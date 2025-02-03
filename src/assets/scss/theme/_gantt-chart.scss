@@ -135,6 +135,7 @@
   .gantt_layout_cell {
     &.gantt_ver_scroll,
     &.gantt_hor_scroll {
+      border: 1px solid transparent;
       @include chrome-scrollbar;
       // height: 0;
     }

@@ -1,14 +1,14 @@
-interface ResizeableNavItem {
+interface ResizableNavItem {
   id: number;
   label: string;
   url: string;
 }
 
-export interface ResizeableNav {
-  navItems: ResizeableNavItem[];
+export interface ResizableNav {
+  navItems: ResizableNavItem[];
 }
 
-export const landingNavItems: ResizeableNavItem[] = [
+export const landingNavItems: ResizableNavItem[] = [
   {
     id: 1,
     label: 'Homepage',
@@ -21,7 +21,7 @@ export const landingNavItems: ResizeableNavItem[] = [
   }
 ];
 
-export const hotelNavItems: ResizeableNavItem[] = [
+export const hotelNavItems: ResizableNavItem[] = [
   {
     id: 1,
     label: 'Homepage',
@@ -54,7 +54,7 @@ export const hotelNavItems: ResizeableNavItem[] = [
   }
 ];
 
-export const flightNavItems: ResizeableNavItem[] = [
+export const flightNavItems: ResizableNavItem[] = [
   {
     id: 1,
     label: 'Homepage',
@@ -72,20 +72,20 @@ export const flightNavItems: ResizeableNavItem[] = [
   }
 ];
 
-export const tripNavItems: ResizeableNavItem[] = [
+export const tripNavItems: ResizableNavItem[] = [
   {
     id: 1,
     label: 'Homepage',
-    url: '#!'
+    url: '/apps/travel-agency/trip/homepage'
   },
   {
     id: 2,
     label: 'Trip Details',
-    url: '#!'
+    url: '/apps/travel-agency/trip/trip-details'
   },
   {
     id: 3,
     label: 'Checkout',
-    url: '#!'
+    url: '/apps/travel-agency/trip/checkout'
   }
 ];

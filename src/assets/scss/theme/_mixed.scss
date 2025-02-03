@@ -238,6 +238,34 @@
   align-items: center;
 }
 
+.card-form-check-input {
+  &:checked {
+    + {
+      div {
+        .card {
+          border: 1px solid var(--#{$prefix}primary-light);
+          box-shadow: 0px 0px 0px 4px rgba(56, 116, 255, 0.2);
+          .radio-circle {
+            border: 5px solid var(--#{$prefix}primary);
+          }
+        }
+      }
+    }
+  }
+  &.pricing-plan-recommended {
+    &:checked {
+      + {
+        div {
+          .card {
+            border: 1px solid var(--#{$prefix}warning-light);
+            box-shadow: 0px 0px 0px 4px rgba(229, 120, 11, 0.2);
+          }
+        }
+      }
+    }
+  }
+}
+
 [data-bs-theme='dark'] {
   .footer-bg {
     opacity: 0.6;
@@ -755,6 +783,26 @@
     .video-icon {
       display: none;
     }
+  }
+}
+
+.radio-circle {
+  display: inline-block;
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid var(--#{$prefix}border-color);
+  border-radius: 50%;
+  transition: border 0.2s ease;
+}
+
+// Trip details Tab Details
+
+.tour-direction-bg {
+  background-position: top 35% center !important;
+  background-size: auto 80% !important;
+  [dir='rtl'] & {
+    transform: scaleY(-1);
+    background-position: top 62% center !important;
   }
 }
 

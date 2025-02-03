@@ -9,10 +9,12 @@ import { useBreakpoints } from 'providers/BreakpointsProvider';
 import classNames from 'classnames';
 
 interface SubMenuItems {
+  id: number;
   label: string;
   url: string;
 }
 interface NavItem {
+  id: number;
   label: string;
   url?: string;
   items?: SubMenuItems[];
@@ -26,60 +28,90 @@ interface dropdownItemsProps {
 
 const navItems: NavItem[] = [
   {
+    id: 1,
     label: 'Hotel',
     items: [
       {
+        id: 2,
         label: 'Homepage',
         url: '/apps/travel-agency/hotel/customer/homepage'
       },
       {
+        id: 3,
         label: 'Hotel details',
         url: '/apps/travel-agency/hotel/customer/hotel-details'
       },
       {
+        id: 4,
         label: 'Hotel compare',
         url: '/apps/travel-agency/hotel/customer/hotel-compare'
       },
       {
+        id: 5,
         label: 'Checkout',
         url: '/apps/travel-agency/hotel/customer/checkout'
       },
       {
+        id: 6,
         label: 'Payment',
         url: '/apps/travel-agency/hotel/customer/payment'
       },
       {
+        id: 7,
         label: 'Gallery',
         url: '/apps/travel-agency/hotel/customer/gallery'
       }
     ]
   },
   {
+    id: 8,
     label: 'Flight',
     items: [
       {
+        id: 9,
         label: 'Homepage',
         url: '/apps/travel-agency/flight/homepage'
       },
       {
+        id: 10,
         label: 'Booking',
         url: '/apps/travel-agency/flight/booking'
       },
       {
+        id: 11,
         label: 'Payment',
         url: '/apps/travel-agency/flight/payment'
       }
     ]
   },
   {
+    id: 12,
     label: 'Trip',
-    url: '#!'
+    items: [
+      {
+        id: 13,
+        label: 'Homepage',
+        url: '/apps/travel-agency/trip/homepage'
+      },
+      {
+        id: 14,
+        label: 'Trip Details',
+        url: '/apps/travel-agency/trip/trip-details'
+      },
+      {
+        id: 15,
+        label: 'Checkout',
+        url: '/apps/travel-agency/trip/checkout'
+      }
+    ]
   },
   {
+    id: 16,
     label: 'Event',
     url: '#!'
   },
   {
+    id: 17,
     label: 'Package',
     url: '#!'
   }
@@ -132,11 +164,11 @@ const NavDropdownItems = ({
         {label}
       </Dropdown.Toggle>
       <Dropdown.Menu className="navbar-dropdown-caret mt-lg-3 mb-3 mb-lg-0">
-        {items.map((dropdownItem, index) => (
+        {items.map(dropdownItem => (
           <Dropdown.Item
             as={Link}
             to={dropdownItem.url}
-            key={index}
+            key={dropdownItem.id}
             className={classNames({ active: pathName === dropdownItem.url })}
           >
             {dropdownItem.label}
@@ -234,17 +266,18 @@ const NavbarMain = () => {
 
         <Navbar.Collapse id="navbarSupportedContent">
           <Nav as="ul" className="me-auto travel-nav-top">
-            {navItems.map((item, index) => (
+            {navItems.map(item => (
               <>
                 {item.items ? (
                   <NavDropdownItems
+                    key={item.id}
                     label={item.label}
                     items={item.items}
                     isActive={pathNameList.includes(item.label.toLowerCase())}
                     pathName={pathname}
                   />
                 ) : (
-                  <Nav.Item as="li" key={index} className="">
+                  <Nav.Item as="li" key={item.id} className="">
                     <Nav.Link
                       as={Link}
                       to="#!"

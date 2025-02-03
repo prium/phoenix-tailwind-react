@@ -5,7 +5,7 @@ import Button from 'components/base/Button';
 import { Collapse } from 'react-bootstrap';
 import classNames from 'classnames';
 
-type ContainerSize = 'sm' | 'base' | 'large';
+type ContainerSize = 'sm' | 'base' | 'large' | 'trip';
 interface CollapsibleContainerProps {
   collapseTitle: string;
   titleClass?: string;
@@ -13,6 +13,7 @@ interface CollapsibleContainerProps {
   children: React.ReactElement;
   className?: string;
   containerSize?: ContainerSize;
+  defaultOpen?: boolean;
 }
 
 const CollapsibleContainer = ({
@@ -21,9 +22,10 @@ const CollapsibleContainer = ({
   children,
   id,
   className,
-  containerSize = 'large'
+  containerSize = 'large',
+  defaultOpen = true
 }: CollapsibleContainerProps) => {
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(defaultOpen);
   return (
     <>
       <Button
@@ -35,7 +37,8 @@ const CollapsibleContainer = ({
             collapsed: open,
             'py-2 px-3': containerSize === 'sm',
             'p-3': containerSize === 'base',
-            'p-4': containerSize === 'large'
+            'p-4': containerSize === 'large',
+            'px-4 py-3 py-sm-4': containerSize === 'trip'
           }
         )}
         aria-controls={id}

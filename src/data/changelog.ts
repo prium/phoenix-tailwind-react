@@ -2,6 +2,31 @@ import changelogListElips from './changelogList';
 
 export default [
   {
+    version: '1.7.0',
+    title: 'Prometheus',
+    publishDate: '14 January, 2025',
+    logs: {
+      new: [
+        'PAGE: <code>travel-agency/trip/homepage</code>',
+        'PAGE: <code>travel-agency/trip/trip-details</code>',
+        'PAGE: <code>travel-agency/trip/checkout</code>',
+        'PACKAGE: <code>@dnd-kit/core</code>',
+        'PACKAGE: <code>@dnd-kit/sortable</code>',
+        'PACKAGE: <code>@dnd-kit/utilities</code>',
+        'PACKAGE: <code>uuid</code>'
+      ],
+      update: [
+        'DOC : <code>Draggable Documentation</code>',
+        'PAGE: <code>apps/kanban/kanban</code>',
+        'PAGE: <code>apps/kanban/create-board</code>',
+        'PAGE: <code>apps/crm/deals</code>',
+        'PACKAGE : <code>swiper 11.0.3 to 11.1.15</code>',
+        'PACKAGE : Removed <code>react-beautiful-dnd</code>'
+      ],
+      fix: ['Minor Bugs']
+    }
+  },
+  {
     version: '1.6.0',
     title: 'Aether',
     publishDate: '12 November, 2024',

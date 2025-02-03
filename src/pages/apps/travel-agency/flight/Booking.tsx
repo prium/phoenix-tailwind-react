@@ -9,14 +9,14 @@ import FlightDetails from 'components/modules/travel-agency/flight/booking/Fligh
 import CouponCard from 'components/cards/CuponCard';
 import PaymentSummary from 'components/modules/travel-agency/flight/booking/PaymentSummary';
 import TravelerDetails from 'components/modules/travel-agency/flight/booking/TravelerDetails';
-import ResizeableNavbar from 'components/navbars/travel-agency/ResizeableNavbar';
-import { flightNavItems } from 'data/travel-agency/ResizeableNav';
+import ResizableNavbar from 'components/navbars/travel-agency/ResizableNavbar';
+import { flightNavItems } from 'data/travel-agency/resizableNav';
 import FlightBottomBar from './BottomBar';
 
 const FlightBooking = () => {
   return (
     <>
-      <ResizeableNavbar navItems={flightNavItems} />
+      <ResizableNavbar navItems={flightNavItems} />
       <Container fluid="small" className="pt-6 pb-6 pb-9">
         <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-3" />
         <h2 className="mb-5">Booking</h2>

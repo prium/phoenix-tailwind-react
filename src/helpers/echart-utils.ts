@@ -1,6 +1,14 @@
 import dayjs from 'dayjs';
-import { CallbackDataParams } from 'echarts/types/dist/shared';
+import {
+  CallbackDataParams,
+  TooltipPositionCallbackParams
+} from 'echarts/types/dist/shared';
 import classNames from 'classnames';
+
+export interface Size {
+  contentSize: number[];
+  viewSize: number[];
+}
 
 export const tooltipFormatterDefault = (
   params: CallbackDataParams[],
@@ -100,4 +108,49 @@ export const rtlTooltipFormatter = (
   `;
 
   return isRTL ? rtl : ltr;
+};
+
+export const handleTooltipPosition = (
+  point: number[],
+  params: TooltipPositionCallbackParams,
+  dom: HTMLDivElement,
+  rect: null,
+  size: Size
+) => {
+  if (window.innerWidth <= 540) {
+    const tooltipHeight = dom.offsetHeight;
+    const obj: { top: number; left?: number; right?: number } = {
+      top: point[1] - tooltipHeight - 20
+    };
+
+    obj[point[0] < size.viewSize[0] / 2 ? 'left' : 'right'] = 5;
+
+    return obj;
+  }
+
+  return null;
+};
+
+export const TopCouponChartTooltip = (
+  point: number[],
+  params: TooltipPositionCallbackParams,
+  el: HTMLDivElement,
+  rect: null,
+  size: Size
+) => {
+  const obj: { top?: number; left?: number; right?: number } = {
+    top: point[1] - 35
+  };
+
+  if (window.innerWidth > 540) {
+    if (point[0] <= size.viewSize[0] / 2) {
+      obj.left = point[0] + 20;
+    } else {
+      obj.left = point[0] - size.contentSize[0] - 20;
+    }
+  } else {
+    obj[point[0] < size.viewSize[0] / 2 ? 'left' : 'right'] = 0;
+  }
+
+  return obj;
 };

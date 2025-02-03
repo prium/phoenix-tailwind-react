@@ -4,9 +4,9 @@ import { Container, Dropdown, Nav, NavItem, Navbar } from 'react-bootstrap';
 import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
-import { ResizeableNav } from 'data/travel-agency/ResizeableNav';
+import { ResizableNav } from 'data/travel-agency/resizableNav';
 
-const ResizeableNavbar = ({ navItems }: ResizeableNav) => {
+const ResizableNavbar = ({ navItems }: ResizableNav) => {
   const { pathname } = useLocation();
 
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -65,7 +65,7 @@ const ResizeableNavbar = ({ navItems }: ResizeableNav) => {
   }, [updateItems]);
 
   return (
-    <Navbar className="resizeable-nav bg-body-emphasis border-y bg-body-emphasis border-translucent py-2">
+    <Navbar className="resizable-nav bg-body-emphasis border-y bg-body-emphasis border-translucent py-2">
       <Container
         fluid="medium"
         className="d-flex flex-between-center flex-nowrap w-100"
@@ -120,4 +120,4 @@ const ResizeableNavbar = ({ navItems }: ResizeableNav) => {
   );
 };
 
-export default ResizeableNavbar;
+export default ResizableNavbar;

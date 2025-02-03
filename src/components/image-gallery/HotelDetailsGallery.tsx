@@ -57,11 +57,6 @@ const HotelDetailsGallery = ({
     images.map((item: HotelImageType) => item.largeImg)
   );
 
-  // const handleItemClick = (index: number) => {
-  //   openLightbox(index);
-  //   setIndex(index);
-  // };
-
   return (
     <>
       <div className={classNames(className, 'gap-3 d-grid grid-cols-12')}>

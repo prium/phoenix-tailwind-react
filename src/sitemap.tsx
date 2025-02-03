@@ -48,7 +48,6 @@ export const routes: RouteItems[] = [
         icon: 'pie-chart',
         active: true,
         flat: true,
-        hasNew: true,
         pages: [
           {
             name: 'e-commerce',
@@ -73,7 +72,6 @@ export const routes: RouteItems[] = [
           },
           {
             name: 'Travel Agency',
-            new: true,
             path: '/dashboard/travel-agency',
             pathName: 'travel-agency',
             topNavIcon: 'briefcase',
@@ -334,7 +332,6 @@ export const routes: RouteItems[] = [
           {
             name: 'hotel',
             active: true,
-            hasNew: true,
             pages: [
               {
                 name: 'admin',
@@ -369,7 +366,6 @@ export const routes: RouteItems[] = [
               {
                 name: 'customer',
                 active: true,
-                hasNew: true,
                 pages: [
                   {
                     name: 'homepage',
@@ -418,7 +414,6 @@ export const routes: RouteItems[] = [
           {
             name: 'flight',
             active: true,
-            new: true,
             pages: [
               {
                 name: 'homepage',
@@ -437,6 +432,31 @@ export const routes: RouteItems[] = [
                 active: true,
                 path: '/apps/travel-agency/flight/payment',
                 pathName: 'flight-payment'
+              }
+            ]
+          },
+          {
+            name: 'trip',
+            active: true,
+            new: true,
+            pages: [
+              {
+                name: 'homepage',
+                active: true,
+                path: '/apps/travel-agency/trip/homepage',
+                pathName: 'trip-homepage'
+              },
+              {
+                name: 'trip-details',
+                active: true,
+                path: '/apps/travel-agency/trip/trip-details',
+                pathName: 'trip-details'
+              },
+              {
+                name: 'checkout',
+                active: true,
+                path: '/apps/travel-agency/trip/checkout',
+                pathName: 'checkout'
               }
             ]
           }
@@ -561,7 +581,6 @@ export const routes: RouteItems[] = [
         name: 'faq',
         icon: 'help-circle',
         active: true,
-        hasNew: true,
         pages: [
           {
             name: 'faq-accordion',
@@ -582,7 +601,6 @@ export const routes: RouteItems[] = [
         name: 'landing',
         icon: 'globe',
         active: true,
-        hasNew: true,
         pages: [
           {
             name: 'default',
@@ -908,7 +926,6 @@ export const routes: RouteItems[] = [
         name: 'forms',
         icon: 'file-text',
         active: true,
-        hasNew: true,
         pages: [
           {
             name: 'basic',
@@ -1131,8 +1148,7 @@ export const routes: RouteItems[] = [
             name: 'calendar',
             pathName: 'components-calendar',
             path: '/modules/components/calendar',
-            active: true,
-            new: true
+            active: true
           },
           {
             name: 'card',
@@ -1510,7 +1526,6 @@ export const routes: RouteItems[] = [
         icon: 'settings',
         dropdownInside: true,
         active: true,
-        hasNew: true,
         pages: [
           {
             name: 'configuration',

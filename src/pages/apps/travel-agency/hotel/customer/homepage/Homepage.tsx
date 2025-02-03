@@ -8,8 +8,8 @@ import { hotels } from 'data/travel-agency/customer/hotel';
 import NavbarHome from 'components/navbars/travel-agency/NavbarHome';
 import HotelActions from 'components/modules/travel-agency/hotel/HotelActions';
 import TravelFooter from 'components/footers/TravelFooter';
-import ResizeableNavbar from 'components/navbars/travel-agency/ResizeableNavbar';
-import { hotelNavItems } from 'data/travel-agency/ResizeableNav';
+import ResizableNavbar from 'components/navbars/travel-agency/ResizableNavbar';
+import { hotelNavItems } from 'data/travel-agency/resizableNav';
 import HomepageFilterOffcanvas from 'components/modules/travel-agency/hotel/HomepageFilterOffcanvas';
 
 const HotelHomepage = () => {
@@ -17,7 +17,7 @@ const HotelHomepage = () => {
 
   return (
     <>
-      <ResizeableNavbar navItems={hotelNavItems} />
+      <ResizableNavbar navItems={hotelNavItems} />
       <section className="container-small py-0">
         <NavbarHome currentPage="Hotel" />
       </section>

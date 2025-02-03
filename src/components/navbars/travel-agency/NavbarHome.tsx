@@ -10,12 +10,12 @@ import React from 'react';
 import { Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-interface nav {
+interface Nav {
   label: string;
   icon: IconDefinition;
   path: string;
 }
-const nav: nav[] = [
+const nav: Nav[] = [
   {
     label: 'Hotel',
     icon: faHotel,
@@ -29,7 +29,7 @@ const nav: nav[] = [
   {
     label: 'Trip',
     icon: faSuitcaseRolling,
-    path: `#!`
+    path: `/apps/travel-agency/trip/homepage`
   }
 ];
 const NavbarHome = ({ currentPage }: { currentPage: string }) => {

@@ -18,13 +18,13 @@ import HotelDetailsTab from 'components/modules/travel-agency/hotel/hotel-detail
 import HotelDetailsGallery from 'components/image-gallery/HotelDetailsGallery';
 import { numberFormat } from 'helpers/utils';
 import TravelFooter from 'components/footers/TravelFooter';
-import ResizeableNavbar from 'components/navbars/travel-agency/ResizeableNavbar';
-import { hotelNavItems } from 'data/travel-agency/ResizeableNav';
+import ResizableNavbar from 'components/navbars/travel-agency/ResizableNavbar';
+import { hotelNavItems } from 'data/travel-agency/resizableNav';
 
 const HotelDetails = () => {
   return (
     <>
-      <ResizeableNavbar navItems={hotelNavItems} />
+      <ResizableNavbar navItems={hotelNavItems} />
       <section className="pt-4 pb-9">
         <Container fluid="medium">
           <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-3" />

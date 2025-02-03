@@ -1,11 +1,12 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment } from 'react';
 import { type AvailableRoom } from 'data/travel-agency/customer/hotelDetails';
-import { Card, Col, Form, InputGroup, Row } from 'react-bootstrap';
+import { Card, Col, Form, Row } from 'react-bootstrap';
 import DatePicker from 'components/base/DatePicker';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCalendar, faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faCalendar } from '@fortawesome/free-solid-svg-icons';
 import Button from 'components/base/Button';
 import HotelDetailsAvailabilityRoomInfo from './HotelDetailsAvailabilityRoomInfo';
+import InputGroupCounter from 'components/common/InputGroupCounter';
 
 interface HotelDetailsAvailabilityProps {
   availableRooms: AvailableRoom[];
@@ -14,12 +15,6 @@ interface HotelDetailsAvailabilityProps {
 const HotelDetailsAvailability = ({
   availableRooms
 }: HotelDetailsAvailabilityProps) => {
-  const [value, setValue] = useState(2);
-
-  const handleCount = (type: string) => {
-    type === 'increase' && setValue(value + 1);
-    type === 'decrease' && value >= 1 && setValue(value - 1);
-  };
   return (
     <>
       <h3 className="mb-3 fw-bold">Availability</h3>
@@ -101,30 +96,12 @@ const HotelDetailsAvailability = ({
               >
                 Adults
               </label>
-              <InputGroup className="gap-2">
-                <Button
-                  variant="phoenix-primary"
-                  className="px-3 rounded"
-                  onClick={() => handleCount('decrease')}
-                >
-                  <FontAwesomeIcon icon={faMinus} />
-                </Button>
-
-                <Form.Control
-                  type="number"
-                  id="adults"
-                  value={value}
-                  onChange={e => setValue(parseInt(e.target.value))}
-                  className="border-translucent input-spin-none text-center rounded"
-                />
-                <Button
-                  variant="phoenix-primary"
-                  className="px-3 rounded"
-                  onClick={() => handleCount('increase')}
-                >
-                  <FontAwesomeIcon icon={faPlus} />
-                </Button>
-              </InputGroup>
+              <InputGroupCounter
+                id="adults"
+                inputGap="gap-2"
+                buttonClasses="px-3 rounded"
+                iconClasses=""
+              />
             </Col>
             <Col sm="auto" className="ms-auto align-self-end">
               <Button variant="primary" className="w-100">

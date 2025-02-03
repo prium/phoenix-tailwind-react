@@ -203,10 +203,15 @@ import TravelAgencyLayout from 'layouts/TravelAgencyLayout';
 import TravelLandingLayout from 'layouts/TravelLandingLayout';
 import HotelCheckout from 'pages/apps/travel-agency/hotel/customer/HotelCheckout';
 import HotelPayment from 'pages/apps/travel-agency/hotel/customer/HotelPayment';
-import FlightHomePage from 'pages/apps/travel-agency/Flight/HomePage';
-import FlightBooking from 'pages/apps/travel-agency/Flight/Booking';
-import FlightPayment from 'pages/apps/travel-agency/Flight/Payment';
+import FlightHomepage from 'pages/apps/travel-agency/flight/Homepage';
+import FlightBooking from 'pages/apps/travel-agency/flight/Booking';
+import FlightPayment from 'pages/apps/travel-agency/flight/Payment';
 import FlightAlternateLayout from 'layouts/FlightAlternateLayout';
+
+import TripHomepage from 'pages/apps/travel-agency/trip/Homepage';
+import TripDetails from 'pages/apps/travel-agency/trip/TripDetails';
+import TripCheckout from 'pages/apps/travel-agency/trip/Checkout';
+import TripLayout from 'layouts/TripLayout';
 
 const routes: RouteObject[] = [
   {
@@ -1035,7 +1040,7 @@ const routes: RouteObject[] = [
             children: [
               {
                 path: 'homepage',
-                element: <FlightHomePage />
+                element: <FlightHomepage />
               }
             ]
           }
@@ -1054,6 +1059,28 @@ const routes: RouteObject[] = [
               {
                 path: 'payment',
                 element: <FlightPayment />
+              }
+            ]
+          }
+        ]
+      },
+      {
+        element: <TripLayout />,
+        path: 'apps/travel-agency/trip',
+        children: [
+          {
+            children: [
+              {
+                path: 'homepage',
+                element: <TripHomepage />
+              },
+              {
+                path: 'trip-details',
+                element: <TripDetails />
+              },
+              {
+                path: 'checkout',
+                element: <TripCheckout />
               }
             ]
           }

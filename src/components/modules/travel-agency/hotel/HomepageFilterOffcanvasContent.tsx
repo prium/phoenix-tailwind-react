@@ -1,67 +1,14 @@
-import {
-  faDollarSign,
-  faMinus,
-  faPlus,
-  faStar
-} from '@fortawesome/free-solid-svg-icons';
-import { faStar as faStarRegular } from '@fortawesome/free-regular-svg-icons';
+import { faDollarSign } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PhoenixReactRange from 'components/forms/PhoenixReactRange';
 import React, { Fragment, useState } from 'react';
-import { Col, Form, InputGroup, Row } from 'react-bootstrap';
+import { Col, Form, Row } from 'react-bootstrap';
 import { homepageOffcanvasAmenitiesItems } from 'data/travel-agency/customer/hotel';
 import classNames from 'classnames';
 import { Link } from 'react-router-dom';
 import Button from 'components/base/Button';
-
-const NumberInputGroup = () => {
-  const [value, setValue] = useState(2);
-
-  const handleCount = (type: string) => {
-    type === 'increase' && setValue(value + 1);
-    type === 'decrease' && value >= 1 && setValue(value - 1);
-  };
-  return (
-    <InputGroup className="gap-2 w-70 w-sm-50">
-      <Button
-        variant="phoenix-primary"
-        className="px-3 rounded"
-        onClick={() => handleCount('decrease')}
-      >
-        <FontAwesomeIcon icon={faMinus} className="px-1" />
-      </Button>
-
-      <Form.Control
-        type="number"
-        defaultValue="2"
-        value={value}
-        className="border-translucent input-spin-none text-center rounded"
-      />
-      <Button
-        variant="phoenix-primary"
-        className="px-3 rounded"
-        onClick={() => handleCount('increase')}
-      >
-        <FontAwesomeIcon icon={faPlus} className="px-1" />
-      </Button>
-    </InputGroup>
-  );
-};
-
-const generateStars = (filledStars: number, totalStars = 5) => (
-  <>
-    {Array.from({ length: filledStars }).map((_, index) => (
-      <Fragment key={`filled-${index}`}>
-        <FontAwesomeIcon icon={faStar} className="text-warning" />
-      </Fragment>
-    ))}
-    {Array.from({ length: totalStars - filledStars }).map((_, index) => (
-      <Fragment key={`empty-${index}`}>
-        <FontAwesomeIcon icon={faStarRegular} className="text-warning" />
-      </Fragment>
-    ))}
-  </>
-);
+import GenerateStar from 'components/common/GenerateStar';
+import InputGroupCounter from 'components/common/InputGroupCounter';
 
 const HomepageFilterOffcanvasContent = () => {
   const [range, setRange] = useState([110, 200]);
@@ -153,17 +100,28 @@ const HomepageFilterOffcanvasContent = () => {
       </Link>
       <hr className="my-5" />
       <h4 className="mb-4 text-body-highlight">Number of Private Bathrooms</h4>
-      <NumberInputGroup />
+      <InputGroupCounter
+        id="privateBathrooms"
+        inputGap="gap-2 w-70 w-sm-50"
+        buttonClasses="px-3 rounded"
+        iconClasses=""
+      />
 
-      <h4 className="mb-4 mt-5 text-body-highlight">
-        Number of Private Bathrooms
-      </h4>
-      <NumberInputGroup />
+      <h4 className="mb-4 mt-5 text-body-highlight">Number of Bedrooms</h4>
+      <InputGroupCounter
+        id="bedRooms"
+        inputGap="gap-2 w-70 w-sm-50"
+        buttonClasses="px-3 rounded"
+        iconClasses=""
+      />
 
-      <h4 className="mb-4 mt-5 text-body-highlight">
-        Number of Private Bathrooms
-      </h4>
-      <NumberInputGroup />
+      <h4 className="mb-4 mt-5 text-body-highlight">Number of Beds</h4>
+      <InputGroupCounter
+        id="beds"
+        inputGap="gap-2 w-70 w-sm-50"
+        buttonClasses="px-3 rounded"
+        iconClasses=""
+      />
       <hr className="my-5" />
       <h4 className="text-body-highlight mb-4">Rating</h4>
       {Array.from([5, 4, 3, 2, 1]).map((stars, index) => (
@@ -181,7 +139,7 @@ const HomepageFilterOffcanvasContent = () => {
               htmlFor={`option${stars}`}
               className="btn w-100 d-flex align-items-center gap-1"
             >
-              {generateStars(stars)}
+              <GenerateStar filledStars={stars} />
               {stars < 5 && (
                 <span className="text-body ms-1 fs-8 fw-normal">and above</span>
               )}

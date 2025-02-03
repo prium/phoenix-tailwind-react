@@ -1,25 +1,16 @@
 import classNames from 'classnames';
 import bg42 from 'assets/img/bg/42.png';
-import {
-  Col,
-  Dropdown,
-  Form,
-  FormControl,
-  InputGroup,
-  Row
-} from 'react-bootstrap';
+import { Col, Dropdown, Form, Row } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCalendar,
   faMapMarkerAlt,
-  faMinus,
-  faPlus,
   faSearch,
   faUser
 } from '@fortawesome/free-solid-svg-icons';
 import DatePicker from 'components/base/DatePicker';
 import Button from 'components/base/Button';
-import { useState } from 'react';
+import InputGroupCounter from 'components/common/InputGroupCounter';
 
 export const DropdownItem = ({
   title,
@@ -28,13 +19,6 @@ export const DropdownItem = ({
   title: string;
   className?: string;
 }) => {
-  const [value, setValue] = useState(2);
-
-  const handleCount = (type: string) => {
-    type === 'increase' && setValue(value + 1);
-    type === 'decrease' && value >= 1 && setValue(value - 1);
-  };
-
   return (
     <Dropdown.Item
       as="div"
@@ -44,29 +28,7 @@ export const DropdownItem = ({
         {title}
       </h5>
       <div style={{ minWidth: 160 }}>
-        <InputGroup className="gap-2">
-          <Button
-            variant="phoenix-primary"
-            className="px-2 rounded"
-            onClick={() => handleCount('decrease')}
-          >
-            <FontAwesomeIcon icon={faMinus} className="px-1" />
-          </Button>
-
-          <FormControl
-            type="number"
-            defaultValue="2"
-            value={value}
-            className="border-translucent input-spin-none text-center rounded"
-          />
-          <Button
-            variant="phoenix-primary"
-            className="px-2 rounded"
-            onClick={() => handleCount('increase')}
-          >
-            <FontAwesomeIcon icon={faPlus} className="px-1" />
-          </Button>
-        </InputGroup>
+        <InputGroupCounter id={title} inputGap="gap-2" />
       </div>
     </Dropdown.Item>
   );

@@ -13,13 +13,13 @@ import CompareRoomDetails from 'components/modules/travel-agency/hotel/hotel-com
 import HotelActions from 'components/modules/travel-agency/hotel/HotelActions';
 import { Container } from 'react-bootstrap';
 import TravelFooter from 'components/footers/TravelFooter';
-import ResizeableNavbar from 'components/navbars/travel-agency/ResizeableNavbar';
-import { hotelNavItems } from 'data/travel-agency/ResizeableNav';
+import ResizableNavbar from 'components/navbars/travel-agency/ResizableNavbar';
+import { hotelNavItems } from 'data/travel-agency/resizableNav';
 
 const HotelCompare = () => {
   return (
     <>
-      <ResizeableNavbar navItems={hotelNavItems} />
+      <ResizableNavbar navItems={hotelNavItems} />
       <section className="pt-6 pb-9">
         <Container fluid="medium">
           <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-3" />
