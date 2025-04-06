@@ -2,6 +2,18 @@ import changelogListElips from './changelogList';
 
 export default [
   {
+    version: '1.8.0',
+    title: 'Dionysus',
+    publishDate: '24 March, 2025',
+    logs: {
+      new: [
+        'PAGE: <code>apps/file-manager/grid-view</code>',
+        'PAGE: <code>apps/file-manager/list-view</code>'
+      ],
+      fix: ['Minor Bugs']
+    }
+  },
+  {
     version: '1.7.0',
     title: 'Prometheus',
     publishDate: '14 January, 2025',

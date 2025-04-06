@@ -840,3 +840,9 @@ $btn-phoenix-border-color: var(--#{$prefix}gray-200); // react specifiq
 // $navbar-slim-height: 1.7rem;
 
 $code-color: $orange-600 !default;
+
+// scss-docs-start treeview-variables
+$treeview-transition-collapse: height 0.15s ease !default;
+$treeview-row-bg-odd: var(--#{$prefix}secondary-bg) !default;
+$treeview-row-bg-even: var(--#{$prefix}light) !default;
+// scss-docs-end treeview-variables

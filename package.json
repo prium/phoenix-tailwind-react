@@ -1,6 +1,6 @@
 {
   "name": "phoenix-react",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "private": true,
   "type": "module",
   "dependencies": {
@@ -124,6 +124,7 @@
     "eslint-plugin-prettier": "^5.0.1",
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "file-loader": "^6.2.0",
     "glob": "^10.3.4",
     "mini-css-extract-plugin": "^2.7.6",
     "prettier": "^3.0.3",
