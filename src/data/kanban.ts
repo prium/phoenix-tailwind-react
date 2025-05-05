@@ -364,7 +364,7 @@ export const kanbanActivities = [
     id: '1',
     task: '<span class="fw-bold"> Alfen Loebe </span> Moved the task <a href="#!">"the standard chunk" </a>from <span class="fw-bold">Doing</span> to <span class="fw-bold">To Do</span>',
     time: '10:41 AM',
-    date: 'Aughst 7,2022',
+    date: 'August 7,2022',
     icon: faRandom,
     iconColor: 'warning'
   },
@@ -372,7 +372,7 @@ export const kanbanActivities = [
     id: '2',
     task: '<span class="fw-bold"> Jessie Samson </span> Attached image3.png to the task <a href="#!">"the standard chunk" </a>',
     time: '10:41 AM',
-    date: 'Aughst 7,2022',
+    date: 'August 7,2022',
     icon: faPaperclip,
     iconColor: 'info'
   },
@@ -380,7 +380,7 @@ export const kanbanActivities = [
     id: '3',
     task: '<span class="fw-bold"> Alfen Loebe </span> Moved the task <a href="#!">"the standard chunk" </a>from <span class="fw-bold">Doing</span> to <span class="fw-bold">To Do</span>',
     time: '10:41 AM',
-    date: 'Aughst 7,2022',
+    date: 'August 7,2022',
     icon: faPlus,
     iconColor: 'info'
   },
@@ -388,7 +388,7 @@ export const kanbanActivities = [
     id: '4',
     task: '<span class="fw-bold"> Alfen Loebe </span> Moved the task <a href="#!">"the standard chunk" </a>from <span class="fw-bold">Doing</span> to <span class="fw-bold">To Do</span>',
     time: '10:41 AM',
-    date: 'Aughst 7,2022',
+    date: 'August 7,2022',
     icon: faRandom,
     iconColor: 'primary'
   }

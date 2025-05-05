@@ -173,7 +173,7 @@ const ChecksExample = () => {
         link={{
           text: 'Checks and radios on react-bootstrap',
           url: `${
-            process.env.REACT_APP_RB_URL_PREFIX || ''
+            import.meta.env.VITE_RB_URL_PREFIX || ''
           }/forms/checks-radios/`
         }}
       />

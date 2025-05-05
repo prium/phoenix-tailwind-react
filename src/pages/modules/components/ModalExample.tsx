@@ -193,7 +193,7 @@ const ModalExample = () => {
         description="Add dialogs to your site for lightboxes, user notifications, or completely custom content."
         link={{
           text: 'Modals on react-bootstrap',
-          url: `${process.env.REACT_APP_RB_URL_PREFIX || ''}/components/modal/`
+          url: `${import.meta.env.VITE_RB_URL_PREFIX || ''}/components/modal/`
         }}
       />
 

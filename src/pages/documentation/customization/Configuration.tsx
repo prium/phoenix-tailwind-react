@@ -200,7 +200,7 @@ const Configuration = () => {
         <PhoenixDocCard.Header title="Config Context" noPreview />
         <PhoenixDocCard.Body>
           <p>
-            {process.env.REACT_APP_TITLE} React uses{' '}
+            {import.meta.env.VITE_TITLE} React uses{' '}
             <a href="https://legacy.reactjs.org/docs/context.html#reactcreatecontext">
               React context
             </a>{' '}

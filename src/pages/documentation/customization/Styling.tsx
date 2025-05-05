@@ -200,8 +200,8 @@ const Styling = () => {
               as your necessity. We recommend to follow this approach.
             </p>
             <p>
-              Light mode is default theme style in {process.env.REACT_APP_TITLE}
-              . So, if you update any bootstrap’s SCSS variables, it will effect
+              Light mode is default theme style in {import.meta.env.VITE_TITLE}.
+              So, if you update any bootstrap’s SCSS variables, it will effect
               in Light mode. If you want to update any color, find the
               corresponding variable for the color and place theme to
               _user-variables.scss file.
@@ -223,7 +223,7 @@ const Styling = () => {
 
             <h6 className="mt-4 fs-7 mb-2 fw-semibold">Theme Color Shades</h6>
             <p className="mb-1">
-              All <strong>{process.env.REACT_APP_TITLE}</strong> colors are
+              All <strong>{import.meta.env.VITE_TITLE}</strong> colors are
               available as Sass variables and Sass map in{' '}
               <code>src/scss/theme/_colors.scss </code> &{' '}
               <code>src/scss/theme/_variables-dark.scss </code>file. To avoid
@@ -235,7 +235,7 @@ const Styling = () => {
               You'll find all the colors used in the theme in a sass map name{' '}
               <code>$theme-color-shades </code>in{' '}
               <code>src/scss/theme/_colors.scss </code>file. If you want to use
-              any <strong>{process.env.REACT_APP_TITLE} </strong>color to
+              any <strong>{import.meta.env.VITE_TITLE} </strong>color to
               generate <code>text/bg </code>
               utility class, Add the color variable in{' '}
               <code>$theme-color-shades </code>map. If you want to add/change
@@ -252,31 +252,6 @@ const Styling = () => {
               example:
             </p>
             <PhoenixLiveEditor code={usingCssVariablesCode} />
-          </PhoenixDocCard.Body>
-        </PhoenixDocCard>
-
-        <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header title="Compiling SCSS" />
-          <PhoenixDocCard.Body>
-            <p>
-              Run <code>npm run build:css</code> command in your project
-              directory to compile scss. This will compile all the SCSS files
-              from <code>src/assets/scss/</code> directory and generate{' '}
-              <code> theme.min.css </code>,<code> theme-rtl.min.css </code>,{' '}
-              <code> user.min.css </code> <code> user-rtl.min.css </code>files
-              in <code>public/css/</code> directory. Reload your browser to see
-              the changes.
-            </p>
-            <p>
-              <strong>
-                You can also use the SCSS watcher to automatically compile and
-                reload your browser every time you save your SCSS files by
-                running the command
-              </strong>
-              <code> npm run watch:css </code>
-              <strong> in a separate terminal window while running</strong>{' '}
-              <code>npm start</code> <strong> in another.</strong>
-            </p>
           </PhoenixDocCard.Body>
         </PhoenixDocCard>
       </DocPagesLayout>

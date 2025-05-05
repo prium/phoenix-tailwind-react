@@ -123,100 +123,83 @@ const ColorShadesDemo = ({ color }: { color: string }) => {
           <code>bg-{color}</code>
         </td>
       </tr>
-      {variants.map((variant, index) => {
+      {variants.map(variant => {
+        const key = `${color}-${variant}`;
+
+        if (variant === 'subtle') {
+          return (
+            <tr key={key}>
+              <td className="ps-0">
+                <div className={`p-5 rounded-2 bg-${color}-${variant}`}></div>
+              </td>
+              <td>
+                <code>
+                  --phoenix-{color}-bg-{variant}
+                </code>
+              </td>
+              <td>
+                <code>
+                  text-{color}-{variant}
+                </code>
+                <br />
+                <code>
+                  bg-{color}-{variant}
+                </code>
+              </td>
+            </tr>
+          );
+        }
+
+        if (variant === 'emphasis') {
+          return (
+            <tr key={key}>
+              <td className="ps-0">
+                <div className={`p-5 rounded-2 bg-${color}-${variant}`}></div>
+              </td>
+              <td>
+                <code>
+                  --phoenix-{color}-{variant}
+                </code>
+              </td>
+              <td>
+                <code>
+                  text-{color}-{variant}
+                </code>
+                <br />
+                <code>
+                  bg-{color}-{variant}
+                </code>
+              </td>
+            </tr>
+          );
+        }
+
         return (
-          <>
-            {variant === 'subtle' ? (
-              <tr key={index}>
-                <td className="ps-0">
-                  <div className={`p-5 rounded-2 bg-${color}-${variant}`}></div>
-                </td>
-                <td>
-                  <code>
-                    --phoenix-{color}-bg-{variant}
-                  </code>
-                </td>
-                <td>
-                  <code>
-                    text-{color}-{variant}
-                  </code>
-                  <br />
-                  <code>
-                    bg-{color}-{variant}
-                  </code>
-                </td>
-              </tr>
-            ) : variant === 'emphasis' ? (
-              <tr key={index}>
-                <td className="ps-0">
-                  <div className={`p-5 rounded-2 bg-${color}-${variant}`}></div>
-                </td>
-                <td>
-                  <code>
-                    --phoenix-{color}-{variant}
-                  </code>
-                </td>
-                <td>
-                  <code>
-                    text-{color}-{variant}
-                  </code>
-                  <br />
-                  <code>
-                    bg-{color}-{variant}
-                  </code>
-                </td>
-              </tr>
-            ) : (
-              <tr key={index}>
-                <td className="ps-0">
-                  <div className={`p-5 rounded-2 bg-${color}-${variant}`}></div>
-                </td>
-                <td>
-                  <code>
-                    --phoenix-{color}-{variant}
-                  </code>
-                  <br />
-                  <code>
-                    --phoenix-{color}-{variant}-rgb
-                  </code>
-                </td>
-                <td>
-                  <code>
-                    text-{color}-{variant}
-                  </code>
-                  <br />
-                  <code>
-                    bg-{color}-{variant}
-                  </code>
-                </td>
-              </tr>
-            )}
-          </>
+          <tr key={key}>
+            <td className="ps-0">
+              <div className={`p-5 rounded-2 bg-${color}-${variant}`}></div>
+            </td>
+            <td>
+              <code>
+                --phoenix-{color}-{variant}
+              </code>
+              <br />
+              <code>
+                --phoenix-{color}-{variant}-rgb
+              </code>
+            </td>
+            <td>
+              <code>
+                text-{color}-{variant}
+              </code>
+              <br />
+              <code>
+                bg-{color}-{variant}
+              </code>
+            </td>
+          </tr>
         );
       })}
-      {/* <tr key={index}>
-        <td className="ps-0">
-          <div className={`p-5 rounded-2 bg-${color}-${variant}`}></div>
-        </td>
-        <td>
-          <code>
-            --phoenix-{color}-{variant}
-          </code>
-          <br />
-          <code>
-            --phoenix-{color}-{variant}-rgb
-          </code>
-        </td>
-        <td>
-          <code>
-            text-{color}-{variant}
-          </code>
-          <br />
-          <code>
-            bg-{color}-{variant}
-          </code>
-        </td>
-      </tr> */}
     </>
   );
 };

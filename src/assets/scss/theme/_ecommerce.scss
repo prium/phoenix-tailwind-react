@@ -365,3 +365,7 @@
     }
   }
 }
+
+.phoenix-offcanvas.products-filter-offcanvas.show ~ .phoenix-offcanvas-backdrop{
+  top: 92px;
+}

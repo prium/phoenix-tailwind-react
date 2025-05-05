@@ -1,7 +1,9 @@
+import { lazy, Suspense } from 'react';
 import { useAppContext } from 'providers/AppProvider';
-import React, { useMemo } from 'react';
-import MapboxCluster from 'components/base/MapBoxCluster';
+import { useMemo } from 'react';
 import { CircleLayer, SymbolLayer } from 'mapbox-gl';
+import PhoenixLoader from 'components/common/PhoenixLoader';
+const MapboxCluster = lazy(() => import('components/base/MapBoxCluster'));
 
 const getMapData = (getThemeColor: (name: string) => string) => {
   return [
@@ -58,19 +60,23 @@ const TripDetailsMapCluster = () => {
     return getMapData(getThemeColor);
   }, [getThemeColor]);
   return (
-    <MapboxCluster
-      className="border border-translucent rounded-2"
-      mapData={mapData}
-      options={{
-        center: [-73.102712, 7.102257],
-        zoom: 3.5,
-        pitch: 40,
-        attributionControl: false
-      }}
-      style={{
-        height: 240
-      }}
-    />
+    <>
+      <Suspense fallback={<PhoenixLoader />}>
+        <MapboxCluster
+          className="border border-translucent rounded-2"
+          mapData={mapData}
+          options={{
+            center: [-73.102712, 7.102257],
+            zoom: 3.5,
+            pitch: 40,
+            attributionControl: false
+          }}
+          style={{
+            height: 240
+          }}
+        />
+      </Suspense>
+    </>
   );
 };
 

@@ -104,7 +104,6 @@ const LeadDetails = () => {
                 <ScrollSpy.Content
                   id="deals"
                   className="lead-details-scrollspy mb-8"
-                  minTopValue={150}
                 >
                   <LeadDeals />
                 </ScrollSpy.Content>

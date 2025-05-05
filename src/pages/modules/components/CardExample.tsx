@@ -66,8 +66,8 @@ const cardGroupCode = `
   const [items] = useState([generic54, generic44, generic46, generic45]);
   return (
     <CardGroup>
-      {items.map(item => (
-        <Card style={{ width: '20rem' }}>
+      {items.map((item,index) => (
+        <Card key={index} style={{ width: '20rem' }}>
           <Card.Img variant="top" src={item} />
           <Card.Body>
             <Card.Title as="h4">Title goes here</Card.Title>
@@ -99,8 +99,8 @@ const backgroundStylesCode = `
   ]);
   return (
     <Row className="g-4">
-      {variants.map(variant => (
-        <Col sm={6} md={4} lg={3}>
+      {variants.map((variant, index) => (
+        <Col key={index} sm={6} md={4} lg={3}>
           <Card
             bg={variant.toLowerCase()}
             key={variant}
@@ -140,8 +140,8 @@ const borderCode = `
   ]);
   return (
     <Row className="g-4">
-      {variants.map(variant => (
-        <Col sm={6} md={4} lg={3}>
+      {variants.map((variant, index) => (
+        <Col key={index} sm={6} md={4} lg={3}>
           <Card key={variant} className={'border border-' + variant.toLowerCase()}>
             <Card.Body>
               <Card.Title as="h4">{variant} Border Card</Card.Title>
@@ -166,7 +166,7 @@ const CardExample = () => {
         description="Bootstrap’s cards provide a flexible and extensible content container with multiple variants and options."
         link={{
           text: 'Cards on react-bootstrap',
-          url: `${process.env.REACT_APP_RB_URL_PREFIX || ''}/components/cards/`
+          url: `${import.meta.env.VITE_RB_URL_PREFIX || ''}/components/cards/`
         }}
       />
 

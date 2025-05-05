@@ -7,10 +7,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
 import { useAppContext } from 'providers/AppProvider';
 // @ts-ignore
-import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
+import MapboxWorker from 'mapbox-gl/dist/mapbox-gl-csp-worker?worker';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 
-mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN || '';
+mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN || '';
 // @ts-ignore
 mapboxgl.workerClass = MapboxWorker;
 

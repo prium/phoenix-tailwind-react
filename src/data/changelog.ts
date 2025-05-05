@@ -2,6 +2,29 @@ import changelogListElips from './changelogList';
 
 export default [
   {
+    version: '1.9.0',
+    title: 'Helios',
+    alertText:
+      'This is a major update. Please backup your project before upgrading to the latest version.',
+    alertLink: {
+      prefix: 'See the',
+      linkText: 'migration',
+      link: '/migrations/#v1.9.0',
+      suffix: 'for details.'
+    },
+    publishDate: '4 May, 2025',
+    logs: {
+      update: [
+        'Migrated from <b> Create React App (CRA) to Vite.</b>',
+        'PACKAGE: Bootstrap to 5.3.5',
+        'PACKAGE: React Bootstrap to 2.10.9',
+        'PACKAGE: Removed <code>react-visibility-sensor</code>'
+      ],
+      new: ['PACKAGE: <code>react-intersection-observer</code>'],
+      fix: ['Console warnings', 'Minor bugs']
+    }
+  },
+  {
     version: '1.8.0',
     title: 'Dionysus',
     publishDate: '24 March, 2025',
@@ -10,7 +33,7 @@ export default [
         'PAGE: <code>apps/file-manager/grid-view</code>',
         'PAGE: <code>apps/file-manager/list-view</code>'
       ],
-      fix: ['Minor Bugs']
+      fix: ['Minor bugs']
     }
   },
   {
@@ -35,7 +58,7 @@ export default [
         'PACKAGE : <code>swiper 11.0.3 to 11.1.15</code>',
         'PACKAGE : Removed <code>react-beautiful-dnd</code>'
       ],
-      fix: ['Minor Bugs']
+      fix: ['Minor bugs']
     }
   },
   {
@@ -60,7 +83,7 @@ export default [
         'Horizontal nav scrollbar issue in firefox',
         'Multiple file select issue',
         'Mapbox full screen issue',
-        'Minor Bugs'
+        'Minor bugs'
       ]
     }
   },
@@ -81,7 +104,7 @@ export default [
         'DOC : <code>React Range Documentation</code>'
       ],
       update: ['PACKAGE: React Bootstrap to 2.10.4'],
-      fix: ['Minor Bugs']
+      fix: ['Minor bugs']
     }
   },
   {
@@ -101,7 +124,7 @@ export default [
         'PACKAGE: React Bootstrap to 2.10.2',
         'DOC: Tinymce documentation'
       ],
-      fix: ['Minor Bugs']
+      fix: ['Minor bugs']
     }
   },
   {
@@ -128,7 +151,7 @@ export default [
         'HTML: <code>text-{themeColor}-{variant}</code> classes replaced with <code>text-{themeColor}-light/lighter/dark/darker</code>',
         'HTML: <code>z-index-bg-{themeColor}-{variant}</code> classes replaced with <code>bg-{themeColor}-light/lighter/dark/darker</code>'
       ],
-      fix: ['Minor Bugs']
+      fix: ['Minor bugs']
     }
   },
   {
@@ -165,7 +188,7 @@ export default [
         'PACKAGE: eslint-plugin-prettier to v5.0.1',
         'PACKAGE: prettier to v3.0.3'
       ],
-      fix: ['Minor Bugs']
+      fix: ['Minor bugs']
     }
   },
   {
@@ -206,7 +229,7 @@ export default [
         'Added <code>footerProps</code> in <code>AdvanceTable</code> columns definition.',
         'Example added for all <code>Icon</code> sets.'
       ],
-      fix: ['Minor Bugs']
+      fix: ['Minor bugs']
     }
   }
 ];

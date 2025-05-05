@@ -8,9 +8,11 @@ let name = JSON.parse(rawdata).name;
 
 const excludedFilesAndFolders = [
   '.git',
+  'dist',
   'node_modules',
   'build',
   'product.js',
+  'postinstall.js',
   'scripts',
   '.env'
 ];

@@ -91,7 +91,7 @@ const CollapseExample = () => {
         link={{
           text: 'Collapse on react-bootstrap',
           url: `${
-            process.env.REACT_APP_RB_URL_PREFIX || ''
+            import.meta.env.VITE_RB_URL_PREFIX || ''
           }/utilities/transitions/#collapse`
         }}
       />

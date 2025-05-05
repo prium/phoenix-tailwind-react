@@ -9,6 +9,26 @@ import { Card, Col, Row } from 'react-bootstrap';
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 import { faRegularIconList } from 'data/icons/faRegularIconList';
 import { faBrandIconList } from 'data/icons/faBrandIconList';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import {
+  fab,
+  faFacebook,
+  faTwitter,
+  faYoutube
+} from '@fortawesome/free-brands-svg-icons';
+
+library.add(fab, faFacebook, faTwitter, faYoutube);
+
+const importFromLibrary = `
+import { library } from '@fortawesome/fontawesome-svg-core';
+import {
+  fab,
+  facebook,
+} from '@fortawesome/free-brands-svg-icons';
+ library.add(fab, faFacebook, faTwitter);
+
+<FontAwesomeIcon icon={['fab', 'facebook']} className="text-facebook fs-5 me-3" />`;
+
 const individualAddIconCode = `import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCoffee } from '@fortawesome/free-solid-svg-icons'
 
@@ -45,6 +65,12 @@ const FontAwesomeExample = () => {
           <PhoenixDocCard.Header title="Usage" noPreview />
           <PhoenixDocCard.Body>
             <p className="mb-3">
+              Import your icon from your desired icon module and then pass it to
+              <code>library.add()</code> function.
+            </p>
+            <PhoenixLiveEditor code={importFromLibrary} />
+
+            <p className="my-3">
               you can explicitly import icons into each component for individual
               use.
             </p>

@@ -195,7 +195,7 @@ const FormValidationExample = () => {
         description="Provide valuable, actionable feedback to your users with HTML5 form validation, via browser default behaviors or custom styles and JavaScript."
         link={{
           text: 'Form validation on react-bootstrap',
-          url: `${process.env.REACT_APP_RB_URL_PREFIX || ''}/forms/validation/`
+          url: `${import.meta.env.VITE_RB_URL_PREFIX || ''}/forms/validation/`
         }}
       />
 

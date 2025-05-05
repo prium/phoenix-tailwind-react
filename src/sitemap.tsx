@@ -377,29 +377,25 @@ export const routes: RouteItems[] = [
                     name: 'hotel-details',
                     path: '/apps/travel-agency/hotel/customer/hotel-details',
                     pathName: 'hotel-details',
-                    active: true,
-                    new: true
+                    active: true
                   },
                   {
                     name: 'hotel-compare',
                     path: '/apps/travel-agency/hotel/customer/hotel-compare',
                     pathName: 'hotel-compare',
-                    active: true,
-                    new: true
+                    active: true
                   },
                   {
                     name: 'checkout',
                     path: '/apps/travel-agency/hotel/customer/checkout',
                     pathName: 'hotel-checkout',
-                    active: true,
-                    new: true
+                    active: true
                   },
                   {
                     name: 'payment',
                     path: '/apps/travel-agency/hotel/customer/payment',
                     pathName: 'hotel-payment',
-                    active: true,
-                    new: true
+                    active: true
                   },
                   {
                     name: 'gallery',

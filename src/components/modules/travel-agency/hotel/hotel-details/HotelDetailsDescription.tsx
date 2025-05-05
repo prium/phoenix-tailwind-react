@@ -1,9 +1,10 @@
-import React, { useEffect, useRef } from 'react';
+import { lazy, Suspense, useEffect, useRef } from 'react';
 import { Card } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
-import Mapbox from 'components/base/MapBox';
 import { Map } from 'mapbox-gl';
+import PhoenixLoader from 'components/common/PhoenixLoader';
+const Mapbox = lazy(() => import('components/base/MapBox'));
 
 const HotelDetailsDescription = ({ activeKey }: { activeKey: string }) => {
   const mapRef = useRef<Map | null>(null);
@@ -52,16 +53,18 @@ const HotelDetailsDescription = ({ activeKey }: { activeKey: string }) => {
       <Card className="bg-body mt-5">
         <Card.Body>
           <div className="mb-4">
-            <Mapbox
-              ref={mapRef}
-              className="rounded-2 border border-translucent overflow-hidden w-100"
-              style={{ height: 300 }}
-              options={{
-                center: [-74.0020158, 40.7228022],
-                zoom: 14,
-                scrollZoom: false
-              }}
-            />
+            <Suspense fallback={<PhoenixLoader />}>
+              <Mapbox
+                ref={mapRef}
+                className="rounded-2 border border-translucent overflow-hidden w-100"
+                style={{ height: 300 }}
+                options={{
+                  center: [-74.0020158, 40.7228022],
+                  zoom: 14,
+                  scrollZoom: false
+                }}
+              />
+            </Suspense>
           </div>
           <p className="mb-2 text-body-tertiary text-uppercase">
             <FontAwesomeIcon

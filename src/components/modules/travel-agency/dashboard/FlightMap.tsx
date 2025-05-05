@@ -6,7 +6,7 @@ import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useAppContext } from 'providers/AppProvider';
 // @ts-ignore
-import MapboxWorker from 'worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker';
+import MapboxWorker from 'mapbox-gl/dist/mapbox-gl-csp-worker?worker';
 import {
   faCircle,
   faMinus,
@@ -22,7 +22,6 @@ import { Autoplay } from 'swiper/modules';
 import { Feature, along, length, LineString } from '@turf/turf';
 import { routes } from 'data/travel-agency/travelAgency';
 import { rgbaColor } from 'helpers/utils';
-// import { Feature as Feature2 } from '@turf/helpers';
 
 interface MapboxProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;
@@ -50,7 +49,7 @@ interface Destination2 {
 }
 
 SwiperCore.use([Autoplay]);
-mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN || '';
+mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN || '';
 // @ts-ignore
 mapboxgl.workerClass = MapboxWorker;
 

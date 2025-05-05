@@ -29,15 +29,17 @@ const HotelDetailsPolicy = () => {
               </h5>
             </Col>
             <Col sm={9}>
-              <ProgressBar
-                className="position-relative align-middle overflow-visible"
-                style={{ height: 8 }}
-              >
+              <div className="position-relative">
                 <ProgressBar
-                  now={50}
-                  isChild={true}
-                  className="ms-auto overflow-visible rounded"
-                />
+                  className="position-relative align-middle overflow-visible"
+                  style={{ height: 8 }}
+                >
+                  <ProgressBar
+                    now={50}
+                    isChild={true}
+                    className="ms-auto overflow-visible rounded"
+                  />
+                </ProgressBar>
                 <span
                   className="text-body translate-middle-x position-absolute fs-10"
                   style={{
@@ -47,7 +49,7 @@ const HotelDetailsPolicy = () => {
                 >
                   12 am
                 </span>
-              </ProgressBar>
+              </div>
               <div className="d-flex flex-between-center w-100">
                 <span className="text-body fs-10 mt-1">6 am</span>
                 <span className="text-body fs-10 mt-1">6 pm</span>
@@ -56,7 +58,7 @@ const HotelDetailsPolicy = () => {
           </Row>
         </Card.Body>
       </Card>
-      <Card className="bg-body-highlight mb-3">
+      {/* <Card className="bg-body-highlight mb-3">
         <Card.Body>
           <Row className="g-3">
             <Col sm={3}>
@@ -96,7 +98,7 @@ const HotelDetailsPolicy = () => {
             </Col>
           </Row>
         </Card.Body>
-      </Card>
+      </Card> */}
       <Card className="bg-body-highlight mb-3">
         <Card.Body>
           <Row className="g-3">

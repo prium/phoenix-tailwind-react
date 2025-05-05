@@ -113,7 +113,7 @@ const FloatingLabelExample = () => {
         link={{
           text: 'Floating labels on react-bootstrap',
           url: `${
-            process.env.REACT_APP_RB_URL_PREFIX || ''
+            import.meta.env.VITE_RB_URL_PREFIX || ''
           }/forms/floating-labels/`
         }}
       />

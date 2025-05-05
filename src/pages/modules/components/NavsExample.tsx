@@ -129,7 +129,7 @@ const NavsExample = () => {
         description="Documentation and examples of how to use Bootstrap’s included navigation components."
         link={{
           text: 'Navs on react-bootstrap',
-          url: `${process.env.REACT_APP_RB_URL_PREFIX || ''}/components/navs/`
+          url: `${import.meta.env.VITE_RB_URL_PREFIX || ''}/components/navs/`
         }}
       />
       <DocPagesLayout>

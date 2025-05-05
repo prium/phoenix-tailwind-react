@@ -161,7 +161,7 @@ const OffcanvasExample = () => {
         link={{
           text: 'Offcanvas on react-bootstrap',
           url: `${
-            process.env.REACT_APP_RB_URL_PREFIX || ''
+            import.meta.env.VITE_RB_URL_PREFIX || ''
           }/components/offcanvas/`
         }}
       />

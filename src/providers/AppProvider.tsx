@@ -52,7 +52,7 @@ const AppProvider = ({ children }: PropsWithChildren) => {
     )
   };
 
-  const [config, configDispatch] = useReducer(configReducer, configState); // initail
+  const [config, configDispatch] = useReducer(configReducer, configState);
 
   const setConfig = (payload: Partial<Config>) => {
     configDispatch({
@@ -74,21 +74,15 @@ const AppProvider = ({ children }: PropsWithChildren) => {
     return getColor(name);
   };
 
+  // Handle DOM attribute updates
   useEffect(() => {
     if (config.navbarTopShape === 'slim') {
-      // document.body.classList.add('nav-slim');
       document.documentElement.setAttribute(
         'data-navbar-horizontal-shape',
         'slim'
       );
     } else {
       document.documentElement.removeAttribute('data-navbar-horizontal-shape');
-    }
-
-    if (config.navbarPosition === 'dual') {
-      setConfig({
-        navbarTopShape: 'default'
-      });
     }
 
     document.documentElement.setAttribute(
@@ -101,7 +95,21 @@ const AppProvider = ({ children }: PropsWithChildren) => {
     } else {
       document.documentElement.classList.remove('navbar-vertical-collapsed');
     }
-  }, [config]);
+  }, [
+    config.navbarTopShape,
+    config.navbarPosition,
+    config.isNavbarVerticalCollapsed
+  ]);
+
+  // Separate useEffect to fix navbarTopShape if needed
+  useEffect(() => {
+    if (
+      config.navbarPosition === 'dual' &&
+      config.navbarTopShape !== 'default'
+    ) {
+      setConfig({ navbarTopShape: 'default' });
+    }
+  }, [config.navbarPosition, config.navbarTopShape]);
 
   return (
     <AppContext.Provider

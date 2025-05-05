@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, Suspense, lazy } from 'react';
 import { useWizardFormContext } from 'providers/WizardFormProvider';
 import { Col, FloatingLabel, Form, Row } from 'react-bootstrap';
 import { AddPropertyWizardFormData } from 'data/travel-agency/addProperty';
@@ -7,8 +7,10 @@ import {
   faLocationCrosshairs,
   faLocationDot
 } from '@fortawesome/free-solid-svg-icons';
-import Mapbox from 'components/base/MapBox';
 import { Map } from 'mapbox-gl';
+import PhoenixLoader from 'components/common/PhoenixLoader';
+
+const Mapbox = lazy(() => import('components/base/MapBox'));
 
 const LocationForm = ({ tabEventKey }: { tabEventKey: number }) => {
   const mapRef = useRef<Map | null>(null);
@@ -51,17 +53,19 @@ const LocationForm = ({ tabEventKey }: { tabEventKey: number }) => {
         />
       </div>
       <div className="mt-3 mb-6">
-        <Mapbox
-          ref={mapRef}
-          className="rounded-3 border overflow-hidden"
-          options={{
-            attributionControl: false,
-            center: [-74.0020158, 40.7228022],
-            zoom: 14,
-            scrollZoom: false
-          }}
-          style={{ height: '250px', width: '100%' }}
-        />
+        <Suspense fallback={<PhoenixLoader />}>
+          <Mapbox
+            ref={mapRef}
+            className="rounded-3 border overflow-hidden"
+            options={{
+              attributionControl: false,
+              center: [-74.0020158, 40.7228022],
+              zoom: 14,
+              scrollZoom: false
+            }}
+            style={{ height: '250px', width: '100%' }}
+          />
+        </Suspense>
       </div>
 
       <FloatingLabel

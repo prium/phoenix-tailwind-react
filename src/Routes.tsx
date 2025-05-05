@@ -57,7 +57,6 @@ import ChangeLog from 'pages/documentation/ChangeLog';
 import NavsExample from 'pages/modules/components/NavsExample';
 import TabsExample from 'pages/modules/components/TabsExample';
 import NavbarExample from 'pages/modules/components/NavbarExample';
-import Ecommerce from 'pages/dashboard/ecommerce';
 import EcommerceLayout from 'layouts/EcommerceLayout';
 import Homepage from 'pages/apps/e-commerce/customer/Homepage';
 import ProductDetails from 'pages/apps/e-commerce/customer/ProductDetails';
@@ -77,7 +76,6 @@ import Orders from 'pages/apps/e-commerce/admin/Orders';
 import OrderDetails from 'pages/apps/e-commerce/admin/OrderDetails';
 import Refund from 'pages/apps/e-commerce/admin/Refund';
 import CustomerDetails from 'pages/apps/e-commerce/admin/CustomerDetails';
-import ProjectManagement from 'pages/dashboard/ProjectManagement';
 import CreateNew from 'pages/apps/project-management/CreateNew';
 import ProjectListView from 'pages/apps/project-management/ProjectListView';
 import ProjectDetails from 'pages/apps/project-management/ProjectDetails';
@@ -85,10 +83,8 @@ import MainLayoutProvider from 'providers/MainLayoutProvider';
 import ProjectTodoList from 'pages/apps/project-management/ProjectTodoList';
 import ProjectBoardView from 'pages/apps/project-management/ProjectBoardView';
 import ProjectCardView from 'pages/apps/project-management/ProjectCardView';
-import Default from 'pages/pages/landing/Default';
 import CreateAnEvent from 'pages/apps/events/CreateAnEvent';
 import EventDetail from 'pages/apps/events/EventDetail';
-import Chat from 'pages/apps/chat/Chat';
 import ChatHomepage from 'pages/apps/chat/ChatHomepage';
 import ChatConversation from 'pages/apps/chat/ChatConversation';
 import FaqAccordion from 'pages/faq/FaqAccordion';
@@ -103,7 +99,6 @@ import Feed from 'pages/apps/social/Feed';
 import Error404 from 'pages/error/Error404';
 import Error403 from 'pages/error/Error403';
 import Error500 from 'pages/error/Error500';
-import AdvanceTableExample from 'pages/modules/tables/AdvanceTableExample';
 import SimpleSignIn from 'pages/pages/authentication/simple/SignIn';
 import SimpleSignUp from 'pages/pages/authentication/simple/SignUp';
 import SimpleSignOut from 'pages/pages/authentication/simple/SignOut';
@@ -122,24 +117,17 @@ import NavbarTop from 'pages/pages/layouts/NavbarTop';
 import NavbarHorizontalSlim from 'pages/pages/layouts/NavbarHorizontalSlim';
 import ComboNav from 'pages/pages/layouts/ComboNav';
 import ComboNavSlim from 'pages/pages/layouts/ComboNavSlim';
-import LightboxExample from 'pages/modules/components/LightboxExample';
-import EmojiButtonExample from 'pages/modules/forms/advance/EmojiButtonExample';
 import RatingExample from 'pages/modules/forms/advance/RatingExample';
-import ReactRangeExample from 'pages/modules/forms/advance/RangeExample';
 import CountupExample from 'pages/modules/components/CountupExample';
 import EditorExample from 'pages/modules/forms/advance/EditorExample';
 import SwiperCarousel from 'pages/modules/components/SwiperCarousel';
 import FileUploaderExample from 'pages/modules/forms/advance/FileUploaderExample';
 import AdvanceSelectExample from 'pages/modules/forms/advance/AdvanceSelectExample';
 import DatePickerExample from 'pages/modules/forms/advance/DatePickerExample';
-import ECharts from 'pages/modules/charts/ECharts';
-import GanttChart from 'pages/modules/charts/GanttChart';
 import Members from 'pages/Members';
 import DualNav from 'pages/pages/layouts/DualNav';
 import App from 'App';
-import Crm from 'pages/dashboard/Crm';
 import LeadDetails from 'pages/apps/crm/LeadDetails';
-import Analytics from 'pages/apps/crm/Analytics';
 import DealDetails from 'pages/apps/crm/DealDetails';
 import ReportDetails from 'pages/apps/crm/ReportDetails';
 import CardSignIn from 'pages/pages/authentication/card/SignIn';
@@ -163,16 +151,12 @@ import SplitTwoFA from 'pages/pages/authentication/split/TwoFA';
 import { Suspense, lazy } from 'react';
 import PhoenixLoader from 'components/common/PhoenixLoader';
 import Migrations from 'pages/documentation/Migrations';
-import Kanban from 'pages/apps/kanban/Kanban';
 import Boards from 'pages/apps/kanban/Boards';
 import CreateBoard from 'pages/apps/kanban/CreateBoard';
 import WizardExample from 'pages/modules/forms/WizardExample';
 import Deals from 'pages/apps/crm/Deals';
 import FaqTab from 'pages/faq/FaqTab';
-import Alternate from 'pages/pages/landing/Alternate';
-import Calendar from 'pages/apps/calendar/Calendar';
 import Timeline from 'pages/pages/Timeline';
-import CalendarExample from 'pages/modules/components/CalendarExample';
 import DraggableExample from 'pages/modules/components/DraggableExample';
 import Widgets from 'pages/modules/Widgets';
 import ComingSoon from 'pages/ComingSoon';
@@ -180,16 +164,45 @@ import ComingSoon from 'pages/ComingSoon';
 const FontAwesomeExample = lazy(
   () => import('pages/modules/components/FontAwesomeExample')
 );
-
 const FeatherIconsExample = lazy(
   () => import('pages/modules/components/FeatherIconsExample')
 );
-
 const UniconsExample = lazy(
   () => import('pages/modules/components/UniconsExample')
 );
+const ECharts = lazy(() => import('pages/modules/charts/ECharts'));
+const Calendar = lazy(() => import('pages/apps/calendar/Calendar'));
+const CalendarExample = lazy(
+  () => import('pages/modules/components/CalendarExample')
+);
+const AdvanceTableExample = lazy(
+  () => import('pages/modules/tables/AdvanceTableExample')
+);
+const Ecommerce = lazy(() => import('pages/dashboard/ecommerce'));
+const TravelAgency = lazy(() => import('pages/dashboard/TravelAgency'));
+const Chat = lazy(() => import('pages/apps/chat/Chat'));
+const GanttChart = lazy(() => import('pages/modules/charts/GanttChart'));
+const EmojiButtonExample = lazy(
+  () => import('pages/modules/forms/advance/EmojiButtonExample')
+);
+const ReactRangeExample = lazy(
+  () => import('pages/modules/forms/advance/RangeExample')
+);
+const LightboxExample = lazy(
+  () => import('pages/modules/components/LightboxExample')
+);
+const ProjectManagement = lazy(
+  () => import('pages/dashboard/ProjectManagement')
+);
+const Crm = lazy(() => import('pages/dashboard/Crm'));
+const Analytics = lazy(() => import('pages/apps/crm/Analytics'));
+const Kanban = lazy(() => import('pages/apps/kanban/Kanban'));
+const Default = lazy(() => import('pages/pages/landing/Default'));
+const Alternate = lazy(() => import('pages/pages/landing/Alternate'));
+const GridView = lazy(() => import('pages/apps/file-manager/GridView'));
+const ListView = lazy(() => import('pages/apps/file-manager/ListView'));
+
 import Color from './pages/documentation/customization/Color';
-import TravelAgency from 'pages/dashboard/TravelAgency';
 import TravelLanding from 'pages/apps/travel-agency/landing/Landing';
 import RoomListing from 'pages/apps/travel-agency/hotel/admin/RoomListing';
 import HotelHomepage from 'pages/apps/travel-agency/hotel/customer/homepage/Homepage';
@@ -212,8 +225,6 @@ import TripHomepage from 'pages/apps/travel-agency/trip/Homepage';
 import TripDetails from 'pages/apps/travel-agency/trip/TripDetails';
 import TripCheckout from 'pages/apps/travel-agency/trip/Checkout';
 import TripLayout from 'layouts/TripLayout';
-import GridView from 'pages/apps/file-manager/GridView';
-import ListView from 'pages/apps/file-manager/ListView';
 import FileManagerProvider from 'providers/FileManagerProvider';
 
 const routes: RouteObject[] = [
@@ -230,22 +241,38 @@ const routes: RouteObject[] = [
         children: [
           {
             index: true,
-            element: <Ecommerce />
+            element: (
+              <Suspense fallback={<PhoenixLoader />}>
+                <Ecommerce />
+              </Suspense>
+            )
           },
           {
             path: '/dashboard',
             children: [
               {
                 path: 'project-management',
-                element: <ProjectManagement />
+                element: (
+                  <Suspense fallback={<PhoenixLoader />}>
+                    <ProjectManagement />
+                  </Suspense>
+                )
               },
               {
                 path: 'crm',
-                element: <Crm />
+                element: (
+                  <Suspense fallback={<PhoenixLoader />}>
+                    <Crm />
+                  </Suspense>
+                )
               },
               {
                 path: 'travel-agency',
-                element: <TravelAgency />
+                element: (
+                  <Suspense fallback={<PhoenixLoader />}>
+                    <TravelAgency />
+                  </Suspense>
+                )
               }
             ]
           },
@@ -290,7 +317,11 @@ const routes: RouteObject[] = [
                 children: [
                   {
                     path: 'analytics',
-                    element: <Analytics />
+                    element: (
+                      <Suspense fallback={<PhoenixLoader />}>
+                        <Analytics />
+                      </Suspense>
+                    )
                   },
                   {
                     path: 'deals',
@@ -369,7 +400,11 @@ const routes: RouteObject[] = [
                 children: [
                   {
                     path: 'kanban',
-                    element: <Kanban />
+                    element: (
+                      <Suspense fallback={<PhoenixLoader />}>
+                        <Kanban />
+                      </Suspense>
+                    )
                   },
                   {
                     path: 'boards',
@@ -383,7 +418,11 @@ const routes: RouteObject[] = [
               },
               {
                 path: 'chat',
-                element: <Chat />,
+                element: (
+                  <Suspense fallback={<PhoenixLoader />}>
+                    <Chat />
+                  </Suspense>
+                ),
                 children: [
                   {
                     index: true,
@@ -414,7 +453,11 @@ const routes: RouteObject[] = [
               },
               {
                 path: 'calendar',
-                element: <Calendar />
+                element: (
+                  <Suspense fallback={<PhoenixLoader />}>
+                    <Calendar />
+                  </Suspense>
+                )
               },
               {
                 path: 'email',
@@ -461,7 +504,9 @@ const routes: RouteObject[] = [
                     path: 'grid-view',
                     element: (
                       <FileManagerProvider>
-                        <GridView />
+                        <Suspense fallback={<PhoenixLoader />}>
+                          <GridView />
+                        </Suspense>
                       </FileManagerProvider>
                     )
                   },
@@ -469,7 +514,9 @@ const routes: RouteObject[] = [
                     path: 'list-view',
                     element: (
                       <FileManagerProvider>
-                        <ListView />
+                        <Suspense fallback={<PhoenixLoader />}>
+                          <ListView />
+                        </Suspense>
                       </FileManagerProvider>
                     )
                   }
@@ -589,7 +636,11 @@ const routes: RouteObject[] = [
                   },
                   {
                     path: 'advance-tables',
-                    element: <AdvanceTableExample />
+                    element: (
+                      <Suspense fallback={<PhoenixLoader />}>
+                        <AdvanceTableExample />
+                      </Suspense>
+                    )
                   }
                 ]
               },
@@ -598,11 +649,19 @@ const routes: RouteObject[] = [
                 children: [
                   {
                     path: 'e-charts',
-                    element: <ECharts />
+                    element: (
+                      <Suspense fallback={<PhoenixLoader />}>
+                        <ECharts />
+                      </Suspense>
+                    )
                   },
                   {
                     path: 'gantt-chart',
-                    element: <GanttChart />
+                    element: (
+                      <Suspense fallback={<PhoenixLoader />}>
+                        <GanttChart />
+                      </Suspense>
+                    )
                   }
                 ]
               },
@@ -732,7 +791,11 @@ const routes: RouteObject[] = [
                   },
                   {
                     path: 'calendar',
-                    element: <CalendarExample />
+                    element: (
+                      <Suspense fallback={<PhoenixLoader />}>
+                        <CalendarExample />
+                      </Suspense>
+                    )
                   },
                   {
                     path: 'navs-and-tabs/navs',
@@ -748,7 +811,11 @@ const routes: RouteObject[] = [
                   },
                   {
                     path: 'pictures/lightbox',
-                    element: <LightboxExample />
+                    element: (
+                      <Suspense fallback={<PhoenixLoader />}>
+                        <LightboxExample />
+                      </Suspense>
+                    )
                   }
                 ]
               },
@@ -797,7 +864,11 @@ const routes: RouteObject[] = [
                   },
                   {
                     path: 'emoji-button',
-                    element: <EmojiButtonExample />
+                    element: (
+                      <Suspense fallback={<PhoenixLoader />}>
+                        <EmojiButtonExample />
+                      </Suspense>
+                    )
                   },
                   {
                     path: 'file-uploader',
@@ -805,7 +876,11 @@ const routes: RouteObject[] = [
                   },
                   {
                     path: 'advance/range',
-                    element: <ReactRangeExample />
+                    element: (
+                      <Suspense fallback={<PhoenixLoader />}>
+                        <ReactRangeExample />
+                      </Suspense>
+                    )
                   },
                   {
                     path: 'rating',
@@ -1004,11 +1079,19 @@ const routes: RouteObject[] = [
         children: [
           {
             path: 'default',
-            element: <Default />
+            element: (
+              <Suspense fallback={<PhoenixLoader fullPage />}>
+                <Default />
+              </Suspense>
+            )
           },
           {
             path: 'alternate',
-            element: <Alternate />
+            element: (
+              <Suspense fallback={<PhoenixLoader fullPage />}>
+                <Alternate />
+              </Suspense>
+            )
           }
         ]
       },
@@ -1238,6 +1321,8 @@ const routes: RouteObject[] = [
   }
 ];
 
-export const router = createBrowserRouter(routes);
+export const router = createBrowserRouter(routes, {
+  basename: import.meta.env.VITE_BASENAME || '/'
+});
 
 export default routes;

@@ -71,7 +71,6 @@ const FeatherIconsExample = () => {
             code={exampleCode}
             scope={{ FeatherIcon, Youtube, Facebook, Twitter }}
           />
-          <FeatherIcon />
         </PhoenixDocCard>
 
         <PhoenixDocCard>

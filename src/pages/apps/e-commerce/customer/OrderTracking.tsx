@@ -1,13 +1,16 @@
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'components/base/Button';
-import Mapbox from 'components/base/MapBox';
 import Section from 'components/base/Section';
 import PageBreadcrumb from 'components/common/PageBreadcrumb';
+import PhoenixLoader from 'components/common/PhoenixLoader';
 import OrderTrackingTimeline from 'components/timelines/OrderTrackingTimeline';
 import { defaultBreadcrumbItems } from 'data/commonData';
 import { orderTrackingTimelineData } from 'data/timelineData';
+import { lazy, Suspense } from 'react';
 import { Col, Row } from 'react-bootstrap';
+
+const Mapbox = lazy(() => import('components/base/MapBox'));
 
 const OrderTracking = () => {
   return (
@@ -33,14 +36,16 @@ const OrderTracking = () => {
         </div>
         <Row className="gy-9 gx-5">
           <Col xs={12} lg={6}>
-            <Mapbox
-              className="border rounded-3 min-vh-50"
-              options={{
-                center: [-74.0020158, 40.7228022],
-                zoom: 15,
-                scrollZoom: false
-              }}
-            />
+            <Suspense fallback={<PhoenixLoader />}>
+              <Mapbox
+                className="border rounded-3 min-vh-50"
+                options={{
+                  center: [-74.0020158, 40.7228022],
+                  zoom: 15,
+                  scrollZoom: false
+                }}
+              />
+            </Suspense>
           </Col>
           <Col xs={12} lg={6}>
             <OrderTrackingTimeline data={orderTrackingTimelineData} />

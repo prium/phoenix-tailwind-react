@@ -62,7 +62,7 @@ const ProgressbarExample = () => {
         link={{
           text: 'Progress on react-bootstrap',
           url: `${
-            process.env.REACT_APP_RB_URL_PREFIX || ''
+            import.meta.env.VITE_RB_URL_PREFIX || ''
           }/components/progress/`
         }}
       />
@@ -101,15 +101,6 @@ const ProgressbarExample = () => {
             title="Striped"
             description="Uses a gradient to create a striped effect."
           />
-          <PhoenixDocCard.Body code={stripedCode} />
-        </PhoenixDocCard>
-
-        <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header title="Stacked">
-            <p className="mb-0">
-              Nest <code>&lt;ProgressBar /&gt;</code>s to stack them.
-            </p>
-          </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={stripedCode} />
         </PhoenixDocCard>
 

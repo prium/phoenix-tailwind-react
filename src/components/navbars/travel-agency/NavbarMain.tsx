@@ -266,31 +266,29 @@ const NavbarMain = () => {
 
         <Navbar.Collapse id="navbarSupportedContent">
           <Nav as="ul" className="me-auto travel-nav-top">
-            {navItems.map(item => (
-              <>
-                {item.items ? (
-                  <NavDropdownItems
-                    key={item.id}
-                    label={item.label}
-                    items={item.items}
-                    isActive={pathNameList.includes(item.label.toLowerCase())}
-                    pathName={pathname}
-                  />
-                ) : (
-                  <Nav.Item as="li" key={item.id} className="">
-                    <Nav.Link
-                      as={Link}
-                      to="#!"
-                      className={classNames('fw-bold', {
-                        active: pathNameList.includes(item.label.toLowerCase())
-                      })}
-                    >
-                      {item.label}
-                    </Nav.Link>
-                  </Nav.Item>
-                )}
-              </>
-            ))}
+            {navItems.map(item =>
+              item.items ? (
+                <NavDropdownItems
+                  key={item.id}
+                  label={item.label}
+                  items={item.items}
+                  isActive={pathNameList.includes(item.label.toLowerCase())}
+                  pathName={pathname}
+                />
+              ) : (
+                <Nav.Item as="li" key={item.id} className="">
+                  <Nav.Link
+                    as={Link}
+                    to="#!"
+                    className={classNames('fw-bold', {
+                      active: pathNameList.includes(item.label.toLowerCase())
+                    })}
+                  >
+                    {item.label}
+                  </Nav.Link>
+                </Nav.Item>
+              )
+            )}
           </Nav>
         </Navbar.Collapse>
       </Navbar>

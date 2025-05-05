@@ -1,59 +1,52 @@
 import classNames from 'classnames';
+import { HTMLAttributes, PropsWithChildren, useEffect } from 'react';
+import { Nav, NavLinkProps } from 'react-bootstrap';
+import { useInView } from 'react-intersection-observer';
 import ScrollSpyProvider, {
   useScrollSpyContext
 } from 'providers/ScrollSpyProvider';
-import { HTMLAttributes, PropsWithChildren, useEffect } from 'react';
-import { Nav, NavLinkProps } from 'react-bootstrap';
-import VisibilitySensor from 'react-visibility-sensor';
 
 interface ScrollSpyContentInterface extends HTMLAttributes<HTMLDivElement> {
-  offset?: { top?: number; left?: number; bottom?: number; right?: number };
-  minTopValue?: number;
-  partialVisibility?: boolean;
+  rootMargin?: string;
+  threshold?: number | number[];
 }
 
 const ScrollSpy = ({ children }: PropsWithChildren) => {
+  useEffect(() => {
+    const hash = window.location.hash;
+    if (hash) {
+      const target = document.getElementById(hash.slice(1));
+      if (target) {
+        setTimeout(() => {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }, 100);
+      }
+    }
+  }, []);
+
   return <ScrollSpyProvider>{children}</ScrollSpyProvider>;
 };
 
 const ScrollSpyContent = ({
   id,
   children,
-  minTopValue,
-  offset,
-  partialVisibility = true,
+  rootMargin = '-50% 0px -50% 0px',
+  threshold = 0,
   ...rest
 }: PropsWithChildren<ScrollSpyContentInterface>) => {
-  const { setActiveElemId, setVisibleItems, visibleItems } =
-    useScrollSpyContext();
-
-  const handleChange = (visible: boolean) => {
-    if (visible && id) {
-      setVisibleItems(prev => [...prev.filter(item => item !== id), id]);
-    } else {
-      setVisibleItems(prev => prev.filter(item => item !== id));
-    }
-  };
+  const { setActiveElemId } = useScrollSpyContext();
+  const { ref, inView } = useInView({ threshold, rootMargin });
 
   useEffect(() => {
-    if (visibleItems.length > 1) {
-      setActiveElemId(visibleItems[1]);
-    } else {
-      setActiveElemId(visibleItems[0]);
+    if (inView && id) {
+      setActiveElemId(id);
     }
-  }, [visibleItems]);
+  }, [inView, id, setActiveElemId]);
 
   return (
-    <VisibilitySensor
-      onChange={handleChange}
-      minTopValue={minTopValue}
-      partialVisibility={partialVisibility}
-      offset={offset}
-    >
-      <div id={id} {...rest}>
-        {children}
-      </div>
-    </VisibilitySensor>
+    <div id={id} ref={ref} {...rest}>
+      {children}
+    </div>
   );
 };
 
@@ -63,11 +56,12 @@ const ScrollSpyNavLink = ({
   children
 }: PropsWithChildren<NavLinkProps>) => {
   const { activeElemId } = useScrollSpyContext();
+  const targetId = href?.replace('#', '');
 
   return (
     <Nav.Link
       className={classNames(className)}
-      active={activeElemId === href?.slice(1)}
+      active={activeElemId === targetId}
       href={href}
     >
       {children}

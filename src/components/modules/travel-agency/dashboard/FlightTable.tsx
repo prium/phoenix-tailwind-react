@@ -99,26 +99,29 @@ const FlightTable = () => {
         </Row>
         <div className="d-flex align-items-center gap-2 mt-3">
           <h6 className="mb-0 text-body-tertiary">GRU</h6>
-          <ProgressBar
-            style={{ height: 2 }}
-            className="position-relative overflow-visible align-middle flex-1"
-          >
+          <div className="position-relative w-100">
             <ProgressBar
-              now={50}
-              min={0}
-              max={100}
-              variant="info"
-              style={{
-                height: '2px',
-                transform: 'translateY(-75%)'
-              }}
-            />
+              style={{ height: 2 }}
+              className="overflow-visible align-middle"
+            >
+              <ProgressBar
+                now={50}
+                min={0}
+                max={100}
+                variant="info"
+                style={{
+                  height: '2px',
+                  transform: 'translateY(-75%)'
+                }}
+              />
+            </ProgressBar>
             <FontAwesomeIcon
-              className="text-info ms-0"
+              className="text-info position-absolute top-50 translate-middle-y"
               icon={faPlane}
-              transform={'up-9'}
+              style={{ left: '50%' }} // Adjust this to match current progress
             />
-          </ProgressBar>
+          </div>
+
           <h6 className="mb-0 text-body-tertiary">SJC</h6>
         </div>
       </div>

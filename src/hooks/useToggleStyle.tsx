@@ -4,7 +4,7 @@ import is from 'is_js';
 import { REFRESH, SET_CONFIG } from 'reducers/ConfigReducer';
 import { getSystemTheme } from 'helpers/utils';
 
-const publicUrl = process.env.PUBLIC_URL;
+const publicUrl = import.meta.env.VITE_PUBLIC_URL;
 
 const useToggleStyle = () => {
   const [isStylesheetLoaded, setIsStylesheetLoaded] = useState(false);
@@ -12,66 +12,66 @@ const useToggleStyle = () => {
     config: { theme, isRTL },
     configDispatch
   } = useAppContext();
-  const HTMLClassList = document.getElementsByTagName('html')[0].classList;
+
+  const HTMLClassList = document.documentElement.classList;
+
   useEffect(() => {
-    if (is.windows()) {
-      HTMLClassList.add('windows');
-    }
-    if (is.chrome()) {
-      HTMLClassList.add('chrome');
-    }
-    if (is.firefox()) {
-      HTMLClassList.add('firefox');
-    }
-    if (is.safari()) {
-      HTMLClassList.add('safari');
-    }
-    if (is.windows()) {
-      HTMLClassList.add('windows');
-    }
-    if (is.mac()) {
-      HTMLClassList.add('osx');
-    }
-  }, [HTMLClassList]);
+    if (is.windows()) HTMLClassList.add('windows');
+    if (is.chrome()) HTMLClassList.add('chrome');
+    if (is.firefox()) HTMLClassList.add('firefox');
+    if (is.safari()) HTMLClassList.add('safari');
+    if (is.mac()) HTMLClassList.add('osx');
+  }, []);
 
   useEffect(() => {
     setIsStylesheetLoaded(false);
-    Array.from(document.getElementsByClassName('theme-stylesheet')).forEach(
-      link => link.remove()
-    );
-    const link = document.createElement('link');
-    link.href = `${publicUrl}/css/theme.min${isRTL ? '.rtl' : ''}.css`;
-    link.type = 'text/css';
-    link.rel = 'stylesheet';
-    link.className = 'theme-stylesheet';
 
+    const oldStyles = Array.from(
+      document.querySelectorAll('link.theme-stylesheet')
+    );
+
+    // Create new theme link
+    const themeLink = document.createElement('link');
+    themeLink.rel = 'stylesheet';
+    themeLink.href = `${publicUrl}css/theme${isRTL ? '.rtl' : ''}.css`;
+    themeLink.className = 'theme-stylesheet';
+
+    // Create new user link
     const userLink = document.createElement('link');
-    userLink.href = `${publicUrl}/css/user.min${isRTL ? '.rtl' : ''}.css`;
-    userLink.type = 'text/css';
     userLink.rel = 'stylesheet';
+    userLink.href = `${publicUrl}css/user${isRTL ? '.rtl' : ''}.css`;
     userLink.className = 'theme-stylesheet';
 
-    link.onload = () => {
-      setIsStylesheetLoaded(true);
+    // Append both to head but don’t remove old until both load
+    let loadedCount = 0;
+    const onLoad = () => {
+      loadedCount += 1;
+      if (loadedCount === 2) {
+        oldStyles.forEach(link => link.remove());
+        setIsStylesheetLoaded(true);
+      }
     };
 
-    document.head.appendChild(link);
+    themeLink.onload = onLoad;
+    userLink.onload = onLoad;
+
+    // Append new styles
+    document.head.appendChild(themeLink);
     document.head.appendChild(userLink);
+
     document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
   }, [isRTL]);
 
   useEffect(() => {
     const mode = theme === 'auto' ? getSystemTheme() : theme;
+
     configDispatch({
       type: SET_CONFIG,
-      payload: {
-        isDark: mode === 'dark'
-      }
+      payload: { isDark: mode === 'dark' }
     });
+
     document.documentElement.setAttribute('data-bs-theme', mode);
-    configDispatch({
-      type: REFRESH
-    });
+    configDispatch({ type: REFRESH });
   }, [theme]);
 
   return { isStylesheetLoaded };

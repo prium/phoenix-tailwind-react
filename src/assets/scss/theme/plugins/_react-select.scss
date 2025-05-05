@@ -37,7 +37,8 @@
     margin: 0;
     padding: 0;
     line-height: 1;
-    font-size: map-get($font-sizes, 10);
+    font-size: map-get($font-sizes, 8);
+    color: var(--#{$prefix}body-color);
   }
   .react-select__value-container {
     &.react-select__value-container--has-value {
@@ -122,3 +123,4 @@
   background-color: var(--#{$prefix}body-highlight-bg) !important;
   color: var(--#{$prefix}emphasis-color) !important;
 }
+

@@ -129,24 +129,30 @@ const columns: ColumnDef<FlightInterface>[] = [
       const { destination, status } = original;
       return (
         <>
-          <ProgressBar
-            style={{ height: 2 }}
-            className="position-relative overflow-visible align-middle"
-          >
+          <div className="position-relative">
             <ProgressBar
-              now={destination.percent}
-              min={0}
-              max={100}
-              variant="info-light"
-            />
+              style={{ height: 2 }}
+              className="overflow-visible align-middle"
+            >
+              <ProgressBar
+                now={destination.percent}
+                min={0}
+                max={100}
+                variant="info-light"
+              />
+            </ProgressBar>
             <FontAwesomeIcon
-              className={classNames('text-info ms-0 plane-icon', {
-                'd-none': status.label.toLowerCase() === 'cancelled'
-              })}
+              className={classNames(
+                'text-info plane-icon position-absolute top-50 translate-middle-y',
+                {
+                  'd-none': status.label.toLowerCase() === 'cancelled'
+                }
+              )}
               icon={faPlane}
-              transform={'up-7'}
+              style={{ left: `${destination.percent}%` }} // move along the progress bar
             />
-          </ProgressBar>
+          </div>
+
           <div className="d-flex justify-content-between mt-2">
             <p
               className={` mb-0 fs-10 ${

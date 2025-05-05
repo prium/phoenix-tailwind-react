@@ -38,7 +38,7 @@ const RangeExample = () => {
         description="Use our custom range inputs for consistent cross-browser styling and built-in customization."
         link={{
           text: 'Range on react-bootstrap',
-          url: `${process.env.REACT_APP_RB_URL_PREFIX || ''}/forms/range/`
+          url: `${import.meta.env.VITE_RB_URL_PREFIX || ''}/forms/range/`
         }}
       />
 

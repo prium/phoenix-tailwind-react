@@ -181,7 +181,7 @@ const ListGroupExample = () => {
         link={{
           text: 'List groups on react-bootstrap',
           url: `${
-            process.env.REACT_APP_RB_URL_PREFIX || ''
+            import.meta.env.VITE_RB_URL_PREFIX || ''
           }/components/list-group/`
         }}
       />

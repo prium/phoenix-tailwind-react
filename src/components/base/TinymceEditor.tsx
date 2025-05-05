@@ -51,7 +51,7 @@ const TinymceEditor = ({
   return (
     <Editor
       tinymceScriptSrc="/tinymce/tinymce.min.js"
-      // apiKey={process.env.REACT_APP_TINYMCE_APIKEY}
+      apiKey={import.meta.env.VITE_TINYMCE_APIKEY}
       onFocus={handleEditorFocus}
       onBlur={handleEditorBlur}
       // @ts-ignore

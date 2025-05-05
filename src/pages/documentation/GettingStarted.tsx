@@ -4,8 +4,8 @@ import PhoenixLiveEditor from 'components/docs/PhoenixLiveEditor';
 import DocPagesLayout from 'layouts/DocPagesLayout';
 
 const serveCode = `
-  npm install -g serve
-  serve -s build
+  npm run build
+  npm run preview
 `;
 
 const GettingStarted = () => {
@@ -19,10 +19,10 @@ const GettingStarted = () => {
             target="_blank"
             rel="noopener noreferrer"
           >
-            original {process.env.REACT_APP_TITLE} theme{' '}
+            original {import.meta.env.VITE_TITLE} theme{' '}
           </a>
           . This doc will guide you to understand how{' '}
-          <strong>{process.env.REACT_APP_TITLE}-React</strong> theme is
+          <strong>{import.meta.env.VITE_TITLE}-React</strong> theme is
           organized, basics of how to customize, and how to compile from the
           source code if you want.
         </p>
@@ -37,11 +37,11 @@ const GettingStarted = () => {
             <p>
               This project is scaffolded using{' '}
               <a
-                href="https://create-react-app.dev"
+                href="https://vite.dev/guide/"
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Create React App
+                vite
               </a>
               .
             </p>
@@ -58,20 +58,20 @@ const GettingStarted = () => {
                 if you do not already have it installed on your machine.
               </li>
               <li>
-                Open the “{process.env.REACT_APP_NAME}-react-v
-                {process.env.REACT_APP_VERSION}” directory with your cmd or
+                Open the “{import.meta.env.VITE_NAME}-react-v
+                {import.meta.env.VITE_VERSION}” directory with your cmd or
                 terminal
               </li>
               <li>
                 Run <code>npm i</code>
                 <br />
                 This command will download all the necessary dependencies for{' '}
-                {process.env.REACT_APP_NAME} in the <code>node_modules</code>{' '}
+                {import.meta.env.VITE_NAME} in the <code>node_modules</code>{' '}
                 directory.
               </li>
               <li>
-                Run <code>npm start</code>. A local web server will start at{' '}
-                <code>http://localhost:3000</code>
+                Run <code>npm run dev</code>. A local web server will start at{' '}
+                <code>http://localhost:5001</code>
               </li>
             </ol>
           </PhoenixDocCard.Body>
@@ -88,11 +88,11 @@ const GettingStarted = () => {
               Edit <code>homapage</code> in your <code>package.json</code> file
               to change asset files relative paths. For more information visit{' '}
               <a
-                href="https://create-react-app.dev/docs/deployment/#building-for-relative-paths"
+                href="https://vite.dev/guide/static-deploy.html"
                 target="_blank"
                 rel="noreferrer"
               >
-                Create React App Doc.
+                Vite Doc.
               </a>{' '}
               Then Run <code>npm run build</code> command in your project
               directory to make the Production build.
@@ -100,7 +100,7 @@ const GettingStarted = () => {
             <p>
               This will create an optimized production build by compililing,
               merging and minifying all the source files as necessary and will
-              put them in the <code>build/</code> folder.
+              put them in the <code>dist/</code> folder.
             </p>
             <p>
               To run the production build locally run the following commands:

@@ -127,7 +127,7 @@ const DarkMode = () => {
     <div>
       <DocPageHeader title="Dark Mode">
         <p className="lead text-body-tertiary">
-          It’s effortless to switch Dark Mode in {process.env.REACT_APP_TITLE}
+          It’s effortless to switch Dark Mode in {import.meta.env.VITE_TITLE}
           -React. You can enable Dark Mode by default or create a Dark/Light
           switch if you want. To set the default mode "Dark", please see the
           <Link to="/documentation/customization/configuration">
@@ -140,7 +140,9 @@ const DarkMode = () => {
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header
             title="Toggle Dark Mode"
-            description={`Toggling dark mode is very easy in ${process.env.REACT_APP_TITLE}-React. You can toggle dark or light mode by using checkbox, radio input, switch input and custom icon component.`}
+            description={`Toggling dark mode is very easy in ${
+              import.meta.env.VITE_TITLE
+            }-React. You can toggle dark or light mode by using checkbox, radio input, switch input and custom icon component.`}
           />
           <PhoenixDocCard.Body
             code={darkModeExampleCode}

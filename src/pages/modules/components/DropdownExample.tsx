@@ -336,7 +336,7 @@ const DropdownExample = () => {
         link={{
           text: 'Dropdowns on react-bootstrap',
           url: `${
-            process.env.REACT_APP_RB_URL_PREFIX || ''
+            import.meta.env.VITE_RB_URL_PREFIX || ''
           }/components/dropdowns/`
         }}
       />

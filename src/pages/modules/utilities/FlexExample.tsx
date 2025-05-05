@@ -47,28 +47,6 @@ const flexDirectionColumnCode = `<>
   </div>
 </>`;
 
-const justifyCode = `
-<>
-  <div justifyContent='start' className="d-flex justify-content-start bg-body-secondary p-2 mb-2">  
-    <div className="p-2 bg-body-secondary border">Flex item</div>
-  </div>
-  <div justifyContent='end' className="d-flex justify-content-end bg-body-secondary p-2 mb-2">  
-    <div className="p-2 bg-body-secondary border">Flex item</div>
-  </div>
-  <div justifyContent='center' className="d-flex justify-content-center bg-body-secondary p-2 mb-2">  
-    <div className="p-2 bg-body-secondary border">Flex item</div>
-  </div>
-  <div justifyContent='between' className="d-flex justify-content-between bg-body-secondary p-2 mb-2">  
-    <div className="p-2 bg-body-secondary border">Flex item</div>
-  </div>
-  <div justifyContent='around' className="d-flex justify-content-around bg-body-secondary p-2 mb-2">  
-    <div className="p-2 bg-body-secondary border">Flex item</div>
-  </div>
-  <div justifyContent='lg-center' className="d-flex justify-content-lg-center bg-body-secondary p-2 mb-2">  
-    <div className="p-2 bg-body-secondary border">Flex item (<code>justify-content:center</code> in <code>lg</code> screen)</div>
-  </div>
-</>`;
-
 const alignItemsCode = `<>
   <div className="d-flex align-items-start bg-body-secondary mb-2" style={{height:'5rem'}}>  
     <div className="p-2 bg-body-secondary border">Flex item</div>
@@ -371,17 +349,6 @@ const FlexExample = () => {
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header title="Direction Row">
-            <p className="mb-0 text-body-secondary">
-              Use <code> .flex-row </code> to set a horizontal direction (the
-              browser default), or .flex-row-reverse to start the horizontal
-              direction from the opposite side.
-            </p>
-          </PhoenixDocCard.Header>
-          <PhoenixDocCard.Body code={flexDirectionRowCode} />
-        </PhoenixDocCard>
-
-        <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Direction Column">
             <p className="mb-0 text-body-secondary">
               Use
@@ -392,22 +359,6 @@ const FlexExample = () => {
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={flexDirectionColumnCode} />
-        </PhoenixDocCard>
-
-        <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header title="Justify Content">
-            <p className="mb-0">
-              Use <code>justifyContent</code> prop to change the alignment of
-              flex items on the main axis (the x-axis to start, y-axis if{' '}
-              <code>flex-direction: column</code>). Choose from{' '}
-              <code>start</code> (browser default), <code>end</code>,{' '}
-              <code>center</code>, <code>between</code>, <code>around</code>, or{' '}
-              <code>evenly</code>. Set <code>justifyContent</code> with{' '}
-              <code>{`{xxl | xl | lg | md | sm}`}</code> prefix for
-              responsiveness.
-            </p>
-          </PhoenixDocCard.Header>
-          <PhoenixDocCard.Body code={justifyCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">

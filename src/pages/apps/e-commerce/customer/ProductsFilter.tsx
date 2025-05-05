@@ -24,7 +24,7 @@ const ProductsFilter = () => {
         open={show}
         onHide={handleClose}
         style={{ width: 300, top: 92 }}
-        className="py-5 ps-5"
+        className="py-5 ps-5 products-filter-offcanvas"
         fixed
       >
         <Scrollbar className="table-scrollbar">

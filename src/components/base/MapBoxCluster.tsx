@@ -7,7 +7,7 @@ import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames';
 import { useAppContext } from 'providers/AppProvider';
 
-mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_ACCESS_TOKEN || '';
+mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN || '';
 
 interface MapboxProps extends HTMLAttributes<HTMLDivElement> {
   className?: string;

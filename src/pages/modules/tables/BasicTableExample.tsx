@@ -202,7 +202,7 @@ const BasicTableExample = () => {
         description="Documentation and examples for opt-in styling of tables with React Bootstrap."
         link={{
           text: 'Tables on react-bootstrap',
-          url: `${process.env.REACT_APP_RB_URL_PREFIX || ''}/components/table/`
+          url: `${import.meta.env.VITE_RB_URL_PREFIX || ''}/components/table/`
         }}
       />
 

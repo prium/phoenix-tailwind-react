@@ -21,7 +21,7 @@ const EcommerceLayout = () => {
         <Outlet />
       </div>
       <EcommerceFooter />
-      <Footer />
+      <Footer className="bg-body-emphasis" />
       <ChatWidget />
     </>
   );

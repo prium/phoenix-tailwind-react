@@ -6,7 +6,7 @@
   z-index: 9999;
 }
 .picmo__picker.picmo__picker {
-  width: 300px;
+  min-width: 330px;
   --background-color: #{$body-bg};
   --border-color: var(--#{$prefix}gray-300);
   --category-tab-active-color: var(--#{$prefix}gray-300);
@@ -82,4 +82,9 @@
     color: $primary;
     --category-tab-active-background-color: var(--#{$prefix}secondary-bg);
   }
+}
+
+html[dir='rtl'] .picmo__picker.picmo__picker .picmo__searchAccessory {
+  right: 1em !important;
+  left: unset !important;
 }

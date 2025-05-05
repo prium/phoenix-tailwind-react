@@ -1,22 +1,27 @@
 import { faRotate } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'components/base/Button';
-import Mapbox from 'components/base/MapBox';
 import { Col, Row } from 'react-bootstrap';
+import { Suspense, lazy } from 'react';
+import PhoenixLoader from 'components/common/PhoenixLoader';
+
+const Mapbox = lazy(() => import('components/base/MapBox'));
 
 const Location = () => {
   return (
     <div className="mb-8">
       <h3 className="mb-5 mb-xl-4">Location</h3>
       <div className="mb-3 mb-xl-4 location-map border border-translucent overflow-hidden">
-        <Mapbox
-          className="border rounded-3"
-          options={{
-            center: [-74.0020158, 40.7228022],
-            zoom: 14,
-            scrollZoom: false
-          }}
-        />
+        <Suspense fallback={<PhoenixLoader />}>
+          <Mapbox
+            className="border rounded-3"
+            options={{
+              center: [-74.0020158, 40.7228022],
+              zoom: 14,
+              scrollZoom: false
+            }}
+          />
+        </Suspense>
       </div>
       <Row className="flex-between-center gx-0 gy-3">
         <Col xs={12} sm="auto" className="me-1">

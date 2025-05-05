@@ -1,17 +1,14 @@
-import AppProvider from 'providers/AppProvider';
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import BreakpointsProvider from 'providers/BreakpointsProvider';
-import SettingsPanelProvider from 'providers/SettingsPanelProvider';
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
 import { router } from 'Routes';
+import AppProvider from 'providers/AppProvider';
+import BreakpointsProvider from 'providers/BreakpointsProvider';
+import SettingsPanelProvider from 'providers/SettingsPanelProvider';
 import ChatWidgetProvider from 'providers/ChatWidgetProvider';
 
-const root = ReactDOM.createRoot(
-  document.getElementById('root') as HTMLElement
-);
-root.render(
-  <React.StrictMode>
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
     <AppProvider>
       <SettingsPanelProvider>
         <ChatWidgetProvider>
@@ -21,5 +18,5 @@ root.render(
         </ChatWidgetProvider>
       </SettingsPanelProvider>
     </AppProvider>
-  </React.StrictMode>
+  </StrictMode>
 );

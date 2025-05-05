@@ -213,15 +213,9 @@ export const conversations: Conversation[] = [
       {
         id: 7,
         type: 'sent',
-        message: 'However, the shot Shott shot shot not Shott, but Nott.',
+        // message: 'However, the shot Shott shot shot not Shott, but Nott.',
         time: 'Yesterday, 10 AM',
-        readAt: new Date()
-      },
-      {
-        id: 8,
-        type: 'received',
-        time: 'Yesterday, 10 AM',
-        readAt: null,
+        readAt: new Date(),
         attachments: {
           file: {
             name: 'Unsupported file format.mad',
@@ -230,6 +224,13 @@ export const conversations: Conversation[] = [
             format: 'mad'
           }
         }
+      },
+      {
+        id: 8,
+        type: 'received',
+        time: 'Yesterday, 10 AM',
+        message: `I can't see the file. It may be unsupported or corrupted.`,
+        readAt: null
       }
     ],
     unreadMessages: 3

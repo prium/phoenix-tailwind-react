@@ -1,7 +1,10 @@
 import { Col, Row } from 'react-bootstrap';
 import HelpCenter from './HelpCenter';
 import QueryForm from './QueryForm';
-import Mapbox from 'components/base/MapBox';
+import { lazy, Suspense } from 'react';
+import PhoenixLoader from 'components/common/PhoenixLoader';
+
+const Mapbox = lazy(() => import('components/base/MapBox'));
 
 const AddressSection = () => {
   return (
@@ -28,15 +31,17 @@ const AddressSection = () => {
           </Col>
         </Row>
         <div className="mb-15">
-          <Mapbox
-            className="rounded-4"
-            style={{ height: 380 }}
-            options={{
-              center: [-74.0020158, 40.7228022],
-              zoom: 14,
-              scrollZoom: false
-            }}
-          />
+          <Suspense fallback={<PhoenixLoader />}>
+            <Mapbox
+              className="rounded-4"
+              style={{ height: 380 }}
+              options={{
+                center: [-74.0020158, 40.7228022],
+                zoom: 14,
+                scrollZoom: false
+              }}
+            />
+          </Suspense>
         </div>
         <Row className="g-5 g-lg-5">
           <Col

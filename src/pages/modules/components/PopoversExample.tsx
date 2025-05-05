@@ -142,7 +142,7 @@ const PopoversExample = () => {
         link={{
           text: 'Popovers on react-bootstrap',
           url: `${
-            process.env.REACT_APP_RB_URL_PREFIX || ''
+            import.meta.env.VITE_RB_URL_PREFIX || ''
           }/components/overlays/#popovers`
         }}
       />

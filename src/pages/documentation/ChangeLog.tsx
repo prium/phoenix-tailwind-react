@@ -47,17 +47,31 @@ const ChangeLog = () => {
                   icon={faCircleInfo}
                   className="text-warning fs-5 me-3"
                 />
-                {changelog.alertText}
+                {changelog.alertText}{' '}
+                {changelog.alertLink && (
+                  <span>
+                    {changelog.alertLink.prefix || ''}{' '}
+                    <Link to={changelog.alertLink.link || ''}>
+                      {changelog.alertLink.linkText || ''}
+                    </Link>{' '}
+                    {changelog.alertLink.suffix || ''}
+                  </span>
+                )}
               </Alert>
             )}
 
             {/* New */}
-            <h6 className="d-inline-block">New</h6>
-            <ul>
-              {changelog.logs.new.map(file => (
-                <li dangerouslySetInnerHTML={{ __html: file }} key={file} />
-              ))}
-            </ul>
+            {changelog.logs.new && (
+              <>
+                <h6 className="d-inline-block">New</h6>
+                <ul>
+                  {changelog.logs.new.map(file => (
+                    <li dangerouslySetInnerHTML={{ __html: file }} key={file} />
+                  ))}
+                </ul>
+              </>
+            )}
+
             {/* Update */}
             {changelog.logs.update && (
               <>
@@ -70,12 +84,16 @@ const ChangeLog = () => {
               </>
             )}
             {/* Fix */}
-            <h6 className="d-inline-block">Fix</h6>
-            <ul>
-              {changelog.logs.fix.map(file => (
-                <li dangerouslySetInnerHTML={{ __html: file }} key={file} />
-              ))}
-            </ul>
+            {changelog.logs.fix && (
+              <>
+                <h6 className="d-inline-block">Fix</h6>
+                <ul>
+                  {changelog.logs.fix.map(file => (
+                    <li dangerouslySetInnerHTML={{ __html: file }} key={file} />
+                  ))}
+                </ul>
+              </>
+            )}
           </PhoenixDocCard.Body>
         </PhoenixDocCard>
       ))}

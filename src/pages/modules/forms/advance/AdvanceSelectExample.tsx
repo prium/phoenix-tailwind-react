@@ -113,7 +113,9 @@ const AdvanceSelectExample = () => {
     <div className="mb-9">
       <DocPageHeader
         title="Advance Select"
-        description={`${process.env.REACT_APP_TITLE}-React uses React Select for advance select component. React Select is a flexible and beautiful Select Input control for ReactJS with multiselect, autocomplete, async and creatable support.`}
+        description={`${
+          import.meta.env.VITE_TITLE
+        }-React uses React Select for advance select component. React Select is a flexible and beautiful Select Input control for ReactJS with multiselect, autocomplete, async and creatable support.`}
         link={{
           text: 'React Select Documentation',
           url: 'https://react-select.com/home'

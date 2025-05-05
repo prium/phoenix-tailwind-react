@@ -1,8 +1,16 @@
 import logo from 'assets/img/icons/logo.png';
+import classNames from 'classnames';
 
-const PhoenixLoader = () => {
+const PhoenixLoader = ({ fullPage }: { fullPage?: boolean }) => {
   return (
-    <div className="d-flex justify-content-center align-items-center h-100 w-100 ">
+    <div
+      className={classNames(
+        'd-flex justify-content-center align-items-center h-100 w-100 ',
+        {
+          'vh-100': fullPage
+        }
+      )}
+    >
       <div>
         <img src={logo} alt="phoenix" className="logo-ripple ripple-1" />
         <img src={logo} alt="phoenix" className="logo-ripple ripple-2" />

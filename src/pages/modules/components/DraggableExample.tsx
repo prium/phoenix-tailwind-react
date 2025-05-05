@@ -353,7 +353,9 @@ const DraggableExample = () => {
     <div className="mb-9">
       <DocPageHeader
         title="Draggable"
-        description={`${process.env.REACT_APP_TITLE}-React utilizes @dnd-kit/core and @dnd-kit/sortable for its draggable component. @dnd-kit/core and @dnd-kit/sortable is designed to create visually appealing drag-and-drop functionality for lists, making it accessible to all.`}
+        description={`${
+          import.meta.env.VITE_TITLE
+        }-React utilizes @dnd-kit/core and @dnd-kit/sortable for its draggable component. @dnd-kit/core and @dnd-kit/sortable is designed to create visually appealing drag-and-drop functionality for lists, making it accessible to all.`}
         link={{
           text: '@dnd-kit Documentation',
           url: 'https://docs.dndkit.com/'

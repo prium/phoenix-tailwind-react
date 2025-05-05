@@ -30,7 +30,12 @@ const MainLayout = () => {
 
       <div className={classNames(contentClass, 'content')}>
         <Outlet />
-        <Footer className={classNames(footerClass, 'position-absolute')} />
+        <Footer
+          className={classNames(
+            footerClass,
+            'position-absolute bg-body-emphasis'
+          )}
+        />
         <ChatWidget />
       </div>
     </Container>
