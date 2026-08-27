@@ -1,7 +1,8 @@
 import PhoenixOffcanvas from 'components/base/PhoenixOffcanvas';
 import Section from 'components/base/Section';
 import { useState } from 'react';
-import { Button, Col, Pagination, Row } from 'react-bootstrap';
+import { Col, Pagination, Row } from '@hummingbirdui/react';
+import Button from 'components/base/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Scrollbar from 'components/base/Scrollbar';
 import ProductFilterItems from 'components/modules/e-commerce/products-filter/ProductFilterItems';
@@ -13,6 +14,9 @@ import {
   faFilter
 } from '@fortawesome/free-solid-svg-icons';
 
+const pages = [1, 2, 3, 4, 5];
+
+/** apps/e-commerce/landing/products-filter.pug */
 const ProductsFilter = () => {
   const [show, setShow] = useState(false);
 
@@ -33,9 +37,10 @@ const ProductsFilter = () => {
           </div>
         </Scrollbar>
       </PhoenixOffcanvas>
-      <Section className="pt-8 pb-16">
+      <Section className="pt-8 pb-16" containerClassName="xl:max-2xl:max-w-304">
         <Button
-          variant="phoenix-secondary"
+          variant="phoenix"
+          color="secondary"
           size="sm"
           className="text-subtle mb-8 lg:hidden"
           onClick={handleShow}
@@ -44,7 +49,7 @@ const ProductsFilter = () => {
           Filter
         </Button>
         <Row>
-          <Col lg={3} xxl={2} className="hidden lg:block xl:ps-0 2xl:ps-4">
+          <Col lg={3} xxl={2} className="hidden lg:block ps-2 2xl:ps-4">
             <div
               className="sticky"
               style={{ top: '1rem', height: 'calc(100vh - 2rem) ' }}
@@ -68,18 +73,24 @@ const ProductsFilter = () => {
               ))}
             </Row>
 
-            <Pagination className="mb-0 justify-end">
-              <Pagination.Prev>
-                <FontAwesomeIcon icon={faChevronLeft} />
-              </Pagination.Prev>
-              <Pagination.Item>1</Pagination.Item>
-              <Pagination.Item>2</Pagination.Item>
-              <Pagination.Item>3</Pagination.Item>
-              <Pagination.Item active>4</Pagination.Item>
-              <Pagination.Item>5</Pagination.Item>
-              <Pagination.Next>
-                <FontAwesomeIcon icon={faChevronRight} />
-              </Pagination.Next>
+            <Pagination className="mb-0">
+              <Pagination.Content className="justify-end">
+                <Pagination.Item>
+                  <Pagination.Link href="#!">
+                    <FontAwesomeIcon icon={faChevronLeft} />
+                  </Pagination.Link>
+                </Pagination.Item>
+                {pages.map(page => (
+                  <Pagination.Item key={page} active={page === 4}>
+                    <Pagination.Link href="#!">{page}</Pagination.Link>
+                  </Pagination.Item>
+                ))}
+                <Pagination.Item>
+                  <Pagination.Link href="#!">
+                    <FontAwesomeIcon icon={faChevronRight} />
+                  </Pagination.Link>
+                </Pagination.Item>
+              </Pagination.Content>
             </Pagination>
           </Col>
         </Row>

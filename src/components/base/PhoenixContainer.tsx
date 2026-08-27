@@ -1,23 +1,21 @@
-import classNames from 'classnames';
-import React, { PropsWithChildren } from 'react';
-import { Container, ContainerProps } from 'react-bootstrap';
+import { cn } from '@hummingbirdui/react';
+import { ComponentProps } from 'react';
 
-export interface PhoenixContainerProps extends ContainerProps {
+export interface PhoenixContainerProps extends ComponentProps<'div'> {
+  /** `.container-small` (phoenix-tailwind container.css) instead of `.container` */
   small?: boolean;
-  className?: string;
 }
+
 const PhoenixContainer = ({
   small,
   className,
-  children
-}: PropsWithChildren<PhoenixContainerProps>) => {
+  ...rest
+}: PhoenixContainerProps) => {
   return (
-    <Container
-      bsPrefix={small ? 'container-small' : 'container'}
-      className={classNames(className)}
-    >
-      {children}
-    </Container>
+    <div
+      className={cn(small ? 'container-small' : 'container', className)}
+      {...rest}
+    />
   );
 };
 

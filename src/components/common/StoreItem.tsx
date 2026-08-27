@@ -11,10 +11,7 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 const StoreItem = ({ store }: { store: StoreItemType }) => {
   return (
     <RevealDropdownTrigger className="hover-actions-trigger">
-      <div
-        className="border border-light flex flex-center rounded-lg mb-4 p-6"
-        style={{ height: 180 }}
-      >
+      <div className="border border-light flex flex-center rounded-lg mb-4 p-6 h-45">
         <img className="max-w-full" src={store.logo} alt={store.name} />
       </div>
       <h5 className="mb-2">{store.name}</h5>
@@ -24,14 +21,14 @@ const StoreItem = ({ store }: { store: StoreItemType }) => {
       <p className="text-soft text-md mb-2 font-semibold">
         ({store.rated} people rated)
       </p>
-      <Link className="p-0 text-md font-bold" to="#!">
+      <Link className="btn btn-link p-0" to="#!">
         Visit Store
         <FontAwesomeIcon icon={faChevronRight} className="ms-1 text-sm" />
       </Link>
 
       <RevealDropdown
-        className="hover-actions top-0 end-0 mt-2 me-2"
-        btnClassName="btn-icon"
+        className="hover-actions top-0 end-0 mt-2 me-4"
+        btnClassName="leading-none bg-subtle rounded-sm"
       >
         <ActionDropdownItems />
       </RevealDropdown>

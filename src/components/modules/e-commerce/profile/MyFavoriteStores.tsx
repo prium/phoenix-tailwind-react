@@ -1,7 +1,7 @@
 import Button from 'components/base/Button';
 import StoreItem from 'components/common/StoreItem';
 import { stores } from 'data/e-commerce/stores';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row } from '@hummingbirdui/react';
 
 const MyFavoriteStores = () => {
   return (
@@ -13,7 +13,7 @@ const MyFavoriteStores = () => {
             Essential for a better life
           </h5>
         </div>
-        <Button variant="phoenix-primary">View all</Button>
+        <Button variant="phoenix" color="primary">View all</Button>
       </div>
       <Row className="gx-4 gy-8">
         {stores.slice(0, 12).map(store => (
