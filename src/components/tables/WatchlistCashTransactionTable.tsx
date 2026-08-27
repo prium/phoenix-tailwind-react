@@ -15,7 +15,7 @@ const columns: ColumnDef<WatchlistCashTransactionRowItem>[] = [
     cell: ({ row: { original } }) => {
       const { date } = original;
 
-      return <p className="fw-semibold mb-0">{date}</p>;
+      return <p className="font-semibold mb-0">{date}</p>;
     },
     meta: {
       headerProps: {
@@ -33,7 +33,7 @@ const columns: ColumnDef<WatchlistCashTransactionRowItem>[] = [
     cell: ({ row: { original } }) => {
       const { type } = original;
 
-      return <p className="fs-9 fw-semibold text-body-tertiary mb-0">{type}</p>;
+      return <p className="text-md font-semibold text-subtle mb-0">{type}</p>;
     },
     meta: {
       headerProps: {
@@ -52,7 +52,7 @@ const columns: ColumnDef<WatchlistCashTransactionRowItem>[] = [
       const { amount } = original;
 
       return (
-        <p className="fw-semibold text-body-tertiary mb-0 fs-9">
+        <p className="font-semibold text-subtle mb-0 text-md">
           {currencyFormat(amount, { minimumFractionDigits: 2 })}
         </p>
       );
@@ -73,7 +73,7 @@ const columns: ColumnDef<WatchlistCashTransactionRowItem>[] = [
     cell: ({ row: { original } }) => {
       const { currency } = original;
 
-      return <p className="text-body-tertiary fs-9 mb-0">{currency}</p>;
+      return <p className="text-subtle text-md mb-0">{currency}</p>;
     },
     meta: {
       headerProps: {
@@ -91,7 +91,7 @@ const columns: ColumnDef<WatchlistCashTransactionRowItem>[] = [
     cell: ({ row: { original } }) => {
       const { note } = original;
 
-      return <p className="fs-9 text-body-tertiary mb-0">{note}</p>;
+      return <p className="text-md text-subtle mb-0">{note}</p>;
     },
     meta: {
       headerProps: {
@@ -111,7 +111,7 @@ const columns: ColumnDef<WatchlistCashTransactionRowItem>[] = [
     enableSorting: false,
     cell: () => {
       return (
-        <Button variant="link" size="sm" className="text-body-quaternary p-0">
+        <Button variant="link" size="sm" className="text-soft p-0">
           <FontAwesomeIcon icon={faTrash} />
         </Button>
       );

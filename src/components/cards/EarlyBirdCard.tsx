@@ -9,17 +9,17 @@ import { faAward } from '@fortawesome/free-solid-svg-icons';
 
 const EarlyBirdCard = () => {
   return (
-    <Card className="border h-100 w-100 overflow-hidden">
+    <Card className="border h-full w-full overflow-hidden">
       <div
-        className="bg-card bg-holder d-block"
+        className="bg-card bg-holder block"
         style={{
           backgroundImage: `url(${illustration32})`,
           backgroundPosition: 'top right'
         }}
       />
-      <div className="d-dark-none">
+      <div className="dark:hidden">
         <div
-          className="bg-holder d-none d-sm-block d-xl-none d-xxl-block bg-card"
+          className="bg-holder hidden sm:block xl:hidden 2xl:block bg-card"
           style={{
             backgroundImage: `url(${illustration21})`,
             backgroundPosition: 'bottom right',
@@ -27,9 +27,9 @@ const EarlyBirdCard = () => {
           }}
         />
       </div>
-      <div className="d-light-none">
+      <div className="hidden dark:block">
         <div
-          className="bg-holder d-none d-sm-block d-xl-none d-xxl-block bg-card"
+          className="bg-holder hidden sm:block xl:hidden 2xl:block bg-card"
           style={{
             backgroundImage: `url(${illustration21Dark})`,
             backgroundPosition: 'bottom right',
@@ -37,33 +37,33 @@ const EarlyBirdCard = () => {
           }}
         />
       </div>
-      <Card.Body className="px-5 position-relative">
+      <Card.Body className="px-8 relative">
         <Badge
           bg="warning"
           variant="phoenix"
           iconPosition="end"
-          className="fs-10 mb-4"
+          className="text-sm mb-6"
           iconFamily="fa"
-          icon={<FontAwesomeIcon icon={faAward} className="ms-1 fs-10" />}
+          icon={<FontAwesomeIcon icon={faAward} className="ms-1 text-sm" />}
         >
           COMING SOON
         </Badge>
-        <h3 className="mb-5">Early bird gets the warm leads!</h3>
-        <p className="text-body-tertiary fw-semibold">
+        <h3 className="mb-8">Early bird gets the warm leads!</h3>
+        <p className="text-subtle font-semibold">
           Phoenix CRM Dashboard is coming to{' '}
-          <br className="d-none d-sm-block" />
+          <br className="hidden sm:block" />
           market soon for fulfilling your every{' '}
-          <br className="d-none d-sm-block" />
+          <br className="hidden sm:block" />
           CRM related needs.{' '}
         </p>
       </Card.Body>
-      <Card.Footer className="border-0 py-0 px-5 z-1">
-        <p className="text-body-tertiary fw-semibold">
+      <Card.Footer className="border-0 py-0 px-8 z-1">
+        <p className="text-subtle font-semibold">
           Follow{' '}
           <a href="https://themewagon.com/" target="_blank" rel="noreferrer">
             ThemeWagon{' '}
           </a>
-          at <br className="d-none d-xxl-block" />
+          at <br className="hidden 2xl:block" />
           Bootstrap Marketplace for updates.
         </p>
       </Card.Footer>

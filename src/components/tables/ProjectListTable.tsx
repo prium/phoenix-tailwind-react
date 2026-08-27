@@ -18,7 +18,7 @@ export const projectListTableColumns: ColumnDef<Project>[] = [
     cell: ({ row: { original } }) => {
       const { name } = original;
       return (
-        <Link to="#!" className="text-decoration-none fw-bold fs-8">
+        <Link to="#!" className="no-underline font-bold text-base">
           {name}
         </Link>
       );
@@ -85,7 +85,7 @@ export const projectListTableColumns: ColumnDef<Project>[] = [
 
       return (
         <>
-          <p className="text-body-secondary fs-10 mb-0">
+          <p className="text-muted text-sm mb-0">
             {progress.min} / {progress.max}
           </p>
           <ProgressBar
@@ -136,13 +136,13 @@ export const projectListTableColumns: ColumnDef<Project>[] = [
 
 const ProjectListTable = () => {
   return (
-    <div className="border-bottom border-translucent">
+    <div className="border-b border-light">
       <AdvanceTable
         tableProps={{
           className: 'phoenix-table border-top border-translucent fs-9'
         }}
       />
-      <AdvanceTableFooter pagination className="py-3" />
+      <AdvanceTableFooter pagination className="py-4" />
     </div>
   );
 };

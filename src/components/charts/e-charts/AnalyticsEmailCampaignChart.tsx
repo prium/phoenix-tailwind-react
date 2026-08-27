@@ -13,7 +13,7 @@ const tooltipFormatter = (params: any) => {
   const el = params[1];
 
   const tooltipItem = `<div class='ms-1'>
-    <h6 class="text-body-tertiary"><span class="d-inline-block rounded-circle me-2" style="height: 0.6rem; width: 0.6rem; background:${
+    <h6 class="text-subtle"><span class="inline-block rounded-full me-2" style="height: 0.6rem; width: 0.6rem; background:${
       el.color
     }"></span>
         ${el.axisValue} : ${
@@ -23,7 +23,7 @@ const tooltipFormatter = (params: any) => {
     </div>`;
 
   return `<div>
-            <p class='mb-2 text-body-tertiary'>
+            <p class='mb-2 text-subtle'>
               ${el.seriesName}
             </p>
             ${tooltipItem}

@@ -14,7 +14,7 @@ const columns: ColumnDef<EmployeeRecordTableRowItem>[] = [
     cell: ({ row: { original } }) => {
       const { date } = original;
       return (
-        <p className="fs-9 fw-semibold text-body-secondary mb-0">{date}</p>
+        <p className="text-md font-semibold text-muted mb-0">{date}</p>
       );
     },
     meta: {
@@ -33,7 +33,7 @@ const columns: ColumnDef<EmployeeRecordTableRowItem>[] = [
     cell: ({ row: { original } }) => {
       const { employees } = original;
       return (
-        <p className="fs-9 fw-semibold text-body-secondary mb-0">
+        <p className="text-md font-semibold text-muted mb-0">
           {numberFormat(employees, 'standard')}
         </p>
       );
@@ -54,7 +54,7 @@ const columns: ColumnDef<EmployeeRecordTableRowItem>[] = [
     cell: ({ row: { original } }) => {
       const { change } = original;
       return (
-        <p className="fs-9 fw-semibold text-body-secondary mb-0">
+        <p className="text-md font-semibold text-muted mb-0">
           {numberFormat(change, 'standard')}
         </p>
       );
@@ -77,7 +77,7 @@ const columns: ColumnDef<EmployeeRecordTableRowItem>[] = [
         growth: { value, className }
       } = original;
       return (
-        <p className={classNames('fs-9 fw-semibold mb-0', className)}>
+        <p className={classNames('text-md font-semibold mb-0', className)}>
           {numberFormat(value, 'standard', { minimumFractionDigits: 2 })}%
         </p>
       );
@@ -117,7 +117,7 @@ const EmployeeRecordsTable = ({
       />
       <AdvanceTableFooter
         pagination
-        className="py-2 pagination-subtle fs-9"
+        className="py-2 pagination-subtle text-md"
         nextPageLinkClassName="me-sm-n2"
       />
     </AdvanceTableProvider>

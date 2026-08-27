@@ -13,26 +13,26 @@ const LeadAddressCard = ({ className }: { className?: string }) => {
   return (
     <Card className={classNames(className)}>
       <Card.Body>
-        <div className="d-flex align-items-center mb-5">
+        <div className="flex items-center mb-8">
           <h3>Address</h3>
-          <Button variant="link" className="px-3">
+          <Button variant="link" className="px-4">
             Edit
           </Button>
         </div>
         <LeadInfoItem
-          className="mb-4"
+          className="mb-6"
           label="Street"
           icon={UilEstate}
           value="38/2 Penelope street"
         />
         <LeadInfoItem
-          className="mb-4"
+          className="mb-6"
           label="Zip Code"
           icon={UilMapPinAlt}
           value="1425"
         />
         <LeadInfoItem
-          className="mb-4"
+          className="mb-6"
           label="City"
           icon={UilMap}
           value="Qualimando"

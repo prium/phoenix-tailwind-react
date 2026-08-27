@@ -6,7 +6,7 @@ const EcomReturningCustomerRate = () => {
     <>
       <div>
         <h3>Returning customer rate</h3>
-        <p className="mb-1 text-body-tertiary">
+        <p className="mb-1 text-subtle">
           Rate of customers returning to your shop over time
         </p>
       </div>

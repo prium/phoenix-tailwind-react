@@ -20,7 +20,7 @@ const columns: ColumnDef<WishlistProductType>[] = [
     cell: ({ row: { original } }) => {
       const { productImage } = original;
       return (
-        <div className="rounded-2 border border-translucent d-inline-block">
+        <div className="rounded-md border border-light inline-block">
           <img src={productImage} alt="" width={53} />
         </div>
       );
@@ -36,7 +36,7 @@ const columns: ColumnDef<WishlistProductType>[] = [
     cell: ({ row: { original } }) => {
       const { product } = original;
       return (
-        <Link to="#!" className="fw-semibold line-clamp-1">
+        <Link to="#!" className="font-semibold line-clamp-1">
           {product}
         </Link>
       );
@@ -74,16 +74,16 @@ const columns: ColumnDef<WishlistProductType>[] = [
   {
     id: 'action',
     cell: () => (
-      <div className="d-flex gap-2 justify-content-end">
+      <div className="flex gap-2 justify-end">
         <Button
           size="sm"
-          className="text-body-quaternary text-body-tertiary-hover"
+          className="text-soft text-body-tertiary-hover"
         >
           <FontAwesomeIcon icon={faTrash} />
         </Button>
         <Button
           variant="primary"
-          className="fs-10 text-nowrap"
+          className="text-sm whitespace-nowrap"
           startIcon={<FontAwesomeIcon icon={faShoppingCart} />}
         >
           Add to cart
@@ -108,7 +108,7 @@ const EcomWishlistTable = () => {
   return (
     <div>
       <AdvanceTableProvider {...table}>
-        <div className="border-y border-translucent">
+        <div className="border-y border-light">
           <AdvanceTable tableProps={{ className: 'phoenix-table fs-9' }} />
           <AdvanceTableFooter pagination />
         </div>

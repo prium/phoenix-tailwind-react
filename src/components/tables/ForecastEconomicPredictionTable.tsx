@@ -16,7 +16,7 @@ const columns: ColumnDef<EconomicPredictionTableRowItem>[] = [
       const { endingYear } = original;
 
       return (
-        <p className="fw-semibold mb-0 fs-9 text-body-emphasis">{endingYear}</p>
+        <p className="font-semibold mb-0 text-md text-emphasis">{endingYear}</p>
       );
     },
     meta: {
@@ -36,7 +36,7 @@ const columns: ColumnDef<EconomicPredictionTableRowItem>[] = [
       const { revenue } = original;
 
       return (
-        <p className="fw-semibold mb-0 fs-9 text-body-emphasis">
+        <p className="font-semibold mb-0 text-md text-emphasis">
           {currencyFormat(revenue, {
             minimumFractionDigits: 2
           })}
@@ -63,7 +63,7 @@ const columns: ColumnDef<EconomicPredictionTableRowItem>[] = [
       } = original;
 
       return (
-        <p className={classNames('fw-semibold mb-0 fs-9', className)}>
+        <p className={classNames('font-semibold mb-0 text-md', className)}>
           {numberFormat(growth, 'standard', {
             minimumFractionDigits: 2
           })}
@@ -87,7 +87,7 @@ const columns: ColumnDef<EconomicPredictionTableRowItem>[] = [
       const { eps } = original;
 
       return (
-        <p className="fw-semibold mb-0 fs-9 text-body-emphasis">
+        <p className="font-semibold mb-0 text-md text-emphasis">
           {numberFormat(eps, 'standard', { minimumFractionDigits: 2 })}
         </p>
       );
@@ -111,7 +111,7 @@ const columns: ColumnDef<EconomicPredictionTableRowItem>[] = [
       } = original;
 
       return (
-        <p className={classNames('fw-semibold mb-0 fs-9', className)}>
+        <p className={classNames('font-semibold mb-0 text-md', className)}>
           {numberFormat(growth, 'standard', {
             minimumFractionDigits: 2
           })}
@@ -135,7 +135,7 @@ const columns: ColumnDef<EconomicPredictionTableRowItem>[] = [
       const { forwardPE } = original;
 
       return (
-        <p className="fw-semibold mb-0 fs-9 text-body-emphasis">
+        <p className="font-semibold mb-0 text-md text-emphasis">
           {forwardPE
             ? numberFormat(forwardPE, 'standard', { minimumFractionDigits: 2 })
             : 'N/A'}
@@ -159,7 +159,7 @@ const columns: ColumnDef<EconomicPredictionTableRowItem>[] = [
       const { noAnalysts } = original;
 
       return (
-        <p className="fw-semibold mb-0 fs-9 text-body-emphasis">
+        <p className="font-semibold mb-0 text-md text-emphasis">
           {noAnalysts
             ? numberFormat(noAnalysts, 'standard', { minimumFractionDigits: 2 })
             : 'N/A'}

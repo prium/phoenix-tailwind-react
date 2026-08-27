@@ -16,37 +16,37 @@ const DealProfileCard = ({ className }: { className?: string }) => {
   return (
     <Card className={className}>
       <Card.Body>
-        <Row className="align-items-center g-3">
+        <Row className="items-center g-4">
           <Col sm="auto" className="flex-1">
-            <h3 className="fw-bolder mb-2 line-clamp-1">
+            <h3 className="font-black mb-2 line-clamp-1">
               Start-Up Growth Suite
             </h3>
-            <div className="d-flex align-items-center mb-4">
-              <h5 className="mb-0 me-4">USD $12,000.00</h5>
-              <h5 className="fw-semibold">
+            <div className="flex items-center mb-6">
+              <h5 className="mb-0 me-6">USD $12,000.00</h5>
+              <h5 className="font-semibold">
                 <FeatherIcon
                   icon="grid"
-                  className="d-inline-block lh-sm me-1"
+                  className="inline-block leading-sm me-1"
                   width={16}
                   height={16}
                 />
-                <span className="d-inline-block lh-sm">Financial</span>
+                <span className="inline-block leading-sm">Financial</span>
               </h5>
             </div>
-            <div className="d-md-flex d-xl-block align-items-center justify-content-between mb-5">
-              <div className="d-flex align-items-center mb-3 mb-md-0 mb-xl-3">
-                <Avatar size="xl" src={avatar} className="me-3" />
+            <div className="md:flex xl:block items-center justify-between mb-8">
+              <div className="flex items-center mb-4 md:mb-0 xl:mb-4">
+                <Avatar size="xl" src={avatar} className="me-4" />
                 <div>
                   <h5>Ansolo Lazinatov</h5>
                   <Dropdown align={isRTL ? 'end' : 'start'}>
                     <Dropdown.Toggle
                       variant="link"
-                      className="text-body-secondary text-decoration-none dropdown-caret-none p-0 fs-8 fw-normal"
+                      className="text-muted no-underline dropdown-caret-none p-0 text-base font-normal"
                     >
                       Owner
                       <FontAwesomeIcon
                         icon={faCaretDown}
-                        className="text-body-secondary fs-9 ms-2"
+                        className="text-muted text-md ms-2"
                       />
                     </Dropdown.Toggle>
 
@@ -54,12 +54,12 @@ const DealProfileCard = ({ className }: { className?: string }) => {
                       className="shadow-sm"
                       style={{ minWidth: '20rem' }}
                     >
-                      <Card className="position-relative border-0">
+                      <Card className="relative border-0">
                         <Card.Body className="p-0">
-                          <div className="mx-3">
-                            <h4 className="mb-3 fw-bold">Switch ownership</h4>
-                            <h5 className="mb-3">Deal Owner</h5>
-                            <Form.Select className="mb-3">
+                          <div className="mx-4">
+                            <h4 className="mb-4 font-bold">Switch ownership</h4>
+                            <h5 className="mb-4">Deal Owner</h5>
+                            <Form.Select className="mb-4">
                               <option value="">Select</option>
                               <option value="1">Jerry Seinfield</option>
                               <option value="2">Anthoney Michael</option>
@@ -72,7 +72,7 @@ const DealProfileCard = ({ className }: { className?: string }) => {
                               <Button
                                 size="sm"
                                 variant="primary"
-                                className="px-5"
+                                className="px-8"
                               >
                                 Save
                               </Button>
@@ -97,16 +97,16 @@ const DealProfileCard = ({ className }: { className?: string }) => {
               </div>
             </div>
             <ProgressBar variant="primary-lighter" now={40} className="mb-2" />
-            <div className="d-flex align-items-center justify-content-between">
+            <div className="flex items-center justify-between">
               <p className="mb-0">New</p>
               <div>
                 <FeatherIcon
                   icon="clock"
-                  className="lh-sm me-1"
+                  className="leading-sm me-1"
                   width={16}
                   height={16}
                 />
-                <span className="d-inline-block lh-sm">Dec 15, 05:00AM</span>
+                <span className="inline-block leading-sm">Dec 15, 05:00AM</span>
               </div>
             </div>
           </Col>

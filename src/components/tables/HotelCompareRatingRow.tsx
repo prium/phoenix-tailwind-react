@@ -13,13 +13,13 @@ const HotelCompareRatingRow = ({
 }: HotelCompareRatingRowProps) => {
   return (
     <tr>
-      <td className="px-4 align-middle bg-body-highlight border-end-lg border-translucent">
-        <h6 className="text-body fw-bolder text-uppercase mb-0">{title}</h6>
+      <td className="px-6 align-middle bg-subtle lg:border-e border-light">
+        <h6 className="text-default font-black uppercase mb-0">{title}</h6>
       </td>
       {ratingValues.map((value, index) => (
-        <td className="px-3 border-end border-translucent" key={index}>
-          <div className="d-flex align-items-center gap-2">
-            <Badge bg="primary" className="fs-8">
+        <td className="px-4 border-e border-light" key={index}>
+          <div className="flex items-center gap-2">
+            <Badge bg="primary" className="text-base">
               {numberFormat(value, 'standard', {
                 minimumFractionDigits: 1
               })}
@@ -27,7 +27,7 @@ const HotelCompareRatingRow = ({
             <ProgressBar
               now={parseFloat(value.toString()) * 20}
               style={{ height: 8 }}
-              className="bg-body-highlight w-100"
+              className="bg-subtle w-full"
             />
           </div>
         </td>

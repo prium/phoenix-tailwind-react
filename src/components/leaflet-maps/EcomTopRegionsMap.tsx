@@ -57,7 +57,7 @@ const LayerComponent = ({ data }: { data: MapMarkerPoints[] }) => {
           >
             <Popup>
               <h6 className="mb-1">{marker.name}</h6>
-              <p className="m-0 text-body-quaternary">
+              <p className="m-0 text-soft">
                 {marker.street} {marker.location}
               </p>
             </Popup>
@@ -82,7 +82,7 @@ const EcomTopRegionsMap = ({ data, ...rest }: { data: MapMarkerPoints[] }) => {
       zoomSnap={0.5}
       center={position}
       {...rest}
-      className="h-100 bg-body-emphasis"
+      className="h-full bg-soft"
     >
       <LayerComponent data={data} />
     </MapContainer>

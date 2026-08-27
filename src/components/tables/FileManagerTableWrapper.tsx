@@ -34,8 +34,8 @@ const RenderFileIcon = ({ file }: { file: File }) => {
         <FontAwesomeIcon
           icon={faFolder}
           className={classNames(
-            'fs-9',
-            file.id === 3 ? 'text-info-light' : 'text-body-tertiary'
+            'text-md',
+            file.id === 3 ? 'text-info-light' : 'text-subtle'
           )}
         />
       );
@@ -43,7 +43,7 @@ const RenderFileIcon = ({ file }: { file: File }) => {
       return (
         <FontAwesomeIcon
           icon={faFileWord}
-          className="fs-9 text-body-tertiary"
+          className="text-md text-subtle"
         />
       );
     case 'xls':
@@ -51,7 +51,7 @@ const RenderFileIcon = ({ file }: { file: File }) => {
       return (
         <FontAwesomeIcon
           icon={faFileExcel}
-          className="fs-9 text-body-tertiary"
+          className="text-md text-subtle"
         />
       );
     case 'source-code':
@@ -59,28 +59,28 @@ const RenderFileIcon = ({ file }: { file: File }) => {
       return (
         <FontAwesomeIcon
           icon={faFileInvoice}
-          className="fs-9 text-body-tertiary"
+          className="text-md text-subtle"
         />
       );
     case 'zip':
       return (
         <FontAwesomeIcon
           icon={faFileZipper}
-          className="fs-9 text-body-tertiary"
+          className="text-md text-subtle"
         />
       );
     case 'pdf':
       return (
-        <FontAwesomeIcon icon={faFilePdf} className="fs-9 text-body-tertiary" />
+        <FontAwesomeIcon icon={faFilePdf} className="text-md text-subtle" />
       );
     case 'csv':
       return (
-        <FontAwesomeIcon icon={faFileCsv} className="fs-9 text-body-tertiary" />
+        <FontAwesomeIcon icon={faFileCsv} className="text-md text-subtle" />
       );
     case 'image':
       return (
         <img
-          className="w-100 h-100 pointer-events-none"
+          className="w-full h-full pointer-events-none"
           src={file.img}
           alt=""
           style={{ aspectRatio: '16/9' }}
@@ -89,7 +89,7 @@ const RenderFileIcon = ({ file }: { file: File }) => {
     case 'video':
       return (
         <img
-          className="w-100 h-100 pointer-events-none"
+          className="w-full h-full pointer-events-none"
           src={file.thumb}
           alt=""
           style={{ aspectRatio: '16/9' }}
@@ -136,7 +136,7 @@ const columns: ColumnDef<File>[] = [
           <Lightbox {...lightboxProps} />
           <Link
             to="#!"
-            className={`d-flex align-items-center gap-3 fw-semibold text-body-highlight ${
+            className={`flex items-center gap-4 font-semibold text-highlight ${
               row.getIsSelected() ? 'file-checked' : ''
             }`}
             onClick={e => {
@@ -155,7 +155,7 @@ const columns: ColumnDef<File>[] = [
               }
             }}
           >
-            <div className="square-icon-box border border-translucent overflow-hidden position-relative">
+            <div className="square-icon-box border border-light overflow-hidden relative">
               <RenderFileIcon file={original} />
             </div>
             <p className="mb-0">{original.name}</p>

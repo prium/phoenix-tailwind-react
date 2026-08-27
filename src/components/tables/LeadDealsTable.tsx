@@ -42,7 +42,7 @@ const columns: ColumnDef<LeadDeal>[] = [
     header: 'deal name',
     accessorKey: 'name',
     cell: ({ row: { original } }) => (
-      <Link to="#!" className="fw-semibold">
+      <Link to="#!" className="font-semibold">
         {original.name}
       </Link>
     ),
@@ -85,7 +85,7 @@ const columns: ColumnDef<LeadDeal>[] = [
       const variant = getProgressColorVariant(probability);
       return (
         <>
-          <p className="text-body-secondary fs-10 mb-0">{probability}%</p>
+          <p className="text-muted text-sm mb-0">{probability}%</p>
           <ProgressBar
             now={probability}
             style={{ height: 3 }}
@@ -156,7 +156,7 @@ const LeadDealsTable = () => {
   return (
     <div>
       <AdvanceTableProvider {...table}>
-        <div className="border-y border-translucent">
+        <div className="border-y border-light">
           <AdvanceTable tableProps={{ className: 'phoenix-table fs-9' }} />
           <AdvanceTableFooter pagination />
         </div>

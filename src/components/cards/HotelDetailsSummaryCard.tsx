@@ -30,14 +30,14 @@ const HotelDetailsSummaryCard = ({
   return (
     <Card className={className}>
       <Card.Body>
-        <h5 className="mb-3">Summary</h5>
+        <h5 className="mb-4">Summary</h5>
         {showHotelInfo && (
           <>
-            <img src={img1} alt="" width={208} className="rounded-2 mb-3" />
-            <h4 className="text-body-highlight mb-2">
+            <img src={img1} alt="" width={208} className="rounded-md mb-4" />
+            <h4 className="text-highlight mb-2">
               Radisson Blu Water Garden Hotel, Dhaka
             </h4>
-            <p className="mb-5 text-body-tertiary">
+            <p className="mb-8 text-subtle">
               Airport Rd, Dhaka Cantonment, Dhaka, 1206, Bangladesh
             </p>
           </>
@@ -47,31 +47,31 @@ const HotelDetailsSummaryCard = ({
             key={item.id}
             cartItem={item}
             index={index}
-            className="mb-3"
+            className="mb-4"
             crossButtonClickHandler={removeButtonClickHandler}
             showHotelInfo={showHotelInfo}
           />
         ))}
-        <div className="px-4 py-3 bg-body-highlight rounded-2">
-          <div className="d-flex flex-between-center mb-2">
-            <h6 className="text-body-tertiary fw-semibold">Sub-total</h6>
-            <h6 className="text-body-highlight fw-semibold">
+        <div className="px-6 py-4 bg-subtle rounded-md">
+          <div className="flex flex-between-center mb-2">
+            <h6 className="text-subtle font-semibold">Sub-total</h6>
+            <h6 className="text-highlight font-semibold">
               {currencyFormat(subTotal, {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2
               })}
             </h6>
           </div>
-          <div className="d-flex flex-between-center mb-2">
-            <h6 className="text-body-tertiary fw-semibold">Discount</h6>
-            <h6 className="text-body-tertiary fw-semibold">
+          <div className="flex flex-between-center mb-2">
+            <h6 className="text-subtle font-semibold">Discount</h6>
+            <h6 className="text-subtle font-semibold">
               -{currencyFormat(discount)}
             </h6>
           </div>
           <hr />
-          <div className="d-flex flex-between-center">
-            <h4 className="text-body">Total</h4>
-            <h4 className="text-body">
+          <div className="flex flex-between-center">
+            <h4 className="text-default">Total</h4>
+            <h4 className="text-default">
               {currencyFormat(subTotal !== 0 ? subTotal - discount : 0, {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2
@@ -81,7 +81,7 @@ const HotelDetailsSummaryCard = ({
         </div>
         {!showHotelInfo && (
           <Link to="/apps/travel-agency/hotel/customer/hotel-compare">
-            <Button variant="primary" className="mt-3 w-100">
+            <Button variant="primary" className="mt-4 w-full">
               Proceed with booking
             </Button>
           </Link>

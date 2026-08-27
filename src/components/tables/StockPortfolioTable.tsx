@@ -11,7 +11,7 @@ const columns: ColumnDef<PortfolioTableDataRowItem>[] = [
     header: 'Portfolio Name',
     cell: ({ row: { original } }) => {
       const { name } = original;
-      return <p className="mb-0 fw-semibold">{name}</p>;
+      return <p className="mb-0 font-semibold">{name}</p>;
     },
     meta: {
       headerProps: {
@@ -29,7 +29,7 @@ const columns: ColumnDef<PortfolioTableDataRowItem>[] = [
     cell: ({ row: { original } }) => {
       const { symbols } = original;
       return (
-        <p className="mb-0 fw-semibold text-body-tertiary fs-9">{symbols}</p>
+        <p className="mb-0 font-semibold text-subtle text-md">{symbols}</p>
       );
     },
     meta: {
@@ -48,7 +48,7 @@ const columns: ColumnDef<PortfolioTableDataRowItem>[] = [
     cell: ({ row: { original } }) => {
       const { costBasis } = original;
       return (
-        <p className="mb-0 text-body-tertiary fs-9">
+        <p className="mb-0 text-subtle text-md">
           {currencyFormat(costBasis, { minimumFractionDigits: 2 })}
         </p>
       );
@@ -71,7 +71,7 @@ const columns: ColumnDef<PortfolioTableDataRowItem>[] = [
         marketValue: { price, suffix }
       } = original;
       return (
-        <p className="mb-0 text-body-tertiary fs-9">
+        <p className="mb-0 text-subtle text-md">
           {currencyFormat(price, { minimumFractionDigits: 2 })} {suffix}
         </p>
       );
@@ -96,11 +96,11 @@ const columns: ColumnDef<PortfolioTableDataRowItem>[] = [
         const { amount, change, prefix, className } = dayChange;
         return (
           <div className={className}>
-            <p className="mb-1 fs-9 fw-bold">
+            <p className="mb-1 text-md font-bold">
               {prefix}
               {currencyFormat(amount, { minimumFractionDigits: 2 })}
             </p>
-            <p className="fs-9 fw-bold mb-1">
+            <p className="text-md font-bold mb-1">
               {prefix}
               {numberFormat(change, 'standard', { minimumFractionDigits: 2 })}%
             </p>
@@ -108,7 +108,7 @@ const columns: ColumnDef<PortfolioTableDataRowItem>[] = [
         );
       }
 
-      return <p className="text-body-tertiary mb-0 fw-bold">---</p>;
+      return <p className="text-subtle mb-0 font-bold">---</p>;
     },
     meta: {
       headerProps: {
@@ -130,11 +130,11 @@ const columns: ColumnDef<PortfolioTableDataRowItem>[] = [
         const { amount, change, prefix, className } = unrealizedGainLoss;
         return (
           <div className={className}>
-            <p className="mb-1 fs-9 fw-bold">
+            <p className="mb-1 text-md font-bold">
               {prefix}
               {currencyFormat(amount, { minimumFractionDigits: 2 })}
             </p>
-            <p className="fs-9 fw-bold mb-1">
+            <p className="text-md font-bold mb-1">
               {prefix}
               {numberFormat(change, 'standard', { minimumFractionDigits: 2 })}%
             </p>
@@ -142,7 +142,7 @@ const columns: ColumnDef<PortfolioTableDataRowItem>[] = [
         );
       }
 
-      return <p className="text-body-tertiary mb-0 fw-bold">---</p>;
+      return <p className="text-subtle mb-0 font-bold">---</p>;
     },
     meta: {
       headerProps: {
@@ -164,11 +164,11 @@ const columns: ColumnDef<PortfolioTableDataRowItem>[] = [
         const { amount, change, prefix, className } = realizedGainLoss;
         return (
           <div className={className}>
-            <p className="mb-1 fs-9 fw-bold">
+            <p className="mb-1 text-md font-bold">
               {prefix}
               {currencyFormat(amount, { minimumFractionDigits: 2 })}
             </p>
-            <p className="fs-9 fw-bold mb-1">
+            <p className="text-md font-bold mb-1">
               {prefix}
               {numberFormat(change, 'standard', { minimumFractionDigits: 2 })}%
             </p>
@@ -176,7 +176,7 @@ const columns: ColumnDef<PortfolioTableDataRowItem>[] = [
         );
       }
 
-      return <p className="text-body-tertiary mb-0 fw-bold">---</p>;
+      return <p className="text-subtle mb-0 font-bold">---</p>;
     },
     meta: {
       headerProps: {

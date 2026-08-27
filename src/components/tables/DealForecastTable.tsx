@@ -18,7 +18,7 @@ const columns: ColumnDef<ForecastTableData>[] = [
     cell: ({ row: { original } }) => {
       const { contact } = original;
       return (
-        <Link to={contact.profileLink} className="fw-semibold">
+        <Link to={contact.profileLink} className="font-semibold">
           {contact.name}
         </Link>
       );
@@ -37,8 +37,8 @@ const columns: ColumnDef<ForecastTableData>[] = [
   {
     id: 'appointment',
     header: () => (
-      <div className="d-inline-flex flex-center gap-2">
-        <FontAwesomeIcon icon={faSquare} className="fs-11 text-primary" />
+      <div className="inline-flex flex-center gap-2">
+        <FontAwesomeIcon icon={faSquare} className="text-xs text-primary" />
         Appoinment
       </div>
     ),
@@ -69,8 +69,8 @@ const columns: ColumnDef<ForecastTableData>[] = [
   {
     id: 'qualified',
     header: () => (
-      <div className="d-inline-flex flex-center gap-2">
-        <FontAwesomeIcon icon={faSquare} className="fs-11 text-primary-light" />
+      <div className="inline-flex flex-center gap-2">
+        <FontAwesomeIcon icon={faSquare} className="text-xs text-primary-light" />
         Qualified
       </div>
     ),
@@ -101,8 +101,8 @@ const columns: ColumnDef<ForecastTableData>[] = [
   {
     id: 'closed_won',
     header: () => (
-      <div className="d-inline-flex flex-center gap-2">
-        <FontAwesomeIcon icon={faSquare} className="fs-11 text-success" />
+      <div className="inline-flex flex-center gap-2">
+        <FontAwesomeIcon icon={faSquare} className="text-xs text-success" />
         Closed Won
       </div>
     ),
@@ -133,8 +133,8 @@ const columns: ColumnDef<ForecastTableData>[] = [
   {
     id: 'contact_sent',
     header: () => (
-      <div className="d-inline-flex flex-center gap-2">
-        <FontAwesomeIcon icon={faSquare} className="fs-11 text-info" />
+      <div className="inline-flex flex-center gap-2">
+        <FontAwesomeIcon icon={faSquare} className="text-xs text-info" />
         Contact Sent
       </div>
     ),

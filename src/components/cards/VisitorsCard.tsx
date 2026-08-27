@@ -13,17 +13,17 @@ export const VisitorsCard = () => {
   };
 
   return (
-    <Card className="h-100">
-      <Card.Header className="border-0 d-flex justify-content-between align-items-start">
+    <Card className="h-full">
+      <Card.Header className="border-0 flex justify-between items-start">
         <div>
-          <h3 className="text-body-highlight">Visitors</h3>
-          <p className="mb-0 text-body-tertiary"> Users across countries </p>
+          <h3 className="text-highlight">Visitors</h3>
+          <p className="mb-0 text-subtle"> Users across countries </p>
         </div>
         <Dropdown>
           <Dropdown.Toggle
             size="sm"
             variant="phoenix-secondary"
-            className="dropdown-caret-none px-3 bg-body-emphasis bg-body-hover"
+            className="dropdown-caret-none px-4 bg-soft hover:bg-default"
           >
             <FontAwesomeIcon transform="shrink-2" icon={faEllipsisH} />
           </Dropdown.Toggle>
@@ -35,9 +35,9 @@ export const VisitorsCard = () => {
         </Dropdown>
       </Card.Header>
       <Card.Body className="py-0">
-        <h4 className="d-flex align-items-center gap-2 text-body-highlight mb-3">
+        <h4 className="flex items-center gap-2 text-highlight mb-4">
           <span>{userCounter}</span>
-          <span className="fs-9 fw-normal">User per second</span>
+          <span className="text-md font-normal">User per second</span>
         </h4>
         <CountryWiseVitorsChart
           updateUserCounder={updateUserCounder}

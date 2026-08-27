@@ -10,18 +10,18 @@ interface TopStocksSidebarProps {
 const TopStocksSidebarCard = ({ topStocksItem }: TopStocksSidebarProps) => {
   return (
     <Card.Body className="p-0 cursor-pointer">
-      <div className="d-flex gap-3 gap-xl-2 gap-xxl-3 align-items-center">
+      <div className="flex gap-4 xl:gap-2 2xl:gap-4 items-center">
         {topStocksItem.darkImage ? (
           <>
             <img
               src={topStocksItem.image}
               alt={topStocksItem.title}
-              className="d-dark-none img-fluid"
+              className="dark:hidden img-fluid"
             />
             <img
               src={topStocksItem.darkImage}
               alt={topStocksItem.title}
-              className="d-light-none img-fluid"
+              className="hidden dark:block img-fluid"
             />
           </>
         ) : (
@@ -31,9 +31,9 @@ const TopStocksSidebarCard = ({ topStocksItem }: TopStocksSidebarProps) => {
             className="img-fluid"
           />
         )}
-        <div className="d-flex gap-3 flex-between-center flex-1">
+        <div className="flex gap-4 flex-between-center flex-1">
           <div>
-            <h6 className="fw-semibold text-body-secondary mb-2 lh-sm text-nowrap">
+            <h6 className="font-semibold text-muted mb-2 leading-sm whitespace-nowrap">
               {topStocksItem.title}
             </h6>
             <h4 className="mb-0">
@@ -43,11 +43,11 @@ const TopStocksSidebarCard = ({ topStocksItem }: TopStocksSidebarProps) => {
             </h4>
           </div>
           <div className="text-end">
-            <h6 className="fw-semibold text-body-secondary mb-2 lh-sm text-uppercase">
+            <h6 className="font-semibold text-muted mb-2 leading-sm uppercase">
               {topStocksItem.abbr}
             </h6>
             <h6
-              className={classNames('fw-semibold lh-sm', {
+              className={classNames('font-semibold leading-sm', {
                 'text-success': topStocksItem.growth,
                 'text-danger': !topStocksItem.growth
               })}

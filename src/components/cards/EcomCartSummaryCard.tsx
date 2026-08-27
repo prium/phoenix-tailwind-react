@@ -10,35 +10,35 @@ const EcomCartSummaryCard = () => {
   return (
     <Card>
       <Card.Body>
-        <div className="d-flex flex-between-center mb-3">
+        <div className="flex flex-between-center mb-4">
           <h3 className="mb-0">Summary</h3>
           <Link to="#!" className="btn btn-link p-0">
             Edit cart
           </Link>
         </div>
-        <Form.Select className="mb-3">
+        <Form.Select className="mb-4">
           <option value="cod">Cash on Delivery</option>
           <option value="card">Card</option>
           <option value="paypal">Paypal</option>
         </Form.Select>
         <OrderSummaryDetails />
-        <InputGroup className="mb-3">
+        <InputGroup className="mb-4">
           <FormControl placeholder="Voucher" aria-label="voucher" />
-          <Button variant="phoenix-primary" className="px-5">
+          <Button variant="phoenix-primary" className="px-8">
             Apply
           </Button>
         </InputGroup>
-        <div className="d-flex justify-content-between border-y border-dashed border-translucent py-3 mb-4">
+        <div className="flex justify-between border-y border-dashed border-light py-4 mb-6">
           <h4 className="mb-0">Total :</h4>
           <h4 className="mb-">
             {currencyFormat(695.2, { minimumFractionDigits: 2 })}
           </h4>
         </div>
         <Button
-          className="w-100"
+          className="w-full"
           variant="primary"
           endIcon={
-            <FontAwesomeIcon icon={faChevronRight} className="ms-1 fs-10" />
+            <FontAwesomeIcon icon={faChevronRight} className="ms-1 text-sm" />
           }
         >
           Proceed to check out

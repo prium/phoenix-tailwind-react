@@ -43,7 +43,7 @@ const stats: StatType[] = [
 
 const EcomStats = () => {
   return (
-    <Row className="align-items-center g-4">
+    <Row className="items-center g-6">
       {stats.map(stat => (
         <Col xs={12} md="auto" key={stat.id}>
           <Stat stat={stat} />
@@ -55,7 +55,7 @@ const EcomStats = () => {
 
 const Stat = ({ stat }: { stat: StatType }) => {
   return (
-    <Stack direction="horizontal" className="align-items-center">
+    <Stack direction="horizontal" className="items-center">
       {/* <img src={stat.icon} alt="" height={46} width={46} /> */}
       <span
         className="fa-layers"
@@ -64,7 +64,7 @@ const Stat = ({ stat }: { stat: StatType }) => {
         <FontAwesomeIcon
           icon={faSquare}
           size="2x"
-          className={`text-${stat.color}-light dark__text-opacity-50`}
+          className={`text-${stat.color}-light dark:text-current/50`}
           transform="down-4 rotate--10 left-4"
         />
         <FontAwesomeIcon
@@ -81,9 +81,9 @@ const Stat = ({ stat }: { stat: StatType }) => {
         />
       </span>
 
-      <div className="ms-3">
+      <div className="ms-4">
         <h4 className="mb-0">{stat.title}</h4>
-        <p className="text-body-secondary fs-9 mb-0">{stat.subTitle}</p>
+        <p className="text-muted text-md mb-0">{stat.subTitle}</p>
       </div>
     </Stack>
   );

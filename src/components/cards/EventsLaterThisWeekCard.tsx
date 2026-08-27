@@ -33,15 +33,15 @@ const EventsLaterThisWeekCard = ({
   return (
     <>
       <Card>
-        <Card.Body className="position-relative">
-          <div className="d-sm-flex gap-3">
+        <Card.Body className="relative">
+          <div className="sm:flex gap-4">
             <div className="custom-calendar-container">
-              <div className="position-relative custom-calender border rounded d-flex flex-column flex-center mb-3 mb-sm-0">
-                <h5 className="fw-bolder lh-sm text-body-tertiary">
+              <div className="relative custom-calender border rounded-md flex flex-col flex-center mb-4 sm:mb-0">
+                <h5 className="font-black leading-sm text-subtle">
                   {startDate.format('DD')}
                   {endDate && `-${endDate.format('DD')}`}
                 </h5>
-                <p className="mb-0 fs-10 text-body-tertiary fw-semibold">
+                <p className="mb-0 text-sm text-subtle font-semibold">
                   {startDate.format('MMM')}, {startDate.format('YYYY')}
                 </p>
               </div>
@@ -50,8 +50,8 @@ const EventsLaterThisWeekCard = ({
               <h5 className="mb-2 cursor-pointer" onClick={() => setOpen(true)}>
                 {eventsLaterThisWeek.title}
               </h5>
-              <div className="d-sm-flex mb-3 align-items-center">
-                <h6 className="text-body-tertiary fw-semibold mb-2 mb-sm-0 border-end-sm pe-sm-3 me-sm-3 text-nowrap">
+              <div className="sm:flex mb-4 items-center">
+                <h6 className="text-subtle font-semibold mb-2 sm:mb-0 sm:border-e sm:pe-4 sm:me-4 whitespace-nowrap">
                   <FeatherIcon
                     icon="clock"
                     className="me-2"
@@ -63,7 +63,7 @@ const EventsLaterThisWeekCard = ({
                     {eventsLaterThisWeek.schedule.displayTimeZone}
                   </span>
                 </h6>
-                <h6 className="text-body-tertiary fw-semibold mb-0 line-clamp-1">
+                <h6 className="text-subtle font-semibold mb-0 line-clamp-1">
                   <FeatherIcon
                     icon="map-pin"
                     className="me-2"
@@ -72,22 +72,22 @@ const EventsLaterThisWeekCard = ({
                   <span>{eventsLaterThisWeek.location}</span>
                 </h6>
               </div>
-              <div className="d-flex align-items-center gap-1">
-                <Avatar.Group size="s" className="align-items-center">
+              <div className="flex items-center gap-1">
+                <Avatar.Group size="s" className="items-center">
                   {eventsLaterThisWeek.interestedToGoing.map(people => (
                     <Avatar src={people.image} key={people.id} size="s" />
                   ))}{' '}
                 </Avatar.Group>
                 <Link
                   to="#!"
-                  className="fs-10 ms-1 fw-semibold text-body-quaternary"
+                  className="text-sm ms-1 font-semibold text-soft"
                 >
                   +
                   {eventsLaterThisWeek.totalUserCount -
                     eventsLaterThisWeek.interestedToGoing.length}{' '}
                   people going
                 </Link>
-                <ul className="ps-3 mb-0 text-body-quaternary fs-10">
+                <ul className="ps-4 mb-0 text-soft text-sm">
                   <li>
                     {numberFormat(eventsLaterThisWeek.interested, 'compact', {
                       compactDisplay: 'short'
@@ -98,7 +98,7 @@ const EventsLaterThisWeekCard = ({
               </div>
             </div>
           </div>
-          <div className="position-absolute top-0 end-0 mt-4 me-4">
+          <div className="absolute top-0 end-0 mt-6 me-6">
             <RevealDropdownTrigger>
               <Dropdown>
                 <Dropdown.Toggle variant="" size="sm" className="p-0">

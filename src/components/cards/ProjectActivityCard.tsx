@@ -5,12 +5,12 @@ import { Card } from 'react-bootstrap';
 
 const ProjectActivityCard = () => {
   return (
-    <Card className="h-100">
+    <Card className="h-full">
       <Card.Body>
         <Card.Title className="mb-1">
-          <h3 className="text-body-emphasis">Activity</h3>
+          <h3 className="text-emphasis">Activity</h3>
         </Card.Title>
-        <p className="text-body-tertiary mb-4">
+        <p className="text-subtle mb-6">
           Recent activity across all projects
         </p>
         <ActivityTimeline data={activityTimelineData} />

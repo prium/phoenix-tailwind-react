@@ -25,11 +25,11 @@ const WatchlistCollapsibleCard = ({
   return (
     <Card className={className}>
       <Card.Body>
-        <div className="d-flex flex-wrap flex-between-center gap-3 gap-xxl-5">
+        <div className="flex flex-wrap flex-between-center gap-4 2xl:gap-8">
           <Button
             variant=""
             className={classNames(
-              'collapse-indicator d-flex align-items-center  gap-2 p-0',
+              'collapse-indicator flex items-center  gap-2 p-0',
               {
                 collapsed: open
               }
@@ -38,7 +38,7 @@ const WatchlistCollapsibleCard = ({
             aria-controls="holdingSummary"
           >
             <FontAwesomeIcon icon={faChevronDown} className="toggle-icon" />
-            <h4 className="fs-8 fs-sm-7 mb-0 text-body-highlight">
+            <h4 className="text-base sm:text-lg mb-0 text-highlight">
               Holdings Summary
             </h4>
           </Button>
@@ -47,8 +47,8 @@ const WatchlistCollapsibleCard = ({
               <Row className="g-0 flex-nowrap py-1">
                 {holdingSummaryOverallSummaryItems.map(item => (
                   <Col xs="auto" key={item.id} className={item.className}>
-                    <div className="d-flex align-items-center gap-2">
-                      <h6 className="fw-normal text-body-tertiary mb-0">
+                    <div className="flex items-center gap-2">
+                      <h6 className="font-normal text-subtle mb-0">
                         {item.title}
                       </h6>
                       <h5 className={classNames('mb-0', item.amount.className)}>
@@ -60,7 +60,7 @@ const WatchlistCollapsibleCard = ({
                       <Badge
                         variant="phoenix"
                         bg={item.badge.badgeBg}
-                        className="fs-10"
+                        className="text-sm"
                       >
                         {item.badge.prefix}
                         {numberFormat(item.badge.label, 'standard', {
@@ -77,63 +77,63 @@ const WatchlistCollapsibleCard = ({
         </div>
         <Collapse in={open}>
           <div id="holdingSummary">
-            <Row className="g-0 mt-3">
+            <Row className="g-0 mt-4">
               <Col
                 xs={12}
                 xl={4}
                 xxl={3}
-                className="pe-xl-5 border-end-xl overflow-hidden"
+                className="xl:pe-8 xl:border-e overflow-hidden"
               >
-                <h3 className="mb-3">Summary</h3>
+                <h3 className="mb-4">Summary</h3>
                 <Table className="mb-2">
                   <tbody>
                     <tr>
-                      <td className="align-middle p-0 pb-2 border-bottom-0">
+                      <td className="align-middle p-0 pb-2 border-b-0">
                         <p className="mb-0">Market Value</p>
                       </td>
-                      <td className="align-middle text-end p-0 pb-2 border-bottom-0">
-                        <h5 className="fw-semibold mb-0">
+                      <td className="align-middle text-end p-0 pb-2 border-b-0">
+                        <h5 className="font-semibold mb-0">
                           {currencyFormat(688.43, { minimumFractionDigits: 2 })}
                         </h5>
                       </td>
                     </tr>
                     <tr>
-                      <td className="align-middle p-0 pb-2 border-bottom-0">
+                      <td className="align-middle p-0 pb-2 border-b-0">
                         <p className="mb-0">Day Change</p>
                       </td>
-                      <td className="align-middle text-end p-0 pb-2 border-bottom-0">
-                        <h5 className="mb-0 fw-semibold">
+                      <td className="align-middle text-end p-0 pb-2 border-b-0">
+                        <h5 className="mb-0 font-semibold">
                           +{currencyFormat(0, { minimumFractionDigits: 2 })}{' '}
                           (0.00%)
                         </h5>
                       </td>
                     </tr>
                     <tr>
-                      <td className="align-middle p-0 pb-2 border-bottom-0">
+                      <td className="align-middle p-0 pb-2 border-b-0">
                         <p className="mb-0">Unrealized G/L</p>
                       </td>
-                      <td className="align-middle text-end p-0 pb-2 border-bottom-0">
-                        <h5 className="mb-0 fw-semibold text-danger">
+                      <td className="align-middle text-end p-0 pb-2 border-b-0">
+                        <h5 className="mb-0 font-semibold text-danger">
                           +{currencyFormat(0, { minimumFractionDigits: 2 })}{' '}
                           (0.00%)
                         </h5>
                       </td>
                     </tr>
                     <tr>
-                      <td className="align-middle p-0 pb-3 border-bottom-0">
+                      <td className="align-middle p-0 pb-4 border-b-0">
                         <p className="mb-0">Realized Value</p>
                       </td>
-                      <td className="align-middle text-end p-0 pb-3 border-bottom-0">
-                        <h5 className="mb-0 fw-semibold">
+                      <td className="align-middle text-end p-0 pb-4 border-b-0">
+                        <h5 className="mb-0 font-semibold">
                           {currencyFormat(0, { minimumFractionDigits: 2 })}
                         </h5>
                       </td>
                     </tr>
                     <tr>
-                      <td className="align-middle p-0 pt-3 border-bottom-0 border-top border-dashed">
+                      <td className="align-middle p-0 pt-4 border-b-0 border-t border-dashed">
                         <h4 className="mb-0">Total:</h4>
                       </td>
-                      <td className="align-middle text-end p-0 pt-3 border-bottom-0 border-top border-dashed">
+                      <td className="align-middle text-end p-0 pt-4 border-b-0 border-t border-dashed">
                         <h4 className="mb-0">
                           {currencyFormat(688.43, { minimumFractionDigits: 2 })}
                         </h4>
@@ -142,8 +142,8 @@ const WatchlistCollapsibleCard = ({
                   </tbody>
                 </Table>
               </Col>
-              <Col xl={8} xxl={9} className="ps-xl-5 mt-5 mt-xl-0">
-                <Row className="g-3 g-xxl-5 flex-between-center mb-3">
+              <Col xl={8} xxl={9} className="xl:ps-8 mt-8 xl:mt-0">
+                <Row className="g-4 2xl:g-8 flex-between-center mb-4">
                   <Col xs={12} xxl="auto">
                     <h4>Chart Report</h4>
                     <p className="mb-0">

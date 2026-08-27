@@ -20,7 +20,7 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
     cell: ({ row: { original } }) => {
       const { orderId } = original;
       return (
-        <Link to="#!" className="fw-semibold">
+        <Link to="#!" className="font-semibold">
           #{orderId}
         </Link>
       );
@@ -49,7 +49,7 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
           bg={payment_status.type}
           variant="phoenix"
           iconPosition="end"
-          className="fs-10"
+          className="text-sm"
           icon={
             <FeatherIcon
               icon={payment_status.icon}
@@ -77,7 +77,7 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
           bg={fulfilment_status.type}
           variant="phoenix"
           iconPosition="end"
-          className="fs-10"
+          className="text-sm"
           icon={
             <FeatherIcon
               icon={fulfilment_status.icon}
@@ -139,7 +139,7 @@ const CustomerOrdersTable = () => {
 
   return (
     <AdvanceTableProvider {...table}>
-      <div className="border-y border-translucent">
+      <div className="border-y border-light">
         <AdvanceTable
           tableProps={{ className: 'phoenix-table table-sm fs-9' }}
         />

@@ -34,7 +34,7 @@ const columns: ColumnDef<LatestReviewsTableDataType>[] = [
       return (
         <Link
           to="/apps/e-commerce/customer/product-details"
-          className="d-block rounded-2 border border-translucent"
+          className="block rounded-md border border-light"
         >
           <img src={productImage} alt="" width={53} />
         </Link>
@@ -51,7 +51,7 @@ const columns: ColumnDef<LatestReviewsTableDataType>[] = [
       return (
         <Link
           to="/apps/e-commerce/customer/product-details"
-          className="fw-semibold"
+          className="font-semibold"
         >{`${product.slice(0, 46)}${product.length > 46 ? '...' : ''}`}</Link>
       );
     },
@@ -68,7 +68,7 @@ const columns: ColumnDef<LatestReviewsTableDataType>[] = [
       return (
         <Link
           to="/apps/e-commerce/admin/customer-details"
-          className="d-flex align-items-center text-body"
+          className="flex items-center text-default"
         >
           {customer.variant === 'name' ? (
             <Avatar src={customer.avatar} size="l" variant={customer.variant}>
@@ -77,7 +77,7 @@ const columns: ColumnDef<LatestReviewsTableDataType>[] = [
           ) : (
             <Avatar src={customer.avatar} size="l" variant={customer.variant} />
           )}
-          <h6 className="mb-0 ms-3 text-body">{customer.name}</h6>
+          <h6 className="mb-0 ms-4 text-default">{customer.name}</h6>
         </Link>
       );
     },
@@ -102,7 +102,7 @@ const columns: ColumnDef<LatestReviewsTableDataType>[] = [
     cell: ({ row: { original } }) => {
       const { review } = original;
       return (
-        <p className="fs--1 fw-semibold text-body-highlight mb-0 line-clamp-3">
+        <p className="fs--1 font-semibold text-highlight mb-0 line-clamp-3">
           {review.slice(0, 134)}
           {review.length > 134 && (
             <>
@@ -129,7 +129,7 @@ const columns: ColumnDef<LatestReviewsTableDataType>[] = [
           bg={badgeBg}
           variant="phoenix"
           iconPosition="end"
-          className="fs-10"
+          className="text-sm"
           icon={<FeatherIcon icon={icon} size={12} className="ms-1" />}
         >
           {title}
@@ -148,7 +148,7 @@ const columns: ColumnDef<LatestReviewsTableDataType>[] = [
       const { time } = original;
       return (
         <div className="hover-hide">
-          <h6 className="text-body-highlight mb-0">{time}</h6>
+          <h6 className="text-highlight mb-0">{time}</h6>
         </div>
       );
     },
@@ -164,16 +164,16 @@ const columns: ColumnDef<LatestReviewsTableDataType>[] = [
     cell: () => {
       return (
         <>
-          <div className="position-relative">
+          <div className="relative">
             <div className="hover-actions">
               <Button
                 variant="phoenix-secondary"
-                className="me-1 fs-10"
+                className="me-1 text-sm"
                 size="sm"
               >
                 <FontAwesomeIcon icon={faCheck} />
               </Button>
-              <Button variant="phoenix-secondary" className="fs-10" size="sm">
+              <Button variant="phoenix-secondary" className="text-sm" size="sm">
                 <FontAwesomeIcon icon={faTrash} />
               </Button>
             </div>
@@ -208,15 +208,15 @@ const EcomLatestReviewsTable = () => {
   return (
     <>
       <AdvanceTableProvider {...table}>
-        <Row className="align-items-end justify-content-between pb-5 g-3">
+        <Row className="items-end justify-between pb-8 g-4">
           <Col xs="auto">
             <h3>Latest reviews</h3>
-            <p className="text-body-tertiary lh-sm mb-0">
+            <p className="text-subtle leading-sm mb-0">
               Payment received across all channels
             </p>
           </Col>
           <Col xs={12} md="auto">
-            <Row className="g-2 gy-3">
+            <Row className="g-2 gy-4">
               <Col xs="auto" className="flex-1">
                 <SearchBox
                   placeholder="Search..."
@@ -224,11 +224,11 @@ const EcomLatestReviewsTable = () => {
                   onChange={handleSearchInputChange}
                 />
               </Col>
-              <Col xs="auto" className="d-flex gap-2">
+              <Col xs="auto" className="flex gap-2">
                 <Button
                   variant="phoenix-secondary"
                   size="sm"
-                  className="bg-body-emphasis bg-body-hover"
+                  className="bg-soft hover:bg-default"
                 >
                   All products
                 </Button>
@@ -236,7 +236,7 @@ const EcomLatestReviewsTable = () => {
                   <Dropdown.Toggle
                     variant="phoenix-secondary"
                     size="sm"
-                    className="bg-body-emphasis bg-body-hover dropdown-caret-none"
+                    className="bg-soft hover:bg-default dropdown-caret-none"
                   >
                     <FontAwesomeIcon icon={faEllipsisH} className="10" />
                   </Dropdown.Toggle>

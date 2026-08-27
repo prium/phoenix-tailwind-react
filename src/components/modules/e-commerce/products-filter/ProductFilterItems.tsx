@@ -18,9 +18,9 @@ import Rating from 'components/base/Rating';
 const ProductFilterItems = ({ handleClose }: { handleClose: () => void }) => {
   return (
     <>
-      <div className="d-flex justify-content-between align-items-center mb-3">
+      <div className="flex justify-between items-center mb-4">
         <h3 className="mb-0">Filters</h3>
-        <button className="btn p-0 d-lg-none" onClick={handleClose}>
+        <button className="btn p-0 lg:hidden" onClick={handleClose}>
           <UilTimes fill='currentColor' size={16} />
         </button>
       </div>
@@ -58,7 +58,7 @@ const ProductFilterItems = ({ handleClose }: { handleClose: () => void }) => {
       </FormCollapse>
 
       <FormCollapse title="Price range">
-        <div className="d-flex gap-2">
+        <div className="flex gap-2">
           <InputGroup>
             <Form.Control placeholder="Min" />
             <Form.Control placeholder="Max" />
@@ -77,7 +77,7 @@ const ProductFilterItems = ({ handleClose }: { handleClose: () => void }) => {
             key={rating}
             name="rating"
             label={
-              <div className="d-flex align-items-center ms-1">
+              <div className="flex items-center ms-1">
                 <Rating
                   style={{ color: 'red' }}
                   initialValue={rating}

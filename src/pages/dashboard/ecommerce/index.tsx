@@ -15,21 +15,21 @@ import EcomTopRegions from 'components/modules/e-commerce/dashboard/EcomTopRegio
 const Ecommerce = () => {
   return (
     <>
-      <div className="pb-5">
-        <Row className="g-4">
+      <div className="pb-8">
+        <Row className="g-6">
           <Col xs={12} xxl={6}>
-            <div className="mb-8">
+            <div className="mb-14">
               <h2 className="mb-2">Ecommerce Dashboard</h2>
-              <h5 className="text-body-tertiary fw-semibold">
+              <h5 className="text-subtle font-semibold">
                 Here’s what’s going on at your business right now
               </h5>
             </div>
             <EcomStats />
-            <hr className="bg-body-secondary mb-6 mt-4" />
+            <hr className="bg-muted mb-10 mt-6" />
             <EcomTotalSells />
           </Col>
           <Col xs={12} xxl={6}>
-            <Row className="g-3">
+            <Row className="g-4">
               <Col xs={12} md={6}>
                 <EcomTotalOrdersCard />
               </Col>
@@ -46,23 +46,23 @@ const Ecommerce = () => {
           </Col>
         </Row>
       </div>
-      <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-body-emphasis pt-7 border-y">
+      <div className="-mx-6 px-6 lg:-mx-10 lg:px-10 bg-soft pt-12 border-y">
         <EcomLatestReviewsTable />
       </div>
-      <Row className="gx-6">
+      <Row className="gx-10">
         <Col xs={12} xl={6}>
           <EcomTopRegions />
         </Col>
         <Col xs={12} xl={6}>
-          <div className="mx-n4 mx-lg-n6 ms-xl-0 h-100">
-            <div className="h-100 w-100" style={{ minHeight: 300 }}>
+          <div className="-mx-6 lg:-mx-10 xl:ms-0 h-full">
+            <div className="h-full w-full" style={{ minHeight: 300 }}>
               <EcomTopRegionsMap data={mapMarkerPoints} />
             </div>
           </div>
         </Col>
       </Row>
-      <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-body-emphasis pt-6 pb-9 border-top">
-        <Row className="g-6">
+      <div className="-mx-6 px-6 lg:-mx-10 lg:px-10 bg-soft pt-10 pb-16 border-t">
+        <Row className="g-10">
           <Col xs={12} xl={6}>
             <EcomProjectionVsActual />
           </Col>

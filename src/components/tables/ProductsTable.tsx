@@ -20,7 +20,7 @@ export const productsTablecolumns: ColumnDef<ProductsTableProductType>[] = [
       return (
         <Link
           to="/apps/e-commerce/customer/product-details"
-          className="rounded-2 border border-translucent d-inline-block"
+          className="rounded-md border border-light inline-block"
         >
           <img src={productImage} alt="" width={53} />
         </Link>
@@ -40,7 +40,7 @@ export const productsTablecolumns: ColumnDef<ProductsTableProductType>[] = [
       return (
         <Link
           to="/apps/e-commerce/customer/product-details"
-          className="fw-semibold line-clamp-3"
+          className="font-semibold line-clamp-3"
         >
           {product}
         </Link>
@@ -85,9 +85,9 @@ export const productsTablecolumns: ColumnDef<ProductsTableProductType>[] = [
     cell: ({ row: { original } }) => {
       const { tags } = original;
       return (
-        <div className="d-flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2">
           {tags.map(tag => (
-            <Link key={tag} to="#!" className="text-decoration-none">
+            <Link key={tag} to="#!" className="no-underline">
               <Badge variant="tag">{tag}</Badge>
             </Link>
           ))}

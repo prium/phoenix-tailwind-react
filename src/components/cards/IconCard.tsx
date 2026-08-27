@@ -39,15 +39,15 @@ const IconCard = ({
   }, []);
 
   return (
-    <div className="border rounded-2 p-3 mb-4 text-center bg-body-emphasis dark__bg-gray-1000 shadow-sm">
+    <div className="border rounded-md p-4 mb-6 text-center bg-soft dark__bg-gray-1000 shadow-sm">
       {iconFamily === 'font-awesome' && (
-        <FontAwesomeIcon icon={icon as IconProp} className="text-body fs-5" />
+        <FontAwesomeIcon icon={icon as IconProp} className="text-default text-2xl" />
       )}
       {iconFamily === 'unicons' && (
-        <Unicon fill="currentColor" icon={icon as Icon} style={{ height: 31.25}} className="text-body fs-5" />
+        <Unicon fill="currentColor" icon={icon as Icon} style={{ height: 31.25}} className="text-default text-2xl" />
       )}
       {iconFamily === 'feather' && (
-        <FeatherIcon icon={icon} className="text-body" size={16} />
+        <FeatherIcon icon={icon} className="text-default" size={16} />
       )}
       {children}
       <Form.Control
@@ -55,21 +55,21 @@ const IconCard = ({
         type="text"
         readOnly
         value={text}
-        className="text-center text-body-emphasis bg-body-secondary dark__bg-gray-1100 mt-3"
+        className="text-center text-emphasis bg-muted dark__bg-gray-1100 mt-4"
       />
 
       <Toast
         show={showCopyToast}
         onClose={() => setShowCopyToast(false)}
-        className="align-items-center bg-dark border-0 bottom-0 end-0 mb-3 me-3 position-fixed text-white z-5"
+        className="items-center bg-dark border-0 bottom-0 end-0 mb-4 me-4 fixed text-white z-5"
         data-bs-theme="light"
         delay={3000}
         autohide
       >
-        <div className="d-flex">
+        <div className="flex">
           <Toast.Body className="P-3">
-            <span className="fw-black">
-              Copied: <code className="text-body-quaternary">{text}</code>
+            <span className="font-black">
+              Copied: <code className="text-soft">{text}</code>
             </span>
           </Toast.Body>
         </div>

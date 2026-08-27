@@ -15,10 +15,10 @@ export const customersTablecolumns: ColumnDef<Customer>[] = [
       return (
         <Link
           to="/apps/e-commerce/admin/customer-details"
-          className="d-flex align-items-center text-body-emphasis"
+          className="flex items-center text-emphasis"
         >
           <Avatar src={avatar} size="m" />
-          <p className="mb-0 ms-3 fw-bold">{name}</p>
+          <p className="mb-0 ms-4 font-bold">{name}</p>
         </Link>
       );
     },
@@ -33,7 +33,7 @@ export const customersTablecolumns: ColumnDef<Customer>[] = [
     cell: ({ row: { original } }) => {
       const { email } = original;
       return (
-        <Link to={`mailto:${email}`} className="fw-semibold">
+        <Link to={`mailto:${email}`} className="font-semibold">
           {email}
         </Link>
       );

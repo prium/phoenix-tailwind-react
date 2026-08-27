@@ -33,16 +33,16 @@ const HotelDetailsCartItem = ({
       <Card.Body>
         {!showHotelInfo && (
           <Button
-            className="p-0 position-absolute end-0 fs-8 mt-n5 me-n2 text-body-tertiary"
+            className="p-0 absolute end-0 text-base -mt-8 -me-2 text-subtle"
             onClick={() => crossButtonClickHandler(cartItem.id)}
           >
             <FontAwesomeIcon icon={faCircleXmark} />
           </Button>
         )}
-        <div className="d-flex justify-content-between gap-3 mb-4">
+        <div className="flex justify-between gap-4 mb-6">
           <div>
-            <h5 className="text-body-highlight"> Room {index + 1}</h5>
-            <p className="mb-0 text-body-tertiary">{cartItem.roomName}</p>
+            <h5 className="text-highlight"> Room {index + 1}</h5>
+            <p className="mb-0 text-subtle">{cartItem.roomName}</p>
           </div>
           <h4 className="mb-0">
             {currencyFormat(cartItem.price, {
@@ -52,9 +52,9 @@ const HotelDetailsCartItem = ({
           </h4>
         </div>
 
-        <Row className="align-items-center g-0">
+        <Row className="items-center g-0">
           <Col xs={3}>
-            <h5 className="text-body text-nowrap mb-0">Check in</h5>
+            <h5 className="text-default whitespace-nowrap mb-0">Check in</h5>
           </Col>
           <Col xs="auto">
             <span className="px-2">:</span>
@@ -62,39 +62,39 @@ const HotelDetailsCartItem = ({
           <Col xs="auto">{cartItem.checkIn}</Col>
         </Row>
 
-        <Row className="align-items-center g-0 mb-4">
+        <Row className="items-center g-0 mb-6">
           <Col xs={3}>
-            <h5 className="text-body text-nowrap mb-0">Check out</h5>
+            <h5 className="text-default whitespace-nowrap mb-0">Check out</h5>
           </Col>
           <Col xs="auto">
             <span className="px-2">:</span>
           </Col>
           <Col xs="auto">{cartItem.checkOut}</Col>
         </Row>
-        <div className="d-flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2">
           <Badge
             variant="phoenix"
             bg="secondary"
-            className="py-1 border-0 text-capitalize"
+            className="py-1 border-0 capitalize"
           >
-            <FontAwesomeIcon icon={faBed} className="fs-9 me-2" />
+            <FontAwesomeIcon icon={faBed} className="text-md me-2" />
             {cartItem.bedType}
           </Badge>
           <Badge
             variant="phoenix"
             bg="secondary"
-            className="py-1 border-0 text-capitalize"
+            className="py-1 border-0 capitalize"
           >
-            <FontAwesomeIcon icon={faUser} className="fs-9 me-2" />
+            <FontAwesomeIcon icon={faUser} className="text-md me-2" />
             {cartItem.adults} Adults
           </Badge>
           {cartItem.child && (
             <Badge
               variant="phoenix"
               bg="secondary"
-              className="py-1 border-0 text-capitalize"
+              className="py-1 border-0 capitalize"
             >
-              <FontAwesomeIcon icon={faBaby} className="fs-9 me-2" />
+              <FontAwesomeIcon icon={faBaby} className="text-md me-2" />
               {cartItem.child} Childs
             </Badge>
           )}
@@ -102,9 +102,9 @@ const HotelDetailsCartItem = ({
             <Badge
               variant="phoenix"
               bg="secondary"
-              className="py-1 border-0 text-capitalize"
+              className="py-1 border-0 capitalize"
             >
-              <FontAwesomeIcon icon={faMoon} className="fs-9 me-2" />
+              <FontAwesomeIcon icon={faMoon} className="text-md me-2" />
               {cartItem.nights} Nights
             </Badge>
           )}

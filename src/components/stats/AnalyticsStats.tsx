@@ -5,7 +5,7 @@ import Unicon from 'components/base/Unicon';
 
 const AnalyticsStats = ({ stats }: { stats: StatType[] }) => {
   return (
-    <Row className="justify-content-between">
+    <Row className="justify-between">
       {stats.map((stat, index) => (
         <Col
           key={stat.id}
@@ -13,19 +13,19 @@ const AnalyticsStats = ({ stats }: { stats: StatType[] }) => {
           md={4}
           xxl={2}
           className={classNames(
-            'text-center border-start-xxl border-translucent',
+            'text-center 2xl:border-s border-light',
             {
-              'border-end-xxl-0 border-bottom-xxl-0 border-end border-bottom pb-4 pb-xxl-0':
+              '2xl:border-e-0 2xl:border-b-0 border-e border-b pb-10 2xl:pb-0':
                 index === 0,
-              'border-end-xxl-0 border-bottom-xxl-0 border-end-md border-bottom pb-4 pb-xxl-0':
+              '2xl:border-e-0 2xl:border-b-0 md:border-e border-b pb-10 2xl:pb-0':
                 index === 1,
-              'border-bottom-xxl-0 border-bottom border-end border-end-md-0 pb-4 pb-xxl-0 pt-4 pt-md-0':
+              '2xl:border-b-0 border-b border-e md:border-e-0 pb-10 2xl:pb-0 pt-10 md:pt-0':
                 index === 2,
-              'border-end-md border-end-xxl-0 border-bottom border-bottom-md-0 pb-4 pb-xxl-0 pt-4 pt-xxl-0':
+              'md:border-e 2xl:border-e-0 border-b md:border-b-0 pb-10 2xl:pb-0 pt-10 2xl:pt-0':
                 index === 3,
-              'border-end border-end-xxl-0 pb-md-4 pb-xxl-0 pt-4 pt-xxl-0':
+              'border-e 2xl:border-e-0 md:pb-6 2xl:pb-0 pt-10 2xl:pt-0':
                 index === 4,
-              'border-end-xxl pb-md-4 pb-xxl-0 pt-4 pt-xxl-0': index === 5
+              '2xl:border-e md:pb-6 2xl:pb-0 pt-10 2xl:pt-0': index === 5
             }
           )}
         >
@@ -45,8 +45,8 @@ const Stat = ({ data }: { data: StatType }) => {
         className={`text-${data.iconColor} mb-1`}
         size={31.25}
       />
-      <h1 className="fs-5 mt-3">{data.emailCount}</h1>
-      <p className="fs-9 mb-0">{data.title}</p>
+      <h1 className="text-2xl mt-4">{data.emailCount}</h1>
+      <p className="text-md mb-0">{data.title}</p>
     </>
   );
 };

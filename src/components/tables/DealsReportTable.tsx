@@ -23,7 +23,7 @@ export const dealsReportColumns: ColumnDef<DealsReport>[] = [
     accessorKey: 'dealName',
     header: 'Deal Name',
     cell: ({ row: { original } }) => (
-      <Link to="#!" className="fw-bold text-primary">
+      <Link to="#!" className="font-bold text-primary">
         {original.dealName}
       </Link>
     ),
@@ -44,9 +44,9 @@ export const dealsReportColumns: ColumnDef<DealsReport>[] = [
     cell: ({ row: { original } }) => {
       const { name, avatar, profileLink } = original.dealOwner;
       return (
-        <Link to={profileLink} className="d-flex align-items-center text-body">
+        <Link to={profileLink} className="flex items-center text-default">
           <Avatar src={avatar} size="m" />
-          <p className="mb-0 ms-3 text-body-emphasis fw-bold">{name}</p>
+          <p className="mb-0 ms-4 text-emphasis font-bold">{name}</p>
         </Link>
       );
     },
@@ -78,13 +78,13 @@ export const dealsReportColumns: ColumnDef<DealsReport>[] = [
     cell: ({ row: { original } }) => {
       const { label, value } = original.stage;
       return (
-        <div className="d-flex align-items-center gap-3">
+        <div className="flex items-center gap-4">
           <div
             style={{ '--phoenix-circle-progress-bar': value } as CSSProperties}
           >
             <CircleProgress color={getColor(getProgressColorVariant(value))} />
           </div>
-          <h6 className="mb-0 text-body">{label}</h6>
+          <h6 className="mb-0 text-default">{label}</h6>
         </div>
       );
     },
@@ -149,11 +149,11 @@ export const dealsReportColumns: ColumnDef<DealsReport>[] = [
 const DealsReportTable = () => {
   return (
     <div>
-      <div className="border-top border-translucent">
+      <div className="border-t border-light">
         <AdvanceTable
           tableProps={{ size: 'sm', className: 'phoenix-table fs-9' }}
         />
-        <AdvanceTableFooter pagination className="pt-3" />
+        <AdvanceTableFooter pagination className="pt-4" />
       </div>
     </div>
   );

@@ -3,10 +3,10 @@ import React from 'react';
 
 const EcomProjectionVsActual = () => {
   return (
-    <div className="me-xl-4">
+    <div className="xl:me-6">
       <div>
         <h3>Projection vs actual</h3>
-        <p className="mb-1 text-body-tertiary">
+        <p className="mb-1 text-subtle">
           Actual earnings vs projected earnings
         </p>
       </div>

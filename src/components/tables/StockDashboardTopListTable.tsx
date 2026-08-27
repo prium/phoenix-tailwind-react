@@ -74,7 +74,7 @@ export const getColumn = (tableType: string) => {
         },
         cellProps: {
           className: classNames(
-            'fs-9 fw-semibold white-space-nowrap text-end px-4',
+            'text-md font-semibold whitespace-nowrap text-end px-6',
             {
               'text-success': tableType === 'gainers',
               'text-danger': tableType === 'losers'
@@ -111,7 +111,7 @@ const StockDashboardTopListTable = ({
       />
       <AdvanceTableFooter
         pagination
-        className="pt-2 pe-0 pb-0 fs-9 pagination-subtle"
+        className="pt-2 pe-0 pb-0 text-md pagination-subtle"
         nextPageLinkClassName="pe-0 me-0"
       />
     </AdvanceTableProvider>

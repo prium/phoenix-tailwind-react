@@ -18,7 +18,7 @@ const columns: ColumnDef<CustomerOrder>[] = [
     accessorKey: 'orderId',
     header: 'Order',
     cell: ({ row: { original } }) => (
-      <Link to="#!" className="fw-semibold text-primary">
+      <Link to="#!" className="font-semibold text-primary">
         {original.orderId}
       </Link>
     ),
@@ -35,7 +35,7 @@ const columns: ColumnDef<CustomerOrder>[] = [
         bg={original.payment_status.type}
         variant="phoenix"
         iconPosition="end"
-        className="fs-10"
+        className="text-sm"
         icon={
           <FeatherIcon
             icon={original.payment_status.icon}
@@ -109,7 +109,7 @@ const EcomProfileOrdersTable = () => {
   return (
     <div>
       <AdvanceTableProvider {...table}>
-        <div className="border-y border-translucent">
+        <div className="border-y border-light">
           <AdvanceTable
             tableProps={{ size: 'sm', className: 'phoenix-table fs-9' }}
           />

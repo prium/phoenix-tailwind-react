@@ -10,27 +10,27 @@ dayjs.extend(localeData);
 export const PaymentMethod = () => {
   return (
     <>
-      <h3 className="mb-5">Payment Method</h3>
-      <Row className="g-4 mb-5">
+      <h3 className="mb-8">Payment Method</h3>
+      <Row className="g-6 mb-8">
         <Col xs={12}>
-          <Row className="gx-lg-11">
+          <Row className="lg:gx-20">
             <Col xs={12} md="auto">
-              <div className="d-flex">
-                <Form.Check type="radio" id="creditCard" className="me-3">
+              <div className="flex">
+                <Form.Check type="radio" id="creditCard" className="me-4">
                   <Form.Check.Input
                     value="credit_card"
                     type="radio"
                     name="paymentMethod"
                   />
-                  <Form.Check.Label className="fs-8 text-body">
+                  <Form.Check.Label className="text-base text-default">
                     Credit card
                   </Form.Check.Label>
                 </Form.Check>
-                <img className="h-100 me-2" src={visa} alt="visa" />
-                <img className="h-100 me-2" src={discover} alt="discover" />
-                <img className="h-100 me-2" src={mastercard} alt="mastercard" />
+                <img className="h-full me-2" src={visa} alt="visa" />
+                <img className="h-full me-2" src={discover} alt="discover" />
+                <img className="h-full me-2" src={mastercard} alt="mastercard" />
                 <img
-                  className="h-100"
+                  className="h-full"
                   src={american_express}
                   alt="american_express"
                 />
@@ -43,7 +43,7 @@ export const PaymentMethod = () => {
                   type="radio"
                   name="paymentMethod"
                 />
-                <Form.Check.Label className="fs-8 text-body">
+                <Form.Check.Label className="text-base text-default">
                   Paypal
                 </Form.Check.Label>
               </Form.Check>
@@ -55,7 +55,7 @@ export const PaymentMethod = () => {
                   value="coupon"
                   name="paymentMethod"
                 />
-                <Form.Check.Label className="fs-8 text-body">
+                <Form.Check.Label className="text-base text-default">
                   Coupon
                 </Form.Check.Label>
               </Form.Check>
@@ -64,10 +64,10 @@ export const PaymentMethod = () => {
         </Col>
         <Col md={6}>
           <Form.Group as={Col}>
-            <Form.Label className="fs-8 text-body-highlight ps-0 text-transform-none">
+            <Form.Label className="text-base text-highlight ps-0 text-transform-none">
               Select card
             </Form.Label>
-            <Form.Select className="text-body-emphasis">
+            <Form.Select className="text-emphasis">
               <option>Select a card</option>
               <option value="visa">Visa</option>
               <option value="discover">Discover</option>
@@ -78,9 +78,9 @@ export const PaymentMethod = () => {
         </Col>
         <Col md={6}>
           <Form.Group>
-            <h5 className="text-body-highlight mb-2"> Card number</h5>
+            <h5 className="text-highlight mb-2"> Card number</h5>
             <Form.Control
-              className="text-body-emphasis"
+              className="text-emphasis"
               type="number"
               placeholder="Enter card number"
             />
@@ -88,7 +88,7 @@ export const PaymentMethod = () => {
         </Col>
         <Col xs={12}>
           <Form.Group as={Col}>
-            <h5 className="text-body-highlight mb-2">Full name</h5>
+            <h5 className="text-highlight mb-2">Full name</h5>
             <Form.Control
               name="full_name"
               type="text"
@@ -97,9 +97,9 @@ export const PaymentMethod = () => {
           </Form.Group>
         </Col>
         <Col md={6}>
-          <h5 className="text-body-highlight mb-2">Expires on</h5>
-          <div className="d-flex gap-3">
-            <Form.Select className="text-body-emphasis" name="month">
+          <h5 className="text-highlight mb-2">Expires on</h5>
+          <div className="flex gap-4">
+            <Form.Select className="text-emphasis" name="month">
               <option>Month</option>
               {dayjs.months().map(month => (
                 <option value={month} key={month}>
@@ -108,7 +108,7 @@ export const PaymentMethod = () => {
               ))}
             </Form.Select>
 
-            <select className="form-select text-body-emphasis">
+            <select className="form-select text-emphasis">
               <option>Year</option>
               <option value={2022}>2022</option>
               <option value={2023}>2023</option>
@@ -120,22 +120,22 @@ export const PaymentMethod = () => {
         </Col>
         <Col md={6}>
           <Form.Group as={Col}>
-            <h5 className="text-body-highlight mb-2">CVC</h5>
+            <h5 className="text-highlight mb-2">CVC</h5>
             <Form.Control
-              className="text-body-emphasis input-spin-none"
+              className="text-emphasis input-spin-none"
               type="number"
               placeholder="Enter a valid CVC"
             />
           </Form.Group>
         </Col>
         <Col xs={12}>
-          <Form.Check type="checkbox" id="gridCheck" className="me-3">
+          <Form.Check type="checkbox" id="gridCheck" className="me-4">
             <Form.Check.Input
               type="checkbox"
               value="save"
               name="paymentMethod"
             />
-            <Form.Check.Label className="fs-8 text-body-emphasis">
+            <Form.Check.Label className="text-base text-emphasis">
               Save Card Details
             </Form.Check.Label>
           </Form.Check>

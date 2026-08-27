@@ -220,7 +220,7 @@ const CompanyProfileEmployeesChart = () => {
     <ReactEChartsCore
       echarts={echarts}
       option={getDefaultOptions(getThemeColor)}
-      className="mb-5"
+      className="mb-8"
       style={{ width: '100%', height: '300px' }}
     />
   );

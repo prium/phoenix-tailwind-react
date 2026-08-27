@@ -454,7 +454,7 @@ const GrossProfitChart = ({ style }: { style: CSSProperties }) => {
       echarts={echarts}
       option={getDefaultOptions(getThemeColor, data, colors, isRTL, isDark)}
       style={style}
-      className="mx-auto mt-3 mt-md-0 mt-xl-3 mt-xxl-0"
+      className="mx-auto mt-4 md:mt-0 xl:mt-4 2xl:mt-0"
     />
   );
 };

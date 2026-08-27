@@ -15,17 +15,17 @@ const DealsPrintingDimensionsCard = ({
   return (
     <Card className={className}>
       <Card.Body>
-        <Row className="g-4 g-xl-1 g-xxl-3 justify-content-between">
+        <Row className="g-6 xl:g-1 2xl:g-4 justify-between">
           {stats.map((stat, index) => (
             <Col key={stat.id} sm="auto">
               <div
                 className={classNames(
-                  'd-sm-block d-inline-flex d-md-flex flex-xl-column flex-xxl-row align-items-center align-items-xl-start align-items-xxl-center',
-                  { 'border-start-sm border-translucent ps-sm-5': index !== 0 }
+                  'sm:block inline-flex md:flex xl:flex-col 2xl:flex-row items-center xl:items-start 2xl:items-center',
+                  { 'sm:border-s border-light sm:ps-8': index !== 0 }
                 )}
               >
                 <div
-                  className={`d-flex bg-${stat.color}-subtle rounded flex-center me-3 mb-sm-3 mb-md-0 mb-xl-3 mb-xxl-0`}
+                  className={`flex bg-${stat.color}-subtle rounded-md flex-center me-4 sm:mb-4 md:mb-0 xl:mb-4 2xl:mb-0`}
                   style={{ width: '32px', height: '32px' }}
                 >
                   <FeatherIcon
@@ -34,8 +34,8 @@ const DealsPrintingDimensionsCard = ({
                   />
                 </div>
                 <div>
-                  <p className="fw-bold mb-1">{stat.title}</p>
-                  <h4 className="fw-bolder text-nowrap">{stat.value}</h4>
+                  <p className="font-bold mb-1">{stat.title}</p>
+                  <h4 className="font-black whitespace-nowrap">{stat.value}</h4>
                 </div>
               </div>
             </Col>

@@ -19,9 +19,9 @@ import {
 
 const SocialCoverCard = () => {
   return (
-    <Card className="mb-5">
+    <Card className="mb-8">
       <Card.Header
-        className="d-flex justify-content-center align-items-end position-relative mb-7 mb-xxl-0"
+        className="flex justify-center items-end relative mb-12 2xl:mb-0"
         style={{ minHeight: '214px' }}
       >
         <CoverUpload src={coverImage} />
@@ -34,64 +34,64 @@ const SocialCoverCard = () => {
         />
       </Card.Header>
       <Card.Body>
-        <Row className="justify-content-xl-between">
+        <Row className="xl:justify-between">
           <Col xs="auto">
-            <div className="d-flex flex-wrap mb-3 align-items-center">
+            <div className="flex flex-wrap mb-4 items-center">
               <h2 className="me-2">Erza Bridgest</h2>
-              <span className="fw-semibold fs-7 text-body-emphasis">
+              <span className="font-semibold text-lg text-emphasis">
                 u/hansolo
               </span>
             </div>
-            <div className="mb-5">
-              <div className="d-md-flex align-items-center">
-                <div className="d-flex align-items-center">
+            <div className="mb-8">
+              <div className="md:flex items-center">
+                <div className="flex items-center">
                   <FontAwesomeIcon
                     icon={faUserGroup}
-                    className="fs-9 text-body-tertiary me-2 me-lg-1 me-xl-2"
+                    className="text-md text-subtle me-2 lg:me-1 xl:me-2"
                   />
-                  <Link to="#!" className="text-body-emphasis">
-                    <span className="fs-7 fw-bold text-body-tertiary text-opacity-85 text-body-emphasis-hover">
+                  <Link to="#!" className="text-emphasis">
+                    <span className="text-lg font-bold text-subtle text-opacity-85 text-body-emphasis-hover">
                       1297
-                      <span className="fw-semibold ms-2 me-4">Followers</span>
+                      <span className="font-semibold ms-2 me-6">Followers</span>
                     </span>
                   </Link>
                 </div>
-                <div className="d-flex align-items-center">
+                <div className="flex items-center">
                   <FontAwesomeIcon
                     icon={faUserCheck}
-                    className="fs-9 text-body-tertiary me-2 me-lg-1 me-xl-2"
+                    className="text-md text-subtle me-2 lg:me-1 xl:me-2"
                   />
-                  <Link to="#!" className="text-body-emphasis">
-                    <span className="fs-7 fw-bold text-body-tertiary text-opacity-85 text-body-emphasis-hover">
+                  <Link to="#!" className="text-emphasis">
+                    <span className="text-lg font-bold text-subtle text-opacity-85 text-body-emphasis-hover">
                       3971
-                      <span className="fw-semibold ms-2 me-4">Following</span>
+                      <span className="font-semibold ms-2 me-6">Following</span>
                     </span>
                   </Link>
                 </div>
-                <div className="d-flex align-items-center">
+                <div className="flex items-center">
                   <FontAwesomeIcon
                     icon={faLocationDot}
-                    className="fs-9 text-body-tertiary me-2 me-lg-1 me-xl-2"
+                    className="text-md text-subtle me-2 lg:me-1 xl:me-2"
                   />
-                  <Link to="#!" className="text-body-emphasis">
-                    <span className="fs-7 fw-semibold text-body-tertiary text-opacity-85 text-body-emphasis-hover">
+                  <Link to="#!" className="text-emphasis">
+                    <span className="text-lg font-semibold text-subtle text-opacity-85 text-body-emphasis-hover">
                       Vancouver, Lothal
                     </span>
                   </Link>
                 </div>
               </div>
             </div>
-            <p className="fs-6 text-body-secondary">
+            <p className="text-xl text-muted">
               “Whenever you find yourself on the side of the majority, it is
               time to pause and reflect.”
             </p>
           </Col>
           <Col xs="auto">
             <Row className="g-2">
-              <Col xs="auto" className="order-xxl-2">
+              <Col xs="auto" className="2xl:order-2">
                 <Button
                   variant="primary"
-                  className="lh-1"
+                  className="leading-none"
                   startIcon={
                     <FontAwesomeIcon icon={faUserPlus} className="me-2" />
                   }
@@ -99,10 +99,10 @@ const SocialCoverCard = () => {
                   Follow Request
                 </Button>
               </Col>
-              <Col xs="auto" className="order-xxl-1">
+              <Col xs="auto" className="2xl:order-1">
                 <Button
                   variant="phoenix-primary"
-                  className="lh-1"
+                  className="leading-none"
                   startIcon={
                     <FontAwesomeIcon icon={faMessage} className="me-2" />
                   }
@@ -111,10 +111,10 @@ const SocialCoverCard = () => {
                 </Button>
               </Col>
               <Col xs="auto">
-                <div className="position-static">
+                <div className="static">
                   <Dropdown align="end">
                     <Dropdown.Toggle
-                      className="dropdown-caret-none d-flex align-items-center lh-1"
+                      className="dropdown-caret-none flex items-center leading-none"
                       variant="phoenix-secondary"
                     >
                       <FontAwesomeIcon icon={faChevronDown} className="me-2" />
@@ -124,11 +124,11 @@ const SocialCoverCard = () => {
                       {dropdownData.map((item, index) => (
                         <Dropdown.Item
                           key={item.label}
-                          className={classNames({ 'd-xl-none': index < 6 })}
+                          className={classNames({ 'xl:hidden': index < 6 })}
                         >
                           <FontAwesomeIcon
                             icon={item.icon}
-                            className="text-body-secondary me-2"
+                            className="text-muted me-2"
                           />
                           {item.label}
                         </Dropdown.Item>

@@ -17,7 +17,7 @@ const columns: ColumnDef<WishlistProductType>[] = [
     cell: ({ row: { original } }) => {
       const { productImage } = original;
       return (
-        <div className="rounded-2 border border-translucent d-inline-block">
+        <div className="rounded-md border border-light inline-block">
           <img src={productImage} alt="" width={53} />
         </div>
       );
@@ -30,7 +30,7 @@ const columns: ColumnDef<WishlistProductType>[] = [
     cell: ({ row: { original } }) => {
       const { product } = original;
       return (
-        <Link to="#!" className="fw-semibold line-clamp-2">
+        <Link to="#!" className="font-semibold line-clamp-2">
           {product}
         </Link>
       );
@@ -107,13 +107,13 @@ const OrderDetailsTable = () => {
   return (
     <div>
       <AdvanceTableProvider {...table}>
-        <div className="border-y border-translucent">
+        <div className="border-y border-light">
           <AdvanceTable tableProps={{ className: 'phoenix-table fs-9' }} />
-          <div className="d-flex flex-between-center py-3">
-            <p className="text-body-emphasis fw-semibold lh-sm mb-0">
+          <div className="flex flex-between-center py-4">
+            <p className="text-emphasis font-semibold leading-sm mb-0">
               Items subtotal :
             </p>
-            <p className="text-body-emphasis fw-bold lh-sm mb-0">
+            <p className="text-emphasis font-bold leading-sm mb-0">
               {currencyFormat(subtotal)}
             </p>
           </div>

@@ -10,61 +10,61 @@ const ReportCard = ({ report }: { report: Report }) => {
   return (
     <Card>
       <Card.Body>
-        <div className="border-bottom border-translucent">
-          <div className="d-flex align-items-start mb-1">
+        <div className="border-b border-light">
+          <div className="flex items-start mb-1">
             <Form.Check type="checkbox" />
-            <div className="d-sm-flex align-items-center ps-3">
+            <div className="sm:flex items-center ps-4">
               <Link
                 to="/apps/crm/report-details"
-                className="fw-bold fs-7 lh-sm line-clamp-1 me-sm-4"
+                className="font-bold text-lg leading-sm line-clamp-1 sm:me-6"
               >
                 {report.title}
               </Link>
-              <div className="d-flex align-items-center">
+              <div className="flex items-center">
                 <FontAwesomeIcon
                   icon={faCircle}
                   transform="shrink-6 up-1"
                   className={`me-1 text-${report.priority.type}`}
                 />
-                <span className="fw-bold fs-9 text-body lh-2">
+                <span className="font-bold text-md text-default lh-2">
                   {report.priority.label}
                 </span>
               </div>
             </div>
           </div>
-          <p className="fs-9 fw-semibold text-body ms-4 text mb-4 ps-2">
+          <p className="text-md font-semibold text-default ms-6 text mb-6 ps-2">
             {report.subTitle}
           </p>
         </div>
-        <Row className="g-1 g-sm-3 mt-2 lh-1">
+        <Row className="g-1 sm:g-4 mt-2 leading-none">
           <Col sm="auto" className="flex-1 text-truncate">
-            <Link to="#!" className="fw-semibold fs-9">
+            <Link to="#!" className="font-semibold text-md">
               <FontAwesomeIcon icon={faFolder} className="me-2" />
               {report.reportsby}
             </Link>
           </Col>
           <Col sm="auto">
-            <div className="d-flex align-items-center">
+            <div className="flex items-center">
               <FeatherIcon
                 icon="grid"
                 width={16}
                 height={16}
                 className="me-2"
               />
-              <p className="mb-0 fs-9 fw-semibold text-body-tertiary">
+              <p className="mb-0 text-md font-semibold text-subtle">
                 {report.category}
               </p>
             </div>
           </Col>
           <Col sm="auto">
-            <div className="d-flex align-items-center">
+            <div className="flex items-center">
               <FeatherIcon
                 icon="clock"
                 className="me-2"
                 width={16}
                 height={16}
               />
-              <p className="mb-0 fs-9 fw-semibold text-body-tertiary">
+              <p className="mb-0 text-md font-semibold text-subtle">
                 {report.date}
               </p>
             </div>

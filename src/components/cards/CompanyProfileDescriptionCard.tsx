@@ -13,31 +13,31 @@ interface CompanyProfileDescriptionCardProps {
 const DetailsItem = ({ item }: { item: CompanyProfileDescriptionItem }) => {
   return (
     <div className={classNames(item.className)}>
-      <div className="d-flex align-items-center mb-1">
+      <div className="flex items-center mb-1">
         <FontAwesomeIcon icon={item.icon} style={{ width: 16 }} />
         <h5 className="my-2 ms-2 line-clamp-1">{item.title}</h5>
       </div>
-      <div className="ps-4">
+      <div className="ps-6">
         {item.link ? (
           <Link to={item.link}>{item.content}</Link>
         ) : item.image ? (
-          <div className="d-flex align-items-center gap-2">
+          <div className="flex items-center gap-2">
             <img
               src={item.image}
               alt={item.title}
-              className="img-fluid d-dark-none"
+              className="img-fluid dark:hidden"
             />
             {item.darkImage && (
               <img
                 src={item.darkImage}
                 alt={item.title}
-                className="img-fluid d-light-none"
+                className="img-fluid hidden dark:block"
               />
             )}
-            <p className="mb-0 text-body-secondary">{item.content}</p>
+            <p className="mb-0 text-muted">{item.content}</p>
           </div>
         ) : (
-          <p className="mb-0 text-body-secondary">{item.content}</p>
+          <p className="mb-0 text-muted">{item.content}</p>
         )}
       </div>
     </div>
@@ -49,9 +49,9 @@ const CompanyProfileDescriptionCard = ({
   stockDetails
 }: CompanyProfileDescriptionCardProps) => {
   return (
-    <Card className="mb-4">
+    <Card className="mb-6">
       <Card.Body>
-        <h4 className="mb-3 text-body">Company Description</h4>
+        <h4 className="mb-4 text-default">Company Description</h4>
         <p className="mb-2">
           Apple Inc. creates, produces, and sells wearable technology, tablets,
           smartphones, PCs, and accessories all over the world.
@@ -64,17 +64,17 @@ const CompanyProfileDescriptionCard = ({
           <Link to="#!">read more</Link>
         </p>
 
-        <hr className="my-4" />
+        <hr className="my-6" />
         <Row className="g-0">
-          <Col xs={12} md={6} className="pe-md-4 pb-4 pb-md-0">
-            <h4 className="text-body mb-3">Company Details</h4>
-            <Row className="gx-5 gx-md-3 gx-lg-1 gx-xl-3 gx-xxl-5">
-              <Col sm={6} xl={12} xxl={6} className="pe-md-2">
+          <Col xs={12} md={6} className="md:pe-6 pb-6 md:pb-0">
+            <h4 className="text-default mb-4">Company Details</h4>
+            <Row className="gx-8 md:gx-4 lg:gx-1 xl:gx-4 2xl:gx-8">
+              <Col sm={6} xl={12} xxl={6} className="md:pe-2">
                 {companyDetails.slice(0, 6).map(item => (
                   <DetailsItem item={item} key={item.id} />
                 ))}
               </Col>
-              <Col sm={6} xl={12} xxl={6} className="ps-md-2">
+              <Col sm={6} xl={12} xxl={6} className="md:ps-2">
                 {companyDetails.slice(6).map(item => (
                   <DetailsItem item={item} key={item.id} />
                 ))}
@@ -84,10 +84,10 @@ const CompanyProfileDescriptionCard = ({
           <Col
             xs={12}
             md={6}
-            className="ps-md-4 pt-4 pt-md-0 border-top border-top-md-0 border-start-md"
+            className="md:ps-6 pt-6 md:pt-0 border-t md:border-t-0 md:border-s"
           >
-            <h4 className="text-body mb-3">Stock Details</h4>
-            <Row className="gx-5 gx-md-3 gx-lg-1 gx-xl-3 gx-xxl-5">
+            <h4 className="text-default mb-4">Stock Details</h4>
+            <Row className="gx-8 md:gx-4 lg:gx-1 xl:gx-4 2xl:gx-8">
               <Col sm={6} xl={12} xxl={6}>
                 {stockDetails.slice(0, 6).map(item => (
                   <DetailsItem item={item} key={item.id} />

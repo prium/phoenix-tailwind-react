@@ -12,9 +12,9 @@ export const membersTablecolumns: ColumnDef<Member>[] = [
     cell: ({ row: { original } }) => {
       const { name, avatar } = original;
       return (
-        <Link to="#!" className=" d-flex align-items-center text-body">
+        <Link to="#!" className=" flex items-center text-default">
           <Avatar src={avatar} size="m" />
-          <p className="mb-0 ms-3 text-body-emphasis fw-semibold">{name}</p>
+          <p className="mb-0 ms-4 text-emphasis font-semibold">{name}</p>
         </Link>
       );
     },
@@ -32,7 +32,7 @@ export const membersTablecolumns: ColumnDef<Member>[] = [
     cell: ({ row: { original } }) => {
       const { email } = original;
       return (
-        <Link to={`mailto:${email}`} className="fw-semibold">
+        <Link to={`mailto:${email}`} className="font-semibold">
           {email}
         </Link>
       );
@@ -50,7 +50,7 @@ export const membersTablecolumns: ColumnDef<Member>[] = [
     cell: ({ row: { original } }) => {
       const { mobile } = original;
       return (
-        <Link to={`tel:${mobile}`} className="fw-bold text-body-emphasis">
+        <Link to={`tel:${mobile}`} className="font-bold text-emphasis">
           {mobile}
         </Link>
       );

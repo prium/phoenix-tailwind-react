@@ -16,11 +16,11 @@ const columns: ColumnDef<visitorData>[] = [
     accessorFn: ({ country }) => country.name,
     cell: ({ row: { original } }) => (
       <Link
-        className="d-flex align-items-center text-primary py-md-1 py-xxl-0"
+        className="flex items-center text-primary md:py-1 2xl:py-0"
         to="#!"
       >
         <img src={original.country.flag} alt="" width="40" />
-        <p className="mb-0 ps-3 fw-bold fs-9">{original.country.name}</p>
+        <p className="mb-0 ps-4 font-bold text-md">{original.country.name}</p>
       </Link>
     ),
     meta: {
@@ -35,7 +35,7 @@ const columns: ColumnDef<visitorData>[] = [
     cell: ({ row: { original } }) => (
       <h6>
         {original.users.number}
-        <span className="text-body-tertiary fw-semibold ms-2">
+        <span className="text-subtle font-semibold ms-2">
           ({original.users.percantage})
         </span>
       </h6>
@@ -50,7 +50,7 @@ const columns: ColumnDef<visitorData>[] = [
   {
     accessorKey: 'status',
     cell: ({ row: { original } }) => (
-      <Badge className="fs-10" variant="phoenix" bg={original.status.type}>
+      <Badge className="text-sm" variant="phoenix" bg={original.status.type}>
         <FontAwesomeIcon icon={faPlus} className="me-1" />
         {original.status.label}
       </Badge>
@@ -83,7 +83,7 @@ export const VisitorsTable = () => {
         headerClassName="fs-0"
       />
       <AdvanceTableFooter
-        className="pt-3 pb-4"
+        className="pt-4 pb-6"
         tableInfo="fs-8"
         viewAllBtnClass="ms-auto"
       />

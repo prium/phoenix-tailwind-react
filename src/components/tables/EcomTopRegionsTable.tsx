@@ -18,12 +18,12 @@ const columns: ColumnDef<TopRegionsTableDataType>[] = [
       const serial = row.index + 1;
       const { country } = row.original;
       return (
-        <div className="d-flex align-items-center">
-          <h6 className="mb-0 me-3">{serial}.</h6>
+        <div className="flex items-center">
+          <h6 className="mb-0 me-4">{serial}.</h6>
           <Link to="#!">
-            <div className="d-flex justify-content-center">
+            <div className="flex justify-center">
               <img src={country.flag} alt="" width={24} />
-              <p className="mb-0 ps-3 text-primary fw-bold fs-9">
+              <p className="mb-0 ps-4 text-primary font-bold text-md">
                 {country.name}
               </p>
             </div>
@@ -44,7 +44,7 @@ const columns: ColumnDef<TopRegionsTableDataType>[] = [
       return (
         <h6 className="mb-0">
           {users.number}
-          <span className="text-body-tertiary fw-semibold ms-2">
+          <span className="text-subtle font-semibold ms-2">
             ({users.percantage})
           </span>
         </h6>
@@ -63,7 +63,7 @@ const columns: ColumnDef<TopRegionsTableDataType>[] = [
       return (
         <h6 className="mb-0">
           {transactions.number}
-          <span className="text-body-tertiary fw-semibold ms-2">
+          <span className="text-subtle font-semibold ms-2">
             ({transactions.percantage})
           </span>
         </h6>
@@ -85,7 +85,7 @@ const columns: ColumnDef<TopRegionsTableDataType>[] = [
       return (
         <h6 className="mb-0">
           ${revenue.number}
-          <span className="text-body-tertiary fw-semibold ms-2">
+          <span className="text-subtle font-semibold ms-2">
             ({revenue.percantage})
           </span>
         </h6>
@@ -132,7 +132,7 @@ const EcomTopRegionsTable = () => {
     <AdvanceTableProvider {...table}>
       {/* <Scrollbar autoHeight autoHeightMax="100%"> */}
       <div className="scrollbar">
-        <Table className="fs-10 mb-0 border-top border-translucent scrollbar">
+        <Table className="text-sm mb-0 border-t border-light scrollbar">
           <thead>
             <tr>
               {getFlatHeaders().map(header => {
@@ -164,17 +164,17 @@ const EcomTopRegionsTable = () => {
           <tbody>
             <tr>
               <td></td>
-              <td className="py-4">
-                <h4 className="mb-0 fw-normal">377,620</h4>
+              <td className="py-6">
+                <h4 className="mb-0 font-normal">377,620</h4>
               </td>
-              <td className="text-end py-4">
-                <h4 className="mb-0 fw-normal">236</h4>
+              <td className="text-end py-6">
+                <h4 className="mb-0 font-normal">236</h4>
               </td>
-              <td className="text-end py-4">
-                <h4 className="mb-0 fw-normal">$15,758</h4>
+              <td className="text-end py-6">
+                <h4 className="mb-0 font-normal">$15,758</h4>
               </td>
-              <td className="text-end py-4 pe-0">
-                <h4 className="mb-0 fw-normal">10.32%</h4>
+              <td className="text-end py-6 pe-0">
+                <h4 className="mb-0 font-normal">10.32%</h4>
               </td>
             </tr>
             {getRowModel().rows.map(row => (

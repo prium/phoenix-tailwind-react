@@ -23,16 +23,16 @@ export const leadsTableColumns: ColumnDef<LeadDataType>[] = [
         status: { label, type }
       } = original.customer;
       return (
-        <div className="d-flex align-items-center">
+        <div className="flex items-center">
           <Link to="/apps/crm/lead-details#tasks">
-            <Avatar src={avatar} size="xl" className="me-3" />
+            <Avatar src={avatar} size="xl" className="me-4" />
           </Link>
           <div>
-            <Link to="/apps/crm/lead-details#tasks" className="fs-8 fw-bold">
+            <Link to="/apps/crm/lead-details#tasks" className="text-base font-bold">
               {name}
             </Link>
-            <div className="d-flex align-items-center">
-              <p className="mb-0 text-body-highlight fw-semibold fs-9 me-2">
+            <div className="flex items-center">
+              <p className="mb-0 text-highlight font-semibold text-md me-2">
                 {designation}
               </p>
               <Badge variant="phoenix" bg={type}>
@@ -52,8 +52,8 @@ export const leadsTableColumns: ColumnDef<LeadDataType>[] = [
     accessorKey: 'email',
     header: () => {
       return (
-        <div className="d-inline-flex flex-center">
-          <div className="px-1 py-1 bg-success-subtle rounded me-2">
+        <div className="inline-flex flex-center">
+          <div className="px-1 py-1 bg-success-subtle rounded-md me-2">
             <FeatherIcon icon="mail" size={16} className="text-success-dark" />
           </div>
           <span>Email</span>
@@ -63,7 +63,7 @@ export const leadsTableColumns: ColumnDef<LeadDataType>[] = [
     cell: ({ row: { original } }) => {
       const { email } = original;
       return (
-        <Link className="text-body-highlight" to={`mailto:${email}`}>
+        <Link className="text-highlight" to={`mailto:${email}`}>
           {email}
         </Link>
       );
@@ -83,8 +83,8 @@ export const leadsTableColumns: ColumnDef<LeadDataType>[] = [
     accessorKey: 'phone',
     header: () => {
       return (
-        <div className="d-inline-flex flex-center">
-          <div className="px-1 py-1 bg-primary-subtle rounded me-2">
+        <div className="inline-flex flex-center">
+          <div className="px-1 py-1 bg-primary-subtle rounded-md me-2">
             <FeatherIcon icon="phone" size={16} className="text-primary-dark" />
           </div>
           <span>Phone</span>
@@ -94,7 +94,7 @@ export const leadsTableColumns: ColumnDef<LeadDataType>[] = [
     cell: ({ row: { original } }) => {
       const { phone } = original;
       return (
-        <Link className="text-body-highlight" to={`tel:${phone}`}>
+        <Link className="text-highlight" to={`tel:${phone}`}>
           {phone}
         </Link>
       );
@@ -114,8 +114,8 @@ export const leadsTableColumns: ColumnDef<LeadDataType>[] = [
     accessorKey: 'contact',
     header: () => {
       return (
-        <div className="d-inline-flex flex-center">
-          <div className="px-1 py-1 bg-info-subtle rounded me-2">
+        <div className="inline-flex flex-center">
+          <div className="px-1 py-1 bg-info-subtle rounded-md me-2">
             <FeatherIcon icon="user" size={16} className="text-info-dark" />
           </div>
           <span>Contact name</span>
@@ -138,8 +138,8 @@ export const leadsTableColumns: ColumnDef<LeadDataType>[] = [
     accessorKey: 'company',
     header: () => {
       return (
-        <div className="d-inline-flex flex-center">
-          <div className="px-1 py-1 bg-warning-subtle rounded me-2">
+        <div className="inline-flex flex-center">
+          <div className="px-1 py-1 bg-warning-subtle rounded-md me-2">
             <FeatherIcon icon="grid" size={16} className="text-warning-dark" />
           </div>
           <span>Company name</span>
@@ -201,12 +201,12 @@ export const leadsTableColumns: ColumnDef<LeadDataType>[] = [
 
 const LeadsTable = () => {
   return (
-    <div className="border-top border-translucent">
+    <div className="border-t border-light">
       <AdvanceTable
         tableProps={{ className: 'phoenix-table fs-9' }}
         rowClassName="hover-actions-trigger btn-reveal-trigger"
       />
-      <AdvanceTableFooter pagination className="py-4" />
+      <AdvanceTableFooter pagination className="py-6" />
     </div>
   );
 };

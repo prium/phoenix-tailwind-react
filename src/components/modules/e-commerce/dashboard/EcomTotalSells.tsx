@@ -5,10 +5,10 @@ import { Col, Form, Row } from 'react-bootstrap';
 const EcomTotalSells = () => {
   return (
     <>
-      <Row className="justify-content-between align-items-center mb-4 g-3">
+      <Row className="justify-between items-center mb-6 g-4">
         <Col xs="auto">
           <h3>Total sells</h3>
-          <p className="text-body-tertiary lh-sm mb-0">
+          <p className="text-subtle leading-sm mb-0">
             Payment received across all channels
           </p>
         </Col>

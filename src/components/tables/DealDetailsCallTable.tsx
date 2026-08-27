@@ -26,10 +26,10 @@ const columns: ColumnDef<CallTableDataType>[] = [
       return (
         <Link
           to="/pages/members"
-          className="d-flex align-items-center text-body-highlight"
+          className="flex items-center text-highlight"
         >
-          <Avatar src={avatar} size="m" className="me-3" status={status} />
-          <h6 className="mb-0 text-body-highlight fw-bold">{name}</h6>
+          <Avatar src={avatar} size="m" className="me-4" status={status} />
+          <h6 className="mb-0 text-highlight font-bold">{name}</h6>
         </Link>
       );
     },
@@ -89,16 +89,16 @@ const columns: ColumnDef<CallTableDataType>[] = [
     header: 'last activity',
     cell: ({ row: { original } }) => {
       return (
-        <div className="d-flex align-items-center flex-1">
+        <div className="flex items-center flex-1">
           <FontAwesomeIcon
             icon={faClock}
             className={classNames('me-1 ', {
               'text-success': original.activity === 'Active',
-              'text-body-quaternary': original.activity !== 'Active'
+              'text-soft': original.activity !== 'Active'
             })}
             transform="shrink-2 up-1"
           />
-          <span className="fw-bold fs-9 text-body">{original.activity}</span>
+          <span className="font-bold text-md text-default">{original.activity}</span>
         </div>
       );
     },
@@ -144,7 +144,7 @@ const DealDetailsCallTable = () => {
   return (
     <div>
       <AdvanceTableProvider {...table}>
-        <div className="border-y border-translucent">
+        <div className="border-y border-light">
           <AdvanceTable tableProps={{ className: 'phoenix-table fs-9' }} />
           <AdvanceTableFooter pagination />
         </div>

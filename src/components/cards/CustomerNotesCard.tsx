@@ -12,13 +12,13 @@ interface NoteProps {
 const Note = ({ note, date, isLast }: NoteProps) => {
   return (
     <div
-      className={classNames('fs-9 fw-semibold', {
-        'border-bottom border-dashed pb-3 mb-4': !isLast
+      className={classNames('text-md font-semibold', {
+        'border-b border-dashed pb-6 mb-10': !isLast
       })}
     >
-      <p className="text-body-highlight mb-1">{note}</p>
+      <p className="text-highlight mb-1">{note}</p>
       <div className="text-end">
-        <p className="text-body-tertiary text-opacity-85 mb-0">{date}</p>
+        <p className="text-subtle text-opacity-85 mb-0">{date}</p>
       </div>
     </div>
   );
@@ -28,9 +28,9 @@ const CustomerNotesCard = ({ className }: { className?: string }) => {
   return (
     <Card className={classNames(className)}>
       <Card.Body>
-        <h3 className="mb-4">Notes on Customer</h3>
-        <Form.Control as="textarea" className="mb-3" rows={4} />
-        <Button variant="phoenix-primary" className="w-100 mb-4">
+        <h3 className="mb-6">Notes on Customer</h3>
+        <Form.Control as="textarea" className="mb-4" rows={4} />
+        <Button variant="phoenix-primary" className="w-full mb-6">
           Add Note
         </Button>
         {customerNotes.map((note, index) => (

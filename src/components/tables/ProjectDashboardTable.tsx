@@ -26,7 +26,7 @@ const columns: ColumnDef<Project>[] = [
       return (
         <Link
           to="/apps/project-management/project-details"
-          className="text-decoration-none fw-bold fs-8"
+          className="no-underline font-bold text-base"
         >
           {name}
         </Link>
@@ -83,10 +83,10 @@ const columns: ColumnDef<Project>[] = [
       if (calculation) {
         return (
           <>
-            <p className="fw-bold text-body-emphasis fs-9 mb-0">
+            <p className="font-bold text-emphasis text-md mb-0">
               {calculation?.amount}
             </p>
-            <p className="fw-semibold fs-10 text-body-tertiary mb-0">
+            <p className="font-semibold text-sm text-subtle mb-0">
               {calculation?.label}
             </p>
           </>
@@ -111,7 +111,7 @@ const columns: ColumnDef<Project>[] = [
 
       return (
         <>
-          <p className="text-body-secondary fs-10 mb-0">
+          <p className="text-muted text-sm mb-0">
             {progress.min} / {progress.max}
           </p>
           <ProgressBar

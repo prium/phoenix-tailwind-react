@@ -19,7 +19,7 @@ const columns: ColumnDef<DividendRecordDataTableRowItem>[] = [
     cell: ({ row: { original } }) => {
       const { exDividendDate } = original;
       return (
-        <p className="fs-9 fw-semibold text-body-emphasis mb-0">
+        <p className="text-md font-semibold text-emphasis mb-0">
           {exDividendDate}
         </p>
       );
@@ -40,7 +40,7 @@ const columns: ColumnDef<DividendRecordDataTableRowItem>[] = [
     cell: ({ row: { original } }) => {
       const { cashAmount } = original;
       return (
-        <p className="fs-9 fw-semibold text-body-emphasis mb-0">
+        <p className="text-md font-semibold text-emphasis mb-0">
           {currencyFormat(cashAmount, {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2
@@ -66,7 +66,7 @@ const columns: ColumnDef<DividendRecordDataTableRowItem>[] = [
         paymentStatus: { title, badgeBg }
       } = original;
       return (
-        <Badge variant="phoenix" bg={badgeBg} className="fs-10 rounded-pill">
+        <Badge variant="phoenix" bg={badgeBg} className="text-sm rounded-full">
           {title}
         </Badge>
       );
@@ -87,7 +87,7 @@ const columns: ColumnDef<DividendRecordDataTableRowItem>[] = [
     cell: ({ row: { original } }) => {
       const { recordDate } = original;
       return (
-        <p className="fs-9 fw-semibold text-body-emphasis mb-0">{recordDate}</p>
+        <p className="text-md font-semibold text-emphasis mb-0">{recordDate}</p>
       );
     },
     meta: {
@@ -107,7 +107,7 @@ const columns: ColumnDef<DividendRecordDataTableRowItem>[] = [
     cell: ({ row: { original } }) => {
       const { paymentDate } = original;
       return (
-        <p className="fs-9 fw-semibold text-body-emphasis mb-0">
+        <p className="text-md font-semibold text-emphasis mb-0">
           {paymentDate}
         </p>
       );
@@ -129,16 +129,16 @@ const columns: ColumnDef<DividendRecordDataTableRowItem>[] = [
     cell: () => {
       return (
         <>
-          <div className="position-relative">
+          <div className="relative">
             <div className="hover-actions">
               <Button
                 variant="phoenix-secondary"
-                className="me-1 fs-10"
+                className="me-1 text-sm"
                 size="sm"
               >
                 <FontAwesomeIcon icon={faCheck} />
               </Button>
-              <Button variant="phoenix-secondary" className="fs-10" size="sm">
+              <Button variant="phoenix-secondary" className="text-sm" size="sm">
                 <FontAwesomeIcon icon={faTrash} />
               </Button>
             </div>
@@ -177,7 +177,7 @@ const DividendRecordTable = ({
       />
       <AdvanceTableFooter
         pagination
-        className="py-2 pe-0 fs-9 pagination-subtle"
+        className="py-2 pe-0 text-md pagination-subtle"
         nextPageLinkClassName="me-sm-n2"
       />
     </AdvanceTableProvider>

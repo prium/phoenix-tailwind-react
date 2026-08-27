@@ -6,16 +6,16 @@ import { Col, Row } from 'react-bootstrap';
 const MyFavoriteStores = () => {
   return (
     <div>
-      <div className="d-flex flex-between-center mb-5">
+      <div className="flex flex-between-center mb-8">
         <div>
-          <h3 className="text-body-emphasis mb-2">My Favorite Stores</h3>
-          <h5 className="text-body-tertiary fw-semibold">
+          <h3 className="text-emphasis mb-2">My Favorite Stores</h3>
+          <h5 className="text-subtle font-semibold">
             Essential for a better life
           </h5>
         </div>
         <Button variant="phoenix-primary">View all</Button>
       </div>
-      <Row className="gx-3 gy-5">
+      <Row className="gx-4 gy-8">
         {stores.slice(0, 12).map(store => (
           <Col key={store.name} xs={6} sm={4} md={3} lg={2}>
             <StoreItem store={store} />

@@ -9,16 +9,16 @@ import { Link } from 'react-router';
 const HotelCard = ({ hotelInfo }: { hotelInfo: hotelInterFace }) => {
   const { name, location, img, price, rating } = hotelInfo;
   return (
-    <div className="hover-actions-trigger mx-auto rounded-3 overflow-hidden">
+    <div className="hover-actions-trigger mx-auto rounded-lg overflow-hidden">
       <img src={img} alt="" height={220} className="img-fluid" />
-      <div className="hover-actions top-0 end-0 mt-4 me-4 z-5">
+      <div className="hover-actions top-0 end-0 mt-6 me-6 z-5">
         <button className="btn btn-wish">
           <FontAwesomeIcon icon={faHeart} transform="down-1" />
         </button>
       </div>
-      <div className="backdrop-faded backdrop-secondary-dark h-100 d-flex flex-column justify-content-end">
+      <div className="backdrop-faded backdrop-secondary-dark h-full flex flex-col justify-end">
         <Link
-          className="stretched-link fs-7 text-white fw-bold"
+          className="stretched-link text-lg text-white font-bold"
           to="/apps/travel-agency/hotel/customer/hotel-details"
         >
           {name}
@@ -27,20 +27,20 @@ const HotelCard = ({ hotelInfo }: { hotelInfo: hotelInterFace }) => {
           <FontAwesomeIcon icon={faMapMarkerAlt} className="me-2" />
           {location}
         </p>
-        <div className="d-flex align-items-center gap-3">
-          <Badge variant="phoenix" bg="warning" className="fs-8 fw-normal">
+        <div className="flex items-center gap-4">
+          <Badge variant="phoenix" bg="warning" className="text-base font-normal">
             <FontAwesomeIcon
               icon={faStar}
-              className="text-warning-emphasis me-1 fs-9"
+              className="text-warning-emphasis me-1 text-md"
               transform="up-1"
             />
             {rating}
           </Badge>
-          <h4 className="mb-0 text-white fw-bold text-nowrap">
+          <h4 className="mb-0 text-white font-bold whitespace-nowrap">
             {currencyFormat(parseFloat(price), {
               minimumFractionDigits: 2
             })}
-            <span className="text-secondary-lighter fs-8 fw-normal">
+            <span className="text-secondary-lighter text-base font-normal">
               {' '}
               / night
             </span>

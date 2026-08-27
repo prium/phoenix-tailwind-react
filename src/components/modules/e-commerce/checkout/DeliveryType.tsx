@@ -45,8 +45,8 @@ const deliverOptions: DeliveryOptionsType[] = [
 const DeliveryType = () => {
   return (
     <>
-      <h3 className="mb-5">Delivery Type</h3>
-      <Row className="gy-6">
+      <h3 className="mb-8">Delivery Type</h3>
+      <Row className="gy-10">
         {deliverOptions.map(option => (
           <Col xs={12} md={6} key={option.id}>
             <DeliveryTypeRadioItem option={option} />

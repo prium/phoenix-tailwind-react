@@ -25,31 +25,31 @@ const CrmStatCard = ({
   badgeBg
 }: CrmStatCardProps) => {
   return (
-    <Card className="h-100">
+    <Card className="h-full">
       <Card.Body>
-        <div className="d-flex d-sm-block justify-content-between">
-          <div className="border-bottom-sm mb-sm-4">
-            <div className="d-flex align-items-center">
+        <div className="flex sm:block justify-between">
+          <div className="sm:border-b sm:mb-6">
+            <div className="flex items-center">
               <div
-                className={`d-flex align-items-center icon-wrapper-sm shadow-${color}-100`}
+                className={`flex items-center icon-wrapper-sm shadow-${color}-100`}
                 style={{ transform: 'rotate(-7.45deg)' }}
               >
                 <FontAwesomeIcon
                   icon={icon}
-                  className={`text-${color} fs-7 z-1 ms-2`}
+                  className={`text-${color} text-lg z-1 ms-2`}
                 />
               </div>
-              <p className="text-body-tertiary fs-9 mb-0 ms-2 mt-3">{label}</p>
+              <p className="text-subtle text-md mb-0 ms-2 mt-4">{label}</p>
             </div>
-            <p className={`text-${color} mt-2 fs-6 fw-bold mb-0 mb-sm-4`}>
-              {value} <span className="fs-8 text-body lh-lg">{title}</span>
+            <p className={`text-${color} mt-2 text-xl font-bold mb-0 sm:mb-6`}>
+              {value} <span className="text-base text-default leading-lg">{title}</span>
             </p>
           </div>
-          <div className="d-flex flex-column justify-content-center flex-between-end d-sm-block text-end text-sm-start">
-            <Badge variant="phoenix" bg={badgeBg} className="fs-10 mb-2">
+          <div className="flex flex-col justify-center flex-between-end sm:block text-end sm:text-start">
+            <Badge variant="phoenix" bg={badgeBg} className="text-sm mb-2">
               {badgeLabel}
             </Badge>
-            <p className="mb-0 fs-9 text-body-tertiary">{footerText}</p>
+            <p className="mb-0 text-md text-subtle">{footerText}</p>
           </div>
         </div>
       </Card.Body>

@@ -15,7 +15,7 @@ export interface SpecificationTableProps {
 const SpecificationTable = ({ title, data }: SpecificationTableProps) => {
   return (
     <>
-      <h3 className="mb-0 ms-4 fw-bold">{title}</h3>
+      <h3 className="mb-0 ms-6 font-bold">{title}</h3>
       <Table>
         <thead>
           <tr>
@@ -27,13 +27,13 @@ const SpecificationTable = ({ title, data }: SpecificationTableProps) => {
           {data.map(item => (
             <tr key={item.key}>
               <td
-                className={classNames('bg-body-highlight', {
+                className={classNames('bg-subtle', {
                   'align-middle': !Array.isArray(item.value)
                 })}
               >
                 <h6
                   className={classNames(
-                    'mb-0 text-body text-uppercase fw-bolder px-4 fs--1 lh-sm',
+                    'mb-0 text-default uppercase font-black px-6 fs--1 leading-sm',
                     {
                       'mt-1': Array.isArray(item.value)
                     }
@@ -42,7 +42,7 @@ const SpecificationTable = ({ title, data }: SpecificationTableProps) => {
                   {item.key}
                 </h6>
               </td>
-              <td className="px-5 mb-0">
+              <td className="px-8 mb-0">
                 {Array.isArray(item.value)
                   ? item.value.map(val => (
                       <Fragment key={val}>

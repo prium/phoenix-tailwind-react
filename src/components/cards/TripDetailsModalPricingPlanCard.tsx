@@ -16,26 +16,26 @@ const TripDetailsModalPricingPlanCard = ({
         type="radio"
         name="availableOption"
         id={pricingPlan.name.split(' ').join('-')}
-        className="card-form-check-input d-none"
+        className="card-form-check-input hidden"
         defaultChecked={pricingPlan.checked}
       />
-      <div className="position-relative">
+      <div className="relative">
         <label
           htmlFor={pricingPlan.name.split(' ').join('-')}
           className="stretched-link"
         />
         <Card>
           <Card.Body>
-            <h4 className="mb-4">
+            <h4 className="mb-6">
               <span className="radio-circle me-2" />
               {pricingPlan.name}
             </h4>
             <ul className="list-unstyled mb-0">
               {pricingPlan.facilities.map(item => (
-                <li key={item.id} className="d-flex mb-1">
+                <li key={item.id} className="flex mb-1">
                   <FontAwesomeIcon
                     icon={faCircle}
-                    className="text-secondary-light me-3"
+                    className="text-secondary-light me-4"
                     transform="down-20"
                     style={{
                       width: 6,
@@ -46,12 +46,12 @@ const TripDetailsModalPricingPlanCard = ({
                 </li>
               ))}
             </ul>
-            <hr className="my-4" />
-            <h5 className="fw-normal mb-4">
+            <hr className="my-6" />
+            <h5 className="font-normal mb-6">
               1 adult x{' '}
               {currencyFormat(pricingPlan.total, { minimumFractionDigits: 2 })}
             </h5>
-            <div className="p-3 rounded-2 bg-body-highlight">
+            <div className="p-4 rounded-md bg-subtle">
               <h4>
                 Total{' '}
                 {currencyFormat(pricingPlan.total, {
@@ -59,7 +59,7 @@ const TripDetailsModalPricingPlanCard = ({
                 })}
               </h4>
               {pricingPlan.additionalCharge === 0 && (
-                <p className="fs-9 mb-0">
+                <p className="text-md mb-0">
                   ( No additional taxes or booking fees )
                 </p>
               )}

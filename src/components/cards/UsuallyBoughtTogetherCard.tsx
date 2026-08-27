@@ -9,7 +9,7 @@ import { Link } from 'react-router';
 const ProductListItem = ({ product }: { product: SuggestedProductType }) => {
   const [checked, setChecked] = useState(product.checked);
   return (
-    <div className="d-flex align-items-center">
+    <div className="flex items-center">
       <Form.Check
         checked={checked}
         className="me-2"
@@ -18,13 +18,13 @@ const ProductListItem = ({ product }: { product: SuggestedProductType }) => {
         }}
       />
       <img
-        className="border border-translucent rounded"
+        className="border border-light rounded-md"
         src={product.img}
         width="53"
         alt=""
       />
       <div className="ms-2">
-        <Link className="fs-9 fw-bold line-clamp-2 mb-2" to="#!">
+        <Link className="text-md font-bold line-clamp-2 mb-2" to="#!">
           {product.name}
         </Link>
         <h5>{currencyFormat(product.price)}</h5>
@@ -43,22 +43,22 @@ const UsuallyBoughtTogetherCard = ({
   return (
     <Card className={className}>
       <Card.Body>
-        <h5 className="text-body-emphasis">Usually Bought Together</h5>
-        <div className="w-75">
-          <p className="text-body-tertiary fs-9 fw-bold line-clamp-1">
+        <h5 className="text-emphasis">Usually Bought Together</h5>
+        <div className="w-3/4">
+          <p className="text-subtle text-md font-bold line-clamp-1">
             with 24" iMac® with Retina 4.5K display - Apple M1 8GB Memory -
             256GB SSD - w/Touch ID (Latest Model) - Blue
           </p>
         </div>
-        <Stack className="border-dashed border-y border-translucent py-4 gap-5 mb-3">
+        <Stack className="border-dashed border-y border-light py-6 gap-8 mb-4">
           {products.map(product => (
             <ProductListItem product={product} key={product.id} />
           ))}
         </Stack>
-        <div className="d-flex align-items-end justify-content-between">
+        <div className="flex items-end justify-between">
           <div>
-            <h5 className="mb-2 text-body-tertiary text-opacity-85">Total</h5>
-            <h4 className="mb-0 text-body-emphasis">
+            <h5 className="mb-2 text-subtle text-opacity-85">Total</h5>
+            <h4 className="mb-0 text-emphasis">
               {currencyFormat(958.99)}
             </h4>
           </div>

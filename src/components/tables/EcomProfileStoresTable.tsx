@@ -32,7 +32,7 @@ const columns: ColumnDef<StoreProductType>[] = [
     cell: ({ row: { original } }) => {
       const { product } = original;
       return (
-        <Link to="#!" className="fw-semibold line-clamp-1">
+        <Link to="#!" className="font-semibold line-clamp-1">
           {product}
         </Link>
       );
@@ -117,7 +117,7 @@ const EcomProfileStoresTable = () => {
   return (
     <div>
       <AdvanceTableProvider {...table}>
-        <div className="border-y border-translucent mb-6">
+        <div className="border-y border-light mb-10">
           <AdvanceTable
             tableProps={{ className: 'phoenix-table table-sm fs-9' }}
           />

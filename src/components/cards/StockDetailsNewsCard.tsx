@@ -7,11 +7,11 @@ const NewsCardBody = ({ news }: { news: NewsItem }) => {
   return (
     <Card.Body>
       <h4 className="mb-2 line-clamp-1">{news.title}</h4>
-      <p className="fs-9 text-body-secondary line-clamp-2">
+      <p className="text-md text-muted line-clamp-2">
         {news.description}
       </p>
-      <div className="d-flex flex-wrap align-items-center gap-2 mb-3 text-body-quaternary">
-        <div className="d-flex">
+      <div className="flex flex-wrap items-center gap-2 mb-4 text-soft">
+        <div className="flex">
           <UilCalendarAlt
             fill="currentColor"
             style={{
@@ -20,19 +20,19 @@ const NewsCardBody = ({ news }: { news: NewsItem }) => {
               transform: 'translateY(-1px)'
             }}
           />
-          <p className="mb-0 fs-10 ms-1">{news.postTime}</p>
+          <p className="mb-0 text-sm ms-1">{news.postTime}</p>
         </div>
-        <ul className="fs-10 ps-3 mb-0">
+        <ul className="text-sm ps-4 mb-0">
           <li>{news.type}</li>
         </ul>
       </div>
       {news.tags && (
-        <div className="d-flex align-items-center gap-2">
+        <div className="flex items-center gap-2">
           {news.tags.map(tag => (
             <Link
               key={tag.id}
               to={tag.link}
-              className="px-2 py-1 bg-primary-subtle rounded fs-10 fw-bold text-body-highlight mb-0 text-uppercase lh-sm"
+              className="px-2 py-1 bg-primary-subtle rounded-md text-sm font-bold text-highlight mb-0 uppercase leading-sm"
             >
               {tag.label}
             </Link>
@@ -48,18 +48,18 @@ const StockDetailsNewsCard = ({ newsItem }: { newsItem: NewsItem }) => {
     <>
       {newsItem.newsState === 'featured' && (
         <Card
-          className="overflow-hidden h-xxl-100"
+          className="overflow-hidden 2xl:h-full"
           style={{ maxHeight: '390px' }}
         >
-          <img src={newsItem.image} alt="" className="card-img-top h-xxl-100" />
-          <Card.ImgOverlay className="d-flex align-items-end stock-news-tab backdrop-faded">
+          <img src={newsItem.image} alt="" className="card-img-top 2xl:h-full" />
+          <Card.ImgOverlay className="flex items-end stock-news-tab backdrop-faded">
             <div className="text-white">
               <h4 className="text-white mb-2 line-clamp-1">{newsItem.title}</h4>
-              <p className="fs-9 text-white line-clamp-4">
+              <p className="text-md text-white line-clamp-4">
                 {newsItem.description}
               </p>
-              <div className="d-flex flex-wrap align-items-center gap-2 mb-3">
-                <div className="d-flex">
+              <div className="flex flex-wrap items-center gap-2 mb-4">
+                <div className="flex">
                   <UilCalendarAlt
                     fill="currentColor"
                     style={{
@@ -68,19 +68,19 @@ const StockDetailsNewsCard = ({ newsItem }: { newsItem: NewsItem }) => {
                       transform: 'translateY(-1px)'
                     }}
                   />
-                  <p className="mb-0 fs-10 ms-1">{newsItem.postTime}</p>
+                  <p className="mb-0 text-sm ms-1">{newsItem.postTime}</p>
                 </div>
-                <ul className="fs-10 ps-3 mb-0">
+                <ul className="text-sm ps-4 mb-0">
                   <li>{newsItem.type}</li>
                 </ul>
               </div>
               {newsItem.tags && (
-                <div className="d-flex align-items-center gap-2">
+                <div className="flex items-center gap-2">
                   {newsItem.tags.map(tag => (
                     <Link
                       key={tag.id}
                       to={tag.link}
-                      className="px-2 py-1 bg-primary-subtle rounded fs-10 fw-bold text-body-highlight mb-0 text-uppercase lh-sm"
+                      className="px-2 py-1 bg-primary-subtle rounded-md text-sm font-bold text-highlight mb-0 uppercase leading-sm"
                     >
                       {tag.label}
                     </Link>
@@ -97,18 +97,18 @@ const StockDetailsNewsCard = ({ newsItem }: { newsItem: NewsItem }) => {
             <img
               src={newsItem.image}
               alt=""
-              className="h-100 w-100 rounded-top rounded-top-sm-0 rounded-start-sm"
+              className="h-full w-full rounded-t-md sm:rounded-t-none sm:rounded-s-md"
             />
           </Col>
           <Col xs={12} sm={8}>
-            <Card className="rounded-0 rounded-end-sm h-100">
+            <Card className="rounded-none sm:rounded-e-md h-full">
               <NewsCardBody news={newsItem} />
             </Card>
           </Col>
         </Row>
       )}
       {newsItem.newsState === 'regular' && (
-        <Card className="h-100">
+        <Card className="h-full">
           <img src={newsItem.image} alt="" className="card-img-top" />
           <NewsCardBody news={newsItem} />
         </Card>

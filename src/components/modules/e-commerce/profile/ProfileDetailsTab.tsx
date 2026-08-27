@@ -61,14 +61,14 @@ const tabLinks: TabLink[] = [
 const ProfileDetailsTab = () => {
   return (
     <Tab.Container defaultActiveKey="orders">
-      <Nav className="mb-3 pb-1 gap-3 nav-underline flex-nowrap scrollbar">
+      <Nav className="mb-4 pb-1 gap-4 nav-underline flex-nowrap scrollbar">
         {tabLinks.map(item => (
           <Nav.Item key={item.id}>
-            <Nav.Link eventKey={item.id} className="text-nowrap">
+            <Nav.Link eventKey={item.id} className="whitespace-nowrap">
               <FontAwesomeIcon icon={item.icon} className="me-2" />
               {item.label}{' '}
               {item.number && (
-                <span className="text-body-tertiary fw-normal">
+                <span className="text-subtle font-normal">
                   ({item.number})
                 </span>
               )}
@@ -87,7 +87,7 @@ const ProfileDetailsTab = () => {
             //     <FontAwesomeIcon icon={item.icon} className="me-2" />
             //     {item.label}{' '}
             //     {item.number && (
-            //       <span className="text-body-tertiary fw-normal">({item.number})</span>
+            //       <span className="text-subtle font-normal">({item.number})</span>
             //     )}
             //   </>
             // }

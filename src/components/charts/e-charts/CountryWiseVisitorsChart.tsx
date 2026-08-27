@@ -37,8 +37,8 @@ const getDefaultOptions = (
     transitionDuration: 0,
     formatter: (params: CallbackDataParams[]) => {
       return `<div>
-        <h6 class="fs-9 text-700 mb-0"><span class="fas fa-circle me-1 text-primary-light"></span>
-          Users : <span class="fw-normal">${params[0].value}</span>
+        <h6 class="text-md text-700 mb-0"><span class="fas fa-circle me-1 text-primary-light"></span>
+          Users : <span class="font-normal">${params[0].value}</span>
         </h6>
     </div>`;
     }

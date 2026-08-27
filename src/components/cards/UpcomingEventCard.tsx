@@ -34,26 +34,26 @@ const UpcomingEventCard = ({
 
   return (
     <>
-      <Card className="mb-4">
+      <Card className="mb-6">
         <Card.Body>
           <Row className="g-0">
-            <Col xs={12} sm={3} className="me-sm-4 custom-calendar-container">
-              <div className="position-relative custom-calender border rounded d-flex flex-column flex-center mb-4 mb-sm-0 px-0">
-                <h5 className="fw-bolder lh-sm text-body-tertiary">
+            <Col xs={12} sm={3} className="sm:me-6 custom-calendar-container">
+              <div className="relative custom-calender border rounded-md flex flex-col flex-center mb-6 sm:mb-0 px-0">
+                <h5 className="font-black leading-sm text-subtle">
                   {startDate.format('D')}{' '}
                   {endDate && `- ${endDate.format('D')}`}
                 </h5>
-                <p className="mb-0 fs-10 text-body-tertiary fw-semibold">
+                <p className="mb-0 text-sm text-subtle font-semibold">
                   {startDate.format('MMM')}, {startDate.format('YYYY')}
                 </p>
               </div>
             </Col>
             <Col xs={12} sm={9} className="flex-1">
-              <Row className="g-4">
+              <Row className="g-6">
                 <Col xs={12} xxl={9}>
-                  <div className="d-xxl-flex align-items-center gap-2 mb-2">
+                  <div className="2xl:flex items-center gap-2 mb-2">
                     <h5
-                      className="mb-2 mb-xxl-0 cursor-pointer"
+                      className="mb-2 2xl:mb-0 cursor-pointer"
                       onClick={() => setOpen(true)}
                     >
                       {upcomingEventItem.title}
@@ -65,13 +65,13 @@ const UpcomingEventCard = ({
                           ? 'info'
                           : 'warning'
                       }
-                      className="fs-10"
+                      className="text-sm"
                     >
                       {upcomingEventItem.status}
                     </Badge>
                   </div>
-                  <div className="d-sm-flex mb-3 align-items-center">
-                    <h6 className="text-body-tertiary fw-semibold mb-2 mb-sm-0 border-end-sm pe-sm-3 me-sm-3 text-nowrap">
+                  <div className="sm:flex mb-4 items-center">
+                    <h6 className="text-subtle font-semibold mb-2 sm:mb-0 sm:border-e sm:pe-4 sm:me-4 whitespace-nowrap">
                       <FeatherIcon
                         icon="clock"
                         className="me-2"
@@ -83,7 +83,7 @@ const UpcomingEventCard = ({
                         {upcomingEventItem.scheduled.displayTimeZone}
                       </span>
                     </h6>
-                    <h6 className="text-body-tertiary fw-semibold mb-0 line-clamp-1">
+                    <h6 className="text-subtle font-semibold mb-0 line-clamp-1">
                       <FeatherIcon
                         icon="map-pin"
                         className="me-2"
@@ -92,17 +92,17 @@ const UpcomingEventCard = ({
                       <span>{upcomingEventItem.location}</span>
                     </h6>
                   </div>
-                  <p className="fs-9 text-body-tertiary">
+                  <p className="text-md text-subtle">
                     {upcomingEventItem.description}
                   </p>
-                  <div className="d-flex align-items-center gap-1">
-                    <Avatar.Group size="s" className="align-items-center">
+                  <div className="flex items-center gap-1">
+                    <Avatar.Group size="s" className="items-center">
                       {upcomingEventItem.interestedToGoing.map(people => (
                         <Avatar src={people.image} key={people.id} size="s" />
                       ))}
                       <Link
                         to="#!"
-                        className="fs-10 ms-1 fw-semibold text-body-quaternary"
+                        className="text-sm ms-1 font-semibold text-soft"
                       >
                         +
                         {upcomingEventItem.totalUserCount -
@@ -110,7 +110,7 @@ const UpcomingEventCard = ({
                         people going
                       </Link>
                     </Avatar.Group>
-                    <ul className="ps-3 mb-0 text-body-quaternary fs-10">
+                    <ul className="ps-4 mb-0 text-soft text-sm">
                       <li>
                         {numberFormat(upcomingEventItem.interested, 'compact', {
                           compactDisplay: 'short'
@@ -122,7 +122,7 @@ const UpcomingEventCard = ({
                 </Col>
                 <Col xxl={3}>
                   <Button
-                    className={classNames('me-2 me-xxl-0 mb-xxl-2 w-xxl-100', {
+                    className={classNames('me-2 2xl:me-0 2xl:mb-2 2xl:w-full', {
                       'btn-primary': upcomingEventItem.status === 'interested',
                       'btn-phoenix-primary':
                         upcomingEventItem.status === 'featured'
@@ -138,7 +138,7 @@ const UpcomingEventCard = ({
                     />
                     Interested
                   </Button>
-                  <Button variant="phoenix-primary" className="w-xxl-100">
+                  <Button variant="phoenix-primary" className="2xl:w-full">
                     <FontAwesomeIcon icon={faCircleCheck} className="me-2" />
                     Going
                   </Button>

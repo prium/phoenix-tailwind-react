@@ -24,7 +24,7 @@ const ProductDetailsTab = () => {
   return (
     <>
       <Tab.Container defaultActiveKey="description">
-        <Nav variant="underline" className="mb-4">
+        <Nav variant="underline" className="mb-6">
           <Nav.Item>
             <Nav.Link eventKey="description">Description</Nav.Link>
           </Nav.Item>
@@ -35,14 +35,14 @@ const ProductDetailsTab = () => {
             <Nav.Link eventKey="reviews">Ratings & reviews</Nav.Link>
           </Nav.Item>
         </Nav>
-        <Row className="gx-3 gy-7">
+        <Row className="gx-4 gy-12">
           <Col xs={12} lg={7} xl={8}>
             <Tab.Content>
               <Tab.Pane
                 eventKey="description"
-                className="text-body-emphasis pe-lg-6 pe-xl-12"
+                className="text-emphasis lg:pe-10 xl:pe-24"
               >
-                <p className="mb-5">
+                <p className="mb-8">
                   CUPERTINO, CA , The M1 CPU allows Apple to deliver an all-new
                   iMac with a lot more compact and impressively thin design. The
                   new iMac delivers tremendous performance in an
@@ -68,7 +68,7 @@ const ProductDetailsTab = () => {
                   <img
                     src={product23}
                     alt=""
-                    className="img-fluid mb-5 rounded-3"
+                    className="img-fluid mb-8 rounded-lg"
                     onClick={() => openLightbox(1)}
                   />
                 </Link>
@@ -91,38 +91,38 @@ const ProductDetailsTab = () => {
                   performance and macOS Big Sur's power."
                 </p>
               </Tab.Pane>
-              <Tab.Pane eventKey="specification" className="pe-lg-6 pe-xl-12">
+              <Tab.Pane eventKey="specification" className="lg:pe-10 xl:pe-24">
                 <ProductSpecificationTables />
               </Tab.Pane>
               <Tab.Pane eventKey="reviews">
                 <Card>
-                  <Card.Header className="pb-0 border-bottom-0">
+                  <Card.Header className="pb-0 border-b-0">
                     <Stack
                       gap={3}
                       direction="horizontal"
-                      className="flex-wrap justify-content-between"
+                      className="flex-wrap justify-between"
                     >
-                      <div className="d-flex align-items-center flex-wrap">
-                        <h2 className="fw-bolder me-3">
+                      <div className="flex items-center flex-wrap">
+                        <h2 className="font-black me-4">
                           4.9
-                          <span className="fs-8 text-body-quaternary fw-bold">
+                          <span className="text-base text-soft font-bold">
                             /5
                           </span>
                         </h2>
-                        <div className="me-3">
+                        <div className="me-4">
                           <Rating
                             initialValue={4.5}
                             readonly
                             iconClass="fs-6"
                           />
                         </div>
-                        <p className="text-body mb-0 fw-semibold fs-7">
+                        <p className="text-default mb-0 font-semibold text-lg">
                           6548 ratings and 567 reviews
                         </p>
                       </div>
                       <Button
                         variant="primary"
-                        className="rounded-pill"
+                        className="rounded-full"
                         onClick={() => setOpenReviewModal(true)}
                       >
                         Rate this product
@@ -134,7 +134,7 @@ const ProductDetailsTab = () => {
                       <ProductReview key={review.id} review={review} />
                     ))}
 
-                    <Pagination className="mb-0 justify-content-center">
+                    <Pagination className="mb-0 justify-center">
                       <Pagination.Prev>
                         <FontAwesomeIcon icon={faChevronLeft} />
                       </Pagination.Prev>

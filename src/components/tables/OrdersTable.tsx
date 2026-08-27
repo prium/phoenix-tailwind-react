@@ -15,7 +15,7 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
     cell: ({ row: { original } }) => {
       const { orderId } = original;
       return (
-        <Link to="#!" className="fw-semibold">
+        <Link to="#!" className="font-semibold">
           #{orderId}
         </Link>
       );
@@ -43,10 +43,10 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
       return (
         <Link
           to="/apps/e-commerce/admin/customer-details"
-          className="d-flex align-items-center"
+          className="flex items-center"
         >
           <Avatar src={avatar} size="m" />
-          <p className="mb-0 ms-3 text-body-emphasis fw-bold">{name}</p>
+          <p className="mb-0 ms-4 text-emphasis font-bold">{name}</p>
         </Link>
       );
     },
@@ -69,7 +69,7 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
           bg={payment_status.type}
           variant="phoenix"
           iconPosition="end"
-          className="fs-10"
+          className="text-sm"
           icon={
             <FeatherIcon
               icon={payment_status.icon}
@@ -97,7 +97,7 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
           bg={fulfilment_status.type}
           variant="phoenix"
           iconPosition="end"
-          className="fs-10"
+          className="text-sm"
           icon={
             <FeatherIcon
               icon={fulfilment_status.icon}

@@ -21,7 +21,7 @@ const columns: ColumnDef<WatchlistSummaryTableRowItem>[] = [
     cell: ({ row: { original } }) => {
       const { symbol } = original;
 
-      return <p className="fw-semibold mb-0">{symbol}</p>;
+      return <p className="font-semibold mb-0">{symbol}</p>;
     },
     meta: {
       headerProps: {
@@ -39,7 +39,7 @@ const columns: ColumnDef<WatchlistSummaryTableRowItem>[] = [
     cell: ({ row: { original } }) => {
       const { lastPrice } = original;
       return (
-        <p className="fs-9 fw-semibold text-body-tertiary mb-0">
+        <p className="text-md font-semibold text-subtle mb-0">
           {currencyFormat(lastPrice, { minimumFractionDigits: 2 })}
         </p>
       );
@@ -64,7 +64,7 @@ const columns: ColumnDef<WatchlistSummaryTableRowItem>[] = [
 
       return (
         <div className={className}>
-          <p className="fw-bold mb-1">
+          <p className="font-bold mb-1">
             {prefix}
             {currencyFormat(amount, { minimumFractionDigits: 2 })}
           </p>
@@ -92,7 +92,7 @@ const columns: ColumnDef<WatchlistSummaryTableRowItem>[] = [
     cell: ({ row: { original } }) => {
       const { priceAdds } = original;
       return (
-        <p className="fs-9 text-body-tertiary fw-semibold mb-0">
+        <p className="text-md text-subtle font-semibold mb-0">
           {currencyFormat(priceAdds, { minimumFractionDigits: 2 })}
         </p>
       );
@@ -113,7 +113,7 @@ const columns: ColumnDef<WatchlistSummaryTableRowItem>[] = [
     cell: ({ row: { original } }) => {
       const { volume } = original;
       return (
-        <p className="fs-9 text-body-tertiary mb-0">
+        <p className="text-md text-subtle mb-0">
           {numberFormat(volume, 'compact', {
             compactDisplay: 'short',
             minimumFractionDigits: 3
@@ -137,7 +137,7 @@ const columns: ColumnDef<WatchlistSummaryTableRowItem>[] = [
     cell: ({ row: { original } }) => {
       const { share } = original;
       return share ? (
-        <p className="fw-bold mb-0 fs-9 text-info">{share}</p>
+        <p className="font-bold mb-0 text-md text-info">{share}</p>
       ) : (
         <Button variant="phoenix-secondary" size="sm">
           Add
@@ -160,7 +160,7 @@ const columns: ColumnDef<WatchlistSummaryTableRowItem>[] = [
     cell: ({ row: { original } }) => {
       const { avgVolume } = original;
       return (
-        <p className="fs-9 text0body-tertiary mb-0">
+        <p className="text-md text0body-tertiary mb-0">
           {numberFormat(avgVolume, 'compact', {
             compactDisplay: 'short',
             minimumFractionDigits: 3
@@ -225,7 +225,7 @@ const columns: ColumnDef<WatchlistSummaryTableRowItem>[] = [
       const { marketCap } = original;
 
       return (
-        <p className="fs-9 text-body-tertiary mb-0">
+        <p className="text-md text-subtle mb-0">
           {numberFormat(marketCap, 'compact', {
             compactDisplay: 'short',
             minimumFractionDigits: 3
@@ -249,10 +249,10 @@ const columns: ColumnDef<WatchlistSummaryTableRowItem>[] = [
     cell: () => {
       return (
         <>
-          <Button variant="link" className="text-body-quaternary p-0 me-2">
+          <Button variant="link" className="text-soft p-0 me-2">
             <FontAwesomeIcon icon={faFileInvoiceDollar} />
           </Button>
-          <Button variant="link" className="text-body-quaternary p-0">
+          <Button variant="link" className="text-soft p-0">
             <FontAwesomeIcon icon={faTrash} />
           </Button>
         </>

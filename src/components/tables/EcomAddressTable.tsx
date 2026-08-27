@@ -12,14 +12,14 @@ const TableRow = ({ rowData }: { rowData: AddressTableDataType }) => {
   return (
     <tr>
       <td className="py-2 ps-0">
-        <div className="d-flex">
+        <div className="flex">
           <FeatherIcon icon={rowData.labelIcon} size={16} className="me-2" />
-          <h5 className="lh-sm me-4">{rowData.label}</h5>
+          <h5 className="leading-sm me-6">{rowData.label}</h5>
         </div>
       </td>
-      <td className="py-2 fw-bold lh-sm">:</td>
-      <td className="py-2 px-3" style={{ maxWidth: 260 }}>
-        <h5 className="lh-lg fw-normal text-body-secondary">{rowData.value}</h5>
+      <td className="py-2 font-bold leading-sm">:</td>
+      <td className="py-2 px-4" style={{ maxWidth: 260 }}>
+        <h5 className="leading-lg font-normal text-muted">{rowData.value}</h5>
       </td>
     </tr>
   );

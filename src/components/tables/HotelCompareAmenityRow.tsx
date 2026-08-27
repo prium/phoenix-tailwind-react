@@ -15,16 +15,16 @@ const HotelCompareAmenityRow = ({
 }: HotelCompareAmenityRowProps) => {
   return (
     <tr>
-      <td className="px-4 align-middle border-end-lg border-translucent bg-body-highlight">
-        <h6 className="text-body fw-bolder text-uppercase mb-0">{title}</h6>
+      <td className="px-6 align-middle lg:border-e border-light bg-subtle">
+        <h6 className="text-default font-black uppercase mb-0">{title}</h6>
       </td>
       {reviewField.map((item, index) => (
         <td
           key={index}
-          className="px-3 align-middle border-end-lg border-translucent"
+          className="px-4 align-middle lg:border-e border-light"
         >
           {item ? (
-            <h6 className="text-body">
+            <h6 className="text-default">
               <FontAwesomeIcon
                 icon={faCircleCheck}
                 className="text-success me-2"
@@ -32,7 +32,7 @@ const HotelCompareAmenityRow = ({
               Available
             </h6>
           ) : (
-            <h6 className="text-body">
+            <h6 className="text-default">
               <FontAwesomeIcon
                 icon={faCircleXmark}
                 className="text-secondary-light me-2"

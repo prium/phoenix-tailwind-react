@@ -36,10 +36,10 @@ export const leadEmailsColumns: ColumnDef<LeadEmail>[] = [
       }
     }) => (
       <>
-        <Link to="#!" className="fw-semibold">
+        <Link to="#!" className="font-semibold">
           {mail.subject}
         </Link>
-        <p className="mb-0 fs-10">{mail.email}</p>
+        <p className="mb-0 text-sm">{mail.email}</p>
       </>
     ),
     meta: {
@@ -120,7 +120,7 @@ export const leadEmailsColumns: ColumnDef<LeadEmail>[] = [
 
 const LeadEmailsTable = () => {
   return (
-    <div className="border-y border-translucent">
+    <div className="border-y border-light">
       <AdvanceTable tableProps={{ className: 'phoenix-table fs-9' }} />
       <AdvanceTableFooter pagination showViewAllBtn={false} />
     </div>

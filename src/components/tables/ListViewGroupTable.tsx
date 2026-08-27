@@ -57,7 +57,7 @@ const ListViewGroupTable = ({
     }
   ];
   return (
-    <div className="scrollbar ms-n1 ps-1">
+    <div className="scrollbar -ms-1 ps-1">
       <Table {...tableProps}>
         <thead className={headerClassName}>
           <tr>

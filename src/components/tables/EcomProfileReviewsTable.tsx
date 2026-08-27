@@ -23,7 +23,7 @@ const columns: ColumnDef<LatestReviewsTableDataType>[] = [
     cell: ({ row: { original } }) => {
       const { product } = original;
       return (
-        <Link to="#!" className="fw-semibold line-clamp-1">{`${product.slice(
+        <Link to="#!" className="font-semibold line-clamp-1">{`${product.slice(
           0,
           46
         )}${product.length > 46 ? '...' : ''}`}</Link>
@@ -51,7 +51,7 @@ const columns: ColumnDef<LatestReviewsTableDataType>[] = [
     cell: ({ row: { original } }) => {
       const { review } = original;
       return (
-        <p className="fs--1 fw-semibold text-body-highlight mb-0 line-clamp-3">
+        <p className="fs--1 font-semibold text-highlight mb-0 line-clamp-3">
           {review.slice(0, 134)}
           {review.length > 134 && (
             <>
@@ -79,7 +79,7 @@ const columns: ColumnDef<LatestReviewsTableDataType>[] = [
           bg={badgeBg}
           variant="phoenix"
           iconPosition="end"
-          className="fs-10"
+          className="text-sm"
           icon={<FeatherIcon icon={icon} size={12} className="ms-1" />}
         >
           {title}
@@ -127,7 +127,7 @@ const EcomProfileReviewsTable = () => {
   return (
     <>
       <AdvanceTableProvider {...table}>
-        <div className="border-y border-translucent">
+        <div className="border-y border-light">
           <AdvanceTable tableProps={{ className: 'phoenix-table fs-9' }} />
           <AdvanceTableFooter pagination />
         </div>

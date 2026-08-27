@@ -22,7 +22,7 @@ const columns: ColumnDef<MostRecentForecastTableRowItem>[] = [
         customer: { name, avatar, placeholder }
       } = original;
       return (
-        <Link to="#!" className="d-flex align-items-center text-body">
+        <Link to="#!" className="flex items-center text-default">
           {avatar ? (
             <Avatar
               src={avatar}
@@ -74,7 +74,7 @@ const columns: ColumnDef<MostRecentForecastTableRowItem>[] = [
         status: { title, badgeBg }
       } = original;
       return (
-        <Badge variant="phoenix" bg={badgeBg} className="fs-10">
+        <Badge variant="phoenix" bg={badgeBg} className="text-sm">
           {title}
         </Badge>
       );
@@ -95,7 +95,7 @@ const columns: ColumnDef<MostRecentForecastTableRowItem>[] = [
     cell: ({ row: { original } }) => {
       const { action } = original;
       return (
-        <p className="fs-9 fw-semibold text-body-emphasis mb-0">{action}</p>
+        <p className="text-md font-semibold text-emphasis mb-0">{action}</p>
       );
     },
     meta: {
@@ -114,7 +114,7 @@ const columns: ColumnDef<MostRecentForecastTableRowItem>[] = [
     cell: ({ row: { original } }) => {
       const { priceTarget } = original;
       return (
-        <p className="fs-9 fw-semibold mb-0">
+        <p className="text-md font-semibold mb-0">
           {currencyFormat(priceTarget, { minimumFractionDigits: 2 })}
         </p>
       );
@@ -138,7 +138,7 @@ const columns: ColumnDef<MostRecentForecastTableRowItem>[] = [
       } = original;
 
       return (
-        <Badge variant="phoenix" bg={badgeBg} className="fs-10">
+        <Badge variant="phoenix" bg={badgeBg} className="text-sm">
           {prefix}
           {numberFormat(label, 'standard', { minimumFractionDigits: 2 })}%
         </Badge>
@@ -160,12 +160,12 @@ const columns: ColumnDef<MostRecentForecastTableRowItem>[] = [
     cell: ({ row: { original } }) => {
       const { date } = original;
       return (
-        <div className="d-flex align-items-center justify-content-end gap-2">
+        <div className="flex items-center justify-end gap-2">
           <UilCalendar
             fill='currentColor'
             style={{ width: 16, height: 23.828, transform: 'translateY(-2px)' }}
           />
-          <h6 className="fw-semibold mb-0">{date}</h6>
+          <h6 className="font-semibold mb-0">{date}</h6>
         </div>
       );
     },
@@ -226,7 +226,7 @@ const MostRecentForecastTable = ({
         }}
         headerClassName="text-uppercase"
       />
-      <MostRecentForecastTableFooter className="pagination-subtle fs-9 flex-end-center" />
+      <MostRecentForecastTableFooter className="pagination-subtle text-md flex-end-center" />
     </AdvanceTableProvider>
   );
 };

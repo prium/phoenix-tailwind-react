@@ -41,27 +41,27 @@ const columns: ColumnDef<RoomListingInterface>[] = [
       const { img, name, category, price } = original;
       return (
         <>
-          <div className="d-flex align-items-center gap-3">
+          <div className="flex items-center gap-4">
             <Link to="#!">
               <img
                 src={img}
                 alt=""
                 width={80}
-                className="rounded-1 border border-translucent"
+                className="rounded-sm border border-light"
               />
             </Link>
             <div>
               <Link
                 to="#!"
-                className="fs-8 fw-bolder text-body-emphasis text-nowrap"
+                className="text-base font-black text-emphasis whitespace-nowrap"
               >
                 {name}
               </Link>
-              <h6 className="fw-seibold text-body text-nowrap mt-1 mb-2">
+              <h6 className="fw-seibold text-default whitespace-nowrap mt-1 mb-2">
                 <FontAwesomeIcon icon={faBorderAll} className="me-2" />
                 {category}
               </h6>
-              <h4 className="fw-bolder mb-0">${price}</h4>
+              <h4 className="font-black mb-0">${price}</h4>
             </div>
           </div>
         </>
@@ -79,9 +79,9 @@ const columns: ColumnDef<RoomListingInterface>[] = [
     cell: ({ row: { original } }) => {
       const { beds, bedRooms } = original;
       return (
-        <div className="d-flex align-items-center">
+        <div className="flex items-center">
           <div
-            className="d-flex align-items-center justify-content-center bg-primary-subtle rounded me-2"
+            className="flex items-center justify-center bg-primary-subtle rounded-md me-2"
             style={{ height: 24, width: 24 }}
           >
             <FontAwesomeIcon
@@ -89,16 +89,16 @@ const columns: ColumnDef<RoomListingInterface>[] = [
               className="text-primary-darker"
             />
           </div>
-          <h5 className="text-body-emphasis fw-semibold mb-0 me-3">
+          <h5 className="text-emphasis font-semibold mb-0 me-4">
             {bedRooms}
           </h5>
           <div
-            className="d-flex align-items-center justify-content-center bg-success-subtle rounded me-2"
+            className="flex items-center justify-center bg-success-subtle rounded-md me-2"
             style={{ height: 24, width: 24 }}
           >
             <FontAwesomeIcon icon={faBed} className="text-success-darker" />
           </div>
-          <h5 className="text-body-emphasis fw-semibold mb-0">{beds}</h5>
+          <h5 className="text-emphasis font-semibold mb-0">{beds}</h5>
         </div>
       );
     },
@@ -116,21 +116,21 @@ const columns: ColumnDef<RoomListingInterface>[] = [
     cell: ({ row: { original } }) => {
       const { guest, child } = original;
       return (
-        <div className="d-flex align-items-center">
+        <div className="flex items-center">
           <div
-            className="d-flex align-items-center justify-content-center bg-warning-subtle rounded me-2"
+            className="flex items-center justify-center bg-warning-subtle rounded-md me-2"
             style={{ height: 24, width: 24 }}
           >
             <FontAwesomeIcon icon={faUser} className="text-warning-darker" />
           </div>
-          <h5 className="text-body-emphasis fw-semibold mb-0 me-3">{guest}</h5>
+          <h5 className="text-emphasis font-semibold mb-0 me-4">{guest}</h5>
           <div
-            className="d-flex align-items-center justify-content-center bg-info-subtle rounded me-2"
+            className="flex items-center justify-center bg-info-subtle rounded-md me-2"
             style={{ height: 24, width: 24 }}
           >
             <FontAwesomeIcon icon={faBaby} className="text-info-darker" />
           </div>
-          <h5 className="text-body-emphasis fw-semibold mb-0">{child}</h5>
+          <h5 className="text-emphasis font-semibold mb-0">{child}</h5>
         </div>
       );
     },
@@ -148,14 +148,14 @@ const columns: ColumnDef<RoomListingInterface>[] = [
     cell: ({ row: { original } }) => {
       const { bathRooms } = original;
       return (
-        <div className="d-flex align-items-center">
+        <div className="flex items-center">
           <div
-            className="d-flex align-items-center justify-content-center bg-danger-subtle rounded me-2"
+            className="flex items-center justify-center bg-danger-subtle rounded-md me-2"
             style={{ height: 24, width: 24 }}
           >
             <FontAwesomeIcon icon={faBath} className="text-danger-darker" />
           </div>
-          <h5 className="text-body-emphasis fw-semibold mb-0 me-3">
+          <h5 className="text-emphasis font-semibold mb-0 me-4">
             {bathRooms}
           </h5>
         </div>
@@ -176,19 +176,19 @@ const columns: ColumnDef<RoomListingInterface>[] = [
     cell: ({ row: { original } }) => {
       const { amenities } = original;
       return (
-        <div className="d-flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2">
           {amenities.slice(0, 13).map((item, index) => (
             <Badge
               key={index}
               variant="phoenix"
               bg="primary"
-              className="text-body-highlight py-1 fs-10 border-0"
+              className="text-highlight py-1 text-sm border-0"
             >
               {item}
             </Badge>
           ))}
           {amenities.length > 13 && (
-            <Link to="#!" className="fw-bold fs-9">
+            <Link to="#!" className="font-bold text-md">
               +{amenities.length - 13} More
             </Link>
           )}
@@ -208,7 +208,7 @@ const columns: ColumnDef<RoomListingInterface>[] = [
     header: 'Total Room',
     cell: ({ row: { original } }) => {
       const { totalRooms } = original;
-      return <h2 className="text-body-secondary">{totalRooms}</h2>;
+      return <h2 className="text-muted">{totalRooms}</h2>;
     },
     meta: {
       headerProps: {
@@ -253,29 +253,29 @@ const RoomListingTable = () => {
   };
   return (
     <AdvanceTableProvider {...table}>
-      <div className="d-md-flex mt-5 mb-4">
+      <div className="md:flex mt-8 mb-6">
         <Button
           variant="primary"
           startIcon={<FontAwesomeIcon icon={faPlus} className="me-2" />}
-          className="me-4"
+          className="me-6"
         >
           Create Listing
         </Button>
         <Button
           variant="link"
           startIcon={
-            <FontAwesomeIcon icon={faFileExport} className="me-2 fs-9" />
+            <FontAwesomeIcon icon={faFileExport} className="me-2 text-md" />
           }
-          className="text-body me-4 px-0"
+          className="text-default me-6 px-0"
         >
           Export
         </Button>
-        <div className="d-flex gap-2 ms-md-auto mt-3 mt-md-0">
+        <div className="flex gap-2 md:ms-auto mt-4 md:mt-0">
           <SearchBox
             placeholder="Search products"
             onChange={handleSearchInputChange}
           />
-          <Button variant="phoenix-primary" className="px-3">
+          <Button variant="phoenix-primary" className="px-4">
             <FontAwesomeIcon transform="down-2" icon={faFilter} />
           </Button>
         </div>

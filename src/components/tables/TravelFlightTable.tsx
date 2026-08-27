@@ -30,7 +30,7 @@ const columns: ColumnDef<FlightInterface>[] = [
     cell: ({ row: { original } }) => {
       const { flightNo } = original;
       return (
-        <Link to="#!" className="fw-bold">
+        <Link to="#!" className="font-bold">
           {flightNo}
         </Link>
       );
@@ -48,9 +48,9 @@ const columns: ColumnDef<FlightInterface>[] = [
     cell: ({ row: { original } }) => {
       const { vendor } = original;
       return (
-        <Link to="#!" className="d-flex align-items-center gap-2">
+        <Link to="#!" className="flex items-center gap-2">
           <img src={vendor.image} alt="" width={32} />
-          <h6 className="mb-0 text-primary fw-semibold text-nowrap">
+          <h6 className="mb-0 text-primary font-semibold whitespace-nowrap">
             {vendor.name}
           </h6>
         </Link>
@@ -70,21 +70,21 @@ const columns: ColumnDef<FlightInterface>[] = [
     cell: ({ row: { original } }) => {
       const { weather } = original;
       return (
-        <div className="d-flex align-items-center">
+        <div className="flex items-center">
           <FontAwesomeIcon
             icon={faTemperature0}
             className={`me-2 text-${
               weather.temperature > 25 ? 'danger' : 'info'
             }`}
           />
-          <p className="mb-0 text-body-tertiary me-3">
+          <p className="mb-0 text-subtle me-4">
             {weather.temperature}°C
           </p>
           <FontAwesomeIcon
             icon={weather.icon}
             className={`me-2 ${weather.color}`}
           />
-          <p className="mb-0 text-body-tertiary">{weather.weather}</p>
+          <p className="mb-0 text-subtle">{weather.weather}</p>
         </div>
       );
     },
@@ -102,14 +102,14 @@ const columns: ColumnDef<FlightInterface>[] = [
     cell: ({ row: { original } }) => {
       const { route } = original;
       return (
-        <div className="d-flex align-items-center gap-2">
+        <div className="flex items-center gap-2">
           <img src={route.from.flag} alt="" width={16} />
-          <p className="mb-0 fw-semibold text-bold">{route.from.airport}</p>
+          <p className="mb-0 font-semibold text-bold">{route.from.airport}</p>
           <FontAwesomeIcon
             icon={faArrowRight}
-            className="text-body-tertiary mx-1"
+            className="text-subtle mx-1"
           />
-          <p className="mb-0 fw-semibold text-bold">{route.to.airport}</p>
+          <p className="mb-0 font-semibold text-bold">{route.to.airport}</p>
           <img src={route.to.flag} alt="" width={16} />
         </div>
       );
@@ -129,7 +129,7 @@ const columns: ColumnDef<FlightInterface>[] = [
       const { destination, status } = original;
       return (
         <>
-          <div className="position-relative">
+          <div className="relative">
             <ProgressBar
               style={{ height: 2 }}
               className="overflow-visible align-middle"
@@ -143,9 +143,9 @@ const columns: ColumnDef<FlightInterface>[] = [
             </ProgressBar>
             <FontAwesomeIcon
               className={classNames(
-                'text-info plane-icon position-absolute top-50 translate-middle-y',
+                'text-info plane-icon absolute top-1/2 top-1/2 -translate-y-1/2',
                 {
-                  'd-none': status.label.toLowerCase() === 'cancelled'
+                  'hidden': status.label.toLowerCase() === 'cancelled'
                 }
               )}
               icon={faPlane}
@@ -153,21 +153,21 @@ const columns: ColumnDef<FlightInterface>[] = [
             />
           </div>
 
-          <div className="d-flex justify-content-between mt-2">
+          <div className="flex justify-between mt-2">
             <p
-              className={` mb-0 fs-10 ${
+              className={` mb-0 text-sm ${
                 status.label === 'Cancelled'
-                  ? 'text-body-quaternary'
-                  : 'text-body-tertiary'
+                  ? 'text-soft'
+                  : 'text-subtle'
               }`}
             >
               {destination.currentPosition}
             </p>
             <p
-              className={` mb-0 fs-10 ${
+              className={` mb-0 text-sm ${
                 status.label === 'Cancelled'
-                  ? 'text-body-quaternary'
-                  : 'text-body-tertiary'
+                  ? 'text-soft'
+                  : 'text-subtle'
               }`}
             >
               {destination.target}
@@ -214,13 +214,13 @@ const columns: ColumnDef<FlightInterface>[] = [
       const { time } = original;
       return (
         <>
-          <div className="d-flex justify-content-end align-items-center gap-2 mb-2">
-            <FontAwesomeIcon icon={faClock} className="text-body" />
-            <span className="text-body fw-semibold">{time.time}</span>
+          <div className="flex justify-end items-center gap-2 mb-2">
+            <FontAwesomeIcon icon={faClock} className="text-default" />
+            <span className="text-default font-semibold">{time.time}</span>
           </div>
-          <div className="d-flex justify-content-end gap-2">
+          <div className="flex justify-end gap-2">
             <FeatherIcon icon="calendar" style={{ width: 16, height: 16 }} />
-            <span className="text-body fw-semibold">{time.date}</span>
+            <span className="text-default font-semibold">{time.date}</span>
           </div>
         </>
       );
@@ -270,30 +270,30 @@ const TravelFlightTable = () => {
   };
   return (
     <AdvanceTableProvider {...table}>
-      <Row className="gx-0 gy-3 align-items-center py-4">
-        <Col xl="auto" className="d-sm-flex flex-between-center">
-          <div className="mb-3 mb-sm-0">
+      <Row className="gx-0 gy-4 items-center py-6">
+        <Col xl="auto" className="sm:flex flex-between-center">
+          <div className="mb-4 sm:mb-0">
             <h3 className="mb-0">Flights</h3>
             <p className="mb-0">Recent flights booked by us</p>
           </div>
-          <div className="d-flex align-items-center">
+          <div className="flex items-center">
             <SearchBox
               placeholder="Search by Flight no."
-              className="ms-xl-6 w-100"
+              className="xl:ms-10 w-full"
               onChange={handleSearchInputChange}
             />
-            <Button variant="phoenix-secondary" className="px-3 ms-2 me-3">
+            <Button variant="phoenix-secondary" className="px-4 ms-2 me-4">
               <FontAwesomeIcon
                 icon={faFilter}
                 transform="down-2"
-                className="text-body-secondary"
+                className="text-muted"
               />
             </Button>
           </div>
         </Col>
         <Col xs="auto" className="flex-1">
-          <div className="d-flex flex-between-center justify-content-xl-end">
-            <div className="d-flex align-items-center">
+          <div className="flex flex-between-center xl:justify-end">
+            <div className="flex items-center">
               <FlightsTableHeader viewAllBtnClass="ms-auto" navBtn />
             </div>
           </div>

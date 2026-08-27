@@ -11,7 +11,7 @@ const CompanyProfileTotalItemsCard = ({
   cardItems: CompanyProfileTotalItem[];
 }) => {
   return (
-    <Card className="mb-5">
+    <Card className="mb-8">
       <Card.Body>
         <Row className="g-0">
           {cardItems.map(item => (
@@ -24,10 +24,10 @@ const CompanyProfileTotalItemsCard = ({
             >
               <Row className="g-2 flex-between-center">
                 <Col md={6}>
-                  <div className="d-md-flex align-items-center gap-2">
+                  <div className="md:flex items-center gap-2">
                     <div
                       className={classNames(
-                        'border bg-opacity-15 d-flex flex-center p-2 rounded-1 mb-3 mb-md-0',
+                        'border bg-opacity-15 flex flex-center p-2 sm:rounded-md mb-6 md:mb-0',
                         item.icon.iconClassName
                       )}
                       style={{ width: '2rem', height: '2rem' }}
@@ -37,17 +37,17 @@ const CompanyProfileTotalItemsCard = ({
                         className={item.icon.iconColor}
                       />
                     </div>
-                    <h5 className="text-body-highlight mb-0 line-clamp-1">
+                    <h5 className="text-highlight mb-0 line-clamp-1">
                       {item.title}
                     </h5>
                   </div>
                 </Col>
-                <Col xs={1} className="d-none d-md-block">
-                  <h5 className="text-body-secondary mb-0">:</h5>
+                <Col xs={1} className="hidden md:block">
+                  <h5 className="text-muted mb-0">:</h5>
                 </Col>
                 <Col md={5}>
-                  <div className="d-flex justify-content-md-between align-items-center gap-2">
-                    <p className="mb-0 text-body-secondary">{item.growth}</p>
+                  <div className="flex md:justify-between items-center gap-2">
+                    <p className="mb-0 text-muted">{item.growth}</p>
                     <div>
                       <OverlayTrigger
                         placement="top"
@@ -66,7 +66,7 @@ const CompanyProfileTotalItemsCard = ({
                           <Badge
                             variant="phoenix"
                             bg={item.badge.badgeBg}
-                            className="fs-10"
+                            className="text-sm"
                           >
                             {item.badge.title}%
                           </Badge>

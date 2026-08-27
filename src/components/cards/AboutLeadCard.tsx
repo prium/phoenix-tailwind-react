@@ -21,53 +21,53 @@ const AboutLeadCard = ({ className }: { className?: string }) => {
   return (
     <Card className={classNames(className)}>
       <Card.Body>
-        <div className="d-flex align-items-center mb-5">
+        <div className="flex items-center mb-8">
           <h3>About lead</h3>
-          <Button variant="link" className="px-3">
+          <Button variant="link" className="px-4">
             Edit
           </Button>
         </div>
-        <LeadInfoItem className="mb-4" label="Email" icon={UilEnvelopeAlt}>
+        <LeadInfoItem className="mb-6" label="Email" icon={UilEnvelopeAlt}>
           <Link to="mailto:ansolo5@jeemail.com">ansolo5@jeemail.com</Link>
         </LeadInfoItem>
-        <LeadInfoItem className="mb-4" label="Phone" icon={UilPhone}>
+        <LeadInfoItem className="mb-6" label="Phone" icon={UilPhone}>
           <a href="tel:+1234567890">+1234567890</a>
         </LeadInfoItem>
 
-        <LeadInfoItem className="mb-4" label="Website" icon={UilGlobe}>
+        <LeadInfoItem className="mb-6" label="Website" icon={UilGlobe}>
           <a href="#!">www.bb.ru.com</a>
         </LeadInfoItem>
 
-        <LeadInfoItem className="mb-4" label="Industry" icon={UilBuilding}>
-          <p className="mb-0 text-body-secondary">Large Enterprise</p>
+        <LeadInfoItem className="mb-6" label="Industry" icon={UilBuilding}>
+          <p className="mb-0 text-muted">Large Enterprise</p>
         </LeadInfoItem>
 
         <LeadInfoItem
-          className="mb-4"
+          className="mb-6"
           label="Number of employees"
           icon={UilPostcard}
         >
-          <p className="mb-0 text-body-secondary">126</p>
+          <p className="mb-0 text-muted">126</p>
         </LeadInfoItem>
 
         <LeadInfoItem
-          className="mb-4"
+          className="mb-6"
           label="Annual Revenue"
           icon={UilDollarAlt}
         >
-          <p className="mb-0 text-body-secondary">{currencyFormat(12000)}</p>
+          <p className="mb-0 text-muted">{currencyFormat(12000)}</p>
         </LeadInfoItem>
 
-        <LeadInfoItem className="mb-4" label="Last contacted" icon={UilClock}>
-          <p className="mb-0 text-body-secondary">12 November 2021, 10:54 AM</p>
+        <LeadInfoItem className="mb-6" label="Last contacted" icon={UilClock}>
+          <p className="mb-0 text-muted">12 November 2021, 10:54 AM</p>
         </LeadInfoItem>
 
         <LeadInfoItem
-          className="mb-4"
+          className="mb-6"
           label="Lead source"
           icon={UilFileCheckAlt}
         >
-          <p className="mb-0 text-body-secondary">Advertisement</p>
+          <p className="mb-0 text-muted">Advertisement</p>
         </LeadInfoItem>
 
         <LeadInfoItem label="Lead status" icon={UilCheckCircle}>
