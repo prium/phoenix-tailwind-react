@@ -60,7 +60,7 @@ export const orderTrackingTimelineData: TimelineData[] = [
     },
     separator: {
       icon: faCheck,
-      dotClass: 'bg-success dark__bg-success',
+      dotClass: 'bg-success dark:bg-success',
       barClass: 'border-success'
     }
   },
@@ -75,7 +75,7 @@ export const orderTrackingTimelineData: TimelineData[] = [
     },
     separator: {
       icon: faCheck,
-      dotClass: 'bg-success dark__bg-success',
+      dotClass: 'bg-success dark:bg-success',
       barClass: 'border-warning'
     }
   },
@@ -90,7 +90,7 @@ export const orderTrackingTimelineData: TimelineData[] = [
     },
     separator: {
       icon: faTruckRampBox,
-      dotClass: 'bg-warning dark__bg-warning',
+      dotClass: 'bg-warning dark:bg-warning',
       barClass: 'border-dashed'
     }
   },
@@ -105,7 +105,7 @@ export const orderTrackingTimelineData: TimelineData[] = [
     },
     separator: {
       icon: faTruck,
-      dotClass: 'bg-body-quaternary',
+      dotClass: 'bg-emphasis',
       barClass: 'border-dashed'
     }
   },
@@ -120,7 +120,7 @@ export const orderTrackingTimelineData: TimelineData[] = [
     },
     separator: {
       icon: faTruckFast,
-      dotClass: 'bg-body-quaternary'
+      dotClass: 'bg-emphasis'
     }
   }
 ];

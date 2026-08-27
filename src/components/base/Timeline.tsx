@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import { cn } from '@hummingbirdui/react';
 import { HTMLAttributes, PropsWithChildren } from 'react';
 
 interface TimelineProps {
@@ -13,6 +13,7 @@ interface TimelineBarProps
   extends TimelineItemProps,
     HTMLAttributes<HTMLSpanElement> {}
 
+/** Class names follow phoenix-tailwind timeline.css (`.timeline-vertical …`) */
 const Timeline = ({
   children,
   variant,
@@ -20,7 +21,7 @@ const Timeline = ({
 }: PropsWithChildren<TimelineProps>) => {
   return (
     <div
-      className={classNames(className, {
+      className={cn(className, {
         'timeline-basic': variant === 'basic',
         'timeline-vertical': variant === 'vertical'
       })}
@@ -34,9 +35,7 @@ export const TimelineItem = ({
   children,
   className
 }: PropsWithChildren<TimelineItemProps>) => {
-  return (
-    <div className={classNames(className, 'timeline-item')}>{children}</div>
-  );
+  return <div className={cn(className, 'timeline-item')}>{children}</div>;
 };
 
 export const TimelineOppositeContent = ({
@@ -44,7 +43,12 @@ export const TimelineOppositeContent = ({
   className
 }: PropsWithChildren<TimelineItemProps>) => {
   return (
-    <div className={classNames(className, 'order-1 md:order-0 md:me-6')}>
+    <div
+      className={cn(
+        className,
+        'timeline-item-date text-end order-1 md:order-0 md:me-6'
+      )}
+    >
       {children}
     </div>
   );
@@ -55,7 +59,9 @@ export const TimelineContent = ({
   className
 }: PropsWithChildren<TimelineItemProps>) => {
   return (
-    <div className={classNames(className, 'timeline-content')}>{children}</div>
+    <div className={cn(className, 'timeline-item-content ps-10 md:ps-4')}>
+      {children}
+    </div>
   );
 };
 
@@ -64,7 +70,7 @@ export const TimelineSeparator = ({
   className
 }: PropsWithChildren<TimelineItemProps>) => {
   return (
-    <div className={classNames(className, 'timeline-separator')}>
+    <div className={cn(className, 'timeline-item-bar relative me-4 md:me-0')}>
       {children}
     </div>
   );
@@ -75,19 +81,12 @@ export const TimelineDot = ({
   className
 }: PropsWithChildren<TimelineItemProps>) => {
   return (
-    <div className={classNames(className, 'icon-item icon-item-sm')}>
-      {children}
-    </div>
+    <div className={cn(className, 'icon-item icon-item-sm')}>{children}</div>
   );
 };
 
 export const TimelineBar = ({ className, ...rest }: TimelineBarProps) => {
-  return (
-    <span
-      className={classNames(className, 'timeline-bar border-e')}
-      {...rest}
-    />
-  );
+  return <span className={cn(className, 'timeline-bar border-e')} {...rest} />;
 };
 
 Timeline.Item = TimelineItem;
