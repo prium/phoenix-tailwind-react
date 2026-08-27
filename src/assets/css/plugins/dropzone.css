@@ -1,0 +1,202 @@
+/* -------------------------------------------------------------------------- */
+/*                                  Dropzone                                  */
+/* -------------------------------------------------------------------------- */
+
+.dropzone {
+  position: relative;
+  border: 0;
+  border-radius: var(--radius-lg);
+  min-height: auto;
+  &.dropzone-has-default {
+    .dz-message {
+      border-color: transparent;
+      transition: all 0.2s ease-in-out;
+      &:hover {
+        background-color: --alpha(var(--color-black) / 50%);
+      }
+    }
+  }
+  .dz-preview {
+    min-height: auto;
+    margin: 0;
+
+    .dz-complete {
+      .dz-progress {
+        opacity: 0 !important;
+      }
+    }
+  }
+  .dz-remove {
+    position: absolute;
+    right: -6px;
+    top: -6px;
+    color: var(--text-color-soft);
+    z-index: 1000;
+    cursor: pointer;
+    width: 2rem;
+    height: 2rem;
+    line-height: 2rem;
+    * {
+      cursor: pointer;
+    }
+  }
+  .dz-message {
+    position: relative;
+    background-color: var(--background-color-default);
+    padding: 5rem 2rem;
+    margin: 0;
+    border: 2px dashed var(--border-color-light);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    text-align: center;
+  }
+  .dz-upload-btn {
+    display: none;
+  }
+  &.dropzone-single {
+    .dz-preview {
+      &:hover {
+        z-index: unset;
+      }
+    }
+    .dz-message {
+      padding: --spacing(14) --spacing(8);
+      border: 1px dashed var(--border-color-base);
+    }
+    &.dz-max-files-reached.dz-file-processing {
+      .dz-message {
+        padding: 0;
+        border: 0;
+      }
+      .dz-upload-btn {
+        display: block;
+      }
+      .dz-message-text {
+        display: none;
+      }
+      &.dz-file-complete {
+        .dz-default-image {
+          opacity: 0;
+        }
+      }
+    }
+    .dz-processing {
+      .dz-message-text {
+        opacity: 0 !important;
+      }
+    }
+    .dz-progress {
+      opacity: 1;
+      transition: opacity 0.4s ease-in;
+      animation: none !important;
+      width: 9.375rem !important;
+      height: --spacing(2) !important;
+      margin: 0 !important;
+      transform: translateX(-50%) !important;
+      top: auto !important;
+      bottom: --spacing(6) !important;
+    }
+    .dz-processing {
+      .dz-progress {
+        opacity: 1;
+      }
+    }
+    .dz-complete {
+      .dz-progress {
+        opacity: 0 !important;
+      }
+    }
+  }
+  .dz-preview-single {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    &:hover {
+      z-index: auto;
+    }
+    .dz-preview-cover {
+      position: absolute;
+      height: 100%;
+      width: 100%;
+      border: 0 !important;
+      overflow: hidden;
+      .dz-errormessage {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+      }
+    }
+    .dz-preview-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: var(--radius-lg);
+    }
+  }
+
+  &.dropzone-multiple {
+    border: 0;
+    .dz-message {
+      padding: 3rem 2rem;
+      border: 1px dashed var(--border-color-base);
+      border-radius: var(--radius-lg);
+    }
+    .btn * {
+      cursor: pointer;
+    }
+    .media:first-child {
+      margin-top: --spacing(6);
+    }
+    .dz-image-container {
+      padding: 1rem;
+    }
+    .dz-image {
+      height: 2rem;
+      width: 2rem;
+      object-fit: cover;
+      border-radius: 0;
+    }
+    .dz-progress {
+      opacity: 0;
+      position: relative !important;
+      transition: opacity 0.4s ease-in;
+      animation: none !important;
+      width: 6.25rem !important;
+      height: --spacing(2) !important;
+      margin-top: 0;
+      margin-left: --spacing(4) !important;
+      transform: none !important;
+      top: auto !important;
+      left: auto !important;
+    }
+    .dz-complete {
+      .dz-progress {
+        transition-delay: 1s;
+        opacity: 1;
+      }
+    }
+  }
+  &.dz-drag-hover {
+    .dz-message {
+      border-color: var(--color-primary);
+    }
+  }
+  .dz-progress {
+    background: var(--background-color-muted) !important;
+    .dz-upload {
+      background: var(--color-primary) !important;
+    }
+  }
+}
+.dropzone-area {
+  border: 1px dashed var(--border-color-light);
+  border-radius: var(--radius-md);
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}

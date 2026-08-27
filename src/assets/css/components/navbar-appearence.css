@@ -1,0 +1,129 @@
+:root,
+[data-hb-theme='light'] {
+  /* ------------------------------- navbar-top  ------------------------------- */
+  &:not([data-hb-theme='dark']) {
+    [data-navbar-appearance='darker'] {
+      --navbar-top-dropdown-hover-bg: var(--color-gray-900);
+      --navbar-top-dropdown-color: var(--color-gray-400);
+    }
+    [data-navbar-appearance='darker']:not([data-hb-theme='dark']) {
+      .navbar-top-collapse {
+        &.show {
+          --navbar-top-link-color: var(--color-gray-400);
+          --navbar-top-menu-bg-color: var(--color-gray-1000);
+          --navbar-top-border-color: var(--border-color-base);
+          --navbar-top-link-hover-color: var(--color-gray-300);
+          --navbar-top-link-hover-bg: var(--color-gray-950);
+          --navbar-top-link-active-color: var(--color-gray-300);
+        }
+      }
+    }
+  }
+  /* ------------------------------- navbar-vertical light dark ------------------------------- */
+  [data-navbar-appearance='darker'] {
+    --navbar-vertical-border-color: var(--color-gray-900);
+    --navbar-vertical-bg-color: var(--color-gray-950);
+    --navbar-vertical-label-color: var(--color-gray-600);
+    --navbar-vertical-link-color: var(--color-gray-400);
+    --navbar-vertical-link-hover-color: var(--color-gray-100);
+    --navbar-vertical-link-hover-bg: var(--color-gray-900);
+    --navbar-vertical-link-active-color: var(--color-white);
+    --navbar-vertical-link-disable-color: var(--color-gray-500);
+
+    /* ----------- collapsed colors ---------------- */
+    --navbar-vertical-hr-color: var(--color-gray-800);
+    --navbar-vertical-collapsed-menu-bg: var(--color-gray-950);
+    /* ----------- collapsed colors ---------------- */
+    --logo-text: var(--color-gray-100);
+    --navbar-footer-border-color: var(--color-gray-900);
+
+    /* --------------- navbar top --------------------------------- */
+    --navbar-top-bg-color: var(--color-gray-950);
+    .navbar-nav-icons {
+      --nav-link-color: var(--color-gray-500);
+    }
+
+    &.navbar-slim {
+      .navbar-brand span {
+        color: var(--color-gray-300) !important;
+      }
+    }
+    .badge-phoenix-warning {
+      /* TODO: These hex colors should update with css variables */
+      --badge-bg: #262527;
+      --badge-color: var(--color-orange-300);
+      --badge-border-color: #51453a;
+    }
+  }
+
+  &[data-navigation-type='dual'] {
+    &:not([data-hb-theme='dark']) {
+      [data-navbar-appearance='darker'] {
+        --dual-nav-border-color: var(--color-gray-900);
+        /* TODO: These hex colors should update with css variables */
+        --dual-nav-first-layer-bg: #0f111a;
+
+        .search-box {
+          &.search-box-icon {
+            /* TODO: These hex colors should update with css variables */
+            color: #606981;
+          }
+        }
+      }
+    }
+  }
+}
+
+:root {
+  &:not([data-hb-theme='dark']) {
+    [data-navbar-appearance='darker'] {
+      .search-box {
+        .btn-close {
+          background-color: transparent;
+          background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#ffffff'><path d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/></svg>");
+          background-position: center;
+          background-size: 1rem auto;
+          background-repeat: no-repeat;
+        }
+        .search-input {
+          background-color: var(--color-gray-1000);
+          /* TODO: These hex colors should update with css variables */
+          border-color: #373e53;
+        }
+        &.search-box-icon {
+          /* TODO: These hex colors should update with css variables */
+          color: #606981;
+        }
+        .form-control {
+          color: var(--color-gray-600);
+        }
+      }
+    }
+  }
+}
+
+/* ---------- dark mode ---------- */
+[data-hb-theme='dark'] {
+  [data-navbar-appearance='darker'] {
+    --navbar-vertical-bg-color: var(--color-gray-950);
+    --navbar-vertical-label-color: var(--color-gray-600);
+    --navbar-vertical-link-color: var(--color-gray-400);
+    --navbar-vertical-link-hover-color: var(--color-gray-100);
+    --navbar-vertical-link-hover-bg: var(--color-gray-900);
+    --navbar-vertical-link-active-color: var(--color-white);
+    --navbar-vertical-link-disable-color: var(--color-gray-600);
+    /* ----------- collapsed colors ---------------- */
+    --navbar-vertical-collapsed-menu-bg: var(--color-gray-950);
+
+    /* --------------- navbar top --------------------------------- */
+    --navbar-top-bg-color: var(--color-gray-950);
+    /* input */
+    .form-control {
+      color: var(--color-gray-600);
+    }
+    .search-box .search-box-icon {
+      /* TODO: These hex colors should update with css variables */
+      color: #606981;
+    }
+  }
+}

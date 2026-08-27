@@ -1,0 +1,73 @@
+.icon-item {
+  @layer base {
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+  &.icon-item-xs {
+    height: 0.75rem;
+    width: 0.75rem;
+  }
+  width: 2.5rem;
+  &.icon-item-sm {
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+  &.icon-item-md {
+    height: 2.5rem;
+    width: 2.5rem;
+  }
+
+  &.icon-item-lg {
+    height: 2.75rem;
+    width: 2.75rem;
+  }
+}
+
+.icon-nav-item {
+  text-align: center;
+  color: var(--text-color-default);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--text-md);
+  &:not(:first-child) {
+    margin-inline-start: 15px;
+  }
+  &:not(:last-child) {
+    margin-inline-end: 15px;
+  }
+  .icon-container {
+    background: var(--color-primary-subtle);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: --spacing(14.5);
+    height: --spacing(14.5);
+    border-radius: var(--radius-lg);
+  }
+  &:hover {
+    .icon-container {
+      color: var(--background-color-soft);
+      background: var(--color-primary);
+    }
+    .nav-label {
+      color: var(--text-color-muted);
+    }
+  }
+}
+
+.fa-icon-wait {
+  opacity: 0;
+  .fontawesome-i2svg-active & {
+    opacity: 1;
+  }
+}
+
+.feather-icon-wait {
+  opacity: 0;
+  .feather-icons-ready & {
+    opacity: 1;
+  }
+}

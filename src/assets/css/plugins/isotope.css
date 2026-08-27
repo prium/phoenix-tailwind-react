@@ -1,0 +1,55 @@
+/*-----------------------------------------------
+|   Isotope
+-----------------------------------------------*/
+
+.isotope-nav {
+  font-weight: var(--font-weight-bold);
+  font-size: var(--text-base);
+  color: var(--text-color-muted);
+  letter-spacing: 0.02em;
+  border: 1px solid transparent;
+  padding: --spacing(2) --spacing(4);
+  background-color: transparent;
+  &.active {
+    color: var(--color-primary);
+    border: 1px solid var(--color-primary);
+    border-radius: 1.2rem;
+  }
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+.isotope-item {
+  visibility: hidden;
+}
+
+.sortable {
+  .menu {
+    display: flex;
+    flex-wrap: wrap;
+    /* font-family: $font-family-base; */
+    text-transform: uppercase;
+    color: var(--color-black);
+    text-decoration: none;
+    font-weight: var(--font-weight-normal);
+    font-size: var(--text-md);
+    letter-spacing: 0.13rem;
+    .isotope-nav {
+      cursor: pointer;
+      padding: --spacing(1) --spacing(2);
+      margin-bottom: --spacing(2);
+      border: 1px solid transparent;
+      transition: all 0.2s ease-in-out;
+      margin-right: --spacing(1);
+      &:last-child {
+        margin-right: 0;
+      }
+      &.active {
+        border-color: currentColor;
+        color: var(--color-black);
+        border-radius: var(--input-btn-border-radius);
+      }
+    }
+  }
+}

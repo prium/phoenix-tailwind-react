@@ -1,0 +1,25 @@
+/*
+ * App stylesheet entry.
+ * Everything except this file is a verbatim copy of ../phoenix-tailwind/src/css
+ * (see SOURCE.md). Differences from phoenix-tailwind's index.css:
+ *  - `theme(static)` keeps every @theme token in the output so getColor() can
+ *    read chart/map colours at runtime even when no utility uses them.
+ *  - `@hummingbirdui/react` replaces `@hummingbirdui/hummingbird`; it re-exports
+ *    the core CSS and adds the Radix-driven animation utilities the React
+ *    components rely on.
+ */
+@import 'tailwindcss' theme(static);
+@import '@hummingbirdui/react';
+@import '@hummingbirdui/hummingbird/src/plugins/choices.css';
+
+@custom-variant dark (&:where([data-hb-theme=dark], [data-hb-theme=dark] *), [data-hb-theme=dark]);
+@custom-variant active (&:active, &.active);
+
+@import './theme.css';
+@import './root.css';
+@import './helpers/background.css';
+@import './components/component.css';
+@import './plugins/plugins.css';
+
+/* Legacy SCSS is kept for reference only — never scan it for class names. */
+@source not '../scss';

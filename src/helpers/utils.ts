@@ -63,9 +63,19 @@ export const camelCase = (string: string) => {
     .join('');
 };
 
-export const getColor = (name: string) => {
-  const dom = document.documentElement;
-  return getComputedStyle(dom).getPropertyValue(`--phoenix-${name}`).trim();
+/**
+ * Read a design token from the root element, e.g. `getColor('color-primary')`
+ * → value of `--color-primary`. Token names follow phoenix-tailwind's theme.css.
+ */
+export const getColor = (
+  name: string,
+  dom: HTMLElement = document.documentElement
+) => {
+  const value = getComputedStyle(dom).getPropertyValue(`--${name}`).trim();
+  if (import.meta.env.DEV && !value) {
+    console.warn(`[getColor] missing token --${name}`);
+  }
+  return value;
 };
 
 /* get Dates between */

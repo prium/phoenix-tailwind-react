@@ -27,5 +27,5 @@
       "*": ["./src/*"]
     }
   },
-  "include": ["src", "compile-scss.ts"]
+  "include": ["src"]
 }

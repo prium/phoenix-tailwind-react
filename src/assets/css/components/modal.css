@@ -1,0 +1,61 @@
+@utility modal {
+  @layer base {
+    --modal-color: var(--text-color-default);
+    --modal-bg: var(--color-white);
+    --modal-border-color: transparent;
+    --modal-border-radius: var(--radius-md);
+    --modal-inner-border-radius: calc(
+      var(--modal-border-radius) - var(--modal-border-width)
+    );
+    --modal-header-border-color: var(--border-color-base);
+    --modal-footer-border-color: var(--border-color-base);
+    --modal-box-shadow: 0 0.125rem 0.25rem --alpha(var(--color-black) / 7.5%);
+
+    @variant sm {
+      --modal-box-shadow: 0 0.5rem 1rem --alpha(var(--color-black) / 15%);
+    }
+    @variant dark {
+      --modal-bg: var(--color-dark);
+    }
+  }
+}
+
+.modal-backdrop {
+  --backdrop-zindex: 1050;
+  --backdrop-bg: --alpha(var(--color-black) / 50%);
+
+  @apply fixed top-0 left-0 z-(--backdrop-zindex) w-screen h-screen bg-(--backdrop-bg);
+}
+
+@utility modal-content {
+  @apply shadow-(--modal-box-shadow);
+}
+
+@utility modal-header {
+  @layer base {
+    .btn-close {
+      @apply py-[calc(var(--modal-header-padding-y)*0.5)]
+      px-[calc(var(--modal-header-padding-x)*0.5)]
+      mt-[calc(-0.5*var(--modal-header-padding-y))]
+      me-[calc(-0.5*var(--modal-header-padding-x))]
+      mb-[calc(-0.5*var(--modal-header-padding-y))]
+      ms-auto;
+    }
+  }
+}
+
+@utility modal-title {
+  @apply text-lg text-muted;
+}
+
+@utility modal-md {
+  @variant md {
+    --modal-width: 48rem;
+  }
+}
+
+@utility modal-600 {
+  @variant md {
+    --modal-width: 37.5rem;
+  }
+}

@@ -1,0 +1,41 @@
+.mapbox-container {
+  position: relative;
+  overflow: hidden;
+
+  .map {
+    @apply min-h-[36.875rem] sm:min-h-[33.125rem];
+  }
+  .mapbox-control-btn {
+    @apply absolute p-4 bottom-0 ;
+
+    .zoomIn,
+    .zoomOut,
+    .fullScreen {
+      @apply btn btn-phoenix-secondary btn-square size-7.5 border-2;
+    }
+
+    .zoomIn {
+      @apply rounded-bl-none rounded-br-none;
+    }
+
+    .zoomOut {
+      @apply -mt-[2px] rounded-tl-none rounded-tr-none;
+    } 
+  }
+}
+
+.flight-map-control-btn {
+  @apply top-15 right-0 bottom-[unset]! md:top-[unset] md:right-[unset] md:bottom-0!;
+
+  /* top: 60px;
+  right: 0;
+  bottom: unset !important;
+  @include media-breakpoint-up(md) {
+    top: unset;
+    right: unset;
+    bottom: 0 !important;
+  } */
+}
+.mapboxgl-ctrl-logo {
+  display: none !important;
+}

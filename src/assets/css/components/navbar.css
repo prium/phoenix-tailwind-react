@@ -1,0 +1,251 @@
+/* -------------------------------------------------------------------------- */
+/*                                   Navbar                                   */
+/* -------------------------------------------------------------------------- */
+@utility navbar {
+  @layer base {
+    --navbar-padding-x: --spacing(6);
+    --navbar-color: --alpha(var(--text-color-emphasis) / 65%);
+    --navbar-hover-color: --alpha(var(--text-color-emphasis) / 90%);
+    --navbar-disabled-color: --alpha(var(--text-color-emphasis) / 25%);
+    --navbar-active-color: var(--text-color-emphasis);
+    --navbar-brand-padding-y: 0;
+    --navbar-brand-font-size: var(--text-2xl);
+    --navbar-brand-color: var(--text-color-emphasis);
+    --navbar-brand-hover-color: var(--text-color-emphasis);
+
+    .container-fluid {
+      @apply flex items-center justify-between;
+    }
+  }
+}
+@utility navbar-nav {
+  --nav-link-color: var(--navbar-color);
+  --nav-link-hover-color: var(--navbar-hover-color);
+  --nav-link-disabled-color: var(--navbar-disabled-color);
+  --nav-link-active-color: var(--navbar-active-color);
+  --nav-link-font-weight: var(--font-weight-semibold);
+}
+
+.navbar {
+  .container-small {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  .navbar-logo {
+    height: 4rem;
+    display: flex;
+    align-items: center;
+  }
+  .nav-link {
+    outline: none;
+  }
+
+  .dropdown-menu {
+    overflow: visible;
+    inset-inline-start: -0.5625rem;
+    &.navbar-dropdown-caret:after {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      width: 1.5rem;
+      height: 1.5rem;
+      top: -10px;
+      inset-inline-start: --spacing(6);
+      transform: rotate(45deg);
+      background: inherit;
+      border-top-left-radius: 0.25rem;
+      border-width: 1px 0 0 1px;
+      border-style: solid;
+      border-color: var(--border-color-base);
+      box-shadow: var(--shadow-sm);
+    }
+    &.dropdown-menu-end.navbar-dropdown-caret {
+      inset-inline-start: auto;
+      inset-inline-end: -0.5625rem;
+      &:after {
+        inset-inline-end: 0.9rem;
+        inset-inline-start: auto;
+      }
+    }
+  }
+  &.navbar-slim {
+    .dropdown-menu {
+      &.navbar-dropdown-caret:after {
+        width: 1rem;
+        height: 1rem;
+        top: -9px;
+      }
+    }
+  }
+  .dropdown-item {
+    font-weight: var(--font-weight-medium);
+    &:hover,
+    &:focus {
+      background-color: var(--background-color-muted);
+      color: var(--text-color-highlight);
+    }
+  }
+}
+.navbar-toggler-humburger-icon {
+  height: 2.25rem;
+  width: 2.25rem;
+  padding: 0.3125rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  border: 0;
+  margin-inline-end: 0.6125rem;
+  &:hover,
+  &:focus {
+    background-color: var(--background-color-highlight);
+  }
+}
+.navbar-toggle-icon {
+  position: relative;
+  height: 0.125rem;
+  width: 1.125rem;
+  transition: all 0.2s ease-in-out;
+  display: block;
+  top: -0.3125rem;
+  padding-inline-end: 0;
+  .toggle-line {
+    display: block;
+    height: 100%;
+    border-radius: var(--radius-md);
+    transition: all 0.2s ease-in-out;
+    background-color: var(--hamburger-menu-color);
+  }
+  &:after,
+  &:before {
+    content: '';
+    position: absolute;
+    height: 0.125rem;
+    background-color: var(--hamburger-menu-color);
+    inset-inline-start: 0;
+    transition: all 0.2s ease-in-out;
+    border-radius: var(--radius-md);
+    width: 100%;
+  }
+  &:before {
+    top: 0.3125rem;
+  }
+  &:after {
+    top: 0.625rem;
+  }
+}
+.nav-vertical {
+  .nav {
+    .nav-link {
+      padding-inline-start: --spacing(6);
+    }
+  }
+  .nav-link {
+    padding: --spacing(2) !important;
+    border-radius: var(--radius-md);
+    color: var(--text-color-default);
+    font-weight: var(--font-weight-normal);
+    &:visited,
+    &:active,
+    &:focus,
+    &:hover {
+      background-color: var(--background-color-muted);
+      color: var(--nav-vertical-color-global);
+    }
+  }
+  &.doc-nav {
+    .nav-link {
+      &.active {
+        background-color: var(--background-color-muted);
+      }
+    }
+  }
+  &.nav-vertical {
+    .nav-link {
+      @variant xl {
+        padding-inline-start: --spacing(6);
+      }
+    }
+  }
+}
+
+.ecommerce-topbar {
+  .navbar-nav {
+    min-width: 9.75rem;
+    .dropdown-menu {
+      position: absolute;
+    }
+  }
+}
+@utility navbar-responsive-navitems {
+  @layer components {
+    .nav-item {
+      white-space: nowrap;
+      .nav-link {
+        color: var(--text-color-subtle);
+        font-size: var(--text-md);
+        font-weight: var(--font-weight-semibold);
+        padding: 0 15px;
+        &.active,
+        &:hover {
+          color: var(--text-color-emphasis);
+        }
+      }
+      &.dropdown {
+        display: none;
+      }
+    }
+  }
+}
+.navbar-toggler {
+  border-width: 0;
+}
+
+/* TODO: Check the use of it */
+/* .nav-link {
+  &:hover,
+  &:focus {
+    color: var(--nav-link-color);
+  }
+} */
+.navbar-nav {
+  .nav-link {
+    &.show {
+      color: var(--nav-link-color);
+    }
+  }
+}
+
+.navbar-landing {
+  --navbar-color: var(--text-color-highlight);
+  --navbar-hover-color: var(--text-color-highlight);
+  --navbar-active-color: var(--color-primary);
+  .nav-link {
+    padding: --spacing(2) --spacing(4) !important;
+    border-radius: 6px;
+    &:hover {
+      background: var(--background-color-muted);
+    }
+    &.active {
+      color: var(--color-primary);
+      background: var(--background-color-muted);
+    }
+  }
+  &.navbar-home {
+    .nav-link {
+      @variant sm {
+        padding: --spacing(4) --spacing(8) !important;
+      }
+    }
+  }
+}
+
+@utility navbar-toggler-icon {
+  @apply inline-block size-[28.8px] align-middle;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%239da9bb' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M0 6h30M0 14h30M0 22h30'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 100%;
+}

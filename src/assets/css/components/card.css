@@ -1,0 +1,83 @@
+@utility card {
+  @layer base {
+    --card-bg: var(--background-color-soft);
+    --card-color: ;
+    --card-border-color: var(--border-color-light);
+    --card-padding-x: --spacing(6);
+    --card-padding-y: --spacing(6);
+    --card-title-color: var(--text-color-emphasis);
+    --card-title-space-y: --spacing(4);
+    --card-font-size: var(--text-base);
+    --card-cap-padding-x: --spacing(6);
+    --card-cap-padding-y: --spacing(6);
+    --card-title-font-weight: var(--font-weight-extrabold);
+
+    @apply leading-base;
+  }
+}
+
+@utility card-footer {
+  @layer base {
+    @apply border-t border-light;
+  }
+}
+
+@utility card-text {
+  @layer base {
+    @apply text-[length:inherit];
+  }
+}
+
+@utility card-group {
+  @layer base {
+    --card-group-margin: --spacing(4);
+    > .card {
+      margin-bottom: var(--card-group-margin);
+    }
+
+    @variant sm {
+      display: flex;
+      flex-flow: row wrap;
+
+      > .card {
+        flex: 1 0 0;
+        margin-bottom: 0;
+
+        & + .card {
+          margin-left: 0;
+          border-left: 0;
+        }
+
+        &:not(:last-child) {
+          border-start-end-radius: 0;
+          border-end-end-radius: 0;
+
+          > .card-img-top,
+          > .card-header {
+            border-top-right-radius: 0;
+          }
+
+          > .card-img-bottom,
+          > .card-footer {
+            border-bottom-right-radius: 0;
+          }
+        }
+
+        &:not(:first-child) {
+          border-start-start-radius: 0;
+          border-end-start-radius: 0;
+
+          > .card-img-top,
+          > .card-header {
+            border-top-left-radius: 0;
+          }
+
+          > .card-img-bottom,
+          > .card-footer {
+            border-bottom-left-radius: 0;
+          }
+        }
+      }
+    }
+  }
+}

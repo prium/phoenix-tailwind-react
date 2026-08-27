@@ -1,0 +1,176 @@
+:root {
+  --input-btn-font-size: var(--text-md);
+  --input-btn-padding-x: --spacing(4);
+  --input-btn-padding-y: --spacing(2);
+  --input-btn-line-height: 1.49;
+  --input-btn-border-radius: var(--radius-md);
+
+  --input-bg: var(--background-color-soft);
+  --input-color: var(--text-color-default);
+  --input-border-color: var(--border-color-base);
+  --input-disabled-color: var(--text-color-soft);
+  --input-disabled-bg: --alpha(var(--background-color-emphasis) / 30%);
+  --input-hover-border-color: var(--border-color-base);
+  --input-focus-border-color: var(--color-primary);
+  --input-disabled-border-color: var(--border-color-base);
+  --input-box-shadow: inset 0 1px 2px transparent;
+  --input-focus-box-shadow: inset 0 0 0 30px transparent,
+    0 0 0 0.25rem --alpha(var(--color-primary) / 25%);
+  --input-placeholder-color: --alpha(var(--text-color-soft) / 80%);
+
+  --form-valid-border-color: var(--color-success);
+  --form-invalid-border-color: var(--color-danger);
+  --form-feedback-font-size: var(--text-md);
+  --form-feedback-tooltip-padding-y: --spacing(2);
+  --form-feedback-tooltip-padding-x: --spacing(2);
+  --form-valid-focus-box-shadow: inset 0 0 0 30px var(--background-color-soft),
+    0 0 0 0.25rem --alpha(var(--color-success) / 25%);
+  --form-invalid-focus-box-shadow: inset 0 0 0 30px var(--background-color-soft),
+    0 0 0 0.25rem --alpha(var(--color-danger) / 25%);
+
+  --h1-font-size: var(--text-3xl);
+  --h1-line-height: 1;
+  --h2-font-size: var(--text-2xl);
+  --h2-line-height: 1;
+  --h3-font-size: var(--text-xl);
+  --h3-line-height: 1;
+  --h4-font-size: var(--text-lg);
+  --h4-line-height: 1;
+  --h5-font-size: var(--text-base);
+  --h5-line-height: 1;
+  --h6-font-size: var(--text-md);
+  --h6-line-height: 1;
+  --headings-margin-bottom: --spacing(1);
+
+  --scroll-margin-top: 2.5rem;
+  --navbar-top-height: 4rem;
+
+  --logo-text: --alpha(var(--text-color-subtle) / 80%);
+  --hamburger-menu-color: var(--color-gray-600);
+  --nav-vertical-color-global: var(--color-gray-1000);
+  --scrollbar-bg: --alpha(var(--background-color-emphasis) / 55%);
+
+  &[data-navbar-horizontal-shape='slim'] {
+    --navbar-top-height: 1.7rem;
+  }
+  [data-navigation-type='dual'] {
+    --navbar-top-height: 7.25rem;
+  }
+  --navbar-top-menu-margin: 1.5rem;
+  .navbar-slim {
+    --navbar-top-menu-margin: 0.8rem;
+  }
+  [data-navigation-type='dual'] {
+    --navbar-top-menu-margin: 1.3rem;
+  }
+
+  /* Navbar Top */
+  --navbar-top-height: 4rem;
+  --navbar-top-bg-color: var(--background-color-soft);
+  --navbar-top-link-padding-start: 1.125rem;
+  --navbar-top-link-padding-end: 1.5rem;
+  --navbar-top-link-color: var(--text-color-default);
+  --theme-control-toggle-bg: --alpha(var(--color-orange-300) / 24%);
+  --theme-control-toggle-color: var(--color-warning);
+  --theme-control-toggle-hover-bg: var(--color-warning);
+  --theme-control-toggle-hover-color: var(--color-warning-subtle);
+  --navbar-top-dropdown-hover-bg: var(--background-color-subtle);
+  --navbar-top-border-color: var(--color-gray-300);
+  --navbar-top-menu-bg-color: var(--background-color-soft);
+  --navbar-top-link-hover-bg: var(--background-color-subtle);
+  --navbar-top-link-hover-color: var(--text-color-highlight);
+  --navbar-top-dropdown-color: var(--text-color-default);
+  --navbar-top-link-active-color: var(--color-primary);
+  --dual-nav-border-color: var(--color-gray-200);
+  --dual-nav-first-layer-bg: var(--color-gray-100);
+
+  /* Navbar vertical */
+  --content-padding-x: --spacing(10);
+  --content-padding-bottom: 6.375rem;
+  --content-padding-top: calc(var(--navbar-top-height) + 2rem);
+  --footer-height: 4rem;
+  --navbar-vertical-width: 15.875rem;
+  --navbar-vertical-icon-width: 1rem;
+
+  --navbar-vertical-link-font-size: var(--text-md);
+  --navbar-vertical-link-padding-y: 0.35rem;
+
+  --navbar-vertical-dropdown-font-size: 0.8125rem;
+  --navbar-vertical-dropdown-link-padding-x: --spacing(2);
+  --navbar-vertical-dropdown-link-padding-y: --spacing(1);
+
+  --navbar-vertical-footer-height: var(--footer-height);
+  --navbar-footer-border-color: var(--border-color-base);
+  --navbar-vertical-height: calc(100vh - var(--navbar-top-height));
+
+  --navbar-vertical-content-height: calc(
+    100vh - var(--navbar-top-height) - var(--navbar-vertical-footer-height)
+  );
+  --navbar-vertical-content-padding-x: --spacing(2);
+  --navbar-vertical-content-padding-y: --spacing(4);
+  --navbar-vertical-label-font-size: var(--text-sm);
+
+  --navbar-vertical-collapse-width: 4rem;
+  --navbar-vertical-link-collapse-padding-x: 1.5rem;
+  --navbar-vertical-collapse-padding-x: 2.5rem;
+  --navbar-vertical-hover-width: 12.625rem;
+  --navbar-vertical-collapsed-hover-shadow: 0.625rem 0 0.625rem -0.5625rem var(--navbar-vertical-collapsed-hover-shadow-color);
+
+  --navbar-vertical-border-color: var(--border-color-base);
+  --navbar-vertical-bg-color: var(--background-color-soft);
+  --navbar-vertical-label-color: var(--color-gray-600);
+  --navbar-vertical-link-color: var(--color-gray-700);
+  --navbar-vertical-link-hover-color: var(--text-color-muted);
+  --navbar-vertical-link-hover-bg: var(--color-gray-100);
+  --navbar-vertical-link-active-color: var(--color-primary);
+  --navbar-vertical-link-disable-color: var(--color-gray-500);
+
+  --navbar-vertical-collapsed-menu-bg: var(--color-white);
+  --navbar-vertical-hr-color: var(--color-gray-200);
+  --navbar-vertical-dropdown-indicator-color: var(--color-gray-500);
+
+  /* Kanban */
+  --kanban-bg: var(--background-color-muted);
+  --kanban-column-bg: var(--background-color-default);
+  --kanban-ghost-bg: var(--background-color-subtle);
+  --kanban-drag-bg: var(--color-white);
+  --kanban-column-hover-bg: var(--color-white);
+  --kanban-form-select-indicator: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTUwIiBoZWlnaHQ9IjE1MCIgdmlld0JveD0iMCAwIDE1MCAxNTAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CjxwYXRoIGQ9Ik03NS4zNDggMTI3LjE5MkM3Mi40MzgxIDEyNy4xOTIgNjkuODUxNCAxMjYuMjIyIDY3LjkxMTUgMTI0LjI4Mkw1LjgzMjE1IDYyLjIwMjNDMS42Mjg4NyA1OC4zMjIzIDEuNjI4ODcgNTEuNTMyNCA1LjgzMjE1IDQ3LjY1MjVDOS43MTIxMSA0My40NDkyIDE2LjUwMiA0My40NDkyIDIwLjM4MiA0Ny42NTI1TDc1LjM0OCAxMDIuMjk1TDEyOS45OTEgNDcuNjUyNUMxMzMuODcxIDQzLjQ0OTIgMTQwLjY2MSA0My40NDkyIDE0NC41NDEgNDcuNjUyNUMxNDguNzQ0IDUxLjUzMjQgMTQ4Ljc0NCA1OC4zMjIzIDE0NC41NDEgNjIuMjAyM0w4Mi40NjEzIDEyNC4yODJDODAuNTIxMyAxMjYuMjIyIDc3LjkzNDcgMTI3LjE5MiA3NS4zNDggMTI3LjE5MloiIGZpbGw9IiMzMTM3NEEiLz4KPC9zdmc+Cg==');
+
+  @variant dark {
+    --logo-text: var(--text-color-emphasis);
+    --hamburger-menu-color: --alpha(var(--text-color-emphasis) / 65%);
+    --nav-vertical-color-global: var(--color-gray-100);
+    --scrollbar-bg: --alpha(var(--color-gray-900) / 60%);
+
+    /* Navbar Top */
+    --theme-control-toggle-bg: --alpha(var(--color-primary) / 24%);
+    --theme-control-toggle-color: var(--color-primary-light);
+    --theme-control-toggle-hover-bg: --alpha(var(--color-primary) / 70%);
+    --theme-control-toggle-hover-color: var(--color-blue-100);
+    --navbar-top-dropdown-hover-bg: var(--color-gray-900);
+    --navbar-top-border-color: var(--color-gray-900);
+    --navbar-top-dropdown-color: var(--color-gray-400);
+    --dual-nav-border-color: var(--color-gray-900);
+    --dual-nav-first-layer-bg: var(--background-color-default);
+
+    /* Navbar Vertical */
+    --navbar-vertical-border-color: var(--color-gray-900);
+    --navbar-footer-border-color: var(--color-gray-900);
+    --navbar-vertical-link-color: var(--color-gray-400);
+    --navbar-vertical-link-hover-color: var(--color-gray-100);
+    --navbar-vertical-link-hover-bg: var(--color-gray-900);
+    --navbar-vertical-link-active-color: var(--color-white);
+    --navbar-vertical-link-disable-color: var(--color-gray-600);
+    --navbar-vertical-collapsed-menu-bg: var(--background-color-subtle);
+    --navbar-vertical-hr-color: var(--color-gray-800);
+
+    /* Kanban */
+    --kanban-bg: var(--background-color-default);
+    --kanban-column-bg: var(--background-color-soft);
+    --kanban-ghost-bg: var(--background-color-default);
+    --kanban-drag-bg: #1c222c;
+    --kanban-column-hover-bg: #1c222c;
+    --kanban-form-select-indicator: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIiIGhlaWdodD0iMTMiIHZpZXdCb3g9IjAgMCAxMiAxMyIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHBhdGggZD0iTTYgMTAuNTI1MkM1Ljc3NSAxMC41MjUyIDUuNTc1IDEwLjQ1MDIgNS40MjUgMTAuMzAwMkwwLjYyNSA1LjUwMDJDMC4zIDUuMjAwMiAwLjMgNC42NzUyIDAuNjI1IDQuMzc1MkMwLjkyNSA0LjA1MDIgMS40NSA0LjA1MDIgMS43NSA0LjM3NTJMNiA4LjYwMDJMMTAuMjI1IDQuMzc1MkMxMC41MjUgNC4wNTAyIDExLjA1IDQuMDUwMiAxMS4zNSA0LjM3NTJDMTEuNjc1IDQuNjc1MiAxMS42NzUgNS4yMDAyIDExLjM1IDUuNTAwMkw2LjU1IDEwLjMwMDJDNi40IDEwLjQ1MDIgNi4yIDEwLjUyNTIgNiAxMC41MjUyWiIgZmlsbD0iIzhBOTRBRCIvPgo8L3N2Zz4K');
+  }
+}

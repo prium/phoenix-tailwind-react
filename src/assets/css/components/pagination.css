@@ -1,0 +1,43 @@
+@utility pagination {
+  @layer components {
+    --pagination-color: var(--text-color-muted);
+    --pagination-font-size: var(--text-md);
+    --pagination-padding-x: --spacing(3);
+    --pagination-padding-y: --spacing(2);
+    --pagination-width: auto;
+    --pagination-height: auto;
+    --pagination-border-width: 0px;
+    --pagination-border-color: var(--border-color-base);
+    --pagination-hover-bg: var(--background-color-muted);
+    --pagination-hover-color: var(--color-primary);
+    --pagination-focus-color: var(--color-primary-darker);
+    --pagination-box-shadow: 0 0 0 0.25rem --alpha(var(--color-primary) / 25%);
+    --pagination-active-bg: var(--color-blue-500);
+    --pagination-active-color: var(--color-white);
+    --pagination-active-ring-color: var(--color-primary);
+    --pagination-disabled-opacity: 0.35;
+  }
+}
+
+@utility page-item {
+  &.active > .page-link {
+    @apply hover:text-(--pagination-active-color);
+    &:focus {
+      @apply bg-(--pagination-active-bg)
+      text-(--pagination-active-color);
+    }
+  }
+}
+
+@utility page-link {
+  @layer base {
+    @apply font-bold leading-sm border-0
+    transition-shadow duration-300
+    hover:text-(--pagination-hover-color);
+    &:focus {
+      @apply text-(--pagination-focus-color)
+      bg-(--pagination-hover-bg)
+      shadow-(--pagination-box-shadow);
+    }
+  }
+}

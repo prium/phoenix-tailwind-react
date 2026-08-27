@@ -15,6 +15,37 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="/manifest.json" />
+    <script>
+      // Apply persisted theme / direction before first paint to avoid a flash.
+      // Keys mirror the ones AppProvider persists via setItemToStore.
+      (function () {
+        try {
+          var read = function (key) {
+            var raw = localStorage.getItem(key);
+            if (raw === null) return null;
+            try {
+              return JSON.parse(raw);
+            } catch (e) {
+              return raw;
+            }
+          };
+          var theme = read('theme') || 'light';
+          if (theme === 'auto') {
+            theme = window.matchMedia('(prefers-color-scheme: dark)').matches
+              ? 'dark'
+              : 'light';
+          }
+          var html = document.documentElement;
+          html.setAttribute('data-hb-theme', theme);
+          html.setAttribute('dir', read('isRTL') ? 'rtl' : 'ltr');
+          if (read('isNavbarVerticalCollapsed')) {
+            html.classList.add('navbar-vertical-collapsed');
+          }
+        } catch (e) {
+          /* storage unavailable */
+        }
+      })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
     <link

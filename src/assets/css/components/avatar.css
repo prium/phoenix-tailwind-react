@@ -1,0 +1,83 @@
+@utility avatar {
+  @layer base {
+    --avatar-font-weight: var(--font-weight-extrabold);
+    --avatar-color: var(--color-primary-dark);
+    --avatar-bg: var(--color-primary-subtle);
+
+    @variant dark {
+      --avatar-color: var(--color-primary-light);
+    }
+
+    .avatar-name {
+      font-size: calc(var(--avatar-width) / 1.9);
+      > span {
+        @apply font-black leading-none absolute;
+      }
+    }
+    .avatar-placeholder {
+      @apply bg-muted;
+    }
+    &[class*='avatar-status-'] {
+      &::before {
+        @apply end-[14%] bottom-[14%] size-3
+        border-2 border-(--background-color-soft)
+        scale-100 translate-x-[50%] translate-y-[50%];
+      }
+      @variant rtl {
+        &::before {
+          @apply translate-x-[-50%];
+        }
+      }
+    }
+    img {
+      display: block;
+    }
+  }
+}
+
+@utility avatar-group {
+  :where(.avatar) {
+    @apply border-0 w-(--avatar-width)
+    h-(--avatar-height) -ms-2;
+  }
+}
+
+@utility avatar-lg {
+  --avatar-width: --spacing(12);
+  --avatar-height: --spacing(12);
+  --avatar-font-size: var(--text-xl);
+}
+
+@utility avatar-xl {
+  --avatar-width: --spacing(14);
+  --avatar-height: --spacing(14);
+  --avatar-font-size: var(--text-2xl);
+}
+
+@utility avatar-2xl {
+  @layer base {
+    --avatar-width: --spacing(18);
+    --avatar-height: --spacing(18);
+    --avatar-font-size: var(--text-3xl);
+  }
+}
+
+@utility avatar-3xl {
+  @layer base {
+    --avatar-width: --spacing(24);
+    --avatar-height: --spacing(24);
+    --avatar-font-size: var(--text-4xl);
+
+    &[class*='avatar-status-']::before {
+      @apply w-6 h-6 border-3 end-[16%] bottom-[16%];
+    }
+  }
+}
+
+@utility avatar-4xl {
+  @layer base {
+    --avatar-width: --spacing(37.5);
+    --avatar-height: --spacing(37.5);
+    --avatar-font-size: var(--text-6xl);
+  }
+}

@@ -1,0 +1,197 @@
+@utility table {
+  @layer base {
+    --table-bg: transparent;
+    --table-color: var(--text-color-default);
+    --table-cell-padding-x: --spacing(2);
+    --table-cell-padding-y: --spacing(4);
+    --table-head-color: var(--table-color);
+    --table-border-color: var(--border-color-light);
+    --table-font-size: var(--text-base);
+    --table-striped-bg: --alpha(var(--background-color-emphasis) / 20%);
+    --table-striped-color: var(--text-color-highlight);
+    --table-active-bg: --alpha(var(--background-color-emphasis) / 40%);
+    --table-active-color: var(--table-color);
+    --table-hover-bg: --alpha(var(--color-primary-dark) / 7%);
+    --table-hover-color: var(--text-color-emphasis);
+    --table-line-height: var(--leading-base);
+    @apply align-top text-start;
+    > thead {
+      > tr {
+        > th {
+          @apply px-2 py-2.5 leading-none text-start;
+          &:last-child {
+            @apply pe-0;
+          }
+        }
+      }
+    }
+    > tbody {
+      > tr {
+        > td {
+          &:first-child {
+            @apply ps-0;
+          }
+          &:last-child {
+            @apply pe-0;
+          }
+        }
+      }
+    }
+  }
+}
+
+@utility table-sm {
+  @layer components {
+    --table-cell-padding-x: --spacing(1);
+    > thead {
+      > tr {
+        > th {
+          @apply px-1;
+        }
+      }
+    }
+    tbody {
+      td,
+      th {
+        --table-cell-padding-y: --spacing(1);
+      }
+    }
+  }
+}
+
+.table-primary,
+.table-secondary,
+.table-success,
+.table-info,
+.table-warning,
+.table-danger {
+  --table-variant: var(--color-blue-500);
+  --table-bg: color-mix(in srgb, white 80%, var(--table-variant));
+  --table-border-color: color-mix(
+    in srgb,
+    var(--table-bg) 90%,
+    var(--color-black)
+  );
+  --table-striped-bg: color-mix(
+    in srgb,
+    var(--table-bg) 95%,
+    var(--color-black)
+  );
+  --table-active-bg: color-mix(
+    in srgb,
+    var(--table-bg) 90%,
+    var(--color-black)
+  );
+  --table-hover-bg: color-mix(
+    in srgb,
+    var(--table-bg) 92.5%,
+    var(--color-black)
+  );
+  --table-color: var(--color-black);
+  --table-striped-color: var(--color-black);
+  --table-active-color: var(--color-black);
+  --table-hover-color: var(--color-black);
+  @variant dark {
+    --table-bg: color-mix(in srgb, black 80%, var(--table-variant));
+    --table-border-color: color-mix(
+      in srgb,
+      var(--table-variant) 90%,
+      var(--color-white)
+    );
+    --table-striped-bg: color-mix(
+      in srgb,
+      var(--table-variant) 95%,
+      var(--color-white)
+    );
+    --table-active-bg: color-mix(
+      in srgb,
+      var(--table-variant) 90%,
+      var(--color-white)
+    );
+    --table-hover-bg: color-mix(
+      in srgb,
+      var(--table-variant) 92.5%,
+      var(--color-white)
+    );
+    --table-color: var(--color-white);
+    --table-striped-color: var(--color-white);
+    --table-active-color: var(--color-white);
+    --table-hover-color: var(--color-white);
+  }
+}
+
+.table-primary {
+  --table-variant: var(--color-blue-500);
+}
+
+.table-secondary {
+  --table-variant: var(--color-secondary);
+}
+
+.table-success {
+  --table-variant: var(--color-green-500);
+}
+
+.table-info {
+  --table-variant: var(--color-cyan-500);
+}
+
+.table-warning {
+  --table-variant: var(--color-orange-500);
+}
+
+.table-danger {
+  --table-variant: var(--color-red-500);
+}
+
+.table-light {
+  --table-bg: var(--color-gray-100);
+  --table-border-color: color-mix(
+    in srgb,
+    var(--table-bg) 90%,
+    var(--color-black)
+  );
+  --table-striped-bg: color-mix(
+    in srgb,
+    var(--table-bg) 95%,
+    var(--color-black)
+  );
+  --table-active-bg: color-mix(
+    in srgb,
+    var(--table-bg) 90%,
+    var(--color-black)
+  );
+  --table-hover-bg: color-mix(
+    in srgb,
+    var(--table-bg) 92.5%,
+    var(--color-black)
+  );
+  --table-color: var(--color-black);
+  --table-striped-color: var(--color-black);
+  --table-active-color: var(--color-black);
+  --table-hover-color: var(--color-black);
+}
+
+.table-dark {
+  --table-bg: var(--color-gray-1000);
+  --table-border-color: color-mix(
+    in srgb,
+    var(--table-bg) 85%,
+    var(--color-white)
+  );
+  --table-striped-bg: color-mix(
+    in srgb,
+    var(--table-bg) 95%,
+    var(--color-white)
+  );
+  --table-active-bg: color-mix(
+    in srgb,
+    var(--table-bg) 85%,
+    var(--color-white)
+  );
+  --table-hover-bg: color-mix(in srgb, var(--table-bg) 90%, var(--color-white));
+  --table-color: var(--color-white);
+  --table-striped-color: var(--color-white);
+  --table-active-color: var(--color-white);
+  --table-hover-color: var(--color-white);
+}

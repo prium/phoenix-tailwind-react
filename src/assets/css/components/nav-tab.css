@@ -1,0 +1,198 @@
+.nav-tabs {
+  --nav-tabs-border-width: 2px;
+  --nav-link-padding-x: --spacing(2);
+  --nav-link-padding-y: --spacing(2);
+  --nav-link-font-size: var(--text-md);
+  --nav-link-font-weight: var(--font-weight-bold);
+}
+/* .nav-tabs {
+  border-bottom: 0px solid transparent;
+  .nav-link {
+    border: none;
+    padding: 0.5rem 0.5rem;
+    color: var(--color-primary);
+  }
+
+  .nav-link.active,
+  .nav-item.show .nav-link {
+    color: var(--text-color-emphasis);
+    background-color: transparent;
+  }
+} */
+.echart-tab-example {
+  .nav-link {
+    color: var(--text-color-emphasis);
+    &.active {
+      color: var(--color-primary);
+    }
+  }
+}
+.nav-pills {
+  .nav-link {
+    font-weight: var(--font-weight-bold);
+    color: var(--text-color-muted);
+    border: 1px solid transparent;
+    &.active {
+      color: var(--color-primary);
+      border: 1px solid var(--color-primary);
+    }
+    &:hover {
+      color: var(--color-primary);
+    }
+  }
+}
+.nav-phoenix-pills {
+  background: var(--background-color-subtle);
+  border: 1px solid var(--border-color-base);
+  border-radius: 0.5rem;
+  .nav-item {
+    flex: 1;
+    .nav-link {
+      color: var(--text-color-subtle);
+      font-weight: var(--font-weight-semibold);
+      line-height: var(--leading-sm);
+      text-align: center;
+      padding-top: 0.25rem;
+      padding-bottom: 0.25rem;
+      &.active {
+        background: var(--background-color-soft);
+        color: var(--color-primary);
+        border-left: 1px solid var(--border-color-base);
+        border-right: 1px solid var(--border-color-base);
+        border-radius: 0.5rem;
+      }
+    }
+    &:last-child {
+      .nav-link {
+        &.active {
+          border-right: none;
+        }
+      }
+    }
+    &:first-child {
+      .nav-link {
+        &.active {
+          border-left: none;
+        }
+      }
+    }
+  }
+}
+
+.nav-underline {
+  /* .nav-link {
+    color: var(--text-color-default);
+    font-weight: var(--font-weight-bold);
+    font-size: var(--text-md);
+  } */
+  &.file-details-tab {
+    .nav-link {
+      border-color: var(--border-color-light);
+      &.active {
+        border-color: var(--color-primary);
+      }
+    }
+  }
+}
+
+.nav-links {
+  .nav-link {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--text-md);
+    &:hover {
+      span:first-child {
+        text-decoration: underline !important;
+      }
+    }
+    &:focus {
+      color: var(--nav-link-color);
+    }
+    &.active {
+      color: var(--text-color-emphasis);
+    }
+  }
+}
+
+.project-tab {
+  .nav-link {
+    color: var(--text-color-default);
+    &:hover {
+      color: var(--text-color-default);
+    }
+    &.active {
+      color: var(--color-primary);
+    }
+  }
+}
+
+.faq-category-tab {
+  display: flex;
+  justify-content: space-between;
+  position: sticky;
+  top: var(--navbar-top-height);
+  background-color: var(--background-color-default);
+  z-index: 1020;
+  gap: 0;
+  .nav-item {
+    flex: 1;
+  }
+  .nav-link {
+    color: var(--background-color-emphasis);
+    width: 100%;
+    border-width: 3px solid transparent;
+    &:hover {
+      --nav-link-active-border-color: transparent;
+    }
+    &.active {
+      color: var(--color-primary);
+      --nav-link-active-border-color: var(--color-primary);
+      border-bottom: 3px solid var(--color-primary);
+    }
+  }
+}
+.faq-subcategory-tab {
+  --nav-tabs-border-width: 0;
+  .nav-link {
+    border: 1px solid var(--border-color-light);
+    &:hover {
+      border: 1px solid var(--border-color-base);
+    }
+    &.active {
+      border: 1px solid var(--color-primary) !important;
+      .category-icon {
+        color: var(--color-primary) !important;
+      }
+    }
+  }
+}
+.faq-subcategory-content {
+  .empty-header {
+    height: 60px;
+    position: sticky;
+    top: var(--navbar-top-height);
+    background-color: var(--background-color-default);
+  }
+  position: sticky;
+  top: 4rem;
+}
+
+.optionChainTableHeader {
+  &.nav-underline {
+    .nav-link:not(.active) {
+      border-color: var(--border-color-light);
+    }
+  }
+}
+
+.tabDetailsOptionChainTab {
+  .nav-link {
+    font-weight: var(--font-weight-semibold);
+    &.active {
+      color: var(--text-color-emphasis);
+      font-weight: var(--font-weight-bold);
+    }
+    &:hover {
+      color: var(--text-color-emphasis);
+    }
+  }
+}

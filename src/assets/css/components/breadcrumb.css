@@ -1,0 +1,29 @@
+@utility breadcrumb {
+  @layer base {
+    --breadcrumb-font-size: var(--text-md);
+    --breadcrumb-item-active-color: var(--text-color-default);
+    --breadcrumb-item-separator: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='10' width='6' fill='%236e7891' viewBox='0 0 256 480'%3E%3Cpath d='M224.3 273l-136 136c-9.4 9.4-24.6 9.4-33.9 0l-22.6-22.6c-9.4-9.4-9.4-24.6 0-33.9l96.4-96.4-96.4-96.4c-9.4-9.4-9.4-24.6 0-33.9L54.3 103c9.4-9.4 24.6-9.4 33.9 0l136 136c9.5 9.4 9.5 24.6.1 34z'/%3E%3C/svg%3E");
+    --breadcrumb-separator-color: var(--text-color-muted);
+
+    @apply font-bold;
+  }
+}
+
+@utility breadcrumb-item {
+  @layer base {
+    @apply before:leading-none;
+    a {
+      @apply no-underline hover:underline;
+    }
+
+    &.active {
+      @apply gap-0;
+    }
+  }
+}
+
+@utility breadcrumb-sticky-top {
+  @variant xl {
+    @apply sticky top-[calc(var(--navbar-top-height)_+_2rem)];
+  }
+}

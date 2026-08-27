@@ -7,7 +7,7 @@ import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router';
 
 const App = () => {
-  const { isStylesheetLoaded } = useToggleStyle();
+  useToggleStyle();
   const { pathname } = useLocation();
 
   const {
@@ -16,7 +16,7 @@ const App = () => {
   } = useSettingsPanelContext();
 
   const {
-    config: { theme, isRTL }
+    config: { isRTL }
   } = useAppContext();
 
   // Automatically scrolls to top whenever pathname changes
@@ -32,26 +32,11 @@ const App = () => {
 
   return (
     <>
-      {!isStylesheetLoaded ? (
-        <div
-          style={{
-            position: 'fixed',
-            top: 0,
-            right: 0,
-            bottom: 0,
-            left: 0,
-            backgroundColor: theme === 'dark' ? '#000' : '#fff'
-          }}
-        />
-      ) : (
+      <Outlet />
+      {showSettingPanelButton && (
         <>
-          <Outlet />
-          {showSettingPanelButton && (
-            <>
-              <SettingsToggle />
-              <SettingsPanel />
-            </>
-          )}
+          <SettingsToggle />
+          <SettingsPanel />
         </>
       )}
     </>
