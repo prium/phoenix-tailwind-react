@@ -2,8 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'components/base/Button';
 import Section from 'components/base/Section';
 import EcomInvoiceTable from 'components/tables/EcomInvoiceTable';
-import React from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row } from '@hummingbirdui/react';
 import phoenixMart from 'assets/img/logos/phoenix-mart.png';
 import { defaultBreadcrumbItems } from 'data/commonData';
 import PageBreadcrumb from 'components/common/PageBreadcrumb';
@@ -14,22 +13,24 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 const Invoice = () => {
   return (
-    <div className="pt-8 pb-16 bg-soft dark__bg-gray-1200 border-t">
+    <div className="pt-8 pb-16 bg-soft dark:bg-default border-t">
       <Section small className="py-0">
         <PageBreadcrumb items={defaultBreadcrumbItems} />
-        <div className="flex gap-2 justify-between items-end mb-6">
-          <h2 className="mb-0 flex-1">Invoice</h2>
-          <Button variant="phoenix-secondary">
-            <FontAwesomeIcon icon={faDownload} className="sm:me-2" />
-            <span className="hidden sm:inline-block">Download Invoice</span>
-          </Button>
-          <Button variant="phoenix-secondary">
-            <FontAwesomeIcon icon={faPrint} className="sm:me-2" />
-            <span className="hidden sm:inline-block">Print</span>
-          </Button>
+        <div className="flex justify-between items-end mb-6">
+          <h2 className="mb-0">Invoice</h2>
+          <div>
+            <Button variant="phoenix" color="secondary" className="me-2">
+              <FontAwesomeIcon icon={faDownload} className="sm:me-2" />
+              <span className="hidden sm:inline-block">Download Invoice</span>
+            </Button>
+            <Button variant="phoenix" color="secondary">
+              <FontAwesomeIcon icon={faPrint} className="sm:me-2" />
+              <span className="hidden sm:inline-block">Print</span>
+            </Button>
+          </div>
         </div>
 
-        <div className="bg-default dark__bg-gray-1100 p-6 mb-6 rounded-md">
+        <div className="bg-default dark:bg-soft p-6 mb-6 rounded-md">
           <Row className="g-6">
             <Col xs={12} lg={3}>
               <Row className="g-6 lg:g-2">

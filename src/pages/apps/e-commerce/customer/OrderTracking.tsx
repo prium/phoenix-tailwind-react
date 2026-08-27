@@ -8,7 +8,7 @@ import OrderTrackingTimeline from 'components/timelines/OrderTrackingTimeline';
 import { defaultBreadcrumbItems } from 'data/commonData';
 import { orderTrackingTimelineData } from 'data/timelineData';
 import { lazy, Suspense } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row } from '@hummingbirdui/react';
 
 const Mapbox = lazy(() => import('components/base/MapBox'));
 
@@ -17,7 +17,7 @@ const OrderTracking = () => {
     <div className="pt-8 mb-16">
       <Section small className="py-0">
         <PageBreadcrumb items={defaultBreadcrumbItems} />
-        <div className="flex gap-4 flex-wrap justify-between items-end mb-8">
+        <div className="flex flex-wrap justify-between items-end mb-8">
           <div>
             <h2>Order #234 Status</h2>
             <p className="text-muted mb-0">
@@ -29,7 +29,7 @@ const OrderTracking = () => {
               <span className="sm:ms-1">Nov 12, 2021, 8:54AM.</span>
             </p>
           </div>
-          <Button variant="outline-primary">
+          <Button variant="outline" color="primary" className="mt-4">
             <FontAwesomeIcon icon={faPhone} className="me-2" />
             Call Support
           </Button>
@@ -38,7 +38,7 @@ const OrderTracking = () => {
           <Col xs={12} lg={6}>
             <Suspense fallback={<PhoenixLoader />}>
               <Mapbox
-                className="border rounded-lg min-vh-50"
+                className="border rounded-lg overflow-hidden h-full min-h-[50vh]"
                 options={{
                   center: [-74.0020158, 40.7228022],
                   zoom: 15,

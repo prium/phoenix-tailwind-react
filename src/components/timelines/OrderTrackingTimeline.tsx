@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
+import { cn } from '@hummingbirdui/react';
 import Timeline from 'components/base/Timeline';
 import { TimelineData } from 'data/timelineData';
 
@@ -9,8 +9,8 @@ const OrderTrackingTimeline = ({ data }: { data: TimelineData[] }) => {
       {data.map((item, index) => (
         <Timeline.Item key={item.content.title}>
           <div
-            className={classNames('row md:g-4 items-center', {
-              'mb-28 lg:mb-18': index !== data.length - 1
+            className={cn('row md:g-4 items-center', {
+              'mb-14 lg:mb-18': index !== data.length - 1
             })}
           >
             <div className="col-12 md:col-auto flex">
