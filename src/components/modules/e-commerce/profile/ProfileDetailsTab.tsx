@@ -13,7 +13,7 @@ import EcomProfileOrdersTable from 'components/tables/EcomProfileOrdersTable';
 import EcomProfileReviewsTable from 'components/tables/EcomProfileReviewsTable';
 import EcomProfileStoresTable from 'components/tables/EcomProfileStoresTable';
 import EcomWishlistTable from 'components/tables/EcomWishlistTable';
-import { Nav, Tab } from 'react-bootstrap';
+import { Tabs, cn } from '@hummingbirdui/react';
 
 interface TabLink {
   id: string;
@@ -58,45 +58,39 @@ const tabLinks: TabLink[] = [
   }
 ];
 
+/** `#myTabdiv` nav-underline tabs in apps/e-commerce/landing/profile.pug */
 const ProfileDetailsTab = () => {
   return (
-    <Tab.Container defaultActiveKey="orders">
-      <Nav className="mb-4 pb-1 gap-4 nav-underline flex-nowrap scrollbar">
-        {tabLinks.map(item => (
-          <Nav.Item key={item.id}>
-            <Nav.Link eventKey={item.id} className="whitespace-nowrap">
+    <Tabs defaultValue="orders">
+      <div className="scrollbar">
+        <Tabs.List
+          variant="underline"
+          className="text-md flex-nowrap mb-4 pb-1"
+        >
+          {tabLinks.map((item, index) => (
+            <Tabs.Trigger
+              key={item.id}
+              value={item.id}
+              className={cn('whitespace-nowrap', {
+                'me-4': index !== tabLinks.length - 1
+              })}
+            >
               <FontAwesomeIcon icon={item.icon} className="me-2" />
               {item.label}{' '}
               {item.number && (
-                <span className="text-subtle font-normal">
-                  ({item.number})
-                </span>
+                <span className="text-subtle font-normal">({item.number})</span>
               )}
-            </Nav.Link>
-          </Nav.Item>
-        ))}
-      </Nav>
+            </Tabs.Trigger>
+          ))}
+        </Tabs.List>
+      </div>
 
-      <Tab.Content>
-        {tabLinks.map(item => (
-          <Tab.Pane
-            key={item.id}
-            eventKey={item.id}
-            // title={
-            //   <>
-            //     <FontAwesomeIcon icon={item.icon} className="me-2" />
-            //     {item.label}{' '}
-            //     {item.number && (
-            //       <span className="text-subtle font-normal">({item.number})</span>
-            //     )}
-            //   </>
-            // }
-          >
-            {item.content}
-          </Tab.Pane>
-        ))}
-      </Tab.Content>
-    </Tab.Container>
+      {tabLinks.map(item => (
+        <Tabs.Content key={item.id} value={item.id}>
+          {item.content}
+        </Tabs.Content>
+      ))}
+    </Tabs>
   );
 };
 

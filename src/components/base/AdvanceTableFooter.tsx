@@ -57,11 +57,12 @@ const AdvanceTableFooter = ({
   const [isAllVisible, setIsAllVisible] = useState(false);
 
   const pageButton = (
+    key: React.Key,
     label: React.ReactNode,
     onClick: () => void,
     { active = false, disabled = false, className: linkClass = '' } = {}
   ) => (
-    <Pagination.Item active={active} disabled={disabled}>
+    <Pagination.Item key={key} active={active} disabled={disabled}>
       <Pagination.Link asChild className={linkClass}>
         <button type="button" onClick={onClick} disabled={disabled}>
           {label}
@@ -70,8 +71,8 @@ const AdvanceTableFooter = ({
     </Pagination.Item>
   );
 
-  const ellipsis = (
-    <Pagination.Item disabled>
+  const ellipsis = (key: React.Key) => (
+    <Pagination.Item key={key} disabled>
       <Pagination.Link asChild>
         <span>…</span>
       </Pagination.Link>
@@ -143,6 +144,7 @@ const AdvanceTableFooter = ({
           <Pagination className="mb-0">
             <Pagination.Content className="justify-center items-center">
               {pageButton(
+                'prev',
                 <FontAwesomeIcon icon={faChevronLeft} />,
                 () => setPageIndex(pageIndex - 1),
                 { disabled: !getCanPreviousPage() }
@@ -150,23 +152,24 @@ const AdvanceTableFooter = ({
 
               {hasPrevEllipsis && (
                 <>
-                  {pageButton(1, () => setPageIndex(0), {
+                  {pageButton('first', 1, () => setPageIndex(0), {
                     active: pageIndex === 0
                   })}
-                  {ellipsis}
+                  {ellipsis('prev-ellipsis')}
                 </>
               )}
 
               {visiblePaginationItems.map(page =>
-                pageButton(page, () => setPageIndex(page - 1), {
+                pageButton(page, page, () => setPageIndex(page - 1), {
                   active: pageIndex === page - 1
                 })
               )}
 
               {hasNextEllipsis && (
                 <>
-                  {ellipsis}
+                  {ellipsis('next-ellipsis')}
                   {pageButton(
+                    'last',
                     getPageCount(),
                     () => setPageIndex(getPageCount() - 1),
                     { active: pageIndex === getPageCount() - 1 }
@@ -175,6 +178,7 @@ const AdvanceTableFooter = ({
               )}
 
               {pageButton(
+                'next',
                 <FontAwesomeIcon icon={faChevronRight} />,
                 () => setPageIndex(pageIndex + 1),
                 {

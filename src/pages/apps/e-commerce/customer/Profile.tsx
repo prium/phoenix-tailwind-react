@@ -7,7 +7,7 @@ import EcomProfileCard from 'components/cards/EcomProfileCard';
 import PageBreadcrumb from 'components/common/PageBreadcrumb';
 import ProfileDetailsTab from 'components/modules/e-commerce/profile/ProfileDetailsTab';
 import { defaultBreadcrumbItems } from 'data/commonData';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row } from '@hummingbirdui/react';
 
 const Profile = () => {
   return (
@@ -20,13 +20,15 @@ const Profile = () => {
           </Col>
           <Col xs="auto" className="flex flex-wrap gap-2 sm:gap-4">
             <Button
-              variant="phoenix-danger"
+              variant="phoenix"
+              color="danger"
               startIcon={<FontAwesomeIcon className="me-2" icon={faTrashAlt} />}
             >
               Delete customer
             </Button>
             <Button
-              variant="phoenix-secondary"
+              variant="phoenix"
+              color="secondary"
               startIcon={<FontAwesomeIcon className="me-2" icon={faKey} />}
             >
               Reset password

@@ -1,7 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AvatarUpload from 'components/common/AvatarUpload';
-import React from 'react';
-import { Card, Col, Row } from 'react-bootstrap';
+import { Card, Col, Row } from '@hummingbirdui/react';
 import team15 from 'assets/img/team/15.webp';
 import {
   faFacebook,
@@ -25,19 +24,19 @@ const EcomProfileCard = () => {
                 <a href="#!" className="me-2">
                   <FontAwesomeIcon
                     icon={faLinkedin}
-                    className="text-soft text-opacity-75 text-primary-hover"
+                    className="text-soft/75 hover:text-primary"
                   />
                 </a>
                 <a href="#!" className="me-2">
                   <FontAwesomeIcon
                     icon={faFacebook}
-                    className="text-soft text-opacity-75 text-primary-hover"
+                    className="text-soft/75 hover:text-primary"
                   />
                 </a>
                 <a href="#!">
                   <FontAwesomeIcon
                     icon={faTwitter}
-                    className="text-soft text-opacity-75 text-primary-hover"
+                    className="text-soft/75 hover:text-primary"
                   />
                 </a>
               </div>
