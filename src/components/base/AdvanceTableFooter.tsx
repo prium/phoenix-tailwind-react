@@ -1,9 +1,8 @@
 import { useState } from 'react';
-import { Col, Pagination, Row } from 'react-bootstrap';
+import { Col, Pagination, Row, cn } from '@hummingbirdui/react';
 import Button from './Button';
 import { useAdvanceTableContext } from 'providers/AdvanceTableProvider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
 import usePagination from 'hooks/usePagination';
 import {
   faAngleRight,
@@ -57,26 +56,52 @@ const AdvanceTableFooter = ({
 
   const [isAllVisible, setIsAllVisible] = useState(false);
 
+  const pageButton = (
+    label: React.ReactNode,
+    onClick: () => void,
+    { active = false, disabled = false, className: linkClass = '' } = {}
+  ) => (
+    <Pagination.Item active={active} disabled={disabled}>
+      <Pagination.Link asChild className={linkClass}>
+        <button type="button" onClick={onClick} disabled={disabled}>
+          {label}
+        </button>
+      </Pagination.Link>
+    </Pagination.Item>
+  );
+
+  const ellipsis = (
+    <Pagination.Item disabled>
+      <Pagination.Link asChild>
+        <span>…</span>
+      </Pagination.Link>
+    </Pagination.Item>
+  );
+
   return (
-    <Row className={classNames(className, 'align-items-center py-1')}>
-      <Col className="d-flex fs-9">
+    <Row className={cn(className, 'items-center py-1')}>
+      <Col className="flex text-md">
         <p
-          className={classNames(
+          className={cn(
             tableInfo,
-            'mb-0 d-none d-sm-block me-3 fw-semibold text-body'
+            'mb-0 hidden sm:block me-4 font-semibold text-default'
           )}
         >
           {pageSize * pageIndex + 1} to{' '}
           {pageSize * pageIndex + getPaginationRowModel().rows.length}
-          <span className="text-body-tertiary"> items of </span>
+          <span className="text-subtle"> items of </span>
           {getPrePaginationRowModel().rows.length}
         </p>
         {showViewAllBtn && (
           <Button
             variant="link"
-            className={classNames(viewAllBtnClass, 'p-0 fw-semibold')}
+            className={cn(viewAllBtnClass, 'p-0 font-semibold')}
             endIcon={
-              <FontAwesomeIcon icon={faAngleRight} className="ms-1 fs-9" />
+              <FontAwesomeIcon
+                icon={faAngleRight}
+                className="ms-1 text-md"
+                transform="down-1"
+              />
             }
             onClick={() => {
               setIsAllVisible(!isAllVisible);
@@ -90,30 +115,24 @@ const AdvanceTableFooter = ({
         )}
       </Col>
       {navBtn && (
-        <Col xs="auto" className="d-flex gap-2">
+        <Col xs="auto" className="flex">
           <Button
             variant="link"
             startIcon={
               <FontAwesomeIcon icon={faChevronLeft} className="me-2" />
             }
-            className={classNames('px-1', {
-              disabled: !getCanPreviousPage()
-            })}
-            onClick={() => {
-              previousPage();
-            }}
+            className="px-1 me-1"
+            disabled={!getCanPreviousPage()}
+            onClick={() => previousPage()}
           >
             Previous
           </Button>
           <Button
             variant="link"
             endIcon={<FontAwesomeIcon icon={faChevronRight} className="ms-2" />}
-            className={classNames('px-1', {
-              disabled: !getCanNextPage()
-            })}
-            onClick={() => {
-              nextPage();
-            }}
+            className="px-1 ms-1"
+            disabled={!getCanNextPage()}
+            onClick={() => nextPage()}
           >
             Next
           </Button>
@@ -121,54 +140,49 @@ const AdvanceTableFooter = ({
       )}
       {pagination && (
         <Col xs="auto">
-          <Pagination className="mb-0 justify-content-center align-items-center">
-            <Pagination.Prev
-              disabled={!getCanPreviousPage()}
-              onClick={() => setPageIndex(pageIndex - 1)}
-            >
-              <FontAwesomeIcon icon={faChevronLeft} />
-            </Pagination.Prev>
+          <Pagination className="mb-0">
+            <Pagination.Content className="justify-center items-center">
+              {pageButton(
+                <FontAwesomeIcon icon={faChevronLeft} />,
+                () => setPageIndex(pageIndex - 1),
+                { disabled: !getCanPreviousPage() }
+              )}
 
-            {hasPrevEllipsis && (
-              <>
-                <Pagination.Item
-                  active={pageIndex === 0}
-                  onClick={() => setPageIndex(0)}
-                >
-                  1
-                </Pagination.Item>
-                <Pagination.Ellipsis disabled />
-              </>
-            )}
+              {hasPrevEllipsis && (
+                <>
+                  {pageButton(1, () => setPageIndex(0), {
+                    active: pageIndex === 0
+                  })}
+                  {ellipsis}
+                </>
+              )}
 
-            {visiblePaginationItems.map(page => (
-              <Pagination.Item
-                key={page}
-                active={pageIndex === page - 1}
-                onClick={() => setPageIndex(page - 1)}
-              >
-                {page}
-              </Pagination.Item>
-            ))}
+              {visiblePaginationItems.map(page =>
+                pageButton(page, () => setPageIndex(page - 1), {
+                  active: pageIndex === page - 1
+                })
+              )}
 
-            {hasNextEllipsis && (
-              <>
-                <Pagination.Ellipsis disabled />
-                <Pagination.Item
-                  active={pageIndex === getPageCount() - 1}
-                  onClick={() => setPageIndex(getPageCount() - 1)}
-                >
-                  {getPageCount()}
-                </Pagination.Item>
-              </>
-            )}
-            <Pagination.Next
-              disabled={!getCanNextPage()}
-              onClick={() => setPageIndex(pageIndex + 1)}
-              linkClassName={nextPageLinkClassName}
-            >
-              <FontAwesomeIcon icon={faChevronRight} />
-            </Pagination.Next>
+              {hasNextEllipsis && (
+                <>
+                  {ellipsis}
+                  {pageButton(
+                    getPageCount(),
+                    () => setPageIndex(getPageCount() - 1),
+                    { active: pageIndex === getPageCount() - 1 }
+                  )}
+                </>
+              )}
+
+              {pageButton(
+                <FontAwesomeIcon icon={faChevronRight} />,
+                () => setPageIndex(pageIndex + 1),
+                {
+                  disabled: !getCanNextPage(),
+                  className: nextPageLinkClassName
+                }
+              )}
+            </Pagination.Content>
           </Pagination>
         </Col>
       )}

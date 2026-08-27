@@ -31,7 +31,7 @@ const selectionColumn = {
   accessorKey: '',
   header: ({ table }: any) => (
     <IndeterminateCheckbox
-      className="form-check fs-8 mb-0"
+      className="text-base"
       {...{
         checked: table.getIsAllRowsSelected(),
         indeterminate: table.getIsSomeRowsSelected(),
@@ -41,7 +41,7 @@ const selectionColumn = {
   ),
   cell: ({ row }: any) => (
     <IndeterminateCheckbox
-      className="form-check fs-8 mb-0"
+      className="text-base"
       {...{
         checked: row.getIsSelected(),
         disabled: !row.getCanSelect(),
@@ -51,7 +51,11 @@ const selectionColumn = {
     />
   ),
   meta: {
-    headerProps: { style: { width: '30px' } }
+    headerProps: {
+      style: { width: '30px' },
+      className: 'whitespace-nowrap text-md ps-0 py-3.5'
+    },
+    cellProps: { className: 'text-md ps-0' }
   }
 };
 

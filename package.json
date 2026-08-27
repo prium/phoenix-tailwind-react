@@ -35,6 +35,7 @@
     "@vitejs/plugin-react": "^4.5.2",
     "chart.js": "^4.5.1",
     "chokidar": "^4.0.3",
+    "class-variance-authority": "^0.7.1",
     "classnames": "^2.5.1",
     "dayjs": "^1.11.19",
     "dhtmlx-gantt": "^9.1.0",
@@ -94,7 +95,8 @@
     "predeploy": "npm run build && cp ./dist/index.html ./dist/404.html",
     "predeploy:alt": "npm run build && cp ./dist/index.html ./dist/404.html",
     "deploy": "echo https://phoenix-react.prium.me > ./dist/CNAME && gh-pages -d dist",
-    "deploy:alt": "echo phoenix-react-alt.prium.me > ./dist/CNAME && gh-pages -d dist -r git@github.com:prium/phoenix-react-alt.git"
+    "deploy:alt": "echo phoenix-react-alt.prium.me > ./dist/CNAME && gh-pages -d dist -r git@github.com:prium/phoenix-react-alt.git",
+    "convert:tw": "node tools/bs2tw/converter.mjs"
   },
   "browserslist": {
     "production": [

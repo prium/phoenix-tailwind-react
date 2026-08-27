@@ -1,9 +1,9 @@
-import classNames from 'classnames';
 import { PropsWithChildren } from 'react';
-import { Dropdown } from 'react-bootstrap';
+import { Dropdown, cn } from '@hummingbirdui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
+import Button from './Button';
 
 interface BasicDropdownProps {
   className?: string;
@@ -19,26 +19,28 @@ const BasicDropdown = ({
   dropdownMenuClassName,
   icon = faEllipsis
 }: PropsWithChildren<BasicDropdownProps>) => {
-  return (
-    <Dropdown className={classNames(className)} align="end">
-      <Dropdown.Toggle
-        variant="phoenix-secondary"
-        size="sm"
-        className={classNames(
-          btnClassName,
-          'bg-body-emphasis bg-body-hover dropdown-caret-none'
-        )}
-      >
-        <FontAwesomeIcon icon={icon} className="fs-10" />
-      </Dropdown.Toggle>
-      <Dropdown.Menu
-        align="end"
-        className={classNames(dropdownMenuClassName, '')}
-      >
+  const dropdown = (
+    <Dropdown>
+      <Dropdown.Trigger asChild>
+        <Button
+          variant="phoenix"
+          color="secondary"
+          size="sm"
+          className={cn(
+            'bg-soft hover:bg-default dropdown-caret-none',
+            btnClassName
+          )}
+        >
+          <FontAwesomeIcon icon={icon} className="text-sm" />
+        </Button>
+      </Dropdown.Trigger>
+      <Dropdown.Content align="end" className={dropdownMenuClassName}>
         {children}
-      </Dropdown.Menu>
+      </Dropdown.Content>
     </Dropdown>
   );
+
+  return className ? <div className={className}>{dropdown}</div> : dropdown;
 };
 
 export default BasicDropdown;

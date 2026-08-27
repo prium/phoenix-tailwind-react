@@ -1,6 +1,5 @@
-import classNames from 'classnames';
 import { HTMLAttributes, PropsWithChildren } from 'react';
-import { Dropdown } from 'react-bootstrap';
+import { Dropdown, cn } from '@hummingbirdui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
@@ -15,17 +14,16 @@ interface RevealDropdownProps {
   icon?: IconProp;
 }
 
+/** Hover target: `.btn-reveal-trigger:hover .btn-reveal` gets its border/bg. */
 export const RevealDropdownTrigger = ({
   children,
   className,
   ...rest
-}: PropsWithChildren<RevealDropdownTriggerProps>) => {
-  return (
-    <div className={classNames('btn-reveal-trigger', className)} {...rest}>
-      {children}
-    </div>
-  );
-};
+}: PropsWithChildren<RevealDropdownTriggerProps>) => (
+  <div className={cn('btn-reveal-trigger', className)} {...rest}>
+    {children}
+  </div>
+);
 
 const RevealDropdown = ({
   children,
@@ -34,26 +32,26 @@ const RevealDropdown = ({
   dropdownMenuClassName,
   icon = faEllipsis
 }: PropsWithChildren<RevealDropdownProps>) => {
-  return (
-    <Dropdown className={classNames(className)} align="end">
-      <Dropdown.Toggle
-        variant=""
-        size="sm"
-        className={classNames(
-          btnClassName,
-          'btn-reveal dropdown-caret-none transition-none'
-        )}
-      >
-        <FontAwesomeIcon icon={icon} className="fs-10" />
-      </Dropdown.Toggle>
-      <Dropdown.Menu
-        align="end"
-        className={classNames(dropdownMenuClassName, 'py-2')}
-      >
+  const dropdown = (
+    <Dropdown>
+      <Dropdown.Trigger asChild>
+        <button
+          type="button"
+          className={cn(
+            'btn btn-sm transition-none btn-reveal dropdown-caret-none',
+            btnClassName
+          )}
+        >
+          <FontAwesomeIcon icon={icon} className="text-sm" />
+        </button>
+      </Dropdown.Trigger>
+      <Dropdown.Content align="end" className={cn('py-2', dropdownMenuClassName)}>
         {children}
-      </Dropdown.Menu>
+      </Dropdown.Content>
     </Dropdown>
   );
+
+  return className ? <div className={className}>{dropdown}</div> : dropdown;
 };
 
 export default RevealDropdown;

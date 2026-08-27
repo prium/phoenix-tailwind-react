@@ -1,31 +1,27 @@
-import classNames from 'classnames';
-import React, { HTMLProps } from 'react';
-import { Form } from 'react-bootstrap';
-import { FormCheckInputProps } from 'react-bootstrap/esm/FormCheckInput';
+import { Checkbox, cn } from '@hummingbirdui/react';
 
-interface IndeterminateCheckboxProps extends FormCheckInputProps {
+export interface IndeterminateCheckboxProps
+  extends Omit<Checkbox.Props, 'indeterminate' | 'label'> {
   indeterminate?: boolean;
+  /** Classes for the `.form-check` wrapper. */
+  className?: string;
+  /** Classes for the `<input>` itself. */
+  inputClassName?: string;
 }
 
 const IndeterminateCheckbox = ({
   indeterminate,
   className,
+  inputClassName,
   ...rest
-}: IndeterminateCheckboxProps & HTMLProps<HTMLInputElement>) => {
-  const ref = React.useRef<HTMLInputElement>(null);
+}: IndeterminateCheckboxProps) => (
+  <div className={cn('form-check mb-0', className)}>
+    <Checkbox
+      indeterminate={!rest.checked && !!indeterminate}
+      className={inputClassName}
+      {...rest}
+    />
+  </div>
+);
 
-  React.useEffect(() => {
-    if (typeof indeterminate === 'boolean') {
-      if (ref.current) {
-        ref.current.indeterminate = !rest.checked && indeterminate;
-      }
-    }
-  }, [ref, indeterminate]);
-
-  return (
-    <Form.Check type="checkbox" className={classNames(className)}>
-      <Form.Check.Input type="checkbox" ref={ref} {...rest} />
-    </Form.Check>
-  );
-};
 export default IndeterminateCheckbox;
