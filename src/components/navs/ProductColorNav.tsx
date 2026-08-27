@@ -117,7 +117,7 @@ const ProductColorNavItem = ({
     <Nav.Item className="">
       <Nav.Link
         eventKey={item.id}
-        className={classNames('border rounded-1 p-0', {
+        className={classNames('border sm:rounded-md p-0', {
           'border-primary': isActive
         })}
       >

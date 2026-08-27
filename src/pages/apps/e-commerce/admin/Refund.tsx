@@ -12,20 +12,20 @@ const Refund = () => {
   return (
     <div>
       <PageBreadcrumb items={defaultBreadcrumbItems} />
-      <div className="mb-9">
-        <h2 className="mb-3">Refund</h2>
-        <div className="d-flex flex-wrap align-items-center mb-4 gap-3">
-          <p className="text-body-secondary lh-sm mb-0">
+      <div className="mb-16">
+        <h2 className="mb-4">Refund</h2>
+        <div className="flex flex-wrap items-center mb-6 gap-4">
+          <p className="text-muted leading-sm mb-0">
             Order :{' '}
-            <Link className="fw-bold" to="#!">
+            <Link className="font-bold" to="#!">
               {' '}
               #349
             </Link>
           </p>
-          <div className="flex-1 d-flex flex-between-center gap-3">
-            <p className="text-body-secondary lh-sm mb-0 flex-1 white-space-nowrap">
+          <div className="flex-1 flex flex-between-center gap-4">
+            <p className="text-muted leading-sm mb-0 flex-1 whitespace-nowrap">
               Customer Id :{' '}
-              <Link className="fw-bold" to="#!">
+              <Link className="font-bold" to="#!">
                 {' '}
                 2364847
               </Link>
@@ -33,7 +33,7 @@ const Refund = () => {
             <Dropdown>
               <Dropdown.Toggle
                 variant=""
-                className="p-0 dropdown-caret-none text-decoration-none"
+                className="p-0 dropdown-caret-none no-underline"
               >
                 More action
                 <FontAwesomeIcon icon={faChevronDown} className="ms-2" />
@@ -46,23 +46,23 @@ const Refund = () => {
             </Dropdown>
           </div>
         </div>
-        <Row className="g-5 gy-7">
+        <Row className="g-8 gy-12">
           <Col xs={12} xl={8} xxl={9}>
             <OrderDetailsTable />
           </Col>
           <Col xs={12} xl={4} xxl={3}>
-            <OrderDetailsSummaryCard className="mb-4" />
+            <OrderDetailsSummaryCard className="mb-6" />
             <Card>
               <Card.Body>
-                <Card.Title as="h4" className="mb-4">
+                <Card.Title as="h4" className="mb-6">
                   Refund Amount
                 </Card.Title>
                 <Form.Control
                   type="number"
                   placeholder="Amount"
-                  className="mb-4 input-spin-none"
+                  className="mb-6 input-spin-none"
                 />
-                <Button variant="primary" className="w-100">
+                <Button variant="primary" className="w-full">
                   Refund $500
                 </Button>
               </Card.Body>

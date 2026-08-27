@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 const EcomWhopingBanner = () => {
   return (
-    <div className="whooping-banner w-100 rounded-3 overflow-hidden">
+    <div className="whooping-banner w-full rounded-lg overflow-hidden">
       <div
         className="bg-holder product-bg"
         style={{
@@ -20,22 +20,20 @@ const EcomWhopingBanner = () => {
         }}
       />
 
-      <div className="position-relative">
-        <div className="banner-text" data-bs-theme="light">
-          <h2 className="text-warning-light fw-bolder fs-lg-3 fs-xxl-2">
+      <div className="banner-text relative">
+          <h2 className="text-orange-300 font-extrabold lg:text-4xl 2xl:text-5xl">
             Whooping <span className="gradient-text">60%</span> Off
           </h2>
-          <h3 className="fw-bolder fs-lg-5 fs-xxl-3 text-white">
+          <h3 className="font-extrabold lg:text-2xl 2xl:text-4xl text-white">
             on everyday items
           </h3>
         </div>
         <Link
           to="#!"
-          className="btn btn-lg btn-primary rounded-pill banner-button"
+          className="btn btn-lg btn-primary rounded-full banner-button relative"
         >
           Shop Now
         </Link>
-      </div>
     </div>
   );
 };

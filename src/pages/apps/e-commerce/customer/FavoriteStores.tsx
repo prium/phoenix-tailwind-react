@@ -8,16 +8,16 @@ import { Col, Row } from 'react-bootstrap';
 
 const FavoriteStores = () => {
   return (
-    <div className="pt-5 mb-9">
+    <div className="pt-8 mb-16">
       <Section small className="py-0">
         <PageBreadcrumb items={defaultBreadcrumbItems} />
-        <div className="mb-5">
+        <div className="mb-8">
           <h2>My Favorite Stores</h2>
-          <p className="mb-0 text-body-tertiary fw-semibold">
+          <p className="mb-0 text-subtle font-semibold">
             Essential for a better life
           </p>
         </div>
-        <Row className="gx-3 gy-5">
+        <Row className="gx-4 gy-8">
           {stores.map(store => (
             <Col key={store.name} xs={6} sm={4} md={3} lg={2}>
               <StoreItem store={store} />

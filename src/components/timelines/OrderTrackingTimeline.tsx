@@ -9,23 +9,23 @@ const OrderTrackingTimeline = ({ data }: { data: TimelineData[] }) => {
       {data.map((item, index) => (
         <Timeline.Item key={item.content.title}>
           <div
-            className={classNames('row g-md-3 align-items-center', {
-              'mb-8 mb-lg-10': index !== data.length - 1
+            className={classNames('row md:g-4 items-center', {
+              'mb-28 lg:mb-18': index !== data.length - 1
             })}
           >
-            <div className="col-12 col-md-auto d-flex">
+            <div className="col-12 md:col-auto flex">
               <Timeline.OppositeContent>
-                <p className="fs-10 fw-semibold text-body-tertiary mb-0 text-end">
+                <p className="text-sm font-semibold text-subtle mb-0 text-end">
                   {item.oppositeContent.date}
-                  <br className="d-none d-md-block" />{' '}
+                  <br className="hidden md:block" />{' '}
                   {item.oppositeContent.time}
                 </p>
               </Timeline.OppositeContent>
-              <Timeline.Separator className="position-relative">
+              <Timeline.Separator className="relative">
                 <Timeline.Dot className={item.separator.dotClass}>
                   <FontAwesomeIcon
                     icon={item.separator.icon}
-                    className="text-white fs-10"
+                    className="text-white text-sm"
                   />
                 </Timeline.Dot>
                 {item.separator.barClass && (
@@ -39,7 +39,7 @@ const OrderTrackingTimeline = ({ data }: { data: TimelineData[] }) => {
             <div className="col">
               <Timeline.Content>
                 <h4>{item.content.title}</h4>
-                <p className="fs-9 text-body-secondary mb-0">
+                <p className="text-md text-muted mb-0">
                   {item.content.subtitle}
                 </p>
               </Timeline.Content>

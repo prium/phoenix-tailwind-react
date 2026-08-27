@@ -83,7 +83,7 @@ const categories: Category[] = [
 
 const EcomCategoryNavs = () => {
   return (
-    <div className="d-flex justify-content-between">
+    <div className="flex justify-between">
       {categories.map(category => (
         <EcomCategoryNavItem key={category.label} category={category} />
       ))}
@@ -93,7 +93,7 @@ const EcomCategoryNavs = () => {
 
 const EcomCategoryNavItem = ({ category }: { category: Category }) => {
   return (
-    <Link to={category.url} className="icon-nav-item mb-3">
+    <Link to={category.url} className="icon-nav-item mb-4">
       <div className={classNames(category.bgClass, 'icon-container mb-2')}>
         {category.icon}
       </div>

@@ -6,13 +6,13 @@ import { Col, Form, Row } from 'react-bootstrap';
 const EcomProfilePersonalInfo = () => {
   return (
     <form>
-      <Row className="gx-3 gy-4 mb-5">
+      <Row className="gx-4 gy-6 mb-8">
         <Col xs={12} lg={6}>
-          <h5 className="text-body-highlight mb-2">Full name</h5>
+          <h5 className="text-highlight mb-2">Full name</h5>
           <Form.Control type="text" placeholder="Full name" />
         </Col>
         <Col xs={12} lg={6}>
-          <h5 className="text-body-highlight mb-2">Gender</h5>
+          <h5 className="text-highlight mb-2">Gender</h5>
           <Form.Select>
             <option value="male">Male</option>
             <option value="female">Female</option>
@@ -21,13 +21,13 @@ const EcomProfilePersonalInfo = () => {
           </Form.Select>
         </Col>
         <Col xs={12} lg={6}>
-          <h5 className="text-body-highlight mb-2">Gender Email</h5>
+          <h5 className="text-highlight mb-2">Gender Email</h5>
           <Form.Control type="text" placeholder="Email" />
         </Col>
         <Col xs={12} lg={6}>
-          <Row className="g-2 gy-lg-0">
+          <Row className="g-2 lg:gy-0">
             <Col xs={12}>
-              <h5 className="text-body-highlight mb-2"> Date of birth</h5>
+              <h5 className="text-highlight mb-2"> Date of birth</h5>
             </Col>
             <Col xs={6} sm={2} lg={3} xl={2}>
               <Form.Select>
@@ -59,27 +59,27 @@ const EcomProfilePersonalInfo = () => {
           </Row>
         </Col>
         <Col xs={12} lg={6}>
-          <h5 className="text-body-highlight mb-2">Phone</h5>
+          <h5 className="text-highlight mb-2">Phone</h5>
           <Form.Control type="text" placeholder="+1234567890" />
         </Col>
         <Col xs={12} lg={6}>
-          <h5 className="text-body-highlight mb-2">Alternative phone</h5>
+          <h5 className="text-highlight mb-2">Alternative phone</h5>
           <Form.Control type="text" placeholder="+1234567890" />
         </Col>
         <Col xs={12} lg={4}>
-          <h5 className="text-body-highlight mb-2">Facebook</h5>
+          <h5 className="text-highlight mb-2">Facebook</h5>
           <Form.Control type="text" placeholder="Facebook" />
         </Col>
         <Col xs={12} lg={4}>
-          <h5 className="text-body-highlight mb-2">Instagram</h5>
+          <h5 className="text-highlight mb-2">Instagram</h5>
           <Form.Control type="text" placeholder="Instagram" />
         </Col>
         <Col xs={12} lg={4}>
-          <h5 className="text-body-highlight mb-2">Twitter</h5>
+          <h5 className="text-highlight mb-2">Twitter</h5>
           <Form.Control type="text" placeholder="Twitter" />
         </Col>
         <Col xs={12} className="text-end">
-          <Button type="submit" variant="primary" className="px-7">
+          <Button type="submit" variant="primary" className="px-12">
             Save changes
           </Button>
         </Col>

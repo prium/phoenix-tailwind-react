@@ -10,11 +10,11 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 const EcomBestOffers = ({ products }: { products: Product[] }) => {
   return (
     <>
-      <div className="d-flex flex-between-center mb-3">
+      <div className="flex flex-between-center mb-4">
         <h3>Best Offers</h3>
-        <Link to="#!" className="btn btn-link btn-lg p-0 d-none d-md-block">
+        <Link to="#!" className="btn btn-link btn-lg p-0 hidden md:block">
           Explore more
-          <FontAwesomeIcon icon={faChevronRight} className="fs-9 ms-1" />
+          <FontAwesomeIcon icon={faChevronRight} className="text-md ms-1" />
         </Link>
       </div>
       <Swiper

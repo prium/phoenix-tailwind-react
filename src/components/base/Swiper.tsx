@@ -12,7 +12,7 @@ import {
   faChevronLeft,
   faChevronRight
 } from '@fortawesome/free-solid-svg-icons';
-import classNames from 'classnames';
+import { cn } from '@hummingbirdui/react';
 
 interface SwiperProps extends ReactSwiperProps {
   navigationPosition?: CSSProperties;
@@ -30,26 +30,30 @@ const Swiper = ({
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
   return (
-    <div className={classNames("swiper-theme-container", parentClassName)}>
+    <div className={cn('swiper-theme-container', parentClassName)}>
+      {/* `.swiper-nav` is what plugins/swiper.css positions the arrows in */}
       {navigation && (
-        <>
+        <div className="swiper-nav">
           <button
+            type="button"
             className="swiper-button-next"
             style={navigationPosition}
             ref={navigationNextRef}
           >
-            <FontAwesomeIcon icon={faChevronRight} />
+            <FontAwesomeIcon icon={faChevronRight} className="nav-icon" />
           </button>
           <button
+            type="button"
             className="swiper-button-prev"
             style={navigationPosition}
             ref={navigationPrevRef}
           >
-            <FontAwesomeIcon icon={faChevronLeft} />
+            <FontAwesomeIcon icon={faChevronLeft} className="nav-icon" />
           </button>
-        </>
+        </div>
       )}
       <ReactSwiper
+        className="theme-slider"
         modules={[Navigation]}
         navigation={{
           prevEl: navigationPrevRef.current,

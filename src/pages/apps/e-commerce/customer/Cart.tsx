@@ -8,11 +8,11 @@ import { Col, Row } from 'react-bootstrap';
 
 const Cart = () => {
   return (
-    <div className="pt-5 mb-9">
+    <div className="pt-8 mb-16">
       <Section small className="py-0">
         <PageBreadcrumb items={defaultBreadcrumbItems} />
-        <h2 className="mb-6">Cart</h2>
-        <Row className="g-5">
+        <h2 className="mb-10">Cart</h2>
+        <Row className="g-8">
           <Col xs={12} lg={8}>
             <EcomCartTable products={cartItems} />
           </Col>

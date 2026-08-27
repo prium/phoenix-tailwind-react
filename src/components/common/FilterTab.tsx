@@ -1,6 +1,5 @@
-import classNames from 'classnames';
-import React, { useState } from 'react';
-import { Nav } from 'react-bootstrap';
+import { Nav, cn } from '@hummingbirdui/react';
+import { useState } from 'react';
 
 export interface FilterTabItem {
   label: string;
@@ -14,30 +13,30 @@ interface FilterTabProps {
   className?: string;
 }
 
+/** `ul.nav.nav-links` filter tabs (e.g. apps/e-commerce/admin/customers.pug) */
 const FilterTab = ({ tabItems, className }: FilterTabProps) => {
   const [activeItem, setActiveItem] = useState('all');
 
   const handleClick = (item: FilterTabItem) => {
     setActiveItem(item.value);
-    if (item.onClick) {
-      item.onClick();
-    }
+    item.onClick?.();
   };
 
   return (
-    <Nav className={classNames(className, 'nav nav-links -mx-2')}>
+    <Nav className={cn(className, 'nav-links -mx-2')}>
       {tabItems.map(item => (
         <Nav.Item key={item.label}>
           <Nav.Link
-            onClick={() => handleClick(item)}
-            className={classNames('px-2 py-1', {
-              active: activeItem === item.value
-            })}
+            href="#!"
+            onClick={e => {
+              e.preventDefault();
+              handleClick(item);
+            }}
+            className="px-2 py-1"
+            active={activeItem === item.value}
           >
-            {item.label}{' '}
-            <span className="text-subtle font-semibold">
-              ({item.count})
-            </span>
+            <span>{item.label} </span>
+            <span className="text-subtle font-semibold">({item.count})</span>
           </Nav.Link>
         </Nav.Item>
       ))}

@@ -1,42 +1,46 @@
-import { faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
-import Button from 'components/base/Button';
+import { Collapsible, cn } from '@hummingbirdui/react';
 import { PropsWithChildren, useState } from 'react';
-import { Collapse } from 'react-bootstrap';
 
 interface FormCollapseProps {
   title: string;
   defaultOpen?: boolean;
+  className?: string;
 }
 
+/** `a.btn.px-0.block.collapse-indicator` + `.collapse` (products-filter.pug) */
 const FormCollapse = ({
   title,
   defaultOpen = true,
+  className,
   children
 }: PropsWithChildren<FormCollapseProps>) => {
   const [open, setOpen] = useState(defaultOpen);
 
   return (
-    <>
-      <Button
-        onClick={() => setOpen(!open)}
-        className={classNames('px-0 block collapse-indicator w-full mt-6', {
-          collapsed: !open
-        })}
-      >
-        <div className="flex items-center justify-between w-full">
-          <div className="text-base text-highlight">{title}</div>
-          <FontAwesomeIcon
-            icon={faAngleUp}
-            className="toggle-icon text-soft"
-          />
-        </div>
-      </Button>
-      <Collapse in={open}>
+    <Collapsible open={open} onOpenChange={setOpen}>
+      <Collapsible.Trigger asChild>
+        <button
+          type="button"
+          className={cn('btn px-0 block collapse-indicator w-full', className, {
+            collapsed: !open
+          })}
+          aria-expanded={open}
+        >
+          <div className="flex items-center justify-between w-full">
+            <div className="text-base text-highlight">{title}</div>
+            <FontAwesomeIcon
+              icon={faAngleDown}
+              className="toggle-icon text-soft"
+            />
+          </div>
+        </button>
+      </Collapsible.Trigger>
+      <Collapsible.Content>
         <div>{children}</div>
-      </Collapse>
-    </>
+      </Collapsible.Content>
+    </Collapsible>
   );
 };
 

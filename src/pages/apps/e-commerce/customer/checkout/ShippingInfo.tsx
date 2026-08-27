@@ -6,17 +6,17 @@ import { Button, Col, Form, Row } from 'react-bootstrap';
 
 const ShippingInfo = () => {
   return (
-    <div className="pt-5 mb-9">
+    <div className="pt-8 mb-16">
       <Section small className="py-0">
         <PageBreadcrumb items={defaultBreadcrumbItems} />
-        <h2 className="mb-5">Check out</h2>
-        <Row className="justify-content-between gy-6 gx-5">
+        <h2 className="mb-8">Check out</h2>
+        <Row className="justify-between gy-10 gx-8">
           <Col lg={7}>
-            <h3 className="mb-5">Shipping Info</h3>
-            <Row className="g-4">
+            <h3 className="mb-8">Shipping Info</h3>
+            <Row className="g-6">
               <Col xs={12}>
                 <Form.Group>
-                  <label className="form-label text-transform-none ps-0 fs-8 text-body-highlight">
+                  <label className="form-label text-transform-none ps-0 text-base text-highlight">
                     Full name
                   </label>
                   <Form.Control type="text" placeholder="Full name" />
@@ -24,7 +24,7 @@ const ShippingInfo = () => {
               </Col>
               <Col md={6}>
                 <Form.Group>
-                  <label className="form-label text-transform-none ps-0 fs-8 text-body-highlight">
+                  <label className="form-label text-transform-none ps-0 text-base text-highlight">
                     Email
                   </label>
                   <Form.Control type="email" placeholder="Email" />
@@ -32,7 +32,7 @@ const ShippingInfo = () => {
               </Col>
               <Col md={6}>
                 <Form.Group>
-                  <label className="form-label text-transform-none ps-0 fs-8 text-body-highlight">
+                  <label className="form-label text-transform-none ps-0 text-base text-highlight">
                     Phone
                   </label>
                   <Form.Control type="tel" placeholder="+1234567890" />
@@ -40,7 +40,7 @@ const ShippingInfo = () => {
               </Col>
               <Col md={12}>
                 <Form.Group>
-                  <label className="form-label text-transform-none ps-0 fs-8 text-body-highlight">
+                  <label className="form-label text-transform-none ps-0 text-base text-highlight">
                     Address line 1
                   </label>
                   <Form.Control type="text" placeholder="Address line 1" />
@@ -48,7 +48,7 @@ const ShippingInfo = () => {
               </Col>
               <Col md={12}>
                 <Form.Group>
-                  <label className="form-label text-transform-none ps-0 fs-8 text-body-highlight">
+                  <label className="form-label text-transform-none ps-0 text-base text-highlight">
                     Address line 2
                   </label>
                   <Form.Control type="text" placeholder="Address line 2" />
@@ -56,7 +56,7 @@ const ShippingInfo = () => {
               </Col>
               <Col md={4}>
                 <Form.Group>
-                  <label className="form-label text-transform-none ps-0 fs-8 text-body-highlight">
+                  <label className="form-label text-transform-none ps-0 text-base text-highlight">
                     City
                   </label>
                   <Form.Select defaultValue="van-nuys">
@@ -69,7 +69,7 @@ const ShippingInfo = () => {
               </Col>
               <Col md={4}>
                 <Form.Group>
-                  <label className="form-label text-transform-none ps-0 fs-8 text-body-highlight">
+                  <label className="form-label text-transform-none ps-0 text-base text-highlight">
                     State
                   </label>
                   <Form.Select defaultValue="california">
@@ -82,15 +82,15 @@ const ShippingInfo = () => {
               </Col>
               <Col md={4}>
                 <Form.Group>
-                  <label className="form-label text-transform-none ps-0 fs-8 text-body-highlight">
+                  <label className="form-label text-transform-none ps-0 text-base text-highlight">
                     Zip code
                   </label>
                   <Form.Control type="text" placeholder="Zip code" />
                 </Form.Group>
               </Col>
-              <Col md={4} className="mb-3">
+              <Col md={4} className="mb-4">
                 <Form.Group>
-                  <label className="form-label text-transform-none ps-0 fs-8 text-body-highlight">
+                  <label className="form-label text-transform-none ps-0 text-base text-highlight">
                     Country
                   </label>
                   <Form.Select defaultValue="usa">
@@ -102,12 +102,12 @@ const ShippingInfo = () => {
                 </Form.Group>
               </Col>
               <Col xs={12}>
-                <Button className="px-8 px-sm-11 me-2" type="submit">
+                <Button className="px-14 sm:px-20 me-2" type="submit">
                   Save
                 </Button>
                 <Button
                   variant="phoenix-secondary"
-                  className="text-nowrap"
+                  className="whitespace-nowrap"
                   type="button"
                 >
                   Exit Without Saving

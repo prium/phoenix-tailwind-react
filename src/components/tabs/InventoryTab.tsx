@@ -27,14 +27,14 @@ const NavItem = ({ item, isLast }: { item: NavItemType; isLast?: boolean }) => {
     <Nav.Link
       eventKey={item.eventKey}
       className={classNames(
-        'text-center text-sm-start cursor-pointer outline-none d-sm-flex align-items-sm-center',
+        'text-center sm:text-start cursor-pointer outline-none sm:flex sm:items-center',
         {
-          'border-bottom-sm border-end border-end-sm-0': !isLast
+          'sm:border-b border-e sm:border-e-0': !isLast
         }
       )}
     >
-      <FeatherIcon icon={item.icon} size={16} className="me-sm-2 nav-icons" />
-      <span className="d-none d-sm-inline">{item.label}</span>
+      <FeatherIcon icon={item.icon} size={16} className="sm:me-2 nav-icons" />
+      <span className="hidden sm:inline">{item.label}</span>
     </Nav.Link>
   );
 };
@@ -75,9 +75,9 @@ const navItems: NavItemType[] = [
 const InventoryTab = () => {
   return (
     <Tab.Container id="left-tabs-example" defaultActiveKey="pricing">
-      <Row className="g-0 border-top border-bottom">
+      <Row className="g-0 border-t border-b">
         <Col xs={12} sm={4}>
-          <Nav className="flex-sm-column border-bottom border-bottom-sm-0 border-end-sm fs-9 vertical-tab h-100 justify-content-between">
+          <Nav className="sm:flex-col border-b sm:border-b-0 sm:border-e text-md vertical-tab h-full justify-between">
             {navItems.map((item, index) => (
               <NavItem
                 key={item.label}
@@ -89,25 +89,25 @@ const InventoryTab = () => {
         </Col>
 
         <Col xs={12} sm={8}>
-          <Tab.Content className="py-3 ps-sm-4 h-100">
+          <Tab.Content className="py-4 sm:ps-6 h-full">
             <Tab.Pane eventKey="pricing">
-              <h4 className="mb-3 d-sm-none">Pricing</h4>
-              <Row className="g-3">
+              <h4 className="mb-4 sm:hidden">Pricing</h4>
+              <Row className="g-4">
                 <Col xs={12} lg={6}>
-                  <h5 className="mb-2 text-body-highlight">Regular price</h5>
+                  <h5 className="mb-2 text-highlight">Regular price</h5>
                   <Form.Control type="text" placeholder="$$$" />
                 </Col>
                 <Col xs={12} lg={6}>
-                  <h5 className="mb-2 text-body-highlight">Sale price</h5>
+                  <h5 className="mb-2 text-highlight">Sale price</h5>
                   <Form.Control type="text" placeholder="$$$" />
                 </Col>
               </Row>
             </Tab.Pane>
-            <Tab.Pane eventKey="restock" className="h-100">
-              <div className="d-flex flex-column h-100">
-                <h5 className="mb-3 text-body-highlight">Add to Stock</h5>
-                <div className="flex-1 mb-4">
-                  <div className="d-flex gap-3">
+            <Tab.Pane eventKey="restock" className="h-full">
+              <div className="flex flex-col h-full">
+                <h5 className="mb-4 text-highlight">Add to Stock</h5>
+                <div className="flex-1 mb-6">
+                  <div className="flex gap-4">
                     <Form.Control
                       type="number"
                       placeholder="Quantity"
@@ -118,7 +118,7 @@ const InventoryTab = () => {
                       variant="primary"
                       type="button"
                       startIcon={<FontAwesomeIcon icon={faCheck} />}
-                      className="text-nowrap"
+                      className="whitespace-nowrap"
                     >
                       Confirm
                     </Button>
@@ -133,15 +133,15 @@ const InventoryTab = () => {
                   </thead>
                   <tbody>
                     <tr>
-                      <td className="text-body-highlight fw-bold py-1">
+                      <td className="text-highlight font-bold py-1">
                         Product in stock now:
                       </td>
-                      <td className="text-body-tertiary fw-semibold py-1">
+                      <td className="text-subtle font-semibold py-1">
                         $1,090
                         <Button className="p-0 ms-1" type="button">
                           <FontAwesomeIcon
                             icon={faRotate}
-                            className="text-body"
+                            className="text-default"
                             style={
                               { '--phoenix-text-opacity': 0.6 } as CSSProperties
                             }
@@ -150,26 +150,26 @@ const InventoryTab = () => {
                       </td>
                     </tr>
                     <tr>
-                      <td className="text-body-highlight fw-bold py-1">
+                      <td className="text-highlight font-bold py-1">
                         Product in transit:
                       </td>
-                      <td className="text-body-tertiary fw-semibold py-1">
+                      <td className="text-subtle font-semibold py-1">
                         5000
                       </td>
                     </tr>
                     <tr>
-                      <td className="text-body-highlight fw-bold py-1">
+                      <td className="text-highlight font-bold py-1">
                         Last time restocked:
                       </td>
-                      <td className="text-body-tertiary fw-semibold py-1">
+                      <td className="text-subtle font-semibold py-1">
                         30th June, 2021
                       </td>
                     </tr>
                     <tr>
-                      <td className="text-body-highlight fw-bold py-1">
+                      <td className="text-highlight font-bold py-1">
                         Total stock over lifetime:
                       </td>
-                      <td className="text-body-tertiary fw-semibold py-1">
+                      <td className="text-subtle font-semibold py-1">
                         20,000
                       </td>
                     </tr>
@@ -178,37 +178,37 @@ const InventoryTab = () => {
               </div>
             </Tab.Pane>
 
-            <Tab.Pane eventKey="shipping" className="h-100">
-              <div className="d-flex flex-column h-100">
-                <h5 className="mb-3 text-body-highlight">Shipping Type</h5>
+            <Tab.Pane eventKey="shipping" className="h-full">
+              <div className="flex flex-col h-full">
+                <h5 className="mb-4 text-highlight">Shipping Type</h5>
                 <div className="flex-1">
-                  <div className="mb-4">
+                  <div className="mb-6">
                     <Form.Check type="radio" id="fullfilledBySeller">
                       <Form.Check.Input type="radio" name="shipping" />
-                      <Form.Check.Label className="text-body fs-8">
+                      <Form.Check.Label className="text-default text-base">
                         Fullfilled by Seller
                       </Form.Check.Label>
                     </Form.Check>
-                    <div className="ps-4">
-                      <p className="text-body-secondary fs-9 mb-0">
+                    <div className="ps-6">
+                      <p className="text-muted text-md mb-0">
                         You’ll be responsible for product delivery. <br />
                         Any damage or delay during shipping may cost you a
                         Damage fee.
                       </p>
                     </div>
                   </div>
-                  <div className="mb-4">
+                  <div className="mb-6">
                     <Form.Check type="radio" id="fullfilledByPhoenix">
                       <Form.Check.Input type="radio" name="shipping" />
-                      <Form.Check.Label className="text-body fs-8">
+                      <Form.Check.Label className="text-default text-base">
                         Fullfilled by Phoenix
                         <Badge variant="phoenix" bg="warning" className="ms-2">
                           Recommended
                         </Badge>
                       </Form.Check.Label>
                     </Form.Check>
-                    <div className="ps-4">
-                      <p className="text-body-secondary fs-9 mb-0">
+                    <div className="ps-6">
+                      <p className="text-muted text-md mb-0">
                         Your product, Our responsibility.
                         <br />
                         For a measly fee, we will handle the delivery process
@@ -217,9 +217,9 @@ const InventoryTab = () => {
                     </div>
                   </div>
                 </div>
-                <p className="fs-9 fw-semibold mb-0">
+                <p className="text-md font-semibold mb-0">
                   See our{' '}
-                  <a className="fw-bold" href="#!">
+                  <a className="font-bold" href="#!">
                     Delivery terms and conditions{' '}
                   </a>
                   for details.
@@ -227,30 +227,30 @@ const InventoryTab = () => {
               </div>
             </Tab.Pane>
 
-            <Tab.Pane eventKey="global-delivery" className="h-100">
-              <h5 className="mb-3 text-body-highlight">Global Delivery</h5>
-              <div className="mb-3">
+            <Tab.Pane eventKey="global-delivery" className="h-full">
+              <h5 className="mb-4 text-highlight">Global Delivery</h5>
+              <div className="mb-4">
                 <Form.Check type="radio" id="globalDelivery">
                   <Form.Check.Input type="radio" name="delivery" />
-                  <Form.Check.Label className="text-body fs-8">
+                  <Form.Check.Label className="text-default text-base">
                     Worldwide delivery
                   </Form.Check.Label>
                 </Form.Check>
-                <div className="ps-4">
-                  <p className="fs-9 mb-0 text-body-secondary">
+                <div className="ps-6">
+                  <p className="text-md mb-0 text-muted">
                     Only available with Shipping method:{' '}
                     <Link to="#!">Fullfilled by Phoenix</Link>
                   </p>
                 </div>
               </div>
-              <div className="mb-3">
+              <div className="mb-4">
                 <Form.Check type="radio" id="selectedCountries">
                   <Form.Check.Input type="radio" name="delivery" />
-                  <Form.Check.Label className="text-body fs-8">
+                  <Form.Check.Label className="text-default text-base">
                     Selected Countries
                   </Form.Check.Label>
                 </Form.Check>
-                <div className="ps-4">
+                <div className="ps-6">
                   <ReactSelect
                     options={options}
                     isMulti
@@ -258,15 +258,15 @@ const InventoryTab = () => {
                   />
                 </div>
               </div>
-              <div className="mb-3">
+              <div className="mb-4">
                 <Form.Check type="radio" id="localDelivery">
                   <Form.Check.Input type="radio" name="delivery" />
-                  <Form.Check.Label className="text-body fs-8">
+                  <Form.Check.Label className="text-default text-base">
                     Local delivery
                   </Form.Check.Label>
                 </Form.Check>
-                <div className="ps-4">
-                  <p className="fs-9 mb-0 text-body-secondary">
+                <div className="ps-6">
+                  <p className="text-md mb-0 text-muted">
                     Deliver to your country of residence{' '}
                     <Link to="#!">Change profile address</Link>
                   </p>
@@ -274,23 +274,23 @@ const InventoryTab = () => {
               </div>
             </Tab.Pane>
 
-            <Tab.Pane eventKey="attributes" className="h-100">
-              <h5 className="mb-3 text-body-highlight">Attributes</h5>
+            <Tab.Pane eventKey="attributes" className="h-full">
+              <h5 className="mb-4 text-highlight">Attributes</h5>
               <Form.Check type="checkbox" id="fragileCheck">
                 <Form.Check.Input type="checkbox" name="attributes" />
-                <Form.Check.Label className="text-body fs-8">
+                <Form.Check.Label className="text-default text-base">
                   Fragile Product
                 </Form.Check.Label>
               </Form.Check>
               <Form.Check type="checkbox" id="biodegradableCheck">
                 <Form.Check.Input type="checkbox" name="attributes" />
-                <Form.Check.Label className="text-body fs-8">
+                <Form.Check.Label className="text-default text-base">
                   Biodegradable
                 </Form.Check.Label>
               </Form.Check>
-              <Form.Check type="checkbox" id="frozenProduct" className="mb-3">
+              <Form.Check type="checkbox" id="frozenProduct" className="mb-4">
                 <Form.Check.Input type="checkbox" name="attributes" />
-                <Form.Check.Label className="text-body fs-8">
+                <Form.Check.Label className="text-default text-base">
                   Frozen Product
                 </Form.Check.Label>
                 <Form.Control
@@ -301,18 +301,18 @@ const InventoryTab = () => {
               </Form.Check>
               <Form.Check type="checkbox" id="expDate">
                 <Form.Check.Input type="checkbox" name="attributes" />
-                <Form.Check.Label className="text-body fs-8">
+                <Form.Check.Label className="text-default text-base">
                   Expiry Date of Product
                 </Form.Check.Label>
                 <Form.Control type="date" style={{ maxWidth: 350 }} />
               </Form.Check>
             </Tab.Pane>
 
-            <Tab.Pane eventKey="advanced" className="h-100">
-              <h5 className="mb-3 text-body-highlight">Advanced</h5>
-              <div className="row g-3">
-                <div className="col-12 col-lg-6">
-                  <h5 className="mb-2 text-body-highlight">Product ID Type</h5>
+            <Tab.Pane eventKey="advanced" className="h-full">
+              <h5 className="mb-4 text-highlight">Advanced</h5>
+              <div className="row g-4">
+                <div className="col-12 lg:col-6">
+                  <h5 className="mb-2 text-highlight">Product ID Type</h5>
                   <Form.Select>
                     <option value="isbn">ISBN</option>
                     <option value="upc">UPC</option>
@@ -320,8 +320,8 @@ const InventoryTab = () => {
                     <option value="jan">JAN</option>
                   </Form.Select>
                 </div>
-                <div className="col-12 col-lg-6">
-                  <h5 className="mb-2 text-body-highlight">Product ID</h5>
+                <div className="col-12 lg:col-6">
+                  <h5 className="mb-2 text-highlight">Product ID</h5>
                   <Form.Control type="text" placeholder="ISBN Number" />
                 </div>
               </div>

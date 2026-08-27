@@ -5,12 +5,12 @@ import { defaultBreadcrumbItems } from 'data/commonData';
 
 const Wishlist = () => {
   return (
-    <div className="pt-5 mb-9">
+    <div className="pt-8 mb-16">
       <Section small className="py-0">
         <PageBreadcrumb items={defaultBreadcrumbItems} />
-        <h2 className="mb-5">
+        <h2 className="mb-8">
           Wishlist
-          <span className="text-body-tertiary fw-normal ms-2">(43)</span>
+          <span className="text-subtle font-normal ms-2">(43)</span>
         </h2>
         <EcomWishlistTable />
       </Section>

@@ -1,5 +1,5 @@
-import classNames from 'classnames';
-import { Breadcrumb } from 'react-bootstrap';
+import { Breadcrumb, cn } from '@hummingbirdui/react';
+import { Link } from 'react-router';
 
 export interface PageBreadcrumbItem {
   label: string;
@@ -14,12 +14,20 @@ interface PageBreadcrumbProps {
 
 const PageBreadcrumb = ({ items, className }: PageBreadcrumbProps) => {
   return (
-    <Breadcrumb className={classNames('mb-2', className)}>
-      {items.map(item => (
-        <Breadcrumb.Item href={item.url} active={item.active} key={item.label}>
-          {item.label}
-        </Breadcrumb.Item>
-      ))}
+    <Breadcrumb>
+      <Breadcrumb.List className={cn('mb-2', className)}>
+        {items.map(item => (
+          <Breadcrumb.Item active={item.active} key={item.label}>
+            {item.active ? (
+              <Breadcrumb.Page>{item.label}</Breadcrumb.Page>
+            ) : (
+              <Breadcrumb.Link asChild>
+                <Link to={item.url ?? '#!'}>{item.label}</Link>
+              </Breadcrumb.Link>
+            )}
+          </Breadcrumb.Item>
+        ))}
+      </Breadcrumb.List>
     </Breadcrumb>
   );
 };

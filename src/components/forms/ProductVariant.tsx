@@ -11,13 +11,13 @@ interface ProductVariantProps {
 const ProductVariant = ({ title ,className }: ProductVariantProps) => {
   return (
     <div className={className}>
-      <div className="d-flex flex-wrap flex-between-center gap-2 mb-2">
-        <h5 className="mb-0 text-body-highlight">{title}</h5>
-        <Link className="fw-bold fs-9" to="#!">
+      <div className="flex flex-wrap flex-between-center gap-2 mb-2">
+        <h5 className="mb-0 text-highlight">{title}</h5>
+        <Link className="font-bold text-md" to="#!">
           Remove
         </Link>
       </div>
-      <Form.Select className="mb-3">
+      <Form.Select className="mb-4">
         <option value="size">Size</option>
         <option value="color">Color</option>
         <option value="weight">Weight</option>

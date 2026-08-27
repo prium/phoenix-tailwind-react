@@ -12,43 +12,43 @@ import { defaultBreadcrumbItems } from 'data/commonData';
 
 const Checkout = () => {
   return (
-    <div className="pt-5 mb-9">
+    <div className="pt-8 mb-16">
       <Section small className="py-0">
         <PageBreadcrumb items={defaultBreadcrumbItems} />
-        <h2 className="mb-5">Check out</h2>
-        <Row className="justify-content-between">
+        <h2 className="mb-8">Check out</h2>
+        <Row className="justify-between">
           <Col lg={7}>
             <form>
-              <div className="d-flex align-items-end mb-4">
-                <h3 className="mb-0 me-3">Shipping Details</h3>
+              <div className="flex items-end mb-6">
+                <h3 className="mb-0 me-4">Shipping Details</h3>
                 <Button variant="link" className="p-0" type="button">
                   Edit
                 </Button>
               </div>
               <EcomAddressTable data={shippingDetailsAddress} />
-              <hr className="my-6" />
+              <hr className="my-10" />
               <h3>Billing Details</h3>
-              <Form.Check type="checkbox" id="sameAsShipping" className="mb-4">
+              <Form.Check type="checkbox" id="sameAsShipping" className="mb-6">
                 <Form.Check.Input type="checkbox" />
-                <Form.Check.Label className="fs-8 fw-normal">
+                <Form.Check.Label className="text-base font-normal">
                   Same as shipping address
                 </Form.Check.Label>
               </Form.Check>
               <EcomAddressTable data={shippingDetailsAddress} />
-              <hr className="my-6" />
+              <hr className="my-10" />
               <DeliveryType />
-              <hr className="my-6" />
+              <hr className="my-10" />
               <PaymentMethod />
 
-              <div className="d-flex flex-column flex-sm-row gap-2 mb-7 mb-lg-0">
-                <Button variant="primary" type="submit" className="w-100">
+              <div className="flex flex-col sm:flex-row gap-2 mb-12 lg:mb-0">
+                <Button variant="primary" type="submit" className="w-full">
                   Pay {currencyFormat(695.2)}
                 </Button>
 
                 <Button
                   variant="phoenix-secondary"
                   type="submit"
-                  className="text-nowrap"
+                  className="whitespace-nowrap"
                 >
                   Save Order and Exit
                 </Button>

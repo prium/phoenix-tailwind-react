@@ -21,29 +21,29 @@ const OrderDetails = () => {
   return (
     <div>
       <PageBreadcrumb items={defaultBreadcrumbItems} />
-      <div className="mb-9">
+      <div className="mb-16">
         <h2 className="mb-1">
           Order <span>#349</span>
         </h2>
-        <div className="d-flex flex-wrap flex-between-center mb-3 gap-2">
-          <p className="text-body-secondary lh-sm mb-0">
+        <div className="flex flex-wrap flex-between-center mb-4 gap-2">
+          <p className="text-muted leading-sm mb-0">
             Customer ID :{' '}
-            <Link className="fw-bold" to="#!">
+            <Link className="font-bold" to="#!">
               {' '}
               2364847
             </Link>
           </p>
-          <div className="d-flex">
+          <div className="flex">
             <Button
               variant="link"
-              className="ps-0 pe-3 text-body text-decoration-none"
+              className="ps-0 pe-4 text-default no-underline"
               startIcon={<FontAwesomeIcon icon={faPrint} className="me-2" />}
             >
               Print
             </Button>
             <Button
               variant="link"
-              className="px-3 text-body text-decoration-none"
+              className="px-4 text-default no-underline"
               startIcon={<FontAwesomeIcon icon={faUndo} className="me-2" />}
             >
               Refund
@@ -51,7 +51,7 @@ const OrderDetails = () => {
             <Dropdown>
               <Dropdown.Toggle
                 variant=""
-                className="ps-3 pe-0 dropdown-caret-none text-decoration-none"
+                className="ps-4 pe-0 dropdown-caret-none no-underline"
               >
                 More action
                 <FontAwesomeIcon icon={faChevronDown} className="ms-2" />
@@ -64,12 +64,12 @@ const OrderDetails = () => {
             </Dropdown>
           </div>
         </div>
-        <Row className="g-5 gy-7">
+        <Row className="g-8 gy-12">
           <Col xs={12} xl={8} xxl={9}>
-            <div className="mb-6">
+            <div className="mb-10">
               <OrderDetailsTable />
             </div>
-            <Row className="gx-4 gy-6 g-xl-7 justify-content-sm-center justify-content-xl-start">
+            <Row className="gx-6 gy-10 xl:g-12 sm:justify-center xl:justify-start">
               <Col xs={12} sm="auto">
                 <BillingDetails />
               </Col>
@@ -84,14 +84,14 @@ const OrderDetails = () => {
             </Row>
           </Col>
           <Col xs={12} xl={4} xxl={3}>
-            <OrderDetailsSummaryCard className="mb-4" />
+            <OrderDetailsSummaryCard className="mb-6" />
             <Card>
               <Card.Body>
-                <Card.Title as="h3" className="mb-4">
+                <Card.Title as="h3" className="mb-6">
                   Order Status
                 </Card.Title>
                 <h6 className="mb-2">Payment status</h6>
-                <Form.Select className="mb-4">
+                <Form.Select className="mb-6">
                   <option value="processing">Processing</option>
                   <option value="canceled">Canceled</option>
                   <option value="completed">Completed</option>

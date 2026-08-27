@@ -19,12 +19,12 @@ import { Link } from 'react-router';
 const ProductReview = ({ review }: { review: ProductReviewType }) => {
   const { lightboxProps, openLightbox } = useLightbox(review.images || []);
   return (
-    <RevealDropdownTrigger className="mb-4 hover-actions-trigger">
-      <div className="d-flex justify-content-between mb-2">
-        <div className="d-flex align-items-center">
+    <RevealDropdownTrigger className="mb-6 hover-actions-trigger">
+      <div className="flex justify-between mb-2">
+        <div className="flex items-center">
           <Rating readonly initialValue={review.star} />
           <h5 className="mb-0 ms-2 line-clamp-1">
-            <span className="text-body-secondary me-1">by</span>
+            <span className="text-muted me-1">by</span>
             {review.customer}
           </h5>
         </div>
@@ -32,10 +32,10 @@ const ProductReview = ({ review }: { review: ProductReviewType }) => {
           <ActionDropdownItems />
         </RevealDropdown>
       </div>
-      <p className="text-body-tertiary fs-9 mb-1">{review.date}</p>
+      <p className="text-subtle text-md mb-1">{review.date}</p>
       <p
-        className={classNames('text-body-highlight', {
-          'mb-3': review.images,
+        className={classNames('text-highlight', {
+          'mb-6': review.images,
           'mb-1': !review.images
         })}
       >
@@ -43,14 +43,14 @@ const ProductReview = ({ review }: { review: ProductReviewType }) => {
       </p>
       <Lightbox {...lightboxProps} />
       {review.images && (
-        <div className="d-flex gap-2 flex-wrap mb-2">
+        <div className="flex gap-2 flex-wrap mb-2">
           {review.images.map((image, index) => (
             <Link to="#!" key={image}>
               <img
                 src={image}
                 key={image}
                 alt=""
-                className="fit-cover w-100"
+                className="fit-cover w-full"
                 height={164}
                 onClick={() => openLightbox(index + 1)}
               />
@@ -60,7 +60,7 @@ const ProductReview = ({ review }: { review: ProductReviewType }) => {
       )}
 
       {review.reply && (
-        <div className="d-flex">
+        <div className="flex">
           <FontAwesomeIcon
             icon={faReply}
             className="me-2"
@@ -69,11 +69,11 @@ const ProductReview = ({ review }: { review: ProductReviewType }) => {
           <div>
             <h5>
               Respond from {review.reply.from}
-              <span className="text-body-tertiary fs-9 ms-2">
+              <span className="text-subtle text-md ms-2">
                 {review.reply.time}{' '}
               </span>
             </h5>
-            <p className="text-body-highlight mb-0">{review.reply.text}</p>
+            <p className="text-highlight mb-0">{review.reply.text}</p>
           </div>
         </div>
       )}
