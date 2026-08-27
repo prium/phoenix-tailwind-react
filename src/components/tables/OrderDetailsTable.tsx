@@ -22,7 +22,10 @@ const columns: ColumnDef<WishlistProductType>[] = [
         </div>
       );
     },
-    meta: { cellProps: { className: 'py-2' } }
+    meta: {
+      headerProps: { className: 'whitespace-nowrap min-w-[63px]' },
+      cellProps: { className: 'whitespace-nowrap py-0' }
+    }
   },
   {
     accessorKey: 'product',
