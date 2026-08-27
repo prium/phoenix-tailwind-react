@@ -24,8 +24,9 @@ const getFilter = (theme: string) =>
       ]
     : ['bright:101%', 'contrast:101%', 'hue:23deg', 'saturate:225%'];
 
+/** leaflet.tilelayer.colorfilter v2 augments TileLayer with these members */
 interface ColorFilterTileLayer extends L.TileLayer {
-  updateFilter: (filter: string[]) => void;
+  updateColorFilter: (filter: string[]) => void;
 }
 
 const LayerComponent = ({ data }: { data: MapMarkerPoints[] }) => {
@@ -44,17 +45,13 @@ const LayerComponent = ({ data }: { data: MapMarkerPoints[] }) => {
   useEffect(() => {
     const filter = getFilter(theme);
     if (!tileLayerRef.current) {
-      // provided by leaflet.tilelayer.colorfilter
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      tileLayerRef.current = (L.tileLayer as any)
-        .colorFilter(TILE_URL, {
-          attribution: null,
-          transparent: true,
-          filter
-        })
-        .addTo(map);
+      tileLayerRef.current = L.tileLayer(TILE_URL, {
+        attribution: undefined,
+        // `colorFilter` is added by leaflet.tilelayer.colorfilter
+        ...({ transparent: true, colorFilter: filter } as L.TileLayerOptions)
+      }).addTo(map) as ColorFilterTileLayer;
     } else {
-      tileLayerRef.current.updateFilter(filter);
+      tileLayerRef.current.updateColorFilter(filter);
     }
   }, [theme]);
 
