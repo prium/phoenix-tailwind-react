@@ -4,15 +4,19 @@ import { Dropdown } from 'react-bootstrap';
 
 const ImageAttachmentPreview = ({
   image,
+  previewHight = 140,
+  previewWidth = 200,
   handleClose
 }: {
   image: string;
   handleClose: () => void;
+  previewHight?: number;
+  previewWidth?: number;
 }) => {
   return (
     <div
-      className="rounded-2 overflow-hidden me-2 mb-2 position-relative"
-      style={{ height: 140, width: 200 }}
+      className="rounded-2 overflow-hidden mb-2 position-relative"
+      style={{ height: previewHight, width: previewWidth }}
     >
       <img src={image} className="w-100 h-100 object-fit-cover" alt="" />
       <Dropdown className="position-absolute end-0 top-0 mt-2 me-2">

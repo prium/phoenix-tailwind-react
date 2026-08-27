@@ -20,7 +20,7 @@ import SearchBox from 'components/common/SearchBox';
 import useAdvanceTable from 'hooks/useAdvanceTable';
 import AdvanceTableProvider from 'providers/AdvanceTableProvider';
 import { ChangeEvent } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import Badge from 'components/base/Badge';
 import RevealDropdown, {
   RevealDropdownTrigger

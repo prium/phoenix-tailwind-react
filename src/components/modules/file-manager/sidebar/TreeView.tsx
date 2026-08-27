@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { TreeViewItem, treeviewItems } from 'data/treeview';
 import { useState } from 'react';
 import { Collapse } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 interface TreeviewCollapseItemProps {
   item: TreeViewItem;

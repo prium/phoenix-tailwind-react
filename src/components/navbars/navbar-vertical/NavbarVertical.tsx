@@ -73,10 +73,10 @@ const NavbarVerical = () => {
             }}
           >
             {isNavbarVerticalCollapsed ? (
-              <UilArrowFromRight size={16} className="mb-1" />
+              <UilArrowFromRight fill='currentColor' size={16} className="mb-1" />
             ) : (
               <>
-                <UilLeftArrowToLeft size={16} className="mb-1" />
+                <UilLeftArrowToLeft fill='currentColor' size={16} className="mb-1" />
                 <span className="ms-2">Collapsed View</span>
               </>
             )}

@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 
 import Button from 'components/base/Button';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import TravelFooter from 'components/footers/TravelFooter';
 import ResizableNavbar from 'components/navbars/travel-agency/ResizableNavbar';
 import { hotelNavItems } from 'data/travel-agency/resizableNav';

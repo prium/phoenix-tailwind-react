@@ -133,6 +133,7 @@ const TodoItemDetailsModal = ({
                       }}
                       icon={
                         <UilBellSchool
+                          fill='currentColor'
                           className="flatpickr-icon text-body-tertiary"
                           size={16}
                         />
@@ -164,6 +165,7 @@ const TodoItemDetailsModal = ({
                     placeholder="Select organizer"
                     icon={
                       <UilTagAlt
+                        fill='currentColor'
                         className="react-select-icon text-body-tertiary"
                         size={16}
                       />

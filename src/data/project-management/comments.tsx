@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import bg42 from 'assets/img/generic/42.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';

@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Dropdown } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { getFileIcon } from 'helpers/utils';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import Avatar, { Status } from 'components/base/Avatar';
@@ -59,7 +59,7 @@ const SearchResult = ({ searchValue = '' }: { searchValue?: string }) => {
   );
 
   return (
-    <Scrollbar autoHeight autoHeightMax={'30rem'}>
+    <Scrollbar style={{ maxHeight: '30rem'}}>
       <h6 className="text-body-highlight fs-10 py-2 mb-0 px-3">
         {results.length} <span className="text-body-quaternary">Results</span>{' '}
       </h6>

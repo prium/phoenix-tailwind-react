@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import AdvanceTableProvider from 'providers/AdvanceTableProvider';
 import React, { PropsWithChildren } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import {
   faFolder,
   faFileWord,

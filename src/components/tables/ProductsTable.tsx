@@ -1,7 +1,7 @@
 import { ColumnDef } from '@tanstack/react-table';
 import AdvanceTable from 'components/base/AdvanceTable';
 import { currencyFormat } from 'helpers/utils';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import AdvanceTableFooter from 'components/base/AdvanceTableFooter';
 import { ProductsTableProductType } from 'data/e-commerce/products';
 import Badge from 'components/base/Badge';

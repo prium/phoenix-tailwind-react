@@ -1,5 +1,5 @@
 import { ElementType } from 'react';
-import { To } from 'react-router-dom';
+import { To } from 'react-router';
 
 declare module 'react-bootstrap' {
   interface ButtonProps {

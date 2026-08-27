@@ -1,9 +1,9 @@
 import { KanbanBoardItem, kanbanItems } from 'data/kanban';
-import React, {
+import {
   Dispatch,
   PropsWithChildren,
   createContext,
-  useContext,
+  use,
   useReducer
 } from 'react';
 import { ACTIONTYPE, kanbanReducer } from 'reducers/KanbanReducer';
@@ -39,17 +39,17 @@ const KanbanProvider = ({
   const [kanbanState, kanbanDispatch] = useKanbanReducer();
 
   return (
-    <KanbanContext.Provider
+    <KanbanContext
       value={{
         ...kanbanState,
         kanbanDispatch
       }}
     >
       {children}
-    </KanbanContext.Provider>
+    </KanbanContext>
   );
 };
 
-export const useKanbanContext = () => useContext(KanbanContext);
+export const useKanbanContext = () => use(KanbanContext);
 
 export default KanbanProvider;

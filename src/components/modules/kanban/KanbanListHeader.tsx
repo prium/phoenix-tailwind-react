@@ -146,9 +146,9 @@ const KanbanListHeader = ({
           onClick={() => setCollapsed(!collapsed)}
         >
           {collapsed ? (
-            <UilArrowFromRight size={16} />
+            <UilArrowFromRight fill='currentColor' size={16} />
           ) : (
-            <UilLeftArrowToLeft size={16} />
+            <UilLeftArrowToLeft fill='currentColor' size={16} />
           )}
         </Button>
       </div>

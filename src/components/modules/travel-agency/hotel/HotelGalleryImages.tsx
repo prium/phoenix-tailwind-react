@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { GalleryItemType } from 'data/travel-agency/customer/gallery';
 import useLightbox from 'hooks/useLightbox';
 import Lightbox from 'components/base/LightBox';

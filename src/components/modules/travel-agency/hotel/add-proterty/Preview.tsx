@@ -12,7 +12,7 @@ import dollarAlt from 'assets/img/icons/dollar-alt.svg';
 import dollarAltDark from 'assets/img/icons/dollar-alt_dark.svg';
 import fileCheckAlt from 'assets/img/icons/file-check-alt.svg';
 import fileCheckAltDark from 'assets/img/icons/file-check-alt_dark.svg';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import classNames from 'classnames';
 import {
   AccordionItemInterface,

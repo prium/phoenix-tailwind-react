@@ -6,7 +6,7 @@ import {
   faChevronDown,
   faLocationDot
 } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { ReactTyped } from 'react-typed';
 
 const HeroHeader = () => {

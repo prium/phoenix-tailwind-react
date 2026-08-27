@@ -195,7 +195,7 @@
     --#{$prefix}navbar-vertical-link-active-color: #{$white};
     --#{$prefix}navbar-vertical-link-disable-color: #{map-get($grays-dark, '600')};
 
-    --#{$prefix}hamburger-menu-color: #{$body-quaternary-color-dark};
+    --#{$prefix}hamburger-menu-color: rgba(var(--#{$prefix}emphasis-color-rgb), 0.65);
 
     // ----------- collapsed colors ----------------
     --#{$prefix}navbar-vertical-hr-color: #{map-get($grays-dark, '400')};

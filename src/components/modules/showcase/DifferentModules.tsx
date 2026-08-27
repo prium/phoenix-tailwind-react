@@ -1,4 +1,3 @@
-import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import spotIllustration31 from 'assets/img/spot-illustrations/31.png';
 import module1 from 'assets/img/sections/module-1.png';
@@ -17,9 +16,17 @@ import module13 from 'assets/img/sections/module-13.png';
 import module14 from 'assets/img/sections/module-14.png';
 import module15 from 'assets/img/sections/module-15.png';
 import module16 from 'assets/img/sections/module-16.png';
+import module17 from 'assets/img/sections/module-17.png';
+import module18 from 'assets/img/sections/module-18.png';
+import module19 from 'assets/img/sections/module-19.png';
+import module20 from 'assets/img/sections/module-20.png';
+import module21 from 'assets/img/sections/module-21.png';
+import module22 from 'assets/img/sections/module-22.png';
+import module23 from 'assets/img/sections/module-23.png';
+import module24 from 'assets/img/sections/module-24.png';
 import { BadgeBg } from 'components/base/Badge';
 import classNames from 'classnames';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 interface Badge {
   label: string;
@@ -52,11 +59,21 @@ const modules: Module[] = [
   {
     name: 'Booking',
     images: [module16, module15, module14, module13],
-    badge: {
-      bg: 'warning',
-      label: 'New'
-    },
     path: '/apps/travel-agency/hotel/customer/homepage'
+  },
+  {
+    name: 'Social',
+    images: [module24, module23, module22, module21],
+    path: '/apps/social/feed'
+  },
+  {
+    name: 'Stock',
+    images: [module20, module19, module18, module17],
+    path: '/dashboard/stock',
+    badge: {
+      label: 'New',
+      bg: 'warning'
+    }
   }
 ];
 

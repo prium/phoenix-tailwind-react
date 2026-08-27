@@ -22,3 +22,13 @@
 .modal-38w {
   max-width: 38.75rem;
 }
+
+.modal-39w {
+  max-width: 39.375rem;
+}
+
+@include media-breakpoint-up(md){
+  .modal-600{
+    --#{$prefix}modal-width: 600px;
+  }
+}

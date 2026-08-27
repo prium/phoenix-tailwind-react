@@ -92,7 +92,7 @@ const getDefaultOptions = (
               : getThemeColor('secondary-bg')
         }
       },
-      boundaryGap: false
+      boundaryGap: 0
     },
     {
       type: 'category',
@@ -118,7 +118,7 @@ const getDefaultOptions = (
       splitLine: {
         show: false
       },
-      boundaryGap: false
+      boundaryGap: 0
     }
   ],
   yAxis: {
@@ -151,11 +151,12 @@ const getDefaultOptions = (
     }
   ],
   grid: {
-    right: 2,
-    left: 5,
-    bottom: '20px',
+    right: -1,
+    left: 2,
+    bottom: -1,
     top: '2%',
-    containLabel: false
+    outerBoundsMode: 'same',
+    outerBoundsContain: 'axisLabel'
   },
   animation: false
 });

@@ -1,5 +1,5 @@
 import { Card, Col, Form, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const OrganizeFormCard = ({ className }: { className?: string }) => {
   return (
@@ -8,7 +8,7 @@ const OrganizeFormCard = ({ className }: { className?: string }) => {
         <h4 className="mb-4">Organize</h4>
         <Row className="gx-3 gy-4">
           <Col xs={12} sm={6} xl={12}>
-            <div className="d-flex gap-2 mb-2">
+            <div className="d-flex flex-wrap flex-between-center gap-2 mb-2">
               <h5 className="mb-0 text-body-highlight">Category</h5>
               <Link className="fw-bold fs-9" to="#!">
                 Add new category
@@ -21,7 +21,7 @@ const OrganizeFormCard = ({ className }: { className?: string }) => {
             </Form.Select>
           </Col>
           <Col xs={12} sm={6} xl={12}>
-            <div className="d-flex gap-2 mb-2">
+            <div className="d-flex flex-wrap flex-between-center gap-2 mb-2">
               <h5 className="mb-0 text-body-highlight">Vendor</h5>
               <Link className="fw-bold fs-9" to="#!">
                 Add new vendor
@@ -34,11 +34,16 @@ const OrganizeFormCard = ({ className }: { className?: string }) => {
             </Form.Select>
           </Col>
           <Col xs={12} sm={6} xl={12}>
-            <h5 className="mb-2 text-body-highlight">Collection</h5>
+            <div className="d-flex flex-wrap flex-between-center gap-2 mb-2">
+              <h5 className="mb-2 text-body-highlight">Collection</h5>
+              <Link className="fw-bold fs-9" to="#!">
+                Add new collection
+              </Link>
+            </div>
             <Form.Control placeholder="Collection" />
           </Col>
           <Col xs={12} sm={6} xl={12}>
-            <div className="d-flex gap-2 mb-2">
+            <div className="d-flex flex-wrap flex-between-center gap-2 mb-2">
               <h5 className="mb-0 text-body-highlight">Tags</h5>
               <Link className="fw-bold fs-9 lh-sm" to="#!">
                 View all tags

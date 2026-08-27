@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import {
   UilEstate,
   UilGift,
@@ -12,7 +13,7 @@ import {
   UilWrench
 } from '@iconscout/react-unicons';
 import classNames from 'classnames';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 type Category = {
   label: string;
@@ -26,57 +27,57 @@ const categories: Category[] = [
     label: 'Deals',
     bgClass: 'bg-warning-subtle',
     url: '#!',
-    icon: <UilStar className="text-warning" size={39} />
+    icon: <UilStar fill='currentColor' className="text-warning" size={39} />
   },
   {
     label: 'Grocery',
     url: '#!',
-    icon: <UilShoppingBag size={39} />
+    icon: <UilShoppingBag fill='currentColor' size={39} />
   },
   {
     label: 'Fashion',
     url: '#!',
-    icon: <UilWatchAlt size={39} />
+    icon: <UilWatchAlt fill='currentColor' size={39} />
   },
   {
     label: 'Mobile',
     url: '#!',
-    icon: <UilMobileAndroid size={39} />
+    icon: <UilMobileAndroid fill='currentColor' size={39} />
   },
   {
     label: 'Electronics',
     url: '#!',
-    icon: <UilMonitor size={39} />
+    icon: <UilMonitor fill='currentColor' size={39} />
   },
   {
     label: 'Home',
     url: '#!',
-    icon: <UilEstate size={39} />
+    icon: <UilEstate fill='currentColor' size={39} />
   },
   {
     label: 'Dining',
     url: '#!',
-    icon: <UilLamp size={39} />
+    icon: <UilLamp fill='currentColor' size={39} />
   },
   {
     label: 'Gifts',
     url: '#!',
-    icon: <UilGift size={39} />
+    icon: <UilGift fill='currentColor' size={39} />
   },
   {
     label: 'Tools',
     url: '#!',
-    icon: <UilWrench size={39} />
+    icon: <UilWrench fill='currentColor' size={39} />
   },
   {
     label: 'Travel',
     url: '#!',
-    icon: <UilPlaneDeparture size={39} />
+    icon: <UilPlaneDeparture fill='currentColor' size={39} />
   },
   {
     label: 'Others',
     url: '#!',
-    icon: <UilPalette size={39} />
+    icon: <UilPalette fill='currentColor' size={39} />
   }
 ];
 

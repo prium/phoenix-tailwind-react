@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useCallback, useEffect, useRef } from 'react';
 import ReactEChartsCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
 import { useAppContext } from 'providers/AppProvider';
@@ -146,17 +146,20 @@ const getDefaultOptions = (
   ],
   grid: {
     right: '0',
-    left: 6,
+    left: 3,
     bottom: 10,
-    top: '5%',
-    containLabel: true
+    top: 15,
+    outerBoundsMode: 'same',
+    outerBoundsContain: 'axisLabel'
   },
   animation: false
 });
 
 const AnalyticsEmailCampaignChart = ({ className }: { className: string }) => {
   const chartRef = useRef<null | EChartsReactCore>(null);
-  const updateDimensions = () => {
+  const updateDimensions = useCallback(() => {
+    if (!chartRef.current) return;
+  
     if (window.innerWidth < 576) {
       chartRef.current?.getEchartsInstance().setOption({
         series: [
@@ -216,19 +219,25 @@ const AnalyticsEmailCampaignChart = ({ className }: { className: string }) => {
         }
       });
     }
-  };
+  }, [chartRef]);
   useEffect(() => {
+    const initialRun = setTimeout(() => {
+      if (chartRef.current) {
+        updateDimensions();
+      }
+    }, 0)
     window.addEventListener('resize', updateDimensions);
-    return () => window.removeEventListener('resize', updateDimensions);
-  }, []);
-  useEffect(() => {
-    updateDimensions();
-  }, [chartRef.current]);
+    return () => {
+      clearTimeout(initialRun);
+      window.removeEventListener('resize', updateDimensions);
+    };
+  }, [updateDimensions]);
 
   const {
     getThemeColor,
     config: { isDark }
   } = useAppContext();
+  
   return (
     <ReactEChartsCore
       ref={chartRef}

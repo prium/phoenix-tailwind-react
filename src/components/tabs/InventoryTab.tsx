@@ -4,7 +4,7 @@ import FeatherIcon from 'feather-icons-react';
 import Button from 'components/base/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Badge from 'components/base/Badge';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import ReactSelect from 'components/base/ReactSelect';
 import classNames from 'classnames';
 import { faCheck, faRotate } from '@fortawesome/free-solid-svg-icons';

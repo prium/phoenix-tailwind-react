@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card, Col, Form, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const DealsOtherInformation = () => {
   return (

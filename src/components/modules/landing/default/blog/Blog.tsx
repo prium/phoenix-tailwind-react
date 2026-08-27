@@ -3,7 +3,7 @@ import { blogs } from 'data/landing/default-landing-data';
 import React from 'react';
 import { Col } from 'react-bootstrap';
 import { Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import BlogItem from './BlogItem';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';

@@ -7,7 +7,7 @@ import gallery54 from 'assets/img/gallery/54.png';
 import gallery55 from 'assets/img/gallery/55.png';
 import gallery56 from 'assets/img/gallery/56.png';
 import { Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 interface photos {
   img: string;
   location: string;

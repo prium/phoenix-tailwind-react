@@ -5,7 +5,7 @@ import { CustomerOrder, customerOrders } from 'data/e-commerce';
 import { currencyFormat } from 'helpers/utils';
 import useAdvanceTable from 'hooks/useAdvanceTable';
 import AdvanceTableProvider from 'providers/AdvanceTableProvider';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import FeatherIcon from 'feather-icons-react';
 import AdvanceTableFooter from 'components/base/AdvanceTableFooter';
 import RevealDropdown, {

@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import Timeline from 'components/base/Timeline';
 import { TimelineItem } from 'data/timelineData';
 import { Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const BasicTimeline = ({ data }: { data: TimelineItem[] }) => {
   return (

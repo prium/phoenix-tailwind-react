@@ -2,7 +2,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'components/base/Button';
 import OrderDetailsTable from 'components/tables/OrderDetailsTable';
 import { Card, Col, Dropdown, Form, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import OrderDetailsSummaryCard from 'components/cards/OrderDetailsSummaryCard';
 import {
   BillingDetails,

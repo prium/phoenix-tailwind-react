@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   UilArchive,
@@ -42,38 +43,38 @@ export interface Email {
 }
 export const mailboxItems: SidebarItem[] = [
   {
-    icon: <UilInbox size={12} />,
+    icon: <UilInbox fill='currentColor' size={12} />,
     label: 'Inbox',
     count: 5,
     link: '/apps/email/inbox'
   },
   {
-    icon: <UilLocationArrow size={12} />,
+    icon: <UilLocationArrow fill='currentColor' size={12} />,
     label: 'Sent',
     count: 23,
     active: true
   },
   {
-    icon: <UilPen size={12} />,
+    icon: <UilPen fill='currentColor' size={12} />,
     label: 'Draft'
   },
   {
-    icon: <UilExclamationCircle size={12} />,
+    icon: <UilExclamationCircle fill='currentColor' size={12} />,
     label: 'Spam'
   },
   {
-    icon: <UilTrash size={12} />,
+    icon: <UilTrash fill='currentColor' size={12} />,
     label: 'Trash'
   }
 ];
 
 export const filteredItems: SidebarItem[] = [
   {
-    icon: <UilStar size={12} />,
+    icon: <UilStar fill='currentColor' size={12} />,
     label: 'Starred'
   },
   {
-    icon: <UilArchive size={12} />,
+    icon: <UilArchive fill='currentColor' size={12} />,
     label: 'Archive'
   }
 ];

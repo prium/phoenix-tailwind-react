@@ -92,7 +92,7 @@ const RoomFilterOffcanvasContent = ({
           className="p-0 fw-bold d-xl-none"
           onClick={() => setOpen && setOpen(false)}
         >
-          <Unicon icon={UilTimes} size={16} />
+          <Unicon fill='currentColor' icon={UilTimes} size={16} />
         </Button>
       </div>
 

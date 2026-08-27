@@ -7,7 +7,7 @@ import {
   faLinkedinIn,
   faTwitter
 } from '@fortawesome/free-brands-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const CustomerProfileCard = () => {
   return (

@@ -1,6 +1,6 @@
 import { ColumnDef } from '@tanstack/react-table';
 import AdvanceTable from 'components/base/AdvanceTable';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import AdvanceTableFooter from 'components/base/AdvanceTableFooter';
 import { Project } from 'data/project-management/projects';
 import Avatar from 'components/base/Avatar';

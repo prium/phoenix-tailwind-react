@@ -64,7 +64,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     type: 'category',
     data: months,
     show: true,
-    boundaryGap: false,
+    boundaryGap: 0,
     axisLine: {
       show: true,
       lineStyle: { color: getThemeColor('tertiary-bg') }
@@ -73,7 +73,6 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       show: false
     },
     axisLabel: {
-      // interval: 1,
       showMinLabel: false,
       showMaxLabel: false,
       color: getThemeColor('secondary-color'),
@@ -89,7 +88,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
   },
   yAxis: {
     type: 'value',
-    boundaryGap: false,
+    boundaryGap: 0,
     axisLabel: {
       showMinLabel: true,
       showMaxLabel: true,
@@ -170,7 +169,14 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       }
     }
   ],
-  grid: { left: 0, right: 8, top: '14%', bottom: 0, containLabel: true }
+  grid: {
+    left: -3,
+    right: 8,
+    top: '12%',
+    bottom: 0,
+    outerBoundsMode: 'same',
+    outerBoundsContain: 'axisLabel' 
+  }
 });
 
 const EcomReturningCustomerRateChart = () => {

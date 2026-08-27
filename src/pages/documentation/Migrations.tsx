@@ -7,9 +7,23 @@ import PhoenixDocCard from 'components/base/PhoenixDocCard';
 import PhoenixLiveEditor from 'components/docs/PhoenixLiveEditor';
 import migrations from 'data/migrations';
 import { Alert, Card } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
+import MigrationToNineteen from './MigrationToNineteen';
+import { useLocation } from 'react-router';
+import { useEffect } from 'react';
 
 const Migrations = () => {
+  const location = useLocation();
+  useEffect(() => {
+    if(location.hash){
+      const el = document.getElementById(location.hash.replace('#', ''));
+      if(el) {
+        setTimeout(() => {
+          el.scrollIntoView({behavior: 'smooth'})
+        }, 0)
+      }
+    }
+  }, [location])
   return (
     <div>
       <h2 className="mb-4 lh-sm">Migrations</h2>
@@ -38,7 +52,7 @@ const Migrations = () => {
       {migrations.map(migration => (
         <PhoenixDocCard className="mb-4" key={migration.from}>
           <PhoenixDocCard.Header noPreview>
-            <div className="d-flex align-items-center">
+            <div className="d-flex align-items-center" id={migration.to}>
               <p className="text-body text-nowrap mb-0">
                 <code className="fs-7 opacity-50">{migration.from}</code>
                 <span className="mx-3">to</span>
@@ -53,6 +67,9 @@ const Migrations = () => {
             </div>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body>
+            {migration.to === 'v2.0.0' && (
+              <MigrationToNineteen />
+            )}
             {migration.to === 'v1.9.0' && (
               <>
                 <div className="bg-body-highlight p-3 py-5 mb-5">

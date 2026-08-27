@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { Stat, stats } from 'data/landing/alternate-landing-data';
 import { Col, Row } from 'react-bootstrap';
 import CountUp from 'react-countup';
-import { LegacyRef } from 'react';
+import { Ref } from 'react';
 
 const StatItem = ({ stat }: { stat: Stat }) => {
   return (
@@ -19,7 +19,7 @@ const StatItem = ({ stat }: { stat: Stat }) => {
         <div>
           <h1
             className="fs-3 fs-lg-1 fw-bolder text-info mb-3"
-            ref={countUpRef as LegacyRef<HTMLHeadingElement>}
+            ref={countUpRef as Ref<HTMLHeadingElement>}
           />
           <h4>{stat.title}</h4>
         </div>

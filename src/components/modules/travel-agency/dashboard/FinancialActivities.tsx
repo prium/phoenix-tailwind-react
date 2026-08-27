@@ -4,12 +4,18 @@ import FinancialActivitiesChart from 'components/charts/e-charts/FinancialActivi
 import { FinancialActivitiesData } from 'data/travel-agency/travelAgency';
 import EChartsReactCore from 'echarts-for-react/lib/core';
 import { capitalize } from 'helpers/utils';
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Button, Col, Dropdown, Form, Row } from 'react-bootstrap';
 
 export const FinancialActivities = () => {
   const chartRef = useRef<null | EChartsReactCore>(null);
   const [selectedOption, setSelectedOption] = useState<number>(0);
+
+  const chartData = useMemo(() => ({
+    profit: FinancialActivitiesData.profitData[selectedOption],
+    revenue: FinancialActivitiesData.revenueData[selectedOption],
+    expenses: FinancialActivitiesData.expensesData[selectedOption],
+  }), [selectedOption]);
 
   const [legends, setlegends] = useState({
     profit: true,
@@ -30,23 +36,18 @@ export const FinancialActivities = () => {
   };
 
   useEffect(() => {
-    const data1 = FinancialActivitiesData.profitData[selectedOption];
-    const data2 = FinancialActivitiesData.revenueData[selectedOption];
-    const data3 = FinancialActivitiesData.expensesData[selectedOption];
+    const data1 = chartData.profit;
+    const data2 = chartData.revenue;
+    const data3 = chartData.expenses;
+
     chartRef?.current?.getEchartsInstance().setOption({
       series: [
-        {
-          data: data1
-        },
-        {
-          data: data2
-        },
-        {
-          data: data3
-        }
+        { data: data1 },
+        { data: data2 },
+        { data: data3 }
       ]
     });
-  }, [selectedOption]);
+  }, [chartData]);
 
   return (
     <div className="mt-5 mt-xl-0 mt-xxl-5 mb-5 mb-xxl-0">
@@ -150,7 +151,7 @@ export const FinancialActivities = () => {
           </div>
         </Col>
       </Row>
-      <FinancialActivitiesChart ref={chartRef} />
+      <FinancialActivitiesChart ref={chartRef} chartData={chartData} />
     </div>
   );
 };

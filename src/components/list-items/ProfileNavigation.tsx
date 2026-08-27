@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import Button from 'components/base/Button';
 import { dropdownData } from 'data/social/dropdownData';
 import { Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const ProfileNavigation = ({ className }: { className?: string }) => {
   return (

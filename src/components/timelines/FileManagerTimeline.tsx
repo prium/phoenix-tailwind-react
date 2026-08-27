@@ -5,7 +5,7 @@ import Avatar from 'components/base/Avatar';
 import Timeline from 'components/base/Timeline';
 import AvatarDropdown from 'components/common/AvatarDropdown';
 import { Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 interface Activity {
   time: string;

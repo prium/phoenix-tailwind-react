@@ -116,3 +116,12 @@ html:not([data-bs-theme="dark"]) {
     display: none;
   }
 }
+.bg-opacity-15{
+  --#{phoenix}-bg-opacity: 0.15;
+}
+
+.border-end-solid-xxl{
+  @include media-breakpoint-up(xxl){
+    border-right-style: solid !important;
+  }
+}

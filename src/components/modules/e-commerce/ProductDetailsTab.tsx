@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Card, Col, Nav, Pagination, Row, Stack, Tab } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import product23 from 'assets/img/products/23.png';
 import ProductSpecificationTables from './ProductSpecificationTables';
 import Rating from 'components/base/Rating';

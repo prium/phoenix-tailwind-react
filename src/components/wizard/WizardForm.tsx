@@ -1,5 +1,5 @@
 import { useWizardFormContext } from 'providers/WizardFormProvider';
-import React, { PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 
 export const WizardForm = ({
   children,
@@ -11,7 +11,9 @@ export const WizardForm = ({
       onSubmit={e => {
         e.preventDefault();
       }}
-      ref={el => (formRefs.current[step - 1] = el)}
+      ref={el => {
+        (formRefs.current[step - 1] = el)
+      }}
       noValidate
     >
       {children}

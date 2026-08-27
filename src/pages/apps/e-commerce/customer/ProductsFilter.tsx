@@ -27,7 +27,7 @@ const ProductsFilter = () => {
         className="py-5 ps-5 products-filter-offcanvas"
         fixed
       >
-        <Scrollbar className="table-scrollbar">
+        <Scrollbar style={{ height: '100%' }} className="table-scrollbar">
           <div className="pe-5">
             <ProductFilterItems handleClose={handleClose} />
           </div>
@@ -49,7 +49,10 @@ const ProductsFilter = () => {
               className="position-sticky"
               style={{ top: '1rem', height: 'calc(100vh - 2rem) ' }}
             >
-              <Scrollbar className="product-scrollbar">
+              <Scrollbar
+                style={{ height: 'calc(100vh - 2rem)' }}
+                className="product-scrollbar"
+              >
                 <ProductFilterItems handleClose={handleClose} />
               </Scrollbar>
             </div>

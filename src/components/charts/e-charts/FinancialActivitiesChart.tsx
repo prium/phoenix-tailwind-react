@@ -1,12 +1,5 @@
-import {
-  CSSProperties,
-  MutableRefObject,
-  forwardRef,
-  useCallback,
-  useEffect,
-  useMemo
-} from 'react';
-import ReactEChartsCore from 'echarts-for-react/lib/core';
+import { CSSProperties, useCallback, useEffect, useMemo } from 'react';
+import ReactEChartsCore from 'echarts-for-react';
 import * as echarts from 'echarts/core';
 import { useAppContext } from 'providers/AppProvider';
 import { TooltipComponent } from 'echarts/components';
@@ -14,21 +7,30 @@ import { BarChart } from 'echarts/charts';
 import { tooltipFormatterDefault } from 'helpers/echart-utils';
 import EChartsReactCore from 'echarts-for-react/lib/core';
 import { CallbackDataParams } from 'echarts/types/dist/shared';
-import { FinancialActivitiesData } from 'data/travel-agency/travelAgency';
 echarts.use([TooltipComponent, BarChart]);
 
-const FinancialActivitiesChart = forwardRef<
-  EChartsReactCore | null,
-  {
-    style?: CSSProperties;
-  }
->(({ style }, ref) => {
+interface ChartData {
+  profit: number[];
+  revenue: number[];
+  expenses: number[];
+}
+interface FinancialActivitiesChartProps {
+  style?: CSSProperties;
+  ref?: React.RefObject<EChartsReactCore | null>;
+  chartData: ChartData;
+}
+
+const FinancialActivitiesChart = ({
+  style,
+  ref,
+  chartData
+}: FinancialActivitiesChartProps) => {
   const {
     getThemeColor,
     config: { isDark }
   } = useAppContext();
 
-  const chartRef = ref as MutableRefObject<EChartsReactCore | null>;
+  const chartRef = ref as React.RefObject<EChartsReactCore | null>;
 
   const getDefaultOptions = useMemo(
     () => ({
@@ -53,6 +55,7 @@ const FinancialActivitiesChart = forwardRef<
       },
 
       xAxis: {
+        type: 'value',
         axisLabel: {
           show: true,
           margin: 12,
@@ -70,6 +73,7 @@ const FinancialActivitiesChart = forwardRef<
       },
 
       yAxis: {
+        type: 'category',
         axisTick: {
           show: false
         },
@@ -110,7 +114,7 @@ const FinancialActivitiesChart = forwardRef<
               ? getThemeColor('primary')
               : getThemeColor('primary-light')
           },
-          data: FinancialActivitiesData.profitData[0]
+          data: chartData.profit
         },
         {
           name: 'Revenue',
@@ -127,7 +131,7 @@ const FinancialActivitiesChart = forwardRef<
               ? getThemeColor('success')
               : getThemeColor('success-light')
           },
-          data: FinancialActivitiesData.revenueData[0]
+          data: chartData.revenue
         },
         {
           name: 'Expenses',
@@ -140,24 +144,35 @@ const FinancialActivitiesChart = forwardRef<
             borderRadius: [4, 0, 0, 4],
             color: isDark ? getThemeColor('info') : getThemeColor('info-light')
           },
-          data: FinancialActivitiesData.expensesData[0]
+          data: chartData.expenses
         }
       ],
       grid: {
-        right: 20,
-        left: 3,
+        right: 3,
+        left: -10,
         bottom: 0,
         top: 16,
-        containLabel: true
+        outerBoundsMode: 'same',
+        outerBoundsContain: 'axisLabel'
       },
       animation: false
     }),
-    [getThemeColor, isDark]
+    [getThemeColor, isDark, chartData]
   );
 
   const updateDimensions = useCallback(() => {
+    if (!chartRef.current) return;
+
+    const chartInstance = chartRef.current.getEchartsInstance();
+
+    if (!chartInstance) return;
+
+    const setSafeOption = (option: any) => {
+      chartInstance.setOption(option, { notMerge: false, lazyUpdate: true });
+    };
+
     if (window.innerWidth < 576) {
-      chartRef?.current?.getEchartsInstance().setOption({
+      setSafeOption({
         yAxis: {
           axisLabel: {
             show: false
@@ -168,7 +183,7 @@ const FinancialActivitiesChart = forwardRef<
         }
       });
     } else if (window.innerWidth < 768) {
-      chartRef.current?.getEchartsInstance().setOption({
+      setSafeOption({
         yAxis: {
           axisLabel: {
             margin: 32,
@@ -180,37 +195,44 @@ const FinancialActivitiesChart = forwardRef<
         }
       });
     } else if (window.innerWidth <= 1540) {
-      chartRef.current?.getEchartsInstance().setOption({
+      setSafeOption({
         yAxis: {
           axisLabel: {
             show: false
           }
         },
         grid: {
-          left: 15
+          left: -2,
         }
       });
     } else {
-      chartRef.current?.getEchartsInstance().setOption({
+      setSafeOption({
         yAxis: {
           axisLabel: {
             show: true
           }
         },
         grid: {
-          left: 3
+          left: 0
         }
       });
     }
   }, []);
 
   useEffect(() => {
-    if (chartRef.current) {
-      updateDimensions();
-    }
+    const initialRun = setTimeout(() => {
+      if (chartRef.current) {
+        updateDimensions();
+      }
+    }, 0)
     window.addEventListener('resize', updateDimensions);
-    return () => window.removeEventListener('resize', updateDimensions);
-  }, []);
+    return () => {
+      clearTimeout(initialRun);
+      window.removeEventListener('resize', updateDimensions);
+    };
+  }, [updateDimensions]);
+
+  
 
   return (
     <ReactEChartsCore
@@ -221,6 +243,6 @@ const FinancialActivitiesChart = forwardRef<
       className="echart-financial-Activities"
     />
   );
-});
+};
 
 export default FinancialActivitiesChart;

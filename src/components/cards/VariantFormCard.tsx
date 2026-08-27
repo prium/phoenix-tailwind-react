@@ -10,10 +10,10 @@ const VariantFormCard = ({ className }: { className?: string }) => {
 
         <Row className="gx-3 gy-4 mb-3">
           <Col xs={12} sm={6} xl={12}>
-            <ProductVariant className="border-bottom border-translucent border-dashed border-sm-0 border-bottom-xl pb-4" />
+            <ProductVariant title='Option 1' className="border-bottom border-translucent border-dashed border-sm-0 border-bottom-xl pb-4" />
           </Col>
           <Col xs={12} sm={6} xl={12}>
-            <ProductVariant />
+            <ProductVariant title='Option 2' />
           </Col>
         </Row>
         <Button variant="phoenix-primary" className="w-100">

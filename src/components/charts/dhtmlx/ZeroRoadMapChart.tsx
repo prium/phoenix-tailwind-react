@@ -1,7 +1,8 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { gantt } from 'dhtmlx-gantt';
 import 'dhtmlx-gantt/codebase/dhtmlxgantt.css';
 import { useAppContext } from 'providers/AppProvider';
+import { resetGanttConfig } from './resetGanttConfig';
 
 const tasks = {
   data: [
@@ -84,6 +85,7 @@ const ZeroRoadMapChart = ({
 
   useEffect(() => {
     if (containerRef.current) {
+      resetGanttConfig();
       gantt.plugins({
         tooltip: true
       });
@@ -157,6 +159,12 @@ const ZeroRoadMapChart = ({
 
       gantt.init(containerRef.current);
       gantt.parse(tasks);
+    }
+
+    return () => {
+      gantt.clearAll();
+      gantt.resetSkin();
+      gantt._events = [];
     }
   }, []);
 

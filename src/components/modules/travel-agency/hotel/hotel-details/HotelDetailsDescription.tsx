@@ -55,7 +55,7 @@ const HotelDetailsDescription = ({ activeKey }: { activeKey: string }) => {
           <div className="mb-4">
             <Suspense fallback={<PhoenixLoader />}>
               <Mapbox
-                ref={mapRef}
+                mapRef={mapRef}
                 className="rounded-2 border border-translucent overflow-hidden w-100"
                 style={{ height: 300 }}
                 options={{

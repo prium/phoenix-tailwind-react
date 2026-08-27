@@ -11,7 +11,7 @@
     font-weight: $font-weight-bold;
     padding-left: 0 !important;
     line-height: $line-height-base !important;
-    color: var(--#{$prefix}body-highlight-color) !important;
+    color: var(--#{$prefix}body-highlight-color);
     text-transform: none !important;
   }
 }

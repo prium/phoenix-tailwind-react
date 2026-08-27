@@ -15,7 +15,7 @@ const GettingStarted = () => {
         <p className="mb-0">
           Welcome to the ReactJS version of the{' '}
           <a
-            href="https://themes.getbootstrap.com/product/phoenix-admin-dashboard-webapp-template/"
+            href="https://themewagon.com/themes/phoenix/"
             target="_blank"
             rel="noopener noreferrer"
           >

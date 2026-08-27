@@ -7,7 +7,7 @@ import Rating from 'components/base/Rating';
 import { Product as ProductType } from 'data/e-commerce/products';
 import { currencyFormat } from 'helpers/utils';
 import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const ProductCard = ({ product }: { product: ProductType }) => {
   return (

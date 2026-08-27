@@ -6,7 +6,7 @@ import gallery49 from 'assets/img/gallery/49.png';
 import gallery50 from 'assets/img/gallery/50.png';
 import gallery64 from 'assets/img/gallery/64.png';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import SwiperCore from 'swiper';
 import { Autoplay, Navigation } from 'swiper/modules';
 import Rating from 'components/base/Rating';

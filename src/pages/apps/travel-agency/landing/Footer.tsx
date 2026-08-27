@@ -1,5 +1,5 @@
 import { Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import logo1 from 'assets/img/icons/logo-1.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {

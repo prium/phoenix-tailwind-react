@@ -107,8 +107,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
         fontWeight: 700,
         fontFamily: 'Nunito Sans',
         fontSize: 12.8,
-        formatter: (value: CallbackDataParams) =>
-          `$${value.value.toLocaleString()}`
+        formatter: (value: CallbackDataParams) => `$${value.value && value.value.toLocaleString()}`
       },
       backgroundStyle: {
         color: getThemeColor('body-highlight-bg')
@@ -124,10 +123,11 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
   ],
   grid: {
     right: 0,
-    left: 0,
+    left: -3,
     bottom: 8,
     top: 0,
-    containLabel: true
+    outerBoundsMode: 'same',
+    outerBoundsContain: 'axisLabel'
   },
   animation: false
 });

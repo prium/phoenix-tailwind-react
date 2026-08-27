@@ -1,6 +1,6 @@
 import OrderInfoItem from 'components/info-items/OrderInfoItem';
 import { Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 export const BillingDetails = () => {
   return (

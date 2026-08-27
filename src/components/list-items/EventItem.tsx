@@ -6,7 +6,7 @@ import RevealDropdown, {
 import { Event } from 'data/eventsData';
 import React from 'react';
 import { Dropdown } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 interface EventItemProps {
   event: Event;

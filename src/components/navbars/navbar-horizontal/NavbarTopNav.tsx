@@ -5,7 +5,7 @@ import { RouteItems, routes } from 'sitemap';
 import TopNavMegaMenu from './TopNavMegaMenu';
 import TopNavItem from './TopNavItem';
 import { useBreakpoints } from 'providers/BreakpointsProvider';
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router';
 
 const NavbarTopNav = () => {
   return (
@@ -59,7 +59,7 @@ const NavbarTopNavItem = ({ route }: { route: RouteItems }) => {
         className="nav-link lh-1 d-flex align-items-center cursor-pointer"
         // onClick={handleClick}
       >
-        <Icon className="me-2" size={16} />
+        <Icon fill='currentColor' className="me-2" size={16} />
         <span>
           {capitalize(
             route.horizontalNavLabel ? route.horizontalNavLabel : route.label

@@ -1,6 +1,6 @@
 import BookingsChart from 'components/charts/e-charts/BookingsChart';
 import EChartsReactCore from 'echarts-for-react/lib/core';
-import React, { useEffect, useRef, useState } from 'react';
+import  { useEffect, useRef, useState } from 'react';
 import { Card, Form } from 'react-bootstrap';
 import { bookingsData } from 'data/travel-agency/travelAgency';
 

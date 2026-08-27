@@ -6,7 +6,7 @@ import japanAirline from 'assets/img/brand/japan-airline.png';
 import longArrow from 'assets/img/icons/long-arrow.svg';
 import { Col, Row } from 'react-bootstrap';
 import Button from 'components/base/Button';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { currencyFormat } from 'helpers/utils';
 
 interface FlightSchedule {

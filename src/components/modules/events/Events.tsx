@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import EventItem from 'components/list-items/EventItem';
 import { Event } from 'data/eventsData';
 import { Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 interface EventsProps {
   events: Event[];

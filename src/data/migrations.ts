@@ -1,5 +1,320 @@
 export default [
   {
+    from: 'v2.1.0',
+    to: 'v2.2.0',
+    new: [
+      'src/assets/img/gallery/65.png',
+      'src/assets/img/gallery/66.png',
+      'src/assets/img/gallery/67.png',
+      'src/assets/img/gallery/68.png',
+      'src/assets/img/gallery/69.png',
+      'src/assets/img/gallery/70.png',
+      'src/assets/img/gallery/71.png',
+      'src/assets/img/gallery/72.png',
+      'src/assets/img/gallery/73.png',
+      'src/assets/img/gallery/74.png',
+      'src/assets/img/gallery/75.png',
+      'src/assets/img/gallery/76.png',
+      'src/assets/img/gallery/77.png',
+      'src/assets/img/gallery/78.png',
+      'src/assets/img/gallery/79.png',
+      'src/assets/img/gallery/80.png',
+      'src/assets/img/gallery/81.png',
+      'src/assets/img/gallery/82.png',
+      'src/assets/img/gallery/83.png',
+      'src/assets/img/gallery/84.png',
+      'src/assets/img/gallery/85.png',
+      'src/assets/img/gallery/86.png',
+      'src/assets/img/gallery/87.png',
+      'src/assets/img/gallery/88.png',
+      'src/assets/img/gallery/89_large.png',
+      'src/assets/img/gallery/89.png',
+      'src/assets/img/gallery/90.png',
+      'src/assets/img/gallery/91_large.png',
+      'src/assets/img/gallery/91.png',
+      'src/assets/img/gallery/92_large.png',
+      'src/assets/img/gallery/92.png',
+      'src/assets/img/gallery/93.png',
+      'src/assets/img/gallery/94.png',
+      'src/assets/img/gallery/95_large.png',
+      'src/assets/img/gallery/95.png',
+      'src/assets/img/gallery/96.mp4',
+      'src/assets/img/gallery/96.png',
+      'src/assets/img/gallery/97.mp4',
+      'src/assets/img/gallery/97.png',
+      'src/assets/img/gallery/98_large.png',
+      'src/assets/img/gallery/98.png',
+      'src/assets/img/gallery/99.mp4',
+      'src/assets/img/gallery/99.png',
+      'src/assets/img/gallery/100.png',
+      'src/assets/img/gallery/101.png',
+      'src/assets/img/gallery/102.png',
+      'src/assets/img/gallery/103.png',
+      'src/assets/img/gallery/104.png',
+      'src/assets/img/gallery/105.png',
+      'src/assets/img/gallery/106_large.png',
+      'src/assets/img/gallery/106.png',
+      'src/assets/img/gallery/107_large.png',
+      'src/assets/img/gallery/107.png',
+      'src/assets/img/gallery/108_large.png',
+      'src/assets/img/gallery/108.png',
+      'src/assets/img/gallery/109.png',
+      'src/assets/img/gallery/111.png',
+      'src/assets/img/gallery/112.png',
+      'src/assets/img/gallery/113.png',
+      'src/assets/img/gallery/114.png',
+      'src/assets/img/gallery/115.png',
+      'src/assets/img/gallery/116.png',
+      'src/assets/img/gallery/117.png',
+      'src/assets/img/gallery/119.png',
+      'src/components/modules/gallery/AlbumItems.tsx',
+      'src/components/modules/gallery/GalleryColumnItems.tsx',
+      'src/components/modules/gallery/GalleryGridItems.tsx',
+      'src/components/modules/gallery/GalleryGridWithTitleItems.tsx',
+      'src/components/modules/gallery/GalleryLayout.tsx',
+      'src/components/modules/gallery/GalleryMasonryItems.tsx',
+      'src/components/modules/gallery/GallerySliderItems.tsx',
+      'src/data/gallery.ts',
+      'src/hooks/useGalleryItems.tsx',
+      'src/pages/apps/gallery/Album.tsx',
+      'src/pages/apps/gallery/GalleryColumn.tsx',
+      'src/pages/apps/gallery/GalleryGrid.tsx',
+      'src/pages/apps/gallery/GalleryGridWithTitle.tsx',
+      'src/pages/apps/gallery/GalleryMasonry.tsx',
+      'src/pages/apps/gallery/GallerySlider.tsx'
+    ],
+    update: [
+      'package.json',
+      'src/Route.tsx',
+      'src/sitemap.tsx',
+      'src/assets/scss/theme/plugins/_swiper.scss',
+      'src/assets/scss/theme/_landing.scss',
+      'src/assets/scss/theme/_mixed.scss',
+      'src/components/base/Swiper.tsx'
+    ]
+  },
+  {
+    from: 'v2.0.0',
+    to: 'v2.1.0',
+    new: [
+      'src/assets/scss/theme/plugins/_emoji-picker.scss',
+    ],
+    update: [
+      'package.json',
+      'src/components/charts/e-charts/example/DoughnutPieChart.tsx',
+      'src/components/charts/e-charts/example/SeriesBarChart.tsx',
+      'src/components/charts/e-charts/example/SimpleLineChart.tsx',
+      'src/components/charts/e-charts/example/StackedLineChart.tsx',
+      'src/components/charts/e-charts/AdClicksChart.tsx',
+      'src/components/charts/e-charts/AnalyticsCallCampaignChart.tsx',
+      'src/components/charts/e-charts/AnalyticsEmailCampaignChart.tsx',
+      'src/components/charts/e-charts/AnalyticsSalesChart.tsx',
+      'src/components/charts/e-charts/BaseLineChart.tsx',
+      'src/components/charts/e-charts/BasicEcharts.tsx',
+      'src/components/charts/e-charts/BookingsCharts.tsx',
+      'src/components/charts/e-charts/CompanyProfileEmployeesChart.tsx',
+      'src/components/charts/e-charts/CompletedTaskChart.tsx',
+      'src/components/charts/e-charts/ContactsBySourceChart.tsx',
+      'src/components/charts/e-charts/ContactsCreatedChart.tsx',
+      'src/components/charts/e-charts/DividendBarChart.tsx',
+      'src/components/charts/e-charts/DividendGrowthChart.tsx',
+      'src/components/charts/e-charts/EcomNewCustomersChart.tsx',
+      'src/components/charts/e-charts/EcomProjectionVsActualChart.tsx',
+      'src/components/charts/e-charts/EcomReturningCustomerChart.tsx',
+      'src/components/charts/e-charts/EcomTopCouponsChart.tsx',
+      'src/components/charts/e-charts/EcomTotalOrdersChart.tsx',
+      'src/components/charts/e-charts/EcomTotalSellsChart.tsx',
+      'src/components/charts/e-charts/EpsNextYearChart.tsx',
+      'src/components/charts/e-charts/EpsThisYearChart.tsx',
+      'src/components/charts/e-charts/FinancialActivitiesChart.tsx',
+      'src/components/charts/e-charts/ForecastRevenueChart.tsx',
+      'src/components/charts/e-charts/GrowthInRevenueChart.tsx',
+      'src/components/charts/e-charts/IssuesDiscoveredChart.tsx',
+      'src/components/charts/e-charts/LeadConversationChart.tsx',
+      'src/components/charts/e-charts/MarketingCampaignChart.tsx',
+      'src/components/charts/e-charts/PortfolioLineChart.tsx',
+      'src/components/charts/e-charts/ProjectElevenProgressChart.tsx',
+      'src/components/charts/e-charts/ReportDetailsChart.tsx',
+      'src/components/charts/e-charts/RevenueNextYearChart.tsx',
+      'src/components/charts/e-charts/RevenueTargetChart.tsx',
+      'src/components/charts/e-charts/RevenueThisYearChart.tsx',
+      'src/components/charts/e-charts/StockOverviewChart.tsx',
+      'src/components/charts/e-charts/StockOverviewInvertedChart.tsx',
+      'src/components/charts/e-charts/StockOverviewMixedChart.tsx',
+      'src/components/charts/e-charts/StockShareReportChart.tsx',
+      'src/components/charts/e-charts/WatchlistReportChart.tsx',
+      'src/components/leaflet-maps/EcomTopRegionsMap.tsx',
+      'src.components/modals/CalendarAddNewEventModal.tsx',
+      'src/components/modules/chat/index.tsx',
+      'src/components/modules/chat/chat-content/ChatContentFooter.tsx',
+      'src/components/modules/travel-agency/dashboard/FinancialActivities.tsx',
+      'src/hooks/useLightbox.tsx',
+      'src/pages/modules/charts/Echarts.tsx',
+      'src/pages/modules/forms/advance/EmojiButtonExample.tsx',
+      'src/pages/modules/utilities/StackExample.tsx',
+    ],
+    delete: [
+      'src/assets/scss/theme/plugins/_picmo.scss',
+      'src/components/base/EmojiPicker.tsx'
+    ]
+  },
+  {
+    from: 'v1.10.0',
+    to: 'v2.0.0',
+    new: [
+      'types/simplebar-react.d.ts',
+      'src/components/charts/dhtmlx/resetGanttConfig.ts',
+      'src/components/modules/gantt/GanttActions.tsx',
+      'src/components/modules/gantt/GanttAddTaskModal.tsx',
+      'src/components/modules/gantt/GanttDeleteLinkModal.tsx',
+      'src/components/modules/gantt/GanttFilterModal.tsx',
+      'src/components/moudles/gantt/GanttOffcanvas.tsx',
+      'src/components/modules/gantt/GanttOptionsModal.tsx',
+      'src/components/modules/gantt/layoutConfig.tsx',
+      'src/hooks/useGanttChartGridWidth.tsx',
+      'src/data/ganttData.ts',
+      'src/pages/gantt-chart/GanttChart.tsx'
+    ],
+    update: [
+      'package.json',
+      'src/Routes.tsx',
+      'src/sitemap.tsx',
+      'src/assets/scss/theme/plugins/_full-calendar.scss',
+      'src/assets/scss/theme/_alert.scss',
+      'src/assets/scss/theme/_gantt_chart.scss',
+      'src/assets/scss/theme/_nav-tab.scss',
+      'src/assets/scss/theme/_scrollbar.scss',
+      'src/components/base/Scrollbar.tsx',
+      'src/pages/modules/AlertsExample.tsx',
+      'src/components/base/ReactSelect.tsx',
+    ]
+  },
+  {
+    from: 'v1.9.0',
+    to: 'v1.10.0',
+    new: [
+      'src/assets/img/brand3/amd.png',
+      'src/assets/img/brand3/apple.png',
+      'src/assets/img/brand3/dark_amd.png',
+      'src/assets/img/brand3/dark_apple_logo.png',
+      'src/assets/img/brand3/dark_intel.png',
+      'src/assets/img/brand3/dark_tesla.png',
+      'src/assets/img/brand3/google.png',
+      'src/assets/img/brand3/intel.png',
+      'src/assets/img/brand3/light_apple_logo.png',
+      'src/assets/img/brand3/light_apple_logo.svg',
+      'src/assets/img/brand3/microsoft.png',
+      'src/assets/img/brand3/nvidia.png',
+      'src/assets/img/brand3/tesla.png',
+      'src/assets/img/stock/news/1.png',
+      'src/assets/img/stock/news/2.png',
+      'src/assets/img/stock/news/3.png',
+      'src/assets/img/stock/news/4.png',
+      'src/assets/img/stock/news/5.png',
+      'src/assets/img/stock/news/6.png',
+      'src/assets/img/stock/news/7.png',
+      'src/assets/img/stock/news/8.png',
+      'src/assets/img/stock/news/9.png',
+      'src/assets/img/stock/news/10.png',
+      'src/assets/img/stock/offcanvas-image.jpeg',
+      'src/assets/scss/theme/_stock.scss',
+      'src/components/cards/CompanyProfileDescriptionCard.tsx',
+      'src/components/cards/CompanyProfileTotalItemsCard.tsx',
+      'src/components/cards/EventsLaterThisWeekCard.tsx',
+      'src/components/cards/StockDetailsNewsCard.tsx',
+      'src/components/cards/StockPortfolioCard.tsx',
+      'src/components/cards/TopStocksSidebarCard.tsx',
+      'src/components/cards/UpcomingEventCard.tsx',
+      'src/components/cards/WatchlistCollapsibleCard.tsx',
+      'src/components/charts/chartjs/TopStockLineChart.tsx',
+      'src/components/charts/e-charts/CompanyProfileEmployeesChart.tsx',
+      'src/components/charts/e-charts/DividendBarChart.tsx',
+      'src/components/charts/e-charts/DividendGrowthChart.tsx',
+      'src/components/charts/e-charts/EpsNextYearChart.tsx',
+      'src/component/charts/e-charts/EpsThisYearChart.tsx',
+      'src/component/charts/e-charts/ForecastRevenueChart.tsx',
+      'src/component/charts/e-charts/GrowthInRevenueChart.tsx',
+      'src/component/charts/e-charts/PortfolioLineChart.tsx',
+      'src/components/charts/e-charts/RevenueNextYearChart.tsx',
+      'src/components/charts/e-charts/RevenueThisYearChart.tsx',
+      'src/components/charts/e-charts/StockOverviewChart.tsx',
+      'src/components/charts/e-charts/StockOverviewInvertedChart.tsx',
+      'src/components/charts/e-charts/StockOverviewMixedChart.tsx',
+      'src/components/charts/e-charts/StockShareReportChart.tsx',
+      'src/components/charts/e-charts/WatchlistReportChart.tsx',
+      'src/components/common/StockDetailsPagination.tsx',
+      'src/components/modules/stock/portfolio/PortfolioMainContent.tsx',
+      'src/components/modules/stock/portfolio/PortfolioOffcanvas.tsx',
+      'src/components/modules/stock/portfolio/PortfolioSidebarContent.tsx',
+      'src/components/modules/stock/stock-details/tab/ChartTabContent.tsx',
+      'src/components/modules/stock/stock-details/tab/CompanyProfileTabContent.tsx',
+      'src/components/modules/stock/stock-details/tab/DividendsTabContent.tsx',
+      'src/components/modules/stock/stock-details/tab/EventOffcanvas.tsx',
+      'src/components/modules/stock/stock-details/tab/EventsTabContent.tsx',
+      'src/components/modules/stock/stock-details/tab/FinancialStatementTabContent.tsx',
+      'src/components/modules/stock/stock-details/tab/ForecastTabContent.tsx',
+      'src/components/modules/stock/stock-details/tab/MostRecentForecastTableFooter.tsx',
+      'src/components/modules/stock/stock-details/tab/NewsTabContent.tsx',
+      'src/components/modules/stock/stock-details/tab/PreviousEventItem.tsx',
+      'src/components/modules/stock/stock-details/tab/UpcomingCollapseContainer.tsx',
+      'src/components/modules/stock/stock-details/StockDetailsBuyAndSellForm.tsx',
+      'src/components/modules/stock/stock-details/StockDetailsMainContent.tsx',
+      'src/components/modules/stock/stock-details/StockDetailsOptionChain.tsx',
+      'src/components/modules/stock/stock-details/StockDetailsSideBarContent.tsx',
+      'src/components/modules/stock/stock-details/StockDetailsSidebarOffcanvas.tsx',
+      'src/components/modules/stock/watchlist/AddCashTransactionModal.tsx',
+      'src/components/modules/stock/watchlist/CashTransactionTabContent.tsx',
+      'src/components/modules/stock/watchlist/WatchlistTab.tsx',
+      'src/components/modules/stock/StockDashboardTopList.tsx',
+      'src/components/modules/stock/StockOverviewSlider.tsx',
+      'src/components/modules/stock/TopStockAdvanceTable.tsx',
+      'src/components/modules/stock/TopStockMainContent.tsx',
+      'src/components/modules/stock/TopStockOptionChainTabContent.tsx',
+      'src/components/modules/stock/TopStocks.tsx',
+      'src/components/tables/DividendRecordTable.tsx',
+      'src/components/tables/EmployeeRecordsTable.tsx',
+      'src/components/tables/FinancialStatementTable.tsx',
+      'src/components/tables/ForecastEconomicPredictionTable.tsx',
+      'src/components/tables/MostRecentForecastTable.tsx',
+      'src/components/tables/OptionChainTable.tsx',
+      'src/components/tables/StockDashboardTopListTable.tsx',
+      'src/components/tables/StockDetailsOptionChainTable.tsx',
+      'src/components/tables/StockPortfolioTable.tsx',
+      'src/components/tables/WatchlistCashTransactionTable.tsx',
+      'src/components/tables/WatchlistSummaryTable.tsx',
+      'src/data/stock/dashboardTopStocks.ts',
+      'src/data/stock/dividend.tsx',
+      'src/data/stock/forecast.tsx',
+      'src/data/stock/optionChainTableData.ts',
+      'src/data/stock/portfolio.ts',
+      'src/data/stock/stockDashboard.ts',
+      'src/data/stock/stockDetails.ts',
+      'src/data/stock/watchlist.ts',
+      'src/helpers/chartjs-utils.ts',
+      'src/pages/apps/stock/Portfolio.tsx',
+      'src/pages/apps/stock/StockDetails.tsx',
+      'src/pages/apps/stock/Watchlist.tsx',
+      'src/pages/dashboard/Stock.tsx'
+    ],
+    update: [
+      'package.json',
+      'src/Routes.tsx',
+      'src/sitemap.tsx',
+      'src/assets/theme/_buttons.scss',
+      'src/assets/theme/_mixed.scss',
+      'src/assets/theme/_modal.scss',
+      'src/assets/theme/_nav-tab.scss',
+      'src/assets/theme/_reboot.scss',
+      'src/assets/theme/_type.scss',
+      'src/components/base/AdvanceTableFooter.tsx',
+      'src/components/base/Datepicker.tsx',
+      'src/components/base/Rating.tsx',
+      'src/components/base/ReactSelect.tsx',
+      'src/helpers/echart-utils.ts',
+      'src/hooks/useAdvanceTable.tsx'
+    ]
+  },
+  {
     from: 'v1.8.0',
     to: 'v1.9.0',
     new: [
@@ -18,7 +333,7 @@ export default [
       'scripts/product.cjs',
       'src/Routes.tsx',
       'src/assets/scss/_bootstrap.scss',
-      'src/assets/scss/theme.scss',
+      'src/assets/scss/theme/root/_dark.scss',
       'src/assets/scss/theme/_ecommerce.scss',
       'src/assets/scss/theme/_offcanvas.scss',
       'src/assets/scss/theme/plugins/_picmo.scss',
@@ -1907,3 +2222,130 @@ export default [
     ]
   }
 ];
+
+export const scrollbarCode = `
+import classNames from 'classnames';
+import { PropsWithChildren } from 'react';
+import SimpleBar from 'simplebar-react';
+import 'simplebar-react/dist/simplebar.min.css';
+
+interface ScrollbarProps {
+  className?: string;
+  style?: React.CSSProperties;
+}
+
+const Scrollbar = ({
+  children,
+  className,
+  style,
+  ...rest
+}: PropsWithChildren<ScrollbarProps>) => {
+  return (
+    <SimpleBar
+      className={classNames('custom-scrollbar', className)}
+      style={style}
+      {...rest}
+    >
+      {children}
+    </SimpleBar>
+  );
+};
+
+export default Scrollbar;
+`
+
+export const scrollbarCodeType = `
+declare module 'simplebar-react' {
+  import * as React from 'react';
+
+  interface SimpleBarProps extends React.HTMLAttributes<HTMLDivElement> {
+    className?: string;
+    style?: React.CSSProperties;
+    children?: React.ReactNode;
+  }
+
+  export default class SimpleBar extends React.Component<SimpleBarProps> {}
+}
+`
+
+export const scrollbarHelperCode = `
+  Import Scrollbar from 'components/base/Scrollbar';
+
+  // Your code
+  
+  return (
+    <Scrollbar
+      className="my-custom-scrollbar"
+      style={{ 
+        maxHeight: '400px' // Optional: Set a max height for the scrollable area if needed
+        height: '100%' // Optional: Set height to 100% to fill the parent container if needed
+      }}
+    >
+      {/* Your scrollable content here */}
+    </Scrollbar>
+  )
+
+`
+
+export const ecomTopRegionsMap = `
+  import { use, useEffect } from 'react';
+  import L, { LatLngExpression } from 'leaflet';
+  import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet';
+  import MarkerClusterGroup from "react-leaflet-markercluster";
+  import 'leaflet.tilelayer.colorfilter';
+  import 'leaflet/dist/leaflet.css';
+  import 'react-leaflet-markercluster/styles'; // styles for marker clustering. It have to be imported after leaflet.css
+  import { MapMarkerPoints } from 'data/mapMarkerPoints';
+  import { AppContext } from 'providers/AppProvider';
+
+  // Rest of the code remains the same
+`
+
+export const forawardRefCode = `
+  const MyComponent = ({ ref, ...props }) => {
+    return (
+      <div ref={ref} {...props}>
+        {/* Your component content */}
+      </div>
+    );
+  };
+
+  // Usage 
+  const App = () => {
+    const myRef = useRef(null);
+    return (
+      <MyComponent ref={myRef} />
+    );
+  };
+`
+
+export const useContextReplaceCode = `
+  import { use } from 'react';
+  import { AppContext } from 'providers/AppProvider';
+
+  const MyComponent = () => {
+    - const { config } = useContext(AppContext);
+    + const { config } = use(AppContext);
+    const { theme } = config;
+    return (
+      <div>
+        {/* Use config or other context values */}
+        <p>Current theme: {theme}</p>
+      </div>
+    );
+  };
+`
+
+export const providerCode = `
+  const themeContext = createContext('');
+
+  const App = ({children}) => {
+    return (
+      - <themeContext.Provider value="dark">
+      +  <themeContext value="dark">
+          {children}
+      + </themeContext>
+      - </themeContext.Provider>
+      )
+  }
+`

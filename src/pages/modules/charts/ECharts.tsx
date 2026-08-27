@@ -144,7 +144,7 @@ const getDefaultOptions = (
               : getThemeColor('secondary-bg')
         }
       },
-      boundaryGap: false
+      boundaryGap: 0
     },
     {
       type: 'category',
@@ -170,7 +170,7 @@ const getDefaultOptions = (
       splitLine: {
         show: false
       },
-      boundaryGap: false
+      boundaryGap: 0
     }
   ],
   yAxis: {
@@ -207,7 +207,7 @@ const getDefaultOptions = (
     left: 5,
     bottom: '20px',
     top: '2%',
-    containLabel: false
+    outerBoundsMode: 'none'
   },
   animation: false
 });
@@ -341,7 +341,8 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     left: 3,
     bottom: 0,
     top: '15%',
-    containLabel: true
+    outerBoundsMode: 'same',
+    outerBoundsContain: 'axisLabel'
   },
   animation: false
 });
@@ -433,7 +434,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     top: 0,
     left: 0,
     right: 0,
-    containLabel: false
+    outerBoundsMode: 'none'
   }
 });
 
@@ -535,7 +536,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
         }
       },
       type: 'category',
-      boundaryGap: false,
+      boundaryGap: 0,
       data: getPastDates(15)
     },
     {
@@ -558,7 +559,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
           type: 'solid'
         }
       },
-      boundaryGap: false,
+      boundaryGap: 0,
       data: getPastDates(15)
     }
   ],
@@ -624,7 +625,8 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     left: 0,
     bottom: '15%',
     top: 20,
-    containLabel: true
+    outerBoundsMode: 'same',
+    outerBoundsContain: 'axisLabel'
   }
 });
 

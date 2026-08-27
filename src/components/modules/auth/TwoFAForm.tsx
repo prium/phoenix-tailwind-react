@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import Button from 'components/base/Button';
 import React, { ChangeEvent, useRef, useState } from 'react';
 import { Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const totalInputLength = 6;
 

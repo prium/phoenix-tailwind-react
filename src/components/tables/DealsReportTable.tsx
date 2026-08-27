@@ -5,7 +5,7 @@ import {
   getColor,
   getProgressColorVariant
 } from 'helpers/utils';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import FeatherIcon from 'feather-icons-react';
 import AdvanceTableFooter from 'components/base/AdvanceTableFooter';
 import RevealDropdown, {

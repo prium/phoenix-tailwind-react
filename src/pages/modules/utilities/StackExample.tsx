@@ -52,7 +52,7 @@ const StackExample = () => {
           <PhoenixDocCard.Header title="Flex Behaviors">
             <p>
               Stacks are vertical by default and stacked items are full-width by
-              default. Use the <code>gap</code>
+              default. Use the <code>gap</code>{' '}
               prop to add space between items.
             </p>
           </PhoenixDocCard.Header>
@@ -63,7 +63,7 @@ const StackExample = () => {
           <PhoenixDocCard.Header title="Vertical">
             <p className="mb-0">
               Stacks are vertical by default and stacked items are full-width by
-              default. Use the <code>gap</code>
+              default. Use the <code>gap</code>{' '}
               prop to add space between items.
             </p>
           </PhoenixDocCard.Header>

@@ -4,7 +4,7 @@ import dark500Illustration from 'assets/img/spot-illustrations/500-illustration.
 import error500 from 'assets/img/spot-illustrations/500.png';
 import darkError500 from 'assets/img/spot-illustrations/dark_500.png';
 import { Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import useSettingsMountEffect from 'hooks/useSettingsMountEffect';
 
 const Error500 = () => {

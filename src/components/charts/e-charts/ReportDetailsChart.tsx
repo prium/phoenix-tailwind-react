@@ -7,7 +7,6 @@ import { BarChart } from 'echarts/charts';
 import { sellersReportData } from 'data/crm/reportsData';
 import { tooltipFormatterDefault } from 'helpers/echart-utils';
 import { CallbackDataParams } from 'echarts/types/dist/shared';
-
 echarts.use([TooltipComponent, BarChart]);
 
 const getDefaultOptions = (
@@ -88,10 +87,11 @@ const getDefaultOptions = (
   ],
   grid: {
     right: '0',
-    left: '0',
-    bottom: 0,
-    top: 10,
-    containLabel: true
+    left: -3,
+    bottom: 3,
+    top: 3,
+    outerBoundsMode: 'same',
+    outerBoundsContain: 'axisLabel'
   },
   animation: false
 });

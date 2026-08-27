@@ -1,6 +1,6 @@
 import React from 'react';
 import giftItemsBannerBg from 'assets/img/e-commerce/gift-items-banner-bg.png';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const EcomGiftItemsBanner = () => {
   return (

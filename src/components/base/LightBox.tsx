@@ -1,4 +1,5 @@
 import FsLightbox, { FsLightboxProps } from 'fslightbox-react';
+import { JSX } from 'react';
 
 interface LightBoxProps extends FsLightboxProps {
   toggler: boolean;

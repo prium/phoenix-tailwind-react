@@ -1,7 +1,7 @@
 import { Col, Dropdown, Row } from 'react-bootstrap';
 import { Route, RouteItems } from 'sitemap';
 import { capitalize } from 'helpers/utils';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router';
 import FeatherIcon from 'feather-icons-react';
 import classNames from 'classnames';
 import logoBg from 'assets/img/icons/logo-bg.png';

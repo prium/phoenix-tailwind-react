@@ -3,7 +3,7 @@ import { Form } from 'react-bootstrap';
 import { Note } from 'data/crm/dealDetailsData';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { faClock } from '@fortawesome/free-solid-svg-icons';
 
 const DealDetailsNotes = ({ notes }: { notes: Note[] }) => {

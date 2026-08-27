@@ -215,10 +215,10 @@
     &:hover {
       background: var(--#{$prefix}warning-bg-subtle);
       .module-title {
-        color: var(--#{$prefix}warning) !important;
+        color: var(--#{$prefix}warning-dark) !important;
       }
       .module-badge {
-        color: var(--#{$prefix}warning-lighter);
+        color: var(--#{$prefix}warning-light);
       }
     }
   }

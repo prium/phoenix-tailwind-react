@@ -1,7 +1,7 @@
 import {
   createContext,
   PropsWithChildren,
-  useContext,
+  use,
   useEffect,
   useState
 } from 'react';
@@ -63,12 +63,12 @@ const BreakpointsProvider = ({ children }: PropsWithChildren) => {
   }, [width]);
 
   return (
-    <BreakpointContext.Provider value={{ breakpoints }}>
+    <BreakpointContext value={{ breakpoints }}>
       {children}
-    </BreakpointContext.Provider>
+    </BreakpointContext>
   );
 };
 
-export const useBreakpoints = () => useContext(BreakpointContext);
+export const useBreakpoints = () => use(BreakpointContext);
 
 export default BreakpointsProvider;

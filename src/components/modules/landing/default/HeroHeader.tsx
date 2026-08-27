@@ -5,7 +5,7 @@ import bg29 from 'assets/img/bg/bg-29.png';
 import bg30 from 'assets/img/bg/bg-30.png';
 import bg31 from 'assets/img/bg/bg-31.png';
 import bg23 from 'assets/img/bg/bg-23.png';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'components/base/Button';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';

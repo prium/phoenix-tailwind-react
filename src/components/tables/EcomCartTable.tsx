@@ -7,7 +7,7 @@ import { CartItemType } from 'data/e-commerce/products';
 import { currencyFormat } from 'helpers/utils';
 import { useMemo, useState } from 'react';
 import { Table } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 interface EcomCartTableProps {
   products: CartItemType[];
@@ -15,7 +15,7 @@ interface EcomCartTableProps {
 
 const EcomCartTable = ({ products }: EcomCartTableProps) => {
   return (
-    <Scrollbar autoHeight autoHeightMax="100%" className="table-scrollbar">
+    <Scrollbar style={{ maxHeight: '100%'}} className="table-scrollbar">
       <Table className="phoenix-table fs-9 mb-0 border-top border-translucent">
         <thead>
           <tr>

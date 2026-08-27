@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { Feature } from 'data/landing/default-landing-data';
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 interface FeatureSectionProps {
   feature: Feature;

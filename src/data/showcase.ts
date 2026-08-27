@@ -22,7 +22,10 @@ import section23 from 'assets/img/sections/23.webp';
 import section24 from 'assets/img/sections/24.webp';
 import section26 from 'assets/img/sections/26.webp';
 import section27 from 'assets/img/sections/27.webp';
+import section28 from 'assets/img/sections/gantt-chart.webp';
+import section29 from 'assets/img/sections/file-manager.webp'
 import kanban from 'assets/img/sections/kanban.webp';
+import { BadgeBg } from 'components/base/Badge';
 
 interface ImportantApplications {
   title: string;
@@ -31,6 +34,10 @@ interface ImportantApplications {
   details: string;
   btnLabel: string;
   disable?: boolean;
+  badge?: {
+    label: string;
+    bg: BadgeBg
+  }
 }
 
 export const demos = [
@@ -85,6 +92,28 @@ export const demos = [
 ];
 
 export const importantApplications: ImportantApplications[] = [
+  {
+    title: 'Gantt Chart',
+    link: '/apps/gantt-chart',
+    thumb: section28,
+    details: `Our Gantt chart app visualizes tasks, schedules, and dependencies in a timeline format. It’s great for planning, tracking progress, and managing resources efficiently.`,
+    btnLabel: 'View gantt chart',
+    badge: {
+      label: 'New',
+      bg: 'warning'
+    }
+  },
+  {
+    title: 'File Manager',
+    link: '/apps/file-manager/grid-view',
+    thumb: section29,
+    details: `Our File Manager application allows you to manage and organize files flawlessly with grid and list views. It ensures a smooth and effortless user experience.`,
+    btnLabel: 'View file manager',
+    badge: {
+      label: 'New',
+      bg: 'warning'
+    }
+  },
   {
     title: 'Email',
     link: '/apps/email/inbox',

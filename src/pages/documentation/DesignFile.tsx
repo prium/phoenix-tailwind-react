@@ -1,5 +1,7 @@
+import { faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import PhoenixDocCard from 'components/base/PhoenixDocCard';
-import React from 'react';
+import { Alert } from 'react-bootstrap';
 
 const DesignFile = () => {
   return (
@@ -8,6 +10,18 @@ const DesignFile = () => {
       <PhoenixDocCard className="mb-4">
         <PhoenixDocCard.Header title="Figma file" noPreview />
         <PhoenixDocCard.Body>
+          <Alert variant="info" className="p-3 mb-4">
+            <div className="d-flex">
+              <FontAwesomeIcon icon={faExclamationCircle} className="fs-6" />
+              <div className='flex-1 ms-3'>
+                <p className="mb-0">
+                  Figma file is only available for{' '}
+                  <strong>Standard Plus</strong> &amp;{' '}
+                  <strong>Extended Plus</strong> license
+                </p>
+              </div>
+            </div>
+          </Alert>
           <h5 className="mb-2">To play with the design:</h5>
           <ul>
             <li>
@@ -16,7 +30,20 @@ const DesignFile = () => {
               </a>
             </li>
             <li>
-              Open the Figma link from the <code>README.md</code>
+              Download{' '}
+              <code>
+                {import.meta.env.VITE_NAME}-design-
+                {import.meta.env.VITE_VERSION}.zip
+              </code>{' '}
+              from ThemeWagon account
+            </li>
+            <li>
+              Open the figma link from{' '}
+              <code>
+                {import.meta.env.VITE_NAME}-design-
+                {import.meta.env.VITE_VERSION} {'->'} Figma file link.md
+              </code>{' '}
+              file
             </li>
             <li>
               This file is <code>"read-only". </code>So, to customize the design

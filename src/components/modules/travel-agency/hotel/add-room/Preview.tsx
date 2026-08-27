@@ -22,7 +22,7 @@ import {
   faWifi,
   faWineGlass
 } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import SummaryTable from './SummaryTable';
 import { useWizardFormContext } from 'providers/WizardFormProvider';
 import { AddRoomWizardFormData } from 'data/travel-agency/addRoom';

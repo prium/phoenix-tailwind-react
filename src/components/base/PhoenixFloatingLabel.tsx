@@ -20,16 +20,16 @@ const PhoenixFloatingLabel = ({
       {...rest}
     >
       {startComponent &&
-        React.cloneElement(startComponent as ReactElement, {
+        React.cloneElement(startComponent as ReactElement<any>, {
           className: classNames(
-            startComponent.props.className,
+            (startComponent as ReactElement<any>).props.className,
             'form-floating-icon form-floating-start-icon'
           )
         })}
 
       {React.Children.map(children, child =>
-        React.cloneElement(child as ReactElement, {
-          className: classNames((child as ReactElement).props.className),
+        React.cloneElement(child as ReactElement<any>, {
+          className: classNames((child as ReactElement<any>).props.className),
           style: {
             paddingLeft: startComponent && '2.25rem'
           }
@@ -37,9 +37,9 @@ const PhoenixFloatingLabel = ({
       )}
 
       {endComponent &&
-        React.cloneElement(endComponent as ReactElement, {
+        React.cloneElement(endComponent as ReactElement<any>, {
           className: classNames(
-            endComponent.props.className,
+            (endComponent as ReactElement<any>).props.className,
             'form-floating-icon form-floating-end-icon'
           )
         })}

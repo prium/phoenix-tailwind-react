@@ -31,13 +31,13 @@ const getDefaultOptions = (
     type: 'category',
     data: dates,
     show: false,
-    boundaryGap: false
+    boundaryGap: 0
   },
 
   yAxis: {
     show: false,
     type: 'value',
-    boundaryGap: false
+    boundaryGap: 0
   },
   series: [
     {
@@ -50,7 +50,14 @@ const getDefaultOptions = (
       showSymbol: false,
       symbol: 'circle'
     }
-  ]
+  ],
+  grid: {
+    left: 8,
+    right: 8,
+    top: 0,
+    bottom: 0,
+    outerBoundsMode: 'none'
+  }
 });
 
 const BasicEcharts = ({

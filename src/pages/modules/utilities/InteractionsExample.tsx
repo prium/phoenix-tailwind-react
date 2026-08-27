@@ -1,7 +1,7 @@
 import PhoenixDocCard from 'components/base/PhoenixDocCard';
 import DocPageHeader from 'components/docs/DocPageHeader';
 import DocPagesLayout from 'layouts/DocPagesLayout';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const textSelectionCode = `
 <>

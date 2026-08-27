@@ -18,7 +18,9 @@ const FeatureFigma = () => {
     >
       <div
         className="bg-gradient-figma"
-        ref={el => parallaxElRef.current?.push(el)}
+        ref={el => {
+          parallaxElRef.current?.push(el)
+        }}
         data-parallax={JSON.stringify({
           y: '-90%',
           scrollTrigger: { end: 'top -20%' }
@@ -28,7 +30,9 @@ const FeatureFigma = () => {
         className="feature-figma-img"
         src={figmaBg}
         alt=""
-        ref={el => parallaxElRef.current?.push(el)}
+        ref={el => {
+          parallaxElRef.current?.push(el)
+        }}
         data-parallax={JSON.stringify({ y: '-50%' })}
       />
       <div className="position-relative container-small text-center">

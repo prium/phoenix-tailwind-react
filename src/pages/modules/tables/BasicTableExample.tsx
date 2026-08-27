@@ -14,19 +14,19 @@ const exampleCode = `
       </thead>
       <tbody>
         <tr>
-          <td>1</td>
+          <td class="ps-2">1</td>
           <td>Mark</td>
           <td>Otto</td>
           <td>@mdo</td>
         </tr>
         <tr>
-          <td>2</td>
+          <td class="ps-2">2</td>
           <td>Jacob</td>
           <td>Thornton</td>
           <td>@fat</td>
         </tr>
         <tr>
-          <td>3</td>
+          <td class="ps-2">3</td>
           <td colSpan={2}>Larry the Bird</td>
           <td>@twitter</td>
         </tr>
@@ -46,19 +46,19 @@ const smTableCode = `
       </thead>
       <tbody>
         <tr>
-          <td>1</td>
+          <td class="ps-1">1</td>
           <td>Mark</td>
           <td>Otto</td>
           <td>@mdo</td>
         </tr>
         <tr>
-          <td>2</td>
+          <td class="ps-1">2</td>
           <td>Jacob</td>
           <td>Thornton</td>
           <td>@fat</td>
         </tr>
         <tr>
-          <td>3</td>
+          <td class="ps-1">3</td>
           <td colSpan={2}>Larry the Bird</td>
           <td>@twitter</td>
         </tr>
@@ -78,19 +78,19 @@ const darkTableCode = `
       </thead>
       <tbody>
         <tr>
-          <td>1</td>
+          <td class="ps-2">1</td>
           <td>Mark</td>
           <td>Otto</td>
           <td>@mdo</td>
         </tr>
         <tr>
-          <td>2</td>
+          <td class="ps-2">2</td>
           <td>Jacob</td>
           <td>Thornton</td>
           <td>@fat</td>
         </tr>
         <tr>
-          <td>3</td>
+          <td class="ps-2">3</td>
           <td colSpan={2}>Larry the Bird</td>
           <td>@twitter</td>
         </tr>
@@ -110,19 +110,19 @@ const stripedColumnTableCode = `
       </thead>
       <tbody>
         <tr>
-          <td>1</td>
+          <td class="ps-2">1</td>
           <td>Mark</td>
           <td>Otto</td>
           <td>@mdo</td>
         </tr>
         <tr>
-          <td>2</td>
+          <td class="ps-2">2</td>
           <td>Jacob</td>
           <td>Thornton</td>
           <td>@fat</td>
         </tr>
         <tr>
-          <td>3</td>
+          <td class="ps-2">3</td>
           <td colSpan={2}>Larry the Bird</td>
           <td>@twitter</td>
         </tr>
@@ -142,19 +142,19 @@ const alwaysResponsiveTableCode = `
       </thead>
       <tbody>
         <tr>
-          <td>1</td>
+          <td class="ps-2">1</td>
           <td>Mark</td>
           <td>Otto</td>
           <td>@mdo</td>
         </tr>
         <tr>
-          <td>2</td>
+          <td class="ps-2">2</td>
           <td>Jacob</td>
           <td>Thornton</td>
           <td>@fat</td>
         </tr>
         <tr>
-          <td>3</td>
+          <td class="ps-2">3</td>
           <td colSpan={2}>Larry the Bird</td>
           <td>@twitter</td>
         </tr>
@@ -174,19 +174,19 @@ const breakpointSpecificTableCode = `
       </thead>
       <tbody>
         <tr>
-          <td>1</td>
+          <td class="ps-2">1</td>
           <td>Mark</td>
           <td>Otto</td>
           <td>@mdo</td>
         </tr>
         <tr>
-          <td>2</td>
+          <td class="ps-2">2</td>
           <td>Jacob</td>
           <td>Thornton</td>
           <td>@fat</td>
         </tr>
         <tr>
-          <td>3</td>
+          <td class="ps-2">3</td>
           <td colSpan={2}>Larry the Bird</td>
           <td>@twitter</td>
         </tr>

@@ -5,7 +5,7 @@ import FeatherIcon from 'feather-icons-react';
 import { Route } from 'sitemap';
 import { capitalize } from 'helpers/utils';
 import classNames from 'classnames';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { useNavbarVerticalCollapse } from './NavbarVerticalCollapseProvider';
@@ -31,6 +31,7 @@ const NavItem = ({ route, level }: NavItemProps) => {
     <Nav.Item as="li">
       <NavLink
         to={route.path ? route.path : '#!'}
+        target={route.isTargetBlank ? '_blank': undefined}
         className={({ isActive }) =>
           classNames('nav-link', {
             'label-1': level === 1,

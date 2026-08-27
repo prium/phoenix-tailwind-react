@@ -62,7 +62,7 @@ const getDefaultOptions = (
   yAxis: {
     type: 'value',
     scale: true,
-    boundaryGap: false,
+    boundaryGap: 0,
     axisLabel: {
       show: false
     },

@@ -1,6 +1,6 @@
 import { conversations } from 'data/chat';
 import ChatProvider from 'providers/ChatProvider';
-import { Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router';
 
 const Chat = () => {
   return (

@@ -1,13 +1,18 @@
 import ReactSelect from 'components/base/ReactSelect';
 import React from 'react';
 import { Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
-const ProductVariant = ({ className }: { className?: string }) => {
+interface ProductVariantProps {  
+  title: string;
+  className?: string;
+}
+
+const ProductVariant = ({ title ,className }: ProductVariantProps) => {
   return (
     <div className={className}>
-      <div className="d-flex gap-2 mb-2">
-        <h5 className="mb-0 text-body-highlight">Option 1</h5>
+      <div className="d-flex flex-wrap flex-between-center gap-2 mb-2">
+        <h5 className="mb-0 text-body-highlight">{title}</h5>
         <Link className="fw-bold fs-9" to="#!">
           Remove
         </Link>

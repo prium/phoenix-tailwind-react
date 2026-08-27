@@ -10,7 +10,7 @@ import { Col, Row } from 'react-bootstrap';
 import InboxToolbar from '../components/modules/email/InboxToolbar';
 import { emails } from 'data/email';
 import EmailRow from '../components/modules/email/EmailRow';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { faBars, faPlus } from '@fortawesome/free-solid-svg-icons';
 import BulkSelectProvider from 'providers/BulkSelectProvider';
 

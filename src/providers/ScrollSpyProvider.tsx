@@ -3,7 +3,7 @@ import {
   PropsWithChildren,
   SetStateAction,
   createContext,
-  useContext,
+  use,
   useState
 } from 'react';
 
@@ -21,14 +21,14 @@ const ScrollSpyProvider = ({ children }: PropsWithChildren) => {
   const [visibleItems, setVisibleItems] = useState<string[]>([]);
 
   return (
-    <ScrollSpyContext.Provider
+    <ScrollSpyContext
       value={{ activeElemId, setActiveElemId, visibleItems, setVisibleItems }}
     >
       {children}
-    </ScrollSpyContext.Provider>
+    </ScrollSpyContext>
   );
 };
 
-export const useScrollSpyContext = () => useContext(ScrollSpyContext);
+export const useScrollSpyContext = () => use(ScrollSpyContext);
 
 export default ScrollSpyProvider;

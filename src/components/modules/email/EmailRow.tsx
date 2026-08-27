@@ -9,7 +9,7 @@ import { Email } from 'data/email';
 import { getFileIcon } from 'helpers/utils';
 import { useBulkSelect } from 'providers/BulkSelectProvider';
 import { Col, Dropdown, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 interface EmailRowProps {
   email: Email;

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, type JSX } from 'react';
 
 const useLightbox = (sources: Array<string | JSX.Element>) => {
   const [open, setOpen] = useState(false);
@@ -9,7 +9,11 @@ const useLightbox = (sources: Array<string | JSX.Element>) => {
     setSlide(slideIndex);
   };
   return {
-    lightboxProps: { toggler: open, sources: sources, slide: slide },
+    lightboxProps: {
+      toggler: open,
+      sources: Array.isArray(sources) ? sources : [],
+      slide: slide
+    },
     openLightbox
   };
 };

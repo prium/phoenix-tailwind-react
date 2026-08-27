@@ -3,7 +3,7 @@ import logoWhite from 'assets/img/icons/logo-white.png';
 import bg19 from 'assets/img/bg/bg-19.png';
 import bgRight20 from 'assets/img/bg/bg-right-20.png';
 import bgLeft20 from 'assets/img/bg/bg-left-20.png';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { CSSProperties } from 'react';
 import classNames from 'classnames';
 

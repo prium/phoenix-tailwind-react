@@ -4,7 +4,7 @@ import TripCheckoutFormDatePicker from 'components/modules/travel-agency/trip/ch
 import TripCheckoutFormTimePicker from 'components/modules/travel-agency/trip/checkout/TripCheckoutFormTimePicker';
 import React from 'react';
 import { Col, Form, Row, FormControlProps } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import PaymentMethodForm from './PaymentMethodForm';
 
 interface TextInputFieldProps extends FormControlProps {

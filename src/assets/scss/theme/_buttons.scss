@@ -350,3 +350,11 @@ button,
   align-items: center;
   border-radius: var(--#{$prefix}border-radius-pill);
 }
+
+.stock-btn-group{
+  .active {
+    background-color: var(--#{$prefix}emphasis-bg);
+    color: var(--#{$prefix}primary);
+    border-color: var(--#{$prefix}border-color-translucent);
+  }
+}

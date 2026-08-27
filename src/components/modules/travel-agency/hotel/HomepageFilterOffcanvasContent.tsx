@@ -5,7 +5,7 @@ import React, { Fragment, useState } from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
 import { homepageOffcanvasAmenitiesItems } from 'data/travel-agency/customer/hotel';
 import classNames from 'classnames';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import Button from 'components/base/Button';
 import GenerateStar from 'components/common/GenerateStar';
 import InputGroupCounter from 'components/common/InputGroupCounter';

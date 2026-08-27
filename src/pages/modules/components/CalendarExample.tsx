@@ -2,7 +2,7 @@ import FullCalendar from 'components/base/FullCalendar';
 import CalendarProvider from 'providers/CalendarProvider';
 import PhoenixDocCard from 'components/base/PhoenixDocCard';
 import DocPageHeader from 'components/docs/DocPageHeader';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const exampleCode = `
 import FullCalendar from 'components/base/FullCalendar';

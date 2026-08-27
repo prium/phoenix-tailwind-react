@@ -18,6 +18,7 @@ interface AdvanceTableFooterProps {
   showViewAllBtn?: boolean;
   viewAllBtnClass?: string;
   tableInfo?: string;
+  nextPageLinkClassName?: string;
 }
 
 const AdvanceTableFooter = ({
@@ -26,7 +27,8 @@ const AdvanceTableFooter = ({
   navBtn,
   showViewAllBtn = true,
   viewAllBtnClass,
-  tableInfo
+  tableInfo,
+  nextPageLinkClassName
 }: AdvanceTableFooterProps) => {
   const {
     setPageSize,
@@ -119,7 +121,7 @@ const AdvanceTableFooter = ({
       )}
       {pagination && (
         <Col xs="auto">
-          <Pagination className="mb-0 justify-content-center">
+          <Pagination className="mb-0 justify-content-center align-items-center">
             <Pagination.Prev
               disabled={!getCanPreviousPage()}
               onClick={() => setPageIndex(pageIndex - 1)}
@@ -163,6 +165,7 @@ const AdvanceTableFooter = ({
             <Pagination.Next
               disabled={!getCanNextPage()}
               onClick={() => setPageIndex(pageIndex + 1)}
+              linkClassName={nextPageLinkClassName}
             >
               <FontAwesomeIcon icon={faChevronRight} />
             </Pagination.Next>

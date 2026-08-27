@@ -87,7 +87,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
         }
       },
       type: 'category',
-      boundaryGap: false,
+      boundaryGap: 0,
       data: getPastDates(15)
     },
     {
@@ -110,7 +110,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
           type: 'solid'
         }
       },
-      boundaryGap: false,
+      boundaryGap: 0,
       data: getPastDates(15)
     }
   ],
@@ -173,10 +173,11 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
   ],
   grid: {
     right: 5,
-    left: 0,
+    left: -3,
     bottom: '15%',
-    top: 20,
-    containLabel: true
+    top: 14,
+    outerBoundsMode: 'same',
+    outerBoundsContain: 'axisLabel'
   }
 });
 

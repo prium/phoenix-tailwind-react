@@ -2,10 +2,10 @@ import { CalendarApi } from '@fullcalendar/core';
 import { EventImpl } from '@fullcalendar/core/internal';
 import {
   PropsWithChildren,
-  useContext,
   Dispatch,
   createContext,
-  useReducer
+  useReducer,
+  use
 } from 'react';
 import {
   CALENDAR_ACTION_TYPE,
@@ -47,17 +47,17 @@ const CalendarProvider = ({ children }: PropsWithChildren) => {
   );
 
   return (
-    <CalendarContext.Provider
+    <CalendarContext
       value={{
         ...calendarState,
         calendarDispatch
       }}
     >
       {children}
-    </CalendarContext.Provider>
+    </CalendarContext>
   );
 };
 
-export const useCalendarContext = () => useContext(CalendarContext);
+export const useCalendarContext = () => use(CalendarContext);
 
 export default CalendarProvider;

@@ -1,6 +1,6 @@
 import React, { FC, HTMLAttributes } from 'react';
 import { Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import bgLeft27 from 'assets/img/bg/bg-left-27.png';
 import bgRight27 from 'assets/img/bg/bg-right-27.png';
 import gallery35 from 'assets/img/gallery/35.png';

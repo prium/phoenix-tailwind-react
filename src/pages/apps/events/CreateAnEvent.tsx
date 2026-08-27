@@ -7,12 +7,12 @@ import EventTicketPricing from 'components/forms/EventTicketPricing';
 import EventsSchedule from 'components/forms/EventsSchedule';
 import { defaultBreadcrumbItems } from 'data/commonData';
 import { Col, Form, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const CreateAnEvent = () => {
   return (
     <div>
-      <PageBreadcrumb items={defaultBreadcrumbItems} />
+      <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-3" />
       <Form className="mb-9">
         <Row className="justify-content-between align-items-end g-3 mb-5">
           <Col xs={12} sm="auto" xl={8}>
@@ -57,6 +57,7 @@ const CreateAnEvent = () => {
                   defaultChecked
                 />
                 <Form.Check.Label className="fw-normal" htmlFor="privacy1">
+                  <span className="h5 d-block mt-1">Public</span>
                   On Phoenix, our distribution partners, and search engines,{' '}
                   <br />
                   anybody can find the event
@@ -69,6 +70,7 @@ const CreateAnEvent = () => {
                   value="option1"
                 />
                 <Form.Check.Label className="fw-normal" htmlFor="privacy2">
+                  <span className="h5 d-block mt-1">Private</span>
                   Only the individuals you select have access to it.
                 </Form.Check.Label>
               </Form.Check>

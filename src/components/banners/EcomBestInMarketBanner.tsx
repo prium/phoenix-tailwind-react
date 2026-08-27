@@ -1,8 +1,7 @@
-import React from 'react';
 import bestInMarketBg from 'assets/img/e-commerce/best-in-market-bg.png';
 import product from 'assets/img/e-commerce/5.png';
 import { Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const EcomBestInMarketBanner = () => {
   return (

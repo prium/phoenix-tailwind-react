@@ -2,7 +2,7 @@ import SearchBox from 'components/common/SearchBox';
 import { faqBreadcrumbItems, faqs } from 'data/faq';
 import { Accordion } from 'react-bootstrap';
 import FaqCta from 'components/cta/FaqCta';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import classNames from 'classnames';
 import PageBreadcrumb from 'components/common/PageBreadcrumb';
 

@@ -11,7 +11,7 @@ import AvatarDropdown from 'components/common/AvatarDropdown';
 import { kanbanBoardMembers } from 'data/kanban';
 import { useKanbanContext } from 'providers/KanbanProvider';
 import { Offcanvas } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { TOGGLE_DETAILS_OFFCANVAS } from 'reducers/KanbanReducer';
 
 const actions = [

@@ -15,7 +15,58 @@
   &.dropzone-sm {
     padding: map-get($spacers, 4);
   }
+  .dz-message {
+    position: relative;
+    background-color: var(--#{$prefix}body-bg);
+    padding: 5rem 2rem;
+    margin: 0;
+    border: 2px dashed var(--#{$prefix}border-color-translucent);
+    border-radius: $border-radius-lg;
+  }
+  &.dropzone-multiple {
+    .dz-message {
+      padding: 3rem 2rem;
+      border: 1px dashed var(--#{$prefix}border-color);
+      border-radius: $border-radius-lg;
+    }
+    .btn * {
+      cursor: pointer;
+    }
+    .media:first-child {
+      margin-top: map-get($spacers, 4);
+    }
+    .dz-image-container {
+      padding: 1rem;
+    }
+    .dz-image {
+      height: 2rem;
+      width: 2rem;
+      object-fit: cover;
+      border-radius: 0;
+      // margin-right: 0.5rem;
+    }
+    .dz-progress {
+      opacity: 0;
+      position: relative !important;
+      transition: opacity 0.4s ease-in;
+      animation: none !important;
+      width: 6.25rem !important;
+      height: map_get($spacers, 2) !important;
+      margin-top: 0;
+      margin-left: map_get($spacers, 3) !important;
+      transform: none !important;
+      top: auto !important;
+      left: auto !important;
+    }
+    .dz-complete {
+      .dz-progress {
+        transition-delay: 1s;
+        opacity: 1;
+      }
+    }
+  }
 }
+
 
 .image-attachment-preview {
   height: 120px;
@@ -55,3 +106,4 @@
     width: 200px;
   }
 }
+

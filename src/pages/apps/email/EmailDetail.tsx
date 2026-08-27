@@ -8,7 +8,7 @@ import generic41 from 'assets/img/generic/41.png';
 import RevealDropdown, {
   RevealDropdownTrigger
 } from 'components/base/RevealDropdown';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import TooltipIconButton from 'components/common/TooltipIconButton';
 import AttachmentPreview from 'components/common/AttachmentPreview';
 import {

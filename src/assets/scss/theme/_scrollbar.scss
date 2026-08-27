@@ -1,6 +1,26 @@
 /*-----------------------------------------------
 |   Scrollbar style for windows
 -----------------------------------------------*/
+.simplebar-scrollbar {
+  &::before {
+    background-color: var(--#{$prefix}gray-400);
+  }
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+.simplebar-scrollbar.simplebar-visible {
+  &:before {
+    opacity: 0.55;
+  }
+}
+
+.scrollbar-overlay {
+  overflow: hidden !important;
+}
+.simplebar-content {
+  height: 100% !important;
+}
 
 .scrollbar,
 .scrollbar-overlay {
@@ -70,11 +90,14 @@
   }
 }
 
-.track-vertical {
+.simplebar-vertical {
+  width: 11px !important;
   right: 2px !important;
+  border-radius: var(--#{$prefix}border-radius) !important;
   > {
     div {
-      background-color: $scrollbar-bg !important;
+      background-color: transparent !important;
+      border-radius: inherit !important;
     }
   }
 }
@@ -90,7 +113,7 @@
             margin-left: 0px !important;
           }
         }
-        .track-vertical {
+        .simplebar-vertical {
           right: 19px !important;
         }
       }
@@ -122,4 +145,12 @@
 }
 .widgets-scrollspy {
   scroll-margin-top: 150px;
+}
+
+.navbar-top-search-box {
+  .simplebar-track {
+    &.simplebar-vertical {
+      width: 11px;
+    }
+  }
 }

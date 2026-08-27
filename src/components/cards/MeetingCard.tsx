@@ -17,6 +17,7 @@ const MeetingCard = ({ meeting }: { meeting: Meeting }) => {
             <h4 className="line-clamp-1 mb-2 mb-sm-1">{meeting.title}</h4>
             <div>
               <UilCalendarAlt
+                fill="currentColor"
                 className="text-primary me-2"
                 width={16}
                 height={16}

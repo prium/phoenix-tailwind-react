@@ -13,7 +13,7 @@ import { CallTableDataType, callTableData } from 'data/crm/dealDetailsData';
 import useAdvanceTable from 'hooks/useAdvanceTable';
 import AdvanceTableProvider from 'providers/AdvanceTableProvider';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const columns: ColumnDef<CallTableDataType>[] = [
   {

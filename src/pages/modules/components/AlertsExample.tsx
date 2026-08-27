@@ -6,7 +6,7 @@ const exampleCode = `
 () => {
   return (
     <>
-      {['primary', 'success', 'danger', 'warning', 'info'].map(
+      {['primary','secondary', 'success', 'danger', 'warning', 'info'].map(
         variant => (
           <Alert key={variant} variant={"subtle-" + variant}>
             This is a {variant} alert—check it out!
@@ -22,7 +22,7 @@ const outlineCode = `
 () => {
   return (
     <>
-      {['primary', 'success', 'danger', 'warning', 'info'].map(
+      {['primary', 'secondary', 'success', 'danger', 'warning', 'info'].map(
         variant => (
           <Alert key={variant} variant={"outline-" + variant}>
             This is a {variant} alert—check it out!
@@ -38,7 +38,7 @@ const phoenixAlertCode = `
 () => {
   return (
     <>
-      {['primary', 'success', 'danger', 'warning', 'info'].map(
+      {['primary', 'secondary', 'success', 'danger', 'warning', 'info'].map(
         variant => (
           <Alert key={variant} variant={"phoenix-" + variant}>
             This is a {variant} alert—check it out!
@@ -54,7 +54,7 @@ const solidAlertCode = `
 () => {
   return (
     <>
-      {['primary', 'success', 'danger', 'warning', 'info'].map(
+      {['primary', 'secondary', 'success', 'danger', 'warning', 'info'].map(
         variant => (
           <Alert key={variant} variant={variant}>
             This is a {variant} alert—check it out!

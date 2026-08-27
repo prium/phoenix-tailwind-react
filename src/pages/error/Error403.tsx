@@ -5,7 +5,7 @@ import light403 from 'assets/img/spot-illustrations/403.png';
 import dark403 from 'assets/img/spot-illustrations/dark_403.png';
 import Button from 'components/base/Button';
 import { Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import useSettingsMountEffect from 'hooks/useSettingsMountEffect';
 
 const Error403 = () => {

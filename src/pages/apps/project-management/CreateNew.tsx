@@ -140,7 +140,7 @@ const CreateNew = () => {
                 </Form.Select>
               </FloatingLabel>
             </Col>
-            <Col md={6} className="gy-6">
+            <Col md={6} className="gy-md-6">
               <FloatingLabel controlId="floatingInputBudget" label="Budget">
                 <Form.Control type="text" placeholder="Budget" />
               </FloatingLabel>

@@ -21,7 +21,7 @@ const ProductFilterItems = ({ handleClose }: { handleClose: () => void }) => {
       <div className="d-flex justify-content-between align-items-center mb-3">
         <h3 className="mb-0">Filters</h3>
         <button className="btn p-0 d-lg-none" onClick={handleClose}>
-          <UilTimes size={16} />
+          <UilTimes fill='currentColor' size={16} />
         </button>
       </div>
       <FormCollapse title="Availability">

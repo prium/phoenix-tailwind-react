@@ -4,7 +4,7 @@ import AvatarUpload from 'components/common/AvatarUpload';
 import { Card, Col, Row } from 'react-bootstrap';
 import { CSSProperties } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import {
   faPencil,
   faUserCheck,

@@ -1,5 +1,5 @@
-import React, { useMemo, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { useMemo, useState } from 'react';
+import { Link } from 'react-router';
 import { Card } from 'react-bootstrap';
 import img1 from 'assets/img/hotels/39.png';
 import { cartItems } from 'data/travel-agency/customer/hotelDetails';

@@ -4,7 +4,7 @@ import { Navbar } from 'react-bootstrap';
 import logo from 'assets/img/icons/logo.png';
 import { useBreakpoints } from 'providers/BreakpointsProvider';
 import NavbarToggleButton from './NavbarToggleButton';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const NavbarBrand = () => {
   const {

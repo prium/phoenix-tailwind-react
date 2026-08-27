@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router';
 import useSettingsMountEffect from 'hooks/useSettingsMountEffect';
 import NavbarMain from 'components/navbars/travel-agency/NavbarMain';
 import Footer from 'pages/apps/travel-agency/landing/Footer';

@@ -3,7 +3,7 @@ import ChatSidebar from 'components/modules/chat/ChatSidebar';
 import { useBreakpoints } from 'providers/BreakpointsProvider';
 import { useChatContext } from 'providers/ChatProvider';
 import { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 import { SET_CURRENT_CONVERSATION } from 'reducers/ChatReducer';
 
 const ChatConversation = () => {

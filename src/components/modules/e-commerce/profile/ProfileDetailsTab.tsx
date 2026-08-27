@@ -1,3 +1,4 @@
+import { JSX } from 'react';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import {
   faHeart,

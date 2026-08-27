@@ -1,7 +1,7 @@
 import { useAppContext } from 'providers/AppProvider';
 import { useEffect } from 'react';
 import { Navbar } from 'react-bootstrap';
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router';
 
 const NavbarToggleButton = () => {
   const {

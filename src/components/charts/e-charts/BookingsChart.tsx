@@ -1,4 +1,4 @@
-import React, { CSSProperties, MutableRefObject, forwardRef } from 'react';
+import React, { CSSProperties } from 'react';
 import ReactEChartsCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
 import { useAppContext } from 'providers/AppProvider';
@@ -10,6 +10,11 @@ import { tooltipFormatterDefault } from 'helpers/echart-utils';
 import dayjs from 'dayjs';
 import EChartsReactCore from 'echarts-for-react/lib/core';
 import { bookingsData } from 'data/travel-agency/travelAgency';
+
+interface BookingsChartProps {
+  style?: CSSProperties;
+  ref?: React.RefObject<EChartsReactCore | null>;
+}
 
 echarts.use([TooltipComponent, LineChart]);
 
@@ -25,6 +30,7 @@ const getDefaultOptions = (
     icon: 'circle',
     itemGap: 32,
     left: 0,
+    top: 0,
     inactiveColor: getThemeColor('quaternary-color'),
     textStyle: {
       color: getThemeColor('secondary-color'),
@@ -103,20 +109,22 @@ const getDefaultOptions = (
       }
     }
   ],
-  grid: { left: 0, right: 8, top: 52, bottom: 0, containLabel: true }
+  grid: { 
+    left: -3,
+    right: 8,
+    top: 46,
+    bottom: 0,
+    outerBoundsMode: 'same',
+    outerBoundsContain: 'axisLabel' 
+  }
 });
 
-const BookingsChart = forwardRef<
-  EChartsReactCore | null,
-  {
-    style?: CSSProperties;
-  }
->(({ style }, ref) => {
+const BookingsChart = ({ style, ref }: BookingsChartProps) => {
   const {
     getThemeColor,
     config: { isDark }
   } = useAppContext();
-  const chartRef = ref as MutableRefObject<EChartsReactCore | null>;
+  const chartRef = ref;
 
   return (
     <ReactEChartsCore
@@ -126,6 +134,6 @@ const BookingsChart = forwardRef<
       style={style}
     />
   );
-});
+};
 
 export default BookingsChart;

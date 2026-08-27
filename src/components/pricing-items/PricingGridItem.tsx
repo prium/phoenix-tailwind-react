@@ -128,6 +128,7 @@ const PricingGridItem = ({ item, pricingType }: PricingGridItemProps) => {
                       >
                         <Unicon
                           icon={UilCheckCircle}
+                          fill='currentColor'
                           className="text-success me-2"
                           size={16}
                         />

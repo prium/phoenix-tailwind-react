@@ -10,7 +10,7 @@ import Button from 'components/base/Button';
 import { Blog } from 'data/landing/default-landing-data';
 import React from 'react';
 import { Card } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const BlogItem = ({ blog }: { blog: Blog }) => {
   return (

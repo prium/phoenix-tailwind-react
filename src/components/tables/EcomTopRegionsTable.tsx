@@ -8,7 +8,7 @@ import {
 import useAdvanceTable from 'hooks/useAdvanceTable';
 import AdvanceTableProvider from 'providers/AdvanceTableProvider';
 import { Table } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const columns: ColumnDef<TopRegionsTableDataType>[] = [
   {

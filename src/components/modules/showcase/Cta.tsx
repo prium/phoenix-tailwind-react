@@ -3,7 +3,7 @@ import { Col, Row } from 'react-bootstrap';
 import spotIllustration33 from 'assets/img/spot-illustrations/33-s.webp';
 import spotIllustration31 from 'assets/img/spot-illustrations/31.png';
 import Button from 'components/base/Button';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const Cta = () => {
   return (

@@ -41,6 +41,7 @@ const Stat = ({ data }: { data: StatType }) => {
     <>
       <Unicon
         icon={data.icon}
+        fill='currentColor'
         className={`text-${data.iconColor} mb-1`}
         size={31.25}
       />

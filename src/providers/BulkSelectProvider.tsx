@@ -1,5 +1,5 @@
 import { getCoreRowModel, useReactTable } from '@tanstack/react-table';
-import { PropsWithChildren, useContext, createContext } from 'react';
+import { PropsWithChildren, createContext, use } from 'react';
 
 interface BulkSelectContextInterface<T> {
   getParentCheckboxProps: () => {
@@ -51,15 +51,15 @@ const BulkSelectProvider = <T,>({
   };
 
   return (
-    <BulkSelectContext.Provider
+    <BulkSelectContext
       value={{ getParentCheckboxProps, getRowCheckboxProps, getSelectedRows }}
     >
       {children}
-    </BulkSelectContext.Provider>
+    </BulkSelectContext>
   );
 };
 
 export const useBulkSelect = <T,>() =>
-  useContext(BulkSelectContext) as BulkSelectContextInterface<T>;
+  use(BulkSelectContext) as BulkSelectContextInterface<T>;
 
 export default BulkSelectProvider;

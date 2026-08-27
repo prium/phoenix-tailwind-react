@@ -29,7 +29,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       1000 * 60 * 60 * 24
     ),
     show: true,
-    boundaryGap: false,
+    boundaryGap: 0,
     axisLine: {
       show: true,
       lineStyle: { color: getThemeColor('secondary-bg') }
@@ -38,6 +38,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       show: false
     },
     axisLabel: {
+      show: false,
       formatter: (value: string) => dayjs(value).format('DD MMM'),
       interval: 6,
       showMinLabel: true,
@@ -48,7 +49,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
   yAxis: {
     show: false,
     type: 'value',
-    boundaryGap: false
+    boundaryGap: 0
   },
   series: [
     {

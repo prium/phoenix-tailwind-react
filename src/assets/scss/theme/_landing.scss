@@ -404,12 +404,22 @@
   img {
     transition: transform 0.5s ease;
   }
+  .backdrop-faded {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+  }
   &:hover {
     img {
       transform: scale(1.2);
     }
     a {
       text-decoration: underline;
+    }
+    .title {
+      color: var(--#{$prefix}primary);
+    }
+    .backdrop-faded {
+      opacity: 1;
     }
   }
 }

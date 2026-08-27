@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import { demos } from 'data/showcase';
 import { Col, Container, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const Demos = () => {
   return (

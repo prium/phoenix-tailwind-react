@@ -2,7 +2,7 @@ import { Stack } from 'react-bootstrap';
 import starterImg from 'assets/img/spot-illustrations/2.png';
 import starterDarkImg from 'assets/img/spot-illustrations/dark_2.png';
 import Button from 'components/base/Button';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const Starter = () => {
   return (

@@ -6,7 +6,7 @@ import bg38 from 'assets/img/bg/38.png';
 import authIllustrations from 'assets/img/spot-illustrations/auth.png';
 import authIllustrationsDark from 'assets/img/spot-illustrations/auth-dark.png';
 import { PropsWithChildren } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import Logo from 'components/common/Logo';
 import classNames from 'classnames';
 
@@ -56,6 +56,7 @@ const AuthCardLayout = ({
                     <ul className="list-unstyled mb-0 w-max-content w-md-auto mx-auto">
                       <li className="d-flex align-items-center gap-2">
                         <Unicon
+                          fill='currentColor'
                           icon={UilCheckCircle}
                           className="text-success"
                           size={16}
@@ -66,6 +67,7 @@ const AuthCardLayout = ({
                       </li>
                       <li className="d-flex align-items-center gap-2">
                         <Unicon
+                          fill='currentColor'
                           icon={UilCheckCircle}
                           className="text-success"
                           size={16}
@@ -76,6 +78,7 @@ const AuthCardLayout = ({
                       </li>
                       <li className="d-flex align-items-center gap-2">
                         <Unicon
+                          fill='currentColor'
                           icon={UilCheckCircle}
                           className="text-success"
                           size={16}

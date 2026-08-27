@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { HotelImageType } from 'data/travel-agency/customer/hotelDetails';
 import useLightbox from 'hooks/useLightbox';
 import Lightbox from 'components/base/LightBox';

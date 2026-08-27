@@ -1,4 +1,4 @@
-import React, { LegacyRef } from 'react';
+import { Ref } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import bg13 from 'assets/img/bg/bg-13.png';
 import bgRight21 from 'assets/img/bg/bg-right-21.png';
@@ -73,7 +73,7 @@ const FunFacts = () => {
                           <div>
                             <h1
                               className="display-1 text-white fw-bolder"
-                              ref={countUpRef as LegacyRef<HTMLHeadingElement>}
+                              ref={countUpRef as Ref<HTMLHeadingElement>}
                             />
                           </div>
                         )}
@@ -95,7 +95,7 @@ const FunFacts = () => {
                           <div>
                             <h1
                               className="display-1 text-white fw-bolder"
-                              ref={countUpRef as LegacyRef<HTMLHeadingElement>}
+                              ref={countUpRef as Ref<HTMLHeadingElement>}
                             />
                           </div>
                         )}
@@ -112,7 +112,7 @@ const FunFacts = () => {
                           <div>
                             <h1
                               className="display-1 text-white fw-bolder"
-                              ref={countUpRef as LegacyRef<HTMLHeadingElement>}
+                              ref={countUpRef as Ref<HTMLHeadingElement>}
                             />
                           </div>
                         )}

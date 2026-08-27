@@ -6,7 +6,7 @@ import AdvanceTableProvider from 'providers/AdvanceTableProvider';
 import Badge from 'components/base/Badge';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { visitorData } from 'data/travel-agency/travelAgency';
 
 const columns: ColumnDef<visitorData>[] = [

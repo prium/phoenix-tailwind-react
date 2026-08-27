@@ -1,7 +1,7 @@
-import React, {
+import {
   PropsWithChildren,
   createContext,
-  useContext,
+  use,
   useEffect,
   useState
 } from 'react';
@@ -76,17 +76,17 @@ const SettingsPanelProvider = ({ children }: PropsWithChildren) => {
   }, [navbarPosition]);
 
   return (
-    <SettingsPanelContext.Provider
+    <SettingsPanelContext
       value={{
         settingsPanelConfig,
         setSettingsPanelConfig: updateSettingsPanelConfig
       }}
     >
       {children}
-    </SettingsPanelContext.Provider>
+    </SettingsPanelContext>
   );
 };
 
 export default SettingsPanelProvider;
 
-export const useSettingsPanelContext = () => useContext(SettingsPanelContext);
+export const useSettingsPanelContext = () => use(SettingsPanelContext);

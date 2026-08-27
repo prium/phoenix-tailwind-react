@@ -2,7 +2,7 @@ import { Dropdown } from 'react-bootstrap';
 import { Fragment, useState } from 'react';
 import { Route, RouteItems } from 'sitemap';
 import { capitalize } from 'helpers/utils';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import FeatherIcon from 'feather-icons-react';
 import { UilAngleRight } from '@iconscout/react-unicons';
@@ -77,7 +77,11 @@ const TopNavLooper = ({ page }: { page: Route }) => {
             'text-body-quaternary': !page.active
           })}
         >
-          <UilAngleRight className="lh-1 dropdown-indicator-icon" size={16} />
+          <UilAngleRight
+            fill="currentColor"
+            className="lh-1 dropdown-indicator-icon"
+            size={16}
+          />
           <span>
             {page.icon && (
               <FeatherIcon icon={page.icon} size={16} className="me-2" />
@@ -108,6 +112,7 @@ const TopNavDropdownItem = ({ page }: { page: Route }) => {
       <Dropdown.Item
         as={Link}
         to={page.path || '#!'}
+        target={page.isTargetBlank ? "_blank": undefined}
         className={classNames({
           'text-body-quaternary': !page.active,
           active: pathname === page.path

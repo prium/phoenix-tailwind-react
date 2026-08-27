@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { Card, Dropdown, Form, Nav } from 'react-bootstrap';
 import avatar from 'assets/img/team/72x72/57.webp';
 import FeatherIcon from 'feather-icons-react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import Scrollbar from 'components/base/Scrollbar';
 import classNames from 'classnames';
 
@@ -56,7 +56,7 @@ const ProfileDropdownMenu = ({ className }: { className?: string }) => {
             />
           </div>
           <div style={{ height: '10rem' }}>
-            <Scrollbar>
+            <Scrollbar style={{ maxHeight: '10rem' }}>
               <Nav className="nav flex-column mb-2 pb-1">
                 {navItems.map(item => (
                   <Nav.Item key={item.label}>

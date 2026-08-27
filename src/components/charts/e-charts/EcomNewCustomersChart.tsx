@@ -32,7 +32,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
         1000 * 60 * 60 * 24
       ),
       show: true,
-      boundaryGap: false,
+      boundaryGap: 0,
       axisLine: {
         show: true,
         lineStyle: { color: getThemeColor('secondary-bg') }
@@ -81,13 +81,13 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       splitLine: {
         show: false
       },
-      boundaryGap: false
+      boundaryGap: 0
     }
   ],
   yAxis: {
     show: false,
     type: 'value',
-    boundaryGap: false
+    boundaryGap: 0
   },
   series: [
     {
@@ -122,7 +122,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       }
     }
   ],
-  grid: { left: 0, right: 0, top: 5, bottom: 20 }
+  grid: { left: 0, right: 0, top: 5, bottom: 20, outerBoundsMode: 'none' }
 });
 
 const EcomNewCustomersChart = () => {

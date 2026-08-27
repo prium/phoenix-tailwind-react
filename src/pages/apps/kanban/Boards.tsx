@@ -12,7 +12,7 @@ import { privateBoards, recentBoards, yourBoards } from 'data/kanban';
 import { useMainLayoutContext } from 'providers/MainLayoutProvider';
 import { useEffect } from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import KanbanBoardSection from 'components/modules/kanban/KanbanBoardSection';
 
 const Boards = () => {

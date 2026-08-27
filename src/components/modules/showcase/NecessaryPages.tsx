@@ -2,7 +2,7 @@ import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import illustration31 from 'assets/img/spot-illustrations/31.png';
 import { necessaryPages } from 'data/showcase';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import classNames from 'classnames';
 
 const NecessaryPages = () => {

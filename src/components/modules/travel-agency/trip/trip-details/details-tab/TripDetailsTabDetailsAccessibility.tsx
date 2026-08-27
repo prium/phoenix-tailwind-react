@@ -2,7 +2,7 @@ import React from 'react';
 import { Accessibility } from 'data/travel-agency/customer/trip';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 interface TripDetailsTabDetailsAccessibilityProps {
   accessibility: Accessibility;

@@ -3,7 +3,7 @@ import Logo from 'components/common/Logo';
 import useNavbarBgChangeOnScroll from 'hooks/useNavbarBgChangeOnScroll';
 import { useRef } from 'react';
 import { Nav, Navbar } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const ShowcaseNavbar = () => {
   const navbarRef = useRef(null);

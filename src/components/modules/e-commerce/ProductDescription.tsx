@@ -7,7 +7,7 @@ import { currencyFormat } from 'helpers/utils';
 import ProductGallery from 'components/modules/e-commerce/ProductGallery';
 import { useMemo, useState } from 'react';
 import { Col, Row, Stack } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import QuantityButtons from 'components/common/QuantityButtons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { faShareAlt, faShoppingCart } from '@fortawesome/free-solid-svg-icons';

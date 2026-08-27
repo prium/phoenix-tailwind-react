@@ -14,7 +14,7 @@ import RevealDropdown, {
 import ActionDropdownItems from 'components/common/ActionDropdownItems';
 import { ProductReviewType } from 'data/e-commerce';
 import useLightbox from 'hooks/useLightbox';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const ProductReview = ({ review }: { review: ProductReviewType }) => {
   const { lightboxProps, openLightbox } = useLightbox(review.images || []);

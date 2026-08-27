@@ -12,7 +12,7 @@ import DatePicker from 'components/base/DatePicker';
 import InputGroupCounter from 'components/common/InputGroupCounter';
 import { tripDetailsModalPricingPlan } from 'data/travel-agency/customer/trip';
 import TripDetailsModalPricingPlanCard from 'components/cards/TripDetailsModalPricingPlanCard';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 interface TripDetailsAvailabilityModalProps {
   show: boolean;

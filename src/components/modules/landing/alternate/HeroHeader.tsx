@@ -1,6 +1,6 @@
 import { Col, Row } from 'react-bootstrap';
 import Button from 'components/base/Button';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import bg1 from 'assets/img/bg/bg-36.png';

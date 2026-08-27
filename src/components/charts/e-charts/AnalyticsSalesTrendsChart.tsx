@@ -122,11 +122,12 @@ const getDefaultOptions = (
     }
   ],
   grid: {
-    right: '0',
-    left: '0',
+    right: 0,
+    left: -3,
     bottom: 0,
-    top: 10,
-    containLabel: true
+    top: 3,
+    outerBoundsMode: 'same',
+    outerBoundsContain: 'axisLabel'
   },
   animation: false
 });

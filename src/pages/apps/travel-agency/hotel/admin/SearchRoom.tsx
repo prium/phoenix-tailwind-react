@@ -15,7 +15,7 @@ import RoomFilterOffcanvasContent from 'components/modules/travel-agency/hotel/s
 import { defaultBreadcrumbItems } from 'data/commonData';
 import { useState } from 'react';
 import { Row, Col, Form, FloatingLabel } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { roomsSearchData } from 'data/travel-agency/customer/hotel';
 
 const SearchRoom = () => {

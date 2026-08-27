@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { gantt } from 'dhtmlx-gantt';
 import 'dhtmlx-gantt/codebase/dhtmlxgantt.css';
 import { useAppContext } from 'providers/AppProvider';
+import { resetGanttConfig } from '../resetGanttConfig';
 
 const tasks = {
   data: [
@@ -76,6 +77,7 @@ const BasicGanttChart = () => {
 
   useEffect(() => {
     if (containerRef.current) {
+      resetGanttConfig();
       gantt.plugins({
         tooltip: true
       });
@@ -149,6 +151,12 @@ const BasicGanttChart = () => {
 
       gantt.init(containerRef.current);
       gantt.parse(tasks);
+    }
+    return () => {
+      gantt.clearAll();
+      gantt.resetSkin();
+      gantt.resetLayout()
+      gantt._events = [];
     }
   }, []);
 

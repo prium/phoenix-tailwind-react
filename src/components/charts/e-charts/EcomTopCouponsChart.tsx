@@ -66,7 +66,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       ]
     }
   ],
-  grid: { containLabel: true }
+  grid: { outerBoundsMode: 'same', outerBoundsContain: 'axisLabel' }
 });
 
 const EcomTopCouponsChart = () => {

@@ -18,7 +18,7 @@ import { attachments } from 'data/project-management/todoListData';
 import { useMainLayoutContext } from 'providers/MainLayoutProvider';
 import { useEffect } from 'react';
 import { Col, Dropdown, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const ProjectDetails = () => {
   const { setContentClass } = useMainLayoutContext();
@@ -53,7 +53,7 @@ const ProjectDetails = () => {
               variant="phoenix"
               bg="primary"
               iconPosition="end"
-              icon={<UilStopwatch size={12} className="ms-1" />}
+              icon={<UilStopwatch fill='currentColor' size={12} className="ms-1" />}
             >
               Ongoing
             </Badge>

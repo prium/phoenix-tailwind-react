@@ -1,6 +1,6 @@
 import whoopingBannerProduct from 'assets/img/e-commerce/whooping_banner_product.png';
 import whoopingBannerShape2 from 'assets/img/e-commerce/whooping_banner_shape_2.png';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const EcomWhopingBanner = () => {
   return (

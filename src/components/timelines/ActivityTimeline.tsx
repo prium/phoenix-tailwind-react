@@ -3,7 +3,7 @@ import classNames from 'classnames';
 import Timeline from 'components/base/Timeline';
 import { ActivityTimelineData } from 'data/project-management/activityTimelineData';
 import { Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 interface ActivityTimelineProps {
   data: ActivityTimelineData[];

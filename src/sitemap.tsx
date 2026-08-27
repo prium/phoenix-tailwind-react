@@ -1,5 +1,6 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faHourglassHalf } from '@fortawesome/free-regular-svg-icons';
+import { faChartGantt } from '@fortawesome/free-solid-svg-icons';
 import {
   Icon,
   UilChartPie,
@@ -23,6 +24,7 @@ export interface Route {
   new?: boolean;
   hasNew?: boolean;
   isNext?: boolean;
+  isTargetBlank?: boolean;
 }
 
 export interface RouteItems {
@@ -75,6 +77,13 @@ export const routes: RouteItems[] = [
             path: '/dashboard/travel-agency',
             pathName: 'travel-agency',
             topNavIcon: 'briefcase',
+            active: true
+          },
+          {
+            name: 'stock',
+            path: '/dashboard/stock',
+            pathName: 'stock',
+            topNavIcon: 'dollar-sign',
             active: true
           },
           {
@@ -319,7 +328,6 @@ export const routes: RouteItems[] = [
       },
       {
         name: 'travel-agency',
-        hasNew: true,
         icon: 'briefcase',
         active: true,
         pages: [
@@ -434,7 +442,6 @@ export const routes: RouteItems[] = [
           {
             name: 'trip',
             active: true,
-            new: true,
             pages: [
               {
                 name: 'homepage',
@@ -455,6 +462,31 @@ export const routes: RouteItems[] = [
                 pathName: 'checkout'
               }
             ]
+          }
+        ]
+      },
+      {
+        name: 'stock',
+        icon: 'dollar-sign',
+        active: true,
+        pages: [
+          {
+            name: 'stock-details',
+            path: '/apps/stock/stock-details',
+            pathName: 'stock-details',
+            active: true
+          },
+          {
+            name: 'portfolio',
+            path: '/apps/stock/portfolio',
+            pathName: 'stock-portfolio',
+            active: true
+          },
+          {
+            name: 'watchlist',
+            path: '/apps/stock/watchlist',
+            pathName: 'stock-watchlist',
+            active: true
           }
         ]
       },
@@ -535,6 +567,14 @@ export const routes: RouteItems[] = [
         ]
       },
       {
+        name: 'gantt-chart',
+        iconSet: 'font-awesome',
+        icon: faChartGantt,
+        path: 'apps/gantt-chart',
+        pathName: 'app-gantt-chart',
+        active: true,
+      },
+      {
         name: 'social',
         icon: 'share-2',
         active: true,
@@ -554,10 +594,53 @@ export const routes: RouteItems[] = [
         ]
       },
       {
+        name: 'gallery',
+        icon: 'image',
+        active: true,
+        new: true,
+        pages: [
+          {
+            name: 'album',
+            path: '/apps/gallery/album',
+            pathName: 'gallery-album',
+            active: true
+          },
+          {
+            name: 'gallery-column',
+            path: '/apps/gallery/gallery-column',
+            pathName: 'gallery-column',
+            active: true
+          },
+          {
+            name: 'gallery-grid',
+            path: '/apps/gallery/gallery-grid',
+            pathName: 'gallery-grid',
+            active: true
+          },
+          {
+            name: 'grid-with-title',
+            path: '/apps/gallery/grid-with-title',
+            pathName: 'grid-with-title',
+            active: true
+          },
+          {
+            name: 'gallery-masonry',
+            path: '/apps/gallery/gallery-masonry',
+            pathName: 'gallery-masonry',
+            active: true
+          },
+          {
+            name: 'gallery-slider',
+            path: '/apps/gallery/gallery-slider',
+            pathName: 'gallery-slider',
+            active: true
+          }
+        ]
+      },
+      {
         name: 'File manager',
         icon: 'folder',
         active: true,
-        new: true,
         pages: [
           {
             name: 'Grid view',
@@ -866,67 +949,77 @@ export const routes: RouteItems[] = [
             name: 'vertical-sidenav',
             path: '/pages/demo/vertical-sidenav',
             pathName: 'demo-vertical-sidenav',
-            active: true
+            active: true,
+            isTargetBlank: true
           },
           {
             name: 'dark-mode',
             path: '/pages/demo/dark-mode',
             pathName: 'demo-dark-mode',
-            active: true
+            active: true,
+            isTargetBlank: true
           },
           {
             name: 'sidenav-collapse',
             path: '/pages/demo/sidenav-collapse',
             pathName: 'demo-sidenav-collapse',
-            active: true
+            active: true,
           },
           {
             name: 'darknav',
             path: '/pages/demo/darknav',
             pathName: 'demo-darknav',
-            active: true
+            active: true,
+            isTargetBlank: true
           },
           {
             name: 'topnav-slim',
             path: '/pages/demo/topnav-slim',
             pathName: 'demo-topnav-slim',
-            active: true
+            active: true,
+            isTargetBlank: true
           },
           {
             name: 'navbar-top-slim',
             path: '/pages/demo/navbar-top-slim',
             pathName: 'demo-navbar-top-slim',
-            active: true
+            active: true,
+            isTargetBlank: true
           },
           {
             name: 'navbar-top',
             path: '/pages/demo/navbar-top',
             pathName: 'demo-navbar-top',
-            active: true
+            active: true,
+            isTargetBlank: true
           },
           {
             name: 'horizontal-slim',
             path: '/pages/demo/horizontal-slim',
             pathName: 'demo-horizontal-slim',
-            active: true
+            active: true,
+            isTargetBlank: true
           },
           {
             name: 'combo-nav',
             path: '/pages/demo/combo-nav',
             pathName: 'demo-combo-nav',
-            active: true
+            active: true,
+            isTargetBlank: true
           },
           {
             name: 'combo-nav-slim',
             path: '/pages/demo/combo-nav-slim',
             pathName: 'demo-combo-nav-slim',
-            active: true
+            active: true,
+            isTargetBlank: true
           },
           {
             name: 'dual-nav',
             path: '/pages/demo/dual-nav',
             pathName: 'demo-dual-nav',
-            active: true
+            active: true,
+            isTargetBlank: true
           }
         ]
       }

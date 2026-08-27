@@ -9,7 +9,7 @@ import {
 import { currencyFormat, numberFormat } from 'helpers/utils';
 import useAdvanceTable from 'hooks/useAdvanceTable';
 import AdvanceTableProvider from 'providers/AdvanceTableProvider';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const columns: ColumnDef<ForecastTableData>[] = [
   {

@@ -29,10 +29,6 @@ const getDefaultOptions = (
       radius: ['48%', '90%'],
       startAngle: 30,
       avoidLabelOverlap: false,
-      // label: {
-      //   show: false,
-      //   position: 'center'
-      // },
 
       label: {
         show: false,
@@ -74,7 +70,7 @@ const getDefaultOptions = (
     top: 0,
     left: 0,
     right: 0,
-    containLabel: false
+    outerBoundsMode: 'none'
   }
 });
 

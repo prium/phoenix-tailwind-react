@@ -1,5 +1,5 @@
 import { Card, Dropdown } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import Scrollbar from 'components/base/Scrollbar';
 import Button from 'components/base/Button';
 import { notifications as notificationData } from 'data/notifications';
@@ -29,7 +29,7 @@ const NotificationDropdownMenu = ({ className }: { className?: string }) => {
           </div>
         </Card.Header>
         <Card.Body className="p-0" style={{ height: '27rem' }}>
-          <Scrollbar>
+          <Scrollbar style={{maxHeight: '27rem'}}>
             {notifications.map((notification, index) => (
               <NotificationItem
                 notification={notification}

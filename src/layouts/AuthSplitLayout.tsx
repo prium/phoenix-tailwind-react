@@ -1,7 +1,7 @@
 import Logo from 'components/common/Logo';
 import { PropsWithChildren } from 'react';
 import { Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 interface AuthSplitLayoutProps {
   logo?: boolean;

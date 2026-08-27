@@ -9,7 +9,7 @@ import PostComments from 'components/modules/social/PostComments';
 import PostGallery from 'components/image-gallery/PostGallery';
 import { Post } from 'data/social/postsData';
 import { Card, Dropdown } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import {
   faCircle,
   faComment,

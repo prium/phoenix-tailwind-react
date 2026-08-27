@@ -1,6 +1,6 @@
 import Logo from 'components/common/Logo';
 import { Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const PreFooter = () => {
   return (

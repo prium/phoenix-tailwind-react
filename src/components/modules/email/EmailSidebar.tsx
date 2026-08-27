@@ -9,9 +9,8 @@ import {
   labelItems,
   mailboxItems
 } from 'data/email';
-import React from 'react';
 import { Nav } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const EmailSidebarItem = ({ item }: { item: SidebarItem }) => {
   return (
@@ -49,7 +48,7 @@ const EmailSidebar = ({ hideSidebar }: { hideSidebar?: () => void }) => {
               className="d-lg-none p-0 mb-1"
               onClick={() => hideSidebar()}
             >
-              <UilTimes size={16} />
+              <UilTimes fill='currentColor' size={16} />
             </Button>
           )}
         </div>

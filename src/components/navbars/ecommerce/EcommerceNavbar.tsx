@@ -10,7 +10,7 @@ import {
   Navbar,
   Row
 } from 'react-bootstrap';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router';
 import FeatherIcon from 'feather-icons-react';
 import Scrollbar from 'components/base/Scrollbar';
 import classNames from 'classnames';
@@ -135,7 +135,7 @@ const EcommerceNavbar = () => {
 
           <Dropdown.Menu className="border border-translucent py-0 category-dropdown-menu">
             <Card className="border-0">
-              <Scrollbar autoHeight autoHeightMax={657}>
+              <Scrollbar style={{ maxHeight: 657}}>
                 <Card.Body className="p-6 pb-3">
                   <Row className="gx-7 gy-5 mb-5">
                     {categories.map(category => (
@@ -181,7 +181,9 @@ const EcommerceNavbar = () => {
             <Nav.Item
               className="gap-3"
               key={item.id}
-              ref={(el: HTMLDivElement) => (navItemsRef.current[index] = el)}
+              ref={(el: HTMLDivElement) => {
+                (navItemsRef.current[index] = el)
+              }}
             >
               <Nav.Link
                 key={item.id}
@@ -210,9 +212,9 @@ const EcommerceNavbar = () => {
                   key={item.id}
                   as={Link}
                   to={item.url}
-                  ref={(el: HTMLAnchorElement) =>
+                  ref={(el: HTMLAnchorElement) => {
                     (dropdownItemsRef.current[index] = el)
-                  }
+                  }}
                 >
                   {item.label}
                 </Dropdown.Item>

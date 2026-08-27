@@ -1,6 +1,6 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import logo from 'assets/img/icons/logo-white.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {

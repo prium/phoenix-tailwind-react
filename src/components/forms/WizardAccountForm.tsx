@@ -2,7 +2,7 @@ import { WizardFormData } from 'pages/modules/forms/WizardExample';
 import { useWizardFormContext } from 'providers/WizardFormProvider';
 import React from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const WizardAccountForm = ({ id }: { id: string }) => {
   const methods = useWizardFormContext<WizardFormData>();

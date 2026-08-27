@@ -2,7 +2,7 @@ import { ColumnDef } from '@tanstack/react-table';
 import AdvanceTable from 'components/base/AdvanceTable';
 import useAdvanceTable from 'hooks/useAdvanceTable';
 import AdvanceTableProvider from 'providers/AdvanceTableProvider';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import AdvanceTableFooter from 'components/base/AdvanceTableFooter';
 import Button from 'components/base/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

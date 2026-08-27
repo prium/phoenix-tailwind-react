@@ -1,8 +1,8 @@
-import React, {
+import {
   createContext,
   Dispatch,
   PropsWithChildren,
-  useContext,
+  use,
   useEffect,
   useReducer
 } from 'react';
@@ -112,14 +112,14 @@ const AppProvider = ({ children }: PropsWithChildren) => {
   }, [config.navbarPosition, config.navbarTopShape]);
 
   return (
-    <AppContext.Provider
+    <AppContext
       value={{ config, setConfig, toggleTheme, getThemeColor, configDispatch }}
     >
       {children}
-    </AppContext.Provider>
+    </AppContext>
   );
 };
 
-export const useAppContext = () => useContext(AppContext);
+export const useAppContext = () => use(AppContext);
 
 export default AppProvider;

@@ -4,7 +4,7 @@ import CoverUpload from 'components/common/CoverUpload';
 import profileImage from 'assets/img/team/9.webp';
 import AvatarUpload from 'components/common/AvatarUpload';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import Button from 'components/base/Button';
 import { dropdownData } from 'data/social/dropdownData';
 import classNames from 'classnames';

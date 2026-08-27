@@ -1,7 +1,7 @@
 import Button from 'components/base/Button';
 import AuthSocialButtons from 'components/common/AuthSocialButtons';
 import { Col, Form, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const SignUpForm = ({ layout }: { layout: 'simple' | 'card' | 'split' }) => {
   return (

@@ -1,6 +1,6 @@
 import Avatar from 'components/base/Avatar';
 import { Card, Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import team33 from 'assets/img/team/33.webp';
 import classNames from 'classnames';
 

@@ -151,3 +151,12 @@
     background: var(--#{$prefix}emphasis-bg) !important;
   }
 }
+
+.gantt_tooltip {
+  --dhx-gantt-tooltip-background: var(--#{$prefix}secondary-bg) !important;
+  --dhx-gantt-tooltip-color: var(--#{$prefix}emphasis-color) !important;
+  font-weight: $font-weight-semibold;
+  padding: 10px;
+  font-size: map-get($font-sizes, 9 );
+  line-height: $line-height-sm;
+}

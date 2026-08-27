@@ -1,4 +1,4 @@
-import React, {
+import {
   Children,
   PropsWithChildren,
   ReactElement,
@@ -45,7 +45,7 @@ const DropdownSearchBox = ({
           style={{ width: 400 }}
         >
           {Children.map(children, child =>
-            cloneElement(child as ReactElement, {
+            cloneElement(child as ReactElement<any>, {
               searchValue: searchInputValue
             })
           )}

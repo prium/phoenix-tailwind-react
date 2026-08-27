@@ -1,15 +1,17 @@
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ReactElement } from 'react';
+import {  ReactElement } from 'react';
 import Select, {
   ClearIndicatorProps,
   DropdownIndicatorProps,
+  SelectInstance,
   components
 } from 'react-select';
-import { StateManagerProps } from 'react-select/dist/declarations/src/useStateManager';
+import { Props } from 'react-select';
 
-interface ReactSelectProps extends StateManagerProps {
+interface ReactSelectProps extends Props {
   icon?: ReactElement;
+  ref?: React.Ref<SelectInstance>;
 }
 
 const ClearIndicator = (props: ClearIndicatorProps) => {
@@ -31,11 +33,13 @@ const DropdownIndicator = (props: DropdownIndicatorProps) => {
   );
 };
 
-const ReactSelect = ({ icon, ...rest }: ReactSelectProps) => {
+const ReactSelect = ({ icon, ref, ...rest }: ReactSelectProps) => {
   return (
     <div className="react-select-container">
       <Select
         closeMenuOnSelect={false}
+        openMenuOnFocus
+        ref={ref}
         components={{ ClearIndicator, DropdownIndicator }}
         classNamePrefix="react-select"
         classNames={{
@@ -48,5 +52,7 @@ const ReactSelect = ({ icon, ...rest }: ReactSelectProps) => {
     </div>
   );
 };
+
+ReactSelect.displayName = 'ReactSelect';
 
 export default ReactSelect;

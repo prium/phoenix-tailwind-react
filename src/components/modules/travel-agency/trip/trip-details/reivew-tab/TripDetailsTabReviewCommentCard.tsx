@@ -3,7 +3,7 @@ import type { Comment } from 'data/travel-agency/customer/trip';
 import { Card } from 'react-bootstrap';
 import classNames from 'classnames';
 import Avatar from 'components/base/Avatar';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faThumbsDown, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
 import GenerateStar from 'components/common/GenerateStar';

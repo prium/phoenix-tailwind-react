@@ -30,7 +30,7 @@ const getDefaultOptions = (
   radar: {
     splitNumber: 5,
     axisNameGap: 10,
-    radius: '87%',
+    radius: '85%',
     splitLine: {
       lineStyle: {
         color: getThemeColor('secondary-bg')
@@ -102,7 +102,8 @@ const getDefaultOptions = (
   ],
   grid: {
     top: 10,
-    left: 0
+    left: 0,
+    outerBoundsMode: 'none'
   }
 });
 

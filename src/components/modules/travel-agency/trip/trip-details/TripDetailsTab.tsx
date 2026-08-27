@@ -1,4 +1,4 @@
-import React from 'react';
+import { JSX } from 'react';
 import { Tab, Nav } from 'react-bootstrap';
 import TripDetailsTabDetailsContent from './TripDetailsTabDetailsContent';
 import TripDetailsTabReviewContent from './TripDetailsTabReviewContent';

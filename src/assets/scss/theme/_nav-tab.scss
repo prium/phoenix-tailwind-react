@@ -108,6 +108,18 @@
   }
 }
 
+.project-tab{
+  .nav-link {
+    color: var(--#{$prefix}body-color);
+    &:hover{
+      color: var(--#{$prefix}body-color);
+    }
+    &.active{
+      color: var(--#{$prefix}primary);
+    }
+  }
+}
+
 // FAQ
 .faq-category-tab {
   position: sticky;
@@ -152,4 +164,25 @@
   top: var(--#{$prefix}navbar-top-height);
   background-color: var(--#{$prefix}body-bg);
   z-index: 1;
+}
+
+.optionChainTableHeader{
+  &.nav-underline{
+    .nav-link:not(.active){
+      border-color:  var(--#{$prefix}border-color-translucent);
+    }
+  }
+}
+
+.tabDetailsOptionChainTab{
+  .nav-link{
+    font-weight: $font-weight-semibold;
+    &.active{
+      color: var(--#{$prefix}emphasis-color);
+      font-weight: $font-weight-bold;
+    }
+    &:hover{
+      color: var(--#{$prefix}emphasis-color);
+    }
+  }
 }

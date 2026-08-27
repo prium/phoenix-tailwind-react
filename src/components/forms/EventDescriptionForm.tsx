@@ -25,7 +25,7 @@ const EventDescriptionForm = () => {
           <Form.Control type="text" placeholder="ORGANIZERS" />
         </FloatingLabel>
       </Col>
-      <Col sm={6} className="gy-6">
+      <Col sm={6} className="gy-sm-6">
         <FloatingLabel controlId="floatingSponsorsInput" label="SPONSORS">
           <Form.Control type="text" placeholder="SPONSORS" />
         </FloatingLabel>

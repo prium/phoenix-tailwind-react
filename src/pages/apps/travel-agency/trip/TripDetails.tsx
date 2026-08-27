@@ -14,7 +14,7 @@ import {
 } from 'data/travel-agency/customer/trip';
 import TripDetailsTab from 'components/modules/travel-agency/trip/trip-details/TripDetailsTab';
 import TripShowcaseItem from 'components/modules/travel-agency/trip/TripShowcaseItem';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const TripDetails = () => {
   useSettingsMountEffect({

@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState, type JSX } from 'react';
 import { Tab, Nav } from 'react-bootstrap';
 import HotelDetailsAvailability from './HotelDetailsAvailability';
 import HotelDetailsDescription from './HotelDetailsDescription';

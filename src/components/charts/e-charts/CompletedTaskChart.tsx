@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactEChartsCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
 import { getDates } from 'helpers/utils';
@@ -88,7 +87,7 @@ const getDefaultOptions = (
           color: getThemeColor('secondary-bg')
         }
       },
-      boundaryGap: false
+      boundaryGap: 0
     },
     {
       type: 'category',
@@ -114,7 +113,7 @@ const getDefaultOptions = (
       splitLine: {
         show: false
       },
-      boundaryGap: false
+      boundaryGap: 0
     }
   ],
   yAxis: {
@@ -131,9 +130,6 @@ const getDefaultOptions = (
     {
       name: 'd',
       type: 'line',
-      // data: Array.from(Array(30).keys()).map(() =>
-      //   getRandomNumber(100, 300)
-      // ),
       data: currentMonthData,
       showSymbol: false,
       symbol: 'circle'
@@ -141,11 +137,7 @@ const getDefaultOptions = (
     {
       name: 'e',
       type: 'line',
-      // data: Array.from(Array(30).keys()).map(() =>
-      //   getRandomNumber(100, 300)
-      // ),
       data: prevMonthData,
-      // symbol: 'none',
       lineStyle: {
         type: 'dashed',
         width: 1,
@@ -156,11 +148,11 @@ const getDefaultOptions = (
     }
   ],
   grid: {
-    right: 2,
+    right: 62,
     left: 5,
     bottom: '20px',
     top: '2%',
-    containLabel: false
+    outerBoundsMode: 'none'
   },
   animation: false
 });
@@ -175,7 +167,7 @@ const CompletedTaskChart = () => {
     <ReactEChartsCore
       echarts={echarts}
       option={getDefaultOptions(theme, getThemeColor)}
-      style={{ height: 200, width: '100%' }}
+      style={{ height: '200px', width: '100%' }}
     />
   );
 };

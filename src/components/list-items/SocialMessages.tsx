@@ -4,7 +4,7 @@ import RevealDropdown, {
 } from 'components/base/RevealDropdown';
 import { Message } from 'data/social/messages';
 import { Dropdown } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 interface SocialMessagesProps {
   messages: Message[];

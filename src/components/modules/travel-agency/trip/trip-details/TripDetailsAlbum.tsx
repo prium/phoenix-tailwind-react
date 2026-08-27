@@ -2,7 +2,7 @@ import React from 'react';
 import { HighlightItem } from 'data/travel-agency/customer/trip';
 import useLightbox from 'hooks/useLightbox';
 import { Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import classNames from 'classnames';
 import Lightbox from 'components/base/LightBox';
 

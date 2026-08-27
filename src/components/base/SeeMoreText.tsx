@@ -1,5 +1,5 @@
-import React, { ElementType } from 'react';
-import { Link } from 'react-router-dom';
+import { ElementType } from 'react';
+import { Link } from 'react-router';
 
 interface SeeMoreTextProps {
   as?: ElementType;

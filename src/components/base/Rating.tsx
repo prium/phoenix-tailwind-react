@@ -6,6 +6,7 @@ import {
   Rating as ReactRating,
   RatingProps as ReactRatingProps
 } from 'react-simple-star-rating';
+import { useAppContext } from 'providers/AppProvider';
 
 export interface RatingProps extends ReactRatingProps {
   iconClass?: string;
@@ -19,9 +20,13 @@ const Rating = ({
   emptyIconColor = 'warning-light',
   ...rest
 }: RatingProps) => {
+  const {
+    config: { isRTL }
+  } = useAppContext();
   return (
     <ReactRating
       allowFraction
+      rtl={isRTL}
       fillIcon={
         <FontAwesomeIcon
           icon={faStar}

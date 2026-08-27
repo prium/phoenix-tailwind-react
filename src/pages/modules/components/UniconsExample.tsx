@@ -34,19 +34,19 @@ import * as Unicons from '@iconscout/react-unicons';
 
 <div>
   <div className="mb-3">
-    <Unicon icon={UilRocket} className="text-danger me-2" size={32} />
-    <Unicon icon={UilRocket} className="text-success me-2" size={24} />
-    <Unicon icon={UilRocket} className="text-primary" size={16} />
+    <Unicon icon={UilRocket} fill="currentColor" className="text-danger me-2" size={32} />
+    <Unicon icon={UilRocket} fill="currentColor" className="text-success me-2" size={24} />
+    <Unicon icon={UilRocket} fill="currentColor" className="text-primary" size={16} />
   </div>
   <div className="mb-3">
-    <UilPlaneDeparture className="text-danger me-2" size={32} />
-    <UilPlaneDeparture className="text-success me-2" size={24} />
-    <UilPlaneDeparture className="text-primary" size={16} />
+    <UilPlaneDeparture fill="currentColor" className="text-danger me-2" size={32} />
+    <UilPlaneDeparture fill="currentColor" className="text-success me-2" size={24} />
+    <UilPlaneDeparture fill="currentColor" className="text-primary" size={16} />
   </div>
   <div>
-    <Unicons.UilStretcher className="text-danger me-2" size={32} />
-    <Unicons.UilStretcher className="text-success me-2" size={24}  />
-    <Unicons.UilStretcher className="text-primary" size={16}  />
+    <Unicons.UilStretcher fill="currentColor" className="text-danger me-2" size={32} />
+    <Unicons.UilStretcher fill="currentColor" className="text-success me-2" size={24}  />
+    <Unicons.UilStretcher fill="currentColor" className="text-primary" size={16}  />
   </div>
 </div>
 `;

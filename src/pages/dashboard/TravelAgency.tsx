@@ -2,7 +2,7 @@ import { faCalendarDays } from '@fortawesome/free-regular-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { TravelStatistics } from 'components/modules/travel-agency/dashboard/TravelStatistics';
 import { FinancialActivities } from 'components/modules/travel-agency/dashboard/FinancialActivities';
 import { HolidaysCard } from 'components/cards/HolidaysCard';

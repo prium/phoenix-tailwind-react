@@ -11,7 +11,7 @@ import { Schedule } from 'data/calendarEvents';
 import dayjs from 'dayjs';
 import { useCalendarContext } from 'providers/CalendarProvider';
 import { Modal } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { REMOVE_EVENT, SET_CALENDAR_STATE } from 'reducers/CalendarReducer';
 
 const CalendarEventModal = () => {

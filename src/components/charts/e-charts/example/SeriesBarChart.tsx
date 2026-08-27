@@ -113,10 +113,11 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
   ],
   grid: {
     right: 0,
-    left: 3,
+    left: 0,
     bottom: 0,
-    top: '15%',
-    containLabel: true
+    top: '11%',
+    outerBoundsMode: 'same',
+    outerBoundsContain: 'axisLabel'
   },
   animation: false
 });

@@ -1,16 +1,16 @@
-import { useEffect, useRef, CSSProperties } from 'react';
+import { useEffect, useRef, CSSProperties, useCallback } from 'react';
 import ReactEChartsCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
 import { getPastDates, rgbaColor } from 'helpers/utils';
 import { useAppContext } from 'providers/AppProvider';
-import { TooltipComponent } from 'echarts/components';
+import { TooltipComponent, GridComponent } from 'echarts/components';
 import { LineChart } from 'echarts/charts';
 import { CallbackDataParams } from 'echarts/types/dist/shared';
 import { tooltipFormatterDefault } from 'helpers/echart-utils';
 import dayjs from 'dayjs';
 import EChartsReactCore from 'echarts-for-react/lib/core';
 
-echarts.use([TooltipComponent, LineChart]);
+echarts.use([TooltipComponent, GridComponent, LineChart]);
 
 const dates = getPastDates(7);
 
@@ -36,7 +36,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     {
       type: 'category',
       data: dates,
-      boundaryGap: false,
+      boundaryGap: 0,
       splitLine: {
         show: true,
         lineStyle: {
@@ -65,7 +65,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     {
       type: 'category',
       data: dates,
-      boundaryGap: false,
+      boundaryGap: 0,
       splitLine: {
         show: true,
         lineStyle: {
@@ -152,20 +152,31 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     }
   ],
   grid: {
-    right: '8',
-    left: 6,
-    bottom: '-10',
-    top: 10,
-    containLabel: true
+    right: 5,
+    left: 3,
+    bottom: 19,
+    top: 4,
+    outerBoundsMode: 'same',
+    outerBoundsContain: 'axisLabel'
   },
   animation: false
 });
 
 const AnalyticsCallCampaignChart = ({ style }: { style: CSSProperties }) => {
   const chartRef = useRef<null | EChartsReactCore>(null);
-  const updateDimensions = () => {
+  const updateDimensions = useCallback(() => {
+    if (!chartRef.current) return;
+
+    const chartInstance = chartRef.current.getEchartsInstance();
+
+    if (!chartInstance) return;
+
+    const setSafeOption = (option: any) => {
+      chartInstance.setOption(option, { notMerge: false, lazyUpdate: true });
+    };
+
     if (window.innerWidth < 576) {
-      chartRef.current?.getEchartsInstance().setOption({
+      setSafeOption({
         xAxis: [
           {},
           {
@@ -176,7 +187,7 @@ const AnalyticsCallCampaignChart = ({ style }: { style: CSSProperties }) => {
         ]
       });
     } else if (window.innerWidth > 576) {
-      chartRef.current?.getEchartsInstance().setOption({
+      setSafeOption({
         xAxis: [
           {},
           {
@@ -187,14 +198,19 @@ const AnalyticsCallCampaignChart = ({ style }: { style: CSSProperties }) => {
         ]
       });
     }
-  };
+  }, [chartRef])
   useEffect(() => {
+    const initialRun = setTimeout(() => {
+      if (chartRef.current) {
+        updateDimensions();
+      }
+    }, 0)
     window.addEventListener('resize', updateDimensions);
-    return () => window.removeEventListener('resize', updateDimensions);
-  }, []);
-  useEffect(() => {
-    updateDimensions();
-  }, [chartRef.current]);
+    return () => {
+      clearTimeout(initialRun);
+      window.removeEventListener('resize', updateDimensions);
+    };
+  }, [updateDimensions]);
 
   const { getThemeColor } = useAppContext();
 

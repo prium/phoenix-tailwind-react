@@ -3,7 +3,7 @@ import { Card, Col, Collapse, Row } from 'react-bootstrap';
 import Badge from 'components/base/Badge';
 import Lightbox from 'components/base/LightBox';
 import useLightbox from 'hooks/useLightbox';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faChevronDown,

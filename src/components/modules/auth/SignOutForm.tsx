@@ -1,6 +1,6 @@
 import lightImg from 'assets/img/spot-illustrations/1.png';
 import darkImg from 'assets/img/spot-illustrations/dark_1.png';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import Button from 'components/base/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';

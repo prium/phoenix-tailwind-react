@@ -167,7 +167,7 @@ const BasicGanttChart = () => {
 };
 `;
 
-const GanttChart = () => {
+const GanttChartExample = () => {
   return (
     <div className="mb-9">
       <DocPageHeader
@@ -194,4 +194,4 @@ const GanttChart = () => {
   );
 };
 
-export default GanttChart;
+export default GanttChartExample;

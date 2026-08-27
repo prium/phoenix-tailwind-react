@@ -64,7 +64,9 @@ const AdvanceFeatures = () => {
                 <Col xs={12}>
                   <img
                     className="w-100 z-3 layer-4"
-                    ref={el => parallaxElRef.current?.push(el)}
+                    ref={el => {
+                      parallaxElRef.current?.push(el)
+                    }}
                     data-parallax={JSON.stringify({
                       y: '-480'
                     })}
@@ -76,7 +78,9 @@ const AdvanceFeatures = () => {
                 <Col xs={6}>
                   <img
                     className="w-100 z-5 layer-6"
-                    ref={el => parallaxElRef.current?.push(el)}
+                    ref={el => {
+                      parallaxElRef.current?.push(el)
+                    }}
                     data-parallax={JSON.stringify({
                       y: '-600'
                     })}
@@ -88,7 +92,9 @@ const AdvanceFeatures = () => {
                 <Col xs={6}>
                   <img
                     className="w-100 z-2 layer-3"
-                    ref={el => parallaxElRef.current?.push(el)}
+                    ref={el => {
+                      parallaxElRef.current?.push(el)
+                    }}
                     data-parallax={JSON.stringify({
                       y: '-420'
                     })}
@@ -100,7 +106,9 @@ const AdvanceFeatures = () => {
                 <Col xs={12} className="text-end">
                   <img
                     className="w-100 z-3 layer-4"
-                    ref={el => parallaxElRef.current?.push(el)}
+                    ref={el => {
+                      parallaxElRef.current?.push(el)
+                    }}
                     data-parallax={JSON.stringify({
                       y: '-480'
                     })}
@@ -116,7 +124,9 @@ const AdvanceFeatures = () => {
                 <Col xs="auto">
                   <img
                     className="z-4 layer-5"
-                    ref={el => parallaxElRef.current?.push(el)}
+                    ref={el => {
+                      parallaxElRef.current?.push(el)
+                    }}
                     data-parallax={JSON.stringify({
                       y: '-540'
                     })}
@@ -128,7 +138,9 @@ const AdvanceFeatures = () => {
                 <Col xs="auto">
                   <img
                     className="z-2 layer-3"
-                    ref={el => parallaxElRef.current?.push(el)}
+                    ref={el => {
+                      parallaxElRef.current?.push(el)
+                    }}
                     data-parallax={JSON.stringify({
                       y: '-420'
                     })}
@@ -140,7 +152,9 @@ const AdvanceFeatures = () => {
                 <Col xs="auto">
                   <img
                     className="z-4 layer-5"
-                    ref={el => parallaxElRef.current?.push(el)}
+                    ref={el => {
+                      parallaxElRef.current?.push(el)
+                    }}
                     data-parallax={JSON.stringify({
                       y: '-540'
                     })}
@@ -154,7 +168,9 @@ const AdvanceFeatures = () => {
                 <Col xs="auto">
                   <img
                     className="layer-1"
-                    ref={el => parallaxElRef.current?.push(el)}
+                    ref={el => {
+                      parallaxElRef.current?.push(el)
+                    }}
                     data-parallax={JSON.stringify({
                       y: '-300'
                     })}
@@ -166,7 +182,9 @@ const AdvanceFeatures = () => {
                 <Col xs="auto">
                   <img
                     className="z-4 layer-5"
-                    ref={el => parallaxElRef.current?.push(el)}
+                    ref={el => {
+                      parallaxElRef.current?.push(el)
+                    }}
                     data-parallax={JSON.stringify({
                       y: '-540'
                     })}
@@ -178,7 +196,9 @@ const AdvanceFeatures = () => {
                 <Col xs="auto">
                   <img
                     className="z-1 layer-2"
-                    ref={el => parallaxElRef.current?.push(el)}
+                    ref={el => {
+                      parallaxElRef.current?.push(el)
+                    }}
                     data-parallax={JSON.stringify({
                       y: '-360'
                     })}
@@ -190,7 +210,9 @@ const AdvanceFeatures = () => {
                 <Col xs="auto">
                   <img
                     className="z-2 layer-3"
-                    ref={el => parallaxElRef.current?.push(el)}
+                    ref={el => {
+                      parallaxElRef.current?.push(el)
+                    }}
                     data-parallax={JSON.stringify({
                       y: '-420'
                     })}
@@ -204,7 +226,9 @@ const AdvanceFeatures = () => {
                 <Col xs="auto">
                   <img
                     className="z-5 layer-6"
-                    ref={el => parallaxElRef.current?.push(el)}
+                    ref={el => {
+                      parallaxElRef.current?.push(el)
+                    }}
                     data-parallax={JSON.stringify({
                       y: '-600'
                     })}
@@ -216,7 +240,9 @@ const AdvanceFeatures = () => {
                 <Col xs="auto">
                   <img
                     className="mb-2 d-block layer-1"
-                    ref={el => parallaxElRef.current?.push(el)}
+                    ref={el => {
+                      parallaxElRef.current?.push(el)
+                    }}
                     data-parallax={JSON.stringify({
                       y: '-300'
                     })}
@@ -226,7 +252,9 @@ const AdvanceFeatures = () => {
                   />
                   <img
                     className="z-2 layer-3"
-                    ref={el => parallaxElRef.current?.push(el)}
+                    ref={el => {
+                      parallaxElRef.current?.push(el)
+                    }}
                     data-parallax={JSON.stringify({
                       y: '-420'
                     })}
@@ -238,7 +266,9 @@ const AdvanceFeatures = () => {
                 <Col xs="auto">
                   <img
                     className="z-5 mb-2 d-block layer-6"
-                    ref={el => parallaxElRef.current?.push(el)}
+                    ref={el => {
+                      parallaxElRef.current?.push(el)
+                    }}
                     data-parallax={JSON.stringify({
                       y: '-600'
                     })}
@@ -248,7 +278,9 @@ const AdvanceFeatures = () => {
                   />
                   <img
                     className="z-5 layer-6"
-                    ref={el => parallaxElRef.current?.push(el)}
+                    ref={el => {
+                      parallaxElRef.current?.push(el)
+                    }}
                     data-parallax={JSON.stringify({
                       y: '-600'
                     })}

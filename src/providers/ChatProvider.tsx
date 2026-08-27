@@ -1,9 +1,9 @@
 import { Conversation } from 'data/chat';
-import React, {
+import {
   Dispatch,
   PropsWithChildren,
   createContext,
-  useContext,
+  use,
   useReducer
 } from 'react';
 import { ACTIONTYPE, SET_CHAT_STATE, chatReducer } from 'reducers/ChatReducer';
@@ -59,7 +59,7 @@ const ChatProvider = ({
   };
 
   return (
-    <ChatContext.Provider
+    <ChatContext
       value={{
         ...chatState,
         chatDispatch,
@@ -68,10 +68,10 @@ const ChatProvider = ({
       }}
     >
       {children}
-    </ChatContext.Provider>
+    </ChatContext>
   );
 };
 
-export const useChatContext = () => useContext(ChatContext);
+export const useChatContext = () => use(ChatContext);
 
 export default ChatProvider;

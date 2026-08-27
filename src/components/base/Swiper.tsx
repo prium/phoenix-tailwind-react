@@ -12,22 +12,25 @@ import {
   faChevronLeft,
   faChevronRight
 } from '@fortawesome/free-solid-svg-icons';
+import classNames from 'classnames';
 
 interface SwiperProps extends ReactSwiperProps {
   navigationPosition?: CSSProperties;
   centeredSlide?: boolean;
+  parentClassName?: string;
 }
 
 const Swiper = ({
   children,
   navigation = true,
   navigationPosition,
+  parentClassName,
   ...rest
 }: PropsWithChildren<SwiperProps>) => {
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
   return (
-    <div className="swiper-theme-container">
+    <div className={classNames("swiper-theme-container", parentClassName)}>
       {navigation && (
         <>
           <button

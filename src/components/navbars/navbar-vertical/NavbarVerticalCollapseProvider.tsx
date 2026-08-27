@@ -1,9 +1,9 @@
-import React, {
+import {
   Dispatch,
   PropsWithChildren,
   SetStateAction,
   createContext,
-  useContext,
+  use,
   useState
 } from 'react';
 
@@ -19,13 +19,13 @@ const NavbarVerticalCollapseContext = createContext(
 const NavbarVerticalCollapseProvider = ({ children }: PropsWithChildren) => {
   const [openItems, setOpenItems] = useState(['']);
   return (
-    <NavbarVerticalCollapseContext.Provider value={{ openItems, setOpenItems }}>
+    <NavbarVerticalCollapseContext value={{ openItems, setOpenItems }}>
       {children}
-    </NavbarVerticalCollapseContext.Provider>
+    </NavbarVerticalCollapseContext>
   );
 };
 
 export const useNavbarVerticalCollapse = () =>
-  useContext(NavbarVerticalCollapseContext);
+  use(NavbarVerticalCollapseContext);
 
 export default NavbarVerticalCollapseProvider;

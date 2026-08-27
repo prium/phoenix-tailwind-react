@@ -1,9 +1,9 @@
-import React, {
+import {
   Dispatch,
   PropsWithChildren,
   SetStateAction,
   createContext,
-  useContext,
+  use,
   useState
 } from 'react';
 
@@ -22,14 +22,14 @@ const MainLayoutProvider = ({ children }: PropsWithChildren) => {
   const [contentClass, setContentClass] = useState('');
   const [footerClass, setFooterClass] = useState('');
   return (
-    <MainLayoutContext.Provider
+    <MainLayoutContext
       value={{ contentClass, setContentClass, footerClass, setFooterClass }}
     >
       {children}
-    </MainLayoutContext.Provider>
+    </MainLayoutContext>
   );
 };
 
-export const useMainLayoutContext = () => useContext(MainLayoutContext);
+export const useMainLayoutContext = () => use(MainLayoutContext);
 
 export default MainLayoutProvider;

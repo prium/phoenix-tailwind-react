@@ -1,6 +1,6 @@
 import Logo from 'components/common/Logo';
 import { Col, Dropdown, Nav, Navbar, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import FeatherIcon from 'feather-icons-react';
 import NotificationDropdownMenu from '../nav-items/NotificationDropdownMenu';
 import ProfileDropdownMenu from '../nav-items/ProfileDropdownMenu';

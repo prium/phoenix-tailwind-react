@@ -7,7 +7,7 @@ import Button from 'components/base/Button';
 import PhoenixDocCard from 'components/base/PhoenixDocCard';
 import changelogs from 'data/changelog';
 import { Alert } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const ChangeLog = () => {
   return (
@@ -28,7 +28,7 @@ const ChangeLog = () => {
               <Button
                 as={Link}
                 variant="link"
-                to={`/migrations/#${changelog.version}`}
+                to={`/migrations/#v${changelog.version}`}
                 endIcon={
                   <FontAwesomeIcon icon={faChevronRight} className="fs-10" />
                 }
@@ -47,16 +47,18 @@ const ChangeLog = () => {
                   icon={faCircleInfo}
                   className="text-warning fs-5 me-3"
                 />
-                {changelog.alertText}{' '}
-                {changelog.alertLink && (
-                  <span>
-                    {changelog.alertLink.prefix || ''}{' '}
-                    <Link to={changelog.alertLink.link || ''}>
-                      {changelog.alertLink.linkText || ''}
-                    </Link>{' '}
-                    {changelog.alertLink.suffix || ''}
-                  </span>
-                )}
+                <div>
+                  {changelog.alertText}{' '}
+                  {changelog.alertLink && (
+                    <span>
+                      {changelog.alertLink.prefix || ''}{' '}
+                      <Link to={changelog.alertLink.link || ''}>
+                        {changelog.alertLink.linkText || ''}
+                      </Link>{' '}
+                      {changelog.alertLink.suffix || ''}
+                    </span>
+                  )}
+                </div>
               </Alert>
             )}
 

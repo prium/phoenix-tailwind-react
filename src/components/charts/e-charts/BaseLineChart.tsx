@@ -31,13 +31,13 @@ const getDefaultOptions = (
     type: 'category',
     data: dates,
     show: false,
-    boundaryGap: false
+    boundaryGap: 0
   },
 
   yAxis: {
     show: false,
     type: 'value',
-    boundaryGap: false
+    boundaryGap: 0
   },
   series: [
     {

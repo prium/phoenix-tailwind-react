@@ -101,7 +101,7 @@ const Message = ({ message, user, showActions = true }: MessageProps) => {
               <FontAwesomeIcon icon={faCheckDouble} className="text-success" />
             )}
           </div>
-          <Lightbox {...lightboxProps} />
+          {message.attachments?.images && <Lightbox {...lightboxProps} />}
         </div>
       </div>
     </div>

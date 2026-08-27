@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo, type JSX } from 'react';
 import { TripDetailsTabDetailItem } from 'data/travel-agency/customer/trip';
 import { Col, Row } from 'react-bootstrap';
 import CollapsibleContainer from 'components/common/CollapsibleContainer';

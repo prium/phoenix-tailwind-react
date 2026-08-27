@@ -69,6 +69,15 @@
     --#{$prefix}alert-bg: transparent;
     --#{$prefix}alert-border-color: var(--#{$prefix}#{$state});
     --#{$prefix}alert-link-color: var(--#{$prefix}#{$state}-text-emphasis);
+
+     @if $state == 'secondary' {
+      html[data-bs-theme="dark"] & {
+        --#{$prefix}alert-color: var(--#{$prefix}secondary-text-emphasis);
+        --#{$prefix}alert-border-color: var(--#{$prefix}secondary-text-emphasis);
+        --#{$prefix}alert-bg: transparent;
+        --#{$prefix}alert-link-color: var(--#{$prefix}body-color);
+      }
+    }
   }
 }
 // scss-docs-end alert-outline-modifiers
@@ -80,6 +89,15 @@
     --#{$prefix}alert-bg: transparent;
     --#{$prefix}alert-border-color: var(--#{$prefix}border-color);
     --#{$prefix}alert-link-color: var(--#{$prefix}#{$state}-text-emphasis);
+
+    @if $state == 'secondary' {
+      html[data-bs-theme="dark"] & {
+        --#{$prefix}alert-color: var(--#{$prefix}#{$state}-text-emphasis);
+        --#{$prefix}alert-border-color: var(--#{$prefix}border-color);
+        --#{$prefix}alert-bg: transparent;
+        --#{$prefix}alert-link-color: var(--#{$prefix}body-color);
+      }
+    }
   }
 }
 // scss-docs-end alert-phoenix-modifiers
@@ -91,6 +109,15 @@
     --#{$prefix}alert-bg: var(--#{$prefix}#{$state});
     --#{$prefix}alert-border-color: var(--#{$prefix}#{$state});
     --#{$prefix}alert-link-color: var(--#{$prefix}#{$state}-text-emphasis);
+
+    @if $state == 'secondary' {
+      html[data-bs-theme="dark"] & {
+        --#{$prefix}alert-color: #{$white};
+        --#{$prefix}alert-bg: var(--#{$prefix}#{$state});
+        --#{$prefix}alert-border-color: var(--#{$prefix}#{$state});
+        --#{$prefix}alert-link-color: #{$white};
+      }
+    }
   }
 }
 // scss-docs-end alert-solid-modifiers

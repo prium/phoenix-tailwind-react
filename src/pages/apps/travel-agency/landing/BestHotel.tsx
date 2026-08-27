@@ -5,7 +5,7 @@ import bgLeft29 from 'assets/img/bg/bg-left-29.png';
 import Badge from 'components/base/Badge';
 import Button from 'components/base/Button';
 import { Card, Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import FeatherIcon from 'feather-icons-react';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
 import { hotelInterFace, hotelsData } from 'data/travel-agency/landing';

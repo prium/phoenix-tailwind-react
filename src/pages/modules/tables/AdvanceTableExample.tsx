@@ -15,7 +15,7 @@ import { Project, projects, tableDocData } from 'data/doc/table';
 import useAdvanceTable from 'hooks/useAdvanceTable';
 import AdvanceTableProvider from 'providers/AdvanceTableProvider';
 import { ChangeEvent, useMemo } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const basicImportString = `
 import { ColumnDef } from '@tanstack/react-table';
@@ -25,7 +25,7 @@ import RevealDropdown, { RevealDropdownTrigger } from 'components/base/RevealDro
 import ActionDropdownItems from 'components/common/ActionDropdownItems';
 import useAdvanceTable from 'hooks/useAdvanceTable';
 import AdvanceTableProvider from 'providers/AdvanceTableProvider';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 `;
 
 const basicDataString = `

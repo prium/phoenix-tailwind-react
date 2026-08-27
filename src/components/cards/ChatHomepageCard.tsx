@@ -6,7 +6,7 @@ import Scrollbar from 'components/base/Scrollbar';
 const ChatHomepageCard = () => {
   return (
     <Card className="h-100 w-100 d-none d-sm-block">
-      <Scrollbar>
+      <Scrollbar style={{ height: '100%' }}>
         <Card.Body className="h-100 d-flex flex-column flex-center text-center">
           <img
             src={chatIllustration}

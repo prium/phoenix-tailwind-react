@@ -30,7 +30,7 @@ const FilterFormFlightAircraft = () => {
               type="radio"
               id="excludeAircraft"
               name="aircrafts"
-              checked
+              defaultChecked={true}
             />
             <Form.Check.Label
               htmlFor="excludeAircraft"

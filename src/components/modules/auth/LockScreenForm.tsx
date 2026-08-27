@@ -2,7 +2,7 @@ import Avatar from 'components/base/Avatar';
 import avatar from 'assets/img/team/30.webp';
 import { Form } from 'react-bootstrap';
 import Button from 'components/base/Button';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const LockScreenForm = () => {
   return (

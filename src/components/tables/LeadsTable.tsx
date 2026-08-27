@@ -8,7 +8,7 @@ import RevealDropdown, {
 } from 'components/base/RevealDropdown';
 import ActionDropdownItems from 'components/common/ActionDropdownItems';
 import { LeadDataType } from 'data/crm/leadsTableData';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import FeatherIcon from 'feather-icons-react';
 
 export const leadsTableColumns: ColumnDef<LeadDataType>[] = [

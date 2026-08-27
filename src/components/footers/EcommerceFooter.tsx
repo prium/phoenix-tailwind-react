@@ -6,7 +6,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Logo from 'components/common/Logo';
 import { PropsWithChildren } from 'react';
 import { Col, Row, Stack } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const LinkItem = ({ children, to }: PropsWithChildren<{ to: string }>) => {
   return (

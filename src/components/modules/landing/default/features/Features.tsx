@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'components/base/Button';
 import { Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import boltIlls from 'assets/img/icons/illustrations/bolt.png';
 import pie from 'assets/img/icons/illustrations/pie.png';
 import { defaultFeatures } from 'data/landing/default-landing-data';

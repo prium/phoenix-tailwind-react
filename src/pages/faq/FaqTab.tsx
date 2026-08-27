@@ -1,6 +1,6 @@
 import bg from 'assets/img/bg/bg-40.png';
 import bgDark from 'assets/img/bg/bg-dark-40.png';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import SearchBox from 'components/common/SearchBox';
 import { Col, Row, Tab } from 'react-bootstrap';
 import { useBreakpoints } from 'providers/BreakpointsProvider';

@@ -88,10 +88,8 @@ const changingContainersCode = `
 `;
 
 const dynamicPositionCode = `
-const UpdatingPopover = forwardRef(
-  ({ popper, children, show: _, ...props }, ref) => {
+const UpdatingPopover = ({ popper, children, show: _, ref, ...props }) => {
     useEffect(() => {
-      console.log('updating!');
       popper.scheduleUpdate();
     }, [children, popper]);
 
@@ -100,8 +98,7 @@ const UpdatingPopover = forwardRef(
         {children}
       </Popover>
     );
-  },
-);
+  }
 
 const longContent = 'Very long Multiline content that is engaging and what-not';
 

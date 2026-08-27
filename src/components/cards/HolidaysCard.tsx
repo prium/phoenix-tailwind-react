@@ -1,10 +1,9 @@
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
 import { Card } from 'react-bootstrap';
 import Button from 'components/base/Button';
 
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import HolidaysNextMonth from 'components/charts/e-charts/HolidaysNextMonth';
 
 export const HolidaysCard = () => {

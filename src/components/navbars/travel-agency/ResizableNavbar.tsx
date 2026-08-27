@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useCallback, useLayoutEffect, useRef } from 'react';
 import { Container, Dropdown, Nav, NavItem, Navbar } from 'react-bootstrap';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router';
 import classNames from 'classnames';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { ResizableNav } from 'data/travel-agency/resizableNav';
@@ -76,7 +76,9 @@ const ResizableNavbar = ({ navItems }: ResizableNav) => {
             <Nav.Item
               className="gap-3"
               key={item.id}
-              ref={(el: HTMLDivElement) => (navItemsRef.current[index] = el)}
+              ref={(el: HTMLDivElement) => {
+                (navItemsRef.current[index] = el)
+              }}
             >
               <Nav.Link
                 key={item.id}
@@ -105,9 +107,9 @@ const ResizableNavbar = ({ navItems }: ResizableNav) => {
                   key={item.id}
                   as={Link}
                   to={item.url}
-                  ref={(el: HTMLAnchorElement) =>
+                  ref={(el: HTMLAnchorElement) =>{
                     (dropdownItemsRef.current[index] = el)
-                  }
+                  }}
                 >
                   {item.label}
                 </Dropdown.Item>

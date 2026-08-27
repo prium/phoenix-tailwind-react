@@ -2,7 +2,7 @@ import React from 'react';
 import bgIllustrations from 'assets/img/spot-illustrations/interations.png';
 import { Card } from 'react-bootstrap';
 import Button from 'components/base/Button';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 

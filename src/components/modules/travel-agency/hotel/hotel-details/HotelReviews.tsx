@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import type { Rating, Review } from 'data/travel-agency/customer/hotelDetails';
 import { Card, Col, ProgressBar, Row } from 'react-bootstrap';
 import Badge from 'components/base/Badge';

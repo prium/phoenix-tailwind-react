@@ -14,7 +14,7 @@ import Button from 'components/base/Button';
 import Swiper from 'components/base/Swiper';
 import React, { useState } from 'react';
 import { Card, Row, Col, Collapse } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { SwiperSlide } from 'swiper/react';
 import { roomSearchInterface } from 'data/travel-agency/customer/hotel';
 

@@ -5,10 +5,10 @@ import {
   createContext,
   PropsWithChildren,
   useState,
-  useContext,
   Dispatch,
   SetStateAction,
-  useCallback
+  useCallback,
+  use
 } from 'react';
 
 interface ChatWidgetProps {
@@ -57,7 +57,7 @@ const ChatWidgetProvider = ({ children }: PropsWithChildren) => {
   );
 
   return (
-    <ChatWidgetContext.Provider
+    <ChatWidgetContext
       value={{
         conversation,
         setConversation,
@@ -67,10 +67,10 @@ const ChatWidgetProvider = ({ children }: PropsWithChildren) => {
       }}
     >
       {children}
-    </ChatWidgetContext.Provider>
+    </ChatWidgetContext>
   );
 };
 
-export const useChatWidgetContext = () => useContext(ChatWidgetContext);
+export const useChatWidgetContext = () => use(ChatWidgetContext);
 
 export default ChatWidgetProvider;

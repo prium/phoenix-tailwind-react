@@ -6,7 +6,6 @@ import {
   attachments,
   subTasks
 } from 'data/project-management/todoListData';
-import React from 'react';
 import SubTask from './SubTask';
 import classNames from 'classnames';
 import FileListItem from './FileListItem';
@@ -135,6 +134,7 @@ const TodoItemDetailsOffcanvas = ({
                   }}
                   icon={
                     <UilBellSchool
+                      fill='currentColor'
                       className="flatpickr-icon text-body-tertiary"
                       size={16}
                     />
@@ -167,6 +167,7 @@ const TodoItemDetailsOffcanvas = ({
                 placeholder="Select organizer"
                 icon={
                   <UilTagAlt
+                    fill='currentColor'
                     className="react-select-icon text-body-tertiary"
                     size={16}
                   />

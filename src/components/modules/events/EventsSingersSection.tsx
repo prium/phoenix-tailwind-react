@@ -1,5 +1,5 @@
 import { Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import useLightbox from 'hooks/useLightbox';
 import Lightbox from 'components/base/LightBox';
 

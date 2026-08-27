@@ -1,5 +1,5 @@
 import { useAppContext } from 'providers/AppProvider';
-import { useEffect, useState } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import is from 'is_js';
 import { REFRESH, SET_CONFIG } from 'reducers/ConfigReducer';
 import { getSystemTheme } from 'helpers/utils';
@@ -21,6 +21,7 @@ const useToggleStyle = () => {
     if (is.firefox()) HTMLClassList.add('firefox');
     if (is.safari()) HTMLClassList.add('safari');
     if (is.mac()) HTMLClassList.add('osx');
+    if (is.ipad()) HTMLClassList.add('ipad')
   }, []);
 
   useEffect(() => {
@@ -62,7 +63,7 @@ const useToggleStyle = () => {
     document.documentElement.setAttribute('dir', isRTL ? 'rtl' : 'ltr');
   }, [isRTL]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const mode = theme === 'auto' ? getSystemTheme() : theme;
 
     configDispatch({

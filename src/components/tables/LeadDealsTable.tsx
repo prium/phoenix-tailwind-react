@@ -3,7 +3,7 @@ import AdvanceTable from 'components/base/AdvanceTable';
 import { currencyFormat, getProgressColorVariant } from 'helpers/utils';
 import useAdvanceTable from 'hooks/useAdvanceTable';
 import AdvanceTableProvider from 'providers/AdvanceTableProvider';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import AdvanceTableFooter from 'components/base/AdvanceTableFooter';
 import { LeadDeal, leadDealsTableData } from 'data/crm/leadsData';
 import RevealDropdown, {

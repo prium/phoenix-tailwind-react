@@ -269,7 +269,7 @@ const getDefaultOptions = (
     left: 100,
     bottom: 0,
     top: '5%',
-    containLabel: false
+    outerBoundsMode: 'none'
   },
   animation: false
 });

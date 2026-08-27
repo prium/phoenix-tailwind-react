@@ -14,7 +14,7 @@ import { TripOverview } from 'data/travel-agency/customer/trip';
 import { currencyFormat, numberFormat } from 'helpers/utils';
 import React, { useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 interface TripDetailsOverviewProps {
   tripOverview: TripOverview;

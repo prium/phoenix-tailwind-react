@@ -5,8 +5,8 @@ import {
   Dispatch,
   SetStateAction,
   PropsWithChildren,
-  useContext,
-  useEffect
+  useEffect,
+  use
 } from 'react';
 import { gridBreakpoints } from './BreakpointsProvider';
 interface FileManagerContextInterface {
@@ -40,7 +40,7 @@ const FileManagerProvider = ({ children }: PropsWithChildren) => {
   }, []);
 
   return (
-    <FileManagerContext.Provider
+    <FileManagerContext
       value={{
         fileCollection,
         setFileCollection,
@@ -55,10 +55,10 @@ const FileManagerProvider = ({ children }: PropsWithChildren) => {
       }}
     >
       {children}
-    </FileManagerContext.Provider>
+    </FileManagerContext>
   );
 };
 
-export const useFileManagerContext = () => useContext(FileManagerContext);
+export const useFileManagerContext = () => use(FileManagerContext);
 
 export default FileManagerProvider;

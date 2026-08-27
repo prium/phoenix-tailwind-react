@@ -3,7 +3,7 @@ import Logo from 'components/common/Logo';
 import ThemeToggler from 'components/common/ThemeToggler';
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Dropdown, Nav, Navbar } from 'react-bootstrap';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router';
 import FeatherIcon from 'feather-icons-react';
 import { useBreakpoints } from 'providers/BreakpointsProvider';
 import classNames from 'classnames';

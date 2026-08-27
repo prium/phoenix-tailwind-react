@@ -1,7 +1,7 @@
 import Avatar from 'components/base/Avatar';
 import React from 'react';
 import { Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import avatar from 'assets/img/team/20.webp';
 
 const CommentField = () => {

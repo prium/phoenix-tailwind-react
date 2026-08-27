@@ -2,13 +2,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'components/base/Button';
 import { ChangeEvent, useState } from 'react';
 import { Card, Form } from 'react-bootstrap';
-import EmojiPicker from 'components/base/EmojiPicker';
 import { useChatContext } from 'providers/ChatProvider';
 import ReactTextareaAutosize from 'react-textarea-autosize';
 import AttachmentPreview from 'components/common/AttachmentPreview';
 import { convertFileToAttachment } from 'helpers/utils';
 import ImageAttachmentPreview from 'components/common/ImageAttachmentPreview';
 import { faFaceSmile } from '@fortawesome/free-regular-svg-icons';
+import EmojiPicker, {
+  EmojiClickData,
+  Theme,
+  EmojiStyle
+} from 'emoji-picker-react';
 import {
   faEllipsis,
   faImage,
@@ -17,13 +21,23 @@ import {
   faPaperclip
 } from '@fortawesome/free-solid-svg-icons';
 import { SENT_MESSAGE } from 'reducers/ChatReducer';
+import { useAppContext } from 'providers/AppProvider';
 
 const ChatContentFooter = () => {
-  const { currentConversation, chatDispatch } = useChatContext();
+  const {
+    config: { isDark }
+  } = useAppContext();
 
+  const { currentConversation, chatDispatch } = useChatContext();
   const [messageText, setMessageText] = useState('');
+  const [previewEmoji, setPreviewEmoji] = useState(false);
   const [fileAttachment, setFileAttachment] = useState<File | null>(null);
   const [imageAttachments, setImageAttachments] = useState<File[]>([]);
+
+  const addEmoji = (emojiObject: EmojiClickData) => {
+    setMessageText(prev => prev + emojiObject.emoji);
+    setPreviewEmoji(false);
+  };
 
   const sentMessage = () => {
     if (
@@ -89,15 +103,28 @@ const ChatContentFooter = () => {
       )}
 
       <div className="d-flex gap-3 align-items-center">
-        <EmojiPicker
-          onSelect={selection => {
-            setMessageText(messageText => messageText + selection.emoji);
-          }}
-        >
-          <Button variant="link" className="p-0 text-body fs-9 btn-emoji">
+        <div>
+          <Button
+            variant="link"
+            className="p-0 text-body fs-9 btn-emoji"
+            onClick={() => setPreviewEmoji(prev => !prev)}
+          >
             <FontAwesomeIcon icon={faFaceSmile} />
           </Button>
-        </EmojiPicker>
+          {previewEmoji && (
+            <div className="chat-emoji-picker" dir="ltr">
+              <EmojiPicker
+                onEmojiClick={addEmoji}
+                theme={isDark ? Theme.DARK : Theme.LIGHT}
+                skinTonesDisabled={true}
+                previewConfig={{ showPreview: false }}
+                emojiStyle={EmojiStyle.GOOGLE}
+                width={354}
+                height={435}
+              />
+            </div>
+          )}
+        </div>
         <div>
           <Button className="p-0">
             <label className="text-body fs-9 cursor-pointer" htmlFor="images">

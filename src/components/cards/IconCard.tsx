@@ -44,7 +44,7 @@ const IconCard = ({
         <FontAwesomeIcon icon={icon as IconProp} className="text-body fs-5" />
       )}
       {iconFamily === 'unicons' && (
-        <Unicon icon={icon as Icon} className="text-body fs-5" />
+        <Unicon fill="currentColor" icon={icon as Icon} style={{ height: 31.25}} className="text-body fs-5" />
       )}
       {iconFamily === 'feather' && (
         <FeatherIcon icon={icon} className="text-body" size={16} />
@@ -55,7 +55,7 @@ const IconCard = ({
         type="text"
         readOnly
         value={text}
-        className="text-center text-dark bg-body-secondary dark__bg-gray-1100 mt-3"
+        className="text-center text-body-emphasis bg-body-secondary dark__bg-gray-1100 mt-3"
       />
 
       <Toast

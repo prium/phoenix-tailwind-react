@@ -1,9 +1,9 @@
-import React, {
+import {
   Dispatch,
   PropsWithChildren,
   SetStateAction,
   createContext,
-  useContext,
+  use,
   useState
 } from 'react';
 
@@ -24,7 +24,7 @@ const PhoenixDocProvider = ({ children }: PropsWithChildren) => {
   const [textToCopy, setTextToCopy] = useState('');
 
   return (
-    <CollapseContext.Provider
+    <CollapseContext
       value={{
         open,
         setOpen,
@@ -35,10 +35,10 @@ const PhoenixDocProvider = ({ children }: PropsWithChildren) => {
       }}
     >
       {children}
-    </CollapseContext.Provider>
+    </CollapseContext>
   );
 };
 
-export const usePhoenixDocContext = () => useContext(CollapseContext);
+export const usePhoenixDocContext = () => use(CollapseContext);
 
 export default PhoenixDocProvider;

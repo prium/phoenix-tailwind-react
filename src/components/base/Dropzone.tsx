@@ -32,6 +32,8 @@ interface DropzoneProps {
   noPreview?: boolean;
   defaultFiles?: File[];
   multiple?: boolean;
+  previewHight?: number;
+  previewWidth?: number;
   setPhotos?: Dispatch<SetStateAction<File[]>>;
   onDrop?: <T extends File>(
     acceptedFiles: T[],
@@ -49,6 +51,8 @@ const Dropzone = ({
   noPreview,
   reactDropZoneProps,
   multiple = true,
+  previewHight,
+  previewWidth,
   setPhotos,
   children
 }: PropsWithChildren<DropzoneProps>) => {
@@ -95,7 +99,8 @@ const Dropzone = ({
       <div
         {...getRootProps()}
         className={classNames(className, 'dropzone', {
-          'dropzone-sm': size === 'sm'
+          'dropzone-sm': size === 'sm',
+          'dropzone-multiple': multiple
         })}
       >
         <input {...getInputProps()} />
@@ -140,6 +145,8 @@ const Dropzone = ({
             <ImageAttachmentPreview
               key={file.name}
               image={URL.createObjectURL(file)}
+              previewWidth={previewWidth}
+              previewHight={previewHight}
               handleClose={() => handleRemoveFile(index)}
             />
           ))}

@@ -10,7 +10,7 @@ import {
 import bd45 from 'assets/img/bg/45.png';
 import Button from 'components/base/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import {
   faFacebook,
   faInstagram,

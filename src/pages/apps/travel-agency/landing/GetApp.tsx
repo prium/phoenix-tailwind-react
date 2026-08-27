@@ -5,7 +5,7 @@ import iPhoneDark from 'assets/img/spot-illustrations/i-phone-dark.png';
 import spotIllustration41 from 'assets/img/spot-illustrations/41.png';
 import spotIllustrationDark41 from 'assets/img/spot-illustrations/dark_41.png';
 import { Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import playStore from 'assets/img/generic/play-store.png';
 import appStore from 'assets/img/generic/app-store.png';
 

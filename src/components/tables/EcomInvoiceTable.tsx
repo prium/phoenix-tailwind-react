@@ -1,9 +1,8 @@
 import Scrollbar from 'components/base/Scrollbar';
-import React from 'react';
 
 const EcomInvoiceTable = () => {
   return (
-    <Scrollbar autoHeight autoHeightMax="100%">
+    <Scrollbar style={{ maxHeight: '100%' }}>
       <table className="table fs-9 text-body mb-0">
         <thead className="bg-body-secondary">
           <tr>

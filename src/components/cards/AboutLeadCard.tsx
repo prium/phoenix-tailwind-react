@@ -15,7 +15,7 @@ import Button from 'components/base/Button';
 import LeadInfoItem from 'components/info-items/LeadInfoItem';
 import { currencyFormat } from 'helpers/utils';
 import { Card } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const AboutLeadCard = ({ className }: { className?: string }) => {
   return (

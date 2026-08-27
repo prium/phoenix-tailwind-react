@@ -4,7 +4,7 @@ import RevealDropdown, {
   RevealDropdownTrigger
 } from 'components/base/RevealDropdown';
 import { StoreItem as StoreItemType } from 'data/e-commerce/stores';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import ActionDropdownItems from './ActionDropdownItems';
 import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 

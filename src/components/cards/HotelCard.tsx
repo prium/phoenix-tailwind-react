@@ -4,8 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Badge from 'components/base/Badge';
 import { hotelInterFace } from 'data/travel-agency/customer/hotel';
 import { currencyFormat } from 'helpers/utils';
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const HotelCard = ({ hotelInfo }: { hotelInfo: hotelInterFace }) => {
   const { name, location, img, price, rating } = hotelInfo;

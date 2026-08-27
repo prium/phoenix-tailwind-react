@@ -5,8 +5,8 @@ import {
   Dispatch,
   SetStateAction,
   PropsWithChildren,
-  useContext,
-  useCallback
+  useCallback,
+  use
 } from 'react';
 import { DragStartEvent, DragOverEvent, DragEndEvent } from '@dnd-kit/core';
 import { arrayMove } from '@dnd-kit/sortable';
@@ -164,7 +164,7 @@ const DealsProvider = ({
     [dealColumns]
   );
   return (
-    <DealsContext.Provider
+    <DealsContext
       value={{
         dealColumns,
         setDealColumns,
@@ -183,10 +183,10 @@ const DealsProvider = ({
       }}
     >
       {children}
-    </DealsContext.Provider>
+    </DealsContext>
   );
 };
 
-export const useDealsContext = () => useContext(DealsContext);
+export const useDealsContext = () => use(DealsContext);
 
 export default DealsProvider;

@@ -4,7 +4,7 @@ import dark404illustrations from 'assets/img/spot-illustrations/dark_404-illustr
 import error404 from 'assets/img/spot-illustrations/404.png';
 import darkError40 from 'assets/img/spot-illustrations/dark_404.png';
 import { Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import useSettingsMountEffect from 'hooks/useSettingsMountEffect';
 
 const Error404 = () => {

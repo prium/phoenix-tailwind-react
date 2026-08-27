@@ -1,6 +1,6 @@
 import Logo from 'components/common/Logo';
 import { Modal, Nav, Navbar } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import FeatherIcon from 'feather-icons-react';
 import SearchBox from 'components/common/SearchBox';
 import Button from 'components/base/Button';

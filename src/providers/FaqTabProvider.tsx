@@ -4,7 +4,7 @@ import {
   Dispatch,
   SetStateAction,
   PropsWithChildren,
-  useContext
+  use
 } from 'react';
 
 interface FaqTabContextInterface {
@@ -23,7 +23,7 @@ const FaqTabProvider = ({ children }: PropsWithChildren) => {
   const [subCategoryActiveKey, setSubCategoryActiveKey] = useState('sale-101');
   const [isOpenOffcanvas, setIsOpenOffcanvas] = useState(false);
   return (
-    <FaqTabContext.Provider
+    <FaqTabContext
       value={{
         activeKey,
         setActiveKey,
@@ -34,10 +34,10 @@ const FaqTabProvider = ({ children }: PropsWithChildren) => {
       }}
     >
       {children}
-    </FaqTabContext.Provider>
+    </FaqTabContext>
   );
 };
 
-export const useFaqTabContext = () => useContext(FaqTabContext);
+export const useFaqTabContext = () => use(FaqTabContext);
 
 export default FaqTabProvider;

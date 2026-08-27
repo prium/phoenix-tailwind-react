@@ -8,7 +8,7 @@ import React, {
   useState
 } from 'react';
 import { Col, Nav, Row } from 'react-bootstrap';
-import { useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router';
 
 export type SideNavItem = {
   to: string;

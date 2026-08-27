@@ -1,5 +1,5 @@
 declare module '@iconscout/react-unicons' {
-  import { SVGProps } from 'react';
+  import { SVGProps, type JSX } from 'react';
 
   export type IconProps = {
     color?: string;
@@ -112,7 +112,6 @@ declare module '@iconscout/react-unicons' {
   export const UilAutoFlash: Icon;
   export const UilAward: Icon;
   export const UilAwardAlt: Icon;
-  export const UilBabyCarriage: Icon;
   export const UilBackpack: Icon;
   export const UilBackspace: Icon;
   export const UilBackward: Icon;
@@ -129,7 +128,6 @@ declare module '@iconscout/react-unicons' {
   export const UilBath: Icon;
   export const UilBatteryBolt: Icon;
   export const UilBatteryEmpty: Icon;
-  export const UilBed: Icon;
   export const UilBedDouble: Icon;
   export const UilBehance: Icon;
   export const UilBehanceAlt: Icon;
@@ -184,7 +182,6 @@ declare module '@iconscout/react-unicons' {
   export const UilBrightnessPlus: Icon;
   export const UilBringBottom: Icon;
   export const UilBringFront: Icon;
-  export const UilBrowser: Icon;
   export const UilBrushAlt: Icon;
   export const UilBug: Icon;
   export const UilBuilding: Icon;
@@ -196,7 +193,7 @@ declare module '@iconscout/react-unicons' {
   export const UilCalculatorAlt: Icon;
   export const UilCalendarAlt: Icon;
   export const UilCalendarSlash: Icon;
-  export const UilCalender: Icon;
+  export const UilCalendar: Icon;
   export const UilCalling: Icon;
   export const UilCamera: Icon;
   export const UilCameraChange: Icon;
@@ -373,7 +370,6 @@ declare module '@iconscout/react-unicons' {
   export const UilCornerLeftDown: Icon;
   export const UilCornerRightDown: Icon;
   export const UilCornerUpLeft: Icon;
-  export const UilCornerUpLeftAlt: Icon;
   export const UilCornerUpRight: Icon;
   export const UilCornerUpRightAlt: Icon;
   export const UilCoronavirus: Icon;
@@ -577,7 +573,6 @@ declare module '@iconscout/react-unicons' {
   export const UilFootball: Icon;
   export const UilFootballAmerican: Icon;
   export const UilFootballBall: Icon;
-  export const UilForecastcloudMoonTear: Icon;
   export const UilForwadedCall: Icon;
   export const UilForward: Icon;
   export const UilFrown: Icon;

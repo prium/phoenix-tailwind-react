@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import useLightbox from 'hooks/useLightbox';
 import { Col, Row } from 'react-bootstrap';
 import Lightbox from 'components/base/LightBox';

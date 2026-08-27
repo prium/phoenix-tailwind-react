@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Project } from 'data/project-management/projects';
 import AvatarDropdown from 'components/common/AvatarDropdown';
 import Badge from 'components/base/Badge';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import { comments } from 'data/project-management/comments';
 import SearchBox from 'components/common/SearchBox';
 import TodoListItem from '../todo-list/TodoListItem';

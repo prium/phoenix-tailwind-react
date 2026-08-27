@@ -4,7 +4,7 @@ import Avatar from 'components/base/Avatar';
 import Button from 'components/base/Button';
 import { Comment } from 'data/social/postsData';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 interface PostCommentsProps {
   comments: Comment[];

@@ -15,7 +15,7 @@ import {
   Tooltip,
   useAccordionButton
 } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 interface CustomToggleProps extends FormCheckProps {
   eventKey: string;

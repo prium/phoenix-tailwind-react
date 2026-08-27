@@ -5,7 +5,7 @@ import { ColumnDef } from '@tanstack/react-table';
 import useAdvanceTable from 'hooks/useAdvanceTable';
 import { roomFiltercheckbox } from 'data/travel-agency/admin/searchRoom';
 import AdvanceTableProvider from 'providers/AdvanceTableProvider';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 export const columns: ColumnDef<roomFiltercheckbox>[] = [
   {

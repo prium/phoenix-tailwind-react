@@ -14,7 +14,7 @@ import {
 import Button from 'components/base/Button';
 import HotelDetailsRoomImageGallery from './HotelDetailsRoomImageGallery';
 import { currencyFormat, numberFormat } from 'helpers/utils';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import classNames from 'classnames';
 
 interface HotelDetailsAvailabilityRoomInfoProps {

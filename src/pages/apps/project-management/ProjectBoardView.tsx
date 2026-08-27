@@ -9,7 +9,7 @@ import { Project, projects } from 'data/project-management/projects';
 import useAdvanceTable from 'hooks/useAdvanceTable';
 import AdvanceTableProvider from 'providers/AdvanceTableProvider';
 import { Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 export const columns: ColumnDef<Project>[] = [
   {

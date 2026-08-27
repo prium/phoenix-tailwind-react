@@ -34,7 +34,7 @@ const getDefaultOptions = (
 
       data: dates,
       show: true,
-      boundaryGap: false,
+      boundaryGap: 0,
       axisLine: {
         show: false
       },
@@ -78,13 +78,13 @@ const getDefaultOptions = (
       splitLine: {
         show: false
       },
-      boundaryGap: false
+      boundaryGap: 0
     }
   ],
   yAxis: {
     show: false,
     type: 'value',
-    boundaryGap: false
+    boundaryGap: 0
   },
   series: [
     {
@@ -117,7 +117,7 @@ const getDefaultOptions = (
       symbol: 'circle'
     }
   ],
-  grid: { left: 0, right: 0, top: 5, bottom: 20 }
+  grid: { left: 0, right: 0, top: 5, bottom: 20, outerBoundsMode: 'none' }
 });
 
 const BasicLineChart = ({

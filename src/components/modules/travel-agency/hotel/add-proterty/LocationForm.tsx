@@ -55,7 +55,7 @@ const LocationForm = ({ tabEventKey }: { tabEventKey: number }) => {
       <div className="mt-3 mb-6">
         <Suspense fallback={<PhoenixLoader />}>
           <Mapbox
-            ref={mapRef}
+            mapRef={mapRef}
             className="rounded-3 border overflow-hidden"
             options={{
               attributionControl: false,

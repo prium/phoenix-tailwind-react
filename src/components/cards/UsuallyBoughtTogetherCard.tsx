@@ -4,7 +4,7 @@ import { SuggestedProductType } from 'data/e-commerce/products';
 import { currencyFormat } from 'helpers/utils';
 import { useState } from 'react';
 import { Button, Card, Form, Stack } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const ProductListItem = ({ product }: { product: SuggestedProductType }) => {
   const [checked, setChecked] = useState(product.checked);

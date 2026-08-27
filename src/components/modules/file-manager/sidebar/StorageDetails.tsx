@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Collapse, ProgressBar } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import classNames from 'classnames';
 import spotIllustration45 from 'assets/img/spot-illustrations/45.png';
 import spotIllustrationDark45 from 'assets/img/spot-illustrations/dark_45.png';

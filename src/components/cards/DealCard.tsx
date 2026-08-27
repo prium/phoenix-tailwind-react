@@ -10,7 +10,7 @@ import { Card, Collapse, Form, ProgressBar, Table } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
 import { UilHeadphones, UilUser } from '@iconscout/react-unicons';
 import classNames from 'classnames';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import Badge, { BadgeBg } from 'components/base/Badge';
 import { faWhatsappSquare } from '@fortawesome/free-brands-svg-icons';
 import { useDealsContext } from 'providers/CrmDealsProvider';
@@ -120,13 +120,13 @@ const DealCard = ({ deal, columnId, cursor }: DealCardProps) => {
             })}
           >
             <div className="d-flex align-items-center">
-              <UilUser className="me-2" size={16} />
+              <UilUser fill='currentColor' className="me-2" size={16} />
               <p className="text-body-secondary fw-bold fs-9 mb-0">
                 {deal.company}
               </p>
             </div>
             <div className="d-flex align-items-center">
-              <UilHeadphones className="me-2" size={16} />
+              <UilHeadphones fill='currentColor' className="me-2" size={16} />
               <p className="text-body-secondary fw-bold fs-9 mb-0">
                 {deal.agent}
               </p>

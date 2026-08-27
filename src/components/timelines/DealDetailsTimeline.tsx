@@ -2,7 +2,7 @@ import { faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
 import { Activity } from 'data/crm/dealDetailsData';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 const DealDetailsTimeline = ({ activities }: { activities: Activity[] }) => {
   return (

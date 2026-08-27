@@ -11,7 +11,7 @@ import {
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation } from 'swiper/modules';
 import SwiperCore from 'swiper';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 
 import { Container } from 'react-bootstrap';
 import { placesData } from 'data/travel-agency/landing';

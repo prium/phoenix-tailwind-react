@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Card, Col, Dropdown, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router';
 import behance from 'assets/img/nav-icons/behance.webp';
 import googleCloud from 'assets/img/nav-icons/google-cloud.webp';
 import slack from 'assets/img/nav-icons/slack.webp';
@@ -43,7 +43,7 @@ const NineDotMenu = () => {
         className="position-relative border-0"
         style={{ height: '20rem', minWidth: 244 }}
       >
-        <Scrollbar>
+        <Scrollbar style={{maxHeight: '20rem' }}>
           <Card.Body className="pt-3 px-3 pb-0">
             <Row className="text-center align-items-center g-0">
               {items.map(item => (
