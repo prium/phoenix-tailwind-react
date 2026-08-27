@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import IndeterminateCheckbox from 'components/base/IndeterminateCheckbox';
 import { PropsWithChildren } from 'react';
+import { cn } from '@hummingbirdui/react';
 import {
   useReactTable,
   getCoreRowModel,
@@ -18,6 +19,8 @@ interface UseAdvanceTableProps<T> {
   pagination?: boolean;
   pageSize?: number;
   selectionColumnWidth?: number | string;
+  /** Extra classes for the selection column (merged with the defaults). */
+  selectionColumnProps?: { headerClassName?: string; cellClassName?: string };
   initialState?: InitialTableState;
   state?: object;
   onPaginationChange?: any;
@@ -26,7 +29,12 @@ interface UseAdvanceTableProps<T> {
   pageCount?: number;
 }
 
-const selectionColumn = {
+const getSelectionColumn = ({
+  headerClassName,
+  cellClassName
+}: NonNullable<
+  UseAdvanceTableProps<unknown>['selectionColumnProps']
+> = {}) => ({
   id: 'select',
   accessorKey: '',
   header: ({ table }: any) => (
@@ -53,11 +61,11 @@ const selectionColumn = {
   meta: {
     headerProps: {
       style: { width: '30px' },
-      className: 'whitespace-nowrap text-md ps-0 py-3.5'
+      className: cn('whitespace-nowrap text-md ps-0 py-3.5', headerClassName)
     },
-    cellProps: { className: 'text-md ps-0' }
+    cellProps: { className: cn('text-md ps-0', cellClassName) }
   }
-};
+});
 
 const useAdvanceTable = <T,>({
   columns,
@@ -67,6 +75,7 @@ const useAdvanceTable = <T,>({
   pagination,
   pageSize,
   initialState,
+  selectionColumnProps,
   ...rest
 }: PropsWithChildren<UseAdvanceTableProps<T>>) => {
   const state = {
@@ -77,7 +86,9 @@ const useAdvanceTable = <T,>({
   };
   const table = useReactTable<T>({
     data,
-    columns: selection ? [selectionColumn, ...columns] : columns,
+    columns: selection
+      ? [getSelectionColumn(selectionColumnProps), ...columns]
+      : columns,
     enableSorting: sortable,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),

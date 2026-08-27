@@ -23,7 +23,11 @@ const initNavItems: NavItemType[] = [
     label: 'My Favorite Stores',
     url: '/apps/e-commerce/customer/favorite-stores'
   },
-  { id: 3, label: 'Products', url: '/apps/e-commerce/customer/products-filter' },
+  {
+    id: 3,
+    label: 'Products',
+    url: '/apps/e-commerce/customer/products-filter'
+  },
   { id: 4, label: 'Wishlist', url: '/apps/e-commerce/customer/wishlist' },
   {
     id: 5,
@@ -53,7 +57,7 @@ const CategoryDropdown = () => (
     </Dropdown.Trigger>
     <Dropdown.Content
       align="start"
-      className="border border-light py-0 category-dropdown-menu"
+      className="border border-light py-0 category-dropdown-menu w-62.5 sm:w-130 md:w-187.5"
     >
       <Card className="border-0 scrollbar max-h-164.25">
         <Card.Body className="p-10 pb-4">

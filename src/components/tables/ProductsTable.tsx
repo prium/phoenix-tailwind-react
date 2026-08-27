@@ -20,15 +20,15 @@ export const productsTablecolumns: ColumnDef<ProductsTableProductType>[] = [
       return (
         <Link
           to="/apps/e-commerce/customer/product-details"
-          className="rounded-md border border-light inline-block"
+          className="inline-block border border-light rounded-md"
         >
           <img src={productImage} alt="" width={53} />
         </Link>
       );
     },
     meta: {
-      headerProps: { style: { width: 70 } },
-      cellProps: { className: 'py-0' }
+      headerProps: { className: 'min-w-17.75 whitespace-nowrap text-sm' },
+      cellProps: { className: 'whitespace-nowrap py-0' }
     },
     enableSorting: false
   },
@@ -40,15 +40,15 @@ export const productsTablecolumns: ColumnDef<ProductsTableProductType>[] = [
       return (
         <Link
           to="/apps/e-commerce/customer/product-details"
-          className="font-semibold line-clamp-3"
+          className="font-semibold line-clamp-3 mb-0"
         >
           {product}
         </Link>
       );
     },
     meta: {
-      headerProps: { style: { width: 350 }, className: 'ps-4' },
-      cellProps: { className: 'ps-4' }
+      headerProps: { className: 'whitespace-nowrap ps-6 w-87.5' },
+      cellProps: { className: 'ps-6' }
     }
   },
   {
@@ -64,17 +64,19 @@ export const productsTablecolumns: ColumnDef<ProductsTableProductType>[] = [
           `${currencyFormat(priceMin!)} - ${currencyFormat(priceMax!)}`;
     },
     meta: {
-      headerProps: { style: { width: 150 }, className: 'ps-4 text-end' },
-      cellProps: { className: 'font-bold ps-4 text-subtle text-end' }
+      headerProps: { className: 'text-end ps-6 w-37.5' },
+      cellProps: {
+        className: 'whitespace-nowrap text-end font-bold text-subtle ps-4'
+      }
     }
   },
   {
     accessorKey: 'category',
     header: 'Category',
     meta: {
-      headerProps: { style: { width: 150 }, className: 'ps-4' },
+      headerProps: { className: 'ps-6 w-37.5' },
       cellProps: {
-        className: 'text-md font-semibold ps-4 text-subtle text-opacity-85'
+        className: 'whitespace-nowrap text-soft text-md ps-6 font-semibold'
       }
     }
   },
@@ -85,18 +87,20 @@ export const productsTablecolumns: ColumnDef<ProductsTableProductType>[] = [
     cell: ({ row: { original } }) => {
       const { tags } = original;
       return (
-        <div className="flex flex-wrap gap-2">
+        <>
           {tags.map(tag => (
             <Link key={tag} to="#!" className="no-underline">
-              <Badge variant="tag">{tag}</Badge>
+              <Badge variant="tag" className="me-2 mb-2">
+                {tag}
+              </Badge>
             </Link>
           ))}
-        </div>
+        </>
       );
     },
     meta: {
-      headerProps: { style: { width: 250 }, className: 'ps-3' },
-      cellProps: { style: { minWidth: 225 }, className: 'ps-3' }
+      headerProps: { className: 'ps-4 w-62.5' },
+      cellProps: { className: 'pb-2 ps-4 min-w-56.25' }
     }
   },
   {
@@ -106,8 +110,8 @@ export const productsTablecolumns: ColumnDef<ProductsTableProductType>[] = [
       return <StarCheckbox />;
     },
     meta: {
-      headerProps: { style: { width: 125 }, className: 'ps-4' },
-      cellProps: { className: 'ps-4 text-center' }
+      headerProps: { className: 'text-base text-center ps-6 w-37.5' },
+      cellProps: { className: 'text-base text-center ps-6' }
     }
   },
   {
@@ -118,16 +122,16 @@ export const productsTablecolumns: ColumnDef<ProductsTableProductType>[] = [
       return <Link to="#!">{vendor}</Link>;
     },
     meta: {
-      headerProps: { style: { width: 200 }, className: 'ps-4' },
-      cellProps: { className: 'ps-4 font-semibold text-start' }
+      headerProps: { className: 'ps-6 w-50' },
+      cellProps: { className: 'text-start font-semibold ps-6' }
     }
   },
   {
     accessorKey: 'publishedOn',
     header: 'Published on',
     meta: {
-      headerProps: { style: { width: 50 }, className: 'ps-4' },
-      cellProps: { className: 'text-subtle text-opacity-85 ps-4' }
+      headerProps: { className: 'ps-6 whitespace-nowrap w-12.5' },
+      cellProps: { className: 'whitespace-nowrap text-subtle/85 ps-4' }
     }
   },
   {
@@ -140,8 +144,10 @@ export const productsTablecolumns: ColumnDef<ProductsTableProductType>[] = [
       </RevealDropdownTrigger>
     ),
     meta: {
-      headerProps: { style: { width: '7%' } },
-      cellProps: { className: 'text-end' }
+      headerProps: { className: 'text-end pe-0 ps-6' },
+      cellProps: {
+        className: 'whitespace-nowrap text-end pe-0 ps-6 btn-reveal-trigger'
+      }
     }
   }
 ];
@@ -149,7 +155,7 @@ export const productsTablecolumns: ColumnDef<ProductsTableProductType>[] = [
 const ProductsTable = () => {
   return (
     <div>
-      <AdvanceTable tableProps={{ className: ' text-md' }} />
+      <AdvanceTable tableProps={{ className: 'text-md mb-0' }} />
       <AdvanceTableFooter pagination />
     </div>
   );

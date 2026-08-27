@@ -85,7 +85,11 @@ const Orders = () => {
     pageSize: 10,
     pagination: true,
     sortable: true,
-    selection: true
+    selection: true,
+    selectionColumnProps: {
+      headerClassName: 'w-6.5',
+      cellClassName: 'px-0 py-5'
+    }
   });
 
   const handleSearchInputChange = (e: ChangeEvent<HTMLInputElement>) => {
@@ -111,7 +115,10 @@ const Orders = () => {
               </div>
               <div className="2xl:ms-auto">
                 <Button variant="link" className="text-default me-6 px-0">
-                  <FontAwesomeIcon icon={faFileExport} className="text-md me-2" />
+                  <FontAwesomeIcon
+                    icon={faFileExport}
+                    className="text-md me-2"
+                  />
                   Export
                 </Button>
                 <Button variant="primary">

@@ -21,8 +21,8 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
       );
     },
     meta: {
-      headerProps: { style: { width: '5%' }, className: 'pe-3 ps-0' },
-      cellProps: { className: 'ps-0' }
+      headerProps: { className: 'whitespace-nowrap pe-4 w-1/20' },
+      cellProps: { className: 'whitespace-nowrap py-0' }
     }
   },
   {
@@ -30,7 +30,7 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
     header: 'Total',
     cell: ({ row: { original } }) => currencyFormat(original.total),
     meta: {
-      headerProps: { style: { width: '6%' }, className: 'text-end' },
+      headerProps: { className: 'text-end w-[6%]' },
       cellProps: { className: 'text-end font-semibold text-highlight' }
     }
   },
@@ -43,19 +43,16 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
       return (
         <Link
           to="/apps/e-commerce/admin/customer-details"
-          className="flex items-center"
+          className="flex items-center text-default"
         >
           <Avatar src={avatar} size="m" />
-          <p className="mb-0 ms-4 text-emphasis font-bold">{name}</p>
+          <h6 className="mb-0 ms-4 text-default">{name}</h6>
         </Link>
       );
     },
     meta: {
-      headerProps: {
-        style: { width: '28%', minWidth: 250 },
-        className: 'ps-8'
-      },
-      cellProps: { className: 'ps-8 py-0 whitespace-nowrap' }
+      headerProps: { className: 'ps-14 w-[28%] min-w-62.5' },
+      cellProps: { className: 'whitespace-nowrap ps-14' }
     }
   },
   {
@@ -83,7 +80,10 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
       );
     },
     meta: {
-      headerProps: { style: { width: '10%' }, className: 'pe-3' }
+      headerProps: { className: 'pe-4 w-1/10' },
+      cellProps: {
+        className: 'whitespace-nowrap text-start font-bold text-subtle'
+      }
     }
   },
   {
@@ -111,24 +111,29 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
       );
     },
     meta: {
-      headerProps: { style: { width: '12%', minWidth: 200 }, className: 'pe-3' }
+      headerProps: { className: 'text-start pe-4 w-[12%] min-w-50' },
+      cellProps: {
+        className: 'whitespace-nowrap text-start font-bold text-subtle'
+      }
     }
   },
   {
     accessorKey: 'delivery_type',
     header: 'Delivery type',
     meta: {
-      headerProps: { style: { width: '30%' } },
-      cellProps: { className: 'text-default text-md' }
+      headerProps: { className: 'text-start w-3/10' },
+      cellProps: {
+        className: 'whitespace-nowrap text-default text-md text-start'
+      }
     }
   },
   {
     accessorKey: 'date',
     header: 'Date',
     meta: {
-      headerProps: { className: 'text-end' },
+      headerProps: { className: 'text-end pe-0' },
       cellProps: {
-        className: 'text-subtle text-md ps-4 text-end whitespace-nowrap'
+        className: 'whitespace-nowrap text-subtle text-md ps-6 text-end'
       }
     }
   }
@@ -137,7 +142,7 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
 const OrdersTable = () => {
   return (
     <div>
-      <AdvanceTable tableProps={{ className: ' text-md' }} />
+      <AdvanceTable tableProps={{ size: 'sm', className: 'text-md mb-0' }} />
       <AdvanceTableFooter pagination />
     </div>
   );

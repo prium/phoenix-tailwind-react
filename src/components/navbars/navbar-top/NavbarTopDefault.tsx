@@ -31,7 +31,7 @@ const NavbarTopDefault = () => {
           <>
             {breakpoints.up('lg') && (
               <DropdownSearchBox
-                className="navbar-top-search-box"
+                className="navbar-top-search-box w-100"
                 inputClassName="rounded-full"
                 size="sm"
               >
