@@ -1,5 +1,5 @@
-import React from 'react';
 import ReactEChartsCore from 'echarts-for-react/lib/core';
+import { cn } from '@hummingbirdui/react';
 import * as echarts from 'echarts/core';
 import { getDates } from 'helpers/utils';
 import dayjs from 'dayjs';
@@ -44,19 +44,21 @@ const getDefaultOptions = (
   theme: ThemeVariant,
   getThemeColor: (name: string) => string
 ) => ({
-  color: [getThemeColor('primary'), getThemeColor('info')],
+  color: [getThemeColor('color-primary'), getThemeColor('color-info')],
   tooltip: {
     trigger: 'axis',
     padding: 10,
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('border-color'),
-    textStyle: { color: getThemeColor('light-text-emphasis') },
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('border-color-base'),
+    textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,
     axisPointer: {
-      type: 'none'
+      type: 'none',
+      z: 0
     },
-    formatter: tooltipFormatterList
+    formatter: tooltipFormatterList,
+    extraCssText: 'z-index: 1000'
   },
   xAxis: [
     {
@@ -67,7 +69,7 @@ const getDefaultOptions = (
         interval: 13,
         showMinLabel: true,
         showMaxLabel: false,
-        color: getThemeColor('secondary-color'),
+        color: getThemeColor('text-color-muted'),
         align: 'left',
         fontFamily: 'Nunito Sans',
         fontWeight: 600,
@@ -76,7 +78,7 @@ const getDefaultOptions = (
       axisLine: {
         show: true,
         lineStyle: {
-          color: getThemeColor('secondary-bg')
+          color: getThemeColor('background-color-muted')
         }
       },
       axisTick: {
@@ -88,8 +90,8 @@ const getDefaultOptions = (
         lineStyle: {
           color:
             theme === 'dark'
-              ? getThemeColor('body-highlight-bg')
-              : getThemeColor('secondary-bg')
+              ? getThemeColor('background-color-subtle')
+              : getThemeColor('background-color-muted')
         }
       },
       boundaryGap: 0
@@ -103,7 +105,7 @@ const getDefaultOptions = (
         interval: 130,
         showMaxLabel: true,
         showMinLabel: false,
-        color: getThemeColor('secondary-color'),
+        color: getThemeColor('text-color-muted'),
         align: 'right',
         fontFamily: 'Nunito Sans',
         fontWeight: 600,
@@ -136,7 +138,8 @@ const getDefaultOptions = (
       type: 'line',
       data: currentMonthData,
       showSymbol: false,
-      symbol: 'circle'
+      symbol: 'circle',
+      zlevel: 2
     },
     {
       type: 'line',
@@ -144,10 +147,11 @@ const getDefaultOptions = (
       lineStyle: {
         type: 'dashed',
         width: 1,
-        color: getThemeColor('info')
+        color: getThemeColor('color-info')
       },
       showSymbol: false,
-      symbol: 'circle'
+      symbol: 'circle',
+      zlevel: 1
     }
   ],
   grid: {
@@ -161,18 +165,21 @@ const getDefaultOptions = (
   animation: false
 });
 
-const EcomTotalSellsChart = () => {
+/** `.echart-total-sales-chart.h-80.w-full` in phoenix-tailwind */
+const EcomTotalSellsChart = ({ className }: { className?: string }) => {
   const {
     config: { theme },
     getThemeColor
   } = useAppContext();
 
   return (
-    <ReactEChartsCore
-      echarts={echarts}
-      option={getDefaultOptions(theme, getThemeColor)}
-      style={{ height: '316px', width: '100%' }}
-    />
+    <div className={cn('h-80 w-full', className)}>
+      <ReactEChartsCore
+        echarts={echarts}
+        option={getDefaultOptions(theme, getThemeColor)}
+        style={{ height: '100%', width: '100%' }}
+      />
+    </div>
   );
 };
 

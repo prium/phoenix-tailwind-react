@@ -1,13 +1,20 @@
-import React from 'react';
 import ReactEChartsCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
+import { cn } from '@hummingbirdui/react';
 import { getPastDates } from 'helpers/utils';
 import dayjs from 'dayjs';
 import { useAppContext } from 'providers/AppProvider';
 import { TooltipComponent } from 'echarts/components';
 import { BarChart } from 'echarts/charts';
-import { CallbackDataParams } from 'echarts/types/dist/shared';
-import { tooltipFormatterDefault } from 'helpers/echart-utils';
+import {
+  CallbackDataParams,
+  TooltipPositionCallbackParams
+} from 'echarts/types/dist/shared';
+import {
+  type Size,
+  handleTooltipPosition,
+  tooltipFormatterDefault
+} from 'helpers/echart-utils';
 
 echarts.use([TooltipComponent, BarChart]);
 
@@ -22,20 +29,28 @@ const data2 = [
 ];
 
 const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
-  color: [getThemeColor('primary'), getThemeColor('tertiary-bg')],
+  color: [getThemeColor('color-primary'), getThemeColor('background-color-highlight')],
   tooltip: {
     trigger: 'axis',
     padding: [7, 10],
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('border-color'),
-    textStyle: { color: getThemeColor('light-text-emphasis') },
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('border-color-base'),
+    textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,
     axisPointer: {
       type: 'none'
     },
+    position: (
+      point: number[],
+      params: TooltipPositionCallbackParams,
+      el: HTMLDivElement,
+      rect: null,
+      size: Size
+    ) => handleTooltipPosition(point, params, el, rect, size),
     formatter: (params: CallbackDataParams[]) =>
-      tooltipFormatterDefault(params, 'MMM DD', 'color')
+      tooltipFormatterDefault(params, 'MMM DD', 'color'),
+    extraCssText: 'z-index: 1000'
   },
   legend: {
     data: ['Projected revenue', 'Actual revenue'],
@@ -45,9 +60,9 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     itemHeight: 8,
     itemGap: 20,
     top: 3,
-    inactiveColor: getThemeColor('quaternary-color'),
+    inactiveColor: getThemeColor('text-color-soft'),
     textStyle: {
-      color: getThemeColor('body-color'),
+      color: getThemeColor('text-color-default'),
       fontWeight: 600,
       fontFamily: 'Nunito Sans'
       // fontSize: '12.8px'
@@ -56,7 +71,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
   xAxis: {
     type: 'category',
     axisLabel: {
-      color: getThemeColor('secondary-color'),
+      color: getThemeColor('text-color-muted'),
       formatter: (value: Date) => dayjs(value).format('MMM DD'),
       interval: 3,
       fontFamily: 'Nunito Sans',
@@ -66,7 +81,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     data: dates,
     axisLine: {
       lineStyle: {
-        color: getThemeColor('tertiary-bg')
+        color: getThemeColor('background-color-highlight')
       }
     },
     axisTick: false
@@ -77,7 +92,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     splitLine: {
       interval: 5,
       lineStyle: {
-        color: getThemeColor('secondary-bg')
+        color: getThemeColor('background-color-muted')
       }
     },
     axisLine: { show: false },
@@ -85,7 +100,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       fontFamily: 'Nunito Sans',
       fontWeight: 600,
       fontSize: 12.8,
-      color: getThemeColor('secondary-color'),
+      color: getThemeColor('text-color-muted'),
       margin: 20,
       verticalAlign: 'bottom',
       formatter: (value: number) => `$${value.toLocaleString()}`
@@ -101,7 +116,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       label: { show: false },
       itemStyle: {
         borderRadius: [2, 2, 0, 0],
-        color: getThemeColor('primary')
+        color: getThemeColor('color-primary')
       }
     },
     {
@@ -114,7 +129,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       z: 10,
       itemStyle: {
         borderRadius: [2, 2, 0, 0],
-        color: getThemeColor('info-bg-subtle')
+        color: getThemeColor('color-info-subtle')
       }
     }
   ],
@@ -129,21 +144,22 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
   animation: false
 });
 
+/** `.echart-projection-actual.h-75.w-full` in phoenix-tailwind */
 const EcomProjectionVsActualChart = ({
-  height,
-  width
+  className
 }: {
-  height: string;
-  width: string;
+  className?: string;
 }) => {
   const { getThemeColor } = useAppContext();
 
   return (
-    <ReactEChartsCore
-      echarts={echarts}
-      option={getDefaultOptions(getThemeColor)}
-      style={{ height, width }}
-    />
+    <div className={cn('h-75 w-full', className)}>
+      <ReactEChartsCore
+        echarts={echarts}
+        option={getDefaultOptions(getThemeColor)}
+        style={{ height: '100%', width: '100%' }}
+      />
+    </div>
   );
 };
 

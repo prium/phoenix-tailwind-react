@@ -1,4 +1,4 @@
-import { Col, Row, Stack } from 'react-bootstrap';
+import { Col, Row } from '@hummingbirdui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import {
@@ -14,30 +14,40 @@ type StatType = {
   icon: IconProp;
   title: string;
   subTitle: string;
-  color: string;
+  /** Literal class strings so Tailwind can see them (no `text-${color}`). */
+  squareClass: string;
+  circleClass: string;
+  iconClass: string;
 };
 
+/** `+Stats` in phoenix-tailwind mixins/dashboard/e-commerce/Stats.pug */
 const stats: StatType[] = [
   {
     id: 1,
     icon: faStar,
     title: '57 new orders',
-    subTitle: 'Awating processing',
-    color: 'success'
+    subTitle: 'Awaiting processing',
+    squareClass: 'text-success-light dark:text-success-light/50',
+    circleClass: 'text-(--color-success-subtle) dark:text-[#134207]',
+    iconClass: 'text-success'
   },
   {
     id: 2,
     icon: faPause,
     title: '5 orders',
     subTitle: 'On hold',
-    color: 'warning'
+    squareClass: 'text-warning-light dark:text-warning-light/50',
+    circleClass: 'text-(--color-warning-subtle) dark:text-[#52310b]',
+    iconClass: 'text-warning'
   },
   {
     id: 3,
     icon: faXmark,
     title: '15 products',
     subTitle: 'Out of stock',
-    color: 'danger'
+    squareClass: 'text-danger-light dark:text-danger-light/50',
+    circleClass: 'text-(--color-danger-subtle) dark:text-[#612017]',
+    iconClass: 'text-danger'
   }
 ];
 
@@ -55,28 +65,24 @@ const EcomStats = () => {
 
 const Stat = ({ stat }: { stat: StatType }) => {
   return (
-    <Stack direction="horizontal" className="items-center">
-      {/* <img src={stat.icon} alt="" height={46} width={46} /> */}
-      <span
-        className="fa-layers"
-        style={{ minHeight: '46px', minWidth: '46px' }}
-      >
+    <div className="flex items-center">
+      <span className="fa-layers min-h-11.5 min-w-11.5">
         <FontAwesomeIcon
           icon={faSquare}
           size="2x"
-          className={`text-${stat.color}-light dark:text-current/50`}
+          className={stat.squareClass}
           transform="down-4 rotate--10 left-4"
         />
         <FontAwesomeIcon
           icon={faCircle}
           size="2x"
-          className={`text-stats-circle-${stat.color} fa-layers-circle`}
+          className={`stack-circle ${stat.circleClass}`}
           transform="up-4 right-3 grow-2"
         />
         <FontAwesomeIcon
           icon={stat.icon}
           size="1x"
-          className={`text-${stat.color}`}
+          className={stat.iconClass}
           transform="shrink-2 up-8 right-6"
         />
       </span>
@@ -85,7 +91,7 @@ const Stat = ({ stat }: { stat: StatType }) => {
         <h4 className="mb-0">{stat.title}</h4>
         <p className="text-muted text-md mb-0">{stat.subTitle}</p>
       </div>
-    </Stack>
+    </div>
   );
 };
 

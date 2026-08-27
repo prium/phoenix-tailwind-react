@@ -15,9 +15,9 @@ const getDefaultOptions = (
   tooltip: {
     trigger: 'item',
     padding: [7, 10],
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('border-color'),
-    textStyle: { color: getThemeColor('light-text-emphasis') },
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('border-color-base'),
+    textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,
     formatter: (params: CallbackDataParams) => {
@@ -46,7 +46,7 @@ const getDefaultOptions = (
       axisLine: {
         lineStyle: {
           width: 3,
-          color: [[1, getThemeColor('secondary-bg')]]
+          color: [[1, getThemeColor('background-color-muted')]]
         }
       },
       splitLine: {

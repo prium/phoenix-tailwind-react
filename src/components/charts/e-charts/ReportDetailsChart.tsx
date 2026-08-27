@@ -13,13 +13,13 @@ const getDefaultOptions = (
   getThemeColor: (name: string) => string,
   isDark: boolean
 ) => ({
-  color: [getThemeColor('primary-lighter'), getThemeColor('info-light')],
+  color: [getThemeColor('color-primary-lighter'), getThemeColor('color-info-light')],
   tooltip: {
     trigger: 'axis',
     padding: [7, 10],
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('border-color'),
-    textStyle: { color: getThemeColor('light-text-emphasis') },
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('border-color-base'),
+    textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,
     axisPointer: {
@@ -32,7 +32,7 @@ const getDefaultOptions = (
     type: 'category',
     data: sellersReportData.map(data => data.reportStage),
     axisLabel: {
-      color: getThemeColor('body-color'),
+      color: getThemeColor('text-color-default'),
       fontFamily: 'Nunito Sans',
       fontWeight: 600,
       fontSize: 12.8,
@@ -41,7 +41,7 @@ const getDefaultOptions = (
     },
     axisLine: {
       lineStyle: {
-        color: getThemeColor('secondary-bg')
+        color: getThemeColor('background-color-muted')
       }
     },
     axisTick: false
@@ -50,11 +50,11 @@ const getDefaultOptions = (
     type: 'value',
     splitLine: {
       lineStyle: {
-        color: getThemeColor('secondary-bg')
+        color: getThemeColor('background-color-muted')
       }
     },
     axisLabel: {
-      color: getThemeColor('body-color'),
+      color: getThemeColor('text-color-default'),
       fontFamily: 'Nunito Sans',
       fontWeight: 700,
       fontSize: 12.8,
@@ -71,16 +71,16 @@ const getDefaultOptions = (
       showBackground: true,
       backgroundStyle: {
         color: !isDark
-          ? getThemeColor('primary-bg-subtle')
-          : getThemeColor('body-highlight-bg')
+          ? getThemeColor('color-primary-subtle')
+          : getThemeColor('background-color-subtle')
       },
       label: {
         show: false
       },
       itemStyle: {
         color: !isDark
-          ? getThemeColor('primary-light')
-          : getThemeColor('primary')
+          ? getThemeColor('color-primary-light')
+          : getThemeColor('color-primary')
       },
       data: sellersReportData.map(data => data.totalCount)
     }

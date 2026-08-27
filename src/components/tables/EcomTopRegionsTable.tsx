@@ -1,5 +1,5 @@
 import { ColumnDef, flexRender } from '@tanstack/react-table';
-import classNames from 'classnames';
+import { Table, cn } from '@hummingbirdui/react';
 import AdvanceTableFooter from 'components/base/AdvanceTableFooter';
 import {
   TopRegionsTableDataType,
@@ -7,9 +7,9 @@ import {
 } from 'data/TopRegionsTableData';
 import useAdvanceTable from 'hooks/useAdvanceTable';
 import AdvanceTableProvider from 'providers/AdvanceTableProvider';
-import { Table } from 'react-bootstrap';
 import { Link } from 'react-router';
 
+/** `+TopRegions` table in phoenix-tailwind e-commerce/TopRegions.pug */
 const columns: ColumnDef<TopRegionsTableDataType>[] = [
   {
     header: 'COUNTRY',
@@ -21,7 +21,7 @@ const columns: ColumnDef<TopRegionsTableDataType>[] = [
         <div className="flex items-center">
           <h6 className="mb-0 me-4">{serial}.</h6>
           <Link to="#!">
-            <div className="flex justify-center">
+            <div className="flex items-center">
               <img src={country.flag} alt="" width={24} />
               <p className="mb-0 ps-4 text-primary font-bold text-md">
                 {country.name}
@@ -32,8 +32,8 @@ const columns: ColumnDef<TopRegionsTableDataType>[] = [
       );
     },
     meta: {
-      headerProps: { style: { width: '32%' }, className: 'ps-0' },
-      cellProps: { className: 'white-space-nowrap align-middle ps-0' }
+      headerProps: { className: 'ps-0 w-[32%] min-w-37' },
+      cellProps: { className: 'whitespace-nowrap ps-0' }
     }
   },
   {
@@ -51,7 +51,7 @@ const columns: ColumnDef<TopRegionsTableDataType>[] = [
       );
     },
     meta: {
-      headerProps: { style: { width: '17%' } },
+      headerProps: { className: 'w-[17%]' },
       cellProps: { className: 'align-middle' }
     }
   },
@@ -70,11 +70,8 @@ const columns: ColumnDef<TopRegionsTableDataType>[] = [
       );
     },
     meta: {
-      cellProps: { className: 'text-end' },
-      headerProps: {
-        style: { width: '16%' },
-        className: 'text-end align-middle'
-      }
+      headerProps: { className: 'text-end w-[17%]' },
+      cellProps: { className: 'align-middle text-end' }
     }
   },
   {
@@ -92,11 +89,8 @@ const columns: ColumnDef<TopRegionsTableDataType>[] = [
       );
     },
     meta: {
-      cellProps: { className: 'text-end' },
-      headerProps: {
-        style: { width: '20%' },
-        className: 'text-end align-middle'
-      }
+      headerProps: { className: 'text-end w-2/10' },
+      cellProps: { className: 'align-middle text-end' }
     }
   },
   {
@@ -104,14 +98,11 @@ const columns: ColumnDef<TopRegionsTableDataType>[] = [
     accessorFn: rowData => rowData.convRate,
     cell: ({ row: { original } }) => {
       const { convRate } = original;
-      return <h6 className="mb-0">{convRate}</h6>;
+      return <h6>{convRate}</h6>;
     },
     meta: {
-      cellProps: { className: 'text-end pe-0' },
-      headerProps: {
-        style: { width: '17%' },
-        className: 'text-end align-middle pe-0'
-      }
+      headerProps: { className: 'text-end pe-0 w-[17%]' },
+      cellProps: { className: 'align-middle text-end pe-0' }
     }
   }
 ];
@@ -122,7 +113,6 @@ const EcomTopRegionsTable = () => {
     columns,
     pageSize: 5,
     pagination: true,
-    selectionColumnWidth: '30px',
     sortable: true
   });
 
@@ -130,19 +120,22 @@ const EcomTopRegionsTable = () => {
 
   return (
     <AdvanceTableProvider {...table}>
-      {/* <Scrollbar autoHeight autoHeightMax="100%"> */}
-      <div className="scrollbar">
-        <Table className="text-sm mb-0 border-t border-light scrollbar">
-          <thead>
-            <tr>
+      {/* `table-list` + data-sort make list.css draw the sort carets */}
+      <div className="table-list overflow-x-auto scrollbar">
+        <Table className="text-sm mb-0">
+          <Table.Header>
+            <Table.Row>
               {getFlatHeaders().map(header => {
+                const { className: headerClass, ...headerProps } =
+                  header.column.columnDef.meta?.headerProps ?? {};
                 return (
-                  <th
+                  <Table.Head
                     key={header.id}
-                    {...header.column.columnDef.meta?.headerProps}
-                    className={classNames(
-                      'sort',
-                      header.column.columnDef.meta?.headerProps?.className,
+                    {...headerProps}
+                    data-sort={header.id}
+                    className={cn(
+                      'sort border-t border-light align-middle',
+                      headerClass,
                       {
                         desc: header.column.getIsSorted() === 'desc',
                         asc: header.column.getIsSorted() === 'asc'
@@ -156,42 +149,44 @@ const EcomTopRegionsTable = () => {
                           header.column.columnDef.header,
                           header.getContext()
                         )}
-                  </th>
+                  </Table.Head>
                 );
               })}
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td></td>
-              <td className="py-6">
+            </Table.Row>
+          </Table.Header>
+          <Table.Body>
+            <Table.Row>
+              <Table.Cell />
+              <Table.Cell className="align-middle py-6">
                 <h4 className="mb-0 font-normal">377,620</h4>
-              </td>
-              <td className="text-end py-6">
+              </Table.Cell>
+              <Table.Cell className="align-middle text-end py-6">
                 <h4 className="mb-0 font-normal">236</h4>
-              </td>
-              <td className="text-end py-6">
+              </Table.Cell>
+              <Table.Cell className="align-middle text-end py-6">
                 <h4 className="mb-0 font-normal">$15,758</h4>
-              </td>
-              <td className="text-end py-6 pe-0">
+              </Table.Cell>
+              <Table.Cell className="align-middle text-end py-6 pe-0">
                 <h4 className="mb-0 font-normal">10.32%</h4>
-              </td>
-            </tr>
+              </Table.Cell>
+            </Table.Row>
             {getRowModel().rows.map(row => (
-              <tr key={row.id}>
+              <Table.Row key={row.id}>
                 {row.getVisibleCells().map(cell => (
-                  <td key={cell.id} {...cell.column.columnDef.meta?.cellProps}>
+                  <Table.Cell
+                    key={cell.id}
+                    {...cell.column.columnDef.meta?.cellProps}
+                  >
                     {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                  </td>
+                  </Table.Cell>
                 ))}
-              </tr>
+              </Table.Row>
             ))}
-          </tbody>
+          </Table.Body>
         </Table>
       </div>
 
-      <AdvanceTableFooter className="gx-0" navBtn showViewAllBtn={false} />
-      {/* </Scrollbar> */}
+      <AdvanceTableFooter navBtn showViewAllBtn={false} />
     </AdvanceTableProvider>
   );
 };

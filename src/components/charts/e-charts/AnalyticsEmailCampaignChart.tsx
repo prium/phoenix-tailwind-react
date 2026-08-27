@@ -34,13 +34,13 @@ const getDefaultOptions = (
   getThemeColor: (name: string) => string,
   isDark: boolean
 ) => ({
-  color: [getThemeColor('primary'), getThemeColor('tertiary-bg')],
+  color: [getThemeColor('color-primary'), getThemeColor('background-color-highlight')],
   tooltip: {
     trigger: 'axis',
     padding: [7, 10],
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('border-color'),
-    textStyle: { color: getThemeColor('light-text-emphasis') },
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('border-color-base'),
+    textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,
     axisPointer: {
@@ -53,7 +53,7 @@ const getDefaultOptions = (
     data: ['Total Emails', 'Sent', 'Bounce', 'Delivered'],
     splitLine: { show: false },
     axisLabel: {
-      color: getThemeColor('body-color'),
+      color: getThemeColor('text-color-default'),
       fontFamily: 'Nunito Sans',
       fontWeight: 400,
       fontSize: 12.8,
@@ -64,7 +64,7 @@ const getDefaultOptions = (
     axisLine: {
       show: true,
       lineStyle: {
-        color: getThemeColor('tertiary-bg')
+        color: getThemeColor('background-color-highlight')
       }
     },
     axisTick: false
@@ -73,11 +73,11 @@ const getDefaultOptions = (
     type: 'value',
     splitLine: {
       lineStyle: {
-        color: getThemeColor('secondary-bg')
+        color: getThemeColor('background-color-muted')
       }
     },
     axisLabel: {
-      color: getThemeColor('body-color'),
+      color: getThemeColor('text-color-default'),
       fontFamily: 'Nunito Sans',
       fontWeight: 700,
       fontSize: 12.8,
@@ -92,7 +92,7 @@ const getDefaultOptions = (
       type: 'bar',
       barWidth: '64px',
       stack: 'Total',
-      backgroundColor: getThemeColor('white'),
+      backgroundColor: getThemeColor('color-white'),
       label: {
         show: false
       },
@@ -114,16 +114,16 @@ const getDefaultOptions = (
       stack: 'Total',
       itemStyle: {
         color: !isDark
-          ? getThemeColor('primary-lighter')
-          : getThemeColor('primary-darker')
+          ? getThemeColor('color-primary-lighter')
+          : getThemeColor('color-primary-darker')
       },
       data: [
         {
           value: 2832,
           itemStyle: {
             color: !isDark
-              ? getThemeColor('primary-light')
-              : getThemeColor('primary-dark')
+              ? getThemeColor('color-primary-light')
+              : getThemeColor('color-primary-dark')
           }
         },
         1366,
@@ -135,7 +135,7 @@ const getDefaultOptions = (
         position: 'inside',
         color: !isDark
           ? getThemeColor('emphasis-color')
-          : getThemeColor('white'),
+          : getThemeColor('color-white'),
 
         fontWeight: 'normal',
         fontSize: '12.8px',

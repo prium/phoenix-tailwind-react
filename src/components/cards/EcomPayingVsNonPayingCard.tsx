@@ -1,6 +1,5 @@
 import EcomPayingVsNonPayingChart from 'components/charts/e-charts/EcomPayingVsNonPayingChart';
-import React from 'react';
-import { Card } from 'react-bootstrap';
+import { Card } from '@hummingbirdui/react';
 
 const EcomPayingVsNonPayingCard = () => {
   return (

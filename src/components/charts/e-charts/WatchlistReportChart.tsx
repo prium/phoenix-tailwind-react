@@ -34,13 +34,13 @@ const getDefaultOptions = (
   data: [string, number][],
   range: Range
 ) => ({
-  color: [getThemeColor('primary'), getThemeColor('tertiary-bg')],
+  color: [getThemeColor('color-primary'), getThemeColor('background-color-highlight')],
   tooltip: {
     trigger: 'axis',
     padding: [7, 10],
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('border-color'),
-    textStyle: { color: getThemeColor('light-text-emphasis') },
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('border-color-base'),
+    textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,
     position: handleTooltipPosition,
@@ -60,7 +60,7 @@ const getDefaultOptions = (
     data: data.map(item => item[0]),
     axisLine: {
       lineStyle: {
-        color: getThemeColor('border-color-translucent'),
+        color: getThemeColor('border-color-light'),
         type: 'solid'
       }
     },
@@ -68,7 +68,7 @@ const getDefaultOptions = (
       show: false
     },
     axisLabel: {
-      color: getThemeColor('tertiary-color'),
+      color: getThemeColor('text-color-subtle'),
       formatter: (value: number) => formatAxisLabel(range, value),
       margin: 15
     },
@@ -82,14 +82,14 @@ const getDefaultOptions = (
     boundaryGap: 1,
     axisLabel: {
       show: true,
-      color: getThemeColor('body-color'),
+      color: getThemeColor('text-color-default'),
       formatter: (value: number) => `$${value}`,
       margin: 15
     },
     splitLine: {
       show: true,
       lineStyle: {
-        color: getThemeColor('secondary-bg')
+        color: getThemeColor('background-color-muted')
       }
     },
     axisTick: {
@@ -108,11 +108,11 @@ const getDefaultOptions = (
       name: 'Total',
       data: data.map(item => item[1]),
       itemStyle: {
-        color: getThemeColor('primary-light'),
+        color: getThemeColor('color-primary-light'),
         borderRadius: [3, 3, 0, 0]
       },
       lineStyle: {
-        color: getThemeColor('primary-light')
+        color: getThemeColor('color-primary-light')
       },
       showSymbol: false,
       symbol: 'circle',

@@ -1,5 +1,6 @@
 import ReactEChartsCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
+import { cn } from '@hummingbirdui/react';
 import { useAppContext } from 'providers/AppProvider';
 import { TooltipComponent } from 'echarts/components';
 import { PieChart } from 'echarts/charts';
@@ -12,17 +13,17 @@ import { type Size, TopCouponChartTooltip } from 'helpers/echart-utils';
 echarts.use([TooltipComponent, PieChart]);
 const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
   color: [
-    getThemeColor('primary'),
-    getThemeColor('primary-lighter'),
-    getThemeColor('info-dark')
+    getThemeColor('color-primary'),
+    getThemeColor('color-primary-lighter'),
+    getThemeColor('color-info-dark')
   ],
 
   tooltip: {
     trigger: 'item',
     padding: [7, 10],
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('border-color'),
-    textStyle: { color: getThemeColor('light-text-emphasis') },
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('border-color-base'),
+    textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,
     position: (
@@ -50,14 +51,14 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       },
       itemStyle: {
         borderWidth: 2,
-        borderColor: getThemeColor('body-bg')
+        borderColor: getThemeColor('background-color-default')
       },
       label: {
         show: true,
         position: 'center',
         formatter: '{a}',
         fontSize: 23,
-        color: getThemeColor('light-text-emphasis')
+        color: getThemeColor('text-color-emphasis')
       },
       data: [
         { value: 7200000, name: 'Percentage discount' },
@@ -69,15 +70,18 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
   grid: { outerBoundsMode: 'same', outerBoundsContain: 'axisLabel' }
 });
 
-const EcomTopCouponsChart = () => {
+/** `.echart-top-coupons.h-28.75.w-full` in phoenix-tailwind */
+const EcomTopCouponsChart = ({ className }: { className?: string }) => {
   const { getThemeColor } = useAppContext();
 
   return (
-    <ReactEChartsCore
-      echarts={echarts}
-      option={getDefaultOptions(getThemeColor)}
-      style={{ height: '115px', width: '100%' }}
-    />
+    <div className={cn('h-28.75 w-full', className)}>
+      <ReactEChartsCore
+        echarts={echarts}
+        option={getDefaultOptions(getThemeColor)}
+        style={{ height: '100%', width: '100%' }}
+      />
+    </div>
   );
 };
 

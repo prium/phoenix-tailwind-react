@@ -22,14 +22,14 @@ const getDefaultOptions = (
   getThemeColor: (name: string) => string,
   data: number[]
 ) => ({
-  color: [getThemeColor('primary'), getThemeColor('info')],
+  color: [getThemeColor('color-primary'), getThemeColor('color-info')],
   tooltip: {
     show: false,
     trigger: 'axis',
     padding: 10,
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('border-color'),
-    textStyle: { color: getThemeColor('light-text-emphasis') },
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('border-color-base'),
+    textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,
     axisPointer: {
@@ -47,7 +47,7 @@ const getDefaultOptions = (
       interval: 5,
       showMinLabel: true,
       showMaxLabel: false,
-      color: getThemeColor('secondary-color'),
+      color: getThemeColor('text-color-muted'),
       align: 'left',
       fontFamily: 'Nunito Sans',
       fontWeight: 600,
@@ -58,7 +58,7 @@ const getDefaultOptions = (
       lineStyle: {
         type: 'dashed',
         width: 1.5,
-        color: getThemeColor('body-highlight-bg')
+        color: getThemeColor('background-color-subtle')
       }
     },
     axisTick: {
@@ -85,12 +85,12 @@ const getDefaultOptions = (
         scale: true
       },
       itemStyle: {
-        color: getThemeColor('body-highlight-bg'),
-        borderColor: getThemeColor('danger'),
+        color: getThemeColor('background-color-subtle'),
+        borderColor: getThemeColor('color-danger'),
         borderWidth: 2
       },
       lineStyle: {
-        color: getThemeColor('danger'),
+        color: getThemeColor('color-danger'),
         width: 1
       },
       areaStyle: {
@@ -103,11 +103,11 @@ const getDefaultOptions = (
           colorStops: [
             {
               offset: 0,
-              color: rgbaColor(getThemeColor('danger'), 0.05)
+              color: rgbaColor(getThemeColor('color-danger'), 0.05)
             },
             {
               offset: 1,
-              color: rgbaColor(getThemeColor('danger'), 0.5)
+              color: rgbaColor(getThemeColor('color-danger'), 0.5)
             }
           ]
         }

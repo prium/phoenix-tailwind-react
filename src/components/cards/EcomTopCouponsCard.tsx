@@ -1,5 +1,5 @@
 import EcomTopCouponsChart from 'components/charts/e-charts/EcomTopCouponsChart';
-import { Card } from 'react-bootstrap';
+import { Card } from '@hummingbirdui/react';
 
 const EcomTopCouponsCard = () => {
   return (

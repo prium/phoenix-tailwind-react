@@ -17,13 +17,13 @@ const getDefaultOptions = (
   getThemeColor: (name: string) => string,
   data: DividendChartData[]
 ) => ({
-  color: [getThemeColor('primary'), getThemeColor('tertiary-bg')],
+  color: [getThemeColor('color-primary'), getThemeColor('background-color-highlight')],
   tooltip: {
     trigger: 'axis',
     padding: [7, 10],
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('border-color'),
-    textStyle: { color: getThemeColor('light-text-emphasis') },
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('border-color-base'),
+    textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,
     axisPointer: {
@@ -39,7 +39,7 @@ const getDefaultOptions = (
     boundaryGap: 0,
     axisLine: {
       lineStyle: {
-        color: getThemeColor('tertiary-bg'),
+        color: getThemeColor('background-color-highlight'),
         type: 'solid'
       }
     },
@@ -47,7 +47,7 @@ const getDefaultOptions = (
       show: false
     },
     axisLabel: {
-      color: getThemeColor('body-color'),
+      color: getThemeColor('text-color-default'),
       margin: 15
     },
     splitLine: {
@@ -59,7 +59,7 @@ const getDefaultOptions = (
     boundaryGap: 0,
     axisLabel: {
       show: true,
-      color: getThemeColor('body-color'),
+      color: getThemeColor('text-color-default'),
       fontWeight: 700,
       formatter: (value: number) => `${value}%`,
       margin: 15
@@ -67,7 +67,7 @@ const getDefaultOptions = (
     splitLine: {
       show: true,
       lineStyle: {
-        color: getThemeColor('secondary-bg')
+        color: getThemeColor('background-color-muted')
       }
     },
     axisTick: {
@@ -84,14 +84,14 @@ const getDefaultOptions = (
       type: 'line',
       data: data.map(item => item.value),
       areaStyle: {
-        color: rgbaColor(getThemeColor('primary'), 0.1)
+        color: rgbaColor(getThemeColor('color-primary'), 0.1)
       },
       lineStyle: {
-        color: getThemeColor('primary')
+        color: getThemeColor('color-primary')
       },
       itemStyle: {
-        color: getThemeColor('body-highlight-bg'),
-        borderColor: getThemeColor('primary'),
+        color: getThemeColor('background-color-subtle'),
+        borderColor: getThemeColor('color-primary'),
         borderWidth: 2
       },
       barMaxWidth: 24,

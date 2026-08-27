@@ -1,7 +1,6 @@
 import Badge from 'components/base/Badge';
 import EcomTotalOrdersChart from 'components/charts/e-charts/EcomTotalOrdersChart';
-import React from 'react';
-import { Card } from 'react-bootstrap';
+import { Card } from '@hummingbirdui/react';
 
 const EcomTotalOrdersCard = () => {
   return (
@@ -11,7 +10,12 @@ const EcomTotalOrdersCard = () => {
           <div>
             <h5 className="mb-1">
               Total orders
-              <Badge bg="warning" variant="phoenix" pill className="ms-2">
+              <Badge
+                color="warning"
+                variant="phoenix"
+                pill
+                className="text-md ms-2"
+              >
                 -6.8%
               </Badge>
             </h5>

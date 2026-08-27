@@ -13,14 +13,14 @@ const getDefaultOptions = (
   getThemeColor: (name: string) => string,
   isDark: boolean
 ) => ({
-  color: [getThemeColor('primary-light'), getThemeColor('warning-light')],
+  color: [getThemeColor('color-primary-light'), getThemeColor('color-warning-light')],
   tooltip: {
     trigger: 'item',
     padding: [7, 10],
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('tertiary-bg'),
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('background-color-highlight'),
     textStyle: {
-      color: getThemeColor('body-color'),
+      color: getThemeColor('text-color-default'),
       fontSize: 12.8,
       fontFamily: 'Nunito Sans'
     },
@@ -33,7 +33,7 @@ const getDefaultOptions = (
     radius: '85%',
     splitLine: {
       lineStyle: {
-        color: getThemeColor('secondary-bg')
+        color: getThemeColor('background-color-muted')
       }
     },
     splitArea: {
@@ -42,20 +42,20 @@ const getDefaultOptions = (
         shadowBlur: 0.5,
         color: [
           !isDark
-            ? getThemeColor('body-highlight-bg')
-            : getThemeColor('body-highlight-bg'),
-          !isDark ? getThemeColor('body-bg') : getThemeColor('secondary-bg')
+            ? getThemeColor('background-color-subtle')
+            : getThemeColor('background-color-subtle'),
+          !isDark ? getThemeColor('background-color-default') : getThemeColor('background-color-muted')
         ]
       }
     },
     axisLine: {
       show: true,
       lineStyle: {
-        color: getThemeColor('secondary-bg')
+        color: getThemeColor('background-color-muted')
       }
     },
     axisName: {
-      color: getThemeColor('tertiary-color'),
+      color: getThemeColor('text-color-subtle'),
       fontWeight: 800,
       fontSize: 10.2
     },
@@ -81,20 +81,20 @@ const getDefaultOptions = (
           value: [2100, 2300, 1600, 3700, 3000, 2500, 2500],
           name: 'Offline Marketing',
           itemStyle: {
-            color: getThemeColor('primary-light')
+            color: getThemeColor('color-primary-light')
           },
           areaStyle: {
-            color: rgbaColor(getThemeColor('primary-light'), 0.3)
+            color: rgbaColor(getThemeColor('color-primary-light'), 0.3)
           }
         },
         {
           value: [3000, 1600, 3700, 500, 3700, 3000, 3200],
           name: 'Online Marketing',
           areaStyle: {
-            color: rgbaColor(getThemeColor('warning-light'), 0.3)
+            color: rgbaColor(getThemeColor('color-warning-light'), 0.3)
           },
           itemStyle: {
-            color: getThemeColor('warning-light')
+            color: getThemeColor('color-warning-light')
           }
         }
       ]

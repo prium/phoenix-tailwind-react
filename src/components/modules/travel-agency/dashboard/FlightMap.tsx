@@ -197,7 +197,7 @@ const FlightMap = ({ options, ...rest }: MapboxProps) => {
       type: 'line',
       paint: {
         'line-width': 2,
-        'line-color': rgbaColor(getThemeColor('primary'), 0.8)
+        'line-color': rgbaColor(getThemeColor('color-primary'), 0.8)
       }
     });
     mapCurrent?.addLayer({
@@ -205,7 +205,7 @@ const FlightMap = ({ options, ...rest }: MapboxProps) => {
       source: 'route2',
       type: 'line',
       paint: {
-        'line-color': getThemeColor('warning')
+        'line-color': getThemeColor('color-warning')
       }
     });
   };

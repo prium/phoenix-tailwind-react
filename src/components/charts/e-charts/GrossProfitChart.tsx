@@ -23,9 +23,9 @@ const getDefaultOptions = (
   tooltip: {
     trigger: 'item',
     padding: [7, 10],
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('border-color'),
-    textStyle: { color: getThemeColor('light-text-emphasis') },
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('border-color-base'),
+    textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,
     extraCssText: 'z-index: 1000',
@@ -54,7 +54,7 @@ const getDefaultOptions = (
           r: 53,
           itemStyle: {
             borderWidth: 2,
-            borderColor: getThemeColor('body-bg')
+            borderColor: getThemeColor('background-color-default')
           },
           label: {
             show: false
@@ -70,7 +70,7 @@ const getDefaultOptions = (
           r: 110,
           itemStyle: {
             borderWidth: 2,
-            borderColor: getThemeColor('body-bg')
+            borderColor: getThemeColor('background-color-default')
           },
           label: {
             show: false
@@ -81,7 +81,7 @@ const getDefaultOptions = (
           r: 125,
           itemStyle: {
             borderWidth: 2,
-            borderColor: getThemeColor('body-bg')
+            borderColor: getThemeColor('background-color-default')
           },
           label: {
             show: false
@@ -103,8 +103,8 @@ const GrossProfitChart = ({ style }: { style: CSSProperties }) => {
       value: 30,
       itemStyle: {
         color: isDark
-          ? getThemeColor('primary')
-          : getThemeColor('primary-light')
+          ? getThemeColor('color-primary')
+          : getThemeColor('color-primary-light')
       },
       children: [
         {
@@ -112,8 +112,8 @@ const GrossProfitChart = ({ style }: { style: CSSProperties }) => {
           value: 5,
           itemStyle: {
             color: isDark
-              ? rgbaColor(getThemeColor('primary'), 0.8)
-              : rgbaColor(getThemeColor('primary-light'), 0.7)
+              ? rgbaColor(getThemeColor('color-primary'), 0.8)
+              : rgbaColor(getThemeColor('color-primary-light'), 0.7)
           },
 
           children: [
@@ -121,7 +121,7 @@ const GrossProfitChart = ({ style }: { style: CSSProperties }) => {
               name: 'label-3',
               value: 5,
               itemStyle: {
-                color: getThemeColor('primary-dark')
+                color: getThemeColor('color-primary-dark')
               }
             }
           ]
@@ -131,29 +131,29 @@ const GrossProfitChart = ({ style }: { style: CSSProperties }) => {
           value: 15,
           itemStyle: {
             color: isDark
-              ? rgbaColor(getThemeColor('primary'), 0.7)
-              : rgbaColor(getThemeColor('primary-light'), 0.5)
+              ? rgbaColor(getThemeColor('color-primary'), 0.7)
+              : rgbaColor(getThemeColor('color-primary-light'), 0.5)
           },
           children: [
             {
               name: 'label-3',
               value: 5,
               itemStyle: {
-                color: rgbaColor(getThemeColor('primary-dark'), 0.9)
+                color: rgbaColor(getThemeColor('color-primary-dark'), 0.9)
               }
             },
             {
               name: 'label-3',
               value: 5,
               itemStyle: {
-                color: rgbaColor(getThemeColor('primary-dark'), 0.8)
+                color: rgbaColor(getThemeColor('color-primary-dark'), 0.8)
               }
             },
             {
               name: 'label-3',
               value: 5,
               itemStyle: {
-                color: rgbaColor(getThemeColor('primary-dark'), 0.7)
+                color: rgbaColor(getThemeColor('color-primary-dark'), 0.7)
               }
             }
           ]
@@ -163,22 +163,22 @@ const GrossProfitChart = ({ style }: { style: CSSProperties }) => {
           value: 10,
           itemStyle: {
             color: isDark
-              ? rgbaColor(getThemeColor('primary'), 0.6)
-              : rgbaColor(getThemeColor('primary-light'), 0.3)
+              ? rgbaColor(getThemeColor('color-primary'), 0.6)
+              : rgbaColor(getThemeColor('color-primary-light'), 0.3)
           },
           children: [
             {
               name: 'label-3',
               value: 5,
               itemStyle: {
-                color: rgbaColor(getThemeColor('primary-dark'), 0.6)
+                color: rgbaColor(getThemeColor('color-primary-dark'), 0.6)
               }
             },
             {
               name: 'label-3',
               value: 5,
               itemStyle: {
-                color: rgbaColor(getThemeColor('primary-dark'), 0.5)
+                color: rgbaColor(getThemeColor('color-primary-dark'), 0.5)
               }
             }
           ]
@@ -189,7 +189,7 @@ const GrossProfitChart = ({ style }: { style: CSSProperties }) => {
       name: 'Package',
       value: 50,
       itemStyle: {
-        color: isDark ? getThemeColor('info') : getThemeColor('info-light')
+        color: isDark ? getThemeColor('color-info') : getThemeColor('color-info-light')
       },
       children: [
         {
@@ -197,15 +197,15 @@ const GrossProfitChart = ({ style }: { style: CSSProperties }) => {
           value: 5,
           itemStyle: {
             color: isDark
-              ? rgbaColor(getThemeColor('info'), 0.4)
-              : rgbaColor(getThemeColor('info-light'), 0.3)
+              ? rgbaColor(getThemeColor('color-info'), 0.4)
+              : rgbaColor(getThemeColor('color-info-light'), 0.3)
           },
           children: [
             {
               name: 'label-3',
               value: 5,
               itemStyle: {
-                color: rgbaColor(getThemeColor('info-dark'), 0.2)
+                color: rgbaColor(getThemeColor('color-info-dark'), 0.2)
               }
             }
           ]
@@ -215,36 +215,36 @@ const GrossProfitChart = ({ style }: { style: CSSProperties }) => {
           value: 20,
           itemStyle: {
             color: isDark
-              ? rgbaColor(getThemeColor('info'), 0.5)
-              : rgbaColor(getThemeColor('info-light'), 0.4)
+              ? rgbaColor(getThemeColor('color-info'), 0.5)
+              : rgbaColor(getThemeColor('color-info-light'), 0.4)
           },
           children: [
             {
               name: 'label-3',
               value: 5,
               itemStyle: {
-                color: rgbaColor(getThemeColor('info-dark'), 0.3)
+                color: rgbaColor(getThemeColor('color-info-dark'), 0.3)
               }
             },
             {
               name: 'label-3',
               value: 5,
               itemStyle: {
-                color: rgbaColor(getThemeColor('info-dark'), 0.4)
+                color: rgbaColor(getThemeColor('color-info-dark'), 0.4)
               }
             },
             {
               name: 'label-3',
               value: 5,
               itemStyle: {
-                color: rgbaColor(getThemeColor('info-dark'), 0.5)
+                color: rgbaColor(getThemeColor('color-info-dark'), 0.5)
               }
             },
             {
               name: 'label-3',
               value: 5,
               itemStyle: {
-                color: rgbaColor(getThemeColor('info-dark'), 0.6)
+                color: rgbaColor(getThemeColor('color-info-dark'), 0.6)
               }
             }
           ]
@@ -254,22 +254,22 @@ const GrossProfitChart = ({ style }: { style: CSSProperties }) => {
           value: 10,
           itemStyle: {
             color: isDark
-              ? rgbaColor(getThemeColor('info'), 0.6)
-              : rgbaColor(getThemeColor('info-light'), 0.55)
+              ? rgbaColor(getThemeColor('color-info'), 0.6)
+              : rgbaColor(getThemeColor('color-info-light'), 0.55)
           },
           children: [
             {
               name: 'label-3',
               value: 5,
               itemStyle: {
-                color: rgbaColor(getThemeColor('info-dark'), 0.66)
+                color: rgbaColor(getThemeColor('color-info-dark'), 0.66)
               }
             },
             {
               name: 'label-3',
               value: 5,
               itemStyle: {
-                color: rgbaColor(getThemeColor('info-dark'), 0.7)
+                color: rgbaColor(getThemeColor('color-info-dark'), 0.7)
               }
             }
           ]
@@ -279,15 +279,15 @@ const GrossProfitChart = ({ style }: { style: CSSProperties }) => {
           value: 5,
           itemStyle: {
             color: isDark
-              ? rgbaColor(getThemeColor('info'), 0.7)
-              : rgbaColor(getThemeColor('info-light'), 0.75)
+              ? rgbaColor(getThemeColor('color-info'), 0.7)
+              : rgbaColor(getThemeColor('color-info-light'), 0.75)
           },
           children: [
             {
               name: 'label-3',
               value: 5,
               itemStyle: {
-                color: rgbaColor(getThemeColor('info-dark'), 0.8)
+                color: rgbaColor(getThemeColor('color-info-dark'), 0.8)
               }
             }
           ]
@@ -297,22 +297,22 @@ const GrossProfitChart = ({ style }: { style: CSSProperties }) => {
           value: 10,
           itemStyle: {
             color: isDark
-              ? rgbaColor(getThemeColor('info'), 0.8)
-              : rgbaColor(getThemeColor('info-light'), 0.9)
+              ? rgbaColor(getThemeColor('color-info'), 0.8)
+              : rgbaColor(getThemeColor('color-info-light'), 0.9)
           },
           children: [
             {
               name: 'label-3',
               value: 5,
               itemStyle: {
-                color: rgbaColor(getThemeColor('info-dark'), 0.9)
+                color: rgbaColor(getThemeColor('color-info-dark'), 0.9)
               }
             },
             {
               name: 'label-3',
               value: 5,
               itemStyle: {
-                color: getThemeColor('info-dark')
+                color: getThemeColor('color-info-dark')
               }
             }
           ]
@@ -324,8 +324,8 @@ const GrossProfitChart = ({ style }: { style: CSSProperties }) => {
       value: 25,
       itemStyle: {
         color: isDark
-          ? getThemeColor('success')
-          : getThemeColor('success-light')
+          ? getThemeColor('color-success')
+          : getThemeColor('color-success-light')
       },
       children: [
         {
@@ -333,22 +333,22 @@ const GrossProfitChart = ({ style }: { style: CSSProperties }) => {
           value: 10,
           itemStyle: {
             color: isDark
-              ? rgbaColor(getThemeColor('success'), 0.8)
-              : rgbaColor(getThemeColor('success-light'), 0.9)
+              ? rgbaColor(getThemeColor('color-success'), 0.8)
+              : rgbaColor(getThemeColor('color-success-light'), 0.9)
           },
           children: [
             {
               name: 'label-3',
               value: 5,
               itemStyle: {
-                color: getThemeColor('success-dark')
+                color: getThemeColor('color-success-dark')
               }
             },
             {
               name: 'label-3',
               value: 5,
               itemStyle: {
-                color: rgbaColor(getThemeColor('success-dark'), 0.88)
+                color: rgbaColor(getThemeColor('color-success-dark'), 0.88)
               }
             }
           ]
@@ -358,29 +358,29 @@ const GrossProfitChart = ({ style }: { style: CSSProperties }) => {
           value: 15,
           itemStyle: {
             color: isDark
-              ? rgbaColor(getThemeColor('success'), 0.7)
-              : rgbaColor(getThemeColor('success-light'), 0.5)
+              ? rgbaColor(getThemeColor('color-success'), 0.7)
+              : rgbaColor(getThemeColor('color-success-light'), 0.5)
           },
           children: [
             {
               name: 'label-3',
               value: 5,
               itemStyle: {
-                color: rgbaColor(getThemeColor('success-dark'), 0.77)
+                color: rgbaColor(getThemeColor('color-success-dark'), 0.77)
               }
             },
             {
               name: 'label-3',
               value: 5,
               itemStyle: {
-                color: rgbaColor(getThemeColor('success-dark'), 0.66)
+                color: rgbaColor(getThemeColor('color-success-dark'), 0.66)
               }
             },
             {
               name: 'label-3',
               value: 5,
               itemStyle: {
-                color: rgbaColor(getThemeColor('success-dark'), 0.55)
+                color: rgbaColor(getThemeColor('color-success-dark'), 0.55)
               }
             }
           ]
@@ -392,8 +392,8 @@ const GrossProfitChart = ({ style }: { style: CSSProperties }) => {
       value: 15,
       itemStyle: {
         color: isDark
-          ? getThemeColor('warning')
-          : getThemeColor('warning-light')
+          ? getThemeColor('color-warning')
+          : getThemeColor('color-warning-light')
       },
       children: [
         {
@@ -401,15 +401,15 @@ const GrossProfitChart = ({ style }: { style: CSSProperties }) => {
           value: 5,
           itemStyle: {
             color: isDark
-              ? rgbaColor(getThemeColor('warning'), 0.8)
-              : rgbaColor(getThemeColor('warning-light'), 0.8)
+              ? rgbaColor(getThemeColor('color-warning'), 0.8)
+              : rgbaColor(getThemeColor('color-warning-light'), 0.8)
           },
           children: [
             {
               name: 'label-3',
               value: 5,
               itemStyle: {
-                color: getThemeColor('warning-dark')
+                color: getThemeColor('color-warning-dark')
               }
             }
           ]
@@ -419,22 +419,22 @@ const GrossProfitChart = ({ style }: { style: CSSProperties }) => {
           value: 10,
           itemStyle: {
             color: isDark
-              ? rgbaColor(getThemeColor('warning'), 0.7)
-              : rgbaColor(getThemeColor('warning-light'), 0.5)
+              ? rgbaColor(getThemeColor('color-warning'), 0.7)
+              : rgbaColor(getThemeColor('color-warning-light'), 0.5)
           },
           children: [
             {
               name: 'label-3',
               value: 5,
               itemStyle: {
-                color: rgbaColor(getThemeColor('warning-dark'), 0.7)
+                color: rgbaColor(getThemeColor('color-warning-dark'), 0.7)
               }
             },
             {
               name: 'label-3',
               value: 5,
               itemStyle: {
-                color: rgbaColor(getThemeColor('warning-dark'), 0.5)
+                color: rgbaColor(getThemeColor('color-warning-dark'), 0.5)
               }
             }
           ]
@@ -443,10 +443,10 @@ const GrossProfitChart = ({ style }: { style: CSSProperties }) => {
     }
   ];
   const colors = [
-    getThemeColor('primary-light'),
-    getThemeColor('info-light'),
-    getThemeColor('success-light'),
-    getThemeColor('warning-light')
+    getThemeColor('color-primary-light'),
+    getThemeColor('color-info-light'),
+    getThemeColor('color-success-light'),
+    getThemeColor('color-warning-light')
   ];
 
   return (

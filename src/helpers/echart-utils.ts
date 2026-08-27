@@ -3,7 +3,7 @@ import {
   CallbackDataParams,
   TooltipPositionCallbackParams
 } from 'echarts/types/dist/shared';
-import classNames from 'classnames';
+import { cn } from '@hummingbirdui/react';
 
 export interface Size {
   contentSize: number[];
@@ -19,7 +19,7 @@ export const tooltipFormatterDefault = (
   params.forEach(el => {
     tooltipItem += `<div class='ms-1'>
         <h6 class="text-subtle">
-        <span class="inline-block rounded-full me-2" style="height: 0.5rem; width: 0.5rem; background:${
+        <span class="inline-block rounded-full me-1" style="height: 0.5rem; width: 0.5rem; background:${
           el[colorProperty] || el.color
         }"></span>
           ${el.seriesName} : ${el.value}
@@ -59,8 +59,8 @@ export const tooltipFormatterList = (params: CallbackDataParams[]) => {
 
   let tooltipItem = ``;
   result.forEach((el, index: number) => {
-    tooltipItem += `<h6 class="text-body-tertiary ${
-      (result.length === 1 || index > 0) && 'mb-0'
+    tooltipItem += `<h6 class="text-md text-subtle ${
+      result.length === 1 || index > 0 ? 'mb-0' : ''
     }"><span class="inline-block rounded-full me-2" style="height: 0.5rem; width: 0.5rem; background:${
       el.color
     }"></span>
@@ -78,7 +78,7 @@ export const rtlTooltipFormatter = (
   isRTL: boolean,
   isDark: boolean
 ) => {
-  const ltr = `<div class=${classNames({
+  const ltr = `<div class=${cn({
     'text-subtle': isDark,
     'text-black': !isDark
   })}>
@@ -91,7 +91,7 @@ export const rtlTooltipFormatter = (
     }</span>
   </div>`;
 
-  const rtl = `<div class=${classNames({
+  const rtl = `<div class=${cn({
     'text-subtle': isDark,
     'text-black': !isDark
   })}>

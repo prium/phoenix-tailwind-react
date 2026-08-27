@@ -34,13 +34,13 @@ const FinancialActivitiesChart = ({
 
   const getDefaultOptions = useMemo(
     () => ({
-      color: [getThemeColor('primary'), getThemeColor('tertiary-bg')],
+      color: [getThemeColor('color-primary'), getThemeColor('background-color-highlight')],
       tooltip: {
         trigger: 'axis',
         padding: 10,
-        backgroundColor: getThemeColor('body-highlight-bg'),
-        borderColor: getThemeColor('border-color'),
-        textStyle: { color: getThemeColor('light-text-emphasis') },
+        backgroundColor: getThemeColor('background-color-subtle'),
+        borderColor: getThemeColor('border-color-base'),
+        textStyle: { color: getThemeColor('text-color-emphasis') },
         borderWidth: 1,
         transitionDuration: 0,
         axisPointer: {
@@ -67,7 +67,7 @@ const FinancialActivitiesChart = ({
         },
         splitLine: {
           lineStyle: {
-            color: getThemeColor('border-color-translucent')
+            color: getThemeColor('border-color-light')
           }
         }
       },
@@ -94,7 +94,7 @@ const FinancialActivitiesChart = ({
         },
         axisLine: {
           lineStyle: {
-            color: getThemeColor('border-color-translucent')
+            color: getThemeColor('border-color-light')
           }
         }
       },
@@ -111,8 +111,8 @@ const FinancialActivitiesChart = ({
           itemStyle: {
             borderRadius: [0, 4, 4, 0],
             color: isDark
-              ? getThemeColor('primary')
-              : getThemeColor('primary-light')
+              ? getThemeColor('color-primary')
+              : getThemeColor('color-primary-light')
           },
           data: chartData.profit
         },
@@ -128,8 +128,8 @@ const FinancialActivitiesChart = ({
           itemStyle: {
             borderRadius: [4, 0, 0, 4],
             color: isDark
-              ? getThemeColor('success')
-              : getThemeColor('success-light')
+              ? getThemeColor('color-success')
+              : getThemeColor('color-success-light')
           },
           data: chartData.revenue
         },
@@ -142,7 +142,7 @@ const FinancialActivitiesChart = ({
           },
           itemStyle: {
             borderRadius: [4, 0, 0, 4],
-            color: isDark ? getThemeColor('info') : getThemeColor('info-light')
+            color: isDark ? getThemeColor('color-info') : getThemeColor('color-info-light')
           },
           data: chartData.expenses
         }

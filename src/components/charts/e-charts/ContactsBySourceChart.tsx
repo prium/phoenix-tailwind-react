@@ -12,12 +12,12 @@ const getDefaultOptions = (
   isDark: boolean
 ) => ({
   color: [
-    getThemeColor('primary'),
-    getThemeColor('success'),
-    getThemeColor('info'),
-    !isDark ? getThemeColor('info-light') : getThemeColor('info-dark'),
-    !isDark ? getThemeColor('danger-lighter') : getThemeColor('danger-darker'),
-    !isDark ? getThemeColor('warning-light') : getThemeColor('warning-dark')
+    getThemeColor('color-primary'),
+    getThemeColor('color-success'),
+    getThemeColor('color-info'),
+    !isDark ? getThemeColor('color-info-light') : getThemeColor('color-info-dark'),
+    !isDark ? getThemeColor('color-danger-lighter') : getThemeColor('color-danger-darker'),
+    !isDark ? getThemeColor('color-warning-light') : getThemeColor('color-warning-dark')
   ],
   tooltip: {
     trigger: 'item',
@@ -34,7 +34,7 @@ const getDefaultOptions = (
       startAngle: 90,
       avoidLabelOverlap: false,
       itemStyle: {
-        borderColor: getThemeColor('body-bg'),
+        borderColor: getThemeColor('background-color-default'),
         borderWidth: 3
       },
 

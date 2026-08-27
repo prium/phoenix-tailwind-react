@@ -1,4 +1,4 @@
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row } from '@hummingbirdui/react';
 import EcomTotalOrdersCard from 'components/cards/EcomTotalOrdersCard';
 import EcomNewCustomersCard from 'components/cards/EcomNewCustomersCard';
 import EcomTopCouponsCard from 'components/cards/EcomTopCouponsCard';
@@ -12,6 +12,7 @@ import EcomReturningCustomerRate from 'components/modules/e-commerce/dashboard/E
 import EcomTotalSells from 'components/modules/e-commerce/dashboard/EcomTotalSells';
 import EcomTopRegions from 'components/modules/e-commerce/dashboard/EcomTopRegions';
 
+/** Mirrors phoenix-tailwind `src/pug/index.pug` (E-commerce dashboard). */
 const Ecommerce = () => {
   return (
     <>
@@ -55,7 +56,7 @@ const Ecommerce = () => {
         </Col>
         <Col xs={12} xl={6}>
           <div className="-mx-6 lg:-mx-10 xl:ms-0 h-full">
-            <div className="h-full w-full" style={{ minHeight: 300 }}>
+            <div className="h-full w-full">
               <EcomTopRegionsMap data={mapMarkerPoints} />
             </div>
           </div>

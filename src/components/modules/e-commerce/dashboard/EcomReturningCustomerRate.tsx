@@ -1,6 +1,6 @@
 import EcomReturningCustomerRateChart from 'components/charts/e-charts/EcomReturningCustomerRateChart';
-import React from 'react';
 
+/** `+EcomCharts` (returning customer rate) in phoenix-tailwind */
 const EcomReturningCustomerRate = () => {
   return (
     <>

@@ -96,13 +96,13 @@ const getDefaultOptions = (
   theme: ThemeVariant,
   getThemeColor: (name: string) => string
 ) => ({
-  color: [getThemeColor('primary'), getThemeColor('info')],
+  color: [getThemeColor('color-primary'), getThemeColor('color-info')],
   tooltip: {
     trigger: 'axis',
     padding: 10,
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('border-color'),
-    textStyle: { color: getThemeColor('light-text-emphasis') },
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('border-color-base'),
+    textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,
     axisPointer: {
@@ -119,7 +119,7 @@ const getDefaultOptions = (
         interval: 13,
         showMinLabel: true,
         showMaxLabel: false,
-        color: getThemeColor('secondary-color'),
+        color: getThemeColor('text-color-muted'),
         align: 'left',
         fontFamily: 'Nunito Sans',
         fontWeight: 600,
@@ -128,7 +128,7 @@ const getDefaultOptions = (
       axisLine: {
         show: true,
         lineStyle: {
-          color: getThemeColor('secondary-bg')
+          color: getThemeColor('background-color-muted')
         }
       },
       axisTick: {
@@ -140,8 +140,8 @@ const getDefaultOptions = (
         lineStyle: {
           color:
             theme === 'dark'
-              ? getThemeColor('body-highlight-bg')
-              : getThemeColor('secondary-bg')
+              ? getThemeColor('background-color-subtle')
+              : getThemeColor('background-color-muted')
         }
       },
       boundaryGap: 0
@@ -155,7 +155,7 @@ const getDefaultOptions = (
         interval: 130,
         showMaxLabel: true,
         showMinLabel: false,
-        color: getThemeColor('secondary-color'),
+        color: getThemeColor('text-color-muted'),
         align: 'right',
         fontFamily: 'Nunito Sans',
         fontWeight: 600,
@@ -196,7 +196,7 @@ const getDefaultOptions = (
       lineStyle: {
         type: 'dashed',
         width: 1,
-        color: getThemeColor('info')
+        color: getThemeColor('color-info')
       },
       showSymbol: false,
       symbol: 'circle'
@@ -243,13 +243,13 @@ const data1 = [3500, 4100, 5400, 4000, 5000, 2000, 3000, 1000, 5500, 4500];
 const data2 = [2500, 3000, 6000, 3500, 4000, 3000, 1500, 1500, 4200, 1000];
 
 const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
-  color: [getThemeColor('primary'), getThemeColor('tertiary-bg')],
+  color: [getThemeColor('color-primary'), getThemeColor('background-color-highlight')],
   tooltip: {
     trigger: 'axis',
     padding: [7, 10],
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('border-color'),
-    textStyle: { color: getThemeColor('light-text-emphasis') },
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('border-color-base'),
+    textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,
     axisPointer: {
@@ -265,9 +265,9 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     itemHeight: 8,
     itemGap: 20,
     top: 3,
-    inactiveColor: getThemeColor('quaternary-color'),
+    inactiveColor: getThemeColor('text-color-soft'),
     textStyle: {
-      color: getThemeColor('body-color'),
+      color: getThemeColor('text-color-default'),
       fontWeight: 600,
       fontFamily: 'Nunito Sans'
     }
@@ -275,7 +275,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
   xAxis: {
     type: 'category',
     axisLabel: {
-      color: getThemeColor('secondary-color'),
+      color: getThemeColor('text-color-muted'),
       formatter: (value: Date) => dayjs(value).format('MMM DD'),
       interval: 3,
       fontFamily: 'Nunito Sans',
@@ -285,7 +285,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     data: dates,
     axisLine: {
       lineStyle: {
-        color: getThemeColor('tertiary-bg')
+        color: getThemeColor('background-color-highlight')
       }
     },
     axisTick: false
@@ -296,7 +296,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     splitLine: {
       interval: 5,
       lineStyle: {
-        color: getThemeColor('secondary-bg')
+        color: getThemeColor('background-color-muted')
       }
     },
     axisLine: { show: false },
@@ -304,7 +304,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       fontFamily: 'Nunito Sans',
       fontWeight: 600,
       fontSize: 12.8,
-      color: getThemeColor('secondary-color'),
+      color: getThemeColor('text-color-muted'),
       margin: 20,
       verticalAlign: 'bottom'
     }
@@ -319,7 +319,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       label: { show: false },
       itemStyle: {
         borderRadius: [2, 2, 0, 0],
-        color: getThemeColor('primary')
+        color: getThemeColor('color-primary')
       }
     },
     {
@@ -332,7 +332,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       z: 10,
       itemStyle: {
         borderRadius: [2, 2, 0, 0],
-        color: getThemeColor('info-bg-subtle')
+        color: getThemeColor('color-info-subtle')
       }
     }
   ],
@@ -374,11 +374,11 @@ echarts.use([TooltipComponent, PieChart]);
 
 const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
   color: [
-    getThemeColor('info-light'),
-    getThemeColor('warning-light'),
-    getThemeColor('danger-light'),
-    getThemeColor('success-light'),
-    getThemeColor('primary')
+    getThemeColor('color-info-light'),
+    getThemeColor('color-warning-light'),
+    getThemeColor('color-danger-light'),
+    getThemeColor('color-success-light'),
+    getThemeColor('color-primary')
   ],
   tooltip: {
     trigger: 'item'
@@ -402,12 +402,12 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
           x: {
             fontSize: 31.25,
             fontWeight: 800,
-            color: getThemeColor('tertiary-color'),
+            color: getThemeColor('text-color-subtle'),
             padding: [0, 0, 5, 15]
           },
           y: {
             fontSize: 12.8,
-            color: getThemeColor('tertiary-color'),
+            color: getThemeColor('text-color-subtle'),
             fontWeight: 600
           }
         }
@@ -462,14 +462,14 @@ echarts.use([TooltipComponent, PieChart]);
 const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
   color: [
     getThemeColor('gray-400'),
-    getThemeColor('success'),
-    getThemeColor('info'),
-    getThemeColor('warning')
+    getThemeColor('color-success'),
+    getThemeColor('color-info'),
+    getThemeColor('color-warning')
   ],
   tooltip: {
     trigger: 'axis',
-    backgroundColor: getThemeColor('body-bg'),
-    bordercolor: getThemeColor('secondary-bg'),
+    backgroundColor: getThemeColor('background-color-default'),
+    bordercolor: getThemeColor('background-color-muted'),
     formatter: tooltipFormatterDefault,
     axisPointer: {
       shadowStyle: {
@@ -496,10 +496,10 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     itemWidth: 16,
     itemHeight: 8,
     itemGap: 10,
-    inactiveColor: getThemeColor('quaternary-color'),
+    inactiveColor: getThemeColor('text-color-soft'),
     inactiveBorderWidth: 0,
     textStyle: {
-      color: getThemeColor('body-color'),
+      color: getThemeColor('text-color-default'),
       fontWeight: 600,
       fontSize: 16,
       fontFamily: 'Nunito Sans'
@@ -512,11 +512,11 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       axisLine: {
         lineStyle: {
           type: 'solid',
-          color: getThemeColor('tertiary-bg')
+          color: getThemeColor('background-color-highlight')
         }
       },
       axisLabel: {
-        color: getThemeColor('body-color'),
+        color: getThemeColor('text-color-default'),
         formatter: (data: string) => dayjs(data).format('D MMM'),
         interval: 5,
         align: 'left',
@@ -531,7 +531,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
         interval: 0,
         show: true,
         lineStyle: {
-          color: getThemeColor('tertiary-bg'),
+          color: getThemeColor('background-color-highlight'),
           type: 'dashed'
         }
       },
@@ -555,7 +555,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
         interval: 1,
         show: true,
         lineStyle: {
-          color: getThemeColor('tertiary-bg'),
+          color: getThemeColor('background-color-highlight'),
           type: 'solid'
         }
       },
@@ -569,11 +569,11 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     axisLine: {
       lineStyle: {
         type: 'solid',
-        color: getThemeColor('tertiary-bg')
+        color: getThemeColor('background-color-highlight')
       }
     },
     axisLabel: {
-      color: getThemeColor('body-color'),
+      color: getThemeColor('text-color-default'),
       margin: 20,
       fontSize: 12.8,
       interval: 0
@@ -581,7 +581,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     splitLine: {
       show: true,
       lineStyle: {
-        color: getThemeColor('tertiary-bg'),
+        color: getThemeColor('background-color-highlight'),
         type: 'solid'
       }
     },
@@ -590,7 +590,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       length: 15,
       alignWithLabel: true,
       lineStyle: {
-        color: getThemeColor('tertiary-bg')
+        color: getThemeColor('background-color-highlight')
       }
     }
   },

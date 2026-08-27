@@ -72,7 +72,7 @@ const TopStockLineChart = ({
           borderColor: ctx =>
             ctx.p0DataIndex <= index
               ? getThemeColor(growth ? 'success' : 'danger')
-              : getThemeColor('border-color'),
+              : getThemeColor('border-color-base'),
           backgroundColor: ctx =>
             ctx.p0DataIndex <= index
               ? ctx.chart.chartArea &&
@@ -117,7 +117,7 @@ const TopStockLineChart = ({
         alignToPixels: true,
         title: {},
         ticks: {
-          color: getThemeColor('body-color'),
+          color: getThemeColor('text-color-default'),
           maxTicksLimit: breakpoints.down('sm')
             ? 4
             : breakpoints.down('md')
@@ -132,11 +132,11 @@ const TopStockLineChart = ({
         max: 290,
         ticks: {
           stepSize: 10,
-          color: getThemeColor('body-color'),
+          color: getThemeColor('text-color-default'),
           callback: value => `${value}     `
         },
         grid: {
-          color: getThemeColor('border-color-translucent'),
+          color: getThemeColor('border-color-light'),
           drawTicks: false
         }
       }

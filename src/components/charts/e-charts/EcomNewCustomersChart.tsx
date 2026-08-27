@@ -1,5 +1,6 @@
 import ReactEChartsCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
+import { cn } from '@hummingbirdui/react';
 import { getDates } from 'helpers/utils';
 import dayjs from 'dayjs';
 import { useAppContext } from 'providers/AppProvider';
@@ -13,15 +14,16 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
   tooltip: {
     trigger: 'axis',
     padding: 10,
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('border-color'),
-    textStyle: { color: getThemeColor('light-text-emphasis') },
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('border-color-base'),
+    textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,
     axisPointer: {
       type: 'none'
     },
-    formatter: tooltipFormatterList
+    formatter: tooltipFormatterList,
+    extraCssText: 'z-index: 1000'
   },
   xAxis: [
     {
@@ -35,7 +37,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       boundaryGap: 0,
       axisLine: {
         show: true,
-        lineStyle: { color: getThemeColor('secondary-bg') }
+        lineStyle: { color: getThemeColor('background-color-muted') }
       },
       axisTick: {
         show: false
@@ -44,7 +46,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
         formatter: (value: Date) => dayjs(value).format('DD MMM'),
         showMinLabel: true,
         showMaxLabel: false,
-        color: getThemeColor('secondary-color'),
+        color: getThemeColor('text-color-muted'),
         align: 'left',
         interval: 5,
         fontFamily: 'Nunito Sans',
@@ -66,7 +68,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
         interval: 130,
         showMaxLabel: true,
         showMinLabel: false,
-        color: getThemeColor('secondary-color'),
+        color: getThemeColor('text-color-muted'),
         align: 'right',
         fontFamily: 'Nunito Sans',
         fontWeight: 600,
@@ -97,15 +99,15 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       symbol: 'circle',
       lineStyle: {
         width: 2,
-        color: getThemeColor('secondary-bg')
+        color: getThemeColor('background-color-muted')
       },
       emphasis: {
         lineStyle: {
-          color: getThemeColor('secondary-bg')
+          color: getThemeColor('background-color-muted')
         }
       },
       itemStyle: {
-        color: getThemeColor('secondary-bg')
+        color: getThemeColor('background-color-muted')
       }
     },
     {
@@ -113,27 +115,30 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       data: [200, 150, 250, 100, 500, 400, 600],
       lineStyle: {
         width: 2,
-        color: getThemeColor('primary')
+        color: getThemeColor('color-primary')
       },
       showSymbol: false,
       symbol: 'circle',
       itemStyle: {
-        color: getThemeColor('primary')
+        color: getThemeColor('color-primary')
       }
     }
   ],
   grid: { left: 0, right: 0, top: 5, bottom: 20, outerBoundsMode: 'none' }
 });
 
-const EcomNewCustomersChart = () => {
+/** `.echarts-new-customers.h-45.w-full` in phoenix-tailwind */
+const EcomNewCustomersChart = ({ className }: { className?: string }) => {
   const { getThemeColor } = useAppContext();
 
   return (
-    <ReactEChartsCore
-      echarts={echarts}
-      option={getDefaultOptions(getThemeColor)}
-      style={{ height: '180px', width: '100%' }}
-    />
+    <div className={cn('h-45 w-full', className)}>
+      <ReactEChartsCore
+        echarts={echarts}
+        option={getDefaultOptions(getThemeColor)}
+        style={{ height: '100%', width: '100%' }}
+      />
+    </div>
   );
 };
 

@@ -20,13 +20,13 @@ const getDefaultOptions = (
   getThemeColor: (name: string) => string,
   isDark: boolean
 ) => ({
-  color: [getThemeColor('primary-lighter'), getThemeColor('info-light')],
+  color: [getThemeColor('color-primary-lighter'), getThemeColor('color-info-light')],
   tooltip: {
     trigger: 'axis',
     padding: [7, 10],
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('border-color'),
-    textStyle: { color: getThemeColor('light-text-emphasis') },
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('border-color-base'),
+    textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,
     axisPointer: {
@@ -39,7 +39,7 @@ const getDefaultOptions = (
     type: 'category',
     data: dates,
     axisLabel: {
-      color: getThemeColor('body-color'),
+      color: getThemeColor('text-color-default'),
       formatter: (value: number) => dayjs(value).format('ddd'),
       fontFamily: 'Nunito Sans',
       fontWeight: 400,
@@ -48,7 +48,7 @@ const getDefaultOptions = (
     },
     axisLine: {
       lineStyle: {
-        color: getThemeColor('secondary-bg')
+        color: getThemeColor('background-color-muted')
       }
     },
     axisTick: false
@@ -57,11 +57,11 @@ const getDefaultOptions = (
     type: 'value',
     splitLine: {
       lineStyle: {
-        color: getThemeColor('secondary-bg')
+        color: getThemeColor('background-color-muted')
       }
     },
     axisLabel: {
-      color: getThemeColor('body-color'),
+      color: getThemeColor('text-color-default'),
       fontFamily: 'Nunito Sans',
       fontWeight: 700,
       fontSize: 12.8,
@@ -80,8 +80,8 @@ const getDefaultOptions = (
       },
       itemStyle: {
         color: !isDark
-          ? getThemeColor('primary-lighter')
-          : getThemeColor('primary'),
+          ? getThemeColor('color-primary-lighter')
+          : getThemeColor('color-primary'),
 
         borderRadius: [4, 4, 0, 0]
       },
@@ -93,10 +93,10 @@ const getDefaultOptions = (
       symbol: 'circle',
       symbolSize: 11,
       itemStyle: {
-        color: getThemeColor('info-light'),
+        color: getThemeColor('color-info-light'),
         borderColor: !isDark
-          ? getThemeColor('white')
-          : getThemeColor('light-text-emphasis'),
+          ? getThemeColor('color-white')
+          : getThemeColor('text-color-emphasis'),
         borderWidth: 2
       },
       areaStyle: {
@@ -109,11 +109,11 @@ const getDefaultOptions = (
           colorStops: [
             {
               offset: 0,
-              color: rgbaColor(getThemeColor('info-light'), 0.2)
+              color: rgbaColor(getThemeColor('color-info-light'), 0.2)
             },
             {
               offset: 1,
-              color: rgbaColor(getThemeColor('info-light'), 0.2)
+              color: rgbaColor(getThemeColor('color-info-light'), 0.2)
             }
           ]
         }

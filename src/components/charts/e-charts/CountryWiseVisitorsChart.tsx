@@ -30,9 +30,9 @@ const getDefaultOptions = (
     axisPointer: {
       type: 'none'
     },
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('border-color'),
-    textStyle: { color: getThemeColor('light-text-emphasis') },
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('border-color-base'),
+    textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,
     formatter: (params: CallbackDataParams[]) => {
@@ -80,8 +80,8 @@ const getDefaultOptions = (
       data,
       itemStyle: {
         color: isDark
-          ? getThemeColor('primary')
-          : getThemeColor('primary-light'),
+          ? getThemeColor('color-primary')
+          : getThemeColor('color-primary-light'),
         borderRadius: [2, 2, 0, 0]
       }
     }

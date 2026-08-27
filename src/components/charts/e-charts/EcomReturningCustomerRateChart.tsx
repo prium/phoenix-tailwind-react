@@ -1,5 +1,6 @@
 import ReactEChartsCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
+import { cn } from '@hummingbirdui/react';
 import { useAppContext } from 'providers/AppProvider';
 import { TooltipComponent } from 'echarts/components';
 import { BarChart } from 'echarts/charts';
@@ -10,26 +11,26 @@ import { tooltipFormatterDefault } from 'helpers/echart-utils';
 echarts.use([TooltipComponent, BarChart]);
 
 const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
-  color: getThemeColor('body-highlight-bg'),
+  color: getThemeColor('background-color-subtle'),
   legend: {
     data: [
       {
         name: 'Fourth time',
         icon: 'roundRect',
         itemStyle: {
-          color: getThemeColor('primary-light'),
+          color: getThemeColor('color-primary-light'),
           borderWidth: 0
         }
       },
       {
         name: 'Third time',
         icon: 'roundRect',
-        itemStyle: { color: getThemeColor('info-lighter'), borderWidth: 0 }
+        itemStyle: { color: getThemeColor('color-info-lighter'), borderWidth: 0 }
       },
       {
         name: 'Second time',
         icon: 'roundRect',
-        itemStyle: { color: getThemeColor('primary'), borderWidth: 0 }
+        itemStyle: { color: getThemeColor('color-primary'), borderWidth: 0 }
       }
     ],
 
@@ -39,10 +40,10 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     itemHeight: 8,
     itemGap: 20,
     top: 3,
-    inactiveColor: getThemeColor('quaternary-color'),
+    inactiveColor: getThemeColor('text-color-soft'),
     inactiveBorderWidth: 0,
     textStyle: {
-      color: getThemeColor('body-color'),
+      color: getThemeColor('text-color-default'),
       fontWeight: 600,
       fontFamily: 'Nunito Sans'
     }
@@ -53,9 +54,9 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       type: 'none'
     },
     padding: [7, 10],
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('border-color'),
-    textStyle: { color: getThemeColor('light-text-emphasis') },
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('border-color-base'),
+    textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,
     formatter: (params: CallbackDataParams[]) => tooltipFormatterDefault(params)
@@ -67,7 +68,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     boundaryGap: 0,
     axisLine: {
       show: true,
-      lineStyle: { color: getThemeColor('tertiary-bg') }
+      lineStyle: { color: getThemeColor('background-color-highlight') }
     },
     axisTick: {
       show: false
@@ -75,7 +76,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     axisLabel: {
       showMinLabel: false,
       showMaxLabel: false,
-      color: getThemeColor('secondary-color'),
+      color: getThemeColor('text-color-muted'),
       formatter: (value: string) => value.slice(0, 3),
       fontFamily: 'Nunito Sans',
       fontWeight: 600,
@@ -83,7 +84,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     },
     splitLine: {
       show: true,
-      lineStyle: { color: getThemeColor('secondary-bg'), type: 'dashed' }
+      lineStyle: { color: getThemeColor('background-color-muted'), type: 'dashed' }
     }
   },
   yAxis: {
@@ -92,7 +93,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     axisLabel: {
       showMinLabel: true,
       showMaxLabel: true,
-      color: getThemeColor('secondary-color'),
+      color: getThemeColor('text-color-muted'),
       formatter: (value: number) => `${value}%`,
       fontFamily: 'Nunito Sans',
       fontWeight: 600,
@@ -100,7 +101,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     },
     splitLine: {
       show: true,
-      lineStyle: { color: getThemeColor('secondary-bg') }
+      lineStyle: { color: getThemeColor('background-color-muted') }
     }
   },
   series: [
@@ -119,12 +120,13 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       lineStyle: {
         type: 'dashed',
         width: 1,
-        color: getThemeColor('primary-light')
+        color: getThemeColor('color-primary-light')
       },
       itemStyle: {
-        borderColor: getThemeColor('primary-light'),
+        borderColor: getThemeColor('color-primary-light'),
         borderWidth: 3
-      }
+      },
+      zlevel: 3
     },
     {
       name: 'Third time',
@@ -140,12 +142,13 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       },
       lineStyle: {
         width: 1,
-        color: getThemeColor('info-lighter')
+        color: getThemeColor('color-info-lighter')
       },
       itemStyle: {
-        borderColor: getThemeColor('info-lighter'),
+        borderColor: getThemeColor('color-info-lighter'),
         borderWidth: 3
-      }
+      },
+      zlevel: 2
     },
     {
       name: 'Second time',
@@ -161,12 +164,13 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       },
       lineStyle: {
         width: 3,
-        color: getThemeColor('primary')
+        color: getThemeColor('color-primary')
       },
       itemStyle: {
-        borderColor: getThemeColor('primary'),
+        borderColor: getThemeColor('color-primary'),
         borderWidth: 3
-      }
+      },
+      zlevel: 1
     }
   ],
   grid: {
@@ -179,15 +183,22 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
   }
 });
 
-const EcomReturningCustomerRateChart = () => {
+/** `.echart-returning-customer.h-75` in phoenix-tailwind */
+const EcomReturningCustomerRateChart = ({
+  className
+}: {
+  className?: string;
+}) => {
   const { getThemeColor } = useAppContext();
 
   return (
-    <ReactEChartsCore
-      echarts={echarts}
-      option={getDefaultOptions(getThemeColor)}
-      style={{ height: '300px', width: '100%' }}
-    />
+    <div className={cn('h-75', className)}>
+      <ReactEChartsCore
+        echarts={echarts}
+        option={getDefaultOptions(getThemeColor)}
+        style={{ height: '100%', width: '100%' }}
+      />
+    </div>
   );
 };
 

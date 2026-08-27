@@ -1,25 +1,38 @@
 import ReactEChartsCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
+import { cn } from '@hummingbirdui/react';
 import { getDates } from 'helpers/utils';
 import dayjs from 'dayjs';
 import { useAppContext } from 'providers/AppProvider';
 import { TooltipComponent } from 'echarts/components';
 import { BarChart } from 'echarts/charts';
-import { CallbackDataParams } from 'echarts/types/dist/shared';
+import {
+  CallbackDataParams,
+  TooltipPositionCallbackParams
+} from 'echarts/types/dist/shared';
+import { type Size, handleTooltipPosition } from 'helpers/echart-utils';
 echarts.use([TooltipComponent, BarChart]);
 
 const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
-  color: getThemeColor('primary'),
+  color: getThemeColor('color-primary'),
   tooltip: {
     trigger: 'item',
     padding: [7, 10],
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('border-color'),
-    textStyle: { color: getThemeColor('light-text-emphasis') },
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('border-color-base'),
+    textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,
+    position: (
+      point: number[],
+      params: TooltipPositionCallbackParams,
+      el: HTMLDivElement,
+      rect: null,
+      size: Size
+    ) => handleTooltipPosition(point, params, el, rect, size),
     formatter: (params: CallbackDataParams) =>
-      `<strong>${dayjs(params.name).format('DD MMM')}:</strong> ${params.value}`
+      `<strong>${dayjs(params.name).format('DD MMM')}:</strong> ${params.value}`,
+    extraCssText: 'z-index: 1000'
   },
   xAxis: {
     type: 'category',
@@ -32,7 +45,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     boundaryGap: 0,
     axisLine: {
       show: true,
-      lineStyle: { color: getThemeColor('secondary-bg') }
+      lineStyle: { color: getThemeColor('background-color-muted') }
     },
     axisTick: {
       show: false
@@ -43,7 +56,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       interval: 6,
       showMinLabel: true,
       showMaxLabel: true,
-      color: getThemeColor('secondary-color')
+      color: getThemeColor('text-color-muted')
     }
   },
   yAxis: {
@@ -63,22 +76,25 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       },
       backgroundStyle: {
         borderRadius: 10,
-        color: getThemeColor('primary-bg-subtle')
+        color: getThemeColor('color-primary-subtle')
       }
     }
   ],
   grid: { right: 10, left: 10, bottom: 0, top: 0 }
 });
 
-const EcomTotalOrdersChart = () => {
+/** `.echart-total-orders.h-21.25.w-28.75` in phoenix-tailwind */
+const EcomTotalOrdersChart = ({ className }: { className?: string }) => {
   const { getThemeColor } = useAppContext();
 
   return (
-    <ReactEChartsCore
-      echarts={echarts}
-      option={getDefaultOptions(getThemeColor)}
-      style={{ height: '85px', width: '115px' }}
-    />
+    <div className={cn('h-21.25 w-28.75', className)}>
+      <ReactEChartsCore
+        echarts={echarts}
+        option={getDefaultOptions(getThemeColor)}
+        style={{ height: '100%', width: '100%' }}
+      />
+    </div>
   );
 };
 

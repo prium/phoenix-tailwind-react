@@ -1,5 +1,6 @@
 import ReactEChartsCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
+import { cn } from '@hummingbirdui/react';
 import { useAppContext } from 'providers/AppProvider';
 import { TooltipComponent } from 'echarts/components';
 import { GaugeChart } from 'echarts/charts';
@@ -14,9 +15,9 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
   tooltip: {
     trigger: 'item',
     padding: [7, 10],
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('border-color'),
-    textStyle: { color: getThemeColor('light-text-emphasis') },
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('border-color-base'),
+    textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,
     position: (
@@ -42,7 +43,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       max: 100,
       splitNumber: 12,
       itemStyle: {
-        color: getThemeColor('primary')
+        color: getThemeColor('color-primary')
       },
       progress: {
         show: true,
@@ -60,7 +61,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
         roundCap: true,
         lineStyle: {
           width: 12,
-          color: [[1, getThemeColor('primary-bg-subtle')]]
+          color: [[1, getThemeColor('color-primary-subtle')]]
         }
       },
       axisTick: {
@@ -87,15 +88,18 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
   ]
 });
 
-const EcomPayingVsNonPayingChart = () => {
+/** `.echarts-paying-customer-chart.size-full` in phoenix-tailwind */
+const EcomPayingVsNonPayingChart = ({ className }: { className?: string }) => {
   const { getThemeColor } = useAppContext();
 
   return (
-    <ReactEChartsCore
-      echarts={echarts}
-      option={getDefaultOptions(getThemeColor)}
-      style={{ height: '100%', width: '100%' }}
-    />
+    <div className={cn('size-full', className)}>
+      <ReactEChartsCore
+        echarts={echarts}
+        option={getDefaultOptions(getThemeColor)}
+        style={{ height: '100%', width: '100%' }}
+      />
+    </div>
   );
 };
 

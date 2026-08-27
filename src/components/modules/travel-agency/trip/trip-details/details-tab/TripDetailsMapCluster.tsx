@@ -16,11 +16,11 @@ const getMapData = (getThemeColor: (name: string) => string) => {
         'circle-color': [
           'step',
           ['get', 'point_count'],
-          getThemeColor('secondary'),
+          getThemeColor('color-secondary'),
           100,
-          getThemeColor('info'),
+          getThemeColor('color-info'),
           750,
-          getThemeColor('warning')
+          getThemeColor('color-warning')
         ],
         'circle-radius': ['step', ['get', 'point_count'], 20, 100, 30, 750, 40]
       }
@@ -36,7 +36,7 @@ const getMapData = (getThemeColor: (name: string) => string) => {
         'text-size': 12
       },
       paint: {
-        'text-color': getThemeColor('white')
+        'text-color': getThemeColor('color-white')
       }
     } as SymbolLayer,
     {
@@ -45,10 +45,10 @@ const getMapData = (getThemeColor: (name: string) => string) => {
       source: 'earthquakes',
       filter: ['!', ['has', 'point_count']],
       paint: {
-        'circle-color': getThemeColor('primary-light'),
+        'circle-color': getThemeColor('color-primary-light'),
         'circle-radius': 4,
         'circle-stroke-width': 1,
-        'circle-stroke-color': getThemeColor('emphasis-bg')
+        'circle-stroke-color': getThemeColor('background-color-emphasis')
       }
     } as CircleLayer
   ];

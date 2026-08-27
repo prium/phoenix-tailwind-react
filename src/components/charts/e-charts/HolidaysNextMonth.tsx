@@ -77,9 +77,9 @@ const getDefaultOptions = (
       type: 'none'
     },
     padding: [7, 10],
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('border-color'),
-    textStyle: { color: getThemeColor('light-text-emphasis') },
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('border-color-base'),
+    textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0
   },
@@ -89,13 +89,13 @@ const getDefaultOptions = (
     calculable: true,
     show: false,
     color: [
-      getThemeColor('warning'),
+      getThemeColor('color-warning'),
       isDark
-        ? rgbaColor(getThemeColor('warning'), 0.5)
-        : getThemeColor('warning-light'),
+        ? rgbaColor(getThemeColor('color-warning'), 0.5)
+        : getThemeColor('color-warning-light'),
       isDark
-        ? rgbaColor(getThemeColor('warning'), 0.75)
-        : getThemeColor('warning-light')
+        ? rgbaColor(getThemeColor('color-warning'), 0.75)
+        : getThemeColor('color-warning-light')
     ]
   },
   calendar: {
@@ -124,8 +124,8 @@ const getDefaultOptions = (
       show: false
     },
     itemStyle: {
-      color: getThemeColor('dark-text-emphasis'),
-      borderColor: getThemeColor('border-color')
+      color: getThemeColor('text-color-emphasis'),
+      borderColor: getThemeColor('border-color-base')
     }
   },
   series: {
@@ -136,7 +136,7 @@ const getDefaultOptions = (
     },
     data: getVirtualData('2017'),
     itemStyle: {
-      color: getThemeColor('warning'),
+      color: getThemeColor('color-warning'),
       opacity: 0.8
     }
   }

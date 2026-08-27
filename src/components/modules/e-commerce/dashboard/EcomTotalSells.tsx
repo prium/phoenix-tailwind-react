@@ -1,11 +1,11 @@
 import EcomTotalSellsChart from 'components/charts/e-charts/EcomTotalSellsChart';
-import React from 'react';
-import { Col, Form, Row } from 'react-bootstrap';
+import { Col, Row, Select } from '@hummingbirdui/react';
 
+/** `+TotalSalesChart` in phoenix-tailwind e-commerce/TotalSalesChart.pug */
 const EcomTotalSells = () => {
   return (
     <>
-      <Row className="justify-between items-center mb-6 g-4">
+      <Row className="flex-between-center mb-6 g-4">
         <Col xs="auto">
           <h3>Total sells</h3>
           <p className="text-subtle leading-sm mb-0">
@@ -13,11 +13,11 @@ const EcomTotalSells = () => {
           </p>
         </Col>
         <Col xs={8} sm={4}>
-          <Form.Select size="sm">
+          <Select size="sm" id="select-gross-revenue-month">
             <option value="mar">Mar 1 - 31, 2023</option>
             <option value="apr">April 1 - 30, 2023</option>
             <option value="may">May 1 - 31, 2023</option>
-          </Form.Select>
+          </Select>
         </Col>
       </Row>
       <EcomTotalSellsChart />
