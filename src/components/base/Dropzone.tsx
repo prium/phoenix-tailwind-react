@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import { cn } from '@hummingbirdui/react';
 import {
   Accept,
   DropEvent,
@@ -98,7 +98,7 @@ const Dropzone = ({
     <>
       <div
         {...getRootProps()}
-        className={classNames(className, 'dropzone', {
+        className={cn(className, 'dropzone', {
           'dropzone-sm': size === 'sm',
           'dropzone-multiple': multiple
         })}
@@ -107,17 +107,17 @@ const Dropzone = ({
         {children ? (
           <>{children}</>
         ) : (
-          <div className="text-subtle text-opacity-85 font-bold text-md">
+          <div className="dz-message text-subtle/85 font-bold text-md">
             Drag your {imageOnly ? 'photo' : 'files'} here{' '}
             <span className="text-muted">or </span>
-            <Button variant="link" className="p-0">
+            <Button variant="link" className="p-0" type="button">
               Browse from device
             </Button>
             <br />
             <img
-              className="mt-4"
+              className="mt-4 me-2"
               src={imageIcon}
-              width={classNames({ 24: size === 'sm', 40: size !== 'sm' })}
+              width={size === 'sm' ? 24 : 40}
               alt=""
             />
           </div>
@@ -127,14 +127,14 @@ const Dropzone = ({
         previews.map((file, index) => (
           <div
             key={index}
-            className={classNames(
+            className={cn(
               'border-b border-light flex items-center justify-between py-6'
             )}
           >
             <AttachmentPreview attachment={file} />
 
             <button className="btn p-0" onClick={() => handleRemoveFile(index)}>
-              <FontAwesomeIcon icon={faTrashAlt} className="fs-0" />
+              <FontAwesomeIcon icon={faTrashAlt} className="text-base" />
             </button>
           </div>
         ))}

@@ -6,7 +6,7 @@ import VariantFormCard from 'components/cards/VariantFormCard';
 import PageBreadcrumb from 'components/common/PageBreadcrumb';
 import InventoryTab from 'components/tabs/InventoryTab';
 import { defaultBreadcrumbItems } from 'data/commonData';
-import { Col, Form, Row } from 'react-bootstrap';
+import { Col, Input, Row } from '@hummingbirdui/react';
 
 const AddProduct = () => {
   return (
@@ -21,10 +21,10 @@ const AddProduct = () => {
             </h5>
           </div>
           <div className="flex flex-wrap gap-2">
-            <Button variant="phoenix-secondary" type="button">
+            <Button variant="phoenix" color="secondary" type="button">
               Discard
             </Button>
-            <Button variant="phoenix-primary" type="button">
+            <Button variant="phoenix" color="primary" type="button">
               Save draft
             </Button>
             <Button variant="primary" type="submit">
@@ -35,7 +35,7 @@ const AddProduct = () => {
         <Row className="g-8">
           <Col xs={12} xl={8}>
             <h4 className="mb-4">Product Title</h4>
-            <Form.Control placeholder="Write title here..." className="mb-8" />
+            <Input type="text" placeholder="Write title here..." className="mb-8" />
             <div className="mb-10">
               <h4 className="mb-4">Product Description</h4>
               <TinymceEditor

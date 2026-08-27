@@ -59,7 +59,7 @@ const FinancialActivitiesChart = ({
         axisLabel: {
           show: true,
           margin: 12,
-          color: getThemeColor('secondary-text-emphasis'),
+          color: getThemeColor('text-color-muted'),
           formatter: (value: number) =>
             `${Math.abs(Math.round((value / 1000) * 10) / 10)}k`,
           fontFamily: 'Nunito Sans',
@@ -87,7 +87,7 @@ const FinancialActivitiesChart = ({
         ],
         axisLabel: {
           show: true,
-          color: getThemeColor('secondary-text-emphasis'),
+          color: getThemeColor('text-color-muted'),
           margin: 8,
           fontFamily: 'Nunito Sans',
           fontWeight: 700

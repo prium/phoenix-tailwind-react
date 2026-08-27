@@ -134,7 +134,7 @@ const getDefaultOptions = (
         show: true,
         position: 'inside',
         color: !isDark
-          ? getThemeColor('emphasis-color')
+          ? getThemeColor('text-color-emphasis')
           : getThemeColor('color-white'),
 
         fontWeight: 'normal',

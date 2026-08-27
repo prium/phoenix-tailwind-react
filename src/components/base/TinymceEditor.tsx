@@ -36,7 +36,7 @@ const TinymceEditor = ({
     if (editorRef.current) {
       editorRef.current.dom.addStyle(
         `.mce-content-body{
-          color: ${getColor('emphasis-color')} !important;
+          color: ${getColor('text-color-emphasis')} !important;
           background-color: ${getColor('tinymce-bg')} !important;
         }
         `
@@ -64,13 +64,13 @@ const TinymceEditor = ({
         menubar: false,
         content_style: `
         body { 
-          color: ${getColor('emphasis-color')};
+          color: ${getColor('text-color-emphasis')};
         }
         .mce-content-body{
           background-color: ${getColor('tinymce-bg')};
         }
         .mce-content-body[data-mce-placeholder]:not(.mce-visualblocks)::before {
-          color: ${getColor('gray-400')};
+          color: ${getColor('color-gray-400')};
           font-weight: 400;
           font-size: 12.8px;
         }

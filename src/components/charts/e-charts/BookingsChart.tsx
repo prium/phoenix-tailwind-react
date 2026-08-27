@@ -54,7 +54,7 @@ const getDefaultOptions = (
   xAxis: {
     type: 'category',
     axisLabel: {
-      color: getThemeColor('secondary-text-emphasis'),
+      color: getThemeColor('text-color-muted'),
       formatter: (value: number) => dayjs(value).format('MMM DD'),
 
       fontFamily: 'Nunito Sans',

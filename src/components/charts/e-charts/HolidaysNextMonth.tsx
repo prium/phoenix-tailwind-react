@@ -116,7 +116,7 @@ const getDefaultOptions = (
       firstDay: 0,
       nameMap: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'],
       margin: 24,
-      color: getThemeColor('secondary-text-emphasis'),
+      color: getThemeColor('text-color-muted'),
       fontFamily: 'Nunito Sans',
       fontWeight: 700
     },

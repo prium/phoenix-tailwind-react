@@ -103,7 +103,7 @@ const getDefaultOptions = (
             b: {
               color: !isDark
                 ? getThemeColor('color-success-dark')
-                : getThemeColor('success-subtle'),
+                : getThemeColor('color-success-subtle'),
               fontWeight: 500,
               padding: [0, 5, 0, 0]
             }

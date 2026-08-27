@@ -74,11 +74,11 @@ const PhoenixReactRange = ({
             colors:
               values.length === 2
                 ? [
-                    getThemeColor('gray-100'),
+                    getThemeColor('color-gray-100'),
                     getThemeColor(variant),
-                    getThemeColor('gray-100')
+                    getThemeColor('color-gray-100')
                   ]
-                : [getThemeColor(variant), getThemeColor('gray-100')],
+                : [getThemeColor(variant), getThemeColor('color-gray-100')],
             min,
             max,
             rtl: isRTL
