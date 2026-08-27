@@ -1,10 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useEffect } from 'react';
-import { Collapse, Nav } from 'react-bootstrap';
+import { cn } from '@hummingbirdui/react';
 import FeatherIcon from 'feather-icons-react';
 import { Route } from 'sitemap';
 import { capitalize } from 'helpers/utils';
-import classNames from 'classnames';
 import { NavLink, useLocation } from 'react-router';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
@@ -22,80 +21,82 @@ interface NavItemProps {
   level: number;
 }
 
+const RouteBadges = ({
+  route,
+  className
+}: {
+  route: Route;
+  className?: string;
+}) => (
+  <>
+    {route.new && (
+      <Badge variant="phoenix" color="warning" className={cn('ms-2', className)}>
+        New
+      </Badge>
+    )}
+    {route.isNext && (
+      <Badge variant="phoenix" color="primary" className={cn('ms-2', className)}>
+        Next
+      </Badge>
+    )}
+  </>
+);
+
+const RouteIcon = ({ route }: { route: Route }) =>
+  route.iconSet === 'font-awesome' ? (
+    <FontAwesomeIcon icon={route.icon as IconProp} transform={{ size: 16 }} />
+  ) : (
+    <FeatherIcon icon={route.icon} size={16} />
+  );
+
+/** Leaf link — `a.nav-link(.label-1)` in NavbarVertical.pug */
 const NavItem = ({ route, level }: NavItemProps) => {
   const {
     config: { isNavbarVerticalCollapsed }
   } = useAppContext();
   const { setOpenItems, openItems } = useNavbarVerticalCollapse();
+
   return (
-    <Nav.Item as="li">
-      <NavLink
-        to={route.path ? route.path : '#!'}
-        target={route.isTargetBlank ? '_blank': undefined}
-        className={({ isActive }) =>
-          classNames('nav-link', {
-            'label-1': level === 1,
-            active: isActive && route.path !== '#!'
-          })
-        }
-        onClick={() => level === 1 && setOpenItems(openItems.map(() => ''))}
-      >
-        <div
-          className={classNames('flex items-center', {
-            'text-soft': !route.active
-          })}
-        >
-          {route.icon ? (
-            <>
-              <span
-                className={classNames('nav-link-icon', {
-                  new: route.new || route.hasNew
-                })}
-              >
-                {route.iconSet === 'font-awesome' ? (
-                  <FontAwesomeIcon
-                    icon={route.icon as IconProp}
-                    transform={{ size: 16 }}
-                  />
-                ) : (
-                  <FeatherIcon icon={route.icon} size={16} />
-                )}
-              </span>
-              <span className="nav-link-text-wrapper">
-                <span className="nav-link-text">{capitalize(route.name)}</span>
-                {route.new && !isNavbarVerticalCollapsed && (
-                  <Badge variant="phoenix" bg="warning" className="ms-2">
-                    New
-                  </Badge>
-                )}
-                {route.isNext && !isNavbarVerticalCollapsed && (
-                  <Badge variant="phoenix" bg="primary" className="ms-2">
-                    next
-                  </Badge>
-                )}
-              </span>
-            </>
-          ) : (
-            <>
+    <NavLink
+      to={route.path ? route.path : '#!'}
+      target={route.isTargetBlank ? '_blank' : undefined}
+      className={({ isActive }) =>
+        cn('nav-link', {
+          'label-1': level === 1,
+          active: isActive && route.path !== '#!'
+        })
+      }
+      onClick={() => level === 1 && setOpenItems(openItems.map(() => ''))}
+    >
+      <div className={cn('flex items-center', { 'text-soft': !route.active })}>
+        {route.icon ? (
+          <>
+            <span
+              className={cn('nav-link-icon', {
+                new: route.new || route.hasNew
+              })}
+            >
+              <RouteIcon route={route} />
+            </span>
+            <span className="nav-link-text-wrapper">
               <span className="nav-link-text">{capitalize(route.name)}</span>
-              {route.new && (
-                <Badge variant="phoenix" bg="warning" className="ms-2">
-                  New
-                </Badge>
+              {!isNavbarVerticalCollapsed && (
+                <RouteBadges route={route} className="nav-link-badge" />
               )}
-              {route.isNext && (
-                <Badge variant="phoenix" bg="primary" className="ms-2">
-                  next
-                </Badge>
-              )}
-            </>
-          )}
-        </div>
-      </NavLink>
-    </Nav.Item>
+            </span>
+          </>
+        ) : (
+          <>
+            <span className="nav-link-text">{capitalize(route.name)}</span>
+            <RouteBadges route={route} />
+          </>
+        )}
+      </div>
+    </NavLink>
   );
 };
 
+/** Parent link + `ul.nav.collapse.parent` — PageLooper in NavbarVertical.pug */
 const CollapsableNavItem = ({ route, level }: NavItemProps) => {
   const { pathname } = useLocation();
   const { setOpenItems, openItems } = useNavbarVerticalCollapse();
@@ -103,12 +104,14 @@ const CollapsableNavItem = ({ route, level }: NavItemProps) => {
     config: { isNavbarVerticalCollapsed }
   } = useAppContext();
 
+  const isOpen = openItems[level] === route.name;
+
   const openCollapse = (childrens: Route[] = []) => {
-    const checkLink = (children: Route) => {
+    const checkLink = (children: Route): boolean => {
       if (`${children.path}` === pathname) {
         return true;
       }
-      return children.pages && children.pages.some(checkLink);
+      return !!children.pages && children.pages.some(checkLink);
     };
     return childrens.some(checkLink);
   };
@@ -116,7 +119,7 @@ const CollapsableNavItem = ({ route, level }: NavItemProps) => {
   const updateOpenItems = (name: string) => {
     const updatedOpenItems = [...openItems];
     updatedOpenItems[level] = name;
-    updatedOpenItems.forEach((item, index) => {
+    updatedOpenItems.forEach((_item, index) => {
       if (index > level) {
         updatedOpenItems[index] = '';
       }
@@ -130,85 +133,71 @@ const CollapsableNavItem = ({ route, level }: NavItemProps) => {
     }
   }, []);
 
+  const toggle = () => updateOpenItems(isOpen ? '' : route.name);
+
   return (
     <>
-      <Nav.Link
-        onClick={() => {
-          if (route.name === openItems[level]) {
-            updateOpenItems('');
-          } else {
-            updateOpenItems(route.name);
+      <a
+        role="button"
+        tabIndex={0}
+        onClick={toggle}
+        onKeyDown={e => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            toggle();
           }
         }}
-        className={classNames('dropdown-indicator', {
+        className={cn('nav-link dropdown-indicator cursor-pointer', {
           'label-1': level === 1,
-          collapsed: openItems[level] !== route.name,
+          collapsed: !isOpen,
           'text-soft': !route.active
         })}
-        aria-expanded={openItems[level] === route.name}
+        aria-expanded={isOpen}
+        aria-controls={`nv-${route.name}`}
       >
         <div className="flex items-center">
-          <div className="dropdown-indicator-icon">
+          <div className="dropdown-indicator-icon-wrapper">
             <FontAwesomeIcon
               icon={faCaretRight}
-              className={classNames({
+              className={cn('dropdown-indicator-icon', {
                 'text-soft': !route.active
               })}
             />
           </div>
           {level === 1 && (
             <span
-              className={classNames('nav-link-icon', {
+              className={cn('nav-link-icon', {
                 new: route.new || route.hasNew
               })}
             >
-              <FeatherIcon icon={route.icon} size={16} />
+              <RouteIcon route={route} />
             </span>
           )}
-          <span
-            className={classNames('nav-link-text', {
-              new: route.hasNew
-            })}
-          >
+          <span className={cn('nav-link-text', { new: route.hasNew })}>
             {capitalize(route.name)}
-            {(!isNavbarVerticalCollapsed || level !== 1) && route.new && (
-              <Badge variant="phoenix" bg="warning" className="ms-2">
-                New
-              </Badge>
-            )}
-            {(!isNavbarVerticalCollapsed || level !== 1) && route.isNext && (
-              <Badge variant="phoenix" bg="primary" className="ms-2">
-                Next
-              </Badge>
+            {(!isNavbarVerticalCollapsed || level !== 1) && (
+              <RouteBadges route={route} />
             )}
           </span>
         </div>
-      </Nav.Link>
-      <div
-        className={classNames('parent-wrapper', {
-          'label-1': level === 1
-        })}
-      >
-        <Collapse in={openItems[level] === route.name} className="nav parent">
-          <div>
-            {level === 1 && (
-              <div className="collapsed-nav-item-title hidden">
-                {capitalize(route.name)}
-                {isNavbarVerticalCollapsed && route.new && (
-                  <Badge variant="phoenix" bg="warning" className="ms-2">
-                    New
-                  </Badge>
-                )}
-                {isNavbarVerticalCollapsed && route.isNext && (
-                  <Badge variant="phoenix" bg="primary" className="ms-2">
-                    Next
-                  </Badge>
-                )}
-              </div>
-            )}
-            <NavbarVerticalMenu routes={route.pages || []} level={level + 1} />
-          </div>
-        </Collapse>
+      </a>
+      <div className={cn('parent-wrapper', { 'label-1': level === 1 })}>
+        {/*
+          Rendered even when closed: in collapsed-navbar mode the CSS shows
+          `.parent-wrapper.label-1 > .parent` as a hover fly-out.
+        */}
+        <ul
+          id={`nv-${route.name}`}
+          className={cn('nav collapse parent', { show: isOpen })}
+        >
+          {level === 1 && (
+            <li className="collapsed-nav-item-title hidden">
+              {capitalize(route.name)}
+              {isNavbarVerticalCollapsed && <RouteBadges route={route} />}
+            </li>
+          )}
+          <NavbarVerticalMenu routes={route.pages || []} level={level + 1} />
+        </ul>
       </div>
     </>
   );
@@ -217,27 +206,22 @@ const CollapsableNavItem = ({ route, level }: NavItemProps) => {
 const NavbarVerticalMenu = ({ routes, level }: NavbarVerticalMenuProps) => {
   return (
     <>
-      {routes.map(route => (
-        <div key={route.name}>
-          {level === 1 ? (
-            <div className="nav-item-wrapper">
-              {route.pages ? (
-                <CollapsableNavItem route={route} level={level} />
-              ) : (
-                <NavItem route={route} level={level} />
-              )}
-            </div>
-          ) : (
-            <>
-              {route.pages ? (
-                <CollapsableNavItem route={route} level={level} />
-              ) : (
-                <NavItem route={route} level={level} />
-              )}
-            </>
-          )}
-        </div>
-      ))}
+      {routes.map(route => {
+        const item = route.pages ? (
+          <CollapsableNavItem route={route} level={level} />
+        ) : (
+          <NavItem route={route} level={level} />
+        );
+        return level === 1 ? (
+          <div className="nav-item-wrapper" key={route.name}>
+            {item}
+          </div>
+        ) : (
+          <li className="nav-item" key={route.name}>
+            {item}
+          </li>
+        );
+      })}
     </>
   );
 };

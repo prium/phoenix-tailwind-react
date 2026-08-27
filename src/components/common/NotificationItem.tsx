@@ -1,10 +1,9 @@
 import { faClock } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
+import { Dropdown, cn } from '@hummingbirdui/react';
 import Avatar from 'components/base/Avatar';
 import RevealDropdown from 'components/base/RevealDropdown';
 import { Notification } from 'data/notifications';
-import { Dropdown } from 'react-bootstrap';
 
 export interface NotificationItemProps {
   notification: Notification;
@@ -12,6 +11,7 @@ export interface NotificationItemProps {
   type: 'dropdownItem' | 'pageItem';
 }
 
+/** `+NotificationItems` in phoenix-tailwind NotificationDropdown.pug */
 const NotificationItem = ({
   notification,
   className,
@@ -19,15 +19,12 @@ const NotificationItem = ({
 }: NotificationItemProps) => {
   return (
     <div
-      className={classNames(
-        className,
-        'py-6 notification-card relative',
-        {
-          unread: !notification.read,
-          'px-10 lg:px-10': type === 'pageItem',
-          'px-2 sm:px-4': type === 'dropdownItem'
-        }
-      )}
+      className={cn(className, 'py-4 notification-card relative', {
+        unread: !notification.read,
+        read: notification.read,
+        'px-6 lg:px-10': type === 'pageItem',
+        'px-2 sm:px-4': type === 'dropdownItem'
+      })}
     >
       <div className="flex items-center justify-between relative">
         <div className="flex">
@@ -35,10 +32,11 @@ const NotificationItem = ({
             src={notification.avatar}
             placeholder={!notification.avatar}
             size={type === 'pageItem' ? 'xl' : 'm'}
-            className="me-4 status-online"
+            status="online"
+            className="me-4"
           />
           <div
-            className={classNames('flex-1', {
+            className={cn('flex-1', {
               'sm:me-4': type === 'dropdownItem',
               'mt-2 me-2': type === 'pageItem'
             })}
@@ -53,7 +51,7 @@ const NotificationItem = ({
                 <span className="font-bold">{notification.detail}</span>
               )}
 
-              <span className="ms-2 text-soft text-opactity-75 font-bold text-sm">
+              <span className="ms-2 text-soft/75 font-bold text-sm">
                 {notification.ago}
               </span>
             </p>
@@ -65,8 +63,9 @@ const NotificationItem = ({
           </div>
         </div>
         <RevealDropdown
+          className="notification-dropdown"
           btnClassName="notification-dropdown-toggle"
-          dropdownMenuClassName={classNames(
+          dropdownMenuClassName={cn(
             'mt-2',
             notification.notificationPosition
           )}

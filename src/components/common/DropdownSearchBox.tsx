@@ -1,57 +1,115 @@
 import {
   Children,
+  CSSProperties,
   PropsWithChildren,
   ReactElement,
   cloneElement,
+  useEffect,
+  useRef,
   useState
 } from 'react';
-import SearchBox, { SearchBoxProps } from './SearchBox';
-import { Dropdown } from 'react-bootstrap';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Input, cn } from '@hummingbirdui/react';
 
-interface DropdownSearchBoxProps extends SearchBoxProps {
+export interface DropdownSearchBoxProps
+  extends Omit<Input.Props, 'size' | 'style'> {
   className?: string;
-  searchBoxClassName?: string;
+  inputClassName?: string;
+  size?: 'sm' | 'lg';
+  style?: CSSProperties;
 }
 
+/**
+ * `+NavSearch` in phoenix-tailwind Mixins.pug: a search input whose result
+ * list is a statically positioned `.dropdown-menu` toggled with `.show`.
+ */
 const DropdownSearchBox = ({
   children,
   className,
-  searchBoxClassName,
+  inputClassName,
+  size,
+  style,
+  placeholder = 'Search...',
   ...rest
 }: PropsWithChildren<DropdownSearchBoxProps>) => {
-  const [openDropdown, setOpenDropdown] = useState(false);
+  const [open, setOpen] = useState(false);
   const [searchInputValue, setSearchInputValue] = useState('');
+  const rootRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const handlePointerDown = (event: PointerEvent) => {
+      if (
+        rootRef.current &&
+        !rootRef.current.contains(event.target as Node)
+      ) {
+        setOpen(false);
+      }
+    };
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setOpen(false);
+    };
+    document.addEventListener('pointerdown', handlePointerDown);
+    document.addEventListener('keydown', handleKeyDown);
+    return () => {
+      document.removeEventListener('pointerdown', handlePointerDown);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [open]);
+
   return (
-    <Dropdown
-      className={className}
-      onToggle={() => setOpenDropdown(!openDropdown)}
-      show={openDropdown}
+    <div
+      ref={rootRef}
+      className={cn('search-box navbar-top-search-box', className)}
+      style={style}
     >
-      <Dropdown.Toggle as="div" aria-expanded={openDropdown} bsPrefix="toggle">
-        <SearchBox
-          placeholder="Search..."
-          className={searchBoxClassName}
+      <form
+        className={cn('relative', { show: open })}
+        onSubmit={e => e.preventDefault()}
+      >
+        <Input
+          type="search"
+          size={size}
+          placeholder={placeholder}
+          aria-label="Search"
+          className={cn('search-input fuzzy-search rounded-full', inputClassName)}
           value={searchInputValue}
+          onFocus={() => setOpen(true)}
           onChange={({ target }) => {
             setSearchInputValue(target.value);
-            setOpenDropdown(true);
+            setOpen(true);
           }}
           {...rest}
         />
-      </Dropdown.Toggle>
+        <FontAwesomeIcon icon={faSearch} className="search-box-icon" />
+      </form>
+      {open && (
+        <div
+          className="btn-close absolute end-0 top-1/2 -translate-1/2 rtl:translate-x-1/2 cursor-pointer shadow-none"
+          onClick={() => {
+            setSearchInputValue('');
+            setOpen(false);
+          }}
+        >
+          <button type="button" className="btn btn-link p-0" aria-label="Close" />
+        </div>
+      )}
       {children && (
-        <Dropdown.Menu
-          className="dropdown-menu border font-base start-0 py-0 overflow-hidden w-full"
-          style={{ width: 400 }}
+        <div
+          className={cn(
+            'dropdown-menu border start-0! py-0 overflow-hidden w-full',
+            { show: open }
+          )}
         >
           {Children.map(children, child =>
-            cloneElement(child as ReactElement<any>, {
+            cloneElement(child as ReactElement<{ searchValue?: string }>, {
               searchValue: searchInputValue
             })
           )}
-        </Dropdown.Menu>
+        </div>
       )}
-    </Dropdown>
+    </div>
   );
 };
 

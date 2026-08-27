@@ -1,61 +1,77 @@
-import Button, { ButtonProps } from 'components/base/Button';
+import { Tooltip, cn } from '@hummingbirdui/react';
 import { useAppContext } from 'providers/AppProvider';
-import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
-import classNames from 'classnames';
+import { useId } from 'react';
 
-interface ThemeTogglerProps extends ButtonProps {
+interface ThemeTogglerProps {
   slim?: boolean;
   className?: string;
 }
 
-const ThemeToggler = ({ slim, className, ...rest }: ThemeTogglerProps) => {
+/**
+ * `+ToggleThemeBtn` in phoenix-tailwind ToggleThemeBtn.pug.
+ * The hidden checkbox drives which label is visible via
+ * `.theme-control-toggle-input:checked ~ …` in navbar-top.css.
+ */
+const ThemeToggler = ({ slim, className }: ThemeTogglerProps) => {
   const {
-    config: { theme, isRTL },
+    config: { isDark, isRTL },
     toggleTheme
   } = useAppContext();
-  return (
-    <Button
-      className={classNames(className, 'border-0 p-0', {
-        'leading-none': slim
-      })}
-      onClick={() => toggleTheme()}
-      {...rest}
+  const id = useId();
+
+  const label = (mode: 'light' | 'dark', icon: 'moon' | 'sun') => (
+    <label
+      htmlFor={id}
+      className={cn(
+        'mb-0 theme-control-toggle-label',
+        `theme-control-toggle-${mode}`,
+        !slim && 'size-8'
+      )}
     >
-      <div
-        className={classNames('theme-control-toggle', {
-          'theme-control-toggle-slim pe-2': slim
-        })}
-      >
-        <OverlayTrigger
-          placement={slim ? 'bottom' : isRTL ? 'right' : 'left'}
-          overlay={
-            <Tooltip id="ThemeColor" style={{ position: 'fixed' }}>
-              {slim
-                ? 'Switch theme'
-                : theme === 'dark'
-                ? 'Switch to light theme'
-                : 'Switch to dark theme'}
-            </Tooltip>
-          }
+      {slim ? (
+        <>
+          <span className="hidden sm:flex flex-center size-4">
+            <FeatherIcon icon={icon} size={10} className="me-1 icon" />
+          </span>
+          <span className="text-md font-bold">
+            {mode === 'light' ? 'Dark' : 'Light'}
+          </span>
+        </>
+      ) : (
+        <FeatherIcon icon={icon} size={16} className="icon" />
+      )}
+    </label>
+  );
+
+  return (
+    <Tooltip>
+      <Tooltip.Trigger asChild>
+        <div
+          className={cn('theme-control-toggle', className, {
+            'theme-control-toggle-slim pe-2': slim
+          })}
         >
-          <div className="theme-control-toggle-label">
-            <FeatherIcon
-              className={classNames({
-                'me-1 hidden sm:block': slim
-              })}
-              icon={theme === 'dark' ? 'moon' : 'sun'}
-              size={slim ? 10 : 16}
-            />
-            {slim && (
-              <span className="text-md font-bold">
-                {theme === 'dark' ? 'Dark' : 'Light'}
-              </span>
-            )}
-          </div>
-        </OverlayTrigger>
-      </div>
-    </Button>
+          <input
+            id={id}
+            type="checkbox"
+            value="dark"
+            className="form-check-input ms-0 theme-control-toggle-input"
+            checked={isDark}
+            onChange={() => toggleTheme()}
+          />
+          {label('light', 'moon')}
+          {label('dark', 'sun')}
+        </div>
+      </Tooltip.Trigger>
+      <Tooltip.Content side={slim ? 'bottom' : isRTL ? 'right' : 'left'}>
+        {slim
+          ? 'Switch theme'
+          : isDark
+            ? 'Switch to light theme'
+            : 'Switch to dark theme'}
+      </Tooltip.Content>
+    </Tooltip>
   );
 };
 

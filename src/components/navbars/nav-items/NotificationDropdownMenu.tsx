@@ -1,57 +1,54 @@
-import { Card, Dropdown } from 'react-bootstrap';
+import { Card, Dropdown, cn } from '@hummingbirdui/react';
 import { Link } from 'react-router';
-import Scrollbar from 'components/base/Scrollbar';
 import Button from 'components/base/Button';
 import { notifications as notificationData } from 'data/notifications';
 import NotificationItem from 'components/common/NotificationItem';
-import classNames from 'classnames';
 import { useMemo } from 'react';
 
+/** `+NotificationDropdown` in phoenix-tailwind NotificationDropdown.pug */
 const NotificationDropdownMenu = ({ className }: { className?: string }) => {
-  const notifications = useMemo(() => {
-    return notificationData.slice(0, 6);
-  }, [notificationData]);
+  const notifications = useMemo(() => notificationData.slice(0, 6), []);
   return (
-    <Dropdown.Menu
+    <Dropdown.Content
       align="end"
-      className={classNames(
+      sideOffset={8}
+      className={cn(
         className,
         'navbar-dropdown-caret py-0 notification-dropdown-menu shadow border'
       )}
     >
       <Card className="relative border-0">
         <Card.Header className="p-2">
-          <div className="flex justify-between items-center">
+          <div className="flex justify-between">
             <h5 className="text-emphasis mb-0">Notifications</h5>
             <Button variant="link" className="p-0 text-md font-normal">
               Mark all as read
             </Button>
           </div>
         </Card.Header>
-        <Card.Body className="p-0" style={{ height: '27rem' }}>
-          <Scrollbar style={{maxHeight: '27rem'}}>
+        <Card.Body className="p-0">
+          <div className="scrollbar-overlay h-108">
             {notifications.map((notification, index) => (
               <NotificationItem
                 notification={notification}
                 type="dropdownItem"
-                className={classNames({
-                  'border-b border-light':
-                    index !== notifications.length - 1
+                className={cn({
+                  'border-b border-light': index !== notifications.length - 1
                 })}
                 key={notification.id}
               />
             ))}
-          </Scrollbar>
+          </div>
         </Card.Body>
-        <Card.Footer className="p-0 border-t">
-          <div className="my-2 text-center font-bold text-sm text-subtle text-opactity-85">
+        <Card.Footer className="p-0 border-t border-light border-0">
+          <div className="my-2 text-center font-bold text-sm text-subtle/85">
             <Link to="/pages/notifications" className="font-black">
               Notification history
             </Link>
           </div>
         </Card.Footer>
       </Card>
-    </Dropdown.Menu>
+    </Dropdown.Content>
   );
 };
 

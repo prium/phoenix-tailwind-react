@@ -1,6 +1,5 @@
-import { Navbar } from 'react-bootstrap';
+import { Navbar, cn } from '@hummingbirdui/react';
 import { useAppContext } from 'providers/AppProvider';
-import classNames from 'classnames';
 import NavbarBrand from 'components/navbars/nav-items/NavbarBrand';
 import NavItems from 'components/navbars/nav-items/NavItems';
 import NavItemsSlim from 'components/navbars/nav-items/NavItemsSlim';
@@ -8,6 +7,7 @@ import DropdownSearchBox from 'components/common/DropdownSearchBox';
 import SearchResult from 'components/common/SearchResult';
 import { useBreakpoints } from 'providers/BreakpointsProvider';
 
+/** Mirrors phoenix-tailwind `mixins/navbars/TopNav.pug` (+TopNav). */
 const NavbarTopDefault = () => {
   const {
     config: { navbarTopShape, navbarTopAppearance }
@@ -17,12 +17,11 @@ const NavbarTopDefault = () => {
 
   return (
     <Navbar
-      className={classNames('navbar-top fixed top-0 left-0 right-0 z-1030', {
+      expand="always"
+      id="navbarDefault"
+      className={cn('navbar-top fixed right-0 top-0 left-0 z-1030', {
         'navbar-slim': navbarTopShape === 'slim'
-        // 'navbar-darker': navbarTopAppearance === 'darker'
       })}
-      expand
-      variant=""
       data-navbar-appearance={navbarTopAppearance === 'darker' ? 'darker' : ''}
     >
       <div className="navbar-collapse justify-between">
@@ -33,9 +32,8 @@ const NavbarTopDefault = () => {
             {breakpoints.up('lg') && (
               <DropdownSearchBox
                 className="navbar-top-search-box"
-                inputClassName="rounded-pill"
+                inputClassName="rounded-full"
                 size="sm"
-                style={{ width: '25rem' }}
               >
                 <SearchResult />
               </DropdownSearchBox>

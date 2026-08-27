@@ -1,6 +1,5 @@
 import { useAppContext } from 'providers/AppProvider';
 import { ChangeEvent } from 'react';
-import { Form } from 'react-bootstrap';
 
 const ChatWidgetVisibility = () => {
   const {
@@ -9,23 +8,23 @@ const ChatWidgetVisibility = () => {
   } = useAppContext();
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { checked } = e.target;
-    setConfig({
-      isChatWidgetVisible: checked
-    });
+    setConfig({ isChatWidgetVisible: e.target.checked });
   };
 
   return (
-    <div className="border border-light rounded-lg p-6 setting-panel-item bg-soft">
+    <div className="border border-light rounded-lg p-6! setting-panel-item bg-soft!">
       <div className="flex justify-between items-center">
         <h5 className="setting-panel-item-title mb-1">Support Chat</h5>
-        <Form.Check
-          type="switch"
-          id="custom-switch"
-          onChange={handleChange}
-          defaultChecked={isChatWidgetVisible}
-          className="text-end"
-        />
+        <div className="form-check form-switch mb-0">
+          <input
+            type="checkbox"
+            role="switch"
+            id="support-chat-switch"
+            className="form-check-input ms-auto"
+            onChange={handleChange}
+            checked={isChatWidgetVisible}
+          />
+        </div>
       </div>
       <p className="mb-0 text-subtle">Toggle support chat</p>
     </div>

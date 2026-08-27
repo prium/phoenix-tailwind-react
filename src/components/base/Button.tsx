@@ -146,6 +146,7 @@ const Button = ({
   shape,
   disabled,
   type = 'button',
+  asChild,
   ...rest
 }: PropsWithChildren<ButtonProps>) => {
   const resolved = resolveVariant(variant, color);
@@ -166,7 +167,8 @@ const Button = ({
       color={null}
       size={null}
       shape={null}
-      type={type}
+      asChild={asChild}
+      type={asChild ? undefined : type}
       disabled={loading || disabled}
       {...rest}
       className={cn(
