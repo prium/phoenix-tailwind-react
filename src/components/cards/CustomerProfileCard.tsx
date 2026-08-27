@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AvatarUpload from 'components/common/AvatarUpload';
-import { Card, Col, Row } from 'react-bootstrap';
+import { Card, Col, Row } from '@hummingbirdui/react';
 import team15 from 'assets/img/team/15.webp';
 import {
   faFacebook,
@@ -14,7 +14,7 @@ const CustomerProfileCard = () => {
     <Card className="h-full">
       <Card.Body className="flex flex-col justify-between pb-4">
         <Row className="items-center g-8 mb-4 text-center sm:text-start">
-          <Col xs={12} sm="auto" className="sm:mb-4">
+          <Col xs={12} sm="auto" className="sm:mb-2">
             <AvatarUpload size="5xl" src={team15} />
           </Col>
           <Col xs={12} sm="auto" className="flex-1">
@@ -24,19 +24,19 @@ const CustomerProfileCard = () => {
               <Link to="#!">
                 <FontAwesomeIcon
                   icon={faLinkedinIn}
-                  className="text-soft text-opacity-75 hover-primary"
+                  className="text-soft/75 hover:text-primary"
                 />
               </Link>
               <Link to="#!">
                 <FontAwesomeIcon
                   icon={faFacebook}
-                  className="text-soft text-opacity-75 hover-primary"
+                  className="text-soft/75 hover:text-primary"
                 />
               </Link>
               <Link to="#!">
                 <FontAwesomeIcon
                   icon={faTwitter}
-                  className="text-soft text-opacity-75 hover-primary"
+                  className="text-soft/75 hover:text-primary"
                 />
               </Link>
             </div>

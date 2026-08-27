@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'components/base/Button';
 import OrderDetailsTable from 'components/tables/OrderDetailsTable';
-import { Card, Col, Dropdown, Form, Row } from 'react-bootstrap';
+import { Card, Col, Dropdown, Input, Row } from '@hummingbirdui/react';
 import { Link } from 'react-router';
 import OrderDetailsSummaryCard from 'components/cards/OrderDetailsSummaryCard';
 import PageBreadcrumb from 'components/common/PageBreadcrumb';
@@ -13,7 +13,7 @@ const Refund = () => {
     <div>
       <PageBreadcrumb items={defaultBreadcrumbItems} />
       <div className="mb-16">
-        <h2 className="mb-4">Refund</h2>
+        <h2 className="mb-2">Refund</h2>
         <div className="flex flex-wrap items-center mb-6 gap-4">
           <p className="text-muted leading-sm mb-0">
             Order :{' '}
@@ -31,18 +31,21 @@ const Refund = () => {
               </Link>
             </p>
             <Dropdown>
-              <Dropdown.Toggle
-                variant=""
-                className="p-0 dropdown-caret-none no-underline"
-              >
-                More action
-                <FontAwesomeIcon icon={faChevronDown} className="ms-2" />
-              </Dropdown.Toggle>
-              <Dropdown.Menu align="end">
-                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-              </Dropdown.Menu>
+              <Dropdown.Trigger asChild>
+                <button
+                  type="button"
+                  className="btn text-default px-0"
+                >
+                  More action
+                  <FontAwesomeIcon icon={faChevronDown} className="ms-2 text-sm" />
+                </button>
+              </Dropdown.Trigger>
+              <Dropdown.Content align="end">
+                <Dropdown.Item>Action</Dropdown.Item>
+                <Dropdown.Item>Another action</Dropdown.Item>
+                <Dropdown.Item>Something else here</Dropdown.Item>
+                <Dropdown.Item>Cancel</Dropdown.Item>
+              </Dropdown.Content>
             </Dropdown>
           </div>
         </div>
@@ -51,17 +54,11 @@ const Refund = () => {
             <OrderDetailsTable />
           </Col>
           <Col xs={12} xl={4} xxl={3}>
-            <OrderDetailsSummaryCard className="mb-6" />
+            <OrderDetailsSummaryCard className="mb-4" />
             <Card>
               <Card.Body>
-                <Card.Title as="h4" className="mb-6">
-                  Refund Amount
-                </Card.Title>
-                <Form.Control
-                  type="number"
-                  placeholder="Amount"
-                  className="mb-6 input-spin-none"
-                />
+                <h4 className="mb-6">Refund Amount</h4>
+                <Input type="text" placeholder="Amount" className="mb-6" />
                 <Button variant="primary" className="w-full">
                   Refund $500
                 </Button>

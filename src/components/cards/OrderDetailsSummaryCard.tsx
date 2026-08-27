@@ -1,22 +1,17 @@
-import classNames from 'classnames';
 import OrderSummaryDetails from 'components/common/OrderSummaryDetails';
 import { currencyFormat } from 'helpers/utils';
-import { Card } from 'react-bootstrap';
+import { Card } from '@hummingbirdui/react';
 
 const OrderDetailsSummaryCard = ({ className }: { className?: string }) => {
   return (
-    <Card className={classNames(className)}>
+    <Card className={className}>
       <Card.Body>
-        <Card.Title as="h3" className="mb-6">
-          Summary
-        </Card.Title>
+        <h3 className="card-title mb-6">Summary</h3>
 
-        <div className="border-b border-light border-dashed mb-6">
-          <OrderSummaryDetails />
-        </div>
-        <div className="flex justify-between">
+        <OrderSummaryDetails />
+        <div className="flex justify-between border-t border-light border-dashed pt-6">
           <h4 className="mb-0">Total :</h4>
-          <h4 className="mb-">
+          <h4 className="mb-0">
             {currencyFormat(695.2, { minimumFractionDigits: 2 })}
           </h4>
         </div>

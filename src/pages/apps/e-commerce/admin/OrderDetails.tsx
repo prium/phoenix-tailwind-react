@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'components/base/Button';
 import OrderDetailsTable from 'components/tables/OrderDetailsTable';
-import { Card, Col, Dropdown, Form, Row } from 'react-bootstrap';
+import { Card, Col, Dropdown, Row, Select } from '@hummingbirdui/react';
 import { Link } from 'react-router';
 import OrderDetailsSummaryCard from 'components/cards/OrderDetailsSummaryCard';
 import {
@@ -22,11 +22,11 @@ const OrderDetails = () => {
     <div>
       <PageBreadcrumb items={defaultBreadcrumbItems} />
       <div className="mb-16">
-        <h2 className="mb-1">
+        <h2 className="mb-0">
           Order <span>#349</span>
         </h2>
-        <div className="flex flex-wrap flex-between-center mb-4 gap-2">
-          <p className="text-muted leading-sm mb-0">
+        <div className="sm:flex flex-between-center mb-4">
+          <p className="text-muted leading-sm mb-0 mt-2 sm:mt-0">
             Customer ID :{' '}
             <Link className="font-bold" to="#!">
               {' '}
@@ -49,18 +49,20 @@ const OrderDetails = () => {
               Refund
             </Button>
             <Dropdown>
-              <Dropdown.Toggle
-                variant=""
-                className="ps-4 pe-0 dropdown-caret-none no-underline"
-              >
-                More action
-                <FontAwesomeIcon icon={faChevronDown} className="ms-2" />
-              </Dropdown.Toggle>
-              <Dropdown.Menu align="end">
-                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-              </Dropdown.Menu>
+              <Dropdown.Trigger asChild>
+                <button
+                  type="button"
+                  className="btn text-default dropdown-caret-none ps-4 pe-0"
+                >
+                  More action
+                  <FontAwesomeIcon icon={faChevronDown} className="ms-2" />
+                </button>
+              </Dropdown.Trigger>
+              <Dropdown.Content align="end">
+                <Dropdown.Item>Action</Dropdown.Item>
+                <Dropdown.Item>Another action</Dropdown.Item>
+                <Dropdown.Item>Something else here</Dropdown.Item>
+              </Dropdown.Content>
             </Dropdown>
           </div>
         </div>
@@ -84,24 +86,22 @@ const OrderDetails = () => {
             </Row>
           </Col>
           <Col xs={12} xl={4} xxl={3}>
-            <OrderDetailsSummaryCard className="mb-6" />
+            <OrderDetailsSummaryCard className="mb-4" />
             <Card>
               <Card.Body>
-                <Card.Title as="h3" className="mb-6">
-                  Order Status
-                </Card.Title>
+                <h3 className="card-title mb-6">Order Status</h3>
                 <h6 className="mb-2">Payment status</h6>
-                <Form.Select className="mb-6">
+                <Select className="mb-6" aria-label="payment status">
                   <option value="processing">Processing</option>
                   <option value="canceled">Canceled</option>
                   <option value="completed">Completed</option>
-                </Form.Select>
+                </Select>
                 <h6 className="mb-2">Fulfillment status</h6>
-                <Form.Select>
+                <Select aria-label="fulfillment status">
                   <option value="unfulfilled">Unfulfilled</option>
                   <option value="fulfilled">Fulfilled</option>
                   <option value="Pending">Pending</option>
-                </Form.Select>
+                </Select>
               </Card.Body>
             </Card>
           </Col>

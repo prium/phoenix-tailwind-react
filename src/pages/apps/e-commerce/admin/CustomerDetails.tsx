@@ -8,7 +8,7 @@ import CustomerOrdersTable from 'components/tables/CustomerOrdersTable';
 import CustomerRatingsTable from 'components/tables/CustomerRatingsTable';
 import CustomerWishlistTable from 'components/tables/CustomerWishlistTable';
 import { defaultBreadcrumbItems } from 'data/commonData';
-import { Card, Col, Row } from 'react-bootstrap';
+import { Card, Col, Row } from '@hummingbirdui/react';
 
 const CustomerDetails = () => {
   return (
@@ -21,13 +21,15 @@ const CustomerDetails = () => {
           </Col>
           <Col xs="auto" className="flex gap-4 flex-wrap">
             <Button
-              variant="phoenix-danger"
+              variant="phoenix"
+              color="danger"
               startIcon={<FontAwesomeIcon icon={faTrashAlt} className="me-2" />}
             >
               Delete customer
             </Button>
             <Button
-              variant="phoenix-secondary"
+              variant="phoenix"
+              color="secondary"
               startIcon={<FontAwesomeIcon icon={faKey} className="me-2" />}
             >
               Reset password
@@ -36,13 +38,13 @@ const CustomerDetails = () => {
         </Row>
         <Row className="g-8">
           <Col xs={12} xxl={4}>
-            <Row className="g-4 xxl-0 h-full">
+            <Row className="g-4 h-full">
               <Col xs={12} md={7} xxl={12}>
                 <CustomerProfileCard />
               </Col>
               <Col xs={12} md={5} xxl={12}>
                 <Card className="h-full">
-                  <Card.Body className="">
+                  <Card.Body>
                     <div className="flex items-center mb-4">
                       <h3 className="me-1">Default Address</h3>
                       <Button variant="link" className="p-0">
@@ -67,7 +69,9 @@ const CustomerDetails = () => {
                       </a>
                     </div>
                     <h5 className="text-muted">Phone</h5>
-                    <a href="tel:+1234567890">+1234567890</a>
+                    <a href="tel:+1234567890" className="text-muted">
+                      +1234567890
+                    </a>
                   </Card.Body>
                 </Card>
               </Col>
