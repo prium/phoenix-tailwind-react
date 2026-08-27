@@ -8,18 +8,18 @@ import { files } from 'data/chat';
 
 const SharedFiles = () => {
   return (
-    <div className="d-flex gap-3 my-3">
-      <FontAwesomeIcon icon={faFolder} className="fs-9" />
+    <div className="flex gap-4 my-4">
+      <FontAwesomeIcon icon={faFolder} className="text-md" />
       <div className="flex-1">
-        <h6 className="fw-semibold mb-2">Shared Files</h6>
+        <h6 className="font-semibold mb-2">Shared Files</h6>
         <div className="mb-2">
           {files.map((file, index) => (
             <div
               key={index}
               className={classNames(
-                'border-bottom d-flex align-items-center justify-content-between py-3 gap-2',
+                'border-b flex items-center justify-between py-6 gap-2',
                 {
-                  'border-top': index === 0
+                  'border-t': index === 0
                 }
               )}
             >
@@ -28,7 +28,7 @@ const SharedFiles = () => {
               <button className="btn p-0">
                 <FontAwesomeIcon
                   icon={faArrowAltCircleDown}
-                  className="fs-0 text-body-tertiary"
+                  className="fs-0 text-subtle"
                 />
               </button>
             </div>
@@ -36,7 +36,7 @@ const SharedFiles = () => {
         </div>
         <Button
           variant="link"
-          className="p-0 fs-10"
+          className="p-0 text-sm"
           endIcon={<FontAwesomeIcon icon={faChevronDown} />}
         >
           See 19 more

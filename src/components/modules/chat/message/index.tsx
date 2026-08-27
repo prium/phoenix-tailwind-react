@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import { cn } from '@hummingbirdui/react';
 import Avatar from 'components/base/Avatar';
 import Lightbox from 'components/base/LightBox';
 import { Message as MessageType, User, actions } from 'data/chat';
@@ -21,19 +21,19 @@ const Message = ({ message, user, showActions = true }: MessageProps) => {
   );
 
   return (
-    <div className="d-flex chat-message">
+    <div className="flex chat-message">
       <div
-        className={classNames('d-flex flex-1', {
-          'justify-content-end': message.type === 'sent'
+        className={cn('flex flex-1', {
+          'justify-end': message.type === 'sent'
         })}
       >
         <div
-          className={classNames('w-100', {
-            'w-xxl-75': showActions
+          className={cn('w-full', {
+            '2xl:w-3/4': showActions
           })}
         >
           <div
-            className={classNames('d-flex hover-actions-trigger', {
+            className={cn('flex hover-actions-trigger', {
               'flex-end-center': message.type === 'sent'
             })}
           >
@@ -41,7 +41,7 @@ const Message = ({ message, user, showActions = true }: MessageProps) => {
               <Avatar
                 src={user.avatar}
                 size="m"
-                className="me-3 flex-shrink-0"
+                className="me-4 shrink-0"
               />
             )}
 
@@ -50,14 +50,14 @@ const Message = ({ message, user, showActions = true }: MessageProps) => {
             )}
 
             <div
-              className={classNames('chat-message-content me-2', {
+              className={cn('chat-message-content me-2', {
                 received: message.type === 'received'
               })}
             >
               <div
-                className={classNames('mb-1', {
+                className={cn('mb-1', {
                   'sent-message-content ': message.type === 'sent',
-                  'received-message-content border border-translucent':
+                  'received-message-content border border-light':
                     message.type === 'received',
                   attachments:
                     Number(message.attachments?.images?.length) > 0 &&
@@ -89,12 +89,12 @@ const Message = ({ message, user, showActions = true }: MessageProps) => {
             )}
           </div>
           <div
-            className={classNames('d-flex gap-1 fs-10', {
-              'ms-7': message.type === 'received',
-              'justify-content-end': message.type === 'sent'
+            className={cn('flex gap-1 text-sm', {
+              'ms-24': message.type === 'received',
+              'justify-end': message.type === 'sent'
             })}
           >
-            <p className="mb-0 text-body-tertiary text-opacity-85 fw-semibold">
+            <p className="mb-0 text-subtle/85 font-semibold">
               {message.time}
             </p>
             {message.readAt && (

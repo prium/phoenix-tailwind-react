@@ -41,9 +41,9 @@ const ChatContent = () => {
 
   if (currentConversation) {
     return (
-      <Card as={PhoenixOffcanvasContainer} className="h-100 w-100">
+      <Card as={PhoenixOffcanvasContainer} className="h-full w-full">
         <ChatContentHeader />
-        <Card.Body className="p-3 p-sm-4 scrollbar d-flex flex-column gap-2">
+        <Card.Body className="p-4 sm:p-6 scrollbar flex flex-col gap-2">
           {currentConversation.messages.length === 0 && <ConversationStarter />}
           {currentConversation.messages.map(message => (
             <Message
@@ -61,7 +61,7 @@ const ChatContent = () => {
           open={showConversationDetails}
           placement="top"
           noBackdrop
-          className="bg-body-emphasis w-100 z-index-0 rounded-3"
+          className="bg-soft w-full z-index-0 rounded-lg"
         >
           <Scrollbar>
             <ConversationDetails
@@ -76,9 +76,9 @@ const ChatContent = () => {
             open={showUserListOffcanvas}
             placement="start"
             noBackdrop
-            className="w-100 z-index-0"
+            className="w-full z-index-0"
           >
-            <ChatSidebar className="border-0 h-100" />
+            <ChatSidebar className="border-0 h-full" />
           </PhoenixOffcanvas>
         )}
       </Card>

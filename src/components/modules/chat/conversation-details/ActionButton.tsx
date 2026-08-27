@@ -8,8 +8,8 @@ const ActionButton = ({
   children
 }: PropsWithChildren<{ icon: IconProp }>) => (
   <div>
-    <Button className="p-0 fw-semibold d-block">
-      <FontAwesomeIcon icon={icon} className="me-3" />
+    <Button className="p-0 font-semibold block">
+      <FontAwesomeIcon icon={icon} className="me-4" />
       {children}
     </Button>
   </div>

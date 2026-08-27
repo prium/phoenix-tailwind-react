@@ -19,28 +19,28 @@ const ChatSidebar = ({ className }: { className?: string }) => {
   } = useAppContext();
   return (
     <>
-      <Card className={classNames(className, 'chat-sidebar p-3 p-xl-1')}>
+      <Card className={classNames(className, 'chat-sidebar p-6 xl:p-1')}>
         <Button
-          className="d-none d-sm-block d-xl-none mb-2"
+          className="hidden sm:block xl:hidden mb-2"
           onClick={() => setOpenSearchModal(true)}
         >
           <FontAwesomeIcon
             icon={faMagnifyingGlass}
-            className="text-body-tertiary text-opacity-85 fs-7"
+            className="text-subtle text-opacity-85 text-lg"
           />
         </Button>
         <Dropdown
-          className="d-none d-sm-block d-xl-none mb-5"
+          className="hidden sm:block xl:hidden mb-8"
           align={isRTL ? 'end' : 'start'}
         >
           <Dropdown.Toggle
             variant=""
             size="sm"
-            className="w-100 mx-auto dropdown-caret-none"
+            className="w-full mx-auto dropdown-caret-none"
           >
             <FontAwesomeIcon
               icon={faBars}
-              className="fs-7 text-body-tertiary text-opacity-85"
+              className="text-lg text-subtle text-opacity-85"
             />
           </Dropdown.Toggle>
           <Dropdown.Menu className="p-0">
@@ -49,20 +49,20 @@ const ChatSidebar = ({ className }: { className?: string }) => {
             <Dropdown.Item eventKey="3">Unread</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        <Form.Group className="form-icon-container mb-4 d-sm-none d-xl-block">
+        <Form.Group className="form-icon-container mb-6 sm:hidden xl:block">
           <Form.Control
             type="text"
             placeholder="People, Groups and Messages"
             className="form-icon-input"
           />
-          <FontAwesomeIcon icon={faUser} className="text-body fs-9 form-icon" />
+          <FontAwesomeIcon icon={faUser} className="text-default text-md form-icon" />
         </Form.Group>
         <ChatFilterTab />
       </Card>
       <Modal
         show={openSearchModal}
         onHide={() => setOpenSearchModal(false)}
-        className="search-box-modal mt-15"
+        className="search-box-modal mt-30"
       >
         <Modal.Body className="p-0 bg-transparent">
           <DropdownSearchBox

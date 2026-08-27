@@ -1,6 +1,6 @@
 import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Dropdown } from 'react-bootstrap';
+import { Dropdown } from '@hummingbirdui/react';
 
 const ImageAttachmentPreview = ({
   image,
@@ -19,19 +19,21 @@ const ImageAttachmentPreview = ({
       style={{ height: previewHight, width: previewWidth }}
     >
       <img src={image} className="w-full h-full object-cover" alt="" />
-      <Dropdown className="absolute end-0 top-0 mt-2 me-2">
-        <Dropdown.Toggle
-          className="text-default bg-default dropdown-caret-none px-4 py-2"
-          id="dropdown-basic"
-        >
-          <FontAwesomeIcon icon={faEllipsisH} />
-        </Dropdown.Toggle>
-        <Dropdown.Menu className="py-1" align="end">
-          <Dropdown.Item href="#/action-1" onClick={handleClose}>
-            Remove
-          </Dropdown.Item>
-        </Dropdown.Menu>
-      </Dropdown>
+      <div className="absolute end-0 top-0 mt-2 me-2">
+        <Dropdown>
+          <Dropdown.Trigger asChild>
+            <button
+              type="button"
+              className="btn text-default bg-default dropdown-caret-none px-4 py-2"
+            >
+              <FontAwesomeIcon icon={faEllipsisH} />
+            </button>
+          </Dropdown.Trigger>
+          <Dropdown.Content className="py-1" align="end">
+            <Dropdown.Item onClick={handleClose}>Remove</Dropdown.Item>
+          </Dropdown.Content>
+        </Dropdown>
+      </div>
     </div>
   );
 };

@@ -73,7 +73,7 @@ const ChatContentFooter = () => {
         value={messageText}
         placeholder="Type your message..."
         onChange={({ target: { value } }) => setMessageText(value)}
-        className="chat-textarea form-control outline-none border-0 scrollbar resize-none mb-1 p-0 fs-8 fw-normal"
+        className="chat-textarea form-control outline-none border-0 scrollbar resize-none mb-1 p-0 text-base font-normal"
       />
 
       {fileAttachment && (
@@ -87,7 +87,7 @@ const ChatContentFooter = () => {
       )}
 
       {imageAttachments && (
-        <div className="mb-2 d-flex gap-2">
+        <div className="mb-2 flex gap-2">
           {imageAttachments.map((attachment, index) => (
             <ImageAttachmentPreview
               key={index}
@@ -102,11 +102,11 @@ const ChatContentFooter = () => {
         </div>
       )}
 
-      <div className="d-flex gap-3 align-items-center">
+      <div className="flex gap-4 items-center">
         <div>
           <Button
             variant="link"
-            className="p-0 text-body fs-9 btn-emoji"
+            className="p-0 text-default text-md btn-emoji"
             onClick={() => setPreviewEmoji(prev => !prev)}
           >
             <FontAwesomeIcon icon={faFaceSmile} />
@@ -127,12 +127,12 @@ const ChatContentFooter = () => {
         </div>
         <div>
           <Button className="p-0">
-            <label className="text-body fs-9 cursor-pointer" htmlFor="images">
+            <label className="text-default text-md cursor-pointer" htmlFor="images">
               <FontAwesomeIcon icon={faImage} />
             </label>
           </Button>
           <Form.Control
-            className="d-none"
+            className="hidden"
             type="file"
             accept="image/*"
             id="images"
@@ -145,14 +145,14 @@ const ChatContentFooter = () => {
         <div>
           <Button className="p-0">
             <label
-              className="text-body fs-9 cursor-pointer"
+              className="text-default text-md cursor-pointer"
               htmlFor="attachments"
             >
               <FontAwesomeIcon icon={faPaperclip} />
             </label>
           </Button>
           <Form.Control
-            className="d-none"
+            className="hidden"
             type="file"
             id="attachments"
             accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar"
@@ -164,10 +164,10 @@ const ChatContentFooter = () => {
           />
         </div>
 
-        <Button className="p-0 text-body fs-9">
+        <Button className="p-0 text-default text-md">
           <FontAwesomeIcon icon={faMicrophone} />
         </Button>
-        <Button className="p-0 text-body fs-9">
+        <Button className="p-0 text-default text-md">
           <FontAwesomeIcon icon={faEllipsis} />
         </Button>
 

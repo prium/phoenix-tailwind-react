@@ -1,7 +1,7 @@
 import { useChatWidgetContext } from 'providers/ChatWidgetProvider';
 import { ChangeEvent, FormEvent, useState } from 'react';
 import ImageAttachmentPreview from 'components/common/ImageAttachmentPreview';
-import classNames from 'classnames';
+import { Input, cn } from '@hummingbirdui/react';
 import { convertFileToAttachment } from 'helpers/utils';
 import AttachmentPreview from 'components/common/AttachmentPreview';
 import Button from 'components/base/Button';
@@ -11,8 +11,8 @@ import {
   faPaperPlane,
   faPaperclip
 } from '@fortawesome/free-solid-svg-icons';
-import { Form } from 'react-bootstrap';
 
+/** `.card-footer` of `+SupportChat` in phoenix-tailwind SupportChat.pug */
 const ChatWidgetFooter = () => {
   const [messageText, setMessageText] = useState('');
   const [fileAttachment, setFileAttachment] = useState<File | null>(null);
@@ -20,7 +20,7 @@ const ChatWidgetFooter = () => {
 
   const { sentMessage } = useChatWidgetContext();
 
-  const handleSumbit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (messageText || fileAttachment || imageAttachments.length > 0) {
       sentMessage({
@@ -41,9 +41,9 @@ const ChatWidgetFooter = () => {
   };
 
   return (
-    <form onSubmit={handleSumbit}>
+    <form onSubmit={handleSubmit}>
       {fileAttachment && (
-        <div className={classNames({ 'mb-2': fileAttachment })}>
+        <div className="mb-2">
           <AttachmentPreview
             attachment={convertFileToAttachment(fileAttachment)}
             size="xl"
@@ -52,12 +52,8 @@ const ChatWidgetFooter = () => {
         </div>
       )}
 
-      {imageAttachments && (
-        <div
-          className={classNames('flex gap-2', {
-            'mb-2': imageAttachments.length
-          })}
-        >
+      {imageAttachments.length > 0 && (
+        <div className={cn('flex gap-2 mb-2')}>
           {imageAttachments.map((attachment, index) => (
             <ImageAttachmentPreview
               key={index}
@@ -72,57 +68,45 @@ const ChatWidgetFooter = () => {
         </div>
       )}
       <div className="flex items-center gap-2">
-        <div className="flex items-center flex-1 gap-4 border rounded-full px-6">
-          <Form.Control
-            className="outline-none border-0 flex-1 fs--1 px-0"
+        <div className="flex items-center flex-1 gap-4 border border-light rounded-full px-6">
+          <Input
+            className="outline-none border-0 flex-1 text-md px-0"
             type="text"
             placeholder="Write message"
             value={messageText}
             onChange={e => setMessageText(e.target.value)}
           />
-          <div>
-            <Button className="p-0">
-              <label
-                className="text-soft text-md cursor-pointer"
-                htmlFor="widgetImages"
-              >
-                <FontAwesomeIcon icon={faImage} transform="down-1" />
-              </label>
-            </Button>
-            <Form.Control
-              className="hidden"
-              type="file"
-              accept="image/*"
-              id="widgetImages"
-              multiple
-              onChange={({
-                target: { files }
-              }: ChangeEvent<HTMLInputElement>) =>
-                files && setImageAttachments(Array.from(files))
-              }
-            />
-          </div>
-          <div>
-            <Button className="p-0">
-              <label
-                className="text-soft text-md cursor-pointer"
-                htmlFor="widgetAttachments"
-              >
-                <FontAwesomeIcon icon={faPaperclip} transform="down-1" />
-              </label>
-            </Button>
-            <Form.Control
-              className="hidden"
-              type="file"
-              id="widgetAttachments"
-              accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar"
-              onChange={({
-                target: { files }
-              }: ChangeEvent<HTMLInputElement>) => {
-                files && setFileAttachment(files[0]);
-              }}
-            />
-          </div>
+          <label
+            className="btn btn-link flex p-0 text-soft text-md border-0"
+            htmlFor="widgetImages"
+          >
+            <FontAwesomeIcon icon={faImage} />
+          </label>
+          <input
+            className="hidden"
+            type="file"
+            accept="image/*"
+            id="widgetImages"
+            multiple
+            onChange={({ target: { files } }: ChangeEvent<HTMLInputElement>) =>
+              files && setImageAttachments(Array.from(files))
+            }
+          />
+          <label
+            className="btn btn-link flex p-0 text-soft text-md border-0"
+            htmlFor="widgetAttachments"
+          >
+            <FontAwesomeIcon icon={faPaperclip} />
+          </label>
+          <input
+            className="hidden"
+            type="file"
+            id="widgetAttachments"
+            accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar"
+            onChange={({ target: { files } }: ChangeEvent<HTMLInputElement>) => {
+              files && setFileAttachment(files[0]);
+            }}
+          />
         </div>
         <Button className="p-0 border-0 send-btn" type="submit">
           <FontAwesomeIcon icon={faPaperPlane} className="text-md" />

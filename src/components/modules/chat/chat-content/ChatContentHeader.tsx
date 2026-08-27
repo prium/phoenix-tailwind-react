@@ -28,29 +28,29 @@ const ChatContentHeader = () => {
     <>
       {currentConversation && (
         <>
-          <Card.Header className="p-3 p-md-4 d-flex flex-between-center">
-            <div className="d-flex align-items-center">
+          <Card.Header className="p-4 md:p-6 flex flex-between-center">
+            <div className="flex items-center">
               <Button
-                className="ps-0 pe-2 text-body-tertiary d-sm-none"
+                className="ps-0 pe-2 text-subtle sm:hidden"
                 onClick={() => setShowUserListOffcanvas(true)}
               >
                 <FontAwesomeIcon icon={faChevronLeft} />
               </Button>
-              <div className="d-flex flex-column flex-md-row align-items-md-center">
+              <div className="flex flex-col md:flex-row md:items-center">
                 <Button
-                  className="fs-7 fw-semibold text-body-emphasis d-flex align-items-center p-0 me-3 text-start"
+                  className="text-lg font-semibold text-emphasis flex items-center p-0 me-4 text-start"
                   onClick={() => setShowConversationDetails(true)}
                 >
                   <span>{firstName}</span>
                   <FontAwesomeIcon
                     icon={faChevronDown}
-                    className="ms-2 fs-10"
+                    className="ms-2 text-sm"
                   />
                 </Button>
-                <p className="fs-9 mb-0 me-2">
+                <p className="text-md mb-0 me-2">
                   <FontAwesomeIcon
                     icon={faCircle}
-                    className={classNames('fs-11 me-2', {
+                    className={classNames('text-xs me-2', {
                       'text-success':
                         currentConversation.user.status === 'online',
                       'text-light':
@@ -63,7 +63,7 @@ const ChatContentHeader = () => {
                 </p>
               </div>
             </div>
-            <div className="d-flex">
+            <div className="flex">
               <Button variant="primary" className="btn-icon me-1">
                 <FontAwesomeIcon icon={faPhone} />
               </Button>

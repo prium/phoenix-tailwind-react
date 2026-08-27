@@ -34,12 +34,12 @@ const ConversationDetails = ({
 }: ConversationDetailsProps) => {
   return (
     <>
-      <div className="border-bottom border-translucent p-4">
-        <div className="d-flex flex-between-center">
+      <div className="border-b border-light p-6">
+        <div className="flex flex-between-center">
           <Button className="p-0" onClick={handleClose}>
             <FontAwesomeIcon
               icon={faChevronLeft}
-              className="text-body-tertiary"
+              className="text-subtle"
             />
           </Button>
           <Dropdown align="end">
@@ -50,7 +50,7 @@ const ConversationDetails = ({
             >
               <FontAwesomeIcon
                 icon={faEllipsisV}
-                className="text-body-tertiary"
+                className="text-subtle"
               />
             </Dropdown.Toggle>
             <Dropdown.Menu align="end" className="py-2">
@@ -58,23 +58,23 @@ const ConversationDetails = ({
             </Dropdown.Menu>
           </Dropdown>
         </div>
-        <div className="d-flex flex-column align-items-center text-center">
+        <div className="flex flex-col items-center text-center">
           <Avatar src={conversation.user.avatar} size="4xl" className="mb-2" />
-          <h4 className="fw-semibold mb-3">{conversation.user.name}</h4>
-          <div className="d-flex gap-1">
-            <Button variant="primary" className="btn-icon fs-10">
+          <h4 className="font-semibold mb-4">{conversation.user.name}</h4>
+          <div className="flex gap-1">
+            <Button variant="primary" className="btn-icon text-sm">
               <FontAwesomeIcon icon={faPhone} />
             </Button>
-            <Button variant="primary" className="btn-icon fs-10">
+            <Button variant="primary" className="btn-icon text-sm">
               <FontAwesomeIcon icon={faVideo} />
             </Button>
-            <Button variant="phoenix-primary" className="btn-icon fs-10">
+            <Button variant="phoenix-primary" className="btn-icon text-sm">
               <FontAwesomeIcon icon={faSearch} />
             </Button>
           </div>
         </div>
       </div>
-      <div className="p-4 px-sm-5 d-flex flex-column gap-3 scrollbar">
+      <div className="p-6 sm:px-8 flex flex-col gap-4 scrollbar">
         <ActionButton icon={faUserPen}>Nickname</ActionButton>
         <ActionButton icon={faPalette}>Change Color</ActionButton>
         <ActionButton icon={faUserPlus}>Create Group Chat</ActionButton>

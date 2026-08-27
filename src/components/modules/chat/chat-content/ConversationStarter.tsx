@@ -4,10 +4,10 @@ const ConversationStarter = () => {
   const { currentConversation } = useChatContext();
 
   return (
-    <div className="d-flex align-items-end justify-content-center text-center h-100">
+    <div className="flex items-end justify-center text-center h-full">
       <div>
         This is the beginning of your private chat with{' '}
-        <a href="#!" className="fw-semibold">
+        <a href="#!" className="font-semibold">
           {currentConversation?.user.name}
         </a>
         . You have 237 mutual connections.

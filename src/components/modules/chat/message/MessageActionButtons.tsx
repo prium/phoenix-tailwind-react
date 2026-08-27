@@ -15,8 +15,8 @@ const MessageActionButtons = ({
 }: MessageActionButtonsProps) => {
   return (
     <>
-      <div className="d-sm-none hover-actions align-self-center me-2 start-0">
-        <div className="bg-body-emphasis rounded-pill d-flex align-items-center border px-2 actions">
+      <div className="sm:hidden hover-actions self-center me-2 start-0">
+        <div className="bg-soft rounded-full flex items-center border px-2 actions">
           {actions.map(action => (
             <Button key={action.label} className="btn p-2" type="button">
               <FontAwesomeIcon
@@ -29,10 +29,10 @@ const MessageActionButtons = ({
           ))}
         </div>
       </div>
-      <div className="d-none d-sm-flex">
-        <div className="hover-actions position-relative align-self-center">
+      <div className="hidden sm:flex">
+        <div className="hover-actions relative self-center">
           {actions.map(action => (
-            <Button key={action.label} className="fs-10 p-2" type="button">
+            <Button key={action.label} className="text-sm p-2" type="button">
               <FontAwesomeIcon
                 icon={action.icon as IconProp}
                 className={classNames({
