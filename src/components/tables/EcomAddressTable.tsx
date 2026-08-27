@@ -1,5 +1,4 @@
-import React from 'react';
-import { Table } from 'react-bootstrap';
+import { Table } from '@hummingbirdui/react';
 import FeatherIcon from 'feather-icons-react';
 
 interface AddressTableDataType {
@@ -8,31 +7,36 @@ interface AddressTableDataType {
   value: string;
 }
 
+/** `+ShippingDetails` table in phoenix-tailwind checkout/Checkout.pug */
 const TableRow = ({ rowData }: { rowData: AddressTableDataType }) => {
   return (
-    <tr>
-      <td className="py-2 ps-0">
+    <Table.Row>
+      <Table.Cell className="py-2 ps-0 align-top">
         <div className="flex">
-          <FeatherIcon icon={rowData.labelIcon} size={16} className="me-2" />
+          <FeatherIcon
+            icon={rowData.labelIcon}
+            size={16}
+            className="me-2 size-4"
+          />
           <h5 className="leading-sm me-6">{rowData.label}</h5>
         </div>
-      </td>
-      <td className="py-2 font-bold leading-sm">:</td>
-      <td className="py-2 px-4" style={{ maxWidth: 260 }}>
+      </Table.Cell>
+      <Table.Cell className="py-2 font-bold leading-sm align-top">:</Table.Cell>
+      <Table.Cell className="py-2 px-4" style={{ maxWidth: 260 }}>
         <h5 className="leading-lg font-normal text-muted">{rowData.value}</h5>
-      </td>
-    </tr>
+      </Table.Cell>
+    </Table.Row>
   );
 };
 
 const EcomAddressTable = ({ data }: { data: AddressTableDataType[] }) => {
   return (
-    <Table borderless>
-      <tbody>
+    <Table borderless className="mt-6">
+      <Table.Body>
         {data.map(item => (
           <TableRow rowData={item} key={item.label} />
         ))}
-      </tbody>
+      </Table.Body>
     </Table>
   );
 };

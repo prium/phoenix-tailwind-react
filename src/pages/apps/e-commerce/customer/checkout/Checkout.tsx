@@ -1,6 +1,6 @@
 import Button from 'components/base/Button';
 import Section from 'components/base/Section';
-import { Col, Form, Row } from 'react-bootstrap';
+import { Col, Row } from '@hummingbirdui/react';
 import EcomAddressTable from 'components/tables/EcomAddressTable';
 import { shippingDetailsAddress } from 'data/e-commerce';
 import DeliveryType from 'components/modules/e-commerce/checkout/DeliveryType';
@@ -10,6 +10,7 @@ import CheckoutSummaryCard from 'components/modules/e-commerce/checkout/Checkout
 import PageBreadcrumb from 'components/common/PageBreadcrumb';
 import { defaultBreadcrumbItems } from 'data/commonData';
 
+/** apps/e-commerce/landing/checkout.pug */
 const Checkout = () => {
   return (
     <div className="pt-8 mb-16">
@@ -19,7 +20,7 @@ const Checkout = () => {
         <Row className="justify-between">
           <Col lg={7}>
             <form>
-              <div className="flex items-end mb-6">
+              <div className="flex items-end">
                 <h3 className="mb-0 me-4">Shipping Details</h3>
                 <Button variant="link" className="p-0" type="button">
                   Edit
@@ -28,31 +29,43 @@ const Checkout = () => {
               <EcomAddressTable data={shippingDetailsAddress} />
               <hr className="my-10" />
               <h3>Billing Details</h3>
-              <Form.Check type="checkbox" id="sameAsShipping" className="mb-6">
-                <Form.Check.Input type="checkbox" />
-                <Form.Check.Label className="text-base font-normal">
+              <div className="form-check">
+                <input
+                  type="checkbox"
+                  id="sameAsShipping"
+                  className="form-check-input"
+                  defaultChecked
+                />
+                <label
+                  htmlFor="sameAsShipping"
+                  className="form-check-label text-base font-normal"
+                >
                   Same as shipping address
-                </Form.Check.Label>
-              </Form.Check>
+                </label>
+              </div>
               <EcomAddressTable data={shippingDetailsAddress} />
               <hr className="my-10" />
               <DeliveryType />
               <hr className="my-10" />
               <PaymentMethod />
 
-              <div className="flex flex-col sm:flex-row gap-2 mb-12 lg:mb-0">
-                <Button variant="primary" type="submit" className="w-full">
-                  Pay {currencyFormat(695.2)}
-                </Button>
-
-                <Button
-                  variant="phoenix-secondary"
-                  type="submit"
-                  className="whitespace-nowrap"
-                >
-                  Save Order and Exit
-                </Button>
-              </div>
+              <Row className="g-2 mb-8 lg:mb-0">
+                <Col md={8} lg={9} className="grid">
+                  <Button variant="primary" type="submit">
+                    Pay {currencyFormat(695.2, { minimumFractionDigits: 2 })}
+                  </Button>
+                </Col>
+                <Col md={4} lg={3} className="grid">
+                  <Button
+                    variant="phoenix"
+                    color="secondary"
+                    type="submit"
+                    className="whitespace-nowrap"
+                  >
+                    Save Order and Exit
+                  </Button>
+                </Col>
+              </Row>
             </form>
           </Col>
           <Col lg={5} xl={4}>

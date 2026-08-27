@@ -1,4 +1,4 @@
-import { Col, Form, Row } from 'react-bootstrap';
+import { Col, Input, Row, Select } from '@hummingbirdui/react';
 import visa from 'assets/img/logos/visa.png';
 import discover from 'assets/img/logos/discover.png';
 import mastercard from 'assets/img/logos/mastercard.png';
@@ -7,138 +7,145 @@ import dayjs from 'dayjs';
 import localeData from 'dayjs/plugin/localeData';
 dayjs.extend(localeData);
 
+const FieldLabel = ({ htmlFor, children }: { htmlFor?: string; children: string }) => (
+  <label
+    htmlFor={htmlFor}
+    className="form-label text-base text-highlight ps-0 normal-case"
+  >
+    {children}
+  </label>
+);
+
+/** `+PaymentMethod` in phoenix-tailwind mixins/e-commerce/checkout/Checkout.pug */
 export const PaymentMethod = () => {
   return (
     <>
       <h3 className="mb-8">Payment Method</h3>
-      <Row className="g-6 mb-8">
+      <Row className="g-6 mb-11">
         <Col xs={12}>
           <Row className="lg:gx-20">
-            <Col xs={12} md="auto">
-              <div className="flex">
-                <Form.Check type="radio" id="creditCard" className="me-4">
-                  <Form.Check.Input
-                    value="credit_card"
-                    type="radio"
-                    name="paymentMethod"
-                  />
-                  <Form.Check.Label className="text-base text-default">
-                    Credit card
-                  </Form.Check.Label>
-                </Form.Check>
-                <img className="h-full me-2" src={visa} alt="visa" />
-                <img className="h-full me-2" src={discover} alt="discover" />
-                <img className="h-full me-2" src={mastercard} alt="mastercard" />
-                <img
-                  className="h-full"
-                  src={american_express}
-                  alt="american_express"
+            <Col md="auto">
+              <div className="form-check mb-1.25">
+                <input
+                  type="radio"
+                  id="creditCard"
+                  name="paymentMethod"
+                  value="credit_card"
+                  className="form-check-input"
+                  defaultChecked
                 />
+                <label
+                  htmlFor="creditCard"
+                  className="form-check-label text-base text-default whitespace-nowrap flex gap-2"
+                >
+                  Credit card
+                  <img className="h-full" src={visa} alt="visa" />
+                  <img className="h-full" src={discover} alt="discover" />
+                  <img className="h-full" src={mastercard} alt="mastercard" />
+                  <img className="h-full" src={american_express} alt="american express" />
+                </label>
               </div>
             </Col>
             <Col xs={12} md="auto">
-              <Form.Check type="radio" id="paypal">
-                <Form.Check.Input
-                  value="paypal"
+              <div className="form-check mb-1.25">
+                <input
                   type="radio"
+                  id="paypal"
                   name="paymentMethod"
+                  value="paypal"
+                  className="form-check-input"
                 />
-                <Form.Check.Label className="text-base text-default">
+                <label htmlFor="paypal" className="form-check-label text-base text-default">
                   Paypal
-                </Form.Check.Label>
-              </Form.Check>
+                </label>
+              </div>
             </Col>
             <Col xs={12} md="auto">
-              <Form.Check type="radio" id="coupon">
-                <Form.Check.Input
+              <div className="form-check mb-1.25">
+                <input
                   type="radio"
-                  value="coupon"
+                  id="coupon"
                   name="paymentMethod"
+                  value="coupon"
+                  className="form-check-input"
                 />
-                <Form.Check.Label className="text-base text-default">
+                <label htmlFor="coupon" className="form-check-label text-base text-default">
                   Coupon
-                </Form.Check.Label>
-              </Form.Check>
+                </label>
+              </div>
             </Col>
           </Row>
         </Col>
         <Col md={6}>
-          <Form.Group as={Col}>
-            <Form.Label className="text-base text-highlight ps-0 text-transform-none">
-              Select card
-            </Form.Label>
-            <Form.Select className="text-emphasis">
-              <option>Select a card</option>
-              <option value="visa">Visa</option>
-              <option value="discover">Discover</option>
-              <option value="mastercard">Mastercard</option>
-              <option value="american-express">American Express</option>
-            </Form.Select>
-          </Form.Group>
+          <FieldLabel htmlFor="selectCard">Select card</FieldLabel>
+          <Select id="selectCard" className="text-emphasis" defaultValue="">
+            <option value="">Select a card</option>
+            <option value="visa">Visa</option>
+            <option value="discover">Discover</option>
+            <option value="mastercard">Mastercard</option>
+            <option value="american-express">American Express</option>
+          </Select>
         </Col>
         <Col md={6}>
-          <Form.Group>
-            <h5 className="text-highlight mb-2"> Card number</h5>
-            <Form.Control
-              className="text-emphasis"
-              type="number"
-              placeholder="Enter card number"
-            />
-          </Form.Group>
+          <FieldLabel htmlFor="inputCardNumber">Card number</FieldLabel>
+          <Input
+            id="inputCardNumber"
+            className="text-emphasis"
+            type="number"
+            placeholder="Enter card number"
+          />
         </Col>
         <Col xs={12}>
-          <Form.Group as={Col}>
-            <h5 className="text-highlight mb-2">Full name</h5>
-            <Form.Control
-              name="full_name"
-              type="text"
-              placeholder="Type your fullname"
-            />
-          </Form.Group>
+          <FieldLabel htmlFor="inputName">Full name</FieldLabel>
+          <Input
+            id="inputName"
+            name="full_name"
+            type="text"
+            placeholder="Ansolo Lazinatov"
+          />
         </Col>
         <Col md={6}>
-          <h5 className="text-highlight mb-2">Expires on</h5>
-          <div className="flex gap-4">
-            <Form.Select className="text-emphasis" name="month">
-              <option>Month</option>
+          <FieldLabel>Expires on</FieldLabel>
+          <div className="flex">
+            <Select className="text-emphasis me-4" name="month" defaultValue="">
+              <option value="">Month</option>
               {dayjs.months().map(month => (
                 <option value={month} key={month}>
                   {month}
                 </option>
               ))}
-            </Form.Select>
-
-            <select className="form-select text-emphasis">
-              <option>Year</option>
-              <option value={2022}>2022</option>
-              <option value={2023}>2023</option>
-              <option value={2024}>2024</option>
-              <option value={2025}>2025</option>
-              <option value={2026}>2026</option>
-            </select>
+            </Select>
+            <Select className="text-emphasis" name="year" defaultValue="">
+              <option value="">Year</option>
+              {[2022, 2023, 2024, 2025, 2026].map(year => (
+                <option value={year} key={year}>
+                  {year}
+                </option>
+              ))}
+            </Select>
           </div>
         </Col>
         <Col md={6}>
-          <Form.Group as={Col}>
-            <h5 className="text-highlight mb-2">CVC</h5>
-            <Form.Control
-              className="text-emphasis input-spin-none"
-              type="number"
-              placeholder="Enter a valid CVC"
-            />
-          </Form.Group>
+          <FieldLabel htmlFor="inputCardCVC">CVC</FieldLabel>
+          <Input
+            id="inputCardCVC"
+            className="text-emphasis input-spin-none"
+            type="number"
+            placeholder="Enter a valid CVC"
+          />
         </Col>
         <Col xs={12}>
-          <Form.Check type="checkbox" id="gridCheck" className="me-4">
-            <Form.Check.Input
+          <div className="form-check">
+            <input
               type="checkbox"
+              id="gridCheck"
               value="save"
-              name="paymentMethod"
+              className="form-check-input"
             />
-            <Form.Check.Label className="text-base text-emphasis">
+            <label htmlFor="gridCheck" className="form-check-label text-emphasis text-base">
               Save Card Details
-            </Form.Check.Label>
-          </Form.Check>
+            </label>
+          </div>
         </Col>
       </Row>
     </>

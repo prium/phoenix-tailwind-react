@@ -1,4 +1,4 @@
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row } from '@hummingbirdui/react';
 import DeliveryTypeRadioItem from './DeliveryOptionRadioItem';
 
 export interface DeliveryOptionsType {

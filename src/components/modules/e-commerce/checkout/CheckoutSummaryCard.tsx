@@ -1,23 +1,29 @@
 import Button from 'components/base/Button';
 import { cartItems } from 'data/e-commerce/products';
 import { currencyFormat } from 'helpers/utils';
-import React from 'react';
-import { Card, Col, Row } from 'react-bootstrap';
+import { Card, Col, Row, cn } from '@hummingbirdui/react';
 
+/** `+CheckoutSummaryCard` in phoenix-tailwind mixins/e-commerce/checkout */
 const CheckoutSummaryCard = () => {
   return (
-    <Card>
+    <Card className="mt-4 lg:mt-0">
       <Card.Body>
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-center justify-between">
           <h3 className="mb-0">Summary</h3>
           <Button variant="link" className="pe-0" type="button">
             Edit cart
           </Button>
         </div>
-        <div className="border-dashed border-b border-light mb-6">
-          <div className="-ms-2 mb-8">
-            {cartItems.map(item => (
-              <Row className="items-center g-4 mb-2" key={item.id}>
+        <div className="border-dashed border-b border-light mt-6">
+          <div className="-ms-2">
+            {cartItems.map((item, index) => (
+              <Row
+                className={cn('items-center g-4', {
+                  'mb-2': index !== cartItems.length - 1,
+                  'mb-8': index === cartItems.length - 1
+                })}
+                key={item.id}
+              >
                 <Col xs={8} md={7} lg={8}>
                   <div className="flex items-center">
                     <img
@@ -26,7 +32,7 @@ const CheckoutSummaryCard = () => {
                       width={40}
                       alt={item.name}
                     />
-                    <h6 className="font-semibold text-highlight leading-base line-clamp-2">
+                    <h6 className="font-semibold text-highlight leading-[1.5] line-clamp-2">
                       {item.name}
                     </h6>
                   </div>
@@ -44,7 +50,7 @@ const CheckoutSummaryCard = () => {
           </div>
         </div>
 
-        <div className="border-dashed border-b border-light mb-4">
+        <div className="border-dashed border-b border-light mt-6">
           <div className="flex justify-between mb-2">
             <h5 className="text-default font-semibold">Items subtotal: </h5>
             <h5 className="text-default font-semibold">$691</h5>
@@ -67,7 +73,7 @@ const CheckoutSummaryCard = () => {
           </div>
         </div>
 
-        <div className="flex justify-between">
+        <div className="flex justify-between pt-4">
           <h4 className="mb-0">Total :</h4>
           <h4 className="mb-0">$695.20</h4>
         </div>
