@@ -6,12 +6,12 @@ const FilterFormFlightAircraft = () => {
   return (
     <CollapsibleContainer
       collapseTitle="Aircraft"
-      titleClass="fs-8"
+      titleClass="text-base"
       containerSize="sm"
       id="flightStops"
     >
       <div className="p-3 pb-0">
-        <div className="d-flex mb-3">
+        <div className="flex mb-3">
           <Form.Check type="radio" className="form-check-inline">
             <Form.Check.Input
               type="radio"
@@ -20,7 +20,7 @@ const FilterFormFlightAircraft = () => {
             />
             <Form.Check.Label
               htmlFor="includeAircraft"
-              className="fs-8 text-body"
+              className="text-base text-default"
             >
               Include
             </Form.Check.Label>
@@ -34,7 +34,7 @@ const FilterFormFlightAircraft = () => {
             />
             <Form.Check.Label
               htmlFor="excludeAircraft"
-              className="fs-8 text-body"
+              className="text-base text-default"
             >
               Exclude
             </Form.Check.Label>
@@ -43,7 +43,7 @@ const FilterFormFlightAircraft = () => {
         {flightAircraft.map(aircraft => (
           <Form.Check key={aircraft.id}>
             <Form.Check.Input id={aircraft.id} />
-            <Form.Check.Label htmlFor={aircraft.id} className="fs-8 text-body">
+            <Form.Check.Label htmlFor={aircraft.id} className="text-base text-default">
               {aircraft.label}
             </Form.Check.Label>
           </Form.Check>

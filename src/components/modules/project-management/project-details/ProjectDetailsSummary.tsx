@@ -17,84 +17,84 @@ const ProjectDetailsSummary = () => {
           <tbody>
             <tr>
               <td className="py-1" colSpan={2}>
-                <div className="d-flex">
+                <div className="flex">
                   <FontAwesomeIcon
                     icon={faEarthAmericas}
-                    className="me-2 text-body-tertiary fs-9"
+                    className="me-2 text-subtle text-md"
                   />
-                  <h5 className="text-body">Public project</h5>
+                  <h5 className="text-default">Public project</h5>
                 </div>
               </td>
             </tr>
             <tr>
               <td className="align-top py-1">
-                <div className="d-flex">
+                <div className="flex">
                   <FontAwesomeIcon
                     icon={faUser}
-                    className="me-2 text-body-tertiary fs-9"
+                    className="me-2 text-subtle text-md"
                   />
-                  <h5 className="text-body mb-0 text-nowrap">Client :</h5>
+                  <h5 className="text-default mb-0 text-nowrap">Client :</h5>
                 </div>
               </td>
               <td className="ps-1 py-1">
-                <Link className="fw-semibold d-block lh-sm" to="#!">
+                <Link className="font-semibold block lh-sm" to="#!">
                   Gobble the Bleep Inc
                 </Link>
               </td>
             </tr>
             <tr>
               <td className="align-top py-1">
-                <div className="d-flex">
+                <div className="flex">
                   <FontAwesomeIcon
                     icon={faCreditCard}
-                    className="me-2 text-body-tertiary fs-9"
+                    className="me-2 text-subtle text-md"
                   />
-                  <h5 className="text-body mb-0 text-nowrap">Budget : </h5>
+                  <h5 className="text-default mb-0 text-nowrap">Budget : </h5>
                 </div>
               </td>
-              <td className="fw-bold ps-1 py-1 text-body-highlight">$8,742</td>
+              <td className="font-bold ps-1 py-1 text-highlight">$8,742</td>
             </tr>
           </tbody>
         </table>
         <table className="lh-sm">
           <tbody>
             <tr>
-              <td className="align-top py-1 text-body text-nowrap fw-bold">
+              <td className="align-top py-1 text-default text-nowrap font-bold">
                 Started :{' '}
               </td>
-              <td className="text-body-tertiary text-opacity-85 fw-semibold ps-3">
+              <td className="text-subtle text-opacity-85 font-semibold ps-3">
                 17th Nov, 2020
               </td>
             </tr>
             <tr>
-              <td className="align-top py-1 text-body text-nowrap fw-bold">
+              <td className="align-top py-1 text-default text-nowrap font-bold">
                 Deadline :
               </td>
-              <td className="text-body-tertiary text-opacity-85 fw-semibold ps-3">
+              <td className="text-subtle text-opacity-85 font-semibold ps-3">
                 21st May, 2028
               </td>
             </tr>
             <tr>
-              <td className="align-top py-1 text-body text-nowrap fw-bold">
+              <td className="align-top py-1 text-default text-nowrap font-bold">
                 Progress :
               </td>
-              <td className="text-warning fw-semibold ps-3">80%</td>
+              <td className="text-warning font-semibold ps-3">80%</td>
             </tr>
           </tbody>
         </table>
       </div>
       <div>
-        <div className="d-flex align-items-center">
+        <div className="flex align-items-center">
           <FontAwesomeIcon
             icon={faListCheck}
-            className="me-2 text-body-tertiary fs-9"
+            className="me-2 text-subtle text-md"
           />
-          <h5 className="text-body-emphasis mb-0 me-2">
-            91<span className="text-body fw-normal ms-2">tasks</span>
+          <h5 className="text-emphasis mb-0 me-2">
+            91<span className="text-default font-normal ms-2">tasks</span>
           </h5>
-          <Link className="fw-bold fs-9 mt-1" to="#!">
+          <Link className="font-bold text-md mt-1" to="#!">
             See tasks{' '}
-            <FontAwesomeIcon icon={faChevronRight} className="me-2 fs-10" />
+            <FontAwesomeIcon icon={faChevronRight} className="me-2 text-sm" />
           </Link>
         </div>
       </div>

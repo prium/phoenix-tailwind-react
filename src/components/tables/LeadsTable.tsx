@@ -45,7 +45,7 @@ export const leadsTableColumns: ColumnDef<LeadDataType>[] = [
     },
     meta: {
       headerProps: { style: { width: '25%' }, className: 'ps-0' },
-      cellProps: { className: 'white-space-nowrap ps-0' }
+      cellProps: { className: 'whitespace-nowrap ps-0' }
     }
   },
   {
@@ -71,11 +71,11 @@ export const leadsTableColumns: ColumnDef<LeadDataType>[] = [
     meta: {
       headerProps: {
         style: { width: '15%' },
-        className: 'ps-4 pe-5 border-end border-translucent'
+        className: 'ps-4 pe-5 border-end border-light'
       },
       cellProps: {
         className:
-          'white-space-nowrap fw-semibold ps-4 border-end border-translucent'
+          'whitespace-nowrap font-semibold ps-4 border-end border-light'
       }
     }
   },
@@ -102,11 +102,11 @@ export const leadsTableColumns: ColumnDef<LeadDataType>[] = [
     meta: {
       headerProps: {
         style: { width: '15%', minWidth: '180px' },
-        className: 'ps-4 pe-5 border-end border-translucent'
+        className: 'ps-4 pe-5 border-end border-light'
       },
       cellProps: {
         className:
-          'white-space-nowrap fw-semibold ps-4 border-end border-translucent'
+          'whitespace-nowrap font-semibold ps-4 border-end border-light'
       }
     }
   },
@@ -126,11 +126,11 @@ export const leadsTableColumns: ColumnDef<LeadDataType>[] = [
     meta: {
       headerProps: {
         style: { width: '15%' },
-        className: 'ps-4 pe-5 border-end border-translucent'
+        className: 'ps-4 pe-5 border-end border-light'
       },
       cellProps: {
         className:
-          'white-space-nowrap ps-4 border-end border-translucent fw-semibold text-body-highlight'
+          'whitespace-nowrap ps-4 border-end border-light font-semibold text-highlight'
       }
     }
   },
@@ -150,11 +150,11 @@ export const leadsTableColumns: ColumnDef<LeadDataType>[] = [
     meta: {
       headerProps: {
         style: { width: '15%' },
-        className: 'ps-4 pe-5 border-end border-translucent'
+        className: 'ps-4 pe-5 border-end border-light'
       },
       cellProps: {
         className:
-          'white-space-nowrap ps-4 border-end border-translucent fw-semibold text-body-highlight'
+          'whitespace-nowrap ps-4 border-end border-light font-semibold text-highlight'
       }
     }
   },
@@ -168,7 +168,7 @@ export const leadsTableColumns: ColumnDef<LeadDataType>[] = [
         className: 'ps-4 pe-5'
       },
       cellProps: {
-        className: 'white-space-nowrap ps-4 text-body-tertiary'
+        className: 'whitespace-nowrap ps-4 text-subtle'
       }
     }
   },
@@ -203,7 +203,7 @@ const LeadsTable = () => {
   return (
     <div className="border-t border-light">
       <AdvanceTable
-        tableProps={{ className: 'phoenix-table fs-9' }}
+        tableProps={{ className: ' text-md' }}
         rowClassName="hover-actions-trigger btn-reveal-trigger"
       />
       <AdvanceTableFooter pagination className="py-6" />

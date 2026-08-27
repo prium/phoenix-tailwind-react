@@ -22,7 +22,7 @@ const lightCode = `
         Disabled
       </Nav.Link>
     </Nav>
-    <Form className="d-flex">
+    <Form className="flex">
       <FormControl
         type="search"
         placeholder="Search"
@@ -55,7 +55,7 @@ const darkCode = `
         Disabled
       </Nav.Link>
     </Nav>
-    <Form className="d-flex">
+    <Form className="flex">
       <FormControl
         type="search"
         placeholder="Search"

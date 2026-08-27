@@ -10,13 +10,13 @@ const StepProgressBoard = ({ className }: { className?: string }) => {
   );
   return (
     <div className={className}>
-      <p className="mb-2 text-body-secondary">
+      <p className="mb-2 text-muted">
         Step: <span>{selectedStep}</span>
       </p>
       <ProgressBar
         now={value}
         style={{ height: 6 }}
-        className="bg-body-tertiary"
+        className="bg-highlight"
       />
     </div>
   );

@@ -19,8 +19,8 @@ const HomepageFilterOffcanvas = ({
       placement="end"
       {...props}
     >
-      <Offcanvas.Header className="p-4 bg-body-highlight" closeButton>
-        <h5 className="mb-0 text-body-highlight">Filter</h5>
+      <Offcanvas.Header className="p-4 bg-subtle" closeButton>
+        <h5 className="mb-0 text-highlight">Filter</h5>
       </Offcanvas.Header>
       <Offcanvas.Body className="scrollbar p-4">
         <HomepageFilterOffcanvasContent />

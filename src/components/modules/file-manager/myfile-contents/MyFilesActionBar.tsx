@@ -36,7 +36,7 @@ const MyFilesActionBar = () => {
     <div className="myfiles-action-bar mx-n4 mb-4">
       {checkedFileIds.length == 0 && (
         <h6
-          className="mb-0 text-body-tertiary"
+          className="mb-0 text-subtle"
           id="file-manager-replace-element"
         >
           {table.getState().globalFilter
@@ -47,10 +47,10 @@ const MyFilesActionBar = () => {
 
       <div
         id="file-manager-actions"
-        className={checkedFileIds.length ? 'd-block' : 'd-none'}
+        className={checkedFileIds.length ? 'block' : 'hidden'}
       >
-        <div className="d-flex align-items-center">
-          <button className="btn p-0 fs-8 me-2 me-sm-3">
+        <div className="flex align-items-center">
+          <button className="btn p-0 text-base me-2 me-sm-3">
             <FontAwesomeIcon
               onClick={() => {
                 setCheckedFileIds([]);
@@ -60,18 +60,18 @@ const MyFilesActionBar = () => {
               transform="down-1"
             />
           </button>
-          <h6 className="mb-0 me-4 text-nowrap text-body-tertiary">
+          <h6 className="mb-0 me-4 text-nowrap text-subtle">
             {checkedFileIds.length} item selected
           </h6>
 
-          <div className="d-flex gap-1 gap-sm-2">
+          <div className="flex gap-1 gap-sm-2">
             <OverlayTrigger
               placement="top"
               overlay={<Tooltip id="file-download-tooltip">Download</Tooltip>}
             >
               <Button
                 variant="phoenix-secondary"
-                className="fs-10 btn-square-sm d-none d-sm-block"
+                className="text-sm btn-square-sm hidden d-sm-block"
               >
                 <FontAwesomeIcon icon={faDownload} />
               </Button>
@@ -84,7 +84,7 @@ const MyFilesActionBar = () => {
             >
               <Button
                 variant="phoenix-secondary"
-                className="fs-10 btn-square-sm d-none d-sm-block"
+                className="text-sm btn-square-sm hidden d-sm-block"
                 onClick={handleDeleteFiles}
               >
                 <FontAwesomeIcon icon={faTrash} />
@@ -97,7 +97,7 @@ const MyFilesActionBar = () => {
             >
               <Button
                 variant="phoenix-secondary"
-                className="fs-10 btn-square-sm d-none d-sm-block"
+                className="text-sm btn-square-sm hidden d-sm-block"
               >
                 <FontAwesomeIcon icon={faShareNodes} />
               </Button>
@@ -106,7 +106,7 @@ const MyFilesActionBar = () => {
             <Dropdown align="end">
               <Dropdown.Toggle
                 variant="phoenix-secondary"
-                className="fs-10 btn-square-sm dropdown-caret-none"
+                className="text-sm btn-square-sm dropdown-caret-none"
               >
                 <FontAwesomeIcon icon={faEllipsis} />
               </Dropdown.Toggle>
@@ -135,7 +135,7 @@ const MyFilesActionBar = () => {
       >
         <Button
           variant="phoenix-secondary"
-          className="fs-10 btn-square-sm"
+          className="text-sm btn-square-sm"
           onClick={() => setShowFileDetails(!showFileDetails)}
         >
           <FontAwesomeIcon icon={faInfoCircle} />

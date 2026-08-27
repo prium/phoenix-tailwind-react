@@ -344,9 +344,9 @@ const Example = () => {
       <AdvanceTable
         tableProps={{
           size: 'sm',
-          className: 'phoenix-table fs-9 mb-0 border-top border-translucent'
+          className: ' text-md mb-0 border-top border-light'
         }}
-        rowClassName="hover-actions-trigger btn-reveal-trigger position-static"
+        rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />
     </AdvanceTableProvider>
   );
@@ -372,9 +372,9 @@ const PaginationExample = () => {
       <AdvanceTable
         tableProps={{
           size: 'sm',
-          className: 'phoenix-table fs-9 mb-0 border-top border-translucent'
+          className: ' text-md mb-0 border-top border-light'
         }}
-        rowClassName="hover-actions-trigger btn-reveal-trigger position-static"
+        rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />
       <AdvanceTableFooter pagination />
     </AdvanceTableProvider>
@@ -436,9 +436,9 @@ const SearchExample = () => {
       <AdvanceTable
         tableProps={{
           size: 'sm',
-          className: 'phoenix-table fs-9 mb-0 border-top border-translucent'
+          className: ' text-md mb-0 border-top border-light'
         }}
-        rowClassName="hover-actions-trigger btn-reveal-trigger position-static"
+        rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />
       <AdvanceTableFooter navBtn />
     </AdvanceTableProvider>
@@ -543,13 +543,13 @@ const projectListTableColumns: ColumnDef<Project>[] = [
     cell: ({ row: { original } }) => {
       const { name } = original;
       return (
-        <Link to="#!" className="text-decoration-none fw-bold fs-8">
+        <Link to="#!" className="text-decoration-none font-bold text-base">
           {name}
         </Link>
       );
     },
     meta: {
-      cellProps: { className: 'white-space-nowrap py-4' }
+      cellProps: { className: 'whitespace-nowrap py-4' }
     }
   },
 
@@ -557,7 +557,7 @@ const projectListTableColumns: ColumnDef<Project>[] = [
     header: 'Start date',
     accessorKey: 'start',
     meta: {
-      cellProps: { className: 'ps-3 fs-9 text-body white-space-nowrap py-4' },
+      cellProps: { className: 'ps-3 text-md text-default whitespace-nowrap py-4' },
       headerProps: { className: 'ps-3' }
     }
   },
@@ -566,7 +566,7 @@ const projectListTableColumns: ColumnDef<Project>[] = [
     accessorKey: 'task',
     header: 'Task',
     meta: {
-      cellProps: { className: 'ps-3 text-body py-4' },
+      cellProps: { className: 'ps-3 text-default py-4' },
       headerProps: { className: 'ps-3' }
     }
   },
@@ -667,9 +667,9 @@ const FilterByColumnExample = () => {
       <AdvanceTable
         tableProps={{
           size: 'sm',
-          className: 'phoenix-table fs-9 mb-0 border-top border-translucent'
+          className: ' text-md mb-0 border-top border-light'
         }}
-        rowClassName="hover-actions-trigger btn-reveal-trigger position-static"
+        rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />
       <AdvanceTableFooter navBtn />
     </AdvanceTableProvider>
@@ -814,9 +814,9 @@ const Example = () => {
       <AdvanceTable
         tableProps={{
           size: 'sm',
-          className: 'phoenix-table fs-9 mb-0 border-top border-translucent'
+          className: ' text-md mb-0 border-top border-light'
         }}
-        rowClassName="hover-actions-trigger btn-reveal-trigger position-static"
+        rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />
     </AdvanceTableProvider>
   );
@@ -837,9 +837,9 @@ const PaginationExample = () => {
       <AdvanceTable
         tableProps={{
           size: 'sm',
-          className: 'phoenix-table fs-9 mb-0 border-top border-translucent'
+          className: ' text-md mb-0 border-top border-light'
         }}
-        rowClassName="hover-actions-trigger btn-reveal-trigger position-static"
+        rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />
       <AdvanceTableFooter pagination />
     </AdvanceTableProvider>
@@ -871,9 +871,9 @@ const SearchExample = () => {
       <AdvanceTable
         tableProps={{
           size: 'sm',
-          className: 'phoenix-table fs-9 mb-0 border-top border-translucent'
+          className: ' text-md mb-0 border-top border-light'
         }}
-        rowClassName="hover-actions-trigger btn-reveal-trigger position-static"
+        rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />
       <AdvanceTableFooter navBtn />
     </AdvanceTableProvider>
@@ -887,13 +887,13 @@ export const projectListTableColumns: ColumnDef<Project>[] = [
     cell: ({ row: { original } }) => {
       const { name } = original;
       return (
-        <Link to="#!" className="text-decoration-none fw-bold fs-8">
+        <Link to="#!" className="text-decoration-none font-bold text-base">
           {name}
         </Link>
       );
     },
     meta: {
-      cellProps: { className: 'white-space-nowrap py-4' }
+      cellProps: { className: 'whitespace-nowrap py-4' }
     }
   },
 
@@ -901,7 +901,7 @@ export const projectListTableColumns: ColumnDef<Project>[] = [
     header: 'Start date',
     accessorKey: 'start',
     meta: {
-      cellProps: { className: 'ps-3 fs-9 text-body white-space-nowrap py-4' },
+      cellProps: { className: 'ps-3 text-md text-default whitespace-nowrap py-4' },
       headerProps: { className: 'ps-3' }
     }
   },
@@ -910,7 +910,7 @@ export const projectListTableColumns: ColumnDef<Project>[] = [
     accessorKey: 'task',
     header: 'Task',
     meta: {
-      cellProps: { className: 'ps-3 text-body py-4' },
+      cellProps: { className: 'ps-3 text-default py-4' },
       headerProps: { className: 'ps-3' }
     }
   },
@@ -1011,9 +1011,9 @@ const FilterByColumnExample = () => {
       <AdvanceTable
         tableProps={{
           size: 'sm',
-          className: 'phoenix-table fs-9 mb-0 border-top border-translucent'
+          className: ' text-md mb-0 border-top border-light'
         }}
-        rowClassName="hover-actions-trigger btn-reveal-trigger position-static"
+        rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />
       <AdvanceTableFooter navBtn />
     </AdvanceTableProvider>

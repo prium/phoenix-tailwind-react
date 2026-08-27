@@ -37,7 +37,7 @@ const GanttDeleteLinkModal = () => {
         aria-labelledby="deleteLinkModal"
       >
         <Modal.Header className="p-4 pb-3 align-items-start">
-          <h3 className="mb-2 text-body-highlight">Delete Link</h3>
+          <h3 className="mb-2 text-highlight">Delete Link</h3>
           <button onClick={() => setShow(false)} className="btn p-0 ms-auto">
           <FontAwesomeIcon icon={faTimes} className="btn-close" />
         </button>

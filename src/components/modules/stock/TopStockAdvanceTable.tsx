@@ -66,7 +66,7 @@ const TopStockAdvanceTable = ({
         {hasFooter && (
           <tfoot>
             {getFooterGroups().map(footerGroup => (
-              <tr key={footerGroup.id} className="border-0 border-translucent">
+              <tr key={footerGroup.id} className="border-0 border-light">
                 {footerGroup.headers.map(header => {
                   return (
                     <th

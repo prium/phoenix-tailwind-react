@@ -31,7 +31,7 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
     cell: ({ row: { original } }) => currencyFormat(original.total),
     meta: {
       headerProps: { style: { width: '6%' }, className: 'text-end' },
-      cellProps: { className: 'text-end fw-semibold text-body-highlight' }
+      cellProps: { className: 'text-end font-semibold text-highlight' }
     }
   },
   {
@@ -55,7 +55,7 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
         style: { width: '28%', minWidth: 250 },
         className: 'ps-8'
       },
-      cellProps: { className: 'ps-8 py-0 white-space-nowrap' }
+      cellProps: { className: 'ps-8 py-0 whitespace-nowrap' }
     }
   },
   {
@@ -119,7 +119,7 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
     header: 'Delivery type',
     meta: {
       headerProps: { style: { width: '30%' } },
-      cellProps: { className: 'text-body fs-9' }
+      cellProps: { className: 'text-default text-md' }
     }
   },
   {
@@ -128,7 +128,7 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
     meta: {
       headerProps: { className: 'text-end' },
       cellProps: {
-        className: 'text-body-tertiary fs-9 ps-4 text-end white-space-nowrap'
+        className: 'text-subtle text-md ps-4 text-end whitespace-nowrap'
       }
     }
   }
@@ -137,7 +137,7 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
 const OrdersTable = () => {
   return (
     <div>
-      <AdvanceTable tableProps={{ className: 'phoenix-table fs-9' }} />
+      <AdvanceTable tableProps={{ className: ' text-md' }} />
       <AdvanceTableFooter pagination />
     </div>
   );

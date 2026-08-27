@@ -27,7 +27,7 @@ const EventDetail = () => {
         <Col xl={8} className="border-end-xl">
           <EventTitleCard className="mb-9" />
           <h2 className="mb-3">About this event</h2>
-          <p className="text-justify text-body-secondary mb-6 mb-xxl-8">
+          <p className="text-justify text-muted mb-6 mb-xxl-8">
             The Festival Season hopes to continue its rescheduled events in 2023
             during the spring block. This will be a continuation of the
             tradition for the loyal fanbase to watch a jam-packed day full of
@@ -39,7 +39,7 @@ const EventDetail = () => {
           </p>
           <EventsSingersSection photos={SingerPhotos} />
           <EventsTopicCovered />
-          <h4 className="mb-3 text-body-highlight fs-xxl-6">Refund Policy:</h4>
+          <h4 className="mb-3 text-highlight fs-xxl-6">Refund Policy:</h4>
           <ul className="mb-6 ps-4">
             <li>Contact the organizer to request a refund.</li>
             <li>Eventbrite’s fee is nonrefundable.</li>
@@ -50,7 +50,7 @@ const EventDetail = () => {
           <EventsOrganized />
           <Location />
           <h3 className="mb-3">Tags</h3>
-          <div className="d-flex flex-wrap mb-8">
+          <div className="flex flex-wrap mb-8">
             <Badge variant="tag" className="me-2">
               Music
             </Badge>
@@ -59,7 +59,7 @@ const EventDetail = () => {
             </Badge>
             <Badge variant="tag">Greatest show on earth</Badge>
           </div>
-          <div className="border-top border-translucent">
+          <div className="border-top border-light">
             <Events events={events} title="Upcoming events" />
           </div>
         </Col>

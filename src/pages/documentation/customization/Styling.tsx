@@ -159,12 +159,12 @@ const Styling = () => {
       <DocPagesLayout>
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Edit SCSS" />
-          <PhoenixDocCard.Body className="text-body-secondary">
+          <PhoenixDocCard.Body className="text-muted">
             <p>
               You can add your own SCSS and override the theme style in the{' '}
               <code>user.scss</code> file.
             </p>
-            <div className="border rounded-1 bg-body-emphasis px-3 py-2 mt-4 mb-3">
+            <div className="border rounded-1 bg-soft px-3 py-2 mt-4 mb-3">
               <code>user.scss</code>
             </div>
             <p>
@@ -176,14 +176,14 @@ const Styling = () => {
               overridden with your own value.
             </p>
 
-            <div className="border rounded-1 bg-body-emphasis px-3 py-2 mt-4 mb-3">
+            <div className="border rounded-1 bg-soft px-3 py-2 mt-4 mb-3">
               <code>_user-variables.scss</code>
             </div>
             <p>
               To remove bootstrap components, update{' '}
               <code>src/scss/_bootstrap.scss</code> file.
             </p>
-            <div className="border rounded-1 bg-body-emphasis px-3 py-2 mt-4 mb-3">
+            <div className="border rounded-1 bg-soft px-3 py-2 mt-4 mb-3">
               <code>_bootstrap.scss</code>
             </div>
           </PhoenixDocCard.Body>
@@ -191,7 +191,7 @@ const Styling = () => {
 
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Changing theme colors" />
-          <PhoenixDocCard.Body className="text-body-secondary">
+          <PhoenixDocCard.Body className="text-muted">
             <p>
               You can bring your necessary variable colors form{' '}
               <code>src/scss/theme/_colors.scss </code> and{' '}
@@ -221,7 +221,7 @@ const Styling = () => {
             </p>
             <PhoenixLiveEditor code={darkThemeColorCode} />
 
-            <h6 className="mt-4 fs-7 mb-2 fw-semibold">Theme Color Shades</h6>
+            <h6 className="mt-4 text-lg mb-2 font-semibold">Theme Color Shades</h6>
             <p className="mb-1">
               All <strong>{import.meta.env.VITE_TITLE}</strong> colors are
               available as Sass variables and Sass map in{' '}

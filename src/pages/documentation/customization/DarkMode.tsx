@@ -54,7 +54,7 @@ const DarkModeExample = () => {
       </Col>
       <Col-12>
         <h5 className="fs-0 mb-2">Radio Button</h5>
-        <Form.Group className="d-flex">
+        <Form.Group className="flex">
           <Form.Check
             inline
             type="radio"
@@ -93,7 +93,7 @@ render(<DarkModeExample />);
 const lightCode = `
   <Card bg='100' className="light">
     <Card.Body>
-      <p className="mb-0 text-body-tertiary">
+      <p className="mb-0 text-subtle">
         <b>This element will retain it's color if you switch between light and dark mode.</b>
       </p>
     </Card.Body>
@@ -103,7 +103,7 @@ const lightCode = `
 const darkCode = `
   <Card bg='100' className="dark">
     <Card.Body>
-      <p className="mb-0 text-body-tertiary">
+      <p className="mb-0 text-subtle">
         <b>This element will retain it's color if you switch between light and dark mode.</b>
       </p>
     </Card.Body>
@@ -114,7 +114,7 @@ const dark__Code = `
   <Card bg='light' className="dark__bg-primary">
     <Card.Body>
       <p className="mb-0 dark__text-gray-100">
-        <span className="fw-bold">
+        <span className="font-bold">
           The background will be primary and text color will be white in dark mode.
         </span>
       </p>
@@ -126,7 +126,7 @@ const DarkMode = () => {
   return (
     <div>
       <DocPageHeader title="Dark Mode">
-        <p className="lead text-body-tertiary">
+        <p className="lead text-subtle">
           It’s effortless to switch Dark Mode in {import.meta.env.VITE_TITLE}
           -React. You can enable Dark Mode by default or create a Dark/Light
           switch if you want. To set the default mode "Dark", please see the
@@ -154,7 +154,7 @@ const DarkMode = () => {
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Modify Dark colors" noPreview />
           <PhoenixDocCard.Body>
-            <p className="mb-0 text-body-secondary">
+            <p className="mb-0 text-muted">
               You can find all the variables used to create the dark mode in
               <code> src/assets/scss/theme/root/_dark.scss </code> file. If you
               want to override a variable, copy that variable to{' '}
@@ -169,7 +169,7 @@ const DarkMode = () => {
           <PhoenixDocProvider>
             <PhoenixDocCard.Header title="Using the Dark className" noPreview />
             <PhoenixDocCard.Body>
-              <h6 className="fs-8 mb-3">
+              <h6 className="text-base mb-3">
                 You can keep a style constant regardless of current (light or
                 dark) mode
               </h6>
@@ -202,7 +202,7 @@ const DarkMode = () => {
                 </Col>
               </Row>
 
-              <h6 className="fs-8 mb-3">
+              <h6 className="text-base mb-3">
                 Override Background and Text color only for dark mode
               </h6>
               <p className="mb-2">

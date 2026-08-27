@@ -29,12 +29,12 @@ const PreviousEventItem = ({
 
   return (
     <div className={classNames('border-dashed py-4', previousEvent.className)}>
-      <h6 className="text-body-quaternary fs-10">
+      <h6 className="text-soft text-sm">
         {startDate.format('DD')}, {startDate.format('MMM')}{' '}
         {startDate.format('YY')} - {endDate && endDate.format('DD')},{' '}
         {endDate && endDate.format('MMM')} {endDate && endDate.format('YY')}
       </h6>
-      <div className="d-flex flex-between-center gap-3 mb-2">
+      <div className="flex flex-between-center gap-3 mb-2">
         <h5 className="mb-0 line-clamp-1">{previousEvent.title}</h5>
         <RevealDropdownTrigger>
           <Dropdown>
@@ -52,11 +52,11 @@ const PreviousEventItem = ({
           </Dropdown>
         </RevealDropdownTrigger>
       </div>
-      <p className="fs-10 text-body-quaternary mb-3">
+      <p className="text-sm text-soft mb-3">
         {previousEvent.interestedToGoing} people going
       </p>
       <div className="d-xxl-flex mb-3 align-items-center">
-        <h6 className="text-body-tertiary fw-semibold mb-2 mb-xxl-0 border-end-xxl border-end-solid-xxl pe-xxl-3 me-xxl-3 text-nowrap">
+        <h6 className="text-subtle font-semibold mb-2 mb-xxl-0 border-end-xxl border-end-solid-xxl pe-xxl-3 me-xxl-3 text-nowrap">
           <FeatherIcon
             icon="clock"
             className="me-2"
@@ -68,7 +68,7 @@ const PreviousEventItem = ({
             {previousEvent.schedule.displayTimeZone}
           </span>
         </h6>
-        <h6 className="text-body-tertiary fw-semibold mb-0 line-clamp-1">
+        <h6 className="text-subtle font-semibold mb-0 line-clamp-1">
           <FeatherIcon
             icon="map-pin"
             className="me-2"

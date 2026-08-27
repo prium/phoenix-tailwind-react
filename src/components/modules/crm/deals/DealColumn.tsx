@@ -26,24 +26,24 @@ const DealColumn = ({
   });
   return (
     <div className="deals-column">
-      <div className="d-flex align-items-center justify-content-between position-sticky top-0 z-1 bg-body">
+      <div className="flex align-items-center justify-content-between position-sticky top-0 z-1 bg-default">
         <div>
           <h5 className="mb-2">{column.title}</h5>
-          <p className="fs-9 text-body-tertiary mb-1">Forecast Revenue:</p>
+          <p className="text-md text-subtle mb-1">Forecast Revenue:</p>
           <h4 className="mb-3">
             {currencyFormat(column.revenue, {
               minimumFractionDigits: 2
             })}
           </h4>
         </div>
-        <div className="d-flex gap-3">
+        <div className="flex gap-3">
           <Button className="p-0" onClick={handleOpenAddModal}>
             <FontAwesomeIcon icon={faPlus} />
           </Button>
           <Dropdown align="end">
             <Dropdown.Toggle
               variant=""
-              className="dropdown-caret-none p-0 fs-10"
+              className="dropdown-caret-none p-0 text-sm"
             >
               <FontAwesomeIcon icon={faEllipsisH} />
             </Dropdown.Toggle>
@@ -63,7 +63,7 @@ const DealColumn = ({
         ref={setNodeRef}
         {...attributes}
         {...listeners}
-        className="scrollbar flex-1 d-flex flex-column"
+        className="scrollbar flex-1 flex flex-column"
         onClick={e => e.stopPropagation()}
       >
         <SortableContext

@@ -14,15 +14,15 @@ const HotelDetails = (data: hotelInterFace) => {
   const { image, rating, stay, name, located, price } = data;
   return (
     <Card className="card-img-shift border-0 mx-auto">
-      <div className="rounded-3 overflow-hidden w-100 position-relative z-5">
+      <div className="rounded-3 overflow-hidden w-100 relative z-5">
         <img src={image} alt="" className="w-100" height="250" />
-        <button className="btn btn-wish position-absolute top-0 end-0 mt-3 me-3">
+        <button className="btn btn-wish absolute top-0 end-0 mt-3 me-3">
           <FontAwesomeIcon icon={faHeart} />
         </button>
       </div>
       <Card.Body className="p-0">
         <div className="card-content">
-          <div className="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-4">
+          <div className="flex align-items-center justify-content-between flex-wrap gap-2 mb-4">
             <div>
               <Badge
                 variant="phoenix"
@@ -43,11 +43,11 @@ const HotelDetails = (data: hotelInterFace) => {
 
           <Link
             to="#!"
-            className="fw-bold fs-7 text-body-emphasis mb-2 text-primary-hover"
+            className="font-bold text-lg text-emphasis mb-2 text-primary-hover"
           >
             {name}
           </Link>
-          <Link to="#!" className="fw-semibold text-body-tertiary mb-3 d-block">
+          <Link to="#!" className="font-semibold text-subtle mb-3 block">
             <FeatherIcon
               icon="map-pin"
               className="me-1"
@@ -55,9 +55,9 @@ const HotelDetails = (data: hotelInterFace) => {
             />
             {located}
           </Link>
-          <h6 className="fe-semibold text-body-tertiary d-flex align-items-center gap-1 mb-4">
+          <h6 className="fe-semibold text-subtle flex align-items-center gap-1 mb-4">
             From
-            <span className="fw-bolder fs-7 text-body-highlight">${price}</span>
+            <span className="font-black text-lg text-highlight">${price}</span>
             / per night
           </h6>
           <Button variant="primary" className="px-5">
@@ -73,23 +73,23 @@ const BestHotel = () => {
   return (
     <section className="py-0">
       <div
-        className="bg-holder d-none d-xl-block"
+        className="bg-holder hidden d-xl-block"
         style={{
           backgroundImage: `url(${bgLeft29})`,
           backgroundPosition: '-15%',
           backgroundSize: 'auto'
         }}
       />
-      <div className="position-relative container-medium">
-        <h3 className="mb-2 text-body-emphasis text-center text-xl-start">
+      <div className="relative container-medium">
+        <h3 className="mb-2 text-emphasis text-center text-xl-start">
           The best of our hotel
         </h3>
         <div className="d-xl-flex justify-content-between mb-5 text-center">
-          <p className="mb-0 text-body-tertiary">
+          <p className="mb-0 text-subtle">
             This list will help you get insights into how much you’ll need to
             spend to afford accommodation.
           </p>
-          <Button variant="link" className="p-0 fs-8">
+          <Button variant="link" className="p-0 text-base">
             View all
             <FontAwesomeIcon
               icon={faChevronRight}

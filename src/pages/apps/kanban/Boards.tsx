@@ -27,19 +27,19 @@ const Boards = () => {
   }, []);
   return (
     <div className="mb-9">
-      <div className="border-bottom border-translucent px-4 px-lg-6 pb-5">
+      <div className="border-bottom border-light px-4 px-lg-6 pb-5">
         <Row className="justify-content-between gy-4">
           <Col xs="auto">
             <h2>
               Kanban Boards{' '}
-              <span className="text-body-tertiary fw-semibold">(8)</span>
+              <span className="text-subtle font-semibold">(8)</span>
             </h2>
           </Col>
-          <Col xs="auto" className="d-flex flex-wrap gap-2">
+          <Col xs="auto" className="flex flex-wrap gap-2">
             <Button
               variant="phoenix-primary"
               startIcon={<FontAwesomeIcon icon={faFilter} />}
-              className="d-flex px-4"
+              className="flex px-4"
             >
               Filter
             </Button>
@@ -54,7 +54,7 @@ const Boards = () => {
           </Col>
         </Row>
       </div>
-      <div className="d-flex flex-wrap gap-3 border-bottom border-translucent px-4 px-lg-6 py-5">
+      <div className="flex flex-wrap gap-3 border-bottom border-light px-4 px-lg-6 py-5">
         <Button
           variant="primary"
           className="px-3 px-sm-5 px-md-10"
@@ -66,23 +66,23 @@ const Boards = () => {
         </Button>
         <Button
           variant="phoenix-primary"
-          className="px-3 px-sm-4 d-flex text-body"
+          className="px-3 px-sm-4 flex text-default"
           as={Link}
           to="#!"
         >
           <FontAwesomeIcon icon={faAnglesDown} className="me-sm-2" />
-          <span className="d-none d-sm-block white-space-nowrap">
+          <span className="hidden d-sm-block whitespace-nowrap">
             Import Bulk Tasks
           </span>
         </Button>
         <Button
           variant="phoenix-primary"
-          className="px-3 px-sm-4 d-flex text-body"
+          className="px-3 px-sm-4 flex text-default"
           as={Link}
           to="#!"
         >
           <FontAwesomeIcon icon={faCalendarXmark} className="me-sm-2" />
-          <span className="d-none d-sm-block">Upcoming Deadlines</span>
+          <span className="hidden d-sm-block">Upcoming Deadlines</span>
         </Button>
       </div>
       <KanbanBoardSection

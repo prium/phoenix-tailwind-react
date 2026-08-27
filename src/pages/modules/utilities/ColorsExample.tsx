@@ -10,12 +10,12 @@ const exampleCode = `
   <p className="text-info">text-info</p>
   <p className="text-warning">text-warning</p>
   <p className="text-danger">text-danger</p>
-  <p className="text-body">text-body</p>
-  <p className="text-body-highlight">text-body-highlight</p>
-  <p className="text-body-secondary">text-body-secondary</p>
-  <p className="text-body-tertiary">text-body-tertiary</p>
-  <p className="text-body-quaternary">text-body-quaternary</p>
-  <p className="text-body-emphasis">text-body-emphasis</p>
+  <p className="text-default">text-default</p>
+  <p className="text-highlight">text-highlight</p>
+  <p className="text-muted">text-muted</p>
+  <p className="text-subtle">text-subtle</p>
+  <p className="text-soft">text-soft</p>
+  <p className="text-emphasis">text-emphasis</p>
   <p className="text-primary-subtle bg-dark dark__bg-gray-400">text-primary-subtle</p>
   <p className="text-primary-light">text-primary-light</p>
   <p className="text-primary-lighter">text-primary-lighter</p>
@@ -106,7 +106,7 @@ const ColorsExample = () => {
 
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="How it works" noPreview>
-            <p className="text-body-tertiary mb-0">
+            <p className="text-subtle mb-0">
               Consider our default <code>.text-primary </code>utility.
             </p>
           </PhoenixDocCard.Header>

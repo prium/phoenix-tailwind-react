@@ -31,7 +31,7 @@ const GridItem = ({ galleryItem, onClick }: GridItemProps) => {
         />
         <div className="hoverbox-content flex-center">
           <div
-            className="rounded-pill bg-white d-flex flex-center"
+            className="rounded-full bg-white flex flex-center"
             style={{ width: 38, height: 38 }}
           >
             <FontAwesomeIcon
@@ -42,7 +42,7 @@ const GridItem = ({ galleryItem, onClick }: GridItemProps) => {
         </div>
       </div>
       <h4 className="title mt-2">{galleryItem.title}</h4>
-      <p className="mb-0 text-body-tertiary text-capitalize">
+      <p className="mb-0 text-subtle text-capitalize">
         {galleryItem.type}
       </p>
     </Col>

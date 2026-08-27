@@ -17,7 +17,7 @@ const AddDealModal = ({ show, handleClose }: AddDealModalProps) => {
       centered
       backdrop="static"
       onHide={handleClose}
-      contentClassName="bg-body-highlight p-6 border border-translucent"
+      contentClassName="bg-subtle p-6 border border-light"
     >
       <Modal.Header className="border-0 p-0 mb-2">
         <h3 className="mb-0">Deal Informations</h3>
@@ -32,7 +32,7 @@ const AddDealModal = ({ show, handleClose }: AddDealModalProps) => {
       </Modal.Header>
       <Modal.Body className="px-0 mb-6">
         <Row className="g-4">
-          <Col lg={6} className="d-flex flex-column gap-4">
+          <Col lg={6} className="flex flex-column gap-4">
             <Form.Group>
               <Form.Label className="form-label-header mb-2">
                 Deal Owner
@@ -233,7 +233,7 @@ const AddDealModal = ({ show, handleClose }: AddDealModalProps) => {
             </Row>
           </Col>
 
-          <Col lg={6} className="d-flex flex-column gap-4">
+          <Col lg={6} className="flex flex-column gap-4">
             <Form.Group>
               <Form.Label className="form-label-header mb-2">
                 Contact Name

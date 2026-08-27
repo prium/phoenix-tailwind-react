@@ -11,14 +11,14 @@ import bg4 from 'assets/img/bg/bg-39.png';
 const HeroHeader = () => {
   return (
     <section id="home" className="pb-8 overflow-hidden">
-      <div className="hero-header-container-alternate position-relative">
+      <div className="hero-header-container-alternate relative">
         <div className="container-small px-lg-7 px-xxl-3">
           <Row className="align-items-center">
             <Col
               lg={6}
-              className="pt-8 pb-6 position-relative z-5 text-center text-lg-start"
+              className="pt-8 pb-6 relative z-5 text-center text-lg-start"
             >
-              <h1 className="fs-3 fs-md-2 fs-xl-1 fw-black mb-4">
+              <h1 className="fs-3 fs-md-2 fs-xl-1 font-black mb-4">
                 <span className="text-gradient-info me-3">Elegance</span> for{' '}
                 <br />
                 your web app
@@ -32,7 +32,7 @@ const HeroHeader = () => {
                 to="#!"
                 variant="primary"
                 size="lg"
-                className="rounded-pill me-3"
+                className="rounded-full me-3"
               >
                 Sign up
               </Button>
@@ -41,21 +41,21 @@ const HeroHeader = () => {
                 to="#!"
                 variant="link"
                 endIcon={
-                  <FontAwesomeIcon icon={faAngleRight} className="ms-2 fs-9" />
+                  <FontAwesomeIcon icon={faAngleRight} className="ms-2 text-md" />
                 }
-                className="me-2 fs-8 p-0"
+                className="me-2 text-base p-0"
               >
                 Check Demo
               </Button>
             </Col>
-            <Col lg="auto" className="d-none d-lg-block">
-              <div className="hero-image-container position-absolute h-100 end-0 d-flex align-items-center">
-                <div className="position-relative">
-                  <div className="position-absolute end-0 hero-image-container-overlay" />
+            <Col lg="auto" className="hidden d-lg-block">
+              <div className="hero-image-container absolute h-100 end-0 flex align-items-center">
+                <div className="relative">
+                  <div className="absolute end-0 hero-image-container-overlay" />
                   <img
                     src={bg1}
                     alt=""
-                    className="position-absolute end-0 hero-image-container-bg"
+                    className="absolute end-0 hero-image-container-bg"
                   />
                   <img
                     src={bg2}
@@ -73,12 +73,12 @@ const HeroHeader = () => {
           </Row>
         </div>
         <div className="container-small px-md-8 mb-8 d-lg-none">
-          <div className="position-relative">
-            <div className="position-absolute end-0 hero-image-container-overlay" />
+          <div className="relative">
+            <div className="absolute end-0 hero-image-container-overlay" />
             <img
               src={bg4}
               alt=""
-              className="position-absolute top-50 hero-image-container-bg"
+              className="absolute top-50 hero-image-container-bg"
             />
             <img
               src={bg2}

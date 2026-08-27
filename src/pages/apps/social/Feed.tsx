@@ -18,7 +18,7 @@ const Feed = () => {
   const { setFooterClass } = useMainLayoutContext();
 
   useEffect(() => {
-    setFooterClass('d-none d-lg-block');
+    setFooterClass('hidden d-lg-block');
     return () => {
       setFooterClass('');
     };
@@ -28,7 +28,7 @@ const Feed = () => {
     <>
       <div className="mb-9">
         <Row className="gy-3 gx-5 gx-xxl-6">
-          <Col lg={5} xl={4} className="d-none d-lg-block">
+          <Col lg={5} xl={4} className="hidden d-lg-block">
             <SocialProfileCard
               showAbout={true}
               avatar={profileImage}

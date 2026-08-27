@@ -16,10 +16,10 @@ const EventItem = ({ event }: EventItemProps) => {
   return (
     <div
       key={event.title}
-      className="py-3 border-bottom border-translucent border-dashed"
+      className="py-3 border-bottom border-light border-dashed"
     >
-      <div className="d-flex flex-between-center">
-        <p className="text-warning fs-10 mb-0 fw-bold mb-1">{event.date}</p>
+      <div className="flex flex-between-center">
+        <p className="text-warning text-sm mb-0 font-bold mb-1">{event.date}</p>
         <RevealDropdownTrigger>
           <RevealDropdown>
             <Dropdown.Item eventKey="1">Edit</Dropdown.Item>
@@ -33,27 +33,27 @@ const EventItem = ({ event }: EventItemProps) => {
       </div>
       <Link
         to="#!"
-        className="hover-primary text-body-highlight fw-bold mb-2 line-clamp-1 me-5 lh-base"
+        className="hover-primary text-highlight font-bold mb-2 line-clamp-1 me-5 lh-base"
       >
         {event.title}
       </Link>
-      <p className="text-body-secondary fs-9 mb-2">
+      <p className="text-muted text-md mb-2">
         Organized by <br />{' '}
-        <Link to="#!" className="fw-bold">
+        <Link to="#!" className="font-bold">
           {event.organization}
         </Link>
       </p>
-      <p className="fs-10 text-body-tertiary text-opacity-85">
+      <p className="text-sm text-subtle text-opacity-85">
         {event.people} people going
       </p>
-      <p className="fs-9 text-body-tertiary fw-bold mb-1">
-        <FontAwesomeIcon icon={faClock} className="text-body-secondary me-1" />
+      <p className="text-md text-subtle font-bold mb-1">
+        <FontAwesomeIcon icon={faClock} className="text-muted me-1" />
         {event.time}
       </p>
-      <p className="fs-9 text-body-tertiary fw-bold mb-0">
+      <p className="text-md text-subtle font-bold mb-0">
         <FontAwesomeIcon
           icon={faMapMarkerAlt}
-          className="text-body-secondary me-1"
+          className="text-muted me-1"
         />
         {event.place}
       </p>

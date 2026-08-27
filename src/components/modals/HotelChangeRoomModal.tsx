@@ -33,7 +33,7 @@ const HotelChangeRoomModal = ({
   return (
     <Modal show={show} onHide={handleClose} centered size="xl">
       <Modal.Header className="p-4 justify-content-between">
-        <h3 className="mb-0 text-body-highlight">Select Room</h3>
+        <h3 className="mb-0 text-highlight">Select Room</h3>
         <Button
           variant="phoenix-secondary"
           className="px-3"
@@ -47,16 +47,16 @@ const HotelChangeRoomModal = ({
           <Fragment key={room.id}>
             <Row className="g-3 mb-4">
               <Col lg={8} xxl={7}>
-                <div className="d-flex align-items-center mb-2">
-                  <h4 className="mb-0 fw-semibold pe-3">
+                <div className="flex align-items-center mb-2">
+                  <h4 className="mb-0 font-semibold pe-3">
                     <FontAwesomeIcon
                       icon={faCircle}
-                      className="fs-9 text-body-quaternary me-2"
+                      className="text-md text-soft me-2"
                       transform="up-2"
                     />
                     {room.type}
                   </h4>
-                  <Badge variant="phoenix" bg="info" className="fs-10">
+                  <Badge variant="phoenix" bg="info" className="text-sm">
                     {numberFormat(room.discount, 'standard', {
                       maximumSignificantDigits: 2
                     })}
@@ -66,16 +66,16 @@ const HotelChangeRoomModal = ({
                 <p className="mb-0">{room.desc}</p>
               </Col>
               <Col lg={4} xxl={5}>
-                <h3 className="mb-2 d-flex align-items-center justify-content-lg-end gap-2">
-                  <span className="fs-9 text-body-quaternary fw-normal text-decoration-line-through">
+                <h3 className="mb-2 flex align-items-center justify-content-lg-end gap-2">
+                  <span className="text-md text-soft font-normal text-decoration-line-through">
                     {currencyFormat(room.price, { maximumFractionDigits: 2 })}
                   </span>
                   {currencyFormat(room.discountPrice, {
                     maximumFractionDigits: 2
                   })}
-                  <span className="fs-9 text-body">/ night</span>
+                  <span className="text-md text-default">/ night</span>
                 </h3>
-                <h5 className="text-body text-lg-end fw-normal">
+                <h5 className="text-default text-lg-end font-normal">
                   Inclusive of all taxes and fees
                 </h5>
               </Col>
@@ -96,10 +96,10 @@ const HotelChangeRoomModal = ({
                 </RoomPictureSlider>
               </Col>
               <Col lg={5} xl={4}>
-                <div className="p-4 border border-translucent rounded-2 mt-4 mt-lg-0">
+                <div className="p-4 border border-light rounded-2 mt-4 mt-lg-0">
                   <Row className="g-3">
                     <Col xs={6}>
-                      <h6 className="fw-semibold text-body-secondary">
+                      <h6 className="font-semibold text-muted">
                         <FontAwesomeIcon
                           icon={faBed}
                           className="text-info me-2"
@@ -111,7 +111,7 @@ const HotelChangeRoomModal = ({
                       </h6>
                     </Col>
                     <Col xs={6}>
-                      <h6 className="fw-semibold text-body-secondary">
+                      <h6 className="font-semibold text-muted">
                         <FontAwesomeIcon
                           icon={faUser}
                           className="text-info me-2"
@@ -123,7 +123,7 @@ const HotelChangeRoomModal = ({
                       </h6>
                     </Col>
                     <Col xs={6}>
-                      <h6 className="fw-semibold text-body-secondary">
+                      <h6 className="font-semibold text-muted">
                         <FontAwesomeIcon
                           icon={faBaby}
                           className="text-info me-2"
@@ -135,7 +135,7 @@ const HotelChangeRoomModal = ({
                       </h6>
                     </Col>
                     <Col xs={6}>
-                      <h6 className="fw-semibold text-body-secondary">
+                      <h6 className="font-semibold text-muted">
                         <FontAwesomeIcon
                           icon={faBath}
                           className="text-info me-2"
@@ -165,14 +165,14 @@ const HotelChangeRoomModal = ({
                       <div
                         className={classNames(
                           item.classes,
-                          'd-flex align-items-center gap-2 px-4 py-3 h-100 border-translucent'
+                          'flex align-items-center gap-2 px-4 py-3 h-100 border-light'
                         )}
                       >
                         <FontAwesomeIcon
                           icon={item.icon}
-                          className="fs-9 text-warning"
+                          className="text-md text-warning"
                         />
-                        <h5 className="text-body-tertiary mb-0 fw-normal">
+                        <h5 className="text-subtle mb-0 font-normal">
                           {item.title}
                         </h5>
                       </div>
@@ -183,8 +183,8 @@ const HotelChangeRoomModal = ({
                 <Row className="g-2">
                   {room.amenities.map((item, index) => (
                     <Col lg={4} xl={3} key={index}>
-                      <div className="p-3 border border-translucent rounded-2">
-                        <h5 className="text-body-secondary fw-semibold mb-0">
+                      <div className="p-3 border border-light rounded-2">
+                        <h5 className="text-muted font-semibold mb-0">
                           <FontAwesomeIcon
                             icon={faCheck}
                             className="text-success me-2"

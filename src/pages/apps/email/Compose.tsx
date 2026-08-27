@@ -15,7 +15,7 @@ const Compose = () => {
       <Col>
         <Card className="email-content">
           <Card.Body>
-            <form className="d-flex flex-column h-100">
+            <form className="flex flex-column h-100">
               <Row className="g-3 mb-2">
                 <Col xs={4}>
                   <Form.Control type="email" placeholder="To" />
@@ -37,19 +37,19 @@ const Compose = () => {
                   }}
                 />
               </div>
-              <div className="d-flex justify-content-between align-items-center">
-                <div className="d-flex gap-3">
+              <div className="flex justify-content-between align-items-center">
+                <div className="flex gap-3">
                   <div>
                     <Button className="p-0">
                       <label
-                        className="text-body fs-9 cursor-pointer"
+                        className="text-default text-md cursor-pointer"
                         htmlFor="attachments"
                       >
                         <FontAwesomeIcon icon={faPaperclip} />
                       </label>
                     </Button>
                     <Form.Control
-                      className="d-none"
+                      className="hidden"
                       type="file"
                       id="attachments"
                     />
@@ -58,30 +58,30 @@ const Compose = () => {
                   <div>
                     <Button className="p-0">
                       <label
-                        className="text-body fs-9 cursor-pointer"
+                        className="text-default text-md cursor-pointer"
                         htmlFor="images"
                       >
                         <FontAwesomeIcon icon={faImage} />
                       </label>
                     </Button>
                     <Form.Control
-                      className="d-none"
+                      className="hidden"
                       type="file"
                       accept="image/*"
                       id="images"
                     />
                   </div>
                 </div>
-                <div className="d-flex">
+                <div className="flex">
                   <Button
                     variant="link"
-                    className="text-body fs-10 text-decoration-none"
+                    className="text-default text-sm text-decoration-none"
                   >
                     Discard
                   </Button>
                   <Button
                     variant="primary"
-                    className="fs-10"
+                    className="text-sm"
                     type="submit"
                     endIcon={<FontAwesomeIcon icon={faPaperPlane} />}
                   >

@@ -53,8 +53,8 @@ export const FinancialActivities = () => {
     <div className="mt-5 mt-xl-0 mt-xxl-5 mb-5 mb-xxl-0">
       <Row className="flex-between-end gy-3 gx-2">
         <Col xs="auto">
-          <h3 className="text-body-highlight">Financial activities</h3>
-          <p className="mb-0 text-body-tertiary"> Yearly Balance</p>
+          <h3 className="text-highlight">Financial activities</h3>
+          <p className="mb-0 text-subtle"> Yearly Balance</p>
         </Col>
         <Col
           xs={{ span: 12, order: 1 }}
@@ -93,13 +93,13 @@ export const FinancialActivities = () => {
           xxl="auto"
           className="mx-auto mb-4"
         >
-          <div className="d-flex justify-content-center gap-6 gap-xxl-4">
+          <div className="flex justify-content-center gap-6 gap-xxl-4">
             <Button
               variant="link"
               id="profile"
               onClick={() => handleLegend('profit')}
               className={classNames(
-                'd-flex align-items-center p-0 shadow-none fw-semibold text-decoration-none',
+                'flex align-items-center p-0 shadow-none font-semibold text-decoration-none',
                 {
                   'opacity-50': !legends.profit
                 }
@@ -110,14 +110,14 @@ export const FinancialActivities = () => {
                 style={{ width: 16, height: 6, borderRadius: 1 }}
                 data-bs-theme="light"
               />
-              <span className="text-body-secondary"> Profit </span>
+              <span className="text-muted"> Profit </span>
             </Button>
             <Button
               variant="link"
               id="revenue"
               onClick={() => handleLegend('revenue')}
               className={classNames(
-                'd-flex align-items-center p-0 shadow-none fw-semibold text-decoration-none',
+                'flex align-items-center p-0 shadow-none font-semibold text-decoration-none',
                 {
                   'opacity-50': !legends.revenue
                 }
@@ -128,14 +128,14 @@ export const FinancialActivities = () => {
                 style={{ width: 16, height: 6, borderRadius: 1 }}
                 data-bs-theme="light"
               />
-              <span className="text-body-secondary"> Revenue </span>
+              <span className="text-muted"> Revenue </span>
             </Button>
             <Button
               variant="link"
               id="expenses"
               onClick={() => handleLegend('expenses')}
               className={classNames(
-                'd-flex align-items-center p-0 shadow-none fw-semibold text-decoration-none',
+                'flex align-items-center p-0 shadow-none font-semibold text-decoration-none',
                 {
                   'opacity-50': !legends.expenses
                 }
@@ -146,7 +146,7 @@ export const FinancialActivities = () => {
                 style={{ width: 16, height: 6, borderRadius: 1 }}
                 data-bs-theme="light"
               />
-              <span className="text-body-secondary"> Expenses </span>
+              <span className="text-muted"> Expenses </span>
             </Button>
           </div>
         </Col>

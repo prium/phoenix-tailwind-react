@@ -14,10 +14,10 @@ const TripDetailsTabDetailsAccessibility = ({
     <div className="py-6 px-4">
       <ul className="list-unstyled">
         {accessibility.items.map(item => (
-          <li key={item} className="mb-1 d-flex">
+          <li key={item} className="mb-1 flex">
             <FontAwesomeIcon
               icon={faCircle}
-              className="text-secondary-light me-3 fs-11"
+              className="text-secondary-light me-3 text-xs"
               transform="down-13 shrink-4"
             />
             {item}
@@ -26,7 +26,7 @@ const TripDetailsTabDetailsAccessibility = ({
       </ul>
       <p>
         {accessibility.query}{' '}
-        <span className="text-body-emphasis fw-semibold">
+        <span className="text-emphasis font-semibold">
           {accessibility.promo}
         </span>
       </p>

@@ -54,7 +54,7 @@ const LatestPosts = () => {
   return (
     <section className="pb-7 pt-0 overflow-x-hidden">
       <div
-        className="bg-holder d-none d-xl-block"
+        className="bg-holder hidden d-xl-block"
         style={{
           backgroundImage: `url(${bgLeft31})`,
           backgroundPosition: 'left',
@@ -63,7 +63,7 @@ const LatestPosts = () => {
         }}
       />
       <div
-        className="bg-holder d-none d-xl-block"
+        className="bg-holder hidden d-xl-block"
         style={{
           backgroundImage: `url(${bgRight31})`,
           backgroundPosition: 'right bottom',
@@ -72,11 +72,11 @@ const LatestPosts = () => {
         }}
       />
       <div className="bg-latest-posts" />
-      <div className="container-medium text-center position-relative z-2">
-        <h3 className="mb-2 text-body-emphasis">
+      <div className="container-medium text-center relative z-2">
+        <h3 className="mb-2 text-emphasis">
           Our Latest Posts For Travellers
         </h3>
-        <p className="mb-0 text-body-tertiary mb-13">
+        <p className="mb-0 text-subtle mb-13">
           Find the best travel memories from our past tours and get a clear idea
           of what we do.
         </p>
@@ -115,33 +115,33 @@ const LatestPosts = () => {
           >
             {posts.map((data, index) => (
               <SwiperSlide className="rounded-3 overflow-hidden" key={index}>
-                <div className="position-relative w-100 h-100">
+                <div className="relative w-100 h-100">
                   <img
                     src={data.img}
                     className="w-100 h-100 object-fit-cover"
                     alt=""
                   />
                   <div className="backdrop-faded p-4 p-md-6">
-                    <div className="d-flex align-items-center mb-2">
+                    <div className="flex align-items-center mb-2">
                       <FeatherIcon
                         icon="calendar"
                         className="text-secondary-lighter me-2"
                         style={{ width: 16 }}
                       />
-                      <h6 className="mb-0 fw-semibold text-secondary-lighter pe-3 me-3 border-end">
+                      <h6 className="mb-0 font-semibold text-secondary-lighter pe-3 me-3 border-end">
                         {data.date}
                       </h6>
                       <Rating
-                        iconClass="text-warning fs-9 me-2"
+                        iconClass="text-warning text-md me-2"
                         initialValue={1}
                         iconsCount={1}
                         allowFraction={false}
                       />
-                      <h6 className="mb-0 text-secondary-lighter fw-semibold">
+                      <h6 className="mb-0 text-secondary-lighter font-semibold">
                         {data.rating}
                       </h6>
                     </div>
-                    <Link to="#!" className="text-white fw-bold fs-7">
+                    <Link to="#!" className="text-white font-bold text-lg">
                       {data.title}
                     </Link>
                   </div>
@@ -167,8 +167,8 @@ const LatestPosts = () => {
           </div>
         </div>
       </div>
-      <div className="text-center mt-12 position-relative z-2">
-        <Button variant="link" className="p-0 fs-8">
+      <div className="text-center mt-12 relative z-2">
+        <Button variant="link" className="p-0 text-base">
           View all
           <FontAwesomeIcon
             icon={faChevronRight}

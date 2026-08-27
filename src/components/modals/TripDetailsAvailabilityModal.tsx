@@ -32,7 +32,7 @@ const TripDetailsAvailabilityModal = ({
           </h2>
         </div>
         <Button
-          className="ms-auto p-0 fs-6 text-body-quaternary"
+          className="ms-auto p-0 text-xl text-soft"
           onClick={onHide}
         >
           <FontAwesomeIcon icon={faXmark} />
@@ -44,7 +44,7 @@ const TripDetailsAvailabilityModal = ({
             <Col md={5}>
               <label
                 htmlFor="tripDate"
-                className="fw-bold mb-2 fs-7 text-body-emphasis px-0"
+                className="font-bold mb-2 text-lg text-emphasis px-0"
               >
                 Choose your preferred date
               </label>
@@ -62,7 +62,7 @@ const TripDetailsAvailabilityModal = ({
                         />
                         <FontAwesomeIcon
                           icon={faCalendar}
-                          className="form-icon text-body fs-9"
+                          className="form-icon text-default text-md"
                           transform="up-2"
                         />
                       </>
@@ -80,7 +80,7 @@ const TripDetailsAvailabilityModal = ({
                 <Col xs="auto" sm={6}>
                   <label
                     htmlFor="adults"
-                    className="fw-bold mb-2 fs-7 text-body-emphasis"
+                    className="font-bold mb-2 text-lg text-emphasis"
                   >
                     Adults
                   </label>
@@ -94,7 +94,7 @@ const TripDetailsAvailabilityModal = ({
                 <Col xs="auto" sm={6}>
                   <label
                     htmlFor="children"
-                    className="fw-bold mb-2 fs-7 text-body-emphasis"
+                    className="font-bold mb-2 text-lg text-emphasis"
                   >
                     Children
                   </label>
@@ -117,7 +117,7 @@ const TripDetailsAvailabilityModal = ({
           <Link to="/apps/travel-agency/trip/checkout">
             <Button variant="primary" className="w-100 mt-6" size="lg">
               Proceed to booking
-              <FontAwesomeIcon icon={faChevronRight} className="fs-9 ms-2" />
+              <FontAwesomeIcon icon={faChevronRight} className="text-md ms-2" />
             </Button>
           </Link>
         </Form>

@@ -31,17 +31,17 @@ const PricingColumnItem = ({ pricing }: PricingColumnItemProps) => {
       />
       <div className="pricing-column-title-box mb-sm-5">
         <h3 className="mb-2">{pricing.title}</h3>
-        <p className="text-body-secondary mb-0 pe-3">{pricing.description}</p>
+        <p className="text-muted mb-0 pe-3">{pricing.description}</p>
       </div>
-      <div className="d-flex align-items-center mb-4">
+      <div className="flex align-items-center mb-4">
         {pricing.price === 0 ? (
-          <h3 className="display-3 fw-bolder">Free</h3>
+          <h3 className="display-3 font-black">Free</h3>
         ) : (
           <>
-            <h3 className="display-3 fw-bolder">
+            <h3 className="display-3 font-black">
               {currencyFormat(pricing.price)}
             </h3>
-            <h5 className="fs-0 fw-normal ms-1">/ month</h5>
+            <h5 className="fs-0 font-normal ms-1">/ month</h5>
           </>
         )}
       </div>
@@ -57,7 +57,7 @@ const PricingColumnItem = ({ pricing }: PricingColumnItemProps) => {
         className="fa-ul"
         style={{ '--fa-li-margin': '1.5em' } as CSSProperties}
       >
-        <li className="text-body-secondary mb-2">
+        <li className="text-muted mb-2">
           <span className="fa-li">
             <FontAwesomeIcon icon={faCheck} className="text-primary" />
           </span>
@@ -67,8 +67,8 @@ const PricingColumnItem = ({ pricing }: PricingColumnItemProps) => {
           <li
             key={item.id}
             className={classNames('mb-2', {
-              'text-body': pricing.features.includes(item.id),
-              'text-body-quaternary': !pricing.features.includes(item.id)
+              'text-default': pricing.features.includes(item.id),
+              'text-soft': !pricing.features.includes(item.id)
             })}
           >
             <span className="fa-li me-2 stack-icon-item">
@@ -77,7 +77,7 @@ const PricingColumnItem = ({ pricing }: PricingColumnItemProps) => {
                   icon={faCircle}
                   className={classNames(
                     {
-                      'text-body-quaternary text-opacity-50':
+                      'text-soft text-opacity-50':
                         !pricing.features.includes(item.id)
                     },
                     {
@@ -89,9 +89,9 @@ const PricingColumnItem = ({ pricing }: PricingColumnItemProps) => {
                   icon={pricing.features.includes(item.id) ? faCheck : faTimes}
                   inverse
                   className={classNames(
-                    'fs-11',
+                    'text-xs',
                     {
-                      'text-body-tertiary': !pricing.features.includes(item.id)
+                      'text-subtle': !pricing.features.includes(item.id)
                     },
                     {
                       'text-white dark__text-dark': pricing.features.includes(
@@ -104,7 +104,7 @@ const PricingColumnItem = ({ pricing }: PricingColumnItemProps) => {
             </span>
             {item.label}
             {pricing.features.includes(item.id) && item.new && (
-              <Badge variant="phoenix" bg="primary" className="ms-2 fs-10">
+              <Badge variant="phoenix" bg="primary" className="ms-2 text-sm">
                 New
               </Badge>
             )}

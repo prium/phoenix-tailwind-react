@@ -4,14 +4,14 @@ import React from 'react';
 
 const Stat = ({ stat }: { stat: ProjectManagementStat }) => {
   return (
-    <div className="d-flex align-items-center">
+    <div className="flex align-items-center">
       <Unicon icon={stat.icon} size={40} fill='currentColor' className={`text-${stat.iconColor}`} />
       <div className="ms-2">
-        <div className="d-flex align-items-end">
+        <div className="flex align-items-end">
           <h2 className="mb-0 me-2">{stat.count}</h2>
-          <span className="fs-7 fw-semibold text-body">{stat.title}</span>
+          <span className="text-lg font-semibold text-default">{stat.title}</span>
         </div>
-        <p className="text-body-secondary fs-9 mb-0">{stat.subtitle}</p>
+        <p className="text-muted text-md mb-0">{stat.subtitle}</p>
       </div>
     </div>
   );

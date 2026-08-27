@@ -21,10 +21,10 @@ const TripShowcaseItem = ({ showcaseItem }: TripShowcaseItemProps) => {
         <Link to="/apps/travel-agency/trip/trip-details">
           <img src={showcaseItem.image} alt="" className="img-fluid" />
           <div className="backdrop-faded">
-            <h3 className="text-underline fs-7 fs-lg-6 text-white fw-bold mb-2 pt-4">
+            <h3 className="text-underline text-lg fs-lg-6 text-white font-bold mb-2 pt-4">
               {showcaseItem.title}
             </h3>
-            <h5 className="text-secondary-lighter fw-normal mb-3">
+            <h5 className="text-secondary-lighter font-normal mb-3">
               <FontAwesomeIcon
                 icon={faLocationDot}
                 className="text-primary me-2"
@@ -32,16 +32,16 @@ const TripShowcaseItem = ({ showcaseItem }: TripShowcaseItemProps) => {
               {showcaseItem.location}
             </h5>
             <div className="d-sm-flex d-md-block d-lg-flex flex-between-center pb-4">
-              <h3 className="text-white fw-bold mb-3 mb-sm-0 mb-md-3 mb-lg-0 fs-7 fs-lg-6">
+              <h3 className="text-white font-bold mb-3 mb-sm-0 mb-md-3 mb-lg-0 text-lg fs-lg-6">
                 $ {numberFormat(showcaseItem.price)}
               </h3>
-              <div className="d-flex gap-3">
-                <h5 className="text-secondary-lighter fw-normal">
-                  <FontAwesomeIcon icon={faClock} className="fs-9 me-2" />
+              <div className="flex gap-3">
+                <h5 className="text-secondary-lighter font-normal">
+                  <FontAwesomeIcon icon={faClock} className="text-md me-2" />
                   {showcaseItem.days} days
                 </h5>
-                <h5 className="text-secondary-lighter fw-normal">
-                  <FontAwesomeIcon icon={faUser} className="fs-9 me-2" />
+                <h5 className="text-secondary-lighter font-normal">
+                  <FontAwesomeIcon icon={faUser} className="text-md me-2" />
                   From 1 to people
                 </h5>
               </div>

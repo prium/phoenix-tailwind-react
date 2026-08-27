@@ -40,14 +40,14 @@ const RecentFilesCardItem = ({
   return (
     <Col sm={6} xxl={3}>
       <div
-        className="position-relative"
+        className="relative"
         {...(file.type === 'video' && {
           onMouseEnter: () => setIsPlaying(true),
           onMouseLeave: () => setIsPlaying(false)
         })}
       >
         <div className="img-zoom-hover mask-image-none overflow-hidden border rounded-3">
-          <div className="position-relative">
+          <div className="relative">
             <div className="mask-image-recent-file overflow-hidden">
               <div className="ratio ratio-16x9">
                 {(file.type === 'image' || file.type === 'pdf') && (
@@ -60,7 +60,7 @@ const RecentFilesCardItem = ({
                 {file.type === 'video' && (
                   <>
                     <video
-                      className="video d-block h-100 w-100 object-fit-cover"
+                      className="video block h-100 w-100 object-fit-cover"
                       loop
                       muted
                       src={file.video}
@@ -69,20 +69,20 @@ const RecentFilesCardItem = ({
                     />
                     <Button
                       data-bs-theme="light"
-                      className="p-0 circle-icon-item-md position-absolute top-50 start-50 translate-middle bg-body-emphasis bg-opacity-50 z-5"
+                      className="p-0 circle-icon-item-md absolute top-50 start-50 translate-middle bg-soft bg-opacity-50 z-5"
                       onClick={handlePlayPause}
                     >
                       <span className="play-icon pointer-events-none">
                         {!isPlaying ? (
                           <FontAwesomeIcon
                             icon={faPlay}
-                            className="text-body-secondary fs-9"
+                            className="text-muted text-md"
                             transform="down-1"
                           />
                         ) : (
                           <FontAwesomeIcon
                             icon={faPause}
-                            className="text-body-secondary fs-9"
+                            className="text-muted text-md"
                             transform="down-1"
                           />
                         )}
@@ -94,22 +94,22 @@ const RecentFilesCardItem = ({
               <Badge
                 bg={file.actionType === 'Edited' ? 'warning' : 'info'}
                 variant="phoenix"
-                className="fs-10 position-absolute top-0 start-0 mt-3 ms-3"
+                className="text-sm absolute top-0 start-0 mt-3 ms-3"
               >
                 {file.actionType} {file.createdAt}
               </Badge>
             </div>
           </div>
-          <div className="bg-body p-3 pe-2 d-flex justify-content-between align-items-start rounded-bottom-3">
+          <div className="bg-default p-3 pe-2 flex justify-content-between align-items-start rounded-bottom-3">
             <div className="w-75">
               <Link
                 to="#!"
-                className="stretched-link text-body-highlight fw-bold mb-2 d-block text-truncate"
+                className="stretched-link text-highlight font-bold mb-2 block text-truncate"
                 onClick={() => openLightbox(file.fileNo)}
               >
                 {file.name}
               </Link>
-              <h6 className="mb-0 fw-semibold text-body-tertiary">
+              <h6 className="mb-0 font-semibold text-subtle">
                 {file.size}
               </h6>
             </div>
@@ -188,7 +188,7 @@ const RecentFilesCard = () => {
             </Collapse>
             <Button
               variant="phoenix-secondary"
-              className="btn collapse-indicator bg-body-emphasis fs-10 py-1 border rounded-1 px-3 position-absolute start-50 translate-middle-x"
+              className="btn collapse-indicator bg-soft text-sm py-1 border rounded-1 px-3 absolute start-50 translate-middle-x"
               style={{ bottom: '-11px' }}
               role="button"
               onClick={toggleCollapse}
@@ -198,7 +198,7 @@ const RecentFilesCard = () => {
               </span>
               <FontAwesomeIcon
                 icon={isCollapsed ? faChevronDown : faChevronUp}
-                className="toggle-icon fs-10 ms-2"
+                className="toggle-icon text-sm ms-2"
               />
             </Button>
           </Card.Body>

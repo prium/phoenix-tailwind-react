@@ -75,7 +75,7 @@ const DefaultLandingNavbar = ({ className }: { className?: string }) => {
               <SearchBox
                 placeholder="Search"
                 className="w-full"
-                inputClassName="rounded-pill my-4"
+                inputClassName="rounded-full my-4"
               />
             </div>
             <Nav className="me-auto mb-2 lg:mb-0" as="ul">
@@ -115,7 +115,7 @@ const DefaultLandingNavbar = ({ className }: { className?: string }) => {
           <DropdownSearchBox
             size="lg"
             className="navbar-top-search-box"
-            inputClassName="rounded-pill"
+            inputClassName="rounded-full"
             style={{ width: 'auto' }}
           >
             <SearchResult />

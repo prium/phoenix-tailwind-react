@@ -66,7 +66,7 @@ const columns: ColumnDef<CustomerOrder>[] = [
         style: { width: '15%', minWidth: 160 },
         className: 'text-end'
       },
-      cellProps: { className: 'text-body-tertiary text-end' }
+      cellProps: { className: 'text-subtle text-end' }
     }
   },
   {
@@ -78,7 +78,7 @@ const columns: ColumnDef<CustomerOrder>[] = [
         style: { width: '15%', minWidth: 160 },
         className: 'text-end'
       },
-      cellProps: { className: 'fw-semibold text-end text-body-highlight' }
+      cellProps: { className: 'font-semibold text-end text-highlight' }
     }
   },
   {
@@ -111,7 +111,7 @@ const EcomProfileOrdersTable = () => {
       <AdvanceTableProvider {...table}>
         <div className="border-y border-light">
           <AdvanceTable
-            tableProps={{ size: 'sm', className: 'phoenix-table fs-9' }}
+            tableProps={{ size: 'sm', className: ' text-md' }}
           />
           <AdvanceTableFooter pagination />
         </div>

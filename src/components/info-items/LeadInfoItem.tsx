@@ -19,11 +19,11 @@ const LeadInfoItem = ({
 }: PropsWithChildren<LeadInfoItemInterface>) => {
   return (
     <div className={classNames(className)}>
-      <div className="d-flex align-items-center mb-1">
+      <div className="flex align-items-center mb-1">
         <Unicon icon={icon} fill='currentColor' className="me-2" size={16} />
-        <h5 className="text-body-highlight mb-0">{label}</h5>
+        <h5 className="text-highlight mb-0">{label}</h5>
       </div>
-      {value && <p className="mb-0 text-body-secondary">{value}</p>}
+      {value && <p className="mb-0 text-muted">{value}</p>}
       {children}
     </div>
   );

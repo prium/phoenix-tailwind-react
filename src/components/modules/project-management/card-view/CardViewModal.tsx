@@ -34,7 +34,7 @@ const CardViewModal = ({
   const { progress, bgClassName, variant } = useProjectProgress(project);
   return (
     <Modal show={show} onHide={handleClose} size="lg" className="p-0">
-      <Modal.Header className="position-relative p-0 overflow-hidden">
+      <Modal.Header className="relative p-0 overflow-hidden">
         <CoverImage handleClose={handleClose} />
       </Modal.Header>
       <Modal.Body className="p-5 px-md-6 pb-md-6">
@@ -42,17 +42,17 @@ const CardViewModal = ({
         <Row className="g-5">
           <Col xs={12} xl={9}>
             <div className="mb-4">
-              <h3 className="fw-bolder lh-sm">{project.name}</h3>
-              <p className="text-body-highlight fw-semibold mb-0">
+              <h3 className="font-black lh-sm">{project.name}</h3>
+              <p className="text-highlight font-semibold mb-0">
                 In list
-                <Link className="ms-1 fw-bold" to="#!">
+                <Link className="ms-1 font-bold" to="#!">
                   Review
                 </Link>
               </p>
             </div>
 
-            <div className="d-flex align-items-center mb-4">
-              <p className="text-body-highlight fw-700 mb-0 me-2">
+            <div className="flex align-items-center mb-4">
+              <p className="text-highlight fw-700 mb-0 me-2">
                 {progress}%
               </p>
 
@@ -62,7 +62,7 @@ const CardViewModal = ({
                 variant={variant}
               />
             </div>
-            <h6 className="text-body-secondary mb-2">Due date</h6>
+            <h6 className="text-muted mb-2">Due date</h6>
             <div className="mb-3">
               <div className="w-50">
                 <DatePicker
@@ -75,8 +75,8 @@ const CardViewModal = ({
             </div>
 
             <div className="mb-3">
-              <h6 className="text-body-secondary mb-2">Assigness</h6>
-              <div className="d-flex gap-1">
+              <h6 className="text-muted mb-2">Assigness</h6>
+              <div className="flex gap-1">
                 {project.assigness.slice(0, 5).map(member => (
                   <AvatarDropdown user={member} size="m" key={member.id} />
                 ))}
@@ -91,20 +91,20 @@ const CardViewModal = ({
             </div>
 
             <div className="mb-5">
-              <h6 className="text-body-secondary mb-2">Labels</h6>
-              <div className="d-flex gap-2 align-items-center">
-                <Badge variant="phoenix" bg="info" className="fs-10">
+              <h6 className="text-muted mb-2">Labels</h6>
+              <div className="flex gap-2 align-items-center">
+                <Badge variant="phoenix" bg="info" className="text-sm">
                   Info
                 </Badge>
-                <Badge variant="phoenix" bg="warning" className="fs-10">
+                <Badge variant="phoenix" bg="warning" className="text-sm">
                   Urgent
                 </Badge>
-                <Badge variant="phoenix" bg="success" className="fs-10">
+                <Badge variant="phoenix" bg="success" className="text-sm">
                   Done
                 </Badge>
                 <Button
                   variant="link"
-                  className="p-0 fs-9 text-body fw-bolder text-decoration-none lh-1"
+                  className="p-0 text-md text-default font-black text-decoration-none lh-1"
                   startIcon={<FontAwesomeIcon icon={faPlus} />}
                 >
                   Add another
@@ -120,14 +120,14 @@ const CardViewModal = ({
               private box seats. Chagall completed 19 gouaches
             </EditableDetailsField>
 
-            <div className="bg-body-highlight rounded-2 px-4 mb-3">
+            <div className="bg-subtle rounded-2 px-4 mb-3">
               <div className="mb-1">
                 {comments.map((comment, index) => (
                   <Comment
                     comment={comment}
                     className={
                       index !== comments.length - 1
-                        ? 'border-bottom border-translucent'
+                        ? 'border-bottom border-light'
                         : undefined
                     }
                     key={comment.id}
@@ -135,16 +135,16 @@ const CardViewModal = ({
                 ))}
               </div>
             </div>
-            <div className="pb-3 border-bottom border-translucent mb-6">
+            <div className="pb-3 border-bottom border-light mb-6">
               <CommentForm />
             </div>
 
             <div className="mb-7">
               <h4 className="mb-4">
                 To do list{' '}
-                <span className="text-body-tertiary fw-normal fs-6">(23)</span>
+                <span className="text-subtle font-normal text-xl">(23)</span>
               </h4>
-              <div className="d-flex justify-content-between align-items-center flex-wrap gap-x-5 gap-y-3 mb-3">
+              <div className="flex justify-content-between align-items-center flex-wrap gap-x-5 gap-y-3 mb-3">
                 <SearchBox
                   placeholder="Search tasks"
                   style={{ maxWidth: '30rem' }}
@@ -152,18 +152,18 @@ const CardViewModal = ({
                 <div>
                   <Button
                     variant="link"
-                    className="p-0 fs-9 text-body-tertiary text-decoration-none me-3"
+                    className="p-0 text-md text-subtle text-decoration-none me-3"
                     startIcon={
-                      <FontAwesomeIcon icon={faFilter} className="fs-10 me-1" />
+                      <FontAwesomeIcon icon={faFilter} className="text-sm me-1" />
                     }
                   >
                     23 tasks
                   </Button>
                   <Button
                     variant="link"
-                    className="p-0 fs-9 text-primary text-decoration-none"
+                    className="p-0 text-md text-primary text-decoration-none"
                     startIcon={
-                      <FontAwesomeIcon icon={faSort} className="fs-10" />
+                      <FontAwesomeIcon icon={faSort} className="text-sm" />
                     }
                   >
                     Sorting
@@ -176,7 +176,7 @@ const CardViewModal = ({
                     key={todo.task}
                     todo={todo}
                     className={classNames('py-3', {
-                      'border-top border-translucent': index === 0
+                      'border-top border-light': index === 0
                     })}
                     // fullLayoutBreakpoints={['lg']}
                     // onClick={setSelectedItem}
@@ -218,8 +218,8 @@ const CardViewModal = ({
           </Col>
 
           <Col xs={12} xl={3}>
-            <h5 className="text-body-secondary mb-3">Add to card</h5>
-            <div className="mb-6 d-flex flex-column gap-2">
+            <h5 className="text-muted mb-3">Add to card</h5>
+            <div className="mb-6 flex flex-column gap-2">
               {addToCardItems.map(item => (
                 <Button
                   key={item.label}
@@ -234,8 +234,8 @@ const CardViewModal = ({
                 </Button>
               ))}
             </div>
-            <h5 className="text-body-secondary mb-3">Actions</h5>
-            <div className="d-flex flex-column gap-2">
+            <h5 className="text-muted mb-3">Actions</h5>
+            <div className="flex flex-column gap-2">
               {actionItems.map(item => (
                 <Button
                   variant="subtle-secondary"

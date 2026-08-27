@@ -9,7 +9,7 @@ const demoForms = () => {
     <>
       <>
         {/* title with floating lavel , select option */}
-        <h5 className="mb-2 mt-5 lh-1 text-body-highlight fw-bold">
+        <h5 className="mb-2 mt-5 lh-1 text-highlight font-bold">
           How many people are included in the base rate?
         </h5>
         <FloatingLabel controlId="peopleSelect" label="Select">
@@ -53,7 +53,7 @@ const demoForms = () => {
 
                 <FontAwesomeIcon
                   icon={faCalendarAlt}
-                  className="position-absolute top-0 end-0 mt-3 me-3"
+                  className="absolute top-0 end-0 mt-3 me-3"
                 />
               </FloatingLabel>
             );

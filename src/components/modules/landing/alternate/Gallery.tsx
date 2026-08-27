@@ -124,9 +124,9 @@ const Gallery = () => {
   };
   return (
     <section className="gallery">
-      <div className="position-absolute left-0 w-100 gallery-overlay" />
+      <div className="absolute left-0 w-100 gallery-overlay" />
       <div
-        className="bg-holder d-none d-xl-block"
+        className="bg-holder hidden d-xl-block"
         style={{
           backgroundImage: `url(${bgLeft})`,
           backgroundSize: 'auto',
@@ -134,14 +134,14 @@ const Gallery = () => {
         }}
       />
       <div
-        className="bg-holder d-none d-xl-block"
+        className="bg-holder hidden d-xl-block"
         style={{
           backgroundImage: `url(${bgRight})`,
           backgroundSize: 'auto',
           backgroundPosition: 'right 62%'
         }}
       />
-      <div className="container-small position-relative px-lg-7 px-xxl-3">
+      <div className="container-small relative px-lg-7 px-xxl-3">
         <div className="text-center mb-7">
           <h5 className="text-info mb-3">Gallery</h5>
           <h2 className="mb-2">Our best works</h2>

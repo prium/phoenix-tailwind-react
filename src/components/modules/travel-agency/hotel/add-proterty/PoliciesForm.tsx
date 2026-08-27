@@ -35,7 +35,7 @@ const SwitchForm = ({
           name={name}
           onChange={onChange}
         />
-        <Form.Check.Label className="fs-8 fw-bold text-body ms-2">
+        <Form.Check.Label className="text-base font-bold text-default ms-2">
           {label}
         </Form.Check.Label>
       </Form.Check>
@@ -70,7 +70,7 @@ const PoliciesForm = () => {
           value="Limited check-in"
           onChange={handleChange}
         />
-        <Form.Check.Label className="fs-8">Limited Check-in</Form.Check.Label>
+        <Form.Check.Label className="text-base">Limited Check-in</Form.Check.Label>
       </Form.Check>
       <Form.Check className="mb-3" inline id="policiesCheckIn24Hr">
         <Form.Check.Input
@@ -79,7 +79,7 @@ const PoliciesForm = () => {
           value="24hr Check-in"
           onChange={handleChange}
         />
-        <Form.Check.Label className="fs-8">24hr Check-in</Form.Check.Label>
+        <Form.Check.Label className="text-base">24hr Check-in</Form.Check.Label>
       </Form.Check>
 
       <Row className="g-3 mb-3 align-items-center">
@@ -161,7 +161,7 @@ const PoliciesForm = () => {
                 });
               }}
             />
-            <Form.Check.Label className="fw-normal fs-8">
+            <Form.Check.Label className="font-normal text-base">
               Late Check-in
             </Form.Check.Label>
           </Form.Check>
@@ -229,7 +229,7 @@ const PoliciesForm = () => {
           value="nonRefundable"
           onChange={handleChange}
         />
-        <Form.Check.Label className="fs-8">Non Refundable</Form.Check.Label>
+        <Form.Check.Label className="text-base">Non Refundable</Form.Check.Label>
       </Form.Check>
       <Form.Check className="mb-3" inline id="optionalRefund">
         <Form.Check.Input
@@ -238,7 +238,7 @@ const PoliciesForm = () => {
           value="optional Refund"
           onChange={handleChange}
         />
-        <Form.Check.Label className="fs-8">Optional Refund</Form.Check.Label>
+        <Form.Check.Label className="text-base">Optional Refund</Form.Check.Label>
       </Form.Check>
       <SwitchForm
         id="policyFullRefund"
@@ -261,7 +261,7 @@ const PoliciesForm = () => {
           value="Not Allowed"
           onChange={handleChange}
         />
-        <Form.Check.Label className="fs-8">Not Allowed</Form.Check.Label>
+        <Form.Check.Label className="text-base">Not Allowed</Form.Check.Label>
       </Form.Check>
       <Form.Check className="mb-3" inline id="PolicyAllowed">
         <Form.Check.Input
@@ -270,7 +270,7 @@ const PoliciesForm = () => {
           value="Allowed"
           onChange={handleChange}
         />
-        <Form.Check.Label className="fs-8">Allowed</Form.Check.Label>
+        <Form.Check.Label className="text-base">Allowed</Form.Check.Label>
       </Form.Check>
       <SwitchForm
         id="petRestictedZone"
@@ -285,7 +285,7 @@ const PoliciesForm = () => {
         className="mb-3"
       />
       <h4 className="mb-4 mt-6">Child Policy</h4>
-      <h5 className="mb-2 text-body">Age Segment 1</h5>
+      <h5 className="mb-2 text-default">Age Segment 1</h5>
       <Row className="align-items-center g-3">
         <Col xs={6} sm="auto">
           <Form.Floating>
@@ -332,7 +332,7 @@ const PoliciesForm = () => {
           </Form.Floating>
         </Col>
       </Row>
-      <h5 className="mb-2 mt-4 text-body">Age Segment 2</h5>
+      <h5 className="mb-2 mt-4 text-default">Age Segment 2</h5>
       <Row className="align-items-center g-3">
         <Col xs={6} sm="auto">
           <Form.Floating>
@@ -378,7 +378,7 @@ const PoliciesForm = () => {
           </Form.Floating>
         </Col>
       </Row>
-      <h5 className="mb-2 mt-4 text-body">Age Segment 3</h5>
+      <h5 className="mb-2 mt-4 text-default">Age Segment 3</h5>
       <Row className="align-items-center g-3">
         <Col xs={6} sm="auto">
           <Form.Floating>
@@ -425,7 +425,7 @@ const PoliciesForm = () => {
           </Form.Floating>
         </Col>
       </Row>
-      <Button variant="link" className="p-0 mt-3 fs-8">
+      <Button variant="link" className="p-0 mt-3 text-base">
         <FontAwesomeIcon icon={faPlus} className="me-2" />
         Add Segment
       </Button>

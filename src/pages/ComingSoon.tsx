@@ -19,7 +19,7 @@ const ComingSoon = () => {
       <Col xs={12} xxl={10}>
         <Row className="align-items-xl-center g-2">
           <Col xs={12} xl={6} className="order-xl-1">
-            <div className="d-flex flex-center">
+            <div className="flex flex-center">
               <Lottie
                 animationData={
                   theme === 'light' ? comingSoonLight : comingSoonDark
@@ -30,7 +30,7 @@ const ComingSoon = () => {
             </div>
           </Col>
           <Col xs={12} xl={6}>
-            <div className="d-flex justify-content-center mt-xl-15">
+            <div className="flex justify-content-center mt-xl-15">
               <div className="text-container text-center text-xl-start">
                 <img
                   src={comingSoonText}
@@ -45,7 +45,7 @@ const ComingSoon = () => {
                   style={{ maxWidth: 415 }}
                 />
 
-                <h2 className="text-body-secondary fs-xl-6 mb-3">
+                <h2 className="text-muted fs-xl-6 mb-3">
                   Get notified when we launch
                 </h2>
                 <p className="mb-6 w-xxl-75">
@@ -60,7 +60,7 @@ const ComingSoon = () => {
                     <Button
                       variant="primary"
                       endIcon={
-                        <FontAwesomeIcon icon={faEnvelope} className="fs-10" />
+                        <FontAwesomeIcon icon={faEnvelope} className="text-sm" />
                       }
                     >
                       Subscribe

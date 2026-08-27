@@ -17,11 +17,11 @@ const TodoList = () => {
         <Card.Header className="border-bottom-0 pb-0">
           <Row className="justify-content-between align-items-center mb-4 gy-2">
             <Col xs="auto">
-              <h3 className="text-body-emphasis">To do</h3>
-              <p className="mb-0 text-body-tertiary">Task assigned to me</p>
+              <h3 className="text-emphasis">To do</h3>
+              <p className="mb-0 text-subtle">Task assigned to me</p>
             </Col>
             <Col xs="auto" className="w-100 w-md-auto">
-              <div className="d-flex justify-content-between align-items-center flex-wrap gap-x-3 gap-y-3">
+              <div className="flex justify-content-between align-items-center flex-wrap gap-x-3 gap-y-3">
                 <SearchBox
                   placeholder="Search tasks"
                   style={{ maxWidth: '30rem' }}
@@ -29,18 +29,18 @@ const TodoList = () => {
                 <div>
                   <Button
                     variant="link"
-                    className="p-0 fs-9 text-body-tertiary text-decoration-none me-3"
+                    className="p-0 text-md text-subtle text-decoration-none me-3"
                     startIcon={
-                      <FontAwesomeIcon icon={faFilter} className="fs-10 me-1" />
+                      <FontAwesomeIcon icon={faFilter} className="text-sm me-1" />
                     }
                   >
                     23 tasks
                   </Button>
                   <Button
                     variant="link"
-                    className="p-0 fs-9 text-primary text-decoration-none"
+                    className="p-0 text-md text-primary text-decoration-none"
                     startIcon={
-                      <FontAwesomeIcon icon={faSort} className="fs-10" />
+                      <FontAwesomeIcon icon={faSort} className="text-sm" />
                     }
                   >
                     Sorting
@@ -57,9 +57,9 @@ const TodoList = () => {
               key={todo.task}
               todo={todo}
               className={classNames({
-                'border-top border-translucent': index === 0
+                'border-top border-light': index === 0
               })}
-              labelClassName="text-body"
+              labelClassName="text-default"
               fullLayoutBreakpoints={['md', 'xxl']}
               halfLayoutBreakpoints={['xl']}
               onClick={setSelectedItem}

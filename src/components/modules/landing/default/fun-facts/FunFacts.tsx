@@ -9,7 +9,7 @@ import CountUp from 'react-countup';
 const FunFacts = () => {
   return (
     <div className="pb-15">
-      <div className="position-relative py-18">
+      <div className="relative py-18">
         <div
           className="bg-holder z-1 world-map-bg"
           style={{
@@ -39,13 +39,13 @@ const FunFacts = () => {
             className="container-small px-lg-7 px-xxl-3"
             data-bs-theme="light"
           >
-            <div className="position-relative">
+            <div className="relative">
               <Row className="row mb-6">
                 <div className="col-xl-6 text-center text-md-start">
                   <h2 className="text-white mb-2">
                     Being used by millions of users
                   </h2>
-                  <h1 className="fs-md-3 fs-xl-2 fw-black text-gradient-info text-uppercase mb-4 mb-md-0">
+                  <h1 className="fs-md-3 fs-xl-2 font-black text-gradient-info text-uppercase mb-4 mb-md-0">
                     WORLDWIDE
                   </h1>
                 </div>
@@ -72,7 +72,7 @@ const FunFacts = () => {
                         {({ countUpRef }) => (
                           <div>
                             <h1
-                              className="display-1 text-white fw-bolder"
+                              className="display-1 text-white font-black"
                               ref={countUpRef as Ref<HTMLHeadingElement>}
                             />
                           </div>
@@ -94,7 +94,7 @@ const FunFacts = () => {
                         {({ countUpRef }) => (
                           <div>
                             <h1
-                              className="display-1 text-white fw-bolder"
+                              className="display-1 text-white font-black"
                               ref={countUpRef as Ref<HTMLHeadingElement>}
                             />
                           </div>
@@ -111,7 +111,7 @@ const FunFacts = () => {
                         {({ countUpRef }) => (
                           <div>
                             <h1
-                              className="display-1 text-white fw-bolder"
+                              className="display-1 text-white font-black"
                               ref={countUpRef as Ref<HTMLHeadingElement>}
                             />
                           </div>

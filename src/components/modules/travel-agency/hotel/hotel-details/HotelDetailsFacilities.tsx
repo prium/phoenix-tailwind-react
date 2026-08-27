@@ -22,14 +22,14 @@ const CategoryLists = ({ category, index }: CategoryListProps) => {
   return (
     <Fragment>
       <h5 className="mb-3">
-        <FontAwesomeIcon icon={category.icon} className="fs-9 me-2" />
+        <FontAwesomeIcon icon={category.icon} className="text-md me-2" />
         {category.title}
       </h5>
       {category.desc && (
-        <p className="mb-2 fs-9 text-body-tertiary">{category.desc}</p>
+        <p className="mb-2 text-md text-subtle">{category.desc}</p>
       )}
       <ul
-        className={classNames('list-unstyled text-body-highlight', {
+        className={classNames('list-unstyled text-highlight', {
           'mb-5': index !== 4,
           'mb-sm-0': index === 4
         })}
@@ -38,7 +38,7 @@ const CategoryLists = ({ category, index }: CategoryListProps) => {
           <li key={idx}>
             <FontAwesomeIcon
               icon={faCheck}
-              className="fs-9 text-success me-2"
+              className="text-md text-success me-2"
             />
             {item.name}
           </li>
@@ -54,30 +54,30 @@ const HotelDetailsFacilities = ({
 }: HotelDetailsFacilitiesProps) => {
   return (
     <>
-      <h3 className="mb-5 fw-bold">Facilities</h3>
+      <h3 className="mb-5 font-bold">Facilities</h3>
       <h5 className="mb-3">Most popular</h5>
       <Row className="g-0">
         {facilities.map(facility => (
           <Col key={facility.id} sm={6} md={4}>
             <div
               className={classNames(
-                'd-flex align-items-center gap-2 px-4 py-3 h-100 border-translucent',
+                'flex align-items-center gap-2 px-4 py-3 h-100 border-light',
                 facility.classes
               )}
             >
               <FontAwesomeIcon
                 icon={facility.icon}
-                className="fs-9 text-warning"
+                className="text-md text-warning"
                 transform="down-1"
               />
-              <h5 className="text-body-tertiary mb-0 fw-normal">
+              <h5 className="text-subtle mb-0 font-normal">
                 {facility.title}
               </h5>
             </div>
           </Col>
         ))}
       </Row>
-      <h6 className="text-warning text-uppercase fw-normal my-5">
+      <h6 className="text-warning text-uppercase font-normal my-5">
         <span className="me-2">*</span>
         additional charges
       </h6>

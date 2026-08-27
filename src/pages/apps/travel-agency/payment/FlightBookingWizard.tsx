@@ -60,15 +60,15 @@ const FlightBookingWizard = ({ activeItem }: FlightBookingWizardProps) => {
               <Nav.Link
                 as={Link}
                 to={item.url}
-                className={`fw-semibold ${stepClass}`}
+                className={`font-semibold ${stepClass}`}
               >
                 <div className="d-inline-block text-center">
                   <span className="nav-item-circle-parent">
-                    <span className="d-block nav-item-circle">
+                    <span className="block nav-item-circle">
                       <FontAwesomeIcon icon={isDone ? faCheck : item.icon} />
                     </span>
                   </span>
-                  <span className="d-md-block mt-1 fs-9">{item.name}</span>
+                  <span className="d-md-block mt-1 text-md">{item.name}</span>
                 </div>
               </Nav.Link>
             </Nav.Item>

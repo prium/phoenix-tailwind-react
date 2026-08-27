@@ -28,7 +28,7 @@ const LeadDetailsOffcanvas = ({ open, setOpen }: LeadDetailsOffcanvasProps) => {
           fixed
         >
           <div>
-            <div className="d-flex justify-content-between align-items-center mb-2 d-md-none">
+            <div className="flex justify-content-between align-items-center mb-2 d-md-none">
               <h3 className="mb-0">Lead Details</h3>
               <Button className="p-0" onClick={() => setOpen(false)}>
                 <Unicon fill='currentColor' size={24} icon={UilTimes} />

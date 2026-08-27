@@ -19,11 +19,11 @@ const columns: ColumnDef<EmployeeRecordTableRowItem>[] = [
     },
     meta: {
       headerProps: {
-        className: 'align-middle white-space-nowrap',
+        className: 'align-middle whitespace-nowrap',
         style: { minWidth: '14rem' }
       },
       cellProps: {
-        className: 'align-middle white-space-nowrap'
+        className: 'align-middle whitespace-nowrap'
       }
     }
   },
@@ -40,11 +40,11 @@ const columns: ColumnDef<EmployeeRecordTableRowItem>[] = [
     },
     meta: {
       headerProps: {
-        className: 'align-middle white-space-nowrap text-center',
+        className: 'align-middle whitespace-nowrap text-center',
         style: { minWidth: '8rem' }
       },
       cellProps: {
-        className: 'align-middle white-space-nowrap text-center'
+        className: 'align-middle whitespace-nowrap text-center'
       }
     }
   },
@@ -84,7 +84,7 @@ const columns: ColumnDef<EmployeeRecordTableRowItem>[] = [
     },
     meta: {
       headerProps: {
-        className: 'align-middle white-space-nowrap text-end',
+        className: 'align-middle whitespace-nowrap text-end',
         style: { minWidth: '11rem' }
       },
       cellProps: {
@@ -111,7 +111,7 @@ const EmployeeRecordsTable = ({
     <AdvanceTableProvider {...table}>
       <AdvanceTable
         tableProps={{
-          className: 'phoenix-table border-top border-translucent fs-9 mb-0'
+          className: ' border-top border-light text-md mb-0'
         }}
         headerClassName="text-uppercase"
       />

@@ -19,7 +19,7 @@ const CreateAnEvent = () => {
             <h2 className="mb-0">Create an Event</h2>
           </Col>
           <Col xs={12} sm="auto" xl={4}>
-            <div className="d-flex">
+            <div className="flex">
               <Button
                 className="px-5 me-2"
                 variant="phoenix-primary"
@@ -47,7 +47,7 @@ const CreateAnEvent = () => {
             </Row>
           </Col>
           <Col xl={4}>
-            <div className="border-bottom border-translucent pb-6 mb-6">
+            <div className="border-bottom border-light pb-6 mb-6">
               <h4 className="mb-4">Privacy</h4>
               <Form.Check type="radio" id="privacy1" className="mb-2">
                 <Form.Check.Input
@@ -56,8 +56,8 @@ const CreateAnEvent = () => {
                   value="option1"
                   defaultChecked
                 />
-                <Form.Check.Label className="fw-normal" htmlFor="privacy1">
-                  <span className="h5 d-block mt-1">Public</span>
+                <Form.Check.Label className="font-normal" htmlFor="privacy1">
+                  <span className="h5 block mt-1">Public</span>
                   On Phoenix, our distribution partners, and search engines,{' '}
                   <br />
                   anybody can find the event
@@ -69,13 +69,13 @@ const CreateAnEvent = () => {
                   name="vrivacyRadio"
                   value="option1"
                 />
-                <Form.Check.Label className="fw-normal" htmlFor="privacy2">
-                  <span className="h5 d-block mt-1">Private</span>
+                <Form.Check.Label className="font-normal" htmlFor="privacy2">
+                  <span className="h5 block mt-1">Private</span>
                   Only the individuals you select have access to it.
                 </Form.Check.Label>
               </Form.Check>
             </div>
-            <div className="border-bottom border-translucent mb-6">
+            <div className="border-bottom border-light mb-6">
               <Form.Check type="checkbox" id="flexChecked">
                 <Form.Check.Input
                   type="checkbox"
@@ -83,7 +83,7 @@ const CreateAnEvent = () => {
                   defaultChecked
                 />
                 <Form.Check.Label
-                  className="fw-bold fs-8 mb-5"
+                  className="font-bold text-base mb-5"
                   htmlFor="flexChecked"
                 >
                   Show the number of available tickets

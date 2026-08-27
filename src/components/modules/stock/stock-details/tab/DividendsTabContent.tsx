@@ -15,11 +15,11 @@ const DividendsTabContent = ({ dividendContent }: DividendsTabContentProps) => {
     <>
       <Alert variant={`phoenix-secondary`} className="mb-4">
         <Alert.Heading>
-          <h4 className="text-body-tertiary mb-2">
+          <h4 className="text-subtle mb-2">
             Apple's Dividend Distribution
           </h4>
         </Alert.Heading>
-        <p className="text-body-tertiary mb-0">
+        <p className="text-subtle mb-0">
           Apple offers a $1.00 yearly dividend per share, or 0.44% return. The
           dividend is distributed every three months, and as of August 12, 2024,
           there was no ex-dividend date.
@@ -35,20 +35,20 @@ const DividendsTabContent = ({ dividendContent }: DividendsTabContentProps) => {
                 xxl={3}
                 className={classNames(item.className)}
               >
-                <div className="d-flex flex-column flex-sm-row flex-xxl-column gap-3">
+                <div className="flex flex-column flex-sm-row flex-xxl-column gap-3">
                   <div
                     className={classNames(
-                      'icon-item border align-items-end p-2 d-flex align-items-center rounded fw-normal',
+                      'icon-item border align-items-end p-2 flex align-items-center rounded font-normal',
                       item.iconClassName
                     )}
                   >
                     {item.icon}
                   </div>
                   <div className="text-nowrap">
-                    <h5 className="fs-9 fs-sm-8 text-body-highlight lh-sm">
+                    <h5 className="text-md sm:text-base text-highlight lh-sm">
                       {item.title}
                     </h5>
-                    <h4 className="fs-8 fs-sm-7 mb-0 text-body fw-bolder lh-sm">
+                    <h4 className="text-base sm:text-lg mb-0 text-default font-black lh-sm">
                       {item.content}
                     </h4>
                   </div>
@@ -63,16 +63,16 @@ const DividendsTabContent = ({ dividendContent }: DividendsTabContentProps) => {
           <Row className="g-3 g-lg-5 flex-between-center mb-4">
             <Col xs="auto">
               <h4>Dividends</h4>
-              <p className="text-body-tertiary mb-0">Dividend Income Basics</p>
+              <p className="text-subtle mb-0">Dividend Income Basics</p>
             </Col>
-            <Col xs="auto" className="d-flex align-items-center gap-2">
+            <Col xs="auto" className="flex align-items-center gap-2">
               <Form.Select size="sm">
                 <option value="9">9 Years</option>
                 <option value="8">8 Years</option>
                 <option value="7">7 Years</option>
               </Form.Select>
               <RevealDropdown
-                btnClassName="btn-phoenix-secondary bg-body-emphasis bg-body-hover action-btn"
+                btnClassName="btn-phoenix-secondary bg-soft hover:bg-default action-btn"
                 dropdownMenuClassName="py-3"
               >
                 <Dropdown.Item>Action</Dropdown.Item>
@@ -87,18 +87,18 @@ const DividendsTabContent = ({ dividendContent }: DividendsTabContentProps) => {
           <Row className="g-3 g-lg-5 flex-between-center mb-4">
             <Col xs="auto">
               <h4>Dividend Growth</h4>
-              <p className="text-body-tertiary mb-0">
+              <p className="text-subtle mb-0">
                 Boosting Dividend Income
               </p>
             </Col>
-            <Col xs="auto" className="d-flex align-items-center gap-2">
+            <Col xs="auto" className="flex align-items-center gap-2">
               <Form.Select size="sm">
                 <option value="7">7 Years</option>
                 <option value="8">8 Years</option>
                 <option value="9">9 Years</option>
               </Form.Select>
               <RevealDropdown
-                btnClassName="btn-phoenix-secondary bg-body-emphasis bg-body-hover action-btn"
+                btnClassName="btn-phoenix-secondary bg-soft hover:bg-default action-btn"
                 dropdownMenuClassName="py-3"
               >
                 <Dropdown.Item>Action</Dropdown.Item>
@@ -113,7 +113,7 @@ const DividendsTabContent = ({ dividendContent }: DividendsTabContentProps) => {
       <Row className="g-3 flex-between-center">
         <Col xs="auto">
           <h4>Dividend Record</h4>
-          <p className="text-body-tertiary mb-0">
+          <p className="text-subtle mb-0">
             Brief summary of all projects
           </p>
         </Col>

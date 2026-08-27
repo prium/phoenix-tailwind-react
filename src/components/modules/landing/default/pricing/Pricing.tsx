@@ -11,7 +11,7 @@ const Pricing = () => {
     <section className="pt-lg-0 pt-xl-8">
       <div>
         <div
-          className="bg-holder d-none d-md-block"
+          className="bg-holder hidden d-md-block"
           style={{
             backgroundImage: `url(${bgLeft15})`,
             backgroundPosition: 'left',
@@ -19,7 +19,7 @@ const Pricing = () => {
           }}
         />
         <div
-          className="bg-holder d-none d-md-block"
+          className="bg-holder hidden d-md-block"
           style={{
             backgroundImage: `url(${bgRight15})`,
             backgroundPosition: 'right',
@@ -28,10 +28,10 @@ const Pricing = () => {
         />
       </div>
 
-      <div className="container-small position-relative px-lg-7 px-xxl-3">
+      <div className="container-small relative px-lg-7 px-xxl-3">
         <Row>
           <Col xs={12} className="mb-4 text-center text-sm-start">
-            <h4 className="text-primary fw-bolder mb-3">Pricing</h4>
+            <h4 className="text-primary font-black mb-3">Pricing</h4>
             <h2>Choose the best deal for you</h2>
           </Col>
           <Col md={6} className="text-center text-sm-start">
@@ -65,7 +65,7 @@ const Pricing = () => {
                   })}
                 >
                   {item.popular && (
-                    <div className="position-absolute d-flex flex-center bg-primary-subtle rounded-top py-1 end-0 start-0 badge-pricing">
+                    <div className="absolute flex flex-center bg-primary-subtle rounded-top py-1 end-0 start-0 badge-pricing">
                       <p className="text-primary-dark mb-0">Most popular</p>
                     </div>
                   )}

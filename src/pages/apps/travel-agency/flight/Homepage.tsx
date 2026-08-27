@@ -20,7 +20,7 @@ const FlightHomepage = () => {
       </section>
       <section className="p-0">
         <Container fluid className="px-0">
-          <div className="position-relative" style={{ height: '19rem' }}>
+          <div className="relative" style={{ height: '19rem' }}>
             <div
               className="bg-holder"
               style={{

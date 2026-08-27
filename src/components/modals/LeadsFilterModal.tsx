@@ -57,15 +57,15 @@ const LeadsFilterModal = ({ show, handleClose }: LeadsFilterModalProps) => {
   );
   return (
     <Modal show={show} onHide={handleClose} className="p-0" centered>
-      <Modal.Header className="border-translucent p-4">
-        <h5 className="modal-title text-body-highlight fs-6 lh-sm">Filter</h5>
+      <Modal.Header className="border-light p-4">
+        <h5 className="modal-title text-highlight text-xl lh-sm">Filter</h5>
         <Button className="p-1 ms-auto" onClick={handleClose}>
-          <FontAwesomeIcon icon={faTimes} className="fs-9" />
+          <FontAwesomeIcon icon={faTimes} className="text-md" />
         </Button>
       </Modal.Header>
       <Modal.Body className="pt-4 pb-2 px-4">
         <div className="mb-3">
-          <label className="fw-bold mb-2 text-body-highlight">
+          <label className="font-bold mb-2 text-highlight">
             Lead Status
           </label>
           <Form.Select
@@ -81,7 +81,7 @@ const LeadsFilterModal = ({ show, handleClose }: LeadsFilterModalProps) => {
           </Form.Select>
         </div>
         <div className="mb-3">
-          <label className="fw-bold mb-2 text-body-highlight">
+          <label className="font-bold mb-2 text-highlight">
             Company name
           </label>
           <Form.Select
@@ -97,7 +97,7 @@ const LeadsFilterModal = ({ show, handleClose }: LeadsFilterModalProps) => {
           </Form.Select>
         </div>
         <div className="mb-3">
-          <label className="fw-bold mb-2 text-body-highlight">
+          <label className="font-bold mb-2 text-highlight">
             Designation
           </label>
           <Form.Select
@@ -113,13 +113,13 @@ const LeadsFilterModal = ({ show, handleClose }: LeadsFilterModalProps) => {
           </Form.Select>
         </div>
       </Modal.Body>
-      <Modal.Footer className="d-flex justify-content-end align-items-center px-4 pb-4 border-0 pt-3">
+      <Modal.Footer className="flex justify-content-end align-items-center px-4 pb-4 border-0 pt-3">
         <Button
           variant="phoenix-primary"
           size="sm"
-          className="px-4 fs-10 my-0"
+          className="px-4 text-sm my-0"
           startIcon={
-            <FontAwesomeIcon icon={faArrowsRotate} className="me-2 fs-10" />
+            <FontAwesomeIcon icon={faArrowsRotate} className="me-2 text-sm" />
           }
           onClick={handleReset}
         >
@@ -128,7 +128,7 @@ const LeadsFilterModal = ({ show, handleClose }: LeadsFilterModalProps) => {
         <Button
           variant="primary"
           size="sm"
-          className="px-9 fs-9 my-0"
+          className="px-9 text-md my-0"
           onClick={handleClose}
         >
           Done

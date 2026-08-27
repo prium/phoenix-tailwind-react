@@ -11,7 +11,7 @@ import { ReactTyped } from 'react-typed';
 
 const HeroHeader = () => {
   return (
-    <div className="booking-hero-header d-flex align-items-center">
+    <div className="booking-hero-header flex align-items-center">
       <div
         className="bg-holder overlay bg-opacity-50"
         style={{
@@ -22,11 +22,11 @@ const HeroHeader = () => {
       >
         <video className="bg-video" autoPlay loop muted src={travelVideo} />
       </div>
-      <div className="container-medium position-relative z-5">
-        <h2 className="text-secondary-lighter fs-5 fs-md-3 fw-normal mb-3">
+      <div className="container-medium relative z-5">
+        <h2 className="text-secondary-lighter fs-5 fs-md-3 font-normal mb-3">
           Where is your
         </h2>
-        <h1 className="fs-4 fs-md-1 text-white fw-normal mb-6 overflow-hidden">
+        <h1 className="fs-4 fs-md-1 text-white font-normal mb-6 overflow-hidden">
           NEXT{' '}
           <ReactTyped
             strings={[
@@ -42,7 +42,7 @@ const HeroHeader = () => {
           />
         </h1>
         <InputGroup className="rounded-2 py-1 ps-2 w-lg-50 border border-light">
-          <div className="form-icon-container flex-1 d-flex align-items-center">
+          <div className="form-icon-container flex-1 flex align-items-center">
             <FontAwesomeIcon
               icon={faLocationDot}
               className="form-icon text-danger-light"
@@ -50,16 +50,16 @@ const HeroHeader = () => {
             <Form.Control
               type="text"
               placeholder="Search Destination"
-              className="form-icon-input bg-transparent border-0 outline-none fs-8 fs-md-7 text-secondary-light"
+              className="form-icon-input bg-transparent border-0 outline-none text-base md:text-lg text-secondary-light"
             />
           </div>
           {/* dropdwon class not added */}
           <Dropdown align="end">
-            <div className="d-flex align-items-center">
+            <div className="flex align-items-center">
               <Dropdown.Toggle
                 as="button"
                 id="dropdown-basic"
-                className="btn dropdown-caret-none py-0 bg-transparent text-secondary-light fs-8 fs-md-7 fw-semibold border-0 border-start border-light rounded-0"
+                className="btn dropdown-caret-none py-0 bg-transparent text-secondary-light text-base md:text-lg font-semibold border-0 border-start border-light rounded-0"
               >
                 Flight
                 <FontAwesomeIcon

@@ -21,14 +21,14 @@ const FileManagerTimeline = ({ data }: { data: Activity[] }) => {
   return (
     <Timeline variant="basic">
       {data.map((item, index) => (
-        <Timeline.Item className="position-relative" key={index}>
+        <Timeline.Item className="relative" key={index}>
           <Row className="g-3">
             <Col xs="auto">
-              <Timeline.Separator className="position-relative">
-                <Timeline.Dot className="icon-item-md rounded-7 border border-translucent">
+              <Timeline.Separator className="relative">
+                <Timeline.Dot className="icon-item-md rounded-7 border border-light">
                   <FontAwesomeIcon
                     icon={item.icon}
-                    className={`text-${item.iconColor} fs-9`}
+                    className={`text-${item.iconColor} text-md`}
                   />
                 </Timeline.Dot>
                 {index !== data.length - 1 && (
@@ -38,18 +38,18 @@ const FileManagerTimeline = ({ data }: { data: Activity[] }) => {
             </Col>
             <Col className="mb-5">
               <Timeline.Content>
-                <div className="d-flex justify-content-between">
-                  <h6 className="lh-sm mb-2 me-2 text-body-secondary timeline-item-title">
+                <div className="flex justify-content-between">
+                  <h6 className="lh-sm mb-2 me-2 text-muted timeline-item-title">
                     {item.title}
                   </h6>
-                  <p className="text-body-quaternary fs-9 mb-0 text-nowrap timeline-time">
+                  <p className="text-soft text-md mb-0 text-nowrap timeline-time">
                     <FontAwesomeIcon icon={faClock} className="me-1" />{' '}
                     {item.time}
                   </p>
                 </div>
-                <h6 className="fs-10 fw-normal mb-3">
+                <h6 className="text-sm font-normal mb-3">
                   by{' '}
-                  <Link className="fw-semibold" to="#!">
+                  <Link className="font-semibold" to="#!">
                     {item.tasker}
                   </Link>
                 </h6>

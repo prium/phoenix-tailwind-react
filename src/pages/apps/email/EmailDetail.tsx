@@ -30,16 +30,16 @@ const EmailDetail = () => {
       <Col>
         <Card className="email-content">
           <Card.Header className="border-0">
-            <div className="d-flex flex-between-center pb-3 border-bottom border-translucent">
+            <div className="flex flex-between-center pb-3 border-bottom border-light">
               <Button
                 as={Link}
                 to="/apps/email/inbox"
                 variant="link"
-                className="p-0 text-body-secondary me-3"
+                className="p-0 text-muted me-3"
               >
                 <FontAwesomeIcon
                   icon={faAngleLeft}
-                  className="fw-bolder fs-8"
+                  className="font-black text-base"
                 />
               </Button>
               <h3 className="flex-1 mb-0 lh-sm line-clamp-1">
@@ -64,7 +64,7 @@ const EmailDetail = () => {
                   sm="auto"
                   lg={12}
                   xl="auto"
-                  className="d-flex gap-4 gap-lg-3 gap-xl-4 order-sm-1 order-lg-0 order-xl-1"
+                  className="flex gap-4 gap-lg-3 gap-xl-4 order-sm-1 order-lg-0 order-xl-1"
                 >
                   <TooltipIconButton title="Reply" icon={faReply} />
                   <TooltipIconButton title="Remove" icon={faTrashCan} />
@@ -76,31 +76,31 @@ const EmailDetail = () => {
                   <Avatar src={team60} size="xl" />
                 </Col>
                 <Col xs="auto" className="flex-1">
-                  <div className="d-flex mb-1">
-                    <h5 className="mb-0 text-body-highlight me-2">
+                  <div className="flex mb-1">
+                    <h5 className="mb-0 text-highlight me-2">
                       Jessica Ball
                     </h5>
-                    <p className="mb-0 lh-sm text-body-tertiary fs-9 d-none d-md-block text-nowrap">
+                    <p className="mb-0 lh-sm text-subtle text-md hidden d-md-block text-nowrap">
                       &lt; jessica.ball@email.com &gt;
                     </p>
                   </div>
-                  <p className="mb-0 fs-9">
-                    <span className="text-body-tertiary me-1">to</span>
-                    <span className="fw-bold text-body-secondary me-1">Me</span>
-                    <span className="text-body-highlight fw-semibold fs-10 me-1">
+                  <p className="mb-0 text-md">
+                    <span className="text-subtle me-1">to</span>
+                    <span className="font-bold text-muted me-1">Me</span>
+                    <span className="text-highlight font-semibold text-sm me-1">
                       28 Aug, 2021
                     </span>
-                    <span className="fw-semibold text-body fs-10 me-1">
+                    <span className="font-semibold text-default text-sm me-1">
                       6:32 PM
                     </span>
                     <FontAwesomeIcon
                       icon={farStar}
-                      className="text-body-quaternary"
+                      className="text-soft"
                     />
                   </p>
                 </Col>
               </Row>
-              <div className="text-body-highlight fs-9 w-100 w-md-75 mb-8">
+              <div className="text-highlight text-md w-100 w-md-75 mb-8">
                 <p>Dear Simp sons,</p>
                 <p>
                   Something in a thirty-acre thermal thicket of thorns and
@@ -119,10 +119,10 @@ const EmailDetail = () => {
                 <p className="mb-0">Best regards,</p>
                 <p>Jess</p>
               </div>
-              <div className="d-flex align-items-center mb-5">
+              <div className="flex align-items-center mb-5">
                 <Button
                   variant="link"
-                  className="text-body-highlight fs-8 text-decoration-none p-0"
+                  className="text-highlight text-base text-decoration-none p-0"
                   type="button"
                   startIcon={
                     <FontAwesomeIcon icon={faPaperclip} className="me-2" />
@@ -131,7 +131,7 @@ const EmailDetail = () => {
                   2 Attachments
                 </Button>
               </div>
-              <Row className="pb-11 border-bottom border-translucent mb-4 gx-0 gy-2">
+              <Row className="pb-11 border-bottom border-light mb-4 gx-0 gy-2">
                 <Col xs="auto" className="me-3">
                   <AttachmentPreview
                     attachment={{
@@ -155,12 +155,12 @@ const EmailDetail = () => {
                   />
                 </Col>
               </Row>
-              <div className="d-flex justify-content-between">
+              <div className="flex justify-content-between">
                 <Button
                   variant="phoenix-secondary"
                   className="me-1 text-nowrap px-2 px-sm-4"
                   endIcon={
-                    <FontAwesomeIcon icon={faReply} className="ms-2 fs-10" />
+                    <FontAwesomeIcon icon={faReply} className="ms-2 text-sm" />
                   }
                 >
                   Reply
@@ -169,7 +169,7 @@ const EmailDetail = () => {
                   variant="phoenix-secondary"
                   className="me-1 text-nowrap px-2 px-sm-4"
                   endIcon={
-                    <FontAwesomeIcon icon={faReplyAll} className="ms-2 fs-10" />
+                    <FontAwesomeIcon icon={faReplyAll} className="ms-2 text-sm" />
                   }
                 >
                   Reply All
@@ -178,7 +178,7 @@ const EmailDetail = () => {
                   variant="phoenix-secondary"
                   className="ms-auto text-nowrap px-2 px-sm-4"
                   endIcon={
-                    <FontAwesomeIcon icon={faShare} className="ms-2 fs-10" />
+                    <FontAwesomeIcon icon={faShare} className="ms-2 text-sm" />
                   }
                 >
                   Forward

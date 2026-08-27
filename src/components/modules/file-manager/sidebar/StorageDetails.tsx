@@ -62,13 +62,13 @@ const StorageDetails = () => {
         to="#!"
         onClick={() => setIsOpen(!isOpen)}
         className={classNames(
-          'collapse-indicator px-0 py-3 mt-3 d-flex flex-between-center text-decoration-none',
+          'collapse-indicator px-0 py-3 mt-3 flex flex-between-center text-decoration-none',
           {
             collapsed: !isOpen
           }
         )}
       >
-        <h5 className="mb-0 text-body-highlight">Storage details</h5>
+        <h5 className="mb-0 text-highlight">Storage details</h5>
         <FontAwesomeIcon
           icon={faChevronRight}
           className={`toggle-icon text-primary`}
@@ -81,7 +81,7 @@ const StorageDetails = () => {
         <ProgressBar variant="danger-lighter" now={12} key={4} />
         <ProgressBar variant="success-lighter" now={11} key={5} />
       </ProgressBar>
-      <h6 className="text-body mt-2 mb-0">Used: 45.8 GB (92%) of the 50 GB.</h6>
+      <h6 className="text-default mt-2 mb-0">Used: 45.8 GB (92%) of the 50 GB.</h6>
 
       <Collapse in={isOpen}>
         <div>
@@ -89,7 +89,7 @@ const StorageDetails = () => {
             {categories.map((item, index) => (
               <div
                 key={index}
-                className={`d-flex align-items-center gap-2 ${
+                className={`flex align-items-center gap-2 ${
                   index !== categories.length - 1 ? 'mb-3' : ''
                 }`}
               >
@@ -100,8 +100,8 @@ const StorageDetails = () => {
                   />
                 </div>
                 <div>
-                  <h6 className="text-body">{item.category}</h6>
-                  <h6 className="mb-0 text-body fw-semibold">
+                  <h6 className="text-default">{item.category}</h6>
+                  <h6 className="mb-0 text-default font-semibold">
                     {item.count} Files - {item.storage} Used
                   </h6>
                 </div>
@@ -124,8 +124,8 @@ const StorageDetails = () => {
           alt=""
           width="98"
         />
-        <h5 className="mt-3 text-body fw-bolder">Upgrade to Pro</h5>
-        <h6 className="mb-3 text-body-tertiary fw-normal">
+        <h5 className="mt-3 text-default font-black">Upgrade to Pro</h5>
+        <h6 className="mb-3 text-subtle font-normal">
           Expand your storage capacity with our upgraded storage options.
         </h6>
         <Button variant="primary" size="sm" className="w-100">

@@ -18,14 +18,14 @@ const FlightPromoModal = ({ show, handleClose }: FlightPromoModalProps) => {
       onHide={handleClose}
       centered
     >
-      <Modal.Body className="position-relative p-6">
-        <div className="position-absolute end-0 top-0">
+      <Modal.Body className="relative p-6">
+        <div className="absolute end-0 top-0">
           <Button
             variant="phoenix-secondary"
             className="px-3 border-0 bg-transparent"
             onClick={handleClose}
           >
-            <FontAwesomeIcon icon={faTimes} className="fs-9" />
+            <FontAwesomeIcon icon={faTimes} className="text-md" />
           </Button>
         </div>
         <div className="text-center">
@@ -42,12 +42,12 @@ const FlightPromoModal = ({ show, handleClose }: FlightPromoModalProps) => {
             alt=""
           />
           <h1 className="text-success">Save 20%</h1>
-          <h3 className="mb-2 text-body">on your next flight - Join now!</h3>
-          <p className="mb-4 fs-9">
+          <h3 className="mb-2 text-default">on your next flight - Join now!</h3>
+          <p className="mb-4 text-md">
             Sign up now to save up to 20% on flights with our free membership
             program!
           </p>
-          <div className="d-flex gap-2 align-items-center mb-4 justify-content-center">
+          <div className="flex gap-2 align-items-center mb-4 justify-content-center">
             <Form.Control
               type="email"
               placeholder="Your email address"
@@ -57,14 +57,14 @@ const FlightPromoModal = ({ show, handleClose }: FlightPromoModalProps) => {
               Sign-up
             </Button>
           </div>
-          <p className="mb-1 fs-9 text-body-quaternary">
+          <p className="mb-1 text-md text-soft">
             Subscribe for exclusive offers. <a href="#!">Privacy Policy</a>
           </p>
           <Button
             onClick={handleClose}
             aria-label="Close"
             variant="link"
-            className=" p-0 fs-10 text-decoration-underline text-body-tertiary"
+            className=" p-0 text-sm text-decoration-underline text-subtle"
           >
             Don’t show it again
           </Button>

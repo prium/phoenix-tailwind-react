@@ -24,12 +24,12 @@ const FooterList = ({
       )}
       style={{ '--phoenix-border-opacity': '.2' } as CSSProperties}
     >
-      <h5 className="lh-lg fw-bolder mb-2 text-light">{label}</h5>
+      <h5 className="lh-lg font-black mb-2 text-light">{label}</h5>
       <ul className="list-unstyled mb-1">
         {items.map((item, index) => (
           <li className="mb-1" key={index}>
             <Link
-              className="text-body-quaternary"
+              className="text-soft"
               data-bs-theme="light"
               to="#!"
             >
@@ -44,7 +44,7 @@ const FooterList = ({
 
 const Footer = () => {
   return (
-    <div className="position-relative">
+    <div className="relative">
       <div
         className="bg-holder footer-bg"
         style={{ backgroundImage: `url(${bg19})`, backgroundSize: 'auto' }}
@@ -66,7 +66,7 @@ const Footer = () => {
         }}
       />
 
-      <div className="position-relative">
+      <div className="relative">
         <svg
           className="w-100 text-white dark__text-gray-1100"
           preserveAspectRatio="none"
@@ -78,7 +78,7 @@ const Footer = () => {
         </svg>
         <section className="footer-default">
           <div className="container-small px-lg-7 px-xxl-3">
-            <Row className="position-relative">
+            <Row className="relative">
               <Col xs={{ span: 12, order: 0 }} lg={5} className="mb-4">
                 <Link to="#!">
                   <img className="mb-3" src={logoWhite} height="48" alt="" />

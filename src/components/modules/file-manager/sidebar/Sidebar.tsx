@@ -12,10 +12,10 @@ interface SidebarProps {
 const Sidebar = ({ setOpenOffcanvas }: SidebarProps) => {
   return (
     <div className="file-manager-sidebar scrollbar">
-      <div className="d-flex flex-between-center">
+      <div className="flex flex-between-center">
         <h5 className="mb-2">My Files</h5>
         <Button
-          className="p-0 fs-8 d-lg-none"
+          className="p-0 text-base d-lg-none"
           onClick={() => setOpenOffcanvas(false)}
         >
           <FontAwesomeIcon icon={faXmark} transform={'up-3'} />

@@ -37,18 +37,18 @@ const LocationForm = ({ tabEventKey }: { tabEventKey: number }) => {
           />
           <label
             htmlFor="LacationAddress"
-            className="form-icon-label text-body-tertiary"
+            className="form-icon-label text-subtle"
           >
             Search Address...
           </label>
         </Form.Floating>
         <FontAwesomeIcon
           icon={faLocationDot}
-          className="text-body fs-10 form-icon "
+          className="text-default text-sm form-icon "
         />
         <FontAwesomeIcon
           icon={faLocationCrosshairs}
-          className="position-absolute text-primary fs-9 end-0 top-0 mt-3 me-3"
+          className="absolute text-primary text-md end-0 top-0 mt-3 me-3"
           transform="down-2"
         />
       </div>
@@ -123,7 +123,7 @@ const LocationForm = ({ tabEventKey }: { tabEventKey: number }) => {
           </FloatingLabel>
         </Col>
       </Row>
-      <div className="d-flex align-items-center gap-3 mt-6">
+      <div className="flex align-items-center gap-3 mt-6">
         <h4>Show your specific location</h4>
         <Form.Check
           inline

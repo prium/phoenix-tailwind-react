@@ -23,7 +23,7 @@ const BasicInformationForm = () => {
           onChange={onChange}
         />
       </FloatingLabel>
-      <h5 className="text-end text-body-quaternary fw-semibold mt-2">
+      <h5 className="text-end text-soft font-semibold mt-2">
         <span className="text-primary">15 </span>/ 60{' '}
       </h5>
       <FloatingLabel
@@ -38,7 +38,7 @@ const BasicInformationForm = () => {
           name="propertyInfo"
           style={{ height: '162px' }}
         />
-        <h5 className="text-end text-body-quaternary fw-semibold mt-2">
+        <h5 className="text-end text-soft font-semibold mt-2">
           <span className="text-primary">0 </span>/ 360{' '}
         </h5>
       </FloatingLabel>
@@ -73,14 +73,14 @@ const BasicInformationForm = () => {
               </Form.Select>
               <label
                 htmlFor="propertyRating"
-                className="form-icon-label text-body-tertiary"
+                className="form-icon-label text-subtle"
               >
                 Rating
               </label>
             </Form.Floating>
             <FontAwesomeIcon
               icon={faStar}
-              className="fs-10 form-icon text-warning"
+              className="text-sm form-icon text-warning"
             />
           </div>
         </Col>
@@ -187,7 +187,7 @@ const BasicInformationForm = () => {
 
             <FontAwesomeIcon
               icon={faSearch}
-              className="position-absolute text-body-quaternary fs-9 end-0 top-0 mt-3 me-3"
+              className="absolute text-soft text-md end-0 top-0 mt-3 me-3"
               transform="down-2"
             />
           </FloatingLabel>

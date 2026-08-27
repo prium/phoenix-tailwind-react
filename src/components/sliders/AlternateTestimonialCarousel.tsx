@@ -10,10 +10,10 @@ const TestimonialItem = ({ testimonial }: { testimonial: Testimonial }) => {
   return (
     <div className="text-center py-8 px-5 px-xl-15">
       <Rating initialValue={testimonial.rating} readonly />
-      <h3 className="fw-semibold fst-italic mt-3 mb-8 w-xl-70 mx-auto lh-base">
+      <h3 className="font-semibold fst-italic mt-3 mb-8 w-xl-70 mx-auto lh-base">
         {testimonial.comment}
       </h3>
-      <div className="d-flex align-items-center justify-content-center gap-3 mx-auto">
+      <div className="flex align-items-center justify-content-center gap-3 mx-auto">
         <Avatar
           src={testimonial.avatar}
           size="3xl"
@@ -30,9 +30,9 @@ const TestimonialItem = ({ testimonial }: { testimonial: Testimonial }) => {
 
 const AlternateTestimonialCarousel = () => {
   return (
-    <div className="testimonial-carousel position-relative dark__bg-gray-1100">
+    <div className="testimonial-carousel relative dark__bg-gray-1100">
       <div
-        className="bg-holder d-none d-xl-block"
+        className="bg-holder hidden d-xl-block"
         style={{
           backgroundImage: `url(${bg39})`,
           backgroundSize: '186px',
@@ -42,14 +42,14 @@ const AlternateTestimonialCarousel = () => {
       <img
         src={bgLeft}
         alt=""
-        className="position-absolute d-none d-lg-block"
+        className="absolute hidden d-lg-block"
         width={150}
         style={{ top: '-100px', left: '-70px' }}
       />
       <img
         src={bgRight}
         alt=""
-        className="position-absolute d-none d-lg-block"
+        className="absolute hidden d-lg-block"
         width={150}
         style={{ bottom: '-80px', right: '-80px' }}
       />

@@ -12,9 +12,9 @@ const FileUploader = ({ title }: { title: string }) => {
         'image/*': ['.png', '.gif', '.jpeg', '.jpg']
       }}
     >
-      <div className="text-body-tertiary text-opacity-85 px-2 py-4">
-        <h6 className="mb-1 text-body-quaternary">Upload or drag</h6>
-        <h6 className="mb-3 text-body-secondary">{title}</h6>
+      <div className="text-subtle text-opacity-85 px-2 py-4">
+        <h6 className="mb-1 text-soft">Upload or drag</h6>
+        <h6 className="mb-3 text-muted">{title}</h6>
         <img className="mt-3 me-2" src={imageIcon} width={42} alt="" />
       </div>
     </Dropzone>
@@ -23,23 +23,23 @@ const FileUploader = ({ title }: { title: string }) => {
 
 const TravelerInfo = ({ id }: { id: string }) => {
   return (
-    <Card className="bg-body mb-4">
-      <Card.Header className="bg-body-highlight">
-        <div className="d-flex flex-between-center">
+    <Card className="bg-default mb-4">
+      <Card.Header className="bg-subtle">
+        <div className="flex flex-between-center">
           <h5 className="mb-0 text-nowrap">
-            <FontAwesomeIcon icon={faUser} className="fs-9 me-2 text-primary" />
+            <FontAwesomeIcon icon={faUser} className="text-md me-2 text-primary" />
             Person {id}
           </h5>
           <Form.Check className="mb-0" id={`saveTravelerInfo${id}`}>
             <Form.Check.Input type="checkbox" />
-            <Form.Check.Label className="fs-8 fw-normal text-body-emphasis">
+            <Form.Check.Label className="text-base font-normal text-emphasis">
               Save traveler info
             </Form.Check.Label>
           </Form.Check>
         </div>
       </Card.Header>
       <Card.Body>
-        <h6 className="mb-0 fw-semibold fs-9 text-body-tertiary">
+        <h6 className="mb-0 font-semibold text-md text-subtle">
           Personal info
         </h6>
         <hr className="my-2" />
@@ -62,7 +62,7 @@ const TravelerInfo = ({ id }: { id: string }) => {
           </Col>
         </Row>
 
-        <h6 className="mb-0 fw-semibold fs-9 text-body-tertiary">
+        <h6 className="mb-0 font-semibold text-md text-subtle">
           Contact info
         </h6>
         <hr className="my-2" />
@@ -81,7 +81,7 @@ const TravelerInfo = ({ id }: { id: string }) => {
           </Col>
         </Row>
 
-        <h6 className="mb-0 fw-semibold fs-9 text-body-tertiary">
+        <h6 className="mb-0 font-semibold text-md text-subtle">
           Passport info
         </h6>
         <hr className="my-2" />

@@ -59,7 +59,7 @@ export const leadEmailsColumns: ColumnDef<LeadEmail>[] = [
         className: 'pe-3'
       },
       cellProps: {
-        className: 'fw-bold text-body-tertiary'
+        className: 'font-bold text-subtle'
       }
     }
   },
@@ -69,7 +69,7 @@ export const leadEmailsColumns: ColumnDef<LeadEmail>[] = [
     meta: {
       headerProps: { style: { minWidth: 165 } },
       cellProps: {
-        className: 'text-body'
+        className: 'text-default'
       }
     }
   },
@@ -110,7 +110,7 @@ export const leadEmailsColumns: ColumnDef<LeadEmail>[] = [
         style: { minWidth: 100, width: '15%' },
         className: 'text-end'
       },
-      cellProps: { className: 'text-end fw-semibold' }
+      cellProps: { className: 'text-end font-semibold' }
     }
   },
   {
@@ -121,7 +121,7 @@ export const leadEmailsColumns: ColumnDef<LeadEmail>[] = [
 const LeadEmailsTable = () => {
   return (
     <div className="border-y border-light">
-      <AdvanceTable tableProps={{ className: 'phoenix-table fs-9' }} />
+      <AdvanceTable tableProps={{ className: ' text-md' }} />
       <AdvanceTableFooter pagination showViewAllBtn={false} />
     </div>
   );

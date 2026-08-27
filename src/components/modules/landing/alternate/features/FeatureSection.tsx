@@ -27,7 +27,7 @@ const FeatureSection = ({ feature, isLast }: FeatureSectionProps) => {
         <Button
           variant="link"
           endIcon={<FontAwesomeIcon icon={faAngleRight} />}
-          className="me-2 p-0 fs-9"
+          className="me-2 p-0 text-md"
         >
           Check Demo
         </Button>

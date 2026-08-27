@@ -70,31 +70,31 @@ const flushCode = `
 const badgeCode = `
 <ListGroup>
   <ListGroup.Item>
-    <div className='d-flex justify-content-between align-items-center'>
+    <div className='flex justify-content-between align-items-center'>
       Messages
       <Badge variant="phoenix" bg="primary">14</Badge>
     </div>
   </ListGroup.Item>
   <ListGroup.Item>
-    <div className='d-flex justify-content-between align-items-center'>
+    <div className='flex justify-content-between align-items-center'>
       Events
       <Badge variant="phoenix" bg="primary">2</Badge>
     </div>
   </ListGroup.Item>
   <ListGroup.Item>
-    <div className='d-flex justify-content-between align-items-center'>
+    <div className='flex justify-content-between align-items-center'>
       Groups
       <Badge variant="phoenix" bg="primary">1</Badge>
     </div>
   </ListGroup.Item>
   <ListGroup.Item>
-    <div className='d-flex justify-content-between align-items-center'>
+    <div className='flex justify-content-between align-items-center'>
       Pages
       <Badge variant="phoenix" bg="primary">9</Badge>
     </div>
   </ListGroup.Item>
   <ListGroup.Item>
-    <div className='d-flex justify-content-between align-items-center'>
+    <div className='flex justify-content-between align-items-center'>
       Notifications
       <Badge variant="phoenix" bg="primary">7</Badge>
     </div>

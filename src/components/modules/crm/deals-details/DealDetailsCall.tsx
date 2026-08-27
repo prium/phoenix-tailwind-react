@@ -13,7 +13,7 @@ const DealDetailsCall = () => {
         </Col>
         <Col sm="auto">
           <div className="d-sm-flex align-items-center gap-4">
-            <div className="d-flex gap-3 gap-sm-4">
+            <div className="flex gap-3 gap-sm-4">
               <Form.Check
                 type="radio"
                 label="All Call"

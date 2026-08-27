@@ -42,7 +42,7 @@ export const CustomColorButton = () => {
       <input
         type="radio"
         name="backgroundColor"
-        className="kanban-form-check d-none"
+        className="kanban-form-check hidden"
         value={color}
         checked={checked}
         readOnly
@@ -51,7 +51,7 @@ export const CustomColorButton = () => {
         variant="outline-secondary"
         as="label"
         htmlFor="customColor"
-        className="rounded-pill text-uppercase"
+        className="rounded-full text-uppercase"
         startIcon={<FontAwesomeIcon icon={faPlus} className="me-2" />}
         style={{
           background: color,
@@ -85,7 +85,7 @@ export const RandomColorButton = () => {
       <input
         type="radio"
         name="backgroundColor"
-        className="kanban-form-check d-none"
+        className="kanban-form-check hidden"
         value={color}
         id="randomColor"
         ref={ref}
@@ -95,7 +95,7 @@ export const RandomColorButton = () => {
         variant="outline-danger"
         as="label"
         htmlFor="randomColor"
-        className="rounded-pill text-uppercase"
+        className="rounded-full text-uppercase"
         startIcon={<FontAwesomeIcon icon={faShuffle} className="me-2" />}
         style={{
           background: color,

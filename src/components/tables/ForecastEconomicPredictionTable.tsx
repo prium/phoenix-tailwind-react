@@ -21,11 +21,11 @@ const columns: ColumnDef<EconomicPredictionTableRowItem>[] = [
     },
     meta: {
       headerProps: {
-        className: 'white-space-nowrap align-middle',
+        className: 'whitespace-nowrap align-middle',
         style: { minWidth: '7.5rem' }
       },
       cellProps: {
-        className: 'align-middle white-space-nowrap'
+        className: 'align-middle whitespace-nowrap'
       }
     }
   },
@@ -50,7 +50,7 @@ const columns: ColumnDef<EconomicPredictionTableRowItem>[] = [
         style: { minWidth: '7.5rem' }
       },
       cellProps: {
-        className: 'align-middle white-space-nowrap'
+        className: 'align-middle whitespace-nowrap'
       }
     }
   },
@@ -120,11 +120,11 @@ const columns: ColumnDef<EconomicPredictionTableRowItem>[] = [
     },
     meta: {
       headerProps: {
-        className: 'white-space-nowrap align-middle ps-5',
+        className: 'whitespace-nowrap align-middle ps-5',
         style: { minWidth: '7.5rem' }
       },
       cellProps: {
-        className: 'align-middle white-space-nowrap ps-5'
+        className: 'align-middle whitespace-nowrap ps-5'
       }
     }
   },
@@ -183,7 +183,7 @@ const columns: ColumnDef<EconomicPredictionTableRowItem>[] = [
     cell: () => {
       return (
         <>
-          <RevealDropdown className="btn-reveal-trigger" btnClassName="fs-10">
+          <RevealDropdown className="btn-reveal-trigger" btnClassName="text-sm">
             <ActionDropdownItems />
           </RevealDropdown>
         </>
@@ -195,7 +195,7 @@ const columns: ColumnDef<EconomicPredictionTableRowItem>[] = [
         style: { minWidth: '3rem' }
       },
       cellProps: {
-        className: 'align-middle white-space-nowrap pe-0'
+        className: 'align-middle whitespace-nowrap pe-0'
       }
     }
   }
@@ -219,7 +219,7 @@ const ForecastEconomicPredictionTable = ({
     <AdvanceTableProvider {...table}>
       <AdvanceTable
         tableProps={{
-          className: 'phoenix-table fs-9 mb-0 border-top border-translucent'
+          className: ' text-md mb-0 border-top border-light'
         }}
         headerClassName="text-uppercase"
       />

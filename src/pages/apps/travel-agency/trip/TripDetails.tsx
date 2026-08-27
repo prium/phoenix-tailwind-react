@@ -30,11 +30,11 @@ const TripDetails = () => {
         <Container fluid="medium">
           <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-3" />
           <h2 className="mb-5">Trip Details</h2>
-          <h1 className="fw-bold">
+          <h1 className="font-bold">
             Walk where the king walked once in Wakanda{' '}
-            <span className="align-middle text-nowrap fs-8">
-              <span className="text-body-quaternary">by </span>
-              <Link to="#!" className="text-body-tertiary">
+            <span className="align-middle text-nowrap text-base">
+              <span className="text-soft">by </span>
+              <Link to="#!" className="text-subtle">
                 Panther Travels Limited
               </Link>
             </span>

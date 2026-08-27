@@ -39,7 +39,7 @@ const columns: ColumnDef<LatestReviewsTableDataType>[] = [
     header: 'RATING',
     cell: ({ row: { original } }) => {
       const { rating } = original;
-      return <Rating readonly initialValue={rating} iconClass="fs-10" />;
+      return <Rating readonly initialValue={rating} iconClass="text-sm" />;
     },
     meta: {
       headerProps: { style: { maxWidth: '10%' } }
@@ -51,7 +51,7 @@ const columns: ColumnDef<LatestReviewsTableDataType>[] = [
     cell: ({ row: { original } }) => {
       const { review } = original;
       return (
-        <p className="fs--1 font-semibold text-highlight mb-0 line-clamp-3">
+        <p className="text-md font-semibold text-highlight mb-0 line-clamp-3">
           {review.slice(0, 134)}
           {review.length > 134 && (
             <>
@@ -96,7 +96,7 @@ const columns: ColumnDef<LatestReviewsTableDataType>[] = [
     header: 'Date',
     meta: {
       headerProps: { className: 'text-end', style: { maxWidth: '10%' } },
-      cellProps: { className: 'text-end text-body-tertiary white-space-nowrap' }
+      cellProps: { className: 'text-end text-subtle whitespace-nowrap' }
     }
   },
   {
@@ -128,7 +128,7 @@ const EcomProfileReviewsTable = () => {
     <>
       <AdvanceTableProvider {...table}>
         <div className="border-y border-light">
-          <AdvanceTable tableProps={{ className: 'phoenix-table fs-9' }} />
+          <AdvanceTable tableProps={{ className: ' text-md' }} />
           <AdvanceTableFooter pagination />
         </div>
       </AdvanceTableProvider>

@@ -15,11 +15,11 @@ const columns: ColumnDef<PortfolioTableDataRowItem>[] = [
     },
     meta: {
       headerProps: {
-        className: 'white-space-nowrap align-middle',
+        className: 'whitespace-nowrap align-middle',
         style: { minWidth: 180 }
       },
       cellProps: {
-        className: 'align-middle white-space-nowrap'
+        className: 'align-middle whitespace-nowrap'
       }
     }
   },
@@ -38,7 +38,7 @@ const columns: ColumnDef<PortfolioTableDataRowItem>[] = [
         style: { minWidth: 120 }
       },
       cellProps: {
-        className: 'align-middle text-center white-space-nowrap'
+        className: 'align-middle text-center whitespace-nowrap'
       }
     }
   },
@@ -82,7 +82,7 @@ const columns: ColumnDef<PortfolioTableDataRowItem>[] = [
         style: { minWidth: 160 }
       },
       cellProps: {
-        className: 'align-middle white-space-nowrap ps-3'
+        className: 'align-middle whitespace-nowrap ps-3'
       }
     }
   },
@@ -116,7 +116,7 @@ const columns: ColumnDef<PortfolioTableDataRowItem>[] = [
         style: { minWidth: 140 }
       },
       cellProps: {
-        className: 'align-middle white-space-nowrap ps-3'
+        className: 'align-middle whitespace-nowrap ps-3'
       }
     }
   },
@@ -150,7 +150,7 @@ const columns: ColumnDef<PortfolioTableDataRowItem>[] = [
         style: { minWidth: 220 }
       },
       cellProps: {
-        className: 'align-middle white-space-nowrap text-end pe-3'
+        className: 'align-middle whitespace-nowrap text-end pe-3'
       }
     }
   },
@@ -184,7 +184,7 @@ const columns: ColumnDef<PortfolioTableDataRowItem>[] = [
         style: { minWidth: 180 }
       },
       cellProps: {
-        className: 'align-middle white-space-nowrap text-end'
+        className: 'align-middle whitespace-nowrap text-end'
       }
     }
   }
@@ -207,9 +207,9 @@ const StockPortfolioTable = ({
     <AdvanceTableProvider {...table}>
       <AdvanceTable
         tableProps={{
-          className: 'border-top phoenix-table mb-0'
+          className: 'border-top  mb-0'
         }}
-        headerClassName="text-uppercase text-body fw-bold fs-9"
+        headerClassName="text-uppercase text-default font-bold text-md"
       />
     </AdvanceTableProvider>
   );

@@ -37,7 +37,7 @@ const columns: ColumnDef<FlightInterface>[] = [
     },
     meta: {
       headerProps: {
-        className: 'white-space-nowrap align-middle text-body-tertiary ps-0'
+        className: 'whitespace-nowrap align-middle text-subtle ps-0'
       },
       cellProps: { className: 'ps-0 align-middle' }
     }
@@ -58,7 +58,7 @@ const columns: ColumnDef<FlightInterface>[] = [
     },
     meta: {
       headerProps: {
-        className: 'white-space-nowrap align-middle text-body-tertiary',
+        className: 'whitespace-nowrap align-middle text-subtle',
         style: { width: '170px' }
       },
       cellProps: { className: 'align-middle pe-5' }
@@ -90,7 +90,7 @@ const columns: ColumnDef<FlightInterface>[] = [
     },
     meta: {
       headerProps: {
-        className: 'text-start align-middle text-body-tertiary',
+        className: 'text-start align-middle text-subtle',
         style: { width: '250px' }
       },
       cellProps: { className: 'align-middle pe-5' }
@@ -116,7 +116,7 @@ const columns: ColumnDef<FlightInterface>[] = [
     },
     meta: {
       headerProps: {
-        className: 'align-middle text-body-tertiary px-0 py-1',
+        className: 'align-middle text-subtle px-0 py-1',
         style: { width: '180px' }
       },
       cellProps: { className: 'align-middle pe-5' }
@@ -178,7 +178,7 @@ const columns: ColumnDef<FlightInterface>[] = [
     },
     meta: {
       headerProps: {
-        className: 'align-middle text-body-tertiary',
+        className: 'align-middle text-subtle',
         style: { minWidth: '280px' }
       },
       cellProps: { className: 'align-middle pe-5 pe-xxl-7' }
@@ -201,7 +201,7 @@ const columns: ColumnDef<FlightInterface>[] = [
     },
     meta: {
       headerProps: {
-        className: 'text-end align-middle text-body-tertiary',
+        className: 'text-end align-middle text-subtle',
         style: { minWidth: '120px' }
       },
       cellProps: { className: 'text-end align-middle' }
@@ -227,7 +227,7 @@ const columns: ColumnDef<FlightInterface>[] = [
     },
     meta: {
       headerProps: {
-        className: 'text-end align-middle text-body-tertiary',
+        className: 'text-end align-middle text-subtle',
         style: { minWidth: '200px' }
       },
       cellProps: { className: 'text-end align-middle' }
@@ -240,7 +240,7 @@ const columns: ColumnDef<FlightInterface>[] = [
     cell: () => {
       return (
         <div className="btn-reveal-trigger">
-          <RevealDropdown btnClassName="fs-10">
+          <RevealDropdown btnClassName="text-sm">
             <ActionDropdownItems />
           </RevealDropdown>
         </div>
@@ -301,9 +301,9 @@ const TravelFlightTable = () => {
       </Row>
       <AdvanceTable
         tableProps={{
-          className: 'phoenix-table fs-9 border-top border-translucent'
+          className: ' text-md border-top border-light'
         }}
-        rowClassName="hover-actions-trigger btn-reveal-trigger position-static"
+        rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />
     </AdvanceTableProvider>
   );

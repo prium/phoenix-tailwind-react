@@ -9,16 +9,16 @@ const SalesTrends = () => {
       <Row className="justify-content-between mb-4">
         <Col xs={12}>
           <h3>Sales Trends</h3>
-          <p className="text-body-tertiary">
+          <p className="text-subtle">
             Updated inventory &amp; the sales report.
           </p>
         </Col>
-        <Col xs={12} className="d-flex">
-          <div className="d-flex">
+        <Col xs={12} className="flex">
+          <div className="flex">
             <FontAwesomeIcon icon={faCircle} className="text-info-light me-2" />
             <h6 className="mb-0 me-3 lh-base">Profit</h6>
           </div>
-          <div className="d-flex">
+          <div className="flex">
             <FontAwesomeIcon
               icon={faCircle}
               className="text-primary-lighter me-2"

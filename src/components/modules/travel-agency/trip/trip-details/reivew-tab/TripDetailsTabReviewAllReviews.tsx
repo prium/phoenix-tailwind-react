@@ -17,29 +17,29 @@ const TripDetailsTabReviewAllReviews = ({
   return (
     <Row className="gy-5 align-items-center">
       <Col xl={5} xxl={4}>
-        <div className="d-flex align-items-center gap-3 flex-wrap">
+        <div className="flex align-items-center gap-3 flex-wrap">
           <h3 className="mb-0">
             {numberFormat(overallReview.rating, 'standard', {
               minimumFractionDigits: 1
             })}
           </h3>
-          <div className="pe-3 border-end-sm border-translucent">
-            <GenerateStar filledStars={5} className="me-1 fs-9" />
-            <span className="fw-semibold text-body-tertiary">
+          <div className="pe-3 border-end-sm border-light">
+            <GenerateStar filledStars={5} className="me-1 text-md" />
+            <span className="font-semibold text-subtle">
               ( {overallReview.reviewCount} reviews )
             </span>
           </div>
           <Badge
             variant="phoenix"
             bg="success"
-            className="border-0 px-3 py-2 fs-8 text-capitalize"
+            className="border-0 px-3 py-2 text-base text-capitalize"
           >
             {overallReview.status}
           </Badge>
         </div>
       </Col>
       <Col xl={7} xxl={8}>
-        <div className="d-flex gap-5 gap-md-6 gap-xl-8 gap-xxl-6 flex-wrap">
+        <div className="flex gap-5 gap-md-6 gap-xl-8 gap-xxl-6 flex-wrap">
           {overallReview.reviewStates.map((statItem, index) => (
             <div
               key={statItem.id}

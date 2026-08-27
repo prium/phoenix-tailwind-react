@@ -11,12 +11,12 @@ const AddContact = () => {
   return (
     <div className="mb-9">
       <PageBreadcrumb items={defaultBreadcrumbItems} />
-      <div className="border-bottom border-translucent mb-7 mx-n3 px-2 mx-lg-n6 px-lg-6">
+      <div className="border-bottom border-light mb-7 mx-n3 px-2 mx-lg-n6 px-lg-6">
         <Row>
           <Col xl={9}>
             <div className="d-sm-flex justify-content-between">
               <h2 className="mb-4">Create a new lead</h2>
-              <div className="d-flex mb-3">
+              <div className="flex mb-3">
                 <Button variant="phoenix-primary" className="me-2 px-6">
                   Cancel
                 </Button>
@@ -28,7 +28,7 @@ const AddContact = () => {
       </div>
       <Row>
         <Col xl={9}>
-          <div className="d-flex align-items-end position-relative mb-7">
+          <div className="flex align-items-end relative mb-7">
             <AvatarUpload src={avatar} size="5xl" />
           </div>
           <Form>

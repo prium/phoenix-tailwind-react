@@ -10,13 +10,13 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 const Features = () => {
   return (
-    <section className="bg-body pt-15 pb-18" id="features">
+    <section className="bg-default pt-15 pb-18" id="features">
       <div className="container-small px-lg-7 px-xxl-3">
-        <div className="position-relative z-2">
+        <div className="relative z-2">
           <Row className="mb-12">
             <Col lg={6} className="text-center text-lg-start pe-xxl-3">
-              <h4 className="text-primary fw-bolder mb-4">Features</h4>
-              <h2 className="mb-3 text-body-emphasis lh-base">
+              <h4 className="text-primary font-black mb-4">Features</h4>
+              <h2 className="mb-3 text-emphasis lh-base">
                 A fully integrated suite
                 <br />
                 of payments products
@@ -33,7 +33,7 @@ const Features = () => {
                 to="#!"
                 size="lg"
                 variant="outline-primary"
-                className="rounded-pill me-2"
+                className="rounded-full me-2"
                 endIcon={
                   <FontAwesomeIcon icon={faAngleRight} className="ms-2" />
                 }
@@ -42,8 +42,8 @@ const Features = () => {
               </Button>
             </Col>
             <Col sm={6} lg={3} className="mt-7 text-center text-lg-start">
-              <div className="h-100 d-flex flex-column justify-content-between">
-                <div className="border-start-lg border-dashed border-translucent ps-4">
+              <div className="h-100 flex flex-column justify-content-between">
+                <div className="border-start-lg border-dashed border-light ps-4">
                   <img
                     className="mb-4"
                     src={boltIlls}
@@ -52,13 +52,13 @@ const Features = () => {
                     alt=""
                   />
                   <div>
-                    <h5 className="fw-bolder mb-2">Lightning Speed</h5>
-                    <p className="fw-semibold lh-sm">
+                    <h5 className="font-black mb-2">Lightning Speed</h5>
+                    <p className="font-semibold lh-sm">
                       Present everything you need in one place within minutes!
                       Grow with Phoenix!
                     </p>
                   </div>
-                  <Link to="#!" className="me-2 p-0 fs-9 fw-bold">
+                  <Link to="#!" className="me-2 p-0 text-md font-bold">
                     Check Demo
                     <FontAwesomeIcon icon={faAngleRight} className="ms-2" />
                   </Link>
@@ -66,8 +66,8 @@ const Features = () => {
               </div>
             </Col>
             <Col sm={6} lg={3} className="mt-7 text-center text-lg-start">
-              <div className="h-100 d-flex flex-column">
-                <div className="border-start-lg border-dashed border-translucent ps-4">
+              <div className="h-100 flex flex-column">
+                <div className="border-start-lg border-dashed border-light ps-4">
                   <img
                     className="mb-4"
                     src={pie}
@@ -76,13 +76,13 @@ const Features = () => {
                     alt=""
                   />
                   <div>
-                    <h5 className="fw-bolder mb-2">All-in-one solution</h5>
-                    <p className="fw-semibold lh-sm">
+                    <h5 className="font-black mb-2">All-in-one solution</h5>
+                    <p className="font-semibold lh-sm">
                       Show your production and growth graph in one place with
                       Phoenix!
                     </p>
                   </div>
-                  <Link to="#!" className="me-2 p-0 fs-9 fw-bold">
+                  <Link to="#!" className="me-2 p-0 text-md font-bold">
                     Check Demo
                     <FontAwesomeIcon icon={faAngleRight} className="ms-2" />
                   </Link>

@@ -16,47 +16,47 @@ const HotelDetailsDescription = ({ activeKey }: { activeKey: string }) => {
 
   return (
     <>
-      <h3 className="mb-3 fw-bold">Description</h3>
-      <p className="text-body">
+      <h3 className="mb-3 font-bold">Description</h3>
+      <p className="text-default">
         Welcome to our hotel, an opulent and cozy setting with everything you
         need for a comfortable and happy stay. The city's biggest attractions,
         dining, shopping, and entertainment options are close to our hotel,
         which is situated in a desirable area.
       </p>
-      <p className="text-body">
+      <p className="text-default">
         Your comfort is our top priority when designing our rooms and suites,
         which include soft beds, fine linens, and contemporary conveniences like
         flat-screen TVs, fast internet access, and mini-fridges. Also, each room
         features a sizeable workstation, making it the perfect accommodation for
         business traveler's who need to remain connected and productive.
       </p>
-      <div className="p-3 border bg-body-highlight border-translucent rounded-2 d-flex flex-between-center flex-wrap gap-3">
+      <div className="p-3 border bg-subtle border-light rounded-2 flex flex-between-center flex-wrap gap-3">
         <h5 className="mb-0">
-          <span className="text-body-tertiary fw-normal">
+          <span className="text-subtle font-normal">
             Number of rooms :
           </span>{' '}
           70
         </h5>
         <h5 className="mb-0">
-          <span className="text-body-tertiary fw-normal">
+          <span className="text-subtle font-normal">
             Number of floors :
           </span>{' '}
           14
         </h5>
         <h5 className="mb-0">
-          <span className="text-body-tertiary fw-normal">
+          <span className="text-subtle font-normal">
             Construction year :
           </span>{' '}
           2018
         </h5>
       </div>
-      <Card className="bg-body mt-5">
+      <Card className="bg-default mt-5">
         <Card.Body>
           <div className="mb-4">
             <Suspense fallback={<PhoenixLoader />}>
               <Mapbox
                 mapRef={mapRef}
-                className="rounded-2 border border-translucent overflow-hidden w-100"
+                className="rounded-2 border border-light overflow-hidden w-100"
                 style={{ height: 300 }}
                 options={{
                   center: [-74.0020158, 40.7228022],
@@ -66,27 +66,27 @@ const HotelDetailsDescription = ({ activeKey }: { activeKey: string }) => {
               />
             </Suspense>
           </div>
-          <p className="mb-2 text-body-tertiary text-uppercase">
+          <p className="mb-2 text-subtle text-uppercase">
             <FontAwesomeIcon
               icon={faMapMarkerAlt}
-              className="text-body-emphasis me-2"
+              className="text-emphasis me-2"
             />
             Museum
           </p>
           <h5>
-            1.5 km <span className="text-body-tertiary fw-normal">from</span>{' '}
+            1.5 km <span className="text-subtle font-normal">from</span>{' '}
             Museum of Liberation War, Dhaka
           </h5>
           <hr className="my-4" />
-          <p className="mb-2 text-body-tertiary text-uppercase">
+          <p className="mb-2 text-subtle text-uppercase">
             <FontAwesomeIcon
               icon={faMapMarkerAlt}
-              className="text-body-emphasis me-2"
+              className="text-emphasis me-2"
             />
             Historical monument
           </p>
           <h5>
-            3.5 km <span className="text-body-tertiary fw-normal">from</span>{' '}
+            3.5 km <span className="text-subtle font-normal">from</span>{' '}
             Lalbagh Kella
           </h5>
         </Card.Body>

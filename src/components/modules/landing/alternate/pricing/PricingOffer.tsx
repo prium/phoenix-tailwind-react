@@ -33,7 +33,7 @@ const PricingOffer = () => {
           </p>
           <Button
             variant="link"
-            className="me-2 p-0 fs-9"
+            className="me-2 p-0 text-md"
             endIcon={<FontAwesomeIcon icon={faAngleRight} transform="down-1" />}
           >
             Contact Support

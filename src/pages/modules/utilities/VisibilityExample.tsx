@@ -17,7 +17,7 @@ const VisibilityExample = () => {
       <DocPagesLayout>
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Example" noPreview>
-            <p className="mb-0 text-body-secondary">
+            <p className="mb-0 text-muted">
               Set the <code>visibility </code>of elements with our visibility
               utilities. These utility classes do not modify the display value
               at all and do not affect layout – .invisible elements still take

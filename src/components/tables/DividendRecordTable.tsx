@@ -26,11 +26,11 @@ const columns: ColumnDef<DividendRecordDataTableRowItem>[] = [
     },
     meta: {
       headerProps: {
-        className: 'white-space-nowrap align-middle text-uppercase',
+        className: 'whitespace-nowrap align-middle text-uppercase',
         style: { minWidth: '200px' }
       },
       cellProps: {
-        className: 'align-middle white-space-nowrap'
+        className: 'align-middle whitespace-nowrap'
       }
     }
   },
@@ -50,11 +50,11 @@ const columns: ColumnDef<DividendRecordDataTableRowItem>[] = [
     },
     meta: {
       headerProps: {
-        className: 'white-space-nowrap align-middle text-uppercase',
+        className: 'whitespace-nowrap align-middle text-uppercase',
         style: { minWidth: '200px' }
       },
       cellProps: {
-        className: 'align-middle white-space-nowrap'
+        className: 'align-middle whitespace-nowrap'
       }
     }
   },
@@ -93,11 +93,11 @@ const columns: ColumnDef<DividendRecordDataTableRowItem>[] = [
     meta: {
       headerProps: {
         className:
-          'white-space-nowrap align-middle text-end pe-5 text-uppercase',
+          'whitespace-nowrap align-middle text-end pe-5 text-uppercase',
         style: { minWidth: '200px' }
       },
       cellProps: {
-        className: 'align-middle text-end pe-5 white-space-nowrap'
+        className: 'align-middle text-end pe-5 whitespace-nowrap'
       }
     }
   },
@@ -114,11 +114,11 @@ const columns: ColumnDef<DividendRecordDataTableRowItem>[] = [
     },
     meta: {
       headerProps: {
-        className: 'white-space-nowrap align-middle ps-5 text-uppercase',
+        className: 'whitespace-nowrap align-middle ps-5 text-uppercase',
         style: { minWidth: '200px' }
       },
       cellProps: {
-        className: 'fs-9 align-middle ps-5 white-space-nowrap'
+        className: 'text-md align-middle ps-5 whitespace-nowrap'
       }
     }
   },
@@ -143,7 +143,7 @@ const columns: ColumnDef<DividendRecordDataTableRowItem>[] = [
               </Button>
             </div>
           </div>
-          <RevealDropdown btnClassName="fs-10">
+          <RevealDropdown btnClassName="text-sm">
             <ActionDropdownItems />
           </RevealDropdown>
         </>
@@ -171,9 +171,9 @@ const DividendRecordTable = ({
     <AdvanceTableProvider {...table}>
       <AdvanceTable
         tableProps={{
-          className: 'phoenix-table fs-9 mb-0 border-top border-translucent'
+          className: ' text-md mb-0 border-top border-light'
         }}
-        rowClassName="hover-actions-trigger btn-reveal-trigger position-static"
+        rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />
       <AdvanceTableFooter
         pagination

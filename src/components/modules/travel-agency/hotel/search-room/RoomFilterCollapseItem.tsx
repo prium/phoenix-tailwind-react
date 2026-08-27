@@ -24,13 +24,13 @@ const RoomFilterCollapseItem = ({
         onClick={onToggle}
         aria-controls={title.split(' ').join('_')}
         aria-expanded={collapseStatus}
-        className="px-0 py-2 d-flex align-items-center mt-3 collapse-indicator"
+        className="px-0 py-2 flex align-items-center mt-3 collapse-indicator"
       >
         <FontAwesomeIcon
           icon={faCaretDown}
-          className="text-body me-2 toggle-icon "
+          className="text-default me-2 toggle-icon "
         />
-        <h5 className="text-body-highlight">{title}</h5>
+        <h5 className="text-highlight">{title}</h5>
       </Button>
       <Collapse in={collapseStatus}>
         <div

@@ -33,42 +33,42 @@ const ThemeDropdown = () => {
       >
         <FontAwesomeIcon
           id="iconLight"
-          className={iconLight !== true ? 'd-none' : 'd-inline'}
+          className={iconLight !== true ? 'hidden' : 'd-inline'}
           icon={faSun}
         />
         <FontAwesomeIcon
           id="iconDark"
-          className={iconDark !== true ? 'd-none' : 'd-inline'}
+          className={iconDark !== true ? 'hidden' : 'd-inline'}
           icon={faMoon}
         />
         <FontAwesomeIcon
           id="iconAuto"
-          className={iconAuto !== true ? 'd-none' : 'd-inline'}
+          className={iconAuto !== true ? 'hidden' : 'd-inline'}
           icon={faAdjust}
         />
       </Dropdown.Toggle>
       <Dropdown.Menu
-        className="dropdown-caret border border-translucent py-0 mt-2"
+        className="dropdown-caret border border-light py-0 mt-2"
         aria-labelledby="themeSwitchDropdown"
       >
         <div className="rounded-2 py-2">
           <Dropdown.Item
             onClick={() => setConfig({ theme: 'light' })}
-            className="d-flex align-items-center gap-2"
+            className="flex align-items-center gap-2"
           >
             <FontAwesomeIcon icon={faSun} />
             light
           </Dropdown.Item>
           <Dropdown.Item
             onClick={() => setConfig({ theme: 'dark' })}
-            className="d-flex align-items-center gap-2"
+            className="flex align-items-center gap-2"
           >
             <FontAwesomeIcon icon={faMoon} />
             Dark
           </Dropdown.Item>
           <Dropdown.Item
             onClick={() => setConfig({ theme: 'auto' })}
-            className="d-flex align-items-center gap-2"
+            className="flex align-items-center gap-2"
           >
             <FontAwesomeIcon icon={faAdjust} />
             Auto

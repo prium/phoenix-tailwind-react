@@ -57,53 +57,53 @@ const KanbanBoardOffcanvas = () => {
     <PhoenixOffcanvas
       open={openBoardDetailsOffcanvas}
       onHide={handleClose}
-      className="bg-body-highlight"
+      className="bg-subtle"
       placement="end"
       fixed
       style={{ maxWidth: 445 }}
     >
       <Offcanvas.Header className="mb-6">
         <h3 className="offcanvas-title">Phoenix Kanban</h3>
-        <Button className="p-1 fw-bolder ms-auto" onClick={handleClose}>
-          <FontAwesomeIcon icon={faTimes} className="fs-8" />
+        <Button className="p-1 font-black ms-auto" onClick={handleClose}>
+          <FontAwesomeIcon icon={faTimes} className="text-base" />
         </Button>
       </Offcanvas.Header>
 
       <Offcanvas.Body>
-        <h4 className="text-body-highlight fw-semibold mb-3">Admins</h4>
-        <div className="d-flex align-items-center gap-3 mb-5">
+        <h4 className="text-highlight font-semibold mb-3">Admins</h4>
+        <div className="flex align-items-center gap-3 mb-5">
           <AvatarDropdown user={kanbanBoardMembers.admin} size="xl" />
           <div className="flex-1">
             <Link
               to="#!"
-              className="text-decoration-none text-body-highlight lh-1 fw-semibold"
+              className="text-decoration-none text-highlight lh-1 font-semibold"
             >
               Sasha Blaus
             </Link>
-            <h6 className="mb-0 lh-1 text-body-highlight fw-semibold">
+            <h6 className="mb-0 lh-1 text-highlight font-semibold">
               @potatogirl
             </h6>
           </div>
         </div>
 
-        <h4 className="text-body-highlight fw-semibold mb-3">Members</h4>
-        <div className="d-flex align-items-center gap-2 mb-4">
+        <h4 className="text-highlight font-semibold mb-3">Members</h4>
+        <div className="flex align-items-center gap-2 mb-4">
           {kanbanBoardMembers.members.map(member => (
             <AvatarDropdown user={member} size="m" key={member.id} />
           ))}
         </div>
 
-        <h4 className="text-body-highlight fw-semibold mb-3">Guests</h4>
-        <div className="d-flex align-items-center gap-2 mb-7">
+        <h4 className="text-highlight font-semibold mb-3">Guests</h4>
+        <div className="flex align-items-center gap-2 mb-7">
           {kanbanBoardMembers.guests.map(member => (
             <AvatarDropdown user={member} size="m" key={member.id} />
           ))}
         </div>
 
-        <div className="d-flex mb-3 border-bottom border-translucent pb-3 gap-3">
-          <h4 className="text-body-highlight fw-semibold mb-0">Description</h4>
+        <div className="flex mb-3 border-bottom border-light pb-3 gap-3">
+          <h4 className="text-highlight font-semibold mb-0">Description</h4>
           <Button className="p-0">
-            <FontAwesomeIcon icon={faPencil} className="text-body fs-9" />
+            <FontAwesomeIcon icon={faPencil} className="text-default text-md" />
           </Button>
         </div>
         <p>
@@ -119,11 +119,11 @@ const KanbanBoardOffcanvas = () => {
               <Link
                 to="#!"
                 className={classNames(
-                  'text-body-highlight fw-semibold text-decoration-none d-flex flex-between-center py-3 border-bottom border-translucent'
+                  'text-highlight font-semibold text-decoration-none flex flex-between-center py-3 border-bottom border-light'
                 )}
               >
                 <span>{action.label}</span>
-                <FontAwesomeIcon icon={faAngleRight} className="fs-9" />
+                <FontAwesomeIcon icon={faAngleRight} className="text-md" />
               </Link>
             </li>
           ))}
@@ -131,7 +131,7 @@ const KanbanBoardOffcanvas = () => {
             <Link
               to="#!"
               className={classNames(
-                'fw-semibold text-decoration-none d-flex flex-between-center text-danger pt-3'
+                'font-semibold text-decoration-none flex flex-between-center text-danger pt-3'
               )}
             >
               Leave Board

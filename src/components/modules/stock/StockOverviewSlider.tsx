@@ -35,16 +35,16 @@ const StockOverViewSlider = ({ overviewItems }: StockOverViewSliderProps) => {
         <SwiperSlide key={item.id} className="stock-overview-card">
           <Card>
             <Card.Body>
-              <div className="d-flex align-items-center gap-2 gap-lg-3">
+              <div className="flex align-items-center gap-2 gap-lg-3">
                 <div className="flex-1">
-                  <div className="d-flex align-items-center gap-2 mb-2">
-                    <h5 className="mb-0 text-body-tertiary text-nowrap">
+                  <div className="flex align-items-center gap-2 mb-2">
+                    <h5 className="mb-0 text-subtle text-nowrap">
                       {item.title}
                     </h5>
                     <Badge
                       variant="phoenix"
                       bg={item.isPositive ? 'success' : 'danger'}
-                      className="fs-10"
+                      className="text-sm"
                     >
                       {item.isPositive ? '+' : '-'}
                       {item.stockValue}%

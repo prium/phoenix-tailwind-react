@@ -31,7 +31,7 @@ const FaqTab = () => {
   return (
     <div className="mb-9">
       <div
-        className="mx-n4 mx-lg-n6 mt-n5 position-relative mb-md-9"
+        className="mx-n4 mx-lg-n6 mt-n5 relative mb-md-9"
         style={{ height: '208px' }}
       >
         <div
@@ -48,7 +48,7 @@ const FaqTab = () => {
             backgroundSize: 'cover'
           }}
         />
-        <div className="faq-title-box position-relative bg-body-emphasis border border-translucent p-6 rounded-3 text-center mx-auto">
+        <div className="faq-title-box relative bg-soft border border-light p-6 rounded-3 text-center mx-auto">
           <h1>How can we help?</h1>
           <p className="my-3">
             Search for the topic you need help with or
@@ -68,7 +68,7 @@ const FaqTab = () => {
             md={6}
             xl={7}
             xxl={8}
-            className="empty-header d-none d-md-block"
+            className="empty-header hidden d-md-block"
           />
           <Col xs={12} className="m-0">
             <Tab.Container

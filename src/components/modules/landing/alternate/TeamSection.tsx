@@ -7,11 +7,11 @@ const TeamSection = () => {
   return (
     <section className="alternate-landing-team" id="team">
       <div
-        className="position-absolute w-100 h-100 start-0 end-0 top-0 bg-body dark__bg-gray-1000"
+        className="absolute w-100 h-100 start-0 end-0 top-0 bg-default dark__bg-gray-1000"
         style={{ transform: 'skewY(-6deg)', transformOrigin: 'right' }}
       />
       <div
-        className="bg-holder d-none d-xl-block"
+        className="bg-holder hidden d-xl-block"
         style={{
           backgroundImage: `url(${bgLeft})`,
           backgroundSize: 'auto',
@@ -19,14 +19,14 @@ const TeamSection = () => {
         }}
       />
       <div
-        className="bg-holder d-none d-xl-block"
+        className="bg-holder hidden d-xl-block"
         style={{
           backgroundImage: `url(${bgRight})`,
           backgroundSize: 'auto',
           backgroundPosition: 'right center'
         }}
       />
-      <div className="container-small position-relative">
+      <div className="container-small relative">
         <div className="text-center mb-11">
           <h5 className="text-info mb-3">Team</h5>
           <h2 className="mb-2">
@@ -45,7 +45,7 @@ const TeamSection = () => {
                       className="w-70 w-sm-100 rounded-4 mb-3"
                     />
                     <h4>{member.name}</h4>
-                    <h5 className="fw-semibold">{member.designation}</h5>
+                    <h5 className="font-semibold">{member.designation}</h5>
                   </div>
                 </Col>
               ))}

@@ -24,7 +24,7 @@ const StockDetailsSideBarContent = ({
       <Card.Body>
         <Row className="g-0 flex-between-center mb-4">
           <Col xs="auto">
-            <h4 className="text-body-highlight font-bold mb-0 text-center">
+            <h4 className="text-highlight font-bold mb-0 text-center">
               Stock Details
             </h4>
           </Col>
@@ -32,20 +32,20 @@ const StockDetailsSideBarContent = ({
             <Button
               variant="link"
               size="sm"
-              className="fs-8 text-body"
+              className="text-base text-default"
               onClick={() => setOpen && setOpen(false)}
             >
               <FontAwesomeIcon icon={faXmark} />
             </Button>
           </Col>
         </Row>
-        <Card className="border text-center bg-body mb-3">
+        <Card className="border text-center bg-default mb-3">
           <Card.Body className="p-3">
-            <h3 className="mb-2 lh-sm text-body d-flex align-items-center gap-2 justify-content-center">
+            <h3 className="mb-2 lh-sm text-default flex align-items-center gap-2 justify-content-center">
               {currencyFormat(226.51, {
                 minimumFractionDigits: 2
               })}
-              <Badge variant="phoenix" bg="success" className="fs-10">
+              <Badge variant="phoenix" bg="success" className="text-sm">
                 +
                 {numberFormat(0.62, 'standard', {
                   minimumFractionDigits: 2
@@ -57,27 +57,27 @@ const StockDetailsSideBarContent = ({
                 %)
               </Badge>
             </h3>
-            <h6 className="lh-sm text-body mb-2">
+            <h6 className="lh-sm text-default mb-2">
               Real time quote: Sep 24, 2024,{' '}
               <span className="text-nowrap">1:34 PM</span>
             </h6>
             <Row className="py-3">
               <Col xs={6} className="border-end">
-                <h6 className="lh-sm text-body">Bid x Size</h6>
-                <h5 className="fw-semibold text-body mb-0">
+                <h6 className="lh-sm text-default">Bid x Size</h6>
+                <h5 className="font-semibold text-default mb-0">
                   {numberFormat(226.51, 'standard', {
                     minimumFractionDigits: 2
                   })}
-                  <span className="fs-9">x 100</span>
+                  <span className="text-md">x 100</span>
                 </h5>
               </Col>
               <Col xs={6}>
-                <h6 className="lh-sm text-body">Ask x Size</h6>
-                <h5 className="fw-semibold text-body mb-0">
+                <h6 className="lh-sm text-default">Ask x Size</h6>
+                <h5 className="font-semibold text-default mb-0">
                   {numberFormat(226.51, 'standard', {
                     minimumFractionDigits: 2
                   })}
-                  <span className="fs-9">x 100</span>
+                  <span className="text-md">x 100</span>
                 </h5>
               </Col>
             </Row>
@@ -101,17 +101,17 @@ const StockDetailsSideBarContent = ({
             </Tab.Pane>
           </Tab.Content>
         </Tab.Container>
-        <div className="d-flex flex-between-center border-y py-3 mb-4">
-          <h5 className="text-body mb-0">Stock available</h5>
+        <div className="flex flex-between-center border-y py-3 mb-4">
+          <h5 className="text-default mb-0">Stock available</h5>
           <Link
             to="#!"
-            className="d-flex align-items-center gap-2 link-primary fw-bold"
+            className="flex align-items-center gap-2 link-primary font-bold"
           >
             {numberFormat(32432234, 'standard')}
             <FontAwesomeIcon icon={faUpRightFromSquare} />
           </Link>
         </div>
-        <h5 className="lh-sm text-center fw-bolder">Options Chain</h5>
+        <h5 className="lh-sm text-center font-black">Options Chain</h5>
         <StockDetailsOptionChain />
       </Card.Body>
     </Card>

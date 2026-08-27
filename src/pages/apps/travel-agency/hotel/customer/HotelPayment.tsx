@@ -43,7 +43,7 @@ const HotelPayment = () => {
                   <Col sm={3}>
                     <label
                       htmlFor="country"
-                      className="fw-bold text-body-highlight mb-1"
+                      className="font-bold text-highlight mb-1"
                     >
                       Country
                     </label>
@@ -56,7 +56,7 @@ const HotelPayment = () => {
                   <Col sm={5} lg={4}>
                     <label
                       htmlFor="phone-number"
-                      className="fw-bold text-body-highlight mb-1"
+                      className="font-bold text-highlight mb-1"
                     >
                       Phone number
                     </label>
@@ -72,7 +72,7 @@ const HotelPayment = () => {
                   <Col sm={8} lg={7}>
                     <label
                       htmlFor="email"
-                      className="fw-bold text-body-highlight mb-1"
+                      className="font-bold text-highlight mb-1"
                     >
                       Email address
                     </label>

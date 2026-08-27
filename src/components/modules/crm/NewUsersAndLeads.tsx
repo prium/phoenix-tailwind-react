@@ -11,22 +11,22 @@ const NewUsersAndLeads = () => {
     <>
       <div className="mb-3">
         <h3>New Users &amp; Leads</h3>
-        <p className="text-body-tertiary mb-0">
+        <p className="text-subtle mb-0">
           Payment received across all channels
         </p>
       </div>
       <Row className="g-6">
         <Col md={6} className="mb-2 mb-sm-0">
-          <div className="d-flex gap-2 align-items-center">
+          <div className="flex gap-2 align-items-center">
             <FeatherIcon icon="users" className="text-info" />{' '}
-            <h4 className="text-body-tertiary mb-0">
-              New Users : <span className="text-body-emphasis">42</span>
+            <h4 className="text-subtle mb-0">
+              New Users : <span className="text-emphasis">42</span>
             </h4>
             <Badge
               bg="success"
               variant="phoenix"
               iconPosition="end"
-              className="fs-10"
+              className="text-sm"
             >
               +24.5%
               <FontAwesomeIcon
@@ -47,16 +47,16 @@ const NewUsersAndLeads = () => {
           </div>
         </Col>
         <Col md={6}>
-          <div className="d-flex gap-2 align-items-center">
+          <div className="flex gap-2 align-items-center">
             <FeatherIcon icon="zap" className="text-primary" />{' '}
-            <h4 className="text-body-tertiary mb-0">
-              New Leads : <span className="text-body-emphasis">45</span>
+            <h4 className="text-subtle mb-0">
+              New Leads : <span className="text-emphasis">45</span>
             </h4>
             <Badge
               bg="success"
               variant="phoenix"
               iconPosition="end"
-              className="fs-10"
+              className="text-sm"
             >
               +30.5%
               <FontAwesomeIcon

@@ -14,22 +14,22 @@ const KanbanInviteModal = ({
 }) => {
   return (
     <Modal show={show} centered onHide={handleClose}>
-      <Modal.Header className="p-4 d-flex gap-2 border-0">
+      <Modal.Header className="p-4 flex gap-2 border-0">
         <img src={boardIcon} height={24} width={18} />
-        <h3 className="mb-0 text-body-emphasis fw-semibold flex-1">
+        <h3 className="mb-0 text-emphasis font-semibold flex-1">
           Phoenix Kanban
         </h3>
         <Button className="p-0 ms-auto" onClick={handleClose}>
-          <FontAwesomeIcon icon={faXmark} className="fs-7" />
+          <FontAwesomeIcon icon={faXmark} className="text-lg" />
         </Button>
       </Modal.Header>
       <Modal.Body className="p-4 pt-0">
-        <p className="text-body-tertiary fw-semibold fs-9">
-          Add the <strong className="fw-bolder">Members</strong> or{' '}
-          <strong className="fw-bolder">Guests</strong> to your Kanban board.
+        <p className="text-subtle font-semibold text-md">
+          Add the <strong className="font-black">Members</strong> or{' '}
+          <strong className="font-black">Guests</strong> to your Kanban board.
           They can add, edit, or move tasks in your board. Tasks can also be
           assigned to them.{' '}
-          <Link to="#!" className="fw-semibold">
+          <Link to="#!" className="font-semibold">
             Learn more
           </Link>
         </p>
@@ -49,13 +49,13 @@ const KanbanInviteModal = ({
           </Col>
           <Col xs="auto" sm={3}>
             <Button variant="primary">
-              <FontAwesomeIcon icon={faEnvelope} className="fs-10 me-sm-2" />
-              <span className="d-none d-sm-inline-block">Invite</span>
+              <FontAwesomeIcon icon={faEnvelope} className="text-sm me-sm-2" />
+              <span className="hidden d-sm-inline-block">Invite</span>
             </Button>
           </Col>
         </Row>
-        <div className="py-2 border-bottom border-translucent border-dashed position-relative mb-4">
-          <span className="bg-body-emphasis px-1 position-absolute top-50 start-50 translate-x-50 fs-9 fw-semibold">
+        <div className="py-2 border-bottom border-light border-dashed relative mb-4">
+          <span className="bg-soft px-1 absolute top-50 start-50 translate-x-50 text-md font-semibold">
             Or,
           </span>
         </div>
@@ -64,11 +64,11 @@ const KanbanInviteModal = ({
             <Button
               variant="phoenix-secondary"
               startIcon={
-                <FontAwesomeIcon icon={faLink} className="ms-2 fs-9" />
+                <FontAwesomeIcon icon={faLink} className="ms-2 text-md" />
               }
               className="w-100"
             >
-              <span className="d-none d-sm-inline">Create & Copy</span>{' '}
+              <span className="hidden d-sm-inline">Create & Copy</span>{' '}
               <span>Shareable link</span>
             </Button>
           </Col>

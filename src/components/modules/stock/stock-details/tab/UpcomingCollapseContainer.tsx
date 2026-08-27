@@ -26,7 +26,7 @@ const UpcomingCollapsibleContainer = ({
       <Button
         variant=""
         className={classNames(
-          'px-4 py-3 d-flex flex-between-center collapse-indicator bg-body-highlight w-100',
+          'px-4 py-3 flex flex-between-center collapse-indicator bg-subtle w-100',
           className,
           {
             collapsed: open
@@ -35,7 +35,7 @@ const UpcomingCollapsibleContainer = ({
         aria-controls={id}
         onClick={() => setOpen(!open)}
       >
-        <h4 className="fs-8 fs-sm-7 mb-0 text-body-highlight">
+        <h4 className="text-base sm:text-lg mb-0 text-highlight">
           {collapseTitle}
         </h4>
         <FontAwesomeIcon icon={faChevronDown} className="toggle-icon" />

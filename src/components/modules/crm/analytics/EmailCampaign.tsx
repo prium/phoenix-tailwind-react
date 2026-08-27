@@ -4,7 +4,7 @@ const EmailCampaign = () => {
   return (
     <div className="scrollbar">
       <h3>Email Campaign Reports</h3>
-      <p className="text-body-tertiary">
+      <p className="text-subtle">
         Paid and Verified for each piece of content
       </p>
       <AnalyticsEmailCampaignChart className="echart-contacts-width" />

@@ -25,7 +25,7 @@ const DocPageHeader = ({
     <div className={classNames(className)} id={id}>
       <h2 className="mb-2 lh-sm">{title}</h2>
       {description && (
-        <p className="text-body-tertiary lead mb-2">{description}</p>
+        <p className="text-subtle lead mb-2">{description}</p>
       )}
       {children}
       {link && (

@@ -15,7 +15,7 @@ const TripCheckoutFormTimePicker = ({
 }: TripCheckoutFormTimePickerProps) => {
   return (
     <>
-      <label htmlFor={id} className="fw-bold text-body-highlight mb-1">
+      <label htmlFor={id} className="font-bold text-highlight mb-1">
         {label}
       </label>
       <div className="flatpickr-input-container">

@@ -51,7 +51,7 @@ const columns: ColumnDef<WishlistProductType>[] = [
     header: 'Color',
     meta: {
       headerProps: { style: { width: '16%' } },
-      cellProps: { className: 'white-space-nowrap' }
+      cellProps: { className: 'whitespace-nowrap' }
     }
   },
   {
@@ -59,7 +59,7 @@ const columns: ColumnDef<WishlistProductType>[] = [
     header: 'Size',
     meta: {
       headerProps: { style: { width: '10%' } },
-      cellProps: { className: 'text-body-tertiary fw-semibold' }
+      cellProps: { className: 'text-subtle font-semibold' }
     }
   },
   {
@@ -68,7 +68,7 @@ const columns: ColumnDef<WishlistProductType>[] = [
     cell: ({ row: { original } }) => currencyFormat(original.price),
     meta: {
       headerProps: { style: { width: '10%' }, className: 'text-end' },
-      cellProps: { className: 'text-end fw-semibold' }
+      cellProps: { className: 'text-end font-semibold' }
     }
   },
   {
@@ -109,7 +109,7 @@ const EcomWishlistTable = () => {
     <div>
       <AdvanceTableProvider {...table}>
         <div className="border-y border-light">
-          <AdvanceTable tableProps={{ className: 'phoenix-table fs-9' }} />
+          <AdvanceTable tableProps={{ className: ' text-md' }} />
           <AdvanceTableFooter pagination />
         </div>
       </AdvanceTableProvider>

@@ -20,15 +20,15 @@ const TextInputFiled = ({
 }: TextInputFieldProps) => {
   return (
     <>
-      <label htmlFor={id} className="fw-bold text-body-highlight mb-1">
+      <label htmlFor={id} className="font-bold text-highlight mb-1">
         {label}
       </label>
       {endIcon ? (
-        <div className="position-relative">
+        <div className="relative">
           <Form.Control id={id} className="pe-6" {...rest} />
           <FontAwesomeIcon
             icon={faLocationCrosshairs}
-            className="position-absolute top-0 end-0 mt-2 me-3 text-body-quaternary"
+            className="absolute top-0 end-0 mt-2 me-3 text-soft"
             transform="down-3"
           />
         </div>
@@ -68,7 +68,7 @@ const TripCheckoutForm = () => {
         <Form.Check type="checkbox">
           <Form.Check.Input id="receiveUpdate" type="checkbox" />
           <Form.Check.Label
-            className="fw-normal fs-8 text-body"
+            className="font-normal text-base text-default"
             htmlFor="receiveUpdate"
           >
             Get booking updates via SMS.
@@ -85,7 +85,7 @@ const TripCheckoutForm = () => {
         <Form.Check type="checkbox" className="mb-5">
           <Form.Check.Input id="anotherCountry" type="checkbox" />
           <Form.Check.Label
-            className="fw-normal fs-8 text-body"
+            className="font-normal text-base text-default"
             htmlFor="anotherCountry"
           >
             I am travelling from another country
@@ -240,7 +240,7 @@ const TripCheckoutForm = () => {
       <hr className="my-7" />
       <div>
         <h5 className="mb-2">Special requests</h5>
-        <p className="text-body-tertiary fs-9">
+        <p className="text-subtle text-md">
           Special requests cannot be guaranteed-but the property will do its
           best to meet your needs. You can always make a special request after
           your booking is complete!

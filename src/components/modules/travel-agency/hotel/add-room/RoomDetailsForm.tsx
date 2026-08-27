@@ -18,7 +18,7 @@ const RoomDetailsForm = () => {
     <>
       <h3 className="mb-6">Room Details</h3>
       <h4 className="mb-2">Share your room details</h4>
-      <p className="mb-4 text-body-tertiary">
+      <p className="mb-4 text-subtle">
         Enjoy a comfortable stay in our well-appointed rooms with a variety of
         options to choose from.
       </p>
@@ -111,7 +111,7 @@ const RoomDetailsForm = () => {
         </Col>
       </Row>
       <h4 className="mt-7 mb-2">Sleeping arrangements</h4>
-      <p className="mb-4 text-body-tertiary">
+      <p className="mb-4 text-subtle">
         Sleep well in our comfortable rooms with modern amenities.
       </p>
       <Row className="gx-3 gx-sm-4 gy-3">

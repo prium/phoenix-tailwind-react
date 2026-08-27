@@ -14,19 +14,19 @@ const DealDetailsNotes = ({ notes }: { notes: Note[] }) => {
       {notes.map((note, index) => (
         <div
           key={note.id}
-          className={classNames('border-2 border-dashed border-translucent', {
+          className={classNames('border-2 border-dashed border-light', {
             'mb-4 pb-4 border-bottom': index !== notes.length - 1
           })}
         >
-          <p className="mb-1 text-body-highlight">{note.description}</p>
+          <p className="mb-1 text-highlight">{note.description}</p>
           <div className="d-sm-flex">
-            <div className="fs-9 text-body-tertiary text-opacity-85">
+            <div className="text-md text-subtle text-opacity-85">
               <FontAwesomeIcon icon={faClock} className="me-2" />
-              <span className="fw-semibold me-1">{note.date}</span>
+              <span className="font-semibold me-1">{note.date}</span>
             </div>
-            <p className="fs-9 mb-0 text-body-tertiary text-opacity-85">
+            <p className="text-md mb-0 text-subtle text-opacity-85">
               by
-              <Link to="#!" className="ms-1 fw-semibold">
+              <Link to="#!" className="ms-1 font-semibold">
                 {note.name}
               </Link>
             </p>

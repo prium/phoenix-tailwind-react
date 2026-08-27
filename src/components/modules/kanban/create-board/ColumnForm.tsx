@@ -98,7 +98,7 @@ const ColumnItem = ({
 
   return (
     <div ref={setNodeRef} {...attributes} style={styles}>
-      <div className={classNames(className, 'd-flex gap-3')}>
+      <div className={classNames(className, 'flex gap-3')}>
         <PhoenixFloatingLabel
           label={label}
           className="flex-1"
@@ -110,7 +110,7 @@ const ColumnItem = ({
           endComponent={
             <button className="btn p-0 lh-1" onClick={handleClear}>
               <FontAwesomeIcon
-                className="text-body-quaternary text-opacity-50"
+                className="text-soft text-opacity-50"
                 icon={faCircleXmark}
               />
             </button>
@@ -229,7 +229,7 @@ const ColumnForm = () => {
       <Button
         variant="phoenix-secondary"
         startIcon={<FontAwesomeIcon icon={faPlus} />}
-        className="w-100 fs-9"
+        className="w-100 text-md"
         size="lg"
         onClick={handleAddNewColumn}
       >

@@ -23,7 +23,7 @@ export const membersTablecolumns: ColumnDef<Member>[] = [
         style: { width: '15%', minWidth: '200px' },
         className: 'px-1'
       },
-      cellProps: { className: 'align-middle white-space-nowrap py-2' }
+      cellProps: { className: 'align-middle whitespace-nowrap py-2' }
     }
   },
   {
@@ -41,7 +41,7 @@ export const membersTablecolumns: ColumnDef<Member>[] = [
       headerProps: {
         style: { width: '15%', minWidth: '200px' }
       },
-      cellProps: { className: 'white-space-nowrap' }
+      cellProps: { className: 'whitespace-nowrap' }
     }
   },
   {
@@ -67,7 +67,7 @@ export const membersTablecolumns: ColumnDef<Member>[] = [
     header: 'City',
     meta: {
       headerProps: { style: { width: '10%' } },
-      cellProps: { className: 'text-body' }
+      cellProps: { className: 'text-default' }
     }
   },
   {
@@ -79,7 +79,7 @@ export const membersTablecolumns: ColumnDef<Member>[] = [
         className: 'text-end'
       },
       cellProps: {
-        className: 'text-end text-body-tertiary'
+        className: 'text-end text-subtle'
       }
     }
   },
@@ -92,7 +92,7 @@ export const membersTablecolumns: ColumnDef<Member>[] = [
         className: 'text-end pe-0'
       },
       cellProps: {
-        className: 'text-body-tertiary text-end'
+        className: 'text-subtle text-end'
       }
     }
   }
@@ -101,7 +101,7 @@ export const membersTablecolumns: ColumnDef<Member>[] = [
 const MembersTable = () => {
   return (
     <div>
-      <AdvanceTable tableProps={{ className: 'phoenix-table fs-9' }} />
+      <AdvanceTable tableProps={{ className: ' text-md' }} />
       <AdvanceTableFooter pagination />
     </div>
   );

@@ -61,12 +61,12 @@ const TravelAgencyFooter = ({ className }: TravelAgencyFooterProps) => {
           </Navbar.Brand>
         </Col>
         <Col xs="auto">
-          <ul className="d-flex flex-center flex-wrap gap-x-5 gap-y-1 list-unstyled mb-0">
+          <ul className="flex flex-center flex-wrap gap-x-5 gap-y-1 list-unstyled mb-0">
             {navItems.map((item, index) => (
               <li key={index}>
                 <Link
                   to={item.link}
-                  className="lh-1 text-body-tertiary fw-semibold fs-9"
+                  className="lh-1 text-subtle font-semibold text-md"
                 >
                   {item.icon && (
                     <FontAwesomeIcon

@@ -28,7 +28,7 @@ const EventOffcanvas = ({ open, setOpen }: EventOffcanvasProps) => {
     <Offcanvas
       show={open}
       onHide={handleClose}
-      className="bg-body-emphasis stock-events-offcanvas"
+      className="bg-soft stock-events-offcanvas"
       placement="end"
       fixed
     >
@@ -64,7 +64,7 @@ const EventOffcanvas = ({ open, setOpen }: EventOffcanvasProps) => {
           <Card.Body>
             <Row className="g-3">
               <Col lg={6}>
-                <div className="d-flex gap-2 align-items-center mb-2">
+                <div className="flex gap-2 align-items-center mb-2">
                   <div className="bg-info-subtle px-2 py-1 rounded">
                     <UilMapMarker
                       fill='currentColor'
@@ -75,12 +75,12 @@ const EventOffcanvas = ({ open, setOpen }: EventOffcanvasProps) => {
                   </div>
                   <h5>Location</h5>
                 </div>
-                <p className="fs-9 mb-0 text-body-secondary">
+                <p className="text-md mb-0 text-muted">
                   Shannon Mekalan Vancouver, British Columbia, Canada
                 </p>
               </Col>
               <Col lg={6}>
-                <div className="d-flex gap-2 align-items-center mb-2">
+                <div className="flex gap-2 align-items-center mb-2">
                   <div className="bg-primary-subtle px-2 py-1 rounded">
                     <UilClock
                       fill='currentColor'
@@ -91,7 +91,7 @@ const EventOffcanvas = ({ open, setOpen }: EventOffcanvasProps) => {
                   </div>
                   <h5>Date &amp; Time</h5>
                 </div>
-                <p className="fs-9 mb-0 text-body-secondary">
+                <p className="text-md mb-0 text-muted">
                   28th June - 2nd July 2022,
                   <br />
                   10 am - 4 pm EDT
@@ -119,7 +119,7 @@ const EventOffcanvas = ({ open, setOpen }: EventOffcanvasProps) => {
           className="mt-4"
         >
           <>
-            <div className="d-flex align-items-center gap-2">
+            <div className="flex align-items-center gap-2">
               <Avatar
                 src={Img}
                 size="xl"
@@ -128,7 +128,7 @@ const EventOffcanvas = ({ open, setOpen }: EventOffcanvasProps) => {
               />
               <div>
                 <h4>Richard Dawkins</h4>
-                <p className="text-body-tertiary fs-9">
+                <p className="text-subtle text-md">
                   Senior Strategist, Phoenix
                 </p>
               </div>

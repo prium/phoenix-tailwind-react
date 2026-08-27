@@ -25,7 +25,7 @@ const GanttFilterModal = ({
       aria-labelledby="ganttFilterModalLabel"
     >
       <Modal.Header className="p-4 pb-3 align-items-start">
-        <h3 id="ganttFilterModalLabel" className="mb-2 text-body-highlight">
+        <h3 id="ganttFilterModalLabel" className="mb-2 text-highlight">
           Filter
         </h3>
         <button onClick={handleClose} className="btn p-0 ms-auto">
@@ -51,7 +51,7 @@ const GanttFilterModal = ({
 
           <Col md={6}>
             <Form.Group controlId="completedOn">
-              <Form.Label className="form-label-header text-body-highlight mb-2">
+              <Form.Label className="form-label-header text-highlight mb-2">
                 Completed on
               </Form.Label>
               <Form.Select aria-label="Default select example">
@@ -66,7 +66,7 @@ const GanttFilterModal = ({
 
           <Col md={6}>
             <Form.Group controlId="completionStatus">
-              <Form.Label className="form-label-header text-body-highlight mb-2">
+              <Form.Label className="form-label-header text-highlight mb-2">
                 Completion Status
               </Form.Label>
               <Form.Select>
@@ -82,7 +82,7 @@ const GanttFilterModal = ({
 
           <Col md={6}>
             <Form.Group controlId="filterPriority">
-              <Form.Label className="form-label-header text-body-highlight mb-2">
+              <Form.Label className="form-label-header text-highlight mb-2">
                 Priority
               </Form.Label>
               <Form.Select>
@@ -96,7 +96,7 @@ const GanttFilterModal = ({
 
           <Col md={6}>
             <Form.Group controlId="lastModifiedON">
-              <Form.Label className="form-label-header text-body-highlight mb-2">
+              <Form.Label className="form-label-header text-highlight mb-2">
                 Last modified on
               </Form.Label>
               <Form.Select>
@@ -111,7 +111,7 @@ const GanttFilterModal = ({
 
           <Col md={6}>
             <Form.Group controlId="filterTaskType">
-              <Form.Label className="form-label-header text-body-highlight mb-2">
+              <Form.Label className="form-label-header text-highlight mb-2">
                 Task type
               </Form.Label>
               <Form.Select>

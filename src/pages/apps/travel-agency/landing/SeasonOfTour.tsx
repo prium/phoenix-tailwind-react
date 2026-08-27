@@ -26,7 +26,7 @@ const ImageZoomHoverCard: FC<ImageZoomHoverCard> = ({
   ...rest
 }: ImageZoomHoverCard) => {
   return (
-    <div className="img-zoom-hover position-relative h-100 rounded-3 overflow-hidden">
+    <div className="img-zoom-hover relative h-100 rounded-3 overflow-hidden">
       <Link to="#!">
         <img
           className={`w-100 object-fit-cover ${imgClass}`}
@@ -36,10 +36,10 @@ const ImageZoomHoverCard: FC<ImageZoomHoverCard> = ({
         />
       </Link>
       <div className="backdrop-faded">
-        <Link to="#!" className="fw-bold fs-7 text-white streched-link">
+        <Link to="#!" className="font-bold text-lg text-white streched-link">
           {title}
         </Link>
-        <p className="mb-0 text-white fs-9">{subTitle}</p>
+        <p className="mb-0 text-white text-md">{subTitle}</p>
       </div>
     </div>
   );
@@ -50,33 +50,33 @@ const SeasonOfTour = () => {
     <section className="pt-6 pt-md-10 pb-10">
       <div className="container-medium">
         <div
-          className="bg-holder d-none d-xl-block bg-left"
+          className="bg-holder hidden d-xl-block bg-left"
           style={{
             backgroundImage: `url(${bgLeft27})`,
             backgroundSize: 'auto'
           }}
         />
         <div
-          className="bg-holder d-none d-xl-block bg-right"
+          className="bg-holder hidden d-xl-block bg-right"
           style={{
             backgroundImage: `url(${bgRight27})`,
             backgroundSize: 'auto'
           }}
         />
-        <Row className="g-3 position-relative">
+        <Row className="g-3 relative">
           <Col lg={6}>
             <Row className="g-3">
               <Col md={7}>
-                <h4 className="fw-semibold mb-3">Season of </h4>
-                <h2 className="fs-4 fw-semibold mb-3 mb-md-4">
+                <h4 className="font-semibold mb-3">Season of </h4>
+                <h2 className="fs-4 font-semibold mb-3 mb-md-4">
                   Tour &{' '}
-                  <span className="text-primary-light fw-bold">Travel</span>
+                  <span className="text-primary-light font-bold">Travel</span>
                 </h2>
-                <p className="mb-3 mb-md-0 text-body-tertiary">
+                <p className="mb-3 mb-md-0 text-subtle">
                   This is the perfect season for tours and travels. At Phoenix,
                   you can easily select the best travel option for your next
                   vacation
-                  <span className="d-none d-lg-inline-block d-xl-none">
+                  <span className="hidden d-lg-inline-block d-xl-none">
                     ...
                   </span>
                   <span className="d-lg-none d-xl-inline">
@@ -112,7 +112,7 @@ const SeasonOfTour = () => {
             </Row>
           </Col>
           <Col lg={6}>
-            <div className="d-flex flex-column gap-3 h-100">
+            <div className="flex flex-column gap-3 h-100">
               <ImageZoomHoverCard
                 src={gallery38}
                 title="Bali, Indonesia"
@@ -120,7 +120,7 @@ const SeasonOfTour = () => {
                 imgClass="h-lg-100"
                 style={{ height: 220 }}
               />
-              <Button variant="primary" className="w-100 py-3 fs-8">
+              <Button variant="primary" className="w-100 py-3 text-base">
                 Explore more
                 <FontAwesomeIcon
                   className="ms-2"

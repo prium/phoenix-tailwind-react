@@ -33,7 +33,7 @@ const SpecificationTable = ({ title, data }: SpecificationTableProps) => {
               >
                 <h6
                   className={classNames(
-                    'mb-0 text-default uppercase font-black px-6 fs--1 leading-sm',
+                    'mb-0 text-default uppercase font-black px-6 text-md leading-sm',
                     {
                       'mt-1': Array.isArray(item.value)
                     }

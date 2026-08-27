@@ -13,10 +13,10 @@ interface SocialMessagesProps {
 const SocialMessages = ({ messages }: SocialMessagesProps) => {
   return (
     <>
-      <div className="d-flex flex-between-center pb-3 border-bottom border-dashed">
+      <div className="flex flex-between-center pb-3 border-bottom border-dashed">
         <h3 className="mb-0">
           Messages
-          <span className="text-body-tertiary ms-2 fw-normal">(97)</span>
+          <span className="text-subtle ms-2 font-normal">(97)</span>
         </h3>
         <RevealDropdownTrigger>
           <RevealDropdown>
@@ -32,7 +32,7 @@ const SocialMessages = ({ messages }: SocialMessagesProps) => {
       {messages.map(message => (
         <div
           key={message.id}
-          className="d-flex py-3 align-items-center border-bottom border-translucent border-dashed"
+          className="flex py-3 align-items-center border-bottom border-light border-dashed"
         >
           <div className="me-2">
             <Avatar
@@ -43,7 +43,7 @@ const SocialMessages = ({ messages }: SocialMessagesProps) => {
           </div>
           <Link to="/apps/chat" className="text-decoration-none flex-1">
             <h5>{message.name}</h5>
-            <p className="text-body-tertiary fw-semibold fs-9 mb-0 lh-sm line-clamp-1">
+            <p className="text-subtle font-semibold text-md mb-0 lh-sm line-clamp-1">
               {message.message}
             </p>
           </Link>

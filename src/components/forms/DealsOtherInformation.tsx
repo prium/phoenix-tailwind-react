@@ -10,9 +10,9 @@ const DealsOtherInformation = () => {
         <Row className="g-3">
           <Col xs={12}>
             <div className="mb-4">
-              <div className="d-flex flex-wrap justify-content-between mb-2">
-                <h5 className="mb-0 text-body-highlight me-2">Category</h5>
-                <Link to="#!" className="fw-bold fs-9">
+              <div className="flex flex-wrap justify-content-between mb-2">
+                <h5 className="mb-0 text-highlight me-2">Category</h5>
+                <Link to="#!" className="font-bold text-md">
                   Add new category
                 </Link>
               </div>
@@ -25,7 +25,7 @@ const DealsOtherInformation = () => {
               </Form.Select>
             </div>
             <div className="mb-4">
-              <h5 className="mb-0 text-body-highlight mb-2">Priority</h5>
+              <h5 className="mb-0 text-highlight mb-2">Priority</h5>
               <Form.Select>
                 <option value="low">Low</option>
                 <option value="high">High</option>
@@ -34,7 +34,7 @@ const DealsOtherInformation = () => {
               </Form.Select>
             </div>
             <div className="mb-4">
-              <h5 className="mb-0 text-body-highlight mb-2">Stage</h5>
+              <h5 className="mb-0 text-highlight mb-2">Stage</h5>
               <Form.Select>
                 <option value="new">New</option>
                 <option value="in-progress">In Progress</option>
@@ -44,9 +44,9 @@ const DealsOtherInformation = () => {
               </Form.Select>
             </div>
             <div className="mb-4">
-              <div className="d-flex flex-wrap justify-content-between mb-2">
-                <h5 className="mb-0 text-body-highlight me-2">Lead Source</h5>
-                <Link to="#!" className="fw-bold fs-9">
+              <div className="flex flex-wrap justify-content-between mb-2">
+                <h5 className="mb-0 text-highlight me-2">Lead Source</h5>
+                <Link to="#!" className="font-bold text-md">
                   Add new
                 </Link>
               </div>
@@ -61,11 +61,11 @@ const DealsOtherInformation = () => {
               </Form.Select>
             </div>
             <div>
-              <div className="d-flex flex-wrap justify-content-between mb-2">
-                <h5 className="mb-0 text-body-highlight me-2">
+              <div className="flex flex-wrap justify-content-between mb-2">
+                <h5 className="mb-0 text-highlight me-2">
                   Campaign Source
                 </h5>
-                <Link to="#!" className="fw-bold fs-9">
+                <Link to="#!" className="font-bold text-md">
                   Add new
                 </Link>
               </div>

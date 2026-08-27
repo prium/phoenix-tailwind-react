@@ -51,7 +51,7 @@ const GallerySliderItems = ({ galleryItems }: GallerySliderItemsProps) => {
           <SwiperSlide
             key={item.id}
             className={classNames(
-              'position-relative rounded-2 overflow-hidden',
+              'relative rounded-2 overflow-hidden',
               item.className
             )}
           >
@@ -125,17 +125,17 @@ const GalleryItems = ({ item, onClick }: GalleryItemsProps) => {
           >
             <source src={item.video} type="video/mp4" />
           </video>
-          <div className="video-icon position-absolute top-50 start-50 translate-middle bg-body-emphasis rounded-pill bg-opacity-50">
+          <div className="video-icon absolute top-50 start-50 translate-middle bg-soft rounded-full bg-opacity-50">
             <FontAwesomeIcon
               icon={faVideo}
-              className="text-body fs-9 fs-sm-8"
+              className="text-default text-md sm:text-base"
             />
           </div>
         </div>
       ) : (
         <img className="w-100 h-100 object-fit-cover" src={item.image} />
       )}
-      <div className="backdrop-faded d-flex justify-content-between p-5">
+      <div className="backdrop-faded flex justify-content-between p-5">
         <div>
           <h3 className="text-white mb-2">{item.title}</h3>
           <p className="mb-0 text-secondary-light">{item.subtitle}</p>

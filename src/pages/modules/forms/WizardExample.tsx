@@ -65,7 +65,7 @@ const ProgressTabExample = () => {
   return (
     <WizardFormProvider {...form}>
       <Card className="theme-wizard">
-        <Card.Header className="bg-body-highlight pt-3 pb-2 border-bottom-0">
+        <Card.Header className="bg-subtle pt-3 pb-2 border-bottom-0">
           <WizardNav />
         </Card.Header>
         <Card.Body>
@@ -92,7 +92,7 @@ const ProgressTabExample = () => {
         </Card.Body>
         <Card.Footer className="border-top-0">
           <WizardFormFooter 
-            className={classNames({ 'd-none': !form.getCanNextPage })}
+            className={classNames({ 'hidden': !form.getCanNextPage })}
           />
         </Card.Footer>
       </Card>
@@ -138,7 +138,7 @@ const WithValidationExample = () => {
   return (
     <WizardFormProvider {...form}>
       <Card className="theme-wizard">
-        <Card.Header className="bg-body-highlight pt-3 pb-2 border-bottom-0">
+        <Card.Header className="bg-subtle pt-3 pb-2 border-bottom-0">
           <WizardNav />
         </Card.Header>
         <Card.Body>
@@ -165,7 +165,7 @@ const WithValidationExample = () => {
         </Card.Body>
         <Card.Footer className="border-top-0">
           <WizardFormFooter 
-            className={classNames({ 'd-none': !form.getCanNextPage })}
+            className={classNames({ 'hidden': !form.getCanNextPage })}
           />
         </Card.Footer>
       </Card>
@@ -211,7 +211,7 @@ const ProgressTabExample = () => {
   return (
     <WizardFormProvider {...form}>
       <Card className="theme-wizard">
-        <Card.Header className="bg-body-highlight pt-3 pb-2 border-bottom-0">
+        <Card.Header className="bg-subtle pt-3 pb-2 border-bottom-0">
           <WizardNav />
         </Card.Header>
         <Card.Body className="pb-0">
@@ -238,7 +238,7 @@ const ProgressTabExample = () => {
         </Card.Body>
         <Card.Footer className="border-top-0">
           <WizardFormFooter
-            className={classNames({ 'd-none': !form.getCanNextPage })}
+            className={classNames({ 'hidden': !form.getCanNextPage })}
           />
         </Card.Footer>
       </Card>
@@ -254,7 +254,7 @@ const WithValidationExample = () => {
   return (
     <WizardFormProvider {...form}>
       <Card className="theme-wizard">
-        <Card.Header className="bg-body-highlight pt-3 pb-2 border-bottom-0">
+        <Card.Header className="bg-subtle pt-3 pb-2 border-bottom-0">
           <WizardNav />
         </Card.Header>
         <Card.Body className="pb-0">
@@ -281,7 +281,7 @@ const WithValidationExample = () => {
         </Card.Body>
         <Card.Footer className="border-top-0">
           <WizardFormFooter
-            className={classNames({ 'd-none': !form.getCanNextPage })}
+            className={classNames({ 'hidden': !form.getCanNextPage })}
           />
         </Card.Footer>
       </Card>

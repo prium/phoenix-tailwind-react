@@ -56,7 +56,7 @@ const WidgetStats = () => {
           <ContactsBySource />
         </Col>
       </Row>
-      <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-body-emphasis py-5">
+      <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-soft py-5">
         <Row className="g-6">
           <Col xl={6}>
             <EcomProjectionVsActual />
@@ -74,7 +74,7 @@ const WidgetStats = () => {
           <ZeroRoadMap />
         </Col>
       </Row>
-      <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-body-emphasis pt-6 pb-3 mt-6">
+      <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-soft pt-6 pb-3 mt-6">
         <Row>
           <Col xl={7} xxl={6}>
             <IssuesDiscovered />
@@ -94,7 +94,7 @@ const WidgetStats = () => {
           </Col>
         </Row>
       </div>
-      <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-body-emphasis pt-6 pb-3 mt-3">
+      <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-soft pt-6 pb-3 mt-3">
         <Row className="gx-6">
           <Col
             md={6}

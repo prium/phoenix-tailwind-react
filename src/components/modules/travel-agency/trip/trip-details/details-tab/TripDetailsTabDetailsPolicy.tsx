@@ -25,10 +25,10 @@ const TripDetailsTabDetailsPolicy = ({
             <h5 className="mb-3">{policy.label}</h5>
             <ul className="list-unstyled mb-0">
               {policy.policyItems.map(item => (
-                <li key={item.id} className="mb-3 d-flex">
+                <li key={item.id} className="mb-3 flex">
                   <FontAwesomeIcon
                     icon={faCircle}
-                    className="text-secondary-light me-3 fs-11"
+                    className="text-secondary-light me-3 text-xs"
                     transform="down-13 shrink-4"
                   />
                   {item.policyItem}

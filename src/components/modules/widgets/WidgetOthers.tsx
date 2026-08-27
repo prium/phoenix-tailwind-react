@@ -30,16 +30,16 @@ const WidgetOthers = () => {
         </Col>
       </Row>
       <Row className="g-3">
-        <Col xl={4} className="d-flex flex-column gap-y-3">
+        <Col xl={4} className="flex flex-column gap-y-3">
           <CustomerNotesCard className="h-100" />
           <DealProfileCard />
         </Col>
-        <Col xl={4} className="d-flex flex-column gap-y-3">
+        <Col xl={4} className="flex flex-column gap-y-3">
           <CustomerProfileCard />
           <LeadAddressCard />
           <OrderDetailsSummaryCard />
         </Col>
-        <Col xl={4} className="d-flex flex-column gap-y-3">
+        <Col xl={4} className="flex flex-column gap-y-3">
           <AboutLeadCard className="h-100" />
           <LeadProfileCard />
         </Col>

@@ -56,15 +56,15 @@ const CalendarAddNewEventModal = () => {
   return (
     <Modal
       show={openNewEventModal}
-      contentClassName="border-translucent"
+      contentClassName="border-light"
       onHide={handleClose}
       enforceFocus={false}
     >
       <Form onSubmit={handleSubmit}>
         <Modal.Header className="px-card border-0">
-          <div className="w-100 d-flex justify-content-between align-items-start">
+          <div className="w-100 flex justify-content-between align-items-start">
             <div>
-              <h5 className="mb-0 lh-sm text-body-highlight">Add new</h5>
+              <h5 className="mb-0 lh-sm text-highlight">Add new</h5>
               <div className="mt-2">
                 <Form.Check
                   type="radio"
@@ -88,7 +88,7 @@ const CalendarAddNewEventModal = () => {
                 </Form.Check>
               </div>
             </div>
-            <Button className="p-1 fs-10 text-body" onClick={handleClose}>
+            <Button className="p-1 text-sm text-default" onClick={handleClose}>
               DISCARD
             </Button>
           </div>
@@ -224,13 +224,13 @@ const CalendarAddNewEventModal = () => {
             Add Reminder
           </Button>
         </Modal.Body>
-        <Modal.Footer className="d-flex justify-content-between align-items-center border-0">
+        <Modal.Footer className="flex justify-content-between align-items-center border-0">
           <Link
             to="/apps/events/create-an-event"
-            className="me-3 fs-9 text-body"
+            className="me-3 text-md text-default"
           >
             More options
-            <FontAwesomeIcon icon={faAngleRight} className="ms-1 fs-10" />
+            <FontAwesomeIcon icon={faAngleRight} className="ms-1 text-sm" />
           </Link>
           <Button variant="primary" type="submit" className="px-4">
             Save

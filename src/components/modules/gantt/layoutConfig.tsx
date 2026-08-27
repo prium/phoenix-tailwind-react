@@ -16,7 +16,7 @@ const assigneeTemplate = (task: Task): string => {
         return `
           <div class="assignee-dropdown-container">
             <a href="#!" class="avatar avatar-s">
-              <div class="avatar-name rounded-circle border border-translucent">
+              <div class="avatar-name rounded-circle border border-light">
                 <span>+${owners.length - 3}</span>
               </div>
             </a>
@@ -24,13 +24,13 @@ const assigneeTemplate = (task: Task): string => {
               ${owners
                 .map(
                   owner => `
-                <div class="dropdown-item py-2 px-3 d-flex gap-2 align-items-center">
+                <div class="dropdown-item py-2 px-3 flex gap-2 align-items-center">
                   <div class="avatar avatar-s">
                     <img class="rounded-circle" src="${owner.img}" alt="${
                       owner.name || 'assignee'
                     }" />
                   </div>
-                  <a href="#" class="fw-bold text-body text-decoration-none lh-1">${
+                  <a href="#" class="font-bold text-default text-decoration-none lh-1">${
                     owner.name
                   }</a>
                 </div>
@@ -51,13 +51,13 @@ const assigneeTemplate = (task: Task): string => {
               }" onerror="this.style.display='none'"/>
             </div>
             <ul class="dropdown-menu py-0">
-              <li class="dropdown-item py-0 px-3 d-flex gap-3 align-items-center">
+              <li class="dropdown-item py-0 px-3 flex gap-3 align-items-center">
                 <div class="avatar avatar-s">
                   <img class="rounded-circle" src="${assignee.img}" alt="${
                     assignee.name || 'assignee'
                   }" onerror="this.style.display='none'"/>
                 </div>
-                <span class="fw-bold text-body text-decoration-none lh-1 py-3">${
+                <span class="font-bold text-default text-decoration-none lh-1 py-3">${
                   assignee.name
                 }</span>
               </li>
@@ -70,7 +70,7 @@ const assigneeTemplate = (task: Task): string => {
     })
     .join('');
 
-  return `<div class="d-flex align-items-center avatar-group">${items}</div>`;
+  return `<div class="flex align-items-center avatar-group">${items}</div>`;
 };
 
 export const formatDate = (date: Date | undefined): string =>
@@ -132,7 +132,7 @@ export const ganttConfigColumnsData = [
           color = 'info';
           break;
       }
-      return `<div class='text-body'><span class='fa-solid fa-circle text-${color} me-1 fs-10'></span>${
+      return `<div class='text-default'><span class='fa-solid fa-circle text-${color} me-1 text-sm'></span>${
         task.priority || 'Low'
       }</div>`;
     },
@@ -152,7 +152,7 @@ export const ganttConfigColumnsData = [
     min_width: 160,
     template(task: Task) {
       return `
-         <span class='far fa-calendar text-body-quaternary fs-8 me-1'></span> ${formatDate(
+         <span class='far fa-calendar text-soft text-base me-1'></span> ${formatDate(
            task.start_date
          )} 
       `;
@@ -165,7 +165,7 @@ export const ganttConfigColumnsData = [
     min_width: 160,
     template(task: Task) {
       return `
-       <span class='far fa-calendar text-body-quaternary fs-8 me-1'></span> ${formatDate(
+       <span class='far fa-calendar text-soft text-base me-1'></span> ${formatDate(
          task.end_date
        )} 
     `;
@@ -178,7 +178,7 @@ export const ganttConfigColumnsData = [
     min_width: 160,
     template(task: Task) {
       return `
-        <span class='far fa-clock me-1 fs-8 text-quaternary'></span>
+        <span class='far fa-clock me-1 text-base text-quaternary'></span>
         ${task.duration} days 
     `;
     }

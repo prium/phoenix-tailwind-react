@@ -15,18 +15,18 @@ const DealDetailsMeeting = ({ meetings }: { meetings: Meeting[] }) => {
           <SearchBox placeholder="Search meeting" className="mb-2 mb-sm-0" />
         </Col>
         <Col xs="auto" className="flex-md-grow-1">
-          <div className="d-flex">
-            <p className="mb-0 fs-9 text-body-tertiary fw-bold">
+          <div className="flex">
+            <p className="mb-0 text-md text-subtle font-bold">
               <FontAwesomeIcon
                 icon={faFilter}
-                className="me-1 fw-extra-bold fs-10"
+                className="me-1 fw-extra-bold text-sm"
               />
               23 tasks
             </p>
             <Button
               variant="link"
-              className="p-0 ms-3 fs-9 text-primary fw-bold"
-              startIcon={<FontAwesomeIcon icon={faSort} className="fs-10" />}
+              className="p-0 ms-3 text-md text-primary font-bold"
+              startIcon={<FontAwesomeIcon icon={faSort} className="text-sm" />}
             >
               Sorting
             </Button>

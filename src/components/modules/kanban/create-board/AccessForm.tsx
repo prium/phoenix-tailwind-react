@@ -73,7 +73,7 @@ const AccessForm = () => {
                 className="flex-1"
                 endComponent={
                   <Button
-                    className="fs-8 text-body-quaternary end-0"
+                    className="text-base text-soft end-0"
                     onClick={handleCopyShareableLink}
                   >
                     <OverlayTrigger
@@ -117,7 +117,7 @@ const AccessForm = () => {
         />
 
         <Accordion.Collapse eventKey="1" className="ms-4">
-          <div className="d-flex flex-column gap-3">
+          <div className="flex flex-column gap-3">
             <Row className="g-3">
               <Col md={9}>
                 <PhoenixFloatingLabel

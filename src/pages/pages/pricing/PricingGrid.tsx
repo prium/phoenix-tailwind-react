@@ -52,12 +52,12 @@ const PricingGrid = () => {
             <p className="mb-0 mt-7">
               Business Starter, Business Standard, and Business Plus plans can
               be purchased for a maximum of 300 users. There is no{' '}
-              <br className="d-none d-xl-block d-xxl-none" />
+              <br className="hidden d-xl-block d-xxl-none" />
               maximum user limit for Enterprise plans.
             </p>
-            <p className="fw-semibold">
+            <p className="font-semibold">
               Phoenix customers may have access to additional features for a
-              limited <br className="d-none d-sm-block d-lg-none" />
+              limited <br className="hidden d-sm-block d-lg-none" />
               promotional period.
             </p>
             <div className="d-grid d-sm-flex">
@@ -78,7 +78,7 @@ const PricingGrid = () => {
           </div>
         </Col>
         <Col xxl={3} className="mt-8">
-          <h3 className="fw-semibold mb-3">Included in our all packages</h3>
+          <h3 className="font-semibold mb-3">Included in our all packages</h3>
           <PricingPackageList features={pricingGridFeatures} />
         </Col>
       </Row>

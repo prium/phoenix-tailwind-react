@@ -20,10 +20,10 @@ const DealDetails = () => {
           <Col md="auto">
             <h2 className="mb-0">Deal details</h2>
           </Col>
-          <Col md="auto" className="d-flex">
+          <Col md="auto" className="flex">
             <Button variant="phoenix-secondary" className="px-3 px-sm-5 me-2">
               <FontAwesomeIcon icon={faEdit} className="me-sm-2" />
-              <span className="d-none d-sm-inline">Edit</span>
+              <span className="hidden d-sm-inline">Edit</span>
             </Button>
             <Button
               variant="phoenix-danger"

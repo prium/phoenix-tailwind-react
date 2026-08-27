@@ -5,7 +5,7 @@ import PhoenixDocProvider from 'providers/PhoenixDocProvider';
 
 const containerCode = `
 <Container>
-    <Row className="p-2 bg-body-secondary border">
+    <Row className="p-2 bg-muted border">
         <Col>1 of 1</Col>
     </Row>
 </Container>
@@ -13,7 +13,7 @@ const containerCode = `
 
 const fluidCode = `
 <Container fluid>
-    <Row className="p-2 bg-body-secondary border">
+    <Row className="p-2 bg-muted border">
         <Col>1 of 1</Col>
     </Row>
 </Container>
@@ -21,7 +21,7 @@ const fluidCode = `
 
 const fluidBreakpointsCode = `
 <Container fluid='md'>
-    <Row className="p-2 bg-body-secondary border">
+    <Row className="p-2 bg-muted border">
         <Col>1 of 1</Col>
     </Row>
 </Container>
@@ -30,46 +30,46 @@ const fluidBreakpointsCode = `
 const responsiveGridsCode = `
 <Container>
   <Row className="p-2 mb-2">
-    <Col sm={8} className="p-2 bg-body-secondary border">sm=8</Col>
-    <Col sm={4} className="p-2 bg-body-secondary border">sm=4</Col>
+    <Col sm={8} className="p-2 bg-muted border">sm=8</Col>
+    <Col sm={4} className="p-2 bg-muted border">sm=4</Col>
   </Row>
   <Row className="p-2">
-    <Col sm className="p-2 bg-body-secondary border">sm=true</Col>
-    <Col sm className="p-2 bg-body-secondary border">sm=true</Col>
-    <Col sm className="p-2 bg-body-secondary border">sm=true</Col>
+    <Col sm className="p-2 bg-muted border">sm=true</Col>
+    <Col sm className="p-2 bg-muted border">sm=true</Col>
+    <Col sm className="p-2 bg-muted border">sm=true</Col>
   </Row>
 </Container>`;
 
 const columnWidthCode = `
 <Container>
     <Row className="p-2 mb-1">
-        <Col className="p-2 bg-body-secondary border">
+        <Col className="p-2 bg-muted border">
           1 of 3
         </Col>
-        <Col className="p-2 bg-body-secondary border">
+        <Col className="p-2 bg-muted border">
           2 of 3
         </Col>
-        <Col className="p-2 bg-body-secondary border">
+        <Col className="p-2 bg-muted border">
           3 of 3
         </Col>
     </Row>
 
     <Row className="p-2 mb-1">
-        <Col xs={3} className="p-2 bg-body-secondary border">
+        <Col xs={3} className="p-2 bg-muted border">
           xs=3
         </Col>
-        <Col xs={4} className="p-2 bg-body-secondary border">
+        <Col xs={4} className="p-2 bg-muted border">
           xs=4
         </Col>
-        <Col xs={5} className="p-2 bg-body-secondary border">
+        <Col xs={5} className="p-2 bg-muted border">
           xs=5
         </Col>
     </Row>
 
     <Row className="p-2">
-        <Col className="p-2 bg-body-secondary border">1 of 3</Col>
-        <Col xs={5} className="p-2 bg-body-secondary border">2 of 3 (wider)</Col>
-        <Col className="p-2 bg-body-secondary border">3 of 3</Col>
+        <Col className="p-2 bg-muted border">1 of 3</Col>
+        <Col xs={5} className="p-2 bg-muted border">2 of 3 (wider)</Col>
+        <Col className="p-2 bg-muted border">3 of 3</Col>
     </Row>
 </Container>
 `;
@@ -78,31 +78,31 @@ const responsiveGridsMixCode = `
 <Container>
   {/* Stack the columns on mobile by making one full-width and the other half-width */}
   <Row className="p-2 mb-1">
-    <Col xs={12} md={8} className="p-2 bg-body-secondary border">
+    <Col xs={12} md={8} className="p-2 bg-muted border">
       xs=12 md=8
     </Col>
-    <Col xs={6} md={4} className="p-2 bg-body-secondary border">
+    <Col xs={6} md={4} className="p-2 bg-muted border">
       xs=6 md=4
     </Col>
   </Row>
 
   {/* Columns start at 50% wide on mobile and bump up to 33.3% wide on desktop */}
   <Row className="p-2 mb-1">
-    <Col xs={6} md={4} className="p-2 bg-body-secondary border">
+    <Col xs={6} md={4} className="p-2 bg-muted border">
       xs=6 md=4
     </Col>
-    <Col xs={6} md={4} className="p-2 bg-body-secondary border">
+    <Col xs={6} md={4} className="p-2 bg-muted border">
       xs=6 md=4
     </Col>
-    <Col xs={6} md={4} className="p-2 bg-body-secondary border">
+    <Col xs={6} md={4} className="p-2 bg-muted border">
       xs=6 md=4
     </Col>
   </Row>
 
   {/* Columns are always 50% wide, on mobile and desktop */}
   <Row className="p-2">
-    <Col xs={6} className="p-2 bg-body-secondary border">xs=6</Col>
-    <Col xs={6} className="p-2 bg-body-secondary border">xs=6</Col>
+    <Col xs={6} className="p-2 bg-muted border">xs=6</Col>
+    <Col xs={6} className="p-2 bg-muted border">xs=6</Col>
   </Row>
 </Container>
 `;
@@ -110,59 +110,59 @@ const responsiveGridsMixCode = `
 const orderCode = `
 <Container>
   <Row className="p-2">
-    <Col xs className="p-2 bg-body-secondary border">First, but unordered</Col>
-    <Col xs={{ order: 12 }} className="p-2 bg-body-secondary border">Second, but last</Col>
-    <Col xs={{ order: 1 }} className="p-2 bg-body-secondary border">Third, but second</Col>
+    <Col xs className="p-2 bg-muted border">First, but unordered</Col>
+    <Col xs={{ order: 12 }} className="p-2 bg-muted border">Second, but last</Col>
+    <Col xs={{ order: 1 }} className="p-2 bg-muted border">Third, but second</Col>
   </Row>
 </Container>`;
 
 const offsetCode = `
 <Container>
   <Row className="p-2">
-    <Col md={4} className="p-2 bg-body-secondary border">md=4</Col>
-    <Col md={{ span: 4, offset: 4 }} className="p-2 bg-body-secondary border">{"md={{ span: 4, offset: 4 }}"}</Col>
+    <Col md={4} className="p-2 bg-muted border">md=4</Col>
+    <Col md={{ span: 4, offset: 4 }} className="p-2 bg-muted border">{"md={{ span: 4, offset: 4 }}"}</Col>
   </Row>
   <Row className="p-2">
-    <Col md={{ span: 3, offset: 3 }} className="p-2 bg-body-secondary border">{"md={{ span: 3, offset: 3 }}"}</Col>
-    <Col md={{ span: 3, offset: 3 }} className="p-2 bg-body-secondary border">{"md={{ span: 3, offset: 3 }}"}</Col>
+    <Col md={{ span: 3, offset: 3 }} className="p-2 bg-muted border">{"md={{ span: 3, offset: 3 }}"}</Col>
+    <Col md={{ span: 3, offset: 3 }} className="p-2 bg-muted border">{"md={{ span: 3, offset: 3 }}"}</Col>
   </Row>
   <Row className="p-2">
-    <Col md={{ span: 6, offset: 3 }} className="p-2 bg-body-secondary border">{"md={{ span: 6, offset: 3 }}"}</Col>
+    <Col md={{ span: 6, offset: 3 }} className="p-2 bg-muted border">{"md={{ span: 6, offset: 3 }}"}</Col>
   </Row>
 </Container>`;
 
 const columnWidthInRowCode = `<Container>
   <Row xs={2} md={4} lg={6} className="p-2">
-    <Col className="p-2 bg-body-secondary border">1 of 2</Col>
-    <Col className="p-2 bg-body-secondary border">2 of 2</Col>
+    <Col className="p-2 bg-muted border">1 of 2</Col>
+    <Col className="p-2 bg-muted border">2 of 2</Col>
   </Row>
   <Row xs={1} md={2} className="p-2">
-    <Col className="p-2 bg-body-secondary border">1 of 3</Col>
-    <Col className="p-2 bg-body-secondary border">2 of 3</Col>
-    <Col className="p-2 bg-body-secondary border">3 of 3</Col>
+    <Col className="p-2 bg-muted border">1 of 3</Col>
+    <Col className="p-2 bg-muted border">2 of 3</Col>
+    <Col className="p-2 bg-muted border">3 of 3</Col>
   </Row>
   <Row xs="auto" className="p-2">
-    <Col className="p-2 bg-body-secondary border">1 of 3</Col>
-    <Col className="p-2 bg-body-secondary border">2 of 3</Col>
-    <Col className="p-2 bg-body-secondary border">3 of 3</Col>
+    <Col className="p-2 bg-muted border">1 of 3</Col>
+    <Col className="p-2 bg-muted border">2 of 3</Col>
+    <Col className="p-2 bg-muted border">3 of 3</Col>
   </Row>
 </Container>`;
 
 const widthAutoCode = `
   <Container>
       <Row className="justify-content-md-center p-2">
-          <Col xs lg="2" className="p-2 bg-body-secondary border">
+          <Col xs lg="2" className="p-2 bg-muted border">
             1 of 3
           </Col>
-          <Col md="auto" className="p-2 bg-body-secondary border">auto width content</Col>
-          <Col xs lg="2" className="p-2 bg-body-secondary border">
+          <Col md="auto" className="p-2 bg-muted border">auto width content</Col>
+          <Col xs lg="2" className="p-2 bg-muted border">
             3 of 3
           </Col>
       </Row>
       <Row>
-          <Col className="p-2 bg-body-secondary border">1 of 3</Col>
-          <Col md="auto" className="p-2 bg-body-secondary border">auto width content</Col>
-          <Col xs lg="2" className="p-2 bg-body-secondary border">
+          <Col className="p-2 bg-muted border">1 of 3</Col>
+          <Col md="auto" className="p-2 bg-muted border">auto width content</Col>
+          <Col xs lg="2" className="p-2 bg-muted border">
             3 of 3
           </Col>
       </Row>
@@ -179,7 +179,7 @@ const GridExample = () => {
       <DocPagesLayout>
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Container">
-            <p className="mb-0 text-body-secondary">
+            <p className="mb-0 text-muted">
               Containers provide a means to center and horizontally pad your
               site’s contents. Use <code>Container</code> for a responsive pixel
               width.
@@ -191,7 +191,7 @@ const GridExample = () => {
         <PhoenixDocCard noProvider className="mb-4">
           <PhoenixDocProvider>
             <PhoenixDocCard.Header title="Fluid Container">
-              <p className="mb-0 text-body-secondary">
+              <p className="mb-0 text-muted">
                 You can use <code>&lt;Container fluid /&gt;</code> for width:
                 100% across all viewport and device sizes.
               </p>
@@ -200,7 +200,7 @@ const GridExample = () => {
           </PhoenixDocProvider>
           <PhoenixDocProvider>
             <PhoenixDocCard.Header className="border-bottom-0">
-              <p className="mb-0 text-body-secondary">
+              <p className="mb-0 text-muted">
                 You can set breakpoints for the <code>fluid</code> prop. Setting
                 it to a breakpoint (<code>sm, md, lg, xl, xxl</code>) will set
                 the
@@ -214,7 +214,7 @@ const GridExample = () => {
         <PhoenixDocCard noProvider className="mb-4">
           <PhoenixDocProvider>
             <PhoenixDocCard.Header title="Column Width">
-              <p className="mb-0 text-body-secondary">
+              <p className="mb-0 text-muted">
                 When no column widths are specified the <code>Col</code>{' '}
                 component will render equal width columns.you can set the width
                 of columns and have the sibling columns automatically resize
@@ -225,7 +225,7 @@ const GridExample = () => {
           </PhoenixDocProvider>
           <PhoenixDocProvider>
             <PhoenixDocCard.Header className="border-bottom-0">
-              <p className="mb-0 text-body-secondary">
+              <p className="mb-0 text-muted">
                 Set the column value (for any breakpoint size) to{' '}
                 <code>"auto"</code> to size columns based on the natural width
                 of their content.
@@ -238,7 +238,7 @@ const GridExample = () => {
         <PhoenixDocCard noProvider className="mb-4">
           <PhoenixDocProvider>
             <PhoenixDocCard.Header title="Responsive grids">
-              <p className="mb-0 text-body-secondary">
+              <p className="mb-0 text-muted">
                 The <code>Col</code> lets you specify column widths across 6
                 breakpoint sizes (<code>xs, sm, md, lg, xl and xxl</code>). For
                 every breakpoint, you can specify the amount of columns to span,
@@ -259,7 +259,7 @@ const GridExample = () => {
 
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Order">
-            <p className="mb-0 text-body-secondary">
+            <p className="mb-0 text-muted">
               You can use the <code>order</code> property to control the visual
               order of your content.
             </p>
@@ -269,7 +269,7 @@ const GridExample = () => {
 
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Offset">
-            <p className="mb-0 text-body-secondary">
+            <p className="mb-0 text-muted">
               For offsetting grid columns you can set an <code>offset</code>{' '}
               value or for a more general layout, use the margin class
               utilities.
@@ -280,7 +280,7 @@ const GridExample = () => {
 
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Setting column widths in Row">
-            <p className="mb-0 text-body-secondary">
+            <p className="mb-0 text-muted">
               The <code>Row</code> lets you specify column widths across 5
               breakpoint sizes (<code>xs, sm, md, lg, xl and xxl</code>). For
               every breakpoint, you can specify the amount of columns that will

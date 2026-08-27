@@ -17,7 +17,7 @@ const useProjectProgress = (project: Project) => {
   const bgClassName = useMemo(() => {
     return classNames({
       [`bg-${project.status.type}-subtle`]: project.status.type !== 'secondary',
-      'bg-body-secondary': project.status.type === 'secondary'
+      'bg-muted': project.status.type === 'secondary'
     });
   }, [project]);
 

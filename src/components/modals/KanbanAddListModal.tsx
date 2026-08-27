@@ -61,13 +61,13 @@ const KanbanAddListModal = () => {
 
   return (
     <Modal show={openAddListModal} centered onHide={handleClose}>
-      <Modal.Header className="p-4 d-flex gap-2 border-0">
+      <Modal.Header className="p-4 flex gap-2 border-0">
         <img src={boardIcon} height={24} width={18} />
-        <h3 className="mb-0 text-body-emphasis fw-semibold flex-1">
+        <h3 className="mb-0 text-emphasis font-semibold flex-1">
           Phoenix Kanban
         </h3>
         <Button className="p-0 ms-auto" onClick={handleClose}>
-          <FontAwesomeIcon icon={faXmark} className="fs-7" />
+          <FontAwesomeIcon icon={faXmark} className="text-lg" />
         </Button>
       </Modal.Header>
       <Modal.Body className="p-4 pt-0">
@@ -126,7 +126,7 @@ const KanbanAddListModal = () => {
               </FloatingLabel>
             </Col>
           </Row>
-          <div className="d-flex gap-3 flex-between-center">
+          <div className="flex gap-3 flex-between-center">
             <Button variant="link" className="p-0" type="button">
               Edit Columns
             </Button>

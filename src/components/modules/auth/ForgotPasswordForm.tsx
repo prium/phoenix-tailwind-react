@@ -15,12 +15,12 @@ const ForgotPasswordForm = ({
       <div
         className={classNames('text-center', { 'mb-6': !(layout === 'split') })}
       >
-        <h4 className="text-body-highlight">Forgot your password?</h4>
-        <p className="text-body-tertiary mb-5">
+        <h4 className="text-highlight">Forgot your password?</h4>
+        <p className="text-subtle mb-5">
           Enter your email below and we will send <br className="d-sm-none" />
           you a reset link
         </p>
-        <Form className="d-flex align-items-center mb-5">
+        <Form className="flex align-items-center mb-5">
           <Form.Control
             type="email"
             id="email"
@@ -35,7 +35,7 @@ const ForgotPasswordForm = ({
             Send
           </Button>
         </Form>
-        <Link to="#!" className="fs-9 fw-bold">
+        <Link to="#!" className="text-md font-bold">
           Still having problems?
         </Link>
       </div>

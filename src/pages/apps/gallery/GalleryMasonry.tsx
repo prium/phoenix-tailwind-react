@@ -22,7 +22,7 @@ const GalleryMasonry = () => {
       {filteredItems.length > 0 ? (
         <GalleryMasonryItems galleryItems={filteredItems} />
       ) : (
-        <div className="min-vh-50 d-flex justify-content-center align-items-center">
+        <div className="min-vh-50 flex justify-content-center align-items-center">
           <FileNotFound />
         </div>
       )}

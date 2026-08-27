@@ -18,7 +18,7 @@ const TripDetailsMostHighlights = ({
   const navigationNextRef = useRef(null);
   const navigationPrevRef = useRef(null);
   return (
-    <div className="position-relative swiper-theme-container hotel-compare-slider overflow-hidden rounded-2">
+    <div className="relative swiper-theme-container hotel-compare-slider overflow-hidden rounded-2">
       <Swiper
         dir="horizontal"
         slidesPerView={1}

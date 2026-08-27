@@ -51,7 +51,7 @@ const KanbanEditTaskModal = ({
                 'image/*': ['.png', '.gif', '.jpeg', '.jpg']
               }}
             >
-              <div className="text-body-secondary">
+              <div className="text-muted">
                 <img className="mb-2" src={imageIcon} width={24} alt="" />
                 <br />
                 Add cover image

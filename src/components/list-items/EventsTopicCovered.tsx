@@ -1,7 +1,7 @@
 const EventsTopicCovered = () => {
   return (
     <>
-      <h4 className="mb-3 text-body-highlight fs-xxl-6">
+      <h4 className="mb-3 text-highlight fs-xxl-6">
         Topic To Be Covered:
       </h4>
       <ul className="mb-6 ps-4">

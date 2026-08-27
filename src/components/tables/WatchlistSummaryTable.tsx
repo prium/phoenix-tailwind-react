@@ -25,11 +25,11 @@ const columns: ColumnDef<WatchlistSummaryTableRowItem>[] = [
     },
     meta: {
       headerProps: {
-        className: 'white-space-nowrap align-middle ps-0',
+        className: 'whitespace-nowrap align-middle ps-0',
         style: { minWidth: 158 }
       },
       cellProps: {
-        className: 'align-middle white-space-nowrap'
+        className: 'align-middle whitespace-nowrap'
       }
     }
   },
@@ -50,7 +50,7 @@ const columns: ColumnDef<WatchlistSummaryTableRowItem>[] = [
         style: { minWidth: 158 }
       },
       cellProps: {
-        className: 'align-middle white-space-nowrap ps-3'
+        className: 'align-middle whitespace-nowrap ps-3'
       }
     }
   },
@@ -82,7 +82,7 @@ const columns: ColumnDef<WatchlistSummaryTableRowItem>[] = [
         style: { minWidth: 158 }
       },
       cellProps: {
-        className: 'align-middle ps-3 fs-9'
+        className: 'align-middle ps-3 text-md'
       }
     }
   },
@@ -103,7 +103,7 @@ const columns: ColumnDef<WatchlistSummaryTableRowItem>[] = [
         style: { minWidth: 180 }
       },
       cellProps: {
-        className: 'align-middle white-space-nowrap ps-0'
+        className: 'align-middle whitespace-nowrap ps-0'
       }
     }
   },
@@ -127,7 +127,7 @@ const columns: ColumnDef<WatchlistSummaryTableRowItem>[] = [
         style: { minWidth: 120 }
       },
       cellProps: {
-        className: 'align-middle white-space-nowrap ps-3'
+        className: 'align-middle whitespace-nowrap ps-3'
       }
     }
   },
@@ -150,7 +150,7 @@ const columns: ColumnDef<WatchlistSummaryTableRowItem>[] = [
         style: { minWidth: 158 }
       },
       cellProps: {
-        className: 'align-middle white-space-nowrap text-center'
+        className: 'align-middle whitespace-nowrap text-center'
       }
     }
   },
@@ -210,11 +210,11 @@ const columns: ColumnDef<WatchlistSummaryTableRowItem>[] = [
     },
     meta: {
       headerProps: {
-        className: 'white-space-nowrap align-middle ps-4',
+        className: 'whitespace-nowrap align-middle ps-4',
         style: { minWidth: 158 }
       },
       cellProps: {
-        className: 'align-middle white-space-nowrap ps-4 py-2'
+        className: 'align-middle whitespace-nowrap ps-4 py-2'
       }
     }
   },
@@ -239,7 +239,7 @@ const columns: ColumnDef<WatchlistSummaryTableRowItem>[] = [
         style: { minWidth: 180 }
       },
       cellProps: {
-        className: 'align-middle white-space-nowrap text-end pe-5'
+        className: 'align-middle whitespace-nowrap text-end pe-5'
       }
     }
   },
@@ -260,11 +260,11 @@ const columns: ColumnDef<WatchlistSummaryTableRowItem>[] = [
     },
     meta: {
       headerProps: {
-        className: 'white-space-nowrap align-middle text-end pe-3',
+        className: 'whitespace-nowrap align-middle text-end pe-3',
         style: { minWidth: 158 }
       },
       cellProps: {
-        className: 'align-middle white-space-nowrap pe-3 text-end'
+        className: 'align-middle whitespace-nowrap pe-3 text-end'
       }
     }
   }
@@ -285,7 +285,7 @@ const WatchlistSummaryTable = ({
   });
   return (
     <AdvanceTableProvider {...table}>
-      <AdvanceTable headerClassName="text-uppercase text-body fw-bold fs-9" />
+      <AdvanceTable headerClassName="text-uppercase text-default font-bold text-md" />
     </AdvanceTableProvider>
   );
 };

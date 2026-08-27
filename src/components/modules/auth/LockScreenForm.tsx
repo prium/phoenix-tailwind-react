@@ -9,11 +9,11 @@ const LockScreenForm = () => {
     <div>
       <div className="text-center mb-5">
         <Avatar size="4xl" src={avatar} className="mb-3 d-inline-block" />
-        <h2 className="text-body-highlight">
-          <span className="fw-normal">Hello </span>
+        <h2 className="text-highlight">
+          <span className="font-normal">Hello </span>
           John Smith
         </h2>
-        <p className="text-body-tertiary">
+        <p className="text-subtle">
           Enter your password to access the admin
         </p>
       </div>

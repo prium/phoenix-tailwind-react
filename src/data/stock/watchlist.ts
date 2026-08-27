@@ -70,7 +70,7 @@ export const holdingSummaryOverallSummaryItems: HoldingSummaryOverallSummaryItem
     {
       id: 1,
       title: 'Total Holding',
-      amount: { count: 1000, className: 'text-body' },
+      amount: { count: 1000, className: 'text-default' },
       badge: {
         label: 1.71,
         prefix: '+',

@@ -21,7 +21,7 @@ const FligthListHead = () => {
 
   return (
     <>
-      <div className="d-flex flex-between-center mb-3">
+      <div className="flex flex-between-center mb-3">
         <IsotopeNav
           navItems={navItems}
           className="justify-content-center w-max-content"
@@ -34,7 +34,7 @@ const FligthListHead = () => {
           onClick={() => setFilterModalOpen(true)}
         >
           <FontAwesomeIcon icon={faFilter} className="me-md-2" />
-          <span className="d-none d-md-inline-block"> Filters </span>
+          <span className="hidden d-md-inline-block"> Filters </span>
         </Button>
       </div>
       <FlightFilterModal

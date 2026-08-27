@@ -40,14 +40,14 @@ const PriceTierForm = ({
             onChange={handleChange}
             name={id}
           />
-          <Form.Check.Label className="fw-bold fs-8 text-body ms-2">
+          <Form.Check.Label className="font-bold text-base text-default ms-2">
             {name}
           </Form.Check.Label>
         </Form.Check>
         <div
           className={classNames('ms-auto mt-2 mt-sm-0', {
-            'd-block': active,
-            'd-none': !active
+            'block': active,
+            'hidden': !active
           })}
         >
           <Form.Check type="radio" className="form-check-inline me-3 mb-0">

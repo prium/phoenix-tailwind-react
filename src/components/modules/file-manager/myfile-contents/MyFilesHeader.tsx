@@ -28,7 +28,7 @@ const MyFilesHeader = () => {
           {table.getState().globalFilter ? 'Top Results' : 'My Files'}
         </h5>
       </Col>
-      <Col xs="auto" className="d-flex">
+      <Col xs="auto" className="flex">
         <OverlayTrigger
           show={showGridTooltip}
           onToggle={setShowGridTooltip}
@@ -81,7 +81,7 @@ const MyFilesHeader = () => {
           <Form.Check
             type="switch"
             id="viewAsGroup"
-            className="mb-0 d-flex align-items-center"
+            className="mb-0 flex align-items-center"
             checked={isGrouped}
             onChange={() => {
               setIsGrouped(prev => !prev);

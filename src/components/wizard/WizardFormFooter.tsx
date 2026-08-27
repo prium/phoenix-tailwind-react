@@ -23,14 +23,14 @@ const WizardFormFooter = ({
 
   return (
     <div
-      className={classNames(className, 'd-flex justify-content-between mb-0')}
+      className={classNames(className, 'flex justify-content-between mb-0')}
     >
       <Button
         variant="link"
         className={classNames('p-0', {
-          'd-none': hidePrevBtn || !getCanPreviousPage
+          'hidden': hidePrevBtn || !getCanPreviousPage
         })}
-        startIcon={<FontAwesomeIcon icon={faChevronLeft} className="fs-10" />}
+        startIcon={<FontAwesomeIcon icon={faChevronLeft} className="text-sm" />}
         onClick={() => goToStep(selectedStep - 1)}
       >
         Previous
@@ -40,7 +40,7 @@ const WizardFormFooter = ({
         className={classNames('px-6', {
           'ms-auto': !hidePrevBtn
         })}
-        endIcon={<FontAwesomeIcon icon={faChevronRight} className="fs-10" />}
+        endIcon={<FontAwesomeIcon icon={faChevronRight} className="text-sm" />}
         onClick={() => {
           if (getCanNextPage) {
             goToStep(selectedStep + 1);

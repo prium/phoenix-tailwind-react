@@ -19,7 +19,7 @@ const Landing = () => {
   });
 
   useEffect(() => {
-    document.body.classList.add('bg-body-emphasis');
+    document.body.classList.add('bg-soft');
     document.body.setAttribute(
       'style',
       document.body.getAttribute('style')
@@ -28,7 +28,7 @@ const Landing = () => {
         : '--phoenix-scroll-margin-top: 1.2rem'
     );
     return () => {
-      document.body.classList.remove('bg-body-emphasis');
+      document.body.classList.remove('bg-soft');
       document.body.removeAttribute('style');
     };
   }, []);

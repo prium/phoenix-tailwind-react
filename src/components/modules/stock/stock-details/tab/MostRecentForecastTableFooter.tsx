@@ -50,25 +50,25 @@ const MostRecentForecastTableFooter = ({
   const [isAllVisible, setIsAllVisible] = useState(false);
 
   return (
-    <div className={classNames(className, 'd-flex py-1')}>
-      <div className="d-flex fs-9">
+    <div className={classNames(className, 'flex py-1')}>
+      <div className="flex text-md">
         <p
           className={classNames(
             tableInfo,
-            'mb-0 d-none d-sm-block me-3 fw-semibold text-body'
+            'mb-0 hidden d-sm-block me-3 font-semibold text-default'
           )}
         >
           {pageSize * pageIndex + 1} to{' '}
           {pageSize * pageIndex + getPaginationRowModel().rows.length}
-          <span className="text-body-tertiary"> items of </span>
+          <span className="text-subtle"> items of </span>
           {getPrePaginationRowModel().rows.length}
         </p>
         {showViewAllBtn && (
           <Button
             variant="link"
-            className={classNames(viewAllBtnClass, 'p-0 fw-semibold')}
+            className={classNames(viewAllBtnClass, 'p-0 font-semibold')}
             endIcon={
-              <FontAwesomeIcon icon={faAngleRight} className="ms-1 fs-9" />
+              <FontAwesomeIcon icon={faAngleRight} className="ms-1 text-md" />
             }
             onClick={() => {
               setIsAllVisible(!isAllVisible);

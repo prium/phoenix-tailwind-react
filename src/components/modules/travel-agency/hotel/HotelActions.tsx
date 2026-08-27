@@ -22,9 +22,9 @@ export const DropdownItem = ({
   return (
     <Dropdown.Item
       as="div"
-      className={`d-flex align-items-center px-0 hover-bg-none g-0 border-translucent ${className}`}
+      className={`flex align-items-center px-0 hover-bg-none g-0 border-light ${className}`}
     >
-      <h5 className="mb-0 text-body" style={{ minWidth: 100 }}>
+      <h5 className="mb-0 text-default" style={{ minWidth: 100 }}>
         {title}
       </h5>
       <div style={{ minWidth: 160 }}>
@@ -43,7 +43,7 @@ const HotelActions = ({ background }: { background: boolean }) => {
     >
       <div
         className={classNames({
-          'px-3 py-8 position-relative': background === true
+          'px-3 py-8 relative': background === true
         })}
       >
         {background && (
@@ -58,23 +58,23 @@ const HotelActions = ({ background }: { background: boolean }) => {
         )}
         <Row
           className={classNames(
-            'gx-0 gy-3 gy-md-0 align-items-center mx-auto p-3 bg-body-emphasis rounded-5 rounded-md-pill position-relative border',
+            'gx-0 gy-3 gy-md-0 align-items-center mx-auto p-3 bg-soft rounded-5 rounded-md-pill relative border',
             {
               'w-lg-75': background === true
             }
           )}
         >
           <Col xs={12} md>
-            <div className="form-icon-container border-bottom border-bottom-md-0 border-translucent pb-3 pb-md-0">
+            <div className="form-icon-container border-bottom border-bottom-md-0 border-light pb-3 pb-md-0">
               <Form.Control
                 id="PickPlace"
                 type="text"
                 placeholder="Pick a place"
-                className="form-icon-input border-0 py-0 shadow-none fs-8"
+                className="form-icon-input border-0 py-0 shadow-none text-base"
               />
               <FontAwesomeIcon
                 icon={faMapMarkerAlt}
-                className="form-icon text-body-tertiary top-0"
+                className="form-icon text-subtle top-0"
                 transform="down-2"
               />
             </div>
@@ -90,11 +90,11 @@ const HotelActions = ({ background }: { background: boolean }) => {
                         placeholder="Pick a date"
                         ref={ref}
                         id="pickDate"
-                        className="form-icon-input border-y-0 border-start-0 border-start-md py-0 shadow-none border-translucent fs-8 rounded-0"
+                        className="form-icon-input border-y-0 border-start-0 border-start-md py-0 shadow-none border-light text-base rounded-0"
                       />
                       <FontAwesomeIcon
                         icon={faCalendar}
-                        className="form-icon text-body-tertiary top-0"
+                        className="form-icon text-subtle top-0"
                         transform="down-2"
                       />
                     </>
@@ -113,7 +113,7 @@ const HotelActions = ({ background }: { background: boolean }) => {
             <Dropdown autoClose="outside">
               <Dropdown.Toggle
                 variant="link"
-                className="btn px-3 fs-8 fw-semibold text-body-tertiary text-decoration-none dropdown-caret-none"
+                className="btn px-3 text-base font-semibold text-subtle text-decoration-none dropdown-caret-none"
               >
                 <FontAwesomeIcon icon={faUser} className="me-2" />1 adult
               </Dropdown.Toggle>
@@ -134,7 +134,7 @@ const HotelActions = ({ background }: { background: boolean }) => {
           <Col xs={12} md="auto">
             <Button
               variant="phoenix-primary"
-              className="rounded-pill w-100 btn-lg"
+              className="rounded-full w-100 btn-lg"
             >
               <FontAwesomeIcon icon={faSearch} className="me-2" />
               Search

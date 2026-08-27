@@ -18,7 +18,7 @@ const WidgetsSectionTitle = ({
   className
 }: WidgetsSectionTitleProps) => {
   return (
-    <div className={classNames('d-flex', className)}>
+    <div className={classNames('flex', className)}>
       <span className="fa-stack me-2 ms-n1">
         <FontAwesomeIcon icon={faCircle} className="text-primary fa-stack-2x" />
         <FontAwesomeIcon
@@ -27,9 +27,9 @@ const WidgetsSectionTitle = ({
         />
       </span>
       <div className="w-100">
-        <h3 className="mb-0 text-primary position-relative fw-bold">
-          <span className="bg-body pe-2">{title}</span>
-          <span className="border border-primary position-absolute top-50 translate-middle-y w-100 start-0 z-n1"></span>
+        <h3 className="mb-0 text-primary relative font-bold">
+          <span className="bg-default pe-2">{title}</span>
+          <span className="border border-primary absolute top-50 translate-middle-y w-100 start-0 z-n1"></span>
         </h3>
         <p className="mb-0">{subtitle}</p>
       </div>

@@ -11,7 +11,7 @@ const RoomWizardFooter = ({
   const { selectedStep, goToStep, getCanNextPage } = useWizardFormContext();
 
   return (
-    <div className="mt-6 d-flex flex-wrap gap-2">
+    <div className="mt-6 flex flex-wrap gap-2">
       <Button variant="phoenix-danger">Discard</Button>
       <Button variant="phoenix-primary">Save draft</Button>
       <Button

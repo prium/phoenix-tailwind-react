@@ -55,19 +55,19 @@ const FlightsTableHeader = ({
 
   return (
     <Row className={classNames(className, 'align-items-center')}>
-      <Col className="d-flex">
-        <p className="mb-0 me-3 fs-9 fw-semibold text-body">
+      <Col className="flex">
+        <p className="mb-0 me-3 text-md font-semibold text-default">
           {pageSize * pageIndex + 1} to{' '}
           {pageSize * pageIndex + getPaginationRowModel().rows.length}
-          <span className="text-body-tertiary"> items of </span>
+          <span className="text-subtle"> items of </span>
           {getPrePaginationRowModel().rows.length}
         </p>
         {showViewAllBtn && (
           <Button
             variant="link"
-            className={classNames(viewAllBtnClass, 'p-0 fw-semibold fs-9')}
+            className={classNames(viewAllBtnClass, 'p-0 font-semibold text-md')}
             endIcon={
-              <FontAwesomeIcon icon={faAngleRight} className="ms-1 fs-9" />
+              <FontAwesomeIcon icon={faAngleRight} className="ms-1 text-md" />
             }
             onClick={() => {
               setIsAllVisible(!isAllVisible);
@@ -81,7 +81,7 @@ const FlightsTableHeader = ({
         )}
       </Col>
       {navBtn && (
-        <Col xs="auto" className="d-flex gap-2">
+        <Col xs="auto" className="flex gap-2">
           <Button
             variant="phoenix-primary"
             startIcon={<FontAwesomeIcon icon={faChevronLeft} />}

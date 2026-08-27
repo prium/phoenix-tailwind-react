@@ -30,16 +30,16 @@ const AccordionItem = (props: PropsWithChildren<AccordionItemInterface>) => {
     <>
       <Accordion.Item
         eventKey={eventKey}
-        className="border rounded-3 bg-body-emphasis p-3 p-sm-4 mb-5 scrollbar"
+        className="border rounded-3 bg-soft p-3 p-sm-4 mb-5 scrollbar"
       >
-        <Accordion.Button className="py-0 lh-1 text-body-highlight">
+        <Accordion.Button className="py-0 lh-1 text-highlight">
           <img src={img1} alt="" className="me-2 d-dark-none" />
           <img src={img2} alt="" className="me-2 d-light-none" />
-          <span className="fs-sm-7">{title}</span>
+          <span className="sm:text-lg">{title}</span>
         </Accordion.Button>
         <Accordion.Collapse eventKey={eventKey} className="scrollbar">
           <div className="mt-4">
-            <Link to="#!" className="fs-9 fw-semibold mb-2 d-inline-block">
+            <Link to="#!" className="text-md font-semibold mb-2 d-inline-block">
               Edit Info
             </Link>
             {children}
@@ -398,7 +398,7 @@ const Preview = () => {
   return (
     <>
       <h3 className="mb-2">We’re building your property</h3>
-      <p className="mb-5 text-body-tertiary">
+      <p className="mb-5 text-subtle">
         We're working on getting your property set up and ready for guests. Stay
         tuned for updates and start accepting bookings soon!
       </p>
@@ -409,7 +409,7 @@ const Preview = () => {
           dismissible
           className="mb-5"
         >
-          <p className="mb-0 flex-1 fw-semibold fs-9 fs-sm-8">
+          <p className="mb-0 flex-1 font-semibold text-md sm:text-base">
             Congratulations on your successful listing! Join a community of
             hospitality professionals as a host. Your hard work will turn your
             home into a sought-after destination?. We anticipate hearing about
@@ -474,7 +474,7 @@ const Preview = () => {
           {financeData.map(({ name, data }, index) => (
             <div key={index}>
               <h5
-                className={classNames('mb-3 fw-bolder', {
+                className={classNames('mb-3 font-black', {
                   'mt-4': index !== 0
                 })}
               >
@@ -493,7 +493,7 @@ const Preview = () => {
           {policiesData.map(({ name, data }, index) => (
             <div key={index}>
               <h5
-                className={classNames('mb-3 fw-bolder', {
+                className={classNames('mb-3 font-black', {
                   'mt-4': index !== 0
                 })}
               >

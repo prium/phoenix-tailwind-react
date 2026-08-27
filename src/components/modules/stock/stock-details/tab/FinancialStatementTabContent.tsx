@@ -11,12 +11,12 @@ const FinancialStatementTabContent = () => {
         <Row className="g-3 flex-between-center mb-4">
           <Col xs="auto">
             <h4>Apple Income Statement</h4>
-            <p className="text-body-tertiary mb-0">
+            <p className="text-subtle mb-0">
               Financials in millions USD.
             </p>
           </Col>
           <Col xs="auto">
-            <div className="d-flex align-items-center gap-2">
+            <div className="flex align-items-center gap-2">
               <Form.Select size="sm">
                 <option value="millions">Millions</option>
                 <option value="thousand">Thousand</option>

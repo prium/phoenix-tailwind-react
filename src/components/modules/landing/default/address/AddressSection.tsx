@@ -11,7 +11,7 @@ const AddressSection = () => {
     <section>
       <div className="container-small px-lg-7 px-xxl-3">
         <div className="mb-4">
-          <h4 className="text-primary fw-bolder mb-3">Address</h4>
+          <h4 className="text-primary font-black mb-3">Address</h4>
           <h2>If you need to find us:</h2>
         </div>
 

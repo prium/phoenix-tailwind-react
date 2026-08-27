@@ -38,8 +38,8 @@ const exampleCode = `
 <div>
   <div>
     <FontAwesomeIcon icon={faHome} className="text-success fs-5 me-3" />
-    <FontAwesomeIcon icon={faHome} className="text-success fs-6 me-3" />
-    <FontAwesomeIcon icon={faHome} className="text-success fs-7" />
+    <FontAwesomeIcon icon={faHome} className="text-success text-xl me-3" />
+    <FontAwesomeIcon icon={faHome} className="text-success text-lg" />
   </div>
   <div className='mt-3'>
     <FontAwesomeIcon icon={['fab', 'facebook']} className="text-facebook fs-5 me-3" />

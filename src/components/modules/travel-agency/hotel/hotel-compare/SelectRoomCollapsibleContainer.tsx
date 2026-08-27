@@ -24,7 +24,7 @@ const SelectRoomCollapsibleContainer = ({
       <Button
         variant=""
         className={classNames(
-          'p-3 d-flex flex-between-center collapse-indicator text-body-highlight bg-body-highlight w-100',
+          'p-3 flex flex-between-center collapse-indicator text-highlight bg-subtle w-100',
           className,
           {
             collapsed: open
@@ -36,7 +36,7 @@ const SelectRoomCollapsibleContainer = ({
         <h5 className="mb-0">{collapseTitle}</h5>
         <FontAwesomeIcon
           icon={faChevronDown}
-          className="toggle-icon text-body"
+          className="toggle-icon text-default"
         />
       </Button>
       <Collapse in={open}>

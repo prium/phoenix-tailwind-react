@@ -6,15 +6,15 @@ const WorkLoads = () => {
   return (
     <div>
       <div className="mb-5">
-        <h4 className="text-body-emphasis">Work loads</h4>
-        <h6 className="text-body-tertiary">Last 7 days</h6>
+        <h4 className="text-emphasis">Work loads</h4>
+        <h6 className="text-subtle">Last 7 days</h6>
       </div>
       <div className="mb-5">
         <EcomTopCouponsChart />
       </div>
       <Row className="justify-content-center">
         <Col xs="auto" sm={12}>
-          <div className="d-flex flex-column gap-2">
+          <div className="flex flex-column gap-2">
             <ChartLegend
               bulletBg="primary"
               label="Shantinan Mekalan"

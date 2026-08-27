@@ -13,11 +13,11 @@ const ChartTabContent = () => {
       <Row className="flex-between-center g-3 mb-4">
         <Col xs="auto">
           <h4>Share Report</h4>
-          <p className="text-body-tertiary mb-0">
+          <p className="text-subtle mb-0">
             Updated inventory according to the sales report.
           </p>
         </Col>
-        <Col xs="auto" className="d-flex gap-2">
+        <Col xs="auto" className="flex gap-2">
           <Form.Select size="sm" style={{ width: 107 }}>
             <option value="daily">Daily</option>
             <option value="weekly">Weekly</option>

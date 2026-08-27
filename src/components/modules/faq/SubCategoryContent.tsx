@@ -17,9 +17,9 @@ const SubCategoryContent = () => {
       <Button
         onClick={() => setIsOpenOffcanvas(true)}
         variant="link"
-        className="d-md-none mt-15 mt-md-6 fs-8 ps-0"
+        className="d-md-none mt-15 mt-md-6 text-base ps-0"
         startIcon={
-          <FontAwesomeIcon icon={faChevronLeft} className="fs-9 me-2" />
+          <FontAwesomeIcon icon={faChevronLeft} className="text-md me-2" />
         }
       >
         Categories
@@ -45,14 +45,14 @@ const SubCategoryContent = () => {
 
 const FaqItem = ({ item, type }: { item: FaqType; type?: string }) => {
   return (
-    <li className="d-flex mt-6">
+    <li className="flex mt-6">
       <FontAwesomeIcon
         icon={type === 'topFaq' ? faStar : faCircle}
-        className={classNames({ 'fs-8 text-primary me-2': type === 'topFaq' })}
+        className={classNames({ 'text-base text-primary me-2': type === 'topFaq' })}
       />
       <div>
-        <h4 className="mb-3 text-body-highlight">{item.question}</h4>
-        <p className="mb-0 text-body-tertiary">{item.answer}</p>
+        <h4 className="mb-3 text-highlight">{item.question}</h4>
+        <p className="mb-0 text-subtle">{item.answer}</p>
       </div>
     </li>
   );

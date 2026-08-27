@@ -35,7 +35,7 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
     cell: ({ row: { original } }) => currencyFormat(original.total),
     meta: {
       headerProps: { style: { width: '10%' }, className: 'text-end pe-7' },
-      cellProps: { className: 'text-end fw-semibold text-body-highlight pe-7' }
+      cellProps: { className: 'text-end font-semibold text-highlight pe-7' }
     }
   },
   {
@@ -99,7 +99,7 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
     header: 'Delivery type',
     meta: {
       headerProps: { style: { width: '30%' } },
-      cellProps: { className: 'text-body fs-9' }
+      cellProps: { className: 'text-default text-md' }
     }
   },
   {
@@ -108,7 +108,7 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
     meta: {
       headerProps: { className: 'text-end' },
       cellProps: {
-        className: 'text-body-tertiary fs-9 ps-4 text-end white-space-nowrap'
+        className: 'text-subtle text-md ps-4 text-end whitespace-nowrap'
       }
     }
   },
@@ -141,7 +141,7 @@ const CustomerOrdersTable = () => {
     <AdvanceTableProvider {...table}>
       <div className="border-y border-light">
         <AdvanceTable
-          tableProps={{ className: 'phoenix-table table-sm fs-9' }}
+          tableProps={{ className: ' table-sm text-md' }}
         />
         <AdvanceTableFooter pagination showViewAllBtn={false} />
       </div>

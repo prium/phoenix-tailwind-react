@@ -42,7 +42,7 @@ const WidgetTables = () => {
           <DealForecast />
         </Col>
       </Row>
-      <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-body-emphasis py-5 border-y">
+      <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-soft py-5 border-y">
         <ProjectDashboard />
       </div>
       <div className="mt-3 mx-lg-n4">
@@ -55,7 +55,7 @@ const WidgetTables = () => {
           </Col>
         </Row>
       </div>
-      <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-body-emphasis pt-7 mt-3 border-y">
+      <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-soft pt-7 mt-3 border-y">
         <EcomLatestReviewsTable />
       </div>
     </div>

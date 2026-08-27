@@ -25,7 +25,7 @@ const exampleCode = `
 const imageOverlaysCode = `
   <Card style={{ width: '30rem' }} className="text-white overflow-hidden">
     <Card.Img variant="top" src={generic46} />
-    <Card.ImgOverlay className="d-flex align-items-end">
+    <Card.ImgOverlay className="flex align-items-end">
       <div>
         <Card.Title as="h4" className="text-white">
           Card title

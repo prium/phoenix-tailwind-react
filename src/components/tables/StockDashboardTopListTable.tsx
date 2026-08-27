@@ -21,7 +21,7 @@ export const getColumn = (tableType: string) => {
       meta: {
         headerProps: { style: { minWidth: '8rem' }, className: 'ps-4' },
         cellProps: {
-          className: 'fs-9 text-body fw-semibold white-space-nowrap ps-4'
+          className: 'text-md text-default font-semibold whitespace-nowrap ps-4'
         }
       }
     },
@@ -34,7 +34,7 @@ export const getColumn = (tableType: string) => {
           className: 'pe-6 align-middle'
         },
         cellProps: {
-          className: 'text-body white-space-nowrap'
+          className: 'text-default whitespace-nowrap'
         }
       }
     },
@@ -48,7 +48,7 @@ export const getColumn = (tableType: string) => {
       meta: {
         headerProps: { style: { minWidth: '9.5rem' }, className: 'text-end' },
         cellProps: {
-          className: 'text-body white-space-nowrap text-end'
+          className: 'text-default whitespace-nowrap text-end'
         }
       }
     },
@@ -103,10 +103,10 @@ const StockDashboardTopListTable = ({
   return (
     <AdvanceTableProvider {...table}>
       <AdvanceTable
-        headerClassName="bg-body-highlight"
+        headerClassName="bg-subtle"
         tableProps={{
           className:
-            'phoenix-table fs-9 table-striped border-top border-translucent'
+            ' text-md table-striped border-top border-light'
         }}
       />
       <AdvanceTableFooter

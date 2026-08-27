@@ -14,8 +14,8 @@ import {
 const MigrationToNineteen = () => {
   return (
     <>
-      <div className="bg-body-highlight p-3 py-5 mb-5">
-        <Alert variant={'subtle-warning'} className="d-flex align-items-center">
+      <div className="bg-subtle p-3 py-5 mb-5">
+        <Alert variant={'subtle-warning'} className="flex align-items-center">
           <FontAwesomeIcon
             icon={faCircleInfo}
             className="text-warning fs-5 me-3"

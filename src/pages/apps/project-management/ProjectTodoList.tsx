@@ -22,24 +22,24 @@ const ProjectTodoList = () => {
   return (
     <div className="mb-9">
       <h2 className="mb-4">
-        Todo list<span className="text-body-tertiary fw-normal">(23)</span>
+        Todo list<span className="text-subtle font-normal">(23)</span>
       </h2>
-      <div className="d-flex align-items-center flex-wrap gap-x-5 gap-y-3 mb-3">
+      <div className="flex align-items-center flex-wrap gap-x-5 gap-y-3 mb-3">
         <SearchBox placeholder="Search tasks" style={{ maxWidth: '30rem' }} />
         <div>
           <Button
             variant="link"
-            className="p-0 fs-9 text-body-tertiary text-decoration-none me-3"
+            className="p-0 text-md text-subtle text-decoration-none me-3"
             startIcon={
-              <FontAwesomeIcon icon={faFilter} className="fs-10 me-1" />
+              <FontAwesomeIcon icon={faFilter} className="text-sm me-1" />
             }
           >
             23 tasks
           </Button>
           <Button
             variant="link"
-            className="p-0 fs-9 text-primary text-decoration-none"
-            startIcon={<FontAwesomeIcon icon={faSort} className="fs-10" />}
+            className="p-0 text-md text-primary text-decoration-none"
+            startIcon={<FontAwesomeIcon icon={faSort} className="text-sm" />}
           >
             Sorting
           </Button>

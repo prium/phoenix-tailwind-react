@@ -15,7 +15,7 @@ const Watchlist = () => {
       <Row className="g-3 g-lg-5 mb-4 flex-between-center">
         <Col xs="auto">
           <h4>My Watchlist</h4>
-          <p className="mb-0 text-body-tertiary me-2">
+          <p className="mb-0 text-subtle me-2">
             Brief summary of all projects
           </p>
         </Col>

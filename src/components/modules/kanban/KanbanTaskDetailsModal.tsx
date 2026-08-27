@@ -49,7 +49,7 @@ const KanbanTaskDetailsModal = ({
         contentClassName="rounded-top-md-4 rounded-bottom-md-4 overflow-hidden h-100"
         scrollable
       >
-        <Modal.Header className="position-relative p-0" style={{ height: 200 }}>
+        <Modal.Header className="relative p-0" style={{ height: 200 }}>
           {task.coverImage ? (
             <img
               src={task.coverImage}
@@ -65,23 +65,23 @@ const KanbanTaskDetailsModal = ({
             <Col xs={12} lg={8} className="h-100 scrollbar">
               <Row className="mt-0 top-0 gy-4 pb-3 gx-0 px-3">
                 <Col xs={4} sm={3}>
-                  <h6 className="text-body-tertiary fw-bolder lh-sm mt-1">
+                  <h6 className="text-subtle font-black lh-sm mt-1">
                     TITLE
                   </h6>
                 </Col>
                 <Col xs={8} sm={9}>
-                  <h4 className="mb-0 text-body-emphasis lh-sm">
+                  <h4 className="mb-0 text-emphasis lh-sm">
                     {task.title}
                   </h4>
                 </Col>
 
                 <Col xs={4} sm={3}>
-                  <h6 className="text-body-tertiary fw-bolder lh-sm mt-1">
+                  <h6 className="text-subtle font-black lh-sm mt-1">
                     DESCRIPTION
                   </h6>
                 </Col>
                 <Col xs={8} sm={9}>
-                  <p className="fs-9 mb-0">
+                  <p className="text-md mb-0">
                     {task.desctiption
                       ? task.desctiption
                       : 'Reproduced below for those interested" is a phrase used to provide additional content or details for individuals who have expressed interest in a particular topic. It signals that what follows is optional and caters specifically to those who want to delve deeper into the subject matter.'}
@@ -89,22 +89,22 @@ const KanbanTaskDetailsModal = ({
                 </Col>
 
                 <Col xs={4} sm={3}>
-                  <h6 className="text-body-tertiary fw-bolder lh-sm mt-1">
+                  <h6 className="text-subtle font-black lh-sm mt-1">
                     BOARD
                   </h6>
                 </Col>
                 <Col xs={8} sm={9}>
-                  <p className="mb-0 text-body-emphasis fw-semibold">Phoenix</p>
+                  <p className="mb-0 text-emphasis font-semibold">Phoenix</p>
                 </Col>
 
                 <Col xs={4} sm={3}>
-                  <h6 className="text-body-tertiary fw-bolder lh-sm mt-1">
+                  <h6 className="text-subtle font-black lh-sm mt-1">
                     COLUMN
                   </h6>
                 </Col>
                 <Col xs={8} sm={9}>
                   <p
-                    className={`mb-0 text-body-emphasis fw-semibold d-inline-block kanban-column-underline-${list.borderColor}`}
+                    className={`mb-0 text-emphasis font-semibold d-inline-block kanban-column-underline-${list.borderColor}`}
                   >
                     {list.title}
                   </p>
@@ -113,11 +113,11 @@ const KanbanTaskDetailsModal = ({
                 {task.members && (
                   <>
                     <Col xs={4} sm={3}>
-                      <h6 className="text-body-tertiary fw-bolder lh-sm mt-1">
+                      <h6 className="text-subtle font-black lh-sm mt-1">
                         ASSAIGNED TO
                       </h6>
                     </Col>
-                    <Col xs={8} sm={9} className="d-flex gap-1">
+                    <Col xs={8} sm={9} className="flex gap-1">
                       {task.members?.map(member => (
                         <AvatarDropdown
                           user={member}
@@ -130,12 +130,12 @@ const KanbanTaskDetailsModal = ({
                 )}
 
                 <Col xs={4} sm={3}>
-                  <h6 className="text-body-tertiary fw-bolder lh-sm mt-1">
+                  <h6 className="text-subtle font-black lh-sm mt-1">
                     PRIORITY
                   </h6>
                 </Col>
                 <Col xs={8} sm={9}>
-                  <p className="mb-0 text-body-emphasis fw-semibold">
+                  <p className="mb-0 text-emphasis font-semibold">
                     <FontAwesomeIcon
                       icon={faCircle}
                       transform="shrink-6 down-1"
@@ -146,7 +146,7 @@ const KanbanTaskDetailsModal = ({
                 </Col>
 
                 <Col xs={4} sm={3}>
-                  <h6 className="text-body-tertiary fw-bolder lh-sm mt-1">
+                  <h6 className="text-subtle font-black lh-sm mt-1">
                     CATEGORY
                   </h6>
                 </Col>
@@ -154,7 +154,7 @@ const KanbanTaskDetailsModal = ({
                   <Badge
                     variant="phoenix"
                     bg={task.status.color as BadgeBg}
-                    className="fs-10"
+                    className="text-sm"
                   >
                     {task.status.label}
                     <FontAwesomeIcon
@@ -167,12 +167,12 @@ const KanbanTaskDetailsModal = ({
                 </Col>
 
                 <Col xs={4} sm={3}>
-                  <h6 className="text-body-tertiary fw-bolder lh-sm mt-1">
+                  <h6 className="text-subtle font-black lh-sm mt-1">
                     ATTACHMENTS
                   </h6>
                 </Col>
                 <Col xs={8} sm={9}>
-                  <div className="d-flex flex-column gap-3 mb-2">
+                  <div className="flex flex-column gap-3 mb-2">
                     {kanbanAttachments.map(attachment => (
                       <KanbanAttachment
                         attachment={attachment}
@@ -194,13 +194,13 @@ const KanbanTaskDetailsModal = ({
             <Col
               xs={12}
               lg={4}
-              className="border-start-lg border-translucent h-100 scrollbar"
+              className="border-start-lg border-light h-100 scrollbar"
             >
               <div>
                 <div className="px-3">
                   <div>
                     <h5 className="mb-3 mt-4">Actions</h5>
-                    <div className="d-flex flex-wrap flex-column gap-2 flex-sm-row flex-lg-column">
+                    <div className="flex flex-wrap flex-column gap-2 flex-sm-row flex-lg-column">
                       {kanbanActions.map(action => (
                         <Button
                           variant="subtle-secondary"
@@ -221,11 +221,11 @@ const KanbanTaskDetailsModal = ({
                   </div>
                   <div>
                     <h5 className="mb-3 mt-4">Activities</h5>
-                    <div className="d-flex flex-column gap-3">
+                    <div className="flex flex-column gap-3">
                       {kanbanActivities.map((activity, index) => (
                         <div
                           className={classNames(
-                            'd-flex gap-2 pb-3 border-translucent',
+                            'flex gap-2 pb-3 border-light',
                             {
                               'border-bottom':
                                 index !== kanbanActivities.length - 1
@@ -235,17 +235,17 @@ const KanbanTaskDetailsModal = ({
                         >
                           <FontAwesomeIcon
                             icon={activity.icon}
-                            className={`border border-translucent rounded-pill p-1 text-${activity.iconColor}`}
+                            className={`border border-light rounded-full p-1 text-${activity.iconColor}`}
                             transform="shrink-4"
                           />
                           <div className="activity-item">
                             <p
-                              className="mb-1 fs-9"
+                              className="mb-1 text-md"
                               dangerouslySetInnerHTML={{
                                 __html: activity.task
                               }}
                             />
-                            <div className="d-flex gap-2 justify-content-between fs-9">
+                            <div className="flex gap-2 justify-content-between text-md">
                               <p className="mb-0">
                                 <FontAwesomeIcon
                                   icon={faClock}

@@ -29,7 +29,7 @@ const Timeline = () => {
       <Row className="gx-xl-8 gx-xxl-11">
         <Col xl={5} className="p-xxl-7">
           <div
-            className="ms-xxl-3 d-none d-xl-block position-sticky"
+            className="ms-xxl-3 hidden d-xl-block position-sticky"
             style={{ top: '30%' }}
           >
             <img src={img} alt="" className="d-dark-none img-fluid" />

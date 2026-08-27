@@ -23,14 +23,14 @@ const SettingsPersonalInfo = () => {
               />
               <label
                 htmlFor="firstName"
-                className="form-icon-label text-body-tertiary"
+                className="form-icon-label text-subtle"
               >
                 FIRST NAME
               </label>
             </Form.Floating>
             <FontAwesomeIcon
               icon={faUser}
-              className="text-body fs-9 form-icon"
+              className="text-default text-md form-icon"
             />
           </div>
         </Col>
@@ -45,14 +45,14 @@ const SettingsPersonalInfo = () => {
               />
               <label
                 htmlFor="lastName"
-                className="form-icon-label text-body-tertiary"
+                className="form-icon-label text-subtle"
               >
                 LAST NAME
               </label>
             </Form.Floating>
             <FontAwesomeIcon
               icon={faUser}
-              className="text-body fs-9 form-icon"
+              className="text-default text-md form-icon"
             />
           </div>
         </Col>
@@ -67,14 +67,14 @@ const SettingsPersonalInfo = () => {
               />
               <label
                 htmlFor="email"
-                className="form-icon-label text-body-tertiary"
+                className="form-icon-label text-subtle"
               >
                 ENTER YOUR EMAIL
               </label>
             </Form.Floating>
             <FontAwesomeIcon
               icon={faEnvelope}
-              className="text-body fs-9 form-icon"
+              className="text-default text-md form-icon"
             />
           </div>
         </Col>
@@ -89,14 +89,14 @@ const SettingsPersonalInfo = () => {
               />
               <label
                 htmlFor="phone"
-                className="form-icon-label text-body-tertiary"
+                className="form-icon-label text-subtle"
               >
                 ENTER YOUR PHONE
               </label>
             </Form.Floating>
             <FontAwesomeIcon
               icon={faPhone}
-              className="text-body fs-9 form-icon"
+              className="text-default text-md form-icon"
             />
           </div>
         </Col>
@@ -113,14 +113,14 @@ const SettingsPersonalInfo = () => {
               />
               <label
                 htmlFor="lastName"
-                className="form-icon-label text-body-tertiary"
+                className="form-icon-label text-subtle"
               >
                 INFO
               </label>
             </Form.Floating>
             <FontAwesomeIcon
               icon={faCircleInfo}
-              className="text-body fs-9 form-icon"
+              className="text-default text-md form-icon"
             />
           </div>
         </Col>

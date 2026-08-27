@@ -17,12 +17,12 @@ const WeeklyPricingCard = () => {
   ];
 
   return (
-    <Card className="bg-body-highlight">
+    <Card className="bg-subtle">
       <Card.Body>
         <Row className="gx-2 justify-content-between">
           <Col xs sm="auto">
             <Form.Group controlId="roomCategory">
-              <Form.Label className="form-label-header mb-1 fs-9">
+              <Form.Label className="form-label-header mb-1 text-md">
                 Date
               </Form.Label>
               <DatePicker
@@ -37,7 +37,7 @@ const WeeklyPricingCard = () => {
           </Col>
           <Col xs="auto">
             <Form.Group controlId="weeklyPricingUsd">
-              <Form.Label className="form-label-header mb-1 fs-9">
+              <Form.Label className="form-label-header mb-1 text-md">
                 Currency
               </Form.Label>
               <Form.Select onChange={onChange}>
@@ -53,7 +53,7 @@ const WeeklyPricingCard = () => {
           {days.map((item, index) => (
             <Col xs={4} sm key={index}>
               <Form.Group controlId="weeklyPricingUsd">
-                <Form.Label className="form-label-header mb-1 fs-9">
+                <Form.Label className="form-label-header mb-1 text-md">
                   {item}
                 </Form.Label>
                 <Form.Control

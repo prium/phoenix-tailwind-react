@@ -289,7 +289,7 @@ export const flightsData: FlightInterface[] = [
       temperature: 15,
       weather: 'Stormy',
       icon: faCloudBolt,
-      color: 'text-body-tertiary'
+      color: 'text-subtle'
     },
     time: {
       time: '08:26 PM',

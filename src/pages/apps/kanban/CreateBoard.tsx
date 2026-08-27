@@ -8,9 +8,9 @@ const CreateBoard = () => {
   return (
     <div className="mb-9">
       <div className="mb-xl-8">
-        <div className="d-flex align-items-center mb-3">
+        <div className="flex align-items-center mb-3">
           <img src={boardIcon} alt="" className="me-3" />
-          <h1 className="mb-0 text-body-emphasis fw-semibold">
+          <h1 className="mb-0 text-emphasis font-semibold">
             Phoenix Kanban
           </h1>
         </div>

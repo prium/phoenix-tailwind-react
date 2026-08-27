@@ -27,14 +27,14 @@ const DetailsGalleryItem = ({
       onClick={handleClick}
     >
       {isLast ? (
-        <div className="position-relative rounded-2 overflow-hidden">
+        <div className="relative rounded-2 overflow-hidden">
           <img
             src={item.img}
             alt=""
             className="w-100 h-md-100 object-fit-cover"
             height={43}
           />
-          <div className="position-absolute left-0 top-0 w-100 h-100 d-flex flex-center bg-black bg-opacity-50">
+          <div className="absolute left-0 top-0 w-100 h-100 flex flex-center bg-black bg-opacity-50">
             <Link
               to="/apps/travel-agency/hotel/customer/gallery"
               className="text-white stretched-link"

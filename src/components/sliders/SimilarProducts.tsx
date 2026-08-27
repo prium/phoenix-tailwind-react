@@ -14,7 +14,7 @@ const SimilarProducts = ({ products }: { products: Product[] }) => {
             Essential for a better life
           </p>
         </div>
-        <Button variant="phoenix-primary" size="sm">
+        <Button variant="phoenix" color="primary" size="sm">
           View all
         </Button>
       </div>

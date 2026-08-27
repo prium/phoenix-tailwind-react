@@ -24,7 +24,7 @@ export const projectListTableColumns: ColumnDef<Project>[] = [
       );
     },
     meta: {
-      cellProps: { className: 'white-space-nowrap py-4' },
+      cellProps: { className: 'whitespace-nowrap py-4' },
       headerProps: { style: { width: '30%' } }
     }
   },
@@ -57,7 +57,7 @@ export const projectListTableColumns: ColumnDef<Project>[] = [
     header: 'Start date',
     accessorKey: 'start',
     meta: {
-      cellProps: { className: 'ps-3 fs-9 text-body white-space-nowrap py-4' },
+      cellProps: { className: 'ps-3 text-md text-default whitespace-nowrap py-4' },
       headerProps: { style: { width: '10%' }, className: 'ps-3' }
     }
   },
@@ -65,7 +65,7 @@ export const projectListTableColumns: ColumnDef<Project>[] = [
     header: 'Deadline',
     accessorKey: 'deadline',
     meta: {
-      cellProps: { className: 'ps-3 fs-9 text-body white-space-nowrap py-4' },
+      cellProps: { className: 'ps-3 text-md text-default whitespace-nowrap py-4' },
       headerProps: { style: { width: '15%' }, className: 'ps-3' }
     }
   },
@@ -73,7 +73,7 @@ export const projectListTableColumns: ColumnDef<Project>[] = [
     accessorKey: 'task',
     header: 'Task',
     meta: {
-      cellProps: { className: 'ps-3 text-body py-4' },
+      cellProps: { className: 'ps-3 text-default py-4' },
       headerProps: { style: { width: '12%' }, className: 'ps-3' }
     }
   },
@@ -139,7 +139,7 @@ const ProjectListTable = () => {
     <div className="border-b border-light">
       <AdvanceTable
         tableProps={{
-          className: 'phoenix-table border-top border-translucent fs-9'
+          className: ' border-top border-light text-md'
         }}
       />
       <AdvanceTableFooter pagination className="py-4" />

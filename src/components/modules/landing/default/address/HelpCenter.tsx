@@ -15,8 +15,8 @@ const HelpCenter = () => {
         Stay connected with Phoenix's Help Center. Phoenix is available for your
         necessities at all times.
       </p>
-      <div className="d-flex flex-column align-items-center align-items-md-start gap-4">
-        <div className="d-flex flex-column flex-md-row gap-2 align-items-center">
+      <div className="flex flex-column align-items-center align-items-md-start gap-4">
+        <div className="flex flex-column flex-md-row gap-2 align-items-center">
           <div className="icon-wrapper shadow-info">
             <UilPhone
               fill='currentColor'
@@ -31,7 +31,7 @@ const HelpCenter = () => {
             </a>
           </div>
         </div>
-        <div className="d-flex flex-column flex-md-row gap-2 align-items-center">
+        <div className="flex flex-column flex-md-row gap-2 align-items-center">
           <div className="icon-wrapper shadow-info">
             <UilEnvelope
               fill='currentColor'
@@ -43,13 +43,13 @@ const HelpCenter = () => {
           <div className="flex-1 ms-3">
             <Link
               to="mailto:phoenix@email.com"
-              className="fw-semibold text-body"
+              className="font-semibold text-default"
             >
               phoenix@email.com
             </Link>
           </div>
         </div>
-        <div className="mb-6 d-flex flex-column flex-md-row gap-2 align-items-center">
+        <div className="mb-6 flex flex-column flex-md-row gap-2 align-items-center">
           <div className="icon-wrapper shadow-info">
             <UilMapMarker
               fill='currentColor'
@@ -59,22 +59,22 @@ const HelpCenter = () => {
             />
           </div>
           <div className="flex-1 ms-3">
-            <Link to="#!" className="fw-semibold text-body">
+            <Link to="#!" className="font-semibold text-default">
               39163 Amir Drive Suite 802
             </Link>
           </div>
         </div>
-        <div className="d-flex gap-3">
+        <div className="flex gap-3">
           <a href="#!">
-            <FontAwesomeIcon icon={faFacebook} className="text-primary fs-6" />
+            <FontAwesomeIcon icon={faFacebook} className="text-primary text-xl" />
           </a>
           <a href="#!">
-            <FontAwesomeIcon icon={faTwitter} className="text-primary fs-6" />
+            <FontAwesomeIcon icon={faTwitter} className="text-primary text-xl" />
           </a>
           <a href="#!">
             <FontAwesomeIcon
               icon={faLinkedinIn}
-              className="text-primary fs-6"
+              className="text-primary text-xl"
             />
           </a>
         </div>

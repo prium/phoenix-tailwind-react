@@ -11,7 +11,7 @@ const TravelCta = () => {
   return (
     <section className="pb-10 pt-3">
       <div
-        className="bg-holder d-none d-xl-block"
+        className="bg-holder hidden d-xl-block"
         style={{
           backgroundImage: `url(${bgLeft32})`,
           backgroundPosition: 'left 115px',
@@ -19,14 +19,14 @@ const TravelCta = () => {
         }}
       />
       <div
-        className="bg-holder d-none d-xl-block"
+        className="bg-holder hidden d-xl-block"
         style={{
           backgroundImage: `url(${bgRight32})`,
           backgroundPosition: 'right -25px',
           backgroundSize: '28%'
         }}
       />
-      <div className="container-medium position-relative">
+      <div className="container-medium relative">
         <Row className="g-0 justify-content-center">
           <Col lg={10} xl={7}>
             <div className="d-md-flex align-items-center gap-7 text-center text-md-start">
@@ -44,10 +44,10 @@ const TravelCta = () => {
               />
               <div className="flex-1">
                 <h3 className="mb-0">Get Updates & More</h3>
-                <p className="mb-4 text-body-tertiary">
+                <p className="mb-4 text-subtle">
                   Subscribe to our newsletter to stay updated.
                 </p>
-                <Form className="d-flex justify-content-center">
+                <Form className="flex justify-content-center">
                   <Form.Control
                     className="me-3"
                     id="ctaEmail"
@@ -55,13 +55,13 @@ const TravelCta = () => {
                   />
                   <Button
                     variant="primary"
-                    className="d-flex align-items-center"
+                    className="flex align-items-center"
                     type="submit"
                   >
                     Subscribe
                     <FontAwesomeIcon
                       icon={faChevronRight}
-                      className="ms-2 fs-9"
+                      className="ms-2 text-md"
                     />
                   </Button>
                 </Form>

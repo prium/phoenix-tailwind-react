@@ -17,12 +17,12 @@ const SettingsChangePassword = () => {
           />
           <label
             htmlFor="oldPassword"
-            className="form-icon-label text-body-tertiary"
+            className="form-icon-label text-subtle"
           >
             OLD PASSWORD
           </label>
         </Form.Floating>
-        <FontAwesomeIcon icon={faLock} className="text-body fs-9 form-icon" />
+        <FontAwesomeIcon icon={faLock} className="text-default text-md form-icon" />
       </div>
       <div className="form-icon-container mb-3">
         <Form.Floating>
@@ -34,12 +34,12 @@ const SettingsChangePassword = () => {
           />
           <label
             htmlFor="newPassword"
-            className="form-icon-label text-body-tertiary"
+            className="form-icon-label text-subtle"
           >
             NEW PASSWORD
           </label>
         </Form.Floating>
-        <FontAwesomeIcon icon={faKey} className="text-body fs-9 form-icon" />
+        <FontAwesomeIcon icon={faKey} className="text-default text-md form-icon" />
       </div>
       <div className="form-icon-container">
         <Form.Floating>
@@ -51,12 +51,12 @@ const SettingsChangePassword = () => {
           />
           <label
             htmlFor="newPassword2"
-            className="form-icon-label text-body-tertiary"
+            className="form-icon-label text-subtle"
           >
             CONFIRM NEW PASSWORD
           </label>
         </Form.Floating>
-        <FontAwesomeIcon icon={faKey} className="text-body fs-9 form-icon" />
+        <FontAwesomeIcon icon={faKey} className="text-default text-md form-icon" />
       </div>
     </>
   );

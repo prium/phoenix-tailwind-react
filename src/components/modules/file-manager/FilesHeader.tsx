@@ -41,7 +41,7 @@ const FilesHeader = ({
   return (
     <>
       <Row className="g-3 flex-between-center">
-        <Col xs="auto" className="d-flex gap-2">
+        <Col xs="auto" className="flex gap-2">
           <Button
             variant="phoenix-secondary"
             className="btn-square d-xl-none"
@@ -51,7 +51,7 @@ const FilesHeader = ({
           >
             <FontAwesomeIcon icon={faBars} />
           </Button>
-          <input type="file" id="fileUpload" className="d-none" />
+          <input type="file" id="fileUpload" className="hidden" />
           <label htmlFor="fileUpload">
             <Button as="span" variant="primary" className="px-sm-6">
               <FontAwesomeIcon icon={faCloudArrowUp} className="me-2" />
@@ -61,14 +61,14 @@ const FilesHeader = ({
 
           <Button
             variant="link"
-            className="text-body-secondary px-2"
+            className="text-muted px-2"
             onClick={() => setAddFolderModal(true)}
           >
             <FontAwesomeIcon icon={faAdd} className="me-2" />
             Add New Folder
           </Button>
         </Col>
-        <Col xs="auto" className="d-flex gap-2">
+        <Col xs="auto" className="flex gap-2">
           <SearchBox
             onChange={handleSearchInputChange}
             placeholder="Search by name"
@@ -91,7 +91,7 @@ const FilesHeader = ({
         <PhoenixOffcanvas
           open={openOffcanvas}
           onHide={() => setOpenOffcanvas(false)}
-          className="phoenix-offcanvas treeview-offcanvas phoenix-offcanvas-content scrollbar bg-body overflow-x-hidden"
+          className="phoenix-offcanvas treeview-offcanvas phoenix-offcanvas-content scrollbar bg-default overflow-x-hidden"
           placement="start"
           fixed
         >
@@ -195,7 +195,7 @@ const FilesHeader = ({
         <Modal.Footer className="border-0 pt-0">
           <Button
             variant="link"
-            className="text-body-secondary px-3 mx-0"
+            className="text-muted px-3 mx-0"
             onClick={() => setFilterModal(false)}
           >
             <FontAwesomeIcon icon={faArrowsRotate} className="me-2" />

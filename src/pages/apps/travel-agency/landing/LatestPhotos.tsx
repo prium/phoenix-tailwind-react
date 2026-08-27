@@ -44,10 +44,10 @@ const LatestPhotos = () => {
     <section className="pb-7 pt-0">
       <div className="container-medium">
         <div className="text-center mb-5">
-          <h3 className="mb-2 text-body-emphasis">
+          <h3 className="mb-2 text-emphasis">
             Latest photos from tourists
           </h3>
-          <p className="mb-0 text-body-tertiary">
+          <p className="mb-0 text-subtle">
             See how our tourists enjoyed their trip from images captured by them
             with Team Phoenix!
           </p>
@@ -55,7 +55,7 @@ const LatestPhotos = () => {
         <Row className="g-3">
           {photos.map((item, index) => (
             <Col md={6} xl={4} key={index}>
-              <div className="img-zoom-hover position-relative h-100 rounded-3 overflow-hidden">
+              <div className="img-zoom-hover relative h-100 rounded-3 overflow-hidden">
                 <Link to="#!">
                   <img
                     className="w-100 h-100 object-fit-cover"

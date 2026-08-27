@@ -10,7 +10,7 @@ const Notification = () => {
     <div>
       <PageBreadcrumb items={notificationsBreadcrumbItems} />
       <h2 className="mb-5">Notifications</h2>
-      <h5 className="text-body-emphasis mb-3 ">Today</h5>
+      <h5 className="text-emphasis mb-3 ">Today</h5>
       <div className="mx-n4 mx-lg-n6 mb-5 border-top">
         {notifications.slice(0, 3).map((notification, index) => (
           <NotificationItem
@@ -23,7 +23,7 @@ const Notification = () => {
           />
         ))}
       </div>
-      <h5 className="text-body-emphasis mb-3 ">Yesterday</h5>
+      <h5 className="text-emphasis mb-3 ">Yesterday</h5>
       <div className="mx-n4 mx-lg-n6 mb-9 border-top">
         {notifications.slice(3, 7).map((notification, index) => (
           <NotificationItem

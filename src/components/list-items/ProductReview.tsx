@@ -4,7 +4,7 @@ import {
   faThumbsUp
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
+import { cn } from '@hummingbirdui/react';
 import Button from 'components/base/Button';
 import Lightbox from 'components/base/LightBox';
 import Rating from 'components/base/Rating';
@@ -34,8 +34,8 @@ const ProductReview = ({ review }: { review: ProductReviewType }) => {
       </div>
       <p className="text-subtle text-md mb-1">{review.date}</p>
       <p
-        className={classNames('text-highlight', {
-          'mb-6': review.images,
+        className={cn('text-highlight', {
+          'mb-3': review.images,
           'mb-1': !review.images
         })}
       >
@@ -50,7 +50,7 @@ const ProductReview = ({ review }: { review: ProductReviewType }) => {
                 src={image}
                 key={image}
                 alt=""
-                className="fit-cover w-full"
+                className="object-cover"
                 height={164}
                 onClick={() => openLightbox(index + 1)}
               />
@@ -78,10 +78,10 @@ const ProductReview = ({ review }: { review: ProductReviewType }) => {
         </div>
       )}
       <div className="hover-actions top-0">
-        <Button className="me-2" variant="phoenix-secondary" size="sm">
+        <Button className="me-2" variant="phoenix" color="secondary" size="sm">
           <FontAwesomeIcon icon={faThumbsUp} />
         </Button>
-        <Button className="me-1" variant="phoenix-secondary" size="sm">
+        <Button className="me-1" variant="phoenix" color="secondary" size="sm">
           <FontAwesomeIcon icon={faThumbsDown} />
         </Button>
       </div>

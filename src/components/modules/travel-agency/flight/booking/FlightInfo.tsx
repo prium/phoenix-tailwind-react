@@ -23,13 +23,13 @@ const FlightDetails = ({
       <h2>{time}</h2>
       <p className="mb-0 text-nowrap">{date}</p>
     </Col>
-    <Col md="auto" className="d-none d-md-block text-center">
-      <FontAwesomeIcon icon={faCircle} className="text-body-quaternary fs-11" />
+    <Col md="auto" className="hidden d-md-block text-center">
+      <FontAwesomeIcon icon={faCircle} className="text-soft text-xs" />
     </Col>
     <Col md="auto">
       <h5>
         {airportCode} - {airportName}
-        <span className="text-body-tertiary fw-normal">
+        <span className="text-subtle font-normal">
           {' '}
           ({airportName} Intl. Airport)
         </span>
@@ -40,7 +40,7 @@ const FlightDetails = ({
 
 const FlightInfo = () => {
   return (
-    <Card className="bg-body-highlight mb-6">
+    <Card className="bg-subtle mb-6">
       <Card.Body className="p-4 p-lg-6">
         <Row className="g-0 justify-content-between">
           <Col lg={8} className="mb-5 mb-lg-0">
@@ -57,13 +57,13 @@ const FlightInfo = () => {
               <Col xs={12}>
                 <Row className="align-items-center">
                   <Col xs="auto" md={3} className="text-md-end">
-                    <p className="mb-0 text-body-quaternary">0h 45m</p>
+                    <p className="mb-0 text-soft">0h 45m</p>
                   </Col>
                   <Col xs="auto" className="text-md-center">
                     <img src={longArrowDown} alt="" />
                   </Col>
                   <Col xs="auto">
-                    <p className="mb-0 text-body-quaternary">Qatar Airways</p>
+                    <p className="mb-0 text-soft">Qatar Airways</p>
                   </Col>
                 </Row>
               </Col>
@@ -82,7 +82,7 @@ const FlightInfo = () => {
           {/* Right Panel for Airline Info */}
           <Col
             lg={4}
-            className="ps-lg-6 pt-5 pt-lg-0 border-top border-top-lg-0 border-start-lg border-translucent"
+            className="ps-lg-6 pt-5 pt-lg-0 border-top border-top-lg-0 border-start-lg border-light"
           >
             <Row className="g-lg-3 g-md-0 g-3 flex-between-center">
               <Col md="auto" lg={12} className="text-nowrap">
@@ -92,7 +92,7 @@ const FlightInfo = () => {
                   width={32}
                   className="rounded-2"
                 />
-                <h5 className="text-nowrap fw-normal d-inline-block ms-2 mb-0">
+                <h5 className="text-nowrap font-normal d-inline-block ms-2 mb-0">
                   Qatar Airways
                 </h5>
               </Col>

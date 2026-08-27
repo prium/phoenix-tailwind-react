@@ -22,7 +22,7 @@ const Default = () => {
   });
 
   return (
-    <div className="bg-body-emphasis">
+    <div className="bg-soft">
       <DefaultLandingNavbar />
       <HeroHeader />
       <Brands className="py-5 pt-xl-13" />

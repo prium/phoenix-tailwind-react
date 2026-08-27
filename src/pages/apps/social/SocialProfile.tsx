@@ -13,7 +13,7 @@ const SocialProfile = () => {
   const { setFooterClass, setContentClass } = useMainLayoutContext();
 
   useEffect(() => {
-    setFooterClass('d-none d-lg-block');
+    setFooterClass('hidden d-lg-block');
     setContentClass('widget-gap-large');
     return () => {
       setFooterClass('');
@@ -25,7 +25,7 @@ const SocialProfile = () => {
       <div className="mb-9">
         <SocialCoverCard />
         <Row className="gy-3 gx-5 gx-xxl-6">
-          <Col xl={4} className="d-none d-xl-block">
+          <Col xl={4} className="hidden d-xl-block">
             <ProfileNavigation className="mb-8" />
             <SocialPhotos className="mb-8" photos={socialPhotos} />
             <MutualNavigation />

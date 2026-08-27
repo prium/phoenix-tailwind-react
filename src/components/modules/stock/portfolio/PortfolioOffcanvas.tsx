@@ -23,7 +23,7 @@ const PortfolioOffcanvas = ({
         <Offcanvas
           show={open}
           onHide={() => setOpen(false)}
-          className="stock-offcanvas-xl bg-body-emphasis scrollbar"
+          className="stock-offcanvas-xl bg-soft scrollbar"
           placement="end"
         >
           <Offcanvas.Body className="p-0">

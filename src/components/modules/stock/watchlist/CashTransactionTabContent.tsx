@@ -14,7 +14,7 @@ const CashTransactionTabContent = () => {
       <Row className="mt-4 flex-between-center">
         <Col xs="auto">
           <h4>Cash Transaction Report</h4>
-          <p className="mb-0 text-body-tertiary">
+          <p className="mb-0 text-subtle">
             Brief summary of all projects
           </p>
         </Col>

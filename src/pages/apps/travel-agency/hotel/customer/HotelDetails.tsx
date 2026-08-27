@@ -31,32 +31,32 @@ const HotelDetails = () => {
           <h2 className="mb-4">Hotel Details</h2>
           <Row className="g-4 flex-between-end mb-5">
             <Col md={8} lg={9}>
-              <h1 className="mb-2 fw-semibold">
+              <h1 className="mb-2 font-semibold">
                 Radisson Blu Water Garden Hotel, Dhaka
               </h1>
               <div className="mb-1">
-                <Link className="text-body-tertiary" to="#!">
+                <Link className="text-subtle" to="#!">
                   <FontAwesomeIcon
                     icon={faMapMarkerAlt}
-                    className="me-2 text-body"
+                    className="me-2 text-default"
                   />
                   Airport Rd, Dhaka Cantonment, Dhaka, 1206, Bangladesh
                 </Link>
               </div>
               <div className="mb-1">
-                <Link className="text-body-tertiary" to="tel:+88029834555">
-                  <FontAwesomeIcon icon={faPhone} className="me-2 text-body" />
+                <Link className="text-subtle" to="tel:+88029834555">
+                  <FontAwesomeIcon icon={faPhone} className="me-2 text-default" />
                   +880 29834555
                 </Link>
               </div>
               <div className="mb-1">
                 <Link
-                  className="text-body-tertiary"
+                  className="text-subtle"
                   to="mailto:sales.dhaka@radisson.com"
                 >
                   <FontAwesomeIcon
                     icon={faEnvelope}
-                    className="me-2 text-body"
+                    className="me-2 text-default"
                     transform="down-1"
                   />
                   sales.dhaka@radisson.com
@@ -64,9 +64,9 @@ const HotelDetails = () => {
               </div>
             </Col>
             <Col md={4} lg={3}>
-              <div className="d-flex flex-md-column align-items-center align-items-md-end gap-3">
+              <div className="flex flex-md-column align-items-center align-items-md-end gap-3">
                 <h5 className="mb-0 text-nowrap">
-                  <span className="text-body-tertiary me-2 fw-normal">
+                  <span className="text-subtle me-2 font-normal">
                     Rated
                   </span>
                   <span className="text-primary me-2">Good</span>

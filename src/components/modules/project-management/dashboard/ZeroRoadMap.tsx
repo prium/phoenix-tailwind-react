@@ -11,15 +11,15 @@ const ZeroRoadMap = () => {
   return (
     <div className="gantt-zero-roadmap">
       <h3>Project: zero Roadmap</h3>
-      <p className="text-body-tertiary">Phase 2 is now ongoing</p>
+      <p className="text-subtle">Phase 2 is now ongoing</p>
       <Row className="g-2 flex-between-center mb-3">
         <Col xs={12} sm="auto">
-          <div className="d-flex gap-3">
+          <div className="flex gap-3">
             <Form.Check
-              className="d-flex min-h-auto mb-0 align-items-end ps-0"
+              className="flex min-h-auto mb-0 align-items-end ps-0"
               id="progress"
             >
-              <Form.Check.Label className="mb-0 me-2 lh-1 text-body">
+              <Form.Check.Label className="mb-0 me-2 lh-1 text-default">
                 Progress
               </Form.Check.Label>
               <Form.Check
@@ -32,10 +32,10 @@ const ZeroRoadMap = () => {
               />
             </Form.Check>
             <Form.Check
-              className="d-flex min-h-auto mb-0 align-items-end ps-0"
+              className="flex min-h-auto mb-0 align-items-end ps-0"
               id="links"
             >
-              <Form.Check.Label className="mb-0 me-2 lh-1 text-body">
+              <Form.Check.Label className="mb-0 me-2 lh-1 text-default">
                 Links
               </Form.Check.Label>
               <Form.Check

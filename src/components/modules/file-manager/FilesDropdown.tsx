@@ -14,7 +14,7 @@ const dropdownItems: string[] = [
 ];
 
 const FilesDropdown = ({
-  className = 'position-static',
+  className = 'static',
   toggleClass = ''
 }: {
   className?: string;
@@ -25,7 +25,7 @@ const FilesDropdown = ({
       <Dropdown className={className}>
         <Dropdown.Toggle
           variant=""
-          className={`btn-square-sm position-relative dropdown-caret-none z-1 ${toggleClass}`}
+          className={`btn-square-sm relative dropdown-caret-none z-1 ${toggleClass}`}
         >
           <FontAwesomeIcon icon={faEllipsisVertical} />
         </Dropdown.Toggle>
@@ -35,7 +35,7 @@ const FilesDropdown = ({
               {idx < dropdownItems.length - 1 ? (
                 <Dropdown.Item
                   href="#!"
-                  className="fw-semibold text-decoration-none"
+                  className="font-semibold text-decoration-none"
                 >
                   {item}
                 </Dropdown.Item>
@@ -44,7 +44,7 @@ const FilesDropdown = ({
                   <hr className="dropdown-divider" />
                   <Dropdown.Item
                     href="#!"
-                    className="fw-semibold text-decoration-none text-danger"
+                    className="font-semibold text-decoration-none text-danger"
                   >
                     Delete
                   </Dropdown.Item>

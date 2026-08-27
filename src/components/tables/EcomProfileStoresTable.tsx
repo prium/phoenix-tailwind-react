@@ -47,7 +47,7 @@ const columns: ColumnDef<StoreProductType>[] = [
     header: 'Store rating',
     cell: ({ row: { original } }) => {
       const { rating } = original;
-      return <Rating readonly initialValue={rating} iconClass="fs-9" />;
+      return <Rating readonly initialValue={rating} iconClass="text-md" />;
     },
     meta: {
       headerProps: { style: { width: '15%', minWidth: 150 } }
@@ -61,7 +61,7 @@ const columns: ColumnDef<StoreProductType>[] = [
         style: { width: '12%', minWidth: 150 },
         className: 'text-end'
       },
-      cellProps: { className: 'text-primary fw-bold text-end' }
+      cellProps: { className: 'text-primary font-bold text-end' }
     }
   },
   {
@@ -73,7 +73,7 @@ const columns: ColumnDef<StoreProductType>[] = [
         style: { width: '15%', minWidth: 150 },
         className: 'text-end'
       },
-      cellProps: { className: 'text-end fw-semibold' }
+      cellProps: { className: 'text-end font-semibold' }
     }
   },
   {
@@ -84,7 +84,7 @@ const columns: ColumnDef<StoreProductType>[] = [
         style: { width: '15%', minWidth: 150 },
         className: 'text-end'
       },
-      cellProps: { className: 'text-end text-body-tertiary' }
+      cellProps: { className: 'text-end text-subtle' }
     }
   },
   {
@@ -119,7 +119,7 @@ const EcomProfileStoresTable = () => {
       <AdvanceTableProvider {...table}>
         <div className="border-y border-light mb-10">
           <AdvanceTable
-            tableProps={{ className: 'phoenix-table table-sm fs-9' }}
+            tableProps={{ className: ' table-sm text-md' }}
           />
           <AdvanceTableFooter pagination />
         </div>

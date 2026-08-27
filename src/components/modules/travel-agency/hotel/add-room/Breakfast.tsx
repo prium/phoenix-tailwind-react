@@ -10,7 +10,7 @@ const Breakfast = () => {
   return (
     <>
       <h4 className="mb-2 mt-7">Breakfast</h4>
-      <p className="mb-4 text-body-tertiary">
+      <p className="mb-4 text-subtle">
         Do you own multiple hotels, or are you part of a property management
         company or group?
       </p>
@@ -37,7 +37,7 @@ const Breakfast = () => {
       </Form.Group>
       <Collapse in={open} className="w-sm-60">
         <div>
-          <h5 className="text-body-highlight my-4">
+          <h5 className="text-highlight my-4">
             What type of food is available for breakfast for guests?
           </h5>
           <FloatingLabel controlId="breakfastType1" label="option 1">

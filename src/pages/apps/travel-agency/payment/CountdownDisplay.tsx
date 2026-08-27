@@ -6,12 +6,12 @@ const CountdownDisplay = () => {
   return (
     <div>
       <p className="mb-2 text-info">Book before time runs out</p>
-      <h3 className="mb-0 text-info fw-bold d-flex gap-2 align-items-center justify-content-sm-end">
-        <FontAwesomeIcon icon={faClock} className="fs-8" />
+      <h3 className="mb-0 text-info font-bold flex gap-2 align-items-center justify-content-sm-end">
+        <FontAwesomeIcon icon={faClock} className="text-base" />
         <span>29</span>
-        <span className="fs-9 fw-normal">min</span>
+        <span className="text-md font-normal">min</span>
         <span>50</span>
-        <span className="fs-9 fw-normal">sec</span>
+        <span className="text-md font-normal">sec</span>
       </h3>
     </div>
   );

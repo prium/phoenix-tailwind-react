@@ -19,11 +19,11 @@ const columns: ColumnDef<WatchlistCashTransactionRowItem>[] = [
     },
     meta: {
       headerProps: {
-        className: 'align-middle white-space-nowrap ps-0',
+        className: 'align-middle whitespace-nowrap ps-0',
         style: { minWidth: 240 }
       },
       cellProps: {
-        className: 'align-middle white-space-nowrap'
+        className: 'align-middle whitespace-nowrap'
       }
     }
   },
@@ -41,7 +41,7 @@ const columns: ColumnDef<WatchlistCashTransactionRowItem>[] = [
         style: { minWidth: 240 }
       },
       cellProps: {
-        className: 'align-middle white-space-nowrap ps-3'
+        className: 'align-middle whitespace-nowrap ps-3'
       }
     }
   },
@@ -81,7 +81,7 @@ const columns: ColumnDef<WatchlistCashTransactionRowItem>[] = [
         style: { minWidth: 120 }
       },
       cellProps: {
-        className: 'align-middle white-space-nowrap text-center'
+        className: 'align-middle whitespace-nowrap text-center'
       }
     }
   },
@@ -101,7 +101,7 @@ const columns: ColumnDef<WatchlistCashTransactionRowItem>[] = [
         }
       },
       cellProps: {
-        className: 'align-middle white-space-nowrap text-end'
+        className: 'align-middle whitespace-nowrap text-end'
       }
     }
   },
@@ -122,7 +122,7 @@ const columns: ColumnDef<WatchlistCashTransactionRowItem>[] = [
         style: { minWidth: 72 }
       },
       cellProps: {
-        className: 'align-middle white-space-nowrap text-end'
+        className: 'align-middle whitespace-nowrap text-end'
       }
     }
   }
@@ -147,7 +147,7 @@ const WatchlistCashTransactionTable = ({
         tableProps={{
           className: 'mt-2'
         }}
-        headerClassName="fs-9 text-uppercase text-body fw-bold"
+        headerClassName="text-md text-uppercase text-default font-bold"
       />
     </AdvanceTableProvider>
   );

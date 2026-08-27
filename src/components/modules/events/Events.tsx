@@ -23,7 +23,7 @@ const Events = ({ events, title, className }: EventsProps) => {
           <h3 className="flex-1 mb-0 text-nowrap me-3">{title}</h3>
         </Col>
         <Col xs="auto">
-          <Link to="#!" className="fw-bold fs-9">
+          <Link to="#!" className="font-bold text-md">
             See more
           </Link>
         </Col>

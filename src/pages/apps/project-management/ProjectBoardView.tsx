@@ -36,10 +36,10 @@ const ProjectBoardView = () => {
     <div>
       <PageBreadcrumb items={defaultBreadcrumbItems} />
       <AdvanceTableProvider {...table}>
-        <div className="d-flex flex-wrap mb-4 gap-3 gap-sm-6 align-items-center">
+        <div className="flex flex-wrap mb-4 gap-3 gap-sm-6 align-items-center">
           <h2 className="mb-0">
             <span className="me-3">Projects</span>{' '}
-            <span className="fw-normal text-body-tertiary">
+            <span className="font-normal text-subtle">
               ({projects.length})
             </span>
           </h2>

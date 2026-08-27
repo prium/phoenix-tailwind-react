@@ -7,7 +7,7 @@ import FeatherIcon from 'feather-icons-react';
 const phoenixBadgesCode = `
 import Badge from 'components/base/Badge';
 
-  <div className="d-flex gap-1">
+  <div className="flex gap-1">
     <Badge bg="primary" variant="phoenix">
       Primary
     </Badge>
@@ -32,12 +32,12 @@ import Badge from 'components/base/Badge';
 const phoenixBadgesWithIconCode = `
 import Badge from 'components/base/Badge';
 
-  <div className="d-flex gap-1">
+  <div className="flex gap-1">
     <Badge
         bg="primary"
         variant="phoenix"
         iconPosition="end"
-        className="fs-10"
+        className="text-sm"
         icon={<FeatherIcon icon="package" size={12} className="ms-1" />}
     >
       Primary
@@ -46,7 +46,7 @@ import Badge from 'components/base/Badge';
         bg="secondary"
         variant="phoenix"
         iconPosition="end"
-        className="fs-10"
+        className="text-sm"
         icon={<FeatherIcon icon="plus" size={12} className="ms-1" />}
     >
       secondary
@@ -55,7 +55,7 @@ import Badge from 'components/base/Badge';
         bg="success"
         variant="phoenix"
         iconPosition="end"
-        className="fs-10"
+        className="text-sm"
         icon={<FeatherIcon icon="check" size={12} className="ms-1" />}
     >
       success
@@ -64,7 +64,7 @@ import Badge from 'components/base/Badge';
         bg="info"
         variant="phoenix"
         iconPosition="end"
-        className="fs-10"
+        className="text-sm"
         icon={<FeatherIcon icon="info" size={12} className="ms-1" />}
     >
       info
@@ -73,7 +73,7 @@ import Badge from 'components/base/Badge';
         bg="warning"
         variant="phoenix"
         iconPosition="end"
-        className="fs-10"
+        className="text-sm"
         icon={<FeatherIcon icon="alert-octagon" size={12} className="ms-1" />}
     >
       warning
@@ -82,7 +82,7 @@ import Badge from 'components/base/Badge';
         bg="danger"
         variant="phoenix"
         iconPosition="end"
-        className="fs-10"
+        className="text-sm"
         icon={<FeatherIcon icon="x" size={12} className="ms-1" />}
     >
       danger
@@ -93,7 +93,7 @@ import Badge from 'components/base/Badge';
 const contextualVariationsCode = `
 import Badge from 'components/base/Badge';
 
-  <div className="d-flex gap-1">
+  <div className="flex gap-1">
     <Badge bg="primary"> Primary </Badge>
     <Badge bg="secondary"> Secondary </Badge>
     <Badge bg="success"> Sucess </Badge>
@@ -106,7 +106,7 @@ import Badge from 'components/base/Badge';
 const pillCode = `
 import Badge from 'components/base/Badge';
 
-  <div className="d-flex gap-1">
+  <div className="flex gap-1">
     <Badge pill bg="primary"> Primary </Badge>
     <Badge pill bg="secondary"> Secondary </Badge>
     <Badge pill bg="success"> Sucess </Badge>

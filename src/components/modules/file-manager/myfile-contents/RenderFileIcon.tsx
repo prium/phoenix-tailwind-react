@@ -46,7 +46,7 @@ const RenderFileIcon = ({ file }: { file: File }) => {
     case 'video':
       return (
         <video
-          className="d-block h-100 w-100 overflow-hidden rounded-2 object-fit-cover mb-3"
+          className="block h-100 w-100 overflow-hidden rounded-2 object-fit-cover mb-3"
           muted
           controls
           style={{ aspectRatio: '16/9' }}

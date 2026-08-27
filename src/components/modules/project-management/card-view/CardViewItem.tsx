@@ -25,7 +25,7 @@ const CardViewItem = ({ project }: { project: Project }) => {
     <>
       <Card className="h-100 hover-actions-trigger">
         <Card.Body>
-          <div className="d-flex align-items-center">
+          <div className="flex align-items-center">
             <h4 className="mb-2 line-clamp-1 lh-sm flex-1 me-5">
               {project.name}
             </h4>
@@ -42,38 +42,38 @@ const CardViewItem = ({ project }: { project: Project }) => {
           <Badge
             variant="phoenix"
             bg={project.status.type}
-            className="fs-10 mb-4"
+            className="text-sm mb-4"
           >
             {project.status.label}
           </Badge>
-          <div className="d-flex align-items-center mb-2">
+          <div className="flex align-items-center mb-2">
             <FontAwesomeIcon
               icon={faUser}
-              className="me-2 text-body-tertiary fs-9 fw-extra-bold"
+              className="me-2 text-subtle text-md fw-extra-bold"
             />
-            <p className="fw-bold mb-0 text-truncate lh-1">
+            <p className="font-bold mb-0 text-truncate lh-1">
               Client :{' '}
-              <span className="fw-semibold text-primary ms-1">
+              <span className="font-semibold text-primary ms-1">
                 {' '}
                 Gusteau’s Restaurant
               </span>
             </p>
           </div>
-          <div className="d-flex align-items-center mb-4">
+          <div className="flex align-items-center mb-4">
             <FontAwesomeIcon
               icon={faCreditCard}
-              className="me-2 text-body-tertiary fs-9 fw-extra-bold"
+              className="me-2 text-subtle text-md fw-extra-bold"
             />
-            <p className="fw-bold mb-0 text-truncate lh-1">
+            <p className="font-bold mb-0 text-truncate lh-1">
               Budget :{' '}
-              <span className="text-body-emphasis ms-1">
+              <span className="text-emphasis ms-1">
                 {currencyFormat(project.budget)}
               </span>
             </p>
           </div>
-          <div className="d-flex justify-content-between text-body-tertiary fw-semibold">
+          <div className="flex justify-content-between text-subtle font-semibold">
             <p className="mb-2"> Progress</p>
-            <p className="mb-2 text-body-emphasis">{progress}%</p>
+            <p className="mb-2 text-emphasis">{progress}%</p>
           </div>
           <ProgressBar
             now={progress}
@@ -82,25 +82,25 @@ const CardViewItem = ({ project }: { project: Project }) => {
           />
 
           <div>
-            <div className="d-flex align-items-center mt-4">
-              <p className="mb-0 fw-bold fs-9">
+            <div className="flex align-items-center mt-4">
+              <p className="mb-0 font-bold text-md">
                 Started :
-                <span className="fw-semibold text-body-tertiary text-opactity-85 ms-1">
+                <span className="font-semibold text-subtle text-opactity-85 ms-1">
                   {project.start}
                 </span>
               </p>
             </div>
-            <div className="d-flex align-items-center mt-2">
-              <p className="mb-0 fw-bold fs-9">
+            <div className="flex align-items-center mt-2">
+              <p className="mb-0 font-bold text-md">
                 Deadline :{' '}
-                <span className="fw-semibold text-body-tertiary text-opactity-85 ms-1">
+                <span className="font-semibold text-subtle text-opactity-85 ms-1">
                   {project.deadline}
                 </span>
               </p>
             </div>
 
-            <div className="d-flex d-lg-block d-xl-flex justify-content-between align-items-center mt-3">
-              <div className="d-flex gap-1">
+            <div className="flex d-lg-block d-xl-flex justify-content-between align-items-center mt-3">
+              <div className="flex gap-1">
                 <Avatar.Group total={project.assigness.length} size="m">
                   {project.assigness.slice(0, 4).map(assigne => (
                     <AvatarDropdown user={assigne} size="m" key={assigne.id} />
@@ -111,9 +111,9 @@ const CardViewItem = ({ project }: { project: Project }) => {
               <div className="mt-lg-3 mt-xl-0">
                 <FontAwesomeIcon icon={faListCheck} className="me-1" />
 
-                <p className="d-inline-block fw-bold mb-0">
+                <p className="d-inline-block font-bold mb-0">
                   {project.task}
-                  <span className="fw-normal"> Task</span>
+                  <span className="font-normal"> Task</span>
                 </p>
               </div>
             </div>

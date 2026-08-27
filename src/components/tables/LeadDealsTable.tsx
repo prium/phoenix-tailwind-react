@@ -61,7 +61,7 @@ const columns: ColumnDef<LeadDeal>[] = [
         className: 'text-end pe-6'
       },
       cellProps: {
-        className: 'text-start fw-bold text-body-tertiary text-end pe-6'
+        className: 'text-start font-bold text-subtle text-end pe-6'
       }
     }
   },
@@ -97,7 +97,7 @@ const columns: ColumnDef<LeadDeal>[] = [
     },
     meta: {
       headerProps: { style: { minWidth: 100, width: '20%' } },
-      cellProps: { className: 'text-body-tertiary fw-semibold' }
+      cellProps: { className: 'text-subtle font-semibold' }
     }
   },
   {
@@ -108,7 +108,7 @@ const columns: ColumnDef<LeadDeal>[] = [
         style: { minWidth: 120, width: '15%' },
         className: 'text-end'
       },
-      cellProps: { className: 'text-body-tertiary text-center' }
+      cellProps: { className: 'text-subtle text-center' }
     }
   },
   {
@@ -124,7 +124,7 @@ const columns: ColumnDef<LeadDeal>[] = [
         style: { minWidth: 140, width: '15%' },
         className: 'text-end'
       },
-      cellProps: { className: 'text-end fw-semibold' }
+      cellProps: { className: 'text-end font-semibold' }
     }
   },
   {
@@ -157,7 +157,7 @@ const LeadDealsTable = () => {
     <div>
       <AdvanceTableProvider {...table}>
         <div className="border-y border-light">
-          <AdvanceTable tableProps={{ className: 'phoenix-table fs-9' }} />
+          <AdvanceTable tableProps={{ className: ' text-md' }} />
           <AdvanceTableFooter pagination />
         </div>
       </AdvanceTableProvider>

@@ -5,7 +5,7 @@ import { Outlet } from 'react-router';
 const Chat = () => {
   return (
     <ChatProvider conversations={conversations}>
-      <div className="chat d-flex gap-3">
+      <div className="chat flex gap-3">
         <Outlet />
       </div>
     </ChatProvider>

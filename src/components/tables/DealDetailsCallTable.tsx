@@ -38,7 +38,7 @@ const columns: ColumnDef<CallTableDataType>[] = [
         style: { width: '20%', minWidth: '100px' },
         className: 'pe-3 ps-0'
       },
-      cellProps: { className: 'white-space-nowrap py-2 ps-0' }
+      cellProps: { className: 'whitespace-nowrap py-2 ps-0' }
     }
   },
   {
@@ -52,7 +52,7 @@ const columns: ColumnDef<CallTableDataType>[] = [
       },
       cellProps: {
         className:
-          'white-space-nowrap text-start fw-bold text-body-tertiary py-2 pe-6'
+          'whitespace-nowrap text-start font-bold text-subtle py-2 pe-6'
       }
     }
   },
@@ -66,7 +66,7 @@ const columns: ColumnDef<CallTableDataType>[] = [
         className: 'text-start'
       },
       cellProps: {
-        className: 'white-space-nowrap text-body text-end'
+        className: 'whitespace-nowrap text-default text-end'
       }
     }
   },
@@ -80,7 +80,7 @@ const columns: ColumnDef<CallTableDataType>[] = [
         className: 'text-start'
       },
       cellProps: {
-        className: 'white-space-nowrap fw-semibold text-body-highlight'
+        className: 'whitespace-nowrap font-semibold text-highlight'
       }
     }
   },
@@ -108,7 +108,7 @@ const columns: ColumnDef<CallTableDataType>[] = [
         className: 'ps-0 text-end'
       },
       cellProps: {
-        className: 'white-space-nowrap fw-semibold text-body-highlight'
+        className: 'whitespace-nowrap font-semibold text-highlight'
       }
     }
   },
@@ -145,7 +145,7 @@ const DealDetailsCallTable = () => {
     <div>
       <AdvanceTableProvider {...table}>
         <div className="border-y border-light">
-          <AdvanceTable tableProps={{ className: 'phoenix-table fs-9' }} />
+          <AdvanceTable tableProps={{ className: ' text-md' }} />
           <AdvanceTableFooter pagination />
         </div>
       </AdvanceTableProvider>

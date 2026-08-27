@@ -13,7 +13,7 @@ const PortfolioMainContent = () => {
       <Row className="g-4">
         <Col xs={12}>
           <h4>My Portfolio</h4>
-          <p className="text-body-tertiary mb-0">
+          <p className="text-subtle mb-0">
             Brief summary of all projects
           </p>
         </Col>

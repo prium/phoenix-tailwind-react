@@ -28,7 +28,7 @@ const borderColorCode = `
   <span className="border border-success"></span>
   <span className="border border-warning"></span>
   <span className="border border-danger"></span>
-  <span className="border border-translucent"></span>
+  <span className="border border-light"></span>
   <div className="w-100"></div>
   <span className="border border-black"></span>
   <span className="border border-dark"></span>
@@ -67,7 +67,7 @@ const borderRadiusCode = `
   <span className="rounded-2"></span>
   <span className="rounded-3"></span>
   <span className="rounded-circle"></span>
-  <span className="rounded-pill" style={{ height:'75px',width:'150px' }}></span>
+  <span className="rounded-full" style={{ height:'75px',width:'150px' }}></span>
 </div>`;
 
 const borderStyleCode = `

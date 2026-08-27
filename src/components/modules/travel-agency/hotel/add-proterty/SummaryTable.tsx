@@ -25,7 +25,7 @@ const SummaryTable = (props: SummaryTableProp) => {
                 'pb-0 border-bottom-0': index === tableItems.length - 1
               })}
             >
-              <h5 className="fw-semibold text-body-highlight mb-0">
+              <h5 className="font-semibold text-highlight mb-0">
                 {item.property}
               </h5>
             </td>
@@ -41,7 +41,7 @@ const SummaryTable = (props: SummaryTableProp) => {
                 'pb-0 border-bottom-0': index === tableItems.length - 1
               })}
             >
-              <p className="mb-0 text-body-secondary">{item.value}</p>
+              <p className="mb-0 text-muted">{item.value}</p>
             </td>
           </tr>
         ))}

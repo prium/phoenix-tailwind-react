@@ -43,26 +43,26 @@ const CompareRoomDetails = ({
         </thead>
         <tbody>
           <tr>
-            <td colSpan={4} className="ps-4 pt-4 pb-3 fw-bold">
+            <td colSpan={4} className="ps-4 pt-4 pb-3 font-bold">
               Accommodation
             </td>
           </tr>
           <tr>
-            <td className="px-4 align-middle border-end-lg border-translucent bg-body-highlight">
-              <h6 className="text-body fw-bolder text-uppercase mb-0">
+            <td className="px-4 align-middle border-end-lg border-light bg-subtle">
+              <h6 className="text-default font-black text-uppercase mb-0">
                 room type
               </h6>
             </td>
             {hotelInfo.map((info, index) =>
               info.rooms.map(item => (
                 <td
-                  className={classNames('border-translucent px-3', {
+                  className={classNames('border-light px-3', {
                     'border-end-lg': index === hotelInfo.length - 1,
                     'border-end': index !== hotelInfo.length - 1
                   })}
                   key={item.id}
                 >
-                  <div className="d-flex flex-wrap flex-between-center gap-2">
+                  <div className="flex flex-wrap flex-between-center gap-2">
                     <h4 className="mb-0">{item.type}</h4>
                     <Button
                       variant="phoenix-primary"
@@ -76,26 +76,26 @@ const CompareRoomDetails = ({
             )}
           </tr>
           <tr>
-            <td className="px-4 align-middle border-end-lg border-translucent bg-body-highlight">
-              <h6 className="text-body fw-bolder text-uppercase mb-0">
+            <td className="px-4 align-middle border-end-lg border-light bg-subtle">
+              <h6 className="text-default font-black text-uppercase mb-0">
                 room price
               </h6>
             </td>
             {hotelInfo.map((info, index) =>
               info.rooms.map(item => (
                 <td
-                  className={classNames('border-translucent px-3', {
+                  className={classNames('border-light px-3', {
                     'border-end-lg': index === hotelInfo.length - 1,
                     'border-end': index !== hotelInfo.length - 1
                   })}
                   key={item.id}
                 >
-                  <h3 className="d-flex align-items-center gap-2">
-                    <span className="fs-9 text-body-quaternary fw-normal text-decoration-line-through">
+                  <h3 className="flex align-items-center gap-2">
+                    <span className="text-md text-soft font-normal text-decoration-line-through">
                       {currencyFormat(item.price)}
                     </span>
                     {currencyFormat(item.discountPrice)}
-                    <span className="fs-9 fw-bold">/ night</span>
+                    <span className="text-md font-bold">/ night</span>
                   </h3>
                   <p className="mb-0">Inclusive of all taxes and fees</p>
                 </td>
@@ -103,15 +103,15 @@ const CompareRoomDetails = ({
             )}
           </tr>
           <tr>
-            <td className="px-4 align-middle border-end-lg border-translucent bg-body-highlight">
-              <h6 className="text-body fw-bolder text-uppercase mb-0">
+            <td className="px-4 align-middle border-end-lg border-light bg-subtle">
+              <h6 className="text-default font-black text-uppercase mb-0">
                 room picture
               </h6>
             </td>
             {hotelInfo.map((info, index) =>
               info.rooms.map(item => (
                 <td
-                  className={classNames('border-translucent px-3', {
+                  className={classNames('border-light px-3', {
                     'border-end-lg': index === hotelInfo.length - 1,
                     'border-end': index !== hotelInfo.length - 1
                   })}
@@ -140,8 +140,8 @@ const CompareRoomDetails = ({
             )}
           </tr>
           <tr>
-            <td className="px-4 align-middle border-end-lg border-translucent bg-body-highlight">
-              <h6 className="text-body fw-bolder text-uppercase mb-0">
+            <td className="px-4 align-middle border-end-lg border-light bg-subtle">
+              <h6 className="text-default font-black text-uppercase mb-0">
                 room details
               </h6>
             </td>
@@ -149,12 +149,12 @@ const CompareRoomDetails = ({
               info.rooms.map(item => (
                 <td
                   key={item.id}
-                  className={classNames('border-translucent px-3', {
+                  className={classNames('border-light px-3', {
                     'border-end-lg': index === hotelInfo.length - 1,
                     'border-end': index !== hotelInfo.length - 1
                   })}
                 >
-                  <h6 className="fw-semibold text-body-highlight mb-2">
+                  <h6 className="font-semibold text-highlight mb-2">
                     <FontAwesomeIcon
                       icon={faBed}
                       className="me-2 text-primary"
@@ -164,7 +164,7 @@ const CompareRoomDetails = ({
                     })}
                     &nbsp;Double Bed
                   </h6>
-                  <h6 className="fw-semibold text-body-highlight mb-2">
+                  <h6 className="font-semibold text-highlight mb-2">
                     <FontAwesomeIcon
                       icon={faUser}
                       className="me-2 text-primary"
@@ -174,7 +174,7 @@ const CompareRoomDetails = ({
                     })}
                     &nbsp;Adults
                   </h6>
-                  <h6 className="fw-semibold text-body-highlight mb-2">
+                  <h6 className="font-semibold text-highlight mb-2">
                     <FontAwesomeIcon
                       icon={faBaby}
                       className="me-2 text-primary"
@@ -184,7 +184,7 @@ const CompareRoomDetails = ({
                     })}
                     &nbsp;Child
                   </h6>
-                  <h6 className="fw-semibold text-body-highlight">
+                  <h6 className="font-semibold text-highlight">
                     <FontAwesomeIcon
                       icon={faBath}
                       className="me-2 text-primary"
@@ -199,7 +199,7 @@ const CompareRoomDetails = ({
             )}
           </tr>
           <tr>
-            <td className="pt-4 pb-3 ps-4 fw-bold" colSpan={4}>
+            <td className="pt-4 pb-3 ps-4 font-bold" colSpan={4}>
               Popular Amenities
             </td>
           </tr>

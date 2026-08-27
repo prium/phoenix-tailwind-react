@@ -73,7 +73,7 @@ const StockDetailsOptionChain = () => {
               <button
                 className={classNames(
                   item.className,
-                  'nav-link w-100 fs-9 lh-sm text-center'
+                  'nav-link w-100 text-md lh-sm text-center'
                 )}
               >
                 {item.date}

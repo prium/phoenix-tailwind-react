@@ -17,11 +17,11 @@ const TripHomepageTripList = ({ tripItems }: TripHomepageTripListProps) => {
             <TripShowcaseItem key={item.id} showcaseItem={item} />
           ))}
         </Row>
-        <div className="mt-5 position-relative text-center">
-          <hr className="m-0 position-absolute top-50 translate-middle-y w-100" />
+        <div className="mt-5 relative text-center">
+          <hr className="m-0 absolute top-50 translate-middle-y w-100" />
           <Button
             variant="phoenix-secondary"
-            className="rounded-pill position-relative"
+            className="rounded-full relative"
           >
             Show more
           </Button>

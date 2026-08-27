@@ -79,8 +79,8 @@ const RoomFilterOffcanvasContent = ({
 
   return (
     <div className="pe-1">
-      <div className="d-flex align-items-center">
-        <h3 className="text-body-highlight">Filters</h3>
+      <div className="flex align-items-center">
+        <h3 className="text-highlight">Filters</h3>
         <Button
           variant="phoenix-secondary"
           className="px-3 ms-auto me-2 me-xl-0"
@@ -89,7 +89,7 @@ const RoomFilterOffcanvasContent = ({
           {allExpanded ? 'Expand' : 'Collapse'} all
         </Button>
         <Button
-          className="p-0 fw-bold d-xl-none"
+          className="p-0 font-bold d-xl-none"
           onClick={() => setOpen && setOpen(false)}
         >
           <Unicon fill='currentColor' icon={UilTimes} size={16} />
@@ -178,7 +178,7 @@ const RoomFilterOffcanvasContent = ({
         <RoomFilterSearch items={amenitiesOptions} />
       </RoomFilterCollapseItem>
 
-      <div className="sticky-bottom bg-body pt-4 pb-4 pb-xl-0">
+      <div className="sticky-bottom bg-default pt-4 pb-4 pb-xl-0">
         <Button variant="phoenix-secondary" className="me-2">
           Reset
         </Button>

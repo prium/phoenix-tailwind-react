@@ -40,7 +40,7 @@ const DealsAddStageModal = ({ show, handleClose }: DealsAddStageModalProps) => {
     <Modal show={show} onHide={handleClose} centered contentClassName="border">
       <Form onSubmit={handleSubmit}>
         <Modal.Header className="border-0 p-5">
-          <h5 className="modal-title text-body-highlight fs-6 lh-sm">
+          <h5 className="modal-title text-highlight text-xl lh-sm">
             Create New Stage
           </h5>
           <Button
@@ -82,7 +82,7 @@ const DealsAddStageModal = ({ show, handleClose }: DealsAddStageModalProps) => {
             />
           </Form.Group>
         </Modal.Body>
-        <Modal.Footer className="d-flex justify-content-end align-items-center border-0 p-5">
+        <Modal.Footer className="flex justify-content-end align-items-center border-0 p-5">
           <Button
             variant="link"
             className="px-4 m-0 text-danger"

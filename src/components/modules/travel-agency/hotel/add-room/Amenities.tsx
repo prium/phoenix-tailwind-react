@@ -33,12 +33,12 @@ const Amenities = () => {
               <FontAwesomeIcon
                 icon={faSearch}
                 transform="down-2"
-                className="position-absolute text-body-quaternary fs-9 end-0 top-0 mt-3 me-3"
+                className="absolute text-soft text-md end-0 top-0 mt-3 me-3"
               />
             </div>
           </Col>
           <Col sm="auto">
-            <Button variant="phoenix-primary" className="w-100 h-100 fs-8">
+            <Button variant="phoenix-primary" className="w-100 h-100 text-base">
               <FontAwesomeIcon icon={faPlus} className="me-2" />
               Add amenity
             </Button>
@@ -60,7 +60,7 @@ const Amenities = () => {
               <span className="circle-icon-item me-3">
                 <FontAwesomeIcon icon={item.icon} />
               </span>
-              <span className="flex-1 text-body-highlight">{item.title}</span>
+              <span className="flex-1 text-highlight">{item.title}</span>
             </Accordion.Button>
             <Accordion.Body className="ms-md-9">
               {item.innerItems.map((item, index) => (

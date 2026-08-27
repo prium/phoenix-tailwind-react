@@ -63,7 +63,7 @@ const GanttChartActions = ({
     <>
       <div className="gantt-header p-4 px-lg-6 py-sm-3">
         <Row className="gx-0 gy-3 justify-content-between">
-          <Col md="auto" className="d-flex align-items-center">
+          <Col md="auto" className="flex align-items-center">
             <h3 className="mb-0">Gantt Chart</h3>
             <Button
               className="btn-sm ms-auto ms-md-3"
@@ -86,9 +86,9 @@ const GanttChartActions = ({
                 />
               </Col>
 
-              <Col className="d-flex align-items-center ms-sm-auto" xs="auto">
+              <Col className="flex align-items-center ms-sm-auto" xs="auto">
                 <div
-                  className="border-start d-none d-md-inline ms-md-3"
+                  className="border-start hidden d-md-inline ms-md-3"
                   style={{ height: '20px', width: '2px' }}
                 />
                 <FormCheck
@@ -122,30 +122,30 @@ const GanttChartActions = ({
               </Col>
 
               <Col
-                className="d-flex align-items-center ms-auto ms-sm-3"
+                className="flex align-items-center ms-auto ms-sm-3"
                 xs="auto"
               >
                 <div
-                  className="border-start d-none d-sm-inline me-3"
+                  className="border-start hidden d-sm-inline me-3"
                   style={{ height: '20px', width: '2px' }}
                 />
                 <Button
                   variant="link"
                   size="sm"
-                  className="text-body px-0 text-nowrap ms-n1"
+                  className="text-default px-0 text-nowrap ms-n1"
                   onClick={() => setShowFilter(true)}
                 >
-                  <FontAwesomeIcon icon={faFilter} className="fs-9" />
-                  <span className="d-none d-xl-inline ms-2">Filter</span>
+                  <FontAwesomeIcon icon={faFilter} className="text-md" />
+                  <span className="hidden d-xl-inline ms-2">Filter</span>
                 </Button>
                 <Button
                   variant="link"
                   size="sm"
-                  className="text-body px-0 text-nowrap ms-3"
+                  className="text-default px-0 text-nowrap ms-3"
                   onClick={() => setShowOptions(true)}
                 >
-                  <FontAwesomeIcon icon={faGear} className="fs-9" />
-                  <span className="d-none d-xl-inline ms-2">Options</span>
+                  <FontAwesomeIcon icon={faGear} className="text-md" />
+                  <span className="hidden d-xl-inline ms-2">Options</span>
                 </Button>
               </Col>
             </Row>

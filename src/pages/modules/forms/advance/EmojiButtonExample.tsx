@@ -26,10 +26,10 @@ function EmojiButtonExample() {
   }
 
   return (
-    <div className="position-relative">
+    <div className="relative">
       <Button
         variant="primary"
-        className="fs-7"
+        className="text-lg"
         onClick={() => setPreviewEmoji(!previewEmoji)}
       >
         <FontAwesomeIcon icon={faFaceSmile} />

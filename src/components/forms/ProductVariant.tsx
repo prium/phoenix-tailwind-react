@@ -1,6 +1,5 @@
 import ReactSelect from 'components/base/ReactSelect';
-import React from 'react';
-import { Form } from 'react-bootstrap';
+import { Select } from '@hummingbirdui/react';
 import { Link } from 'react-router';
 
 interface ProductVariantProps {  
@@ -17,12 +16,12 @@ const ProductVariant = ({ title ,className }: ProductVariantProps) => {
           Remove
         </Link>
       </div>
-      <Form.Select className="mb-4">
+      <Select className="mb-4">
         <option value="size">Size</option>
         <option value="color">Color</option>
         <option value="weight">Weight</option>
         <option value="smell">Smell</option>
-      </Form.Select>
+      </Select>
       <ReactSelect
         options={[
           { value: '4x6 in', label: '4x6 in' },

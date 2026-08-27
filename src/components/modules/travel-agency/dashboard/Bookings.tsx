@@ -26,7 +26,7 @@ const Bookings = () => {
     <Card className="h-100">
       <Card.Header className="pb-3 d-sm-flex d-xl-block d-xxl-flex justify-content-between align-items-start">
         <div>
-          <h3 className="text-body-highlight">Bookings</h3>
+          <h3 className="text-highlight">Bookings</h3>
           <p className="mb-0">Completed and canceled bookings</p>
         </div>
         <Form.Select

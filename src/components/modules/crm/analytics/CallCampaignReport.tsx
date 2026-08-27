@@ -9,10 +9,10 @@ const CallCampaignReport = () => {
       <Row className="justify-content-between mb-4">
         <Col xs={12}>
           <h3>Call Campaign Reports</h3>
-          <p className="text-body-tertiary">All call campaigns succeeded.</p>
+          <p className="text-subtle">All call campaigns succeeded.</p>
         </Col>
         <Col xs={12}>
-          <div className="d-flex">
+          <div className="flex">
             <FontAwesomeIcon icon={faCircle} className="text-primary me-2" />
             <h6 className="mb-0 me-3 lh-base">Campaign</h6>
           </div>

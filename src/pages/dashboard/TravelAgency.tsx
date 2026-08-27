@@ -20,7 +20,7 @@ const TravelAgency = () => {
           <h2> Travel Agency </h2>
         </Col>
         <Col xs="auto">
-          <div className="d-flex gap-3">
+          <div className="flex gap-3">
             <Link to="#!" className="btn btn-phoenix-primary">
               <FontAwesomeIcon icon={faPlus} className="me-2" />
               New Package
@@ -66,7 +66,7 @@ const TravelAgency = () => {
           <Bookings />
         </Col>
       </Row>
-      <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 pb-9 bg-body-emphasis border-top">
+      <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 pb-9 bg-soft border-top">
         <Flights />
       </div>
     </>

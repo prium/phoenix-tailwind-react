@@ -65,7 +65,7 @@ export const productsTablecolumns: ColumnDef<ProductsTableProductType>[] = [
     },
     meta: {
       headerProps: { style: { width: 150 }, className: 'ps-4 text-end' },
-      cellProps: { className: 'fw-bold ps-4 text-body-tertiary text-end' }
+      cellProps: { className: 'font-bold ps-4 text-subtle text-end' }
     }
   },
   {
@@ -74,7 +74,7 @@ export const productsTablecolumns: ColumnDef<ProductsTableProductType>[] = [
     meta: {
       headerProps: { style: { width: 150 }, className: 'ps-4' },
       cellProps: {
-        className: 'fs-9 fw-semibold ps-4 text-body-tertiary text-opacity-85'
+        className: 'text-md font-semibold ps-4 text-subtle text-opacity-85'
       }
     }
   },
@@ -119,7 +119,7 @@ export const productsTablecolumns: ColumnDef<ProductsTableProductType>[] = [
     },
     meta: {
       headerProps: { style: { width: 200 }, className: 'ps-4' },
-      cellProps: { className: 'ps-4 fw-semibold text-start' }
+      cellProps: { className: 'ps-4 font-semibold text-start' }
     }
   },
   {
@@ -127,7 +127,7 @@ export const productsTablecolumns: ColumnDef<ProductsTableProductType>[] = [
     header: 'Published on',
     meta: {
       headerProps: { style: { width: 50 }, className: 'ps-4' },
-      cellProps: { className: 'text-body-tertiary text-opacity-85 ps-4' }
+      cellProps: { className: 'text-subtle text-opacity-85 ps-4' }
     }
   },
   {
@@ -149,7 +149,7 @@ export const productsTablecolumns: ColumnDef<ProductsTableProductType>[] = [
 const ProductsTable = () => {
   return (
     <div>
-      <AdvanceTable tableProps={{ className: 'phoenix-table fs-9' }} />
+      <AdvanceTable tableProps={{ className: ' text-md' }} />
       <AdvanceTableFooter pagination />
     </div>
   );

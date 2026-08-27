@@ -27,14 +27,14 @@ const SettingsSocial = () => {
               />
               <label
                 htmlFor="facebook"
-                className="form-icon-label text-body-tertiary"
+                className="form-icon-label text-subtle"
               >
                 FACEBOOK
               </label>
             </Form.Floating>
             <FontAwesomeIcon
               icon={faFacebook}
-              className="text-body fs-9 form-icon"
+              className="text-default text-md form-icon"
             />
           </div>
         </Col>
@@ -49,14 +49,14 @@ const SettingsSocial = () => {
               />
               <label
                 htmlFor="twitter"
-                className="form-icon-label text-body-tertiary"
+                className="form-icon-label text-subtle"
               >
                 TWITTER
               </label>
             </Form.Floating>
             <FontAwesomeIcon
               icon={faTwitter}
-              className="text-body fs-9 form-icon"
+              className="text-default text-md form-icon"
             />
           </div>
         </Col>
@@ -71,14 +71,14 @@ const SettingsSocial = () => {
               />
               <label
                 htmlFor="linkedin"
-                className="form-icon-label text-body-tertiary"
+                className="form-icon-label text-subtle"
               >
                 LINKEDIN
               </label>
             </Form.Floating>
             <FontAwesomeIcon
               icon={faLinkedin}
-              className="text-body fs-9 form-icon"
+              className="text-default text-md form-icon"
             />
           </div>
         </Col>
@@ -93,14 +93,14 @@ const SettingsSocial = () => {
               />
               <label
                 htmlFor="youtube"
-                className="form-icon-label text-body-tertiary"
+                className="form-icon-label text-subtle"
               >
                 YOUTUBE
               </label>
             </Form.Floating>
             <FontAwesomeIcon
               icon={faYoutube}
-              className="text-body fs-9 form-icon"
+              className="text-default text-md form-icon"
             />
           </div>
         </Col>
@@ -115,14 +115,14 @@ const SettingsSocial = () => {
               />
               <label
                 htmlFor="artstation"
-                className="form-icon-label text-body-tertiary"
+                className="form-icon-label text-subtle"
               >
                 ARTSTATION
               </label>
             </Form.Floating>
             <FontAwesomeIcon
               icon={faArtstation}
-              className="text-body fs-9 form-icon"
+              className="text-default text-md form-icon"
             />
           </div>
         </Col>
@@ -137,14 +137,14 @@ const SettingsSocial = () => {
               />
               <label
                 htmlFor="behance"
-                className="form-icon-label text-body-tertiary"
+                className="form-icon-label text-subtle"
               >
                 BEHANCE
               </label>
             </Form.Floating>
             <FontAwesomeIcon
               icon={faBehance}
-              className="text-body fs-9 form-icon"
+              className="text-default text-md form-icon"
             />
           </div>
         </Col>

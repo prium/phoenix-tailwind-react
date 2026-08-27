@@ -23,7 +23,7 @@ const Cta = () => {
                 }}
               />
 
-              <Card.Body className="position-relative">
+              <Card.Body className="relative">
                 <img
                   className="img-fluid mb-5 d-dark-none"
                   src={illustrations27}
@@ -36,7 +36,7 @@ const Cta = () => {
                   width={210}
                   alt="..."
                 />
-                <div className="d-flex align-items-center fw-bold justify-content-center mb-3">
+                <div className="flex align-items-center font-bold justify-content-center mb-3">
                   <p className="mb-0">2008 Premium Icons</p>
                   <FontAwesomeIcon
                     icon={faCircle}
@@ -45,12 +45,12 @@ const Cta = () => {
                   />
                   <p className="mb-0">Included FREE with it</p>
                 </div>
-                <h1 className="fs-6 fs-sm-4 fs-lg-2 fw-bolder lh-sm mb-3">
+                <h1 className="text-xl fs-sm-4 fs-lg-2 font-black lh-sm mb-3">
                   Join
                   <span className="gradient-text-primary mx-2">Phoenix</span>
                   Today
                 </h1>
-                <Form className="d-flex gap-3 justify-content-center mb-3 px-xxl-12">
+                <Form className="flex gap-3 justify-content-center mb-3 px-xxl-12">
                   <Form.Control
                     type="email"
                     placeholder="Email"

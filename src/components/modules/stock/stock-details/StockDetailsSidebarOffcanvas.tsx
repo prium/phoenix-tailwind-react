@@ -20,7 +20,7 @@ const StockDetailsSidebarOffcanvas = ({
         <Offcanvas
           show={open}
           onHide={() => setOpen(false)}
-          className="stock-offcanvas-xl bg-body-emphasis scrollbar stock-details-sidebar"
+          className="stock-offcanvas-xl bg-soft scrollbar stock-details-sidebar"
           placement="end"
           fixed
         >

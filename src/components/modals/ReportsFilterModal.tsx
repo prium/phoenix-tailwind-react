@@ -48,9 +48,9 @@ const ReportsFilterModal = ({ show, onHide }: ReportsFilterModalProps) => {
   return (
     <Modal show={show} onHide={onHide} centered>
       <Modal.Header className="p-4">
-        <h5 className="modal-title text-body-highlight fs-6 lh-sm">Filter</h5>
-        <Button className="p-1 text-body ms-auto" onClick={onHide}>
-          <FontAwesomeIcon icon={faTimes} className="fs-9" />
+        <h5 className="modal-title text-highlight text-xl lh-sm">Filter</h5>
+        <Button className="p-1 text-default ms-auto" onClick={onHide}>
+          <FontAwesomeIcon icon={faTimes} className="text-md" />
         </Button>
       </Modal.Header>
       <Modal.Body className="p-4 pb-3">
@@ -89,7 +89,7 @@ const ReportsFilterModal = ({ show, onHide }: ReportsFilterModalProps) => {
         <Button
           variant="phoenix-primary"
           size="sm"
-          className="fs-10 px-4"
+          className="text-sm px-4"
           startIcon={<FontAwesomeIcon icon={faArrowsRotate} className="me-2" />}
           onClick={handleReset}
         >
@@ -98,7 +98,7 @@ const ReportsFilterModal = ({ show, onHide }: ReportsFilterModalProps) => {
         <Button
           variant="primary"
           size="sm"
-          className="px-9 fs-10"
+          className="px-9 text-sm"
           onClick={onHide}
         >
           Done

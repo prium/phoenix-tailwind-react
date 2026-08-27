@@ -7,12 +7,12 @@ const SignUpForm = ({ layout }: { layout: 'simple' | 'card' | 'split' }) => {
   return (
     <>
       <div className="text-center mb-7">
-        <h3 className="text-body-highlight">Sign Up</h3>
-        <p className="text-body-tertiary">Create your account today</p>
+        <h3 className="text-highlight">Sign Up</h3>
+        <p className="text-subtle">Create your account today</p>
       </div>
       <AuthSocialButtons title="Sign up" />
-      <div className="position-relative mt-4">
-        <hr className="bg-body-secondary" />
+      <div className="relative mt-4">
+        <hr className="bg-muted" />
         <div className="divider-content-center">or use email</div>
       </div>
       <Form>
@@ -56,7 +56,7 @@ const SignUpForm = ({ layout }: { layout: 'simple' | 'card' | 'split' }) => {
           />
           <Form.Check.Label
             htmlFor="termsService"
-            className="fs-9 text-transform-none"
+            className="text-md normal-case"
           >
             I accept the <Link to="#!">terms </Link>and{' '}
             <Link to="#!">privacy policy</Link>
@@ -68,7 +68,7 @@ const SignUpForm = ({ layout }: { layout: 'simple' | 'card' | 'split' }) => {
         <div className="text-center">
           <Link
             to={`/pages/authentication/${layout}/sign-in`}
-            className="fs-9 fw-bold"
+            className="text-md font-bold"
           >
             Sign in to an existing account
           </Link>

@@ -13,7 +13,7 @@ const GetApp = () => {
   return (
     <section className="pb-10 pt-9">
       <div
-        className="bg-holder d-none d-xl-block"
+        className="bg-holder hidden d-xl-block"
         style={{
           backgroundImage: `url(${bgLeft33})`,
           backgroundPosition: '-8% 38px',
@@ -21,7 +21,7 @@ const GetApp = () => {
         }}
       />
       <div
-        className="bg-holder d-none d-xl-block"
+        className="bg-holder hidden d-xl-block"
         style={{
           backgroundImage: `url(${bgRight33})`,
           backgroundPosition: 'right',
@@ -29,7 +29,7 @@ const GetApp = () => {
         }}
       />
       <div className="bg-get-app" />
-      <div className="container-medium position-relative">
+      <div className="container-medium relative">
         <Row className="g-0 justify-content-center">
           <Col lg={10} xl={8} xxl={7}>
             <div className="d-md-flex align-items-center gap-5 text-center text-md-start">
@@ -46,7 +46,7 @@ const GetApp = () => {
                 className="d-light-none img-fluid"
               />
               <div className="mt-5 mt-md-0">
-                <div className="d-none d-md-block">
+                <div className="hidden d-md-block">
                   <img
                     src={spotIllustration41}
                     alt=""
@@ -60,8 +60,8 @@ const GetApp = () => {
                     className="d-light-none"
                   />
                 </div>
-                <h3 className="fw-bolder mt-4">Get The App Now</h3>
-                <p className="text-body-tertiary">
+                <h3 className="font-black mt-4">Get The App Now</h3>
+                <p className="text-subtle">
                   Designed to provide the best user experience possible to all
                   our customers with activities ranging from anything thinkable
                   to the unthinkables.

@@ -3,7 +3,7 @@ import { Nav } from 'react-bootstrap';
 
 const LeadDetailsNavbar = () => {
   return (
-    <div className="pt-3 pb-4 px-0 sticky-top bg-body nav-underline-scrollspy z-5">
+    <div className="pt-3 pb-4 px-0 sticky-top bg-default nav-underline-scrollspy z-5">
       <Nav className="nav-underline">
         <Nav.Item>
           <ScrollSpy.NavLink className="pt-0" href="#tasks">

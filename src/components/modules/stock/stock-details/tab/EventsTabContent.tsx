@@ -12,8 +12,8 @@ const EventsTabContent = ({ eventLists }: { eventLists: EventLists }) => {
     <>
       <Row className="g-3 g-md-5 flex-between-center mb-3">
         <Col xs="auto">
-          <h4 className="fw-bolder">Upcoming Events</h4>
-          <p className="mb-0 text-body-tertiary">
+          <h4 className="font-black">Upcoming Events</h4>
+          <p className="mb-0 text-subtle">
             Brief summary of all projects
           </p>
         </Col>
@@ -38,7 +38,7 @@ const EventsTabContent = ({ eventLists }: { eventLists: EventLists }) => {
         <Col xs={6}>
           <h4 className="mb-0">Previous Events</h4>
         </Col>
-        <Col xs={6} className="d-flex flex-end-center">
+        <Col xs={6} className="flex flex-end-center">
           <DatePicker
             placeholder="dd/mm/yyyy"
             className="form-control-sm pe-5"

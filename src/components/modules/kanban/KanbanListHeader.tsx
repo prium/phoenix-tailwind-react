@@ -96,7 +96,7 @@ const KanbanListHeader = ({
   return (
     <div className="kanban-column-header px-4 hover-actions-trigger">
       <div
-        className={`d-flex align-items-center border-bottom border-3 py-3`}
+        className={`flex align-items-center border-bottom border-3 py-3`}
         style={
           {
             '--phoenix-border-color': list.borderColor
@@ -117,7 +117,7 @@ const KanbanListHeader = ({
           </Dropdown.Toggle>
 
           <Dropdown.Menu
-            className="py-2 border-translucent"
+            className="py-2 border-light"
             style={{ width: '15rem' }}
           >
             {kanbanHeaderActions.map(action => (
@@ -128,11 +128,11 @@ const KanbanListHeader = ({
                   <Dropdown.Item
                     href="#!"
                     key={action.label}
-                    className="d-flex flex-between-center"
+                    className="flex flex-between-center"
                   >
                     {action.label}
                     {action.isNested && (
-                      <FontAwesomeIcon icon={faAngleRight} className="fs-10" />
+                      <FontAwesomeIcon icon={faAngleRight} className="text-sm" />
                     )}
                   </Dropdown.Item>
                 )}

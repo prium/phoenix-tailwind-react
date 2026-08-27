@@ -362,7 +362,7 @@ export const kanbanActions = [
 export const kanbanActivities = [
   {
     id: '1',
-    task: '<span class="fw-bold"> Alfen Loebe </span> Moved the task <a href="#!">"the standard chunk" </a>from <span class="fw-bold">Doing</span> to <span class="fw-bold">To Do</span>',
+    task: '<span class="font-bold"> Alfen Loebe </span> Moved the task <a href="#!">"the standard chunk" </a>from <span class="font-bold">Doing</span> to <span class="font-bold">To Do</span>',
     time: '10:41 AM',
     date: 'August 7,2022',
     icon: faRandom,
@@ -370,7 +370,7 @@ export const kanbanActivities = [
   },
   {
     id: '2',
-    task: '<span class="fw-bold"> Jessie Samson </span> Attached image3.png to the task <a href="#!">"the standard chunk" </a>',
+    task: '<span class="font-bold"> Jessie Samson </span> Attached image3.png to the task <a href="#!">"the standard chunk" </a>',
     time: '10:41 AM',
     date: 'August 7,2022',
     icon: faPaperclip,
@@ -378,7 +378,7 @@ export const kanbanActivities = [
   },
   {
     id: '3',
-    task: '<span class="fw-bold"> Alfen Loebe </span> Moved the task <a href="#!">"the standard chunk" </a>from <span class="fw-bold">Doing</span> to <span class="fw-bold">To Do</span>',
+    task: '<span class="font-bold"> Alfen Loebe </span> Moved the task <a href="#!">"the standard chunk" </a>from <span class="font-bold">Doing</span> to <span class="font-bold">To Do</span>',
     time: '10:41 AM',
     date: 'August 7,2022',
     icon: faPlus,
@@ -386,7 +386,7 @@ export const kanbanActivities = [
   },
   {
     id: '4',
-    task: '<span class="fw-bold"> Alfen Loebe </span> Moved the task <a href="#!">"the standard chunk" </a>from <span class="fw-bold">Doing</span> to <span class="fw-bold">To Do</span>',
+    task: '<span class="font-bold"> Alfen Loebe </span> Moved the task <a href="#!">"the standard chunk" </a>from <span class="font-bold">Doing</span> to <span class="font-bold">To Do</span>',
     time: '10:41 AM',
     date: 'August 7,2022',
     icon: faRandom,
@@ -460,7 +460,7 @@ export const yourBoards: KanbanBoard[] = [
     id: 7,
     title: 'Phoenix Kanban',
     category: 'Project Management',
-    // boardClass: 'bg-body-secondary',
+    // boardClass: 'bg-muted',
     totalTasks: 43,
     comments: 22,
     deadlines: 17,

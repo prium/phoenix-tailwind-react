@@ -24,27 +24,27 @@ const TripDetailsOverview = ({ tripOverview }: TripDetailsOverviewProps) => {
   const [modalShow, setModalShow] = useState(false);
   return (
     <>
-      <div className="d-flex flex-wrap align-items-center gap-3">
+      <div className="flex flex-wrap align-items-center gap-3">
         <h2 className="me-3">
           {currencyFormat(tripOverview.cost)}{' '}
-          <span className="fs-8 fw-semibold text-body-tertiary align-middle">
+          <span className="text-base font-semibold text-subtle align-middle">
             / per person
           </span>
         </h2>
         <div className="me-3">
           <GenerateStar
             filledStars={tripOverview.totalRate}
-            className="me-1 fs-9"
+            className="me-1 text-md"
           />
-          <span className="fw-semibold text-body-tertiary">
+          <span className="font-semibold text-subtle">
             ( {numberFormat(tripOverview.totalReviews, 'standard')} reviews )
           </span>
         </div>
-        <h5 className="fw-semibold text-body-tertiary me-3">
-          <span className="p-2 d-inline-flex bg-danger-subtle rounded-pill me-2">
+        <h5 className="font-semibold text-subtle me-3">
+          <span className="p-2 d-inline-flex bg-danger-subtle rounded-full me-2">
             <FontAwesomeIcon
               icon={faHeart}
-              className="fs-9 text-danger-light"
+              className="text-md text-danger-light"
               transform="down-1"
             />
           </span>
@@ -59,22 +59,22 @@ const TripDetailsOverview = ({ tripOverview }: TripDetailsOverviewProps) => {
           Check availability
         </Button>
       </div>
-      <div className="p-4 bg-body-highlight rounded-2 mt-3 mb-5">
+      <div className="p-4 bg-subtle rounded-2 mt-3 mb-5">
         <Row className="gy-4">
           <Col md={4} lg={3} className="border-end-md">
-            <h6 className="text-body fw-semibold mb-2">
+            <h6 className="text-default font-semibold mb-2">
               <FontAwesomeIcon icon={faLocationDot} className="me-2" />
               {tripOverview.tripLocation}
             </h6>
-            <h6 className="text-body fw-semibold mb-2">
+            <h6 className="text-default font-semibold mb-2">
               <FontAwesomeIcon icon={faClock} className="me-2" />
               {tripOverview.tripDuration}
             </h6>
-            <h6 className="text-body fw-semibold mb-4">
+            <h6 className="text-default font-semibold mb-4">
               <FontAwesomeIcon icon={faUser} className="me-2" />
               From {tripOverview.minPeoples} to {tripOverview.maxPeoples} people
             </h6>
-            <div className="d-flex flex-wrap">
+            <div className="flex flex-wrap">
               {tripOverview.tripTags.map(tag => (
                 <Link key={tag} to="#!" className="me-2">
                   <Badge variant="phoenix" bg="secondary">
@@ -85,7 +85,7 @@ const TripDetailsOverview = ({ tripOverview }: TripDetailsOverviewProps) => {
             </div>
           </Col>
           <Col md={8} lg={9} className="ps-lg-7">
-            <h4 className="text-body mb-3">Overview</h4>
+            <h4 className="text-default mb-3">Overview</h4>
             <p className="mb-0">
               <TextTruncate text={tripOverview.description} maxLength={313} />
             </p>

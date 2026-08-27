@@ -34,7 +34,7 @@ const ExtraBed = () => {
 
   return (
     <>
-      <div className="d-flex align-items-center gap-2 mt-7">
+      <div className="flex align-items-center gap-2 mt-7">
         <h4>Extra bed option</h4>
         <Form.Check
           inline
@@ -47,7 +47,7 @@ const ExtraBed = () => {
           defaultChecked={open}
         />
       </div>
-      <p className="fs-9 text-body-tertiary mb-0">Can you provide extra bed</p>
+      <p className="text-md text-subtle mb-0">Can you provide extra bed</p>
       <Collapse in={open}>
         <div>
           <div className="mt-4">
@@ -59,7 +59,7 @@ const ExtraBed = () => {
                   </Form.Label>
                   <InputGroup className="gap-2">
                     <Button
-                      className="border rounded px-3 bg-body-emphasis bg-body-hover lh-1"
+                      className="border rounded px-3 bg-soft hover:bg-default lh-1"
                       onClick={() => handleCount('decrease')}
                     >
                       <FontAwesomeIcon icon={faMinus} />
@@ -72,7 +72,7 @@ const ExtraBed = () => {
                       className="input-spin-none rounded text-center"
                     />
                     <Button
-                      className="border rounded px-3 bg-body-emphasis bg-body-hover lh-1"
+                      className="border rounded px-3 bg-soft hover:bg-default lh-1"
                       onClick={() => handleCount('increase')}
                     >
                       <FontAwesomeIcon icon={faPlus} />

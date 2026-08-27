@@ -33,7 +33,7 @@ export const dealsReportColumns: ColumnDef<DealsReport>[] = [
         className: 'pe-5 text-nowrap'
       },
       cellProps: {
-        className: 'white-space-nowrap pe-5'
+        className: 'whitespace-nowrap pe-5'
       }
     }
   },
@@ -55,7 +55,7 @@ export const dealsReportColumns: ColumnDef<DealsReport>[] = [
         style: { minWidth: 50 },
         className: 'pe-5 text-nowrap'
       },
-      cellProps: { className: 'white-space-nowrap pe-5 py-0' }
+      cellProps: { className: 'whitespace-nowrap pe-5 py-0' }
     }
   },
   {
@@ -67,7 +67,7 @@ export const dealsReportColumns: ColumnDef<DealsReport>[] = [
         className: 'text-nowrap'
       },
       cellProps: {
-        className: 'white-space-nowrap fw-semibold text-body'
+        className: 'whitespace-nowrap font-semibold text-default'
       }
     }
   },
@@ -95,7 +95,7 @@ export const dealsReportColumns: ColumnDef<DealsReport>[] = [
       },
       cellProps: {
         style: { paddingTop: 1, paddingBottom: 1 },
-        className: 'white-space-nowrap fw-bold text-body pe-5 overflow-hidden'
+        className: 'whitespace-nowrap font-bold text-default pe-5 overflow-hidden'
       }
     }
   },
@@ -124,7 +124,7 @@ export const dealsReportColumns: ColumnDef<DealsReport>[] = [
         style: { minWidth: 50 },
         className: 'ps-4 pe-5'
       },
-      cellProps: { className: 'white-space-nowrap fw-bold ps-4 text-body' }
+      cellProps: { className: 'whitespace-nowrap font-bold ps-4 text-default' }
     }
   },
 
@@ -151,7 +151,7 @@ const DealsReportTable = () => {
     <div>
       <div className="border-t border-light">
         <AdvanceTable
-          tableProps={{ size: 'sm', className: 'phoenix-table fs-9' }}
+          tableProps={{ size: 'sm', className: ' text-md' }}
         />
         <AdvanceTableFooter pagination className="pt-4" />
       </div>

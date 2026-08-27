@@ -9,7 +9,7 @@ import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 const phoenixButtonsCode = `
 import Button from 'components/base/Button';
 
-<div className='d-flex gap-2'>
+<div className='flex gap-2'>
   <Button variant='phoenix-primary'> Primary </Button>
   <Button variant='phoenix-secondary'> Secondary </Button>
   <Button variant='phoenix-success'> Success </Button>
@@ -22,7 +22,7 @@ import Button from 'components/base/Button';
 const solidButtonsCode = `
 import Button from 'components/base/Button';
 
-<div className='d-flex gap-2'>
+<div className='flex gap-2'>
   <Button variant='primary'> Primary </Button>
   <Button variant='secondary'> Secondary </Button>
   <Button variant='success'> Success </Button>
@@ -36,7 +36,7 @@ import Button from 'components/base/Button';
 const subtleButtonsCode = `
 import Button from 'components/base/Button';
 
-<div className="d-flex gap-2">
+<div className="flex gap-2">
   <Button variant="subtle-primary"> Primary </Button>
   <Button variant="subtle-secondary"> Secondary </Button>
   <Button variant="subtle-success"> Success </Button>
@@ -49,7 +49,7 @@ import Button from 'components/base/Button';
 const outlineButtonsCode = `
 import Button from 'components/base/Button';
 
-<div className="d-flex  gap-2">
+<div className="flex  gap-2">
   <Button variant="outline-primary"> Primary </Button>
   <Button variant="outline-secondary"> Secondary </Button>
   <Button variant="outline-success"> Success </Button>
@@ -62,7 +62,7 @@ import Button from 'components/base/Button';
 const buttonSizesCode = `
 import Button from 'components/base/Button';
 
-<div className="d-flex align-items-center gap-2">
+<div className="flex align-items-center gap-2">
   <Button variant="primary" size='sm'> Primary </Button>
   <Button variant="primary"> Primary </Button>
   <Button variant="primary" size='lg'> Primary </Button>
@@ -72,7 +72,7 @@ import Button from 'components/base/Button';
 const buttonWithIconCode = `
 import Button from 'components/base/Button';
 
-<div className="d-flex align-items-center gap-2">
+<div className="flex align-items-center gap-2">
   <Button variant="primary" startIcon={<FontAwesomeIcon icon={faPlus} />}>
     Create
   </Button>
@@ -88,7 +88,7 @@ import Button from 'components/base/Button';
 const disableButtonsCode = `
 import Button from 'components/base/Button';
 
-<div className="d-flex gap-2">
+<div className="flex gap-2">
   <Button variant="primary" disabled>
     Primary button
   </Button>
@@ -110,7 +110,7 @@ const loadingButtonsCode = `
         onChange={e => setLoading(e.target.checked)}
       />
 
-      <div className="d-flex align-items-center gap-2 mb-2">
+      <div className="flex align-items-center gap-2 mb-2">
         <Button size="sm" loading={loading} loadingPosition="start">
           Loading
         </Button>
@@ -119,7 +119,7 @@ const loadingButtonsCode = `
         </Button>
       </div>
 
-      <div className="d-flex align-items-center gap-2 mb-2">
+      <div className="flex align-items-center gap-2 mb-2">
         <Button loading={loading} loadingPosition="start">
           Loading
         </Button>
@@ -128,7 +128,7 @@ const loadingButtonsCode = `
         </Button>
       </div>
 
-      <div className="d-flex align-items-center gap-2">
+      <div className="flex align-items-center gap-2">
         <Button size="lg" loading={loading} loadingPosition="start">
           Loading
         </Button>

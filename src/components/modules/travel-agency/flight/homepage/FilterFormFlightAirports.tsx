@@ -6,12 +6,12 @@ const FilterFormFlightAirports = () => {
   return (
     <CollapsibleContainer
       collapseTitle="Airports"
-      titleClass="fs-8"
+      titleClass="text-base"
       containerSize="sm"
       id="flightAirports"
     >
       <div className="p-3 pb-0">
-        <div className="d-flex gap-3">
+        <div className="flex gap-3">
           {flightAirports.map(item => (
             <div key={item.id} className="flex-1">
               <h5 className="mb-3">{item.label}</h5>
@@ -23,7 +23,7 @@ const FilterFormFlightAirports = () => {
                   />
                   <Form.Check.Label
                     htmlFor={airport.split(' : ')[0]}
-                    className="fs-9 text-body lh-sm"
+                    className="text-md text-default lh-sm"
                   >
                     {airport}
                   </Form.Check.Label>

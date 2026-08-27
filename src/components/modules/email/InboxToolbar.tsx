@@ -26,49 +26,49 @@ const InboxToolbar = ({ size = 'lg', className }: InboxToolbarProps) => {
       <div
         className={classNames(
           className,
-          'd-flex align-items-center flex-wrap position-sticky pb-2 bg-body z-2 email-toolbar'
+          'flex align-items-center flex-wrap position-sticky pb-2 bg-default z-2 email-toolbar'
         )}
       >
-        <div className="d-flex align-items-center flex-1 me-2">
+        <div className="flex align-items-center flex-1 me-2">
           <Button className="p-0 me-2" onClick={() => location.reload()}>
-            <FontAwesomeIcon icon={faRedo} className="text-primary fs-10" />
+            <FontAwesomeIcon icon={faRedo} className="text-primary text-sm" />
           </Button>
-          <p className="fw-semibold fs-10 text-body-tertiary text-opacity-85 mb-0 lh-sm text-nowrap">
+          <p className="font-semibold text-sm text-subtle text-opacity-85 mb-0 lh-sm text-nowrap">
             Last refreshed 1m ago
           </p>
         </div>
-        <div className="d-flex gap-3">
-          <p className="text-body-tertiary text-opacity-85 fs-9 fw-semibold mb-0">
+        <div className="flex gap-3">
+          <p className="text-subtle text-opacity-85 text-md font-semibold mb-0">
             {size === 'lg' ? 'Showing : ' : ' '}
-            <span className="text-body">1-7</span>
+            <span className="text-default">1-7</span>
             {' of '}
-            <span className="text-body">205</span>
+            <span className="text-default">205</span>
           </p>
           <Button className="p-0" type="button">
             <FontAwesomeIcon
               icon={faAngleLeft}
-              className="text-body-quaternary fs-10"
+              className="text-soft text-sm"
             />
           </Button>
           <Button className="p-0" type="button">
             <FontAwesomeIcon
               icon={faAngleRight}
-              className="text-primary fs-10"
+              className="text-primary text-sm"
             />
           </Button>
         </div>
       </div>
-      <div className="border-y border-translucent py-2 d-flex justify-content-between">
+      <div className="border-y border-light py-2 flex justify-content-between">
         <IndeterminateCheckbox {...getParentCheckboxProps()} />
-        <div className="d-flex gap-2">
+        <div className="flex gap-2">
           <TooltipIconButton
-            iconClass="fs-10"
+            iconClass="text-sm"
             title="Archive"
             icon={faArchive}
           />
-          <TooltipIconButton iconClass="fs-10" title="Delete" icon={faTrash} />
-          <TooltipIconButton iconClass="fs-10" title="Star" icon={faStar} />
-          <TooltipIconButton iconClass="fs-10" title="Tags" icon={faTag} />
+          <TooltipIconButton iconClass="text-sm" title="Delete" icon={faTrash} />
+          <TooltipIconButton iconClass="text-sm" title="Star" icon={faStar} />
+          <TooltipIconButton iconClass="text-sm" title="Tags" icon={faTag} />
         </div>
       </div>
     </>

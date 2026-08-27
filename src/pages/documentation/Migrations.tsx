@@ -31,7 +31,7 @@ const Migrations = () => {
       <Card className="mb-4">
         <Card.Body>
           <Alert variant="subtle-warning" className="mb-0">
-            <div className="d-flex">
+            <div className="flex">
               <FontAwesomeIcon icon={faExclamationTriangle} className="fs-5" />
               <div className="ms-3 flex-1">
                 <h4 className="alert-heading">Before you update!</h4>
@@ -52,15 +52,15 @@ const Migrations = () => {
       {migrations.map(migration => (
         <PhoenixDocCard className="mb-4" key={migration.from}>
           <PhoenixDocCard.Header noPreview>
-            <div className="d-flex align-items-center" id={migration.to}>
-              <p className="text-body text-nowrap mb-0">
-                <code className="fs-7 opacity-50">{migration.from}</code>
+            <div className="flex align-items-center" id={migration.to}>
+              <p className="text-default text-nowrap mb-0">
+                <code className="text-lg opacity-50">{migration.from}</code>
                 <span className="mx-3">to</span>
-                <code className="fs-7">{migration.to}</code>
+                <code className="text-lg">{migration.to}</code>
               </p>
               <Link
                 to={`#${migration.to}`}
-                className="opacity-0 hover-show fw-bold ps-2"
+                className="opacity-0 hover-show font-bold ps-2"
               >
                 #
               </Link>
@@ -72,10 +72,10 @@ const Migrations = () => {
             )}
             {migration.to === 'v1.9.0' && (
               <>
-                <div className="bg-body-highlight p-3 py-5 mb-5">
+                <div className="bg-subtle p-3 py-5 mb-5">
                   <Alert
                     variant={'subtle-warning'}
-                    className="d-flex align-items-center"
+                    className="flex align-items-center"
                   >
                     <FontAwesomeIcon
                       icon={faCircleInfo}

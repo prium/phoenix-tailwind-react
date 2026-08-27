@@ -226,7 +226,7 @@ const NavbarMain = () => {
           to="/"
           className="flex-1 lg:grow-0 lg:me-14 xl:me-26"
         >
-          <Logo textClass="d-none d-sm-block" />
+          <Logo textClass="hidden d-sm-block" />
         </Navbar.Brand>
         <div className="flex items-center gap-4 md:gap-6 my-2 lg:order-1">
           <ThemeToggler />

@@ -15,20 +15,20 @@ const WizardAccessDeniedModal = () => {
       onHide={() => setOpenDeniedModal(false)}
     >
       <Modal.Header className="border-gray-100 p-3">
-        <div className="h4 text-body-secondary mb-0">Access Denied!</div>
+        <div className="h4 text-muted mb-0">Access Denied!</div>
         <Button
           variant="link"
-          className="text-danger px-1 position-absolute top-0 end-0 mt-2 me-2 ms-auto"
+          className="text-danger px-1 absolute top-0 end-0 mt-2 me-2 ms-auto"
           onClick={() => setOpenDeniedModal(false)}
         >
           <FontAwesomeIcon icon={faTimes} />
         </Button>
       </Modal.Header>
       <Modal.Body className="px-4 py-6">
-        <div className="d-flex align-items-center">
+        <div className="flex align-items-center">
           <img className="me-4" src={stopIcon} />
           <div className="flex-1">
-            <p className="mb-0 fw-semibold text-body-tertiary">
+            <p className="mb-0 font-semibold text-subtle">
               You do not have the link to access. Please start <br />
               over to get access for the next session.
               <br />

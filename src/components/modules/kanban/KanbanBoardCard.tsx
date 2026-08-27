@@ -11,8 +11,8 @@ import { Link } from 'react-router';
 
 const KanbanBoardCard = ({ board }: { board: KanbanBoard }) => {
   return (
-    <Card className="overflow-hidden bg-transparent h-100 position-relative">
-      <div className="position-relative">
+    <Card className="overflow-hidden bg-transparent h-100 relative">
+      <div className="relative">
         {board.coverImage ? (
           <>
             <img
@@ -23,12 +23,12 @@ const KanbanBoardCard = ({ board }: { board: KanbanBoard }) => {
             />
           </>
         ) : (
-          <div className="bg-body-secondary" style={{ height: '128px' }} />
+          <div className="bg-muted" style={{ height: '128px' }} />
         )}
         <Avatar.Group
           total={board.users.length}
           size="m"
-          className="position-absolute bottom-0 mb-3 ms-4"
+          className="absolute bottom-0 mb-3 ms-4"
         >
           {board.users.map(user => (
             <Avatar
@@ -40,30 +40,30 @@ const KanbanBoardCard = ({ board }: { board: KanbanBoard }) => {
           ))}
         </Avatar.Group>
       </div>
-      <Card.Body className="d-flex flex-column rounded-bottom-lg justify-content-between">
+      <Card.Body className="flex flex-column rounded-bottom-lg justify-content-between">
         <div>
-          <h3 className="text-body">{board.title}</h3>
-          <p className="text-body-tertiary mb-4">{board.category}</p>
+          <h3 className="text-default">{board.title}</h3>
+          <p className="text-subtle mb-4">{board.category}</p>
         </div>
-        <div className="d-flex gap-4">
-          <h5 className="text-body">
+        <div className="flex gap-4">
+          <h5 className="text-default">
             <FontAwesomeIcon
               icon={faListCheck}
-              className="text-body-tertiary me-1"
+              className="text-subtle me-1"
             />
             {board.totalTasks}
           </h5>
-          <h5 className="text-body">
+          <h5 className="text-default">
             <FontAwesomeIcon
               icon={faComment}
-              className="text-body-tertiary me-1"
+              className="text-subtle me-1"
             />
             {board.comments}
           </h5>
-          <h5 className="text-body">
+          <h5 className="text-default">
             <FontAwesomeIcon
               icon={faCalendarXmark}
-              className="text-body-tertiary me-1"
+              className="text-subtle me-1"
             />
             {board.deadlines}
           </h5>

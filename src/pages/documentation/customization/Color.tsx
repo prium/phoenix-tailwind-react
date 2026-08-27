@@ -24,7 +24,7 @@ const BodyColorDemo = () => {
           <code>--phoenix-body-color-rgb</code>
         </td>
         <td>
-          <code>text-body</code>
+          <code>text-default</code>
         </td>
       </tr>
       <tr>
@@ -42,7 +42,7 @@ const BodyColorDemo = () => {
           <code>--phoenix-body-bg-rgb</code>
         </td>
         <td>
-          <code>bg-body</code>
+          <code>bg-default</code>
         </td>
       </tr>
     </>
@@ -212,7 +212,7 @@ const Color = () => {
       />
       <PhoenixDocCard className="mb-4">
         <PhoenixDocCard.Header title="Config Context" noPreview>
-          <p className="text-body-tertiary mb-0">
+          <p className="text-subtle mb-0">
             Phoenix comes with lots of colors and variants. We added
             <code> quaternary </code>
             and <code> body-highlight </code> colors besides

@@ -325,7 +325,7 @@ const Example = () => {
                 <SortableItem key={task.id} task={task} columnId={list.id}>
                   <Card className="mb-3">
                     <Card.Body>
-                      <p className="mb-0 fw-medium">{task.title}</p>
+                      <p className="mb-0 font-medium">{task.title}</p>
                     </Card.Body>
                   </Card>
                 </SortableItem>
@@ -338,7 +338,7 @@ const Example = () => {
         {activeTask && (
           <Card className="mb-3" style={{ cursor: 'grabbing' }}>
             <Card.Body>
-              <p className="mb-0 fw-medium">{activeTask?.title}</p>
+              <p className="mb-0 font-medium">{activeTask?.title}</p>
             </Card.Body>
           </Card>
         )}
@@ -537,7 +537,7 @@ const Example = () => {
                 <SortableItem key={task.id} task={task} columnId={list.id}>
                   <Card className="mb-3">
                     <Card.Body>
-                      <p className="mb-0 fw-medium">{task.title}</p>
+                      <p className="mb-0 font-medium">{task.title}</p>
                     </Card.Body>
                   </Card>
                 </SortableItem>
@@ -555,7 +555,7 @@ const Example = () => {
             }}
           >
             <Card.Body>
-              <p className="mb-0 fw-medium">{activeTask?.title}</p>
+              <p className="mb-0 font-medium">{activeTask?.title}</p>
             </Card.Body>
           </Card>
         )}

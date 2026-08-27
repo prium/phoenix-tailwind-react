@@ -23,7 +23,7 @@ const ColumnItem = ({ galleryItem, onClick }: ColumnItemProps) => {
       </div>
       <div className="mt-3">
         <h4 className="title">{galleryItem.title}</h4>
-        <p className="text-body text-capitalize mb-0">{galleryItem.type}</p>
+        <p className="text-default text-capitalize mb-0">{galleryItem.type}</p>
       </div>
     </div>
   );
@@ -39,7 +39,7 @@ const GalleryColumnItems = ({
   );
   return (
     <>
-      <div className="position-relative">
+      <div className="relative">
         <Masonry
           items={columnItems}
           config={{

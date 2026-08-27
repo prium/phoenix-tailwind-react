@@ -105,7 +105,7 @@ const columns: ColumnDef<RoomListingInterface>[] = [
     meta: {
       headerProps: {
         style: { width: 200 },
-        className: 'text-body-tertiary align-middle px-4'
+        className: 'text-subtle align-middle px-4'
       },
       cellProps: { className: 'align-middle px-4' }
     }
@@ -137,7 +137,7 @@ const columns: ColumnDef<RoomListingInterface>[] = [
     meta: {
       headerProps: {
         style: { width: 200 },
-        className: 'text-body-tertiary align-middle px-4'
+        className: 'text-subtle align-middle px-4'
       },
       cellProps: { className: 'align-middle px-4' }
     }
@@ -164,7 +164,7 @@ const columns: ColumnDef<RoomListingInterface>[] = [
     meta: {
       headerProps: {
         style: { width: 140 },
-        className: 'text-body-tertiary align-middle px-4'
+        className: 'text-subtle align-middle px-4'
       },
       cellProps: { className: 'align-middle px-4' }
     }
@@ -198,7 +198,7 @@ const columns: ColumnDef<RoomListingInterface>[] = [
     meta: {
       headerProps: {
         style: { minWidth: 450 },
-        className: 'text-body-tertiary align-middle ps-4'
+        className: 'text-subtle align-middle ps-4'
       },
       cellProps: { className: 'align-middle ps-4' }
     }
@@ -213,7 +213,7 @@ const columns: ColumnDef<RoomListingInterface>[] = [
     meta: {
       headerProps: {
         style: { width: 180 },
-        className: 'text-body-tertiary align-middle text-end ps-4'
+        className: 'text-subtle align-middle text-end ps-4'
       },
       cellProps: { className: 'align-middle text-end ps-4' }
     }
@@ -231,7 +231,7 @@ const columns: ColumnDef<RoomListingInterface>[] = [
     },
     meta: {
       headerProps: {
-        className: 'text-body-tertiary align-middle text-end ps-4 pe-0'
+        className: 'text-subtle align-middle text-end ps-4 pe-0'
       },
       cellProps: { className: 'align-middle ps-4' }
     }
@@ -283,9 +283,9 @@ const RoomListingTable = () => {
 
       <AdvanceTable
         tableProps={{
-          className: 'phoenix-table fs-9 mb-0 border-translucent'
+          className: ' text-md mb-0 border-light'
         }}
-        rowClassName="hover-actions-trigger btn-reveal-trigger position-static"
+        rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />
       <AdvanceTableFooter navBtn />
     </AdvanceTableProvider>

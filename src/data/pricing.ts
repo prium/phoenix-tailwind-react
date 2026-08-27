@@ -224,7 +224,7 @@ export const pricingGridItems: PricingGrid[] = [
       'Technical Supports',
       'Up to 20 Members',
       'Create & Share libraries',
-      '<span class="fw-bold">Unlimited</span> Collaboration'
+      '<span class="font-bold">Unlimited</span> Collaboration'
     ]
   },
   {
@@ -241,7 +241,7 @@ export const pricingGridItems: PricingGrid[] = [
     features: [
       '24/7 VIP Support',
       'Automated analytics',
-      '<span class="fw-bold">Unlimited</span> Members*',
+      '<span class="font-bold">Unlimited</span> Members*',
       'Create & Share libraries',
       'Centralized billing'
     ]

@@ -19,7 +19,7 @@ const KanbanBoardSection = ({
   changePreference
 }: KanbanBoardSectionProps) => {
   return (
-    <div className="px-4 px-lg-6 py-5 border-bottom border-translucent">
+    <div className="px-4 px-lg-6 py-5 border-bottom border-light">
       <h4>{title}</h4>
       <p className="mb-4">
         {description}{' '}

@@ -41,11 +41,11 @@ const columns: ColumnDef<MostRecentForecastTableRowItem>[] = [
     },
     meta: {
       headerProps: {
-        className: 'align-middle white-space-nowrap',
+        className: 'align-middle whitespace-nowrap',
         style: { minWidth: '13.75rem' }
       },
       cellProps: {
-        className: 'align-middle white-space-nowrap'
+        className: 'align-middle whitespace-nowrap'
       }
     }
   },
@@ -62,7 +62,7 @@ const columns: ColumnDef<MostRecentForecastTableRowItem>[] = [
         style: { minWidth: '7.5rem' }
       },
       cellProps: {
-        className: 'align-middle white-space-nowrap ps-3'
+        className: 'align-middle whitespace-nowrap ps-3'
       }
     }
   },
@@ -125,7 +125,7 @@ const columns: ColumnDef<MostRecentForecastTableRowItem>[] = [
         style: { minWidth: '10rem' }
       },
       cellProps: {
-        className: 'align-middle white-space-nowrap'
+        className: 'align-middle whitespace-nowrap'
       }
     }
   },
@@ -186,7 +186,7 @@ const columns: ColumnDef<MostRecentForecastTableRowItem>[] = [
     cell: () => {
       return (
         <>
-          <RevealDropdown className="btn-reveal-trigger" btnClassName="fs-10">
+          <RevealDropdown className="btn-reveal-trigger" btnClassName="text-sm">
             <ActionDropdownItems />
           </RevealDropdown>
         </>
@@ -198,7 +198,7 @@ const columns: ColumnDef<MostRecentForecastTableRowItem>[] = [
         style: { minWidth: '3.6rem' }
       },
       cellProps: {
-        className: 'align-middle white-space-nowrap pe-0'
+        className: 'align-middle whitespace-nowrap pe-0'
       }
     }
   }
@@ -222,7 +222,7 @@ const MostRecentForecastTable = ({
     <AdvanceTableProvider {...table}>
       <AdvanceTable
         tableProps={{
-          className: 'phoenix-table border-top border-translucent fs-9 mb-0'
+          className: ' border-top border-light text-md mb-0'
         }}
         headerClassName="text-uppercase"
       />

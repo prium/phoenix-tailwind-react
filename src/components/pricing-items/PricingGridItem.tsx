@@ -17,13 +17,13 @@ const PricingGridItem = ({ item, pricingType }: PricingGridItemProps) => {
       <Form.Control
         type="radio"
         name={pricingType}
-        className={classNames('pricing-plan-radio d-none', {
+        className={classNames('pricing-plan-radio hidden', {
           'pricing-plan-recommended': item.badge?.label === 'recommended'
         })}
         defaultChecked={item.selected}
         id={`${item.title.split(' ')[0]}-${pricingType}`}
       />
-      <div className="position-relative h-100">
+      <div className="relative h-100">
         <Form.Label
           htmlFor={`${item.title.split(' ')[0]}-${pricingType}`}
           className="stretched-link"
@@ -50,8 +50,8 @@ const PricingGridItem = ({ item, pricingType }: PricingGridItemProps) => {
               backgroundSize: 'auto'
             }}
           />
-          <Card.Body className="d-flex flex-column justify-content-between position-relative">
-            <div className="d-flex justify-content-between">
+          <Card.Body className="flex flex-column justify-content-between relative">
+            <div className="flex justify-content-between">
               <div className="mb-5 mb-md-0 mb-lg-5 me-3">
                 <div className="d-sm-flex align-items-center mb-3">
                   <h3 className="mb-0">{item.title}</h3>
@@ -59,32 +59,32 @@ const PricingGridItem = ({ item, pricingType }: PricingGridItemProps) => {
                     <Badge
                       variant="default"
                       bg={item.badge.badgeBg}
-                      className="ms-sm-3 fs-10 text-uppercase"
+                      className="ms-sm-3 text-sm text-uppercase"
                     >
                       {item.badge.label}
                     </Badge>
                   )}
                 </div>
                 <p
-                  className="fs-9 text-body-tertiary"
+                  className="text-md text-subtle"
                   dangerouslySetInnerHTML={{ __html: item.description }}
                 />
-                <div className="d-flex align-items-end mb-md-5 mb-lg-0">
+                <div className="flex align-items-end mb-md-5 mb-lg-0">
                   {item.monthlyPrice === 0 || item.yearlyPrice === 0 ? (
-                    <h4 className="fw-bolder me-1">Free</h4>
+                    <h4 className="font-black me-1">Free</h4>
                   ) : (
-                    <h4 className="fw-bolder me-1">{`${
+                    <h4 className="font-black me-1">{`${
                       pricingType === 'monthly'
                         ? currencyFormat(item.monthlyPrice)
                         : currencyFormat(item.yearlyPrice)
                     }`}</h4>
                   )}
                   {item.monthlyPrice === 0 || item.yearlyPrice === 0 ? (
-                    <h5 className="fs-9 fw-normal text-body-tertiary ms-1">
+                    <h5 className="text-md font-normal text-subtle ms-1">
                       Forever
                     </h5>
                   ) : (
-                    <h5 className="fs-9 fw-normal text-body-tertiary ms-1">
+                    <h5 className="text-md font-normal text-subtle ms-1">
                       {pricingType === 'monthly' ? 'Per month' : 'Per year'}
                     </h5>
                   )}
@@ -114,7 +114,7 @@ const PricingGridItem = ({ item, pricingType }: PricingGridItemProps) => {
                       {
                         'border-warning-subtle':
                           item.badge?.label === 'recommended',
-                        'border-translucent':
+                        'border-light':
                           item.badge?.label !== 'recommended'
                       }
                     )}
@@ -122,7 +122,7 @@ const PricingGridItem = ({ item, pricingType }: PricingGridItemProps) => {
                     {item.features.map((feature, index) => (
                       <li
                         key={feature}
-                        className={classNames('d-flex align-items-center', {
+                        className={classNames('flex align-items-center', {
                           'mb-2': index !== item.features.length - 1
                         })}
                       >
@@ -133,7 +133,7 @@ const PricingGridItem = ({ item, pricingType }: PricingGridItemProps) => {
                           size={16}
                         />
                         <span
-                          className="text-body-tertiary fw-semibold lh-1"
+                          className="text-subtle font-semibold lh-1"
                           dangerouslySetInnerHTML={{ __html: feature }}
                         />
                       </li>

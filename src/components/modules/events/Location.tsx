@@ -11,7 +11,7 @@ const Location = () => {
   return (
     <div className="mb-8">
       <h3 className="mb-5 mb-xl-4">Location</h3>
-      <div className="mb-3 mb-xl-4 location-map border border-translucent overflow-hidden">
+      <div className="mb-3 mb-xl-4 location-map border border-light overflow-hidden">
         <Suspense fallback={<PhoenixLoader />}>
           <Mapbox
             className="border rounded-3"
@@ -25,11 +25,11 @@ const Location = () => {
       </div>
       <Row className="flex-between-center gx-0 gy-3">
         <Col xs={12} sm="auto" className="me-1">
-          <div className="d-flex">
-            <h5 className="fw-bold text-body-highlight me-2 mb-0">
+          <div className="flex">
+            <h5 className="font-bold text-highlight me-2 mb-0">
               James Tiberius Auditorium
             </h5>
-            <p className="mb-0 text-body-highlight fs-9">Vancouver</p>
+            <p className="mb-0 text-highlight text-md">Vancouver</p>
           </div>
         </Col>
         <Col xs={12} sm="auto" xl={12}>

@@ -61,11 +61,11 @@ export const TravelStatistics = () => {
               className="fs-5 text-warning-light dark__text-opacity-75"
               data-bs-theme="light"
             />
-            <div className="d-flex d-md-block gap-2 align-items-center mt-1 mt-md-0">
-              <p className="fs-9 mb-0 mb-md-2 text-body-tertiary text-nowrap">
+            <div className="flex d-md-block gap-2 align-items-center mt-1 mt-md-0">
+              <p className="text-md mb-0 mb-md-2 text-subtle text-nowrap">
                 Rain Chances
               </p>
-              <h4 className="text-body-highlight mb-0">95%</h4>
+              <h4 className="text-highlight mb-0">95%</h4>
             </div>
           </div>
         </TravelStats>

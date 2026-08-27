@@ -36,7 +36,7 @@ const FloatExample = () => {
       <DocPagesLayout>
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Overview">
-            <p className="mb-0 text-body-secondary">
+            <p className="mb-0 text-muted">
               These utility classes float an element to the left or right, or
               disable floating, based on the current viewport size using the
               <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/float">
@@ -52,7 +52,7 @@ const FloatExample = () => {
 
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Responsive">
-            <p className="mb-0 text-body-secondary">
+            <p className="mb-0 text-muted">
               Responsive variations also exist for each <code>float</code> value
             </p>
           </PhoenixDocCard.Header>

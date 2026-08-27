@@ -73,7 +73,7 @@ const stockDetailsTabItems: StockDetailsTabItem[] = [
     name: '',
     content: null,
     className: 'disabled h-100 px-3',
-    navItemClassName: 'flex-1 d-none d-md-inline'
+    navItemClassName: 'flex-1 hidden d-md-inline'
   }
 ];
 const StockDetailsMainContent = () => {
@@ -99,7 +99,7 @@ const StockDetailsMainContent = () => {
           <Tab.Pane
             key={item.id}
             eventKey={item.id}
-            className="h-100 position-relative"
+            className="h-100 relative"
           >
             {item.content}
           </Tab.Pane>

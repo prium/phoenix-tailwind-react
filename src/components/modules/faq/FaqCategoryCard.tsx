@@ -9,18 +9,18 @@ const FaqCategoryCard = ({ category }: { category: FaqCategory }) => {
   return (
     <Nav.Link
       eventKey={category.id}
-      className={`btn bg-body-emphasis w-100 px-3 pt-4 pb-3 fs-8 ${
+      className={`btn bg-soft w-100 px-3 pt-4 pb-3 text-base ${
         subCategoryActiveKey === category.id && 'active'
       }`}
     >
       <FontAwesomeIcon
         icon={category.icon}
-        className="category-icon text-body-secondary fs-6"
+        className="category-icon text-muted text-xl"
       />
-      <span className="d-block fs-6 fw-bolder lh-1 text-body mt-3 mb-2">
+      <span className="block text-xl font-black lh-1 text-default mt-3 mb-2">
         {category.name}
       </span>
-      <span className="d-block text-body fw-normal mb-0 fs-9">
+      <span className="block text-default font-normal mb-0 text-md">
         {category.description}
       </span>
     </Nav.Link>

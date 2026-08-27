@@ -14,7 +14,7 @@ const HomepageFilterOffcanvasContent = () => {
   const [range, setRange] = useState([110, 200]);
   return (
     <>
-      <h4 className="text-body-highlight mb-4">Price Range</h4>
+      <h4 className="text-highlight mb-4">Price Range</h4>
       <Row className="g-2">
         <Col xs={6}>
           <div className="form-icon-container">
@@ -25,7 +25,7 @@ const HomepageFilterOffcanvasContent = () => {
             />
             <FontAwesomeIcon
               icon={faDollarSign}
-              className="fs-9 form-icon text-body-tertiary"
+              className="text-md form-icon text-subtle"
             />
           </div>
         </Col>
@@ -38,7 +38,7 @@ const HomepageFilterOffcanvasContent = () => {
             />
             <FontAwesomeIcon
               icon={faDollarSign}
-              className="fs-9 form-icon text-body-tertiary"
+              className="text-md form-icon text-subtle"
             />
           </div>
         </Col>
@@ -53,10 +53,10 @@ const HomepageFilterOffcanvasContent = () => {
         classNames="phoenix-react-range-large mt-3 ps-5 pe-3"
       />
       <hr className="my-5" />
-      <h4 className="text-body-highlight mb-4">Amenities</h4>
+      <h4 className="text-highlight mb-4">Amenities</h4>
       {homepageOffcanvasAmenitiesItems.map(amenity => (
         <Fragment key={amenity.id}>
-          <p className={classNames(amenity.className, 'text-body-tertiary')}>
+          <p className={classNames(amenity.className, 'text-subtle')}>
             {amenity.title}
           </p>
           <Row className="g-3">
@@ -70,7 +70,7 @@ const HomepageFilterOffcanvasContent = () => {
                       id={item.id}
                       name={item.label}
                     />
-                    <Form.Check.Label className="fs-8 text-body-highlight fw-normal">
+                    <Form.Check.Label className="text-base text-highlight font-normal">
                       {item.label}
                     </Form.Check.Label>
                   </Form.Check>
@@ -86,7 +86,7 @@ const HomepageFilterOffcanvasContent = () => {
                       id={item.id}
                       name={item.label}
                     />
-                    <Form.Check.Label className="fs-8 text-body-highlight fw-normal">
+                    <Form.Check.Label className="text-base text-highlight font-normal">
                       {item.label}
                     </Form.Check.Label>
                   </Form.Check>
@@ -95,11 +95,11 @@ const HomepageFilterOffcanvasContent = () => {
           </Row>
         </Fragment>
       ))}
-      <Link to={'#!'} className="fw-bold fs-9 mt-3 d-inline-block">
+      <Link to={'#!'} className="font-bold text-md mt-3 d-inline-block">
         Show more items
       </Link>
       <hr className="my-5" />
-      <h4 className="mb-4 text-body-highlight">Number of Private Bathrooms</h4>
+      <h4 className="mb-4 text-highlight">Number of Private Bathrooms</h4>
       <InputGroupCounter
         id="privateBathrooms"
         inputGap="gap-2 w-70 w-sm-50"
@@ -107,7 +107,7 @@ const HomepageFilterOffcanvasContent = () => {
         iconClasses=""
       />
 
-      <h4 className="mb-4 mt-5 text-body-highlight">Number of Bedrooms</h4>
+      <h4 className="mb-4 mt-5 text-highlight">Number of Bedrooms</h4>
       <InputGroupCounter
         id="bedRooms"
         inputGap="gap-2 w-70 w-sm-50"
@@ -115,7 +115,7 @@ const HomepageFilterOffcanvasContent = () => {
         iconClasses=""
       />
 
-      <h4 className="mb-4 mt-5 text-body-highlight">Number of Beds</h4>
+      <h4 className="mb-4 mt-5 text-highlight">Number of Beds</h4>
       <InputGroupCounter
         id="beds"
         inputGap="gap-2 w-70 w-sm-50"
@@ -123,7 +123,7 @@ const HomepageFilterOffcanvasContent = () => {
         iconClasses=""
       />
       <hr className="my-5" />
-      <h4 className="text-body-highlight mb-4">Rating</h4>
+      <h4 className="text-highlight mb-4">Rating</h4>
       {Array.from([5, 4, 3, 2, 1]).map((stars, index) => (
         <div key={stars}>
           <Form.Check type="radio" className="px-0">
@@ -137,17 +137,17 @@ const HomepageFilterOffcanvasContent = () => {
             />
             <Form.Check.Label
               htmlFor={`option${stars}`}
-              className="btn w-100 d-flex align-items-center gap-1"
+              className="btn w-100 flex align-items-center gap-1"
             >
               <GenerateStar filledStars={stars} />
               {stars < 5 && (
-                <span className="text-body ms-1 fs-8 fw-normal">and above</span>
+                <span className="text-default ms-1 text-base font-normal">and above</span>
               )}
             </Form.Check.Label>
           </Form.Check>
         </div>
       ))}
-      <div className="mt-4 pt-4 border-top border-translucent d-flex gap-2">
+      <div className="mt-4 pt-4 border-top border-light flex gap-2">
         <Button variant="phoenix-primary" size="lg">
           Reset
         </Button>

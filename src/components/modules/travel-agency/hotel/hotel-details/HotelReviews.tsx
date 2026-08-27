@@ -31,11 +31,11 @@ const HotelReviews = ({ ratings, reviews }: HotelReviewsProps) => {
           <Col key={index} md={6} lg={5}>
             <Row className="align-items-center g-0">
               <Col xs={4}>
-                <h5 className="mb-0 text-body text-nowrap">{item.name}</h5>
+                <h5 className="mb-0 text-default text-nowrap">{item.name}</h5>
               </Col>
               <Col xs={8}>
-                <div className="d-flex align-items-center gap-2">
-                  <Badge bg="primary" className="fs-8">
+                <div className="flex align-items-center gap-2">
+                  <Badge bg="primary" className="text-base">
                     {numberFormat(item.rating, 'standard', {
                       minimumFractionDigits: 1,
                       maximumFractionDigits: 1
@@ -54,43 +54,43 @@ const HotelReviews = ({ ratings, reviews }: HotelReviewsProps) => {
       <hr className="mt-5 mb-8" />
       {reviews.map((review, index) => (
         <Fragment key={index}>
-          <div className="d-flex align-items-center position-relative gap-2 mb-3">
+          <div className="flex align-items-center relative gap-2 mb-3">
             <Avatar src={review.avatar} size="s" />
             <Link
               to="#!"
-              className="fw-semibold text-body-emphasis stretched-link"
+              className="font-semibold text-emphasis stretched-link"
             >
               {review.name}
             </Link>
             <img src={review.flag} alt="" />
           </div>
-          <div className="d-flex align-items-center flex-wrap gap-5 mb-5">
-            <div className="d-flex align-items-center gap-4">
+          <div className="flex align-items-center flex-wrap gap-5 mb-5">
+            <div className="flex align-items-center gap-4">
               <div className="border-end pe-4">
-                <Badge bg="primary" className="fs-8">
+                <Badge bg="primary" className="text-base">
                   {numberFormat(review.rating, 'standard', {
                     minimumFractionDigits: 1,
                     maximumFractionDigits: 1
                   })}
                 </Badge>
               </div>
-              <Link to="#!" className="text-body-tertiary">
-                <FontAwesomeIcon icon={faBed} className="me-2 fs-9" />
+              <Link to="#!" className="text-subtle">
+                <FontAwesomeIcon icon={faBed} className="me-2 text-md" />
                 {review.service}
               </Link>
             </div>
-            <div className="d-flex align-items-center gap-5">
-              <h5 className="fw-normal text-body-tertiary">
-                <FontAwesomeIcon icon={faCalendar} className="me-2 fs-9" />
+            <div className="flex align-items-center gap-5">
+              <h5 className="font-normal text-subtle">
+                <FontAwesomeIcon icon={faCalendar} className="me-2 text-md" />
                 {review.date}
               </h5>
-              <h5 className="fw-normal text-body-tertiary">
-                <FontAwesomeIcon icon={faUser} className="me-2 fs-9" />
+              <h5 className="font-normal text-subtle">
+                <FontAwesomeIcon icon={faUser} className="me-2 text-md" />
                 {review.travelerType}
               </h5>
             </div>
           </div>
-          <div className="d-flex gap-3 mb-5">
+          <div className="flex gap-3 mb-5">
             <FontAwesomeIcon
               icon={faThumbsUp}
               className="text-success"
@@ -98,17 +98,17 @@ const HotelReviews = ({ ratings, reviews }: HotelReviewsProps) => {
             />
             <p className="mb-0">{review.liked}</p>
           </div>
-          <div className="d-flex gap-3 mb-5">
+          <div className="flex gap-3 mb-5">
             <FontAwesomeIcon
               icon={faThumbsDown}
-              className="text-body-quaternary"
+              className="text-soft"
               transform="down-5"
             />
             <p className="mb-0">{review.disLiked}</p>
           </div>
-          <Card className="bg-body-highlight">
+          <Card className="bg-subtle">
             <Card.Body>
-              <h6 className="mb-2 fw-bolder text-body-quaternary text-uppercase">
+              <h6 className="mb-2 font-black text-soft text-uppercase">
                 <FontAwesomeIcon icon={faReply} className="me-2" />
                 Hotel's Reply:
               </h6>
@@ -123,7 +123,7 @@ const HotelReviews = ({ ratings, reviews }: HotelReviewsProps) => {
           />
         </Fragment>
       ))}
-      <Button className="bg-body border-translucent text-body-quaternary fw-bolder mt-n4">
+      <Button className="bg-default border-light text-soft font-black mt-n4">
         Show 2 more replies
       </Button>
     </>

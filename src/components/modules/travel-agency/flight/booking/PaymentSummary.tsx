@@ -20,9 +20,9 @@ const SummaryItem = ({
   className
 }: SummaryItemProps) => (
   <ListGroup.Item
-    className={classNames('px-0 py-3 bg-body-highlight', className)}
+    className={classNames('px-0 py-3 bg-subtle', className)}
   >
-    <div className="d-flex flex-between-center">
+    <div className="flex flex-between-center">
       <h6 className="mb-0">
         {label}
         {badgeText && (
@@ -32,11 +32,11 @@ const SummaryItem = ({
         )}
       </h6>
       <p
-        className={classNames('mb-0 text-body-emphasis', {
-          'fw-semibold': isBold
+        className={classNames('mb-0 text-emphasis', {
+          'font-semibold': isBold
         })}
       >
-        <span className="fs-9 me-2">BDT</span>
+        <span className="text-md me-2">BDT</span>
         {isPositive ? `+${value}` : value}
       </p>
     </div>
@@ -47,7 +47,7 @@ const PaymentSummary = () => {
   return (
     <div className="mb-4 mb-lg-9">
       <h3 className="mb-4">Payment Summary</h3>
-      <Card className="bg-body-highlight">
+      <Card className="bg-subtle">
         <Card.Body>
           <ListGroup variant="flush">
             <SummaryItem label="Base fare" value="4,074" className="pt-0" />

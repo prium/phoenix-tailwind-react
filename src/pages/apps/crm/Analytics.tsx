@@ -25,7 +25,7 @@ const Analytics = () => {
         <div className="px-3 mb-6">
           <AnalyticsStats stats={stats} />
         </div>
-        <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-body-emphasis pt-6 pb-3 border-y">
+        <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-soft pt-6 pb-3 border-y">
           <Row className="gx-6">
             <Col
               md={6}

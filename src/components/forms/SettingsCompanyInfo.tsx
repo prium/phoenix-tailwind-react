@@ -17,14 +17,14 @@ const SettingsCompanyInfo = () => {
           />
           <label
             htmlFor="companyName"
-            className="form-icon-label text-body-tertiary"
+            className="form-icon-label text-subtle"
           >
             COMPANY NAME
           </label>
         </Form.Floating>
         <FontAwesomeIcon
           icon={faBuilding}
-          className="text-body fs-9 form-icon"
+          className="text-default text-md form-icon"
         />
       </div>
       <div className="form-icon-container">
@@ -37,12 +37,12 @@ const SettingsCompanyInfo = () => {
           />
           <label
             htmlFor="website"
-            className="form-icon-label text-body-tertiary"
+            className="form-icon-label text-subtle"
           >
             WEBSITE
           </label>
         </Form.Floating>
-        <FontAwesomeIcon icon={faGlobe} className="text-body fs-9 form-icon" />
+        <FontAwesomeIcon icon={faGlobe} className="text-default text-md form-icon" />
       </div>
     </>
   );

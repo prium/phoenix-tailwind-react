@@ -14,19 +14,19 @@ const PostComments = ({ comments }: PostCommentsProps) => {
   return (
     <>
       {comments.map((comment, index) => (
-        <div key={index} className="d-flex align-items-start">
+        <div key={index} className="flex align-items-start">
           <Link to="/apps/social/profile">
             <Avatar size="m" src={comment.avatar} className="me-2" />
           </Link>
           <div className="flex-1">
-            <div className="d-flex align-items-center">
+            <div className="flex align-items-center">
               <Link
                 to="/apps/social/profile"
-                className="fw-bold mb-0 text-body-emphasis"
+                className="font-bold mb-0 text-emphasis"
               >
                 {comment.name}
               </Link>
-              <span className="text-body-tertiary text-opacity-85 fw-semibold fs-10 ms-2">
+              <span className="text-subtle text-opacity-85 font-semibold text-sm ms-2">
                 {comment.time}
               </span>
             </div>
@@ -35,7 +35,7 @@ const PostComments = ({ comments }: PostCommentsProps) => {
               <div className="mb-3">
                 <Button
                   variant="link"
-                  className="p-0 text-body mb-2 fs-10"
+                  className="p-0 text-default mb-2 text-sm"
                   startIcon={
                     <FontAwesomeIcon icon={faReply} className="me-1" />
                   }

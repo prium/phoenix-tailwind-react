@@ -26,7 +26,7 @@ const columns: ColumnDef<StockDetailsOptionChainRow>[] = [
           });
         },
         meta: {
-          headerProps: { className: 'fs-10' },
+          headerProps: { className: 'text-sm' },
           cellProps: {
             className: 'text-info-dark'
           }
@@ -44,7 +44,7 @@ const columns: ColumnDef<StockDetailsOptionChainRow>[] = [
           });
         },
         meta: {
-          headerProps: { className: 'fs-10' },
+          headerProps: { className: 'text-sm' },
           cellProps: {
             className: 'text-info-dark'
           }
@@ -52,7 +52,7 @@ const columns: ColumnDef<StockDetailsOptionChainRow>[] = [
       }
     ],
     meta: {
-      headerProps: { className: 'fs-9' }
+      headerProps: { className: 'text-md' }
     }
   },
   {
@@ -71,17 +71,17 @@ const columns: ColumnDef<StockDetailsOptionChainRow>[] = [
         },
         meta: {
           headerProps: {
-            className: 'border-x border-translucent fs-10'
+            className: 'border-x border-light text-sm'
           },
           cellProps: {
-            className: 'border-x text-body-tertiary fw-bold border-translucent'
+            className: 'border-x text-subtle font-bold border-light'
           }
         }
       }
     ],
     meta: {
       headerProps: {
-        className: 'fs-9 border-x border-translucent'
+        className: 'text-md border-x border-light'
       }
     }
   },
@@ -101,7 +101,7 @@ const columns: ColumnDef<StockDetailsOptionChainRow>[] = [
           });
         },
         meta: {
-          headerProps: { className: 'fs-10' },
+          headerProps: { className: 'text-sm' },
           cellProps: {
             className: 'text-info-dark'
           }
@@ -119,7 +119,7 @@ const columns: ColumnDef<StockDetailsOptionChainRow>[] = [
           });
         },
         meta: {
-          headerProps: { className: 'fs-10 pe-0' },
+          headerProps: { className: 'text-sm pe-0' },
           cellProps: {
             className: 'text-info-dark'
           }
@@ -127,7 +127,7 @@ const columns: ColumnDef<StockDetailsOptionChainRow>[] = [
       }
     ],
     meta: {
-      headerProps: { className: 'fs-9 pe-0' }
+      headerProps: { className: 'text-md pe-0' }
     }
   }
 ];
@@ -148,9 +148,9 @@ const StockDetailsOptionChainTable = ({
     <AdvanceTableProvider {...table}>
       <TopStockAdvanceTable
         tableProps={{
-          className: 'text-center border-top border-translucent'
+          className: 'text-center border-top border-light'
         }}
-        rowClassName="fs-9 fw-semibold"
+        rowClassName="text-md font-semibold"
       />
     </AdvanceTableProvider>
   );

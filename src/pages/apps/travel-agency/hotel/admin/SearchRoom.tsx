@@ -39,7 +39,7 @@ const SearchRoom = () => {
                 <Button
                   variant="phoenix-secondary"
                   size="lg"
-                  className="text-body-tertiary w-100"
+                  className="text-subtle w-100"
                   onClick={() => setOpenOffcanvas(true)}
                 >
                   <FontAwesomeIcon icon={faFilter} className="me-2" />
@@ -64,7 +64,7 @@ const SearchRoom = () => {
 
                         <FontAwesomeIcon
                           icon={faCalendarAlt}
-                          className="position-absolute top-0 end-0 mt-3 me-3"
+                          className="absolute top-0 end-0 mt-3 me-3"
                         />
                       </FloatingLabel>
                     );
@@ -83,8 +83,8 @@ const SearchRoom = () => {
                   size="lg"
                   className="px-xxl-6 text-nowrap"
                 >
-                  <span className="d-none d-xl-inline-block">Update</span>
-                  <FontAwesomeIcon icon={faSearch} className="fs-9 ms-xl-2" />
+                  <span className="hidden d-xl-inline-block">Update</span>
+                  <FontAwesomeIcon icon={faSearch} className="text-md ms-xl-2" />
                 </Button>
               </Col>
               <Col xs sm="auto" className="ms-auto flex-grow-0">
@@ -93,8 +93,8 @@ const SearchRoom = () => {
                   size="lg"
                   className="ms-auto text-nowrap"
                 >
-                  <span className="d-none d-xl-inline-block">Refresh</span>
-                  <FontAwesomeIcon icon={faRotate} className="fs-9 ms-xl-2" />
+                  <span className="hidden d-xl-inline-block">Refresh</span>
+                  <FontAwesomeIcon icon={faRotate} className="text-md ms-xl-2" />
                 </Button>
               </Col>
             </Row>
@@ -104,8 +104,8 @@ const SearchRoom = () => {
 
         <Row className="gx-6">
           {/* offcanvas start */}
-          <Col xl="auto" className="d-none d-xl-block">
-            <div className="phoenix-room-filter-offcanvas bg-body scrollbar">
+          <Col xl="auto" className="hidden d-xl-block">
+            <div className="phoenix-room-filter-offcanvas bg-default scrollbar">
               <RoomFilterOffcanvasContent />
             </div>
           </Col>
@@ -118,9 +118,9 @@ const SearchRoom = () => {
                 isLastItem={roomsSearchData.length - 1 === index}
               />
             ))}
-            <div className="border p-3 rounded-3 mt-5 d-flex flex-end-center gap-3 gap-sm-6 flex-wrap">
-              <h2 className="text-body mb-0">
-                <span className="fs-9 text-body-tertiary fw-bold me-2">
+            <div className="border p-3 rounded-3 mt-5 flex flex-end-center gap-3 gap-sm-6 flex-wrap">
+              <h2 className="text-default mb-0">
+                <span className="text-md text-subtle font-bold me-2">
                   Total :
                 </span>
                 04

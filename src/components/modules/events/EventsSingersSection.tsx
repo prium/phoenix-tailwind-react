@@ -11,7 +11,7 @@ const EventsSingersSection = ({ photos }: EventsSingersSection) => {
   const { lightboxProps, openLightbox } = useLightbox(photos);
   return (
     <>
-      <h4 className="mb-3 fw-bold text-body-highlight fs-xxl-6">Singers:</h4>
+      <h4 className="mb-3 font-bold text-highlight fs-xxl-6">Singers:</h4>
       <p>
         To join the festival, you’ll need to register through
         <Link to="mailto:register@event.com"> register@event.com </Link>

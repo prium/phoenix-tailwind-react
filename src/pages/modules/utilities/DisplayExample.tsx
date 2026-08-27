@@ -6,14 +6,14 @@ import { Table } from 'react-bootstrap';
 const exampleCode = `
 <>
   <div className="d-inline bg-primary p-2 text-white">d-inline</div>
-  <div className="d-block bg-primary p-2 text-white mt-3">d-inline-block</div>
+  <div className="block bg-primary p-2 text-white mt-3">d-inline-block</div>
 </>`;
 
 const displayInPrintCode = `
 <>
   <div className="d-print-none">Screen Only (Hide on print only)</div>
-  <div className="d-none d-print-block">Print Only (Hide on screen only)</div>
-  <div className="d-none d-lg-block d-print-block">Hide up to large on screen, but always show on print</div>
+  <div className="hidden d-print-block">Print Only (Hide on screen only)</div>
+  <div className="hidden d-lg-block d-print-block">Hide up to large on screen, but always show on print</div>
 </>`;
 
 const DisplayExample = () => {
@@ -110,7 +110,7 @@ const DisplayExample = () => {
               elements responsively for each screen size.
             </p>
             <p>
-              To hide elements simply use the <code>.d-none </code>class or one
+              To hide elements simply use the <code>.hidden </code>class or one
               of the
               <code>.d-{'{sm,md,lg,xl}'}-none </code>classes for any responsive
               screen variation.
@@ -119,7 +119,7 @@ const DisplayExample = () => {
               To show an element only on a given interval of screen sizes you
               can combine one <code>.d-*-none class with a </code>
               <code>.d-*-* class, for example </code>
-              <code>.d-none .d-md-block .d-xl-none </code>will hide the element
+              <code>.hidden .d-md-block .d-xl-none </code>will hide the element
               for all screen sizes except on medium and large devices.
             </p>
             <Table className="table-bordered">
@@ -133,13 +133,13 @@ const DisplayExample = () => {
                 <tr>
                   <td className="ps-2">Hidden on all</td>
                   <td>
-                    <code>.d-none</code>
+                    <code>.hidden</code>
                   </td>
                 </tr>
                 <tr>
                   <td className="ps-2">Hidden only on xs</td>
                   <td>
-                    <code>.d-none .d-sm-block</code>
+                    <code>.hidden .d-sm-block</code>
                   </td>
                 </tr>
                 <tr>
@@ -169,37 +169,37 @@ const DisplayExample = () => {
                 <tr>
                   <td className="ps-2">Visible on all</td>
                   <td>
-                    <code>.d-block</code>
+                    <code>.block</code>
                   </td>
                 </tr>
                 <tr>
                   <td className="ps-2">Visible only on xs</td>
                   <td>
-                    <code>.d-block .d-sm-none</code>
+                    <code>.block .d-sm-none</code>
                   </td>
                 </tr>
                 <tr>
                   <td className="ps-2">Visible only on sm</td>
                   <td>
-                    <code>.d-none .d-sm-block .d-md-none</code>
+                    <code>.hidden .d-sm-block .d-md-none</code>
                   </td>
                 </tr>
                 <tr>
                   <td className="ps-2">Visible only on md</td>
                   <td>
-                    <code>.d-none .d-md-block .d-lg-none</code>
+                    <code>.hidden .d-md-block .d-lg-none</code>
                   </td>
                 </tr>
                 <tr>
                   <td className="ps-2">Visible only on lg</td>
                   <td>
-                    <code>.d-none .d-lg-block .d-xl-none</code>
+                    <code>.hidden .d-lg-block .d-xl-none</code>
                   </td>
                 </tr>
                 <tr>
                   <td className="ps-2">Visible only on xl</td>
                   <td>
-                    <code>.d-none .d-xl-block</code>
+                    <code>.hidden .d-xl-block</code>
                   </td>
                 </tr>
               </tbody>

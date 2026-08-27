@@ -107,13 +107,13 @@ const KanbanListItemCard = ({
         className={classNames(
           className,
           'sortable-item hover-actions-trigger',
-          { 'bg-body-emphasis': isDragging }
+          { 'bg-soft': isDragging }
         )}
       >
         <Card.Body className="p-3">
           {task.coverImage && (
             <div
-              className="position-relative mb-2 overflow-hidden rounded w-100"
+              className="relative mb-2 overflow-hidden rounded w-100"
               style={{ height: 200 }}
             >
               <div
@@ -125,7 +125,7 @@ const KanbanListItemCard = ({
               />
             </div>
           )}
-          <div className="kanban-status mb-1 position-relative lh-1">
+          <div className="kanban-status mb-1 relative lh-1">
             <FontAwesomeIcon
               transform="shrink-1 down-3"
               icon={faCircle}
@@ -134,7 +134,7 @@ const KanbanListItemCard = ({
             <Badge
               variant="phoenix"
               bg={task.status.color as BadgeBg}
-              className="fs-10"
+              className="text-sm"
             >
               {task.status.label}
               <FontAwesomeIcon
@@ -144,7 +144,7 @@ const KanbanListItemCard = ({
                 style={{ height: 7.8, width: 7.8 }}
               />
             </Badge>
-            <Dropdown autoClose="outside" className="position-static">
+            <Dropdown autoClose="outside" className="static">
               <Dropdown.Toggle
                 variant=""
                 size="sm"
@@ -162,13 +162,13 @@ const KanbanListItemCard = ({
                       <Dropdown.Item
                         href="#!"
                         key={action.label}
-                        className="d-flex flex-between-center"
+                        className="flex flex-between-center"
                       >
                         {action.label}
                         {action.isNested && (
                           <FontAwesomeIcon
                             icon={faAngleRight}
-                            className="fs-10"
+                            className="text-sm"
                           />
                         )}
                       </Dropdown.Item>
@@ -181,9 +181,9 @@ const KanbanListItemCard = ({
           <p className="mb-2 stretched-link" onClick={() => setOpenModal(true)}>
             {task.title}
           </p>
-          <div className="d-flex mt-2 align-items-center">
+          <div className="flex mt-2 align-items-center">
             {task.date && (
-              <p className="mb-0 text-body-tertiary text-opactity-85 fs-9 lh-1 me-3 white-space-nowrap">
+              <p className="mb-0 text-subtle text-opactity-85 text-md lh-1 me-3 whitespace-nowrap">
                 <FontAwesomeIcon
                   icon={faCalendarXmark}
                   className="fs-0 me-2 d-inline-block"
@@ -192,7 +192,7 @@ const KanbanListItemCard = ({
               </p>
             )}
             {task.attachments && (
-              <p className="mb-0 text-body-tertiary text-opactity-85 fs-9 lh-1">
+              <p className="mb-0 text-subtle text-opactity-85 text-md lh-1">
                 <FontAwesomeIcon
                   icon={faPaperclip}
                   className="fs-0 me-2 d-inline-block"
@@ -201,7 +201,7 @@ const KanbanListItemCard = ({
               </p>
             )}
             {task.completedTasks && (
-              <p className="mb-0 text-body-tertiary text-opactity-85 fs-9 lh-1">
+              <p className="mb-0 text-subtle text-opactity-85 text-md lh-1">
                 <FontAwesomeIcon
                   icon={faPaperclip}
                   className="fs-0 me-2 d-inline-block"

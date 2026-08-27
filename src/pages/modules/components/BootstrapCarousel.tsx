@@ -14,21 +14,21 @@ const exampleCode = `
 <Carousel>
   <Carousel.Item>
     <img
-      className="d-block w-100"
+      className="block w-100"
       src={generic6}
       alt="First slide"
     />
   </Carousel.Item>
   <Carousel.Item>
     <img
-      className="d-block w-100"
+      className="block w-100"
       src={generic7}
       alt="Second slide"
     />
   </Carousel.Item>
   <Carousel.Item>
     <img
-      className="d-block w-100"
+      className="block w-100"
       src={generic8}
       alt="Third slide"
     />
@@ -49,21 +49,21 @@ const customStyledCode = `
 >
   <Carousel.Item>
     <img
-      className="d-block w-100"
+      className="block w-100"
       src={generic6}
       alt="First slide"
     />
   </Carousel.Item>
   <Carousel.Item>
     <img
-      className="d-block w-100"
+      className="block w-100"
       src={generic7}
       alt="Second slide"
     />
   </Carousel.Item>
   <Carousel.Item>
     <img
-      className="d-block w-100"
+      className="block w-100"
       src={generic8}
       alt="Third slide"
     />
@@ -75,7 +75,7 @@ const withCaptionsCode = `
 <Carousel className='light'>
   <Carousel.Item>
     <img
-      className="d-block w-100"
+      className="block w-100"
       src={generic5}
       alt="First slide"
     />
@@ -86,7 +86,7 @@ const withCaptionsCode = `
   </Carousel.Item>
   <Carousel.Item>
     <img
-      className="d-block w-100"
+      className="block w-100"
       src={generic28}
       alt="Second slide"
     />
@@ -98,7 +98,7 @@ const withCaptionsCode = `
   </Carousel.Item>
   <Carousel.Item>
     <img
-      className="d-block w-100"
+      className="block w-100"
       src={generic9}
       alt="Third slide"
     />
@@ -115,21 +115,21 @@ const fadeCode = `
 <Carousel fade>
   <Carousel.Item>
     <img
-      className="d-block w-100"
+      className="block w-100"
       src={generic8}
       alt="First slide"
     />
   </Carousel.Item>
   <Carousel.Item>
     <img
-      className="d-block w-100"
+      className="block w-100"
       src={generic7}
       alt="Second slide"
     />
   </Carousel.Item>
   <Carousel.Item>
     <img
-      className="d-block w-100"
+      className="block w-100"
       src={generic6}
       alt="Third slide"
     />
@@ -149,21 +149,21 @@ function ControlledCarousel() {
     <Carousel activeIndex={index} onSelect={handleSelect} indicators={false}>
       <Carousel.Item>
         <img
-          className="d-block w-100"
+          className="block w-100"
           src={generic6}
           alt="First slide"
         />
       </Carousel.Item>
       <Carousel.Item>
         <img
-          className="d-block w-100"
+          className="block w-100"
           src={generic7}
           alt="Second slide"
         />
       </Carousel.Item>
       <Carousel.Item>
         <img
-          className="d-block w-100"
+          className="block w-100"
           src={generic8}
           alt="Third slide"
         />
@@ -177,7 +177,7 @@ const intervalCode = `
 <Carousel className='light'>
   <Carousel.Item interval={1000}>
     <img
-      className="d-block w-100"
+      className="block w-100"
       src={generic6}
       alt="First slide"
     />
@@ -188,7 +188,7 @@ const intervalCode = `
   </Carousel.Item>
   <Carousel.Item interval={500}>
     <img
-      className="d-block w-100"
+      className="block w-100"
       src={generic7}
       alt="Second slide"
     />
@@ -200,7 +200,7 @@ const intervalCode = `
   </Carousel.Item>
   <Carousel.Item>
     <img
-      className="d-block w-100"
+      className="block w-100"
       src={generic8}
       alt="Third slide"
     />

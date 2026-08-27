@@ -37,12 +37,12 @@ const CompareHotelDetails = ({
       </thead>
       <tbody>
         <tr>
-          <td colSpan={4} className="ps-4 pt-4 pb-3 fw-bold border-0">
+          <td colSpan={4} className="ps-4 pt-4 pb-3 font-bold border-0">
             Hotel picture
           </td>
         </tr>
         <tr>
-          <td className="border-0 bg-body-highlight py-0"></td>
+          <td className="border-0 bg-subtle py-0"></td>
           {hotelInfo.map((item, index) => (
             <td
               className={classNames('border-0 py-0', {
@@ -54,7 +54,7 @@ const CompareHotelDetails = ({
                 minWidth: 250
               }}
             >
-              <div className="position-relative swiper-theme-container overflow-hidden rounded-2">
+              <div className="relative swiper-theme-container overflow-hidden rounded-2">
                 <Swiper
                   slidesPerView={1}
                   loop
@@ -74,18 +74,18 @@ const CompareHotelDetails = ({
                 <Badge
                   variant="phoenix"
                   bg="warning"
-                  className="fs-10 position-absolute top-0 start-0 ms-3 mt-3 z-1"
+                  className="text-sm absolute top-0 start-0 ms-3 mt-3 z-1"
                 >
                   <FontAwesomeIcon icon={faStar} className="me-1" />
                   {numberFormat(item.overallRating, 'standard', {
                     minimumFractionDigits: 1
                   })}
                 </Badge>
-                <Button className="btn-wish position-absolute top-0 end-0 me-3 mt-3 z-1">
+                <Button className="btn-wish absolute top-0 end-0 me-3 mt-3 z-1">
                   <FontAwesomeIcon icon={faHeart} />
                 </Button>
               </div>
-              <div className="position-relative">
+              <div className="relative">
                 <Form.Control
                   type="text"
                   defaultValue={item.name}
@@ -94,7 +94,7 @@ const CompareHotelDetails = ({
                 />
                 <FontAwesomeIcon
                   icon={faSearch}
-                  className="fs-9 text-body-quaternary position-absolute top-0 end-0 me-3 mt-3"
+                  className="text-md text-soft absolute top-0 end-0 me-3 mt-3"
                   transform="down-2"
                 />
               </div>
@@ -102,7 +102,7 @@ const CompareHotelDetails = ({
           ))}
         </tr>
         <tr>
-          <td colSpan={4} className="pt-4 pb-3 ps-4 fw-bold">
+          <td colSpan={4} className="pt-4 pb-3 ps-4 font-bold">
             Hotel Review
           </td>
         </tr>
@@ -116,19 +116,19 @@ const CompareHotelDetails = ({
           />
         ))}
         <tr>
-          <td colSpan={4} className="ps-4 pt-4 pb-3 fw-bold">
+          <td colSpan={4} className="ps-4 pt-4 pb-3 font-bold">
             Facilities at a Glance
           </td>
         </tr>
         <tr>
-          <td className="px-4 align-middle bg-body-highlight border-end-lg border-translucent">
-            <h6 className="text-body fw-bolder text-uppercase mb-0">
+          <td className="px-4 align-middle bg-subtle border-end-lg border-light">
+            <h6 className="text-default font-black text-uppercase mb-0">
               Hotel facilities
             </h6>
           </td>
           {hotelInfo.map((item, index) => (
             <td
-              className={classNames('border-translucent px-3', {
+              className={classNames('border-light px-3', {
                 'border-end-lg': index === hotelInfo.length - 1,
                 'border-end': index !== hotelInfo.length - 1
               })}
@@ -136,7 +136,7 @@ const CompareHotelDetails = ({
             >
               <ul className="mb-0 list-unstyled">
                 {item.facilities.map((facility, idx) => (
-                  <li className="text-body-highlight fs-9" key={idx}>
+                  <li className="text-highlight text-md" key={idx}>
                     <span>
                       <FontAwesomeIcon
                         icon={faCheck}

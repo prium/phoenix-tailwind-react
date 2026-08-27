@@ -14,11 +14,11 @@ const BasicTimeline = ({ data }: { data: TimelineItem[] }) => {
         <Timeline.Item key={item.id}>
           <Row className="g-3">
             <Col xs="auto">
-              <Timeline.Separator className="position-relative">
-                <Timeline.Dot className="icon-item-md border border-translucent bg-body">
+              <Timeline.Separator className="relative">
+                <Timeline.Dot className="icon-item-md border border-light bg-default">
                   <FontAwesomeIcon
                     icon={item.icon}
-                    className={`fs-9 text-${item.iconColor}`}
+                    className={`text-md text-${item.iconColor}`}
                   />
                 </Timeline.Dot>
                 {index !== data.length - 1 && (
@@ -28,40 +28,40 @@ const BasicTimeline = ({ data }: { data: TimelineItem[] }) => {
             </Col>
             <Col>
               <Timeline.Content>
-                <div className="d-flex justify-content-between">
-                  <div className="d-flex mb-2">
+                <div className="flex justify-content-between">
+                  <div className="flex mb-2">
                     <h6
-                      className="lh-sm mb-0 me-2 text-body-secondary timeline-item-title"
+                      className="lh-sm mb-0 me-2 text-muted timeline-item-title"
                       dangerouslySetInnerHTML={{ __html: item.title }}
                     />
                     {item.file && (
-                      <h6 className="mb-0 fs-9">
+                      <h6 className="mb-0 text-md">
                         <FontAwesomeIcon
                           icon={faFilePdf}
-                          className="me-1 text-body-tertiary"
+                          className="me-1 text-subtle"
                         />
                         <Link to="#!">{item.file}</Link>
                       </h6>
                     )}
                   </div>
-                  <div className="text-body-quaternary fs-9 text-nowrap timeline-time">
+                  <div className="text-soft text-md text-nowrap timeline-time">
                     <FontAwesomeIcon icon={faClock} className="me-1" />
                     {item.time}
                   </div>
                 </div>
                 <h6
-                  className={classNames('fs-10 fw-normal', {
+                  className={classNames('text-sm font-normal', {
                     'mb-3': index !== data.length - 1
                   })}
                 >
                   by{' '}
-                  <Link to="#!" className="fw-semibold">
+                  <Link to="#!" className="font-semibold">
                     {item.tasker}
                   </Link>
                 </h6>
                 <p
                   className={classNames(
-                    'fs-9 text-body-secondary w-sm-60 mb-0',
+                    'text-md text-muted w-sm-60 mb-0',
                     {
                       'mb-5': index !== data.length - 1
                     }

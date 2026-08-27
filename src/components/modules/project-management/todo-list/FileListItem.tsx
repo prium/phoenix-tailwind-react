@@ -20,9 +20,9 @@ const FileListItem = ({ attachment, className }: FileListItemProps) => {
   return (
     <div className={classNames(className, 'border-bottom py-4')}>
       <div>
-        <div className="d-flex justify-content-between align-items-start">
+        <div className="flex justify-content-between align-items-start">
           <div>
-            <div className="d-flex align-items-center mb-1">
+            <div className="flex align-items-center mb-1">
               <FontAwesomeIcon
                 icon={
                   attachment.mimeType === 'image'
@@ -31,22 +31,22 @@ const FileListItem = ({ attachment, className }: FileListItemProps) => {
                     ? faFileZipper
                     : faFileLines
                 }
-                className="me-2 fs-9 text-body-tertiary"
+                className="me-2 text-md text-subtle"
               />
-              <p className="text-body-highlight mb-0 lh-1">{attachment.name}</p>
+              <p className="text-highlight mb-0 lh-1">{attachment.name}</p>
             </div>
             <div
               className={classNames(
-                'd-flex fs-9 text-body-tertiary flex-wrap',
+                'flex text-md text-subtle flex-wrap',
                 {
                   'mb-3': attachment.thumbnail
                 }
               )}
             >
               <span>{attachment.size}</span>
-              <span className="text-body-quaternary mx-1">| </span>
+              <span className="text-soft mx-1">| </span>
               <a href="#!">{attachment.user}</a>
-              <span className="text-body-quaternary mx-1">| </span>
+              <span className="text-soft mx-1">| </span>
               <span className="text-nowrap">{attachment.date}</span>
             </div>
             {attachment.thumbnail && (

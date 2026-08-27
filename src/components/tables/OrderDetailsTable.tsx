@@ -45,7 +45,7 @@ const columns: ColumnDef<WishlistProductType>[] = [
     header: 'Color',
     meta: {
       headerProps: { style: { width: 150 }, className: 'ps-4' },
-      cellProps: { className: 'white-space-nowrap text-body ps-4' }
+      cellProps: { className: 'whitespace-nowrap text-default ps-4' }
     }
   },
   {
@@ -54,7 +54,7 @@ const columns: ColumnDef<WishlistProductType>[] = [
     meta: {
       headerProps: { style: { width: 300 }, className: 'ps-4' },
       cellProps: {
-        className: 'white-space-nowrap text-body-tertiary fw-semibold ps-4'
+        className: 'whitespace-nowrap text-subtle font-semibold ps-4'
       }
     }
   },
@@ -64,7 +64,7 @@ const columns: ColumnDef<WishlistProductType>[] = [
     cell: ({ row: { original } }) => currencyFormat(original.price),
     meta: {
       headerProps: { style: { width: 150 }, className: 'ps-4 text-end' },
-      cellProps: { className: 'text-body fw-semibold text-end ps-4' }
+      cellProps: { className: 'text-default font-semibold text-end ps-4' }
     }
   },
   {
@@ -72,7 +72,7 @@ const columns: ColumnDef<WishlistProductType>[] = [
     header: 'Quantity',
     meta: {
       headerProps: { style: { width: 200 }, className: 'ps-4 text-end' },
-      cellProps: { className: 'text-end ps-4 text-body-tertiary' }
+      cellProps: { className: 'text-end ps-4 text-subtle' }
     }
   },
   {
@@ -83,7 +83,7 @@ const columns: ColumnDef<WishlistProductType>[] = [
       currencyFormat(original.price * original.quantity),
     meta: {
       headerProps: { style: { width: 250 }, className: 'ps-4 text-end' },
-      cellProps: { className: 'fw-bold text-body-highlight text-end ps-4' }
+      cellProps: { className: 'font-bold text-highlight text-end ps-4' }
     }
   }
 ];
@@ -108,7 +108,7 @@ const OrderDetailsTable = () => {
     <div>
       <AdvanceTableProvider {...table}>
         <div className="border-y border-light">
-          <AdvanceTable tableProps={{ className: 'phoenix-table fs-9' }} />
+          <AdvanceTable tableProps={{ className: ' text-md' }} />
           <div className="flex flex-between-center py-4">
             <p className="text-emphasis font-semibold leading-sm mb-0">
               Items subtotal :

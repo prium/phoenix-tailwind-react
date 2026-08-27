@@ -22,7 +22,7 @@ const RoomFilterCheckbox = ({
         name={name}
         className="mt-0"
       />
-      <Form.Check.Label className="d-block lh-sm fs-8 text-body-highlight mb-0">
+      <Form.Check.Label className="block lh-sm text-base text-highlight mb-0">
         {label}
       </Form.Check.Label>
     </Form.Check>

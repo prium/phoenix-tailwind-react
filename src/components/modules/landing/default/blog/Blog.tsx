@@ -14,7 +14,7 @@ const Blog = () => {
       <div className="container-small px-lg-7 px-xxl-3">
         <Row className="row">
           <Col xs={12} className="mb-4 text-center text-sm-start">
-            <h4 className="text-primary fw-bolder mb-3">Blog</h4>
+            <h4 className="text-primary font-black mb-3">Blog</h4>
             <h2>Latest articles</h2>
           </Col>
           <Col lg={6} className="text-center text-sm-start">

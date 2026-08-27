@@ -29,7 +29,7 @@ const OneStopSolution = () => {
           <Col lg={6} className="text-center text-lg-start">
             <h5 className="text-info mb-3">One-stop solution</h5>
             <h2 className="mb-2 lh-base">Used by millions of users</h2>
-            <h1 className="fs-4 fs-sm-2 mb-3 text-gradient-info fw-black">
+            <h1 className="fs-4 fs-sm-2 mb-3 text-gradient-info font-black">
               WORLDWIDE
             </h1>
             <p className="mb-10">
@@ -45,7 +45,7 @@ const OneStopSolution = () => {
             </Row>
           </Col>
           <Col lg="auto">
-            <div className="position-relative position-lg-absolute rotating-earth">
+            <div className="relative position-lg-absolute rotating-earth">
               <Lottie
                 animationData={theme === 'light' ? earthLight : earthDark}
                 className="lottie"
@@ -53,12 +53,12 @@ const OneStopSolution = () => {
               <img
                 src={earthPlane}
                 alt=""
-                className="position-absolute d-dark-none"
+                className="absolute d-dark-none"
               />
               <img
                 src={earthPlaneDark}
                 alt=""
-                className="position-absolute d-light-none"
+                className="absolute d-light-none"
               />
             </div>
           </Col>

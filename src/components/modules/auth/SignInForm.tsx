@@ -9,12 +9,12 @@ const SignInForm = ({ layout }: { layout: 'simple' | 'card' | 'split' }) => {
   return (
     <>
       <div className="text-center mb-7">
-        <h3 className="text-body-highlight">Sign In</h3>
-        <p className="text-body-tertiary">Get access to your account</p>
+        <h3 className="text-highlight">Sign In</h3>
+        <p className="text-subtle">Get access to your account</p>
       </div>
       <AuthSocialButtons title="Sign in" />
-      <div className="position-relative">
-        <hr className="bg-body-secondary mt-5 mb-4" />
+      <div className="relative">
+        <hr className="bg-muted mt-5 mb-4" />
         <div className="divider-content-center">or use email</div>
       </div>
       <Form.Group className="mb-3 text-start">
@@ -26,7 +26,7 @@ const SignInForm = ({ layout }: { layout: 'simple' | 'card' | 'split' }) => {
             className="form-icon-input"
             placeholder="name@example.com"
           />
-          <FontAwesomeIcon icon={faUser} className="text-body fs-9 form-icon" />
+          <FontAwesomeIcon icon={faUser} className="text-default text-md form-icon" />
         </div>
       </Form.Group>
       <Form.Group className="mb-3 text-start">
@@ -38,7 +38,7 @@ const SignInForm = ({ layout }: { layout: 'simple' | 'card' | 'split' }) => {
             className="form-icon-input"
             placeholder="Password"
           />
-          <FontAwesomeIcon icon={faKey} className="text-body fs-9 form-icon" />
+          <FontAwesomeIcon icon={faKey} className="text-default text-md form-icon" />
         </div>
       </Form.Group>
       <Row className="flex-between-center mb-7">
@@ -58,7 +58,7 @@ const SignInForm = ({ layout }: { layout: 'simple' | 'card' | 'split' }) => {
         <Col xs="auto">
           <Link
             to={`/pages/authentication/${layout}/forgot-password`}
-            className="fs-9 fw-semibold"
+            className="text-md font-semibold"
           >
             Forgot Password?
           </Link>
@@ -70,7 +70,7 @@ const SignInForm = ({ layout }: { layout: 'simple' | 'card' | 'split' }) => {
       <div className="text-center">
         <Link
           to={`/pages/authentication/${layout}/sign-up`}
-          className="fs-9 fw-bold"
+          className="text-md font-bold"
         >
           Create an account
         </Link>

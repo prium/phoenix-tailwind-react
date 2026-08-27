@@ -156,22 +156,22 @@ const FlightsInfo: FlightInfo[] = [
 
 const FlightSchedule = ({ schedule }: FlightScheduleProps) => {
   return (
-    <div className="d-flex gap-4 justify-content-center">
+    <div className="flex gap-4 justify-content-center">
       <div>
-        <p className="mb-2 fs-9 text-body-tertiary">
+        <p className="mb-2 text-md text-subtle">
           {schedule.departure.date}
         </p>
-        <h4 className="mb-2 text-body">{schedule.departure.from}</h4>
+        <h4 className="mb-2 text-default">{schedule.departure.from}</h4>
         <h2 className="mb-0">{schedule.departure.time}</h2>
       </div>
       <div className="text-center">
-        <p className="mb-2 fs-9 text-body-tertiary">{schedule.duration}</p>
-        <p className="mb-2 fs-9 text-body-tertiary">Non-stop</p>
-        <img src={longArrow} alt="" className="position-relative rtl__flip" />
+        <p className="mb-2 text-md text-subtle">{schedule.duration}</p>
+        <p className="mb-2 text-md text-subtle">Non-stop</p>
+        <img src={longArrow} alt="" className="relative rtl__flip" />
       </div>
       <div className="text-end">
-        <p className="mb-2 fs-9 text-body-tertiary">{schedule.arrival.date}</p>
-        <h4 className="mb-2 text-body">{schedule.arrival.to}</h4>
+        <p className="mb-2 text-md text-subtle">{schedule.arrival.date}</p>
+        <h4 className="mb-2 text-default">{schedule.arrival.to}</h4>
         <h2 className="mb-0">{schedule.arrival.time}</h2>
       </div>
     </div>
@@ -182,20 +182,20 @@ const FlightItem = ({ airline, schedules, price }: FlightInfo) => {
   return (
     <Row className="g-0 gap-6 align-items-center py-7 border-top">
       <Col lg>
-        <div className="d-flex flex-column gap-md-3 gap-6">
+        <div className="flex flex-column gap-md-3 gap-6">
           {schedules.map((schedule, idx) => (
             <Row
               key={idx}
               className="gy-md-0 gy-4 justify-content-sm-between justify-content-lg-start"
             >
               <Col sm="auto" md={5}>
-                <div className="d-flex flex-center justify-content-sm-start gap-4">
+                <div className="flex flex-center justify-content-sm-start gap-4">
                   <img
                     src={airline.logo}
                     alt=""
                     className="flight-list-item-logo img-fluid rounded-3"
                   />
-                  <h5 className="d-none d-md-block text-nowrap text-body-highlight">
+                  <h5 className="hidden d-md-block text-nowrap text-highlight">
                     {airline.name}
                   </h5>
                 </div>
@@ -208,9 +208,9 @@ const FlightItem = ({ airline, schedules, price }: FlightInfo) => {
         </div>
       </Col>
       <Col lg="auto">
-        <div className="d-flex gap-3 flex-column flex-sm-row flex-lg-column flex-xl-row flex-end-center">
-          <h3 className="mb-0 fs-5 fs-sm-6 d-flex gap-2 flex-column flex-sm-row align-items-center">
-            <span className="fs-9 text-body-quaternary fw-normal text-decoration-line-through">
+        <div className="flex gap-3 flex-column flex-sm-row flex-lg-column flex-xl-row flex-end-center">
+          <h3 className="mb-0 fs-5 fs-sm-6 flex gap-2 flex-column flex-sm-row align-items-center">
+            <span className="text-md text-soft font-normal text-decoration-line-through">
               {currencyFormat(price.regular, { minimumFractionDigits: 2 })}
             </span>
             {currencyFormat(price.discounted, { minimumFractionDigits: 2 })}
@@ -234,11 +234,11 @@ const FlightListing = () => {
       {FlightsInfo.map((flight, idx) => (
         <FlightItem key={idx} {...flight} />
       ))}
-      <div className="mt-4 position-relative text-center">
-        <hr className="m-0 position-absolute top-50 translate-middle-y w-100" />
+      <div className="mt-4 relative text-center">
+        <hr className="m-0 absolute top-50 translate-middle-y w-100" />
         <Button
           variant="phoenix-secondary"
-          className="rounded-pill position-relative"
+          className="rounded-full relative"
         >
           Show more
         </Button>

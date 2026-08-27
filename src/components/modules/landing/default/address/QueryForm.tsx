@@ -9,7 +9,7 @@ const QueryForm = () => {
         If you have any query or suggestion, we are open to learn from you.
         Let's talk, reach us anytime.
       </p>
-      <Form className="d-flex flex-column gap-4">
+      <Form className="flex flex-column gap-4">
         <Form.Control type="text" name="name" placeholder="Name" required />
         <Form.Control type="email" name="email" placeholder="Email" required />
         <Form.Control

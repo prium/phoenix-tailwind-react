@@ -24,8 +24,8 @@ const TopStockMainContent = ({ topStockItem }: TopStockMainContentProps) => {
     <>
       <Row className="g-3 mb-5 justify-content-between">
         <Col xs="auto">
-          <h4 className="text-body-tertiary mb-2 lh-sm">{topStockItem.abbr}</h4>
-          <h3 className="text-body-highlight d-flex gap-2 flex-between-center lh-sm mb-0">
+          <h4 className="text-subtle mb-2 lh-sm">{topStockItem.abbr}</h4>
+          <h3 className="text-highlight flex gap-2 flex-between-center lh-sm mb-0">
             {currencyFormat(topStockItem.amount, {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2
@@ -33,7 +33,7 @@ const TopStockMainContent = ({ topStockItem }: TopStockMainContentProps) => {
             <Badge
               variant="phoenix"
               bg={topStockItem.growth ? 'success' : 'danger'}
-              className="fs-10 d-flex align-items-center"
+              className="text-sm flex align-items-center"
             >
               {topStockItem.percent}%
               <FontAwesomeIcon
@@ -44,7 +44,7 @@ const TopStockMainContent = ({ topStockItem }: TopStockMainContentProps) => {
           </h3>
         </Col>
         <Col xs="auto">
-          <div className="d-flex align-items-center gap-2">
+          <div className="flex align-items-center gap-2">
             <Link
               to={'/apps/stock/stock-details'}
               className="btn btn-sm btn-phoenix-primary"
@@ -88,45 +88,45 @@ const TopStockMainContent = ({ topStockItem }: TopStockMainContentProps) => {
               >
                 <Button
                   variant="phoenix-secondary"
-                  className="fw-bolder active"
+                  className="font-black active"
                   type="button"
                 >
                   1 D
-                  <span className="d-none d-sm-inline d-xl-none d-xxl-inline">
+                  <span className="hidden d-sm-inline d-xl-none d-xxl-inline">
                     ay
                   </span>
                 </Button>
-                <Button variant="phoenix-secondary" className="fw-bolder">
+                <Button variant="phoenix-secondary" className="font-black">
                   5 D
-                  <span className="d-none d-sm-inline d-xl-none d-xxl-inline">
+                  <span className="hidden d-sm-inline d-xl-none d-xxl-inline">
                     ays
                   </span>
                 </Button>
-                <Button variant="phoenix-secondary" className="fw-bolder">
+                <Button variant="phoenix-secondary" className="font-black">
                   3 M
-                  <span className="d-none d-sm-inline d-xl-none d-xxl-inline">
+                  <span className="hidden d-sm-inline d-xl-none d-xxl-inline">
                     onths
                   </span>
                 </Button>
-                <Button variant="phoenix-secondary" className="fw-bolder">
+                <Button variant="phoenix-secondary" className="font-black">
                   6 M
-                  <span className="d-none d-sm-inline d-xl-none d-xxl-inline">
+                  <span className="hidden d-sm-inline d-xl-none d-xxl-inline">
                     onths
                   </span>
                 </Button>
-                <Button variant="phoenix-secondary" className="fw-bolder">
+                <Button variant="phoenix-secondary" className="font-black">
                   1 Y
-                  <span className="d-none d-sm-inline d-xl-none d-xxl-inline">
+                  <span className="hidden d-sm-inline d-xl-none d-xxl-inline">
                     ear
                   </span>
                 </Button>
-                <Button variant="phoenix-secondary" className="fw-bolder">
+                <Button variant="phoenix-secondary" className="font-black">
                   5 Y
-                  <span className="d-none d-sm-inline d-xl-none d-xxl-inline">
+                  <span className="hidden d-sm-inline d-xl-none d-xxl-inline">
                     ears
                   </span>
                 </Button>
-                <Button variant="phoenix-secondary" className="fw-bolder">
+                <Button variant="phoenix-secondary" className="font-black">
                   Max
                 </Button>
               </ButtonGroup>

@@ -55,7 +55,7 @@ const Deals = () => {
   }, []);
 
   return (
-    <div className="d-flex flex-column h-100">
+    <div className="flex flex-column h-100">
       <PageBreadcrumb items={defaultBreadcrumbItems} />
       <div className="mb-6">
         <h2 className="mb-5">Deals</h2>
@@ -71,16 +71,16 @@ const Deals = () => {
             </Button>
             <Button
               variant="link"
-              className="text-body px-0"
+              className="text-default px-0"
               startIcon={
-                <FontAwesomeIcon icon={faFileExport} className="fs-9 me-2" />
+                <FontAwesomeIcon icon={faFileExport} className="text-md me-2" />
               }
             >
               Export
             </Button>
           </Col>
           <Col xs="auto">
-            <div className="d-flex">
+            <div className="flex">
               <SearchBox placeholder="Search by name" className="me-2" />
               <Form.Select className="w-auto">
                 <option value="deals">Deals</option>
@@ -107,7 +107,7 @@ const Deals = () => {
         onDragOver={handleDragOver}
         onDragEnd={handleDragEnd}
       >
-        <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 flex-1 d-flex gap-4 scrollbar">
+        <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 flex-1 flex gap-4 scrollbar">
           {dealColumns.map(col => (
             <DealColumn
               column={col}

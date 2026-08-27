@@ -23,12 +23,12 @@ const ForecastTabContent = ({ forecastDataItems }: ForecastTabContentProps) => {
       <Row className="g-3 g-lg-5 mb-4 flex-between-center">
         <Col xs="auto">
           <h4>Economic Prediction</h4>
-          <p className="text-body-tertiary mb-0">
+          <p className="text-subtle mb-0">
             Brief summary of all projects
           </p>
         </Col>
         <Col xs="auto">
-          <div className="d-flex align-items-center gap-2">
+          <div className="flex align-items-center gap-2">
             <Form.Select size="sm">
               <option value="annual">Annual</option>
               <option value="half-annual">Half Annual</option>
@@ -52,7 +52,7 @@ const ForecastTabContent = ({ forecastDataItems }: ForecastTabContentProps) => {
                 key={item.id}
                 className={classNames(item.className)}
               >
-                <h5 className="text-body-highlight mb-3">{item.title}</h5>
+                <h5 className="text-highlight mb-3">{item.title}</h5>
                 <Row className="flex-between-center">
                   <Col xs={9} className="pe-xl-0 order-xxl-1">
                     <h4 className="mb-2">
@@ -62,8 +62,8 @@ const ForecastTabContent = ({ forecastDataItems }: ForecastTabContentProps) => {
                       })}
                       {item.postfix && item.postfix}
                     </h4>
-                    <div className="d-flex align-items-center gap-2">
-                      <h6 className="text-body-tertiary fw-semibold mb-0 text-nowrap">
+                    <div className="flex align-items-center gap-2">
+                      <h6 className="text-subtle font-semibold mb-0 text-nowrap">
                         From{' '}
                         {numberFormat(item.pastAmount, 'standard', {
                           minimumFractionDigits: 2
@@ -73,7 +73,7 @@ const ForecastTabContent = ({ forecastDataItems }: ForecastTabContentProps) => {
                       <Badge
                         variant="phoenix"
                         bg={item.badge.badgeBg}
-                        className="fs-10"
+                        className="text-sm"
                       >
                         {item.badge.amount}%{item.badge.icon}
                       </Badge>
@@ -82,7 +82,7 @@ const ForecastTabContent = ({ forecastDataItems }: ForecastTabContentProps) => {
                   <Col
                     xs={3}
                     xxl={12}
-                    className="mb-xxl-3 ps-0 ps-xxl-3 d-flex justify-content-end justify-content-xxl-start"
+                    className="mb-xxl-3 ps-0 ps-xxl-3 flex justify-content-end justify-content-xxl-start"
                   >
                     {item.chart}
                   </Col>
@@ -133,7 +133,7 @@ const ForecastTabContent = ({ forecastDataItems }: ForecastTabContentProps) => {
           <p className="mb-0">Brief summary of all projects</p>
         </Col>
         <Col xs="auto">
-          <div className="d-flex align-items-center gap-2">
+          <div className="flex align-items-center gap-2">
             <Form.Select size="sm">
               <option value="annual">Annual</option>
               <option value="half-annual">Half Annual</option>
@@ -141,10 +141,10 @@ const ForecastTabContent = ({ forecastDataItems }: ForecastTabContentProps) => {
             </Form.Select>
             <Button
               variant="phoenix-primary"
-              className="d-flex align-items-center gap-2 px-3"
+              className="flex align-items-center gap-2 px-3"
             >
               <FontAwesomeIcon icon={faFilter} transform="up-1" />
-              <span className="d-none d-sm-inline">Filter</span>
+              <span className="hidden d-sm-inline">Filter</span>
             </Button>
           </div>
         </Col>

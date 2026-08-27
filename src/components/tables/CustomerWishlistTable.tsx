@@ -54,7 +54,7 @@ const columns: ColumnDef<WishlistProductType>[] = [
     header: 'Color',
     meta: {
       headerProps: { style: { width: '15%' } },
-      cellProps: { className: 'white-space-nowrap text-body' }
+      cellProps: { className: 'whitespace-nowrap text-default' }
     }
   },
   {
@@ -63,7 +63,7 @@ const columns: ColumnDef<WishlistProductType>[] = [
     meta: {
       headerProps: { style: { width: '10%' } },
       cellProps: {
-        className: 'white-space-nowrap text-body-tertiary fw-semibold'
+        className: 'whitespace-nowrap text-subtle font-semibold'
       }
     }
   },
@@ -73,7 +73,7 @@ const columns: ColumnDef<WishlistProductType>[] = [
     cell: ({ row: { original } }) => currencyFormat(original.price),
     meta: {
       headerProps: { style: { width: '15%' }, className: 'text-end' },
-      cellProps: { className: 'text-body fw-semibold text-end' }
+      cellProps: { className: 'text-default font-semibold text-end' }
     }
   },
   {
@@ -84,7 +84,7 @@ const columns: ColumnDef<WishlistProductType>[] = [
       currencyFormat(original.price * original.quantity),
     meta: {
       headerProps: { style: { width: '15%' }, className: 'text-end' },
-      cellProps: { className: 'fw-bold text-body-highlight text-end' }
+      cellProps: { className: 'font-bold text-highlight text-end' }
     }
   }
 ];
@@ -102,7 +102,7 @@ const CustomerWishlistTable = () => {
     <div>
       <AdvanceTableProvider {...table}>
         <div className="border-y border-light">
-          <AdvanceTable tableProps={{ className: 'phoenix-table fs-9' }} />
+          <AdvanceTable tableProps={{ className: ' text-md' }} />
           <AdvanceTableFooter pagination showViewAllBtn={false} />
         </div>
       </AdvanceTableProvider>

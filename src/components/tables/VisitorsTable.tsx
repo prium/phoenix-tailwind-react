@@ -25,7 +25,7 @@ const columns: ColumnDef<visitorData>[] = [
     ),
     meta: {
       headerProps: {
-        className: 'fs-10'
+        className: 'text-sm'
       },
       cellProps: { className: 'py-2' }
     }
@@ -42,7 +42,7 @@ const columns: ColumnDef<visitorData>[] = [
     ),
     meta: {
       headerProps: {
-        className: 'fs-10'
+        className: 'text-sm'
       },
       cellProps: { className: 'py-2' }
     }
@@ -58,9 +58,9 @@ const columns: ColumnDef<visitorData>[] = [
     meta: {
       headerProps: {
         style: { minWidth: 100, width: '15%' },
-        className: 'text-end fs-10'
+        className: 'text-end text-sm'
       },
-      cellProps: { className: 'text-end fw-semibold py-2' }
+      cellProps: { className: 'text-end font-semibold py-2' }
     }
   }
 ];
@@ -78,13 +78,13 @@ export const VisitorsTable = () => {
       <AdvanceTable
         tableProps={{
           size: 'sm',
-          className: 'phoenix-table fs-10 mb-0 mt-3'
+          className: ' text-sm mb-0 mt-3'
         }}
         headerClassName="fs-0"
       />
       <AdvanceTableFooter
         className="pt-4 pb-6"
-        tableInfo="fs-8"
+        tableInfo="text-base"
         viewAllBtnClass="ms-auto"
       />
     </AdvanceTableProvider>

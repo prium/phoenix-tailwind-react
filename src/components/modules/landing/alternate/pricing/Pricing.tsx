@@ -5,7 +5,7 @@ import PricingOffer from './PricingOffer';
 
 const Pricing = () => {
   return (
-    <section className="position-static pt-15 pt-md-5 pt-lg-2">
+    <section className="static pt-15 pt-md-5 pt-lg-2">
       <div className="container-small px-lg-7 px-xxl-3">
         <div className="text-center mb-3 mb-lg-7">
           <h5 className="text-info mb-3">Pricing</h5>

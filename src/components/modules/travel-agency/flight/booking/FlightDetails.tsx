@@ -16,13 +16,13 @@ interface BaggageRowProps {
 const BaggageRow: React.FC<BaggageRowProps> = ({ icon, label, weight }) => (
   <tr>
     <td className="text-nowrap py-1">
-      <p className="mb-0 text-body-tertiary text-nowrap">
-        <FontAwesomeIcon icon={icon} className="text-body-emphasis me-2" />
+      <p className="mb-0 text-subtle text-nowrap">
+        <FontAwesomeIcon icon={icon} className="text-emphasis me-2" />
         {label}
       </p>
     </td>
     <td className="w-max-content py-1 pe-1">
-      <p className="mb-0 text-body-tertiary">:</p>
+      <p className="mb-0 text-subtle">:</p>
     </td>
     <td className="py-1 align-middle">
       <h5 className="mb-0">{weight}</h5>
@@ -58,7 +58,7 @@ const FlightDetails = () => {
         {/* Policy Section */}
         <Col className="col-auto col-lg-8">
           <h5 className="mb-4">Policy</h5>
-          <div className="d-flex flex-column flex-sm-row justify-content-between gap-4">
+          <div className="flex flex-column flex-sm-row justify-content-between gap-4">
             <div>
               <p className="mb-2 text-info">Cancellation</p>
               <p className="mb-0">

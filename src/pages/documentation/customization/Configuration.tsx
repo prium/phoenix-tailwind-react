@@ -50,30 +50,30 @@ const Configuration = () => {
       <PhoenixDocCard className="mb-4">
         <PhoenixDocCard.Header title="Available Options" noPreview />
         <PhoenixDocCard.Body>
-          <table className="fs--1 mb-0 table table-bordered">
-            <thead className="bg-body-secondary text-body">
+          <table className="text-md mb-0 table table-bordered">
+            <thead className="bg-muted text-default">
               <tr>
-                <th className="white-space-nowrap" style={{ width: '20%' }}>
+                <th className="whitespace-nowrap" style={{ width: '20%' }}>
                   Option
                 </th>
-                <th className="white-space-nowrap" style={{ width: '20%' }}>
+                <th className="whitespace-nowrap" style={{ width: '20%' }}>
                   Type
                 </th>
-                <th className="white-space-nowrap" style={{ width: '20%' }}>
+                <th className="whitespace-nowrap" style={{ width: '20%' }}>
                   Defaults
                 </th>
-                <th className="white-space-nowrap">Description</th>
+                <th className="whitespace-nowrap">Description</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td className="white-space-nowrap">
+                <td className="whitespace-nowrap">
                   isNavbarVerticalCollapsed
                 </td>
-                <td className="white-space-nowrap">
+                <td className="whitespace-nowrap">
                   <code>Boolean</code>
                 </td>
-                <td className="white-space-nowrap">
+                <td className="whitespace-nowrap">
                   <code>false</code>
                 </td>
                 <td>
@@ -83,7 +83,7 @@ const Configuration = () => {
               </tr>
 
               <tr>
-                <td className="white-space-nowrap">openNavbarVertical</td>
+                <td className="whitespace-nowrap">openNavbarVertical</td>
                 <td>
                   <code>Boolean</code>
                 </td>
@@ -98,11 +98,11 @@ const Configuration = () => {
               </tr>
 
               <tr>
-                <td className="white-space-nowrap">theme</td>
+                <td className="whitespace-nowrap">theme</td>
                 <td>
                   <code> light | dark</code>
                 </td>
-                <td className="white-space-nowrap">
+                <td className="whitespace-nowrap">
                   <code>light</code>
                 </td>
                 <td>
@@ -113,11 +113,11 @@ const Configuration = () => {
               </tr>
 
               <tr>
-                <td className="white-space-nowrap">navbarTopAppearance</td>
-                <td className="white-space-nowrap">
+                <td className="whitespace-nowrap">navbarTopAppearance</td>
+                <td className="whitespace-nowrap">
                   <code> default | darker </code>
                 </td>
-                <td className="white-space-nowrap">
+                <td className="whitespace-nowrap">
                   <code> default </code>
                 </td>
                 <td>
@@ -129,11 +129,11 @@ const Configuration = () => {
               </tr>
 
               <tr>
-                <td className="white-space-nowrap">navbarVerticalAppearance</td>
-                <td className="white-space-nowrap">
+                <td className="whitespace-nowrap">navbarVerticalAppearance</td>
+                <td className="whitespace-nowrap">
                   <code> default | darker </code>
                 </td>
-                <td className="white-space-nowrap">
+                <td className="whitespace-nowrap">
                   <code> default </code>
                 </td>
                 <td>
@@ -145,28 +145,28 @@ const Configuration = () => {
               </tr>
 
               <tr>
-                <td className="white-space-nowrap">navbarPosition</td>
-                <td className="white-space-nowrap">
+                <td className="whitespace-nowrap">navbarPosition</td>
+                <td className="whitespace-nowrap">
                   <code>horizontal | vertical | combo</code>
                 </td>
-                <td className="white-space-nowrap">
+                <td className="whitespace-nowrap">
                   <code>vertical</code>
                 </td>
                 <td>For setting the navbar position.</td>
               </tr>
 
               <tr>
-                <td className="white-space-nowrap">navbarTopShape</td>
-                <td className="white-space-nowrap">
+                <td className="whitespace-nowrap">navbarTopShape</td>
+                <td className="whitespace-nowrap">
                   <code>default | slim</code>
                 </td>
-                <td className="white-space-nowrap">
+                <td className="whitespace-nowrap">
                   <code>default</code>
                 </td>
                 <td>For setting the top navbar shape.</td>
               </tr>
               <tr>
-                <td className="white-space-nowrap">isRTL</td>
+                <td className="whitespace-nowrap">isRTL</td>
                 <td>
                   <code>Boolean</code>
                 </td>
@@ -180,7 +180,7 @@ const Configuration = () => {
                 </td>
               </tr>
               <tr>
-                <td className="white-space-nowrap">isChatWidgetVisible</td>
+                <td className="whitespace-nowrap">isChatWidgetVisible</td>
                 <td>
                   <code>Boolean</code>
                 </td>

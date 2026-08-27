@@ -22,7 +22,7 @@ const exampleCode = `
 `;
 
 const horizontalCenteringcode = `
-  <div className="mx-auto bg-body-highlight" style={{ width: '200px' }}>Centered element</div>
+  <div className="mx-auto bg-subtle" style={{ width: '200px' }}>Centered element</div>
 `;
 
 const negativeMargincode = `
@@ -142,7 +142,7 @@ const SpacingExample = () => {
 
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Horizontal centering">
-            <p className="mb-0 text-body-secondary">
+            <p className="mb-0 text-muted">
               Additionally, Bootstrap also includes an <code>.mx-auto</code>{' '}
               class for horizontally centering fixed-width block level
               content—that is, content that has <code>display: block</code> and{' '}
@@ -155,7 +155,7 @@ const SpacingExample = () => {
 
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header noPreview title="Negative margins">
-            <p className="mb-0 text-body-secondary">
+            <p className="mb-0 text-muted">
               In CSS, <code>margin </code>properties can utilize negative values
               (<code>padding </code>cannot). These negative margins are{' '}
               <strong>disabled </strong>by default, but can be enabled in Sass
@@ -170,7 +170,7 @@ const SpacingExample = () => {
 
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Gap">
-            <p className="mb-0 text-body-secondary">
+            <p className="mb-0 text-muted">
               When using <code>display: grid</code>, you can make use of{' '}
               <code>gap</code> utilities on the parent grid container. This can
               save on having to add margin utilities to individual grid items

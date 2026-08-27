@@ -14,7 +14,7 @@ const Header = () => {
         }}
       />
 
-      <Container fluid="lg" className="position-relative">
+      <Container fluid="lg" className="relative">
         <Row className="flex-center">
           <Col
             xs={12}
@@ -22,7 +22,7 @@ const Header = () => {
             xl={7}
             className="px-4 px-xxl-6 text-center pt-10"
           >
-            <h1 className="display-3 fw-bolder lh-sm text-body-highlight mb-4">
+            <h1 className="display-3 font-black lh-sm text-highlight mb-4">
               Multiple Demos for You
             </h1>
             <p className="mb-10">

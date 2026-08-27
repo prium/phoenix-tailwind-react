@@ -22,7 +22,7 @@ const BestPlaces = () => {
   return (
     <section className="pb-10 pt-0">
       <div
-        className="bg-holder d-none d-md-block"
+        className="bg-holder hidden d-md-block"
         style={{
           backgroundImage: `url(${bgLeft28})`,
           backgroundPosition: 'left 27%',
@@ -30,16 +30,16 @@ const BestPlaces = () => {
         }}
       />
       <div
-        className="bg-holder d-none d-md-block"
+        className="bg-holder hidden d-md-block"
         style={{
           backgroundImage: `url(${bgRight28})`,
           backgroundPosition: 'right -25px',
           backgroundSize: '16%'
         }}
       />
-      <div className="container-medium text-center mb-11 position-relative">
-        <h3 className="mb-2 text-body-emphasis">Travel more, spend less</h3>
-        <p className="text-body-tertiary mb-0">
+      <div className="container-medium text-center mb-11 relative">
+        <h3 className="mb-2 text-emphasis">Travel more, spend less</h3>
+        <p className="text-subtle mb-0">
           Working with Phoenix means you’ll have all the plans and the perfect
           price list to help you plan.
         </p>
@@ -89,7 +89,7 @@ const BestPlaces = () => {
               <SwiperSlide className="w-sm-auto" key={index}>
                 <Link
                   to="#!"
-                  className="position-relative rounded-3 overflow-hidden d-block"
+                  className="relative rounded-3 overflow-hidden block"
                 >
                   <img
                     src={data.img}
@@ -99,26 +99,26 @@ const BestPlaces = () => {
                   />
                   <div className="img-backdrop-faded">
                     <div className="image-reveal-content mb-3">
-                      <div className="d-flex align-items-center gap-2 mb-2">
+                      <div className="flex align-items-center gap-2 mb-2">
                         <FontAwesomeIcon
                           icon={faHotel}
                           className="text-secondary-lighter"
                         />
-                        <h6 className="mb-0 text-secondary-lighter fw-semibold">
+                        <h6 className="mb-0 text-secondary-lighter font-semibold">
                           {data.hotels} Hotels
                         </h6>
                       </div>
-                      <div className="d-flex align-items-center gap-2">
+                      <div className="flex align-items-center gap-2">
                         <FontAwesomeIcon
                           icon={faTreeCity}
                           className="text-secondary-lighter"
                         />
-                        <h6 className="mb-0 text-secondary-lighter fw-semibold">
+                        <h6 className="mb-0 text-secondary-lighter font-semibold">
                           {data.packages} Tour Package
                         </h6>
                       </div>
                     </div>
-                    <div className="d-flex align-items-center gap-2">
+                    <div className="flex align-items-center gap-2">
                       <img src={data.flag} alt="" />
                       <h4 className="mb-0 text-white">{data.country}</h4>
                     </div>

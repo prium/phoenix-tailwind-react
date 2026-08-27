@@ -20,12 +20,12 @@ const EventsOrganized = () => {
           />
         </Col>
         <Col sm="auto" className="flex-1">
-          <Link to="#!" className="mb-0 text-primary fw-semibold lh-sm">
+          <Link to="#!" className="mb-0 text-primary font-semibold lh-sm">
             Bass Events, Inc.
           </Link>
         </Col>
         <Col sm="auto" xl={12} xxl="auto">
-          <Button variant="link" className="text-body p-0 me-2">
+          <Button variant="link" className="text-default p-0 me-2">
             10k Followers
           </Button>
           <Button

@@ -3,7 +3,7 @@ import DocPageHeader from 'components/docs/DocPageHeader';
 import DocPagesLayout from 'layouts/DocPagesLayout';
 import generic53 from 'assets/img/generic/53.png';
 
-const exampleCode = `<div className="d-flex justify-content-center">
+const exampleCode = `<div className="flex justify-content-center">
   <Card style={{width: '20rem'}} className='overflow-hidden'>
     <Card.Img src={generic53} variant='top'/>
     <Card.Body>

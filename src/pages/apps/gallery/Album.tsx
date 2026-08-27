@@ -28,14 +28,14 @@ const Album = () => {
       <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-3" />
       <div className="mb-9">
         <h2 className="mb-5">Album</h2>
-        <div className="d-flex justify-content-between gap-3 flex-wrap">
+        <div className="flex justify-content-between gap-3 flex-wrap">
           <div>
             <Button variant="primary" className="me-4">
               <FontAwesomeIcon icon={faPlus} className="me-2" />
               Add New
             </Button>
-            <Button variant="link" className="px-0 me-4 text-body">
-              <FontAwesomeIcon icon={faFileExport} className="me-2 fs-9" />
+            <Button variant="link" className="px-0 me-4 text-default">
+              <FontAwesomeIcon icon={faFileExport} className="me-2 text-md" />
               Export
             </Button>
           </div>
@@ -48,7 +48,7 @@ const Album = () => {
         {items.length > 0 ? (
           <AlbumItems albumItems={items} />
         ) : (
-          <div className="min-vh-50 d-flex justify-content-center align-items-center mt-4">
+          <div className="min-vh-50 flex justify-content-center align-items-center mt-4">
             <FileNotFound />
           </div>
         )}

@@ -81,17 +81,17 @@ const FileManagerContent = () => {
                       <ListViewGroupTable
                         tableProps={{
                           className:
-                            'phoenix-table fs-9 mb-0 border-translucent'
+                            ' text-md mb-0 border-light'
                         }}
-                        rowClassName="hover-actions-trigger btn-reveal-trigger position-static"
+                        rowClassName="hover-actions-trigger btn-reveal-trigger static"
                       />
                     ) : (
                       <AdvanceTable
                         tableProps={{
                           className:
-                            'phoenix-table fs-9 mb-0 border-translucent'
+                            ' text-md mb-0 border-light'
                         }}
-                        rowClassName="hover-actions-trigger btn-reveal-trigger position-static"
+                        rowClassName="hover-actions-trigger btn-reveal-trigger static"
                       />
                     )}
                   </Col>
@@ -101,7 +101,7 @@ const FileManagerContent = () => {
                   <Col
                     xs="auto"
                     className={classNames(
-                      'px-0 px-xxl-5 border-start-xxl border-translucent',
+                      'px-0 px-xxl-5 border-start-xxl border-light',
                       {
                         'd-xxl-none': !showFileDetails
                       }
@@ -143,11 +143,11 @@ const FileManagerContent = () => {
         <PhoenixOffcanvas
           open={showFileDetails}
           onHide={() => setShowFileDetails(false)}
-          className="phoenix-offcanvas-content file-details-wrapper scrollbar bg-body-emphasis overflow-x-hidden"
+          className="phoenix-offcanvas-content file-details-wrapper scrollbar bg-soft overflow-x-hidden"
           placement="end"
           fixed
         >
-          <Button className="fs-8 position-absolute top-0 end-0 mt-3">
+          <Button className="text-base absolute top-0 end-0 mt-3">
             <FontAwesomeIcon
               icon={faXmark}
               onClick={() => setShowFileDetails(false)}

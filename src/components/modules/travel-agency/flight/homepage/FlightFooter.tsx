@@ -68,7 +68,7 @@ const FlightFooter = () => {
   return (
     <footer className="mb-6">
       <Container fluid="small-md" className="px-0 px-md-3">
-        <div className="position-relative overflow-hidden rounded-md-2">
+        <div className="relative overflow-hidden rounded-md-2">
           <div
             className="bg-holder overlay bg-opacity-75"
             style={{
@@ -77,7 +77,7 @@ const FlightFooter = () => {
               backgroundSize: 'cover'
             }}
           />
-          <Row className="g-lg-0 gy-3 position-relative justify-content-center py-9 px-3 px-sm-6 px-xl-15">
+          <Row className="g-lg-0 gy-3 relative justify-content-center py-9 px-3 px-sm-6 px-xl-15">
             <Col xs={11} sm={8} lg={5}>
               <InputGroup className="gap-2">
                 <div className="form-icon-container flex-1">
@@ -98,7 +98,7 @@ const FlightFooter = () => {
               </InputGroup>
             </Col>
             <Col lg={7} data-bs-theme="light">
-              <div className="d-flex flex-column flex-lg-row gap-lg-6 gap-2 align-items-center justify-content-lg-end justify-content-center">
+              <div className="flex flex-column flex-lg-row gap-lg-6 gap-2 align-items-center justify-content-lg-end justify-content-center">
                 <Nav as="ul">
                   {footerNavs.map((item, idx) => (
                     <Nav.Item as="li" key={idx}>

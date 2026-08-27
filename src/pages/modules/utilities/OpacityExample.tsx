@@ -21,7 +21,7 @@ const OpacityExample = () => {
       <DocPagesLayout>
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Example">
-            <p className="mb-0 text-body-secondary">
+            <p className="mb-0 text-muted">
               The opacity property sets the opacity level for an element. The
               opacity level describes the transparency level, where 1 is not
               transparent at all, .5 is 50% visible, and 0 is completely

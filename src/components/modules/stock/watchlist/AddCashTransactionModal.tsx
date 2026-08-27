@@ -32,27 +32,27 @@ const AddCashTransactionModal = ({
       dialogClassName="modal-600"
     >
       <Modal.Header className="border-0">
-        <h4 className="text-body-highlight mb-0">Add Transaction</h4>
+        <h4 className="text-highlight mb-0">Add Transaction</h4>
         <Button
           variant="link"
-          className="text-danger fs-9 ms-auto p-1"
+          className="text-danger text-md ms-auto p-1"
           onClick={handleClose}
         >
           <FontAwesomeIcon icon={faXmark} />
         </Button>
       </Modal.Header>
       <Modal.Body>
-        <Row className="bg-body-highlight rounded-3 g-0 gap-3 p-3 flex-between-center mb-4">
+        <Row className="bg-subtle rounded-3 g-0 gap-3 p-3 flex-between-center mb-4">
           <Col xs="auto">
-            <p className="fw-bold mb-0">Stock Name : Apple Inc</p>
+            <p className="font-bold mb-0">Stock Name : Apple Inc</p>
           </Col>
           <Col xs="auto">
-            <p className="mb-0 fw-bold">NASDAQ : AAPL</p>
+            <p className="mb-0 font-bold">NASDAQ : AAPL</p>
           </Col>
         </Row>
         <Row className="g-3">
           <Col sm={6}>
-            <label className="fw-bold text-body-highlight mb-2">Type</label>
+            <label className="font-bold text-highlight mb-2">Type</label>
             <Form.Select>
               <option value="buy">Buy</option>
               <option value="sell">Sell</option>
@@ -60,7 +60,7 @@ const AddCashTransactionModal = ({
             </Form.Select>
           </Col>
           <Col sm={6}>
-            <label className="fw-bold text-body-highlight mb-2">Date</label>
+            <label className="font-bold text-highlight mb-2">Date</label>
             <DatePicker
               placeholder="dd/mm/yyyy"
               style={{ height: 33.06 }}
@@ -70,14 +70,14 @@ const AddCashTransactionModal = ({
               icon={
                 <FontAwesomeIcon
                   icon={faCalendarAlt}
-                  className="text-body fs-9 flatpickr-icon translate-middle-y"
+                  className="text-default text-md flatpickr-icon translate-middle-y"
                   transform="shrink-1 down-1"
                 />
               }
             />
           </Col>
           <Col sm={6}>
-            <label className="fw-bold text-body-highlight mb-2">
+            <label className="font-bold text-highlight mb-2">
               Cost per share
             </label>
             <Form.Control
@@ -88,7 +88,7 @@ const AddCashTransactionModal = ({
             />
           </Col>
           <Col sm={6}>
-            <label className="fw-bold text-body-highlight mb-2">Currency</label>
+            <label className="font-bold text-highlight mb-2">Currency</label>
             <Form.Select>
               <option value="usd">USD</option>
               <option value="cad">CAD</option>
@@ -96,7 +96,7 @@ const AddCashTransactionModal = ({
             </Form.Select>
           </Col>
           <Col sm={6}>
-            <label className="fw-bold text-body-highlight mb-2">
+            <label className="font-bold text-highlight mb-2">
               Share Quantity
             </label>
             <Form.Control
@@ -107,7 +107,7 @@ const AddCashTransactionModal = ({
             />
           </Col>
           <Col sm={6}>
-            <label className="fw-bold text-body-highlight mb-2">
+            <label className="font-bold text-highlight mb-2">
               Commission
             </label>
             <Form.Select>
@@ -117,7 +117,7 @@ const AddCashTransactionModal = ({
             </Form.Select>
           </Col>
           <Col xs={12} className="mb-4">
-            <label className="fw-bold text-body-highlight mb-2">Note</label>
+            <label className="font-bold text-highlight mb-2">Note</label>
             <Form.Control
               type="text"
               name="note"
@@ -125,9 +125,9 @@ const AddCashTransactionModal = ({
               placeholder="Write a note..."
               onChange={handleChange}
             />
-            <span className="text-end fs-8 lh-sm mt-2 d-block">
-              <span className="fw-semibold text-primary">{note.length}</span>
-              <span className="text-body-quaternary">/60</span>
+            <span className="text-end text-base lh-sm mt-2 block">
+              <span className="font-semibold text-primary">{note.length}</span>
+              <span className="text-soft">/60</span>
             </span>
           </Col>
           <Col xs={12}>

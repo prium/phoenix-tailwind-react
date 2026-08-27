@@ -33,11 +33,11 @@ const LeadDetails = () => {
             <h2 className="mb-0">Lead details</h2>
           </Col>
           <Col xs={12} md="auto">
-            <div className="d-flex gap-2">
+            <div className="flex gap-2">
               <div className="flex-1 d-md-none">
                 <Button
                   variant="phoenix-secondary"
-                  className="px-3 text-body-tertiary"
+                  className="px-3 text-subtle"
                   onClick={() => setOpenOffcanvas(true)}
                 >
                   <FontAwesomeIcon icon={faBars} />
@@ -53,7 +53,7 @@ const LeadDetails = () => {
               </Button>
               <Button variant="phoenix-secondary" className="px-3 px-sm-5">
                 <FontAwesomeIcon icon={faThumbtack} className="me-0 me-sm-2" />
-                <span className="d-none d-sm-inline">Shortlist</span>
+                <span className="hidden d-sm-inline">Shortlist</span>
               </Button>
               <Dropdown>
                 <Dropdown.Toggle
@@ -77,10 +77,10 @@ const LeadDetails = () => {
         </Row>
 
         <Row className="g-0 g-md-4 g-xl-6">
-          <Col md={5} xl={4} className="d-none d-md-block">
+          <Col md={5} xl={4} className="hidden d-md-block">
             <div className="sticky-leads-sidebar">
-              <div className="lead-details-offcanvas bg-body scrollbar">
-                <div className="d-flex justify-content-between align-items-center mb-2 d-md-none">
+              <div className="lead-details-offcanvas bg-default scrollbar">
+                <div className="flex justify-content-between align-items-center mb-2 d-md-none">
                   <h3 className="mb-0">Lead Details</h3>
                 </div>
                 <LeadProfileCard className="mb-3" />

@@ -13,7 +13,7 @@ const StockDetailsBuyAndSellForm = ({
   return (
     <>
       <div className="mb-3">
-        <label className="fs-9 lh-sm fw-semibold mb-2 text-body-emphasis ps-0">
+        <label className="text-md lh-sm font-semibold mb-2 text-emphasis ps-0">
           Order type
         </label>
         <Form.Select>
@@ -22,13 +22,13 @@ const StockDetailsBuyAndSellForm = ({
         </Form.Select>
       </div>
       <div className="mb-3">
-        <label className="fs-9 lh-sm fw-semibold mb-2 text-body-emphasis ps-0">
+        <label className="text-md lh-sm font-semibold mb-2 text-emphasis ps-0">
           Shares
         </label>
         <Form.Control type="text" placeholder="Enter shares" />
       </div>
       <div className="mb-3">
-        <label className="fs-9 lh-sm fw-semibold mb-2 text-body-emphasis ps-0">
+        <label className="text-md lh-sm font-semibold mb-2 text-emphasis ps-0">
           Amount
         </label>
         <InputGroup>
@@ -41,7 +41,7 @@ const StockDetailsBuyAndSellForm = ({
         </InputGroup>
       </div>
       <div className="mb-3">
-        <label className="fs-9 lh-sm fw-semibold mb-2 text-body-emphasis ps-0">
+        <label className="text-md lh-sm font-semibold mb-2 text-emphasis ps-0">
           Account
         </label>
         <Form.Select>
@@ -49,8 +49,8 @@ const StockDetailsBuyAndSellForm = ({
           <option value="debit">Debit</option>
         </Form.Select>
       </div>
-      <div className="d-flex flex-between-center gap-3 mb-3">
-        <h5 className="mb-0 text-body fw-semibold">
+      <div className="flex flex-between-center gap-3 mb-3">
+        <h5 className="mb-0 text-default font-semibold">
           {title === 'buy' ? 'Available cash' : 'Available shares'}
         </h5>
         <p className="mb-0">
@@ -59,7 +59,7 @@ const StockDetailsBuyAndSellForm = ({
             : 100}
         </p>
       </div>
-      <div className="d-flex flex-wrap gap-2">
+      <div className="flex flex-wrap gap-2">
         <Button variant="primary" size="sm" className="flex-1 text-capitalize">
           {title} Share
         </Button>

@@ -77,7 +77,7 @@ const FileDetails = () => {
                               {item.modifiedBy && (
                                 <>
                                   by{' '}
-                                  <a className="fs-9 fw-bolder" href="#!">
+                                  <a className="text-md font-black" href="#!">
                                     John Doe
                                   </a>
                                 </>
@@ -119,12 +119,12 @@ const FileDetails = () => {
                       Control Access
                       <FontAwesomeIcon
                         icon={faChevronRight}
-                        className="ms-2 mt-2 fs-10"
+                        className="ms-2 mt-2 text-sm"
                       />
                     </Button>
                     <hr className="my-4" />
                     <h5 className="mb-3 mb-3">File Link</h5>
-                    <h6 className="fw-normal text-body">{data.fileLink}</h6>
+                    <h6 className="font-normal text-default">{data.fileLink}</h6>
                     <Button variant="phoenix-primary" className="mt-2">
                       <FontAwesomeIcon icon={faLink} className="me-2" />
                       Copy link

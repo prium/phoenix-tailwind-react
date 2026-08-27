@@ -27,16 +27,16 @@ const PostCard = ({ post }: PostCardProps) => {
     <div className="mb-5">
       <Card className="mb-4 overflow-hidden">
         <Card.Body className="p-3 p-sm-4">
-          <div className="border-bottom border-translucent mb-3">
-            <div className="d-flex align-items-center mb-3">
+          <div className="border-bottom border-light mb-3">
+            <div className="flex align-items-center mb-3">
               <Link to="/apps/social/profile" style={{ lineHeight: 0 }}>
                 <Avatar size="xl" src={post.author.avatar} className="me-2" />
               </Link>
               <div className="flex-1">
-                <Link to="/apps/social/profile" className="fw-bold mb-0">
+                <Link to="/apps/social/profile" className="font-bold mb-0">
                   {post.author.name}
                 </Link>
-                <p className="fs-10 mb-0 text-body-tertiary text-opacity-85 fw-semibold">
+                <p className="text-sm mb-0 text-subtle text-opacity-85 font-semibold">
                   {post.time}
                   {post.location && (
                     <>
@@ -53,7 +53,7 @@ const PostCard = ({ post }: PostCardProps) => {
                       />
                       <FontAwesomeIcon
                         icon={faEarthAmericas}
-                        className="text-body"
+                        className="text-default"
                       />
                     </>
                   )}
@@ -70,34 +70,34 @@ const PostCard = ({ post }: PostCardProps) => {
                 </RevealDropdown>
               </RevealDropdownTrigger>
             </div>
-            <p className="text-body-secondary">{post.caption}</p>
+            <p className="text-muted">{post.caption}</p>
             {post.images && <PostGallery images={post.images} />}
           </div>
-          <div className="d-flex">
+          <div className="flex">
             <Button
               variant="link"
               startIcon={<FontAwesomeIcon icon={faHeart} />}
-              className="p-0 me-3 fs-10 fw-bolder"
+              className="p-0 me-3 text-sm font-black"
             >
               {post.interactions.likes} Likes
             </Button>
             <Button
               variant="link"
               startIcon={<FontAwesomeIcon icon={faComment} />}
-              className="p-0 me-3 fs-10 fw-bolder text-body"
+              className="p-0 me-3 text-sm font-black text-default"
             >
               {post.interactions.comments} Comments
             </Button>
             <Button
               variant="link"
               startIcon={<FontAwesomeIcon icon={faShare} />}
-              className="p-0 me-3 fs-10 fw-bolder text-body"
+              className="p-0 me-3 text-sm font-black text-default"
             >
               {post.interactions.shares} Shares
             </Button>
           </div>
         </Card.Body>
-        <div className="bg-body-highlight border-top border-translucent p-3 p-sm-4">
+        <div className="bg-subtle border-top border-light p-3 p-sm-4">
           {post.comments && <PostComments comments={post.comments} />}
           <CommentField />
         </div>

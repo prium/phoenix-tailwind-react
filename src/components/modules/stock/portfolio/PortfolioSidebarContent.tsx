@@ -25,7 +25,7 @@ const PortfolioSidebarContent = ({
       <Card.Body>
         <Row className="flex-between-center mb-4">
           <Col xs="auto" xl={12}>
-            <h4 className="mb-0 text-body-highlight text-xl-center">
+            <h4 className="mb-0 text-highlight text-xl-center">
               Quote Lookup
             </h4>
           </Col>
@@ -33,7 +33,7 @@ const PortfolioSidebarContent = ({
             <Button
               variant="link"
               size="sm"
-              className="fs-8 p-0 text-body-secondary"
+              className="text-base p-0 text-muted"
               onClick={() => setOpen && setOpen(false)}
             >
               <FontAwesomeIcon icon={faXmark} />
@@ -47,26 +47,26 @@ const PortfolioSidebarContent = ({
               {sidebarItems.map(item => (
                 <tr key={item.id}>
                   <td
-                    className="align-middle white-space-nowrap"
+                    className="align-middle whitespace-nowrap"
                     style={{ minWidth: 112 }}
                   >
-                    <p className="mb-0 fw-semibold text-uppercase">
+                    <p className="mb-0 font-semibold text-uppercase">
                       {item.companyAbbr}
                     </p>
                   </td>
                   <td
-                    className="align-middle white-space-nowrap"
+                    className="align-middle whitespace-nowrap"
                     style={{ minWidth: 112 }}
                   >
-                    <h5 className="text-body">
+                    <h5 className="text-default">
                       {currencyFormat(item.amount, {
                         minimumFractionDigits: 2
                       })}
                     </h5>
                     <p
-                      className={classNames('fs-9 mb-0', item.profit.className)}
+                      className={classNames('text-md mb-0', item.profit.className)}
                     >
-                      <span className="me-1 fw-bold">
+                      <span className="me-1 font-bold">
                         {item.profit.prefix}
                         {currencyFormat(item.profit.amount, {
                           minimumFractionDigits: 2
@@ -79,7 +79,7 @@ const PortfolioSidebarContent = ({
                     </p>
                   </td>
                   <td
-                    className="align-middle white-space-nowrap d-flex align-items-center justify-content-end justify-content-xl-start"
+                    className="align-middle whitespace-nowrap flex align-items-center justify-content-end justify-content-xl-start"
                     style={{ minWidth: 112 }}
                   >
                     {item.chartType === 'inverted' && (

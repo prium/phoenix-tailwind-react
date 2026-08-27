@@ -31,7 +31,7 @@ const BackgroundExample = () => {
                 <Col xs={6} sm={4} lg={3} key={variant}>
                   <div
                     className={classNames(
-                      `d-flex flex-center p-3 bg-${variant}`
+                      `flex flex-center p-3 bg-${variant}`
                     )}
                     style={{ height: '180px' }}
                   >
@@ -39,7 +39,7 @@ const BackgroundExample = () => {
                       <code
                         className={
                           variant === 'secondary'
-                            ? 'text-body-quaternary'
+                            ? 'text-soft'
                             : 'text-white'
                         }
                       >
@@ -49,7 +49,7 @@ const BackgroundExample = () => {
                       <code
                         className={
                           variant === 'secondary'
-                            ? 'text-body-quaternary'
+                            ? 'text-soft'
                             : 'text-white'
                         }
                       >
@@ -77,12 +77,12 @@ const BackgroundExample = () => {
                 <Col xs={6} sm={4} lg={3} key={variant}>
                   <div
                     className={classNames(
-                      `d-flex flex-center p-3 bg-${variant}`
+                      `flex flex-center p-3 bg-${variant}`
                     )}
                     style={{ height: '180px' }}
                   >
                     <div className="text-center">
-                      <code className="text-body">.bg-{variant}</code>
+                      <code className="text-default">.bg-{variant}</code>
                     </div>
                   </div>
                 </Col>
@@ -106,7 +106,7 @@ const BackgroundExample = () => {
                 <Col xs={6} sm={4} lg={3} key={index}>
                   <div
                     className={classNames(
-                      `d-flex flex-center p-3 bg-${variant} bg-gradient `,
+                      `flex flex-center p-3 bg-${variant} bg-gradient `,
                       {
                         border: index > 7
                       }
@@ -149,7 +149,7 @@ const BackgroundExample = () => {
                 <Col xs={6} sm={4} lg={3} key={index}>
                   <div
                     className={classNames(
-                      `d-flex flex-center p-3 bg-gray-${variant} `,
+                      `flex flex-center p-3 bg-gray-${variant} `,
                       {
                         border: index > 7
                       }
@@ -159,7 +159,7 @@ const BackgroundExample = () => {
                     <div className="text-center">
                       <code
                         className={
-                          index > 7 ? 'text-body-emphasis' : 'text-gray-100'
+                          index > 7 ? 'text-emphasis' : 'text-gray-100'
                         }
                       >
                         .bg-gray-{variant}
@@ -167,7 +167,7 @@ const BackgroundExample = () => {
                       <br />
                       <code
                         className={
-                          index > 7 ? 'text-body-emphasis' : 'text-gray-100'
+                          index > 7 ? 'text-emphasis' : 'text-gray-100'
                         }
                       >
                         {getThemeColor(`gray-${variant}`)}

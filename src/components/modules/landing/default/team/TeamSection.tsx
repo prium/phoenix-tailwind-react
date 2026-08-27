@@ -9,7 +9,7 @@ const TeamSection = () => {
   return (
     <section id="team">
       <div
-        className="position-absolute h-70 w-100 bg-body"
+        className="absolute h-70 w-100 bg-default"
         style={{ transform: 'skew(0,-10deg)', top: '10%' }}
       />
       <div
@@ -30,12 +30,12 @@ const TeamSection = () => {
       />
 
       <div
-        className="container-small position-relative py-1 px-lg-7 px-xxl-3"
+        className="container-small relative py-1 px-lg-7 px-xxl-3"
         style={{ zIndex: 10 }}
       >
         <Row>
           <Col xs={12} className="mb-4 text-center text-sm-start">
-            <h4 className="text-primary fw-bolder mb-3">Team</h4>
+            <h4 className="text-primary font-black mb-3">Team</h4>
             <h2>Our small team behind our success</h2>
           </Col>
           <Col md={6} className="text-center text-sm-start">

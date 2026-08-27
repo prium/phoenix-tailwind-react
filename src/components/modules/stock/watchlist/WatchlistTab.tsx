@@ -7,7 +7,7 @@ const WatchlistTab = () => {
   return (
     <>
       <Tab.Container defaultActiveKey="summary">
-        <Nav variant="underline" className="optionChainTableHeader fs-9 gap-0">
+        <Nav variant="underline" className="optionChainTableHeader text-md gap-0">
           <Nav.Item>
             <Nav.Link className="pe-3" eventKey="summary">
               Summary

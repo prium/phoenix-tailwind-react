@@ -65,7 +65,7 @@ const AlbumItems = ({ albumItems }: { albumItems: AlbumItem[] }) => {
         }}
         render={album => {
           return (
-            <div className="album-item position-relative overflow-hidden">
+            <div className="album-item relative overflow-hidden">
               <Link
                 to="/apps/gallery/gallery-grid"
                 className="text-decoration-none"
@@ -76,9 +76,9 @@ const AlbumItems = ({ albumItems }: { albumItems: AlbumItem[] }) => {
                   ))}
                 </div>
                 <h4 className="mt-5 title">{album.title}</h4>
-                <p className="mb-0 fs-9 text-body">{album.count} items</p>
+                <p className="mb-0 text-md text-default">{album.count} items</p>
               </Link>
-              <Dropdown className="position-absolute top-0 end-0 mt-3 me-3 z-5">
+              <Dropdown className="absolute top-0 end-0 mt-3 me-3 z-5">
                 <Dropdown.Toggle
                   variant=""
                   size="sm"
@@ -128,15 +128,15 @@ const Media = ({ item }: MediaProps) => {
             ref={videoRef}
             onMouseEnter={handleMouseEnter}
             onMouseOut={handleMouseOut}
-            className="video d-block h-100 w-100 overflow-hidden rounded-2"
+            className="video block h-100 w-100 overflow-hidden rounded-2"
             poster={item.poster}
           >
             <source src={item.src} type="video/mp4" />
           </video>
-          <div className="video-icon border-0 position-absolute top-50 start-50 translate-middle bg-body-emphasis rounded-pill bg-opacity-50">
+          <div className="video-icon border-0 absolute top-50 start-50 translate-middle bg-soft rounded-full bg-opacity-50">
             <FontAwesomeIcon
               icon={faVideo}
-              className="fs-9 fs-sm-8 text-body"
+              className="text-md sm:text-base text-default"
             />
           </div>
         </div>

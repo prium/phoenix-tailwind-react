@@ -17,10 +17,10 @@ const ChangeLog = () => {
       {changelogs.map(changelog => (
         <PhoenixDocCard className="mb-4" key={changelog.title}>
           <PhoenixDocCard.Header noPreview>
-            <div className="d-flex justify-content-between align-items-center">
+            <div className="flex justify-content-between align-items-center">
               <div>
                 <h5 className="mb-2">
-                  <code className="fw-bold fs-7">v{changelog.version}</code> -{' '}
+                  <code className="font-bold text-lg">v{changelog.version}</code> -{' '}
                   {changelog.title}
                 </h5>
                 <p className="mb-0">{changelog.publishDate}</p>
@@ -30,7 +30,7 @@ const ChangeLog = () => {
                 variant="link"
                 to={`/migrations/#v${changelog.version}`}
                 endIcon={
-                  <FontAwesomeIcon icon={faChevronRight} className="fs-10" />
+                  <FontAwesomeIcon icon={faChevronRight} className="text-sm" />
                 }
               >
                 See migration
@@ -41,7 +41,7 @@ const ChangeLog = () => {
             {changelog.alertText && (
               <Alert
                 variant={'subtle-warning'}
-                className="d-flex align-items-center"
+                className="flex align-items-center"
               >
                 <FontAwesomeIcon
                   icon={faCircleInfo}
@@ -103,7 +103,7 @@ const ChangeLog = () => {
       <PhoenixDocCard className="mb-4">
         <PhoenixDocCard.Header noPreview>
           <h5 className="mb-2">
-            <code className="fw-bold fs-7">v1.0.0</code> - Initial Release
+            <code className="font-bold text-lg">v1.0.0</code> - Initial Release
           </h5>
           <p className="mb-0">11 Sep, 2023</p>
         </PhoenixDocCard.Header>

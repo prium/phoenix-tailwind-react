@@ -39,7 +39,7 @@ const columns: ColumnDef<CustomerReview>[] = [
     header: 'RATING',
     cell: ({ row: { original } }) => {
       const { rating } = original;
-      return <Rating readonly initialValue={rating} iconClass="fs-10" />;
+      return <Rating readonly initialValue={rating} iconClass="text-sm" />;
     },
     meta: {
       headerProps: { style: { width: '10%' } }
@@ -99,7 +99,7 @@ const columns: ColumnDef<CustomerReview>[] = [
     },
     meta: {
       headerProps: { className: 'text-end', style: { width: '10%' } },
-      cellProps: { className: 'text-end white-space-nowrap' }
+      cellProps: { className: 'text-end whitespace-nowrap' }
     }
   },
   {
@@ -134,8 +134,8 @@ const CustomerRatingsTable = () => {
       <AdvanceTableProvider {...table}>
         <div className="border-y border-light">
           <AdvanceTable
-            tableProps={{ className: 'phoenix-table fs-9 mb-0' }}
-            rowClassName="hover-actions-trigger btn-reveal-trigger position-static"
+            tableProps={{ className: ' text-md mb-0' }}
+            rowClassName="hover-actions-trigger btn-reveal-trigger static"
           />
           <AdvanceTableFooter navBtn showViewAllBtn={false} />
         </div>

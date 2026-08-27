@@ -44,7 +44,7 @@ const GanttOptionsModal = ({
       aria-labelledby="OptionsModal"
     >
       <Modal.Header className="p-4 pb-3 align-items-start">
-        <h4 className="text-body-highlight mb-0" id="OptionsModal">
+        <h4 className="text-highlight mb-0" id="OptionsModal">
           Options
         </h4>
         <button onClick={() => setShow(false)} className="btn p-0 ms-auto">
@@ -56,7 +56,7 @@ const GanttOptionsModal = ({
         <Form id="ganttOptionsForm">
           <Row className="g-3">
             <Col xs={12}>
-              <div className="d-flex align-items-center justify-content-between">
+              <div className="flex align-items-center justify-content-between">
                 <Form.Label
                   htmlFor="taskOptionSelect"
                   className="form-label-header"
@@ -77,10 +77,10 @@ const GanttOptionsModal = ({
 
             <Col xs={12}>
               <Form.Group controlId="optionsDate">
-                <Form.Label className="form-label-header text-body-highlight mb-2">
+                <Form.Label className="form-label-header text-highlight mb-2">
                   Baseline
                 </Form.Label>
-                <div className="position-relative">
+                <div className="relative">
                   <DatePicker
                     id="optionsDate"
                     options={{ dateFormat: 'd/m/Y' }}
@@ -92,9 +92,9 @@ const GanttOptionsModal = ({
             </Col>
 
             <Col xs={12}>
-              <div className="d-flex align-items-center justify-content-between mt-2">
+              <div className="flex align-items-center justify-content-between mt-2">
                 <h4 className="mb-0">Show baseline</h4>
-                <div className="d-flex align-items-center">
+                <div className="flex align-items-center">
                   <Form.Check type="radio" className="me-3 form-check">
                     <Form.Check.Input
                       id="hideBaseline"
@@ -120,17 +120,17 @@ const GanttOptionsModal = ({
             </Col>
 
             <Col xs={12}>
-              <div className="d-flex justify-content-between align-items-center mt-2">
+              <div className="flex justify-content-between align-items-center mt-2">
                 <div>
                   <h4>Auto-schedule tasks</h4>
-                  <p className="mb-0 fs-9">
+                  <p className="mb-0 text-md">
                     Assign date to new tasks automatically
                   </p>
                 </div>
                 <Form.Check
                   type="switch"
                   id="isAutoScheduleTask"
-                  className="mb-0 fs-6 form-check"
+                  className="mb-0 text-xl form-check"
                 />
               </div>
             </Col>
@@ -154,12 +154,12 @@ const GanttOptionsModal = ({
                           'mb-4': dependencies.length - 1 !== index
                         })}
                       >
-                        <div className="d-flex align-items-center">
+                        <div className="flex align-items-center">
                           <Form.Check type="checkbox" className="mb-0 me-2" />
                           <h5 className="mb-0">{item.title}</h5>
                         </div>
                         <p
-                          className={`fs-9 fw-semibold text-body ms-4 ${
+                          className={`text-md font-semibold text-default ms-4 ${
                             index === dependencies.length - 1 ? 'mb-0' : 'mb-4'
                           }`}
                         >
@@ -173,10 +173,10 @@ const GanttOptionsModal = ({
             </Col>
 
             <Col xs={12} className="mt-4">
-              <div className="d-flex justify-content-between align-items-center">
+              <div className="flex justify-content-between align-items-center">
                 <div>
                   <h4>Weekend awareness</h4>
-                  <p className="mb-0 fs-9">
+                  <p className="mb-0 text-md">
                     Task dates will take the weekend into consideration and try
                     to avoid it.
                   </p>
@@ -184,7 +184,7 @@ const GanttOptionsModal = ({
                 <Form.Check
                   type="switch"
                   id="weekendCheck"
-                  className="mb-0 fs-6"
+                  className="mb-0 text-xl"
                   label=""
                 />
               </div>

@@ -21,24 +21,24 @@ const TripHomepageHeroBanner = () => {
             backgroundPosition: 'center'
           }}
         />
-        <Container fluid="medium" className="position-relative pt-11 pb-15">
+        <Container fluid="medium" className="relative pt-11 pb-15">
           <h2 className="text-center text-white mb-4">
             Where do you want to go?
           </h2>
-          <div className="position-relative w-md-70 w-lg-50 mx-auto mb-4 mb-lg-10">
+          <div className="relative w-md-70 w-lg-50 mx-auto mb-4 mb-lg-10">
             <Form.Control
               type="text"
               placeholder="Search for a location"
-              className="py-3 ps-4 pe-6 rounded-pill fs-8"
+              className="py-3 ps-4 pe-6 rounded-full text-base"
             />
             <FontAwesomeIcon
               icon={faMagnifyingGlass}
-              className="position-absolute top-0 end-0 mt-4 me-4 fs-8 text-body-tertiary"
+              className="absolute top-0 end-0 mt-4 me-4 text-base text-subtle"
               transform="up-3"
             />
           </div>
-          <div className="d-flex justify-content-center">
-            <div className="d-none d-lg-flex gap-2">
+          <div className="flex justify-content-center">
+            <div className="hidden d-lg-flex gap-2">
               {homepageFilterCheckboxItems.categories.map((category, index) => (
                 <Fragment key={category.id}>
                   <Form.Check.Input
@@ -50,7 +50,7 @@ const TripHomepageHeroBanner = () => {
                   />
                   <Form.Check.Label
                     htmlFor={category.id}
-                    className="btn btn-phoenix-secondary fw-bold text-nowrap px-3"
+                    className="btn btn-phoenix-secondary font-bold text-nowrap px-3"
                   >
                     {category.label}
                   </Form.Check.Label>
@@ -62,7 +62,7 @@ const TripHomepageHeroBanner = () => {
               className="ms-lg-auto"
               onClick={() => setIsOffCanvasOpen(true)}
             >
-              <FontAwesomeIcon icon={faFilter} className="fs-10 me-2" />
+              <FontAwesomeIcon icon={faFilter} className="text-sm me-2" />
               Filter
             </Button>
           </div>

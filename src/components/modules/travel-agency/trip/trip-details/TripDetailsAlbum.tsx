@@ -25,15 +25,15 @@ const LightBoxItem = ({
     <div
       onClick={handleImageClick}
       className={classNames('cursor-pointer', {
-        'position-relative rounded-2 overflow-hidden': isLast
+        'relative rounded-2 overflow-hidden': isLast
       })}
     >
       <img src={item.image} alt="" className="img-fluid rounded-2" />
       {isLast && (
-        <div className="position-absolute w-100 h-100 left-0 top-0 d-flex flex-center bg-black bg-opacity-50">
+        <div className="absolute w-100 h-100 left-0 top-0 flex flex-center bg-black bg-opacity-50">
           <Link
             to="/apps/travel-agency/hotel/customer/gallery"
-            className="text-white stretched-link fs-7 fs-lg-5 fw-bolder"
+            className="text-white stretched-link text-lg fs-lg-5 font-black"
           >
             24+
           </Link>

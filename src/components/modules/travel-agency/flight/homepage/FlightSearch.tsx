@@ -30,7 +30,7 @@ const FlightTypeCheckbox = ({
         value={value}
         defaultChecked={defaultChecked || false}
       />
-      <Form.Check.Label className="fs-8 text-body">{label}</Form.Check.Label>
+      <Form.Check.Label className="text-base text-default">{label}</Form.Check.Label>
     </Form.Check>
   );
 };
@@ -48,7 +48,7 @@ const FlightSearch = () => {
 
   return (
     <Form>
-      <Card className="position-relative mb-6">
+      <Card className="relative mb-6">
         <Card.Body>
           <div className="mb-4">
             <FlightTypeCheckbox
@@ -72,7 +72,7 @@ const FlightSearch = () => {
             />
           </div>
           <FlightSearchForm />
-          <div className="bg-body-highlight p-3 p-sm-4 rounded-2">
+          <div className="bg-subtle p-3 p-sm-4 rounded-2">
             <Fade in={detailsVisible} timeout={5000}>
               <div
                 id="flight-preview-form"
@@ -90,12 +90,12 @@ const FlightSearch = () => {
               </div>
             </Fade>
           </div>
-          <div className="d-flex flex-wrap gap-3 justify-content-between mt-4">
+          <div className="flex flex-wrap gap-3 justify-content-between mt-4">
             <Button
               variant="link"
               to="#!"
               className={classNames(
-                'd-flex align-items-center fs-8 fw-semibold text-normal px-0 pt-0 collapse-indicator',
+                'flex align-items-center text-base font-semibold text-normal px-0 pt-0 collapse-indicator',
                 {
                   collapsed: !detailsVisible
                 }

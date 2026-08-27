@@ -7,11 +7,11 @@ const KanbanAddBoardCard = () => {
   return (
     <Button
       variant="phoenix-primary"
-      className="d-flex flex-center h-100 w-100 fs-7 fw-semibold"
+      className="flex flex-center h-100 w-100 text-lg font-semibold"
       as={Link}
       to="/apps/kanban/create-board"
     >
-      <FontAwesomeIcon icon={faPlusCircle} className="fs-8 me-2" />
+      <FontAwesomeIcon icon={faPlusCircle} className="text-base me-2" />
       Create New Board
     </Button>
   );

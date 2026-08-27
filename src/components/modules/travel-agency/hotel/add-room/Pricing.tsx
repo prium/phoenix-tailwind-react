@@ -15,7 +15,7 @@ const Pricing = () => {
     <>
       <h3 className="mb-6">Pricing</h3>
       <h4 className="mb-2">Base price per night</h4>
-      <p className="mb-5 text-body-tertiary">
+      <p className="mb-5 text-subtle">
         Get a great value stay with us, starting at our base price per night.
       </p>
       <Tab.Container activeKey={selectedTab}>
@@ -72,7 +72,7 @@ const Pricing = () => {
         </Tab.Content>
       </Tab.Container>
       <>
-        <h5 className="mb-2 mt-5 lh-1 text-body-highlight fw-bold">
+        <h5 className="mb-2 mt-5 lh-1 text-highlight font-bold">
           How many people are included in the base rate?
         </h5>
         <FloatingLabel

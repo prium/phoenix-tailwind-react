@@ -45,12 +45,12 @@ const Error404 = () => {
                   className="img-fluid mb-6 w-50 w-lg-75 d-light-none"
                   alt=""
                 />
-                <h2 className="text-body-secondary fw-bolder mb-3">
+                <h2 className="text-muted font-black mb-3">
                   Page Missing!
                 </h2>
-                <p className="text-body mb-5">
+                <p className="text-default mb-5">
                   But no worries! Our ostrich is looking everywhere
-                  <br className="d-none d-sm-block" />
+                  <br className="hidden d-sm-block" />
                   while you wait safely.
                 </p>
                 <Button variant="primary" size="lg" as={Link} to="/">

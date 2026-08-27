@@ -167,7 +167,7 @@ const columns: ColumnDef<File>[] = [
       cellProps: { className: 'py-0 ps-0' },
       headerProps: {
         style: { minWidth: 210 },
-        className: 'white-space-nowrap text-body-tertiary ps-0'
+        className: 'whitespace-nowrap text-subtle ps-0'
       }
     },
     enableSorting: true
@@ -199,7 +199,7 @@ const columns: ColumnDef<File>[] = [
     meta: {
       headerProps: {
         style: { minWidth: 150 },
-        className: 'py-2 text-body-tertiary'
+        className: 'py-2 text-subtle'
       }
     }
   },
@@ -211,7 +211,7 @@ const columns: ColumnDef<File>[] = [
       return <div className="">{modified}</div>;
     },
     meta: {
-      headerProps: { style: { minWidth: 150 }, className: 'text-body-tertiary' }
+      headerProps: { style: { minWidth: 150 }, className: 'text-subtle' }
     }
   },
   {
@@ -224,7 +224,7 @@ const columns: ColumnDef<File>[] = [
     meta: {
       headerProps: {
         style: { minWidth: 130 },
-        className: 'text-body-tertiary'
+        className: 'text-subtle'
       }
     }
   },

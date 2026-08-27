@@ -136,10 +136,10 @@ const Gallery = () => {
 
   return (
     <section className="pt-15">
-      <div className="container-small position-relative px-lg-7 px-xxl-3">
+      <div className="container-small relative px-lg-7 px-xxl-3">
         <Row className="mb-8 text-center text-sm-start">
           <Col xs={12} className="mb-4">
-            <h4 className="text-primary fw-bolder mb-3">Gallery</h4>
+            <h4 className="text-primary font-black mb-3">Gallery</h4>
             <h2>Some of Our Best Works</h2>
           </Col>
           <Col lg={6}>

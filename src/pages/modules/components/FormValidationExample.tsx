@@ -19,7 +19,7 @@ function FormExample() {
   return (
     <Form noValidate validated={validated} onSubmit={handleSubmit}>
       <Row className="mb-3 gx-3">
-        <Form.Group as={Col} md="4" controlId="tooltipFirstName" className="position-relative">
+        <Form.Group as={Col} md="4" controlId="tooltipFirstName" className="relative">
           <Form.Label>First name</Form.Label>
           <Form.Control
             required
@@ -29,7 +29,7 @@ function FormExample() {
           />
           <Form.Control.Feedback tooltip>Looks good!</Form.Control.Feedback>
         </Form.Group>
-        <Form.Group as={Col} md="4" controlId="tooltipLastName" className="position-relative">
+        <Form.Group as={Col} md="4" controlId="tooltipLastName" className="relative">
           <Form.Label>Last name</Form.Label>
           <Form.Control
             required
@@ -39,7 +39,7 @@ function FormExample() {
           />
           <Form.Control.Feedback tooltip>Looks good!</Form.Control.Feedback>
         </Form.Group>
-        <Form.Group as={Col} md="4" controlId="tooltipUserName" className="position-relative">
+        <Form.Group as={Col} md="4" controlId="tooltipUserName" className="relative">
           <Form.Label>Username</Form.Label>
           <InputGroup hasValidation>
             <InputGroup.Text id="inputGroupPrepend">@</InputGroup.Text>
@@ -56,21 +56,21 @@ function FormExample() {
         </Form.Group>
       </Row>
       <Row className="mb-3 gx-3">
-        <Form.Group as={Col} md="6" controlId="tooltipCity" className="position-relative">
+        <Form.Group as={Col} md="6" controlId="tooltipCity" className="relative">
           <Form.Label>City</Form.Label>
           <Form.Control type="text" placeholder="City" required />
           <Form.Control.Feedback type="invalid" tooltip>
             Please provide a valid city.
           </Form.Control.Feedback>
         </Form.Group>
-        <Form.Group as={Col} md="3" controlId="tooltipState" className="position-relative">
+        <Form.Group as={Col} md="3" controlId="tooltipState" className="relative">
           <Form.Label>State</Form.Label>
           <Form.Control type="text" placeholder="State" required />
           <Form.Control.Feedback type="invalid" tooltip>
             Please provide a valid state.
           </Form.Control.Feedback>
         </Form.Group>
-        <Form.Group as={Col} md="3" controlId="tooltipZip" className="position-relative">
+        <Form.Group as={Col} md="3" controlId="tooltipZip" className="relative">
           <Form.Label>Zip</Form.Label>
           <Form.Control type="text" placeholder="Zip" required />
           <Form.Control.Feedback type="invalid" tooltip>
@@ -78,7 +78,7 @@ function FormExample() {
           </Form.Control.Feedback>
         </Form.Group>
       </Row>
-      <Form.Group className="mb-3" className="position-relative">
+      <Form.Group className="mb-3" className="relative">
         <Form.Check
           required
           label="Agree to terms and conditions"

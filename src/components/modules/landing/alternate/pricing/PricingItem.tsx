@@ -16,14 +16,14 @@ const PricingItem = ({ pricing }: { pricing: PricingAlternate }) => {
         className={classNames('bg-transparent', {
           'border border-2 border-info rounded-4':
             pricing.category === 'Business',
-          'border-0 border-translucent': pricing.category !== 'Business'
+          'border-0 border-light': pricing.category !== 'Business'
         })}
       >
         <Card.Body className="p-7">
           <h3 className="mb-5">{pricing.category}</h3>
-          <h1 className="fs-3 d-flex align-items-center gap-1 mb-3">
+          <h1 className="fs-3 flex align-items-center gap-1 mb-3">
             ${pricing.price}
-            <span className="fs-8 fw-normal"> / month</span>
+            <span className="text-base font-normal"> / month</span>
           </h1>
           <Button
             variant={
@@ -39,7 +39,7 @@ const PricingItem = ({ pricing }: { pricing: PricingAlternate }) => {
             {pricingFeaturesAlternate.map((feature, index) => (
               <li
                 key={feature.id}
-                className={classNames('d-flex align-items-center', {
+                className={classNames('flex align-items-center', {
                   'mb-3': index !== pricingFeaturesAlternate.length - 1
                 })}
               >
@@ -53,7 +53,7 @@ const PricingItem = ({ pricing }: { pricing: PricingAlternate }) => {
                 )}
                 <p className="mb-0">{feature.label}</p>
                 {feature.new && pricing.category === 'Business' && (
-                  <Badge variant="phoenix" bg="info" className="ms-2 fs-10">
+                  <Badge variant="phoenix" bg="info" className="ms-2 text-sm">
                     New
                   </Badge>
                 )}

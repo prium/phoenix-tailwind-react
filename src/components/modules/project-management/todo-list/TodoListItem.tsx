@@ -69,7 +69,7 @@ const TodoListItem = ({
       <div
         className={classNames(
           className,
-          'd-flex align-items-center hover-actions-trigger border-bottom border-translucent gap-2 todolist-item'
+          'flex align-items-center hover-actions-trigger border-bottom border-light gap-2 todolist-item'
         )}
       >
         <Form.Check.Input
@@ -78,7 +78,7 @@ const TodoListItem = ({
           className={classNames('flex-shrink-0 my-0 align-self-start')}
           onChange={handleSelectionChange}
         />
-        <Row className="justify-content-between align-items-center btn-reveal-trigger border-translucent gx-0 flex-1 gy-1">
+        <Row className="justify-content-between align-items-center btn-reveal-trigger border-light gx-0 flex-1 gy-1">
           <Col
             xs={12}
             {...fullLayoutBreakpoints?.reduce(
@@ -96,13 +96,13 @@ const TodoListItem = ({
               {}
             )}
           >
-            <div className="d-flex align-items-center lh-1 gap-2">
+            <div className="flex align-items-center lh-1 gap-2">
               <h5
                 className={classNames(
                   labelClassName,
-                  'mb-0 line-clamp-1 fw-semibold text-body-tertiary cursor-pointer',
+                  'mb-0 line-clamp-1 font-semibold text-subtle cursor-pointer',
                   {
-                    'text-decoration-line-through text-body-quaternary':
+                    'text-decoration-line-through text-soft':
                       selected
                   }
                 )}
@@ -114,7 +114,7 @@ const TodoListItem = ({
                 <Badge
                   variant="phoenix"
                   bg={todo.badge.bg}
-                  className="fs-10 ms-auto"
+                  className="text-sm ms-auto"
                 >
                   {todo.badge.label}
                 </Badge>
@@ -138,15 +138,15 @@ const TodoListItem = ({
               {}
             )}
           >
-            <div className="d-flex lh-1 align-items-center">
+            <div className="flex lh-1 align-items-center">
               {todo.attachment && (
-                <Button className="p-0 text-body-tertiary fs-10 me-2">
+                <Button className="p-0 text-subtle text-sm me-2">
                   <FontAwesomeIcon icon={faPaperclip} className="me-1" />
                   {todo.attachment}
                 </Button>
               )}
               {todo.listitems && (
-                <Button className="p-0 text-warning fs-10 me-2">
+                <Button className="p-0 text-warning text-sm me-2">
                   <FontAwesomeIcon icon={faTasks} className="me-1" />
                   {todo.listitems}
                 </Button>
@@ -154,7 +154,7 @@ const TodoListItem = ({
               <p
                 className={classNames(
                   getBreakpointClasses('me', [2, 3]),
-                  'text-body-tertiary fs-10 me-2 mb-0'
+                  'text-subtle text-sm me-2 mb-0'
                 )}
               >
                 {todo.date}
@@ -167,7 +167,7 @@ const TodoListItem = ({
                 <p
                   className={classNames(
                     getBreakpointClasses('ps', [0, 3]),
-                    'text-body-tertiary fs-10 ps-lg-3 border-start-lg fw-bold mb-md-0 mb-0'
+                    'text-subtle text-sm ps-lg-3 border-start-lg font-bold mb-md-0 mb-0'
                   )}
                 >
                   {todo.time}
@@ -179,15 +179,15 @@ const TodoListItem = ({
         <div
           className={classNames(
             getBreakpointClasses('d', ['none', 'block']),
-            'd-none end-0 position-absolute'
+            'hidden end-0 absolute'
           )}
           style={{ top: '23%' }}
         >
           <div className="hover-actions end-0">
-            <Button variant="phoenix-secondary" className="btn-icon fs-10 me-1">
+            <Button variant="phoenix-secondary" className="btn-icon text-sm me-1">
               <FontAwesomeIcon icon={faEdit} />
             </Button>
-            <Button variant="phoenix-secondary" className="btn-icon fs-10">
+            <Button variant="phoenix-secondary" className="btn-icon text-sm">
               <FontAwesomeIcon icon={faTrash} className="text-danger" />
             </Button>
           </div>

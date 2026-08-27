@@ -80,10 +80,10 @@ const collapsibleContainerContent = (
         <div className="py-6 px-4">
           <ul className="px-0">
             {tripDetailsItems.additional.map(item => (
-              <li key={item.id} className="mb-1 d-flex">
+              <li key={item.id} className="mb-1 flex">
                 <FontAwesomeIcon
                   icon={faCircle}
-                  className="text-secondary-light me-3 fs-11"
+                  className="text-secondary-light me-3 text-xs"
                   transform="down-13 shrink-4"
                 />
                 {item.additionalItem}
@@ -119,7 +119,7 @@ const TripDetailsTabDetailsContent = ({
             key={item.id}
             id={item.id}
             collapseTitle={item.title}
-            titleClass="fs-8 fs-sm-7 text-body-highlight"
+            titleClass="text-base sm:text-lg text-highlight"
             className={item.className}
             containerSize="trip"
             defaultOpen={item.defaultOpen}

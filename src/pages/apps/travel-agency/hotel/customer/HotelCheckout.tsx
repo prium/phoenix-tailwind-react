@@ -23,7 +23,7 @@ const HotelCheckout = () => {
             <Col lg={7} xl={6}>
               <Form id="checkoutForm1" onSubmit={e => e.preventDefault()}>
                 <hr className="mt-0 mb-7" />
-                <h3 className="fw-bold mb-5">Enter your details</h3>
+                <h3 className="font-bold mb-5">Enter your details</h3>
                 <h5 className="mb-3">Are you travelling for work?</h5>
                 <Form.Check
                   id="tripTypeRadio"
@@ -53,7 +53,7 @@ const HotelCheckout = () => {
                   <Col sm={6}>
                     <label
                       htmlFor="first-name"
-                      className="fw-bold text-body-highlight mb-1"
+                      className="font-bold text-highlight mb-1"
                     >
                       First name
                     </label>
@@ -66,7 +66,7 @@ const HotelCheckout = () => {
                   <Col sm={6}>
                     <label
                       htmlFor="last-name"
-                      className="fw-bold text-body-highlight mb-1"
+                      className="font-bold text-highlight mb-1"
                     >
                       Last name
                     </label>
@@ -81,7 +81,7 @@ const HotelCheckout = () => {
                   <Col sm={6}>
                     <label
                       htmlFor="email-address"
-                      className="fw-bold text-body-highlight mb-1"
+                      className="font-bold text-highlight mb-1"
                     >
                       Email address
                     </label>
@@ -94,7 +94,7 @@ const HotelCheckout = () => {
                   <Col sm={6}>
                     <label
                       htmlFor="confirm-email-address"
-                      className="fw-bold text-body-highlight mb-1"
+                      className="font-bold text-highlight mb-1"
                     >
                       Confirm email address
                     </label>
@@ -140,10 +140,10 @@ const HotelCheckout = () => {
                   <Form.Check.Input type="checkbox" id="airportShuttle" />
                   <Form.Check.Label
                     htmlFor="airportShuttle"
-                    className="fw-normal fs-8 text-body"
+                    className="font-normal text-base text-default"
                   >
                     I am interested in requesting an airport shuttle
-                    <span className="d-block fs-9 text-body-tertiary">
+                    <span className="block text-md text-subtle">
                       We'll tell your accommodation what you're interested in so
                       they can provide details and costs.
                     </span>
@@ -153,10 +153,10 @@ const HotelCheckout = () => {
                   <Form.Check.Input type="checkbox" id="rentingCar" />
                   <Form.Check.Label
                     htmlFor="rentingCar"
-                    className="fw-normal fs-8 text-body"
+                    className="font-normal text-base text-default"
                   >
                     I'm interested in renting a car
-                    <span className="d-block fs-9 text-body-tertiary">
+                    <span className="block text-md text-subtle">
                       Make the most of your trip and check the car rental
                       options in your booking confirmation.
                     </span>
@@ -187,7 +187,7 @@ const HotelCheckout = () => {
                 <p className="mb-2">
                   <FontAwesomeIcon
                     icon={faCircle}
-                    className="text-body-quaternary fs-10 me-2"
+                    className="text-soft text-sm me-2"
                     transform="up-2"
                   />
                   No smoking
@@ -195,7 +195,7 @@ const HotelCheckout = () => {
                 <p>
                   <FontAwesomeIcon
                     icon={faCircle}
-                    className="text-body-quaternary fs-10 me-2"
+                    className="text-soft text-sm me-2"
                     transform="up-2"
                   />
                   Pets are not allowed
@@ -205,7 +205,7 @@ const HotelCheckout = () => {
                   house rules.
                 </p>
                 <h5 className="mb-3">Special requests</h5>
-                <p className="fs-9 text-body-tertiary mb-4">
+                <p className="text-md text-subtle mb-4">
                   Special requests cannot be guaranteed, but the property will
                   do its best to meet your needs. You can always make a special
                   request after your booking is complete!

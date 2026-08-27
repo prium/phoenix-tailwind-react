@@ -33,11 +33,11 @@ const ProjectDetails = () => {
 
   return (
     <Row className="g-0">
-      <Col xs={12} xxl={8} className="px-0 bg-body">
+      <Col xs={12} xxl={8} className="px-0 bg-default">
         <div className="px-4 px-lg-6 pt-6 pb-9">
           <div className="mb-5">
-            <div className="d-flex justify-content-between">
-              <h2 className="text-body-emphasis fw-bolder mb-2">
+            <div className="flex justify-content-between">
+              <h2 className="text-emphasis font-black mb-2">
                 Retrieving Old Repos to Redirect to a new URL
               </h2>
               <RevealDropdownTrigger>
@@ -73,8 +73,8 @@ const ProjectDetails = () => {
             </Col>
           </Row>
           <div>
-            <h3 className="text-body-emphasis mb-4">Project overview</h3>
-            <p className="text-body-secondary mb-4">
+            <h3 className="text-emphasis mb-4">Project overview</h3>
+            <p className="text-muted mb-4">
               The new redirection team is happy to announce that we’ve fixed all
               our unresponsive URLs and redirected them to new URLs. The
               tremendous assistance from our support team and the dev team, as
@@ -82,14 +82,14 @@ const ProjectDetails = () => {
               possible within a week. They didn’t stop for a moment, and we got
               our pages working again for all the valuable users.{' '}
             </p>
-            <p className="text-body-secondary mb-0">
+            <p className="text-muted mb-0">
               Join us in celebrating the massive success of data transferring
               and getting us a huge revenue by eating out. Free public viewing
               and a buffet is offered for the great team as well as for the
               other teams working with us. We’ll be checking out places for the
               best option available at hands and we’ll let you know the schedule
               once we decide on one...
-              <Link className="fw-semibold" to="#!">
+              <Link className="font-semibold" to="#!">
                 read more
               </Link>
             </p>
@@ -100,7 +100,7 @@ const ProjectDetails = () => {
         <div className="h-100">
           <div className="bg-light dark__bg-gray-1100 h-100">
             <div className="p-4 p-lg-6">
-              <h3 className="text-body-highlight mb-4 fw-bold">
+              <h3 className="text-highlight mb-4 font-bold">
                 Recent activity
               </h3>
               <ActivityTimeline data={activityTimelineData} />

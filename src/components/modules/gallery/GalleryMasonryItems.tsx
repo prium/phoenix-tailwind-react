@@ -55,11 +55,11 @@ const GalleryItem = ({ item, onClick }: GalleryItemProps) => {
   };
   return (
     <div onClick={onClick} className={classNames(item.className)}>
-      <div className="img-zoom-hover position-relative rounded-2 overflow-hidden cursor-pointer">
+      <div className="img-zoom-hover relative rounded-2 overflow-hidden cursor-pointer">
         {item.srcType === 'video' ? (
-          <div className="video-container position-relative">
+          <div className="video-container relative">
             <video
-              className="video d-block h-100 w-100 overflow-hidden rounded-2"
+              className="video block h-100 w-100 overflow-hidden rounded-2"
               muted
               poster={item.image}
               onMouseEnter={handleMouseEnter}
@@ -68,10 +68,10 @@ const GalleryItem = ({ item, onClick }: GalleryItemProps) => {
             >
               <source src={item.video} type="video/mp4" />
             </video>
-            <div className="video-icon position-absolute top-50 start-50 translate-middle bg-body-emphasis rounded-pill bg-opacity-50">
+            <div className="video-icon absolute top-50 start-50 translate-middle bg-soft rounded-full bg-opacity-50">
               <FontAwesomeIcon
                 icon={faVideo}
-                className="text-body fs-9 fs-sm-8"
+                className="text-default text-md sm:text-base"
               />
             </div>
           </div>
@@ -84,7 +84,7 @@ const GalleryItem = ({ item, onClick }: GalleryItemProps) => {
             />
           </>
         )}
-        <div className="backdrop-faded position-absolute w-100 bottom-0 start-0 p-3">
+        <div className="backdrop-faded absolute w-100 bottom-0 start-0 p-3">
           <h4 className="text-white">{item.title}</h4>
           <p className="mb-0 text-secondary-lighter text-capitalize">
             {item.categoryTitle}

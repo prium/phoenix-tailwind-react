@@ -13,7 +13,7 @@ const exampleCode = `
         <strong className="me-auto">Bootstrap</strong>
         <small>11 mins ago</small>
         <Button className="ms-2 p-0 " onClick={() => setShow(false)} >
-          <UilTimes className="fs-7"/>
+          <UilTimes className="text-lg"/>
         </Button>
       </Toast.Header>
       <Toast.Body>Hello, world! This is a toast message.</Toast.Body>
@@ -30,7 +30,7 @@ const transcluentCode = `
           <strong className="me-auto">Bootstrap</strong>
           <small>11 mins ago</small>
           <Button className="ms-2 p-0 " onClick={() => setShow(false)} >
-            <UilTimes className="fs-7"/>
+            <UilTimes className="text-lg"/>
           </Button>
         </Toast.Header>
         <Toast.Body>Hello, world! This is a toast message.</Toast.Body>
@@ -45,13 +45,13 @@ const stackingCode = `
   const [showB, setShowB] = useState(true);
 
   return (
-    <ToastContainer className="position-static">
+    <ToastContainer className="static">
       <Toast show={showA} className="mb-4" onClose={() => setShowA(!showA)}>
         <Toast.Header closeButton={false}>
           <strong className="me-auto">Bootstrap</strong>
           <small className="text-muted">just now</small>
           <Button className="ms-2 p-0 " onClick={() => setShowA(false)} >
-            <UilTimes className="fs-7"/>
+            <UilTimes className="text-lg"/>
           </Button>
         </Toast.Header>
         <Toast.Body>See? Just like this.</Toast.Body>
@@ -61,7 +61,7 @@ const stackingCode = `
           <strong className="me-auto">Bootstrap</strong>
           <small className="text-muted">2 seconds ago</small>
           <Button className="ms-2 p-0 " onClick={() => setShowB(false)} >
-            <UilTimes className="fs-7"/>
+            <UilTimes className="text-lg"/>
           </Button>
         </Toast.Header>
         <Toast.Body>Heads up, toasts will stack automatically</Toast.Body>
@@ -103,7 +103,7 @@ const placementCode = `
       <div
         aria-live="polite"
         aria-atomic="true"
-        className="position-relative"
+        className="relative"
         style={{ minHeight: '240px' }}
       >
         <ToastContainer className="p-3" position={position}>
@@ -136,7 +136,7 @@ const autoHideCode = `
             <strong className="me-auto">Bootstrap</strong>
             <small>11 mins ago</small>
             <Button className="ms-2 p-0 " onClick={() => setShow(false)} >
-              <UilTimes className="fs-7"/>
+              <UilTimes className="text-lg"/>
             </Button>
           </Toast.Header>
           <Toast.Body>Woohoo, you're reading this text in a Toast!</Toast.Body>
@@ -171,7 +171,7 @@ const dismissibleCode = `
             <strong className="me-auto">Bootstrap</strong>
             <small>11 mins ago</small>
             <Button className="ms-2 p-0 " onClick={() => setShowA(false)} >
-              <UilTimes className="fs-7"/>
+              <UilTimes className="text-lg"/>
             </Button>
           </Toast.Header>
           <Toast.Body>Woohoo, you're reading this text in a Toast!</Toast.Body>
@@ -191,7 +191,7 @@ const dismissibleCode = `
             <strong className="me-auto">Bootstrap</strong>
             <small>11 mins ago</small>
             <Button className="ms-2 p-0 " onClick={() => setShowB(false)} >
-              <UilTimes className="fs-7"/>
+              <UilTimes className="text-lg"/>
             </Button>
           </Toast.Header>
           <Toast.Body>Woohoo, you're reading this text in a Toast!</Toast.Body>

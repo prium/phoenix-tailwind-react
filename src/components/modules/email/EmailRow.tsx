@@ -19,16 +19,16 @@ interface EmailRowProps {
 const EmailRow = ({ email, index }: EmailRowProps) => {
   const { getRowCheckboxProps } = useBulkSelect();
   return (
-    <div className="border-bottom border-translucent hover-actions-trigger py-3">
+    <div className="border-bottom border-light hover-actions-trigger py-3">
       <Row className="gx-2">
         <Col xs="auto">
-          <div className="d-flex flex-column flex-sm-row">
+          <div className="flex flex-column flex-sm-row">
             <IndeterminateCheckbox
               {...getRowCheckboxProps(String(index))}
               className="mb-2 m-sm-0 me-sm-2"
             />
             <Button className="btn p-0">
-              <StarCheckbox defaultChecked={email.starred} iconClass="fs-9" />
+              <StarCheckbox defaultChecked={email.starred} iconClass="text-md" />
             </Button>
           </div>
         </Col>
@@ -44,9 +44,9 @@ const EmailRow = ({ email, index }: EmailRowProps) => {
         <Col className="col-auto">
           <Link
             to="#!"
-            className={classNames('fs-9 inbox-link', {
-              'text-body fw-semibold': email.read_at,
-              'text-body-emphasis fw-bold': !email.read_at
+            className={classNames('text-md inbox-link', {
+              'text-default font-semibold': email.read_at,
+              'text-emphasis font-bold': !email.read_at
             })}
           >
             {email.sender.name}
@@ -83,8 +83,8 @@ const EmailRow = ({ email, index }: EmailRowProps) => {
             </Dropdown>
           </div>
           <span
-            className={classNames('fs-10', {
-              'fw-bold': email.read_at
+            className={classNames('text-sm', {
+              'font-bold': email.read_at
             })}
           >
             {email.time}
@@ -92,16 +92,16 @@ const EmailRow = ({ email, index }: EmailRowProps) => {
         </Col>
       </Row>
       <div className="ms-4 mt-n3 mt-sm-0 ms-sm-11">
-        <Link to="/apps/email/email-detail" className="d-block inbox-link">
+        <Link to="/apps/email/email-detail" className="block inbox-link">
           <span
-            className={classNames('fs-9 line-clamp-1', {
-              'text-body-highlight': email.read_at,
-              'text-body-emphasis': !email.read_at
+            className={classNames('text-md line-clamp-1', {
+              'text-highlight': email.read_at,
+              'text-emphasis': !email.read_at
             })}
           >
             {email.subject}
           </span>
-          <p className="fs-9 ps-0 text-body-tertiary mb-0 line-clamp-2">
+          <p className="text-md ps-0 text-subtle mb-0 line-clamp-2">
             {email.details}
           </p>
         </Link>
@@ -109,17 +109,17 @@ const EmailRow = ({ email, index }: EmailRowProps) => {
         {email.attachments?.map(attachment => (
           <a
             href="#!"
-            className="d-inline-flex align-items-center border border-translucent rounded-pill px-3 py-1 me-2 mt-2 inbox-link"
+            className="d-inline-flex align-items-center border border-light rounded-full px-3 py-1 me-2 mt-2 inbox-link"
             key={attachment.id}
           >
             <FontAwesomeIcon
               icon={getFileIcon(attachment.format)}
-              className={classNames('fs-9', {
+              className={classNames('text-md', {
                 'text-warning': ['pdf', 'zip'].includes(attachment.format),
                 'text-primary': ['music'].includes(attachment.format)
               })}
             />
-            <span className="ms-2 fw-bold fs-10 text-body">
+            <span className="ms-2 font-bold text-sm text-default">
               {attachment.fileName}
             </span>
           </a>

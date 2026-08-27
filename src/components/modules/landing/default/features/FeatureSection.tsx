@@ -34,9 +34,9 @@ const FeatureSection = ({ feature, orderReverse }: FeatureSectionProps) => {
       </Col>
       <Col lg={6}>
         <h6 className="text-primary mb-2 ls-2">{label}</h6>
-        <h3 className="fw-bolder mb-3">{title}</h3>
+        <h3 className="font-black mb-3">{title}</h3>
         <p className="mb-4 px-md-7 px-lg-0">{details}</p>
-        <Link to={link} className="me-2 p-0 fs-9 fw-bold">
+        <Link to={link} className="me-2 p-0 text-md font-bold">
           Check Demo
           <FontAwesomeIcon icon={faAngleRight} className="ms-2" />
         </Link>

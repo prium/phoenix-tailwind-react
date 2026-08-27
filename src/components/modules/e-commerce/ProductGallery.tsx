@@ -1,6 +1,6 @@
 import { useBreakpoints } from 'providers/BreakpointsProvider';
 import { useState } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row } from '@hummingbirdui/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -26,7 +26,7 @@ const ProductGallery = ({ images }: { images: string[] }) => {
           freeMode={true}
           watchSlidesProgress={true}
           modules={[Thumbs]}
-          className="swiper-products-thumb"
+          className="swiper-products-thumb theme-slider overflow-visible md:h-121 lg:h-auto xl:h-121"
         >
           {images.map((image, index) => (
             <SwiperSlide className="h-auto" key={index}>

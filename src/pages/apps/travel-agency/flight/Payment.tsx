@@ -37,7 +37,7 @@ const FlightPayment = () => {
             </Card>
           </Col>
         </Row>
-        <hr className="mt-6 mb-9 d-none d-lg-block" />
+        <hr className="mt-6 mb-9 hidden d-lg-block" />
       </Container>
       <FlightBottomBar />
     </>

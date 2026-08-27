@@ -156,7 +156,7 @@ const Preview = () => {
   return (
     <>
       <h3 className="mb-2">We’re building your listing</h3>
-      <p className="mb-5 text-body-tertiary">
+      <p className="mb-5 text-subtle">
         We're working on getting your property set up and ready for guests. Stay
         tuned for updates and start accepting bookings soon!
       </p>
@@ -167,7 +167,7 @@ const Preview = () => {
           dismissible
           className="mb-5"
         >
-          <p className="mb-0 flex-1 fw-semibold fs-9 fs-sm-8">
+          <p className="mb-0 flex-1 font-semibold text-md sm:text-base">
             Congratulations on your successful listing! Join a community of
             hospitality professionals as a host. Your hard work will turn your
             home into a sought-after destination. We anticipate hearing about
@@ -175,9 +175,9 @@ const Preview = () => {
           </p>
         </Alert>
       )}
-      <h4 className="text-body mb-3">
+      <h4 className="text-default mb-3">
         Room information
-        <Link to="#!" className="fs-9 mx-2">
+        <Link to="#!" className="text-md mx-2">
           Edit
         </Link>
       </h4>
@@ -189,17 +189,17 @@ const Preview = () => {
           <SummaryTable items={roomInformation.slice(5)} />
         </Col>
       </Row>
-      <h4 className="text-body mb-4 mt-5">
+      <h4 className="text-default mb-4 mt-5">
         Pricing
-        <Link to="#!" className="fs-9 mx-2">
+        <Link to="#!" className="text-md mx-2">
           Edit
         </Link>
       </h4>
       <h6 className="mb-2">Across all days</h6>
       <h3 className="mb-0">$894</h3>
-      <h4 className="text-body mb-3 mt-7">
+      <h4 className="text-default mb-3 mt-7">
         Amenities
-        <Link to="#!" className="fs-9 mx-2">
+        <Link to="#!" className="text-md mx-2">
           Edit
         </Link>
       </h4>
@@ -211,9 +211,9 @@ const Preview = () => {
           <SummaryTable items={amenities.slice(7)} />
         </Col>
       </Row>
-      <h4 className="text-body mb-4 mt-7">
+      <h4 className="text-default mb-4 mt-7">
         Picture
-        <Link to="#!" className="fs-9 mx-2">
+        <Link to="#!" className="text-md mx-2">
           Edit
         </Link>
       </h4>

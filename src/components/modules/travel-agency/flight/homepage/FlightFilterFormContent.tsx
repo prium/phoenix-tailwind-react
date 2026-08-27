@@ -15,7 +15,7 @@ export const FilterFormFlightStops = () => {
   return (
     <CollapsibleContainer
       collapseTitle="Stops"
-      titleClass="fs-8"
+      titleClass="text-base"
       containerSize="sm"
       id="flightStops"
     >
@@ -23,7 +23,7 @@ export const FilterFormFlightStops = () => {
         {flightStops.map(stop => (
           <Form.Check key={stop.id} className={classNames(stop.className)}>
             <Form.Check.Input id={stop.id} />
-            <Form.Check.Label htmlFor={stop.id} className="fs-8 text-body">
+            <Form.Check.Label htmlFor={stop.id} className="text-base text-default">
               {stop.label}
             </Form.Check.Label>
           </Form.Check>
@@ -37,7 +37,7 @@ export const FilterFormFlightAirlines = () => {
   return (
     <CollapsibleContainer
       collapseTitle="Airlines"
-      titleClass="fs-8"
+      titleClass="text-base"
       containerSize="sm"
       id="flightAirlines"
     >
@@ -45,7 +45,7 @@ export const FilterFormFlightAirlines = () => {
         {flightAirlines.map(airline => (
           <Form.Check key={airline.id}>
             <Form.Check.Input id={airline.id} />
-            <Form.Check.Label htmlFor={airline.id} className="fs-8 text-body">
+            <Form.Check.Label htmlFor={airline.id} className="text-base text-default">
               {airline.label}
             </Form.Check.Label>
           </Form.Check>
@@ -59,7 +59,7 @@ export const FilterFormFlightCabin = () => {
   return (
     <CollapsibleContainer
       collapseTitle="Cabin"
-      titleClass="fs-8"
+      titleClass="text-base"
       containerSize="sm"
       id="flightCabin"
     >
@@ -67,7 +67,7 @@ export const FilterFormFlightCabin = () => {
         {flightCabins.map(cabin => (
           <Form.Check key={cabin.id}>
             <Form.Check.Input id={cabin.id} />
-            <Form.Check.Label htmlFor={cabin.id} className="fs-8 text-body">
+            <Form.Check.Label htmlFor={cabin.id} className="text-base text-default">
               {cabin.label}
             </Form.Check.Label>
           </Form.Check>
@@ -82,14 +82,14 @@ export const FilterFormFlightDuration = () => {
   return (
     <CollapsibleContainer
       collapseTitle="Flight Duration"
-      titleClass="fs-8"
+      titleClass="text-base"
       containerSize="sm"
       id="flightDuration"
     >
       <div className="p-3 pb-0">
-        <div className="d-flex flex-between-center mb-2">
-          <h6 className="mb-0 text-body-highlight fw-semibold">0h 45m</h6>
-          <h6 className="mb-0 text-body-highlight fw-semibold">0h 55m</h6>
+        <div className="flex flex-between-center mb-2">
+          <h6 className="mb-0 text-highlight font-semibold">0h 45m</h6>
+          <h6 className="mb-0 text-highlight font-semibold">0h 55m</h6>
         </div>
         <PhoenixReactRange
           step={1}
@@ -111,7 +111,7 @@ export const FilterFormFlightPriceCalculator = () => {
   return (
     <CollapsibleContainer
       collapseTitle="Price Calculator"
-      titleClass="fs-8"
+      titleClass="text-base"
       containerSize="sm"
       id="flightPriceCalculator"
     >

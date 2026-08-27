@@ -166,9 +166,9 @@ const KanbanContent = () => {
           {boardLists.map(list => (
             <KanbanList list={list} key={list.id} columnId={list.id} />
           ))}
-          <div className="kanban-column scrollbar position-relative bg-transparent d-flex flex-column h-100 flex-center bg-body-hover">
+          <div className="kanban-column scrollbar relative bg-transparent flex flex-column h-100 flex-center hover:bg-default">
             <Button
-              className="stretched-link btn-icon btn-icon bg-body-secondary rounded-circle mb-1"
+              className="stretched-link btn-icon btn-icon bg-muted rounded-circle mb-1"
               onClick={() =>
                 kanbanDispatch({
                   type: TOGGLE_ADD_LIST_MODAL,
@@ -178,10 +178,10 @@ const KanbanContent = () => {
             >
               <FontAwesomeIcon
                 icon={faPlus}
-                className="text-body-secondary fs-8"
+                className="text-muted text-base"
               />
             </Button>
-            <h5 className="text-body-secondary">Add another list</h5>
+            <h5 className="text-muted">Add another list</h5>
           </div>
         </div>
         <KanbanBoardOffcanvas />

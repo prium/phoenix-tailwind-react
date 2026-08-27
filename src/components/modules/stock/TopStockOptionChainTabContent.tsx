@@ -83,8 +83,8 @@ const TopStockOptionChainTabContent = ({
                   'nav-link w-100 text-nowrap text-center rounded-0'
                 )}
               >
-                <span className="fs-8">{item.date} </span>
-                <span className="text-body-tertiary fs-9 fw-semibold">
+                <span className="text-base">{item.date} </span>
+                <span className="text-subtle text-md font-semibold">
                   ({item.daysCount} Days)
                 </span>
               </button>

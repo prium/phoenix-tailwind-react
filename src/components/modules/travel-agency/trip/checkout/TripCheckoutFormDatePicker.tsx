@@ -17,7 +17,7 @@ const TripCheckoutFormDatePicker = ({
 }: TripCheckoutFormDatePickerProps) => {
   return (
     <>
-      <label htmlFor={id} className="fw-bold text-body-highlight mb-1">
+      <label htmlFor={id} className="font-bold text-highlight mb-1">
         {label}
       </label>
       <div className="form-icon-container flatpickr-input-container">
@@ -34,7 +34,7 @@ const TripCheckoutFormDatePicker = ({
                 />
                 <FontAwesomeIcon
                   icon={faCalendarDays}
-                  className="form-icon text-body-quaternary fs-9"
+                  className="form-icon text-soft text-md"
                   transform="up-1"
                 />
               </>

@@ -15,12 +15,12 @@ const PricingItem = ({ pricing }: PricingItemProps) => {
       <div className="px-5">
         <div className="text-center pt-5">
           <img src={pricing.icon} width={48} height={48} alt="" />
-          <h3 className="fw-semibold my-4">{pricing.category}</h3>
+          <h3 className="font-semibold my-4">{pricing.category}</h3>
         </div>
         <div className="text-center">
-          <h1 className="fw-semibold text-primary mb-4">
-            $<span className="fw-bolder">{pricing.price}</span>
-            <span className="text-body-emphasis fs-7 ms-1 fw-bolder">USD</span>
+          <h1 className="font-semibold text-primary mb-4">
+            $<span className="font-black">{pricing.price}</span>
+            <span className="text-emphasis text-lg ms-1 font-black">USD</span>
           </h1>
           <Button
             variant={pricing.popular ? 'primary' : 'outline-primary'}
@@ -32,7 +32,7 @@ const PricingItem = ({ pricing }: PricingItemProps) => {
       </div>
       <ul className="fa-ul pricing-list">
         {pricingFeatures.map(feature => (
-          <li key={feature.id} className="mb-4 d-flex align-items-center">
+          <li key={feature.id} className="mb-4 flex align-items-center">
             {pricing.features.includes(feature.id) && (
               <span className="fa-li">
                 <FontAwesomeIcon
@@ -42,7 +42,7 @@ const PricingItem = ({ pricing }: PricingItemProps) => {
               </span>
             )}
             <span
-              className="text-body-secondary"
+              className="text-muted"
               style={
                 pricing.features.includes(feature.id)
                   ? ({ '--phoenix-text-opacity': 1 } as CSSProperties)
@@ -52,7 +52,7 @@ const PricingItem = ({ pricing }: PricingItemProps) => {
               {feature.label}
             </span>
             {feature.new && (
-              <Badge bg="warning" variant="phoenix" className="ms-2 fs-10">
+              <Badge bg="warning" variant="phoenix" className="ms-2 text-sm">
                 New
               </Badge>
             )}

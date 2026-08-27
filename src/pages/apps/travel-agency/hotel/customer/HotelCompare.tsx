@@ -33,7 +33,7 @@ const HotelCompare = () => {
           >
             <EcomTopRegionsMap data={mapMarkerPoints} />
           </div>
-          <div className="position-relative scrollbar">
+          <div className="relative scrollbar">
             <CollapsibleContainer
               collapseTitle="Hotel Details"
               id="hotelDetailsCollapse"

@@ -26,7 +26,7 @@ const renderIcons = (count: number, iconClass: IconDefinition) => {
     <FontAwesomeIcon
       icon={iconClass}
       key={index}
-      className={classNames('text-primary fs-9', {
+      className={classNames('text-primary text-md', {
         'me-1': index !== count - 1
       })}
     />
@@ -42,30 +42,30 @@ const HotelDetailsAvailabilityRoomInfo = ({
         <Col lg={8} xxl={7}>
           <Row className="flex-lg-nowrap g-3 mb-2">
             <Col md="auto">
-              <h4 className="mb-0 fw-semibold">
+              <h4 className="mb-0 font-semibold">
                 <FontAwesomeIcon
                   icon={faCircle}
-                  className="fs-9 text-body-quaternary me-2"
+                  className="text-md text-soft me-2"
                   transform="up-1"
                 />
                 {room.name}
               </h4>
             </Col>
-            <Col md="auto" className="d-flex align-items-center">
-              <div className="vr bg-body-secondary me-3 d-none d-md-block" />
+            <Col md="auto" className="flex align-items-center">
+              <div className="vr bg-muted me-3 hidden d-md-block" />
               {renderIcons(room.beds, faBed)}
 
-              <div className="vr bg-body-secondary mx-3" />
+              <div className="vr bg-muted mx-3" />
               {renderIcons(room.person, faUser)}
 
-              <div className="vr bg-body-secondary mx-3" />
+              <div className="vr bg-muted mx-3" />
               {room.breakfast && (
                 <>
                   <FontAwesomeIcon
                     icon={faMugSaucer}
-                    className="text-primary fs-9"
+                    className="text-primary text-md"
                   />
-                  <div className="vr bg-body-secondary mx-3" />
+                  <div className="vr bg-muted mx-3" />
                 </>
               )}
               <Badge variant="phoenix" bg="info">
@@ -76,8 +76,8 @@ const HotelDetailsAvailabilityRoomInfo = ({
           <p className="mb-0">{room.desc}</p>
         </Col>
         <Col lg={4} xxl={5}>
-          <h3 className="mb-2 d-flex align-items-center justify-content-lg-end gap-2">
-            <span className="fs-9 text-body-quaternary fw-normal text-decoration-line-through">
+          <h3 className="mb-2 flex align-items-center justify-content-lg-end gap-2">
+            <span className="text-md text-soft font-normal text-decoration-line-through">
               {currencyFormat(room.price, {
                 maximumFractionDigits: 2,
                 useGrouping: true
@@ -85,7 +85,7 @@ const HotelDetailsAvailabilityRoomInfo = ({
             </span>
             {currencyFormat(room.discountPrice, { maximumFractionDigits: 2 })}
           </h3>
-          <h5 className="text-body text-lg-end fw-normal">
+          <h5 className="text-default text-lg-end font-normal">
             +{currencyFormat(room.tax)} for tax and fees
           </h5>
         </Col>
@@ -95,9 +95,9 @@ const HotelDetailsAvailabilityRoomInfo = ({
           <HotelDetailsRoomImageGallery images={room.images} />
         </Col>
         <Col lg={4} xl={5} xxl={4} className="ms-auto">
-          <Card className="bg-body-highlight">
+          <Card className="bg-subtle">
             <Card.Body>
-              <ul className="mb-2 list-unstyled d-flex flex-wrap gap-2 text-body-highlight fs-9 lh-1">
+              <ul className="mb-2 list-unstyled flex flex-wrap gap-2 text-highlight text-md lh-1">
                 {room.amenities.slice(0, 6).map((item, index) => (
                   <li key={index} className="me-1 mb-0">
                     <FontAwesomeIcon
@@ -108,7 +108,7 @@ const HotelDetailsAvailabilityRoomInfo = ({
                   </li>
                 ))}
               </ul>
-              <Link to="#!" className="fw-bold fs-9">
+              <Link to="#!" className="font-bold text-md">
                 Show other amenities
               </Link>
             </Card.Body>

@@ -32,123 +32,123 @@ const RoomCard = ({
       <Card.Body>
         <Row className="gx-4 justify-content-between">
           <Col xs="auto" className="mb-4">
-            <div className="d-flex gap-3">
+            <div className="flex gap-3">
               <Link to="#!">
                 <img
                   src={data.img}
                   alt=""
                   width={108}
-                  className="rounded-1 border border-translucent"
+                  className="rounded-1 border border-light"
                 />
               </Link>
               <div>
                 <Link
                   to="#!"
-                  className="fs-8 fw-bolder text-body-emphasis text-nowrap"
+                  className="text-base font-black text-emphasis text-nowrap"
                 >
                   {data.name}
                 </Link>
-                <h6 className="fw-semibold text-body text-nowrap mt-1 mb-2">
+                <h6 className="font-semibold text-default text-nowrap mt-1 mb-2">
                   <FontAwesomeIcon icon={faBorderAll} className="me-2" />
                   {data.category}
                 </h6>
-                <div className="d-flex align-items-baseline gap-1 mb-3">
-                  <h6 className="mb-0 fw-semibold">Available:</h6>
-                  <h4 className="text-warning-dark fw-bolder mb-0">
+                <div className="flex align-items-baseline gap-1 mb-3">
+                  <h6 className="mb-0 font-semibold">Available:</h6>
+                  <h4 className="text-warning-dark font-black mb-0">
                     {data.available}
-                    <span className="fs-9 text-body-tertiary fw-bold">
+                    <span className="text-md text-subtle font-bold">
                       / {data.total}
                     </span>
                   </h4>
                 </div>
-                <h4 className="fw-bolder mb-0">${data.price}</h4>
+                <h4 className="font-black mb-0">${data.price}</h4>
               </div>
             </div>
           </Col>
           <Col
             xs={{ order: 1 }}
             xxl={{ order: 0, span: 'auto' }}
-            className="d-flex gap-5 gap-md-6 mb-4"
+            className="flex gap-5 gap-md-6 mb-4"
           >
             <div>
-              <h6 className="mb-3 fw-bolder text-body-tertiary text-uppercase">
-                <span className="d-none d-sm-inline-block">No. of</span> Beds
+              <h6 className="mb-3 font-black text-subtle text-uppercase">
+                <span className="hidden d-sm-inline-block">No. of</span> Beds
               </h6>
-              <div className="d-flex align-items-center gap-3">
+              <div className="flex align-items-center gap-3">
                 <div className="d-sm-flex align-items-center gap-2">
                   <div
                     style={{ height: 24, width: 24 }}
-                    className="d-flex align-items-center justify-content-center bg-primary-subtle rounded mb-2 mb-sm-0"
+                    className="flex align-items-center justify-content-center bg-primary-subtle rounded mb-2 mb-sm-0"
                   >
                     <FontAwesomeIcon
                       icon={faPersonShelter}
                       className="text-primary-darker"
                     />
                   </div>
-                  <h5 className="text-body fw-semibold mb-0">
+                  <h5 className="text-default font-semibold mb-0">
                     {data.bedRooms}
                   </h5>
                 </div>
                 <div className="d-sm-flex align-items-center gap-2">
                   <div
                     style={{ height: 24, width: 24 }}
-                    className="d-flex align-items-center justify-content-center bg-success-subtle rounded mb-2 mb-sm-0"
+                    className="flex align-items-center justify-content-center bg-success-subtle rounded mb-2 mb-sm-0"
                   >
                     <FontAwesomeIcon
                       icon={faBed}
                       className="text-success-darker"
                     />
                   </div>
-                  <h5 className="text-body fw-semibold mb-0">{data.beds}</h5>
+                  <h5 className="text-default font-semibold mb-0">{data.beds}</h5>
                 </div>
               </div>
             </div>
             <div>
-              <h6 className="mb-3 fw-bolder text-body-tertiary text-uppercase">
-                <span className="d-none d-sm-inline-block">No. of </span> guests
+              <h6 className="mb-3 font-black text-subtle text-uppercase">
+                <span className="hidden d-sm-inline-block">No. of </span> guests
               </h6>
-              <div className="d-flex align-items-center gap-3">
+              <div className="flex align-items-center gap-3">
                 <div className="d-sm-flex align-items-center gap-2">
                   <div
                     style={{ height: 24, width: 24 }}
-                    className="d-flex align-items-center justify-content-center bg-warning-subtle rounded mb-2 mb-sm-0"
+                    className="flex align-items-center justify-content-center bg-warning-subtle rounded mb-2 mb-sm-0"
                   >
                     <FontAwesomeIcon
                       icon={faUser}
                       className="text-warning-darker"
                     />
                   </div>
-                  <h5 className="text-body fw-semibold mb-0">{data.guest}</h5>
+                  <h5 className="text-default font-semibold mb-0">{data.guest}</h5>
                 </div>
                 <div className="d-sm-flex align-items-center gap-2">
                   <div
                     style={{ height: 24, width: 24 }}
-                    className="d-flex align-items-center justify-content-center bg-info-subtle rounded mb-2 mb-sm-0"
+                    className="flex align-items-center justify-content-center bg-info-subtle rounded mb-2 mb-sm-0"
                   >
                     <FontAwesomeIcon
                       icon={faBaby}
                       className="text-info-darker"
                     />
                   </div>
-                  <h5 className="text-body fw-semibold mb-0">{data.child}</h5>
+                  <h5 className="text-default font-semibold mb-0">{data.child}</h5>
                 </div>
               </div>
             </div>
             <div>
-              <h6 className="mb-3 fw-bolder text-body-tertiary text-uppercase">
+              <h6 className="mb-3 font-black text-subtle text-uppercase">
                 Bathroom
               </h6>
               <div className="d-sm-flex align-items-center gap-2">
                 <div
                   style={{ height: 24, width: 24 }}
-                  className="d-flex align-items-center justify-content-center bg-danger-subtle rounded mb-2 mb-sm-0"
+                  className="flex align-items-center justify-content-center bg-danger-subtle rounded mb-2 mb-sm-0"
                 >
                   <FontAwesomeIcon
                     icon={faBath}
                     className="text-danger-darker"
                   />
                 </div>
-                <h5 className="text-body fw-semibold mb-0">{data.guest}</h5>
+                <h5 className="text-default font-semibold mb-0">{data.guest}</h5>
               </div>
             </div>
           </Col>
@@ -177,7 +177,7 @@ const RoomCard = ({
           <Col xs={12}>
             <Collapse in={open}>
               <div id={`collapseRoomAvailableOnDates`}>
-                <div className="px-4 py-3 border border-translucent rounded mb-4 bg-body-highlight">
+                <div className="px-4 py-3 border border-light rounded mb-4 bg-subtle">
                   <Swiper
                     spaceBetween={24}
                     slidesPerView="auto"
@@ -202,10 +202,10 @@ const RoomCard = ({
                             }
                           )}
                         >
-                          <h6 className="mb-3 fw-bolder text-body">
+                          <h6 className="mb-3 font-black text-default">
                             {item.date}
                           </h6>
-                          <h6 className="mb-2 text-body-highlight fw-semibold">
+                          <h6 className="mb-2 text-highlight font-semibold">
                             ${item.price}
                           </h6>
                           {item.units ? (
@@ -230,11 +230,11 @@ const RoomCard = ({
             </Collapse>
           </Col>
         </Row>
-        <div className="p-3 border border-translucent rounded">
+        <div className="p-3 border border-light rounded">
           {data.amenities.slice(0, 13).map((item, index) => (
             <Link key={index} to="#!">
               <Badge
-                className="text-body-highlight py-1 fs-10 me-2 border-0"
+                className="text-highlight py-1 text-sm me-2 border-0"
                 variant="phoenix"
                 bg="primary"
               >
@@ -243,7 +243,7 @@ const RoomCard = ({
             </Link>
           ))}
           {data.amenities.slice(13).length > 1 && (
-            <Link to="#!" className="fw-bold pe-0 fs-9 text-nowrap">
+            <Link to="#!" className="font-bold pe-0 text-md text-nowrap">
               + {data.amenities.slice(13).length} more
             </Link>
           )}

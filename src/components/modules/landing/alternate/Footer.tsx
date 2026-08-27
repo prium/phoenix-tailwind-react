@@ -20,7 +20,7 @@ const Footer = () => {
             </Link>
           </Col>
           <Col xl="auto" className="flex-1">
-            <ul className="list-unstyled d-flex justify-content-center flex-wrap mb-0 border-end-xl border-dashed gap-3 gap-xl-8 pe-xl-5 pe-xxl-8 w-75 w-md-100 mx-auto">
+            <ul className="list-unstyled flex justify-content-center flex-wrap mb-0 border-end-xl border-dashed gap-3 gap-xl-8 pe-xl-5 pe-xxl-8 w-75 w-md-100 mx-auto">
               {[
                 'Contact us',
                 'Newsroom',
@@ -39,7 +39,7 @@ const Footer = () => {
             </ul>
           </Col>
           <Col xl="auto">
-            <div className="d-flex align-items-center justify-content-center gap-8">
+            <div className="flex align-items-center justify-content-center gap-8">
               <Link to="#!" className="text-white">
                 <FontAwesomeIcon icon={faFacebook} />
               </Link>
@@ -54,8 +54,8 @@ const Footer = () => {
         </Row>
         <hr className="border-top" />
         <div className="d-sm-flex flex-between-center text-center">
-          <p className="text-body-tertiary mb-0">Copyright © Company Name</p>
-          <p className="text-body-tertiary mb-0">
+          <p className="text-subtle mb-0">Copyright © Company Name</p>
+          <p className="text-subtle mb-0">
             Made with love by{' '}
             <Link to="https://themewagon.com">ThemeWagon</Link>
           </p>

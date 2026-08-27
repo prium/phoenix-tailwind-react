@@ -19,11 +19,11 @@ export const IntegrationsCard = () => {
       />
       <Card.Body className="z-5">
         <div>
-          <h3 className="text-body-highlight mb-3">Phoenix integrations</h3>
-          <p className="text-body-tertiary mb-4 w-75 w-xl-100">
+          <h3 className="text-highlight mb-3">Phoenix integrations</h3>
+          <p className="text-subtle mb-4 w-75 w-xl-100">
             Phoenix improves efficiency instantly and effortlessly
-            <br className="d-none d-xxl-block" /> by allowing easy & simple
-            connection <br className="d-none d-xxl-block" /> to other popular
+            <br className="hidden d-xxl-block" /> by allowing easy & simple
+            connection <br className="hidden d-xxl-block" /> to other popular
             programs
           </p>
           <Button

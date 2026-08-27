@@ -15,8 +15,8 @@ const Crm = () => {
     <>
       <Row className="mb-4 gy-3 justify-content-between">
         <Col xxl={6}>
-          <h2 className="mb-2 text-body-emphasis">CRM Dashboard</h2>
-          <h5 className="text-body-tertiary fw-semibold mb-4">
+          <h2 className="mb-2 text-emphasis">CRM Dashboard</h2>
+          <h5 className="text-subtle font-semibold mb-4">
             Check your business growth in one place
           </h5>
           <Row className="g-3 mb-3">
@@ -54,7 +54,7 @@ const Crm = () => {
         </Col>
         <Col xxl={6} className="mb-6">
           <h3>Contacts Created</h3>
-          <p className="text-body-tertiary mb-1">
+          <p className="text-subtle mb-1">
             Payment received across all channels
           </p>
           <ContactsCreatedChart style={{ height: 270, width: '100%' }} />

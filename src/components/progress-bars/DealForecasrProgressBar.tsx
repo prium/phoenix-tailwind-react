@@ -3,18 +3,18 @@ import { ProgressBar } from 'react-bootstrap';
 const DealForecasrProgressBar = () => {
   return (
     <div className="w-100">
-      <div className="d-flex flex-start">
+      <div className="flex flex-start">
         <div style={{ width: '20.72%' }}>
-          <p className="mb-2 text-body-tertiary fw-semibold fs-9">$21.0k</p>
+          <p className="mb-2 text-subtle font-semibold text-md">$21.0k</p>
         </div>
         <div style={{ width: '35.76%' }}>
-          <p className="mb-2 text-body-tertiary fw-semibold fs-9">$3.4k</p>
+          <p className="mb-2 text-subtle font-semibold text-md">$3.4k</p>
         </div>
         <div style={{ width: '25.38%' }}>
-          <p className="mb-2 text-body-tertiary fw-semibold fs-9">$15.1k</p>
+          <p className="mb-2 text-subtle font-semibold text-md">$15.1k</p>
         </div>
         <div style={{ width: '25.14%' }}>
-          <p className="mb-2 text-body-tertiary fw-semibold fs-9">$4.6k</p>
+          <p className="mb-2 text-subtle font-semibold text-md">$4.6k</p>
         </div>
       </div>
 

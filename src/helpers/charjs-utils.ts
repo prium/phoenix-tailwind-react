@@ -46,7 +46,7 @@ export const getOrCreateTooltip = (chart: Chart): HTMLDivElement => {
 
   if (!tooltipEl) {
     tooltipEl = document.createElement('div');
-    tooltipEl.classList.add('custom-tooltip', 'bg-body', 'border');
+    tooltipEl.classList.add('custom-tooltip', 'bg-default', 'border');
     Object.assign(tooltipEl.style, {
       borderRadius: '4px',
       opacity: '0',

@@ -3,7 +3,7 @@ import DocPageHeader from 'components/docs/DocPageHeader';
 import DocPagesLayout from 'layouts/DocPagesLayout';
 
 const exampleCode = `
-<div className="d-flex overflow-docs">
+<div className="flex overflow-docs">
     <div className="overflow-auto">
       This is an example of using <code>.overflow-auto </code>on an element with set width
       and height dimensions. By design, this content will vertically scroll.

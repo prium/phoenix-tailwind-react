@@ -62,7 +62,7 @@ const FinanceForm = () => {
       </FloatingLabel>
       <Form.Check className="my-4" id="financeInvoiceChecked">
         <Form.Check.Input type="checkbox" />
-        <Form.Check.Label className="fw-normal fs-8">
+        <Form.Check.Label className="font-normal text-base">
           Invoice to the name and address of property
         </Form.Check.Label>
       </Form.Check>
@@ -80,7 +80,7 @@ const FinanceForm = () => {
 
         <Link
           to="#!"
-          className="position-absolute d-flex align-items-center px-3 fw-bold fs-9 end-0 top-0 mt-3 me-2"
+          className="absolute flex align-items-center px-3 font-bold text-md end-0 top-0 mt-3 me-2"
         >
           Verify now
         </Link>
@@ -93,7 +93,7 @@ const FinanceForm = () => {
           value="CreditCard"
           onChange={handleChange}
         />
-        <Form.Check.Label className="fs-8">Credit Card</Form.Check.Label>
+        <Form.Check.Label className="text-base">Credit Card</Form.Check.Label>
       </Form.Check>
       <Form.Check className="mb-3" inline id="financeBankAccount">
         <Form.Check.Input
@@ -102,7 +102,7 @@ const FinanceForm = () => {
           value="BankAccount"
           onChange={handleChange}
         />
-        <Form.Check.Label className="fs-8">Bank Account</Form.Check.Label>
+        <Form.Check.Label className="text-base">Bank Account</Form.Check.Label>
       </Form.Check>
       <Form.Check className="mb-3" inline id="financeOnlinePayment">
         <Form.Check.Input
@@ -111,7 +111,7 @@ const FinanceForm = () => {
           value="online"
           onChange={handleChange}
         />
-        <Form.Check.Label className="fs-8">Online</Form.Check.Label>
+        <Form.Check.Label className="text-base">Online</Form.Check.Label>
       </Form.Check>
       <Row className="g-3 mb-3">
         <Col md={6}>
@@ -158,7 +158,7 @@ const FinanceForm = () => {
             name="isCashPayment"
             onChange={handleChange}
           />
-          <Form.Check.Label className="fs-8 fw-bold text-body ms-2">
+          <Form.Check.Label className="text-base font-bold text-default ms-2">
             Cash Payment
           </Form.Check.Label>
         </Form.Check>
@@ -166,7 +166,7 @@ const FinanceForm = () => {
       <div className="border p-3 mb-3 rounded-2">
         <Form.Check type="switch" className="mb-0" id="isCardPayment">
           <Form.Check.Input name="isCardPayment" onChange={handleChange} />
-          <Form.Check.Label className="fs-8 fw-bold text-body ms-2">
+          <Form.Check.Label className="text-base font-bold text-default ms-2">
             Card Payment
           </Form.Check.Label>
         </Form.Check>
@@ -179,7 +179,7 @@ const FinanceForm = () => {
           onChange={handleChange}
         >
           <Form.Check.Input name="isMFSPayment" onChange={handleChange} />
-          <Form.Check.Label className="fs-8 fw-bold text-body ms-2">
+          <Form.Check.Label className="text-base font-bold text-default ms-2">
             MFS Payment
           </Form.Check.Label>
         </Form.Check>

@@ -18,14 +18,14 @@ const EmailSidebarItem = ({ item }: { item: SidebarItem }) => {
       <Nav.Link
         as={Link}
         className={classNames(
-          'py-2 ps-0 pe-3 border-end border-bottom border-translucent text-start outline-none',
+          'py-2 ps-0 pe-3 border-end border-bottom border-light text-start outline-none',
           {
             active: item.active
           }
         )}
         to={item.link ? item.link : '#!'}
       >
-        <div className="d-flex gap-2 align-items-center">
+        <div className="flex gap-2 align-items-center">
           {item.icon}
           <span className="flex-1">{item.label}</span>
           {item.count && <span className="nav-item-count">{item.count}</span>}
@@ -39,8 +39,8 @@ const EmailSidebar = ({ hideSidebar }: { hideSidebar?: () => void }) => {
   return (
     <div>
       <div className="email-content scrollbar">
-        <div className="d-flex flex-between-center mb-2">
-          <p className="text-uppercase fs-10 text-body-tertiary text-opacity-85 mb-0 fw-bold">
+        <div className="flex flex-between-center mb-2">
+          <p className="text-uppercase text-sm text-subtle text-opacity-85 mb-0 font-bold">
             Mailbox
           </p>
           {hideSidebar && (
@@ -53,45 +53,45 @@ const EmailSidebar = ({ hideSidebar }: { hideSidebar?: () => void }) => {
           )}
         </div>
 
-        <Nav className="flex-column border-top border-translucent fs-9 vertical-nav mb-4">
+        <Nav className="flex-column border-top border-light text-md vertical-nav mb-4">
           {mailboxItems.map(item => (
             <EmailSidebarItem item={item} key={item.label} />
           ))}
         </Nav>
 
-        <div className="d-flex flex-between-center mb-2">
-          <p className="text-uppercase fs-10 text-body-tertiary text-opacity-85 mb-0 fw-bold">
+        <div className="flex flex-between-center mb-2">
+          <p className="text-uppercase text-sm text-subtle text-opacity-85 mb-0 font-bold">
             Filtered
           </p>
           <Button
             variant="link"
-            className="fs-10 fw-bold p-0"
+            className="text-sm font-bold p-0"
             startIcon={<FontAwesomeIcon icon={faPlus} className="me-2" />}
           >
             Add Folder
           </Button>
         </div>
 
-        <Nav className="flex-column border-top border-translucent fs-9 vertical-nav mb-4">
+        <Nav className="flex-column border-top border-light text-md vertical-nav mb-4">
           {filteredItems.map(item => (
             <EmailSidebarItem item={item} key={item.label} />
           ))}
         </Nav>
 
-        <div className="d-flex flex-between-center mb-2">
-          <p className="text-uppercase fs-10 text-body-tertiary text-opacity-85 mb-0 fw-bold">
+        <div className="flex flex-between-center mb-2">
+          <p className="text-uppercase text-sm text-subtle text-opacity-85 mb-0 font-bold">
             Labels
           </p>
           <Button
             variant="link"
-            className="fs-10 fw-bold p-0"
+            className="text-sm font-bold p-0"
             startIcon={<FontAwesomeIcon icon={faPlus} className="me-2" />}
           >
             Add Label
           </Button>
         </div>
 
-        <Nav className="flex-column border-top border-translucent fs-9 vertical-nav">
+        <Nav className="flex-column border-top border-light text-md vertical-nav">
           {labelItems.map(item => (
             <EmailSidebarItem item={item} key={item.label} />
           ))}

@@ -17,13 +17,13 @@ const HotelDetailsAvailability = ({
 }: HotelDetailsAvailabilityProps) => {
   return (
     <>
-      <h3 className="mb-3 fw-bold">Availability</h3>
+      <h3 className="mb-3 font-bold">Availability</h3>
       <Card>
         <Card.Body>
           <Row className="g-3">
             <Col sm={6} lg={3}>
               <label
-                className="fw-bold text-body-tertiary mb-1"
+                className="font-bold text-subtle mb-1"
                 htmlFor="checkIn"
               >
                 Check in
@@ -42,7 +42,7 @@ const HotelDetailsAvailability = ({
                         />
                         <FontAwesomeIcon
                           icon={faCalendar}
-                          className="form-icon fs-9 text-body"
+                          className="form-icon text-md text-default"
                         />
                       </>
                     );
@@ -57,7 +57,7 @@ const HotelDetailsAvailability = ({
             </Col>
             <Col sm={6} lg={3}>
               <label
-                className="fw-bold text-body-tertiary mb-1"
+                className="font-bold text-subtle mb-1"
                 htmlFor="checkOut"
               >
                 Check out
@@ -76,7 +76,7 @@ const HotelDetailsAvailability = ({
                         />
                         <FontAwesomeIcon
                           icon={faCalendar}
-                          className="form-icon fs-9 text-body"
+                          className="form-icon text-md text-default"
                         />
                       </>
                     );
@@ -91,7 +91,7 @@ const HotelDetailsAvailability = ({
             </Col>
             <Col sm={6} lg={3}>
               <label
-                className="fw-bold text-body-tertiary mb-1"
+                className="font-bold text-subtle mb-1"
                 htmlFor="adults"
               >
                 Adults

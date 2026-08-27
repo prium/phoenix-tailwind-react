@@ -84,7 +84,7 @@ const ImageCheckbox = ({ img, id }: { img: string; id: string }) => {
         type="radio"
         id={id}
         name="backgroundImage"
-        className="d-none kanban-form-check"
+        className="hidden kanban-form-check"
         value={formData.backgroundImage}
         checked={formData.backgroundImage === img}
         onChange={handleChange}
@@ -115,7 +115,7 @@ const BackgroundColorForm = () => {
       <Tab.Container id="left-tabs-example" defaultActiveKey="first">
         <Nav
           variant="underline"
-          className="border-bottom border-translucent mb-10"
+          className="border-bottom border-light mb-10"
         >
           <Nav.Item>
             <Nav.Link eventKey="first">
@@ -131,7 +131,7 @@ const BackgroundColorForm = () => {
 
         <Tab.Content>
           <Tab.Pane eventKey="first">
-            <div className="d-flex flex-wrap gap-x-3 gap-y-4">
+            <div className="flex flex-wrap gap-x-3 gap-y-4">
               {colors.map(color => (
                 <ColorCheckbox color={color} key={color} />
               ))}
@@ -181,7 +181,7 @@ const BackgroundColorForm = () => {
                     });
                   }}
                 >
-                  <div className="text-body-tertiary text-opacity-85">
+                  <div className="text-subtle text-opacity-85">
                     or, Add a custom background
                     <br />
                     <img className="mt-3" src={imageIcon} width={30} alt="" />

@@ -3,7 +3,7 @@ import DocPageHeader from 'components/docs/DocPageHeader';
 import DocPagesLayout from 'layouts/DocPagesLayout';
 
 const exampleCode = `
-<div className='d-flex gap-2'>
+<div className='flex gap-2'>
   <span className="align-baseline">baseline</span>
   <span className="align-top">top</span>
   <span className="align-middle">middle</span>

@@ -6,7 +6,7 @@ import { productColorVariants } from 'data/e-commerce';
 import { currencyFormat } from 'helpers/utils';
 import ProductGallery from 'components/modules/e-commerce/ProductGallery';
 import { useMemo, useState } from 'react';
-import { Col, Row, Stack } from 'react-bootstrap';
+import { Col, Row } from '@hummingbirdui/react';
 import { Link } from 'react-router';
 import QuantityButtons from 'components/common/QuantityButtons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
@@ -30,7 +30,7 @@ const ProductDescription = () => {
           <Button
             variant="outline-warning"
             size="lg"
-            className="rounded-full w-full me-4 px-2 sm:px-6 fs--1 fs-sm-0"
+            className="rounded-full w-full me-4 px-2 sm:px-6 text-md sm:text-base"
           >
             <FontAwesomeIcon icon={faHeart} className="me-2" />
             Add to wishlist
@@ -38,7 +38,7 @@ const ProductDescription = () => {
           <Button
             variant="warning"
             size="lg"
-            className="rounded-full w-full px-2 sm:px-6 fs--1 fs-sm-0"
+            className="rounded-full w-full text-md sm:text-base"
           >
             <FontAwesomeIcon icon={faShoppingCart} className="me-2" />
             Add to cart
@@ -46,7 +46,7 @@ const ProductDescription = () => {
         </div>
       </Col>
       <Col xs={12} lg={6}>
-        <Stack className="justify-between h-full">
+        <div className="flex flex-col justify-between h-full">
           <div className="mb-4">
             <div className="flex flex-wrap">
               <div className="me-2">
@@ -73,7 +73,7 @@ const ProductDescription = () => {
               <p className="text-soft line-through text-xl mb-0 me-4">
                 {currencyFormat(1499.99)}
               </p>
-              <p className="text-warning-dark font-black text-xl mb-0">10% off</p>
+              <p className="text-warning font-extrabold text-xl mb-0">10% off</p>
             </div>
             <p className="text-success font-semibold text-lg mb-2"> In stock</p>
             <p className="mb-2 text-muted">
@@ -125,21 +125,21 @@ const ProductDescription = () => {
                   </a>
                 </div>
               </div>
-              <div className="col-12 col-sm">
+              <div className="col-12 sm:col-auto flex-1">
                 <p className="font-semibold mb-2 text-default">Quantity : </p>
                 <div className="flex justify-between items-end">
                   <QuantityButtons
                     quantity={quantity}
                     setQuantity={setQuantity}
                   />
-                  <Button variant="phoenix-primary" className="px-4 border-0">
+                  <Button variant="phoenix" color="primary" className="px-4 border-0">
                     <FontAwesomeIcon icon={faShareAlt} className="text-lg" />
                   </Button>
                 </div>
               </div>
             </div>
           </div>
-        </Stack>
+        </div>
       </Col>
     </Row>
   );

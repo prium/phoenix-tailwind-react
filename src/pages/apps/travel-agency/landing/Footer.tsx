@@ -64,7 +64,7 @@ const Footer = () => {
             </Link>
           </Col>
           <Col xs="auto">
-            <ul className="mb-0 list-unstyled d-flex flex-wrap">
+            <ul className="mb-0 list-unstyled flex flex-wrap">
               {footerItems.map((item, index) => (
                 <li
                   key={index}
@@ -72,7 +72,7 @@ const Footer = () => {
                     'me-sm-5 me-3': index !== footerItems.length - 1
                   })}
                 >
-                  <Link to={item.link} className="fs-8 fw-bold text-white">
+                  <Link to={item.link} className="text-base font-bold text-white">
                     {item.title}
                   </Link>
                 </li>

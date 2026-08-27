@@ -56,7 +56,7 @@ const urlList: URlItem[] = [
 
 const TripCommonCTASection = () => {
   return (
-    <footer className="position-relative overflow-hidden mb-4">
+    <footer className="relative overflow-hidden mb-4">
       <Container fluid="medium">
         <div className="">
           <div
@@ -67,9 +67,9 @@ const TripCommonCTASection = () => {
               backgroundSize: 'cover'
             }}
           />
-          <Row className="position-relative flex-center gy-3 py-6">
+          <Row className="relative flex-center gy-3 py-6">
             <Col xxl={4} className="order-1 order-xxl-0">
-              <ul className="list-unstyled d-flex flex-wrap justify-content-center justify-content-xxl-start gap-3 gap-xxl-4 mb-0">
+              <ul className="list-unstyled flex flex-wrap justify-content-center justify-content-xxl-start gap-3 gap-xxl-4 mb-0">
                 {urlList.slice(0, 4).map(item => (
                   <li key={item.id}>
                     <Link to={item.url} className="text-secondary-lighter">
@@ -80,10 +80,10 @@ const TripCommonCTASection = () => {
               </ul>
             </Col>
             <Col sm={8} md={7} lg={5} xl={4} className="mb-3 mb-xxl-0 mx-auto">
-              <h2 className="mb-4 fw-semibold text-white text-center lh-sm">
+              <h2 className="mb-4 font-semibold text-white text-center lh-sm">
                 Subscribe to get notified about the latest news
               </h2>
-              <div className="d-flex gap-2">
+              <div className="flex gap-2">
                 <div className="form-icon-container flex-1">
                   <Form.Control
                     type="text"
@@ -93,7 +93,7 @@ const TripCommonCTASection = () => {
                   />
                   <FontAwesomeIcon
                     icon={faEnvelope}
-                    className="form-icon text-body fs-9"
+                    className="form-icon text-default text-md"
                   />
                 </div>
                 <Button variant="primary" className="rounded">
@@ -102,7 +102,7 @@ const TripCommonCTASection = () => {
               </div>
             </Col>
             <Col xxl={4} className="order-2 order-xxl-0">
-              <ul className="list-unstyled d-flex flex-wrap justify-content-center justify-content-xxl-end gap-3 gap-xxl-4 mb-0">
+              <ul className="list-unstyled flex flex-wrap justify-content-center justify-content-xxl-end gap-3 gap-xxl-4 mb-0">
                 {urlList.slice(4).map(item => (
                   <li key={item.id}>
                     <Link to={item.url} className="text-secondary-lighter">

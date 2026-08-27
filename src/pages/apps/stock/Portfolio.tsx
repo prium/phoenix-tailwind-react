@@ -30,7 +30,7 @@ const Portfolio = () => {
           </Button>
           <Button variant="phoenix-secondary" size="sm" className="px-md-4">
             <FontAwesomeIcon icon={faPrint} />
-            <span className="d-none d-md-inline ms-2"> Print</span>
+            <span className="hidden d-md-inline ms-2"> Print</span>
           </Button>
           <Button
             variant="phoenix-secondary"
@@ -47,7 +47,7 @@ const Portfolio = () => {
           <PortfolioMainContent />
         </Col>
         <Col xl={5} className="portfolio-sidebar-container">
-          <div className="stock-offcanvas-xl d-none d-xl-block">
+          <div className="stock-offcanvas-xl hidden d-xl-block">
             <PortfolioSidebarContent
               sidebarItems={portfolioItems.portfolioSidebarItems}
             />

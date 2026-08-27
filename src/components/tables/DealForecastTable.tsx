@@ -26,9 +26,9 @@ const columns: ColumnDef<ForecastTableData>[] = [
     meta: {
       headerProps: {
         style: { width: '15%', minWidth: '100px' },
-        className: 'text-start text-body-tertiary'
+        className: 'text-start text-subtle'
       },
-      cellProps: { className: 'pe-3 white-space-nowrap py-2' },
+      cellProps: { className: 'pe-3 whitespace-nowrap py-2' },
       footerProps: {
         className: 'text-end px-3 border-bottom-0'
       }
@@ -47,10 +47,10 @@ const columns: ColumnDef<ForecastTableData>[] = [
     meta: {
       headerProps: {
         style: { width: '15%', minWidth: '95px' },
-        className: 'text-end px-3 text-body-tertiary'
+        className: 'text-end px-3 text-subtle'
       },
       cellProps: {
-        className: 'text-end fw-semibold text-body py-2 px-3'
+        className: 'text-end font-semibold text-default py-2 px-3'
       },
       footerProps: {
         className: 'text-end px-3 border-bottom-0'
@@ -79,10 +79,10 @@ const columns: ColumnDef<ForecastTableData>[] = [
     meta: {
       headerProps: {
         style: { width: '20%', minWidth: '100px' },
-        className: 'text-end px-3 text-body-tertiary'
+        className: 'text-end px-3 text-subtle'
       },
       cellProps: {
-        className: 'text-end fw-semibold text-body py-2 px-3'
+        className: 'text-end font-semibold text-default py-2 px-3'
       },
       footerProps: {
         className: 'text-end px-3 py-2'
@@ -111,10 +111,10 @@ const columns: ColumnDef<ForecastTableData>[] = [
     meta: {
       headerProps: {
         style: { width: '20%', minWidth: '100px' },
-        className: 'text-end px-3 text-body-tertiary'
+        className: 'text-end px-3 text-subtle'
       },
       cellProps: {
-        className: 'text-end fw-semibold text-body py-2 px-3'
+        className: 'text-end font-semibold text-default py-2 px-3'
       },
       footerProps: {
         className: 'text-end px-3'
@@ -143,10 +143,10 @@ const columns: ColumnDef<ForecastTableData>[] = [
     meta: {
       headerProps: {
         style: { width: '20%', minWidth: '100px' },
-        className: 'text-end text-body-tertiary'
+        className: 'text-end text-subtle'
       },
       cellProps: {
-        className: 'text-end fw-semibold text-body py-2 ps-3'
+        className: 'text-end font-semibold text-default py-2 ps-3'
       },
       footerProps: {
         className: 'text-end ps-3 pe-0 border-bottom-0'
@@ -180,7 +180,7 @@ const DealForecastTable = () => {
         hasFooter
         tableProps={{
           size: 'sm',
-          className: 'phoenix-table phoenix-table-bordered fs-9 mb-0 border-top'
+          className: ' phoenix-table-bordered text-md mb-0 border-top'
         }}
       />
     </AdvanceTableProvider>

@@ -39,25 +39,25 @@ const CalendarEventModal = () => {
       onHide={handleClose}
       contentClassName="border"
     >
-      <Modal.Header className="ps-card border-bottom border-translucent">
+      <Modal.Header className="ps-card border-bottom border-light">
         <div>
-          <Modal.Title className="modal-title text-body-highlight mb-0">
+          <Modal.Title className="modal-title text-highlight mb-0">
             {selectedEvent?.title}
           </Modal.Title>
           {selectedEvent?.extendedProps.organizer && (
-            <p className="mb-0 fs-9 mt-1">
+            <p className="mb-0 text-md mt-1">
               by <Link to="#!">{selectedEvent.extendedProps.organizer}</Link>
             </p>
           )}
         </div>
         <Button className="p-1 ms-auto" onClick={handleClose}>
-          <FontAwesomeIcon icon={faTimes} className="fs-8" />
+          <FontAwesomeIcon icon={faTimes} className="text-base" />
         </Button>
       </Modal.Header>
-      <Modal.Body className="px-card pb-card pt-1 fs-9">
+      <Modal.Body className="px-card pb-card pt-1 text-md">
         {selectedEvent?.extendedProps.description && (
-          <div className="mt-3 border-bottom border-translucent pb-3">
-            <h5 className="mb-0 text-body-secondary">Description</h5>
+          <div className="mt-3 border-bottom border-light pb-3">
+            <h5 className="mb-0 text-muted">Description</h5>
             <p className="mb-0 mt-2">
               {selectedEvent.extendedProps.description
                 .split(' ')
@@ -68,11 +68,11 @@ const CalendarEventModal = () => {
         )}
         <div
           className={classNames('mt-4', {
-            'border-bottom border-translucent pb-3':
+            'border-bottom border-light pb-3':
               selectedEvent?.extendedProps.location
           })}
         >
-          <h5 className="mb-0 text-body-secondary">Date and Time</h5>
+          <h5 className="mb-0 text-muted">Date and Time</h5>
           <p className="mb-1 mt-2">
             {dayjs(selectedEvent?.start).format('dddd, MMMM D, YYYY, h:mm A')}
             {selectedEvent?.end &&
@@ -86,7 +86,7 @@ const CalendarEventModal = () => {
         </div>
         {selectedEvent?.extendedProps.location && (
           <div className="mt-4 ">
-            <h5 className="mb-0 text-body-secondary">Location</h5>
+            <h5 className="mb-0 text-muted">Location</h5>
             <p
               className="mb-0 mt-2"
               dangerouslySetInnerHTML={{
@@ -97,7 +97,7 @@ const CalendarEventModal = () => {
         )}
         {selectedEvent?.extendedProps.schedules && (
           <div className="mt-3">
-            <h5 className="mb-0 text-body-secondary">Schedule</h5>
+            <h5 className="mb-0 text-muted">Schedule</h5>
             <ul className="list-unstyled timeline mt-2 mb-0">
               {selectedEvent.extendedProps.schedules.map(
                 (schedule: Schedule) => (
@@ -108,13 +108,13 @@ const CalendarEventModal = () => {
           </div>
         )}
       </Modal.Body>
-      <Modal.Footer className="d-flex justify-content-end px-card pt-0 border-top-0">
+      <Modal.Footer className="flex justify-content-end px-card pt-0 border-top-0">
         <Button
           as={Link}
           to="/apps/events/create-an-event"
           variant="phoenix-secondary"
           size="sm"
-          startIcon={<FontAwesomeIcon icon={faPencilAlt} className="fs-10" />}
+          startIcon={<FontAwesomeIcon icon={faPencilAlt} className="text-sm" />}
         >
           Edit
         </Button>
@@ -122,7 +122,7 @@ const CalendarEventModal = () => {
           onClick={handleRemove}
           variant="phoenix-danger"
           size="sm"
-          startIcon={<FontAwesomeIcon icon={faTrash} className="fs-9" />}
+          startIcon={<FontAwesomeIcon icon={faTrash} className="text-md" />}
         >
           Delete
         </Button>
@@ -131,7 +131,7 @@ const CalendarEventModal = () => {
           to="/apps/events/event-detail"
           variant="primary"
           size="sm"
-          endIcon={<FontAwesomeIcon icon={faAngleRight} className="fs-10" />}
+          endIcon={<FontAwesomeIcon icon={faAngleRight} className="text-sm" />}
         >
           See more details
         </Button>

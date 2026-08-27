@@ -37,17 +37,17 @@ const BoardViewModal = ({
       size="xl"
       contentClassName="overflow-hidden"
     >
-      <Modal.Header className="position-relative p-0">
+      <Modal.Header className="relative p-0">
         <CoverImage handleClose={handleClose} />
       </Modal.Header>
       <Modal.Body className="p-0">
         <ActionSection />
         <Row className="g-0">
-          <Col xs={12} xl={5} className="border-end bg-body-highlight">
-            <div className="px-5 px-lg-6 py-4 bg-body-emphasis">
-              <h3 className="fw-bolder lh-sm mb-5">{project.name}</h3>
-              <div className="d-flex align-items-center mb-5">
-                <p className="text-body-highlight fw-700 mb-0 me-2">
+          <Col xs={12} xl={5} className="border-end bg-subtle">
+            <div className="px-5 px-lg-6 py-4 bg-soft">
+              <h3 className="font-black lh-sm mb-5">{project.name}</h3>
+              <div className="flex align-items-center mb-5">
+                <p className="text-highlight fw-700 mb-0 me-2">
                   {progress}%
                 </p>
                 <ProgressBar
@@ -57,8 +57,8 @@ const BoardViewModal = ({
                 />
               </div>
               <div className="mb-4">
-                <h6 className="text-body-secondary mb-2">Assigness</h6>
-                <div className="d-flex gap-1">
+                <h6 className="text-muted mb-2">Assigness</h6>
+                <div className="flex gap-1">
                   {project.assigness.slice(0, 5).map(member => (
                     <AvatarDropdown user={member} size="m" key={member.id} />
                   ))}
@@ -72,20 +72,20 @@ const BoardViewModal = ({
                 </div>
               </div>
               <div className="mb-5">
-                <h6 className="text-body-secondary mb-2">Labels</h6>
-                <div className="d-flex gap-2 align-items-center">
-                  <Badge variant="phoenix" bg="info" className="fs-10">
+                <h6 className="text-muted mb-2">Labels</h6>
+                <div className="flex gap-2 align-items-center">
+                  <Badge variant="phoenix" bg="info" className="text-sm">
                     Info
                   </Badge>
-                  <Badge variant="phoenix" bg="warning" className="fs-10">
+                  <Badge variant="phoenix" bg="warning" className="text-sm">
                     Urgent
                   </Badge>
-                  <Badge variant="phoenix" bg="success" className="fs-10">
+                  <Badge variant="phoenix" bg="success" className="text-sm">
                     Done
                   </Badge>
                   <Button
                     variant="link"
-                    className="p-0 fs-9 text-body fw-bolder text-decoration-none lh-1"
+                    className="p-0 text-md text-default font-black text-decoration-none lh-1"
                     startIcon={<FontAwesomeIcon icon={faPlus} />}
                   >
                     Add another
@@ -107,7 +107,7 @@ const BoardViewModal = ({
                     comment={comment}
                     className={
                       index !== comments.length - 1
-                        ? 'border-bottom border-translucent'
+                        ? 'border-bottom border-light'
                         : undefined
                     }
                     key={comment.id}
@@ -123,11 +123,11 @@ const BoardViewModal = ({
               <div className="mb-7">
                 <h4 className="mb-4">
                   To do list{' '}
-                  <span className="text-body-tertiary fw-normal fs-6">
+                  <span className="text-subtle font-normal text-xl">
                     (23)
                   </span>
                 </h4>
-                <div className="d-flex justify-content-between align-items-center flex-wrap gap-x-5 gap-y-3 mb-3">
+                <div className="flex justify-content-between align-items-center flex-wrap gap-x-5 gap-y-3 mb-3">
                   <SearchBox
                     placeholder="Search tasks"
                     style={{ maxWidth: '30rem' }}
@@ -135,11 +135,11 @@ const BoardViewModal = ({
                   <div>
                     <Button
                       variant="link"
-                      className="p-0 fs-9 text-body-tertiary text-decoration-none me-3"
+                      className="p-0 text-md text-subtle text-decoration-none me-3"
                       startIcon={
                         <FontAwesomeIcon
                           icon={faFilter}
-                          className="fs-10 me-1"
+                          className="text-sm me-1"
                         />
                       }
                     >
@@ -147,9 +147,9 @@ const BoardViewModal = ({
                     </Button>
                     <Button
                       variant="link"
-                      className="p-0 fs-9 text-primary text-decoration-none"
+                      className="p-0 text-md text-primary text-decoration-none"
                       startIcon={
-                        <FontAwesomeIcon icon={faSort} className="fs-10" />
+                        <FontAwesomeIcon icon={faSort} className="text-sm" />
                       }
                     >
                       Sorting
@@ -185,7 +185,7 @@ const BoardViewModal = ({
                       key={attachment.name}
                       attachment={attachment}
                       className={classNames({
-                        'border-top border-translucent': index === 0
+                        'border-top border-light': index === 0
                       })}
                     />
                   ))}

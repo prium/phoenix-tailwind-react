@@ -108,7 +108,7 @@ const AddProperty = () => {
                   <div className="mt-6">
                     <WizardFormFooter
                       hidePrevBtn
-                      className={classNames({ 'd-none': !form.getCanNextPage })}
+                      className={classNames({ 'hidden': !form.getCanNextPage })}
                     />
                   </div>
                 </Col>

@@ -24,7 +24,7 @@ const HotelHomepage = () => {
       <HotelActions background={true} />
       <section className="container-medium py-0">
         <div className="py-6">
-          <div className="d-flex">
+          <div className="flex">
             <Form.Select className="w-sm-auto me-4">
               <option>Sort by</option>
               <option>Best reviewed and lowest price</option>
@@ -36,7 +36,7 @@ const HotelHomepage = () => {
               className="text-nowrap px-3 px-md-4 ms-auto me-2"
             >
               <FontAwesomeIcon icon={faMap} className="me-md-2" />
-              <span className="d-none d-md-inline-block">Show in map</span>
+              <span className="hidden d-md-inline-block">Show in map</span>
             </Button>
             <Button
               variant="phoenix-secondary"
@@ -44,7 +44,7 @@ const HotelHomepage = () => {
               onClick={() => setIsOpen(true)}
             >
               <FontAwesomeIcon icon={faFilter} className="me-md-2" />
-              <span className="d-none d-md-inline-block">Filters</span>
+              <span className="hidden d-md-inline-block">Filters</span>
             </Button>
           </div>
         </div>

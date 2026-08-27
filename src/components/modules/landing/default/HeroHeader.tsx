@@ -20,7 +20,7 @@ const HeroHeader = () => {
             lg="auto"
             className="text-end order-0 order-md-1 order-1"
           >
-            <div className="position-relative p-5 p-md-7 d-lg-none">
+            <div className="relative p-5 p-md-7 d-lg-none">
               <div
                 className="bg-holder banner-bg"
                 style={{
@@ -28,7 +28,7 @@ const HeroHeader = () => {
                   backgroundSize: 'contain'
                 }}
               />
-              <div className="position-relative">
+              <div className="relative">
                 <img
                   className="w-100 shadow-lg d-dark-none rounded-2"
                   src={bg31}
@@ -41,16 +41,16 @@ const HeroHeader = () => {
                 />
               </div>
             </div>
-            <div className="hero-image-container position-absolute top-0 bottom-0 end-0 d-none d-lg-block">
-              <div className="position-relative h-100 w-100">
-                <div className="position-absolute h-100 top-0 d-flex align-items-center end-0 hero-image-container-bg">
+            <div className="hero-image-container absolute top-0 bottom-0 end-0 hidden d-lg-block">
+              <div className="relative h-100 w-100">
+                <div className="absolute h-100 top-0 flex align-items-center end-0 hero-image-container-bg">
                   <img
                     className="pt-7 pt-md-0 w-100"
                     src={bg12}
                     alt="hero-header"
                   />
                 </div>
-                <div className="position-absolute h-100 top-0 d-flex align-items-center end-0">
+                <div className="absolute h-100 top-0 flex align-items-center end-0">
                   <img
                     className="pt-7 pt-md-0 w-100 shadow-lg d-dark-none rounded-2"
                     src={bg28}
@@ -68,10 +68,10 @@ const HeroHeader = () => {
           <Col
             xs={12}
             lg={6}
-            className="text-lg-start text-center pt-8 pb-6 order-0 position-relative"
+            className="text-lg-start text-center pt-8 pb-6 order-0 relative"
           >
             <div>
-              <h1 className="fs-3 fs-lg-2 fs-md-1 fs-lg-2 fs-xl-1 fw-black mb-4">
+              <h1 className="fs-3 fs-lg-2 fs-md-1 fs-lg-2 fs-xl-1 font-black mb-4">
                 <span className="text-primary me-3">Elegance</span>for
                 <br />
                 your web app
@@ -82,7 +82,7 @@ const HeroHeader = () => {
               </p>
               <Link
                 to="#!"
-                className="btn btn-lg btn-primary rounded-pill me-3"
+                className="btn btn-lg btn-primary rounded-full me-3"
               >
                 Sign up
               </Link>
@@ -90,10 +90,10 @@ const HeroHeader = () => {
                 as={Link}
                 variant="link"
                 to="#!"
-                className="me-2 fs-8 p-0 text-decoration-none"
+                className="me-2 text-base p-0 text-decoration-none"
               >
                 Check Demo
-                <FontAwesomeIcon icon={faAngleRight} className="ms-2 fs-9" />
+                <FontAwesomeIcon icon={faAngleRight} className="ms-2 text-md" />
               </Button>
             </div>
           </Col>

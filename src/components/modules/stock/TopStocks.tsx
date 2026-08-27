@@ -16,7 +16,7 @@ const TopStocks = () => {
 
   return (
     <>
-      <h3 className="mb-4 text-body-emphasis">Top Stock</h3>
+      <h3 className="mb-4 text-emphasis">Top Stock</h3>
       <Tab.Container
         activeKey={activeKey}
         onSelect={handleSelect}

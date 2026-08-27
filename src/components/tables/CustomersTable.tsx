@@ -24,7 +24,7 @@ export const customersTablecolumns: ColumnDef<Customer>[] = [
     },
     meta: {
       headerProps: { style: { width: '10%' }, className: 'pe-5 ps-0' },
-      cellProps: { className: 'py-0 pe-5 ps-0 white-space-nowrap' }
+      cellProps: { className: 'py-0 pe-5 ps-0 whitespace-nowrap' }
     }
   },
   {
@@ -48,7 +48,7 @@ export const customersTablecolumns: ColumnDef<Customer>[] = [
     header: 'Orders',
     meta: {
       headerProps: { style: { width: '10%' }, className: 'text-end px-1' },
-      cellProps: { className: 'fw-semibold text-body-highlight text-end px-1' }
+      cellProps: { className: 'font-semibold text-highlight text-end px-1' }
     }
   },
   {
@@ -57,7 +57,7 @@ export const customersTablecolumns: ColumnDef<Customer>[] = [
     cell: ({ row: { original } }) => currencyFormat(original.totalSpent),
     meta: {
       headerProps: { style: { width: '10%' }, className: 'text-end ps-3 pe-1' },
-      cellProps: { className: 'fw-bold text-body-emphasis ps-3 text-end pe-1' }
+      cellProps: { className: 'font-bold text-emphasis ps-3 text-end pe-1' }
     }
   },
   {
@@ -65,7 +65,7 @@ export const customersTablecolumns: ColumnDef<Customer>[] = [
     header: 'City',
     meta: {
       headerProps: { style: { width: '25%' }, className: 'ps-7' },
-      cellProps: { className: 'ps-7 text-body-highlight white-space-nowrap' }
+      cellProps: { className: 'ps-7 text-highlight whitespace-nowrap' }
     }
   },
   {
@@ -73,7 +73,7 @@ export const customersTablecolumns: ColumnDef<Customer>[] = [
     header: 'Last seen',
     meta: {
       headerProps: { style: { width: '15%' }, className: 'text-end px-1' },
-      cellProps: { className: 'text-body-tertiary text-end px-1' }
+      cellProps: { className: 'text-subtle text-end px-1' }
     }
   },
   {
@@ -84,7 +84,7 @@ export const customersTablecolumns: ColumnDef<Customer>[] = [
         style: { width: '10%', minWidth: 150 },
         className: 'text-end'
       },
-      cellProps: { className: 'text-body-tertiary text-end pe-0' }
+      cellProps: { className: 'text-subtle text-end pe-0' }
     }
   }
 ];
@@ -92,7 +92,7 @@ export const customersTablecolumns: ColumnDef<Customer>[] = [
 const CustomersTable = () => {
   return (
     <div>
-      <AdvanceTable tableProps={{ className: 'phoenix-table fs-9' }} />
+      <AdvanceTable tableProps={{ className: ' text-md' }} />
       <AdvanceTableFooter pagination />
     </div>
   );

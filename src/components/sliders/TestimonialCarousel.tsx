@@ -8,7 +8,7 @@ const TestimonialItem = ({ testimonial }: { testimonial: Testimonial }) => {
   return (
     <Row className="g-1 g-lg-0 g-xl-1 pb-lg-3 pb-xl-0 ps-lg-1 ps-xl-0">
       <Col lg={6} xl={5} className="text-center">
-        <div className="testimonial-avatar-container d-inline-block position-relative">
+        <div className="testimonial-avatar-container d-inline-block relative">
           <div
             className="bg-holder"
             style={{
@@ -22,7 +22,7 @@ const TestimonialItem = ({ testimonial }: { testimonial: Testimonial }) => {
             alt=""
             height={153}
             width={153}
-            className="rounded-3 mb-lg-0 opacity-100 position-relative"
+            className="rounded-3 mb-lg-0 opacity-100 relative"
           />
         </div>
       </Col>
@@ -35,11 +35,11 @@ const TestimonialItem = ({ testimonial }: { testimonial: Testimonial }) => {
             emptyIconColor="primary-light"
           />
         </div>
-        <h3 className="fs-7 fs-xl-6 mb-5 lh-sm me-md-7 me-lg-0">
+        <h3 className="text-lg fs-xl-6 mb-5 lh-sm me-md-7 me-lg-0">
           {testimonial.comment}
         </h3>
         <h6>{testimonial.name}</h6>
-        <h6 className="fw-normal">{testimonial.occupation}</h6>
+        <h6 className="font-normal">{testimonial.occupation}</h6>
       </Col>
     </Row>
   );

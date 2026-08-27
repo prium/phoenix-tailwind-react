@@ -41,7 +41,7 @@ const PaymentMethodForm = ({
               defaultChecked
             />
             <Form.Check.Label
-              className="d-flex gap-2 fs-8 text-body text-nowrap"
+              className="flex gap-2 text-base text-default text-nowrap"
               htmlFor="creditCard"
             >
               Credit card
@@ -55,7 +55,7 @@ const PaymentMethodForm = ({
         <Col md="auto">
           <Form.Check>
             <Form.Check.Input type="radio" name="paymentMethod" id="paypal" />
-            <Form.Check.Label className="fs-8 text-body" htmlFor="paypal">
+            <Form.Check.Label className="text-base text-default" htmlFor="paypal">
               Paypal
             </Form.Check.Label>
           </Form.Check>
@@ -63,7 +63,7 @@ const PaymentMethodForm = ({
         <Col md="auto">
           <Form.Check>
             <Form.Check.Input type="radio" name="paymentMethod" id="coupon" />
-            <Form.Check.Label className="fs-8 text-body" htmlFor="coupon">
+            <Form.Check.Label className="text-base text-default" htmlFor="coupon">
               Coupon
             </Form.Check.Label>
           </Form.Check>
@@ -73,12 +73,12 @@ const PaymentMethodForm = ({
         <Col md={6}>
           <label
             htmlFor="selectCard"
-            className="fw-bold text-body-highlight mb-1"
+            className="font-bold text-highlight mb-1"
           >
             Select card
           </label>
           <Form.Select
-            className="text-body-emphasis"
+            className="text-emphasis"
             id="selectCard"
             defaultValue=""
           >
@@ -92,7 +92,7 @@ const PaymentMethodForm = ({
         <Col md={6}>
           <label
             htmlFor="inputCardNumber"
-            className="fw-bold text-body-highlight mb-1"
+            className="font-bold text-highlight mb-1"
           >
             Card number
           </label>
@@ -107,7 +107,7 @@ const PaymentMethodForm = ({
         <Col xs={12}>
           <label
             htmlFor="inputName"
-            className="fw-bold text-body-highlight mb-1"
+            className="font-bold text-highlight mb-1"
           >
             Full name
           </label>
@@ -120,15 +120,15 @@ const PaymentMethodForm = ({
           />
         </Col>
         <Col md={6}>
-          <label className="fw-bold text-body-highlight mb-1">Expires on</label>
-          <div className="d-flex">
-            <Form.Select className="text-body-emphasis me-3" defaultValue="">
+          <label className="font-bold text-highlight mb-1">Expires on</label>
+          <div className="flex">
+            <Form.Select className="text-emphasis me-3" defaultValue="">
               <option value="">Month</option>
               <option value="january">January</option>
               <option value="february">February</option>
               <option value="march">March</option>
             </Form.Select>
-            <Form.Select className="text-body-emphasis" defaultValue="">
+            <Form.Select className="text-emphasis" defaultValue="">
               <option value="">Year</option>
               {Array.from({ length: end_year - start_year + 1 }).map(
                 (_, index) => {
@@ -146,7 +146,7 @@ const PaymentMethodForm = ({
         <Col md={6}>
           <label
             htmlFor="inputCardCVC"
-            className="fw-bold text-body-highlight mb-1"
+            className="font-bold text-highlight mb-1"
           >
             CVC
           </label>
@@ -163,7 +163,7 @@ const PaymentMethodForm = ({
           <Form.Check>
             <Form.Check.Input type="checkbox" id="gridCheck" />
             <Form.Check.Label
-              className="text-body-emphasis fs-8"
+              className="text-emphasis text-base"
               htmlFor="gridCheck"
             >
               Save Card Details

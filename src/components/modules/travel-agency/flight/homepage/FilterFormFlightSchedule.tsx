@@ -6,7 +6,7 @@ const FilterFormFlightSchedule = () => {
   return (
     <CollapsibleContainer
       collapseTitle="Flight Schedules"
-      titleClass="fs-8"
+      titleClass="text-base"
       containerSize="sm"
       id="flightTime"
     >
@@ -23,7 +23,7 @@ const FilterFormFlightSchedule = () => {
                     id={check.id}
                   />
                   <Form.Check.Label
-                    className="btn btn-phoenix-secondary fw-bold text-nowrap w-100 px-0"
+                    className="btn btn-phoenix-secondary font-bold text-nowrap w-100 px-0"
                     htmlFor={check.id}
                   >
                     {check.label}

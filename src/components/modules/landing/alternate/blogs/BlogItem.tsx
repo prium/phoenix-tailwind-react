@@ -13,28 +13,28 @@ const BlogItem = ({ blog }: { blog: Blog }) => {
   return (
     <div className="blog-card">
       <img src={blog.image} alt="" className="w-100 rounded-3" />
-      <div className="d-flex align-items-cente mt-3">
+      <div className="flex align-items-cente mt-3">
         <Button
           variant="link"
           href="#!"
-          className="text-decoration-none text-body-secondary d-flex align-items-center me-3 fs-10 p-0"
-          startIcon={<FontAwesomeIcon icon={faEye} className="fs-9" />}
+          className="text-decoration-none text-muted flex align-items-center me-3 text-sm p-0"
+          startIcon={<FontAwesomeIcon icon={faEye} className="text-md" />}
         >
           {blog.views}
         </Button>
         <Button
           variant="link"
           href="#!"
-          className="text-decoration-none text-body-secondary d-flex align-items-center me-3 fs-10 p-0"
-          startIcon={<FontAwesomeIcon icon={faHeart} className="fs-9" />}
+          className="text-decoration-none text-muted flex align-items-center me-3 text-sm p-0"
+          startIcon={<FontAwesomeIcon icon={faHeart} className="text-md" />}
         >
           {blog.like}
         </Button>
         <Button
           variant="link"
           href="#!"
-          className="text-decoration-none text-body-secondary d-flex align-items-center fs-10 p-0"
-          startIcon={<FontAwesomeIcon icon={faComment} className="fs-9" />}
+          className="text-decoration-none text-muted flex align-items-center text-sm p-0"
+          startIcon={<FontAwesomeIcon icon={faComment} className="text-md" />}
         >
           {blog.comments}
         </Button>
@@ -45,7 +45,7 @@ const BlogItem = ({ blog }: { blog: Blog }) => {
       <h4 className="mb-3 pe-sm-5 lh-lg">{blog.title}</h4>
       <Button
         variant="link"
-        className="px-0 d-flex align-items-center fs-9 fw-bold"
+        className="px-0 flex align-items-center text-md font-bold"
         endIcon={<FontAwesomeIcon icon={faAngleRight} />}
       >
         See more

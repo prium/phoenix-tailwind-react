@@ -42,7 +42,7 @@ const FlightFilterModal = ({
     >
       <Modal.Header className="p-4 pb-3 align-items-start border-0">
         <div>
-          <h4 id="flightFilterModalLabel" className="mb-2 text-body-highlight">
+          <h4 id="flightFilterModalLabel" className="mb-2 text-highlight">
             Filter
           </h4>
           <p className="mb-0">
@@ -50,7 +50,7 @@ const FlightFilterModal = ({
           </p>
         </div>
         <Button className="p-1 ms-auto" onClick={handleModalClose}>
-          <FontAwesomeIcon icon={faTimes} className="fs-10 btn-close" />
+          <FontAwesomeIcon icon={faTimes} className="text-sm btn-close" />
         </Button>
       </Modal.Header>
       <Modal.Body className="scrollbar px-4 pt-3 pb-0">
@@ -93,14 +93,14 @@ const FlightFilterModal = ({
             </Col>
           </Row>
           <div className="modal-footer border-0 px-0 pt-3 pb-4">
-            <div className="w-100 d-flex flex-wrap gap-3 border-top border-translucent pt-4">
+            <div className="w-100 flex flex-wrap gap-3 border-top border-light pt-4">
               <Button
                 variant="phoenix-primary"
                 className="m-0 text-nowrap"
                 size="lg"
               >
                 <FontAwesomeIcon icon={faRotate} className="me-sm-2" />
-                <span className="d-none d-sm-inline-block">Reset filter</span>
+                <span className="hidden d-sm-inline-block">Reset filter</span>
               </Button>
               <Button
                 variant="primary"

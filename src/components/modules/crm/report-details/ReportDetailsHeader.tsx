@@ -26,7 +26,7 @@ const ReportDetailsHeader = () => {
     <>
       <Row className="g-3 justify-content-between mb-4">
         <Col xs="auto">
-          <div className="d-flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2">
             <Button
               variant="primary"
               startIcon={<FontAwesomeIcon icon={faEnvelope} className="me-2" />}
@@ -41,9 +41,9 @@ const ReportDetailsHeader = () => {
             </Button>
             <Button
               variant="phoenix-secondary"
-              className="text-body"
+              className="text-default"
               startIcon={
-                <FontAwesomeIcon icon={faFileExport} className="fs-9 me-2" />
+                <FontAwesomeIcon icon={faFileExport} className="text-md me-2" />
               }
             >
               Export
@@ -51,10 +51,10 @@ const ReportDetailsHeader = () => {
           </div>
         </Col>
         <Col xs="auto">
-          <div className="d-flex gap-2">
+          <div className="flex gap-2">
             <SearchBox
               placeholder="Search by name"
-              className="d-none d-xl-block"
+              className="hidden d-xl-block"
               onChange={handleSearchInputChange}
             />
             <Button variant="phoenix-secondary" className="px-3 me-2 d-xl-none">

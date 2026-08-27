@@ -33,33 +33,33 @@ const Subtasks = () => (
     ].map(({ id, label, isLast }) => (
       <div
         key={id}
-        className={`d-flex flex-between-center hover-actions-trigger py-3 border-top ${
+        className={`flex flex-between-center hover-actions-trigger py-3 border-top ${
           isLast ? ' border-bottom mb-3' : ''
         }`}
       >
         <Form.Check
           id={`subtask${id}`}
-          className="mb-1 mb-md-0 d-flex align-items-center lh-1 min-h-auto"
+          className="mb-1 mb-md-0 flex align-items-center lh-1 min-h-auto"
         >
           <Form.Check.Input
             type="checkbox"
             className="subtask-checkbox form-check-input form-check-line-through mt-0 me-3"
           />
-          <Form.Check.Label className="mb-0 fs-8">{label}</Form.Check.Label>
+          <Form.Check.Label className="mb-0 text-base">{label}</Form.Check.Label>
         </Form.Check>
 
         <div className="hover-actions end-0">
-          <button className="btn btn-sm me-1 fs-10 text-body-tertiary px-0 me-3">
+          <button className="btn btn-sm me-1 text-sm text-subtle px-0 me-3">
             <FontAwesomeIcon icon={faPencil} />
           </button>
-          <button className="btn btn-sm text-body-tertiary px-0">
-            <FontAwesomeIcon icon={faXmark} className="fs-8" />
+          <button className="btn btn-sm text-subtle px-0">
+            <FontAwesomeIcon icon={faXmark} className="text-base" />
           </button>
         </div>
       </div>
     ))}
 
-    <Button variant="link" href="#!" className="fw-bold fs-9 p-0">
+    <Button variant="link" href="#!" className="font-bold text-md p-0">
       <FontAwesomeIcon icon={faPlus} className="me-1" />
       Add subtask
     </Button>
@@ -129,7 +129,7 @@ const GanttOffcanvas = () => {
         placement="end"
       >
         <Offcanvas.Header className="border-bottom">
-          <div className="d-flex justify-content-between w-100">
+          <div className="flex justify-content-between w-100">
             <Button variant="phoenix-success" className="me-1 mb-1">
               <FontAwesomeIcon
                 icon={faCheck}
@@ -139,7 +139,7 @@ const GanttOffcanvas = () => {
               Mark Complete
             </Button>
 
-            <div className="d-flex gap-2">
+            <div className="flex gap-2">
               <Button variant="phoenix-secondary" className="btn-square px-2">
                 <FontAwesomeIcon icon={faThumbsUp} />
               </Button>
@@ -170,26 +170,26 @@ const GanttOffcanvas = () => {
                 value={taskTitle}
                 onChange={e => setTaskTitle(e.target.value)}
                 placeholder="Task title"
-                className="fs-8"
+                className="text-base"
               />
             </Form.Group>
             <div className="mb-3">
               <h5 className="mb-3">Assignee</h5>
-              <div className="d-flex">
+              <div className="flex">
                 {members.slice(0, 5).map(member => (
                   <AvatarDropdown
                     key={member.id}
                     user={member}
                     size="m"
                     dropdownClass="d-inline-block border-0"
-                    className="me-2 rounded-pill border border-light-subtle"
+                    className="me-2 rounded-full border border-light-subtle"
                   />
                 ))}
                 <Link
                   to="#!"
-                  className="text-decoration-none text-body-secondary"
+                  className="text-decoration-none text-muted"
                 >
-                  <div className="circle-btn bg-body-secondary mx-auto">
+                  <div className="circle-btn bg-muted mx-auto">
                     <FontAwesomeIcon icon={faPlus} transform="shrink-2" />
                   </div>
                 </Link>
@@ -235,7 +235,7 @@ const GanttOffcanvas = () => {
                 <Form.Group controlId="createTaskDuration">
                   <Form.Label className="form-label-header mb-2">
                     Duration{' '}
-                    <span className="text-body-quaternary fw-normal">
+                    <span className="text-soft font-normal">
                       (Days)
                     </span>
                   </Form.Label>
@@ -249,7 +249,7 @@ const GanttOffcanvas = () => {
                     />
                     <FontAwesomeIcon
                       icon={faClock}
-                      className="fs-9 form-icon text-body"
+                      className="text-md form-icon text-default"
                     />
                   </div>
                 </Form.Group>
@@ -299,14 +299,14 @@ const GanttOffcanvas = () => {
             </Row>
             <Card className="mt-4">
               <Card.Body className="p-3">
-                <div className="d-flex justify-content-between align-items-center">
+                <div className="flex justify-content-between align-items-center">
                   <h4 className="mb-0">Dependency</h4>
                   <Button variant="link" className="pe-0">
                     Add new
                   </Button>
                 </div>
 
-                <div className="bg-body p-3 mt-3 rounded">
+                <div className="bg-default p-3 mt-3 rounded">
                   {/* First Dependency Row */}
                   <Row className="gy-3">
                     <Col sm={8}>
@@ -390,7 +390,7 @@ const GanttOffcanvas = () => {
               </Card.Body>
             </Card>
             <Form.Group controlId="EditTaskNotes" className="mt-4 mb-3">
-              <Form.Label className="form-label-header fw-bold text-body-highlight mb-2">
+              <Form.Label className="form-label-header font-bold text-highlight mb-2">
                 Description
               </Form.Label>
               <Form.Control
@@ -407,17 +407,17 @@ const GanttOffcanvas = () => {
               previewWidth={140}
               multiple
               size="sm"
-              className="d-block border-0 ps-0 pb-2"
+              className="block border-0 ps-0 pb-2"
             >
               <div
-                className="dz-message text-body-tertiary text-opacity-85 d-flex justify-content-center align-items-center"
+                className="dz-message text-subtle text-opacity-85 flex justify-content-center align-items-center"
                 data-dz-message
                 style={{ height: '140px', width: '140px' }}
               >
                 <FontAwesomeIcon icon={faPlus} className="fs-4" />
               </div>
             </Dropzone>
-            <div className="d-flex border-top pt-4 gap-3 mt-4">
+            <div className="flex border-top pt-4 gap-3 mt-4">
               <Button
                 type="button"
                 id="ganttDeleteTask"
@@ -451,7 +451,7 @@ const GanttOffcanvas = () => {
         aria-labelledby="deleteTaskModal"
       >
         <Modal.Header className="p-4 pb-3 align-items-start">
-          <h3 className="mb-2 text-body-highlight">Delete Task</h3>
+          <h3 className="mb-2 text-highlight">Delete Task</h3>
           <button
             onClick={() => setShowModal(false)}
             className="btn p-1 ms-auto"

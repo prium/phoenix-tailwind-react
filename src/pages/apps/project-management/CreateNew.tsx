@@ -165,7 +165,7 @@ const CreateNew = () => {
               />
             </Col>
             <Col xs={12} className="gy-6">
-              <div className="d-flex justify-content-end gap-3">
+              <div className="flex justify-content-end gap-3">
                 <Button variant="phoenix-primary" className="px-5">
                   Cancel
                 </Button>

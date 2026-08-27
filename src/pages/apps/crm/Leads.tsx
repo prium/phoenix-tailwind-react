@@ -53,16 +53,16 @@ const Leads = () => {
               </Button>
               <Button
                 variant="link"
-                className="text-body px-0"
+                className="text-default px-0"
                 startIcon={
-                  <FontAwesomeIcon icon={faFileExport} className="fs-9 me-2" />
+                  <FontAwesomeIcon icon={faFileExport} className="text-md me-2" />
                 }
               >
                 Export
               </Button>
             </Col>
             <Col xs="auto">
-              <div className="d-flex">
+              <div className="flex">
                 <SearchBox
                   placeholder="Search by name"
                   className="me-2"

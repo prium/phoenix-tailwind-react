@@ -13,13 +13,13 @@ const ActivityTimeline = ({ data }: ActivityTimelineProps) => {
   return (
     <Timeline variant="vertical">
       {data.map((item, index) => (
-        <Timeline.Item className="position-relative" key={item.id}>
+        <Timeline.Item className="relative" key={item.id}>
           <Row className="g-md-3">
-            <Col xs={12} md="auto" className="d-flex">
+            <Col xs={12} md="auto" className="flex">
               <Timeline.OppositeContent>
-                <p className="fs-10 fw-semibold text-body-tertiary text-opacity-85 text-end">
+                <p className="text-sm font-semibold text-subtle text-opacity-85 text-end">
                   {item.oppositeContent.date}
-                  <br className="d-none d-md-block" />{' '}
+                  <br className="hidden d-md-block" />{' '}
                   {item.oppositeContent.time}
                 </p>
               </Timeline.OppositeContent>
@@ -27,7 +27,7 @@ const ActivityTimeline = ({ data }: ActivityTimelineProps) => {
                 <Timeline.Dot className="bg-primary-subtle">
                   <FontAwesomeIcon
                     icon={item.separator.icon}
-                    className="text-primary-dark fs-10"
+                    className="text-primary-dark text-sm"
                   />
                 </Timeline.Dot>
                 {index !== data.length - 1 && (
@@ -37,15 +37,15 @@ const ActivityTimeline = ({ data }: ActivityTimelineProps) => {
             </Col>
             <Col>
               <Timeline.Content>
-                <h5 className="fs-9 lh-sm">{item.content.title}</h5>
-                <p className="fs-9">
+                <h5 className="text-md lh-sm">{item.content.title}</h5>
+                <p className="text-md">
                   by{' '}
-                  <Link className="fw-semibold" to="#!">
+                  <Link className="font-semibold" to="#!">
                     {item.content.user}
                   </Link>
                 </p>
                 <p
-                  className={classNames('fs-9 text-body-secondary', {
+                  className={classNames('text-md text-muted', {
                     'mb-5': index !== data.length - 1,
                     'mb-0': index === data.length - 1
                   })}

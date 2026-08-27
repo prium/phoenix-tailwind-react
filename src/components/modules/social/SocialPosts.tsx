@@ -15,7 +15,7 @@ const SocialPosts = ({ posts }: SocialPostsProps) => {
         ))}
       </div>
       <div className="text-center">
-        <Button variant="link" className="fs-8 p-0">
+        <Button variant="link" className="text-base p-0">
           Load more
         </Button>
       </div>

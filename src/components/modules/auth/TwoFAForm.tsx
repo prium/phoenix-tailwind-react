@@ -44,17 +44,17 @@ const TwoFAForm = ({ layout }: { layout?: 'simple' | 'card' | 'split' }) => {
             'mb-6': !(layout === 'split')
           })}
         >
-          <h4 className="text-body-highlight">Enter the verification code</h4>
-          <p className="text-body-tertiary mb-0">
+          <h4 className="text-highlight">Enter the verification code</h4>
+          <p className="text-subtle mb-0">
             An email containing a 6-digit verification code has been sent to the
             email address - exa*********.com
           </p>
-          <p className="fs-10 mb-5">
+          <p className="text-sm mb-5">
             Don’t have access?
             <Link to="#!"> Use another method</Link>
           </p>
           <div className="verification-form">
-            <div className="d-flex align-items-center gap-2 mb-3">
+            <div className="flex align-items-center gap-2 mb-3">
               {Array(totalInputLength)
                 .fill('')
                 .map((_, index) => (
@@ -80,7 +80,7 @@ const TwoFAForm = ({ layout }: { layout?: 'simple' | 'card' | 'split' }) => {
                 id="2fa-checkbox"
               />
               <Form.Check.Label
-                className="fs-8 fw-medium"
+                className="text-base font-medium"
                 htmlFor="2fa-checkbox"
               >
                 Don’t ask again on this device
@@ -94,7 +94,7 @@ const TwoFAForm = ({ layout }: { layout?: 'simple' | 'card' | 'split' }) => {
             >
               Verify
             </Button>
-            <Link to="#!" className="fs-9">
+            <Link to="#!" className="text-md">
               Didn’t receive the code?
             </Link>
           </div>

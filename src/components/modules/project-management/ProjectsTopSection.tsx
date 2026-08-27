@@ -75,7 +75,7 @@ const ProjectsTopSection = ({ activeView }: ProjectsTopSectionInterface) => {
         <FilterTab className="project-tab" tabItems={tabItems} />
       </Col>
       <Col xs={12} sm="auto">
-        <div className="d-flex align-items-center gap-1">
+        <div className="flex align-items-center gap-1">
           <SearchBox
             onChange={handleSearchInputChange}
             placeholder="Search projects"
@@ -89,7 +89,7 @@ const ProjectsTopSection = ({ activeView }: ProjectsTopSectionInterface) => {
               navigate('/apps/project-management/project-list-view');
             }}
           >
-            <FontAwesomeIcon icon={faList} className="fs-10" />
+            <FontAwesomeIcon icon={faList} className="text-sm" />
           </ToggleViewButton>
           <ToggleViewButton
             tooltip="Board view"

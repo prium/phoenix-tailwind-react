@@ -25,7 +25,7 @@ export const featureItems = [
     title: (
       <>
         Built on{' '}
-        <span className="text-bootstrap me-1 fw-bold">Bootstrap 5</span>
+        <span className="text-bootstrap me-1 font-bold">Bootstrap 5</span>
       </>
     )
   },
@@ -35,7 +35,7 @@ export const featureItems = [
     border: 'border-end-0 border-end-sm',
     title: (
       <>
-        Styled with <span className="text-css3 ms-1 fw-bold">CSS3</span>
+        Styled with <span className="text-css3 ms-1 font-bold">CSS3</span>
       </>
     )
   },
@@ -46,7 +46,7 @@ export const featureItems = [
     title: (
       <>
         Developed with{' '}
-        <span className="text-info-light me-1 fw-bold">ReactJs</span>
+        <span className="text-info-light me-1 font-bold">ReactJs</span>
       </>
     )
   },
@@ -57,7 +57,7 @@ export const featureItems = [
     title: (
       <>
         Built with{' '}
-        <span className="text-info-light me-1 fw-bold">React Bootstrap</span>
+        <span className="text-info-light me-1 font-bold">React Bootstrap</span>
       </>
     )
   },
@@ -67,7 +67,7 @@ export const featureItems = [
     border: 'border-end-0',
     title: (
       <>
-        <span className="text-sass ms-1 fw-bold">SASS</span> Supported
+        <span className="text-sass ms-1 font-bold">SASS</span> Supported
       </>
     )
   },
@@ -78,7 +78,7 @@ export const featureItems = [
     border: 'border-end-0 border-end-sm border-end-lg-0',
     title: (
       <>
-        Built on <span className="text-info fw-bold">Typescript</span>
+        Built on <span className="text-info font-bold">Typescript</span>
       </>
     )
   },
@@ -88,7 +88,7 @@ export const featureItems = [
     border: 'border-end-0 border-end-sm',
     title: (
       <>
-        <span className="text-info fw-bold">Clean </span> design
+        <span className="text-info font-bold">Clean </span> design
       </>
     )
   },
@@ -98,7 +98,7 @@ export const featureItems = [
     border: 'border-end-0 border-end-sm',
     title: (
       <>
-        <span className="text-success ms-1 fw-bold">Cross-browser</span> tested
+        <span className="text-success ms-1 font-bold">Cross-browser</span> tested
       </>
     )
   },
@@ -108,7 +108,7 @@ export const featureItems = [
     border: 'border-end',
     title: (
       <>
-        Interactive <span className="text-warning fw-bold">components</span>
+        Interactive <span className="text-warning font-bold">components</span>
       </>
     )
   },
@@ -119,7 +119,7 @@ export const featureItems = [
     border: 'border-end',
     title: (
       <>
-        <span className="text-warning ms-1 fw-bold">Echarts </span>
+        <span className="text-warning ms-1 font-bold">Echarts </span>
         &amp; DHtmlx Gantt
       </>
     )
@@ -130,7 +130,7 @@ export const featureItems = [
     border: 'border-end',
     title: (
       <>
-        <span className="text-info ms-1 fw-bold">Dark/Light</span> Layouts
+        <span className="text-info ms-1 font-bold">Dark/Light</span> Layouts
       </>
     )
   },
@@ -140,7 +140,7 @@ export const featureItems = [
     border: 'border-end-0',
     title: (
       <>
-        <span className="text-success ms-1 fw-bold">FontAwesome 6</span> icons
+        <span className="text-success ms-1 font-bold">FontAwesome 6</span> icons
       </>
     )
   },
@@ -150,7 +150,7 @@ export const featureItems = [
     border: 'border-end',
     title: (
       <>
-        Opinionated <span className="text-success fw-bold">code formatter</span>
+        Opinionated <span className="text-success font-bold">code formatter</span>
       </>
     )
   },
@@ -160,7 +160,7 @@ export const featureItems = [
     border: 'border-end',
     title: (
       <>
-        <span className="text-w3c me-1 fw-bold">W3C</span>validated
+        <span className="text-w3c me-1 font-bold">W3C</span>validated
       </>
     )
   },
@@ -170,7 +170,7 @@ export const featureItems = [
     border: 'border-end-0',
     title: (
       <>
-        10+ <span className="text-warning fw-bold">layouts</span>
+        10+ <span className="text-warning font-bold">layouts</span>
       </>
     )
   }
@@ -178,13 +178,13 @@ export const featureItems = [
 
 const EssentialFeatures = () => {
   return (
-    <section className="bg-body-highlight pt-14">
+    <section className="bg-subtle pt-14">
       <Container fluid="lg">
         <Row className="justify-content-center">
           <Col xs={12} lg={9} xl={8} xxl={6} className="text-center">
-            <h2 className="text-body-highlight fw-normal mb-13 lh-sm">
+            <h2 className="text-highlight font-normal mb-13 lh-sm">
               Packed with{' '}
-              <span className="text-primary ms-2 position-relative fw-bolder d-inline-flex">
+              <span className="text-primary ms-2 relative font-black d-inline-flex">
                 essential features
                 <img
                   className="text-illustration-underline"
@@ -198,7 +198,7 @@ const EssentialFeatures = () => {
                 <Col xs={12} sm={4} className="px-0" key={item.id}>
                   <div
                     className={classNames(
-                      'mb-10 text-center border-translucent',
+                      'mb-10 text-center border-light',
                       item.border
                     )}
                   >

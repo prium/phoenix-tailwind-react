@@ -48,7 +48,7 @@ import Avatar from 'components/base/Avatar';
 const statusCode = `
 import Avatar from 'components/base/Avatar';
 
-  <div className="d-flex gap-4">
+  <div className="flex gap-4">
     <Avatar src={team30} size="xl" status="online" />
     <Avatar src={team30} size="xl" status="offline" />
     <Avatar src={team30} size="xl" status="away" />
@@ -58,7 +58,7 @@ import Avatar from 'components/base/Avatar';
 const sizesCode = `
 import Avatar from 'components/base/Avatar';
 
-  <div className="d-flex gap-2 flex-wrap">
+  <div className="flex gap-2 flex-wrap">
     <Avatar src={team30} size="5xl" />
     <Avatar src={team30} size="4xl" />
     <Avatar src={team30} size="3xl" />
@@ -75,7 +75,7 @@ import Avatar from 'components/base/Avatar';
 () => {
   const [sizes] = useState(['5xl', '4xl', '3xl', '2xl', 'xl', 'l', 'm', 's']);
   return (
-    <div className="d-flex flex-column gap-4">
+    <div className="flex flex-column gap-4">
       {sizes.map(size => (
         <Avatar.Group key={size}>
           <Avatar src={team30} size={size} />

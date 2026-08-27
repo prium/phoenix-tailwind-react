@@ -4,12 +4,12 @@ import { Nav } from 'react-bootstrap';
 
 const WidgetsScrollspyNav = () => {
   return (
-    <div className="widgets-scrollspy-nav mt-n5 bg-body-emphasis mx-n4 mx-lg-n6 border-bottom">
+    <div className="widgets-scrollspy-nav mt-n5 bg-soft mx-n4 mx-lg-n6 border-bottom">
       <Scrollbar style={{ height: 'auto'}}>
         <Nav className="px-4 flex-nowrap">
           <Nav.Item>
             <ScrollSpy.NavLink
-              className="text-body-tertiary fw-bold p-3 lh-1 text-nowrap fs-8"
+              className="text-subtle font-bold p-3 lh-1 text-nowrap text-base"
               href="#stats"
             >
               Number Stats and Charts
@@ -17,7 +17,7 @@ const WidgetsScrollspyNav = () => {
           </Nav.Item>
           <Nav.Item>
             <ScrollSpy.NavLink
-              className="text-body-tertiary fw-bold p-3 lh-1 text-nowrap fs-8"
+              className="text-subtle font-bold p-3 lh-1 text-nowrap text-base"
               href="#tables"
             >
               Tables, Files, and Lists
@@ -25,7 +25,7 @@ const WidgetsScrollspyNav = () => {
           </Nav.Item>
           <Nav.Item>
             <ScrollSpy.NavLink
-              className="text-body-tertiary fw-bold p-3 lh-1 text-nowrap fs-8"
+              className="text-subtle font-bold p-3 lh-1 text-nowrap text-base"
               href="#e-commerce"
             >
               E-commerce
@@ -33,7 +33,7 @@ const WidgetsScrollspyNav = () => {
           </Nav.Item>
           <Nav.Item>
             <ScrollSpy.NavLink
-              className="text-body-tertiary fw-bold p-3 lh-1 text-nowrap fs-8"
+              className="text-subtle font-bold p-3 lh-1 text-nowrap text-base"
               href="#users-and-feed"
             >
               Users & Feed
@@ -41,7 +41,7 @@ const WidgetsScrollspyNav = () => {
           </Nav.Item>
           <Nav.Item>
             <ScrollSpy.NavLink
-              className="text-body-tertiary fw-bold p-3 lh-1 text-nowrap fs-8"
+              className="text-subtle font-bold p-3 lh-1 text-nowrap text-base"
               href="#forms"
             >
               Forms
@@ -49,7 +49,7 @@ const WidgetsScrollspyNav = () => {
           </Nav.Item>
           <Nav.Item>
             <ScrollSpy.NavLink
-              className="text-body-tertiary fw-bold p-3 lh-1 text-nowrap fs-8"
+              className="text-subtle font-bold p-3 lh-1 text-nowrap text-base"
               href="#others"
             >
               Others

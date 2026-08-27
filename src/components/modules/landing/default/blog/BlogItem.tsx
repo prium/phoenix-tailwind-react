@@ -22,48 +22,48 @@ const BlogItem = ({ blog }: { blog: Blog }) => {
         className="rounded-top h-100 fit-cover"
       />
       <Card.Body className="rounded-top">
-        <div className="d-flex align-items-center mb-3">
-          <div className="d-flex align-items-center me-3">
+        <div className="flex align-items-center mb-3">
+          <div className="flex align-items-center me-3">
             <Link
               to="#!"
-              className="btn-link text-decoration-none d-flex align-items-center"
+              className="btn-link text-decoration-none flex align-items-center"
             >
               <FontAwesomeIcon
                 icon={faEye}
-                className="text-body-quaternary me-1"
+                className="text-soft me-1"
               />
-              <span className="text-body fs-10 lh-1">{blog.views}</span>
+              <span className="text-default text-sm lh-1">{blog.views}</span>
             </Link>
           </div>
-          <div className="d-flex align-items-center me-3">
+          <div className="flex align-items-center me-3">
             <Link
               to="#!"
-              className="btn-link text-decoration-none d-flex align-items-center"
+              className="btn-link text-decoration-none flex align-items-center"
             >
               <FontAwesomeIcon
                 icon={faHeart}
-                className="text-body-quaternary me-1"
+                className="text-soft me-1"
               />
-              <span className="text-body fs-10 lh-1">{blog.likes}</span>
+              <span className="text-default text-sm lh-1">{blog.likes}</span>
             </Link>
           </div>
-          <div className="d-flex align-items-center">
+          <div className="flex align-items-center">
             <Link
               to="#!"
-              className="btn-link text-decoration-none d-flex align-items-center"
+              className="btn-link text-decoration-none flex align-items-center"
             >
               <FontAwesomeIcon
                 icon={faComment}
-                className="text-body-quaternary me-1"
+                className="text-soft me-1"
               />
-              <span className="text-body fs-10 lh-1">{blog.comments}</span>
+              <span className="text-default text-sm lh-1">{blog.comments}</span>
             </Link>
           </div>
         </div>
         <Badge variant="phoenix" bg="primary" className="mb-2">
           {blog.category}
         </Badge>
-        <h4 className="fw-bold mb-3 lh-sm line-clamp-2">{blog.title}</h4>
+        <h4 className="font-bold mb-3 lh-sm line-clamp-2">{blog.title}</h4>
         <Button as={Link} to="#!" className="p-0" variant="link">
           Read more
           <FontAwesomeIcon icon={faAngleRight} className="ms-2" />

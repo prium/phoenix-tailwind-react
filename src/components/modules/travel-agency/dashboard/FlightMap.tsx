@@ -256,7 +256,7 @@ const FlightMap = ({ options, ...rest }: MapboxProps) => {
   return (
     <>
       <div className="mapbox-container flight-map mt-4" {...rest}>
-        <div className="position-relative">
+        <div className="relative">
           <div
             ref={flightMap}
             id="flightMap"
@@ -266,13 +266,13 @@ const FlightMap = ({ options, ...rest }: MapboxProps) => {
           <div className="mapbox-control-btn flight-map-control-btn">
             <Button
               onClick={() => map.current?.zoomIn()}
-              className="zoomIn d-none d-md-block"
+              className="zoomIn hidden d-md-block"
             >
               <FontAwesomeIcon icon={faPlus} />
             </Button>
             <Button
               onClick={() => map.current?.zoomOut()}
-              className="zoomOut d-none d-md-block"
+              className="zoomOut hidden d-md-block"
             >
               <FontAwesomeIcon icon={faMinus} />
             </Button>
@@ -285,17 +285,17 @@ const FlightMap = ({ options, ...rest }: MapboxProps) => {
           </div>
         </div>
 
-        <div className="position-absolute top-0 w-100 mt-3 mt-md-5 px-3 px-md-5 px-xl-7">
+        <div className="absolute top-0 w-100 mt-3 mt-md-5 px-3 px-md-5 px-xl-7">
           <div
-            className="d-flex align-items-center bg-secondary overflow-hidden rounded-1"
+            className="flex align-items-center bg-secondary overflow-hidden rounded-1"
             style={{ height: 46 }}
           >
-            <div className="h-100 px-3 d-flex align-items-center bg-danger-subtle position-relative">
+            <div className="h-100 px-3 flex align-items-center bg-danger-subtle relative">
               <FontAwesomeIcon
                 icon={faCircle}
                 className="text-danger me-md-2"
               />
-              <h3 className="mb-0 fw-bold text-nowrap d-none d-md-block">
+              <h3 className="mb-0 font-bold text-nowrap hidden d-md-block">
                 Live Tracking
               </h3>
             </div>
@@ -314,8 +314,8 @@ const FlightMap = ({ options, ...rest }: MapboxProps) => {
               >
                 {routes.map((route, index) => (
                   <SwiperSlide key={index} className="w-auto">
-                    <div className="d-flex align-items-center">
-                      <h6 className="px-3 py-2 bg-primary-subtle mb-0 fs-10 rounded-1 me-2">
+                    <div className="flex align-items-center">
+                      <h6 className="px-3 py-2 bg-primary-subtle mb-0 text-sm rounded-1 me-2">
                         {route.flightNo}
                       </h6>
                       <img
@@ -324,17 +324,17 @@ const FlightMap = ({ options, ...rest }: MapboxProps) => {
                         alt=""
                         width={16}
                       />
-                      <h6 className="mb-0 text-white fw-semibold me-3 text-nowrap">
+                      <h6 className="mb-0 text-white font-semibold me-3 text-nowrap">
                         {route.airLine}
                       </h6>
-                      <h6 className="mb-0 fw-semibold text-white">
+                      <h6 className="mb-0 font-semibold text-white">
                         {route.from}
                       </h6>
                       <FontAwesomeIcon
                         icon={faPlane}
                         className="text-primary mx-2"
                       />
-                      <h6 className="mb-0 fw-semibold text-white border-end pe-6">
+                      <h6 className="mb-0 font-semibold text-white border-end pe-6">
                         {route.to}
                       </h6>
                     </div>

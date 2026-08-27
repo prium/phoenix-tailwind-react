@@ -11,8 +11,8 @@ const DesignFile = () => {
         <PhoenixDocCard.Header title="Figma file" noPreview />
         <PhoenixDocCard.Body>
           <Alert variant="info" className="p-3 mb-4">
-            <div className="d-flex">
-              <FontAwesomeIcon icon={faExclamationCircle} className="fs-6" />
+            <div className="flex">
+              <FontAwesomeIcon icon={faExclamationCircle} className="text-xl" />
               <div className='flex-1 ms-3'>
                 <p className="mb-0">
                   Figma file is only available for{' '}

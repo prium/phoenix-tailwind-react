@@ -26,7 +26,7 @@ const columns: ColumnDef<OptionTableRow>[] = [
           });
         },
         meta: {
-          headerProps: { className: 'fs-10', style: { minWidth: '6.688rem' } },
+          headerProps: { className: 'text-sm', style: { minWidth: '6.688rem' } },
           cellProps: {
             className: 'text-info-dark lh-sm'
           }
@@ -44,7 +44,7 @@ const columns: ColumnDef<OptionTableRow>[] = [
           });
         },
         meta: {
-          headerProps: { className: 'fs-10', style: { minWidth: '6.688rem' } },
+          headerProps: { className: 'text-sm', style: { minWidth: '6.688rem' } },
           cellProps: {
             className: 'text-info-dark lh-sm'
           }
@@ -62,7 +62,7 @@ const columns: ColumnDef<OptionTableRow>[] = [
           });
         },
         meta: {
-          headerProps: { className: 'fs-10', style: { minWidth: '6.688rem' } },
+          headerProps: { className: 'text-sm', style: { minWidth: '6.688rem' } },
           cellProps: {
             className: 'lh-sm'
           }
@@ -80,7 +80,7 @@ const columns: ColumnDef<OptionTableRow>[] = [
           });
         },
         meta: {
-          headerProps: { className: 'fs-10', style: { minWidth: '6.688rem' } },
+          headerProps: { className: 'text-sm', style: { minWidth: '6.688rem' } },
           cellProps: {
             className: 'lh-sm'
           }
@@ -98,7 +98,7 @@ const columns: ColumnDef<OptionTableRow>[] = [
           });
         },
         meta: {
-          headerProps: { className: 'fs-10', style: { minWidth: '6.688rem' } },
+          headerProps: { className: 'text-sm', style: { minWidth: '6.688rem' } },
           cellProps: {
             className: 'lh-sm'
           }
@@ -124,11 +124,11 @@ const columns: ColumnDef<OptionTableRow>[] = [
         },
         meta: {
           headerProps: {
-            className: 'border-x border-translucent bg-body-highlight fs-10',
+            className: 'border-x border-light bg-subtle text-sm',
             style: { minWidth: '7.5rem' }
           },
           cellProps: {
-            className: 'bg-body-highlight border-x border-translucent lh-sm'
+            className: 'bg-subtle border-x border-light lh-sm'
           }
         }
       }
@@ -136,7 +136,7 @@ const columns: ColumnDef<OptionTableRow>[] = [
     meta: {
       headerProps: {
         className:
-          'bg-body-highlight border-x border-translucent text-nowrap text-capitalize'
+          'bg-subtle border-x border-light text-nowrap text-capitalize'
       }
     }
   },
@@ -156,7 +156,7 @@ const columns: ColumnDef<OptionTableRow>[] = [
           });
         },
         meta: {
-          headerProps: { className: 'fs-10', style: { minWidth: '6.688rem' } },
+          headerProps: { className: 'text-sm', style: { minWidth: '6.688rem' } },
           cellProps: {
             className: 'text-info-dark lh-sm'
           }
@@ -174,7 +174,7 @@ const columns: ColumnDef<OptionTableRow>[] = [
           });
         },
         meta: {
-          headerProps: { className: 'fs-10', style: { minWidth: '6.688rem' } },
+          headerProps: { className: 'text-sm', style: { minWidth: '6.688rem' } },
           cellProps: {
             className: 'text-info-dark lh-sm'
           }
@@ -192,7 +192,7 @@ const columns: ColumnDef<OptionTableRow>[] = [
           });
         },
         meta: {
-          headerProps: { className: 'fs-10', style: { minWidth: '6.688rem' } },
+          headerProps: { className: 'text-sm', style: { minWidth: '6.688rem' } },
           cellProps: {
             className: 'lh-sm'
           }
@@ -210,7 +210,7 @@ const columns: ColumnDef<OptionTableRow>[] = [
           });
         },
         meta: {
-          headerProps: { className: 'fs-10', style: { minWidth: '6.688rem' } },
+          headerProps: { className: 'text-sm', style: { minWidth: '6.688rem' } },
           cellProps: {
             className: 'lh-sm'
           }
@@ -229,7 +229,7 @@ const columns: ColumnDef<OptionTableRow>[] = [
         },
         meta: {
           headerProps: {
-            className: 'fs-10 pe-0',
+            className: 'text-sm pe-0',
             style: { minWidth: '6.688rem' }
           },
           cellProps: {
@@ -260,7 +260,7 @@ const OptionChainTable = ({ data }: OptionChainTableProps) => {
         tableProps={{
           className: 'text-center mb-0'
         }}
-        rowClassName="fs-9 fw-semibold"
+        rowClassName="text-md font-semibold"
       />
     </AdvanceTableProvider>
   );

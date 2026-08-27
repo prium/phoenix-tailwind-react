@@ -21,18 +21,18 @@ const DealDetailsTask = ({ tasks }: { tasks: Task[] }) => {
           />
         </Col>
         <Col xs="auto">
-          <div className="d-flex ms-sm-3">
-            <p className="mb-0 fs-9 text-body-tertiary fw-bold">
+          <div className="flex ms-sm-3">
+            <p className="mb-0 text-md text-subtle font-bold">
               <FontAwesomeIcon
                 icon={faFilter}
-                className="me-1 fw-extra-bold fs-10"
+                className="me-1 fw-extra-bold text-sm"
               />
               23 tasks
             </p>
             <Button
               variant="link"
-              className="p-0 ms-3 fs-9 text-primary fw-bold"
-              startIcon={<FontAwesomeIcon icon={faSort} className="fs-10" />}
+              className="p-0 ms-3 text-md text-primary font-bold"
+              startIcon={<FontAwesomeIcon icon={faSort} className="text-sm" />}
             >
               Sorting
             </Button>
@@ -43,7 +43,7 @@ const DealDetailsTask = ({ tasks }: { tasks: Task[] }) => {
         <TodoListItem
           key={task.id}
           todo={task}
-          className={classNames('border-translucent', {
+          className={classNames('border-light', {
             'border-top': index === 0,
             'border-bottom-0': index === tasks.length - 1
           })}

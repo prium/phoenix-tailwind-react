@@ -59,12 +59,12 @@ const KanbanHeader = () => {
             <Dropdown>
               <Dropdown.Toggle
                 variant="link"
-                className="text-decoration-none dropdown-caret-none text-body-emphasis fs-8 ps-0"
+                className="text-decoration-none dropdown-caret-none text-emphasis text-base ps-0"
               >
-                <span className="fs-7 me-2">Phoenix</span>
+                <span className="text-lg me-2">Phoenix</span>
                 <FontAwesomeIcon
                   icon={faAngleDown}
-                  className="text-body-quaternary d-inline-block"
+                  className="text-soft d-inline-block"
                 />
               </Dropdown.Toggle>
 
@@ -75,7 +75,7 @@ const KanbanHeader = () => {
               </Dropdown.Menu>
             </Dropdown>
           </Col>
-          <Col xs="auto" className="d-flex align-items-center gap-4">
+          <Col xs="auto" className="flex align-items-center gap-4">
             <Avatar.Group
               total={
                 kanbanBoardMembers.members.length +
@@ -90,25 +90,25 @@ const KanbanHeader = () => {
             <Button
               startIcon={<FontAwesomeIcon icon={faUserPlus} />}
               variant="primary"
-              className="fs-10 px-3"
+              className="text-sm px-3"
               onClick={() => setOpenInviteModal(!openInviteModal)}
             >
-              <span className="d-none d-sm-inline">invite</span>
+              <span className="hidden d-sm-inline">invite</span>
             </Button>
           </Col>
-          <Col md="auto" className="d-flex align-items-center gap-4 ms-auto">
-            <Nav className="w-100 fs-9">
+          <Col md="auto" className="flex align-items-center gap-4 ms-auto">
+            <Nav className="w-100 text-md">
               {navItems.map(item => (
                 <Nav.Item key={item.title}>
-                  <Nav.Link className="d-flex gap-2 align-items-center text-body px-2 px-xl-3 fw-bold">
+                  <Nav.Link className="flex gap-2 align-items-center text-default px-2 px-xl-3 font-bold">
                     <FontAwesomeIcon icon={item.icon} transform="up-2" />
-                    <span className="d-none d-xxl-inline">{item.title}</span>
+                    <span className="hidden d-xxl-inline">{item.title}</span>
                   </Nav.Link>
                 </Nav.Item>
               ))}
               <Nav.Item className="my-auto ms-auto">
                 <Nav.Link
-                  className="d-flex gap-2 align-items-center text-body px-2 px-xl-3 fw-bold"
+                  className="flex gap-2 align-items-center text-default px-2 px-xl-3 font-bold"
                   onClick={() => {
                     kanbanDispatch({
                       type: TOGGLE_DETAILS_OFFCANVAS,
