@@ -34,9 +34,9 @@ const RadioItem = ({
       />
       <Form.Check.Label
         htmlFor={`${name}-${value}`}
-        className="btn btn-navbar-style d-inline-block fs-9"
+        className="btn btn-navbar-style inline-block text-md"
       >
-        <span className="mb-2 rounded d-block">
+        <span className="mb-2 rounded-md block">
           <img className="img-fluid img-prototype mb-0" src={thumb} alt="" />
         </span>
         <span className="label-text">{label}</span>

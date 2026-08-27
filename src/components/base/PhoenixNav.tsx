@@ -11,7 +11,7 @@ interface PhoenixNavProps {
 
 const PhoenixNav = ({ navItems }: PhoenixNavProps) => {
   return (
-    <Nav variant="phoenix-pills" className="mb-5 d-sm-none d-xl-flex">
+    <Nav variant="phoenix-pills" className="mb-8 sm:hidden xl:flex">
       {navItems.map(item => {
         const { label, ...rest } = item;
         return (

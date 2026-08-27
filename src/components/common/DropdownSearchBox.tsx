@@ -41,7 +41,7 @@ const DropdownSearchBox = ({
       </Dropdown.Toggle>
       {children && (
         <Dropdown.Menu
-          className="dropdown-menu border font-base start-0 py-0 overflow-hidden w-100"
+          className="dropdown-menu border font-base start-0 py-0 overflow-hidden w-full"
           style={{ width: 400 }}
         >
           {Children.map(children, child =>

@@ -13,15 +13,15 @@ const SettingsToggle = () => {
 
   return (
     <Card className="setting-toggle" onClick={handleClick}>
-      <Card.Body className="d-flex align-items-center px-2 py-1">
+      <Card.Body className="flex items-center px-2 py-1">
         <div
-          className="position-relative rounded-start"
+          className="relative rounded-s-md"
           style={{ height: 34, width: 28 }}
         >
           <div className="settings-popover">
             <span className="ripple">
-              <span className="fa-spin position-absolute all-0 d-flex flex-center">
-                <span className="icon-spin position-absolute all-0 d-flex flex-center">
+              <span className="fa-spin absolute all-0 flex flex-center">
+                <span className="icon-spin absolute all-0 flex flex-center">
                   <svg
                     width="20"
                     height="20"
@@ -39,7 +39,7 @@ const SettingsToggle = () => {
             </span>
           </div>
         </div>
-        <small className="text-uppercase text-body-tertiary fw-bold py-2 pe-2 ps-1 rounded-end">
+        <small className="uppercase text-subtle font-bold py-2 pe-2 ps-1 rounded-e-md">
           customize
         </small>
       </Card.Body>

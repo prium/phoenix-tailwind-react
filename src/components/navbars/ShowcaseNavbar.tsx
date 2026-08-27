@@ -11,8 +11,8 @@ const ShowcaseNavbar = () => {
   useNavbarBgChangeOnScroll(navbarRef);
 
   return (
-    <Navbar ref={navbarRef} expand="lg" sticky="top" className="py-3">
-      <div className="container-small px-0 px-sm-3">
+    <Navbar ref={navbarRef} expand="lg" sticky="top" className="py-4">
+      <div className="container-small px-0 sm:px-4">
         <Navbar.Brand as={Link} to="/">
           <Logo />
         </Navbar.Brand>
@@ -20,20 +20,20 @@ const ShowcaseNavbar = () => {
           <span className="navbar-toggler-icon"></span>
         </Navbar.Toggle>
         <Navbar.Collapse id="navbarSupportedContent">
-          <Nav className="ms-auto mb-2 mb-lg-0">
-            <Nav.Item className="border-bottom border-translucent border-bottom-lg-0">
+          <Nav className="ms-auto mb-2 lg:mb-0">
+            <Nav.Item className="border-b border-light lg:border-b-0">
               <Nav.Link
                 as={Link}
                 to="/documentation/getting-started"
-                className="fs-9 fw-bold pe-3 active"
+                className="text-md font-bold pe-4 active"
                 aria-current="page"
               >
                 Documentation
               </Nav.Link>
             </Nav.Item>
-            <Nav.Item className="border-bottom border-translucent border-bottom-lg-0">
+            <Nav.Item className="border-b border-light lg:border-b-0">
               <Nav.Link
-                className="fs-9 fw-bold pe-3"
+                className="text-md font-bold pe-4"
                 href="mailto:support@themewagon.com"
               >
                 Support
@@ -41,7 +41,7 @@ const ShowcaseNavbar = () => {
             </Nav.Item>
             <Nav.Item>
               <Nav.Link
-                className="fs-9 fw-bold pe-5"
+                className="text-md font-bold pe-8"
                 href="https://themewagon.com/hire-us/"
                 target="_blank"
               >
@@ -49,7 +49,7 @@ const ShowcaseNavbar = () => {
               </Nav.Link>
             </Nav.Item>
           </Nav>
-          <div className="d-grid d-lg-flex align-items-center">
+          <div className="grid lg:flex items-center">
             <Button
               variant="primary"
               as={Link}

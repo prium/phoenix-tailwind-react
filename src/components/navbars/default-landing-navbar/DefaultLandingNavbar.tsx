@@ -23,10 +23,10 @@ const NavItem = ({
     <Nav.Item
       as="li"
       className={classNames({
-        'border-bottom border-translucent border-bottom-lg-0': !isLast
+        'border-b border-light lg:border-b-0': !isLast
       })}
     >
-      <Nav.Link href={url} className="lh-1 py-0 fs-9 fw-bold py-3">
+      <Nav.Link href={url} className="leading-none py-0 text-md font-bold py-4">
         {label}
       </Nav.Link>
     </Nav.Item>
@@ -56,46 +56,46 @@ const DefaultLandingNavbar = ({ className }: { className?: string }) => {
       <div
         className={classNames(
           className,
-          'bg-body-emphasis sticky-top landing-navbar'
+          'bg-soft sticky top-0 z-1020 landing-navbar'
         )}
         ref={containerRef}
       >
-        <Navbar className="px-3 px-lg-7 px-xxl-3 container-small" expand="lg">
+        <Navbar className="px-4 lg:px-12 2xl:px-4 container-small" expand="lg">
           <Navbar.Brand
             as={Link}
             to="/"
-            className="text-decoration-none flex-1 flex-lg-grow-0"
+            className="no-underline flex-1 lg:grow-0"
           >
             <Logo />
           </Navbar.Brand>
-          <ThemeToggler className="mx-2 d-lg-none" />
+          <ThemeToggler className="mx-2 lg:hidden" />
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse>
-            <div className="border-bottom border-translucent d-lg-none mb-2">
+            <div className="border-b border-light lg:hidden mb-2">
               <SearchBox
                 placeholder="Search"
-                className="w-100"
+                className="w-full"
                 inputClassName="rounded-pill my-4"
               />
             </div>
-            <Nav className="me-auto mb-2 mb-lg-0" as="ul">
+            <Nav className="me-auto mb-2 lg:mb-0" as="ul">
               <NavItem label="Home" url="#home" />
               <NavItem label="Features" url="#features" />
               <NavItem label="Blog" url="#blog" />
               <NavItem label="Team" url="#team" isLast />
             </Nav>
 
-            <div className="d-grid d-lg-flex gap-4 align-items-center">
-              <ThemeToggler className="d-none d-lg-block" />
+            <div className="grid lg:flex gap-6 items-center">
+              <ThemeToggler className="hidden lg:block" />
               <Button
-                className="p-0 text-body-tertiary text-body-emphasis-hover d-none d-lg-inline lh-sm"
+                className="p-0 text-subtle text-body-emphasis-hover hidden lg:inline leading-sm"
                 onClick={() => setOpenSearchModal(!openSearchModal)}
               >
                 <FeatherIcon icon="search" size={20} />
               </Button>
               <Link
                 to="#!"
-                className="btn btn-link p-0 text-body order-1 order-lg-0"
+                className="btn btn-link p-0 text-default order-1 lg:order-0"
               >
                 Sign in
               </Link>
@@ -109,7 +109,7 @@ const DefaultLandingNavbar = ({ className }: { className?: string }) => {
       <Modal
         show={openSearchModal}
         onHide={() => setOpenSearchModal(false)}
-        className="search-box-modal mt-15"
+        className="search-box-modal mt-30"
       >
         <Modal.Body className="p-0 bg-transparent">
           <DropdownSearchBox

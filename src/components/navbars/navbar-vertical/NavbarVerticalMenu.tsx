@@ -41,8 +41,8 @@ const NavItem = ({ route, level }: NavItemProps) => {
         onClick={() => level === 1 && setOpenItems(openItems.map(() => ''))}
       >
         <div
-          className={classNames('d-flex align-items-center', {
-            'text-body-quaternary': !route.active
+          className={classNames('flex items-center', {
+            'text-soft': !route.active
           })}
         >
           {route.icon ? (
@@ -143,16 +143,16 @@ const CollapsableNavItem = ({ route, level }: NavItemProps) => {
         className={classNames('dropdown-indicator', {
           'label-1': level === 1,
           collapsed: openItems[level] !== route.name,
-          'text-body-quaternary': !route.active
+          'text-soft': !route.active
         })}
         aria-expanded={openItems[level] === route.name}
       >
-        <div className="d-flex align-items-center">
+        <div className="flex items-center">
           <div className="dropdown-indicator-icon">
             <FontAwesomeIcon
               icon={faCaretRight}
               className={classNames({
-                'text-body-quaternary': !route.active
+                'text-soft': !route.active
               })}
             />
           </div>
@@ -192,7 +192,7 @@ const CollapsableNavItem = ({ route, level }: NavItemProps) => {
         <Collapse in={openItems[level] === route.name} className="nav parent">
           <div>
             {level === 1 && (
-              <div className="collapsed-nav-item-title d-none">
+              <div className="collapsed-nav-item-title hidden">
                 {capitalize(route.name)}
                 {isNavbarVerticalCollapsed && route.new && (
                   <Badge variant="phoenix" bg="warning" className="ms-2">

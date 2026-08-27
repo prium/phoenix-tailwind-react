@@ -4,27 +4,27 @@ import React from 'react';
 const OrderSummaryDetails = () => {
   return (
     <div>
-      <div className="d-flex justify-content-between">
-        <p className="text-body fw-semibold">Items subtotal :</p>
-        <p className="text-body-emphasis fw-semibold">{currencyFormat(691)}</p>
+      <div className="flex justify-between">
+        <p className="text-default font-semibold">Items subtotal :</p>
+        <p className="text-emphasis font-semibold">{currencyFormat(691)}</p>
       </div>
-      <div className="d-flex justify-content-between">
-        <p className="text-body fw-semibold">Discount :</p>
-        <p className="text-danger fw-semibold">-{currencyFormat(59)}</p>
+      <div className="flex justify-between">
+        <p className="text-default font-semibold">Discount :</p>
+        <p className="text-danger font-semibold">-{currencyFormat(59)}</p>
       </div>
-      <div className="d-flex justify-content-between">
-        <p className="text-body fw-semibold">Tax :</p>
-        <p className="text-body-emphasis fw-semibold">
+      <div className="flex justify-between">
+        <p className="text-default font-semibold">Tax :</p>
+        <p className="text-emphasis font-semibold">
           {currencyFormat(126.2)}
         </p>
       </div>
-      <div className="d-flex justify-content-between">
-        <p className="text-body fw-semibold">Subtotal :</p>
-        <p className="text-body-emphasis fw-semibold">{currencyFormat(665)}</p>
+      <div className="flex justify-between">
+        <p className="text-default font-semibold">Subtotal :</p>
+        <p className="text-emphasis font-semibold">{currencyFormat(665)}</p>
       </div>
-      <div className="d-flex justify-content-between">
-        <p className="text-body fw-semibold">Shipping Cost :</p>
-        <p className="text-body-emphasis fw-semibold">{currencyFormat(30)}</p>
+      <div className="flex justify-between">
+        <p className="text-default font-semibold">Shipping Cost :</p>
+        <p className="text-emphasis font-semibold">{currencyFormat(30)}</p>
       </div>
     </div>
   );

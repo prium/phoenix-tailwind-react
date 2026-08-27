@@ -84,7 +84,7 @@ const AdvanceTableFooter = ({
         <p
           className={cn(
             tableInfo,
-            'mb-0 hidden sm:block me-4 font-semibold text-default'
+            'mb-0 hidden sm:block me-10 font-semibold text-default'
           )}
         >
           {pageSize * pageIndex + 1} to{' '}

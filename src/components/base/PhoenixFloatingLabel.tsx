@@ -45,7 +45,7 @@ const PhoenixFloatingLabel = ({
         })}
       <label
         className={classNames({
-          'ps-6': startComponent
+          'ps-18': startComponent
         })}
       >
         {label}

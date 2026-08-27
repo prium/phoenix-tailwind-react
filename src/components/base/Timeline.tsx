@@ -44,7 +44,7 @@ export const TimelineOppositeContent = ({
   className
 }: PropsWithChildren<TimelineItemProps>) => {
   return (
-    <div className={classNames(className, 'order-1 order-md-0 me-md-4')}>
+    <div className={classNames(className, 'order-1 md:order-0 md:me-6')}>
       {children}
     </div>
   );
@@ -84,7 +84,7 @@ export const TimelineDot = ({
 export const TimelineBar = ({ className, ...rest }: TimelineBarProps) => {
   return (
     <span
-      className={classNames(className, 'timeline-bar border-end')}
+      className={classNames(className, 'timeline-bar border-e')}
       {...rest}
     />
   );

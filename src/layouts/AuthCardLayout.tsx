@@ -21,20 +21,20 @@ const AuthCardLayout = ({
   children
 }: PropsWithChildren<AuthCardLayoutProps>) => {
   return (
-    <Container fluid className="bg-body-tertiary dark__bg-gray-1200">
+    <Container fluid className="bg-highlight dark__bg-gray-1200">
       <div
         className="bg-holder bg-auth-card-overlay"
         style={{ backgroundImage: `url(${bg37})` }}
       />
 
-      <Row className="flex-center position-relative min-vh-100 g-0 py-5">
+      <Row className="flex-center relative min-h-screen g-0 py-8">
         <Col xs={11} sm={10} xl={8}>
-          <Card className="border border-translucent auth-card">
-            <Card.Body className="pe-md-0">
-              <Row className="align-items-center gx-0 gy-7">
+          <Card className="border border-light auth-card">
+            <Card.Body className="md:pe-0">
+              <Row className="items-center gx-0 gy-12">
                 <Col
                   xs="auto"
-                  className="bg-body-highlight dark__bg-gray-1100 rounded-3 position-relative overflow-hidden auth-title-box"
+                  className="bg-subtle dark__bg-gray-1100 rounded-lg relative overflow-hidden auth-title-box"
                 >
                   <div
                     className="bg-holder"
@@ -43,60 +43,60 @@ const AuthCardLayout = ({
                   <div
                     className={classNames(
                       className,
-                      'position-relative px-4 px-lg-7 py-7 pb-sm-5 text-center text-md-start pb-lg-7'
+                      'relative px-10 lg:px-12 py-24 sm:pb-8 text-center md:text-start lg:pb-12'
                     )}
                   >
-                    <h3 className="mb-3 text-body-emphasis fs-7">
+                    <h3 className="mb-4 text-emphasis text-lg">
                       Phoenix Authentication
                     </h3>
-                    <p className="text-body-tertiary">
+                    <p className="text-subtle">
                       Give yourself some hassle-free development process with
                       the uniqueness of Phoenix!
                     </p>
-                    <ul className="list-unstyled mb-0 w-max-content w-md-auto mx-auto">
-                      <li className="d-flex align-items-center gap-2">
+                    <ul className="list-unstyled mb-0 w-max-content md:w-auto mx-auto">
+                      <li className="flex items-center gap-2">
                         <Unicon
                           fill='currentColor'
                           icon={UilCheckCircle}
                           className="text-success"
                           size={16}
                         />
-                        <span className="text-body-tertiary fw-semibold">
+                        <span className="text-subtle font-semibold">
                           Fast
                         </span>
                       </li>
-                      <li className="d-flex align-items-center gap-2">
+                      <li className="flex items-center gap-2">
                         <Unicon
                           fill='currentColor'
                           icon={UilCheckCircle}
                           className="text-success"
                           size={16}
                         />
-                        <span className="text-body-tertiary fw-semibold">
+                        <span className="text-subtle font-semibold">
                           Simple
                         </span>
                       </li>
-                      <li className="d-flex align-items-center gap-2">
+                      <li className="flex items-center gap-2">
                         <Unicon
                           fill='currentColor'
                           icon={UilCheckCircle}
                           className="text-success"
                           size={16}
                         />
-                        <span className="text-body-tertiary fw-semibold">
+                        <span className="text-subtle font-semibold">
                           Responsive
                         </span>
                       </li>
                     </ul>
                   </div>
-                  <div className="position-relative mb-6 d-none d-md-block text-center mt-md-15 z-n1">
+                  <div className="relative mb-10 hidden md:block text-center md:mt-30 -z-1">
                     <img
-                      className="auth-title-box-img d-dark-none"
+                      className="auth-title-box-img dark:hidden"
                       src={authIllustrations}
                       alt=""
                     />
                     <img
-                      className="auth-title-box-img d-light-none"
+                      className="auth-title-box-img hidden dark:block"
                       src={authIllustrationsDark}
                       alt=""
                     />
@@ -107,12 +107,12 @@ const AuthCardLayout = ({
                     <div className="text-center">
                       <Link
                         to="/"
-                        className="d-inline-block text-decoration-none mb-4"
+                        className="inline-block no-underline mb-6"
                       >
                         <Logo
                           text={false}
                           width={58}
-                          className="fw-bolder fs-5 d-inline-block"
+                          className="font-black text-2xl inline-block"
                         />
                       </Link>
                     </div>

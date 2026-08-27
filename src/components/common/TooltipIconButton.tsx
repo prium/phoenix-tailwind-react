@@ -19,7 +19,7 @@ const TooltipIconButton = ({
       overlay={<Tooltip style={{ position: 'fixed' }}>{title}</Tooltip>}
     >
       <div>
-        <Button className="p-0 text-body-quaternary text-body-tertiary-hover">
+        <Button className="p-0 text-soft text-body-tertiary-hover">
           <FontAwesomeIcon icon={icon} className={classNames(iconClass)} />
         </Button>
       </div>

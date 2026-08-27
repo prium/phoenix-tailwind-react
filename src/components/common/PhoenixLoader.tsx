@@ -5,9 +5,9 @@ const PhoenixLoader = ({ fullPage }: { fullPage?: boolean }) => {
   return (
     <div
       className={classNames(
-        'd-flex justify-content-center align-items-center h-100 w-100 ',
+        'flex justify-center items-center h-full w-full ',
         {
-          'vh-100': fullPage
+          'h-screen': fullPage
         }
       )}
     >

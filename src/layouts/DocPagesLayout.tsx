@@ -64,15 +64,15 @@ const DocPagesLayout = ({
   }, []);
 
   return (
-    <Row className="gx-3 gy-4 mb-7">
-      <Col xs={12} xl={10} className="order-1 order-xl-0">
+    <Row className="gx-4 gy-6 mb-12">
+      <Col xs={12} xl={10} className="order-1 xl:order-0">
         {children}
       </Col>
       <Col xs={12} xl={2}>
-        <div className="position-sticky" style={{ top: 80 }}>
+        <div className="sticky" style={{ top: 80 }}>
           <h5>On this page</h5>
           <hr />
-          <Nav as="ul" className="flex-column nav-vertical doc-nav">
+          <Nav as="ul" className="flex-col nav-vertical doc-nav">
             {navItems.map(item => (
               <NavItem item={item} key={item.label} />
             ))}
@@ -92,7 +92,7 @@ const NavItem = ({ item }: { item: SideNavItem }) => {
         {item.label}
       </Nav.Link>
       {item.subItem && (
-        <Nav as="ul" className="flex-column">
+        <Nav as="ul" className="flex-col">
           {item.subItem.map(subItem => (
             <NavItem item={subItem} key={subItem.to} />
           ))}

@@ -16,8 +16,8 @@ const RTLMode = () => {
   };
 
   return (
-    <div className="border border-translucent rounded-3 p-4 setting-panel-item bg-body-emphasis">
-      <div className="d-flex justify-content-between align-items-center">
+    <div className="border border-light rounded-lg p-6 setting-panel-item bg-soft">
+      <div className="flex justify-between items-center">
         <h5 className="setting-panel-item-title mb-1">RTL </h5>
         <Form.Check
           type="switch"
@@ -27,7 +27,7 @@ const RTLMode = () => {
           className="text-end"
         />
       </div>
-      <p className="mb-0 text-body-tertiary">Change text direction</p>
+      <p className="mb-0 text-subtle">Change text direction</p>
     </div>
   );
 };

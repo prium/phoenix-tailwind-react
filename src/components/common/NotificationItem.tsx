@@ -21,45 +21,45 @@ const NotificationItem = ({
     <div
       className={classNames(
         className,
-        'py-3 notification-card position-relative',
+        'py-6 notification-card relative',
         {
           unread: !notification.read,
-          'px-4 px-lg-6': type === 'pageItem',
-          'px-2 px-sm-3': type === 'dropdownItem'
+          'px-10 lg:px-10': type === 'pageItem',
+          'px-2 sm:px-4': type === 'dropdownItem'
         }
       )}
     >
-      <div className="d-flex align-items-center justify-content-between position-relative">
-        <div className="d-flex">
+      <div className="flex items-center justify-between relative">
+        <div className="flex">
           <Avatar
             src={notification.avatar}
             placeholder={!notification.avatar}
             size={type === 'pageItem' ? 'xl' : 'm'}
-            className="me-3 status-online"
+            className="me-4 status-online"
           />
           <div
             className={classNames('flex-1', {
-              'me-sm-3': type === 'dropdownItem',
+              'sm:me-4': type === 'dropdownItem',
               'mt-2 me-2': type === 'pageItem'
             })}
           >
-            <h4 className="fs-9 text-body-emphasis">{notification.name}</h4>
-            <p className="fs-9 text-body-highlight mb-2 mb-sm-3 fw-normal">
-              <span className="me-1 fw-bold fs-10">
+            <h4 className="text-md text-emphasis">{notification.name}</h4>
+            <p className="text-md text-highlight mb-2 sm:mb-4 font-normal">
+              <span className="me-1 font-bold text-sm">
                 {notification.interactionIcon}
               </span>
               <span>{notification.interaction}</span>
               {type === 'pageItem' && (
-                <span className="fw-bold">{notification.detail}</span>
+                <span className="font-bold">{notification.detail}</span>
               )}
 
-              <span className="ms-2 text-body-quaternary text-opactity-75 fw-bold fs-10">
+              <span className="ms-2 text-soft text-opactity-75 font-bold text-sm">
                 {notification.ago}
               </span>
             </p>
-            <p className="text-body-secondary fs-9 mb-0">
+            <p className="text-muted text-md mb-0">
               <FontAwesomeIcon icon={faClock} className="me-1" />
-              <span className="fw-bold">{notification.time}</span>
+              <span className="font-bold">{notification.time}</span>
               {notification.date}
             </p>
           </div>

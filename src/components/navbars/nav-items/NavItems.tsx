@@ -26,7 +26,7 @@ const NavItems = () => {
       </Nav.Item>
       <Nav.Item
         className={classNames({
-          'd-lg-none':
+          'lg:hidden':
             navbarPosition === 'vertical' || navbarPosition === 'dual'
         })}
       >
@@ -35,11 +35,11 @@ const NavItems = () => {
         </Nav.Link>
       </Nav.Item>
       <Nav.Item>
-        <Dropdown autoClose="outside" className="h-100">
+        <Dropdown autoClose="outside" className="h-full">
           <Dropdown.Toggle
             as={Link}
             to="#!"
-            className="dropdown-caret-none nav-link h-100"
+            className="dropdown-caret-none nav-link h-full"
             variant=""
           >
             <FeatherIcon icon="bell" size={20} />
@@ -48,11 +48,11 @@ const NavItems = () => {
         </Dropdown>
       </Nav.Item>
       <Nav.Item>
-        <Dropdown autoClose="outside" className="h-100">
+        <Dropdown autoClose="outside" className="h-full">
           <Dropdown.Toggle
             as={Link}
             to="#!"
-            className="dropdown-caret-none nav-link h-100"
+            className="dropdown-caret-none nav-link h-full"
             variant=""
           >
             <svg
@@ -77,11 +77,11 @@ const NavItems = () => {
         </Dropdown>
       </Nav.Item>
       <Nav.Item>
-        <Dropdown autoClose="outside" className="h-100">
+        <Dropdown autoClose="outside" className="h-full">
           <Dropdown.Toggle
             as={Link}
             to="#!"
-            className="dropdown-caret-none nav-link pe-0 py-0 lh-1 h-100 d-flex align-items-center"
+            className="dropdown-caret-none nav-link pe-0 py-0 leading-none h-full flex items-center"
             variant=""
           >
             <Avatar src={avatar57} size="l" />
@@ -93,7 +93,7 @@ const NavItems = () => {
       <Modal
         show={openSearchModal}
         onHide={() => setOpenSearchModal(false)}
-        className="search-box-modal mt-15"
+        className="search-box-modal mt-30"
       >
         <Modal.Body className="p-0 bg-transparent">
           <DropdownSearchBox

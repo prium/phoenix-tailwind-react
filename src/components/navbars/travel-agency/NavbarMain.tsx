@@ -156,14 +156,14 @@ const NavDropdownItems = ({
     >
       <Dropdown.Toggle
         as={Link}
-        className={classNames('nav-link fs-8 fw-bold', {
+        className={classNames('nav-link text-base font-bold', {
           active: isActive
         })}
         to="#!"
       >
         {label}
       </Dropdown.Toggle>
-      <Dropdown.Menu className="navbar-dropdown-caret mt-lg-3 mb-3 mb-lg-0">
+      <Dropdown.Menu className="navbar-dropdown-caret lg:mt-4 mb-4 lg:mb-0">
         {items.map(dropdownItem => (
           <Dropdown.Item
             as={Link}
@@ -209,14 +209,14 @@ const NavbarMain = () => {
   }, [pathname]);
 
   return (
-    <div className="bg-body sticky-top" ref={containerRef}>
+    <div className="bg-default sticky top-0 z-1020" ref={containerRef}>
       <Navbar
         expand="lg"
-        className="navbar-landing container-medium border-0 px-3 py-2"
+        className="navbar-landing container-medium border-0 px-4 py-2"
         expanded={isNavItemOpen}
         onToggle={() => setNavItemsOpen(!isNavItemOpen)}
       >
-        <Navbar.Toggle className="fs-8 ps-2 me-sm-2 border-0 ms-n2 hover-bg-transparent navbar-toggler-humburger-icon">
+        <Navbar.Toggle className="text-base ps-2 sm:me-2 border-0 -ms-2 hover-bg-transparent navbar-toggler-humburger-icon">
           <span className="navbar-toggle-icon">
             <span className="toggle-line" />
           </span>
@@ -224,17 +224,17 @@ const NavbarMain = () => {
         <Navbar.Brand
           as={Link}
           to="/"
-          className="flex-1 flex-lg-grow-0 me-lg-8 me-xl-13"
+          className="flex-1 lg:grow-0 lg:me-14 xl:me-26"
         >
           <Logo textClass="d-none d-sm-block" />
         </Navbar.Brand>
-        <div className="d-flex align-items-center gap-3 gap-md-4 my-2 order-lg-1">
+        <div className="flex items-center gap-4 md:gap-6 my-2 lg:order-1">
           <ThemeToggler />
           <Button
             to="#!"
             as={Link}
             variant="link"
-            className="text-body-tertiary p-0"
+            className="text-subtle p-0"
           >
             <FeatherIcon icon="map-pin" size={18} />
           </Button>
@@ -242,7 +242,7 @@ const NavbarMain = () => {
             to="#!"
             as={Link}
             variant="link"
-            className="text-body-tertiary p-0"
+            className="text-subtle p-0"
           >
             <FeatherIcon icon="bell" size={20} />
           </Button>
@@ -250,7 +250,7 @@ const NavbarMain = () => {
             to="#!"
             as={Link}
             variant="link"
-            className="text-body-tertiary p-0"
+            className="text-subtle p-0"
           >
             <FeatherIcon icon="log-in" size={20} />
           </Button>
@@ -258,7 +258,7 @@ const NavbarMain = () => {
             to="#!"
             as={Link}
             variant="link"
-            className="text-body-tertiary p-0"
+            className="text-subtle p-0"
           >
             <FeatherIcon icon="user" size={20} />
           </Button>
@@ -280,7 +280,7 @@ const NavbarMain = () => {
                   <Nav.Link
                     as={Link}
                     to="#!"
-                    className={classNames('fw-bold', {
+                    className={classNames('font-bold', {
                       active: pathNameList.includes(item.label.toLowerCase())
                     })}
                   >

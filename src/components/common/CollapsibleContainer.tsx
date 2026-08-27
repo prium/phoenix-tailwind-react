@@ -32,13 +32,13 @@ const CollapsibleContainer = ({
         variant=""
         className={classNames(
           className,
-          'd-flex flex-between-center collapse-indicator text-body-highlight bg-body-highlight w-100 position-sticky start-0',
+          'flex flex-between-center collapse-indicator text-highlight bg-subtle w-full sticky start-0',
           {
             collapsed: open,
-            'py-2 px-3': containerSize === 'sm',
-            'p-3': containerSize === 'base',
-            'p-4': containerSize === 'large',
-            'px-4 py-3 py-sm-4': containerSize === 'trip'
+            'py-2 px-6': containerSize === 'sm',
+            'p-6': containerSize === 'base',
+            'p-10': containerSize === 'large',
+            'px-10 py-6 sm:py-6': containerSize === 'trip'
           }
         )}
         aria-controls={id}
@@ -47,7 +47,7 @@ const CollapsibleContainer = ({
         <h4 className={classNames('mb-0', titleClass)}>{collapseTitle}</h4>
         <FontAwesomeIcon
           icon={faChevronDown}
-          className="toggle-icon text-body"
+          className="toggle-icon text-default"
         />
       </Button>
       <Collapse in={open}>

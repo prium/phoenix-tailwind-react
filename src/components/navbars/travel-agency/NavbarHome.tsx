@@ -35,12 +35,12 @@ const nav: Nav[] = [
 const NavbarHome = ({ currentPage }: { currentPage: string }) => {
   return (
     <>
-      <Nav className="nav-home justify-content-center py-4 gap-2">
+      <Nav className="nav-home justify-center py-6 gap-2">
         {nav.map((item, index) => (
           <Nav.Item key={index}>
             <Nav.Link
               as={Link}
-              className={classNames('fw-bold rounded-3', {
+              className={classNames('font-bold lg:rounded-md', {
                 active: currentPage === item.label
               })}
               to={item.path}

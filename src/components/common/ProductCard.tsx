@@ -11,14 +11,14 @@ import { Link } from 'react-router';
 
 const ProductCard = ({ product }: { product: ProductType }) => {
   return (
-    <div className="position-relative text-decoration-none product-card h-100">
-      <div className="d-flex flex-column justify-content-between h-100">
+    <div className="relative no-underline product-card h-full">
+      <div className="flex flex-col justify-between h-full">
         <div>
-          <div className="border border-translucent rounded-3 position-relative mb-3">
+          <div className="border border-light rounded-lg relative mb-4">
             <Button
               variant={product.wishListed ? 'primary' : 'outline-primary'}
               className={classNames(
-                'rounded-circle p-0 d-flex flex-center btn-wish btn-wish-primary  z-2 d-toggle-container',
+                'rounded-full p-0 flex flex-center btn-wish btn-wish-primary  z-2 d-toggle-container',
                 {
                   active: product.wishListed
                 }
@@ -35,7 +35,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
             </Button>
             <img src={product.image} alt="" className="img-fluid" />
             {product.verified && (
-              <Badge bg="success" className="fs-10 product-verified-badge">
+              <Badge bg="success" className="text-sm product-verified-badge">
                 Verified
                 <FontAwesomeIcon icon={faCheck} className="ms-1" />
               </Badge>
@@ -45,15 +45,15 @@ const ProductCard = ({ product }: { product: ProductType }) => {
             to="/apps/e-commerce/customer/product-details"
             className="stretched-link"
           >
-            <h6 className="mb-2 lh-sm line-clamp-3 product-name">
+            <h6 className="mb-2 leading-sm line-clamp-3 product-name">
               {product.name}
             </h6>
           </Link>
           {product.rating && (
-            <p className="fs-9">
+            <p className="text-md">
               <Rating readonly initialValue={product.rating} />
               {product.rated && (
-                <span className="text-body-quaternary fw-semibold ms-1">
+                <span className="text-soft font-semibold ms-1">
                   ({product.rated} people rated)
                 </span>
               )}
@@ -62,12 +62,12 @@ const ProductCard = ({ product }: { product: ProductType }) => {
         </div>
         <div>
           {product.extra && (
-            <p className={classNames(product.extraClass, 'fs-9')}>
+            <p className={classNames(product.extraClass, 'text-md')}>
               {product.extra}
             </p>
           )}
           {product.extra2 && (
-            <p className={classNames(product.extra2Class, 'fs-9')}>
+            <p className={classNames(product.extra2Class, 'text-md')}>
               {product.extra2}
             </p>
           )}
@@ -75,16 +75,16 @@ const ProductCard = ({ product }: { product: ProductType }) => {
           {product.salePrice && (
             <>
               {product.price ? (
-                <div className="d-flex align-items-center mb-1">
-                  <p className="me-2 text-body text-decoration-line-through mb-0">
+                <div className="flex items-center mb-1">
+                  <p className="me-2 text-default line-through mb-0">
                     {currencyFormat(product.price)}
                   </p>
-                  <h3 className="text-body-emphasis mb-0">
+                  <h3 className="text-emphasis mb-0">
                     {currencyFormat(product.salePrice)}
                   </h3>
                 </div>
               ) : (
-                <h3 className="text-body-emphasis">
+                <h3 className="text-emphasis">
                   {currencyFormat(product.salePrice)}
                 </h3>
               )}
@@ -94,7 +94,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
           {product.colors && (
             <p
               className={classNames(
-                'text-body-tertiary fw-semibold fs-9 lh-1',
+                'text-subtle font-semibold text-md leading-none',
                 {
                   'mb-0': !product.dealEndTime
                 }
@@ -105,13 +105,13 @@ const ProductCard = ({ product }: { product: ProductType }) => {
           )}
 
           {product.dealEndTime && (
-            <p className="text-success fw-bold fs-9 lh-1 mb-0">
+            <p className="text-success font-bold text-md leading-none mb-0">
               Deal time ends in {product.dealEndTime}
             </p>
           )}
 
           {product.offer && (
-            <h6 className="text-success lh-1 mb-0">{product.offer} off</h6>
+            <h6 className="text-success leading-none mb-0">{product.offer} off</h6>
           )}
         </div>
       </div>

@@ -35,11 +35,11 @@ const EmailLayout = ({
   }, []);
   return (
     <div className="email-container">
-      <Row className="gx-lg-4 gx-xl-6 gx-3 py-4 z-2 position-sticky bg-body email-header">
+      <Row className="lg:gx-6 xl:gx-10 gx-4 py-6 z-2 sticky bg-default email-header">
         <Col className="col-auto">
           <Button
             variant="primary"
-            className="email-sidebar-width d-none d-lg-block"
+            className="email-sidebar-width hidden lg:block"
             as={Link}
             to="/apps/email/compose"
           >
@@ -47,28 +47,28 @@ const EmailLayout = ({
           </Button>
           <Button
             variant="phoenix-secondary"
-            className="px-3 text-body-tertiary d-lg-none"
+            className="px-4 text-subtle lg:hidden"
             onClick={() => setOpenSidebar(true)}
           >
             <FontAwesomeIcon icon={faBars} />
           </Button>
         </Col>
         {page !== 'compose' && (
-          <Col className="col-auto d-lg-none">
-            <Button variant="primary" className="px-3 px-sm-4">
-              <span className="d-none d-sm-inline-block">Compose</span>
-              <FontAwesomeIcon icon={faPlus} className="d-sm-none" />
+          <Col className="col-auto lg:hidden">
+            <Button variant="primary" className="px-4 sm:px-6">
+              <span className="hidden sm:inline-block">Compose</span>
+              <FontAwesomeIcon icon={faPlus} className="sm:hidden" />
             </Button>
           </Col>
         )}
         <Col className="col-auto flex-1">
-          <SearchBox className="w-100" />
+          <SearchBox className="w-full" />
         </Col>
       </Row>
-      <Row className="g-lg-4 g-xl-6 mb-8">
+      <Row className="lg:g-6 xl:g-10 mb-14">
         <Col lg="auto">
           <div
-            className="email-sidebar email-sidebar-width bg-body d-none d-lg-block"
+            className="email-sidebar email-sidebar-width bg-default hidden lg:block"
             id="emailSidebarColumn"
           >
             <EmailSidebar />
@@ -78,7 +78,7 @@ const EmailLayout = ({
               open={openSidebar}
               fixed
               placement="start"
-              className="email-sidebar email-sidebar-width bg-body"
+              className="email-sidebar email-sidebar-width bg-default"
               backdropClassName="top-0"
               onHide={() => setOpenSidebar(false)}
             >
@@ -87,9 +87,9 @@ const EmailLayout = ({
           )}
         </Col>
         {page !== 'inbox' && (
-          <Col xs="3" className="d-none d-xxl-block">
+          <Col xs="3" className="hidden 2xl:block">
             <div className="email-content scrollbar">
-              <div className="px-lg-1">
+              <div className="lg:px-1">
                 <BulkSelectProvider data={emails}>
                   <InboxToolbar size="sm" />
                   {emails.map((email, index) => (

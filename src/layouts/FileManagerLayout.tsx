@@ -13,16 +13,16 @@ const FileManagerLayout = ({ children }: PropsWithChildren) => {
 
   return (
     <div>
-      <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-3" />
-      <h2 className="mb-4">File Manager</h2>
+      <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-4" />
+      <h2 className="mb-6">File Manager</h2>
       <Row
-        className={`gx-4 data-collapse-file-manager-sidebar mb-9 ${
+        className={`gx-6 data-collapse-file-manager-sidebar mb-16 ${
           showSidebar ? 'show-sidebar' : ''
         }`}
       >
         <Col
           xs="auto"
-          className="file-manager-sidebar-wrapper d-none d-lg-block "
+          className="file-manager-sidebar-wrapper hidden lg:block "
         >
           <Sidebar setOpenOffcanvas={setOpenOffcanvas} />
         </Col>

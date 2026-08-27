@@ -20,7 +20,7 @@ const ClearIndicator = (props: ClearIndicatorProps) => {
   } = props;
   return (
     <div {...restInnerProps} ref={ref} className="me-2">
-      <div className="text-primary fs-9">clear</div>
+      <div className="text-primary text-md">clear</div>
     </div>
   );
 };
@@ -28,7 +28,7 @@ const ClearIndicator = (props: ClearIndicatorProps) => {
 const DropdownIndicator = (props: DropdownIndicatorProps) => {
   return (
     <components.DropdownIndicator {...props}>
-      <FontAwesomeIcon icon={faAngleDown} className="fs-9 text-body" />
+      <FontAwesomeIcon icon={faAngleDown} className="text-md text-default" />
     </components.DropdownIndicator>
   );
 };

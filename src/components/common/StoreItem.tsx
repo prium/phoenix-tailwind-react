@@ -12,21 +12,21 @@ const StoreItem = ({ store }: { store: StoreItemType }) => {
   return (
     <RevealDropdownTrigger className="hover-actions-trigger">
       <div
-        className="border border-translucent d-flex flex-center rounded-3 mb-3 p-4"
+        className="border border-light flex flex-center rounded-lg mb-4 p-6"
         style={{ height: 180 }}
       >
-        <img className="mw-100" src={store.logo} alt={store.name} />
+        <img className="max-w-full" src={store.logo} alt={store.name} />
       </div>
       <h5 className="mb-2">{store.name}</h5>
-      <div className="mb-1 fs-9">
+      <div className="mb-1 text-md">
         <Rating initialValue={store.rating} readonly />
       </div>
-      <p className="text-body-quaternary fs-9 mb-2 fw-semibold">
+      <p className="text-soft text-md mb-2 font-semibold">
         ({store.rated} people rated)
       </p>
-      <Link className="p-0 fs-9 fw-bold" to="#!">
+      <Link className="p-0 text-md font-bold" to="#!">
         Visit Store
-        <FontAwesomeIcon icon={faChevronRight} className="ms-1 fs-10" />
+        <FontAwesomeIcon icon={faChevronRight} className="ms-1 text-sm" />
       </Link>
 
       <RevealDropdown

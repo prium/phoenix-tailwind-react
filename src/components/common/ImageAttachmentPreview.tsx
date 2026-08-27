@@ -15,13 +15,13 @@ const ImageAttachmentPreview = ({
 }) => {
   return (
     <div
-      className="rounded-2 overflow-hidden mb-2 position-relative"
+      className="rounded-md overflow-hidden mb-2 relative"
       style={{ height: previewHight, width: previewWidth }}
     >
-      <img src={image} className="w-100 h-100 object-fit-cover" alt="" />
-      <Dropdown className="position-absolute end-0 top-0 mt-2 me-2">
+      <img src={image} className="w-full h-full object-cover" alt="" />
+      <Dropdown className="absolute end-0 top-0 mt-2 me-2">
         <Dropdown.Toggle
-          className="text-body bg-body dropdown-caret-none px-3 py-2"
+          className="text-default bg-default dropdown-caret-none px-4 py-2"
           id="dropdown-basic"
         >
           <FontAwesomeIcon icon={faEllipsisH} />

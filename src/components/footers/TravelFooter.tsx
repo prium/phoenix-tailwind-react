@@ -15,9 +15,9 @@ const footerList1: string[] = [
 const footerList2: string[] = ['Refund policy', 'EMI Policy', 'Privacy Policy'];
 const TravelFooter = () => {
   return (
-    <section className="py-0 mb-5 mb-md-7 mb-lg-9">
-      <div className="container-medium-md px-0 px-md-3">
-        <div className="p-5 p-sm-7 py-xl-12 px-xl-15 rounded-md-2 overflow-hidden position-relative">
+    <section className="py-0 mb-8 md:mb-12 lg:mb-16">
+      <div className="container-medium-md px-0 md:px-4">
+        <div className="p-8 sm:p-12 xl:py-24 xl:px-30 md:rounded-md overflow-hidden relative">
           <div
             className="bg-holder overlay bg-opacity-85"
             style={{
@@ -26,10 +26,10 @@ const TravelFooter = () => {
               backgroundSize: 'cover'
             }}
           />
-          <Row className="g-5 position-relative justify-content-between">
+          <Row className="g-8 relative justify-between">
             <Col md={6} lg={3}>
-              <h5 className="text-white mb-3">Discover</h5>
-              <Row className="g-3">
+              <h5 className="text-white mb-4">Discover</h5>
+              <Row className="g-4">
                 <Col>
                   <ul className="list-unstyled mb-0">
                     {footerList1.map((item, index) => (
@@ -55,34 +55,34 @@ const TravelFooter = () => {
               </Row>
             </Col>
             <Col md={6} lg={3}>
-              <h5 className="text-white mb-3">Contact</h5>
+              <h5 className="text-white mb-4">Contact</h5>
               <Link
                 to="mailto:info@phoenixtravels.com"
-                className="d-block text-secondary-lighter mb-1 text-nowrap"
+                className="block text-secondary-lighter mb-1 whitespace-nowrap"
               >
                 <FontAwesomeIcon
                   icon={faEnvelope}
-                  className="me-2 me-lg-1 me-xl-2"
+                  className="me-2 lg:me-1 xl:me-2"
                 />
                 info@phoenixtravels.com
               </Link>
               <Link
                 to="tel:+13134048290"
-                className="d-block text-secondary-lighter mb-1"
+                className="block text-secondary-lighter mb-1"
               >
                 <FontAwesomeIcon icon={faPhone} className="me-2" />
                 +13134048290
               </Link>
             </Col>
             <Col lg={5}>
-              <h2 className="text-white mb-2 fw-semibold">
+              <h2 className="text-white mb-2 font-semibold">
                 Enjoy your trip to the fullest
               </h2>
-              <p className="mb-5 text-secondary-lighter">
+              <p className="mb-8 text-secondary-lighter">
                 Sign up and get notified
                 <br /> about best deals immediately
               </p>
-              <div className="d-flex gap-2">
+              <div className="flex gap-2">
                 <div className="form-icon-container flex-1">
                   <Form.Control
                     id="PickPlace"
@@ -92,11 +92,11 @@ const TravelFooter = () => {
                   />
                   <FontAwesomeIcon
                     icon={faEnvelope}
-                    className="form-icon text-body fs-9"
+                    className="form-icon text-default text-md"
                     transform="up-2"
                   />
                 </div>
-                <Button variant="primary" className="rounded px-md-7">
+                <Button variant="primary" className="rounded-md md:px-12">
                   Sign up
                 </Button>
               </div>

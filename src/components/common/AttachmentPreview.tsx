@@ -27,13 +27,13 @@ const AttachmentPreview = ({
   handleRemove
 }: AttachmentProps) => {
   return (
-    <a href={url} className="text-decoration-none d-flex align-items-center">
+    <a href={url} className="no-underline flex items-center">
       <div
         className={classNames(
-          `btn-icon btn-icon-${size} rounded-3 flex-column me-2 position-relative`,
+          `btn-icon btn-icon-${size} rounded-lg flex-col me-2 relative`,
           {
             border: !attachment.preview,
-            'text-body-quaternary': variant === 'primary',
+            'text-soft': variant === 'primary',
             'border-light-subtle text-white': variant === 'secondary'
           }
         )}
@@ -42,29 +42,29 @@ const AttachmentPreview = ({
           <img
             src={attachment.preview}
             alt={attachment.name}
-            className="w-100 rounded"
+            className="w-full rounded-md"
           />
         ) : (
           <>
             <FontAwesomeIcon
               icon={getFileIcon(attachment.format)}
-              className={classNames('fs-8 mb-1')}
+              className={classNames('text-base mb-1')}
             />
-            <p className="mb-0 fs-10 fw-bold lh-1">{attachment.format}</p>
+            <p className="mb-0 text-sm font-bold leading-none">{attachment.format}</p>
           </>
         )}
 
         {handleRemove && (
           <button className="btn btn-x" onClick={handleRemove}>
-            <FontAwesomeIcon icon={faXmark} className="text-body" />
+            <FontAwesomeIcon icon={faXmark} className="text-default" />
           </button>
         )}
       </div>
 
       <div className="flex-1">
         <h6
-          className={classNames('line-clamp-1 text-break', {
-            'text-body': variant === 'primary',
+          className={classNames('line-clamp-1 wrap-break-word', {
+            'text-default': variant === 'primary',
             'text-white': variant === 'secondary'
           })}
         >
@@ -72,22 +72,22 @@ const AttachmentPreview = ({
         </h6>
         <div
           className={classNames(
-            'd-flex align-items-center lh-1 fw-semibold fs-10',
+            'flex items-center leading-none font-semibold text-sm',
             {
-              'text-body-tertiary': variant == 'primary',
+              'text-subtle': variant == 'primary',
               'text-light': variant == 'secondary'
             }
           )}
         >
-          <p className="mb-0 text-nowrap">{attachment.size}</p>
+          <p className="mb-0 whitespace-nowrap">{attachment.size}</p>
           {attachment.date && (
             <>
               <FontAwesomeIcon
                 icon={faCircle}
-                className="text-body-quaternary"
+                className="text-soft"
                 transform="shrink-12"
               />
-              <p className="mb-0 text-nowrap">{attachment.date}</p>
+              <p className="mb-0 whitespace-nowrap">{attachment.date}</p>
             </>
           )}
         </div>

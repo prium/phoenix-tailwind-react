@@ -65,16 +65,16 @@ const ResizableNavbar = ({ navItems }: ResizableNav) => {
   }, [updateItems]);
 
   return (
-    <Navbar className="resizable-nav bg-body-emphasis border-y bg-body-emphasis border-translucent py-2">
+    <Navbar className="resizable-nav bg-soft border-y bg-soft border-light py-2">
       <Container
         fluid="medium"
-        className="d-flex flex-between-center flex-nowrap w-100"
+        className="flex flex-between-center flex-nowrap w-full"
         ref={containerRef}
       >
-        <Nav as="ul" className="justify-content-end align-items-center gap-5">
+        <Nav as="ul" className="justify-end items-center gap-8">
           {navItems.map((item, index) => (
             <Nav.Item
-              className="gap-3"
+              className="gap-4"
               key={item.id}
               ref={(el: HTMLDivElement) => {
                 (navItemsRef.current[index] = el)
@@ -95,7 +95,7 @@ const ResizableNavbar = ({ navItems }: ResizableNav) => {
           <Dropdown align="end" as={NavItem} ref={moreBtnRef}>
             <Dropdown.Toggle
               variant=""
-              className="fw-bold nav-link dropdown-caret-none"
+              className="font-bold nav-link dropdown-caret-none"
             >
               More
               <FontAwesomeIcon icon={faAngleDown} className="ms-2" />

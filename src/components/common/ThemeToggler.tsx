@@ -17,7 +17,7 @@ const ThemeToggler = ({ slim, className, ...rest }: ThemeTogglerProps) => {
   return (
     <Button
       className={classNames(className, 'border-0 p-0', {
-        'lh-1': slim
+        'leading-none': slim
       })}
       onClick={() => toggleTheme()}
       {...rest}
@@ -42,13 +42,13 @@ const ThemeToggler = ({ slim, className, ...rest }: ThemeTogglerProps) => {
           <div className="theme-control-toggle-label">
             <FeatherIcon
               className={classNames({
-                'me-1 d-none d-sm-block': slim
+                'me-1 hidden sm:block': slim
               })}
               icon={theme === 'dark' ? 'moon' : 'sun'}
               size={slim ? 10 : 16}
             />
             {slim && (
-              <span className="fs-9 fw-bold">
+              <span className="text-md font-bold">
                 {theme === 'dark' ? 'Dark' : 'Light'}
               </span>
             )}

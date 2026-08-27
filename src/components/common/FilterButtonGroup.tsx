@@ -18,12 +18,12 @@ interface FilterButtonGroupProps {
 
 const FilterButtonGroup = ({ menus }: FilterButtonGroupProps) => {
   return (
-    <ButtonGroup className="position-static">
+    <ButtonGroup className="static">
       {menus.map(menu => (
-        <Dropdown key={menu.label} as={ButtonGroup} className="position-static">
+        <Dropdown key={menu.label} as={ButtonGroup} className="static">
           <Dropdown.Toggle
             variant="phoenix-secondary"
-            className="px-7 flex-shrink-0 dropdown-caret-none"
+            className="px-12 shrink-0 dropdown-caret-none"
           >
             {menu.label}
             <FontAwesomeIcon
@@ -41,7 +41,7 @@ const FilterButtonGroup = ({ menus }: FilterButtonGroupProps) => {
           </Dropdown.Menu>
         </Dropdown>
       ))}
-      <Button variant="phoenix-secondary" className="px-7 flex-shrink-0">
+      <Button variant="phoenix-secondary" className="px-12 shrink-0">
         More filters
       </Button>
     </ButtonGroup>

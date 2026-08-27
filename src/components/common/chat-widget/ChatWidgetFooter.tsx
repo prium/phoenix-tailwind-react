@@ -54,7 +54,7 @@ const ChatWidgetFooter = () => {
 
       {imageAttachments && (
         <div
-          className={classNames('d-flex gap-2', {
+          className={classNames('flex gap-2', {
             'mb-2': imageAttachments.length
           })}
         >
@@ -71,8 +71,8 @@ const ChatWidgetFooter = () => {
           ))}
         </div>
       )}
-      <div className="d-flex align-items-center gap-2">
-        <div className="d-flex align-items-center flex-1 gap-3 border rounded-pill px-4">
+      <div className="flex items-center gap-2">
+        <div className="flex items-center flex-1 gap-4 border rounded-full px-6">
           <Form.Control
             className="outline-none border-0 flex-1 fs--1 px-0"
             type="text"
@@ -83,14 +83,14 @@ const ChatWidgetFooter = () => {
           <div>
             <Button className="p-0">
               <label
-                className="text-body-quaternary fs-9 cursor-pointer"
+                className="text-soft text-md cursor-pointer"
                 htmlFor="widgetImages"
               >
                 <FontAwesomeIcon icon={faImage} transform="down-1" />
               </label>
             </Button>
             <Form.Control
-              className="d-none"
+              className="hidden"
               type="file"
               accept="image/*"
               id="widgetImages"
@@ -105,14 +105,14 @@ const ChatWidgetFooter = () => {
           <div>
             <Button className="p-0">
               <label
-                className="text-body-quaternary fs-9 cursor-pointer"
+                className="text-soft text-md cursor-pointer"
                 htmlFor="widgetAttachments"
               >
                 <FontAwesomeIcon icon={faPaperclip} transform="down-1" />
               </label>
             </Button>
             <Form.Control
-              className="d-none"
+              className="hidden"
               type="file"
               id="widgetAttachments"
               accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar"
@@ -125,7 +125,7 @@ const ChatWidgetFooter = () => {
           </div>
         </div>
         <Button className="p-0 border-0 send-btn" type="submit">
-          <FontAwesomeIcon icon={faPaperPlane} className="fs-9" />
+          <FontAwesomeIcon icon={faPaperPlane} className="text-md" />
         </Button>
       </div>
     </form>

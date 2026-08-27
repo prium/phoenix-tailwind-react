@@ -21,7 +21,7 @@ const NavbarTopHorizontal = () => {
 
   return (
     <Navbar
-      className={classNames('navbar-top fixed-top', {
+      className={classNames('navbar-top fixed top-0 left-0 right-0 z-1030', {
         'navbar-slim': navbarTopShape === 'slim'
       })}
       expand="lg"
@@ -31,7 +31,7 @@ const NavbarTopHorizontal = () => {
       <NavbarBrand />
       {!(navbarPosition === 'combo' && breakpoints.down('lg')) && (
         <Navbar.Collapse
-          className="navbar-top-collapse order-1 order-lg-0 justify-content-center pb-0"
+          className="navbar-top-collapse order-1 lg:order-0 justify-center pb-0"
           in={openNavbarVertical}
         >
           <NavbarTopNav />

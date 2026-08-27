@@ -69,17 +69,17 @@ const TopNavLooper = ({ page }: { page: Route }) => {
       <Dropdown.Toggle
         as="a"
         variant=""
-        className="dropdown-item dropdown-caret-none lh-1 d-flex align-items-center cursor-pointer"
+        className="dropdown-item dropdown-caret-none leading-none flex items-center cursor-pointer"
         onClick={handleClick}
       >
         <div
           className={classNames('dropdown-item-wrapper', {
-            'text-body-quaternary': !page.active
+            'text-soft': !page.active
           })}
         >
           <UilAngleRight
             fill="currentColor"
-            className="lh-1 dropdown-indicator-icon"
+            className="leading-none dropdown-indicator-icon"
             size={16}
           />
           <span>
@@ -114,7 +114,7 @@ const TopNavDropdownItem = ({ page }: { page: Route }) => {
         to={page.path || '#!'}
         target={page.isTargetBlank ? "_blank": undefined}
         className={classNames({
-          'text-body-quaternary': !page.active,
+          'text-soft': !page.active,
           active: pathname === page.path
         })}
       >
@@ -124,7 +124,7 @@ const TopNavDropdownItem = ({ page }: { page: Route }) => {
               {page.iconSet === 'font-awesome' ? (
                 <FontAwesomeIcon
                   icon={page.icon as IconProp}
-                  className="fs-8 ms-1 me-2"
+                  className="text-base ms-1 me-2"
                 />
               ) : (
                 <FeatherIcon icon={page.icon} size={14} className="me-2" />

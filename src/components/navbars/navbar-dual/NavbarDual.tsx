@@ -13,13 +13,13 @@ const NavbarDual = () => {
 
   return (
     <Navbar
-      className="navbar-top fixed-top"
+      className="navbar-top fixed top-0 left-0 right-0 z-1030"
       expand="lg"
       variant=""
       data-navbar-appearance={navbarTopAppearance === 'darker' ? 'darker' : ''}
     >
-      <div className="w-100">
-        <div className="d-flex flex-between-center dual-nav-first-layer">
+      <div className="w-full">
+        <div className="flex flex-between-center dual-nav-first-layer">
           <NavbarBrand />
           <DropdownSearchBox
             className="navbar-top-search-box"
@@ -33,7 +33,7 @@ const NavbarDual = () => {
           <NavItems />
         </div>
         <Navbar.Collapse
-          className="navbar-top-collapse justify-content-center"
+          className="navbar-top-collapse justify-center"
           id="basic-navbar-nav"
         >
           <NavbarTopNav />

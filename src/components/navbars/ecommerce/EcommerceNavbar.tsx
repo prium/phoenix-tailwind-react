@@ -119,44 +119,44 @@ const EcommerceNavbar = () => {
   }, [updateItems]);
 
   return (
-    <Navbar className="ecommerce-navbar bg-body-emphasis justify-content-between p-0">
+    <Navbar className="ecommerce-navbar bg-soft justify-between p-0">
       <div
-        className="container-small d-flex flex-between-center flex-nowrap w-100"
+        className="container-small flex flex-between-center flex-nowrap w-full"
         ref={containerRef}
       >
         <Dropdown ref={otherElsRef}>
           <Dropdown.Toggle
             variant=""
-            className="text-body ps-0 pe-5 text-nowrap dropdown-toggle dropdown-caret-none"
+            className="text-default ps-0 pe-8 whitespace-nowrap dropdown-toggle dropdown-caret-none"
           >
             <FontAwesomeIcon icon={faBars} className="me-2" />
             Category
           </Dropdown.Toggle>
 
-          <Dropdown.Menu className="border border-translucent py-0 category-dropdown-menu">
+          <Dropdown.Menu className="border border-light py-0 category-dropdown-menu">
             <Card className="border-0">
               <Scrollbar style={{ maxHeight: 657}}>
-                <Card.Body className="p-6 pb-3">
-                  <Row className="gx-7 gy-5 mb-5">
+                <Card.Body className="p-10 pb-4">
+                  <Row className="gx-12 gy-8 mb-8">
                     {categories.map(category => (
                       <Col xs={12} sm={6} md={4} key={category.title}>
-                        <div className="d-flex align-items-center mb-3">
+                        <div className="flex items-center mb-4">
                           <FeatherIcon
                             icon={category.icon}
                             className="text-primary me-2"
                             style={{ strokeWidth: 3 }}
                             size={16}
                           />
-                          <h6 className="text-body-highlight mb-0 text-nowrap">
+                          <h6 className="text-highlight mb-0 whitespace-nowrap">
                             {category.title}
                           </h6>
                         </div>
-                        <div className="ms-n2">
+                        <div className="-ms-2">
                           {category.sections.map(section => (
                             <Link
                               key={section.label}
                               to={section.url}
-                              className="text-body-emphasis d-block mb-1 text-decoration-none bg-body-highlight-hover px-2 py-1 rounded-2"
+                              className="text-emphasis block mb-1 no-underline bg-body-highlight-hover px-2 py-1 rounded-md"
                             >
                               {section.label}
                             </Link>
@@ -165,8 +165,8 @@ const EcommerceNavbar = () => {
                       </Col>
                     ))}
                   </Row>
-                  <div className="text-center border-top border-translucent pt-3">
-                    <Link className="fw-bold" to="#!">
+                  <div className="text-center border-t border-light pt-4">
+                    <Link className="font-bold" to="#!">
                       See all Categories
                       <FontAwesomeIcon icon={faAngleRight} className="ms-1" />
                     </Link>
@@ -176,10 +176,10 @@ const EcommerceNavbar = () => {
             </Card>
           </Dropdown.Menu>
         </Dropdown>
-        <Nav as="ul" className="justify-content-end align-items-center gap-5">
+        <Nav as="ul" className="justify-end items-center gap-8">
           {initNavItems.map((item, index) => (
             <Nav.Item
-              className="gap-3"
+              className="gap-4"
               key={item.id}
               ref={(el: HTMLDivElement) => {
                 (navItemsRef.current[index] = el)
@@ -200,7 +200,7 @@ const EcommerceNavbar = () => {
           <Dropdown align="end" as={NavItem} ref={moreBtnRef}>
             <Dropdown.Toggle
               variant=""
-              className="fw-bold nav-link dropdown-caret-none"
+              className="font-bold nav-link dropdown-caret-none"
             >
               More
               <FontAwesomeIcon icon={faAngleDown} className="ms-2" />

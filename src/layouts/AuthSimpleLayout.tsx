@@ -11,22 +11,22 @@ interface AuthSimpleLayoutProps {
 
 const AuthSimpleLayout = ({
   logo = true,
-  className = 'col-xl-5 col-xxl-3',
+  className='xl:col-5 2xl:col-3',
   children
 }: PropsWithChildren<AuthSimpleLayoutProps>) => {
   return (
     <div className="container">
-      <Row className="flex-center min-vh-100 py-5">
+      <Row className="flex-center min-h-screen py-8">
         <Col sm={10} md={8} lg={5} className={classNames(className)}>
           {logo && (
             <Link
               to="/"
-              className="d-flex flex-center text-decoration-none mb-4"
+              className="flex flex-center no-underline mb-6"
             >
               <Logo
                 text={false}
                 width={58}
-                className="fw-bolder fs-5 d-inline-block"
+                className="font-black text-2xl inline-block"
               />
             </Link>
           )}

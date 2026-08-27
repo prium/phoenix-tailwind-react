@@ -9,7 +9,7 @@ import { useLocation } from 'react-router';
 
 const NavbarTopNav = () => {
   return (
-    <Nav className="navbar-nav-top pb-4 pb-lg-0">
+    <Nav className="navbar-nav-top pb-6 lg:pb-0">
       {routes.map(route => (
         <NavbarTopNavItem route={route} key={route.label} />
       ))}
@@ -56,7 +56,7 @@ const NavbarTopNavItem = ({ route }: { route: RouteItems }) => {
       <Dropdown.Toggle
         as="a"
         variant=""
-        className="nav-link lh-1 d-flex align-items-center cursor-pointer"
+        className="nav-link leading-none flex items-center cursor-pointer"
         // onClick={handleClick}
       >
         <Icon fill='currentColor' className="me-2" size={16} />

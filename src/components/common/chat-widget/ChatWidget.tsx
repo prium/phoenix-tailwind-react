@@ -23,7 +23,7 @@ const ChatWidget = () => {
   return (
     <div
       className={classNames({
-        'd-none': !isChatWidgetVisible
+        'hidden': !isChatWidgetVisible
       })}
     >
       <div
@@ -31,11 +31,11 @@ const ChatWidget = () => {
           'show-chat': isOpenChat
         })}
       >
-        <Card className="bg-body-emphasis chat">
-          <Card.Header className="d-flex flex-between-center px-4 py-2 border-bottom">
-            <h5 className="mb-0 d-flex align-items-center gap-2">
+        <Card className="bg-soft chat">
+          <Card.Header className="flex flex-between-center px-6 py-2 border-b">
+            <h5 className="mb-0 flex items-center gap-2">
               Demo widget
-              <FontAwesomeIcon icon={faCircle} className="text-success fs-11" />
+              <FontAwesomeIcon icon={faCircle} className="text-success text-xs" />
             </h5>
             <RevealDropdownTrigger>
               <RevealDropdown>
@@ -49,35 +49,35 @@ const ChatWidget = () => {
               </RevealDropdown>
             </RevealDropdownTrigger>
           </Card.Header>
-          <Card.Body className="scrollbar p-3">
+          <Card.Body className="scrollbar p-4">
             <ChatWidgetConversation />
           </Card.Body>
-          <Card.Footer className="border-top ps-3 pe-4 py-3">
+          <Card.Footer className="border-t ps-4 pe-6 py-4">
             <ChatWidgetFooter />
           </Card.Footer>
         </Card>
       </div>
       <Button
         className={classNames(
-          'p-0 border border-translucent btn-support-chat',
+          'p-0 border border-light btn-support-chat',
           {
             'btn-chat-close': isOpenChat
           }
         )}
         onClick={() => setIsOpenChat(!isOpenChat)}
       >
-        <span className="fs-8 btn-text text-primary text-nowrap">
+        <span className="text-base btn-text text-primary whitespace-nowrap">
           Chat demo
         </span>
-        <span className="ping-icon-wrapper mt-n4 ms-n6 mt-sm-0 ms-sm-2 position-absolute position-sm-relative">
+        <span className="ping-icon-wrapper -mt-6 -ms-10 sm:mt-0 sm:ms-2 absolute sm:relative">
           <span className="ping-icon-bg" />
           <FontAwesomeIcon icon={faCircle} className="ping-icon" />
         </span>
         <FontAwesomeIcon
           icon={faHeadset}
-          className="text-primary fs-8 d-sm-none"
+          className="text-primary text-base sm:hidden"
         />
-        <FontAwesomeIcon icon={faChevronDown} className="text-primary fs-7" />
+        <FontAwesomeIcon icon={faChevronDown} className="text-primary text-lg" />
       </Button>
     </div>
   );

@@ -20,7 +20,7 @@ const MessageAttachments = ({ attachments }: { attachments: string[] }) => {
             <img
               src={attachment}
               alt=""
-              className="rounded-2 cursor-pointer img-fluid"
+              className="rounded-md cursor-pointer img-fluid"
               onClick={() => {
                 openLightbox(index + 1);
               }}

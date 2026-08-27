@@ -8,20 +8,20 @@ const AuthSocialButtons = ({ title }: { title: string }) => {
     <>
       <Button
         variant="phoenix-secondary"
-        className="w-100 mb-3"
+        className="w-full mb-4"
         startIcon={
-          <FontAwesomeIcon icon={faGoogle} className="text-danger me-2 fs-9" />
+          <FontAwesomeIcon icon={faGoogle} className="text-danger me-2 text-md" />
         }
       >
         {title} with google
       </Button>
       <Button
         variant="phoenix-secondary"
-        className="w-100"
+        className="w-full"
         startIcon={
           <FontAwesomeIcon
             icon={faFacebook}
-            className="text-primary me-2 fs-9"
+            className="text-primary me-2 text-md"
           />
         }
       >

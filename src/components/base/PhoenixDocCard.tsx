@@ -82,15 +82,15 @@ const PhoenixDocCardHeader = ({
     <Card.Header
       className={classNames(
         className,
-        'p-4 border-bottom bg-body hover-actions-trigger'
+        'p-10 border-b bg-default hover-actions-trigger'
       )}
       id={headerId}
     >
-      <Row className={`g-3 justify-content-between align-items-${alignItems}`}>
+      <Row className={`g-4 justify-between align-items-${alignItems}`}>
         <Col xs={12} md>
           {title && (
             <h4
-              className={classNames('text-body text-nowrap', {
+              className={classNames('text-default whitespace-nowrap', {
                 'mb-0': !children && !description,
                 'mb-2': children || description
               })}
@@ -102,17 +102,17 @@ const PhoenixDocCardHeader = ({
             </h4>
           )}
           {description && (
-            <p className="mb-0 text-body-secondary">{description}</p>
+            <p className="mb-0 text-muted">{description}</p>
           )}
           {children}
         </Col>
         {showPreviewBtn && (
           <Col md="auto">
-            <Nav className="nav-underline justify-content-end doc-tab-nav align-items-center">
+            <Nav className="nav-underline justify-end doc-tab-nav items-center">
               <Button
                 variant="link"
                 size="sm"
-                className="px-2 text-body copy-code-btn me-2"
+                className="px-2 text-default copy-code-btn me-2"
                 onClick={handleCopyCode}
               >
                 <FontAwesomeIcon icon={faCopy} className="me-1" />
@@ -120,7 +120,7 @@ const PhoenixDocCardHeader = ({
               </Button>
               <Button
                 variant="phoenix-primary"
-                className="text-nowrap"
+                className="whitespace-nowrap"
                 size="sm"
                 style={{ width: 135 }}
                 onClick={() => setOpen(!open)}
@@ -145,15 +145,15 @@ const PhoenixDocCardHeader = ({
       <Toast
         show={showToast}
         onClose={() => setShowToast(false)}
-        className="align-items-center bg-dark border-0 bottom-0 end-0 mb-3 me-3 position-fixed text-white z-5"
+        className="items-center bg-dark border-0 bottom-0 end-0 mb-4 me-4 fixed text-white z-5"
         delay={3000}
         data-bs-theme="light"
         autohide
       >
-        <div className="d-flex">
+        <div className="flex">
           <Toast.Body className="P-3">
-            <span className="fw-black">
-              <code className="text-body-quaternary">
+            <span className="font-black">
+              <code className="text-soft">
                 Code has been copied to clipboard.
               </code>
             </span>
@@ -200,7 +200,7 @@ const PhoenixDocCardBody = ({
                 </div>
               </Collapse>
               {!hidePreview && (
-                <div className="p-4">
+                <div className="p-6">
                   <LivePreview />
                 </div>
               )}
@@ -209,7 +209,7 @@ const PhoenixDocCardBody = ({
         </PhoenixLiveProvider>
       )}
 
-      {children && <div className="p-4">{children}</div>}
+      {children && <div className="p-6">{children}</div>}
     </Card.Body>
   );
 };

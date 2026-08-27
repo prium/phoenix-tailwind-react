@@ -43,28 +43,28 @@ const SettingsPanel = () => {
       onHide={handleClose}
       placement="end"
     >
-      <Offcanvas.Header className="align-items-start border-bottom border-translucent flex-column">
-        <div className="pt-1 w-100 mb-6 d-flex justify-content-between align-items-start">
+      <Offcanvas.Header className="items-start border-b border-light flex-col">
+        <div className="pt-1 w-full mb-10 flex justify-between items-start">
           <div>
-            <h5 className="mb-2 me-2 lh-sm">
-              <FontAwesomeIcon icon={faPalette} className="me-2 fs-8" />
+            <h5 className="mb-2 me-2 leading-sm">
+              <FontAwesomeIcon icon={faPalette} className="me-2 text-base" />
               Theme Customizer
             </h5>
-            <p className="mb-0 fs-9">
+            <p className="mb-0 text-md">
               Explore different styles according to your preferences
             </p>
           </div>
-          <button className="btn p-1 fw-bolder" onClick={handleClose}>
-            <FontAwesomeIcon icon={faTimes} className="fs-8" />
+          <button className="btn p-1 font-black" onClick={handleClose}>
+            <FontAwesomeIcon icon={faTimes} className="text-base" />
           </button>
         </div>
         <Button
           variant="phoenix-secondary"
-          className="w-100"
+          className="w-full"
           onClick={handleResetToDefault}
           disabled={disableResetButton}
         >
-          <FontAwesomeIcon icon={faArrowsRotate} className="me-2 fs-10" />
+          <FontAwesomeIcon icon={faArrowsRotate} className="me-2 text-sm" />
           Reset to default
         </Button>
       </Offcanvas.Header>
@@ -75,12 +75,12 @@ const SettingsPanel = () => {
         <NavigationType />
         <VerticalNavbarAppearance />
         <HorizontalNavbarShape />
-        <TopNavbarAppearance className="mb-5" />
+        <TopNavbarAppearance className="mb-8" />
         <Button
           as="a"
           target="_blank"
           href={`${import.meta.env.VITE_PURCHASE_LINK}`}
-          className="w-100 mb-3 text-white"
+          className="w-full mb-4 text-white"
           variant="primary"
         >
           Purchase template

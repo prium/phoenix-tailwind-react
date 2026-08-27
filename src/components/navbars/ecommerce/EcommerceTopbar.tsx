@@ -12,15 +12,15 @@ const EcommerceTopbar = () => {
     <div className="container-small">
       <div className="ecommerce-topbar">
         <Navbar className="px-0">
-          <Row className="gx-0 gy-2 w-100 flex-between-center">
+          <Row className="gx-0 gy-2 w-full flex-between-center">
             <Col xs="auto">
-              <Link to="/" className="text-decoration-none">
+              <Link to="/" className="no-underline">
                 <Logo />
               </Link>
             </Col>
-            <Col xs="auto" className="order-md-1">
-              <Nav as="ul" className="navbar-nav-icons flex-row me-n2">
-                <Nav.Item as="li" className="d-flex align-items-center">
+            <Col xs="auto" className="md:order-1">
+              <Nav as="ul" className="navbar-nav-icons flex-row -me-2">
+                <Nav.Item as="li" className="flex items-center">
                   <ThemeToggler />
                 </Nav.Item>
 
@@ -54,7 +54,7 @@ const EcommerceTopbar = () => {
                     <Dropdown.Toggle
                       as={Link}
                       to="#!"
-                      className="dropdown-caret-none nav-link lh-1"
+                      className="dropdown-caret-none nav-link leading-none"
                       variant=""
                     >
                       <FeatherIcon icon="user" size={20} />
@@ -67,7 +67,7 @@ const EcommerceTopbar = () => {
             <Col xs={12} md={6}>
               <SearchBox
                 placeholder="Search..."
-                className="ecommerce-search-box w-100"
+                className="ecommerce-search-box w-full"
                 inputClassName="rounded-pill"
                 size="sm"
                 // style={{ width: '25rem' }}

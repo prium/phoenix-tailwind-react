@@ -73,7 +73,7 @@ const NavItemsSlim = () => {
             className="dropdown-caret-none nav-link pe-0 py-0"
             variant=""
           >
-            Olivia <FontAwesomeIcon icon={faChevronDown} className="fs-10" />
+            Olivia <FontAwesomeIcon icon={faChevronDown} className="text-sm" />
           </Dropdown.Toggle>
           <ProfileDropdownMenu />
         </Dropdown>
@@ -82,7 +82,7 @@ const NavItemsSlim = () => {
       <Modal
         show={openSearchModal}
         onHide={() => setOpenSearchModal(false)}
-        className="search-box-modal mt-15"
+        className="search-box-modal mt-30"
       >
         <Modal.Body className="p-0 bg-transparent">
           <DropdownSearchBox

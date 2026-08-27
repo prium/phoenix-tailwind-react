@@ -37,7 +37,7 @@ const NavbarVerical = () => {
       >
         <Navbar.Collapse id="navbarVerticalCollapse" in={openNavbarVertical}>
           <div className="navbar-vertical-content">
-            <Nav className="flex-column" as="ul" id="navbarVerticalNav">
+            <Nav className="flex-col" as="ul" id="navbarVerticalNav">
               {routes.map(route => (
                 <Nav.Item key={route.label}>
                   {!route.labelDisabled && (
@@ -65,7 +65,7 @@ const NavbarVerical = () => {
         </Navbar.Collapse>
         <div className="navbar-vertical-footer">
           <Button
-            className="navbar-vertical-toggle border-0 fw-semibold w-100 white-space-nowrap d-flex align-items-center"
+            className="navbar-vertical-toggle border-0 font-semibold w-full whitespace-nowrap flex items-center"
             onClick={() => {
               setConfig({
                 isNavbarVerticalCollapsed: !isNavbarVerticalCollapsed

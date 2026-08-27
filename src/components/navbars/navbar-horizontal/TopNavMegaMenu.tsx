@@ -34,19 +34,19 @@ const TopNavMegaMenu = ({ route }: { route: RouteItems }) => {
     >
       <div className="border-0 scrollbar" style={{ height: '60vh' }}>
         <div
-          className="px-3 pt-4 pb-3 img-dropdown scrollbar"
+          className="px-4 pt-6 pb-4 img-dropdown scrollbar"
           style={{
             backgroundImage: `url(${logoBg})`
           }}
         >
-          <Row className="gx-4 gy-5">
+          <Row className="gx-6 gy-8">
             {columns.map((column, index) => (
               <Col key={index} xs={12} sm={6} md={4}>
                 {column.map((page, index) => (
                   <Fragment key={page.name}>
                     <div
                       className={classNames('dropdown-item-group', {
-                        'mt-5': index > 0
+                        'mt-14': index > 0
                       })}
                     >
                       <FeatherIcon
@@ -82,7 +82,7 @@ const TopNavMegaMenuIitemsLooper = ({ page }: { page: Route }) => {
             <Link
               to={page.path || '#!'}
               className={classNames('dropdown-link', {
-                'text-body-quaternary': !page.active,
+                'text-soft': !page.active,
                 active: pathname === page.path
               })}
             >

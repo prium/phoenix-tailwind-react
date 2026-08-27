@@ -107,15 +107,15 @@ const Dropzone = ({
         {children ? (
           <>{children}</>
         ) : (
-          <div className="text-body-tertiary text-opacity-85 fw-bold fs-9">
+          <div className="text-subtle text-opacity-85 font-bold text-md">
             Drag your {imageOnly ? 'photo' : 'files'} here{' '}
-            <span className="text-body-secondary">or </span>
+            <span className="text-muted">or </span>
             <Button variant="link" className="p-0">
               Browse from device
             </Button>
             <br />
             <img
-              className="mt-3"
+              className="mt-4"
               src={imageIcon}
               width={classNames({ 24: size === 'sm', 40: size !== 'sm' })}
               alt=""
@@ -128,7 +128,7 @@ const Dropzone = ({
           <div
             key={index}
             className={classNames(
-              'border-bottom border-translucent d-flex align-items-center justify-content-between py-3'
+              'border-b border-light flex items-center justify-between py-6'
             )}
           >
             <AttachmentPreview attachment={file} />
@@ -140,7 +140,7 @@ const Dropzone = ({
         ))}
 
       {imageOnly && !noPreview && files.length > 0 && (
-        <div className="d-flex flex-wrap gap-2 mt-3">
+        <div className="flex flex-wrap gap-2 mt-4">
           {files.map((file, index) => (
             <ImageAttachmentPreview
               key={file.name}

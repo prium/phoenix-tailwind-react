@@ -40,7 +40,7 @@ const InputGroupCounter = ({
         value={value}
         id={id && id}
         onChange={e => setValue(parseInt(e.target.value))}
-        className="border-translucent input-spin-none text-center rounded"
+        className="border-light input-spin-none text-center rounded-md"
       />
       <Button
         variant="phoenix-primary"

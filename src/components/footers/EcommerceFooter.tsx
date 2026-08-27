@@ -10,7 +10,7 @@ import { Link } from 'react-router';
 
 const LinkItem = ({ children, to }: PropsWithChildren<{ to: string }>) => {
   return (
-    <Link to={to} className="text-body-tertiary fw-semibold fs-9 mb-1">
+    <Link to={to} className="text-subtle font-semibold text-md mb-1">
       {children}
     </Link>
   );
@@ -18,12 +18,12 @@ const LinkItem = ({ children, to }: PropsWithChildren<{ to: string }>) => {
 
 const EcommerceFooter = () => {
   return (
-    <section className="bg-body-highlight dark__bg-gray-1100 py-9">
+    <section className="bg-subtle dark__bg-gray-1100 py-16">
       <div className="container-small">
-        <Row className="justify-content-between gy-4">
+        <Row className="justify-between gy-6">
           <Col xs={12} lg={4}>
-            <Logo className="mb-3" />
-            <p className="text-body-tertiary mb-1 fw-semibold lh-sm fs-9">
+            <Logo className="mb-4" />
+            <p className="text-subtle mb-1 font-semibold leading-sm text-md">
               Phoenix is an admin dashboard template with fascinating features
               and amazing layout. The template is responsive to all major
               browsers and is compatible with all available devices and screen
@@ -31,7 +31,7 @@ const EcommerceFooter = () => {
             </p>
           </Col>
           <Col xs={6} md="auto">
-            <h5 className="fw-bolder mb-3">About Phoenix</h5>
+            <h5 className="font-black mb-4">About Phoenix</h5>
             <Stack>
               <LinkItem to="#!">Careers</LinkItem>
               <LinkItem to="#!">Affiliate Program</LinkItem>
@@ -40,27 +40,27 @@ const EcommerceFooter = () => {
             </Stack>
           </Col>
           <Col xs={6} md="auto">
-            <h5 className="fw-bolder mb-3">Stay Connected</h5>
+            <h5 className="font-black mb-4">Stay Connected</h5>
             <Stack>
               <LinkItem to="#!">Blogs</LinkItem>
-              <Link to="#!" className="mb-1 fw-semibold fs-9">
+              <Link to="#!" className="mb-1 font-semibold text-md">
                 <FontAwesomeIcon
                   icon={faFacebookSquare}
-                  className="text-primary me-2 fs-8"
+                  className="text-primary me-2 text-base"
                 />
-                <span className="text-body-secondary">Facebook</span>
+                <span className="text-muted">Facebook</span>
               </Link>
-              <Link to="#!" className="mb-1 fw-semibold fs-9">
+              <Link to="#!" className="mb-1 font-semibold text-md">
                 <FontAwesomeIcon
                   icon={faTwitterSquare}
-                  className="text-info me-2 fs-8"
+                  className="text-info me-2 text-base"
                 />
-                <span className="text-body-secondary">Twitter</span>
+                <span className="text-muted">Twitter</span>
               </Link>
             </Stack>
           </Col>
           <Col xs={6} md="auto">
-            <h5 className="fw-bolder mb-3">Customer Service</h5>
+            <h5 className="font-black mb-4">Customer Service</h5>
             <Stack>
               <LinkItem to="#!">Help Desk</LinkItem>
               <LinkItem to="#!">Support, 24/7</LinkItem>
@@ -68,7 +68,7 @@ const EcommerceFooter = () => {
             </Stack>
           </Col>
           <Col xs={6} md="auto">
-            <h5 className="fw-bolder mb-3">Payment Method</h5>
+            <h5 className="font-black mb-4">Payment Method</h5>
             <Stack>
               <LinkItem to="#!">Cash on Delivery</LinkItem>
               <LinkItem to="#!">Online Payment</LinkItem>

@@ -25,7 +25,7 @@ const CheckButton = ({
       <Button
         as="label"
         variant={variant}
-        className={classNames(className, 'bg-body-hover fs-10 py-1 mb-0')}
+        className={classNames(className, 'hover:bg-default text-sm py-1 mb-0')}
         htmlFor={id}
       >
         {label}

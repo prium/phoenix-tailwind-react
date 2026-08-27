@@ -20,21 +20,21 @@ const NavbarBrand = () => {
           as={Link}
           to="/"
           className={classNames({
-            'me-1 me-sm-3':
+            'me-1 sm:me-4':
               navbarTopShape === 'slim' || navbarPosition === 'horizontal'
           })}
         >
           {navbarTopShape === 'slim' ? (
             <>
               phoenix{' '}
-              <span className="text-body-highlight d-none d-sm-inline">
+              <span className="text-highlight hidden sm:inline">
                 slim
               </span>
             </>
           ) : (
-            <div className="d-flex align-items-center">
+            <div className="flex items-center">
               <img src={logo} alt="phoenix" width={27} />
-              <p className="logo-text ms-2 d-none d-sm-block">phoenix</p>
+              <p className="logo-text ms-2 hidden sm:block">phoenix</p>
             </div>
           )}
         </Navbar.Brand>

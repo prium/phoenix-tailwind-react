@@ -34,9 +34,9 @@ const AvatarUpload = ({
     }
   };
   return (
-    <div className={classNames('d-inline-flex', className)}>
+    <div className={classNames('inline-flex', className)}>
       <input
-        className="d-none"
+        className="hidden"
         id="avatarFile"
         type="file"
         accept="image/*"
@@ -54,7 +54,7 @@ const AvatarUpload = ({
           imageClassName={imageClassName}
         />
         <div
-          className="h-100 w-100 bg-black position-absolute top-0 rounded-circle justify-content-center align-items-center hover-actions"
+          className="h-full w-full bg-black absolute top-0 rounded-full justify-center items-center hover-actions"
           data-bs-theme="light"
           style={{ '--phoenix-bg-opacity': 0.56 } as CSSProperties}
         >

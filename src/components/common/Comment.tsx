@@ -13,19 +13,19 @@ const Comment = ({ comment, className }: CommentProps) => {
     <Row
       className={classNames(
         className,
-        'justify-contnet-between g-0 py-3 align-items-start'
+        'justify-contnet-between g-0 py-6 items-start'
       )}
     >
       <Col xs={12} sm>
         <p
-          className={classNames('fs-9 text-body-secondary mb-0', {
+          className={classNames('text-md text-muted mb-0', {
             'mb-2': comment.attachment
           })}
         >
           <Link
             to={comment.user.url}
-            className={classNames('fw-semibold', {
-              'text-body-highlight text-decoration-none': comment.own
+            className={classNames('font-semibold', {
+              'text-highlight no-underline': comment.own
             })}
           >
             {comment.own ? 'You' : comment.user.name}
@@ -38,12 +38,12 @@ const Comment = ({ comment, className }: CommentProps) => {
             src={comment.attachment}
             alt=""
             width={220}
-            className="rounded-2 mb-2"
+            className="rounded-md mb-2"
           />
         )}
       </Col>
       <Col xs={{ span: 12, order: 1 }} sm={{ span: 'auto', order: 0 }}>
-        <p className="text-body-secondary fw-semibold fs-10 mb-0">
+        <p className="text-muted font-semibold text-sm mb-0">
           Oct 4 at 12:18 pm
         </p>
       </Col>
