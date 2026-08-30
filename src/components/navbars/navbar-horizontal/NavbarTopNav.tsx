@@ -1,77 +1,48 @@
 import { capitalize } from 'helpers/utils';
-import { useEffect, useState } from 'react';
-import { Dropdown, Nav } from 'react-bootstrap';
+import { cn } from '@hummingbirdui/react';
 import { RouteItems, routes } from 'sitemap';
 import TopNavMegaMenu from './TopNavMegaMenu';
 import TopNavItem from './TopNavItem';
-import { useBreakpoints } from 'providers/BreakpointsProvider';
-import { useLocation } from 'react-router';
+import useTopNavDropdown from './useTopNavDropdown';
 
-const NavbarTopNav = () => {
+/** `+navbarTopMenus` in phoenix-tailwind Mixins.pug */
+const NavbarTopNav = ({ className }: { className?: string }) => {
   return (
-    <Nav className="navbar-nav-top pb-6 lg:pb-0">
+    <ul
+      className={cn('navbar-nav navbar-nav-top', className)}
+      data-dropdown-on-hover=""
+    >
       {routes.map(route => (
         <NavbarTopNavItem route={route} key={route.label} />
       ))}
-    </Nav>
+    </ul>
   );
 };
 
 const NavbarTopNavItem = ({ route }: { route: RouteItems }) => {
   const Icon = route.icon;
-  const [show, setShow] = useState(false);
-  const { pathname } = useLocation();
-
-  const { breakpoints } = useBreakpoints();
-
-  const handleMouseEnter = () => {
-    if (breakpoints.up('lg')) {
-      setShow(true);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (breakpoints.up('lg')) {
-      setShow(false);
-    }
-  };
-
-  useEffect(() => {
-    if (show) {
-      setShow(false);
-    }
-  }, [pathname]);
+  const { open, toggleProps, containerProps } =
+    useTopNavDropdown<HTMLLIElement>();
+  const label = route.horizontalNavLabel ?? route.label;
 
   return (
-    <Dropdown
-      as="li"
-      show={show}
-      className="nav-item"
-      key={route.label}
-      autoClose="outside"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onToggle={() => setShow(!show)}
-    >
-      <Dropdown.Toggle
-        as="a"
-        variant=""
-        className="nav-link leading-none flex items-center cursor-pointer"
-        // onClick={handleClick}
+    <li className="nav-item dropdown" {...containerProps}>
+      <a
+        href="#!"
+        role="button"
+        aria-haspopup="true"
+        className={cn('nav-link dropdown-toggle leading-none', { show: open })}
+        {...toggleProps}
       >
-        <Icon fill='currentColor' className="me-2" size={16} />
-        <span>
-          {capitalize(
-            route.horizontalNavLabel ? route.horizontalNavLabel : route.label
-          )}
-        </span>
-      </Dropdown.Toggle>
+        <Icon className="uil text-base me-2" size={16} fill="currentColor" />
+        {capitalize(label)}
+      </a>
       {route.megaMenu ? (
-        <TopNavMegaMenu route={route} />
+        <TopNavMegaMenu route={route} show={open} />
       ) : (
-        <TopNavItem route={route} />
+        <TopNavItem route={route} show={open} />
       )}
-    </Dropdown>
+    </li>
   );
 };
 

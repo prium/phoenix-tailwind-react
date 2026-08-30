@@ -77,6 +77,9 @@ Anything unmigrated still compiles through the temporary shim `src/react-bootstr
 - Anything whose CSS keys on structure (`.swiper-nav`, `.timeline-item-bar`, `.dz-message`, `.search-box > form > .search-input`, `.table-list .sort[data-sort]`, `.navbar-vertical ~ .content`) must keep the gold DOM verbatim.
 - Table image columns need the gold `min-w-*` on the `th`, otherwise `max-w-full` shrinks the image.
 - Radix portals: dropdown/dialog content lives under `body` — classes go on the content element; measure hidden nav items while visible (`EcommerceNavbar`).
+- Nested / hover menus (top navbar): HB `Dropdown` has no submenus — keep gold's plain `li.dropdown > a.dropdown-toggle + ul.dropdown-menu` markup and drive `show` + `data-bs-popper="none"` from state (`navbar-horizontal/useTopNavDropdown.ts`).
+- HB `Navbar.Collapse` is a `grid` below its breakpoint (gold is `display:block`): use `lg:justify-center`, not `justify-center`.
+- Layout variants (horizontal / combo / dual / slim) are verified against `../phoenix-tailwind/public/demo/*.html` via `layout(...)` entries in `tests/visual/pages.ts` (per-side `setup.storage` seeds `localStorage`).
 - Leaflet colour filter: `L.tileLayer(url, { colorFilter })` + `updateColorFilter` (plugin v2 augments `TileLayer`).
 - Playwright: install once with `npm i -D playwright`, launch with `channel: 'chrome'`; Mapbox pages need `waitUntil: 'load'` not `networkidle`.
 - Shell quirks: don't `cd` into subdirs in compound commands (cwd drifts); `===` in `echo` breaks zsh.

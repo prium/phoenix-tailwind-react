@@ -26,7 +26,23 @@ export interface VisualPage {
 export interface SideSetup {
   click?: string;
   eval?: string;
+  /** localStorage entries set before the page loads (e.g. layout config). */
+  storage?: Record<string, string>;
 }
+
+/** React `/` with a navbar config vs a gold `demo/*.html` layout page. */
+const layout = (
+  name: string,
+  gold: string,
+  storage: Record<string, string>,
+  extra: Partial<VisualPage> = {}
+): VisualPage => ({
+  name,
+  react: '/',
+  gold: `/demo/${gold}.html`,
+  setup: { react: { storage } },
+  ...extra
+});
 
 /** Forces the gold (static JS) offcanvas open the way hummingbird's toggle would. */
 const OPEN_GOLD_OFFCANVAS = `const o=document.querySelector('#settings-offcanvas');o.classList.add('show');o.style.visibility='visible';const b=document.createElement('div');b.className='offcanvas-backdrop fade show';document.body.appendChild(b)`;
@@ -52,6 +68,20 @@ export const pages: VisualPage[] = [
     dark: true,
     widths: [768]
   },
+  // layouts (settings panel "Navigation type" / "Horizontal navbar shape")
+  layout('layout-horizontal', 'navbar-horizontal', {
+    navbarPosition: 'horizontal'
+  }),
+  layout('layout-combo', 'combo-nav', { navbarPosition: 'combo' }),
+  layout('layout-dual', 'dual-nav', { navbarPosition: 'dual' }),
+  layout('layout-combo-slim', 'combo-nav-slim', {
+    navbarPosition: 'combo',
+    navbarTopShape: 'slim'
+  }),
+  layout('layout-topnav-slim', 'topnav-slim', {
+    navbarTopShape: 'slim',
+    navbarTopAppearance: 'darker'
+  }),
   {
     name: 'settings-panel',
     react: '/',

@@ -38,7 +38,7 @@ export interface ShotOptions {
   width: number;
   dark: boolean;
   mask?: string[];
-  setup?: { click?: string; eval?: string };
+  setup?: { click?: string; eval?: string; storage?: Record<string, string> };
 }
 
 export async function shoot(
@@ -54,13 +54,14 @@ export async function shoot(
   });
   // Both apps read the same localStorage keys (phoenix config.js / index.html pre-paint script).
   await context.addInitScript(
-    ([theme]) => {
+    ([theme, storage]) => {
       localStorage.setItem('theme', theme);
       localStorage.setItem('isRTL', 'false');
       localStorage.setItem('isNavbarVerticalCollapsed', 'false');
       localStorage.setItem('phoenixTheme', theme); // gold config.js key
+      Object.entries(storage).forEach(([k, v]) => localStorage.setItem(k, v));
     },
-    [opts.dark ? 'dark' : 'light']
+    [opts.dark ? 'dark' : 'light', opts.setup?.storage ?? {}] as const
   );
   const page = await context.newPage();
   await page.goto(url, { waitUntil: 'load', timeout: 60_000 });

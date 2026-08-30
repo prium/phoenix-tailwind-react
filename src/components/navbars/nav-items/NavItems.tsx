@@ -1,5 +1,5 @@
 import Avatar from 'components/base/Avatar';
-import { Dialog, Dropdown, cn } from '@hummingbirdui/react';
+import { Dropdown, cn } from '@hummingbirdui/react';
 import avatar57 from 'assets/img/team/40x40/57.webp';
 import ProfileDropdownMenu from './ProfileDropdownMenu';
 import NineDotMenu from './NineDotMenu';
@@ -9,8 +9,7 @@ import { Link } from 'react-router';
 import NotificationDropdownMenu from './NotificationDropdownMenu';
 import ThemeToggler from 'components/common/ThemeToggler';
 import { useState } from 'react';
-import DropdownSearchBox from 'components/common/DropdownSearchBox';
-import SearchResult from 'components/common/SearchResult';
+import SearchModal from './SearchModal';
 
 /** `+NavbarIcons` in phoenix-tailwind Mixins.pug */
 const NavItems = () => {
@@ -97,25 +96,7 @@ const NavItems = () => {
         </li>
       </ul>
 
-      {/* #searchBoxModal in LayoutContent.pug */}
-      <Dialog open={openSearchModal} onOpenChange={setOpenSearchModal}>
-        <Dialog.Content
-          className="mt-30 rounded-full"
-          aria-describedby={undefined}
-        >
-          <Dialog.Title className="sr-only">Search</Dialog.Title>
-          <Dialog.Body className="p-0">
-            <DropdownSearchBox
-              className="navbar-top-search-box"
-              inputClassName="rounded-full"
-              size="lg"
-              style={{ width: 'auto' }}
-            >
-              <SearchResult />
-            </DropdownSearchBox>
-          </Dialog.Body>
-        </Dialog.Content>
-      </Dialog>
+      <SearchModal open={openSearchModal} onOpenChange={setOpenSearchModal} />
     </>
   );
 };

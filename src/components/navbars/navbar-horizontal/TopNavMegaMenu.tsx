@@ -1,64 +1,56 @@
-import { Col, Dropdown, Row } from 'react-bootstrap';
+import { Col, Row, cn } from '@hummingbirdui/react';
 import { Route, RouteItems } from 'sitemap';
 import { capitalize } from 'helpers/utils';
 import { Link, useLocation } from 'react-router';
 import FeatherIcon from 'feather-icons-react';
-import classNames from 'classnames';
-import logoBg from 'assets/img/icons/logo-bg.png';
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useMemo } from 'react';
 
-const TopNavMegaMenu = ({ route }: { route: RouteItems }) => {
-  const [columns, setColumns] = useState<Route[][]>([]);
-
-  useEffect(() => {
-    const cols: Route[][] = [[], [], []];
-    route.pages.forEach((page, index) => {
-      if ([0, 1, 3].includes(index)) {
-        cols[1].push(page);
-      }
-      if (index === 4) {
-        cols[0].push(page);
-      }
-      if ([2, 5].includes(index)) {
-        cols[2].push(page);
-      }
-    });
-
-    setColumns(cols);
-  }, []);
+/** `+TopNavMegaMenu` in phoenix-tailwind Mixins.pug */
+const TopNavMegaMenu = ({
+  route,
+  show
+}: {
+  route: RouteItems;
+  show?: boolean;
+}) => {
+  // gold: group1 = [4], group2 = [0, 1, 3], group3 = [2, 5]; rendered as group2, group1, group3
+  const groups = useMemo(() => {
+    const p = route.pages;
+    return [[p[0], p[1], p[3]], [p[4]], [p[2], p[5]]].map(g =>
+      g.filter(Boolean)
+    );
+  }, [route.pages]);
 
   return (
-    <Dropdown.Menu
-      as="ul"
-      className=" navbar-dropdown-caret dropdown-menu-card py-0"
+    <div
+      className={cn(
+        'dropdown-menu navbar-dropdown-caret dropdown-menu-card py-0',
+        { show }
+      )}
+      data-bs-popper={show ? 'none' : undefined}
     >
-      <div className="border-0 scrollbar" style={{ height: '60vh' }}>
-        <div
-          className="px-4 pt-6 pb-4 img-dropdown scrollbar"
-          style={{
-            backgroundImage: `url(${logoBg})`
-          }}
-        >
+      <div className="border-0 scrollbar max-h-[60vh]">
+        <div className="px-4 pt-6 pb-4 img-dropdown">
           <Row className="gx-6 gy-8">
-            {columns.map((column, index) => (
-              <Col key={index} xs={12} sm={6} md={4}>
-                {column.map((page, index) => (
+            {groups.map((group, gi) => (
+              <Col key={gi} xs={12} sm={6} md={4}>
+                {group.map((page, index) => (
                   <Fragment key={page.name}>
                     <div
-                      className={classNames('dropdown-item-group', {
-                        'mt-14': index > 0
+                      className={cn('dropdown-item-group', {
+                        'mt-5': index > 0
                       })}
                     >
                       <FeatherIcon
-                        icon={page.icon}
+                        icon={page.icon as string}
                         size={16}
-                        className="me-2"
+                        className="me-2 stroke-2"
                       />
                       <h6 className="dropdown-item-title">
                         {capitalize(page.name)}
                       </h6>
                     </div>
-                    <TopNavMegaMenuIitemsLooper page={page} />
+                    <TopNavMegaMenuItemsLooper page={page} />
                   </Fragment>
                 ))}
               </Col>
@@ -66,27 +58,26 @@ const TopNavMegaMenu = ({ route }: { route: RouteItems }) => {
           </Row>
         </div>
       </div>
-    </Dropdown.Menu>
+    </div>
   );
 };
 
-const TopNavMegaMenuIitemsLooper = ({ page }: { page: Route }) => {
+const TopNavMegaMenuItemsLooper = ({ page }: { page: Route }) => {
   const { pathname } = useLocation();
   return (
     <>
-      {page.pages?.map(page => (
-        <Fragment key={page.name}>
-          {page.pages ? (
-            <TopNavMegaMenuIitemsLooper page={page} />
+      {page.pages?.map(item => (
+        <Fragment key={item.name}>
+          {item.pages ? (
+            <TopNavMegaMenuItemsLooper page={item} />
           ) : (
             <Link
-              to={page.path || '#!'}
-              className={classNames('dropdown-link', {
-                'text-soft': !page.active,
-                active: pathname === page.path
+              to={item.path || '#!'}
+              className={cn('dropdown-link', {
+                active: pathname === item.path
               })}
             >
-              {capitalize(page.name)}
+              {capitalize(item.name)}
             </Link>
           )}
         </Fragment>

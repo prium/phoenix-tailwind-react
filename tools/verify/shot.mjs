@@ -5,7 +5,7 @@ import { chromium } from 'playwright';
 const [, , url, out, w = '1540', theme = 'light', click, evalJs] = process.argv;
 const browser = await chromium.launch({ channel: 'chrome' });
 const ctx = await browser.newContext({ viewport: { width: +w, height: 900 } });
-await ctx.addInitScript(t => { localStorage.setItem('theme', t); localStorage.setItem('phoenixTheme', t); }, theme);
+await ctx.addInitScript(([t, st]) => { localStorage.setItem('theme', t); localStorage.setItem('phoenixTheme', t); Object.entries(JSON.parse(st)).forEach(([k, v]) => localStorage.setItem(k, v)); }, [theme, process.env.SHOT_STORAGE || '{}']);
 const page = await ctx.newPage();
 await page.goto(url, { waitUntil: 'load', timeout: 60000 });
 await page.waitForTimeout(1500);

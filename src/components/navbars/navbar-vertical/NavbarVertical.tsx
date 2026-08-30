@@ -9,6 +9,8 @@ import {
 import { useAppContext } from 'providers/AppProvider';
 import Button from 'components/base/Button';
 import NavbarVerticalCollapseProvider from './NavbarVerticalCollapseProvider';
+import NavbarTopNav from 'components/navbars/navbar-horizontal/NavbarTopNav';
+import { useBreakpoints } from 'providers/BreakpointsProvider';
 
 /** Mirrors phoenix-tailwind `mixins/navbars/NavbarVertical.pug`. */
 const NavbarVertical = () => {
@@ -16,10 +18,12 @@ const NavbarVertical = () => {
     config: {
       openNavbarVertical,
       navbarVerticalAppearance,
-      isNavbarVerticalCollapsed
+      isNavbarVerticalCollapsed,
+      navbarPosition
     },
     setConfig
   } = useAppContext();
+  const { breakpoints } = useBreakpoints();
 
   return (
     <NavbarVerticalCollapseProvider>
@@ -52,7 +56,15 @@ const NavbarVertical = () => {
                 </li>
               ))}
             </Navbar.Nav>
-            {/* TODO(hb-migration): combo navigation (NavbarTopNav) below lg */}
+            {/* navbar-combo.js moves the top menu here below the navbar's breakpoint */}
+            {navbarPosition === 'combo' && breakpoints.down('lg') && (
+              <div className="move-container" data-move-container="">
+                <div className="navbar-vertical-divider">
+                  <hr className="navbar-vertical-hr" />
+                </div>
+                <NavbarTopNav />
+              </div>
+            )}
           </div>
         </Navbar.Collapse>
         <div className="navbar-vertical-footer">
