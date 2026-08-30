@@ -93,7 +93,7 @@ const columns: ColumnDef<LatestReviewsTableDataType>[] = [
   },
   {
     accessorKey: 'time',
-    header: 'Date',
+    header: 'DATE',
     meta: {
       headerProps: { className: 'text-end', style: { maxWidth: '10%' } },
       cellProps: { className: 'text-end text-subtle whitespace-nowrap' }

@@ -11,7 +11,7 @@ import FeatherIcon from 'feather-icons-react';
 export const ordersTableColumns: ColumnDef<Order>[] = [
   {
     accessorKey: 'orderId',
-    header: 'Order',
+    header: 'ORDER',
     cell: ({ row: { original } }) => {
       const { orderId } = original;
       return (
@@ -27,7 +27,7 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
   },
   {
     accessorKey: 'total',
-    header: 'Total',
+    header: 'TOTAL',
     cell: ({ row: { original } }) => currencyFormat(original.total),
     meta: {
       headerProps: { className: 'text-end w-[6%]' },
@@ -37,7 +37,7 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
   {
     id: 'customer',
     accessorFn: ({ customer }) => customer.name,
-    header: 'Customer',
+    header: 'CUSTOMER',
     cell: ({ row: { original } }) => {
       const { name, avatar } = original.customer;
       return (
@@ -58,7 +58,7 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
   {
     id: 'payment_status',
     accessorFn: ({ payment_status }) => payment_status.label,
-    header: 'Payment status',
+    header: 'PAYMENT STATUS',
     cell: ({ row: { original } }) => {
       const { payment_status } = original;
       return (
@@ -89,7 +89,7 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
   {
     id: 'fulfilment_status',
     accessorFn: ({ fulfilment_status }) => fulfilment_status.label,
-    header: 'Fulfilment status',
+    header: 'FULFILMENT STATUS',
     cell: ({ row: { original } }) => {
       const { fulfilment_status } = original;
       return (
@@ -119,7 +119,7 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
   },
   {
     accessorKey: 'delivery_type',
-    header: 'Delivery type',
+    header: 'DELIVERY TYPE',
     meta: {
       headerProps: { className: 'text-start w-3/10' },
       cellProps: {
@@ -129,7 +129,7 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
   },
   {
     accessorKey: 'date',
-    header: 'Date',
+    header: 'DATE',
     meta: {
       headerProps: { className: 'text-end pe-0' },
       cellProps: {

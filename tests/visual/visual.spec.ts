@@ -26,7 +26,10 @@ for (const p of pages) {
       ]);
       const name = `${p.name}-${v.width}${v.dark ? '-dark' : ''}`;
       const r = diff(react, gold, OUT, name);
-      const tolerance = p.tolerance ?? DEFAULT_TOLERANCE;
+      // an explicit VISUAL_TOLERANCE env wins over per-page values (audit mode)
+      const tolerance = process.env.VISUAL_TOLERANCE
+        ? DEFAULT_TOLERANCE
+        : (p.tolerance ?? DEFAULT_TOLERANCE);
       test.info().annotations.push({
         type: 'diff',
         description: `${(r.ratio * 100).toFixed(2)}% (${r.diffPixels}px), height Δ ${r.heightDelta}px`

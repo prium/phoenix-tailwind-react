@@ -9,7 +9,7 @@ import Avatar from 'components/base/Avatar';
 export const customersTablecolumns: ColumnDef<Customer>[] = [
   {
     accessorKey: 'name',
-    header: 'Customer',
+    header: 'CUSTOMER',
     cell: ({ row: { original } }) => {
       const { name, avatar } = original;
       return (
@@ -29,7 +29,7 @@ export const customersTablecolumns: ColumnDef<Customer>[] = [
   },
   {
     accessorKey: 'email',
-    header: 'Email',
+    header: 'EMAIL',
     cell: ({ row: { original } }) => {
       const { email } = original;
       return (
@@ -45,7 +45,7 @@ export const customersTablecolumns: ColumnDef<Customer>[] = [
   },
   {
     accessorKey: 'totalOrders',
-    header: 'Orders',
+    header: 'ORDERS',
     meta: {
       headerProps: { className: 'text-end w-1/10' },
       cellProps: {
@@ -55,7 +55,7 @@ export const customersTablecolumns: ColumnDef<Customer>[] = [
   },
   {
     accessorKey: 'totalSpent',
-    header: 'Total spent',
+    header: 'TOTAL SPENT',
     cell: ({ row: { original } }) => currencyFormat(original.totalSpent),
     meta: {
       headerProps: { className: 'text-end ps-4 w-1/10' },
@@ -66,7 +66,7 @@ export const customersTablecolumns: ColumnDef<Customer>[] = [
   },
   {
     accessorKey: 'city',
-    header: 'City',
+    header: 'CITY',
     meta: {
       headerProps: { className: 'ps-12 w-1/4' },
       cellProps: { className: 'whitespace-nowrap text-highlight ps-12' }
@@ -74,7 +74,7 @@ export const customersTablecolumns: ColumnDef<Customer>[] = [
   },
   {
     accessorKey: 'lastSeen',
-    header: 'Last seen',
+    header: 'LAST SEEN',
     meta: {
       headerProps: { className: 'text-end w-[15%]' },
       cellProps: { className: 'whitespace-nowrap text-subtle text-end' }
@@ -82,7 +82,7 @@ export const customersTablecolumns: ColumnDef<Customer>[] = [
   },
   {
     accessorKey: 'lastOrder',
-    header: 'Last order',
+    header: 'LAST ORDER',
     meta: {
       headerProps: { className: 'text-end pe-0 w-1/10 min-w-37.5' },
       cellProps: { className: 'whitespace-nowrap text-subtle text-end pe-0' }

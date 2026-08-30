@@ -28,7 +28,7 @@ const columns: ColumnDef<StoreProductType>[] = [
   },
   {
     accessorKey: 'product',
-    header: 'Vendor',
+    header: 'VENDOR',
     cell: ({ row: { original } }) => {
       const { product } = original;
       return (
@@ -44,7 +44,7 @@ const columns: ColumnDef<StoreProductType>[] = [
   },
   {
     accessorKey: 'rating',
-    header: 'Store rating',
+    header: 'STORE RATING',
     cell: ({ row: { original } }) => {
       const { rating } = original;
       return <Rating readonly initialValue={rating} iconClass="text-md" />;
@@ -55,7 +55,7 @@ const columns: ColumnDef<StoreProductType>[] = [
   },
   {
     accessorKey: 'orders',
-    header: 'orders',
+    header: 'ORDERS',
     meta: {
       headerProps: {
         style: { width: '12%', minWidth: 150 },
@@ -78,7 +78,7 @@ const columns: ColumnDef<StoreProductType>[] = [
   },
   {
     accessorKey: 'lastOrderDate',
-    header: 'Last Order',
+    header: 'LAST ORDER',
     meta: {
       headerProps: {
         style: { width: '15%', minWidth: 150 },

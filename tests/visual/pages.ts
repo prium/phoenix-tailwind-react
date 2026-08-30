@@ -59,9 +59,7 @@ export const pages: VisualPage[] = [
   ),
   p('ec-cart', '/customer/cart', '/landing/cart.html'),
   // data-only: address text wraps differently
-  p('ec-checkout', '/customer/checkout', '/landing/checkout.html', {
-    tolerance: 0.015
-  }),
+  p('ec-checkout', '/customer/checkout', '/landing/checkout.html'),
   p(
     'ec-shipping-info',
     '/customer/shipping-info',
@@ -86,14 +84,10 @@ export const pages: VisualPage[] = [
 
   // admin
   // data-only: gold headers are UPPERCASE, "$39" vs "$39.00"
-  p('ec-admin-products', '/admin/products', '/admin/products.html', {
-    tolerance: 0.015
-  }),
+  p('ec-admin-products', '/admin/products', '/admin/products.html'),
   p('ec-admin-customers', '/admin/customers', '/admin/customers.html'),
   // data-only: gold headers UPPERCASE, totals formatting, badge labels
-  p('ec-admin-orders', '/admin/orders', '/admin/orders.html', {
-    tolerance: 0.02
-  }),
+  p('ec-admin-orders', '/admin/orders', '/admin/orders.html'),
   p('ec-admin-add-product', '/admin/add-product', '/admin/add-product.html'),
   // data-only: different demo products / row count
   p(

@@ -34,7 +34,7 @@ export const productsTablecolumns: ColumnDef<ProductsTableProductType>[] = [
   },
   {
     accessorKey: 'product',
-    header: 'Product name',
+    header: 'PRODUCT NAME',
     cell: ({ row: { original } }) => {
       const { product } = original;
       return (
@@ -55,7 +55,7 @@ export const productsTablecolumns: ColumnDef<ProductsTableProductType>[] = [
     id: 'price',
     accessorFn: ({ price, priceMax, priceMin }) =>
       `${price} ${priceMax} ${priceMin}`,
-    header: 'Price',
+    header: 'PRICE',
     cell: ({ row: { original } }) => {
       const { price, priceMax, priceMin } = original;
       return price
@@ -72,7 +72,7 @@ export const productsTablecolumns: ColumnDef<ProductsTableProductType>[] = [
   },
   {
     accessorKey: 'category',
-    header: 'Category',
+    header: 'CATEGORY',
     meta: {
       headerProps: { className: 'ps-6 w-37.5' },
       cellProps: {
@@ -83,7 +83,7 @@ export const productsTablecolumns: ColumnDef<ProductsTableProductType>[] = [
   {
     id: 'tags',
     accessorFn: ({ tags }) => tags.join(''),
-    header: 'Tags',
+    header: 'TAGS',
     cell: ({ row: { original } }) => {
       const { tags } = original;
       return (
@@ -116,7 +116,7 @@ export const productsTablecolumns: ColumnDef<ProductsTableProductType>[] = [
   },
   {
     accessorKey: 'vendor',
-    header: 'Vendor',
+    header: 'VENDOR',
     cell: ({ row: { original } }) => {
       const { vendor } = original;
       return <Link to="#!">{vendor}</Link>;
@@ -128,7 +128,7 @@ export const productsTablecolumns: ColumnDef<ProductsTableProductType>[] = [
   },
   {
     accessorKey: 'publishedOn',
-    header: 'Published on',
+    header: 'PUBLISHED ON',
     meta: {
       headerProps: { className: 'ps-6 whitespace-nowrap w-12.5' },
       cellProps: { className: 'whitespace-nowrap text-subtle/85 ps-4' }

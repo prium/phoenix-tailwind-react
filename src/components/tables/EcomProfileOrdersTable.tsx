@@ -16,7 +16,7 @@ import ActionDropdownItems from 'components/common/ActionDropdownItems';
 const columns: ColumnDef<CustomerOrder>[] = [
   {
     accessorKey: 'orderId',
-    header: 'Order',
+    header: 'ORDER',
     cell: ({ row: { original } }) => (
       <Link to="#!" className="font-semibold text-primary">
         {original.orderId}
@@ -29,7 +29,7 @@ const columns: ColumnDef<CustomerOrder>[] = [
   },
   {
     accessorFn: ({ payment_status }) => payment_status.status,
-    header: 'Status',
+    header: 'STATUS',
     cell: ({ row: { original } }) => (
       <Badge
         bg={original.payment_status.type}
@@ -53,14 +53,14 @@ const columns: ColumnDef<CustomerOrder>[] = [
   },
   {
     accessorKey: 'delivery_method',
-    header: 'delivery method',
+    header: 'DELIVERY METHOD',
     meta: {
       headerProps: { style: { width: '20%', minWidth: 160 } }
     }
   },
   {
     accessorKey: 'date',
-    header: 'Date',
+    header: 'DATE',
     meta: {
       headerProps: {
         style: { width: '15%', minWidth: 160 },
@@ -71,7 +71,7 @@ const columns: ColumnDef<CustomerOrder>[] = [
   },
   {
     accessorKey: 'totalPrice',
-    header: 'Total',
+    header: 'TOTAL',
     cell: ({ row: { original } }) => currencyFormat(original.totalPrice),
     meta: {
       headerProps: {

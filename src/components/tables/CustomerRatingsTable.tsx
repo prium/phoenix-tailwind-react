@@ -92,7 +92,7 @@ const columns: ColumnDef<CustomerReview>[] = [
   },
   {
     accessorKey: 'time',
-    header: 'Date',
+    header: 'DATE',
     cell: ({ row: { original } }) => {
       const { time } = original;
       return <p className="text-highlight mb-0">{time}</p>;

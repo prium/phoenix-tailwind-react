@@ -32,7 +32,7 @@ const columns: ColumnDef<WishlistProductType>[] = [
   },
   {
     accessorKey: 'product',
-    header: 'Products',
+    header: 'PRODUCTS',
     cell: ({ row: { original } }) => {
       const { product } = original;
       return (
@@ -48,7 +48,7 @@ const columns: ColumnDef<WishlistProductType>[] = [
   },
   {
     accessorKey: 'color',
-    header: 'Color',
+    header: 'COLOR',
     meta: {
       headerProps: { style: { width: '16%' } },
       cellProps: { className: 'whitespace-nowrap' }
@@ -56,7 +56,7 @@ const columns: ColumnDef<WishlistProductType>[] = [
   },
   {
     accessorKey: 'size',
-    header: 'Size',
+    header: 'SIZE',
     meta: {
       headerProps: { style: { width: '10%' } },
       cellProps: { className: 'text-subtle font-semibold' }
