@@ -4,43 +4,50 @@ import { Link } from 'react-router';
 import AdvanceTableFooter from 'components/base/AdvanceTableFooter';
 import { Project } from 'data/project-management/projects';
 import Avatar from 'components/base/Avatar';
-import { ProgressBar } from 'react-bootstrap';
 import RevealDropdown, {
   RevealDropdownTrigger
 } from 'components/base/RevealDropdown';
 import ActionDropdownItems from 'components/common/ActionDropdownItems';
 import Badge from 'components/base/Badge';
 
+/** `+ProjectListTable` in project-management/Common.pug */
 export const projectListTableColumns: ColumnDef<Project>[] = [
   {
     accessorKey: 'name',
-    header: 'Project Name',
+    header: 'PROJECT NAME',
     cell: ({ row: { original } }) => {
       const { name } = original;
       return (
-        <Link to="#!" className="no-underline font-bold text-base">
+        <Link to="#!" className="font-bold text-base leading-normal">
           {name}
         </Link>
       );
     },
     meta: {
-      cellProps: { className: 'whitespace-nowrap py-4' },
-      headerProps: { style: { width: '30%' } }
+      cellProps: { className: 'text-start whitespace-nowrap ps-0 py-6' },
+      headerProps: {
+        className: 'text-start whitespace-nowrap ps-0 w-3/10 leading-none'
+      }
     }
   },
   {
     id: 'assigness',
-    header: 'assigness',
+    header: 'ASSIGNEES',
     cell: ({ row: { original } }) => {
       const { assigness } = original;
       return (
-        <Avatar.Group total={assigness.length} size="s">
+        <Avatar.Group
+          total={assigness.length}
+          size="s"
+          className="avatar-group-dense h-6"
+        >
           {assigness.slice(0, 4).map(assigne => (
             <Avatar
               key={assigne.id}
               src={assigne.avatar ? assigne.avatar : undefined}
               variant={assigne.avatar ? 'image' : 'name'}
               size="s"
+              className="border-0 h-6"
             >
               {!assigne.avatar && assigne.name[0]}
             </Avatar>
@@ -49,37 +56,46 @@ export const projectListTableColumns: ColumnDef<Project>[] = [
       );
     },
     meta: {
-      cellProps: { className: 'ps-3 py-4' },
-      headerProps: { style: { width: '10%' }, className: 'ps-3' }
+      cellProps: { className: 'whitespace-nowrap ps-6 py-6' },
+      headerProps: { className: 'text-start ps-4 w-1/10 leading-none' }
     }
   },
   {
-    header: 'Start date',
+    header: 'START DATE',
     accessorKey: 'start',
+    cell: ({ row: { original } }) => (
+      <p className="mb-0 text-md text-default">{original.start}</p>
+    ),
     meta: {
-      cellProps: { className: 'ps-3 text-md text-default whitespace-nowrap py-4' },
-      headerProps: { style: { width: '10%' }, className: 'ps-3' }
+      cellProps: { className: 'text-start whitespace-nowrap ps-4 py-6' },
+      headerProps: { className: 'text-start ps-4 w-1/10 leading-none' }
     }
   },
   {
-    header: 'Deadline',
+    header: 'DEADLINE',
     accessorKey: 'deadline',
+    cell: ({ row: { original } }) => (
+      <p className="mb-0 text-md text-default">{original.deadline}</p>
+    ),
     meta: {
-      cellProps: { className: 'ps-3 text-md text-default whitespace-nowrap py-4' },
-      headerProps: { style: { width: '15%' }, className: 'ps-3' }
+      cellProps: { className: 'text-start whitespace-nowrap ps-4 py-6' },
+      headerProps: { className: 'text-start ps-4 w-3/20 leading-none' }
     }
   },
   {
     accessorKey: 'task',
-    header: 'Task',
+    header: 'TASK',
+    cell: ({ row: { original } }) => (
+      <p className="text-default text-md mb-0">{original.task}</p>
+    ),
     meta: {
-      cellProps: { className: 'ps-3 text-default py-4' },
-      headerProps: { style: { width: '12%' }, className: 'ps-3' }
+      cellProps: { className: 'text-start whitespace-nowrap ps-4 py-6' },
+      headerProps: { className: 'text-start ps-4 w-3/25 leading-none' }
     }
   },
   {
     id: 'progress',
-    header: 'Progress',
+    header: 'PROGRESS',
     cell: ({ row: { original } }) => {
       const { progress } = original;
 
@@ -88,61 +104,66 @@ export const projectListTableColumns: ColumnDef<Project>[] = [
           <p className="text-muted text-sm mb-0">
             {progress.min} / {progress.max}
           </p>
-          <ProgressBar
-            now={(progress.min / progress.max) * 100}
-            style={{ height: 3 }}
-            variant="success"
-          />
+          <div className="progress h-0.75">
+            <div
+              className="progress-bar bg-success"
+              role="progressbar"
+              style={{ width: `${(progress.min / progress.max) * 100}%` }}
+            />
+          </div>
         </>
       );
     },
     meta: {
-      cellProps: { className: 'ps-3 py-4' },
-      headerProps: { style: { width: '5%' }, className: 'ps-3' }
+      cellProps: { className: 'text-start whitespace-nowrap ps-4' },
+      headerProps: { className: 'text-start ps-4 w-1/20 leading-none' }
     }
   },
   {
     id: 'status',
-    header: 'Status',
+    header: 'STATUS',
     accessorFn: ({ status }) => status.label,
     cell: ({ row: { original } }) => {
       const { status } = original;
       return (
-        <Badge variant="phoenix" bg={status.type}>
+        <Badge variant="phoenix" bg={status.type} className="text-sm">
           {status.label}
         </Badge>
       );
     },
     meta: {
-      cellProps: { className: 'ps-8 py-4' },
-      headerProps: { style: { width: '10%' }, className: 'ps-8' }
+      cellProps: { className: 'whitespace-nowrap text-end' },
+      headerProps: { className: 'text-end w-1/10 leading-none' }
     }
   },
   {
     id: 'action',
     cell: () => (
-      <RevealDropdownTrigger>
+      <RevealDropdownTrigger className="static">
         <RevealDropdown>
           <ActionDropdownItems />
         </RevealDropdown>
       </RevealDropdownTrigger>
     ),
     meta: {
-      headerProps: { style: { width: '10%' }, className: 'text-end' },
-      cellProps: { className: 'text-end' }
+      headerProps: { className: 'text-end w-1/10' },
+      cellProps: { className: 'text-end whitespace-nowrap pe-0' }
     }
   }
 ];
 
 const ProjectListTable = () => {
   return (
-    <div className="border-b border-subtle">
+    <div>
       <AdvanceTable
         tableProps={{
-          className: ' border-top border-subtle text-md'
+          className: 'text-md mb-0 border-t border-subtle'
         }}
       />
-      <AdvanceTableFooter pagination className="py-4" />
+      <AdvanceTableFooter
+        pagination
+        className="flex-wrap py-4 border-b border-subtle"
+      />
     </div>
   );
 };

@@ -1,35 +1,47 @@
-import classNames from 'classnames';
-import Button from 'components/base/Button';
+import { Tooltip, cn } from '@hummingbirdui/react';
 import { PropsWithChildren } from 'react';
-import { OverlayTrigger, Tooltip } from 'react-bootstrap';
+import { Link } from 'react-router';
 
+interface ToggleViewButtonProps {
+  active?: boolean;
+  tooltip: string;
+  /** Route to navigate to (renders `a.btn` like the gold `+ViewButtons`). */
+  to?: string;
+  onClick?: () => void;
+  className?: string;
+}
+
+/** `+ViewButtons` in project-management/Common.pug: `a.btn.btn-phoenix-primary.px-4` */
 const ToggleViewButton = ({
   active,
   tooltip,
+  to = '#!',
   onClick,
+  className,
   children
-}: PropsWithChildren<{
-  active?: boolean;
-  tooltip: string;
-  onClick: () => void;
-}>) => {
+}: PropsWithChildren<ToggleViewButtonProps>) => {
   return (
-    <OverlayTrigger
-      placement="top"
-      overlay={<Tooltip style={{ position: 'fixed' }}>{tooltip}</Tooltip>}
-    >
-      <div>
-        <Button
-          variant="phoenix-primary"
-          className={classNames('px-6', {
-            'text-default border-0': active
-          })}
-          onClick={onClick}
+    <Tooltip>
+      <Tooltip.Trigger asChild>
+        <Link
+          to={to}
+          className={cn(
+            'btn btn-phoenix-primary px-4',
+            { 'border-0 text-default': active },
+            className
+          )}
+          onClick={e => {
+            if (onClick) {
+              e.preventDefault();
+              onClick();
+            }
+          }}
         >
           {children}
-        </Button>
-      </div>
-    </OverlayTrigger>
+        </Link>
+      </Tooltip.Trigger>
+      <Tooltip.Content side="top">{tooltip}</Tooltip.Content>
+    </Tooltip>
   );
 };
 

@@ -1,5 +1,6 @@
 import { faList } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Col, Row } from '@hummingbirdui/react';
 import FilterTab, { FilterTabItem } from 'components/common/FilterTab';
 import SearchBox from 'components/common/SearchBox';
 import ToggleViewButton from 'components/common/ToggleViewbutton';
@@ -8,15 +9,13 @@ import NineGrid from 'components/icons/NineGrid';
 import { Project } from 'data/project-management/projects';
 import { useAdvanceTableContext } from 'providers/AdvanceTableProvider';
 import { ChangeEvent, useMemo } from 'react';
-import { Col, Row } from 'react-bootstrap';
-import { useNavigate } from 'react-router';
 
 interface ProjectsTopSectionInterface {
   activeView: 'list' | 'board' | 'card';
 }
 
+/** Filter tabs + search + `+ViewButtons` row (project-management/Common.pug) */
 const ProjectsTopSection = ({ activeView }: ProjectsTopSectionInterface) => {
-  const navigate = useNavigate();
   const { setGlobalFilter, getPrePaginationRowModel, getColumn } =
     useAdvanceTableContext<Project>();
 
@@ -51,13 +50,13 @@ const ProjectsTopSection = ({ activeView }: ProjectsTopSectionInterface) => {
         count: getDataCount('cancelled')
       },
       {
-        label: 'Completed',
+        label: 'Finished',
         value: 'completed',
         onClick: () => handleFilterItemClick('status', 'completed'),
         count: getDataCount('completed')
       },
       {
-        label: 'Critical',
+        label: 'Postponed',
         value: 'critical',
         onClick: () => handleFilterItemClick('status', 'critical'),
         count: getDataCount('critical')
@@ -70,42 +69,41 @@ const ProjectsTopSection = ({ activeView }: ProjectsTopSectionInterface) => {
   };
 
   return (
-    <Row className="g-4 justify-between items-center mb-6">
+    <Row className="g-4 justify-between items-end mb-6">
       <Col xs={12} sm="auto">
-        <FilterTab className="project-tab" tabItems={tabItems} />
+        <FilterTab
+          className="-mx-2 project-tab"
+          navLinkClassName="px-2 py-1"
+          tabItems={tabItems}
+        />
       </Col>
       <Col xs={12} sm="auto">
-        <div className="flex items-center gap-1">
+        <div className="flex items-center">
           <SearchBox
             onChange={handleSearchInputChange}
             placeholder="Search projects"
-            style={{ maxWidth: '30rem' }}
             className="me-4"
           />
           <ToggleViewButton
             tooltip="List view"
             active={activeView === 'list'}
-            onClick={() => {
-              navigate('/apps/project-management/project-list-view');
-            }}
+            to="/apps/project-management/project-list-view"
+            className="me-1"
           >
             <FontAwesomeIcon icon={faList} className="text-sm" />
           </ToggleViewButton>
           <ToggleViewButton
             tooltip="Board view"
             active={activeView === 'board'}
-            onClick={() => {
-              navigate('/apps/project-management/project-board-view');
-            }}
+            to="/apps/project-management/project-board-view"
+            className="me-1"
           >
             <NineGrid />
           </ToggleViewButton>
           <ToggleViewButton
             tooltip="Card view"
             active={activeView === 'card'}
-            onClick={() => {
-              navigate('/apps/project-management/project-card-view');
-            }}
+            to="/apps/project-management/project-card-view"
           >
             <FourGrid />
           </ToggleViewButton>
