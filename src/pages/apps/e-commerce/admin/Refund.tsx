@@ -14,42 +14,49 @@ const Refund = () => {
       <PageBreadcrumb items={defaultBreadcrumbItems} />
       <div className="mb-16">
         <h2 className="mb-2">Refund</h2>
-        <div className="flex flex-wrap items-center mb-6 gap-4">
-          <p className="text-muted leading-sm mb-0">
-            Order :{' '}
-            <Link className="font-bold" to="#!">
-              {' '}
-              #349
-            </Link>
-          </p>
-          <div className="flex-1 flex flex-between-center gap-4">
-            <p className="text-muted leading-sm mb-0 flex-1 whitespace-nowrap">
-              Customer Id :{' '}
-              <Link className="font-bold" to="#!">
-                {' '}
-                2364847
+        {/* gold: .row.items-center.mb-4.gx-4.gy-2 in apps/e-commerce/admin/refund.pug */}
+        <Row className="items-center mb-4 gx-4 gy-2">
+          <Col xs={12} sm="auto">
+            <p className="text-muted leading-sm mb-0">
+              Order :
+              <Link className="font-bold ms-1" to="#!">
+                #349
               </Link>
             </p>
-            <Dropdown>
-              <Dropdown.Trigger asChild>
-                <button
-                  type="button"
-                  className="btn text-default px-0"
-                >
-                  More action
-                  <FontAwesomeIcon icon={faChevronDown} className="ms-2 text-sm" />
-                </button>
-              </Dropdown.Trigger>
-              <Dropdown.Content align="end">
-                <Dropdown.Item>Action</Dropdown.Item>
-                <Dropdown.Item>Another action</Dropdown.Item>
-                <Dropdown.Item>Something else here</Dropdown.Item>
-                <Dropdown.Item>Cancel</Dropdown.Item>
-              </Dropdown.Content>
-            </Dropdown>
-          </div>
-        </div>
-        <Row className="g-8 gy-12">
+          </Col>
+          <Col xs={12} sm="auto" className="grow">
+            <Row className="items-center flex-wrap gy-1">
+              <Col xs="auto" className="grow">
+                <p className="text-muted leading-sm mb-0">
+                  Customer ID :
+                  <Link className="font-bold ms-1" to="#!">
+                    2364847
+                  </Link>
+                </p>
+              </Col>
+              <Col xs="auto">
+                <Dropdown>
+                  <Dropdown.Trigger asChild>
+                    <button type="button" className="btn px-0 text-default">
+                      More action
+                      <FontAwesomeIcon
+                        icon={faChevronDown}
+                        className="ms-2 text-sm"
+                      />
+                    </button>
+                  </Dropdown.Trigger>
+                  <Dropdown.Content align="end">
+                    <Dropdown.Item>Action</Dropdown.Item>
+                    <Dropdown.Item>Another action</Dropdown.Item>
+                    <Dropdown.Item>Something else here</Dropdown.Item>
+                    <Dropdown.Item>Cancel</Dropdown.Item>
+                  </Dropdown.Content>
+                </Dropdown>
+              </Col>
+            </Row>
+          </Col>
+        </Row>
+        <Row className="gx-8">
           <Col xs={12} xl={8} xxl={9}>
             <OrderDetailsTable />
           </Col>

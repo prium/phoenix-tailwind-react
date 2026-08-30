@@ -80,8 +80,16 @@ const AdvanceTableFooter = ({
   );
 
   return (
-    <Row className={cn(className, 'items-center py-1')}>
-      <Col className="flex text-md">
+    // gold pagination footer: `.row.items-center.justify-between.py-2.pe-0.text-md > .col-auto.flex`
+    // gold prev/next footer (dashboard tables): `.row.items-center.py-1 > .col.flex.text-md`
+    <Row
+      className={cn(
+        'items-center',
+        pagination ? 'justify-between py-2 pe-0 text-md' : 'py-1',
+        className
+      )}
+    >
+      <Col xs={pagination ? 'auto' : undefined} className="flex text-md">
         <p
           className={cn(
             tableInfo,
@@ -140,7 +148,7 @@ const AdvanceTableFooter = ({
         </Col>
       )}
       {pagination && (
-        <Col xs="auto">
+        <Col xs="auto" className="flex">
           <Pagination className="mb-0">
             <Pagination.Content className="justify-center items-center">
               {pageButton(

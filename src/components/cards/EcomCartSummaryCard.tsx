@@ -31,9 +31,8 @@ const EcomCartSummaryCard = () => {
         </InputGroup>
         <div className="flex justify-between border-y border-dashed py-4 mb-6">
           <h4 className="mb-0">Total :</h4>
-          <h4 className="mb-0">
-            {currencyFormat(695.2, { minimumFractionDigits: 2 })}
-          </h4>
+          {/* gold SummaryCard.pug has `h4.mb-` (no mb-0) → default h4 margin */}
+          <h4>{currencyFormat(695.2, { minimumFractionDigits: 2 })}</h4>
         </div>
         <Button
           className="w-full"

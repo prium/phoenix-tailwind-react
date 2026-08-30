@@ -22,6 +22,7 @@ reference — copy its patterns.
 | Hummingbird core CSS | `node_modules/@hummingbirdui/hummingbird/src/**` |
 | Class-name codemod | `tools/bs2tw/` (`npm run convert:tw -- <dir>`), `overrides.mjs` = app knowledge, `CONVERTED.md` = what has been run |
 | Token rename codemod | `node tools/bs2tw/rename-tokens.mjs <dir>` (`getThemeColor('primary')` → `'color-primary'`, see `tokenMap.mjs`) |
+| Visual regression | `tests/visual/` (`pages.ts` list, `compare.ts` masks/tolerance, `visual.spec.ts`), `playwright.config.ts` starts both servers; `tools/verify/{shot,probe}.mjs` for ad-hoc checks |
 | Finished examples | `src/components/base/{Button,Badge,Avatar,AdvanceTable,AdvanceTableFooter,IndeterminateCheckbox,RevealDropdown,Swiper,Timeline,Dropzone}.tsx`, `src/components/tables/{ProductsTable,OrdersTable}.tsx`, `src/components/navbars/ecommerce/*`, `src/layouts/MainLayout.tsx` |
 
 **Never guess a class from Bootstrap memory.** Bootstrap `mb-4` ≠ Tailwind `mb-4`.
@@ -33,7 +34,7 @@ Open the pug mixin and copy its class string.
 2. **Codemod first, once.** For each directory not yet in `tools/bs2tw/CONVERTED.md`: `npm run convert:tw -- <dir>` → append to `CONVERTED.md` → commit `chore: run bs2tw codemod over <dir>`. Running twice corrupts spacing (`mb-4→mb-6→mb-10`).
 3. **Port components** file by file (leaf components → page). Replace react-bootstrap with Hummingbird React or plain elements (section 2), then paste the **exact** class strings from the pug. Put literal class strings in data files when classes are dynamic (Tailwind can't see `text-${color}`).
 4. **Start servers**: `npx vite --port 5077` (React) and `cd ../phoenix-tailwind/public && python3 -m http.server 5088` (gold), both in background.
-5. **Verify visually**: `node tools/verify/shot.mjs <url> out.png` for gold and React at 1540px light (dashboards also dark + 768px); view both images. For any delta, `node tools/verify/probe.mjs <url> "<selector>"` on both sides and diff the numbers — the class/padding difference is always visible there. Fix, re-shoot.
+5. **Verify visually** with the regression suite: add the page to `tests/visual/pages.ts` (`react` route + `gold` html path), then `VISUAL_PAGES=<name> npm run test:visual`. It screenshots both sides, writes `tests/visual/output/<name>-1540.{react,gold,diff}.png` and fails above 1% differing pixels. **View the diff png**: red = React-only, blue = gold-only; a uniform vertical shift means a margin/padding delta above that point; scattered text = data-only. For any real delta run `node tools/verify/probe.mjs <url> "<selector>"` against gold (:5088) and React (:5077) — the differing class/padding/line-height is visible in the numbers. Fix, re-run. Only raise a page's `tolerance` for documented data-only noise (comment why). `npm run test:visual` (no filter) is the module gate; `npm run test:visual:report` opens the HTML report.
 6. **Leftover grep must be empty** for the touched dirs:
    `grep -rnE "\b(d-(flex|none|block)|fs-[0-9]+|fw-|text-body|bg-body|position-|justify-content-|align-items-|mx-n|rounded-pill|react-bootstrap)" <dirs>`
 7. `npx tsc --noEmit -p tsconfig.app.json | grep <changed files>` (repo has ~300 pre-existing errors in unmigrated files — only gate on yours) and `npx prettier --write <files>`.
@@ -83,6 +84,6 @@ Anything unmigrated still compiles through the temporary shim `src/react-bootstr
 
 ## 5. Done criteria for a module
 
-- All its pages screenshot-identical to gold (light; dashboards also dark + mobile) — remaining diffs are data-only and listed in the final report.
+- `npm run test:visual` green with every page of the module listed in `tests/visual/pages.ts` (dashboards with `dark: true, widths: [768]`); any tolerance above 1% is commented as data-only.
 - `grep -rl react-bootstrap` over the module's import closure is empty; leftover grep (1.6) empty.
 - `CONVERTED.md` updated; commits per page; final message lists pages verified, known data-only deltas, and what remains on the shim.

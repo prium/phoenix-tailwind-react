@@ -40,7 +40,11 @@ export interface ShotOptions {
   mask?: string[];
 }
 
-export async function shoot(browser: Browser, url: string, opts: ShotOptions): Promise<PNG> {
+export async function shoot(
+  browser: Browser,
+  url: string,
+  opts: ShotOptions
+): Promise<PNG> {
   const context = await browser.newContext({
     viewport: { width: opts.width, height: 900 },
     deviceScaleFactor: 1,
@@ -59,7 +63,13 @@ export async function shoot(browser: Browser, url: string, opts: ShotOptions): P
   );
   const page = await context.newPage();
   await page.goto(url, { waitUntil: 'load', timeout: 60_000 });
-  await page.addStyleTag({ content: HIDE_CSS + (opts.mask?.length ? `${opts.mask.join(', ')} { opacity: 0 !important; pointer-events: none !important; }` : '') });
+  await page.addStyleTag({
+    content:
+      HIDE_CSS +
+      (opts.mask?.length
+        ? `${opts.mask.join(', ')} { opacity: 0 !important; pointer-events: none !important; }`
+        : '')
+  });
   await settle(page);
   const buf = await page.screenshot({ fullPage: true, animations: 'disabled' });
   await context.close();
@@ -73,12 +83,20 @@ async function settle(page: Page) {
     await Promise.all(
       Array.from(document.images)
         .filter(i => !i.complete)
-        .map(i => new Promise(r => { i.onload = i.onerror = r; }))
+        .map(
+          i =>
+            new Promise(r => {
+              i.onload = i.onerror = r;
+            })
+        )
     );
   });
   // Scroll through the page so lazy content renders, then back to top.
   await page.evaluate(async () => {
-    for (let y = 0; y < document.body.scrollHeight; y += 800) { window.scrollTo(0, y); await new Promise(r => setTimeout(r, 40)); }
+    for (let y = 0; y < document.body.scrollHeight; y += 800) {
+      window.scrollTo(0, y);
+      await new Promise(r => setTimeout(r, 40));
+    }
     window.scrollTo(0, 0);
   });
   await page.waitForTimeout(700);
@@ -101,7 +119,12 @@ export interface DiffResult {
   files: { react: string; gold: string; diff: string };
 }
 
-export function diff(react: PNG, gold: PNG, outDir: string, name: string): DiffResult {
+export function diff(
+  react: PNG,
+  gold: PNG,
+  outDir: string,
+  name: string
+): DiffResult {
   const width = Math.max(react.width, gold.width);
   const height = Math.max(react.height, gold.height);
   const a = padTo(react, width, height);
@@ -122,5 +145,12 @@ export function diff(react: PNG, gold: PNG, outDir: string, name: string): DiffR
   fs.writeFileSync(files.react, PNG.sync.write(a));
   fs.writeFileSync(files.gold, PNG.sync.write(b));
   fs.writeFileSync(files.diff, PNG.sync.write(d));
-  return { ratio: diffPixels / (width * height), diffPixels, width, height, heightDelta: react.height - gold.height, files };
+  return {
+    ratio: diffPixels / (width * height),
+    diffPixels,
+    width,
+    height,
+    heightDelta: react.height - gold.height,
+    files
+  };
 }
