@@ -70,17 +70,17 @@ const ProjectsTopSection = ({ activeView }: ProjectsTopSectionInterface) => {
   };
 
   return (
-    <Row className="g-3 justify-content-between align-items-center mb-4">
+    <Row className="g-4 justify-between items-center mb-6">
       <Col xs={12} sm="auto">
         <FilterTab className="project-tab" tabItems={tabItems} />
       </Col>
       <Col xs={12} sm="auto">
-        <div className="flex align-items-center gap-1">
+        <div className="flex items-center gap-1">
           <SearchBox
             onChange={handleSearchInputChange}
             placeholder="Search projects"
             style={{ maxWidth: '30rem' }}
-            className="me-3"
+            className="me-4"
           />
           <ToggleViewButton
             tooltip="List view"

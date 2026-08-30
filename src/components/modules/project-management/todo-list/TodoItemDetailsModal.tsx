@@ -27,26 +27,26 @@ const TodoItemDetailsModal = ({
     <Modal show={!!item} onHide={handleClose} size="xl">
       {item && (
         <>
-          <Modal.Header className="px-6 py-5 pe-sm-5 px-md-6 dark__bg-gray-1100">
+          <Modal.Header className="px-10 py-8 sm:pe-8 md:px-10 dark__bg-gray-1100">
             <h3 className="text-highlight font-black mb-0">{item.task}</h3>
             <Button
               variant="phoenix-secondary"
               onClick={handleClose}
-              className="btn-icon btn-icon-xl flex-shrink-0 ms-auto"
+              className="btn-icon btn-icon-xl shrink-0 ms-auto"
             >
               <FontAwesomeIcon icon={faXmark} />
             </Button>
           </Modal.Header>
-          <Modal.Body className="bg-subtle px-5 px-sm-6 py-0 rounded-bottom">
-            <Row className="gx-14">
-              <Col xs={12} lg={7} className="border-end-lg">
-                <div className="mt-6 mb-7">
-                  <div className="mb-7">
-                    <div className="flex align-items-center mb-3">
-                      <h4 className="text-default me-3">Description</h4>
+          <Modal.Body className="bg-subtle px-8 sm:px-10 py-0 rounded-b-md">
+            <Row className="gx-28">
+              <Col xs={12} lg={7} className="lg:border-e">
+                <div className="mt-10 mb-12">
+                  <div className="mb-12">
+                    <div className="flex items-center mb-4">
+                      <h4 className="text-default me-4">Description</h4>
                       <Button
                         variant="link"
-                        className="text-decoration-none p-0"
+                        className="no-underline p-0"
                       >
                         <FontAwesomeIcon icon={faPen} />
                       </Button>
@@ -62,15 +62,15 @@ const TodoItemDetailsModal = ({
                       project based on the circus.
                     </p>
                   </div>
-                  <div className="mb-7">
-                    <h4 className="mb-3">Subtasks</h4>
-                    <div className="mb-3">
+                  <div className="mb-12">
+                    <h4 className="mb-4">Subtasks</h4>
+                    <div className="mb-4">
                       {subTasks.map((subTask, index) => (
                         <SubTask
                           key={subTask.task}
                           task={subTask}
                           className={classNames({
-                            'border-top border-subtle': index === 0
+                            'border-t border-subtle': index === 0
                           })}
                         />
                       ))}
@@ -82,21 +82,21 @@ const TodoItemDetailsModal = ({
                   </div>
 
                   <div>
-                    <h4 className="mb-3">Files</h4>
-                    <div className="mb-3">
+                    <h4 className="mb-4">Files</h4>
+                    <div className="mb-4">
                       {attachments.map((attachment, index) => (
                         <FileListItem
                           key={attachment.name}
                           attachment={attachment}
                           className={classNames({
-                            'border-top border-subtle': index === 0
+                            'border-t border-subtle': index === 0
                           })}
                         />
                       ))}
                     </div>
                     <Button
                       variant="link"
-                      className="text-decoration-none p-0"
+                      className="no-underline p-0"
                       startIcon={
                         <FontAwesomeIcon icon={faPlus} className="me-1" />
                       }
@@ -107,23 +107,23 @@ const TodoItemDetailsModal = ({
                 </div>
               </Col>
               <Col xs={12} lg={5}>
-                <div className="mt-lg-6 mb-5 mb-sm-6">
-                  <h4 className="mb-5 text-emphasis">
+                <div className="lg:mt-10 mb-8 sm:mb-10">
+                  <h4 className="mb-8 text-emphasis">
                     Others Information
                   </h4>
                   <h5 className="text-highlight mb-2">Status</h5>
-                  <Form.Select className="mb-4">
+                  <Form.Select className="mb-6">
                     <option>Select</option>
                     <option value="pending">Pending</option>
                     <option value="completed">Completed</option>
                     <option value="closed">Closed</option>
                   </Form.Select>
                   <h5 className="text-highlight mb-2">Due Date</h5>
-                  <div className="mb-4">
+                  <div className="mb-6">
                     <DatePicker placeholder="Set the due date" />
                   </div>
                   <h5 className="text-highlight mb-2">Reminder</h5>
-                  <div className="mb-4">
+                  <div className="mb-6">
                     <DatePicker
                       placeholder="Set the due date"
                       options={{
@@ -160,7 +160,7 @@ const TodoItemDetailsModal = ({
                         label: 'California Institute of Technology'
                       }
                     ]}
-                    className="mb-5"
+                    className="mb-8"
                     isMulti
                     placeholder="Select organizer"
                     icon={

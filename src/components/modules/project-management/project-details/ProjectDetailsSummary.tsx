@@ -12,8 +12,8 @@ import { Link } from 'react-router';
 const ProjectDetailsSummary = () => {
   return (
     <>
-      <div className="mb-4 mb-xl-7">
-        <table className="lh-sm mb-4 mb-sm-0 mb-xl-4">
+      <div className="mb-6 xl:mb-12">
+        <table className="leading-sm mb-6 sm:mb-0 xl:mb-6">
           <tbody>
             <tr>
               <td className="py-1" colSpan={2}>
@@ -33,11 +33,11 @@ const ProjectDetailsSummary = () => {
                     icon={faUser}
                     className="me-2 text-subtle text-md"
                   />
-                  <h5 className="text-default mb-0 text-nowrap">Client :</h5>
+                  <h5 className="text-default mb-0 whitespace-nowrap">Client :</h5>
                 </div>
               </td>
               <td className="ps-1 py-1">
-                <Link className="font-semibold block lh-sm" to="#!">
+                <Link className="font-semibold block leading-sm" to="#!">
                   Gobble the Bleep Inc
                 </Link>
               </td>
@@ -49,42 +49,42 @@ const ProjectDetailsSummary = () => {
                     icon={faCreditCard}
                     className="me-2 text-subtle text-md"
                   />
-                  <h5 className="text-default mb-0 text-nowrap">Budget : </h5>
+                  <h5 className="text-default mb-0 whitespace-nowrap">Budget : </h5>
                 </div>
               </td>
               <td className="font-bold ps-1 py-1 text-highlight">$8,742</td>
             </tr>
           </tbody>
         </table>
-        <table className="lh-sm">
+        <table className="leading-sm">
           <tbody>
             <tr>
-              <td className="align-top py-1 text-default text-nowrap font-bold">
+              <td className="align-top py-1 text-default whitespace-nowrap font-bold">
                 Started :{' '}
               </td>
-              <td className="text-subtle text-opacity-85 font-semibold ps-3">
+              <td className="text-subtle text-opacity-85 font-semibold ps-4">
                 17th Nov, 2020
               </td>
             </tr>
             <tr>
-              <td className="align-top py-1 text-default text-nowrap font-bold">
+              <td className="align-top py-1 text-default whitespace-nowrap font-bold">
                 Deadline :
               </td>
-              <td className="text-subtle text-opacity-85 font-semibold ps-3">
+              <td className="text-subtle text-opacity-85 font-semibold ps-4">
                 21st May, 2028
               </td>
             </tr>
             <tr>
-              <td className="align-top py-1 text-default text-nowrap font-bold">
+              <td className="align-top py-1 text-default whitespace-nowrap font-bold">
                 Progress :
               </td>
-              <td className="text-warning font-semibold ps-3">80%</td>
+              <td className="text-warning font-semibold ps-4">80%</td>
             </tr>
           </tbody>
         </table>
       </div>
       <div>
-        <div className="flex align-items-center">
+        <div className="flex items-center">
           <FontAwesomeIcon
             icon={faListCheck}
             className="me-2 text-subtle text-md"

@@ -13,7 +13,7 @@ import ProjectActivityCard from 'components/cards/ProjectActivityCard';
 const ProjectManagement = () => {
   return (
     <>
-      <Row className="gy-3 mb-6 justify-content-between">
+      <Row className="gy-4 mb-10 justify-between">
         <Col md={9} xs="auto">
           <h2 className="mb-2 text-emphasis">Projects Dashboard</h2>
           <h5 className="text-subtle font-semibold">
@@ -28,9 +28,9 @@ const ProjectManagement = () => {
           />
         </Col>
       </Row>
-      <Row className="mb-3 gy-6">
+      <Row className="mb-4 gy-10">
         <Col xs={12} xxl={2}>
-          <Row className="align-items-center g-3 g-xxl-0 h-100 align-content-between">
+          <Row className="items-center g-4 2xl:g-0 h-full content-between">
             {stats.map(stat => (
               <Col
                 xs={12}
@@ -53,7 +53,7 @@ const ProjectManagement = () => {
           <EarlyBirdCard />
         </Col>
       </Row>
-      <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-soft pt-7 pb-3 border-y mb-3">
+      <div className="-mx-6 px-6 lg:-mx-10 lg:px-10 bg-soft pt-12 pb-4 border-y mb-4">
         <Row>
           <Col xs={12} xl={7} xxl={6}>
             <IssuesDiscovered />
@@ -63,8 +63,8 @@ const ProjectManagement = () => {
           </Col>
         </Row>
       </div>
-      <div className="mx-lg-n4 mb-3">
-        <Row className="g-3">
+      <div className="lg:-mx-6 mb-4">
+        <Row className="g-4">
           <Col xs={12} xl={6} xxl={7}>
             <TodoList />
           </Col>
@@ -74,7 +74,7 @@ const ProjectManagement = () => {
         </Row>
       </div>
 
-      <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-soft pt-6 border-top">
+      <div className="-mx-6 px-6 lg:-mx-10 lg:px-10 bg-soft pt-10 border-t">
         <ProjectDashboard />
       </div>
     </>

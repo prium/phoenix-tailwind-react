@@ -34,9 +34,9 @@ const ProjectDetails = () => {
   return (
     <Row className="g-0">
       <Col xs={12} xxl={8} className="px-0 bg-default">
-        <div className="px-4 px-lg-6 pt-6 pb-9">
-          <div className="mb-5">
-            <div className="flex justify-content-between">
+        <div className="px-6 lg:px-10 pt-10 pb-16">
+          <div className="mb-8">
+            <div className="flex justify-between">
               <h2 className="text-emphasis font-black mb-2">
                 Retrieving Old Repos to Redirect to a new URL
               </h2>
@@ -58,8 +58,8 @@ const ProjectDetails = () => {
               Ongoing
             </Badge>
           </div>
-          <Row className="gx-0 gx-sm-5 gy-8 mb-8">
-            <Col xs={12} xl={3} xxl={4} className="pe-xl-0">
+          <Row className="gx-0 sm:gx-8 gy-14 mb-14">
+            <Col xs={12} xl={3} xxl={4} className="xl:pe-0">
               <ProjectDetailsSummary />
             </Col>
             <Col xs={12} xl={9} xxl={8}>
@@ -73,8 +73,8 @@ const ProjectDetails = () => {
             </Col>
           </Row>
           <div>
-            <h3 className="text-emphasis mb-4">Project overview</h3>
-            <p className="text-muted mb-4">
+            <h3 className="text-emphasis mb-6">Project overview</h3>
+            <p className="text-muted mb-6">
               The new redirection team is happy to announce that we’ve fixed all
               our unresponsive URLs and redirected them to new URLs. The
               tremendous assistance from our support team and the dev team, as
@@ -96,34 +96,34 @@ const ProjectDetails = () => {
           </div>
         </div>
       </Col>
-      <Col xs={12} xxl={4} className="px-0 border-start-xxl">
-        <div className="h-100">
-          <div className="bg-light dark__bg-gray-1100 h-100">
-            <div className="p-4 p-lg-6">
-              <h3 className="text-highlight mb-4 font-bold">
+      <Col xs={12} xxl={4} className="px-0 2xl:border-s">
+        <div className="h-full">
+          <div className="bg-light dark__bg-gray-1100 h-full">
+            <div className="p-6 lg:p-10">
+              <h3 className="text-highlight mb-6 font-bold">
                 Recent activity
               </h3>
               <ActivityTimeline data={activityTimelineData} />
             </div>
             <div>
-              <div className="px-4 px-lg-6 mb-3">
+              <div className="px-6 lg:px-10 mb-4">
                 <h4 className="mb-0">Files</h4>
               </div>
-              <div className="mb-3">
+              <div className="mb-4">
                 {attachments.map((attachment, index) => (
                   <FileListItem
                     key={attachment.name}
                     attachment={attachment}
-                    className={classNames('px-4 px-lg-6', {
-                      'border-top': index === 0
+                    className={classNames('px-10 lg:px-10', {
+                      'border-t': index === 0
                     })}
                   />
                 ))}
               </div>
-              <div className="px-5 px-md-6 mb-9">
+              <div className="px-8 md:px-10 mb-16">
                 <Button
                   variant="link"
-                  className="text-decoration-none p-0"
+                  className="no-underline p-0"
                   startIcon={<FontAwesomeIcon icon={faPlus} className="me-1" />}
                 >
                   Add file(s)

@@ -12,9 +12,9 @@ import { Col, Dropdown, Row } from 'react-bootstrap';
 
 const ActionSection = () => {
   return (
-    <Row className="gx-0 gy-3 border-bottom px-5 px-lg-6 py-4 p-xl-0">
-      <Col xs={12} xl={5} className="border-end-xl">
-        <Row className="h-100 align-items-center px-xl-6 justify-content-between justify-content-xl-start">
+    <Row className="gx-0 gy-4 border-b px-8 lg:px-10 py-6 xl:p-0">
+      <Col xs={12} xl={5} className="xl:border-e">
+        <Row className="h-full items-center xl:px-10 justify-between xl:justify-start">
           <Col xs="auto">
             <div>
               <p className="text-subtle text-sm font-semibold mb-0">
@@ -34,26 +34,26 @@ const ActionSection = () => {
         </Row>
       </Col>
       <Col xs={12} xl={7}>
-        <div className="px-xl-6 py-xl-4">
-          <div className="flex gap-2 justify-content-between align-items-center">
+        <div className="xl:px-10 xl:py-6">
+          <div className="flex gap-2 justify-between items-center">
             <div className="flex gap-2">
               <Dropdown align="end">
                 <Dropdown.Toggle
-                  className="hidden d-sm-block btn btn-subtle-secondary dropdown-toggle dropdown-caret-none flex align-items-center"
+                  className="hidden sm:block btn btn-subtle-secondary dropdown-toggle dropdown-caret-none flex items-center"
                   variant="subtle-secondary"
                 >
                   Add to card
                   <FontAwesomeIcon icon={faPlus} className="ms-2" />
                 </Dropdown.Toggle>
                 <Dropdown.Toggle
-                  className="d-sm-none btn btn-icon btn-icon-lg btn-subtle-secondary dropdown-toggle dropdown-caret-none flex align-items-center show"
+                  className="sm:hidden btn btn-icon btn-icon-lg btn-subtle-secondary dropdown-toggle dropdown-caret-none flex items-center show"
                   variant="subtle-secondary"
                 >
                   <FontAwesomeIcon icon={faPlus} />
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>
-                  <div className="px-2 flex flex-column gap-2">
+                  <div className="px-2 flex flex-col gap-2">
                     {addToCardItems.map(item => (
                       <Dropdown.Item
                         key={item.label}
@@ -62,7 +62,7 @@ const ActionSection = () => {
                         startIcon={
                           <FontAwesomeIcon icon={item.icon} className="me-2" />
                         }
-                        className="w-100 text-start"
+                        className="w-full text-start"
                         size="sm"
                       >
                         {item.label}
@@ -73,13 +73,13 @@ const ActionSection = () => {
               </Dropdown>
               <Dropdown align="end">
                 <Dropdown.Toggle
-                  className="btn-icon btn-icon-lg bg-subtle text-emphasis bg-body-secondary-hover rounded-2 me-2 dropdown-caret-none"
+                  className="btn-icon btn-icon-lg bg-subtle text-emphasis bg-body-secondary-hover rounded-md me-2 dropdown-caret-none"
                   variant=""
                 >
                   <FontAwesomeIcon icon={faEllipsisVertical} />
                 </Dropdown.Toggle>
                 <Dropdown.Menu>
-                  <div className="px-2 flex flex-column gap-2">
+                  <div className="px-2 flex flex-col gap-2">
                     {actionItems.map(item => (
                       <Dropdown.Item
                         as={Button}
@@ -87,7 +87,7 @@ const ActionSection = () => {
                         startIcon={
                           <FontAwesomeIcon icon={item.icon} className="me-2" />
                         }
-                        className="w-100 text-start"
+                        className="w-full text-start"
                         size="sm"
                         key={item.label}
                       >
@@ -101,7 +101,7 @@ const ActionSection = () => {
             <div className="flex gap-2">
               <Dropdown align="end">
                 <Dropdown.Toggle
-                  className="dropdown-caret-none flex align-items-center"
+                  className="dropdown-caret-none flex items-center"
                   variant="subtle-info"
                 >
                   Review

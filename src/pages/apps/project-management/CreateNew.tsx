@@ -9,10 +9,10 @@ const CreateNew = () => {
   return (
     <div>
       <PageBreadcrumb items={defaultBreadcrumbItems} />
-      <h2 className="mb-4">Create a project</h2>
+      <h2 className="mb-6">Create a project</h2>
       <Row>
         <Col xs={12} xl={9}>
-          <Row as="form" className="g-3 mb-6">
+          <Row as="form" className="g-4 mb-10">
             <Col sm={6} md={8}>
               <FloatingLabel
                 controlId="floatingInputGrid"
@@ -91,7 +91,7 @@ const CreateNew = () => {
                         ref={ref}
                         id="startDate"
                       />
-                      <label htmlFor="startDate" className="ps-6">
+                      <label htmlFor="startDate" className="ps-10">
                         Start date
                       </label>
                     </Form.Floating>
@@ -110,7 +110,7 @@ const CreateNew = () => {
                         ref={ref}
                         id="deadline"
                       />
-                      <label htmlFor="deadline" className="ps-6">
+                      <label htmlFor="deadline" className="ps-10">
                         Deadline
                       </label>
                     </Form.Floating>
@@ -118,7 +118,7 @@ const CreateNew = () => {
                 }}
               />
             </Col>
-            <Col xs={12} className="gy-6">
+            <Col xs={12} className="gy-10">
               <FloatingLabel
                 controlId="floatingProjectOverview"
                 label="Project overview"
@@ -130,7 +130,7 @@ const CreateNew = () => {
                 />
               </FloatingLabel>
             </Col>
-            <Col md={6} className="gy-6">
+            <Col md={6} className="gy-10">
               <FloatingLabel controlId="floatingSelectClient" label="Client">
                 <Form.Select>
                   <option>Select client</option>
@@ -140,12 +140,12 @@ const CreateNew = () => {
                 </Form.Select>
               </FloatingLabel>
             </Col>
-            <Col md={6} className="gy-md-6">
+            <Col md={6} className="md:gy-10">
               <FloatingLabel controlId="floatingInputBudget" label="Budget">
                 <Form.Control type="text" placeholder="Budget" />
               </FloatingLabel>
             </Col>
-            <Col xs={12} className="gy-6">
+            <Col xs={12} className="gy-10">
               <ReactSelect
                 isMulti
                 placeholder="Add tags"
@@ -164,12 +164,12 @@ const CreateNew = () => {
                 }}
               />
             </Col>
-            <Col xs={12} className="gy-6">
-              <div className="flex justify-content-end gap-3">
-                <Button variant="phoenix-primary" className="px-5">
+            <Col xs={12} className="gy-10">
+              <div className="flex justify-end gap-4">
+                <Button variant="phoenix-primary" className="px-8">
                   Cancel
                 </Button>
-                <Button variant="primary" className="px-5 px-sm-15">
+                <Button variant="primary" className="px-8 sm:px-30">
                   Create Project
                 </Button>
               </div>

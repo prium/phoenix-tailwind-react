@@ -14,13 +14,13 @@ const issueStats = [
 
 const IssuesDiscovered = () => {
   return (
-    <Row className="g-3 mb-3">
+    <Row className="g-4 mb-4">
       <Col xs={12} md={6}>
-        <h3 className="text-emphasis text-nowrap">Issues Discovered</h3>
-        <p className="text-subtle mb-md-7">
+        <h3 className="text-emphasis whitespace-nowrap">Issues Discovered</h3>
+        <p className="text-subtle md:mb-12">
           Newly found and yet to be solved
         </p>
-        <div className="flex align-items-center justify-content-between">
+        <div className="flex items-center justify-between">
           <p className="mb-0 font-bold">Issue type </p>
           <p className="mb-0 text-md">
             Total count <span className="font-bold">257</span>
@@ -29,23 +29,23 @@ const IssuesDiscovered = () => {
         <hr className="bg-muted mb-2 mt-2" />
 
         {issueStats.map(issue => (
-          <div className="flex align-items-center mb-1" key={issue.type}>
+          <div className="flex items-center mb-1" key={issue.type}>
             <span
-              className={`d-inline-block bg-${issue.bg} bullet-item me-2`}
+              className={`inline-block bg-${issue.bg} bullet-item me-2`}
             />
-            <p className="mb-0 font-semibold text-default lh-sm flex-1">
+            <p className="mb-0 font-semibold text-default leading-sm flex-1">
               {issue.type}
             </p>
             <h5 className="mb-0 text-default">{issue.value}</h5>
           </div>
         ))}
-        <Button variant="outline-primary" className="mt-5">
+        <Button variant="outline-primary" className="mt-8">
           See Details
           <FontAwesomeIcon icon={faAngleRight} className="ms-2 text-sm" />
         </Button>
       </Col>
       <Col xs={12} md={6}>
-        <div className="relative mb-sm-4 mb-xl-0">
+        <div className="relative sm:mb-6 xl:mb-0">
           <IssuesDiscoveredChart />
         </div>
       </Col>

@@ -13,15 +13,15 @@ const TodoList = () => {
   const [selectedItem, setSelectedItem] = useState<ToDoItem | null>(null);
   return (
     <>
-      <Card className="h-100 todo-list">
-        <Card.Header className="border-bottom-0 pb-0">
-          <Row className="justify-content-between align-items-center mb-4 gy-2">
+      <Card className="h-full todo-list">
+        <Card.Header className="border-b-0 pb-0">
+          <Row className="justify-between items-center mb-6 gy-2">
             <Col xs="auto">
               <h3 className="text-emphasis">To do</h3>
               <p className="mb-0 text-subtle">Task assigned to me</p>
             </Col>
-            <Col xs="auto" className="w-100 w-md-auto">
-              <div className="flex justify-content-between align-items-center flex-wrap gap-x-3 gap-y-3">
+            <Col xs="auto" className="w-full md:w-auto">
+              <div className="flex justify-between items-center flex-wrap gap-x-4 gap-y-4">
                 <SearchBox
                   placeholder="Search tasks"
                   style={{ maxWidth: '30rem' }}
@@ -29,7 +29,7 @@ const TodoList = () => {
                 <div>
                   <Button
                     variant="link"
-                    className="p-0 text-md text-subtle text-decoration-none me-3"
+                    className="p-0 text-md text-subtle no-underline me-4"
                     startIcon={
                       <FontAwesomeIcon icon={faFilter} className="text-sm me-1" />
                     }
@@ -38,7 +38,7 @@ const TodoList = () => {
                   </Button>
                   <Button
                     variant="link"
-                    className="p-0 text-md text-primary text-decoration-none"
+                    className="p-0 text-md text-primary no-underline"
                     startIcon={
                       <FontAwesomeIcon icon={faSort} className="text-sm" />
                     }
@@ -57,7 +57,7 @@ const TodoList = () => {
               key={todo.task}
               todo={todo}
               className={classNames({
-                'border-top border-subtle': index === 0
+                'border-t border-subtle': index === 0
               })}
               labelClassName="text-default"
               fullLayoutBreakpoints={['md', 'xxl']}
@@ -71,7 +71,7 @@ const TodoList = () => {
           <Button
             startIcon={<FontAwesomeIcon icon={faPlus} />}
             variant="link"
-            className="text-decoration-none p-0"
+            className="no-underline p-0"
           >
             Add new task
           </Button>

@@ -5,7 +5,7 @@ const ProjectElevenProgress = () => {
   return (
     <>
       <h3>Project: eleven Progress</h3>
-      <p className="text-subtle mb-0 mb-xl-3">Deadline &amp; progress</p>
+      <p className="text-subtle mb-0 xl:mb-4">Deadline &amp; progress</p>
       <ProjectElevenProgressChart />
     </>
   );

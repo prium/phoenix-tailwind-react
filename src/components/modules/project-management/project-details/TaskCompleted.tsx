@@ -4,7 +4,7 @@ import { Col, Form, Row } from 'react-bootstrap';
 const TaskCompleted = () => {
   return (
     <>
-      <Row className="row flex-between-center mb-3 g-3">
+      <Row className="row flex-between-center mb-4 g-4">
         <Col xs="auto">
           <h4 className="text-emphasis">Task completed over time</h4>
           <p className="text-subtle mb-0">

@@ -37,12 +37,12 @@ const CardViewModal = ({
       <Modal.Header className="relative p-0 overflow-hidden">
         <CoverImage handleClose={handleClose} />
       </Modal.Header>
-      <Modal.Body className="p-5 px-md-6 pb-md-6">
+      <Modal.Body className="p-8 md:px-10 md:pb-10">
         {/* <ActionSection /> */}
-        <Row className="g-5">
+        <Row className="g-8">
           <Col xs={12} xl={9}>
-            <div className="mb-4">
-              <h3 className="font-black lh-sm">{project.name}</h3>
+            <div className="mb-6">
+              <h3 className="font-black leading-sm">{project.name}</h3>
               <p className="text-highlight font-semibold mb-0">
                 In list
                 <Link className="ms-1 font-bold" to="#!">
@@ -51,7 +51,7 @@ const CardViewModal = ({
               </p>
             </div>
 
-            <div className="flex align-items-center mb-4">
+            <div className="flex items-center mb-6">
               <p className="text-highlight fw-700 mb-0 me-2">
                 {progress}%
               </p>
@@ -63,8 +63,8 @@ const CardViewModal = ({
               />
             </div>
             <h6 className="text-muted mb-2">Due date</h6>
-            <div className="mb-3">
-              <div className="w-50">
+            <div className="mb-4">
+              <div className="w-1/2">
                 <DatePicker
                   placeholder="Set the due date"
                   options={{
@@ -74,7 +74,7 @@ const CardViewModal = ({
               </div>
             </div>
 
-            <div className="mb-3">
+            <div className="mb-4">
               <h6 className="text-muted mb-2">Assigness</h6>
               <div className="flex gap-1">
                 {project.assigness.slice(0, 5).map(member => (
@@ -90,9 +90,9 @@ const CardViewModal = ({
               </div>
             </div>
 
-            <div className="mb-5">
+            <div className="mb-8">
               <h6 className="text-muted mb-2">Labels</h6>
-              <div className="flex gap-2 align-items-center">
+              <div className="flex gap-2 items-center">
                 <Badge variant="phoenix" bg="info" className="text-sm">
                   Info
                 </Badge>
@@ -104,7 +104,7 @@ const CardViewModal = ({
                 </Badge>
                 <Button
                   variant="link"
-                  className="p-0 text-md text-default font-black text-decoration-none lh-1"
+                  className="p-0 text-md text-default font-black no-underline leading-none"
                   startIcon={<FontAwesomeIcon icon={faPlus} />}
                 >
                   Add another
@@ -112,7 +112,7 @@ const CardViewModal = ({
               </div>
             </div>
 
-            <EditableDetailsField className="mb-6">
+            <EditableDetailsField className="mb-10">
               The female circus horse-rider is a recurring subject in Chagall’s
               work. In 1926 the art dealer Ambroise Vollard invited Chagall to
               make a project based on the circus. They visited Paris’s historic
@@ -120,14 +120,14 @@ const CardViewModal = ({
               private box seats. Chagall completed 19 gouaches
             </EditableDetailsField>
 
-            <div className="bg-subtle rounded-2 px-4 mb-3">
+            <div className="bg-subtle rounded-md px-6 mb-4">
               <div className="mb-1">
                 {comments.map((comment, index) => (
                   <Comment
                     comment={comment}
                     className={
                       index !== comments.length - 1
-                        ? 'border-bottom border-subtle'
+                        ? 'border-b border-subtle'
                         : undefined
                     }
                     key={comment.id}
@@ -135,16 +135,16 @@ const CardViewModal = ({
                 ))}
               </div>
             </div>
-            <div className="pb-3 border-bottom border-subtle mb-6">
+            <div className="pb-4 border-b border-subtle mb-10">
               <CommentForm />
             </div>
 
-            <div className="mb-7">
-              <h4 className="mb-4">
+            <div className="mb-12">
+              <h4 className="mb-6">
                 To do list{' '}
                 <span className="text-subtle font-normal text-xl">(23)</span>
               </h4>
-              <div className="flex justify-content-between align-items-center flex-wrap gap-x-5 gap-y-3 mb-3">
+              <div className="flex justify-between items-center flex-wrap gap-x-8 gap-y-4 mb-4">
                 <SearchBox
                   placeholder="Search tasks"
                   style={{ maxWidth: '30rem' }}
@@ -152,7 +152,7 @@ const CardViewModal = ({
                 <div>
                   <Button
                     variant="link"
-                    className="p-0 text-md text-subtle text-decoration-none me-3"
+                    className="p-0 text-md text-subtle no-underline me-4"
                     startIcon={
                       <FontAwesomeIcon icon={faFilter} className="text-sm me-1" />
                     }
@@ -161,7 +161,7 @@ const CardViewModal = ({
                   </Button>
                   <Button
                     variant="link"
-                    className="p-0 text-md text-primary text-decoration-none"
+                    className="p-0 text-md text-primary no-underline"
                     startIcon={
                       <FontAwesomeIcon icon={faSort} className="text-sm" />
                     }
@@ -170,13 +170,13 @@ const CardViewModal = ({
                   </Button>
                 </div>
               </div>
-              <div className="mb-4">
+              <div className="mb-6">
                 {todoList.map((todo, index) => (
                   <TodoListItem
                     key={todo.task}
                     todo={todo}
-                    className={classNames('py-3', {
-                      'border-top border-subtle': index === 0
+                    className={classNames('py-6', {
+                      'border-t border-subtle': index === 0
                     })}
                     // fullLayoutBreakpoints={['lg']}
                     // onClick={setSelectedItem}
@@ -186,21 +186,21 @@ const CardViewModal = ({
               <Button
                 startIcon={<FontAwesomeIcon icon={faPlus} />}
                 variant="link"
-                className="text-decoration-none p-0"
+                className="no-underline p-0"
               >
                 Add new task
               </Button>
             </div>
 
             <div>
-              <h4 className="mb-3">Files</h4>
-              <div className="mb-3">
+              <h4 className="mb-4">Files</h4>
+              <div className="mb-4">
                 {attachments.map((attachment, index) => (
                   <FileListItem
                     key={attachment.name}
                     attachment={attachment}
                     className={classNames({
-                      'border-top': index === 0
+                      'border-t': index === 0
                     })}
                   />
                 ))}
@@ -208,7 +208,7 @@ const CardViewModal = ({
               <div className="">
                 <Button
                   variant="link"
-                  className="text-decoration-none p-0"
+                  className="no-underline p-0"
                   startIcon={<FontAwesomeIcon icon={faPlus} className="me-1" />}
                 >
                   Add file(s)
@@ -218,8 +218,8 @@ const CardViewModal = ({
           </Col>
 
           <Col xs={12} xl={3}>
-            <h5 className="text-muted mb-3">Add to card</h5>
-            <div className="mb-6 flex flex-column gap-2">
+            <h5 className="text-muted mb-4">Add to card</h5>
+            <div className="mb-10 flex flex-col gap-2">
               {addToCardItems.map(item => (
                 <Button
                   key={item.label}
@@ -227,22 +227,22 @@ const CardViewModal = ({
                   startIcon={
                     <FontAwesomeIcon icon={item.icon} className="me-2" />
                   }
-                  className="w-100 text-start"
+                  className="w-full text-start"
                   size="sm"
                 >
                   {item.label}
                 </Button>
               ))}
             </div>
-            <h5 className="text-muted mb-3">Actions</h5>
-            <div className="flex flex-column gap-2">
+            <h5 className="text-muted mb-4">Actions</h5>
+            <div className="flex flex-col gap-2">
               {actionItems.map(item => (
                 <Button
                   variant="subtle-secondary"
                   startIcon={
                     <FontAwesomeIcon icon={item.icon} className="me-2" />
                   }
-                  className="w-100 text-start"
+                  className="w-full text-start"
                   size="sm"
                   key={item.label}
                 >

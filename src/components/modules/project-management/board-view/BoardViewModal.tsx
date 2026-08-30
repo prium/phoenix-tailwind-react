@@ -43,10 +43,10 @@ const BoardViewModal = ({
       <Modal.Body className="p-0">
         <ActionSection />
         <Row className="g-0">
-          <Col xs={12} xl={5} className="border-end bg-subtle">
-            <div className="px-5 px-lg-6 py-4 bg-soft">
-              <h3 className="font-black lh-sm mb-5">{project.name}</h3>
-              <div className="flex align-items-center mb-5">
+          <Col xs={12} xl={5} className="border-e bg-subtle">
+            <div className="px-8 lg:px-10 py-6 bg-soft">
+              <h3 className="font-black leading-sm mb-8">{project.name}</h3>
+              <div className="flex items-center mb-8">
                 <p className="text-highlight fw-700 mb-0 me-2">
                   {progress}%
                 </p>
@@ -56,7 +56,7 @@ const BoardViewModal = ({
                   variant={variant}
                 />
               </div>
-              <div className="mb-4">
+              <div className="mb-6">
                 <h6 className="text-muted mb-2">Assigness</h6>
                 <div className="flex gap-1">
                   {project.assigness.slice(0, 5).map(member => (
@@ -71,9 +71,9 @@ const BoardViewModal = ({
                   </Button>
                 </div>
               </div>
-              <div className="mb-5">
+              <div className="mb-8">
                 <h6 className="text-muted mb-2">Labels</h6>
-                <div className="flex gap-2 align-items-center">
+                <div className="flex gap-2 items-center">
                   <Badge variant="phoenix" bg="info" className="text-sm">
                     Info
                   </Badge>
@@ -85,14 +85,14 @@ const BoardViewModal = ({
                   </Badge>
                   <Button
                     variant="link"
-                    className="p-0 text-md text-default font-black text-decoration-none lh-1"
+                    className="p-0 text-md text-default font-black no-underline leading-none"
                     startIcon={<FontAwesomeIcon icon={faPlus} />}
                   >
                     Add another
                   </Button>
                 </div>
               </div>
-              <EditableDetailsField className="mb-6">
+              <EditableDetailsField className="mb-10">
                 The female circus horse-rider is a recurring subject in
                 Chagall’s work. In 1926 the art dealer Ambroise Vollard invited
                 Chagall to make a project based on the circus. They visited
@@ -100,14 +100,14 @@ const BoardViewModal = ({
                 Chagall his private box seats. Chagall completed 19 gouaches
               </EditableDetailsField>
             </div>
-            <div className="px-5 px-lg-6 py-4">
+            <div className="px-8 lg:px-10 py-6">
               <div className="mb-1">
                 {comments.map((comment, index) => (
                   <Comment
                     comment={comment}
                     className={
                       index !== comments.length - 1
-                        ? 'border-bottom border-subtle'
+                        ? 'border-b border-subtle'
                         : undefined
                     }
                     key={comment.id}
@@ -119,15 +119,15 @@ const BoardViewModal = ({
           </Col>
 
           <Col xs={12} xl={7}>
-            <div className="px-5 px-lg-6 pt-4 pb-5 pb-lg-6">
-              <div className="mb-7">
-                <h4 className="mb-4">
+            <div className="px-8 lg:px-10 pt-6 pb-8 lg:pb-10">
+              <div className="mb-12">
+                <h4 className="mb-6">
                   To do list{' '}
                   <span className="text-subtle font-normal text-xl">
                     (23)
                   </span>
                 </h4>
-                <div className="flex justify-content-between align-items-center flex-wrap gap-x-5 gap-y-3 mb-3">
+                <div className="flex justify-between items-center flex-wrap gap-x-8 gap-y-4 mb-4">
                   <SearchBox
                     placeholder="Search tasks"
                     style={{ maxWidth: '30rem' }}
@@ -135,7 +135,7 @@ const BoardViewModal = ({
                   <div>
                     <Button
                       variant="link"
-                      className="p-0 text-md text-subtle text-decoration-none me-3"
+                      className="p-0 text-md text-subtle no-underline me-4"
                       startIcon={
                         <FontAwesomeIcon
                           icon={faFilter}
@@ -147,7 +147,7 @@ const BoardViewModal = ({
                     </Button>
                     <Button
                       variant="link"
-                      className="p-0 text-md text-primary text-decoration-none"
+                      className="p-0 text-md text-primary no-underline"
                       startIcon={
                         <FontAwesomeIcon icon={faSort} className="text-sm" />
                       }
@@ -156,13 +156,13 @@ const BoardViewModal = ({
                     </Button>
                   </div>
                 </div>
-                <div className="mb-4">
+                <div className="mb-6">
                   {todoList.map((todo, index) => (
                     <TodoListItem
                       key={todo.task}
                       todo={todo}
-                      className={classNames('py-3', {
-                        'border-top': index === 0
+                      className={classNames('py-6', {
+                        'border-t': index === 0
                       })}
                       fullLayoutBreakpoints={['lg']}
                     />
@@ -171,21 +171,21 @@ const BoardViewModal = ({
                 <Button
                   startIcon={<FontAwesomeIcon icon={faPlus} />}
                   variant="link"
-                  className="text-decoration-none p-0"
+                  className="no-underline p-0"
                 >
                   Add new task
                 </Button>
               </div>
 
               <div>
-                <h4 className="mb-3">Files</h4>
-                <div className="mb-3">
+                <h4 className="mb-4">Files</h4>
+                <div className="mb-4">
                   {attachments.map((attachment, index) => (
                     <FileListItem
                       key={attachment.name}
                       attachment={attachment}
                       className={classNames({
-                        'border-top border-subtle': index === 0
+                        'border-t border-subtle': index === 0
                       })}
                     />
                   ))}
@@ -193,7 +193,7 @@ const BoardViewModal = ({
                 <div className="">
                   <Button
                     variant="link"
-                    className="text-decoration-none p-0"
+                    className="no-underline p-0"
                     startIcon={
                       <FontAwesomeIcon icon={faPlus} className="me-1" />
                     }

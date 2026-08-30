@@ -35,23 +35,23 @@ const TodoItemDetailsOffcanvas = ({
     >
       {item && (
         <>
-          <div className="p-5 p-md-6">
-            <div className="flex flex-between-center mb-4 gap-3">
+          <div className="p-8 md:p-10">
+            <div className="flex flex-between-center mb-6 gap-4">
               <h2 className="font-bold text-xl mb-0 text-highlight line-clamp-1">
                 {item.task}
               </h2>
               <Button
                 variant="phoenix-secondary"
                 onClick={handleClose}
-                className="btn-icon flex-shrink-0"
+                className="btn-icon shrink-0"
               >
                 <FontAwesomeIcon icon={faXmark} />
               </Button>
             </div>
-            <div className="mb-6">
-              <div className="flex align-items-center mb-3">
-                <h4 className="text-default me-3">Description</h4>
-                <Button variant="link" className="text-decoration-none p-0">
+            <div className="mb-10">
+              <div className="flex items-center mb-4">
+                <h4 className="text-default me-4">Description</h4>
+                <Button variant="link" className="no-underline p-0">
                   <FontAwesomeIcon icon={faPen} />
                 </Button>
               </div>
@@ -65,37 +65,37 @@ const TodoItemDetailsOffcanvas = ({
                 Chagall to make a project based on the circus.
               </p>
             </div>
-            <div className="mb-6">
-              <h4 className="mb-3">Subtasks</h4>
-              <div className="mb-3">
+            <div className="mb-10">
+              <h4 className="mb-4">Subtasks</h4>
+              <div className="mb-4">
                 {subTasks.map((subTask, index) => (
                   <SubTask
                     key={subTask.task}
                     task={subTask}
                     className={classNames({
-                      'border-top border-subtle': index === 0
+                      'border-t border-subtle': index === 0
                     })}
                   />
                 ))}
               </div>
               <Button
                 variant="link"
-                className="font-bold text-md text-decoration-none p-0"
+                className="font-bold text-md no-underline p-0"
               >
                 <FontAwesomeIcon icon={faPlus} className="me-1" />
                 Add subtask
               </Button>
             </div>
 
-            <div className="mb-6">
-              <h4 className="mb-3">Files</h4>
-              <div className="mx-n5 mx-md-n6 mb-3">
+            <div className="mb-10">
+              <h4 className="mb-4">Files</h4>
+              <div className="-mx-8 md:-mx-10 mb-4">
                 {attachments.map((attachment, index) => (
                   <FileListItem
                     key={attachment.name}
                     attachment={attachment}
-                    className={classNames('px-5 px-md-6', {
-                      'border-top border-subtle': index === 0
+                    className={classNames('px-14 md:px-10', {
+                      'border-t border-subtle': index === 0
                     })}
                   />
                 ))}
@@ -103,28 +103,28 @@ const TodoItemDetailsOffcanvas = ({
               <div className="">
                 <Button
                   variant="link"
-                  className="text-decoration-none p-0"
+                  className="no-underline p-0"
                   startIcon={<FontAwesomeIcon icon={faPlus} className="me-1" />}
                 >
                   Add file(s)
                 </Button>
               </div>
             </div>
-            <div className="mb-4">
-              <h4 className="mb-4 text-emphasis">Others Information</h4>
+            <div className="mb-6">
+              <h4 className="mb-6 text-emphasis">Others Information</h4>
               <h5 className="text-highlight mb-2">Status</h5>
-              <Form.Select className="mb-4">
+              <Form.Select className="mb-6">
                 <option>Select</option>
                 <option value="pending">Pending</option>
                 <option value="completed">Completed</option>
                 <option value="closed">Closed</option>
               </Form.Select>
               <h5 className="text-highlight mb-2">Due Date</h5>
-              <div className="mb-4">
+              <div className="mb-6">
                 <DatePicker placeholder="Set the due date" />
               </div>
               <h5 className="text-highlight mb-2">Reminder</h5>
-              <div className="mb-4">
+              <div className="mb-6">
                 <DatePicker
                   placeholder="Set the due date"
                   options={{
@@ -162,7 +162,7 @@ const TodoItemDetailsOffcanvas = ({
                     label: 'California Institute of Technology'
                   }
                 ]}
-                className="mb-6"
+                className="mb-10"
                 isMulti
                 placeholder="Select organizer"
                 icon={

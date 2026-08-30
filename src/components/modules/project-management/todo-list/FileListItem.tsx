@@ -18,11 +18,11 @@ interface FileListItemProps {
 
 const FileListItem = ({ attachment, className }: FileListItemProps) => {
   return (
-    <div className={classNames(className, 'border-bottom py-4')}>
+    <div className={classNames(className, 'border-b py-10')}>
       <div>
-        <div className="flex justify-content-between align-items-start">
+        <div className="flex justify-between items-start">
           <div>
-            <div className="flex align-items-center mb-1">
+            <div className="flex items-center mb-1">
               <FontAwesomeIcon
                 icon={
                   attachment.mimeType === 'image'
@@ -33,13 +33,13 @@ const FileListItem = ({ attachment, className }: FileListItemProps) => {
                 }
                 className="me-2 text-md text-subtle"
               />
-              <p className="text-highlight mb-0 lh-1">{attachment.name}</p>
+              <p className="text-highlight mb-0 leading-none">{attachment.name}</p>
             </div>
             <div
               className={classNames(
                 'flex text-md text-subtle flex-wrap',
                 {
-                  'mb-3': attachment.thumbnail
+                  'mb-6': attachment.thumbnail
                 }
               )}
             >
@@ -47,13 +47,13 @@ const FileListItem = ({ attachment, className }: FileListItemProps) => {
               <span className="text-soft mx-1">| </span>
               <a href="#!">{attachment.user}</a>
               <span className="text-soft mx-1">| </span>
-              <span className="text-nowrap">{attachment.date}</span>
+              <span className="whitespace-nowrap">{attachment.date}</span>
             </div>
             {attachment.thumbnail && (
               <img
                 src={attachment.thumbnail}
                 alt={attachment.name}
-                className="rounded-2 img-fluid"
+                className="rounded-md img-fluid"
               />
             )}
           </div>

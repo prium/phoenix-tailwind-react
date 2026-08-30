@@ -5,7 +5,7 @@ const ProjectDashboard = () => {
   return (
     <>
       <h3>Projects</h3>
-      <p className="text-subtle lh-sm mb-4">
+      <p className="text-subtle leading-sm mb-6">
         Brief summary of all projects
       </p>
       <ProjectDashboardTable />

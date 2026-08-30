@@ -36,15 +36,15 @@ const ProjectBoardView = () => {
     <div>
       <PageBreadcrumb items={defaultBreadcrumbItems} />
       <AdvanceTableProvider {...table}>
-        <div className="flex flex-wrap mb-4 gap-3 gap-sm-6 align-items-center">
+        <div className="flex flex-wrap mb-6 gap-4 sm:gap-10 items-center">
           <h2 className="mb-0">
-            <span className="me-3">Projects</span>{' '}
+            <span className="me-4">Projects</span>{' '}
             <span className="font-normal text-subtle">
               ({projects.length})
             </span>
           </h2>
           <Link
-            className="btn btn-primary px-5"
+            className="btn btn-primary px-8"
             to="/apps/project-management/create-new"
           >
             <FontAwesomeIcon icon={faPlus} className="me-2" />
@@ -52,7 +52,7 @@ const ProjectBoardView = () => {
           </Link>
         </div>
         <ProjectsTopSection activeView="board" />
-        <Row className="g-3 mb-9">
+        <Row className="g-4 mb-16">
           {table
             .getRowModel()
             .rows.map(row => row.original)

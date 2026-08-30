@@ -10,3 +10,4 @@ class names with different meanings (`mb-4` → `mb-6` → `mb-10` …).
 - src/helpers
 - src/pages/apps/e-commerce + closure files (banners, cta, forms, modals, navs, tabs, hooks…)
 - (see git log "chore: run bs2tw codemod" commits for later additions)
+- src/pages/apps/project-management, src/pages/dashboard/ProjectManagement.tsx, src/components/modules/project-management

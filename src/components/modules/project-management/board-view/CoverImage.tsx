@@ -24,7 +24,7 @@ const CoverImage = ({ handleClose }: { handleClose: () => void }) => {
         className="absolute top-0 start-0"
         htmlFor="projectCoverInput"
       >
-        <span className="project-modal-btn d-inline-block bg-soft dark__text-gray-100 rounded-2 py-2 px-3 text-md font-black mt-3 ms-3 cursor-pointer">
+        <span className="project-modal-btn inline-block bg-soft dark__text-gray-100 rounded-md py-2 px-4 text-md font-black mt-4 ms-4 cursor-pointer">
           <FontAwesomeIcon icon={faImage} className="me-1" />
           Change
         </span>
@@ -32,7 +32,7 @@ const CoverImage = ({ handleClose }: { handleClose: () => void }) => {
 
       <Button
         variant="circle"
-        className="project-modal-btn absolute end-0 top-0 mt-3 me-3 bg-soft"
+        className="project-modal-btn absolute end-0 top-0 mt-4 me-4 bg-soft"
         onClick={handleClose}
       >
         <FontAwesomeIcon icon={faXmark} />
@@ -40,7 +40,7 @@ const CoverImage = ({ handleClose }: { handleClose: () => void }) => {
       <img
         src={image ? URL.createObjectURL(image) : generic43}
         alt="cover"
-        className="w-100"
+        className="w-full"
         style={{ minHeight: 150, maxHeight: 280 }}
       />
     </>

@@ -69,16 +69,16 @@ const TodoListItem = ({
       <div
         className={classNames(
           className,
-          'flex align-items-center hover-actions-trigger border-bottom border-subtle gap-2 todolist-item'
+          'flex items-center hover-actions-trigger border-b border-subtle gap-2 todolist-item'
         )}
       >
         <Form.Check.Input
           type="checkbox"
           checked={selected}
-          className={classNames('flex-shrink-0 my-0 align-self-start')}
+          className={classNames('shrink-0 my-0 self-start')}
           onChange={handleSelectionChange}
         />
-        <Row className="justify-content-between align-items-center btn-reveal-trigger border-subtle gx-0 flex-1 gy-1">
+        <Row className="justify-between items-center btn-reveal-trigger border-subtle gx-0 flex-1 gy-1">
           <Col
             xs={12}
             {...fullLayoutBreakpoints?.reduce(
@@ -96,13 +96,13 @@ const TodoListItem = ({
               {}
             )}
           >
-            <div className="flex align-items-center lh-1 gap-2">
+            <div className="flex items-center leading-none gap-2">
               <h5
                 className={classNames(
                   labelClassName,
                   'mb-0 line-clamp-1 font-semibold text-subtle cursor-pointer',
                   {
-                    'text-decoration-line-through text-soft':
+                    'line-through text-soft':
                       selected
                   }
                 )}
@@ -138,7 +138,7 @@ const TodoListItem = ({
               {}
             )}
           >
-            <div className="flex lh-1 align-items-center">
+            <div className="flex leading-none items-center">
               {todo.attachment && (
                 <Button className="p-0 text-subtle text-sm me-2">
                   <FontAwesomeIcon icon={faPaperclip} className="me-1" />
@@ -167,7 +167,7 @@ const TodoListItem = ({
                 <p
                   className={classNames(
                     getBreakpointClasses('ps', [0, 3]),
-                    'text-subtle text-sm ps-lg-3 border-start-lg font-bold mb-md-0 mb-0'
+                    'text-subtle text-sm lg:ps-4 lg:border-s font-bold md:mb-0 mb-0'
                   )}
                 >
                   {todo.time}

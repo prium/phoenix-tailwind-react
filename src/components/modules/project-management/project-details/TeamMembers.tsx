@@ -20,13 +20,13 @@ const tags = [
 const TeamMembers = () => {
   return (
     <div>
-      <h4 className="text-emphasis mb-4">Team members</h4>
-      <div className="flex mb-8 gap-1">
+      <h4 className="text-emphasis mb-6">Team members</h4>
+      <div className="flex mb-14 gap-1">
         {members.slice(0, 5).map(member => (
           <AvatarDropdown key={member.id} user={member} size="xl" />
         ))}
       </div>
-      <h4 className="text-emphasis mb-4">Tags</h4>
+      <h4 className="text-emphasis mb-6">Tags</h4>
       <div className="flex flex-wrap gap-2">
         {tags.map(tag => (
           <Badge variant="tag" key={tag}>

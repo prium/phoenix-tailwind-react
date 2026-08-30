@@ -18,17 +18,17 @@ const SubTask = ({
     <div
       className={classNames(
         className,
-        'flex flex-between-center hover-actions-trigger py-3 border-bottom'
+        'flex flex-between-center hover-actions-trigger py-6 border-b'
       )}
     >
       <Form.Check
         type="checkbox"
         id={snakeCase(task.task)}
-        className="mb-1 mb-md-0 flex align-items-center lh-1 min-h-auto"
+        className="mb-1 md:mb-0 flex items-center leading-none min-h-auto"
       >
         <Form.Check.Input
           type="checkbox"
-          className="form-check-line-through mt-0 me-3"
+          className="form-check-line-through mt-0 me-4"
         />
         <Form.Check.Label className="mb-0 text-base"> {task.task}</Form.Check.Label>
       </Form.Check>
@@ -37,7 +37,7 @@ const SubTask = ({
         <Button
           variant=""
           size="sm"
-          className="me-1 text-subtle px-0 me-3"
+          className="me-1 text-subtle px-0 me-4"
         >
           <FontAwesomeIcon icon={faPencil} className="text-sm" />
         </Button>

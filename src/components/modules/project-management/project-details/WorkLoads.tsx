@@ -5,16 +5,16 @@ import { Col, Row } from 'react-bootstrap';
 const WorkLoads = () => {
   return (
     <div>
-      <div className="mb-5">
+      <div className="mb-8">
         <h4 className="text-emphasis">Work loads</h4>
         <h6 className="text-subtle">Last 7 days</h6>
       </div>
-      <div className="mb-5">
+      <div className="mb-8">
         <EcomTopCouponsChart />
       </div>
-      <Row className="justify-content-center">
+      <Row className="justify-center">
         <Col xs="auto" sm={12}>
-          <div className="flex flex-column gap-2">
+          <div className="flex flex-col gap-2">
             <ChartLegend
               bulletBg="primary"
               label="Shantinan Mekalan"

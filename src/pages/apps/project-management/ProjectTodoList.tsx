@@ -20,16 +20,16 @@ const ProjectTodoList = () => {
   }, [selectedItem]);
 
   return (
-    <div className="mb-9">
-      <h2 className="mb-4">
+    <div className="mb-16">
+      <h2 className="mb-6">
         Todo list<span className="text-subtle font-normal">(23)</span>
       </h2>
-      <div className="flex align-items-center flex-wrap gap-x-5 gap-y-3 mb-3">
+      <div className="flex items-center flex-wrap gap-x-8 gap-y-4 mb-4">
         <SearchBox placeholder="Search tasks" style={{ maxWidth: '30rem' }} />
         <div>
           <Button
             variant="link"
-            className="p-0 text-md text-subtle text-decoration-none me-3"
+            className="p-0 text-md text-subtle no-underline me-4"
             startIcon={
               <FontAwesomeIcon icon={faFilter} className="text-sm me-1" />
             }
@@ -38,20 +38,20 @@ const ProjectTodoList = () => {
           </Button>
           <Button
             variant="link"
-            className="p-0 text-md text-primary text-decoration-none"
+            className="p-0 text-md text-primary no-underline"
             startIcon={<FontAwesomeIcon icon={faSort} className="text-sm" />}
           >
             Sorting
           </Button>
         </div>
       </div>
-      <div className="todolist-container ms-n1 ps-1 scrollbar">
+      <div className="todolist-container -ms-1 ps-1 scrollbar">
         {todoList.map((todo, index) => (
           <TodoListItem
             key={todo.task}
             todo={todo}
             className={classNames({
-              'border-top': index === 0
+              'border-t': index === 0
             })}
             fullLayoutBreakpoints={['md']}
             onClick={item => setSelectedItem(item)}
@@ -61,7 +61,7 @@ const ProjectTodoList = () => {
       <Button
         startIcon={<FontAwesomeIcon icon={faPlus} />}
         variant="link"
-        className="text-decoration-none p-0 mt-4"
+        className="no-underline p-0 mt-6"
       >
         Add new task
       </Button>
