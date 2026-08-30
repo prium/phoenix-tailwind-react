@@ -50,7 +50,7 @@ export const projects: Project[] = [
       amount: '$4',
       label: 'Cost'
     },
-    assigness: [17, 16, 11, 5, 18, 19].map(index => members[index]),
+    assigness: [17, 16, 5, 15, 18, 19, 0].map(index => members[index]),
     progress: {
       min: 145,
       max: 145
@@ -72,7 +72,7 @@ export const projects: Project[] = [
   {
     id: 2,
     name: 'Project Doughnut Dungeon',
-    assigness: [18, 19].map(index => members[index]),
+    assigness: [18, 19, 11].map(index => members[index]),
     start: 'Jan 9, 2019',
     deadline: 'Dec 9, 2022',
     progress: {
@@ -148,7 +148,7 @@ export const projects: Project[] = [
   {
     id: 5,
     name: 'Harnessing stupidity from Jerry',
-    assigness: [17, 16, 15].map(index => members[index]),
+    assigness: [16, 17, 15].map(index => members[index]),
     start: 'Dec 28, 2019',
     deadline: 'Nov 28, 2021',
     progress: {
@@ -172,7 +172,7 @@ export const projects: Project[] = [
   {
     id: 6,
     name: 'Water resistant mosquito killer gun',
-    assigness: [1, 11, 10, 2].map(index => members[index]),
+    assigness: [1, 15, 10, 2, 6].map(index => members[index]),
     start: 'Feb 24, 2020',
     deadline: 'Nov 24, 2021',
     calculation: {

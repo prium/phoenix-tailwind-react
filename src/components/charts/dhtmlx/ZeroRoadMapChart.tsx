@@ -91,6 +91,9 @@ const ZeroRoadMapChart = ({
       });
 
       gantt.config.date_format = '%Y-%m-%d %H:%i';
+      // gold uses dhtmlx defaults here (resetGanttConfig narrows them for the gantt example page)
+      gantt.config.min_column_width = 70;
+      gantt.config.scroll_size = 20;
       gantt.config.scale_height = 0;
       gantt.config.row_height = 36;
       gantt.config.bar_height = 12;
@@ -99,7 +102,6 @@ const ZeroRoadMapChart = ({
       gantt.config.drag_resize = false;
       gantt.config.drag_links = false;
       gantt.config.details_on_dblclick = false;
-      // gantt.config.click_drag = false;
 
       const zoomConfig = {
         levels: [
@@ -141,7 +143,8 @@ const ZeroRoadMapChart = ({
         ]
       };
 
-      gantt.ext.zoom.init(zoomConfig);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      gantt.ext.zoom.init(zoomConfig as any);
       gantt.ext.zoom.setLevel('week');
       // gantt.ext.zoom.attachEvent('onAfterZoom', function (level, config) {
       //   document.querySelector("input[value='" + config.name + "']").checked = true;
@@ -149,11 +152,7 @@ const ZeroRoadMapChart = ({
 
       gantt.config.columns = [{ name: 'text', width: 56, resize: true }];
 
-      gantt.templates.task_class = (start, end, task) => task.task_class;
-
-      gantt.templates.timeline_cell_class = function () {
-        return 'weekend';
-      };
+      gantt.templates.task_class = (_start, _end, task) => task.task_class;
 
       gantt.templates.task_text = () => '';
 
@@ -165,7 +164,7 @@ const ZeroRoadMapChart = ({
       gantt.clearAll();
       gantt.resetSkin();
       gantt._events = [];
-    }
+    };
   }, []);
 
   useEffect(() => {

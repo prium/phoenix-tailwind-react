@@ -1,43 +1,44 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
+import { Col, Row, cn } from '@hummingbirdui/react';
 import Timeline from 'components/base/Timeline';
 import { ActivityTimelineData } from 'data/project-management/activityTimelineData';
-import { Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router';
 
 interface ActivityTimelineProps {
   data: ActivityTimelineData[];
 }
 
+/** `+RecentActivityTimeline` in mixins/dashboard/project-management/RecentActivity.pug */
 const ActivityTimeline = ({ data }: ActivityTimelineProps) => {
   return (
-    <Timeline variant="vertical">
+    <Timeline variant="vertical" className="timeline-with-details">
       {data.map((item, index) => (
         <Timeline.Item className="relative" key={item.id}>
-          <Row className="g-md-3">
+          <Row className="md:g-4">
             <Col xs={12} md="auto" className="flex">
               <Timeline.OppositeContent>
-                <p className="text-sm font-semibold text-subtle text-opacity-85 text-end">
+                <p className="text-sm font-semibold text-subtle/85 text-end">
                   {item.oppositeContent.date}
-                  <br className="hidden d-md-block" />{' '}
-                  {item.oppositeContent.time}
+                  <br className="hidden md:block" /> {item.oppositeContent.time}
                 </p>
               </Timeline.OppositeContent>
-              <Timeline.Separator className="position-md-relative">
-                <Timeline.Dot className="bg-primary-subtle">
+              <Timeline.Separator className="md:relative">
+                <Timeline.Dot className="rounded-7 shadow-none bg-primary-subtle">
                   <FontAwesomeIcon
                     icon={item.separator.icon}
                     className="text-primary-dark text-sm"
                   />
                 </Timeline.Dot>
                 {index !== data.length - 1 && (
-                  <Timeline.Bar className="h-100 border-dashed" />
+                  <Timeline.Bar className="border-dashed" />
                 )}
               </Timeline.Separator>
             </Col>
             <Col>
               <Timeline.Content>
-                <h5 className="text-md lh-sm">{item.content.title}</h5>
+                <h5 className="text-md mb-1 leading-sm">
+                  {item.content.title}
+                </h5>
                 <p className="text-md">
                   by{' '}
                   <Link className="font-semibold" to="#!">
@@ -45,10 +46,10 @@ const ActivityTimeline = ({ data }: ActivityTimelineProps) => {
                   </Link>
                 </p>
                 <p
-                  className={classNames('text-md text-muted', {
-                    'mb-5': index !== data.length - 1,
-                    'mb-0': index === data.length - 1
-                  })}
+                  className={cn(
+                    index !== data.length - 1 ? 'mb-8' : 'mb-0',
+                    'text-md text-muted'
+                  )}
                 >
                   {item.content.details}
                 </p>

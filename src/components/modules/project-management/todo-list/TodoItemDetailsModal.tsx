@@ -1,187 +1,85 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { UilBellSchool, UilTagAlt } from '@iconscout/react-unicons';
-import classNames from 'classnames';
-import Button from 'components/base/Button';
-import DatePicker from 'components/base/DatePicker';
-import ReactSelect from 'components/base/ReactSelect';
-import {
-  ToDoItem,
-  attachments,
-  subTasks
-} from 'data/project-management/todoListData';
-import { Col, Form, Modal, Row } from 'react-bootstrap';
-import FileListItem from './FileListItem';
-import SubTask from './SubTask';
-import { faPen, faPlus, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { Col, Dialog, Row } from '@hummingbirdui/react';
+import { ToDoItem } from 'data/project-management/todoListData';
+import { Files } from './FileListItem';
+import { SubTasks } from './SubTask';
+import OthersInformation from './OthersInformation';
+import { faPen, faXmark } from '@fortawesome/free-solid-svg-icons';
 
 interface TodoItemDetailsModalProps {
   handleClose: () => void;
   item: ToDoItem | null;
 }
 
+/** `+ToDoModal` in mixins/dashboard/project-management/ToDo.pug */
 const TodoItemDetailsModal = ({
   handleClose,
   item
 }: TodoItemDetailsModalProps) => {
   return (
-    <Modal show={!!item} onHide={handleClose} size="xl">
-      {item && (
-        <>
-          <Modal.Header className="px-10 py-8 sm:pe-8 md:px-10 dark__bg-gray-1100">
-            <h3 className="text-highlight font-black mb-0">{item.task}</h3>
-            <Button
-              variant="phoenix-secondary"
-              onClick={handleClose}
-              className="btn-icon btn-icon-xl shrink-0 ms-auto"
-            >
-              <FontAwesomeIcon icon={faXmark} />
-            </Button>
-          </Modal.Header>
-          <Modal.Body className="bg-subtle px-8 sm:px-10 py-0 rounded-b-md">
-            <Row className="gx-28">
-              <Col xs={12} lg={7} className="lg:border-e">
-                <div className="mt-10 mb-12">
-                  <div className="mb-12">
-                    <div className="flex items-center mb-4">
-                      <h4 className="text-default me-4">Description</h4>
-                      <Button
-                        variant="link"
-                        className="no-underline p-0"
-                      >
-                        <FontAwesomeIcon icon={faPen} />
-                      </Button>
-                    </div>
-                    <p className="text-highlight mb-0">
-                      The female circus horse-rider is a recurring subject in
-                      Chagall’s work. In 1926 the art dealer Ambroise Vollard
-                      invited Chagall to make a project based on the circus.
-                      They visited Paris’s historic Cirque d’Hiver Bouglione
-                      together; Vollard lent Chagall his private box seats.
-                      Chagall completed 19 gouaches Chagall’s work. In 1926 the
-                      art dealer Ambroise Vollard invited Chagall to make a
-                      project based on the circus.
-                    </p>
+    <Dialog open={!!item} onOpenChange={open => !open && handleClose()}>
+      <Dialog.Content
+        size="xl"
+        className="bg-default overflow-hidden"
+        aria-describedby={undefined}
+      >
+        <Dialog.Header className="justify-between px-10 py-8 sm:pe-8 md:px-10 dark:bg-soft">
+          <Dialog.Title className="sr-only">{item?.task}</Dialog.Title>
+          <h3 className="text-highlight font-bolder mb-0">{item?.task}</h3>
+          <button
+            type="button"
+            className="btn btn-phoenix-secondary btn-square btn-lg w-12 h-12 shrink-0"
+            aria-label="Close"
+            onClick={handleClose}
+          >
+            <FontAwesomeIcon icon={faXmark} />
+          </button>
+        </Dialog.Header>
+        <Dialog.Body className="bg-subtle px-10 py-0">
+          <Row className="gx-28">
+            <Col xs={12} lg={7} className="lg:border-e">
+              <div className="py-10">
+                <div className="mb-12">
+                  <div className="flex items-center mb-4">
+                    <h4 className="mb-1 text-default me-4">Description</h4>
+                    <a href="#!" className="btn btn-link no-underline p-0 mb-1">
+                      <FontAwesomeIcon icon={faPen} />
+                    </a>
                   </div>
-                  <div className="mb-12">
-                    <h4 className="mb-4">Subtasks</h4>
-                    <div className="mb-4">
-                      {subTasks.map((subTask, index) => (
-                        <SubTask
-                          key={subTask.task}
-                          task={subTask}
-                          className={classNames({
-                            'border-t border-subtle': index === 0
-                          })}
-                        />
-                      ))}
-                    </div>
-                    <Button variant="link" className="font-bold text-md p-0">
-                      <FontAwesomeIcon icon={faPlus} className="me-1" />
-                      Add subtask
-                    </Button>
-                  </div>
-
-                  <div>
-                    <h4 className="mb-4">Files</h4>
-                    <div className="mb-4">
-                      {attachments.map((attachment, index) => (
-                        <FileListItem
-                          key={attachment.name}
-                          attachment={attachment}
-                          className={classNames({
-                            'border-t border-subtle': index === 0
-                          })}
-                        />
-                      ))}
-                    </div>
-                    <Button
-                      variant="link"
-                      className="no-underline p-0"
-                      startIcon={
-                        <FontAwesomeIcon icon={faPlus} className="me-1" />
-                      }
-                    >
-                      Add file(s)
-                    </Button>
-                  </div>
+                  <p className="text-highlight mb-0">
+                    The female circus horse-rider is a recurring subject in
+                    Chagall’s work. In 1926 the art dealer Ambroise Vollard
+                    invited Chagall to make a project based on the circus. They
+                    visited Paris’s historic Cirque d’Hiver Bouglione together;
+                    Vollard lent Chagall his private box seats. Chagall
+                    completed 19 gouaches Chagall’s work. In 1926 the art dealer
+                    Ambroise Vollard invited Chagall to make a project based on
+                    the circus.
+                  </p>
                 </div>
-              </Col>
-              <Col xs={12} lg={5}>
-                <div className="lg:mt-10 mb-8 sm:mb-10">
-                  <h4 className="mb-8 text-emphasis">
-                    Others Information
-                  </h4>
-                  <h5 className="text-highlight mb-2">Status</h5>
-                  <Form.Select className="mb-6">
-                    <option>Select</option>
-                    <option value="pending">Pending</option>
-                    <option value="completed">Completed</option>
-                    <option value="closed">Closed</option>
-                  </Form.Select>
-                  <h5 className="text-highlight mb-2">Due Date</h5>
-                  <div className="mb-6">
-                    <DatePicker placeholder="Set the due date" />
-                  </div>
-                  <h5 className="text-highlight mb-2">Reminder</h5>
-                  <div className="mb-6">
-                    <DatePicker
-                      placeholder="Set the due date"
-                      options={{
-                        noCalendar: true,
-                        enableTime: true,
-                        dateFormat: 'H:i'
-                      }}
-                      icon={
-                        <UilBellSchool
-                          fill='currentColor'
-                          className="flatpickr-icon text-subtle"
-                          size={16}
-                        />
-                      }
-                    />
-                  </div>
-                  <h5 className="text-highlight mb-2">Tag</h5>
-                  <ReactSelect
-                    options={[
-                      {
-                        value: 'massachusetts_institute_of_technology',
-                        label: 'Massachusetts Institute of Technology'
-                      },
-                      {
-                        value: 'university_of_chicago',
-                        label: 'University of Chicago'
-                      },
-                      {
-                        value: 'gsas_open_labs_at_harvard',
-                        label: 'GSAS Open Labs At Harvard'
-                      },
-                      {
-                        value: 'california_institute_of_technology',
-                        label: 'California Institute of Technology'
-                      }
-                    ]}
-                    className="mb-8"
-                    isMulti
-                    placeholder="Select organizer"
-                    icon={
-                      <UilTagAlt
-                        fill='currentColor'
-                        className="react-select-icon text-subtle"
-                        size={16}
-                      />
-                    }
+                <div className="mb-12">
+                  <SubTasks />
+                </div>
+                <div className="mb-4">
+                  <Files
+                    itemPaddingClass="px-0 pt-6 pb-4"
+                    showAddBtn
+                    showAddBtnClass="mt-4"
+                    imgMaxWidth={230}
                   />
-
-                  <div className="text-end">
-                    <Button variant="phoenix-danger">Delete Task</Button>
-                  </div>
                 </div>
-              </Col>
-            </Row>
-          </Modal.Body>
-        </>
-      )}
-    </Modal>
+              </div>
+            </Col>
+            <Col xs={12} lg={5}>
+              <div className="py-10">
+                <h4 className="mb-6 text-emphasis">Others Information</h4>
+                <OthersInformation />
+              </div>
+            </Col>
+          </Row>
+        </Dialog.Body>
+      </Dialog.Content>
+    </Dialog>
   );
 };
 

@@ -10,10 +10,18 @@ const getDefaultOptions = (
   isDark: boolean
 ) => ({
   color: [
-    !isDark ? getThemeColor('color-info-light') : getThemeColor('color-info-dark'),
-    !isDark ? getThemeColor('color-warning-light') : getThemeColor('color-warning-dark'),
-    !isDark ? getThemeColor('color-danger-light') : getThemeColor('color-danger-dark'),
-    !isDark ? getThemeColor('color-success-light') : getThemeColor('color-success-dark'),
+    !isDark
+      ? getThemeColor('color-info-light')
+      : getThemeColor('color-info-dark'),
+    !isDark
+      ? getThemeColor('color-warning-light')
+      : getThemeColor('color-warning-dark'),
+    !isDark
+      ? getThemeColor('color-danger-light')
+      : getThemeColor('color-danger-dark'),
+    !isDark
+      ? getThemeColor('color-success-light')
+      : getThemeColor('color-success-dark'),
     getThemeColor('color-primary')
   ],
   tooltip: {
@@ -84,7 +92,8 @@ const IssuesDiscoveredChart = () => {
     <ReactEChartsCore
       echarts={echarts}
       option={getDefaultOptions(getThemeColor, isDark)}
-      style={{ minHeight: '390px', width: '100%' }}
+      className="echart-issue-chart w-full min-h-97.5"
+      style={{ height: 'auto', width: '100%' }}
     />
   );
 };

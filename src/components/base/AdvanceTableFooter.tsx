@@ -92,8 +92,8 @@ const AdvanceTableFooter = ({
       <Col xs={pagination ? 'auto' : undefined} className="flex text-md">
         <p
           className={cn(
-            tableInfo,
-            'mb-0 hidden sm:block me-10 font-semibold text-default'
+            'mb-0 hidden sm:block me-10 font-semibold text-default',
+            tableInfo
           )}
         >
           {pageSize * pageIndex + 1} to{' '}

@@ -209,7 +209,8 @@ const ProjectElevenProgressChart = () => {
     <ReactEChartsCore
       echarts={echarts}
       option={getDefaultOptions(getThemeColor)}
-      style={{ minHeight: '320px', width: '100%' }}
+      className="echart-zero-burnout-chart w-full min-h-80"
+      style={{ height: 'auto', width: '100%' }}
     />
   );
 };

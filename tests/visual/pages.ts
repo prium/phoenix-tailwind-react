@@ -68,6 +68,22 @@ export const pages: VisualPage[] = [
     dark: true,
     widths: [768]
   },
+  // data-only: the Projects table has 7 demo projects (gold 6) and different
+  // assignee images; gold's `.avatar-group .avatar-xs` has no width, so the
+  // avatars (and row heights) are driven by each image's natural size
+  {
+    name: 'dashboard-project-management',
+    react: '/dashboard/project-management',
+    gold: '/dashboard/project-management.html',
+    dark: true,
+    widths: [768],
+    tolerance: 0.02
+  },
+  {
+    name: 'pm-todo-list',
+    react: '/apps/project-management/todo-list',
+    gold: '/apps/project-management/todo-list.html'
+  },
   // layouts (settings panel "Navigation type" / "Horizontal navbar shape")
   layout('layout-horizontal', 'navbar-horizontal', {
     navbarPosition: 'horizontal'
