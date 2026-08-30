@@ -58,7 +58,6 @@ export const pages: VisualPage[] = [
     '/landing/favourite-stores.html'
   ),
   p('ec-cart', '/customer/cart', '/landing/cart.html'),
-  // data-only: address text wraps differently
   p('ec-checkout', '/customer/checkout', '/landing/checkout.html'),
   p(
     'ec-shipping-info',
@@ -83,10 +82,8 @@ export const pages: VisualPage[] = [
   p('ec-wishlist', '/customer/wishlist', '/landing/wishlist.html'),
 
   // admin
-  // data-only: gold headers are UPPERCASE, "$39" vs "$39.00"
   p('ec-admin-products', '/admin/products', '/admin/products.html'),
   p('ec-admin-customers', '/admin/customers', '/admin/customers.html'),
-  // data-only: gold headers UPPERCASE, totals formatting, badge labels
   p('ec-admin-orders', '/admin/orders', '/admin/orders.html'),
   p('ec-admin-add-product', '/admin/add-product', '/admin/add-product.html'),
   // data-only: different demo products / row count
