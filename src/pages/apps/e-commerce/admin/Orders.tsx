@@ -1,3 +1,4 @@
+import { Col, Row } from '@hummingbirdui/react';
 import { faFileExport, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'components/base/Button';
@@ -100,8 +101,12 @@ const Orders = () => {
     <div>
       <PageBreadcrumb items={defaultBreadcrumbItems} />
       <div className="mb-16">
-        <h2 className="mb-6">Orders</h2>
-        <FilterTab tabItems={tabItems} className="mb-2" />
+        <Row className="g-3 mb-6">
+          <Col xs="auto">
+            <h2 className="mb-0">Orders</h2>
+          </Col>
+        </Row>
+        <FilterTab tabItems={tabItems} className="mb-4 lg:mb-2" />
 
         <AdvanceTableProvider {...table}>
           <div className="mb-6">

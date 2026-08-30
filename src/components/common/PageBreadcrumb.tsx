@@ -14,8 +14,9 @@ interface PageBreadcrumbProps {
 
 const PageBreadcrumb = ({ items, className }: PageBreadcrumbProps) => {
   return (
-    <Breadcrumb>
-      <Breadcrumb.List className={cn('mb-2', className)}>
+    // gold: `nav.mb-4(aria-label='breadcrumb') > ol.breadcrumb.mb-0`
+    <Breadcrumb className={cn('mb-4', className)}>
+      <Breadcrumb.List className="mb-0">
         {items.map(item => (
           <Breadcrumb.Item active={item.active} key={item.label}>
             {item.active ? (

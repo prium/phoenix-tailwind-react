@@ -23,7 +23,7 @@ const FilterTab = ({ tabItems, className }: FilterTabProps) => {
   };
 
   return (
-    <Nav className={cn(className, 'nav-links -mx-2')}>
+    <Nav className={cn('nav-links -mx-4', className)}>
       {tabItems.map(item => (
         <Nav.Item key={item.label}>
           <Nav.Link
@@ -32,7 +32,6 @@ const FilterTab = ({ tabItems, className }: FilterTabProps) => {
               e.preventDefault();
               handleClick(item);
             }}
-            className="px-2 py-1"
             active={activeItem === item.value}
           >
             <span>{item.label} </span>

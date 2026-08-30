@@ -1,3 +1,4 @@
+import { Col, Row } from '@hummingbirdui/react';
 import { faFileExport, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'components/base/Button';
@@ -88,8 +89,12 @@ const Products = () => {
     <div>
       <PageBreadcrumb items={defaultBreadcrumbItems} />
       <div className="mb-16">
-        <h2 className="mb-6">Products</h2>
-        <FilterTab tabItems={tabItems} className="mb-2" />
+        <Row className="g-3 mb-6">
+          <Col xs="auto">
+            <h2 className="mb-0">Products</h2>
+          </Col>
+        </Row>
+        <FilterTab tabItems={tabItems} className="mb-4 lg:mb-2" />
         <AdvanceTableProvider {...table}>
           <div className="mb-6">
             <div className="flex flex-wrap gap-4">
@@ -102,7 +107,10 @@ const Products = () => {
               </div>
               <div className="2xl:ms-auto">
                 <Button variant="link" className="text-default me-6 px-0">
-                  <FontAwesomeIcon icon={faFileExport} className="text-md me-2" />
+                  <FontAwesomeIcon
+                    icon={faFileExport}
+                    className="text-md me-2"
+                  />
                   Export
                 </Button>
                 <Button variant="primary">

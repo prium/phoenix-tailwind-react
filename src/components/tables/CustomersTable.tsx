@@ -23,8 +23,8 @@ export const customersTablecolumns: ColumnDef<Customer>[] = [
       );
     },
     meta: {
-      headerProps: { style: { width: '10%' }, className: 'pe-5 ps-0' },
-      cellProps: { className: 'py-0 pe-5 ps-0 whitespace-nowrap' }
+      headerProps: { className: 'pe-8 w-1/10' },
+      cellProps: { className: 'whitespace-nowrap pe-8' }
     }
   },
   {
@@ -39,16 +39,18 @@ export const customersTablecolumns: ColumnDef<Customer>[] = [
       );
     },
     meta: {
-      headerProps: { style: { width: '20%' }, className: 'pe-5 ps-1' },
-      cellProps: { className: 'pe-5 ps-1' }
+      headerProps: { className: 'pe-8 w-2/10' },
+      cellProps: { className: 'whitespace-nowrap pe-8' }
     }
   },
   {
     accessorKey: 'totalOrders',
     header: 'Orders',
     meta: {
-      headerProps: { style: { width: '10%' }, className: 'text-end px-1' },
-      cellProps: { className: 'font-semibold text-highlight text-end px-1' }
+      headerProps: { className: 'text-end w-1/10' },
+      cellProps: {
+        className: 'whitespace-nowrap font-semibold text-end text-highlight'
+      }
     }
   },
   {
@@ -56,35 +58,34 @@ export const customersTablecolumns: ColumnDef<Customer>[] = [
     header: 'Total spent',
     cell: ({ row: { original } }) => currencyFormat(original.totalSpent),
     meta: {
-      headerProps: { style: { width: '10%' }, className: 'text-end ps-3 pe-1' },
-      cellProps: { className: 'font-bold text-emphasis ps-3 text-end pe-1' }
+      headerProps: { className: 'text-end ps-4 w-1/10' },
+      cellProps: {
+        className: 'whitespace-nowrap font-bold text-end ps-4 text-emphasis'
+      }
     }
   },
   {
     accessorKey: 'city',
     header: 'City',
     meta: {
-      headerProps: { style: { width: '25%' }, className: 'ps-7' },
-      cellProps: { className: 'ps-7 text-highlight whitespace-nowrap' }
+      headerProps: { className: 'ps-12 w-1/4' },
+      cellProps: { className: 'whitespace-nowrap text-highlight ps-12' }
     }
   },
   {
     accessorKey: 'lastSeen',
     header: 'Last seen',
     meta: {
-      headerProps: { style: { width: '15%' }, className: 'text-end px-1' },
-      cellProps: { className: 'text-subtle text-end px-1' }
+      headerProps: { className: 'text-end w-[15%]' },
+      cellProps: { className: 'whitespace-nowrap text-subtle text-end' }
     }
   },
   {
     accessorKey: 'lastOrder',
     header: 'Last order',
     meta: {
-      headerProps: {
-        style: { width: '10%', minWidth: 150 },
-        className: 'text-end'
-      },
-      cellProps: { className: 'text-subtle text-end pe-0' }
+      headerProps: { className: 'text-end pe-0 w-1/10 min-w-37.5' },
+      cellProps: { className: 'whitespace-nowrap text-subtle text-end pe-0' }
     }
   }
 ];
@@ -92,7 +93,7 @@ export const customersTablecolumns: ColumnDef<Customer>[] = [
 const CustomersTable = () => {
   return (
     <div>
-      <AdvanceTable tableProps={{ className: ' text-md' }} />
+      <AdvanceTable tableProps={{ size: 'sm', className: 'text-md mb-0' }} />
       <AdvanceTableFooter pagination />
     </div>
   );
