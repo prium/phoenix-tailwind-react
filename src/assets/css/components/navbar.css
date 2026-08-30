@@ -58,7 +58,7 @@
       border-top-left-radius: 0.25rem;
       border-width: 1px 0 0 1px;
       border-style: solid;
-      border-color: var(--border-color-base);
+      border-color: var(--border-color-default);
       box-shadow: var(--shadow-sm);
     }
     &.dropdown-menu-end.navbar-dropdown-caret {

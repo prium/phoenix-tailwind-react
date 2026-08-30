@@ -39,7 +39,7 @@ const CalendarEventModal = () => {
       onHide={handleClose}
       contentClassName="border"
     >
-      <Modal.Header className="ps-card border-bottom border-light">
+      <Modal.Header className="ps-card border-bottom border-subtle">
         <div>
           <Modal.Title className="modal-title text-highlight mb-0">
             {selectedEvent?.title}
@@ -56,7 +56,7 @@ const CalendarEventModal = () => {
       </Modal.Header>
       <Modal.Body className="px-card pb-card pt-1 text-md">
         {selectedEvent?.extendedProps.description && (
-          <div className="mt-3 border-bottom border-light pb-3">
+          <div className="mt-3 border-bottom border-subtle pb-3">
             <h5 className="mb-0 text-muted">Description</h5>
             <p className="mb-0 mt-2">
               {selectedEvent.extendedProps.description
@@ -68,7 +68,7 @@ const CalendarEventModal = () => {
         )}
         <div
           className={classNames('mt-4', {
-            'border-bottom border-light pb-3':
+            'border-bottom border-subtle pb-3':
               selectedEvent?.extendedProps.location
           })}
         >

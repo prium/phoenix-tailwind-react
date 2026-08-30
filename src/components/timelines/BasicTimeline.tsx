@@ -15,7 +15,7 @@ const BasicTimeline = ({ data }: { data: TimelineItem[] }) => {
           <Row className="g-3">
             <Col xs="auto">
               <Timeline.Separator className="relative">
-                <Timeline.Dot className="icon-item-md border border-light bg-default">
+                <Timeline.Dot className="icon-item-md border border-subtle bg-default">
                   <FontAwesomeIcon
                     icon={item.icon}
                     className={`text-md text-${item.iconColor}`}

@@ -4,7 +4,7 @@
 
 .leaflet-touch {
   .leaflet-bar {
-    border-color: var(--border-color-light) !important;
+    border-color: var(--border-color-subtle) !important;
   }
 }
 .leaflet-bar {
@@ -14,7 +14,7 @@
     &:hover {
       background-color: var(--background-color-subtle) !important;
       color: var(--text-color-default) !important;
-      border-bottom-color: var(--border-color-base) !important;
+      border-bottom-color: var(--border-color-default) !important;
     }
     &.leaflet-disabled {
       background-color: var(--background-color-muted);

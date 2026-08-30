@@ -123,7 +123,7 @@ const HotelReviews = ({ ratings, reviews }: HotelReviewsProps) => {
           />
         </Fragment>
       ))}
-      <Button className="bg-default border-light text-soft font-black mt-n4">
+      <Button className="bg-default border-subtle text-soft font-black mt-n4">
         Show 2 more replies
       </Button>
     </>

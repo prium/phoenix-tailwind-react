@@ -22,7 +22,7 @@ export const DropdownItem = ({
   return (
     <Dropdown.Item
       as="div"
-      className={`flex align-items-center px-0 hover-bg-none g-0 border-light ${className}`}
+      className={`flex align-items-center px-0 hover-bg-none g-0 border-subtle ${className}`}
     >
       <h5 className="mb-0 text-default" style={{ minWidth: 100 }}>
         {title}
@@ -65,7 +65,7 @@ const HotelActions = ({ background }: { background: boolean }) => {
           )}
         >
           <Col xs={12} md>
-            <div className="form-icon-container border-bottom border-bottom-md-0 border-light pb-3 pb-md-0">
+            <div className="form-icon-container border-bottom border-bottom-md-0 border-subtle pb-3 pb-md-0">
               <Form.Control
                 id="PickPlace"
                 type="text"
@@ -90,7 +90,7 @@ const HotelActions = ({ background }: { background: boolean }) => {
                         placeholder="Pick a date"
                         ref={ref}
                         id="pickDate"
-                        className="form-icon-input border-y-0 border-start-0 border-start-md py-0 shadow-none border-light text-base rounded-0"
+                        className="form-icon-input border-y-0 border-start-0 border-start-md py-0 shadow-none border-subtle text-base rounded-0"
                       />
                       <FontAwesomeIcon
                         icon={faCalendar}

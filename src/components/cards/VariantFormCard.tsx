@@ -10,7 +10,7 @@ const VariantFormCard = ({ className }: { className?: string }) => {
 
         <Row className="gx-4 gy-6 mb-4">
           <Col xs={12} sm={6} xl={12}>
-            <ProductVariant title='Option 1' className="border-b border-light border-dashed sm:border-0 xl:border-b pb-6" />
+            <ProductVariant title='Option 1' className="border-b border-subtle border-dashed sm:border-0 xl:border-b pb-6" />
           </Col>
           <Col xs={12} sm={6} xl={12}>
             <ProductVariant title='Option 2' />

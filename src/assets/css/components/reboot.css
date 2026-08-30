@@ -178,7 +178,7 @@ img {
 ::backdrop,
 ::file-selector-button {
   @layer base {
-    @apply border-base;
+    @apply border-default;
   }
 }
 

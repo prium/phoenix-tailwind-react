@@ -7,7 +7,7 @@ import { Link } from 'react-router';
 const MutualNavigation = () => {
   return (
     <>
-      <div className="flex pb-4 align-items-end border-bottom border-light border-dashed">
+      <div className="flex pb-4 align-items-end border-bottom border-subtle border-dashed">
         <h3 className="flex-1 mb-0">You and Erza</h3>
         <Link to="#!" className="font-bold text-md">
           See details
@@ -18,7 +18,7 @@ const MutualNavigation = () => {
           <Col
             xs={12}
             key={item.label}
-            className="border-bottom border-light py-2"
+            className="border-bottom border-subtle py-2"
           >
             <Button
               variant="link"

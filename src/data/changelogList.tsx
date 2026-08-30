@@ -55,7 +55,7 @@ const changelogListElips = `
         </ul>
       <li> Border 
         <ul>
-          <li><code>border-light</code></li>
+          <li><code>border-subtle</code></li>
           <li><code>border-{themeColor}-light</code></li>
           <li><code>border-{themeColor}-dark</code></li>
         </ul>

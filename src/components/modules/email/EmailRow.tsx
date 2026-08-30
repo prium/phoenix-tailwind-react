@@ -19,7 +19,7 @@ interface EmailRowProps {
 const EmailRow = ({ email, index }: EmailRowProps) => {
   const { getRowCheckboxProps } = useBulkSelect();
   return (
-    <div className="border-bottom border-light hover-actions-trigger py-3">
+    <div className="border-bottom border-subtle hover-actions-trigger py-3">
       <Row className="gx-2">
         <Col xs="auto">
           <div className="flex flex-column flex-sm-row">
@@ -109,7 +109,7 @@ const EmailRow = ({ email, index }: EmailRowProps) => {
         {email.attachments?.map(attachment => (
           <a
             href="#!"
-            className="d-inline-flex align-items-center border border-light rounded-full px-3 py-1 me-2 mt-2 inbox-link"
+            className="d-inline-flex align-items-center border border-subtle rounded-full px-3 py-1 me-2 mt-2 inbox-link"
             key={attachment.id}
           >
             <FontAwesomeIcon

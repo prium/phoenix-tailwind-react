@@ -69,7 +69,7 @@ const TodoListItem = ({
       <div
         className={classNames(
           className,
-          'flex align-items-center hover-actions-trigger border-bottom border-light gap-2 todolist-item'
+          'flex align-items-center hover-actions-trigger border-bottom border-subtle gap-2 todolist-item'
         )}
       >
         <Form.Check.Input
@@ -78,7 +78,7 @@ const TodoListItem = ({
           className={classNames('flex-shrink-0 my-0 align-self-start')}
           onChange={handleSelectionChange}
         />
-        <Row className="justify-content-between align-items-center btn-reveal-trigger border-light gx-0 flex-1 gy-1">
+        <Row className="justify-content-between align-items-center btn-reveal-trigger border-subtle gx-0 flex-1 gy-1">
           <Col
             xs={12}
             {...fullLayoutBreakpoints?.reduce(

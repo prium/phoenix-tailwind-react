@@ -136,10 +136,10 @@ export const projectListTableColumns: ColumnDef<Project>[] = [
 
 const ProjectListTable = () => {
   return (
-    <div className="border-b border-light">
+    <div className="border-b border-subtle">
       <AdvanceTable
         tableProps={{
-          className: ' border-top border-light text-md'
+          className: ' border-top border-subtle text-md'
         }}
       />
       <AdvanceTableFooter pagination className="py-4" />

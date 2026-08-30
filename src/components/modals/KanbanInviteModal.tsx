@@ -54,7 +54,7 @@ const KanbanInviteModal = ({
             </Button>
           </Col>
         </Row>
-        <div className="py-2 border-bottom border-light border-dashed relative mb-4">
+        <div className="py-2 border-bottom border-subtle border-dashed relative mb-4">
           <span className="bg-soft px-1 absolute top-50 start-50 translate-x-50 text-md font-semibold">
             Or,
           </span>

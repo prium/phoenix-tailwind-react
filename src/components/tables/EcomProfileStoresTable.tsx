@@ -117,7 +117,7 @@ const EcomProfileStoresTable = () => {
   return (
     <div>
       <AdvanceTableProvider {...table}>
-        <div className="border-y border-light mb-10">
+        <div className="border-y border-subtle mb-10">
           <AdvanceTable
             tableProps={{ className: ' table-sm text-md' }}
           />

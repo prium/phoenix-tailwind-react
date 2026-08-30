@@ -92,7 +92,7 @@ const AvatarDropdown = ({
           </div>
         </div>
         <div className="bg-soft">
-          <div className="p-4 border-b border-light">
+          <div className="p-4 border-b border-subtle">
             <div className="flex gap-2">
               <Button
                 variant="phoenix-secondary"
@@ -123,7 +123,7 @@ const AvatarDropdown = ({
               </Button>
             </div>
           </div>
-          <Nav className="flex-col py-4 border-b border-light">
+          <Nav className="flex-col py-4 border-b border-subtle">
             <Nav.Link className="">
               <FeatherIcon
                 icon="clipboard"

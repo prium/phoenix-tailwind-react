@@ -147,7 +147,7 @@ const HomepageFilterOffcanvasContent = () => {
           </Form.Check>
         </div>
       ))}
-      <div className="mt-4 pt-4 border-top border-light flex gap-2">
+      <div className="mt-4 pt-4 border-top border-subtle flex gap-2">
         <Button variant="phoenix-primary" size="lg">
           Reset
         </Button>

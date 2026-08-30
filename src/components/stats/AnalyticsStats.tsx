@@ -13,7 +13,7 @@ const AnalyticsStats = ({ stats }: { stats: StatType[] }) => {
           md={4}
           xxl={2}
           className={classNames(
-            'text-center 2xl:border-s border-light',
+            'text-center 2xl:border-s border-subtle',
             {
               '2xl:border-e-0 2xl:border-b-0 border-e border-b pb-10 2xl:pb-0':
                 index === 0,

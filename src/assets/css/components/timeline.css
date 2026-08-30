@@ -30,7 +30,7 @@
       .timeline-item-bar {
         .icon-item {
           background: var(--background-color-subtle) !important;
-          border-color: var(--border-color-base) !important;
+          border-color: var(--border-color-default) !important;
         }
       }
       .timeline-item-title {

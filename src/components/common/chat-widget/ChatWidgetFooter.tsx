@@ -68,7 +68,7 @@ const ChatWidgetFooter = () => {
         </div>
       )}
       <div className="flex items-center gap-2">
-        <div className="flex items-center flex-1 gap-4 border border-light rounded-full px-6">
+        <div className="flex items-center flex-1 gap-4 border border-subtle rounded-full px-6">
           <Input
             className="outline-none border-0 flex-1 text-md px-0"
             type="text"

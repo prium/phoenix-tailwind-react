@@ -381,7 +381,7 @@
   &:focus {
     .btn-reveal {
       @apply bg-default
-      border border-light
+      border border-subtle
       text-default;
 
       &:hover,

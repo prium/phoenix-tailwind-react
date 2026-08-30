@@ -43,7 +43,7 @@ const DealDetailsTask = ({ tasks }: { tasks: Task[] }) => {
         <TodoListItem
           key={task.id}
           todo={task}
-          className={classNames('border-light', {
+          className={classNames('border-subtle', {
             'border-top': index === 0,
             'border-bottom-0': index === tasks.length - 1
           })}

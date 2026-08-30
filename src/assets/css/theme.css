@@ -141,8 +141,8 @@
   --color-info-dark: var(--color-cyan-600);
   --color-info-darker: var(--color-cyan-700);
 
-  --border-color-base: var(--color-gray-300);
-  --border-color-light: --alpha(var(--border-color-base) / 54%);
+  --border-color-default: var(--color-gray-300);
+  --border-color-subtle: --alpha(var(--border-color-default) / 54%);
 
   --border-color-primary-subtle: var(--color-blue-300);
   --border-color-secondary-subtle: var(--color-gray-300);
@@ -270,8 +270,8 @@
       --color-info-dark: var(--color-cyan-300);
       --color-info-darker: var(--color-cyan-300);
 
-      --border-color-base: #373e53;
-      --border-color-light: --alpha(var(--border-color-base) / 78%);
+      --border-color-default: #373e53;
+      --border-color-subtle: --alpha(var(--border-color-default) / 78%);
 
       --border-color-primary-subtle: #303b5a;
       --border-color-secondary-subtle: #3d414c;

@@ -57,7 +57,7 @@ const CategoryDropdown = () => (
     </Dropdown.Trigger>
     <Dropdown.Content
       align="start"
-      className="border border-light py-0 category-dropdown-menu w-62.5 sm:w-130 md:w-187.5"
+      className="border border-subtle py-0 category-dropdown-menu w-62.5 sm:w-130 md:w-187.5"
     >
       <Card className="border-0 scrollbar max-h-164.25">
         <Card.Body className="p-10 pb-4">
@@ -88,7 +88,7 @@ const CategoryDropdown = () => (
               </Col>
             ))}
           </Row>
-          <div className="text-center border-t border-light pt-4">
+          <div className="text-center border-t border-subtle pt-4">
             <Link className="font-bold" to="#!">
               See all Categories
               <FontAwesomeIcon

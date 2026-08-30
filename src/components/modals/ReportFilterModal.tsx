@@ -46,7 +46,7 @@ const ReportFilterModal = ({ show, handleClose }: ReportFilterModalProps) => {
 
   return (
     <Modal show={show} onHide={handleClose} className="p-0" centered>
-      <Modal.Header className="border-light p-4">
+      <Modal.Header className="border-subtle p-4">
         <h5 className="modal-title text-highlight text-xl lh-sm">Filter</h5>
         <Button className="p-1 ms-auto" onClick={handleClose}>
           <FontAwesomeIcon icon={faTimes} className="text-md text-danger" />

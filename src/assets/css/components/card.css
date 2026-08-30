@@ -2,7 +2,7 @@
   @layer base {
     --card-bg: var(--background-color-soft);
     --card-color: ;
-    --card-border-color: var(--border-color-light);
+    --card-border-color: var(--border-color-subtle);
     --card-padding-x: --spacing(6);
     --card-padding-y: --spacing(6);
     --card-title-color: var(--text-color-emphasis);
@@ -18,7 +18,7 @@
 
 @utility card-footer {
   @layer base {
-    @apply border-t border-light;
+    @apply border-t border-subtle;
   }
 }
 

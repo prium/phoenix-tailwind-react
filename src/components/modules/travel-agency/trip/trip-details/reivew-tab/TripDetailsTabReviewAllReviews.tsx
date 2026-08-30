@@ -23,7 +23,7 @@ const TripDetailsTabReviewAllReviews = ({
               minimumFractionDigits: 1
             })}
           </h3>
-          <div className="pe-3 border-end-sm border-light">
+          <div className="pe-3 border-end-sm border-subtle">
             <GenerateStar filledStars={5} className="me-1 text-md" />
             <span className="font-semibold text-subtle">
               ( {overallReview.reviewCount} reviews )

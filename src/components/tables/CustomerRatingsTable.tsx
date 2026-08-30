@@ -132,7 +132,7 @@ const CustomerRatingsTable = () => {
   return (
     <>
       <AdvanceTableProvider {...table}>
-        <div className="border-y border-light">
+        <div className="border-y border-subtle">
           <AdvanceTable
             tableProps={{ className: ' text-md mb-0' }}
             rowClassName="hover-actions-trigger btn-reveal-trigger static"

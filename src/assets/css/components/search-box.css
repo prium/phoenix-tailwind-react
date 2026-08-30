@@ -44,7 +44,7 @@
     &.navbar-top-search-box {
       .search-input {
         &:focus {
-          border-color: var(--border-color-base);
+          border-color: var(--border-color-default);
         }
       }
       .show .search-input {

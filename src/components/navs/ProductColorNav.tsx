@@ -56,7 +56,7 @@ const ProductColorNav = ({
           onClick={() => setSelectedVariantKey(variant.id)}
           className={cn('rounded-sm border me-2 p-0', {
             'border-primary': variant.id === selectedVariantKey,
-            'border-light': variant.id !== selectedVariantKey
+            'border-subtle': variant.id !== selectedVariantKey
           })}
         >
           <img src={variant.thumb} width={38} alt={variant.variant} />

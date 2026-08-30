@@ -69,7 +69,7 @@
   .tox-menu,
   .tox-dialog {
     border-radius: var(--radius-md) !important;
-    border-color: var(--border-color-light) !important;
+    border-color: var(--border-color-subtle) !important;
     background-color: var(--tinymce-bg) !important;
   }
   .tox-dialog__header,
@@ -112,7 +112,7 @@
     color: var(--text-color-default) !important;
     padding-inline-start: 1rem !important;
     padding-inline-end: 1rem !important;
-    border-color: var(--border-color-light) !important;
+    border-color: var(--border-color-subtle) !important;
     &.tox-listbox--select {
       &:focus {
         box-shadow: none !important;
@@ -134,7 +134,7 @@
     color: var(--text-color-default) !important;
     &:hover:not(:disabled) {
       background-color: var(--background-color-muted) !important;
-      border-color: var(--border-color-light) !important;
+      border-color: var(--border-color-subtle) !important;
     }
   }
   .tox-icon {
@@ -150,12 +150,12 @@
   }
   .tox-dialog {
     border-radius: var(--radius-md) !important;
-    border-color: var(--border-color-light) !important;
+    border-color: var(--border-color-subtle) !important;
     background-color: var(--tinymce-bg) !important;
     &__header,
     &__footer {
       background-color: var(--tinymce-bg) !important;
-      border-color: var(--border-color-light) !important;
+      border-color: var(--border-color-subtle) !important;
     }
     &__footer {
       .tox-button--secondary {

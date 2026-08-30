@@ -65,7 +65,7 @@ const ResizableNavbar = ({ navItems }: ResizableNav) => {
   }, [updateItems]);
 
   return (
-    <Navbar className="resizable-nav bg-soft border-y bg-soft border-light py-2">
+    <Navbar className="resizable-nav bg-soft border-y bg-soft border-subtle py-2">
       <Container
         fluid="medium"
         className="flex flex-between-center flex-nowrap w-full"

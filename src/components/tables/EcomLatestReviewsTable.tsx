@@ -37,7 +37,7 @@ const columns: ColumnDef<LatestReviewsTableDataType>[] = [
       return (
         <Link
           to="/apps/e-commerce/customer/product-details"
-          className="inline-block rounded-md border border-light"
+          className="inline-block rounded-md border border-subtle"
         >
           <img src={productImage} alt="" width={53} />
         </Link>
@@ -273,7 +273,7 @@ const EcomLatestReviewsTable = () => {
       </Row>
 
       <AdvanceTable
-        tableProps={{ className: 'text-md mb-0 border-t border-light' }}
+        tableProps={{ className: 'text-md mb-0 border-t border-subtle' }}
         rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />
       <AdvanceTableFooter navBtn />

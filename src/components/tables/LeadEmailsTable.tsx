@@ -120,7 +120,7 @@ export const leadEmailsColumns: ColumnDef<LeadEmail>[] = [
 
 const LeadEmailsTable = () => {
   return (
-    <div className="border-y border-light">
+    <div className="border-y border-subtle">
       <AdvanceTable tableProps={{ className: ' text-md' }} />
       <AdvanceTableFooter pagination showViewAllBtn={false} />
     </div>

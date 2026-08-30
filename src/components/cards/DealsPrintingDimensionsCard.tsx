@@ -21,7 +21,7 @@ const DealsPrintingDimensionsCard = ({
               <div
                 className={classNames(
                   'sm:block inline-flex md:flex xl:flex-col 2xl:flex-row items-center xl:items-start 2xl:items-center',
-                  { 'sm:border-s border-light sm:ps-8': index !== 0 }
+                  { 'sm:border-s border-subtle sm:ps-8': index !== 0 }
                 )}
               >
                 <div

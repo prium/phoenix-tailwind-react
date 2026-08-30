@@ -137,7 +137,7 @@
     margin-bottom: 0.25rem !important;
     padding: 0.5rem 0.5rem !important;
     font-size: var(--text-sm);
-    border: 1px solid var(--border-color-base) !important;
+    border: 1px solid var(--border-color-default) !important;
   }
   .fc-h-event,
   .fc-daygrid-event {
@@ -180,7 +180,7 @@
     font-weight: normal !important;
   }
   .fc-daygrid-event-dot {
-    border-color: var(--border-color-base) !important;
+    border-color: var(--border-color-default) !important;
   }
   .fc-daygrid-dot-event {
     align-items: baseline !important;
@@ -210,7 +210,7 @@
     }
   }
   .fc-popover {
-    border-color: var(--border-color-light);
+    border-color: var(--border-color-subtle);
     box-shadow: var(--shadow-base);
     background-color: var(--background-color-soft);
     z-index: 1000;
@@ -343,7 +343,7 @@
     background-color: var(--background-color-subtle);
   }
   .fc-list-event-dot {
-    border-color: var(--border-color-base);
+    border-color: var(--border-color-default);
   }
 
   .fc-timegrid {
@@ -394,7 +394,7 @@
       background-color: var(--color-primary) !important;
     }
     &.fc-v-event {
-      border: 1px solid var(--border-color-base) !important;
+      border: 1px solid var(--border-color-default) !important;
       background-color: var(--background-color-subtle) !important;
     }
     &.fc-daygrid-event {
@@ -414,7 +414,7 @@
       background-color: var(--color-secondary) !important;
     }
     &.fc-v-event {
-      border: 1px solid var(--border-color-base) !important;
+      border: 1px solid var(--border-color-default) !important;
       background-color: var(--background-color-subtle) !important;
     }
     &.fc-daygrid-event {
@@ -434,7 +434,7 @@
       background-color: var(--color-success) !important;
     }
     &.fc-v-event {
-      border: 1px solid var(--border-color-base) !important;
+      border: 1px solid var(--border-color-default) !important;
       background-color: var(--background-color-subtle) !important;
     }
     &.fc-daygrid-event {
@@ -454,7 +454,7 @@
       background-color: var(--color-danger) !important;
     }
     &.fc-v-event {
-      border: 1px solid var(--border-color-base) !important;
+      border: 1px solid var(--border-color-default) !important;
       background-color: var(--background-color-subtle) !important;
     }
     &.fc-daygrid-event {
@@ -474,7 +474,7 @@
       background-color: var(--color-warning) !important;
     }
     &.fc-v-event {
-      border: 1px solid var(--border-color-base) !important;
+      border: 1px solid var(--border-color-default) !important;
       background-color: var(--background-color-subtle) !important;
     }
     &.fc-daygrid-event {
@@ -494,7 +494,7 @@
       background-color: var(--color-info) !important;
     }
     &.fc-v-event {
-      border: 1px solid var(--border-color-base) !important;
+      border: 1px solid var(--border-color-default) !important;
       background-color: var(--background-color-subtle) !important;
     }
     &.fc-daygrid-event {
@@ -514,7 +514,7 @@
       background-color: var(--color-light) !important;
     }
     &.fc-v-event {
-      border: 1px solid var(--border-color-base) !important;
+      border: 1px solid var(--border-color-default) !important;
       background-color: var(--background-color-subtle) !important;
     }
     &.fc-daygrid-event {
@@ -534,7 +534,7 @@
       background-color: var(--color-dark) !important;
     }
     &.fc-v-event {
-      border: 1px solid var(--border-color-base) !important;
+      border: 1px solid var(--border-color-default) !important;
       background-color: var(--background-color-subtle) !important;
     }
     &.fc-daygrid-event {

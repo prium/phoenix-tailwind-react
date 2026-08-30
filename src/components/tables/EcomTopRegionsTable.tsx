@@ -134,7 +134,7 @@ const EcomTopRegionsTable = () => {
                     {...headerProps}
                     data-sort={header.id}
                     className={cn(
-                      'sort border-t border-light align-middle',
+                      'sort border-t border-subtle align-middle',
                       headerClass,
                       {
                         desc: header.column.getIsSorted() === 'desc',

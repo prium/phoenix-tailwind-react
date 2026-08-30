@@ -344,7 +344,7 @@ const Example = () => {
       <AdvanceTable
         tableProps={{
           size: 'sm',
-          className: ' text-md mb-0 border-top border-light'
+          className: ' text-md mb-0 border-top border-subtle'
         }}
         rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />
@@ -372,7 +372,7 @@ const PaginationExample = () => {
       <AdvanceTable
         tableProps={{
           size: 'sm',
-          className: ' text-md mb-0 border-top border-light'
+          className: ' text-md mb-0 border-top border-subtle'
         }}
         rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />
@@ -436,7 +436,7 @@ const SearchExample = () => {
       <AdvanceTable
         tableProps={{
           size: 'sm',
-          className: ' text-md mb-0 border-top border-light'
+          className: ' text-md mb-0 border-top border-subtle'
         }}
         rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />
@@ -667,7 +667,7 @@ const FilterByColumnExample = () => {
       <AdvanceTable
         tableProps={{
           size: 'sm',
-          className: ' text-md mb-0 border-top border-light'
+          className: ' text-md mb-0 border-top border-subtle'
         }}
         rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />
@@ -814,7 +814,7 @@ const Example = () => {
       <AdvanceTable
         tableProps={{
           size: 'sm',
-          className: ' text-md mb-0 border-top border-light'
+          className: ' text-md mb-0 border-top border-subtle'
         }}
         rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />
@@ -837,7 +837,7 @@ const PaginationExample = () => {
       <AdvanceTable
         tableProps={{
           size: 'sm',
-          className: ' text-md mb-0 border-top border-light'
+          className: ' text-md mb-0 border-top border-subtle'
         }}
         rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />
@@ -871,7 +871,7 @@ const SearchExample = () => {
       <AdvanceTable
         tableProps={{
           size: 'sm',
-          className: ' text-md mb-0 border-top border-light'
+          className: ' text-md mb-0 border-top border-subtle'
         }}
         rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />
@@ -1011,7 +1011,7 @@ const FilterByColumnExample = () => {
       <AdvanceTable
         tableProps={{
           size: 'sm',
-          className: ' text-md mb-0 border-top border-light'
+          className: ' text-md mb-0 border-top border-subtle'
         }}
         rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />

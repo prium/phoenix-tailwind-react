@@ -30,7 +30,7 @@ const EmailDetail = () => {
       <Col>
         <Card className="email-content">
           <Card.Header className="border-0">
-            <div className="flex flex-between-center pb-3 border-bottom border-light">
+            <div className="flex flex-between-center pb-3 border-bottom border-subtle">
               <Button
                 as={Link}
                 to="/apps/email/inbox"
@@ -131,7 +131,7 @@ const EmailDetail = () => {
                   2 Attachments
                 </Button>
               </div>
-              <Row className="pb-11 border-bottom border-light mb-4 gx-0 gy-2">
+              <Row className="pb-11 border-bottom border-subtle mb-4 gx-0 gy-2">
                 <Col xs="auto" className="me-3">
                   <AttachmentPreview
                     attachment={{

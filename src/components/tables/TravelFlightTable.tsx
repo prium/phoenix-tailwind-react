@@ -301,7 +301,7 @@ const TravelFlightTable = () => {
       </Row>
       <AdvanceTable
         tableProps={{
-          className: ' text-md border-top border-light'
+          className: ' text-md border-top border-subtle'
         }}
         rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />

@@ -61,7 +61,7 @@ const HotelDetailsFacilities = ({
           <Col key={facility.id} sm={6} md={4}>
             <div
               className={classNames(
-                'flex align-items-center gap-2 px-4 py-3 h-100 border-light',
+                'flex align-items-center gap-2 px-4 py-3 h-100 border-subtle',
                 facility.classes
               )}
             >

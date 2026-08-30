@@ -76,7 +76,7 @@ const KanbanList = ({ list, columnId }: KanbanListProps) => {
         >
           {list.tasks.map(task => (
             <div
-              className="py-2 px-2 border-bottom border-light"
+              className="py-2 px-2 border-bottom border-subtle"
               key={task.id}
             >
               <KanbanListItemCard list={list} task={task} columnId={columnId} />

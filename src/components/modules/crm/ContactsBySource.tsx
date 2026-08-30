@@ -24,7 +24,7 @@ const ContactsBySource = () => {
                 value={item.value}
                 label={item.name}
                 color={item.color}
-                className={classNames('border-light', {
+                className={classNames('border-subtle', {
                   'border-bottom border-end': index === 0,
                   'border-bottom border-end-md-0 border-end-xl': index === 1,
                   'border-bottom border-end border-end-md border-end-xl-0':

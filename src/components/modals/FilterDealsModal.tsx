@@ -18,7 +18,7 @@ const FilterDealsModal = ({ show, handleClose }: FilterDealsModalProps) => {
       centered
       contentClassName="border"
     >
-      <Modal.Header className="border-light p-4">
+      <Modal.Header className="border-subtle p-4">
         <h5 className="modal-title text-highlight text-xl lh-sm">Filter</h5>
         <Button className="p-1 ms-auto" onClick={handleClose}>
           <FontAwesomeIcon icon={faTimes} className="text-md text-danger" />

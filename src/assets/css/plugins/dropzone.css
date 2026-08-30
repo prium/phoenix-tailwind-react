@@ -45,7 +45,7 @@
     background-color: var(--background-color-default);
     padding: 5rem 2rem;
     margin: 0;
-    border: 2px dashed var(--border-color-light);
+    border: 2px dashed var(--border-color-subtle);
     border-radius: var(--radius-lg);
     cursor: pointer;
     text-align: center;
@@ -61,7 +61,7 @@
     }
     .dz-message {
       padding: --spacing(14) --spacing(8);
-      border: 1px dashed var(--border-color-base);
+      border: 1px dashed var(--border-color-default);
     }
     &.dz-max-files-reached.dz-file-processing {
       .dz-message {
@@ -141,7 +141,7 @@
     border: 0;
     .dz-message {
       padding: 3rem 2rem;
-      border: 1px dashed var(--border-color-base);
+      border: 1px dashed var(--border-color-default);
       border-radius: var(--radius-lg);
     }
     .btn * {
@@ -192,7 +192,7 @@
   }
 }
 .dropzone-area {
-  border: 1px dashed var(--border-color-light);
+  border: 1px dashed var(--border-color-subtle);
   border-radius: var(--radius-md);
   height: 100%;
   display: flex;

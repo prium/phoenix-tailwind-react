@@ -57,7 +57,7 @@ const Message = ({ message, user, showActions = true }: MessageProps) => {
               <div
                 className={cn('mb-1', {
                   'sent-message-content ': message.type === 'sent',
-                  'received-message-content border border-light':
+                  'received-message-content border border-subtle':
                     message.type === 'received',
                   attachments:
                     Number(message.attachments?.images?.length) > 0 &&

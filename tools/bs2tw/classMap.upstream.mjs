@@ -36,7 +36,7 @@ export const classMap = {
   // 'border-danger': '',
   // 'border-warning': '',
   // 'border-info': '',
-  // 'border-light': '',
+  // 'border-subtle': '',
 
   // 'border-primary-subtle': '',
   // 'border-secondary-subtle': '',

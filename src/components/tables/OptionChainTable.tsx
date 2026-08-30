@@ -124,11 +124,11 @@ const columns: ColumnDef<OptionTableRow>[] = [
         },
         meta: {
           headerProps: {
-            className: 'border-x border-light bg-subtle text-sm',
+            className: 'border-x border-subtle bg-subtle text-sm',
             style: { minWidth: '7.5rem' }
           },
           cellProps: {
-            className: 'bg-subtle border-x border-light lh-sm'
+            className: 'bg-subtle border-x border-subtle lh-sm'
           }
         }
       }
@@ -136,7 +136,7 @@ const columns: ColumnDef<OptionTableRow>[] = [
     meta: {
       headerProps: {
         className:
-          'bg-subtle border-x border-light text-nowrap text-capitalize'
+          'bg-subtle border-x border-subtle text-nowrap text-capitalize'
       }
     }
   },

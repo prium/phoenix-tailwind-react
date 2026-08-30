@@ -89,7 +89,7 @@ const ProductDetailsTab = () => {
                 <ProductSpecificationTables />
               </Tabs.Content>
               <Tabs.Content value="reviews">
-                <Card className="bg-soft border border-light">
+                <Card className="bg-soft border border-subtle">
                   <Card.Header className="pb-0 border-b-0">
                     <div className="flex flex-wrap justify-between gap-4">
                       <div className="flex items-center flex-wrap">

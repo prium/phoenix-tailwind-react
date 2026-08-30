@@ -168,7 +168,7 @@ const TripHomepageFilterOffcanvasContent = () => {
           </Button>
         </div>
       </div>
-      <div className="mt-5 p-4 border-top border-light flex gap-2 bg-soft position-sticky bottom-0">
+      <div className="mt-5 p-4 border-top border-subtle flex gap-2 bg-soft position-sticky bottom-0">
         <Button variant="phoenix-primary" className="m-0 text-nowrap" size="lg">
           <FontAwesomeIcon icon={faRotate} className="me-2 text-md" />
           Reset

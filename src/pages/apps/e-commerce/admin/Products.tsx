@@ -121,7 +121,7 @@ const Products = () => {
             </div>
           </div>
 
-          <div className="-mx-6 px-6 lg:-mx-10 lg:px-10 bg-soft border-t border-b border-light relative top-1">
+          <div className="-mx-6 px-6 lg:-mx-10 lg:px-10 bg-soft border-t border-b border-subtle relative top-1">
             <ProductsTable />
           </div>
         </AdvanceTableProvider>

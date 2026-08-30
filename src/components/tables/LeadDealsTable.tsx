@@ -156,7 +156,7 @@ const LeadDealsTable = () => {
   return (
     <div>
       <AdvanceTableProvider {...table}>
-        <div className="border-y border-light">
+        <div className="border-y border-subtle">
           <AdvanceTable tableProps={{ className: ' text-md' }} />
           <AdvanceTableFooter pagination />
         </div>

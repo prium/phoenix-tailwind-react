@@ -4,7 +4,7 @@
 .picmo__picker.picmo__picker {
   width: 300px;
   --background-color: var(--color-gray-50);
-  --border-color: var(--border-color-base);
+  --border-color: var(--border-color-default);
   --category-tab-active-color: var(--background-color-emphasis);
   --category-tab-highlight-background-color: var(--background-color-muted);
   --category-tab-color: --alpha(var(--text-color-subtle) / 75%);
@@ -62,7 +62,7 @@
   }
 
   .picmo__searchContainer .picmo__searchField {
-    border: 1px solid var(--border-color-light);
+    border: 1px solid var(--border-color-subtle);
     border-radius: 0.375rem;
     padding: 1rem;
   }

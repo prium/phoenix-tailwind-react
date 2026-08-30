@@ -81,7 +81,7 @@
   @layer base {
     --alert-bg: transparent;
     --alert-color: var(--color-primary);
-    --alert-border-color: var(--border-color-base);
+    --alert-border-color: var(--border-color-default);
   }
 }
 
@@ -89,7 +89,7 @@
   @layer base {
     --alert-bg: transparent;
     --alert-color: var(--color-secondary);
-    --alert-border-color: var(--border-color-base);
+    --alert-border-color: var(--border-color-default);
     @variant dark {
       --alert-color: var(--color-secondary-light);
     }
@@ -100,7 +100,7 @@
   @layer base {
     --alert-bg: transparent;
     --alert-color: var(--color-success);
-    --alert-border-color: var(--border-color-base);
+    --alert-border-color: var(--border-color-default);
   }
 }
 
@@ -108,7 +108,7 @@
   @layer base {
     --alert-bg: transparent;
     --alert-color: var(--color-danger);
-    --alert-border-color: var(--border-color-base);
+    --alert-border-color: var(--border-color-default);
   }
 }
 
@@ -116,7 +116,7 @@
   @layer base {
     --alert-bg: transparent;
     --alert-color: var(--color-warning);
-    --alert-border-color: var(--border-color-base);
+    --alert-border-color: var(--border-color-default);
   }
 }
 
@@ -124,6 +124,6 @@
   @layer base {
     --alert-bg: transparent;
     --alert-color: var(--color-info);
-    --alert-border-color: var(--border-color-base);
+    --alert-border-color: var(--border-color-default);
   }
 }

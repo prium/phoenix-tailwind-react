@@ -2,7 +2,7 @@
   @layer components {
     --accordion-color: var(--text-color-highlight);
     --accordion-bg: transparent;
-    --accordion-border-color: var(--border-color-base);
+    --accordion-border-color: var(--border-color-default);
     --accordion-border-width: 1px;
     --accordion-border-radius: 0;
     --accordion-btn-padding-x: 0;

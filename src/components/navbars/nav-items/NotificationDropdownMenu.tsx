@@ -33,14 +33,14 @@ const NotificationDropdownMenu = ({ className }: { className?: string }) => {
                 notification={notification}
                 type="dropdownItem"
                 className={cn({
-                  'border-b border-light': index !== notifications.length - 1
+                  'border-b border-subtle': index !== notifications.length - 1
                 })}
                 key={notification.id}
               />
             ))}
           </div>
         </Card.Body>
-        <Card.Footer className="p-0 border-t border-light border-0">
+        <Card.Footer className="p-0 border-t border-subtle border-0">
           <div className="my-2 text-center font-bold text-sm text-subtle/85">
             <Link to="/pages/notifications" className="font-black">
               Notification history

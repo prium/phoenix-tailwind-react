@@ -73,7 +73,7 @@ export const overrides = {
   'bg-body-secondary': 'bg-muted',
   'bg-body-tertiary': 'bg-highlight',
   'bg-body-hover': 'hover:bg-default',
-  'border-translucent': 'border-light',
+  'border-translucent': 'border-subtle',
 
   // Misc Bootstrap helpers that upstream left unmapped
   'rounded-pill': 'rounded-full',

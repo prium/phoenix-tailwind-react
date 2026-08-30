@@ -21,7 +21,7 @@ const ResultLink = ({
 
 const ResultSectionHeader = ({ title }: { title: string }) => {
   return (
-    <h6 className="text-highlight text-md border-y border-light py-2 leading-sm mb-0 px-4">
+    <h6 className="text-highlight text-md border-y border-subtle py-2 leading-sm mb-0 px-4">
       {title}
     </h6>
   );

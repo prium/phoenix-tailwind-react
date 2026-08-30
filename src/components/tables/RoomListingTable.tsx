@@ -47,7 +47,7 @@ const columns: ColumnDef<RoomListingInterface>[] = [
                 src={img}
                 alt=""
                 width={80}
-                className="rounded-sm border border-light"
+                className="rounded-sm border border-subtle"
               />
             </Link>
             <div>
@@ -283,7 +283,7 @@ const RoomListingTable = () => {
 
       <AdvanceTable
         tableProps={{
-          className: ' text-md mb-0 border-light'
+          className: ' text-md mb-0 border-subtle'
         }}
         rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />

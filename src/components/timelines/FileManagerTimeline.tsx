@@ -25,7 +25,7 @@ const FileManagerTimeline = ({ data }: { data: Activity[] }) => {
           <Row className="g-3">
             <Col xs="auto">
               <Timeline.Separator className="relative">
-                <Timeline.Dot className="icon-item-md rounded-7 border border-light">
+                <Timeline.Dot className="icon-item-md rounded-7 border border-subtle">
                   <FontAwesomeIcon
                     icon={item.icon}
                     className={`text-${item.iconColor} text-md`}

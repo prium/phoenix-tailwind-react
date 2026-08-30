@@ -43,7 +43,7 @@ const Features = () => {
             </Col>
             <Col sm={6} lg={3} className="mt-7 text-center text-lg-start">
               <div className="h-100 flex flex-column justify-content-between">
-                <div className="border-start-lg border-dashed border-light ps-4">
+                <div className="border-start-lg border-dashed border-subtle ps-4">
                   <img
                     className="mb-4"
                     src={boltIlls}
@@ -67,7 +67,7 @@ const Features = () => {
             </Col>
             <Col sm={6} lg={3} className="mt-7 text-center text-lg-start">
               <div className="h-100 flex flex-column">
-                <div className="border-start-lg border-dashed border-light ps-4">
+                <div className="border-start-lg border-dashed border-subtle ps-4">
                   <img
                     className="mb-4"
                     src={pie}

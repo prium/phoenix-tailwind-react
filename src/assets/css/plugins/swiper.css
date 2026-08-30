@@ -16,7 +16,7 @@
       top: 50%;
       transform: translateY(-50%);
       border: 1px solid;
-      border-color: var(--border-color-light);
+      border-color: var(--border-color-subtle);
       transition: opacity 0.4s ease-in-out;
       width: 2rem;
       height: 2rem;

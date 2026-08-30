@@ -197,7 +197,7 @@ const ProjectDashboardTable = () => {
       <AdvanceTableProvider {...table}>
         <AdvanceTable
           tableProps={{
-            className: ' border-top border-light text-md'
+            className: ' border-top border-subtle text-md'
           }}
         />
         <AdvanceTableFooter pagination />

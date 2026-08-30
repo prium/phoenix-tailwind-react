@@ -4,7 +4,7 @@ import { Form } from 'react-bootstrap';
 const SocialSettingsSideBar = () => {
   return (
     <>
-      <div className="border-bottom border-light border-dashed pb-3 mb-4">
+      <div className="border-bottom border-subtle border-dashed pb-3 mb-4">
         <h5 className="text-default mb-3">
           Who will be able to see your profile?
         </h5>
@@ -40,7 +40,7 @@ const SocialSettingsSideBar = () => {
           </Form.Check.Label>
         </Form.Check>
       </div>
-      <div className="border-bottom border-light border-dashed pb-3 mb-4">
+      <div className="border-bottom border-subtle border-dashed pb-3 mb-4">
         <h5 className="text-default mb-3">Who can tag you?</h5>
         <Form.Check type="radio" id="tagGroupMembers">
           <Form.Check.Input
@@ -64,7 +64,7 @@ const SocialSettingsSideBar = () => {
           </Form.Check.Label>
         </Form.Check>
       </div>
-      <div className="border-bottom border-light border-dashed pb-3 mb-4">
+      <div className="border-bottom border-subtle border-dashed pb-3 mb-4">
         <Form.Check type="checkbox" id="showEmail">
           <Form.Check.Input
             type="checkbox"

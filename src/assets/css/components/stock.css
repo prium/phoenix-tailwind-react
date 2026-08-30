@@ -1,7 +1,7 @@
 .stock-btn-group .active {
   background-color: var(--background-color-soft);
   color: var(--color-primary);
-  border-color: var(--border-color-light);
+  border-color: var(--border-color-subtle);
 }
 
 .stock-overview-card {
@@ -23,7 +23,7 @@
 .top-stock-tab {
   .company-card {
     min-width: --spacing(75);
-    border: 1px solid var(--border-color-light);
+    border: 1px solid var(--border-color-subtle);
     padding: --spacing(5);
     position: relative;
     &.active {
@@ -130,7 +130,7 @@ html[dir='rtl'] {
       position: absolute;
       height: 10px;
       width: 2px;
-      background-color: var(--border-color-base);
+      background-color: var(--border-color-default);
       bottom: 93%;
       border-radius: var(--radius-sm);
     }
@@ -189,7 +189,7 @@ html[dir='rtl'] {
   }
   .active .page {
     background-color: var(--background-color-default) !important;
-    border: 1px solid var(--border-color-light);
+    border: 1px solid var(--border-color-subtle);
     color: var(--color-primary) !important;
   }
   .page-link.disabled {

@@ -38,7 +38,7 @@ const ProductGallery = ({ images }: { images: string[] }) => {
         </Swiper>
       </Col>
       <Col xs={12} md={10} lg={12} xl={10}>
-        <div className="flex items-center border border-light rounded-lg text-center p-8 h-full">
+        <div className="flex items-center border border-subtle rounded-lg text-center p-8 h-full">
           <Swiper
             loop={true}
             spaceBetween={10}

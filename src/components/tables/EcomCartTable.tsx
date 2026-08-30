@@ -15,7 +15,7 @@ interface EcomCartTableProps {
 const EcomCartTable = ({ products }: EcomCartTableProps) => {
   return (
     <div className="overflow-x-auto scrollbar -mx-1 px-1">
-      <Table className="text-md mb-0 border-t border-light">
+      <Table className="text-md mb-0 border-t border-subtle">
         <Table.Header>
           <Table.Row>
             <Table.Head className="whitespace-nowrap align-middle text-sm min-w-[63px]" />
@@ -63,7 +63,7 @@ const EcomCartTableRow = ({ product }: { product: CartItemType }) => {
       <Table.Cell className="align-middle whitespace-nowrap py-0">
         <Link
           to="/apps/e-commerce/customer/product-details"
-          className="block border border-light rounded-md"
+          className="block border border-subtle rounded-md"
         >
           <img src={product.image} alt={product.name} width={53} />
         </Link>

@@ -3,7 +3,7 @@
     --list-group-bg: var(--background-color-soft);
     --list-group-color: var(--text-color-muted);
     --list-group-padding-y: 0;
-    --list-group-border-color: var(--border-color-light);
+    --list-group-border-color: var(--border-color-subtle);
     --list-group-border-radius: var(--radius-md);
     --list-group-item-padding-x: --spacing(4);
     --list-group-item-padding-y: --spacing(2);

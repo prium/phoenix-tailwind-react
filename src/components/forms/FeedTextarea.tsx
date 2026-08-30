@@ -18,7 +18,7 @@ const FeedTextarea = ({ className }: { className?: string }) => {
       <Card.Body className="p-0">
         <Form.Control
           as="textarea"
-          className="border-light rounded-bottom-0 border-0 flex-1 text-base"
+          className="border-subtle rounded-bottom-0 border-0 flex-1 text-base"
           rows={7}
           placeholder="Write something..."
         />

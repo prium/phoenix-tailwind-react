@@ -223,7 +223,7 @@
 
 .kanban-color-picker {
   @apply relative min-w-32 size-full  
-  border border-(--border-color-base) rounded-md;
+  border border-(--border-color-default) rounded-md;
 
   padding: 10px 46px 10px 14px;
   background: var(--background-color-soft);
@@ -248,7 +248,7 @@
 .kanban-swatch-label {
   width: 50px;
   height: 40px;
-  border: 1px solid var(--border-color-light);
+  border: 1px solid var(--border-color-subtle);
   border-radius: 50rem;
 }
 .kanban-radio-bg-image {

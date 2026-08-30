@@ -14,7 +14,7 @@ const ProductCard = ({ product }: { product: ProductType }) => {
     <div className="relative no-underline product-card h-full group">
       <div className="flex flex-col justify-between h-full">
         <div>
-          <div className="border border-1 border-light rounded-lg relative mb-4">
+          <div className="border border-1 border-subtle rounded-lg relative mb-4">
             <button
               type="button"
               title={product.wishListed ? 'Remove from wishlist' : 'Add to wishlist'}

@@ -47,7 +47,7 @@ const CreateAnEvent = () => {
             </Row>
           </Col>
           <Col xl={4}>
-            <div className="border-bottom border-light pb-6 mb-6">
+            <div className="border-bottom border-subtle pb-6 mb-6">
               <h4 className="mb-4">Privacy</h4>
               <Form.Check type="radio" id="privacy1" className="mb-2">
                 <Form.Check.Input
@@ -75,7 +75,7 @@ const CreateAnEvent = () => {
                 </Form.Check.Label>
               </Form.Check>
             </div>
-            <div className="border-bottom border-light mb-6">
+            <div className="border-bottom border-subtle mb-6">
               <Form.Check type="checkbox" id="flexChecked">
                 <Form.Check.Input
                   type="checkbox"

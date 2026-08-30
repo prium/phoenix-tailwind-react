@@ -38,7 +38,7 @@ const RoomCard = ({
                   src={data.img}
                   alt=""
                   width={108}
-                  className="rounded-1 border border-light"
+                  className="rounded-1 border border-subtle"
                 />
               </Link>
               <div>
@@ -177,7 +177,7 @@ const RoomCard = ({
           <Col xs={12}>
             <Collapse in={open}>
               <div id={`collapseRoomAvailableOnDates`}>
-                <div className="px-4 py-3 border border-light rounded mb-4 bg-subtle">
+                <div className="px-4 py-3 border border-subtle rounded mb-4 bg-subtle">
                   <Swiper
                     spaceBetween={24}
                     slidesPerView="auto"
@@ -230,7 +230,7 @@ const RoomCard = ({
             </Collapse>
           </Col>
         </Row>
-        <div className="p-3 border border-light rounded">
+        <div className="p-3 border border-subtle rounded">
           {data.amenities.slice(0, 13).map((item, index) => (
             <Link key={index} to="#!">
               <Badge

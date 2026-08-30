@@ -106,7 +106,7 @@ const StockDashboardTopListTable = ({
         headerClassName="bg-subtle"
         tableProps={{
           className:
-            ' text-md table-striped border-top border-light'
+            ' text-md table-striped border-top border-subtle'
         }}
       />
       <AdvanceTableFooter

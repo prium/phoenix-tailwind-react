@@ -50,7 +50,7 @@ const ProfileDropdownMenu = ({ className }: { className?: string }) => {
             </ul>
           </div>
         </Card.Body>
-        <Card.Footer className="p-0 border-t border-light">
+        <Card.Footer className="p-0 border-t border-subtle">
           <ul className="nav flex flex-col my-4">
             <li className="nav-item">
               <Link to="#!" className="nav-link px-4! block text-md">

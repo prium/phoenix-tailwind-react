@@ -96,7 +96,7 @@ const HotelChangeRoomModal = ({
                 </RoomPictureSlider>
               </Col>
               <Col lg={5} xl={4}>
-                <div className="p-4 border border-light rounded-2 mt-4 mt-lg-0">
+                <div className="p-4 border border-subtle rounded-2 mt-4 mt-lg-0">
                   <Row className="g-3">
                     <Col xs={6}>
                       <h6 className="font-semibold text-muted">
@@ -165,7 +165,7 @@ const HotelChangeRoomModal = ({
                       <div
                         className={classNames(
                           item.classes,
-                          'flex align-items-center gap-2 px-4 py-3 h-100 border-light'
+                          'flex align-items-center gap-2 px-4 py-3 h-100 border-subtle'
                         )}
                       >
                         <FontAwesomeIcon
@@ -183,7 +183,7 @@ const HotelChangeRoomModal = ({
                 <Row className="g-2">
                   {room.amenities.map((item, index) => (
                     <Col lg={4} xl={3} key={index}>
-                      <div className="p-3 border border-light rounded-2">
+                      <div className="p-3 border border-subtle rounded-2">
                         <h5 className="text-muted font-semibold mb-0">
                           <FontAwesomeIcon
                             icon={faCheck}

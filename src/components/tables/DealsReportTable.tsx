@@ -149,7 +149,7 @@ export const dealsReportColumns: ColumnDef<DealsReport>[] = [
 const DealsReportTable = () => {
   return (
     <div>
-      <div className="border-t border-light">
+      <div className="border-t border-subtle">
         <AdvanceTable
           tableProps={{ size: 'sm', className: ' text-md' }}
         />

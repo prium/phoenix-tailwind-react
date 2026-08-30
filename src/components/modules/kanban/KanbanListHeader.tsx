@@ -117,7 +117,7 @@ const KanbanListHeader = ({
           </Dropdown.Toggle>
 
           <Dropdown.Menu
-            className="py-2 border-light"
+            className="py-2 border-subtle"
             style={{ width: '15rem' }}
           >
             {kanbanHeaderActions.map(action => (

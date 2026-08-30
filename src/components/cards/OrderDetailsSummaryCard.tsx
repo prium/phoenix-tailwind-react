@@ -9,7 +9,7 @@ const OrderDetailsSummaryCard = ({ className }: { className?: string }) => {
         <h3 className="card-title mb-6">Summary</h3>
 
         <OrderSummaryDetails />
-        <div className="flex justify-between border-t border-light border-dashed pt-6">
+        <div className="flex justify-between border-t border-subtle border-dashed pt-6">
           <h4 className="mb-0">Total :</h4>
           <h4 className="mb-0">
             {currencyFormat(695.2, { minimumFractionDigits: 2 })}

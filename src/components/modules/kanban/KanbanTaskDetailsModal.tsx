@@ -194,7 +194,7 @@ const KanbanTaskDetailsModal = ({
             <Col
               xs={12}
               lg={4}
-              className="border-start-lg border-light h-100 scrollbar"
+              className="border-start-lg border-subtle h-100 scrollbar"
             >
               <div>
                 <div className="px-3">
@@ -225,7 +225,7 @@ const KanbanTaskDetailsModal = ({
                       {kanbanActivities.map((activity, index) => (
                         <div
                           className={classNames(
-                            'flex gap-2 pb-3 border-light',
+                            'flex gap-2 pb-3 border-subtle',
                             {
                               'border-bottom':
                                 index !== kanbanActivities.length - 1
@@ -235,7 +235,7 @@ const KanbanTaskDetailsModal = ({
                         >
                           <FontAwesomeIcon
                             icon={activity.icon}
-                            className={`border border-light rounded-full p-1 text-${activity.iconColor}`}
+                            className={`border border-subtle rounded-full p-1 text-${activity.iconColor}`}
                             transform="shrink-4"
                           />
                           <div className="activity-item">

@@ -121,14 +121,14 @@ const CompareHotelDetails = ({
           </td>
         </tr>
         <tr>
-          <td className="px-4 align-middle bg-subtle border-end-lg border-light">
+          <td className="px-4 align-middle bg-subtle border-end-lg border-subtle">
             <h6 className="text-default font-black text-uppercase mb-0">
               Hotel facilities
             </h6>
           </td>
           {hotelInfo.map((item, index) => (
             <td
-              className={classNames('border-light px-3', {
+              className={classNames('border-subtle px-3', {
                 'border-end-lg': index === hotelInfo.length - 1,
                 'border-end': index !== hotelInfo.length - 1
               })}

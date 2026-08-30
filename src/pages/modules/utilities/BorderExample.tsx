@@ -28,7 +28,7 @@ const borderColorCode = `
   <span className="border border-success"></span>
   <span className="border border-warning"></span>
   <span className="border border-danger"></span>
-  <span className="border border-light"></span>
+  <span className="border border-subtle"></span>
   <div className="w-100"></div>
   <span className="border border-black"></span>
   <span className="border border-dark"></span>
@@ -43,7 +43,7 @@ const borderColorCode = `
   <span className="border border-gray-300"></span>
   <span className="border border-gray-200"></span>
   <span className="border border-gray-100"></span>
-  <span className="border border-light"></span>
+  <span className="border border-subtle"></span>
   <span className="border border-white"></span>
 </div>`;
 

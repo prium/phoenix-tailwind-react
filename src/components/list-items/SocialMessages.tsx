@@ -32,7 +32,7 @@ const SocialMessages = ({ messages }: SocialMessagesProps) => {
       {messages.map(message => (
         <div
           key={message.id}
-          className="flex py-3 align-items-center border-bottom border-light border-dashed"
+          className="flex py-3 align-items-center border-bottom border-subtle border-dashed"
         >
           <div className="me-2">
             <Avatar

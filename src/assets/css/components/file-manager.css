@@ -23,7 +23,7 @@
       width: 100%;
       height: 100%;
       background: var(--background-color-default);
-      border: 1px solid var(--border-color-base);
+      border: 1px solid var(--border-color-default);
       border-radius: var(--radius-md);
       mask-image: radial-gradient(var(--color-white), var(--color-black));
     }
@@ -136,7 +136,7 @@
   position: sticky;
   top: var(--navbar-top-height);
   z-index: 4;
-  border-bottom: 1px solid var(--border-color-light);
+  border-bottom: 1px solid var(--border-color-subtle);
   padding: --spacing(2) --spacing(6);
   background-color: var(--background-color-default);
   display: flex;
@@ -164,7 +164,7 @@
     border-top-left-radius: var(--radius-lg);
     border-top-right-radius: var(--radius-lg);
     mask-image: radial-gradient(var(--color-white), var(--color-black));
-    border-top: 1px solid var(--border-color-base);
+    border-top: 1px solid var(--border-color-default);
     margin-top: -1px;
   }
 }

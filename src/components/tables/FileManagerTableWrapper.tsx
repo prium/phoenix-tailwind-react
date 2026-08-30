@@ -155,7 +155,7 @@ const columns: ColumnDef<File>[] = [
               }
             }}
           >
-            <div className="square-icon-box border border-light overflow-hidden relative">
+            <div className="square-icon-box border border-subtle overflow-hidden relative">
               <RenderFileIcon file={original} />
             </div>
             <p className="mb-0">{original.name}</p>

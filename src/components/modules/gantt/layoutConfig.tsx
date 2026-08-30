@@ -16,7 +16,7 @@ const assigneeTemplate = (task: Task): string => {
         return `
           <div class="assignee-dropdown-container">
             <a href="#!" class="avatar avatar-s">
-              <div class="avatar-name rounded-circle border border-light">
+              <div class="avatar-name rounded-circle border border-subtle">
                 <span>+${owners.length - 3}</span>
               </div>
             </a>

@@ -107,7 +107,7 @@ const BoardViewModal = ({
                     comment={comment}
                     className={
                       index !== comments.length - 1
-                        ? 'border-bottom border-light'
+                        ? 'border-bottom border-subtle'
                         : undefined
                     }
                     key={comment.id}
@@ -185,7 +185,7 @@ const BoardViewModal = ({
                       key={attachment.name}
                       attachment={attachment}
                       className={classNames({
-                        'border-top border-light': index === 0
+                        'border-top border-subtle': index === 0
                       })}
                     />
                   ))}

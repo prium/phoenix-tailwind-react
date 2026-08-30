@@ -71,17 +71,17 @@ const columns: ColumnDef<StockDetailsOptionChainRow>[] = [
         },
         meta: {
           headerProps: {
-            className: 'border-x border-light text-sm'
+            className: 'border-x border-subtle text-sm'
           },
           cellProps: {
-            className: 'border-x text-subtle font-bold border-light'
+            className: 'border-x text-subtle font-bold border-subtle'
           }
         }
       }
     ],
     meta: {
       headerProps: {
-        className: 'text-md border-x border-light'
+        className: 'text-md border-x border-subtle'
       }
     }
   },
@@ -148,7 +148,7 @@ const StockDetailsOptionChainTable = ({
     <AdvanceTableProvider {...table}>
       <TopStockAdvanceTable
         tableProps={{
-          className: 'text-center border-top border-light'
+          className: 'text-center border-top border-subtle'
         }}
         rowClassName="text-md font-semibold"
       />

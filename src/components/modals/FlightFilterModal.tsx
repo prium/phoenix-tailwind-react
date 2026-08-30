@@ -93,7 +93,7 @@ const FlightFilterModal = ({
             </Col>
           </Row>
           <div className="modal-footer border-0 px-0 pt-3 pb-4">
-            <div className="w-100 flex flex-wrap gap-3 border-top border-light pt-4">
+            <div className="w-100 flex flex-wrap gap-3 border-top border-subtle pt-4">
               <Button
                 variant="phoenix-primary"
                 className="m-0 text-nowrap"

@@ -20,7 +20,7 @@
   text-align: unset;
   background-color: var(--dtp-calendar-bg) !important;
   box-shadow: none !important;
-  border: 1px solid var(--border-color-light) !important;
+  border: 1px solid var(--border-color-subtle) !important;
 
   &.open {
     z-index: 1100 !important;
@@ -31,7 +31,7 @@
       border-bottom-color: var(--dtp-calendar-bg) !important;
     }
     &:before {
-      border-bottom-color: var(--border-color-light) !important;
+      border-bottom-color: var(--border-color-subtle) !important;
     }
   }
   &.arrowBottom {
@@ -39,7 +39,7 @@
       border-top-color: var(--dtp-calendar-bg) !important;
     }
     &:before {
-      border-top-color: var(--border-color-light) !important;
+      border-top-color: var(--border-color-subtle) !important;
     }
   }
 }
@@ -153,7 +153,7 @@
   border-top: 0 !important;
 }
 .flatpickr-calendar.hasTime .flatpickr-time {
-  border-top-color: var(--border-color-light) !important;
+  border-top-color: var(--border-color-subtle) !important;
 }
 .flatpickr-day.selected.startRange + .endRange:not(:nth-child(7n + 1)),
 .flatpickr-day.startRange.startRange + .endRange:not(:nth-child(7n + 1)),

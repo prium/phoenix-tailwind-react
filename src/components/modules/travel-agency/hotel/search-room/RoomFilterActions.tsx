@@ -29,7 +29,7 @@ const RoomFilterActions = () => {
           value={value}
           onChange={e => setValue(parseInt(e.target.value))}
           size="lg"
-          className="border-light input-spin-none text-center rounded"
+          className="border-subtle input-spin-none text-center rounded"
         />
         <Button
           variant="phoenix-primary"

@@ -13,11 +13,11 @@ const HotelCompareRatingRow = ({
 }: HotelCompareRatingRowProps) => {
   return (
     <tr>
-      <td className="px-6 align-middle bg-subtle lg:border-e border-light">
+      <td className="px-6 align-middle bg-subtle lg:border-e border-subtle">
         <h6 className="text-default font-black uppercase mb-0">{title}</h6>
       </td>
       {ratingValues.map((value, index) => (
-        <td className="px-4 border-e border-light" key={index}>
+        <td className="px-4 border-e border-subtle" key={index}>
           <div className="flex items-center gap-2">
             <Badge bg="primary" className="text-base">
               {numberFormat(value, 'standard', {

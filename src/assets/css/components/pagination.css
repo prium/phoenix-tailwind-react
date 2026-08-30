@@ -7,7 +7,7 @@
     --pagination-width: auto;
     --pagination-height: auto;
     --pagination-border-width: 0px;
-    --pagination-border-color: var(--border-color-base);
+    --pagination-border-color: var(--border-color-default);
     --pagination-hover-bg: var(--background-color-muted);
     --pagination-hover-color: var(--color-primary);
     --pagination-focus-color: var(--color-primary-darker);

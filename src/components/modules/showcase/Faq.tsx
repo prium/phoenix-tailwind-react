@@ -17,7 +17,7 @@ const Faq = () => {
             >
               {showcaseFaqs.map((faq, index) => (
                 <Accordion.Item
-                  className={classNames('border-bottom border-light')}
+                  className={classNames('border-bottom border-subtle')}
                   eventKey={String(index)}
                   key={faq.id}
                 >

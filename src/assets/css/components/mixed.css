@@ -206,7 +206,7 @@
 .notification-dropdown {
   .dropdown-toggle {
     &:hover {
-      border-color: var(--border-color-base);
+      border-color: var(--border-color-default);
       background: transparent;
     }
   }
@@ -462,7 +462,7 @@
   + {
     label {
       padding: --spacing(4);
-      border: 1px solid var(--border-color-light) !important;
+      border: 1px solid var(--border-color-subtle) !important;
       .check-icon {
         display: none;
       }
@@ -555,7 +555,7 @@
   display: inline-block;
   width: 1rem;
   height: 1rem;
-  border: 1px solid var(--border-color-base);
+  border: 1px solid var(--border-color-default);
   border-radius: 50%;
   transition: border 0.2s ease;
 }
@@ -601,7 +601,7 @@
   height: 100%;
   padding: 0;
   width: auto;
-  border-right: 1px solid var(--border-color-light);
+  border-right: 1px solid var(--border-color-subtle);
 }
 
 .gallery-column-separator-1 {
@@ -739,7 +739,7 @@
   @layer base {
     padding: --spacing(1);
     background-color: var(--background-color-default);
-    border: 1px solid var(--border-color-base);
+    border: 1px solid var(--border-color-default);
     border-radius: var(--radius-md);
     max-width: 100%;
     height: auto;

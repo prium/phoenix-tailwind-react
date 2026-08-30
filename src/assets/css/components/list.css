@@ -63,11 +63,11 @@
     --pagination-padding-x: --spacing(3);
     --pagination-padding-y: --spacing(2);
     --pagination-font-size: var(--text-md);
-    --pagination-radius: var(--radius-md);
+    --pagination-border-radius: var(--radius-md);
     @apply px-(--pagination-padding-x) py-(--pagination-padding-y)
     text-(--pagination-font-size)
     font-bold leading-sm
-    rounded-(--pagination-radius);
+    rounded-(--pagination-border-radius);
     &.disabled {
       @apply text-(--background-color-emphasis)!;
     }

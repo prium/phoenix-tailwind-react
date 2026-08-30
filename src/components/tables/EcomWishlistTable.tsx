@@ -20,7 +20,7 @@ const columns: ColumnDef<WishlistProductType>[] = [
     cell: ({ row: { original } }) => {
       const { productImage } = original;
       return (
-        <div className="rounded-md border border-light inline-block">
+        <div className="rounded-md border border-subtle inline-block">
           <img src={productImage} alt="" width={53} />
         </div>
       );
@@ -108,7 +108,7 @@ const EcomWishlistTable = () => {
   return (
     <div>
       <AdvanceTableProvider {...table}>
-        <div className="border-y border-light">
+        <div className="border-y border-subtle">
           <AdvanceTable tableProps={{ className: ' text-md' }} />
           <AdvanceTableFooter pagination />
         </div>

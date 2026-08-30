@@ -12,7 +12,7 @@ const ProfileNavigation = ({ className }: { className?: string }) => {
         <Col
           key={index}
           xs={6}
-          className={classNames('py-2 border-light', {
+          className={classNames('py-2 border-subtle', {
             'border-bottom border-end': index === 0 || index === 2,
             'border-bottom': index === 1 || index === 3,
             'border-end': index === 4

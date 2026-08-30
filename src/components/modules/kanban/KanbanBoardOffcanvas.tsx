@@ -100,7 +100,7 @@ const KanbanBoardOffcanvas = () => {
           ))}
         </div>
 
-        <div className="flex mb-3 border-bottom border-light pb-3 gap-3">
+        <div className="flex mb-3 border-bottom border-subtle pb-3 gap-3">
           <h4 className="text-highlight font-semibold mb-0">Description</h4>
           <Button className="p-0">
             <FontAwesomeIcon icon={faPencil} className="text-default text-md" />
@@ -119,7 +119,7 @@ const KanbanBoardOffcanvas = () => {
               <Link
                 to="#!"
                 className={classNames(
-                  'text-highlight font-semibold text-decoration-none flex flex-between-center py-3 border-bottom border-light'
+                  'text-highlight font-semibold text-decoration-none flex flex-between-center py-3 border-bottom border-subtle'
                 )}
               >
                 <span>{action.label}</span>

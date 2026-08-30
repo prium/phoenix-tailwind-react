@@ -30,7 +30,7 @@ const HotelDetailsDescription = ({ activeKey }: { activeKey: string }) => {
         features a sizeable workstation, making it the perfect accommodation for
         business traveler's who need to remain connected and productive.
       </p>
-      <div className="p-3 border bg-subtle border-light rounded-2 flex flex-between-center flex-wrap gap-3">
+      <div className="p-3 border bg-subtle border-subtle rounded-2 flex flex-between-center flex-wrap gap-3">
         <h5 className="mb-0">
           <span className="text-subtle font-normal">
             Number of rooms :
@@ -56,7 +56,7 @@ const HotelDetailsDescription = ({ activeKey }: { activeKey: string }) => {
             <Suspense fallback={<PhoenixLoader />}>
               <Mapbox
                 mapRef={mapRef}
-                className="rounded-2 border border-light overflow-hidden w-100"
+                className="rounded-2 border border-subtle overflow-hidden w-100"
                 style={{ height: 300 }}
                 options={{
                   center: [-74.0020158, 40.7228022],

@@ -81,7 +81,7 @@ const FileManagerContent = () => {
                       <ListViewGroupTable
                         tableProps={{
                           className:
-                            ' text-md mb-0 border-light'
+                            ' text-md mb-0 border-subtle'
                         }}
                         rowClassName="hover-actions-trigger btn-reveal-trigger static"
                       />
@@ -89,7 +89,7 @@ const FileManagerContent = () => {
                       <AdvanceTable
                         tableProps={{
                           className:
-                            ' text-md mb-0 border-light'
+                            ' text-md mb-0 border-subtle'
                         }}
                         rowClassName="hover-actions-trigger btn-reveal-trigger static"
                       />
@@ -101,7 +101,7 @@ const FileManagerContent = () => {
                   <Col
                     xs="auto"
                     className={classNames(
-                      'px-0 px-xxl-5 border-start-xxl border-light',
+                      'px-0 px-xxl-5 border-start-xxl border-subtle',
                       {
                         'd-xxl-none': !showFileDetails
                       }

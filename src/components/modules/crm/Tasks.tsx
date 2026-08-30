@@ -35,7 +35,7 @@ const Tasks = () => {
         <TodoListItem
           key={todo.task}
           todo={todo}
-          className={classNames('border-light', {
+          className={classNames('border-subtle', {
             'border-top': index === 0,
             'border-bottom-0': index === leadTasks.length - 1
           })}

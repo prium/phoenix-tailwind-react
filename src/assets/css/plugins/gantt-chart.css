@@ -77,7 +77,7 @@
     }
 
     .gantt_link_corner {
-      border-color: var(--border-color-base) !important;
+      border-color: var(--border-color-default) !important;
     }
     .gantt_scale_line {
       border-width: 0;
@@ -103,13 +103,13 @@
     }
   }
   .gantt_link_arrow_right {
-    border-inline-start-color: var(--border-color-base);
+    border-inline-start-color: var(--border-color-default);
   }
   .gantt_link_arrow_left {
-    border-inline-end-color: var(--border-color-base);
+    border-inline-end-color: var(--border-color-default);
   }
   .gantt_link_arrow:before {
-    color: var(--border-color-base) !important;
+    color: var(--border-color-default) !important;
   }
 
   .gantt_row,
@@ -118,7 +118,7 @@
   .gantt_task_scale,
   .gantt_task_cell,
   .gantt_grid_scale {
-    border-color: var(--border-color-light) !important;
+    border-color: var(--border-color-subtle) !important;
   }
 
   .gantt_task_link:hover .gantt_line_wrapper div {
@@ -129,10 +129,10 @@
       background-color: var(--background-color-emphasis) !important;
     }
     .gantt_link_arrow_right {
-      border-inline-start-color: var(--border-color-base);
+      border-inline-start-color: var(--border-color-default);
     }
     .gantt_link_arrow_left {
-      border-inline-end-color: var(--border-color-base);
+      border-inline-end-color: var(--border-color-default);
     }
   }
   .gantt_layout_cell {

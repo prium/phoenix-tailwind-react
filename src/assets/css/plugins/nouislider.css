@@ -36,7 +36,7 @@
     height: 1.5rem;
     background: white;
     box-shadow: none;
-    border: 1px solid var(--border-color-base);
+    border: 1px solid var(--border-color-default);
     top: var(--noUi-handle-top);
     cursor: grab;
 
@@ -62,7 +62,7 @@
     .noUi-tooltip {
       display: none;
       background: var(--background-color-soft);
-      border: 1px solid var(--border-color-base);
+      border: 1px solid var(--border-color-default);
       color: var(--text-color-default);
       /* font-size: $tooltip-font-size; */
     }

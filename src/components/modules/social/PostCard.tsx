@@ -27,7 +27,7 @@ const PostCard = ({ post }: PostCardProps) => {
     <div className="mb-5">
       <Card className="mb-4 overflow-hidden">
         <Card.Body className="p-3 p-sm-4">
-          <div className="border-bottom border-light mb-3">
+          <div className="border-bottom border-subtle mb-3">
             <div className="flex align-items-center mb-3">
               <Link to="/apps/social/profile" style={{ lineHeight: 0 }}>
                 <Avatar size="xl" src={post.author.avatar} className="me-2" />
@@ -97,7 +97,7 @@ const PostCard = ({ post }: PostCardProps) => {
             </Button>
           </div>
         </Card.Body>
-        <div className="bg-subtle border-top border-light p-3 p-sm-4">
+        <div className="bg-subtle border-top border-subtle p-3 p-sm-4">
           {post.comments && <PostComments comments={post.comments} />}
           <CommentField />
         </div>

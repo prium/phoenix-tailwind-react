@@ -71,11 +71,11 @@ export const leadsTableColumns: ColumnDef<LeadDataType>[] = [
     meta: {
       headerProps: {
         style: { width: '15%' },
-        className: 'ps-4 pe-5 border-end border-light'
+        className: 'ps-4 pe-5 border-end border-subtle'
       },
       cellProps: {
         className:
-          'whitespace-nowrap font-semibold ps-4 border-end border-light'
+          'whitespace-nowrap font-semibold ps-4 border-end border-subtle'
       }
     }
   },
@@ -102,11 +102,11 @@ export const leadsTableColumns: ColumnDef<LeadDataType>[] = [
     meta: {
       headerProps: {
         style: { width: '15%', minWidth: '180px' },
-        className: 'ps-4 pe-5 border-end border-light'
+        className: 'ps-4 pe-5 border-end border-subtle'
       },
       cellProps: {
         className:
-          'whitespace-nowrap font-semibold ps-4 border-end border-light'
+          'whitespace-nowrap font-semibold ps-4 border-end border-subtle'
       }
     }
   },
@@ -126,11 +126,11 @@ export const leadsTableColumns: ColumnDef<LeadDataType>[] = [
     meta: {
       headerProps: {
         style: { width: '15%' },
-        className: 'ps-4 pe-5 border-end border-light'
+        className: 'ps-4 pe-5 border-end border-subtle'
       },
       cellProps: {
         className:
-          'whitespace-nowrap ps-4 border-end border-light font-semibold text-highlight'
+          'whitespace-nowrap ps-4 border-end border-subtle font-semibold text-highlight'
       }
     }
   },
@@ -150,11 +150,11 @@ export const leadsTableColumns: ColumnDef<LeadDataType>[] = [
     meta: {
       headerProps: {
         style: { width: '15%' },
-        className: 'ps-4 pe-5 border-end border-light'
+        className: 'ps-4 pe-5 border-end border-subtle'
       },
       cellProps: {
         className:
-          'whitespace-nowrap ps-4 border-end border-light font-semibold text-highlight'
+          'whitespace-nowrap ps-4 border-end border-subtle font-semibold text-highlight'
       }
     }
   },
@@ -201,7 +201,7 @@ export const leadsTableColumns: ColumnDef<LeadDataType>[] = [
 
 const LeadsTable = () => {
   return (
-    <div className="border-t border-light">
+    <div className="border-t border-subtle">
       <AdvanceTable
         tableProps={{ className: ' text-md' }}
         rowClassName="hover-actions-trigger btn-reveal-trigger"

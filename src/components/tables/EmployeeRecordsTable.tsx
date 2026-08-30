@@ -111,7 +111,7 @@ const EmployeeRecordsTable = ({
     <AdvanceTableProvider {...table}>
       <AdvanceTable
         tableProps={{
-          className: ' border-top border-light text-md mb-0'
+          className: ' border-top border-subtle text-md mb-0'
         }}
         headerClassName="text-uppercase"
       />

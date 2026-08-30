@@ -17,7 +17,7 @@ const AddDealModal = ({ show, handleClose }: AddDealModalProps) => {
       centered
       backdrop="static"
       onHide={handleClose}
-      contentClassName="bg-subtle p-6 border border-light"
+      contentClassName="bg-subtle p-6 border border-subtle"
     >
       <Modal.Header className="border-0 p-0 mb-2">
         <h3 className="mb-0">Deal Informations</h3>

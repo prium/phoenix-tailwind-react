@@ -11,7 +11,7 @@ import { faChevronRight } from '@fortawesome/free-solid-svg-icons';
 const StoreItem = ({ store }: { store: StoreItemType }) => {
   return (
     <RevealDropdownTrigger className="hover-actions-trigger">
-      <div className="border border-light flex flex-center rounded-lg mb-4 p-6 h-45">
+      <div className="border border-subtle flex flex-center rounded-lg mb-4 p-6 h-45">
         <img className="max-w-full" src={store.logo} alt={store.name} />
       </div>
       <h5 className="mb-2">{store.name}</h5>

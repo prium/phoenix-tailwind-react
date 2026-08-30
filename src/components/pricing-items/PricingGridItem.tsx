@@ -114,7 +114,7 @@ const PricingGridItem = ({ item, pricingType }: PricingGridItemProps) => {
                       {
                         'border-warning-subtle':
                           item.badge?.label === 'recommended',
-                        'border-light':
+                        'border-subtle':
                           item.badge?.label !== 'recommended'
                       }
                     )}

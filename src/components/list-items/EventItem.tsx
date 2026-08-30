@@ -16,7 +16,7 @@ const EventItem = ({ event }: EventItemProps) => {
   return (
     <div
       key={event.title}
-      className="py-3 border-bottom border-light border-dashed"
+      className="py-3 border-bottom border-subtle border-dashed"
     >
       <div className="flex flex-between-center">
         <p className="text-warning text-sm mb-0 font-bold mb-1">{event.date}</p>

@@ -24,7 +24,7 @@
     transition: var(--treeview-transition-collapse);
   }
   .treeview-border {
-    border-inline-start: 1px dashed var(--border-color-base);
+    border-inline-start: 1px dashed var(--border-color-default);
     margin-inline-start: 3px;
     padding-inline-start: 20px;
   }

@@ -11,7 +11,7 @@ const AddContact = () => {
   return (
     <div className="mb-9">
       <PageBreadcrumb items={defaultBreadcrumbItems} />
-      <div className="border-bottom border-light mb-7 mx-n3 px-2 mx-lg-n6 px-lg-6">
+      <div className="border-bottom border-subtle mb-7 mx-n3 px-2 mx-lg-n6 px-lg-6">
         <Row>
           <Col xl={9}>
             <div className="d-sm-flex justify-content-between">

@@ -72,7 +72,7 @@ const TopStockLineChart = ({
           borderColor: ctx =>
             ctx.p0DataIndex <= index
               ? getThemeColor(growth ? 'success' : 'danger')
-              : getThemeColor('border-color-base'),
+              : getThemeColor('border-color-default'),
           backgroundColor: ctx =>
             ctx.p0DataIndex <= index
               ? ctx.chart.chartArea &&

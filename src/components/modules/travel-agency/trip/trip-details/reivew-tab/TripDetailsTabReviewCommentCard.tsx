@@ -74,7 +74,7 @@ const TripDetailsTabReviewCommentCard = ({
               <div
                 key={replyItem.id}
                 className={classNames(
-                  'mt-5 border-start border-light ps-4',
+                  'mt-5 border-start border-subtle ps-4',
                   {
                     'mt-5': idx === 0,
                     'mb-3': idx !== comment.replies.length - 1

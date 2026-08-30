@@ -38,7 +38,7 @@ const EventTitleCard = ({ className }: { className?: string }) => {
                     Vancouver, British Columbia, Canada
                   </p>
                 </div>
-                <div className="my-6 mx-4 border-s border-light hidden md:block" />
+                <div className="my-6 mx-4 border-s border-subtle hidden md:block" />
               </Col>
               <Col md={6}>
                 <div className="mb-4">

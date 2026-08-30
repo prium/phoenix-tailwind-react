@@ -128,7 +128,7 @@ const Dropzone = ({
           <div
             key={index}
             className={cn(
-              'border-b border-light flex items-center justify-between py-6'
+              'border-b border-subtle flex items-center justify-between py-6'
             )}
           >
             <AttachmentPreview attachment={file} />

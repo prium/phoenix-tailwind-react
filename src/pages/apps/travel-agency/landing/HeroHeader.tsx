@@ -41,7 +41,7 @@ const HeroHeader = () => {
             backDelay={1000}
           />
         </h1>
-        <InputGroup className="rounded-2 py-1 ps-2 w-lg-50 border border-light">
+        <InputGroup className="rounded-2 py-1 ps-2 w-lg-50 border border-subtle">
           <div className="form-icon-container flex-1 flex align-items-center">
             <FontAwesomeIcon
               icon={faLocationDot}
@@ -59,7 +59,7 @@ const HeroHeader = () => {
               <Dropdown.Toggle
                 as="button"
                 id="dropdown-basic"
-                className="btn dropdown-caret-none py-0 bg-transparent text-secondary-light text-base md:text-lg font-semibold border-0 border-start border-light rounded-0"
+                className="btn dropdown-caret-none py-0 bg-transparent text-secondary-light text-base md:text-lg font-semibold border-0 border-start border-subtle rounded-0"
               >
                 Flight
                 <FontAwesomeIcon

@@ -6,7 +6,7 @@ const BoardForm = () => {
   const { formData, onChange } = useWizardFormContext<CreateBoardFormData>();
   return (
     <>
-      <div className="mt-6 border-bottom-0 border-light">
+      <div className="mt-6 border-bottom-0 border-subtle">
         <p className="mb-4">
           This will be the <b>Name</b> and description of your Kanban board. You
           and other admins can edit the name in future. The name can contain

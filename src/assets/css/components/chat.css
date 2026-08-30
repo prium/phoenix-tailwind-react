@@ -80,7 +80,7 @@
           top: -1px;
           bottom: auto;
           border: 11px solid;
-          border-color: var(--border-color-base) transparent transparent
+          border-color: var(--border-color-default) transparent transparent
             transparent;
         }
       }
@@ -97,7 +97,7 @@
           inset-inline-end: -12px;
           top: auto;
           bottom: 0;
-          border: 12px solid var(--border-color-light);
+          border: 12px solid var(--border-color-subtle);
           border-color: transparent transparent var(--color-primary) transparent;
         }
       }

@@ -14,7 +14,7 @@ const CheckoutSummaryCard = () => {
             Edit cart
           </Button>
         </div>
-        <div className="border-dashed border-b border-light mt-6">
+        <div className="border-dashed border-b border-subtle mt-6">
           <div className="-ms-2">
             {cartItems.map((item, index) => (
               <Row
@@ -50,7 +50,7 @@ const CheckoutSummaryCard = () => {
           </div>
         </div>
 
-        <div className="border-dashed border-b border-light mt-6">
+        <div className="border-dashed border-b border-subtle mt-6">
           <div className="flex justify-between mb-2">
             <h5 className="text-default font-semibold">Items subtotal: </h5>
             <h5 className="text-default font-semibold">$691</h5>

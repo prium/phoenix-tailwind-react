@@ -139,7 +139,7 @@
   padding: 0 0.5rem;
   display: flex;
   align-items: center;
-  border: 1px solid var(--border-color-light);
+  border: 1px solid var(--border-color-subtle);
   border-radius: var(--radius-md);
   cursor: pointer;
   @variant xl {
@@ -176,7 +176,7 @@
         background: var(--background-color-default);
         border-width: 1px 0 0 1px;
         border-style: solid;
-        border-color: var(--border-color-base);
+        border-color: var(--border-color-default);
         @variant max-sm {
           top: 41px;
           inset-inline-end: 42%;
@@ -226,7 +226,7 @@
     border-radius: var(--radius-sm);
     border-width: 1px 0 0 1px;
     border-style: solid;
-    border-color: var(--border-color-light);
+    border-color: var(--border-color-subtle);
     box-shadow: var(--shadow-sm);
   }
   .card {

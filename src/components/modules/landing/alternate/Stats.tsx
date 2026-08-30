@@ -58,7 +58,7 @@ const Stats = () => {
               className={classNames('text-center', {
                 'order-2 order-md-0': index === 0,
                 'order-1 order-md-0': index === 1,
-                'me-md-5 pe-md-5 border-end-md border-dashed border-light':
+                'me-md-5 pe-md-5 border-end-md border-dashed border-subtle':
                   index !== stats.length - 1
               })}
             >

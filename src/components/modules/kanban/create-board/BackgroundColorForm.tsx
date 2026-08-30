@@ -115,7 +115,7 @@ const BackgroundColorForm = () => {
       <Tab.Container id="left-tabs-example" defaultActiveKey="first">
         <Nav
           variant="underline"
-          className="border-bottom border-light mb-10"
+          className="border-bottom border-subtle mb-10"
         >
           <Nav.Item>
             <Nav.Link eventKey="first">

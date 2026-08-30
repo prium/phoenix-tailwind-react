@@ -219,7 +219,7 @@ const ForecastEconomicPredictionTable = ({
     <AdvanceTableProvider {...table}>
       <AdvanceTable
         tableProps={{
-          className: ' text-md mb-0 border-top border-light'
+          className: ' text-md mb-0 border-top border-subtle'
         }}
         headerClassName="text-uppercase"
       />

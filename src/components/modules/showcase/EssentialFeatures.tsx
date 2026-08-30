@@ -198,7 +198,7 @@ const EssentialFeatures = () => {
                 <Col xs={12} sm={4} className="px-0" key={item.id}>
                   <div
                     className={classNames(
-                      'mb-10 text-center border-light',
+                      'mb-10 text-center border-subtle',
                       item.border
                     )}
                   >

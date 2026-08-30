@@ -82,7 +82,7 @@ const FlightInfo = () => {
           {/* Right Panel for Airline Info */}
           <Col
             lg={4}
-            className="ps-lg-6 pt-5 pt-lg-0 border-top border-top-lg-0 border-start-lg border-light"
+            className="ps-lg-6 pt-5 pt-lg-0 border-top border-top-lg-0 border-start-lg border-subtle"
           >
             <Row className="g-lg-3 g-md-0 g-3 flex-between-center">
               <Col md="auto" lg={12} className="text-nowrap">

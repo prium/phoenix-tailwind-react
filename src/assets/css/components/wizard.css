@@ -41,7 +41,7 @@
       .nav-item-circle {
         color: var(--text-color-subtle);
         background-color: var(--theme-wizard-nav-item-circle-bg);
-        border: 2px solid var(--border-color-base);
+        border: 2px solid var(--border-color-default);
         height: 2.5rem;
         width: 2.5rem;
         border-radius: 50%;
@@ -183,7 +183,7 @@
             after:left-1/2
             after:w-0.5
             after:h-full
-            after:bg-(--border-color-base);
+            after:bg-(--border-color-default);
           }
         }
       }
@@ -208,7 +208,7 @@
             sm:after:left-1/2
             sm:after:w-0.5
             sm:after:h-full
-            sm:after:bg-(--border-color-base);
+            sm:after:bg-(--border-color-default);
           }
         }
       }
@@ -233,7 +233,7 @@
             md:after:left-1/2
             md:after:w-0.5
             md:after:h-full
-            md:after:bg-(--border-color-base);
+            md:after:bg-(--border-color-default);
           }
         }
       }
@@ -258,7 +258,7 @@
             lg:after:left-1/2
             lg:after:w-0.5
             lg:after:h-full
-            lg:after:bg-(--border-color-base);
+            lg:after:bg-(--border-color-default);
           }
         }
       }
@@ -283,7 +283,7 @@
             xl:after:left-1/2
             xl:after:w-0.5
             xl:after:h-full
-            xl:after:bg-(--border-color-base);
+            xl:after:bg-(--border-color-default);
           }
         }
       }
@@ -308,7 +308,7 @@
             2xl:after:left-1/2
             2xl:after:w-0.5
             2xl:after:h-full
-            2xl:after:bg-(--border-color-base);
+            2xl:after:bg-(--border-color-default);
           }
         }
       }

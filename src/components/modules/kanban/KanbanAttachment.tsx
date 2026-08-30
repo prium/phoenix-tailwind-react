@@ -25,7 +25,7 @@ interface KanbanAttachmentProps {
 
 const KanbanAttachment = ({ attachment }: KanbanAttachmentProps) => {
   return (
-    <div className="border-bottom border-light flex flex-row pb-3">
+    <div className="border-bottom border-subtle flex flex-row pb-3">
       {attachment.preview ? (
         <img
           src={attachment.preview}
@@ -36,7 +36,7 @@ const KanbanAttachment = ({ attachment }: KanbanAttachmentProps) => {
         />
       ) : (
         <div
-          className="border border-light rounded-3 flex-center flex"
+          className="border border-subtle rounded-3 flex-center flex"
           style={{ height: 64, width: 64 }}
         >
           <FontAwesomeIcon

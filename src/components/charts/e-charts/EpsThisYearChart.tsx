@@ -12,7 +12,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     trigger: 'axis',
     padding: [7, 10],
     backgroundColor: getThemeColor('background-color-subtle'),
-    borderColor: getThemeColor('border-color-base'),
+    borderColor: getThemeColor('border-color-default'),
     borderWidth: 1,
     transitionDuration: 0,
     axisPointer: {

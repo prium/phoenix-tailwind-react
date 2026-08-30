@@ -86,7 +86,7 @@ const AdvanceTable = ({
             {getFooterGroups().map(footerGroup => (
               <Table.Row
                 key={footerGroup.id}
-                className="border-0 border-light"
+                className="border-0 border-subtle"
               >
                 {footerGroup.headers.map(header => (
                   <Table.Head

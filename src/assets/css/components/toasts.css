@@ -6,13 +6,13 @@
     --toast-font-size: var(--text-base);
     --toast-color: var(--text-color-default);
     --toast-bg: --alpha(var(--background-color-soft) / 85%);
-    --toast-border-color: var(--border-color-base);
+    --toast-border-color: var(--border-color-default);
     --toast-border-radius: var(--radius-md);
     --toast-box-shadow: 0px 4px 8px -6px rgba(36, 40, 46, 0.03),
       0px 16px 8px -4px rgba(36, 40, 46, 0.03);
     --toast-header-color: var(--text-color-muted);
     --toast-header-bg: transparent;
-    --toast-header-border-color: var(--border-color-light);
+    --toast-header-border-color: var(--border-color-subtle);
 
     @apply px-6 py-2
     border-(length:--toast-border-width) border-(--toast-border-color);

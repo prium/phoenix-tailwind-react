@@ -45,7 +45,7 @@
       var(--form-select-padding-x) + var(--form-select-indicator-padding)
     );
     padding-inline-start: var(--form-select-padding-x);
-    border: 1px solid var(--border-color-light) !important;
+    border: 1px solid var(--border-color-subtle) !important;
 
     &:has(.choices__input.form-select) {
       --form-select-line-height: 1;
@@ -68,7 +68,7 @@
     }
   }
   .choices__list--dropdown {
-    border: 1px solid var(--border-color-light) !important;
+    border: 1px solid var(--border-color-subtle) !important;
     border-bottom-left-radius: var(--radius-md);
     border-bottom-right-radius: var(--radius-md);
     z-index: 999;

@@ -48,7 +48,7 @@ const CompareRoomDetails = ({
             </td>
           </tr>
           <tr>
-            <td className="px-4 align-middle border-end-lg border-light bg-subtle">
+            <td className="px-4 align-middle border-end-lg border-subtle bg-subtle">
               <h6 className="text-default font-black text-uppercase mb-0">
                 room type
               </h6>
@@ -56,7 +56,7 @@ const CompareRoomDetails = ({
             {hotelInfo.map((info, index) =>
               info.rooms.map(item => (
                 <td
-                  className={classNames('border-light px-3', {
+                  className={classNames('border-subtle px-3', {
                     'border-end-lg': index === hotelInfo.length - 1,
                     'border-end': index !== hotelInfo.length - 1
                   })}
@@ -76,7 +76,7 @@ const CompareRoomDetails = ({
             )}
           </tr>
           <tr>
-            <td className="px-4 align-middle border-end-lg border-light bg-subtle">
+            <td className="px-4 align-middle border-end-lg border-subtle bg-subtle">
               <h6 className="text-default font-black text-uppercase mb-0">
                 room price
               </h6>
@@ -84,7 +84,7 @@ const CompareRoomDetails = ({
             {hotelInfo.map((info, index) =>
               info.rooms.map(item => (
                 <td
-                  className={classNames('border-light px-3', {
+                  className={classNames('border-subtle px-3', {
                     'border-end-lg': index === hotelInfo.length - 1,
                     'border-end': index !== hotelInfo.length - 1
                   })}
@@ -103,7 +103,7 @@ const CompareRoomDetails = ({
             )}
           </tr>
           <tr>
-            <td className="px-4 align-middle border-end-lg border-light bg-subtle">
+            <td className="px-4 align-middle border-end-lg border-subtle bg-subtle">
               <h6 className="text-default font-black text-uppercase mb-0">
                 room picture
               </h6>
@@ -111,7 +111,7 @@ const CompareRoomDetails = ({
             {hotelInfo.map((info, index) =>
               info.rooms.map(item => (
                 <td
-                  className={classNames('border-light px-3', {
+                  className={classNames('border-subtle px-3', {
                     'border-end-lg': index === hotelInfo.length - 1,
                     'border-end': index !== hotelInfo.length - 1
                   })}
@@ -140,7 +140,7 @@ const CompareRoomDetails = ({
             )}
           </tr>
           <tr>
-            <td className="px-4 align-middle border-end-lg border-light bg-subtle">
+            <td className="px-4 align-middle border-end-lg border-subtle bg-subtle">
               <h6 className="text-default font-black text-uppercase mb-0">
                 room details
               </h6>
@@ -149,7 +149,7 @@ const CompareRoomDetails = ({
               info.rooms.map(item => (
                 <td
                   key={item.id}
-                  className={classNames('border-light px-3', {
+                  className={classNames('border-subtle px-3', {
                     'border-end-lg': index === hotelInfo.length - 1,
                     'border-end': index !== hotelInfo.length - 1
                   })}

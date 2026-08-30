@@ -27,7 +27,7 @@ const Boards = () => {
   }, []);
   return (
     <div className="mb-9">
-      <div className="border-bottom border-light px-4 px-lg-6 pb-5">
+      <div className="border-bottom border-subtle px-4 px-lg-6 pb-5">
         <Row className="justify-content-between gy-4">
           <Col xs="auto">
             <h2>
@@ -54,7 +54,7 @@ const Boards = () => {
           </Col>
         </Row>
       </div>
-      <div className="flex flex-wrap gap-3 border-bottom border-light px-4 px-lg-6 py-5">
+      <div className="flex flex-wrap gap-3 border-bottom border-subtle px-4 px-lg-6 py-5">
         <Button
           variant="primary"
           className="px-3 px-sm-5 px-md-10"

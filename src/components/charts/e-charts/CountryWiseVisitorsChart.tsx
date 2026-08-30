@@ -31,7 +31,7 @@ const getDefaultOptions = (
       type: 'none'
     },
     backgroundColor: getThemeColor('background-color-subtle'),
-    borderColor: getThemeColor('border-color-base'),
+    borderColor: getThemeColor('border-color-default'),
     textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,

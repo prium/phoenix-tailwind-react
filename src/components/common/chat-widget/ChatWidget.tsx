@@ -28,7 +28,7 @@ const ChatWidget = () => {
         })}
       >
         <Card className="bg-soft">
-          <Card.Header className="flex flex-between-center px-6 py-4 border-b border-light">
+          <Card.Header className="flex flex-between-center px-6 py-4 border-b border-subtle">
             <h5 className="mb-0 flex items-center gap-2">
               Demo widget
               <FontAwesomeIcon icon={faCircle} className="text-success text-xs" />
@@ -48,13 +48,13 @@ const ChatWidget = () => {
           <Card.Body className="chat p-0">
             <ChatWidgetConversation />
           </Card.Body>
-          <Card.Footer className="border-t border-light ps-4 pe-6 py-4">
+          <Card.Footer className="border-t border-subtle ps-4 pe-6 py-4">
             <ChatWidgetFooter />
           </Card.Footer>
         </Card>
       </div>
       <Button
-        className={cn('p-0 border border-light btn-support-chat', {
+        className={cn('p-0 border border-subtle btn-support-chat', {
           'btn-chat-close': isOpenChat
         })}
         onClick={() => setIsOpenChat(!isOpenChat)}

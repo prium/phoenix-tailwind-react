@@ -11,7 +11,7 @@
         &.show {
           --navbar-top-link-color: var(--color-gray-400);
           --navbar-top-menu-bg-color: var(--color-gray-1000);
-          --navbar-top-border-color: var(--border-color-base);
+          --navbar-top-border-color: var(--border-color-default);
           --navbar-top-link-hover-color: var(--color-gray-300);
           --navbar-top-link-hover-bg: var(--color-gray-950);
           --navbar-top-link-active-color: var(--color-gray-300);

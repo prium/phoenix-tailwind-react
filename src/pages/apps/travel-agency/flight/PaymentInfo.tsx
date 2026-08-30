@@ -97,7 +97,7 @@ const PersonalInfo = () => {
               Male
             </p>
           </Col>
-          <Col className="border-start-sm border-top-sm-0 border-top border-light ps-sm-4 pt-4 pt-sm-0">
+          <Col className="border-start-sm border-top-sm-0 border-top border-subtle ps-sm-4 pt-4 pt-sm-0">
             <h5 className="mb-3">Passenger 2</h5>
             <p className="mb-2">John James Johansen</p>
             <p className="mb-0">

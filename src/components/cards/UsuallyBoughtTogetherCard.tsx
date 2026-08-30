@@ -27,7 +27,7 @@ const ProductListItem = ({
       </div>
       <Link to="/apps/e-commerce/customer/product-details" className="shrink-0">
         <img
-          className="border border-dashed border-light rounded-md"
+          className="border border-dashed border-subtle rounded-md"
           src={product.img}
           width="53"
           alt=""
@@ -61,7 +61,7 @@ const UsuallyBoughtTogetherCard = ({
             256GB SSD - w/Touch ID (Latest Model) - Blue
           </p>
         </div>
-        <div className="border-dashed border-y border-light py-6">
+        <div className="border-dashed border-y border-subtle py-6">
           {products.map((product, index) => (
             <ProductListItem
               product={product}

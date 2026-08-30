@@ -18,7 +18,7 @@ const EmailSidebarItem = ({ item }: { item: SidebarItem }) => {
       <Nav.Link
         as={Link}
         className={classNames(
-          'py-2 ps-0 pe-3 border-end border-bottom border-light text-start outline-none',
+          'py-2 ps-0 pe-3 border-end border-bottom border-subtle text-start outline-none',
           {
             active: item.active
           }
@@ -53,7 +53,7 @@ const EmailSidebar = ({ hideSidebar }: { hideSidebar?: () => void }) => {
           )}
         </div>
 
-        <Nav className="flex-column border-top border-light text-md vertical-nav mb-4">
+        <Nav className="flex-column border-top border-subtle text-md vertical-nav mb-4">
           {mailboxItems.map(item => (
             <EmailSidebarItem item={item} key={item.label} />
           ))}
@@ -72,7 +72,7 @@ const EmailSidebar = ({ hideSidebar }: { hideSidebar?: () => void }) => {
           </Button>
         </div>
 
-        <Nav className="flex-column border-top border-light text-md vertical-nav mb-4">
+        <Nav className="flex-column border-top border-subtle text-md vertical-nav mb-4">
           {filteredItems.map(item => (
             <EmailSidebarItem item={item} key={item.label} />
           ))}
@@ -91,7 +91,7 @@ const EmailSidebar = ({ hideSidebar }: { hideSidebar?: () => void }) => {
           </Button>
         </div>
 
-        <Nav className="flex-column border-top border-light text-md vertical-nav">
+        <Nav className="flex-column border-top border-subtle text-md vertical-nav">
           {labelItems.map(item => (
             <EmailSidebarItem item={item} key={item.label} />
           ))}

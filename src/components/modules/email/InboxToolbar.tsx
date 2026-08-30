@@ -58,7 +58,7 @@ const InboxToolbar = ({ size = 'lg', className }: InboxToolbarProps) => {
           </Button>
         </div>
       </div>
-      <div className="border-y border-light py-2 flex justify-content-between">
+      <div className="border-y border-subtle py-2 flex justify-content-between">
         <IndeterminateCheckbox {...getParentCheckboxProps()} />
         <div className="flex gap-2">
           <TooltipIconButton

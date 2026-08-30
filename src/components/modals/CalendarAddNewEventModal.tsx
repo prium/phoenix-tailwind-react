@@ -56,7 +56,7 @@ const CalendarAddNewEventModal = () => {
   return (
     <Modal
       show={openNewEventModal}
-      contentClassName="border-light"
+      contentClassName="border-subtle"
       onHide={handleClose}
       enforceFocus={false}
     >

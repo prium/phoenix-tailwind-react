@@ -17,12 +17,12 @@ const ResponsesAndShare = () => {
           <p className="mb-2 text-muted">Going</p>
           <h3 className="text-muted">4,569</h3>
         </div>
-        <div className="my-3 mx-2 mx-sm-3 border-start border-light" />
+        <div className="my-3 mx-2 mx-sm-3 border-start border-subtle" />
         <div className="mx-3">
           <p className="mb-2 text-muted">Interested</p>
           <h3 className="text-muted">15,652</h3>
         </div>
-        <div className="my-3 mx-2 mx-sm-3 border-start border-light" />
+        <div className="my-3 mx-2 mx-sm-3 border-start border-subtle" />
         <div className="mx-3">
           <p className="mb-2 text-muted">Share</p>
           <h3 className="text-muted">11,236</h3>

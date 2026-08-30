@@ -8,7 +8,7 @@ const FinancialStatementTable = () => {
   const [openOperating, setOpenOperating] = useState(true);
   return (
     <div className="scrollbar table-responsive">
-      <Table className=" border-t border-light text-md mb-0">
+      <Table className=" border-t border-subtle text-md mb-0">
         <thead>
           <tr className="uppercase">
             <th className="font-bold py-4" style={{ minWidth: '22rem' }}>
