@@ -153,5 +153,12 @@ export const pages: VisualPage[] = [
     '/admin/customer-details',
     '/admin/customer-details.html',
     { tolerance: 0.03 }
-  )
+  ),
+
+  // project management
+  {
+    name: 'pm-create-new',
+    react: '/apps/project-management/create-new',
+    gold: '/apps/project-management/create-new.html'
+  }
 ];
