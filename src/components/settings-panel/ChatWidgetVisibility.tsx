@@ -12,7 +12,7 @@ const ChatWidgetVisibility = () => {
   };
 
   return (
-    <div className="border border-light rounded-lg p-6! setting-panel-item bg-soft!">
+    <div className="border border-subtle rounded-lg p-6! setting-panel-item bg-soft!">
       <div className="flex justify-between items-center">
         <h5 className="setting-panel-item-title mb-1">Support Chat</h5>
         <div className="form-check form-switch mb-0">

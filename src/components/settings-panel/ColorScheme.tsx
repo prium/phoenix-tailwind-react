@@ -21,7 +21,7 @@ const ColorScheme = () => {
   };
 
   return (
-    <div className="setting-panel-item mt-0">
+    <div className="setting-panel-item mt-0!">
       <h5 className="setting-panel-item-title">Color Scheme</h5>
       <Row className="gx-2">
         <Col xs={4}>
@@ -29,7 +29,7 @@ const ColorScheme = () => {
             label="Light"
             name="theme"
             value="light"
-            thumb={defaultLight}
+            thumb={{ light: defaultLight }}
             checked={theme === 'light'}
             handleChange={handleThemeChange}
           />
@@ -39,7 +39,7 @@ const ColorScheme = () => {
             label="Dark"
             name="theme"
             value="dark"
-            thumb={defaultDark}
+            thumb={{ light: defaultDark }}
             checked={theme === 'dark'}
             handleChange={handleThemeChange}
           />
@@ -49,7 +49,7 @@ const ColorScheme = () => {
             label="Auto"
             name="theme"
             value="auto"
-            thumb={auto}
+            thumb={{ light: auto }}
             checked={theme === 'auto'}
             handleChange={handleThemeChange}
           />

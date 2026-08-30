@@ -21,8 +21,8 @@ for (const p of pages) {
     test(label, async ({ browser }) => {
       const opts = { width: v.width, dark: v.dark, mask: p.mask };
       const [react, gold] = await Promise.all([
-        shoot(browser, REACT + p.react, opts),
-        shoot(browser, GOLD + p.gold, opts)
+        shoot(browser, REACT + p.react, { ...opts, setup: p.setup?.react }),
+        shoot(browser, GOLD + p.gold, { ...opts, setup: p.setup?.gold })
       ]);
       const name = `${p.name}-${v.width}${v.dark ? '-dark' : ''}`;
       const r = diff(react, gold, OUT, name);

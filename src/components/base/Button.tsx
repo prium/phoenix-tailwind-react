@@ -151,6 +151,30 @@ const Button = ({
 }: PropsWithChildren<ButtonProps>) => {
   const resolved = resolveVariant(variant, color);
 
+  // Radix Slot (asChild) accepts exactly one child: render the child as-is and
+  // skip icon/loader decorations, which would produce multiple children.
+  const content = asChild ? (
+    children
+  ) : (
+    <>
+      {loading && loadingPosition === 'start' && (
+        <Loader variant="border" size="sm" className="me-2" />
+      )}
+      {startIcon &&
+        React.cloneElement(startIcon, {
+          className: cn(startIcon.props.className, 'me-1')
+        })}
+      {children}
+      {endIcon &&
+        React.cloneElement(endIcon, {
+          className: cn(endIcon.props.className, 'ms-1')
+        })}
+      {loading && loadingPosition === 'end' && (
+        <Loader variant="border" size="sm" className="ms-2" />
+      )}
+    </>
+  );
+
   const variantClasses =
     resolved.style === 'phoenix'
       ? phoenixButtonVariants({ color: resolved.color, size, shape })
@@ -178,23 +202,7 @@ const Button = ({
         className
       )}
     >
-      {loading && loadingPosition === 'start' && (
-        <Loader variant="border" size="sm" className="me-2" />
-      )}
-      {startIcon &&
-        React.cloneElement(startIcon, {
-          className: cn(startIcon.props.className, 'me-1')
-        })}
-
-      {children}
-
-      {endIcon &&
-        React.cloneElement(endIcon, {
-          className: cn(endIcon.props.className, 'ms-1')
-        })}
-      {loading && loadingPosition === 'end' && (
-        <Loader variant="border" size="sm" className="ms-2" />
-      )}
+      {content}
     </HbButton>
   );
 };

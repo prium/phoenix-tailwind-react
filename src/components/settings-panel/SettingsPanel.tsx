@@ -47,7 +47,7 @@ const SettingsPanel = () => {
         aria-describedby={undefined}
       >
         <Drawer.Title className="sr-only">Theme Customizer</Drawer.Title>
-        <Drawer.Header className="items-start border-b flex-col border-light">
+        <Drawer.Header className="items-start border-b flex-col border-subtle">
           <div className="pt-1 w-full mb-10 flex justify-between items-start">
             <div>
               <h5 className="mb-2 me-2 leading-sm">
@@ -85,7 +85,7 @@ const SettingsPanel = () => {
           <NavigationType />
           <VerticalNavbarAppearance />
           <HorizontalNavbarShape />
-          <TopNavbarAppearance className="mb-8" />
+          <TopNavbarAppearance />
           <Button
             asChild
             variant="primary"

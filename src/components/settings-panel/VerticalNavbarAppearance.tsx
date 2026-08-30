@@ -12,7 +12,7 @@ import { useSettingsPanelContext } from 'providers/SettingsPanelProvider';
 
 const VerticalNavbarAppearance = () => {
   const {
-    config: { isDark, navbarVerticalAppearance },
+    config: { navbarVerticalAppearance },
     setConfig
   } = useAppContext();
 
@@ -36,7 +36,8 @@ const VerticalNavbarAppearance = () => {
             label="Default"
             name="vertical-navbar-appearance"
             value="default"
-            thumb={isDark === false ? defaultLight : defaultDark}
+            thumb={{ light: defaultLight, dark: defaultDark }}
+            variant="block"
             checked={navbarVerticalAppearance === 'default'}
             handleChange={handleChange}
             disabled={disableVerticalNavbarAppearance}
@@ -44,10 +45,12 @@ const VerticalNavbarAppearance = () => {
         </Col>
         <Col xs={6}>
           <RadioItem
-            label={isDark === false ? 'Darker' : 'Lighter'}
+            label="Darker"
+            darkLabel="Lighter"
             name="vertical-navbar-appearance"
             value="darker"
-            thumb={isDark === false ? verticalDarker : verticalLighter}
+            thumb={{ light: verticalDarker, dark: verticalLighter }}
+            variant="block"
             checked={navbarVerticalAppearance === 'darker'}
             handleChange={handleChange}
             disabled={disableVerticalNavbarAppearance}
@@ -55,7 +58,7 @@ const VerticalNavbarAppearance = () => {
         </Col>
       </Row>
       {disableVerticalNavbarAppearance && (
-        <WarningMessage message="You can't update vertical navbar appearance type here" />
+        <WarningMessage message="You can't update vertical navbar appearance in this page" />
       )}
     </div>
   );

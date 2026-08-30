@@ -19,7 +19,17 @@ export interface VisualPage {
   tolerance?: number;
   /** Extra selectors to mask (dynamic/unstable content). */
   mask?: string[];
+  /** Actions run after load, per side: click a selector and/or eval JS (e.g. open a panel). */
+  setup?: { react?: SideSetup; gold?: SideSetup };
 }
+
+export interface SideSetup {
+  click?: string;
+  eval?: string;
+}
+
+/** Forces the gold (static JS) offcanvas open the way hummingbird's toggle would. */
+const OPEN_GOLD_OFFCANVAS = `const o=document.querySelector('#settings-offcanvas');o.classList.add('show');o.style.visibility='visible';const b=document.createElement('div');b.className='offcanvas-backdrop fade show';document.body.appendChild(b)`;
 
 const EC = '/apps/e-commerce';
 const p = (
@@ -41,6 +51,16 @@ export const pages: VisualPage[] = [
     gold: '/index.html',
     dark: true,
     widths: [768]
+  },
+  {
+    name: 'settings-panel',
+    react: '/',
+    gold: '/index.html',
+    dark: true,
+    setup: {
+      react: { click: '.setting-toggle' },
+      gold: { eval: OPEN_GOLD_OFFCANVAS }
+    }
   },
 
   // customer

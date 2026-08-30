@@ -16,7 +16,7 @@ import { useSettingsPanelContext } from 'providers/SettingsPanelProvider';
 
 const NavigationType = () => {
   const {
-    config: { navbarPosition, isDark },
+    config: { navbarPosition },
     setConfig
   } = useAppContext();
 
@@ -40,7 +40,8 @@ const NavigationType = () => {
             label="Vertical"
             name="nav-type"
             value="vertical"
-            thumb={isDark === false ? defaultLight : defaultDark}
+            thumb={{ light: defaultLight, dark: defaultDark }}
+            variant="inline-tight"
             checked={navbarPosition === 'vertical'}
             handleChange={handleChange}
             disabled={disableNavigationType}
@@ -51,7 +52,8 @@ const NavigationType = () => {
             label="Horizontal"
             name="nav-type"
             value="horizontal"
-            thumb={isDark === false ? topDefault : topDefaultDark}
+            thumb={{ light: topDefault, dark: topDefaultDark }}
+            variant="inline-tight"
             checked={navbarPosition === 'horizontal'}
             handleChange={handleChange}
             disabled={disableNavigationType}
@@ -62,7 +64,8 @@ const NavigationType = () => {
             label="Combo"
             name="nav-type"
             value="combo"
-            thumb={isDark === false ? navComboLight : navComboDark}
+            thumb={{ light: navComboLight, dark: navComboDark }}
+            variant="inline-tight"
             checked={navbarPosition === 'combo'}
             handleChange={handleChange}
             disabled={disableNavigationType}
@@ -73,7 +76,8 @@ const NavigationType = () => {
             label="Dual nav"
             name="nav-type"
             value="dual"
-            thumb={isDark === false ? dualLight : dualDark}
+            thumb={{ light: dualLight, dark: dualDark }}
+            variant="inline-tight"
             checked={navbarPosition === 'dual'}
             handleChange={handleChange}
             disabled={disableNavigationType}
@@ -81,7 +85,7 @@ const NavigationType = () => {
         </Col>
       </Row>
       {disableNavigationType && (
-        <WarningMessage message="You can't update navigation type here" />
+        <WarningMessage message="You can't update navigation type in this page" />
       )}
     </div>
   );

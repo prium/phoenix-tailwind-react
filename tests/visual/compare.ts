@@ -38,6 +38,7 @@ export interface ShotOptions {
   width: number;
   dark: boolean;
   mask?: string[];
+  setup?: { click?: string; eval?: string };
 }
 
 export async function shoot(
@@ -71,6 +72,14 @@ export async function shoot(
         : '')
   });
   await settle(page);
+  if (opts.setup?.click) {
+    await page.click(opts.setup.click);
+    await page.waitForTimeout(600);
+  }
+  if (opts.setup?.eval) {
+    await page.evaluate(opts.setup.eval);
+    await page.waitForTimeout(600);
+  }
   const buf = await page.screenshot({ fullPage: true, animations: 'disabled' });
   await context.close();
   return PNG.sync.read(buf);
