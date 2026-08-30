@@ -1,15 +1,11 @@
 import { attachments, todoList } from 'data/project-management/todoListData';
-import { Col, Modal, ProgressBar, Row } from 'react-bootstrap';
-import Button from 'components/base/Button';
+import { Col, Dialog, Row, cn } from '@hummingbirdui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Project } from 'data/project-management/projects';
 import AvatarDropdown from 'components/common/AvatarDropdown';
-import Badge from 'components/base/Badge';
 import { Link } from 'react-router';
 import { comments } from 'data/project-management/comments';
-import SearchBox from 'components/common/SearchBox';
 import TodoListItem from '../todo-list/TodoListItem';
-import classNames from 'classnames';
 import FileListItem from '../todo-list/FileListItem';
 import CommentForm from 'components/common/CommentForm';
 import CoverImage from '../board-view/CoverImage';
@@ -18,110 +14,93 @@ import { actionItems, addToCardItems } from 'data/project-management/actions';
 import Comment from 'components/common/Comment';
 import EditableDetailsField from 'components/common/EditableDetailsField';
 import useProjectProgress from '../useProjectProgress';
-import { faFilter, faPlus, faSort } from '@fortawesome/free-solid-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import ProjectModalLabels from '../board-view/ProjectModalLabels';
+import ProjectModalProgress from '../board-view/ProjectModalProgress';
+import TodoSearchBar from '../board-view/TodoSearchBar';
 
-interface BoardViewModalModalProps {
+interface CardViewModalProps {
   handleClose: () => void;
   project: Project;
   show: boolean;
 }
 
-const CardViewModal = ({
-  handleClose,
-  show,
-  project
-}: BoardViewModalModalProps) => {
+/** `+ProjectsCardViewModal` in project-management/ProjectDetailsModal.pug */
+const CardViewModal = ({ handleClose, show, project }: CardViewModalProps) => {
   const { progress, bgClassName, variant } = useProjectProgress(project);
   return (
-    <Modal show={show} onHide={handleClose} size="lg" className="p-0">
-      <Modal.Header className="relative p-0 overflow-hidden">
-        <CoverImage handleClose={handleClose} />
-      </Modal.Header>
-      <Modal.Body className="p-8 md:px-10 md:pb-10">
-        {/* <ActionSection /> */}
-        <Row className="g-8">
-          <Col xs={12} xl={9}>
-            <div className="mb-6">
-              <h3 className="font-black leading-sm">{project.name}</h3>
-              <p className="text-highlight font-semibold mb-0">
-                In list
-                <Link className="ms-1 font-bold" to="#!">
-                  Review
-                </Link>
-              </p>
-            </div>
-
-            <div className="flex items-center mb-6">
-              <p className="text-highlight fw-700 mb-0 me-2">
-                {progress}%
-              </p>
-
-              <ProgressBar
-                now={progress}
-                className={classNames('flex-1', bgClassName)}
-                variant={variant}
+    <Dialog open={show} onOpenChange={open => !open && handleClose()}>
+      <Dialog.Content
+        size="md"
+        dialogClassName="modal-md"
+        className="overflow-hidden"
+        aria-describedby={undefined}
+      >
+        <Dialog.Title className="sr-only">{project.name}</Dialog.Title>
+        <Dialog.Header className="relative p-0">
+          <CoverImage handleClose={handleClose} />
+        </Dialog.Header>
+        <Dialog.Body className="p-8 md:px-10">
+          <Row className="g-8">
+            <Col xs={12} md={9}>
+              <div className="mb-6">
+                <h3 className="font-extrabold leading-sm">{project.name}</h3>
+                <p className="text-highlight font-semibold mb-0">
+                  In list
+                  <Link className="ms-1 font-bold" to="#!">
+                    Review
+                  </Link>
+                </p>
+              </div>
+              <ProjectModalProgress
+                progress={progress}
+                barClassName={variant}
+                trackClassName={bgClassName}
+                className="mb-6"
               />
-            </div>
-            <h6 className="text-muted mb-2">Due date</h6>
-            <div className="mb-4">
-              <div className="w-1/2">
+              <h6 className="text-muted mb-2">Due date</h6>
+              <div className="w-1/2 mb-4">
                 <DatePicker
                   placeholder="Set the due date"
                   options={{
-                    defaultDate: 'May 1, 2023'
+                    defaultDate: 'Mar 1, 2022'
                   }}
                 />
               </div>
-            </div>
 
-            <div className="mb-4">
-              <h6 className="text-muted mb-2">Assigness</h6>
-              <div className="flex gap-1">
-                {project.assigness.slice(0, 5).map(member => (
-                  <AvatarDropdown user={member} size="m" key={member.id} />
-                ))}
-                <Button
-                  variant="phoenix-secondary"
-                  className="btn-circle"
-                  size="sm"
-                >
-                  <FontAwesomeIcon icon={faPlus} />
-                </Button>
+              <div className="mb-4">
+                <h6 className="text-muted mb-2">Assignees</h6>
+                <div className="flex">
+                  {project.assigness.slice(0, 4).map(member => (
+                    <AvatarDropdown
+                      user={member}
+                      size="m"
+                      className="me-1"
+                      key={member.id}
+                    />
+                  ))}
+                  <button
+                    type="button"
+                    className="btn btn-sm btn-phoenix-secondary btn-circle"
+                  >
+                    <FontAwesomeIcon icon={faPlus} />
+                  </button>
+                </div>
               </div>
-            </div>
 
-            <div className="mb-8">
-              <h6 className="text-muted mb-2">Labels</h6>
-              <div className="flex gap-2 items-center">
-                <Badge variant="phoenix" bg="info" className="text-sm">
-                  Info
-                </Badge>
-                <Badge variant="phoenix" bg="warning" className="text-sm">
-                  Urgent
-                </Badge>
-                <Badge variant="phoenix" bg="success" className="text-sm">
-                  Done
-                </Badge>
-                <Button
-                  variant="link"
-                  className="p-0 text-md text-default font-black no-underline leading-none"
-                  startIcon={<FontAwesomeIcon icon={faPlus} />}
-                >
-                  Add another
-                </Button>
+              <div className="mb-8">
+                <ProjectModalLabels />
               </div>
-            </div>
 
-            <EditableDetailsField className="mb-10">
-              The female circus horse-rider is a recurring subject in Chagall’s
-              work. In 1926 the art dealer Ambroise Vollard invited Chagall to
-              make a project based on the circus. They visited Paris’s historic
-              Cirque d’Hiver Bouglione together; Vollard lent Chagall his
-              private box seats. Chagall completed 19 gouaches
-            </EditableDetailsField>
+              <EditableDetailsField className="mb-10">
+                The female circus horse-rider is a recurring subject in
+                Chagall’s work. In 1926 the art dealer Ambroise Vollard invited
+                Chagall to make a project based on the circus. They visited
+                Paris’s historic Cirque d’Hiver Bouglione together; Vollard lent
+                Chagall his private box seats. Chagall completed 19 gouaches
+              </EditableDetailsField>
 
-            <div className="bg-subtle rounded-md px-6 mb-4">
-              <div className="mb-1">
+              <div className="bg-subtle rounded-md p-6 mb-4">
                 {comments.map((comment, index) => (
                   <Comment
                     comment={comment}
@@ -134,126 +113,86 @@ const CardViewModal = ({
                   />
                 ))}
               </div>
-            </div>
-            <div className="pb-4 border-b border-subtle mb-10">
-              <CommentForm />
-            </div>
+              <div className="pb-4 border-b border-subtle mb-10">
+                <CommentForm />
+              </div>
 
-            <div className="mb-12">
-              <h4 className="mb-6">
-                To do list{' '}
-                <span className="text-subtle font-normal text-xl">(23)</span>
-              </h4>
-              <div className="flex justify-between items-center flex-wrap gap-x-8 gap-y-4 mb-4">
-                <SearchBox
-                  placeholder="Search tasks"
-                  style={{ maxWidth: '30rem' }}
-                />
-                <div>
-                  <Button
-                    variant="link"
-                    className="p-0 text-md text-subtle no-underline me-4"
-                    startIcon={
-                      <FontAwesomeIcon icon={faFilter} className="text-sm me-1" />
-                    }
-                  >
-                    23 tasks
-                  </Button>
-                  <Button
-                    variant="link"
-                    className="p-0 text-md text-primary no-underline"
-                    startIcon={
-                      <FontAwesomeIcon icon={faSort} className="text-sm" />
-                    }
-                  >
-                    Sorting
-                  </Button>
+              <div className="mb-10">
+                <div className="mb-12">
+                  <h4 className="mb-6">
+                    To do list{' '}
+                    <span className="text-subtle font-normal text-xl">
+                      (23)
+                    </span>
+                  </h4>
+                  <TodoSearchBar className="mb-4" />
+                  <div className="mb-4">
+                    {todoList.map((todo, index) => (
+                      <TodoListItem
+                        key={todo.task}
+                        todo={todo}
+                        className={cn('py-4', {
+                          'border-t border-subtle': index === 0
+                        })}
+                      />
+                    ))}
+                  </div>
+                  <Link to="#!" className="font-bold text-md mt-6">
+                    <FontAwesomeIcon icon={faPlus} className="me-1" />
+                    Add new task
+                  </Link>
                 </div>
               </div>
-              <div className="mb-6">
-                {todoList.map((todo, index) => (
-                  <TodoListItem
-                    key={todo.task}
-                    todo={todo}
-                    className={classNames('py-6', {
-                      'border-t border-subtle': index === 0
-                    })}
-                    // fullLayoutBreakpoints={['lg']}
-                    // onClick={setSelectedItem}
-                  />
-                ))}
-              </div>
-              <Button
-                startIcon={<FontAwesomeIcon icon={faPlus} />}
-                variant="link"
-                className="no-underline p-0"
-              >
-                Add new task
-              </Button>
-            </div>
 
-            <div>
               <h4 className="mb-4">Files</h4>
               <div className="mb-4">
                 {attachments.map((attachment, index) => (
                   <FileListItem
                     key={attachment.name}
                     attachment={attachment}
-                    className={classNames({
-                      'border-t': index === 0
-                    })}
+                    className={cn({ 'border-t': index === 0 })}
                   />
                 ))}
               </div>
-              <div className="">
-                <Button
-                  variant="link"
-                  className="no-underline p-0"
-                  startIcon={<FontAwesomeIcon icon={faPlus} className="me-1" />}
-                >
-                  Add file(s)
-                </Button>
-              </div>
-            </div>
-          </Col>
+              <label className="btn btn-link p-0" htmlFor="cardViewModalFile">
+                <FontAwesomeIcon icon={faPlus} className="me-1" />
+                Add file(s)
+              </label>
+              <input className="hidden" id="cardViewModalFile" type="file" />
+            </Col>
 
-          <Col xs={12} xl={3}>
-            <h5 className="text-muted mb-4">Add to card</h5>
-            <div className="mb-10 flex flex-col gap-2">
-              {addToCardItems.map(item => (
-                <Button
-                  key={item.label}
-                  variant="subtle-secondary"
-                  startIcon={
+            <Col xs={12} md={3}>
+              <h5 className="text-muted mb-4">Add to card</h5>
+              <div className="mb-10">
+                {addToCardItems.map(item => (
+                  <button
+                    type="button"
+                    key={item.label}
+                    className="btn btn-sm btn-subtle-secondary rounded-lg mb-2 flex items-center justify-start w-full"
+                  >
                     <FontAwesomeIcon icon={item.icon} className="me-2" />
-                  }
-                  className="w-full text-start"
-                  size="sm"
-                >
-                  {item.label}
-                </Button>
-              ))}
-            </div>
-            <h5 className="text-muted mb-4">Actions</h5>
-            <div className="flex flex-col gap-2">
-              {actionItems.map(item => (
-                <Button
-                  variant="subtle-secondary"
-                  startIcon={
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+              <h5 className="text-muted mb-4">Actions</h5>
+              <div className="mb-10">
+                {actionItems.map(item => (
+                  <button
+                    type="button"
+                    key={item.label}
+                    className="btn btn-sm btn-subtle-secondary rounded-lg mb-2 flex items-center justify-start w-full"
+                  >
                     <FontAwesomeIcon icon={item.icon} className="me-2" />
-                  }
-                  className="w-full text-start"
-                  size="sm"
-                  key={item.label}
-                >
-                  {item.label}
-                </Button>
-              ))}
-            </div>
-          </Col>
-        </Row>
-      </Modal.Body>
-    </Modal>
+                    {item.label}
+                  </button>
+                ))}
+              </div>
+            </Col>
+          </Row>
+        </Dialog.Body>
+      </Dialog.Content>
+    </Dialog>
   );
 };
 
