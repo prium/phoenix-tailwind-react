@@ -19,6 +19,10 @@ export interface VisualPage {
   tolerance?: number;
   /** Extra selectors to mask (dynamic/unstable content). */
   mask?: string[];
+  /** Selectors whose element geometry (visual center) must match the gold
+      within 1.5px — catches small in-component misalignments that stay far
+      below any page-level pixel tolerance. */
+  probes?: string[];
   /** Actions run after load, per side: click a selector and/or eval JS (e.g. open a panel). */
   setup?: { react?: SideSetup; gold?: SideSetup };
 }
@@ -75,7 +79,11 @@ export const pages: VisualPage[] = [
     react: '/dashboard/project-management',
     gold: '/dashboard/project-management.html',
     dark: true,
-    widths: [768]
+    widths: [768],
+    probes: [
+      '.flatpickr-input-container .flatpickr-icon',
+      '.flatpickr-input-container .form-control'
+    ]
   },
   {
     name: 'pm-todo-list',

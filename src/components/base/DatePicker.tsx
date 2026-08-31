@@ -50,11 +50,11 @@ const DatePicker = ({
         <>{icon}</>
       ) : (
         !hideIcon && (
-          <UilCalendarAlt
-            fill="currentColor"
-            className="flatpickr-icon text-subtle"
-            size={16}
-          />
+          /* the skin centers .flatpickr-icon for the gold glyph's 1lh line box
+             (translateY(-12px)); give the 16px svg the same box */
+          <span className="flatpickr-icon text-subtle flex h-[1lh] items-center">
+            <UilCalendarAlt fill="currentColor" size={16} />
+          </span>
         )
       )}
     </div>

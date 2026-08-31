@@ -39,13 +39,28 @@ export interface ShotOptions {
   dark: boolean;
   mask?: string[];
   setup?: { click?: string; eval?: string; storage?: Record<string, string> };
+  /** selectors whose element geometry is compared between the two sides */
+  probes?: string[];
+}
+
+export interface ProbeBox {
+  x: number;
+  y: number;
+  w: number;
+  h: number;
+}
+
+export interface Shot {
+  png: PNG;
+  /** bounding boxes per probe selector (all matches, in DOM order) */
+  boxes: Record<string, ProbeBox[]>;
 }
 
 export async function shoot(
   browser: Browser,
   url: string,
   opts: ShotOptions
-): Promise<PNG> {
+): Promise<Shot> {
   const context = await browser.newContext({
     viewport: { width: opts.width, height: 900 },
     deviceScaleFactor: 1,
@@ -81,9 +96,36 @@ export async function shoot(
     await page.evaluate(opts.setup.eval);
     await page.waitForTimeout(600);
   }
+  let boxes: Record<string, ProbeBox[]> = {};
+  if (opts.probes?.length) {
+    boxes = await page.evaluate(
+      sels =>
+        Object.fromEntries(
+          sels.map(sel => [
+            sel,
+            [...document.querySelectorAll(sel)]
+              .filter(el => {
+                const r = el.getBoundingClientRect();
+                // ignore hidden instances (e.g. the gold keeps closed modals in the DOM)
+                return r.width > 0 && r.height > 0;
+              })
+              .map(el => {
+                const r = el.getBoundingClientRect();
+                return {
+                  x: Math.round(r.x * 10) / 10,
+                  y: Math.round((r.y + window.scrollY) * 10) / 10,
+                  w: Math.round(r.width * 10) / 10,
+                  h: Math.round(r.height * 10) / 10
+                };
+              })
+          ])
+        ),
+      opts.probes
+    );
+  }
   const buf = await page.screenshot({ fullPage: true, animations: 'disabled' });
   await context.close();
-  return PNG.sync.read(buf);
+  return { png: PNG.sync.read(buf), boxes };
 }
 
 /** Wait for fonts, images, echarts and layout to be stable. */
