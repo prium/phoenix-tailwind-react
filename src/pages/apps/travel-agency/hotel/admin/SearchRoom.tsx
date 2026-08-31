@@ -6,15 +6,14 @@ import {
   faSearch
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FloatingLabel } from '@hummingbirdui/react';
 import Button from 'components/base/Button';
 import DatePicker from 'components/base/DatePicker';
 import PageBreadcrumb from 'components/common/PageBreadcrumb';
 import RoomCard from 'components/modules/travel-agency/hotel/search-room/RoomCard';
 import RoomFilterOffcanvas from 'components/modules/travel-agency/hotel/search-room/RoomFilterOffcanvas';
-import RoomFilterOffcanvasContent from 'components/modules/travel-agency/hotel/search-room/RoomFilterOffcanvasContent';
 import { defaultBreadcrumbItems } from 'data/commonData';
 import { useState } from 'react';
-import { Row, Col, Form, FloatingLabel } from 'react-bootstrap';
 import { Link } from 'react-router';
 import { roomsSearchData } from 'data/travel-agency/customer/hotel';
 
@@ -25,17 +24,13 @@ const SearchRoom = () => {
     <>
       <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-4" />
       <div className="mb-16">
-        <Row className="items-end mb-8 gy-4">
-          <Col style={{ maxWidth: 290 }}>
+        <div className="row items-end mb-8 gy-4">
+          <div className="col max-w-72.5">
             <h2>Rooms</h2>
-          </Col>
-          <Col xl>
-            <Row className="gx-2 xl:gx-4 gy-4">
-              <Col
-                xs={{ order: 1 }}
-                sm={{ span: 'auto', order: 0 }}
-                className="sm:me-2 xl:hidden"
-              >
+          </div>
+          <div className="xl:col">
+            <div className="row gx-2 xl:gx-4 gy-4">
+              <div className="sm:col-auto order-1 sm:order-0 sm:me-2 xl:hidden">
                 <Button
                   variant="phoenix-secondary"
                   size="lg"
@@ -45,23 +40,23 @@ const SearchRoom = () => {
                   <FontAwesomeIcon icon={faFilter} className="me-2" />
                   Filter
                 </Button>
-              </Col>
-              <Col xs sm={5} xxl={3}>
+              </div>
+              <div className="col sm:col-5 2xl:col-3">
                 <DatePicker
                   render={(_, ref) => {
                     return (
                       <FloatingLabel
-                        label="Select Time Range"
+                        htmlFor="checkIn"
+                        label="Select time range"
                         className="w-auto"
                       >
-                        <Form.Control
+                        <input
+                          className="form-control datetimepicker"
+                          id="checkIn"
                           type="text"
-                          placeholder="start date"
+                          placeholder="H:i"
                           ref={ref}
-                          id="startDatepicker"
-                          className="ps-4"
                         />
-
                         <FontAwesomeIcon
                           icon={faCalendarAlt}
                           className="absolute top-0 end-0 mt-4 me-4"
@@ -69,52 +64,58 @@ const SearchRoom = () => {
                       </FloatingLabel>
                     );
                   }}
-                  hideIcon={true}
+                  hideIcon
                   options={{
+                    disableMobile: true,
                     mode: 'range',
                     minDate: 'today',
-                    dateFormat: 'Y-m-d'
+                    dateFormat: 'd-m-y'
                   }}
                 />
-              </Col>
-              <Col xs sm="auto" className="grow-0">
+              </div>
+              <div className="col sm:col-auto grow-0">
                 <Button
                   variant="phoenix-primary"
                   size="lg"
-                  className="2xl:px-10 whitespace-nowrap"
+                  className="2xl:px-10 text-nowrap"
                 >
-                  <span className="hidden xl:inline-block">Update</span>
-                  <FontAwesomeIcon icon={faSearch} className="text-md xl:ms-2" />
+                  <span className="hidden xl:inline-block">Update </span>
+                  <FontAwesomeIcon
+                    icon={faSearch}
+                    className="text-md xl:ms-2"
+                  />
                 </Button>
-              </Col>
-              <Col xs sm="auto" className="ms-auto grow-0">
+              </div>
+              <div className="col sm:col-auto ms-auto grow-0">
                 <Button
                   variant="phoenix-secondary"
                   size="lg"
-                  className="ms-auto whitespace-nowrap"
+                  className="ms-auto text-nowrap"
                 >
-                  <span className="hidden xl:inline-block">Refresh</span>
-                  <FontAwesomeIcon icon={faRotate} className="text-md xl:ms-2" />
+                  <span className="hidden xl:inline-block">Refresh </span>
+                  <FontAwesomeIcon
+                    icon={faRotate}
+                    className="text-md xl:ms-2"
+                  />
                 </Button>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-        {/* header section end */}
-
-        <Row className="gx-10">
-          {/* offcanvas start */}
-          <Col xl="auto" className="hidden xl:block">
-            <div className="phoenix-room-filter-offcanvas bg-default scrollbar">
-              <RoomFilterOffcanvasContent />
+              </div>
             </div>
-          </Col>
-          {/* offcanvas end */}
-          <Col className="xl:w-1/4">
+          </div>
+        </div>
+
+        <div className="row gx-10">
+          <div className="xl:col-auto">
+            <RoomFilterOffcanvas
+              open={openOffcanvas}
+              setOpen={setOpenOffcanvas}
+            />
+          </div>
+          <div className="col xl:w-1/4">
             {roomsSearchData.map((item, index) => (
               <RoomCard
                 key={index}
                 data={item}
+                index={index}
                 isLastItem={roomsSearchData.length - 1 === index}
               />
             ))}
@@ -125,17 +126,13 @@ const SearchRoom = () => {
                 </span>
                 04
               </h2>
-              <Link to="#!">
-                <Button variant="primary" className="sm:px-12">
-                  Confirm Booking
-                  <FontAwesomeIcon icon={faChevronRight} className="ms-2" />
-                </Button>
+              <Link to="#!" className="btn btn-primary sm:px-12">
+                Confirm Booking
+                <FontAwesomeIcon icon={faChevronRight} className="ms-2" />
               </Link>
             </div>
-          </Col>
-        </Row>
-
-        <RoomFilterOffcanvas open={openOffcanvas} setOpen={setOpenOffcanvas} />
+          </div>
+        </div>
       </div>
     </>
   );

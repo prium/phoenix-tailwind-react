@@ -1,8 +1,8 @@
 import { UilTimes } from '@iconscout/react-unicons';
+import { Col, FloatingLabel, Input, Row } from '@hummingbirdui/react';
 import Button from 'components/base/Button';
 import Unicon from 'components/base/Unicon';
-import PhoenixReactRange from 'components/forms/PhoenixReactRange';
-import { Col, Form, Row } from 'react-bootstrap';
+import NouiSlider from 'components/base/NouiSlider';
 import RoomFilterActions from './RoomFilterActions';
 import RoomFilterSearch from './RoomFilterSearch';
 import {
@@ -36,13 +36,10 @@ interface ExpandedStates {
   amenities: boolean;
 }
 
+/** gold `+RoomFilterOffcanvas` (mixins/travel-agency/room-search/RoomFilterOffcanvas.pug) */
 const RoomFilterOffcanvasContent = ({
   setOpen
 }: RoomFilterOffcanvasContentProps) => {
-  const [range, setRange] = useState({
-    priceRangeMin: 500,
-    priceRangeMax: 2000
-  });
   const [priceRange, setPriceRange] = useState([699, 1299]);
   const [expandedStates, setExpandedState] = useState<ExpandedStates>({
     priceRange: true,
@@ -58,7 +55,11 @@ const RoomFilterOffcanvasContent = ({
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setRange(prevState => ({ ...prevState, [name]: parseInt(value) }));
+    setPriceRange(prev =>
+      name === 'price-range-min'
+        ? [parseInt(value) || 0, prev[1]]
+        : [prev[0], parseInt(value) || 0]
+    );
   };
 
   const allExpanded = useMemo(() => {
@@ -89,10 +90,10 @@ const RoomFilterOffcanvasContent = ({
           {allExpanded ? 'Expand' : 'Collapse'} all
         </Button>
         <Button
-          className="p-0 font-bold xl:hidden"
+          className="xl:hidden p-0"
           onClick={() => setOpen && setOpen(false)}
         >
-          <Unicon fill='currentColor' icon={UilTimes} size={16} />
+          <Unicon icon={UilTimes} size={16} fill="currentColor" lineBox />
         </Button>
       </div>
 
@@ -100,42 +101,43 @@ const RoomFilterOffcanvasContent = ({
         title="Price Range"
         onToggle={() => handleToggleCollapse('priceRange')}
         collapseStatus={expandedStates.priceRange}
+        contentClassName="border-b pb-6 pt-1"
       >
-        <PhoenixReactRange
-          values={priceRange}
-          variant="primary"
-          min={range.priceRangeMin}
-          max={range.priceRangeMax}
-          onChange={val => setPriceRange(val)}
-          trackHeight={'4px'}
-          classNames={'phoenix-react-range-slim px-2 pt-1 mb-3'}
+        <NouiSlider
+          className="noUi-target-primary noUi-handle-primary noUi-slider-slim noUi-handle-circle bg-primary-subtle px-2 mb-4"
+          options={{
+            range: { min: 500, max: 2000 },
+            start: [699, 1299],
+            connect: true
+          }}
+          onChange={vals => setPriceRange(vals.map(v => Math.round(Number(v))))}
         />
         <Row className="g-2">
           <Col xs={6}>
-            <Form.Floating>
-              <Form.Control
+            <FloatingLabel htmlFor="price-range-min" label="Min">
+              <Input
                 type="number"
-                id="priceRangeMin"
-                name="priceRangeMin"
+                id="price-range-min"
+                name="price-range-min"
+                placeholder="Min"
                 className="input-spin-none"
-                value={range.priceRangeMin}
+                value={priceRange[0]}
                 onChange={handleChange}
               />
-              <label htmlFor="priceRangeMin">Min</label>
-            </Form.Floating>
+            </FloatingLabel>
           </Col>
           <Col xs={6}>
-            <Form.Floating>
-              <Form.Control
+            <FloatingLabel htmlFor="price-range-max" label="Max">
+              <Input
                 type="number"
-                id="priceRangeMax"
-                name="priceRangeMax"
+                id="price-range-max"
+                name="price-range-max"
+                placeholder="Max"
                 className="input-spin-none"
-                value={range.priceRangeMax}
+                value={priceRange[1]}
                 onChange={handleChange}
               />
-              <label htmlFor="priceRangeMax">Max</label>
-            </Form.Floating>
+            </FloatingLabel>
           </Col>
         </Row>
       </RoomFilterCollapseItem>
@@ -149,7 +151,7 @@ const RoomFilterOffcanvasContent = ({
             handleToggleCollapse(item.key as keyof ExpandedStates)
           }
         >
-          <RoomFilterActions />
+          <RoomFilterActions id={item.key} />
         </RoomFilterCollapseItem>
       ))}
 
@@ -172,7 +174,7 @@ const RoomFilterOffcanvasContent = ({
       <RoomFilterCollapseItem
         title="Amenities"
         collapseStatus={expandedStates.amenities}
-        hideBorderBottom
+        contentClassName=""
         onToggle={() => handleToggleCollapse('amenities')}
       >
         <RoomFilterSearch items={amenitiesOptions} />
@@ -181,7 +183,7 @@ const RoomFilterOffcanvasContent = ({
       <div className="sticky bottom-0 z-1020 bg-default pt-6 pb-6 xl:pb-0">
         <Button variant="phoenix-secondary" className="me-2">
           Reset
-        </Button>
+        </Button>{' '}
         <Button variant="primary" className="px-12">
           Apply
         </Button>

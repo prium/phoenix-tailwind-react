@@ -303,5 +303,61 @@ export const pages: VisualPage[] = [
     name: 'ta-trip-homepage',
     react: '/apps/travel-agency/trip/homepage',
     gold: '/apps/travel-agency/trip/homepage.html'
+  },
+  {
+    name: 'dashboard-travel-agency',
+    react: '/dashboard/travel-agency',
+    gold: '/dashboard/travel-agency.html',
+    dark: true,
+    widths: [768],
+    // live visitors-per-second counter: React randomises it every 2s, the
+    // gold static page never runs its countup (stays "0")
+    mask: ['.real-time-user'],
+    probes: [
+      '.search-box .search-box-icon',
+      'button[title="Next"]',
+      '.card-footer.pt-4 a'
+    ]
+  },
+  {
+    name: 'ta-landing',
+    react: '/apps/travel-agency/landing',
+    gold: '/apps/travel-agency/landing.html'
+  },
+  {
+    name: 'ta-flight-homepage',
+    react: '/apps/travel-agency/flight/homepage',
+    gold: '/apps/travel-agency/flight/homepage.html',
+    // the gold capture has the auto-show promo modal closed — close ours too
+    setup: {
+      react: { click: '[data-slot="dialog-body"] button[aria-label="Close"]' }
+    }
+  },
+  {
+    name: 'ta-admin-room-search',
+    react: '/apps/travel-agency/hotel/admin/search-room',
+    gold: '/apps/travel-agency/hotel/admin/room-search.html',
+    probes: [
+      '.noUi-handle',
+      '.swiper-nav .swiper-button-next',
+      '.sticky.bottom-0 .btn-primary'
+    ]
+  },
+  {
+    name: 'ta-hotel-details',
+    react: '/apps/travel-agency/hotel/customer/hotel-details',
+    gold: '/apps/travel-agency/hotel/customer/hotel-details.html'
+  },
+  {
+    name: 'ta-trip-details',
+    react: '/apps/travel-agency/trip/trip-details',
+    gold: '/apps/travel-agency/trip/trip-details.html',
+    // swiper autoplay + mapbox cluster render nondeterministically
+    mask: ['.swiper-theme-container', '.mapboxgl-map', '.mapbox-container'],
+    probes: [
+      '.collapse-indicator .toggle-icon',
+      '.echart-trip-review',
+      '.avatar.avatar-xs img'
+    ]
   }
 ];

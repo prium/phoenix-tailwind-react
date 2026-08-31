@@ -1,46 +1,43 @@
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button from 'components/base/Button';
-import React, { PropsWithChildren } from 'react';
-import { Collapse } from 'react-bootstrap';
+import { Collapsible, cn } from '@hummingbirdui/react';
+import { PropsWithChildren } from 'react';
 
 interface RoomFilterCollapseProps {
   title: string;
-  hideBorderBottom?: boolean;
   onToggle: () => void;
   collapseStatus: boolean;
+  /** gold content wrapper classes; amenities has none, price range adds pt-1 */
+  contentClassName?: string;
 }
 
+/** `a.btn.collapse-indicator` + `.collapse` sections of RoomFilterOffcanvas.pug */
 const RoomFilterCollapseItem = ({
   title,
   children,
-  hideBorderBottom = false,
   onToggle,
-  collapseStatus
+  collapseStatus,
+  contentClassName = 'border-b pb-6'
 }: PropsWithChildren<RoomFilterCollapseProps>) => {
   return (
-    <>
-      <Button
-        onClick={onToggle}
-        aria-controls={title.split(' ').join('_')}
-        aria-expanded={collapseStatus}
-        className="px-0 py-2 flex items-center mt-4 collapse-indicator"
-      >
-        <FontAwesomeIcon
-          icon={faCaretDown}
-          className="text-default me-2 toggle-icon "
-        />
-        <h5 className="text-highlight">{title}</h5>
-      </Button>
-      <Collapse in={collapseStatus}>
-        <div
-          id={title.split(' ').join('_')}
-          className={hideBorderBottom ? undefined : 'border-b'}
+    <Collapsible open={collapseStatus} onOpenChange={onToggle}>
+      <Collapsible.Trigger asChild>
+        <button
+          type="button"
+          className="btn collapse-indicator px-0 py-2 flex justify-start items-center mt-4"
+          aria-expanded={collapseStatus}
         >
-          <div className="pb-6">{children}</div>
-        </div>
-      </Collapse>
-    </>
+          <FontAwesomeIcon
+            icon={faCaretDown}
+            className="toggle-icon text-default me-2"
+          />
+          <h5 className="text-highlight">{title}</h5>
+        </button>
+      </Collapsible.Trigger>
+      <Collapsible.Content>
+        <div className={cn(contentClassName) || undefined}>{children}</div>
+      </Collapsible.Content>
+    </Collapsible>
   );
 };
 export default RoomFilterCollapseItem;

@@ -23,22 +23,20 @@ const RoomFilterSearch = ({ items }: { items: roomFiltercheckbox[] }) => {
   const table = useAdvanceTable<roomFiltercheckbox>({
     data: items,
     columns,
-    pageSize: 10
+    pageSize: 13
   });
 
   const handleSearchInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     table.setGlobalFilter(e.target.value || undefined);
   };
   return (
-    <>
-      <AdvanceTableProvider {...table}>
-        <SearchBox
-          placeholder="Search..."
-          size="sm"
-          onChange={handleSearchInputChange}
-          className="mx-auto mb-6 w-full"
-        />
-
+    <AdvanceTableProvider {...table}>
+      <SearchBox
+        placeholder="Search Room"
+        onChange={handleSearchInputChange}
+        className="w-full"
+      />
+      <div className="list">
         {table
           .getRowModel()
           .rows.map(row => row.original)
@@ -50,11 +48,11 @@ const RoomFilterSearch = ({ items }: { items: roomFiltercheckbox[] }) => {
               key={index}
             />
           ))}
-        <Link to="" className="mt-2 font-bold inline-block">
-          Show more items
-        </Link>
-      </AdvanceTableProvider>
-    </>
+      </div>
+      <Link to="#!" className="mt-2 font-bold inline-block">
+        Show more items
+      </Link>
+    </AdvanceTableProvider>
   );
 };
 

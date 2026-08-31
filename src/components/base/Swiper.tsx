@@ -18,6 +18,10 @@ interface SwiperProps extends ReactSwiperProps {
   navigationPosition?: CSSProperties;
   centeredSlide?: boolean;
   parentClassName?: string;
+  /** classes for the arrow glyphs (gold default `nav-icon`; some pages use `text-primary`) */
+  navIconClassName?: string;
+  /** FontAwesome transform for the arrow glyphs (e.g. `shrink-3`) */
+  navIconTransform?: string;
 }
 
 const Swiper = ({
@@ -25,6 +29,8 @@ const Swiper = ({
   navigation = true,
   navigationPosition,
   parentClassName,
+  navIconClassName = 'nav-icon',
+  navIconTransform,
   ...rest
 }: PropsWithChildren<SwiperProps>) => {
   const navigationPrevRef = useRef(null);
@@ -40,7 +46,11 @@ const Swiper = ({
             style={navigationPosition}
             ref={navigationNextRef}
           >
-            <FontAwesomeIcon icon={faChevronRight} className="nav-icon" />
+            <FontAwesomeIcon
+              icon={faChevronRight}
+              className={navIconClassName}
+              transform={navIconTransform}
+            />
           </button>
           <button
             type="button"
@@ -48,7 +58,11 @@ const Swiper = ({
             style={navigationPosition}
             ref={navigationPrevRef}
           >
-            <FontAwesomeIcon icon={faChevronLeft} className="nav-icon" />
+            <FontAwesomeIcon
+              icon={faChevronLeft}
+              className={navIconClassName}
+              transform={navIconTransform}
+            />
           </button>
         </div>
       )}
