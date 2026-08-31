@@ -1,25 +1,25 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button from 'components/base/Button';
-import AboutLeadCard from 'components/cards/AboutLeadCard';
-import LeadAddressCard from 'components/cards/LeadAddressCard';
-import LeadProfileCard from 'components/cards/LeadProfileCard';
-import PageBreadcrumb from 'components/common/PageBreadcrumb';
-import LeadDeals from 'components/modules/crm/LeadDeals';
-import LeadEmails from 'components/modules/crm/LeadEmails';
-import Tasks from 'components/modules/crm/Tasks';
-import { defaultBreadcrumbItems } from 'data/commonData';
-import { Col, Dropdown, Row } from 'react-bootstrap';
-import LeadAttachments from 'components/modules/crm/LeadAttachments';
-import LeadDetailsNavbar from 'components/modules/crm/LeadDetailsNavbar';
-import { useState } from 'react';
-import LeadDetailsOffcanvas from 'components/modules/crm/LeadDetailsOffcanvas';
 import {
   faBars,
   faEllipsis,
   faEnvelope,
   faThumbtack
 } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Col, Dropdown, Row } from '@hummingbirdui/react';
+import Button from 'components/base/Button';
 import ScrollSpy from 'components/base/ScrollSpy';
+import AboutLeadCard from 'components/cards/AboutLeadCard';
+import LeadAddressCard from 'components/cards/LeadAddressCard';
+import LeadProfileCard from 'components/cards/LeadProfileCard';
+import PageBreadcrumb from 'components/common/PageBreadcrumb';
+import LeadAttachments from 'components/modules/crm/LeadAttachments';
+import LeadDeals from 'components/modules/crm/LeadDeals';
+import LeadDetailsNavbar from 'components/modules/crm/LeadDetailsNavbar';
+import LeadDetailsOffcanvas from 'components/modules/crm/LeadDetailsOffcanvas';
+import LeadEmails from 'components/modules/crm/LeadEmails';
+import Tasks from 'components/modules/crm/Tasks';
+import { defaultBreadcrumbItems } from 'data/commonData';
+import { useState } from 'react';
 
 const LeadDetails = () => {
   const [openOffcanvas, setOpenOffcanvas] = useState(false);
@@ -33,11 +33,11 @@ const LeadDetails = () => {
             <h2 className="mb-0">Lead details</h2>
           </Col>
           <Col xs={12} md="auto">
-            <div className="flex gap-2">
+            <div className="flex">
               <div className="flex-1 md:hidden">
                 <Button
                   variant="phoenix-secondary"
-                  className="px-4 text-subtle"
+                  className="px-4 text-subtle me-2"
                   onClick={() => setOpenOffcanvas(true)}
                 >
                   <FontAwesomeIcon icon={faBars} />
@@ -45,32 +45,41 @@ const LeadDetails = () => {
               </div>
               <Button
                 variant="primary"
+                className="me-2"
                 startIcon={
                   <FontAwesomeIcon icon={faEnvelope} className="me-2" />
                 }
               >
                 Send an email
               </Button>
-              <Button variant="phoenix-secondary" className="px-4 sm:px-8">
-                <FontAwesomeIcon icon={faThumbtack} className="me-0 sm:me-2" />
+              <Button variant="phoenix-secondary" className="px-4 sm:px-8 me-2">
+                <FontAwesomeIcon icon={faThumbtack} className="sm:me-2" />
                 <span className="hidden sm:inline">Shortlist</span>
               </Button>
+              {/* `+DropDownLead.z-9999` */}
               <Dropdown>
-                <Dropdown.Toggle
-                  variant="phoenix-secondary"
-                  className="dropdown-caret-none px-4"
-                >
-                  <FontAwesomeIcon icon={faEllipsis} />
-                </Dropdown.Toggle>
-
-                <Dropdown.Menu>
-                  <Dropdown.Item href="#!">View Profile</Dropdown.Item>
-                  <Dropdown.Item href="#!">Report</Dropdown.Item>
-                  <Dropdown.Item href="#!">Manage notifications</Dropdown.Item>
-                  <Dropdown.Item href="#!" className="text-danger">
-                    Delete Lead
+                <Dropdown.Trigger asChild>
+                  <button
+                    type="button"
+                    className="btn px-4 btn-phoenix-secondary"
+                  >
+                    <FontAwesomeIcon icon={faEllipsis} />
+                  </button>
+                </Dropdown.Trigger>
+                <Dropdown.Content align="end" className="p-0 z-9999">
+                  <Dropdown.Item asChild>
+                    <a href="#!">View profile</a>
                   </Dropdown.Item>
-                </Dropdown.Menu>
+                  <Dropdown.Item asChild>
+                    <a href="#!">Report</a>
+                  </Dropdown.Item>
+                  <Dropdown.Item asChild>
+                    <a href="#!">Manage notifications</a>
+                  </Dropdown.Item>
+                  <Dropdown.Item asChild className="text-danger">
+                    <a href="#!">Delete Lead</a>
+                  </Dropdown.Item>
+                </Dropdown.Content>
               </Dropdown>
             </div>
           </Col>
@@ -85,42 +94,31 @@ const LeadDetails = () => {
                 </div>
                 <LeadProfileCard className="mb-4" />
                 <AboutLeadCard className="mb-4" />
-                <LeadAddressCard />
+                <LeadAddressCard className="mb-4" />
               </div>
             </div>
           </Col>
-          <Col md={7} xl={8}>
+          <Col md={7} lg={7} xl={8}>
             <div className="lead-details-container">
               <ScrollSpy>
                 <LeadDetailsNavbar />
+                <div className="scrollspy-example rounded-md">
+                  <ScrollSpy.Content id="tasks" className="mb-14">
+                    <Tasks />
+                  </ScrollSpy.Content>
 
-                <ScrollSpy.Content
-                  id="tasks"
-                  className="lead-details-scrollspy mb-14"
-                >
-                  <Tasks />
-                </ScrollSpy.Content>
+                  <ScrollSpy.Content id="deals" className="mb-14">
+                    <LeadDeals />
+                  </ScrollSpy.Content>
 
-                <ScrollSpy.Content
-                  id="deals"
-                  className="lead-details-scrollspy mb-14"
-                >
-                  <LeadDeals />
-                </ScrollSpy.Content>
+                  <ScrollSpy.Content id="emails" className="mb-14">
+                    <LeadEmails />
+                  </ScrollSpy.Content>
 
-                <ScrollSpy.Content
-                  id="emails"
-                  className="lead-details-scrollspy mb-14"
-                >
-                  <LeadEmails />
-                </ScrollSpy.Content>
-
-                <ScrollSpy.Content
-                  id="attachments"
-                  className="lead-details-scrollspy"
-                >
-                  <LeadAttachments />
-                </ScrollSpy.Content>
+                  <ScrollSpy.Content id="attachments">
+                    <LeadAttachments />
+                  </ScrollSpy.Content>
+                </div>
               </ScrollSpy>
             </div>
           </Col>

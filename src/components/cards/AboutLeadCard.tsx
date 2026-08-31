@@ -9,17 +9,15 @@ import {
   UilPhone,
   UilPostcard
 } from '@iconscout/react-unicons';
-import classNames from 'classnames';
+import { Card, cn } from '@hummingbirdui/react';
 import Badge from 'components/base/Badge';
 import Button from 'components/base/Button';
 import LeadInfoItem from 'components/info-items/LeadInfoItem';
-import { currencyFormat } from 'helpers/utils';
-import { Card } from 'react-bootstrap';
 import { Link } from 'react-router';
 
 const AboutLeadCard = ({ className }: { className?: string }) => {
   return (
-    <Card className={classNames(className)}>
+    <Card className={cn(className)}>
       <Card.Body>
         <div className="flex items-center mb-8">
           <h3>About lead</h3>
@@ -55,7 +53,7 @@ const AboutLeadCard = ({ className }: { className?: string }) => {
           label="Annual Revenue"
           icon={UilDollarAlt}
         >
-          <p className="mb-0 text-muted">{currencyFormat(12000)}</p>
+          <p className="mb-0 text-muted">$12000</p>
         </LeadInfoItem>
 
         <LeadInfoItem className="mb-6" label="Last contacted" icon={UilClock}>

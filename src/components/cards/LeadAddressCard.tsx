@@ -4,20 +4,17 @@ import {
   UilMapPinAlt,
   UilWindsock
 } from '@iconscout/react-unicons';
-import classNames from 'classnames';
+import { Card, cn } from '@hummingbirdui/react';
 import Button from 'components/base/Button';
 import LeadInfoItem from 'components/info-items/LeadInfoItem';
-import { Card } from 'react-bootstrap';
 
 const LeadAddressCard = ({ className }: { className?: string }) => {
   return (
-    <Card className={classNames(className)}>
+    <Card className={cn(className)}>
       <Card.Body>
         <div className="flex items-center mb-8">
           <h3>Address</h3>
-          <Button variant="link" className="px-4">
-            Edit
-          </Button>
+          <Button variant="link">Edit</Button>
         </div>
         <LeadInfoItem
           className="mb-6"
@@ -27,7 +24,7 @@ const LeadAddressCard = ({ className }: { className?: string }) => {
         />
         <LeadInfoItem
           className="mb-6"
-          label="Zip Code"
+          label="Zip code"
           icon={UilMapPinAlt}
           value="1425"
         />

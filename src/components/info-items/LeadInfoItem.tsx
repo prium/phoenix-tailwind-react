@@ -1,5 +1,5 @@
 import { Icon } from '@iconscout/react-unicons';
-import classNames from 'classnames';
+import { cn } from '@hummingbirdui/react';
 import Unicon from 'components/base/Unicon';
 import { PropsWithChildren } from 'react';
 
@@ -10,6 +10,7 @@ interface LeadInfoItemInterface {
   className?: string;
 }
 
+/** info rows of `+AboutThisLead` / `+Address` in mixins/crm/LeadDetails.pug */
 const LeadInfoItem = ({
   className,
   label,
@@ -18,9 +19,12 @@ const LeadInfoItem = ({
   children
 }: PropsWithChildren<LeadInfoItemInterface>) => {
   return (
-    <div className={classNames(className)}>
-      <div className="flex align-items-center mb-1">
-        <Unicon icon={icon} fill='currentColor' className="me-2" size={16} />
+    <div className={cn(className)}>
+      <div className="flex items-center mb-1">
+        {/* the gold glyph is a font icon with a 1lh line box — give the svg the same */}
+        <span className="me-2 flex h-[1lh] items-center">
+          <Unicon icon={icon} fill="currentColor" size={16} />
+        </span>
         <h5 className="text-highlight mb-0">{label}</h5>
       </div>
       {value && <p className="mb-0 text-muted">{value}</p>}

@@ -1,32 +1,19 @@
+import { faPhone } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ColumnDef } from '@tanstack/react-table';
 import AdvanceTable from 'components/base/AdvanceTable';
-import { Link } from 'react-router';
 import AdvanceTableFooter from 'components/base/AdvanceTableFooter';
-import { LeadEmail } from 'data/crm/leadsData';
 import Badge, { BadgeBg } from 'components/base/Badge';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPhone } from '@fortawesome/free-solid-svg-icons';
-
-const getBadgeBg = (label: string): BadgeBg => {
-  switch (label) {
-    case 'sent':
-      return 'success';
-
-    case 'delivered':
-      return 'info';
-
-    case 'spam':
-      return 'danger';
-
-    case 'bounced':
-      return 'warning';
-
-    default:
-      return 'primary';
-  }
-};
+import { buildSelectionColumn } from 'components/tables/LeadsTable';
+import { LeadEmail } from 'data/crm/leadsData';
+import { Link } from 'react-router';
 
 export const leadEmailsColumns: ColumnDef<LeadEmail>[] = [
+  buildSelectionColumn<LeadEmail>({
+    headerClassName: 'w-6.5 whitespace-nowrap text-md ps-0',
+    cellClassName: 'text-md px-0 py-5',
+    checkboxClassName: 'text-base py-1'
+  }),
   {
     header: 'Subject',
     accessorFn: ({ mail }) => mail.subject,
@@ -36,30 +23,26 @@ export const leadEmailsColumns: ColumnDef<LeadEmail>[] = [
       }
     }) => (
       <>
-        <Link to="#!" className="font-semibold">
+        <Link to="#!" className="font-semibold text-primary">
           {mail.subject}
         </Link>
-        <p className="mb-0 text-sm">{mail.email}</p>
+        <div className="text-sm block">{mail.email}</div>
       </>
     ),
     meta: {
       headerProps: {
-        style: { width: '30%', minWidth: 350 },
-        className: 'ps-0'
+        className: 'whitespace-nowrap pe-4 ps-0 uppercase w-[31%] min-w-87.5'
       },
-      cellProps: { className: 'py-2 ps-0' }
+      cellProps: { className: 'whitespace-nowrap py-2 ps-0' }
     }
   },
   {
     accessorKey: 'sentBy',
-    header: 'Sent By',
+    header: 'Sent by',
     meta: {
-      headerProps: {
-        style: { minWidth: 130, width: '15%' },
-        className: 'pe-3'
-      },
+      headerProps: { className: 'pe-4 uppercase w-3/20 min-w-32.5' },
       cellProps: {
-        className: 'font-bold text-subtle'
+        className: 'whitespace-nowrap text-start font-bold text-subtle py-2'
       }
     }
   },
@@ -67,10 +50,8 @@ export const leadEmailsColumns: ColumnDef<LeadEmail>[] = [
     accessorKey: 'date',
     header: 'Date',
     meta: {
-      headerProps: { style: { minWidth: 165 } },
-      cellProps: {
-        className: 'text-default'
-      }
+      headerProps: { className: 'text-start uppercase min-w-41.25' },
+      cellProps: { className: 'whitespace-nowrap text-default py-2' }
     }
   },
   {
@@ -82,16 +63,16 @@ export const leadEmailsColumns: ColumnDef<LeadEmail>[] = [
         original: { action }
       }
     }) => (
-      <>
+      <a href="#!" className="text-default">
         <FontAwesomeIcon icon={faPhone} className="text-primary me-2" />
         {action}
-      </>
+      </a>
     ),
     meta: {
-      headerProps: { style: { minWidth: 100, width: '15%' } }
+      headerProps: { className: 'pe-0 uppercase w-3/20 min-w-25' },
+      cellProps: { className: 'whitespace-nowrap ps-4' }
     }
   },
-
   {
     id: 'label',
     header: 'Status',
@@ -101,16 +82,13 @@ export const leadEmailsColumns: ColumnDef<LeadEmail>[] = [
         original: { status }
       }
     }) => (
-      <Badge variant="phoenix" bg={getBadgeBg(status.label)}>
+      <Badge variant="phoenix" bg={status.type as BadgeBg} className="text-sm">
         {status.label}
       </Badge>
     ),
     meta: {
-      headerProps: {
-        style: { minWidth: 100, width: '15%' },
-        className: 'text-end'
-      },
-      cellProps: { className: 'text-end font-semibold' }
+      headerProps: { className: 'text-end uppercase w-3/20 min-w-25' },
+      cellProps: { className: 'font-semibold text-end py-2' }
     }
   },
   {
@@ -118,11 +96,22 @@ export const leadEmailsColumns: ColumnDef<LeadEmail>[] = [
   }
 ];
 
+/** `+EmailTable` in mixins/crm/LeadDetails.pug */
 const LeadEmailsTable = () => {
   return (
-    <div className="border-y border-subtle">
-      <AdvanceTable tableProps={{ className: ' text-md' }} />
-      <AdvanceTableFooter pagination showViewAllBtn={false} />
+    <div className="border-t border-b border-subtle">
+      <AdvanceTable
+        tableProps={{ className: 'text-md mb-0' }}
+        rowClassName="hover-actions-trigger btn-reveal-trigger static"
+      />
+      {/* h pinned: HB's active page-link is 1px taller than the gold list.js
+          `.page` button and would shift every section below the table */}
+      <AdvanceTableFooter
+        pagination
+        className="h-[46.3px]"
+        tableInfo="me-4!"
+        nextPageLinkClassName="pe-0"
+      />
     </div>
   );
 };
