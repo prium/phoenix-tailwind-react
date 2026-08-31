@@ -3,13 +3,20 @@ import ReactEChartsCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
 import { getPastDates, rgbaColor } from 'helpers/utils';
 import { useAppContext } from 'providers/AppProvider';
-import { TooltipComponent } from 'echarts/components';
+import { GridComponent, TooltipComponent } from 'echarts/components';
+import { CanvasRenderer } from 'echarts/renderers';
 import { BarChart, LineChart } from 'echarts/charts';
 import dayjs from 'dayjs';
 import { CallbackDataParams } from 'echarts/types/dist/shared';
 import { tooltipFormatterDefault } from 'helpers/echart-utils';
 
-echarts.use([TooltipComponent, BarChart, LineChart]);
+echarts.use([
+  TooltipComponent,
+  GridComponent,
+  BarChart,
+  LineChart,
+  CanvasRenderer
+]);
 
 const dates = getPastDates(7);
 
@@ -20,7 +27,10 @@ const getDefaultOptions = (
   getThemeColor: (name: string) => string,
   isDark: boolean
 ) => ({
-  color: [getThemeColor('color-primary-lighter'), getThemeColor('color-info-light')],
+  color: [
+    getThemeColor('color-primary-lighter'),
+    getThemeColor('color-info-light')
+  ],
   tooltip: {
     trigger: 'axis',
     padding: [7, 10],
@@ -132,7 +142,13 @@ const getDefaultOptions = (
   animation: false
 });
 
-const AnalyticsSalesTrendsChart = ({ style }: { style: CSSProperties }) => {
+const AnalyticsSalesTrendsChart = ({
+  className,
+  style
+}: {
+  className?: string;
+  style?: CSSProperties;
+}) => {
   const {
     getThemeColor,
     config: { isDark }
@@ -141,6 +157,7 @@ const AnalyticsSalesTrendsChart = ({ style }: { style: CSSProperties }) => {
     <ReactEChartsCore
       echarts={echarts}
       option={getDefaultOptions(getThemeColor, isDark)}
+      className={className}
       style={style}
     />
   );

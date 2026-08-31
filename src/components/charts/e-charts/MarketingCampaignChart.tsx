@@ -3,17 +3,21 @@ import ReactEChartsCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
 import { rgbaColor } from 'helpers/utils';
 import { useAppContext } from 'providers/AppProvider';
-import { TooltipComponent } from 'echarts/components';
+import { RadarComponent, TooltipComponent } from 'echarts/components';
+import { CanvasRenderer } from 'echarts/renderers';
 import { RadarChart } from 'echarts/charts';
 import EChartsReactCore from 'echarts-for-react/lib/core';
 
-echarts.use([TooltipComponent, RadarChart]);
+echarts.use([TooltipComponent, RadarComponent, RadarChart, CanvasRenderer]);
 
 const getDefaultOptions = (
   getThemeColor: (name: string) => string,
   isDark: boolean
 ) => ({
-  color: [getThemeColor('color-primary-light'), getThemeColor('color-warning-light')],
+  color: [
+    getThemeColor('color-primary-light'),
+    getThemeColor('color-warning-light')
+  ],
   tooltip: {
     trigger: 'item',
     padding: [7, 10],
@@ -44,7 +48,9 @@ const getDefaultOptions = (
           !isDark
             ? getThemeColor('background-color-subtle')
             : getThemeColor('background-color-subtle'),
-          !isDark ? getThemeColor('background-color-default') : getThemeColor('background-color-muted')
+          !isDark
+            ? getThemeColor('background-color-default')
+            : getThemeColor('background-color-muted')
         ]
       }
     },
@@ -107,7 +113,13 @@ const getDefaultOptions = (
   }
 });
 
-const MarketingCampaignChart = ({ style }: { style: CSSProperties }) => {
+const MarketingCampaignChart = ({
+  className,
+  style
+}: {
+  className?: string;
+  style?: CSSProperties;
+}) => {
   const chartRef = useRef<null | EChartsReactCore>(null);
   const updateDimensions = () => {
     if (window.innerWidth < 1200) {
@@ -142,6 +154,7 @@ const MarketingCampaignChart = ({ style }: { style: CSSProperties }) => {
       ref={chartRef}
       echarts={echarts}
       option={getDefaultOptions(getThemeColor, isDark)}
+      className={className}
       style={style}
     />
   );

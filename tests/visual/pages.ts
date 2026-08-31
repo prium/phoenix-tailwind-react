@@ -238,7 +238,11 @@ export const pages: VisualPage[] = [
   {
     name: 'crm-analytics',
     react: '/apps/crm/analytics',
-    gold: '/apps/crm/analytics.html'
+    gold: '/apps/crm/analytics.html',
+    probes: [
+      '.flatpickr-input-container .flatpickr-icon',
+      '.flatpickr-input-container .form-control'
+    ]
   },
   {
     name: 'crm-leads',

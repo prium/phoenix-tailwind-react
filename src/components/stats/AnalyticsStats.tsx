@@ -1,33 +1,18 @@
-import { Col, Row } from 'react-bootstrap';
-import { StatType } from 'data/crm/stats';
-import classNames from 'classnames';
+import { Col, Row, cn } from '@hummingbirdui/react';
 import Unicon from 'components/base/Unicon';
+import { StatType } from 'data/crm/stats';
 
+/** `+Analytics` in mixins/crm/Analytics.pug */
 const AnalyticsStats = ({ stats }: { stats: StatType[] }) => {
   return (
     <Row className="justify-between">
-      {stats.map((stat, index) => (
+      {stats.map(stat => (
         <Col
           key={stat.id}
           xs={6}
           md={4}
           xxl={2}
-          className={classNames(
-            'text-center 2xl:border-s border-subtle',
-            {
-              '2xl:border-e-0 2xl:border-b-0 border-e border-b pb-10 2xl:pb-0':
-                index === 0,
-              '2xl:border-e-0 2xl:border-b-0 md:border-e border-b pb-10 2xl:pb-0':
-                index === 1,
-              '2xl:border-b-0 border-b border-e md:border-e-0 pb-10 2xl:pb-0 pt-10 md:pt-0':
-                index === 2,
-              'md:border-e 2xl:border-e-0 border-b md:border-b-0 pb-10 2xl:pb-0 pt-10 2xl:pt-0':
-                index === 3,
-              'border-e 2xl:border-e-0 md:pb-6 2xl:pb-0 pt-10 2xl:pt-0':
-                index === 4,
-              '2xl:border-e md:pb-6 2xl:pb-0 pt-10 2xl:pt-0': index === 5
-            }
-          )}
+          className={cn(stat.className, 'text-center')}
         >
           <Stat data={stat} />
         </Col>
@@ -39,13 +24,18 @@ const AnalyticsStats = ({ stats }: { stats: StatType[] }) => {
 const Stat = ({ data }: { data: StatType }) => {
   return (
     <>
-      <Unicon
-        icon={data.icon}
-        fill='currentColor'
-        className={`text-${data.iconColor} mb-1`}
-        size={31.25}
-      />
-      <h1 className="text-2xl mt-4">{data.emailCount}</h1>
+      {/* the gold uses the unicons icon font: an inline 31.25px/leading-none
+          span whose line box (with the parent's 16px strut descent) is 33.9px
+          tall — give the svg the same box */}
+      <span className="flex flex-center h-[33.9px]">
+        <Unicon
+          icon={data.icon}
+          fill="currentColor"
+          size={31.25}
+          className={data.iconColorClass}
+        />
+      </span>
+      <h1 className="text-2xl pt-4">{data.emailCount}</h1>
       <p className="text-md mb-0">{data.title}</p>
     </>
   );

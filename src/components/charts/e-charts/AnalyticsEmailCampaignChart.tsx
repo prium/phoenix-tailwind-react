@@ -2,11 +2,12 @@ import { useCallback, useEffect, useRef } from 'react';
 import ReactEChartsCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
 import { useAppContext } from 'providers/AppProvider';
-import { TooltipComponent } from 'echarts/components';
+import { GridComponent, TooltipComponent } from 'echarts/components';
+import { CanvasRenderer } from 'echarts/renderers';
 import { BarChart } from 'echarts/charts';
 import EChartsReactCore from 'echarts-for-react/lib/core';
 
-echarts.use([TooltipComponent, BarChart]);
+echarts.use([TooltipComponent, GridComponent, BarChart, CanvasRenderer]);
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const tooltipFormatter = (params: any) => {
@@ -34,7 +35,10 @@ const getDefaultOptions = (
   getThemeColor: (name: string) => string,
   isDark: boolean
 ) => ({
-  color: [getThemeColor('color-primary'), getThemeColor('background-color-highlight')],
+  color: [
+    getThemeColor('color-primary'),
+    getThemeColor('background-color-highlight')
+  ],
   tooltip: {
     trigger: 'axis',
     padding: [7, 10],
@@ -159,7 +163,7 @@ const AnalyticsEmailCampaignChart = ({ className }: { className: string }) => {
   const chartRef = useRef<null | EChartsReactCore>(null);
   const updateDimensions = useCallback(() => {
     if (!chartRef.current) return;
-  
+
     if (window.innerWidth < 576) {
       chartRef.current?.getEchartsInstance().setOption({
         series: [
@@ -225,7 +229,7 @@ const AnalyticsEmailCampaignChart = ({ className }: { className: string }) => {
       if (chartRef.current) {
         updateDimensions();
       }
-    }, 0)
+    }, 0);
     window.addEventListener('resize', updateDimensions);
     return () => {
       clearTimeout(initialRun);
@@ -237,13 +241,14 @@ const AnalyticsEmailCampaignChart = ({ className }: { className: string }) => {
     getThemeColor,
     config: { isDark }
   } = useAppContext();
-  
+
   return (
     <ReactEChartsCore
       ref={chartRef}
       echarts={echarts}
       option={getDefaultOptions(getThemeColor, isDark)}
       className={className}
+      style={{ height: 'auto', width: '100%' }}
     />
   );
 };

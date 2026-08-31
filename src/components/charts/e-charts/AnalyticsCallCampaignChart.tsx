@@ -4,20 +4,24 @@ import * as echarts from 'echarts/core';
 import { getPastDates, rgbaColor } from 'helpers/utils';
 import { useAppContext } from 'providers/AppProvider';
 import { TooltipComponent, GridComponent } from 'echarts/components';
+import { CanvasRenderer } from 'echarts/renderers';
 import { LineChart } from 'echarts/charts';
 import { CallbackDataParams } from 'echarts/types/dist/shared';
 import { tooltipFormatterDefault } from 'helpers/echart-utils';
 import dayjs from 'dayjs';
 import EChartsReactCore from 'echarts-for-react/lib/core';
 
-echarts.use([TooltipComponent, GridComponent, LineChart]);
+echarts.use([TooltipComponent, GridComponent, LineChart, CanvasRenderer]);
 
 const dates = getPastDates(7);
 
 const data1 = [8000, 7700, 5900, 10100, 5100, 6000, 4300];
 
 const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
-  color: [getThemeColor('color-primary-lighter'), getThemeColor('color-info-light')],
+  color: [
+    getThemeColor('color-primary-lighter'),
+    getThemeColor('color-info-light')
+  ],
   tooltip: {
     trigger: 'axis',
     padding: [7, 10],
@@ -162,7 +166,13 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
   animation: false
 });
 
-const AnalyticsCallCampaignChart = ({ style }: { style: CSSProperties }) => {
+const AnalyticsCallCampaignChart = ({
+  className,
+  style
+}: {
+  className?: string;
+  style?: CSSProperties;
+}) => {
   const chartRef = useRef<null | EChartsReactCore>(null);
   const updateDimensions = useCallback(() => {
     if (!chartRef.current) return;
@@ -198,13 +208,13 @@ const AnalyticsCallCampaignChart = ({ style }: { style: CSSProperties }) => {
         ]
       });
     }
-  }, [chartRef])
+  }, [chartRef]);
   useEffect(() => {
     const initialRun = setTimeout(() => {
       if (chartRef.current) {
         updateDimensions();
       }
-    }, 0)
+    }, 0);
     window.addEventListener('resize', updateDimensions);
     return () => {
       clearTimeout(initialRun);
@@ -219,6 +229,7 @@ const AnalyticsCallCampaignChart = ({ style }: { style: CSSProperties }) => {
       ref={chartRef}
       echarts={echarts}
       option={getDefaultOptions(getThemeColor)}
+      className={className}
       style={style}
     />
   );
