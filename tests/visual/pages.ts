@@ -184,14 +184,15 @@ export const pages: VisualPage[] = [
     gold: '/apps/project-management/project-list-view.html',
     tolerance: 0.02
   },
-  // data-only: demo projects differ, and the gold's `.avatar-group > a.inline-block`
-  // avatars size themselves from each image's intrinsic size, so card heights
-  // follow the demo members' images (React members use other images)
+  // data-only: demo project names/dates/budgets differ and React has 7 demo
+  // projects vs the gold's 6 (one extra card in row 2). Avatar sizes depend on
+  // assignee count (`.avatar` width is auto inside the fixed-width group), so
+  // assigness counts in data/project-management/projects.ts mirror the gold.
   {
     name: 'pm-card-view',
     react: '/apps/project-management/project-card-view',
     gold: '/apps/project-management/project-card-view.html',
-    tolerance: 0.07
+    tolerance: 0.05
   },
   // data-only: demo project names / status badges differ
   {
