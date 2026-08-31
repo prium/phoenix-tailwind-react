@@ -33,7 +33,7 @@ the leftover-Bootstrap grep is empty for its closure, and this table says so.
 | Project management `/dashboard/project-management` | ✅ | `dashboard-project-management` (dark, 768, probes) |
 | CRM `/dashboard/crm` | ✅ | `dashboard-crm` (dark, 768) |
 | Stock `/dashboard/stock` | ⬜ | |
-| Travel agency `/dashboard/travel-agency` | ⬜ | |
+| Travel agency `/dashboard/travel-agency` | ✅ | `dashboard-travel-agency` (dark, 768, probes) |
 
 ## Apps
 
@@ -52,7 +52,7 @@ the leftover-Bootstrap grep is empty for its closure, and this table says so.
 | Kanban | ⬜ | |
 | Social | ⬜ | |
 | Stock app pages | ⬜ | |
-| Travel agency | ⬜ | largest closure (~28 page files + modules) |
+| Travel agency (17 pages: landing, 6 hotel customer, 4 hotel admin, 3 flight, 3 trip) | ✅ | `ta-*` (17 entries); own layouts (TravelLanding/TravelAgency/FlightAlternate/Trip) all migrated |
 
 ## Pages / misc
 
