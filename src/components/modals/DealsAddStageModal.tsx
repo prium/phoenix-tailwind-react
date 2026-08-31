@@ -1,12 +1,9 @@
-import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Dialog } from '@hummingbirdui/react';
 import Button from 'components/base/Button';
 import { DealColumn } from 'data/crm/deals';
 import usePhoenixForm from 'hooks/usePhoenixForm';
 import { useDealsContext } from 'providers/CrmDealsProvider';
 import { FormEvent, useEffect } from 'react';
-import { Form } from 'react-bootstrap';
-import { Modal } from 'react-bootstrap';
 import { v4 as uuid } from 'uuid';
 
 interface DealsAddStageModalProps {
@@ -17,10 +14,11 @@ interface DealsAddStageModalProps {
 const initFormData = {
   id: parseInt(uuid().replace(/-/g, '').slice(0, 12), 16),
   title: '',
-  revenue: 0,
+  revenue: '',
   deals: []
 };
 
+/** `+AddStageModal` in mixins/crm/Deals.pug (`#addStageModal`) */
 const DealsAddStageModal = ({ show, handleClose }: DealsAddStageModalProps) => {
   const { onChange, formData, setFormData } = usePhoenixForm<DealColumn>();
   const { handleAddStage, setOpenAddStageModal } = useDealsContext();
@@ -37,65 +35,56 @@ const DealsAddStageModal = ({ show, handleClose }: DealsAddStageModalProps) => {
   }, []);
 
   return (
-    <Modal show={show} onHide={handleClose} centered contentClassName="border">
-      <Form onSubmit={handleSubmit}>
-        <Modal.Header className="border-0 p-8">
-          <h5 className="modal-title text-highlight text-xl leading-sm">
-            Create New Stage
-          </h5>
-          <Button
-            variant="phoenix-secondary"
-            className="ms-auto"
-            onClick={handleClose}
-            size="sm"
-          >
-            <FontAwesomeIcon icon={faTimes} className="text-danger" />
-          </Button>
-        </Modal.Header>
-        <Modal.Body className="px-8 py-0 mb-2">
-          <Form.Group className="mb-6">
-            <Form.Label className="form-label-header mb-2">
-              Column Name
-            </Form.Label>
-            <Form.Control
+    <Dialog open={show} onOpenChange={open => !open && handleClose()}>
+      <Dialog.Content centered aria-describedby={undefined}>
+        <form onSubmit={handleSubmit}>
+          <div className="modal-body p-6">
+            {/* gold's h3 has no `.modal-title` styling, so keep the a11y title visually hidden */}
+            <Dialog.Title className="sr-only">Create New Stage</Dialog.Title>
+            <h3 className="mb-8 text-highlight">Create New Stage</h3>
+            <div className="mb-6">
+              <label className="mb-2 font-bold text-highlight">
+                Column Name
+              </label>
+              <input
+                className="form-control"
+                type="text"
+                placeholder="Enter stage name"
+                value={formData.title ?? ''}
+                name="title"
+                onChange={onChange}
+                required
+              />
+            </div>
+            <label className="mb-2 font-bold text-highlight">
+              Forecast Revenue
+            </label>
+            <input
+              className="form-control"
               type="text"
-              placeholder="Enter column name"
-              value={formData.title}
-              name="title"
-              onChange={onChange}
-              required
-            />
-          </Form.Group>
-          <Form.Group>
-            <Form.Label className="form-label-header mb-2">
-              Expected Revenue
-            </Form.Label>
-
-            <Form.Control
-              type="number"
-              placeholder="$ Enter amount"
-              className="flex-1 input-spin-none"
-              value={formData.revenue}
+              placeholder="$  Enter amount"
+              value={formData.revenue ?? ''}
               name="revenue"
-              required
               onChange={onChange}
+              required
             />
-          </Form.Group>
-        </Modal.Body>
-        <Modal.Footer className="flex justify-end items-center border-0 p-8">
-          <Button
-            variant="link"
-            className="px-6 m-0 text-danger"
-            onClick={handleClose}
-          >
-            Cencel
-          </Button>
-          <Button variant="primary" type="submit" className="px-6 m-0">
-            Create New Stage
-          </Button>
-        </Modal.Footer>
-      </Form>
-    </Modal>
+          </div>
+          <div className="modal-footer border-0 pt-4 px-6 pb-6">
+            <Button
+              variant="link"
+              className="text-danger px-6 m-0"
+              aria-label="Close"
+              onClick={handleClose}
+            >
+              Cancel
+            </Button>
+            <Button variant="primary" type="submit" className="px-10 m-0">
+              Create New Stage
+            </Button>
+          </div>
+        </form>
+      </Dialog.Content>
+    </Dialog>
   );
 };
 

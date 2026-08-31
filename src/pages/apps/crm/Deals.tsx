@@ -9,8 +9,7 @@ import PageBreadcrumb from 'components/common/PageBreadcrumb';
 import SearchBox from 'components/common/SearchBox';
 import { defaultBreadcrumbItems } from 'data/commonData';
 import { dealColumnsData } from 'data/crm/deals';
-import { useEffect } from 'react';
-import { Col, Form, Row } from 'react-bootstrap';
+import { Fragment, useEffect } from 'react';
 import { useMainLayoutContext } from 'providers/MainLayoutProvider';
 import DealColumn from 'components/modules/crm/deals/DealColumn';
 import AddDealModal from 'components/modules/crm/deals/AddDealModal';
@@ -29,6 +28,8 @@ const index = () => {
   );
 };
 
+/** apps/crm/deals.pug — the fixed `.content.kanban-deals-content` layout and
+ *  the `.deals` board sizing live in assets/css/components/{crm,kanban}.css. */
 const Deals = () => {
   const { setContentClass } = useMainLayoutContext();
   const {
@@ -47,7 +48,7 @@ const Deals = () => {
   } = useDealsContext();
   const sensors = useGetDndSensor();
   useEffect(() => {
-    setContentClass('vh-100');
+    setContentClass('kanban-deals-content');
 
     return () => {
       setContentClass('');
@@ -55,39 +56,49 @@ const Deals = () => {
   }, []);
 
   return (
-    <div className="flex flex-col h-full">
-      <PageBreadcrumb items={defaultBreadcrumbItems} />
-      <div className="mb-10">
-        <h2 className="mb-8">Deals</h2>
-        <Row className="g-4 justify-between">
-          <Col xs="auto">
-            <Button
-              variant="primary"
-              className="me-6"
-              startIcon={<FontAwesomeIcon icon={faPlus} className="me-2" />}
-              onClick={() => setOpenAddDealModal(true)}
-            >
-              Add Deal
-            </Button>
-            <Button
-              variant="link"
-              className="text-default px-0"
-              startIcon={
-                <FontAwesomeIcon icon={faFileExport} className="text-md me-2" />
-              }
-            >
-              Export
-            </Button>
-          </Col>
-          <Col xs="auto">
-            <div className="flex">
-              <SearchBox placeholder="Search by name" className="me-2" />
-              <Form.Select className="w-auto">
-                <option value="deals">Deals</option>
-              </Form.Select>
+    <>
+      <PageBreadcrumb
+        items={defaultBreadcrumbItems}
+        className="crm-deals-breadcrumb"
+      />
+      <div>
+        <div className="px-6 lg:px-10">
+          <h2 className="mb-8">Deals</h2>
+          <div className="xl:flex justify-between">
+            <div className="mb-4">
+              <Button
+                variant="primary"
+                className="me-6"
+                startIcon={<FontAwesomeIcon icon={faPlus} className="me-2" />}
+                onClick={() => setOpenAddDealModal(true)}
+              >
+                Add Deal
+              </Button>{' '}
+              <Button
+                variant="link"
+                className="text-default px-0"
+                startIcon={
+                  <FontAwesomeIcon
+                    icon={faFileExport}
+                    className="text-md me-2"
+                  />
+                }
+              >
+                Export
+              </Button>
+            </div>
+            <div className="flex mb-6">
+              <SearchBox placeholder="Search by name" />
+              <select
+                className="form-select w-auto mx-2"
+                id="select-deals"
+                defaultValue="Deals"
+              >
+                <option>Deals</option>
+              </select>
               <Button
                 variant="phoenix-secondary"
-                className="px-4 ms-2"
+                className="px-4"
                 onClick={() => setOpenFilterDealModal(true)}
               >
                 <FontAwesomeIcon
@@ -97,46 +108,55 @@ const Deals = () => {
                 />
               </Button>
             </div>
-          </Col>
-        </Row>
-      </div>
-      <DndContext
-        sensors={sensors}
-        collisionDetection={closestCorners}
-        onDragStart={handleDragStart}
-        onDragOver={handleDragOver}
-        onDragEnd={handleDragEnd}
-      >
-        <div className="-mx-6 px-6 lg:-mx-10 lg:px-10 flex-1 flex gap-6 scrollbar">
-          {dealColumns.map(col => (
-            <DealColumn
-              column={col}
-              handleOpenAddModal={() => setOpenAddDealModal(true)}
-              key={col.id}
-            />
-          ))}
-          <div className="deals-column flex-center shrink-0">
-            <h3 className="mb-6">Add new stage</h3>
-            <Button
-              variant="primary"
-              size="sm"
-              startIcon={<FontAwesomeIcon icon={faPlus} />}
-              onClick={() => setOpenAddStageModal(true)}
-            >
-              New Stage
-            </Button>
           </div>
         </div>
-        <DragOverlay>
-          {activeColumnId && activeDeal && (
-            <DealCard
-              deal={activeDeal}
-              columnId={activeColumnId}
-              cursor={true}
-            />
-          )}
-        </DragOverlay>
-      </DndContext>
+        <DndContext
+          sensors={sensors}
+          collisionDetection={closestCorners}
+          onDragStart={handleDragStart}
+          onDragOver={handleDragOver}
+          onDragEnd={handleDragEnd}
+        >
+          <div className="px-6 lg:px-10 scrollbar">
+            <div className="deals">
+              {/* the `{' '}` text nodes matter: `.deals-col` is inline-block,
+                  so the gold's inter-tag whitespace adds ~4px per gap */}
+              {dealColumns.map(col => (
+                <Fragment key={col.id}>
+                  <DealColumn
+                    column={col}
+                    handleOpenAddModal={() => setOpenAddDealModal(true)}
+                  />{' '}
+                </Fragment>
+              ))}
+              <div className="deals-col relative">
+                <div className="flex flex-center flex-col h-full">
+                  <h3 className="mb-6">Add new stage</h3>
+                  <Button
+                    variant="primary"
+                    size="sm"
+                    startIcon={
+                      <FontAwesomeIcon icon={faPlus} className="me-2" />
+                    }
+                    onClick={() => setOpenAddStageModal(true)}
+                  >
+                    New Stage
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </div>
+          <DragOverlay>
+            {activeColumnId && activeDeal && (
+              <DealCard
+                deal={activeDeal}
+                columnId={activeColumnId}
+                cursor={true}
+              />
+            )}
+          </DragOverlay>
+        </DndContext>
+      </div>
 
       <AddDealModal
         show={openAddDealModal}
@@ -150,7 +170,7 @@ const Deals = () => {
         show={openAddStageModal}
         handleClose={() => setOpenAddStageModal(false)}
       />
-    </div>
+    </>
   );
 };
 
