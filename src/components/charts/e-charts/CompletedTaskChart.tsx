@@ -1,5 +1,6 @@
 import ReactEChartsCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
+import { cn } from '@hummingbirdui/react';
 import { getDates } from 'helpers/utils';
 import dayjs from 'dayjs';
 import { useAppContext } from 'providers/AppProvider';
@@ -11,7 +12,6 @@ import {
 } from 'echarts/components';
 import { LineChart } from 'echarts/charts';
 import { CanvasRenderer } from 'echarts/renderers';
-import { ThemeVariant } from 'config';
 import { tooltipFormatterList } from 'helpers/echart-utils';
 
 echarts.use([
@@ -38,10 +38,7 @@ const prevMonthData = [
   230, 230, 270, 310, 270, 230, 260, 290, 320, 280, 280, 280
 ];
 
-const getDefaultOptions = (
-  theme: ThemeVariant,
-  getThemeColor: (name: string) => string
-) => ({
+const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
   color: [getThemeColor('color-primary'), getThemeColor('color-info')],
   tooltip: {
     trigger: 'axis',
@@ -101,7 +98,7 @@ const getDefaultOptions = (
         color: getThemeColor('text-color-muted'),
         align: 'right',
         fontFamily: 'Nunito Sans',
-        fontWeight: 600,
+        fontWeight: 400,
         fontSize: 12.8
       },
       axisLine: {
@@ -148,7 +145,7 @@ const getDefaultOptions = (
     }
   ],
   grid: {
-    right: 62,
+    right: 2,
     left: 5,
     bottom: '20px',
     top: '2%',
@@ -157,18 +154,18 @@ const getDefaultOptions = (
   animation: false
 });
 
-const CompletedTaskChart = () => {
-  const {
-    config: { theme },
-    getThemeColor
-  } = useAppContext();
+/** `.echart-completed-task-chart.min-h-50.w-full` in phoenix-tailwind (chart fills the wrapper) */
+const CompletedTaskChart = ({ className }: { className?: string }) => {
+  const { getThemeColor } = useAppContext();
 
   return (
-    <ReactEChartsCore
-      echarts={echarts}
-      option={getDefaultOptions(theme, getThemeColor)}
-      style={{ height: '200px', width: '100%' }}
-    />
+    <div className={cn('min-h-50 w-full', className)}>
+      <ReactEChartsCore
+        echarts={echarts}
+        option={getDefaultOptions(getThemeColor)}
+        style={{ height: '200px', width: '100%' }}
+      />
+    </div>
   );
 };
 

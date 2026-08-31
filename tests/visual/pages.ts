@@ -84,6 +84,11 @@ export const pages: VisualPage[] = [
     react: '/apps/project-management/todo-list',
     gold: '/apps/project-management/todo-list.html'
   },
+  {
+    name: 'pm-project-details',
+    react: '/apps/project-management/project-details',
+    gold: '/apps/project-management/project-details.html'
+  },
   // layouts (settings panel "Navigation type" / "Horizontal navbar shape")
   layout('layout-horizontal', 'navbar-horizontal', {
     navbarPosition: 'horizontal'

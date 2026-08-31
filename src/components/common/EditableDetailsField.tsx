@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'components/base/Button';
 import SeeMoreText from 'components/base/SeeMoreText';
 import { useState } from 'react';
-import { FormControl } from 'react-bootstrap';
+import { Textarea } from '@hummingbirdui/react';
 
 interface EditableDetailsFieldProps {
   children: string;
@@ -37,8 +37,7 @@ const EditableDetailsField = ({
       </div>
       {editMode ? (
         <>
-          <FormControl
-            as="textarea"
+          <Textarea
             rows={rows}
             className="mb-4"
             value={value}
@@ -68,11 +67,7 @@ const EditableDetailsField = ({
           </div>
         </>
       ) : (
-        <SeeMoreText
-          link="#!"
-          className="text-highlight mb-0"
-          maxChars={300}
-        >
+        <SeeMoreText link="#!" className="text-highlight mb-0" maxChars={300}>
           {value}
         </SeeMoreText>
       )}

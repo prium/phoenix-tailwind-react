@@ -1,40 +1,31 @@
 import Badge from 'components/base/Badge';
 import AvatarDropdown from 'components/common/AvatarDropdown';
+import { projectTags } from 'data/project-management/projectDetailsData';
 import { members } from 'data/users';
 
-const tags = [
-  'Unused_brain',
-  'Machine',
-  'Coding',
-  'Meseeks',
-  'Smithpeople',
-  'Rick',
-  'Biology',
-  'Neurology',
-  'Brainlessness',
-  'Stupidity',
-  'Jerry',
-  'Not _the_mouse'
-];
-
+/** `+MembersTags` in mixins/project-management/ProjectDetails.pug */
 const TeamMembers = () => {
   return (
-    <div>
+    <>
       <h4 className="text-emphasis mb-6">Team members</h4>
-      <div className="flex mb-14 gap-1">
+      <div className="flex mb-14">
         {members.slice(0, 5).map(member => (
-          <AvatarDropdown key={member.id} user={member} size="xl" />
+          <AvatarDropdown
+            key={member.id}
+            user={member}
+            size="xl"
+            className="me-1"
+            dropdownClass="dropdown-caret-none outline-none"
+          />
         ))}
       </div>
-      <h4 className="text-emphasis mb-6">Tags</h4>
-      <div className="flex flex-wrap gap-2">
-        {tags.map(tag => (
-          <Badge variant="tag" key={tag}>
-            {tag}
-          </Badge>
-        ))}
-      </div>
-    </div>
+      <h4 className="text-emphasis mb-7">Tags</h4>
+      {projectTags.map(tag => (
+        <Badge variant="tag" className="me-2 mb-2" key={tag}>
+          {tag}
+        </Badge>
+      ))}
+    </>
   );
 };
 

@@ -1,10 +1,11 @@
+import { Col, Row, Select } from '@hummingbirdui/react';
 import CompletedTaskChart from 'components/charts/e-charts/CompletedTaskChart';
-import { Col, Form, Row } from 'react-bootstrap';
 
+/** `+TotalSalesChart` in mixins/project-management/ProjectDetails.pug */
 const TaskCompleted = () => {
   return (
     <>
-      <Row className="row flex-between-center mb-4 g-4">
+      <Row className="flex-between-center mb-4 g-4">
         <Col xs="auto">
           <h4 className="text-emphasis">Task completed over time</h4>
           <p className="text-subtle mb-0">
@@ -12,14 +13,14 @@ const TaskCompleted = () => {
           </p>
         </Col>
         <Col xs={8} sm={4}>
-          <Form.Select size="sm">
+          <Select size="sm">
             <option>Mar 1 - 31, 2022</option>
             <option>April 1 - 30, 2022</option>
             <option>May 1 - 31, 2022</option>
-          </Form.Select>
+          </Select>
         </Col>
       </Row>
-      <CompletedTaskChart />
+      <CompletedTaskChart className="echart-completed-task-chart min-h-50 w-full" />
     </>
   );
 };
