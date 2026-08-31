@@ -1,7 +1,7 @@
 import { faCalendarDays } from '@fortawesome/free-regular-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row } from '@hummingbirdui/react';
 import { Link } from 'react-router';
 import { TravelStatistics } from 'components/modules/travel-agency/dashboard/TravelStatistics';
 import { FinancialActivities } from 'components/modules/travel-agency/dashboard/FinancialActivities';
@@ -17,7 +17,7 @@ const TravelAgency = () => {
     <>
       <Row className="mb-6 xl:mb-10 2xl:mb-6 gy-4 justify-between">
         <Col xs="auto">
-          <h2> Travel Agency </h2>
+          <h2 className="mb-0 text-emphasis">Travel Agency</h2>
         </Col>
         <Col xs="auto">
           <div className="flex gap-4">
@@ -40,20 +40,20 @@ const TravelAgency = () => {
               <TravelStatistics />
             </Col>
             <Col xs={12} xl={7} xxl={12}>
-              <FinancialActivities />
+              <FinancialActivities className="mt-8 xl:mt-0 2xl:mt-8 mb-8 2xl:mb-0" />
             </Col>
           </Row>
         </Col>
         <Col xxl={5}>
           <Row className="g-4">
-            <Col xs={12} lg={6} xxl={12}>
+            <Col xs={12} md={6} xxl={12}>
               <VisitorsCard />
             </Col>
-            <Col xs={12} lg={6} xxl={12}>
+            <Col xs={12} md={6} xxl={12}>
               <HolidaysCard />
             </Col>
             <Col xs={12}>
-              <IntegrationsCard />
+              <IntegrationsCard className="mb-4" />
             </Col>
           </Row>
         </Col>

@@ -5,8 +5,8 @@ import phoenixFirelines from 'assets/img/brands/phoenix-firelines.png';
 import qatarAirways from 'assets/img/brands/qatar-airways.png';
 import japanAirlines from 'assets/img/brands/jal.png';
 import emirates from 'assets/img/brands/emirates.png';
-// import china from 'assets/img/country/china.png';
-// import usa from 'assets/img/country/usa.png';
+import chinaFlag from 'assets/img/country/china.png';
+import usaFlag from 'assets/img/country/usa.png';
 import canada from 'assets/img/country/canada.png';
 import denmark from 'assets/img/country/denmark.png';
 import southKorea from 'assets/img/country/south-korea.png';
@@ -134,7 +134,7 @@ export const routes: routes[] = [
   {
     flightNo: 1,
     airLine: 'EK204 (AK98)',
-    logo: phoenixFirelines,
+    logo: emirates,
     from: 'RIG',
     to: 'LAX'
   },
@@ -194,7 +194,7 @@ export interface profitInterface {
 export const profitData: profitInterface[] = [
   {
     title: 'Flight',
-    bgColor: 'primary-light',
+    bgColor: 'bg-primary-light dark:bg-primary',
     profit: '162,791,400',
     percent: '15.50',
     icon: 'trending-up',
@@ -202,7 +202,7 @@ export const profitData: profitInterface[] = [
   },
   {
     title: 'Flight (Package)',
-    bgColor: 'info-light',
+    bgColor: 'bg-info-light dark:bg-info',
     profit: '135,659,500',
     percent: '11.09',
     icon: 'trending-down',
@@ -210,7 +210,7 @@ export const profitData: profitInterface[] = [
   },
   {
     title: 'Hotel',
-    bgColor: 'warning-light',
+    bgColor: 'bg-warning-light dark:bg-warning',
     profit: '271,319,000',
     percent: '29.98',
     icon: 'trending-up',
@@ -218,7 +218,7 @@ export const profitData: profitInterface[] = [
   },
   {
     title: 'Hotel (Package)',
-    bgColor: 'success-light',
+    bgColor: 'bg-success-light dark:bg-success',
     profit: '162,791,400',
     percent: '03.90',
     icon: 'trending-up',
@@ -272,7 +272,7 @@ export const flightsData: FlightInterface[] = [
     },
     route: {
       from: {
-        flag: usa,
+        flag: usaFlag,
         airport: 'LAX'
       },
       to: {
@@ -344,11 +344,11 @@ export const flightsData: FlightInterface[] = [
     },
     route: {
       from: {
-        flag: china,
+        flag: chinaFlag,
         airport: 'GOT'
       },
       to: {
-        flag: usa,
+        flag: usaFlag,
         airport: 'BCN'
       }
     },

@@ -1,9 +1,5 @@
 import { ColumnDef } from '@tanstack/react-table';
 import AdvanceTable from 'components/base/AdvanceTable';
-import AdvanceTableFooter from 'components/base/AdvanceTableFooter';
-import useAdvanceTable from 'hooks/useAdvanceTable';
-import AdvanceTableProvider from 'providers/AdvanceTableProvider';
-import Badge from 'components/base/Badge';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router';
@@ -11,27 +7,24 @@ import { visitorData } from 'data/travel-agency/travelAgency';
 
 const columns: ColumnDef<visitorData>[] = [
   {
-    id: 'country_name',
-    header: 'Country name',
+    id: 'country',
+    header: 'COUNTRY NAME',
     accessorFn: ({ country }) => country.name,
     cell: ({ row: { original } }) => (
-      <Link
-        className="flex items-center text-primary md:py-1 2xl:py-0"
-        to="#!"
-      >
+      <Link className="flex items-center text-primary md:py-1 2xl:py-0" to="#!">
         <img src={original.country.flag} alt="" width="40" />
         <p className="mb-0 ps-4 font-bold text-md">{original.country.name}</p>
       </Link>
     ),
     meta: {
-      headerProps: {
-        className: 'text-sm'
-      },
-      cellProps: { className: 'py-2' }
+      headerProps: { className: 'ps-0 min-w-25' },
+      cellProps: { className: 'py-2 whitespace-nowrap ps-0' }
     }
   },
   {
-    accessorKey: 'users',
+    id: 'users',
+    header: 'USERS',
+    accessorFn: ({ users }) => users.number,
     cell: ({ row: { original } }) => (
       <h6>
         {original.users.number}
@@ -41,52 +34,38 @@ const columns: ColumnDef<visitorData>[] = [
       </h6>
     ),
     meta: {
-      headerProps: {
-        className: 'text-sm'
-      },
+      headerProps: { className: 'min-w-28.75' },
       cellProps: { className: 'py-2' }
     }
   },
   {
-    accessorKey: 'status',
+    id: 'status',
+    header: 'STATUS',
+    accessorFn: ({ status }) => status.label,
     cell: ({ row: { original } }) => (
-      <Badge className="text-sm" variant="phoenix" bg={original.status.type}>
-        <FontAwesomeIcon icon={faPlus} className="me-1" />
+      <span
+        className={`badge-phoenix-${original.status.type} badge text-sm rounded-sm`}
+      >
+        <FontAwesomeIcon icon={faPlus} />
         {original.status.label}
-      </Badge>
+      </span>
     ),
     meta: {
-      headerProps: {
-        style: { minWidth: 100, width: '15%' },
-        className: 'text-end text-sm'
-      },
-      cellProps: { className: 'text-end font-semibold py-2' }
+      headerProps: { className: 'text-end' },
+      cellProps: { className: 'py-2 text-end' }
     }
   }
 ];
 
-export const VisitorsTable = () => {
-  const table = useAdvanceTable({
-    data: visitorData,
-    columns,
-    pageSize: 5,
-    sortable: true
-  });
+export const visitorsTableColumns = columns;
 
-  return (
-    <AdvanceTableProvider {...table}>
-      <AdvanceTable
-        tableProps={{
-          size: 'sm',
-          className: ' text-sm mb-0 mt-3'
-        }}
-        headerClassName="fs-0"
-      />
-      <AdvanceTableFooter
-        className="pt-4 pb-6"
-        tableInfo="text-base"
-        viewAllBtnClass="ms-auto"
-      />
-    </AdvanceTableProvider>
-  );
-};
+/** Renders inside an `AdvanceTableProvider` owned by `VisitorsCard` so the
+ * card footer can show the gold list info / View all controls. */
+export const VisitorsTable = () => (
+  <AdvanceTable
+    className="mt-4"
+    tableProps={{
+      className: 'text-sm mb-0'
+    }}
+  />
+);

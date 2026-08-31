@@ -1,7 +1,7 @@
+import { Card, Select } from '@hummingbirdui/react';
 import BookingsChart from 'components/charts/e-charts/BookingsChart';
 import EChartsReactCore from 'echarts-for-react/lib/core';
-import  { useEffect, useRef, useState } from 'react';
-import { Card, Form } from 'react-bootstrap';
+import { useEffect, useRef, useState } from 'react';
 import { bookingsData } from 'data/travel-agency/travelAgency';
 
 const Bookings = () => {
@@ -27,9 +27,9 @@ const Bookings = () => {
       <Card.Header className="pb-4 sm:flex xl:block 2xl:flex justify-between items-start">
         <div>
           <h3 className="text-highlight">Bookings</h3>
-          <p className="mb-0">Completed and canceled bookings</p>
+          <p className="mb-0 text-base">Completed and canceled bookings</p>
         </div>
-        <Form.Select
+        <Select
           size="sm"
           className="pe-16 w-auto mt-4 sm:mt-0 xl:mt-4 2xl:mt-0"
           value={selectedOption}
@@ -38,13 +38,15 @@ const Bookings = () => {
           <option value={0}>Hotel</option>
           <option value={1}>Flight</option>
           <option value={2}>Trip</option>
-        </Form.Select>
+        </Select>
       </Card.Header>
       <Card.Body>
-        <BookingsChart
-          ref={chartRef}
-          style={{ height: '100%', minHeight: 322, width: '100%' }}
-        />
+        <div className="echart-bookings size-full min-h-80.5">
+          <BookingsChart
+            ref={chartRef}
+            style={{ height: '100%', width: '100%' }}
+          />
+        </div>
       </Card.Body>
     </Card>
   );

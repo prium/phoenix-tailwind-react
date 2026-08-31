@@ -1,131 +1,90 @@
 import { faPlane } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
-import { Col, ProgressBar, Row, Table } from 'react-bootstrap';
+import { Col, Row, cn } from '@hummingbirdui/react';
 
+interface FlightSpec {
+  label: string;
+  value: string;
+  /** gold: the Airline value is `text-primary` instead of `text-subtle` */
+  valueClass?: string;
+}
+
+const flightSpecs: FlightSpec[][] = [
+  [
+    { label: 'Flight no.', value: 'FF-SCA001' },
+    { label: 'Model', value: 'Appa 707-RTX' },
+    { label: 'Velocity', value: '450 km/h' }
+  ],
+  [
+    { label: 'Airline', value: 'YIP YIP', valueClass: 'text-primary' },
+    { label: 'Callsign', value: 'Skybison1' },
+    { label: 'ETA', value: '12 hrs 57 mins' }
+  ]
+];
+
+const SpecTable = ({ specs }: { specs: FlightSpec[] }) => (
+  <table className="text-md">
+    <tbody>
+      <tr>
+        <th className="w-17.75"></th>
+        <th></th>
+        <th></th>
+      </tr>
+      {specs.map(spec => (
+        <tr key={spec.label}>
+          <td className="p-px">
+            <h6 className="mb-0 text-subtle leading-4.75">{spec.label}</h6>
+          </td>
+          <td className="text-subtle pe-2"> : </td>
+          <td className="p-px">
+            <h6
+              className={cn(
+                'mb-0 text-nowrap font-semibold',
+                spec.valueClass ?? 'text-subtle'
+              )}
+            >
+              {spec.value}
+            </h6>
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+);
+
+/** The floating flight description card over the flight map (gold DOM:
+ * `.flight-desc-card` positioning + dotted `.progress` come from
+ * assets/css/components/travel-agency.css). */
 const FlightTable = () => {
   return (
-    <>
-      <div className="flight-desc-card p-4 bg-soft rounded-lg">
-        <Row className="gx-8 justify-between">
-          <Col xs="auto">
-            <Table className="text-md" bsPrefix="flight-table">
-              <tbody>
-                <tr>
-                  <th style={{ width: 70 }}></th>
-                  <th></th>
-                  <th></th>
-                </tr>
-                <tr>
-                  <td>
-                    <h6 className="mb-0 text-subtle">Flight no.</h6>
-                  </td>
-                  <td className="text-subtle pe-2"> : </td>
-                  <td>
-                    <h6 className="mb-0 whitespace-nowrap font-semibold text-subtle">
-                      FF-SCA001
-                    </h6>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <h6 className="mb-0 text-subtle">Model</h6>
-                  </td>
-                  <td className="text-subtle pe-2"> : </td>
-                  <td>
-                    <h6 className="mb-0 whitespace-nowrap font-semibold text-subtle">
-                      Appa 707-RTX
-                    </h6>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <h6 className="mb-0 text-subtle">Velocity</h6>
-                  </td>
-                  <td className="text-subtle pe-2"> : </td>
-                  <td>
-                    <h6 className="mb-0 whitespace-nowrap font-semibold text-subtle">
-                      450 km/h
-                    </h6>
-                  </td>
-                </tr>
-              </tbody>
-            </Table>
+    <div className="flight-desc-card p-4 pt-4.5 bg-soft rounded-lg">
+      <Row className="gx-8 justify-between">
+        {flightSpecs.map((specs, index) => (
+          <Col xs="auto" key={index}>
+            <SpecTable specs={specs} />
           </Col>
-          <Col xs="auto">
-            <Table className="text-md font-sans-serif" bsPrefix="flight-table">
-              <tbody>
-                <tr>
-                  <th style={{ width: 70 }}></th>
-                  <th></th>
-                  <th></th>
-                </tr>
-                <tr>
-                  <td>
-                    <h6 className="mb-0 text-subtle">Airline</h6>
-                  </td>
-                  <td className="text-subtle pe-2"> : </td>
-                  <td>
-                    <h6 className="mb-0 whitespace-nowrap font-semibold text-primary">
-                      YIP YIP
-                    </h6>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <h6 className="mb-0 text-subtle">Callsign</h6>
-                  </td>
-                  <td className="text-subtle pe-2"> : </td>
-                  <td>
-                    <h6 className="mb-0 whitespace-nowrap font-semibold text-subtle">
-                      Skybison1
-                    </h6>
-                  </td>
-                </tr>
-                <tr>
-                  <td>
-                    <h6 className="mb-0 text-subtle">ETA</h6>
-                  </td>
-                  <td className="text-subtle pe-2"> : </td>
-                  <td>
-                    <h6 className="mb-0 whitespace-nowrap font-semibold text-subtle">
-                      12 hrs 57 mins
-                    </h6>
-                  </td>
-                </tr>
-              </tbody>
-            </Table>
-          </Col>
-        </Row>
-        <div className="flex items-center gap-2 mt-4">
-          <h6 className="mb-0 text-subtle">GRU</h6>
-          <div className="relative w-full">
-            <ProgressBar
-              style={{ height: 2 }}
-              className="overflow-visible align-middle"
-            >
-              <ProgressBar
-                now={50}
-                min={0}
-                max={100}
-                variant="info"
-                style={{
-                  height: '2px',
-                  transform: 'translateY(-75%)'
-                }}
-              />
-            </ProgressBar>
+        ))}
+      </Row>
+      <div className="flex items-center gap-2 mt-4">
+        <h6 className="mb-0 text-subtle">GRU</h6>
+        <div
+          className="progress flex-1"
+          role="progressbar"
+          aria-label="flight-destination-progress"
+          aria-valuenow={50}
+          aria-valuemin={0}
+          aria-valuemax={100}
+        >
+          <div className="progress-bar bg-info overflow-visible w-1/2">
             <FontAwesomeIcon
-              className="text-info absolute top-1/2 top-1/2 -translate-y-1/2"
               icon={faPlane}
-              style={{ left: '50%' }} // Adjust this to match current progress
+              className="text-info absolute end-0"
             />
           </div>
-
-          <h6 className="mb-0 text-subtle">SJC</h6>
         </div>
+        <h6 className="mb-0 text-subtle">SJC</h6>
       </div>
-    </>
+    </div>
   );
 };
 

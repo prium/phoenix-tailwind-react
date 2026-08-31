@@ -1,11 +1,11 @@
 import { faCloudBolt, faMinus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Col, Row } from '@hummingbirdui/react';
 import BaseLineChart from 'components/charts/e-charts/BaseLineChart';
 import BasicEcharts from 'components/charts/e-charts/BasicEcharts';
 import CommissionChart from 'components/charts/e-charts/CommissionChart';
 import TravelStats from 'components/stats/TravelStats';
 import { currencyFormat, getDates } from 'helpers/utils';
-import { Col, Row } from 'react-bootstrap';
 
 export const TravelStatistics = () => {
   return (
@@ -21,13 +21,11 @@ export const TravelStatistics = () => {
           amount={currencyFormat(2345, {
             minimumFractionDigits: 2
           })}
-          badgeLabel="23.33%"
+          badgeLabel="23.35%"
           badgeBg="primary"
+          amountContainerClass="mt-6 md:mt-0"
         >
-          <div
-            className="order-1 sm:order-0 md:order-1"
-            style={{ height: 54, width: 90 }}
-          >
+          <div className="echart-booking-value h-13.5 w-22.5 order-1 sm:order-0 md:order-1">
             <BaseLineChart
               data={[150, 100, 300, 200, 250, 180, 250]}
               dates={getDates(
@@ -36,7 +34,7 @@ export const TravelStatistics = () => {
                 1000 * 60 * 60 * 24
               )}
               color="warning"
-              style={{ height: '100%', width: 90 }}
+              style={{ height: '100%', width: '100%' }}
             />
           </div>
         </TravelStats>
@@ -54,15 +52,16 @@ export const TravelStatistics = () => {
           amount="1,432"
           badgeLabel="3.98%"
           badgeBg="success"
+          subtitleNowrap
         >
           <div className="md:flex items-center gap-2 sm:order-0 md:order-1">
             <FontAwesomeIcon
               icon={faCloudBolt}
-              className="text-2xl text-warning-light dark__text-opacity-75"
-              data-bs-theme="light"
+              className="text-2xl text-warning-light dark:text-warning/75"
+              data-hb-theme="light"
             />
             <div className="flex md:block gap-2 items-center mt-1 md:mt-0">
-              <p className="text-md mb-0 md:mb-2 text-subtle whitespace-nowrap">
+              <p className="text-md mb-0 md:mb-2 text-subtle text-nowrap">
                 Rain Chances
               </p>
               <h4 className="text-highlight mb-0">95%</h4>
@@ -85,13 +84,10 @@ export const TravelStatistics = () => {
           badgeBg="danger"
           badgeIcon={faMinus}
         >
-          <div
-            className="sm:order-0 md:order-1"
-            style={{ height: 54, width: 54 }}
-          >
+          <div className="echart-commission size-13.5 sm:order-0 md:order-1">
             <CommissionChart
               color="primary"
-              style={{ height: 54, width: 54 }}
+              style={{ height: '100%', width: '100%' }}
             />
           </div>
         </TravelStats>
@@ -109,10 +105,7 @@ export const TravelStatistics = () => {
           badgeLabel="5.76%"
           badgeBg="danger"
         >
-          <div
-            className="order-1 sm:order-0 md:order-1"
-            style={{ height: 54, width: 78 }}
-          >
+          <div className="chart-cancel-booking h-13.5 w-19.5 sm:order-0 md:order-1">
             <BasicEcharts
               data={[120, 150, 100, 120, 110, 160]}
               dates={getDates(
@@ -120,7 +113,7 @@ export const TravelStatistics = () => {
                 new Date('11/6/2023'),
                 1000 * 60 * 60 * 24
               )}
-              style={{ height: '100%', width: 78 }}
+              style={{ height: '100%', width: '100%' }}
             />
           </div>
         </TravelStats>

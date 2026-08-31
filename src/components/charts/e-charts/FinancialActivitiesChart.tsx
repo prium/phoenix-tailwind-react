@@ -34,7 +34,10 @@ const FinancialActivitiesChart = ({
 
   const getDefaultOptions = useMemo(
     () => ({
-      color: [getThemeColor('color-primary'), getThemeColor('background-color-highlight')],
+      color: [
+        getThemeColor('color-primary'),
+        getThemeColor('background-color-highlight')
+      ],
       tooltip: {
         trigger: 'axis',
         padding: 10,
@@ -142,7 +145,9 @@ const FinancialActivitiesChart = ({
           },
           itemStyle: {
             borderRadius: [4, 0, 0, 4],
-            color: isDark ? getThemeColor('color-info') : getThemeColor('color-info-light')
+            color: isDark
+              ? getThemeColor('color-info')
+              : getThemeColor('color-info-light')
           },
           data: chartData.expenses
         }
@@ -202,7 +207,7 @@ const FinancialActivitiesChart = ({
           }
         },
         grid: {
-          left: -2,
+          left: -2
         }
       });
     } else {
@@ -224,7 +229,7 @@ const FinancialActivitiesChart = ({
       if (chartRef.current) {
         updateDimensions();
       }
-    }, 0)
+    }, 0);
     window.addEventListener('resize', updateDimensions);
     return () => {
       clearTimeout(initialRun);
@@ -232,15 +237,12 @@ const FinancialActivitiesChart = ({
     };
   }, [updateDimensions]);
 
-  
-
   return (
     <ReactEChartsCore
       echarts={echarts}
       ref={chartRef}
       option={getDefaultOptions}
       style={style}
-      className="echart-financial-Activities"
     />
   );
 };

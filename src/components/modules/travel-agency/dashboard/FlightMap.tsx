@@ -1,8 +1,7 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import React, { HTMLAttributes, useEffect, useRef } from 'react';
+import { HTMLAttributes, useEffect, useRef } from 'react';
 import mapboxgl, { LngLatLike, Map, MapboxOptions } from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useAppContext } from 'providers/AppProvider';
 // @ts-ignore
@@ -19,7 +18,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore from 'swiper';
 
 import { Autoplay } from 'swiper/modules';
-import { Feature, along, length, LineString } from '@turf/turf';
+import { along, length } from '@turf/turf';
+import type { Feature, LineString } from 'geojson';
 import { routes } from 'data/travel-agency/travelAgency';
 import { rgbaColor } from 'helpers/utils';
 
@@ -224,7 +224,7 @@ const FlightMap = ({ options, ...rest }: MapboxProps) => {
       let count = 1;
       points.features.forEach(feature => {
         const el = document.createElement('div');
-        el.className=`marker-${count}`;
+        el.className = `marker-${count}`;
         if (map.current) {
           new mapboxgl.Marker(el)
             .setLngLat(feature.geometry.coordinates)
@@ -254,99 +254,90 @@ const FlightMap = ({ options, ...rest }: MapboxProps) => {
   }, [theme]);
 
   return (
-    <>
-      <div className="mapbox-container flight-map mt-6" {...rest}>
-        <div className="relative">
-          <div
-            ref={flightMap}
-            id="flightMap"
-            className="map rounded-lg mapboxgl-map"
-          />
+    <div className="mapbox-container" {...rest}>
+      <div className="relative">
+        <div
+          ref={flightMap}
+          id="flightMap"
+          className="map rounded-lg mapboxgl-map"
+        />
 
-          <div className="mapbox-control-btn flight-map-control-btn">
-            <Button
-              onClick={() => map.current?.zoomIn()}
-              className="zoomIn hidden md:block"
-            >
-              <FontAwesomeIcon icon={faPlus} />
-            </Button>
-            <Button
-              onClick={() => map.current?.zoomOut()}
-              className="zoomOut hidden md:block"
-            >
-              <FontAwesomeIcon icon={faMinus} />
-            </Button>
-            <Button
-              onClick={handleFullScreen}
-              className="zoomOut rounded-md md:mt-4"
-            >
-              <FontAwesomeIcon icon={faUpRightAndDownLeftFromCenter} />
-            </Button>
-          </div>
-        </div>
-
-        <div className="absolute top-0 w-full mt-4 md:mt-8 px-4 md:px-8 xl:px-12">
-          <div
-            className="flex items-center bg-secondary overflow-hidden rounded-sm"
-            style={{ height: 46 }}
+        <div className="mapbox-control-btn flight-map-control-btn">
+          <button
+            type="button"
+            onClick={() => map.current?.zoomIn()}
+            className="zoomIn hidden md:block"
           >
-            <div className="h-full px-4 flex items-center bg-danger-subtle relative">
-              <FontAwesomeIcon
-                icon={faCircle}
-                className="text-danger md:me-2"
-              />
-              <h3 className="mb-0 font-bold whitespace-nowrap hidden md:block">
-                Live Tracking
-              </h3>
-            </div>
-            <div className="swiper-theme-container">
-              <Swiper
-                wrapperClass="swiper-continuous-autoplay"
-                loop={true}
-                spaceBetween={40}
-                centeredSlides={true}
-                slidesPerView="auto"
-                speed={4000}
-                autoplay={{
-                  delay: 0
-                }}
-                grabCursor={true}
-              >
-                {routes.map((route, index) => (
-                  <SwiperSlide key={index} className="w-auto">
-                    <div className="flex items-center">
-                      <h6 className="px-4 py-2 bg-primary-subtle mb-0 text-sm rounded-sm me-2">
-                        {route.flightNo}
-                      </h6>
-                      <img
-                        className="me-1"
-                        src={route.logo}
-                        alt=""
-                        width={16}
-                      />
-                      <h6 className="mb-0 text-white font-semibold me-4 whitespace-nowrap">
-                        {route.airLine}
-                      </h6>
-                      <h6 className="mb-0 font-semibold text-white">
-                        {route.from}
-                      </h6>
-                      <FontAwesomeIcon
-                        icon={faPlane}
-                        className="text-primary mx-2"
-                      />
-                      <h6 className="mb-0 font-semibold text-white border-e pe-10">
-                        {route.to}
-                      </h6>
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </div>
+            <FontAwesomeIcon icon={faPlus} />
+          </button>
+          <button
+            type="button"
+            onClick={() => map.current?.zoomOut()}
+            className="zoomOut hidden md:block"
+          >
+            <FontAwesomeIcon icon={faMinus} />
+          </button>
+          <button
+            type="button"
+            onClick={handleFullScreen}
+            className="fullScreen md:mt-4"
+          >
+            <FontAwesomeIcon icon={faUpRightAndDownLeftFromCenter} />
+          </button>
+        </div>
+      </div>
+
+      <div className="absolute top-0 w-full mt-4 md:mt-8 px-4 md:px-8 xl:px-12">
+        <div className="flex items-center overflow-hidden rounded-sm bg-gray-900 h-11.5">
+          <div className="h-full px-4 flex items-center bg-danger-subtle relative z-5">
+            <FontAwesomeIcon icon={faCircle} className="text-danger md:me-2" />
+            <h3 className="mb-0 font-bold text-nowrap hidden md:block">
+              Live Tracking
+            </h3>
+          </div>
+          <div className="swiper-theme-container w-full">
+            <Swiper
+              wrapperClass="swiper-wrapper swiper-continuous-autoplay"
+              loop={true}
+              spaceBetween={40}
+              centeredSlides={true}
+              slidesPerView="auto"
+              speed={4000}
+              autoplay={{
+                delay: 0
+              }}
+              grabCursor={true}
+              className="swiper theme-slider"
+            >
+              {routes.map((route, index) => (
+                <SwiperSlide key={index} className="w-auto!">
+                  <div className="flex items-center">
+                    <h6 className="px-4 py-2 bg-primary-subtle mb-0 text-sm rounded-sm me-2">
+                      {route.flightNo}
+                    </h6>
+                    <img className="me-1" src={route.logo} alt="" width={16} />
+                    <h6 className="mb-0 text-white font-semibold me-4 text-nowrap">
+                      {route.airLine}
+                    </h6>
+                    <h6 className="mb-0 font-semibold text-white">
+                      {route.from}
+                    </h6>
+                    <FontAwesomeIcon
+                      icon={faPlane}
+                      className="text-primary mx-2"
+                    />
+                    <h6 className="mb-0 font-semibold text-white border-e pe-6">
+                      {route.to}
+                    </h6>
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
           </div>
         </div>
-        <FlightTable />
       </div>
-    </>
+      <FlightTable />
+    </div>
   );
 };
 

@@ -1,40 +1,33 @@
-import React from 'react';
-import bgIllustrations from 'assets/img/spot-illustrations/interations.png';
-import { Card } from 'react-bootstrap';
-import Button from 'components/base/Button';
-import { Link } from 'react-router';
+import { Card, cn } from '@hummingbirdui/react';
+import bgIllustrations from 'assets/img/spot-illustrations/39.png';
 import { faLink } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Link } from 'react-router';
 
-export const IntegrationsCard = () => {
+export const IntegrationsCard = ({ className }: { className?: string }) => {
   return (
-    <Card className="mb-3">
+    <Card className={cn(className)}>
       <div
         className="bg-holder bg-card"
         style={{
           backgroundImage: `url(${bgIllustrations})`,
-          backgroundSize: 'auto',
-          backgroundPosition: 'bottom right 0px'
+          backgroundPosition: 'bottom right 0px',
+          backgroundSize: 'auto'
         }}
       />
       <Card.Body className="z-5">
         <div>
-          <h3 className="text-highlight mb-3">Phoenix integrations</h3>
-          <p className="text-subtle mb-4 w-75 w-xl-100">
-            Phoenix improves efficiency instantly and effortlessly
-            <br className="hidden d-xxl-block" /> by allowing easy & simple
-            connection <br className="hidden d-xxl-block" /> to other popular
+          <h3 className="text-highlight mb-4">Phoenix integrations</h3>
+          <p className="text-subtle mb-6 w-3/4 xl:w-full text-base">
+            Phoenix improves efficiency instantly and effortlessly{' '}
+            <br className="hidden 2xl:block" /> by allowing easy &amp; simple
+            connection <br className="hidden xl:block" /> to other popular
             programs
           </p>
-          <Button
-            variant="phoenix-primary"
-            size="sm"
-            as={Link}
-            to={`#!`}
-            startIcon={<FontAwesomeIcon icon={faLink} className="me-1" />}
-          >
+          <Link to="#!" className="btn btn-sm btn-phoenix-primary">
+            <FontAwesomeIcon icon={faLink} className="me-1" />
             Connect Now
-          </Button>
+          </Link>
         </div>
       </Card.Body>
     </Card>

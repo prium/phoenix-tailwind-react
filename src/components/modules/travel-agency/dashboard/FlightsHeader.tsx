@@ -1,31 +1,19 @@
 import { useState } from 'react';
-import { Col, Pagination, Row } from 'react-bootstrap';
+import { cn } from '@hummingbirdui/react';
 import { useAdvanceTableContext } from 'providers/AdvanceTableProvider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
-import usePagination from 'hooks/usePagination';
 import {
   faAngleRight,
   faChevronLeft,
   faChevronRight
 } from '@fortawesome/free-solid-svg-icons';
-import Button from 'components/base/Button';
 
-interface AdvanceTableFooterProps {
-  className?: string;
-  pagination?: boolean;
-  navBtn?: boolean;
-  showViewAllBtn?: boolean;
-  viewAllBtnClass?: string;
-}
-
-const FlightsTableHeader = ({
-  className,
-  pagination,
-  navBtn,
-  showViewAllBtn = true,
-  viewAllBtnClass
-}: AdvanceTableFooterProps) => {
+/**
+ * Gold Flights list controls (phoenix list.js DOM): hidden `.pagination`,
+ * `[data-list-info]` text, View all / View Less toggle and the
+ * `.btn-phoenix-primary` prev/next buttons.
+ */
+const FlightsTableHeader = () => {
   const {
     setPageSize,
     previousPage,
@@ -34,9 +22,7 @@ const FlightsTableHeader = ({
     getCanPreviousPage,
     getState,
     getPrePaginationRowModel,
-    getPaginationRowModel,
-    getPageCount,
-    setPageIndex
+    getPaginationRowModel
   } = useAdvanceTableContext();
 
   const {
@@ -44,120 +30,72 @@ const FlightsTableHeader = ({
   } = getState();
 
   const [perPage] = useState(pageSize);
-  const { hasNextEllipsis, hasPrevEllipsis, visiblePaginationItems } =
-    usePagination({
-      currentPageNo: pageIndex + 1,
-      totalPage: getPageCount(),
-      maxPaginationButtonCount: 5
-    });
-
   const [isAllVisible, setIsAllVisible] = useState(false);
 
+  const toggleView = () => {
+    setIsAllVisible(!isAllVisible);
+    setPageSize(
+      isAllVisible ? perPage : getPrePaginationRowModel().rows.length
+    );
+  };
+
   return (
-    <Row className={classNames(className, 'items-center')}>
-      <Col className="flex">
-        <p className="mb-0 me-4 text-md font-semibold text-default">
-          {pageSize * pageIndex + 1} to{' '}
-          {pageSize * pageIndex + getPaginationRowModel().rows.length}
-          <span className="text-subtle"> items of </span>
-          {getPrePaginationRowModel().rows.length}
-        </p>
-        {showViewAllBtn && (
-          <Button
-            variant="link"
-            className={classNames(viewAllBtnClass, 'p-0 font-semibold text-md')}
-            endIcon={
-              <FontAwesomeIcon icon={faAngleRight} className="ms-1 text-md" />
-            }
-            onClick={() => {
-              setIsAllVisible(!isAllVisible);
-              setPageSize(
-                isAllVisible ? perPage : getPrePaginationRowModel().rows.length
-              );
-            }}
-          >
-            View {isAllVisible ? 'less' : 'all'}
-          </Button>
-        )}
-      </Col>
-      {navBtn && (
-        <Col xs="auto" className="flex gap-2">
-          <Button
-            variant="phoenix-primary"
-            startIcon={<FontAwesomeIcon icon={faChevronLeft} />}
-            className={classNames('px-4', {
-              disabled: !getCanPreviousPage()
-            })}
-            onClick={() => {
-              previousPage();
-            }}
+    <div className="flex items-center">
+      <div className="pagination hidden"></div>
+      <p className="mb-0 hidden md:block me-4 font-semibold text-default text-nowrap">
+        {pageSize * pageIndex + 1} to{' '}
+        {pageSize * pageIndex + getPaginationRowModel().rows.length}
+        <span className="text-subtle"> Items of </span>
+        {getPrePaginationRowModel().rows.length}
+      </p>
+      <div className="hidden sm:block">
+        <a
+          className={cn('font-semibold text-nowrap', { hidden: isAllVisible })}
+          href="#!"
+          onClick={e => {
+            e.preventDefault();
+            toggleView();
+          }}
+        >
+          View all
+          <FontAwesomeIcon
+            icon={faAngleRight}
+            className="ms-1"
+            transform="down-1"
           />
-
-          <Button
-            variant="phoenix-primary"
-            endIcon={<FontAwesomeIcon icon={faChevronRight} />}
-            className={classNames('px-4', {
-              disabled: !getCanNextPage()
-            })}
-            onClick={() => {
-              nextPage();
-            }}
-          />
-        </Col>
-      )}
-      {pagination && (
-        <Col xs="auto">
-          <Pagination className="mb-0 justify-center">
-            <Pagination.Prev
-              disabled={!getCanPreviousPage()}
-              onClick={() => setPageIndex(pageIndex - 1)}
-            >
-              <FontAwesomeIcon icon={faChevronLeft} />
-            </Pagination.Prev>
-
-            {hasPrevEllipsis && (
-              <>
-                <Pagination.Item
-                  active={pageIndex === 0}
-                  onClick={() => setPageIndex(0)}
-                >
-                  1
-                </Pagination.Item>
-                <Pagination.Ellipsis disabled />
-              </>
-            )}
-
-            {visiblePaginationItems.map(page => (
-              <Pagination.Item
-                key={page}
-                active={pageIndex === page - 1}
-                onClick={() => setPageIndex(page - 1)}
-              >
-                {page}
-              </Pagination.Item>
-            ))}
-
-            {hasNextEllipsis && (
-              <>
-                <Pagination.Ellipsis disabled />
-                <Pagination.Item
-                  active={pageIndex === getPageCount() - 1}
-                  onClick={() => setPageIndex(getPageCount() - 1)}
-                >
-                  {getPageCount()}
-                </Pagination.Item>
-              </>
-            )}
-            <Pagination.Next
-              disabled={!getCanNextPage()}
-              onClick={() => setPageIndex(pageIndex + 1)}
-            >
-              <FontAwesomeIcon icon={faChevronRight} />
-            </Pagination.Next>
-          </Pagination>
-        </Col>
-      )}
-    </Row>
+        </a>
+        <a
+          className={cn('font-semibold text-nowrap', { hidden: !isAllVisible })}
+          href="#!"
+          onClick={e => {
+            e.preventDefault();
+            toggleView();
+          }}
+        >
+          View Less
+        </a>
+      </div>
+      <button
+        type="button"
+        title="Previous"
+        className={cn('btn btn-phoenix-primary px-4 me-1 sm:ms-6', {
+          disabled: !getCanPreviousPage()
+        })}
+        onClick={() => previousPage()}
+      >
+        <FontAwesomeIcon icon={faChevronLeft} transform="down-1" />
+      </button>
+      <button
+        type="button"
+        title="Next"
+        className={cn('btn btn-phoenix-primary px-4', {
+          disabled: !getCanNextPage()
+        })}
+        onClick={() => nextPage()}
+      >
+        <FontAwesomeIcon icon={faChevronRight} transform="down-1" />
+      </button>
+    </div>
   );
 };
 

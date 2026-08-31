@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react';
+import { CSSProperties } from 'react';
 import ReactEChartsCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
 import { useAppContext } from 'providers/AppProvider';
@@ -189,7 +189,9 @@ const GrossProfitChart = ({ style }: { style: CSSProperties }) => {
       name: 'Package',
       value: 50,
       itemStyle: {
-        color: isDark ? getThemeColor('color-info') : getThemeColor('color-info-light')
+        color: isDark
+          ? getThemeColor('color-info')
+          : getThemeColor('color-info-light')
       },
       children: [
         {
@@ -454,7 +456,6 @@ const GrossProfitChart = ({ style }: { style: CSSProperties }) => {
       echarts={echarts}
       option={getDefaultOptions(getThemeColor, data, colors, isRTL, isDark)}
       style={style}
-      className="mx-auto mt-4 md:mt-0 xl:mt-4 2xl:mt-0"
     />
   );
 };
