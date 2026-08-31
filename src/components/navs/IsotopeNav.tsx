@@ -1,36 +1,50 @@
-import classNames from 'classnames';
-import { Nav, NavProps } from 'react-bootstrap';
+import { useState } from 'react';
+import { cn } from '@hummingbirdui/react';
 
 export interface IsotopeNavItem {
   eventKey: string | number;
   label: string;
-  defaultActiveKey?: string | number;
 }
 
-interface IsotopeNavProps extends NavProps {
+interface IsotopeNavProps {
   navItems: IsotopeNavItem[];
+  className?: string;
+  defaultActiveKey?: string | number;
+  onSelect?: (eventKey: string | null) => void;
 }
 
+/**
+ * Gold isotope filter nav: `ul.nav > li.nav-item > a.isotope-nav.cursor-pointer(.active)`
+ * (see phoenix-tailwind `[data-filter-nav]` markup — no `.nav-link` class).
+ */
 const IsotopeNav = ({
   navItems,
   className,
   defaultActiveKey,
   onSelect
 }: IsotopeNavProps) => {
+  const [activeKey, setActiveKey] = useState<string | number>(
+    defaultActiveKey ?? navItems[0].eventKey
+  );
+
   return (
-    <Nav
-      className={classNames(className)}
-      defaultActiveKey={defaultActiveKey || navItems[0].eventKey}
-      onSelect={onSelect}
-    >
+    <ul className={cn('nav', className)}>
       {navItems.map((navItem: IsotopeNavItem) => (
-        <Nav.Item key={navItem.eventKey}>
-          <Nav.Link className="isotope-nav" eventKey={navItem.eventKey}>
+        <li className="nav-item" key={navItem.eventKey}>
+          <a
+            className={cn('isotope-nav cursor-pointer', {
+              active: activeKey === navItem.eventKey
+            })}
+            onClick={() => {
+              setActiveKey(navItem.eventKey);
+              onSelect?.(String(navItem.eventKey));
+            }}
+          >
             {navItem.label}
-          </Nav.Link>
-        </Nav.Item>
+          </a>
+        </li>
       ))}
-    </Nav>
+    </ul>
   );
 };
 

@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react';
-import useSettingsMountEffect from 'hooks/useSettingsMountEffect';
+import { useEffect } from 'react';
 import HeroHeader from './HeroHeader';
 import SeasonOfTour from './SeasonOfTour';
 import BestPlaces from './BestPlaces';
@@ -11,13 +10,7 @@ import GetApp from './GetApp';
 import TravelCta from 'components/cta/TravelCta';
 
 const Landing = () => {
-  useSettingsMountEffect({
-    disableNavigationType: true,
-    disableHorizontalNavbarAppearance: true,
-    disableVerticalNavbarAppearance: true,
-    disableHorizontalNavbarShape: true
-  });
-
+  // gold: attrsBody = { style: '--phoenix-scroll-margin-top: 1.2rem', class: 'bg-soft' }
   useEffect(() => {
     document.body.classList.add('bg-soft');
     document.body.setAttribute(

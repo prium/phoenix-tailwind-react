@@ -6,7 +6,7 @@ import gallery53 from 'assets/img/gallery/53.png';
 import gallery54 from 'assets/img/gallery/54.png';
 import gallery55 from 'assets/img/gallery/55.png';
 import gallery56 from 'assets/img/gallery/56.png';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row } from '@hummingbirdui/react';
 import { Link } from 'react-router';
 interface photos {
   img: string;
@@ -44,9 +44,7 @@ const LatestPhotos = () => {
     <section className="pb-12 pt-0">
       <div className="container-medium">
         <div className="text-center mb-8">
-          <h3 className="mb-2 text-emphasis">
-            Latest photos from tourists
-          </h3>
+          <h3 className="mb-2 text-emphasis">Latest photos from tourists</h3>
           <p className="mb-0 text-subtle">
             See how our tourists enjoyed their trip from images captured by them
             with Team Phoenix!
@@ -55,10 +53,10 @@ const LatestPhotos = () => {
         <Row className="g-4">
           {photos.map((item, index) => (
             <Col md={6} xl={4} key={index}>
-              <div className="img-zoom-hover relative h-full rounded-lg overflow-hidden">
+              <div className="img-zoom-hover rounded-lg overflow-hidden relative">
                 <Link to="#!">
                   <img
-                    className="w-full h-full object-cover"
+                    className="latest-img w-full object-cover"
                     src={item.img}
                     alt=""
                   />
@@ -66,11 +64,11 @@ const LatestPhotos = () => {
                 <div className="backdrop-faded">
                   <Link
                     to="#!"
-                    className="w-semibold mb-0 text-secondary-lighter stretched-link"
+                    className="font-semibold mb-0 text-gray-100 stretched-link"
                   >
                     <FontAwesomeIcon
                       icon={faLocationDot}
-                      className="text-secondary-lighter me-2"
+                      className="text-gray-100 me-2"
                     />
                     {item.location}
                   </Link>

@@ -1,25 +1,24 @@
-import { Navbar, Container, Row, Col } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { IconDefinition } from '@fortawesome/free-brands-svg-icons';
-import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { IconDefinition, faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { Link } from 'react-router';
+import { cn } from '@hummingbirdui/react';
 import Logo from 'components/common/Logo';
-import classNames from 'classnames';
 import Footer from 'components/footers/Footer';
 
 interface TravelAgencyFooterProps {
   className?: string;
 }
 
-interface navItems {
+interface NavItem {
   title: string;
   link: string;
   icon?: IconDefinition;
   transform?: string;
 }
 
-const navItems: navItems[] = [
+/** `+FooterLinks` in phoenix-tailwind mixins/travel-agency/common/FooterLinks.pug */
+const navItems: NavItem[] = [
   {
     title: 'Become a Host',
     link: '#!'
@@ -32,7 +31,6 @@ const navItems: navItems[] = [
     title: 'Career',
     link: '#!'
   },
-
   {
     title: 'Support',
     link: 'mailto:example@gmail.com',
@@ -48,20 +46,21 @@ const navItems: navItems[] = [
 
 const TravelAgencyFooter = ({ className }: TravelAgencyFooterProps) => {
   return (
-    <Container fluid="medium">
-      <Row
-        className={classNames(
-          'flex-center md:justify-between md:items-center mb-6 gy-2',
-          className
+    <div className="container-medium">
+      <div
+        className={cn(
+          'row flex-center md:justify-between! md:items-center gy-2',
+          // gold layouts: LayoutHotel `+FooterLinks.mb-4`, LayoutTrip `.mt-6.mb-4`
+          className ?? 'mb-4'
         )}
       >
-        <Col xs="auto">
-          <Navbar.Brand as={Link} to={'/'} className="flex-1 grow-0">
+        <div className="col-auto">
+          <Link to="/" className="navbar-brand">
             <Logo />
-          </Navbar.Brand>
-        </Col>
-        <Col xs="auto">
-          <ul className="flex flex-center flex-wrap gap-x-8 gap-y-1 list-unstyled mb-0">
+          </Link>
+        </div>
+        <div className="col-auto">
+          <ul className="list-none flex flex-center flex-wrap gap-x-8 gap-y-1 mb-0 p-0">
             {navItems.map((item, index) => (
               <li key={index}>
                 <Link
@@ -80,10 +79,10 @@ const TravelAgencyFooter = ({ className }: TravelAgencyFooterProps) => {
               </li>
             ))}
           </ul>
-        </Col>
-      </Row>
-      <Footer className="px-0" />
-    </Container>
+        </div>
+      </div>
+      <Footer className="px-0!" />
+    </div>
   );
 };
 
