@@ -32,7 +32,7 @@ the leftover-Bootstrap grep is empty for its closure, and this table says so.
 | E-commerce `/` | ✅ | `dashboard-ecommerce` (dark, 768) |
 | Project management `/dashboard/project-management` | ✅ | `dashboard-project-management` (dark, 768, probes) |
 | CRM `/dashboard/crm` | ✅ | `dashboard-crm` (dark, 768) |
-| Stock `/dashboard/stock` | ⬜ | |
+| Stock `/dashboard/stock` | ✅ | `dashboard-stock` (dark, 768, probes) |
 | Travel agency `/dashboard/travel-agency` | ✅ | `dashboard-travel-agency` (dark, 768, probes) |
 
 ## Apps
@@ -51,7 +51,7 @@ the leftover-Bootstrap grep is empty for its closure, and this table says so.
 | Gantt chart | ⬜ | dhtmlx engine stays (see ZeroRoadMapChart) |
 | Kanban | ⬜ | |
 | Social | ⬜ | |
-| Stock app pages | ⬜ | |
+| Stock app pages (stock-details, portfolio, watchlist) | ✅ | `stock-*` (3 entries); orphaned react-bootstrap stock tables/cards deleted |
 | Travel agency (17 pages: landing, 6 hotel customer, 4 hotel admin, 3 flight, 3 trip) | ✅ | `ta-*` (17 entries); own layouts (TravelLanding/TravelAgency/FlightAlternate/Trip) all migrated |
 
 ## Pages / misc
