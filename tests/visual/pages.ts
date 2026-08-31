@@ -393,8 +393,36 @@ export const pages: VisualPage[] = [
     gold: '/apps/travel-agency/trip/checkout.html',
     probes: [
       '.input-group-icon .form-control-icon-start',
-      '.form-check .form-check-input',
+      // scoped: the gold settings offcanvas adds 2 form-switch inputs outside <main>
+      '.container-medium .form-check .form-check-input',
       '.relative .form-control.pe-10'
+    ]
+  },
+  {
+    name: 'ta-hotel-checkout',
+    react: '/apps/travel-agency/hotel/customer/checkout',
+    gold: '/apps/travel-agency/hotel/customer/checkout.html',
+    probes: ['.form-check-inline .form-check-input', '#checkoutForm1 .btn']
+  },
+  {
+    name: 'ta-hotel-payment',
+    react: '/apps/travel-agency/hotel/customer/payment',
+    gold: '/apps/travel-agency/hotel/customer/payment.html',
+    probes: ['#checkoutForm2 .form-check-input', '#checkoutForm2 .btn-primary']
+  },
+  {
+    name: 'ta-hotel-gallery',
+    react: '/apps/travel-agency/hotel/customer/gallery',
+    gold: '/apps/travel-agency/hotel/customer/gallery.html'
+  },
+  {
+    name: 'ta-admin-add-room',
+    react: '/apps/travel-agency/hotel/admin/add-room',
+    gold: '/apps/travel-agency/hotel/admin/add-room.html',
+    probes: [
+      '.theme-wizard .nav-item-circle',
+      '.theme-wizard .form-select',
+      '.theme-wizard .input-group .btn'
     ]
   }
 ];
