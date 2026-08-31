@@ -25,14 +25,14 @@ const ReportDetails = () => {
     <div>
       <PageBreadcrumb items={defaultBreadcrumbItems} />
       <AdvanceTableProvider {...table}>
-        <div className="pb-9">
-          <h2 className="mb-4">Purchasers and sellers</h2>
+        <div className="pb-16">
+          <h2 className="mb-6">Purchasers and sellers</h2>
           <ReportDetailsHeader />
-          <Row className="gy-5">
+          <Row className="gy-8">
             <Col xl={5} xxl={4}>
               <Card>
                 <Card.Body>
-                  <div className="mb-5">
+                  <div className="mb-8">
                     <ReportDetailsChart
                       style={{ height: '358px', width: '100%' }}
                     />

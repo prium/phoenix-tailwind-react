@@ -7,7 +7,7 @@ import React from 'react';
 const LeadDeals = () => {
   return (
     <div>
-      <div className="flex justify-content-between align-items-center mb-4">
+      <div className="flex justify-between items-center mb-6">
         <h2 className="mb-0">Deals</h2>
         <Button
           variant="primary"

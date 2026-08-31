@@ -13,8 +13,8 @@ const Analytics = () => {
   return (
     <div>
       <PageBreadcrumb items={defaultBreadcrumbItems} />
-      <div className="mb-6">
-        <Row className="align-items-center justify-content-between g-3 mb-6">
+      <div className="mb-10">
+        <Row className="items-center justify-between g-4 mb-10">
           <Col md="auto">
             <h2 className="mb-0">Analytics</h2>
           </Col>
@@ -22,25 +22,25 @@ const Analytics = () => {
             <DatePicker defaultValue="Mar 1, 2022" />
           </Col>
         </Row>
-        <div className="px-3 mb-6">
+        <div className="px-4 mb-10">
           <AnalyticsStats stats={stats} />
         </div>
-        <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-soft pt-6 pb-3 border-y">
-          <Row className="gx-6">
+        <div className="-mx-6 px-6 lg:-mx-10 lg:px-10 bg-soft pt-10 pb-4 border-y">
+          <Row className="gx-10">
             <Col
               md={6}
               lg={12}
               xl={6}
-              className="mb-5 mb-md-3 mb-lg-5 mb-xl-2 mb-xxl-3"
+              className="mb-8 md:mb-4 lg:mb-8 xl:mb-2 2xl:mb-4"
             >
               <EmailCampaign />
             </Col>
-            <Col md={6} lg={12} xl={6} className="mb-1 mb-sm-0">
+            <Col md={6} lg={12} xl={6} className="mb-1 sm:mb-0">
               <MarketingCampaign />
             </Col>
           </Row>
         </div>
-        <Row className="pt-6 gy-7 gx-6">
+        <Row className="pt-10 gy-12 gx-10">
           <Col md={6}>
             <SalesTrends />
           </Col>

@@ -24,7 +24,7 @@ const ReportDetailsHeader = () => {
   };
   return (
     <>
-      <Row className="g-3 justify-content-between mb-4">
+      <Row className="g-4 justify-between mb-6">
         <Col xs="auto">
           <div className="flex flex-wrap gap-2">
             <Button
@@ -54,15 +54,15 @@ const ReportDetailsHeader = () => {
           <div className="flex gap-2">
             <SearchBox
               placeholder="Search by name"
-              className="hidden d-xl-block"
+              className="hidden xl:block"
               onChange={handleSearchInputChange}
             />
-            <Button variant="phoenix-secondary" className="px-3 me-2 d-xl-none">
+            <Button variant="phoenix-secondary" className="px-4 me-2 xl:hidden">
               <FontAwesomeIcon icon={faSearch} />
             </Button>
             <Button
               variant="phoenix-primary"
-              className="px-3"
+              className="px-4"
               onClick={() => setOpenFilterModal(true)}
             >
               <FontAwesomeIcon icon={faFilter} transform="down-3" />

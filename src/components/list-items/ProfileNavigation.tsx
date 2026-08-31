@@ -13,9 +13,9 @@ const ProfileNavigation = ({ className }: { className?: string }) => {
           key={index}
           xs={6}
           className={classNames('py-2 border-subtle', {
-            'border-bottom border-end': index === 0 || index === 2,
-            'border-bottom': index === 1 || index === 3,
-            'border-end': index === 4
+            'border-b border-e': index === 0 || index === 2,
+            'border-b': index === 1 || index === 3,
+            'border-e': index === 4
           })}
         >
           <Button
@@ -23,7 +23,7 @@ const ProfileNavigation = ({ className }: { className?: string }) => {
             to="#!"
             variant="link"
             className={classNames(
-              'text-base text-muted hover-primary font-semibold flex flex-column d-xxl-inline-block align-items-center align-items-xxl-start',
+              'text-base text-muted hover-primary font-semibold flex flex-col 2xl:inline-block items-center 2xl:items-start',
               {
                 'ps-2': index % 2 === 0
               }
@@ -31,7 +31,7 @@ const ProfileNavigation = ({ className }: { className?: string }) => {
             startIcon={
               <FontAwesomeIcon
                 icon={item.icon}
-                className="me-2 mb-2 mb-xxl-0"
+                className="me-2 mb-2 2xl:mb-0"
               />
             }
           >

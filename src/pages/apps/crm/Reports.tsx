@@ -38,10 +38,10 @@ const Reports = () => {
     <div>
       <PageBreadcrumb items={defaultBreadcrumbItems} />
       <AdvanceTableProvider {...table}>
-        <div className="mb-9">
-          <h2 className="mb-4">Reports</h2>
+        <div className="mb-16">
+          <h2 className="mb-6">Reports</h2>
           <ReportTopSection />
-          <Row className="g-3">
+          <Row className="g-4">
             {table
               .getRowModel()
               .rows.map(row => row.original)

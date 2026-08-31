@@ -55,15 +55,15 @@ const Deals = () => {
   }, []);
 
   return (
-    <div className="flex flex-column h-100">
+    <div className="flex flex-col h-full">
       <PageBreadcrumb items={defaultBreadcrumbItems} />
-      <div className="mb-6">
-        <h2 className="mb-5">Deals</h2>
-        <Row className="g-3 justify-content-between">
+      <div className="mb-10">
+        <h2 className="mb-8">Deals</h2>
+        <Row className="g-4 justify-between">
           <Col xs="auto">
             <Button
               variant="primary"
-              className="me-4"
+              className="me-6"
               startIcon={<FontAwesomeIcon icon={faPlus} className="me-2" />}
               onClick={() => setOpenAddDealModal(true)}
             >
@@ -87,7 +87,7 @@ const Deals = () => {
               </Form.Select>
               <Button
                 variant="phoenix-secondary"
-                className="px-3 ms-2"
+                className="px-4 ms-2"
                 onClick={() => setOpenFilterDealModal(true)}
               >
                 <FontAwesomeIcon
@@ -107,7 +107,7 @@ const Deals = () => {
         onDragOver={handleDragOver}
         onDragEnd={handleDragEnd}
       >
-        <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 flex-1 flex gap-4 scrollbar">
+        <div className="-mx-6 px-6 lg:-mx-10 lg:px-10 flex-1 flex gap-6 scrollbar">
           {dealColumns.map(col => (
             <DealColumn
               column={col}
@@ -115,8 +115,8 @@ const Deals = () => {
               key={col.id}
             />
           ))}
-          <div className="deals-column flex-center flex-shrink-0">
-            <h3 className="mb-4">Add new stage</h3>
+          <div className="deals-column flex-center shrink-0">
+            <h3 className="mb-6">Add new stage</h3>
             <Button
               variant="primary"
               size="sm"

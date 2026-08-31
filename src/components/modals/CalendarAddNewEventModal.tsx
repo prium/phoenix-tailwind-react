@@ -62,9 +62,9 @@ const CalendarAddNewEventModal = () => {
     >
       <Form onSubmit={handleSubmit}>
         <Modal.Header className="px-card border-0">
-          <div className="w-100 flex justify-content-between align-items-start">
+          <div className="w-full flex justify-between items-start">
             <div>
-              <h5 className="mb-0 lh-sm text-highlight">Add new</h5>
+              <h5 className="mb-0 leading-sm text-highlight">Add new</h5>
               <div className="mt-2">
                 <Form.Check
                   type="radio"
@@ -94,7 +94,7 @@ const CalendarAddNewEventModal = () => {
           </div>
         </Modal.Header>
         <Modal.Body className="p-card py-0" ref={modalBodyRef}>
-          <FloatingLabel controlId="event-title" label="Title" className="mb-3">
+          <FloatingLabel controlId="event-title" label="Title" className="mb-4">
             <input
               className="form-control"
               onChange={onChange}
@@ -103,7 +103,7 @@ const CalendarAddNewEventModal = () => {
               placeholder="Title"
             />
           </FloatingLabel>
-          <FloatingLabel controlId="eventLabel" label="Label" className="mb-5">
+          <FloatingLabel controlId="eventLabel" label="Label" className="mb-8">
             <Form.Select onChange={onChange} name="className">
               <option>Select</option>
               <option value="text-primary">Business</option>
@@ -129,14 +129,14 @@ const CalendarAddNewEventModal = () => {
             }}
             render={(_, ref) => {
               return (
-                <Form.Floating className="mb-3">
+                <Form.Floating className="mb-4">
                   <Form.Control
                     type="text"
                     placeholder="Starts at"
                     ref={ref}
                     id="startDatepicker"
                   />
-                  <label htmlFor="startDatepicker" className="ps-6">
+                  <label htmlFor="startDatepicker" className="ps-10">
                     Starts at
                   </label>
                 </Form.Floating>
@@ -154,14 +154,14 @@ const CalendarAddNewEventModal = () => {
             }}
             render={(_, ref) => {
               return (
-                <Form.Floating className="mb-3">
+                <Form.Floating className="mb-4">
                   <Form.Control
                     type="text"
                     placeholder="Ends at"
                     ref={ref}
                     id="endDatepicker"
                   />
-                  <label htmlFor="endDatepicker" className="ps-6">
+                  <label htmlFor="endDatepicker" className="ps-10">
                     Ends at
                   </label>
                 </Form.Floating>
@@ -178,7 +178,7 @@ const CalendarAddNewEventModal = () => {
             />
             <Form.Check.Label htmlFor="all-day">All day event</Form.Check.Label>
           </Form.Check>
-          <div className="py-5">
+          <div className="py-8">
             <FloatingLabel controlId="description" label="Description">
               <textarea
                 className="form-control"
@@ -192,7 +192,7 @@ const CalendarAddNewEventModal = () => {
           <FloatingLabel
             controlId="repetition"
             label="Repetition"
-            className="mb-3"
+            className="mb-4"
           >
             <Form.Select onChange={onChange} name="repetition">
               <option>Select</option>
@@ -206,7 +206,7 @@ const CalendarAddNewEventModal = () => {
               <option value="custom">Custom</option>
             </Form.Select>
           </FloatingLabel>
-          <FloatingLabel controlId="reminder" label="Reminder" className="mb-3">
+          <FloatingLabel controlId="reminder" label="Reminder" className="mb-4">
             <Form.Select onChange={onChange} name="reminder">
               <option>Select</option>
               <option value="1">30 minutes earlier</option>
@@ -218,21 +218,21 @@ const CalendarAddNewEventModal = () => {
           </FloatingLabel>
           <Button
             variant="link"
-            className="p-0 mb-3"
+            className="p-0 mb-4"
             startIcon={<FontAwesomeIcon icon={faPlus} className="me-2" />}
           >
             Add Reminder
           </Button>
         </Modal.Body>
-        <Modal.Footer className="flex justify-content-between align-items-center border-0">
+        <Modal.Footer className="flex justify-between items-center border-0">
           <Link
             to="/apps/events/create-an-event"
-            className="me-3 text-md text-default"
+            className="me-4 text-md text-default"
           >
             More options
             <FontAwesomeIcon icon={faAngleRight} className="ms-1 text-sm" />
           </Link>
-          <Button variant="primary" type="submit" className="px-4">
+          <Button variant="primary" type="submit" className="px-6">
             Save
           </Button>
         </Modal.Footer>

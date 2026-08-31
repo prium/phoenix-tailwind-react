@@ -13,7 +13,7 @@ interface SocialMessagesProps {
 const SocialMessages = ({ messages }: SocialMessagesProps) => {
   return (
     <>
-      <div className="flex flex-between-center pb-3 border-bottom border-dashed">
+      <div className="flex flex-between-center pb-4 border-b border-dashed">
         <h3 className="mb-0">
           Messages
           <span className="text-subtle ms-2 font-normal">(97)</span>
@@ -32,7 +32,7 @@ const SocialMessages = ({ messages }: SocialMessagesProps) => {
       {messages.map(message => (
         <div
           key={message.id}
-          className="flex py-3 align-items-center border-bottom border-subtle border-dashed"
+          className="flex py-4 items-center border-b border-subtle border-dashed"
         >
           <div className="me-2">
             <Avatar
@@ -41,9 +41,9 @@ const SocialMessages = ({ messages }: SocialMessagesProps) => {
               status={message.avatar.status}
             />
           </div>
-          <Link to="/apps/chat" className="text-decoration-none flex-1">
+          <Link to="/apps/chat" className="no-underline flex-1">
             <h5>{message.name}</h5>
-            <p className="text-subtle font-semibold text-md mb-0 lh-sm line-clamp-1">
+            <p className="text-subtle font-semibold text-md mb-0 leading-sm line-clamp-1">
               {message.message}
             </p>
           </Link>

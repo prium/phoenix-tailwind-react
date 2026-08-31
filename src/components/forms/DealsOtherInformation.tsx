@@ -6,11 +6,11 @@ const DealsOtherInformation = () => {
   return (
     <Card>
       <Card.Body>
-        <h4 className="mb-5">Others Information</h4>
-        <Row className="g-3">
+        <h4 className="mb-8">Others Information</h4>
+        <Row className="g-4">
           <Col xs={12}>
-            <div className="mb-4">
-              <div className="flex flex-wrap justify-content-between mb-2">
+            <div className="mb-6">
+              <div className="flex flex-wrap justify-between mb-2">
                 <h5 className="mb-0 text-highlight me-2">Category</h5>
                 <Link to="#!" className="font-bold text-md">
                   Add new category
@@ -24,7 +24,7 @@ const DealsOtherInformation = () => {
                 <option value="cloud-computing">Cloud Computing</option>
               </Form.Select>
             </div>
-            <div className="mb-4">
+            <div className="mb-6">
               <h5 className="mb-0 text-highlight mb-2">Priority</h5>
               <Form.Select>
                 <option value="low">Low</option>
@@ -33,7 +33,7 @@ const DealsOtherInformation = () => {
                 <option value="urgent">Urgent</option>
               </Form.Select>
             </div>
-            <div className="mb-4">
+            <div className="mb-6">
               <h5 className="mb-0 text-highlight mb-2">Stage</h5>
               <Form.Select>
                 <option value="new">New</option>
@@ -43,8 +43,8 @@ const DealsOtherInformation = () => {
                 <option value="completed">Completed</option>
               </Form.Select>
             </div>
-            <div className="mb-4">
-              <div className="flex flex-wrap justify-content-between mb-2">
+            <div className="mb-6">
+              <div className="flex flex-wrap justify-between mb-2">
                 <h5 className="mb-0 text-highlight me-2">Lead Source</h5>
                 <Link to="#!" className="font-bold text-md">
                   Add new
@@ -61,7 +61,7 @@ const DealsOtherInformation = () => {
               </Form.Select>
             </div>
             <div>
-              <div className="flex flex-wrap justify-content-between mb-2">
+              <div className="flex flex-wrap justify-between mb-2">
                 <h5 className="mb-0 text-highlight me-2">
                   Campaign Source
                 </h5>

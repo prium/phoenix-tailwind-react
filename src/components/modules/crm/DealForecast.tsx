@@ -6,7 +6,7 @@ import { Col, Form, Row } from 'react-bootstrap';
 const DealForecast = () => {
   return (
     <>
-      <Row className="align-items-start justify-content-between mb-4 g-3">
+      <Row className="items-start justify-between mb-6 g-4">
         <Col xs="auto">
           <h3>
             Deal Forecast
@@ -23,7 +23,7 @@ const DealForecast = () => {
         </Col>
       </Row>
       <DealForecasrProgressBar />
-      <h4 className="mt-4 mb-3">Deal Forecast by Owner </h4>
+      <h4 className="mt-6 mb-4">Deal Forecast by Owner </h4>
       <DealForecastTable />
     </>
   );

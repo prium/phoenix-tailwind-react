@@ -9,13 +9,13 @@ import { faFilter, faPlus, faSort } from '@fortawesome/free-solid-svg-icons';
 const Tasks = () => {
   return (
     <div>
-      <h2 className="mb-4"> Tasks</h2>
-      <div className="flex align-items-center flex-wrap gap-x-3 gap-y-3 mb-3">
+      <h2 className="mb-6"> Tasks</h2>
+      <div className="flex items-center flex-wrap gap-x-4 gap-y-4 mb-4">
         <SearchBox placeholder="Search tasks" style={{ maxWidth: '30rem' }} />
         <div>
           <Button
             variant="link"
-            className="p-0 text-md text-subtle text-decoration-none me-3"
+            className="p-0 text-md text-subtle no-underline me-4"
             startIcon={
               <FontAwesomeIcon icon={faFilter} className="text-sm me-1" />
             }
@@ -24,7 +24,7 @@ const Tasks = () => {
           </Button>
           <Button
             variant="link"
-            className="p-0 text-md text-primary text-decoration-none"
+            className="p-0 text-md text-primary no-underline"
             startIcon={<FontAwesomeIcon icon={faSort} className="text-sm" />}
           >
             Sorting
@@ -36,8 +36,8 @@ const Tasks = () => {
           key={todo.task}
           todo={todo}
           className={classNames('border-subtle', {
-            'border-top': index === 0,
-            'border-bottom-0': index === leadTasks.length - 1
+            'border-t': index === 0,
+            'border-b-0': index === leadTasks.length - 1
           })}
           fullLayoutBreakpoints={['md', 'xxl']}
           halfLayoutBreakpoints={['xl']}
@@ -47,7 +47,7 @@ const Tasks = () => {
       <Button
         startIcon={<FontAwesomeIcon icon={faPlus} />}
         variant="link"
-        className="text-decoration-none p-0"
+        className="no-underline p-0"
       >
         Add new task
       </Button>

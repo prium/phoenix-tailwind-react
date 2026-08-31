@@ -18,14 +18,14 @@ const FilterDealsModal = ({ show, handleClose }: FilterDealsModalProps) => {
       centered
       contentClassName="border"
     >
-      <Modal.Header className="border-subtle p-4">
-        <h5 className="modal-title text-highlight text-xl lh-sm">Filter</h5>
+      <Modal.Header className="border-subtle p-6">
+        <h5 className="modal-title text-highlight text-xl leading-sm">Filter</h5>
         <Button className="p-1 ms-auto" onClick={handleClose}>
           <FontAwesomeIcon icon={faTimes} className="text-md text-danger" />
         </Button>
       </Modal.Header>
-      <Modal.Body className="pt-4 pb-2 px-4">
-        <div className="mb-3">
+      <Modal.Body className="pt-6 pb-2 px-6">
+        <div className="mb-4">
           <Form.Label className="form-label-header mb-2">Priority</Form.Label>
           <Form.Select>
             <option value="urgent">Urgent</option>
@@ -34,7 +34,7 @@ const FilterDealsModal = ({ show, handleClose }: FilterDealsModalProps) => {
             <option value="low">Low</option>
           </Form.Select>
         </div>
-        <div className="mb-3">
+        <div className="mb-4">
           <Form.Label className="form-label-header mb-2">
             Create Date
           </Form.Label>
@@ -45,7 +45,7 @@ const FilterDealsModal = ({ show, handleClose }: FilterDealsModalProps) => {
             <option value="chooseATimePeriod">Choose a time period</option>
           </Form.Select>
         </div>
-        <div className="mb-3">
+        <div className="mb-4">
           <Form.Label className="form-label-header mb-2">Category</Form.Label>
           <Form.Select>
             <option value="salesReports">Sales Reports</option>
@@ -57,11 +57,11 @@ const FilterDealsModal = ({ show, handleClose }: FilterDealsModalProps) => {
           </Form.Select>
         </div>
       </Modal.Body>
-      <Modal.Footer className="flex justify-content-end align-items-center px-4 pb-4 border-0 pt-3">
+      <Modal.Footer className="flex justify-end items-center px-6 pb-6 border-0 pt-4">
         <Button
           variant="phoenix-primary"
           size="sm"
-          className="px-4 text-sm my-0"
+          className="px-6 text-sm my-0"
           startIcon={
             <FontAwesomeIcon icon={faArrowsRotate} className="me-2 text-sm" />
           }
@@ -71,7 +71,7 @@ const FilterDealsModal = ({ show, handleClose }: FilterDealsModalProps) => {
         <Button
           variant="primary"
           size="sm"
-          className="px-9 text-md my-0"
+          className="px-16 text-md my-0"
           onClick={handleClose}
         >
           Done

@@ -18,32 +18,32 @@ const FeedTextarea = ({ className }: { className?: string }) => {
       <Card.Body className="p-0">
         <Form.Control
           as="textarea"
-          className="border-subtle rounded-bottom-0 border-0 flex-1 text-base"
+          className="border-subtle rounded-b-none border-0 flex-1 text-base"
           rows={7}
           placeholder="Write something..."
         />
       </Card.Body>
-      <Card.Footer className="p-3">
-        <div className="flex justify-content-between align-items-center">
-          <Button className="p-0 me-3">
+      <Card.Footer className="p-4">
+        <div className="flex justify-between items-center">
+          <Button className="p-0 me-4">
             <FontAwesomeIcon icon={faImage} className="text-base" />
           </Button>
-          <Button className="p-0 me-3">
+          <Button className="p-0 me-4">
             <FontAwesomeIcon icon={faCalendarAlt} className="text-base" />
           </Button>
-          <Button className="p-0 me-3">
+          <Button className="p-0 me-4">
             <FontAwesomeIcon icon={faMapMarkerAlt} className="text-base" />
           </Button>
-          <Button className="p-0 me-3">
+          <Button className="p-0 me-4">
             <FontAwesomeIcon icon={faTag} className="text-base" />
           </Button>
-          <Dropdown className="me-3 flex-1">
+          <Dropdown className="me-4 flex-1">
             <Dropdown.Toggle
               variant=""
-              className="p-0 dropdown-caret-none flex align-items-center"
+              className="p-0 dropdown-caret-none flex items-center"
             >
               <FontAwesomeIcon icon={faGlobeAsia} className="text-base me-1" />
-              <span className="me-1 lh-base hidden d-sm-block">{privacy}</span>
+              <span className="me-1 leading-base hidden sm:block">{privacy}</span>
               <FontAwesomeIcon
                 icon={faCaretDown}
                 className="text-sm text-soft"
@@ -65,7 +65,7 @@ const FeedTextarea = ({ className }: { className?: string }) => {
             variant="primary"
             type="submit"
             size="sm"
-            className="px-6 px-sm-8"
+            className="px-10 sm:px-14"
           >
             Post
           </Button>

@@ -18,11 +18,11 @@ const FlightPromoModal = ({ show, handleClose }: FlightPromoModalProps) => {
       onHide={handleClose}
       centered
     >
-      <Modal.Body className="relative p-6">
+      <Modal.Body className="relative p-10">
         <div className="absolute end-0 top-0">
           <Button
             variant="phoenix-secondary"
-            className="px-3 border-0 bg-transparent"
+            className="px-4 border-0 bg-transparent"
             onClick={handleClose}
           >
             <FontAwesomeIcon icon={faTimes} className="text-md" />
@@ -30,30 +30,30 @@ const FlightPromoModal = ({ show, handleClose }: FlightPromoModalProps) => {
         </div>
         <div className="text-center">
           <img
-            className="d-dark-none img-fluid mb-4"
+            className="dark:hidden img-fluid mb-6"
             src={spotIllustration44}
             width={130}
             alt=""
           />
           <img
-            className="d-light-none img-fluid mb-4"
+            className="hidden dark:block img-fluid mb-6"
             src={spotIllustrationDark44}
             width={130}
             alt=""
           />
           <h1 className="text-success">Save 20%</h1>
           <h3 className="mb-2 text-default">on your next flight - Join now!</h3>
-          <p className="mb-4 text-md">
+          <p className="mb-6 text-md">
             Sign up now to save up to 20% on flights with our free membership
             program!
           </p>
-          <div className="flex gap-2 align-items-center mb-4 justify-content-center">
+          <div className="flex gap-2 items-center mb-6 justify-center">
             <Form.Control
               type="email"
               placeholder="Your email address"
               style={{ maxWidth: 248 }}
             />
-            <Button variant="primary" className="rounded text-nowrap px-sm-6">
+            <Button variant="primary" className="rounded-md whitespace-nowrap sm:px-10">
               Sign-up
             </Button>
           </div>
@@ -64,7 +64,7 @@ const FlightPromoModal = ({ show, handleClose }: FlightPromoModalProps) => {
             onClick={handleClose}
             aria-label="Close"
             variant="link"
-            className=" p-0 text-sm text-decoration-underline text-subtle"
+            className=" p-0 text-sm underline text-subtle"
           >
             Don’t show it again
           </Button>

@@ -7,34 +7,34 @@ import { Col, Form, Row } from 'react-bootstrap';
 const DealDetailsCall = () => {
   return (
     <>
-      <Row className="align-items-center gx-4 gy-3 flex-wrap mb-3">
+      <Row className="items-center gx-6 gy-4 flex-wrap mb-4">
         <Col sm="auto" className="flex-1">
           <h2 className="mb-0">Call</h2>
         </Col>
         <Col sm="auto">
-          <div className="d-sm-flex align-items-center gap-4">
-            <div className="flex gap-3 gap-sm-4">
+          <div className="sm:flex items-center gap-6">
+            <div className="flex gap-4 sm:gap-6">
               <Form.Check
                 type="radio"
                 label="All Call"
                 name="callType"
                 id="all-call"
                 defaultChecked
-                className="mb-sm-0"
+                className="sm:mb-0"
               />
               <Form.Check
                 type="radio"
                 label="Incoming Call"
                 name="callType"
                 id="incoming-call"
-                className="mb-sm-0"
+                className="sm:mb-0"
               />
               <Form.Check
                 type="radio"
                 label="OutgoingCall"
                 name="callType"
                 id="outgoing-call"
-                className="mb-sm-0"
+                className="sm:mb-0"
               />
             </div>
             <Button

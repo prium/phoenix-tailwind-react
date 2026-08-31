@@ -39,14 +39,14 @@ const Leads = () => {
   return (
     <div>
       <PageBreadcrumb items={defaultBreadcrumbItems} />
-      <div className="mb-6">
+      <div className="mb-10">
         <AdvanceTableProvider {...table}>
-          <h2 className="mb-4">{leadsTableData.length} Leads</h2>
-          <Row className="g-3 justify-content-between mb-4">
+          <h2 className="mb-6">{leadsTableData.length} Leads</h2>
+          <Row className="g-4 justify-between mb-6">
             <Col xs="auto">
               <Button
                 variant="primary"
-                className="me-4"
+                className="me-6"
                 startIcon={<FontAwesomeIcon icon={faPlus} className="me-2" />}
               >
                 Create Lead
@@ -71,7 +71,7 @@ const Leads = () => {
                 <DatePicker defaultValue="Mar 1, 2022" />
                 <Button
                   variant="phoenix-secondary"
-                  className="px-3 ms-2"
+                  className="px-4 ms-2"
                   onClick={() => setOpenFilterModal(true)}
                 >
                   <FontAwesomeIcon

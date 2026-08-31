@@ -21,7 +21,7 @@ const LeadSources = () => {
 const LeadSourceItem = ({ serial, source, count }: LeadSourceItemProps) => {
   return (
     <ListGroup.Item className="bg-transparent list-group-crm font-bold text-default text-md py-2">
-      <div className="flex justify-content-between">
+      <div className="flex justify-between">
         <span className="font-normal text-md mx-1">
           <span className="font-bold">{serial}.</span> {source}
         </span>{' '}

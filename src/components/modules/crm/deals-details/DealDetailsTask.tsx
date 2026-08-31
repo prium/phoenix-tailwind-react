@@ -11,17 +11,17 @@ import { Col, Row } from 'react-bootstrap';
 const DealDetailsTask = ({ tasks }: { tasks: Task[] }) => {
   return (
     <>
-      <h2 className="mb-4">Tasks</h2>
-      <Row className="align-items-center g-0 mb-3">
+      <h2 className="mb-6">Tasks</h2>
+      <Row className="items-center g-0 mb-4">
         <Col sm="auto">
           <SearchBox
             placeholder="Search tasks"
-            className="w-100 mb-2 mb-sm-0"
+            className="w-full mb-2 sm:mb-0"
             style={{ maxWidth: '30rem' }}
           />
         </Col>
         <Col xs="auto">
-          <div className="flex ms-sm-3">
+          <div className="flex sm:ms-4">
             <p className="mb-0 text-md text-subtle font-bold">
               <FontAwesomeIcon
                 icon={faFilter}
@@ -31,7 +31,7 @@ const DealDetailsTask = ({ tasks }: { tasks: Task[] }) => {
             </p>
             <Button
               variant="link"
-              className="p-0 ms-3 text-md text-primary font-bold"
+              className="p-0 ms-4 text-md text-primary font-bold"
               startIcon={<FontAwesomeIcon icon={faSort} className="text-sm" />}
             >
               Sorting
@@ -44,8 +44,8 @@ const DealDetailsTask = ({ tasks }: { tasks: Task[] }) => {
           key={task.id}
           todo={task}
           className={classNames('border-subtle', {
-            'border-top': index === 0,
-            'border-bottom-0': index === tasks.length - 1
+            'border-t': index === 0,
+            'border-b-0': index === tasks.length - 1
           })}
           fullLayoutBreakpoints={['lg']}
         />

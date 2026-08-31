@@ -9,10 +9,10 @@ import { Link } from 'react-router';
 
 const BasicTimeline = ({ data }: { data: TimelineItem[] }) => {
   return (
-    <Timeline variant="basic" className="mb-9">
+    <Timeline variant="basic" className="mb-16">
       {data.map((item, index) => (
         <Timeline.Item key={item.id}>
-          <Row className="g-3">
+          <Row className="g-4">
             <Col xs="auto">
               <Timeline.Separator className="relative">
                 <Timeline.Dot className="icon-item-md border border-subtle bg-default">
@@ -22,16 +22,16 @@ const BasicTimeline = ({ data }: { data: TimelineItem[] }) => {
                   />
                 </Timeline.Dot>
                 {index !== data.length - 1 && (
-                  <Timeline.Bar className="h-100 border-dashed" />
+                  <Timeline.Bar className="h-full border-dashed" />
                 )}
               </Timeline.Separator>
             </Col>
             <Col>
               <Timeline.Content>
-                <div className="flex justify-content-between">
+                <div className="flex justify-between">
                   <div className="flex mb-2">
                     <h6
-                      className="lh-sm mb-0 me-2 text-muted timeline-item-title"
+                      className="leading-sm mb-0 me-2 text-muted timeline-item-title"
                       dangerouslySetInnerHTML={{ __html: item.title }}
                     />
                     {item.file && (
@@ -44,14 +44,14 @@ const BasicTimeline = ({ data }: { data: TimelineItem[] }) => {
                       </h6>
                     )}
                   </div>
-                  <div className="text-soft text-md text-nowrap timeline-time">
+                  <div className="text-soft text-md whitespace-nowrap timeline-time">
                     <FontAwesomeIcon icon={faClock} className="me-1" />
                     {item.time}
                   </div>
                 </div>
                 <h6
                   className={classNames('text-sm font-normal', {
-                    'mb-3': index !== data.length - 1
+                    'mb-6': index !== data.length - 1
                   })}
                 >
                   by{' '}
@@ -63,7 +63,7 @@ const BasicTimeline = ({ data }: { data: TimelineItem[] }) => {
                   className={classNames(
                     'text-md text-muted w-sm-60 mb-0',
                     {
-                      'mb-5': index !== data.length - 1
+                      'mb-14': index !== data.length - 1
                     }
                   )}
                 >

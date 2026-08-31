@@ -40,7 +40,7 @@ const FlightFilterModal = ({
       dialogClassName="modal-53w"
       scrollable={true}
     >
-      <Modal.Header className="p-4 pb-3 align-items-start border-0">
+      <Modal.Header className="p-6 pb-4 items-start border-0">
         <div>
           <h4 id="flightFilterModalLabel" className="mb-2 text-highlight">
             Filter
@@ -53,18 +53,18 @@ const FlightFilterModal = ({
           <FontAwesomeIcon icon={faTimes} className="text-sm btn-close" />
         </Button>
       </Modal.Header>
-      <Modal.Body className="scrollbar px-4 pt-3 pb-0">
+      <Modal.Body className="scrollbar px-6 pt-4 pb-0">
         <Form>
-          <Row className="g-5">
+          <Row className="g-8">
             <Col md={6}>
               <Row className="g-0">
-                <Col xs={12} className="mb-6">
+                <Col xs={12} className="mb-10">
                   <FilterFormFlightStops />
                 </Col>
-                <Col xs={12} className="mb-6">
+                <Col xs={12} className="mb-10">
                   <FilterFormFlightSchedule />
                 </Col>
-                <Col xs={12} className="mb-6">
+                <Col xs={12} className="mb-10">
                   <FilterFormFlightAirlines />
                 </Col>
                 <Col xs={12}>
@@ -74,16 +74,16 @@ const FlightFilterModal = ({
             </Col>
             <Col md={6}>
               <Row className="g-0">
-                <Col xs={12} className="mb-6">
+                <Col xs={12} className="mb-10">
                   <FilterFormFlightPriceCalculator />
                 </Col>
-                <Col xs={12} className="mb-6">
+                <Col xs={12} className="mb-10">
                   <FilterFormFlightAirports />
                 </Col>
-                <Col xs={12} className="mb-6">
+                <Col xs={12} className="mb-10">
                   <FilterFormFlightBaggage />
                 </Col>
-                <Col xs={12} className="mb-6">
+                <Col xs={12} className="mb-10">
                   <FilterFormFlightCabin />
                 </Col>
                 <Col xs={12}>
@@ -92,19 +92,19 @@ const FlightFilterModal = ({
               </Row>
             </Col>
           </Row>
-          <div className="modal-footer border-0 px-0 pt-3 pb-4">
-            <div className="w-100 flex flex-wrap gap-3 border-top border-subtle pt-4">
+          <div className="modal-footer border-0 px-0 pt-4 pb-6">
+            <div className="w-full flex flex-wrap gap-4 border-t border-subtle pt-6">
               <Button
                 variant="phoenix-primary"
-                className="m-0 text-nowrap"
+                className="m-0 whitespace-nowrap"
                 size="lg"
               >
-                <FontAwesomeIcon icon={faRotate} className="me-sm-2" />
-                <span className="hidden d-sm-inline-block">Reset filter</span>
+                <FontAwesomeIcon icon={faRotate} className="sm:me-2" />
+                <span className="hidden sm:inline-block">Reset filter</span>
               </Button>
               <Button
                 variant="primary"
-                className="m-0 text-nowrap flex-1"
+                className="m-0 whitespace-nowrap flex-1"
                 type="submit"
                 size="lg"
                 startIcon={

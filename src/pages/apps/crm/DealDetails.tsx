@@ -15,15 +15,15 @@ const DealDetails = () => {
   return (
     <div>
       <PageBreadcrumb items={defaultBreadcrumbItems} />
-      <div className="mb-9">
-        <Row className="align-items-center justify-content-between g-3 mb-4">
+      <div className="mb-16">
+        <Row className="items-center justify-between g-4 mb-6">
           <Col md="auto">
             <h2 className="mb-0">Deal details</h2>
           </Col>
           <Col md="auto" className="flex">
-            <Button variant="phoenix-secondary" className="px-3 px-sm-5 me-2">
-              <FontAwesomeIcon icon={faEdit} className="me-sm-2" />
-              <span className="hidden d-sm-inline">Edit</span>
+            <Button variant="phoenix-secondary" className="px-4 sm:px-8 me-2">
+              <FontAwesomeIcon icon={faEdit} className="sm:me-2" />
+              <span className="hidden sm:inline">Edit</span>
             </Button>
             <Button
               variant="phoenix-danger"
@@ -35,7 +35,7 @@ const DealDetails = () => {
             <Dropdown>
               <Dropdown.Toggle
                 variant="phoenix-secondary"
-                className="px-3 dropdown-caret-none"
+                className="px-4 dropdown-caret-none"
               >
                 <FontAwesomeIcon icon={faEllipsis} />
               </Dropdown.Toggle>
@@ -51,16 +51,16 @@ const DealDetails = () => {
             </Dropdown>
           </Col>
         </Row>
-        <Row className="g-4 g-xl-6">
+        <Row className="g-6 xl:g-10">
           <Col xl={5} xxl={4}>
             <div className="sticky-leads-sidebar">
-              <DealProfileCard className="mb-3" />
+              <DealProfileCard className="mb-4" />
               <DealsOtherInformation />
             </div>
           </Col>
           <Col xl={7} xxl={8}>
-            <DealsPrintingDimensionsCard stats={stats} className="mb-5" />
-            <DealDetailsInfo data={dealDetailsInfoData} className="mb-7" />
+            <DealsPrintingDimensionsCard stats={stats} className="mb-8" />
+            <DealDetailsInfo data={dealDetailsInfoData} className="mb-12" />
             <DealDetailsTab />
           </Col>
         </Row>

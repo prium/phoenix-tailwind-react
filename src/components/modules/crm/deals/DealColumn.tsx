@@ -26,17 +26,17 @@ const DealColumn = ({
   });
   return (
     <div className="deals-column">
-      <div className="flex align-items-center justify-content-between position-sticky top-0 z-1 bg-default">
+      <div className="flex items-center justify-between sticky top-0 z-1 bg-default">
         <div>
           <h5 className="mb-2">{column.title}</h5>
           <p className="text-md text-subtle mb-1">Forecast Revenue:</p>
-          <h4 className="mb-3">
+          <h4 className="mb-4">
             {currencyFormat(column.revenue, {
               minimumFractionDigits: 2
             })}
           </h4>
         </div>
-        <div className="flex gap-3">
+        <div className="flex gap-4">
           <Button className="p-0" onClick={handleOpenAddModal}>
             <FontAwesomeIcon icon={faPlus} />
           </Button>
@@ -63,7 +63,7 @@ const DealColumn = ({
         ref={setNodeRef}
         {...attributes}
         {...listeners}
-        className="scrollbar flex-1 flex flex-column"
+        className="scrollbar flex-1 flex flex-col"
         onClick={e => e.stopPropagation()}
       >
         <SortableContext

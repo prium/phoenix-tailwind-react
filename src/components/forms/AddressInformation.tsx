@@ -4,8 +4,8 @@ import { Col, FloatingLabel, Form, Row } from 'react-bootstrap';
 const AddressInformation = ({ className }: { className?: string }) => {
   return (
     <>
-      <h4 className="mb-3">Address Information</h4>
-      <Row className={classNames('g-3', className)}>
+      <h4 className="mb-4">Address Information</h4>
+      <Row className={classNames('g-6', className)}>
         <Col sm={6} md={4}>
           <FloatingLabel controlId="street" label="Street">
             <Form.Control type="text" placeholder="Street" />

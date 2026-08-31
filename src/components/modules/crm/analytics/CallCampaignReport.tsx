@@ -6,7 +6,7 @@ import { Col, Row } from 'react-bootstrap';
 const CallCampaignReport = () => {
   return (
     <>
-      <Row className="justify-content-between mb-4">
+      <Row className="justify-between mb-6">
         <Col xs={12}>
           <h3>Call Campaign Reports</h3>
           <p className="text-subtle">All call campaigns succeeded.</p>
@@ -14,7 +14,7 @@ const CallCampaignReport = () => {
         <Col xs={12}>
           <div className="flex">
             <FontAwesomeIcon icon={faCircle} className="text-primary me-2" />
-            <h6 className="mb-0 me-3 lh-base">Campaign</h6>
+            <h6 className="mb-0 me-4 leading-base">Campaign</h6>
           </div>
         </Col>
       </Row>

@@ -39,8 +39,8 @@ const DealsAddStageModal = ({ show, handleClose }: DealsAddStageModalProps) => {
   return (
     <Modal show={show} onHide={handleClose} centered contentClassName="border">
       <Form onSubmit={handleSubmit}>
-        <Modal.Header className="border-0 p-5">
-          <h5 className="modal-title text-highlight text-xl lh-sm">
+        <Modal.Header className="border-0 p-8">
+          <h5 className="modal-title text-highlight text-xl leading-sm">
             Create New Stage
           </h5>
           <Button
@@ -52,8 +52,8 @@ const DealsAddStageModal = ({ show, handleClose }: DealsAddStageModalProps) => {
             <FontAwesomeIcon icon={faTimes} className="text-danger" />
           </Button>
         </Modal.Header>
-        <Modal.Body className="px-5 py-0 mb-2">
-          <Form.Group className="mb-4">
+        <Modal.Body className="px-8 py-0 mb-2">
+          <Form.Group className="mb-6">
             <Form.Label className="form-label-header mb-2">
               Column Name
             </Form.Label>
@@ -82,15 +82,15 @@ const DealsAddStageModal = ({ show, handleClose }: DealsAddStageModalProps) => {
             />
           </Form.Group>
         </Modal.Body>
-        <Modal.Footer className="flex justify-content-end align-items-center border-0 p-5">
+        <Modal.Footer className="flex justify-end items-center border-0 p-8">
           <Button
             variant="link"
-            className="px-4 m-0 text-danger"
+            className="px-6 m-0 text-danger"
             onClick={handleClose}
           >
             Cencel
           </Button>
-          <Button variant="primary" type="submit" className="px-4 m-0">
+          <Button variant="primary" type="submit" className="px-6 m-0">
             Create New Stage
           </Button>
         </Modal.Footer>

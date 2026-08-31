@@ -25,7 +25,7 @@ const TripDetailsAvailabilityModal = ({
 }: TripDetailsAvailabilityModalProps) => {
   return (
     <Modal show={show} onHide={onHide} centered dialogClassName="modal-md">
-      <Modal.Header className="border-0 justify-content-between align-items-start gap-5 px-4 pt-4 pb-3">
+      <Modal.Header className="border-0 justify-between items-start gap-8 px-6 pt-6 pb-4">
         <div>
           <h2 id="flightFilterModalLabel" className="mb-0">
             Walk where the king walked once in Wakanda
@@ -38,9 +38,9 @@ const TripDetailsAvailabilityModal = ({
           <FontAwesomeIcon icon={faXmark} />
         </Button>
       </Modal.Header>
-      <Modal.Body className="p-4">
+      <Modal.Body className="p-6">
         <Form>
-          <Row className="g-5 mb-4">
+          <Row className="g-8 mb-6">
             <Col md={5}>
               <label
                 htmlFor="tripDate"
@@ -76,7 +76,7 @@ const TripDetailsAvailabilityModal = ({
               </div>
             </Col>
             <Col md={7}>
-              <Row className="g-3">
+              <Row className="g-4">
                 <Col xs="auto" sm={6}>
                   <label
                     htmlFor="adults"
@@ -115,7 +115,7 @@ const TripDetailsAvailabilityModal = ({
             />
           ))}
           <Link to="/apps/travel-agency/trip/checkout">
-            <Button variant="primary" className="w-100 mt-6" size="lg">
+            <Button variant="primary" className="w-full mt-10" size="lg">
               Proceed to booking
               <FontAwesomeIcon icon={faChevronRight} className="text-md ms-2" />
             </Button>

@@ -27,17 +27,17 @@ const LeadDetails = () => {
   return (
     <div>
       <PageBreadcrumb items={defaultBreadcrumbItems} />
-      <div className="pb-9">
-        <Row className="align-items-center justify-content-between g-3 mb-3">
+      <div className="pb-16">
+        <Row className="items-center justify-between g-4 mb-4">
           <Col xs={12} md="auto">
             <h2 className="mb-0">Lead details</h2>
           </Col>
           <Col xs={12} md="auto">
             <div className="flex gap-2">
-              <div className="flex-1 d-md-none">
+              <div className="flex-1 md:hidden">
                 <Button
                   variant="phoenix-secondary"
-                  className="px-3 text-subtle"
+                  className="px-4 text-subtle"
                   onClick={() => setOpenOffcanvas(true)}
                 >
                   <FontAwesomeIcon icon={faBars} />
@@ -51,14 +51,14 @@ const LeadDetails = () => {
               >
                 Send an email
               </Button>
-              <Button variant="phoenix-secondary" className="px-3 px-sm-5">
-                <FontAwesomeIcon icon={faThumbtack} className="me-0 me-sm-2" />
-                <span className="hidden d-sm-inline">Shortlist</span>
+              <Button variant="phoenix-secondary" className="px-4 sm:px-8">
+                <FontAwesomeIcon icon={faThumbtack} className="me-0 sm:me-2" />
+                <span className="hidden sm:inline">Shortlist</span>
               </Button>
               <Dropdown>
                 <Dropdown.Toggle
                   variant="phoenix-secondary"
-                  className="dropdown-caret-none px-3"
+                  className="dropdown-caret-none px-4"
                 >
                   <FontAwesomeIcon icon={faEllipsis} />
                 </Dropdown.Toggle>
@@ -76,15 +76,15 @@ const LeadDetails = () => {
           </Col>
         </Row>
 
-        <Row className="g-0 g-md-4 g-xl-6">
-          <Col md={5} xl={4} className="hidden d-md-block">
+        <Row className="g-0 md:g-6 xl:g-10">
+          <Col md={5} xl={4} className="hidden md:block">
             <div className="sticky-leads-sidebar">
               <div className="lead-details-offcanvas bg-default scrollbar">
-                <div className="flex justify-content-between align-items-center mb-2 d-md-none">
+                <div className="flex justify-between items-center mb-2 md:hidden">
                   <h3 className="mb-0">Lead Details</h3>
                 </div>
-                <LeadProfileCard className="mb-3" />
-                <AboutLeadCard className="mb-3" />
+                <LeadProfileCard className="mb-4" />
+                <AboutLeadCard className="mb-4" />
                 <LeadAddressCard />
               </div>
             </div>
@@ -96,21 +96,21 @@ const LeadDetails = () => {
 
                 <ScrollSpy.Content
                   id="tasks"
-                  className="lead-details-scrollspy mb-8"
+                  className="lead-details-scrollspy mb-14"
                 >
                   <Tasks />
                 </ScrollSpy.Content>
 
                 <ScrollSpy.Content
                   id="deals"
-                  className="lead-details-scrollspy mb-8"
+                  className="lead-details-scrollspy mb-14"
                 >
                   <LeadDeals />
                 </ScrollSpy.Content>
 
                 <ScrollSpy.Content
                   id="emails"
-                  className="lead-details-scrollspy mb-8"
+                  className="lead-details-scrollspy mb-14"
                 >
                   <LeadEmails />
                 </ScrollSpy.Content>

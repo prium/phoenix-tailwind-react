@@ -9,17 +9,17 @@ interface DealDetailsInfoProps {
 
 const DealDetailsInfo = ({ data, className }: DealDetailsInfoProps) => {
   return (
-    <div className={classNames('px-xl-4', className)}>
-      <Row className="mx-0 mx-sm-3 mx-lg-0 px-lg-0">
+    <div className={classNames('xl:px-6', className)}>
+      <Row className="mx-0 sm:mx-4 lg:mx-0 lg:px-0">
         {data.map((category, index) => (
           <Col
             key={index}
             sm={12}
             xxl={6}
-            className={classNames('py-3 border-subtle', {
-              'col-sm-12 col-xxl-6 border-bottom border-end-xxl': index === 0,
-              'border-bottom': index === 1,
-              'border-end-xxl border-bottom border-bottom-xxl-0 py-3':
+            className={classNames('py-6 border-subtle', {
+              'sm:col-12 2xl:col-6 border-b 2xl:border-e': index === 0,
+              'border-b': index === 1,
+              '2xl:border-e border-b 2xl:border-b-0 py-6':
                 index === 2
             })}
           >
@@ -33,7 +33,7 @@ const DealDetailsInfo = ({ data, className }: DealDetailsInfoProps) => {
 
 const InfoCategory = ({ category }: { category: DealDetailsInfoType[] }) => {
   return (
-    <Table borderless className="w-100 table-stats mb-0">
+    <Table borderless className="w-full table-stats mb-0">
       <thead>
         <tr>
           <th className="p-0" />
@@ -59,14 +59,14 @@ const InfoItem = ({
 }) => {
   return (
     <tr>
-      <td className="py-2 lh-1">
+      <td className="py-2 leading-none">
         <div
-          className={classNames('d-inline-flex align-items-center p-0', {
+          className={classNames('inline-flex items-center p-0', {
             'flex': index == 1
           })}
         >
           <div
-            className={`flex bg-${data.color}-subtle rounded-circle flex-center me-3`}
+            className={`flex bg-${data.color}-subtle rounded-full flex-center me-4`}
             style={{ width: '24px', height: '24px' }}
           >
             <FeatherIcon
@@ -79,7 +79,7 @@ const InfoItem = ({
           <p className="font-bold mb-0">{data.title}</p>
         </div>
       </td>
-      <td className="py-2 hidden d-sm-block pe-sm-2">:</td>
+      <td className="py-2 hidden sm:block sm:pe-2">:</td>
       <td className="py-2">
         {data.title === 'Email' ? (
           <a href={`mailto:${data.value}`} className="font-semibold">
@@ -91,8 +91,8 @@ const InfoItem = ({
           </a>
         ) : (
           <p
-            className={classNames('ps-6 ps-sm-0 font-semibold mb-0 py-0 pe-0', {
-              'pb-3 pb-sm-0': index === 0
+            className={classNames('ps-18 sm:ps-0 font-semibold mb-0 py-0 pe-0', {
+              'pb-6 sm:pb-0': index === 0
             })}
           >
             {data.value}

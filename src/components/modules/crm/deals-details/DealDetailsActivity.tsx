@@ -7,13 +7,13 @@ import { Col, Row } from 'react-bootstrap';
 const DealDetailsActivity = ({ activities }: { activities: Activity[] }) => {
   return (
     <>
-      <h2 className="mb-4">Activity</h2>
-      <Row className="align-items-center g-3 justify-content-between">
+      <h2 className="mb-6">Activity</h2>
+      <Row className="items-center g-4 justify-between">
         <Col sm="auto">
           <SearchBox placeholder="Search Activity" />
         </Col>
         <Col xs="auto">
-          <Button variant="phoenix-primary" className="px-6">
+          <Button variant="phoenix-primary" className="px-10">
             Add Activity
           </Button>
         </Col>

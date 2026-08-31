@@ -39,7 +39,7 @@ const CalendarEventModal = () => {
       onHide={handleClose}
       contentClassName="border"
     >
-      <Modal.Header className="ps-card border-bottom border-subtle">
+      <Modal.Header className="ps-card border-b border-subtle">
         <div>
           <Modal.Title className="modal-title text-highlight mb-0">
             {selectedEvent?.title}
@@ -56,7 +56,7 @@ const CalendarEventModal = () => {
       </Modal.Header>
       <Modal.Body className="px-card pb-card pt-1 text-md">
         {selectedEvent?.extendedProps.description && (
-          <div className="mt-3 border-bottom border-subtle pb-3">
+          <div className="mt-4 border-b border-subtle pb-4">
             <h5 className="mb-0 text-muted">Description</h5>
             <p className="mb-0 mt-2">
               {selectedEvent.extendedProps.description
@@ -67,8 +67,8 @@ const CalendarEventModal = () => {
           </div>
         )}
         <div
-          className={classNames('mt-4', {
-            'border-bottom border-subtle pb-3':
+          className={classNames('mt-10', {
+            'border-b border-subtle pb-6':
               selectedEvent?.extendedProps.location
           })}
         >
@@ -85,7 +85,7 @@ const CalendarEventModal = () => {
           </p>
         </div>
         {selectedEvent?.extendedProps.location && (
-          <div className="mt-4 ">
+          <div className="mt-6 ">
             <h5 className="mb-0 text-muted">Location</h5>
             <p
               className="mb-0 mt-2"
@@ -96,7 +96,7 @@ const CalendarEventModal = () => {
           </div>
         )}
         {selectedEvent?.extendedProps.schedules && (
-          <div className="mt-3">
+          <div className="mt-4">
             <h5 className="mb-0 text-muted">Schedule</h5>
             <ul className="list-unstyled timeline mt-2 mb-0">
               {selectedEvent.extendedProps.schedules.map(
@@ -108,7 +108,7 @@ const CalendarEventModal = () => {
           </div>
         )}
       </Modal.Body>
-      <Modal.Footer className="flex justify-content-end px-card pt-0 border-top-0">
+      <Modal.Footer className="flex justify-end px-card pt-0 border-t-0">
         <Button
           as={Link}
           to="/apps/events/create-an-event"

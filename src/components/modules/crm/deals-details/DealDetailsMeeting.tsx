@@ -9,12 +9,12 @@ import { Col, Row } from 'react-bootstrap';
 const DealDetailsMeeting = ({ meetings }: { meetings: Meeting[] }) => {
   return (
     <>
-      <h2 className="mb-4">Meeting</h2>
-      <Row className="align-items-center g-2 flex-wrap mb-3">
+      <h2 className="mb-6">Meeting</h2>
+      <Row className="items-center g-2 flex-wrap mb-4">
         <Col sm="auto">
-          <SearchBox placeholder="Search meeting" className="mb-2 mb-sm-0" />
+          <SearchBox placeholder="Search meeting" className="mb-2 sm:mb-0" />
         </Col>
-        <Col xs="auto" className="flex-md-grow-1">
+        <Col xs="auto" className="md:grow">
           <div className="flex">
             <p className="mb-0 text-md text-subtle font-bold">
               <FontAwesomeIcon
@@ -25,7 +25,7 @@ const DealDetailsMeeting = ({ meetings }: { meetings: Meeting[] }) => {
             </p>
             <Button
               variant="link"
-              className="p-0 ms-3 text-md text-primary font-bold"
+              className="p-0 ms-4 text-md text-primary font-bold"
               startIcon={<FontAwesomeIcon icon={faSort} className="text-sm" />}
             >
               Sorting
@@ -41,7 +41,7 @@ const DealDetailsMeeting = ({ meetings }: { meetings: Meeting[] }) => {
           </Button>
         </Col>
       </Row>
-      <Row className="g-3">
+      <Row className="g-4">
         {meetings.map(meeting => (
           <Col xxl={6} key={meeting.id}>
             <MeetingCard meeting={meeting} />

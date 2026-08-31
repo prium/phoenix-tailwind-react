@@ -22,7 +22,7 @@ const FileManagerTimeline = ({ data }: { data: Activity[] }) => {
     <Timeline variant="basic">
       {data.map((item, index) => (
         <Timeline.Item className="relative" key={index}>
-          <Row className="g-3">
+          <Row className="g-4">
             <Col xs="auto">
               <Timeline.Separator className="relative">
                 <Timeline.Dot className="icon-item-md rounded-7 border border-subtle">
@@ -36,18 +36,18 @@ const FileManagerTimeline = ({ data }: { data: Activity[] }) => {
                 )}
               </Timeline.Separator>
             </Col>
-            <Col className="mb-5">
+            <Col className="mb-8">
               <Timeline.Content>
-                <div className="flex justify-content-between">
-                  <h6 className="lh-sm mb-2 me-2 text-muted timeline-item-title">
+                <div className="flex justify-between">
+                  <h6 className="leading-sm mb-2 me-2 text-muted timeline-item-title">
                     {item.title}
                   </h6>
-                  <p className="text-soft text-md mb-0 text-nowrap timeline-time">
+                  <p className="text-soft text-md mb-0 whitespace-nowrap timeline-time">
                     <FontAwesomeIcon icon={faClock} className="me-1" />{' '}
                     {item.time}
                   </p>
                 </div>
-                <h6 className="text-sm font-normal mb-3">
+                <h6 className="text-sm font-normal mb-4">
                   by{' '}
                   <Link className="font-semibold" to="#!">
                     {item.tasker}

@@ -47,16 +47,16 @@ const ReportsFilterModal = ({ show, onHide }: ReportsFilterModalProps) => {
 
   return (
     <Modal show={show} onHide={onHide} centered>
-      <Modal.Header className="p-4">
-        <h5 className="modal-title text-highlight text-xl lh-sm">Filter</h5>
+      <Modal.Header className="p-6">
+        <h5 className="modal-title text-highlight text-xl leading-sm">Filter</h5>
         <Button className="p-1 text-default ms-auto" onClick={onHide}>
           <FontAwesomeIcon icon={faTimes} className="text-md" />
         </Button>
       </Modal.Header>
-      <Modal.Body className="p-4 pb-3">
+      <Modal.Body className="p-6 pb-4">
         <Form id="addEventForm" autoComplete="off">
-          <Form.Group className="mb-3">
-            <h5 className="mb-2 lh-lg">Account Name</h5>
+          <Form.Group className="mb-4">
+            <h5 className="mb-2 leading-lg">Account Name</h5>
             <Form.Select
               value={formData.accountName}
               onChange={e => handleFilter('accountName', e.target.value)}
@@ -69,8 +69,8 @@ const ReportsFilterModal = ({ show, onHide }: ReportsFilterModalProps) => {
               ))}
             </Form.Select>
           </Form.Group>
-          <Form.Group className="mb-3">
-            <h5 className="mb-2 lh-lg">Stage</h5>
+          <Form.Group className="mb-4">
+            <h5 className="mb-2 leading-lg">Stage</h5>
             <Form.Select
               value={formData.stage}
               onChange={e => handleFilter('stage', e.target.value)}
@@ -85,11 +85,11 @@ const ReportsFilterModal = ({ show, onHide }: ReportsFilterModalProps) => {
           </Form.Group>
         </Form>
       </Modal.Body>
-      <Modal.Footer className="border-0 p-4">
+      <Modal.Footer className="border-0 p-6">
         <Button
           variant="phoenix-primary"
           size="sm"
-          className="text-sm px-4"
+          className="text-sm px-6"
           startIcon={<FontAwesomeIcon icon={faArrowsRotate} className="me-2" />}
           onClick={handleReset}
         >
@@ -98,7 +98,7 @@ const ReportsFilterModal = ({ show, onHide }: ReportsFilterModalProps) => {
         <Button
           variant="primary"
           size="sm"
-          className="px-9 text-sm"
+          className="px-16 text-sm"
           onClick={onHide}
         >
           Done

@@ -9,15 +9,15 @@ import AddressInformation from 'components/forms/AddressInformation';
 
 const AddContact = () => {
   return (
-    <div className="mb-9">
+    <div className="mb-16">
       <PageBreadcrumb items={defaultBreadcrumbItems} />
-      <div className="border-bottom border-subtle mb-7 mx-n3 px-2 mx-lg-n6 px-lg-6">
+      <div className="border-b border-subtle mb-12 -mx-4 px-2 lg:-mx-10 lg:px-10">
         <Row>
           <Col xl={9}>
-            <div className="d-sm-flex justify-content-between">
-              <h2 className="mb-4">Create a new lead</h2>
-              <div className="flex mb-3">
-                <Button variant="phoenix-primary" className="me-2 px-6">
+            <div className="sm:flex justify-between">
+              <h2 className="mb-6">Create a new lead</h2>
+              <div className="flex mb-4">
+                <Button variant="phoenix-primary" className="me-2 px-10">
                   Cancel
                 </Button>
                 <Button variant="primary">Create lead</Button>
@@ -28,13 +28,13 @@ const AddContact = () => {
       </div>
       <Row>
         <Col xl={9}>
-          <div className="flex align-items-end relative mb-7">
+          <div className="flex items-end relative mb-12">
             <AvatarUpload src={avatar} size="5xl" />
           </div>
           <Form>
-            <LeadInformationForm className="mb-6" />
-            <AddressInformation className="mb-6" />
-            <h4 className="mb-3">Description</h4>
+            <LeadInformationForm className="mb-10" />
+            <AddressInformation className="mb-10" />
+            <h4 className="mb-4">Description</h4>
             <FloatingLabel
               controlId="lead-description"
               label="Lead description"
@@ -47,7 +47,7 @@ const AddContact = () => {
               />
             </FloatingLabel>
             <div className="text-end">
-              <Button variant="primary" className="mt-6">
+              <Button variant="primary" className="mt-10">
                 Create lead
               </Button>
             </div>

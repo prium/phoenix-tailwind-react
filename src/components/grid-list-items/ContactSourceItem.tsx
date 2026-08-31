@@ -19,10 +19,10 @@ const ContactSourceItem = ({
     <div
       className={classNames(
         className,
-        'flex flex-column flex-center align-items-sm-start flex-md-row justify-content-md-between flex-xxl-column p-3 ps-sm-3 ps-md-4 p-md-3 h-100'
+        'flex flex-col flex-center sm:items-start md:flex-row md:justify-between 2xl:flex-col p-6 sm:ps-4 md:ps-6 md:p-4 h-full'
       )}
     >
-      <div className="flex align-items-center mb-1">
+      <div className="flex items-center mb-1">
         <FontAwesomeIcon
           icon={faSquare}
           className={`text-xs me-2 text-${color}`}
@@ -30,7 +30,7 @@ const ContactSourceItem = ({
         />
         <span className="mb-0 text-md text-default">{label}</span>
       </div>
-      <h3 className="font-semibold ms-xl-3 ms-xxl-0 pe-md-2 pe-xxl-0 mb-0 mb-sm-3">
+      <h3 className="font-semibold xl:ms-4 2xl:ms-0 md:pe-2 2xl:pe-0 mb-0 sm:mb-4">
         {value}
       </h3>
     </div>

@@ -19,11 +19,11 @@ const ReportTopSection = () => {
     setGlobalFilter(e.target.value || undefined);
   };
   return (
-    <Row className="g-3 justify-content-between mb-4">
+    <Row className="g-4 justify-between mb-6">
       <Col xs="auto">
         <Button
           variant="primary"
-          className="me-4"
+          className="me-6"
           startIcon={<FontAwesomeIcon icon={faPlus} className="me-2" />}
         >
           Create Report
@@ -47,7 +47,7 @@ const ReportTopSection = () => {
           />
           <Button
             variant="phoenix-secondary"
-            className="px-3"
+            className="px-4"
             onClick={() => setOpenFilterModal(true)}
           >
             <FontAwesomeIcon

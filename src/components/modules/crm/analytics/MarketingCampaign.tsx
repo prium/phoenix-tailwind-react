@@ -7,10 +7,10 @@ import { Col, Form, Row } from 'react-bootstrap';
 const MarketingCampaign = () => {
   return (
     <>
-      <Row className="align-itms-center mb-5 mb-sm-2 mb-md-4">
-        <Col sm={8} md={12} lg={8} xl={12} xxl={8} className="mb-xl-2 mb-xxl-0">
+      <Row className="align-itms-center mb-8 sm:mb-2 md:mb-6">
+        <Col sm={8} md={12} lg={8} xl={12} xxl={8} className="xl:mb-2 2xl:mb-0">
           <h3>Marketing Campaign Report</h3>
-          <p className="text-subtle mb-lg-0">
+          <p className="text-subtle lg:mb-0">
             According to the sales data.
           </p>
         </Col>
@@ -22,7 +22,7 @@ const MarketingCampaign = () => {
           </Form.Select>
         </Col>
       </Row>
-      <Row className="g-3 align-items-center">
+      <Row className="g-4 items-center">
         <Col sm={8} md={12} lg={8} xl={12} xxl={8}>
           <MarketingCampaignChart style={{ height: '320px', width: '100%' }} />
         </Col>
@@ -34,15 +34,15 @@ const MarketingCampaign = () => {
           xxl={4}
           className="flex justify-content-end-xxl mt-0"
         >
-          <div className="flex flex-1 justify-content-center d-sm-block d-md-flex d-lg-block d-xl-flex d-xxl-block">
-            <div className="mb-4 me-6 me-sm-0 me-md-6 me-lg-0 me-xl-6 me-xxl-0">
-              <div className="flex align-items-center mb-2">
+          <div className="flex flex-1 justify-center sm:block md:flex lg:block xl:flex 2xl:block">
+            <div className="mb-6 me-10 sm:me-0 md:me-10 lg:me-0 xl:me-10 2xl:me-0">
+              <div className="flex items-center mb-2">
                 <h4 className="mb-0">15,000</h4>
                 <Badge variant="phoenix" bg="primary" className="ms-2">
                   +30.63%
                 </Badge>
               </div>
-              <div className="flex align-items-center">
+              <div className="flex items-center">
                 <FontAwesomeIcon
                   icon={faCircle}
                   className="text-warning-light me-2"
@@ -51,13 +51,13 @@ const MarketingCampaign = () => {
               </div>
             </div>
             <div>
-              <div className="flex align-items-center mb-2">
+              <div className="flex items-center mb-2">
                 <h4 className="mb-0">5,000</h4>
                 <Badge variant="phoenix" bg="danger" className="ms-2">
                   +13.52%
                 </Badge>
               </div>
-              <div className="flex align-items-center">
+              <div className="flex items-center">
                 <FontAwesomeIcon
                   icon={faCircle}
                   className="text-primary-light me-2"

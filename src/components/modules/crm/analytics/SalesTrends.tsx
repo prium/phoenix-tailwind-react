@@ -6,7 +6,7 @@ import { Col, Row } from 'react-bootstrap';
 const SalesTrends = () => {
   return (
     <>
-      <Row className="justify-content-between mb-4">
+      <Row className="justify-between mb-6">
         <Col xs={12}>
           <h3>Sales Trends</h3>
           <p className="text-subtle">
@@ -16,14 +16,14 @@ const SalesTrends = () => {
         <Col xs={12} className="flex">
           <div className="flex">
             <FontAwesomeIcon icon={faCircle} className="text-info-light me-2" />
-            <h6 className="mb-0 me-3 lh-base">Profit</h6>
+            <h6 className="mb-0 me-4 leading-base">Profit</h6>
           </div>
           <div className="flex">
             <FontAwesomeIcon
               icon={faCircle}
               className="text-primary-lighter me-2"
             />
-            <h6 className="mb-0 me-3 lh-base">Revenue</h6>
+            <h6 className="mb-0 me-4 leading-base">Revenue</h6>
           </div>
         </Col>
       </Row>

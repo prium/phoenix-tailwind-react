@@ -4,10 +4,10 @@ import { Col, Form, Row } from 'react-bootstrap';
 const AdClicks = () => {
   return (
     <div>
-      <Row className="align-items-start justify-content-between mb-4 g-3">
+      <Row className="items-start justify-between mb-6 g-4">
         <Col xs="auto">
           <h3>Ad Clicks</h3>
-          <p className="text-subtle lh-sm mb-0">
+          <p className="text-subtle leading-sm mb-0">
             Check effectiveness of your ads
           </p>
         </Col>

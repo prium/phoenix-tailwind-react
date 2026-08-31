@@ -10,13 +10,13 @@ const DealDetailsTimeline = ({ activities }: { activities: Activity[] }) => {
       {activities.map((activity, index) => (
         <div
           key={activity.id}
-          className={classNames('border-bottom border-subtle py-4', {
-            'pb-0 border-bottom-0': index === activities.length - 1
+          className={classNames('border-b border-subtle py-10', {
+            'pb-0 border-b-0': index === activities.length - 1
           })}
         >
           <div className="flex">
             <div
-              className={`flex bg-${activity.variant}-subtle rounded-circle flex-center me-3`}
+              className={`flex bg-${activity.variant}-subtle rounded-full flex-center me-4`}
               style={{ width: '25px', height: '25px' }}
             >
               <FontAwesomeIcon
@@ -25,9 +25,9 @@ const DealDetailsTimeline = ({ activities }: { activities: Activity[] }) => {
               />
             </div>
             <div className="flex-1">
-              <div className="flex justify-content-between flex-column flex-xl-row mb-2 mb-sm-0">
+              <div className="flex justify-between flex-col xl:flex-row mb-2 sm:mb-0">
                 <div className="flex-1 me-2">
-                  <h5 className="text-highlight lh-sm">
+                  <h5 className="text-highlight leading-sm">
                     {activity.title}
                   </h5>
                   <p className="text-md mb-0">
