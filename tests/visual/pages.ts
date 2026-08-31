@@ -69,15 +69,13 @@ export const pages: VisualPage[] = [
     widths: [768]
   },
   // data-only: the Projects table has 7 demo projects (gold 6) and different
-  // assignee images; gold's `.avatar-group .avatar-xs` has no width, so the
-  // avatars (and row heights) are driven by each image's natural size
+  // assignee images
   {
     name: 'dashboard-project-management',
     react: '/dashboard/project-management',
     gold: '/dashboard/project-management.html',
     dark: true,
-    widths: [768],
-    tolerance: 0.02
+    widths: [768]
   },
   {
     name: 'pm-todo-list',
@@ -190,14 +188,13 @@ export const pages: VisualPage[] = [
     tolerance: 0.02
   },
   // data-only: demo project names/dates/budgets differ and React has 7 demo
-  // projects vs the gold's 6 (one extra card in row 2). Avatar sizes depend on
-  // assignee count (`.avatar` width is auto inside the fixed-width group), so
-  // assigness counts in data/project-management/projects.ts mirror the gold.
+  // projects vs the gold 6 (one extra card in row 2); assignee counts in
+  // data/project-management/projects.ts mirror the gold
   {
     name: 'pm-card-view',
     react: '/apps/project-management/project-card-view',
     gold: '/apps/project-management/project-card-view.html',
-    tolerance: 0.05
+    tolerance: 0.02
   },
   // data-only: demo project names / status badges differ
   {

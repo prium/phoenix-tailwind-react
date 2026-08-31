@@ -1,5 +1,11 @@
 @utility avatar {
   @layer base {
+    /* default the phoenix group sizing vars to the core box size so
+       .avatar-group avatars keep a fixed size for every avatar-* size
+       (undefined vars collapsed w/h to auto and let the image's intrinsic
+       size drive the layout) */
+    --avatar-width: var(--avatar-size);
+    --avatar-height: var(--avatar-size);
     --avatar-font-weight: var(--font-weight-extrabold);
     --avatar-color: var(--color-primary-dark);
     --avatar-bg: var(--color-primary-subtle);
