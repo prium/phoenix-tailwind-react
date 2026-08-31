@@ -11,3 +11,7 @@ Also patched in the phoenix-tailwind working tree (pug, not css):
 dashboard/travel-agency.pug FinancialActivities margins mt-8/mb-8 -> mt-14/mb-14
 (the original Phoenix Bootstrap spacer 8 = 3.5rem; the literal Tailwind mb-8 =
 2rem lost the gap below the chart). Commit it upstream with the avatar fix.
+
+Third working-tree patch upstream: financial-activities-chart.js tooltip now
+Math.abs()es the diverging revenue/expanses values (bundle rebuilt via gulp
+script) — the raw negatives leaked into the tooltip on both sides.

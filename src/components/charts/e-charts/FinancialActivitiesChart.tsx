@@ -49,11 +49,22 @@ const FinancialActivitiesChart = ({
         axisPointer: {
           type: 'none'
         },
+        // revenue/expanses are plotted negative for the diverging layout;
+        // show absolute values like the axis labels
         formatter: (params: CallbackDataParams[]) =>
-          tooltipFormatterDefault(params, 'MMM DD', 'color')
+          tooltipFormatterDefault(
+            params.map(el => ({
+              ...el,
+              value: Math.abs(
+                (Array.isArray(el.value) ? el.value[1] : el.value) as number
+              )
+            })),
+            'MMM DD',
+            'color'
+          )
       },
       legend: {
-        data: ['Profit', 'Revenue', 'Expenses'],
+        data: ['Profit', 'Revenue', 'Expanses'], // gold copy really says Expanses
         show: false
       },
 
@@ -137,7 +148,7 @@ const FinancialActivitiesChart = ({
           data: chartData.revenue
         },
         {
-          name: 'Expenses',
+          name: 'Expanses',
           type: 'bar',
           barWidth: 8,
           emphasis: {

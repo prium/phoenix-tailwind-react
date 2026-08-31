@@ -23,7 +23,7 @@ const legendItems = [
 const legendSeriesName: Record<string, string> = {
   profit: 'Profit',
   revenue: 'Revenue',
-  expanses: 'Expenses'
+  expanses: 'Expanses'
 };
 
 export const FinancialActivities = ({ className }: { className?: string }) => {
