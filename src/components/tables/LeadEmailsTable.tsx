@@ -4,7 +4,7 @@ import { ColumnDef } from '@tanstack/react-table';
 import AdvanceTable from 'components/base/AdvanceTable';
 import AdvanceTableFooter from 'components/base/AdvanceTableFooter';
 import Badge, { BadgeBg } from 'components/base/Badge';
-import { buildSelectionColumn } from 'components/tables/LeadsTable';
+import { buildSelectionColumn } from 'hooks/useAdvanceTable';
 import { LeadEmail } from 'data/crm/leadsData';
 import { Link } from 'react-router';
 

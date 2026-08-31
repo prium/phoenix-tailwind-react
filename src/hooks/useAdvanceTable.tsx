@@ -29,6 +29,46 @@ interface UseAdvanceTableProps<T> {
   pageCount?: number;
 }
 
+/**
+ * Bulk-select column with the exact gold `th`/`td` classes. Use this when the
+ * gold table defines its own selection column widths; `selection: true` on the
+ * hook keeps the legacy 30px variant below.
+ */
+export const buildSelectionColumn = <T,>({
+  headerClassName,
+  cellClassName,
+  checkboxClassName = 'text-base'
+}: {
+  headerClassName: string;
+  cellClassName: string;
+  /** classes for the header `.form-check` wrapper */
+  checkboxClassName?: string;
+}): ColumnDef<T> => ({
+  id: 'select',
+  enableSorting: false,
+  header: ({ table }) => (
+    <IndeterminateCheckbox
+      className={checkboxClassName}
+      checked={table.getIsAllRowsSelected()}
+      indeterminate={table.getIsSomeRowsSelected()}
+      onChange={table.getToggleAllRowsSelectedHandler()}
+    />
+  ),
+  cell: ({ row }) => (
+    <IndeterminateCheckbox
+      className="text-base"
+      checked={row.getIsSelected()}
+      disabled={!row.getCanSelect()}
+      indeterminate={row.getIsSomeSelected()}
+      onChange={row.getToggleSelectedHandler()}
+    />
+  ),
+  meta: {
+    headerProps: { className: headerClassName },
+    cellProps: { className: cellClassName }
+  }
+});
+
 const getSelectionColumn = ({
   headerClassName,
   cellClassName

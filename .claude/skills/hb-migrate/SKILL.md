@@ -26,6 +26,21 @@ reference — copy its patterns.
 | Visual regression | `tests/visual/` (`pages.ts` list, `compare.ts` masks/tolerance, `visual.spec.ts`), `playwright.config.ts` starts both servers; `tools/verify/{shot,probe}.mjs` for ad-hoc checks |
 | Finished examples | `src/components/base/{Button,Badge,Avatar,AdvanceTable,AdvanceTableFooter,IndeterminateCheckbox,RevealDropdown,Swiper,Timeline,Dropzone}.tsx`, `src/components/tables/{ProductsTable,OrdersTable}.tsx`, `src/components/navbars/ecommerce/*`, `src/layouts/MainLayout.tsx` |
 
+## Component policy
+
+Use `@hummingbirdui/react` components wherever their DOM matches the gold
+(Card, Row/Col, Dropdown, Dialog, Drawer, Input, Select, Textarea, Table,
+Collapsible, Tooltip, Pagination-free contexts…). When HB's DOM diverges from
+the gold (Checkbox halo wrapper, Avatar), or the gold uses plugin/JS-driven
+markup (list.js pagination, flatpickr, choices), **never inline raw HTML
+repeatedly across pages** — create or extend a named component under
+`components/base|common` that emits the gold markup with a stable prop API,
+and use that everywhere. Existing wrappers: `IndeterminateCheckbox`,
+`CheckboxItem`, `CheckButton`, `Avatar`/`AvatarDropdown`, `Unicon` (`lineBox`
+for the gold `span.uil` 1lh box), `buildSelectionColumn` (hooks/useAdvanceTable),
+`AdvanceTableFooter` (gold list.js pagination), `DatePicker`, `ReactSelect`.
+Check for one of these before writing gold markup by hand.
+
 **Never guess a class from Bootstrap memory.** Bootstrap `mb-4` ≠ Tailwind `mb-4`.
 Open the pug mixin and copy its class string.
 

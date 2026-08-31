@@ -3,7 +3,7 @@ import AdvanceTable from 'components/base/AdvanceTable';
 import { Link } from 'react-router';
 import FeatherIcon from 'feather-icons-react';
 import AdvanceTableFooter from 'components/base/AdvanceTableFooter';
-import IndeterminateCheckbox from 'components/base/IndeterminateCheckbox';
+import { buildSelectionColumn } from 'hooks/useAdvanceTable';
 import RevealDropdown, {
   RevealDropdownTrigger
 } from 'components/base/RevealDropdown';
@@ -12,38 +12,11 @@ import { DealsReport } from 'data/crm/reportsData';
 import { CSSProperties } from 'react';
 import { cn } from '@hummingbirdui/react';
 
-/**
- * `+PurchasersSellersTable` in ../phoenix-tailwind/src/pug/mixins/crm/ReportsDetails.pug.
- * The checkbox column mirrors the gold `th.max-w-5.w-4.5` / `.form-check.py-1`
- * markup, so it is defined here instead of `useAdvanceTable`'s selection column.
- */
-const selectColumn: ColumnDef<DealsReport> = {
-  id: 'select',
-  header: ({ table }) => (
-    <IndeterminateCheckbox
-      className="text-base py-1"
-      checked={table.getIsAllRowsSelected()}
-      indeterminate={table.getIsSomeRowsSelected()}
-      onChange={table.getToggleAllRowsSelectedHandler()}
-    />
-  ),
-  cell: ({ row }) => (
-    <IndeterminateCheckbox
-      className="text-base"
-      checked={row.getIsSelected()}
-      disabled={!row.getCanSelect()}
-      indeterminate={row.getIsSomeSelected()}
-      onChange={row.getToggleSelectedHandler()}
-    />
-  ),
-  enableSorting: false,
-  meta: {
-    headerProps: {
-      className: 'max-w-5 w-4.5 whitespace-nowrap text-md ps-0'
-    },
-    cellProps: { className: 'text-md py-0' }
-  }
-};
+const selectColumn: ColumnDef<DealsReport> = buildSelectionColumn<DealsReport>({
+  headerClassName: 'max-w-5 w-4.5 whitespace-nowrap text-md ps-0',
+  cellClassName: 'text-md py-0',
+  checkboxClassName: 'text-base py-1'
+});
 
 export const dealsReportColumns: ColumnDef<DealsReport>[] = [
   {

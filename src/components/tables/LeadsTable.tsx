@@ -3,7 +3,7 @@ import AdvanceTable from 'components/base/AdvanceTable';
 import AdvanceTableFooter from 'components/base/AdvanceTableFooter';
 import Avatar from 'components/base/Avatar';
 import Badge from 'components/base/Badge';
-import IndeterminateCheckbox from 'components/base/IndeterminateCheckbox';
+import { buildSelectionColumn } from 'hooks/useAdvanceTable';
 import RevealDropdown, {
   RevealDropdownTrigger
 } from 'components/base/RevealDropdown';
@@ -11,46 +11,6 @@ import ActionDropdownItems from 'components/common/ActionDropdownItems';
 import { LeadDataType } from 'data/crm/leadsTableData';
 import { Link } from 'react-router';
 import FeatherIcon from 'feather-icons-react';
-
-/**
- * Bulk-select column with the exact gold `th`/`td` classes (the hook's
- * built-in selection column pins a 30px inline width that the CRM gold
- * tables don't have).
- */
-export const buildSelectionColumn = <T,>({
-  headerClassName,
-  cellClassName,
-  checkboxClassName = 'text-base'
-}: {
-  headerClassName: string;
-  cellClassName: string;
-  /** classes for the header `.form-check` wrapper */
-  checkboxClassName?: string;
-}): ColumnDef<T> => ({
-  id: 'select',
-  enableSorting: false,
-  header: ({ table }) => (
-    <IndeterminateCheckbox
-      className={checkboxClassName}
-      checked={table.getIsAllRowsSelected()}
-      indeterminate={table.getIsSomeRowsSelected()}
-      onChange={table.getToggleAllRowsSelectedHandler()}
-    />
-  ),
-  cell: ({ row }) => (
-    <IndeterminateCheckbox
-      className="text-base"
-      checked={row.getIsSelected()}
-      disabled={!row.getCanSelect()}
-      indeterminate={row.getIsSomeSelected()}
-      onChange={row.getToggleSelectedHandler()}
-    />
-  ),
-  meta: {
-    headerProps: { className: headerClassName },
-    cellProps: { className: cellClassName }
-  }
-});
 
 /** `+LealsTable` header icon boxes in mixins/crm/LeadsTable.pug */
 const HeaderIconLabel = ({

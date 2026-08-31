@@ -4,6 +4,7 @@ import {
   faSquarePhone
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Unicon from 'components/base/Unicon';
 import { Deal, dealAgents } from 'data/crm/deals';
 import { cn } from '@hummingbirdui/react';
 import FeatherIcon from 'feather-icons-react';
@@ -110,18 +111,25 @@ const DealCard = ({ deal, columnId, cursor }: DealCardProps) => {
           </div>
           <div className="deals-company-agent flex items-center justify-between">
             <div className="flex items-center">
-              {/* h-lh mimics the 23.84px (1lh) line box of the gold `span.uil` font icon */}
-              <span className="me-2 inline-flex items-center h-lh">
-                <UilUser fill="currentColor" size={16} />
-              </span>
+              <Unicon
+                icon={UilUser}
+                lineBox
+                wrapperClassName="me-2"
+                fill="currentColor"
+                size={16}
+              />
               <p className="text-muted font-bold text-md mb-0">
                 {deal.company}
               </p>
             </div>
             <div className="flex items-center">
-              <span className="me-2 inline-flex items-center h-lh">
-                <UilHeadphones fill="currentColor" size={16} />
-              </span>
+              <Unicon
+                icon={UilHeadphones}
+                lineBox
+                wrapperClassName="me-2"
+                fill="currentColor"
+                size={16}
+              />
               <p className="text-muted font-bold text-md mb-0">{deal.agent}</p>
             </div>
           </div>

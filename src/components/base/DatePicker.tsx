@@ -1,4 +1,5 @@
 import Flatpickr, { DateTimePickerProps } from 'react-flatpickr';
+import Unicon from 'components/base/Unicon';
 import { UilCalendarAlt } from '@iconscout/react-unicons';
 import { ReactElement } from 'react';
 import { cn } from '@hummingbirdui/react';
@@ -50,11 +51,14 @@ const DatePicker = ({
         <>{icon}</>
       ) : (
         !hideIcon && (
-          /* the skin centers .flatpickr-icon for the gold glyph's 1lh line box
-             (translateY(-12px)); give the 16px svg the same box */
-          <span className="flatpickr-icon text-subtle flex h-[1lh] items-center">
-            <UilCalendarAlt fill="currentColor" size={16} />
-          </span>
+          /* the skin centers .flatpickr-icon for the gold glyph's 1lh box */
+          <Unicon
+            icon={UilCalendarAlt}
+            lineBox
+            wrapperClassName="flatpickr-icon text-subtle"
+            fill="currentColor"
+            size={16}
+          />
         )
       )}
     </div>

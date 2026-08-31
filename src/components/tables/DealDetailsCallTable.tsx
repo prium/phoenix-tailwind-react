@@ -9,7 +9,7 @@ import RevealDropdown, {
   RevealDropdownTrigger
 } from 'components/base/RevealDropdown';
 import ActionDropdownItems from 'components/common/ActionDropdownItems';
-import { buildSelectionColumn } from 'components/tables/LeadsTable';
+import { buildSelectionColumn } from 'hooks/useAdvanceTable';
 import { CallTableDataType, callTableData } from 'data/crm/dealDetailsData';
 import useAdvanceTable from 'hooks/useAdvanceTable';
 import AdvanceTableProvider from 'providers/AdvanceTableProvider';

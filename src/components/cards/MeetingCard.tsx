@@ -1,4 +1,5 @@
 import { faCircle, faVideo } from '@fortawesome/free-solid-svg-icons';
+import Unicon from 'components/base/Unicon';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { UilCalendarAlt } from '@iconscout/react-unicons';
 import Avatar from 'components/base/Avatar';
@@ -14,10 +15,13 @@ const MeetingCard = ({ meeting }: { meeting: Meeting }) => {
           <div className="mb-4 sm:mb-0">
             <h4 className="line-clamp-1 mb-2 sm:mb-1">{meeting.title}</h4>
             <div>
-              {/* h-lh keeps the gold `span.uil` font-icon line box */}
-              <span className="text-primary me-2 inline-flex items-center align-top h-lh">
-                <UilCalendarAlt fill="currentColor" size={16} />
-              </span>
+              <Unicon
+                icon={UilCalendarAlt}
+                lineBox
+                wrapperClassName="text-primary me-2 align-top"
+                fill="currentColor"
+                size={16}
+              />
               <span className="font-semibold text-muted text-md">
                 {meeting.date.from}
               </span>

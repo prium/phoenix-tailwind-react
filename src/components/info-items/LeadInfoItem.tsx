@@ -21,10 +21,13 @@ const LeadInfoItem = ({
   return (
     <div className={cn(className)}>
       <div className="flex items-center mb-1">
-        {/* the gold glyph is a font icon with a 1lh line box — give the svg the same */}
-        <span className="me-2 flex h-[1lh] items-center">
-          <Unicon icon={icon} fill="currentColor" size={16} />
-        </span>
+        <Unicon
+          icon={icon}
+          lineBox
+          wrapperClassName="me-2"
+          fill="currentColor"
+          size={16}
+        />
         <h5 className="text-highlight mb-0">{label}</h5>
       </div>
       {value && <p className="mb-0 text-muted">{value}</p>}
