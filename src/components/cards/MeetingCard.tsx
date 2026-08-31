@@ -2,30 +2,26 @@ import { faCircle, faVideo } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { UilCalendarAlt } from '@iconscout/react-unicons';
 import Avatar from 'components/base/Avatar';
-import Badge from 'components/base/Badge';
 import Button from 'components/base/Button';
 import { Meeting } from 'data/crm/dealDetailsData';
-import React from 'react';
-import { Card } from 'react-bootstrap';
 
+/** `+Meeting(data)` in mixins/crm/DealDetails.pug */
 const MeetingCard = ({ meeting }: { meeting: Meeting }) => {
   return (
-    <Card>
-      <Card.Body>
+    <div className="card h-full">
+      <div className="card-body">
         <div className="flex justify-between items-start flex-wrap mb-6 gap-2">
           <div className="mb-4 sm:mb-0">
             <h4 className="line-clamp-1 mb-2 sm:mb-1">{meeting.title}</h4>
             <div>
-              <UilCalendarAlt
-                fill="currentColor"
-                className="text-primary me-2"
-                width={16}
-                height={16}
-              />
+              {/* h-lh keeps the gold `span.uil` font-icon line box */}
+              <span className="text-primary me-2 inline-flex items-center align-top h-lh">
+                <UilCalendarAlt fill="currentColor" size={16} />
+              </span>
               <span className="font-semibold text-muted text-md">
                 {meeting.date.from}
               </span>
-              <span className="text-body-teritary text-opacity-85"> to </span>
+              <span className="text-subtle/85"> to </span>
               <span className="font-semibold text-muted text-md">
                 {meeting.date.to}
               </span>
@@ -34,25 +30,31 @@ const MeetingCard = ({ meeting }: { meeting: Meeting }) => {
               </span>
             </div>
           </div>
-          <Avatar.Group total={meeting.assigness.length} size="s">
-            {meeting.assigness.slice(0, 4).map(assigne => (
-              <Avatar key={assigne} size="s" src={assigne} />
+          <div className="avatar-group avatar-group-dense">
+            {meeting.name && (
+              <Avatar size="s" variant="name">
+                {meeting.name}
+              </Avatar>
+            )}
+            {meeting.assignees.map(assignee => (
+              <Avatar key={assignee} size="s" src={assignee} />
             ))}
-          </Avatar.Group>
+            {meeting.more && (
+              <Avatar size="s" variant="name">
+                {meeting.more}
+              </Avatar>
+            )}
+          </div>
         </div>
         <div className="flex items-center">
-          <Badge
-            variant={meeting.badge.variant}
-            bg={meeting.badge.bg}
-            className="me-2"
-          >
+          <span className={`badge me-2 ${meeting.badge.className}`}>
             {meeting.badge.text}
-          </Badge>
+          </span>
           <div className="flex items-center flex-1">
             <FontAwesomeIcon
               icon={faCircle}
               transform="shrink-6 up-1"
-              className={`text-${meeting.priority.color} me-1`}
+              className={`me-1 ${meeting.priority.iconClass}`}
             />
             <span className="font-bold text-md text-default">
               {meeting.priority.label}
@@ -70,8 +72,8 @@ const MeetingCard = ({ meeting }: { meeting: Meeting }) => {
             Join
           </Button>
         </div>
-      </Card.Body>
-    </Card>
+      </div>
+    </div>
   );
 };
 

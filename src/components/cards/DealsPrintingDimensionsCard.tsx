@@ -1,5 +1,4 @@
-import classNames from 'classnames';
-import { Card, Col, Row } from 'react-bootstrap';
+import { Card, cn } from '@hummingbirdui/react';
 import FeatherIcon from 'feather-icons-react';
 import { Stat } from 'data/crm/dealDetailsInfo';
 
@@ -8,6 +7,7 @@ interface DimensionsCardProps {
   className?: string;
 }
 
+/** `+PrintingDimensions` in mixins/crm/DealDetails.pug */
 const DealsPrintingDimensionsCard = ({
   stats,
   className
@@ -15,32 +15,32 @@ const DealsPrintingDimensionsCard = ({
   return (
     <Card className={className}>
       <Card.Body>
-        <Row className="g-6 xl:g-1 2xl:g-4 justify-between">
+        <div className="row g-6 xl:g-1 2xl:g-4 items-center justify-between">
           {stats.map((stat, index) => (
-            <Col key={stat.id} sm="auto">
+            <div key={stat.id} className="sm:col-auto">
               <div
-                className={classNames(
+                className={cn(
                   'sm:block inline-flex md:flex xl:flex-col 2xl:flex-row items-center xl:items-start 2xl:items-center',
-                  { 'sm:border-s border-subtle sm:ps-8': index !== 0 }
+                  { 'sm:border-s sm:ps-8 border-subtle': index !== 0 }
                 )}
               >
                 <div
-                  className={`flex bg-${stat.color}-subtle rounded-md flex-center me-4 sm:mb-4 md:mb-0 xl:mb-4 2xl:mb-0`}
-                  style={{ width: '32px', height: '32px' }}
+                  className={`size-8 flex ${stat.bgClass} rounded-md flex-center me-4 sm:mb-4 md:mb-0 xl:mb-4 2xl:mb-0`}
                 >
                   <FeatherIcon
                     icon={stat.icon}
-                    className={`text-${stat.color}-dark`}
+                    size={16}
+                    className={`size-6 ${stat.textClass}`}
                   />
                 </div>
                 <div>
                   <p className="font-bold mb-1">{stat.title}</p>
-                  <h4 className="font-black whitespace-nowrap">{stat.value}</h4>
+                  <h4 className="font-extrabold text-nowrap">{stat.value}</h4>
                 </div>
               </div>
-            </Col>
+            </div>
           ))}
-        </Row>
+        </div>
       </Card.Body>
     </Card>
   );

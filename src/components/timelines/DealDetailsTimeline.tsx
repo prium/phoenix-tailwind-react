@@ -1,27 +1,27 @@
-import { faCalendarDays } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarDays } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
 import { Activity } from 'data/crm/dealDetailsData';
-import { Link } from 'react-router';
 
+/** `+Activity(data, isLast)` in mixins/crm/DealDetails.pug */
 const DealDetailsTimeline = ({ activities }: { activities: Activity[] }) => {
   return (
     <>
       {activities.map((activity, index) => (
         <div
           key={activity.id}
-          className={classNames('border-b border-subtle py-10', {
-            'pb-0 border-b-0': index === activities.length - 1
-          })}
+          className={
+            index === activities.length - 1
+              ? 'pt-6'
+              : 'border-b border-subtle py-6'
+          }
         >
           <div className="flex">
             <div
-              className={`flex bg-${activity.variant}-subtle rounded-full flex-center me-4`}
-              style={{ width: '25px', height: '25px' }}
+              className={`flex rounded-full flex-center me-4 size-6.25 ${activity.iconBg}`}
             >
               <FontAwesomeIcon
                 icon={activity.icon}
-                className={`text-${activity.variant}-dark text-md`}
+                className={`${activity.iconColor} text-md`}
               />
             </div>
             <div className="flex-1">
@@ -31,7 +31,10 @@ const DealDetailsTimeline = ({ activities }: { activities: Activity[] }) => {
                     {activity.title}
                   </h5>
                   <p className="text-md mb-0">
-                    by <Link to="#!">{activity.name}</Link>
+                    by
+                    <a href="#!" className="ms-1">
+                      {activity.name}
+                    </a>
                   </p>
                 </div>
                 <div className="text-md">

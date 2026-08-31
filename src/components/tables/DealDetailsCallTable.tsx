@@ -1,7 +1,7 @@
 import { faClock } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ColumnDef } from '@tanstack/react-table';
-import classNames from 'classnames';
+import { cn } from '@hummingbirdui/react';
 import AdvanceTable from 'components/base/AdvanceTable';
 import AdvanceTableFooter from 'components/base/AdvanceTableFooter';
 import Avatar from 'components/base/Avatar';
@@ -9,14 +9,20 @@ import RevealDropdown, {
   RevealDropdownTrigger
 } from 'components/base/RevealDropdown';
 import ActionDropdownItems from 'components/common/ActionDropdownItems';
+import { buildSelectionColumn } from 'components/tables/LeadsTable';
 import { CallTableDataType, callTableData } from 'data/crm/dealDetailsData';
 import useAdvanceTable from 'hooks/useAdvanceTable';
 import AdvanceTableProvider from 'providers/AdvanceTableProvider';
-import React from 'react';
-import { Link } from 'react-router';
 
+/** `+CallTable` (`#leadDetailsTable`) in mixins/crm/DealDetails.pug */
 const columns: ColumnDef<CallTableDataType>[] = [
+  buildSelectionColumn<CallTableDataType>({
+    headerClassName: 'w-6.5 whitespace-nowrap text-md align-middle ps-0',
+    cellClassName: 'text-md align-middle px-0 py-5',
+    checkboxClassName: 'text-base py-1'
+  }),
   {
+    id: 'name',
     accessorKey: 'user.name',
     header: 'Name',
     cell: ({ row: { original } }) => {
@@ -24,100 +30,103 @@ const columns: ColumnDef<CallTableDataType>[] = [
         user: { name, avatar, status }
       } = original;
       return (
-        <Link
-          to="/pages/members"
-          className="flex items-center text-highlight"
-        >
-          <Avatar src={avatar} size="m" className="me-4" status={status} />
+        <a href="#!" className="flex items-center text-highlight">
+          {/* gold uses the (unstyled) `status-*` class, not `avatar-status-*` */}
+          <Avatar src={avatar} size="m" className={`me-4 status-${status}`} />
           <h6 className="mb-0 text-highlight font-bold">{name}</h6>
-        </Link>
+        </a>
       );
     },
     meta: {
       headerProps: {
-        style: { width: '20%', minWidth: '100px' },
-        className: 'pe-3 ps-0'
+        className:
+          'sort whitespace-nowrap align-middle pe-4 ps-0 uppercase w-1/5 min-w-25'
       },
-      cellProps: { className: 'whitespace-nowrap py-2 ps-0' }
+      cellProps: { className: 'name align-middle whitespace-nowrap py-2 ps-0' }
     }
   },
   {
     accessorKey: 'description',
-    header: 'Description',
+    header: 'description',
     cell: ({ row: { original } }) => original.description,
     meta: {
       headerProps: {
-        style: { width: '20%', minWidth: '60px' },
-        className: 'pe-6'
+        className: 'sort align-middle pe-10 uppercase w-1/5 min-w-15'
       },
       cellProps: {
         className:
-          'whitespace-nowrap text-start font-bold text-subtle py-2 pe-6'
+          'description align-middle whitespace-nowrap text-start font-bold text-subtle py-2 pe-6'
       }
     }
   },
   {
+    id: 'create_date',
     accessorKey: 'date',
     header: 'create date',
     cell: ({ row: { original } }) => original.date,
     meta: {
       headerProps: {
-        style: { width: '20%', minWidth: '115px' },
-        className: 'text-start'
+        className: 'sort align-middle text-start uppercase w-1/5 min-w-28.75'
       },
       cellProps: {
-        className: 'whitespace-nowrap text-default text-end'
+        className:
+          'create_date text-start align-middle whitespace-nowrap text-default py-2'
       }
     }
   },
   {
+    id: 'create_by',
     accessorKey: 'creatBy',
     header: 'create by',
     cell: ({ row: { original } }) => original.creatBy,
     meta: {
       headerProps: {
-        style: { width: '20%', minWidth: '150px' },
-        className: 'text-start'
+        className: 'sort align-middle text-start uppercase w-1/5 min-w-37.5'
       },
       cellProps: {
-        className: 'whitespace-nowrap font-semibold text-highlight'
+        className:
+          'create_by align-middle whitespace-nowrap font-semibold text-highlight'
       }
     }
   },
   {
+    id: 'last_activity',
     accessorKey: 'activity',
-    header: 'last activity',
+    header: 'Last Activity',
     cell: ({ row: { original } }) => {
       return (
         <div className="flex items-center flex-1">
           <FontAwesomeIcon
             icon={faClock}
-            className={classNames('me-1 ', {
+            className={cn('me-1', {
               'text-success': original.activity === 'Active',
               'text-soft': original.activity !== 'Active'
             })}
             transform="shrink-2 up-1"
           />
-          <span className="font-bold text-md text-default">{original.activity}</span>
+          <span className="font-bold text-md text-default">
+            {original.activity}
+          </span>
         </div>
       );
     },
     meta: {
       headerProps: {
-        style: { width: '20%', minWidth: '115px' },
-        className: 'ps-0 text-end'
+        className:
+          'sort align-middle ps-0 text-start uppercase w-1/5 max-w-28.75'
       },
       cellProps: {
-        className: 'whitespace-nowrap font-semibold text-highlight'
+        className: 'last_activity align-middle text-center py-2'
       }
     }
   },
   {
     id: 'dealDropdown',
     accessorKey: '',
+    enableSorting: false,
     cell: () => {
       return (
-        <RevealDropdownTrigger>
+        <RevealDropdownTrigger className="static">
           <RevealDropdown>
             <ActionDropdownItems />
           </RevealDropdown>
@@ -125,8 +134,10 @@ const columns: ColumnDef<CallTableDataType>[] = [
       );
     },
     meta: {
-      headerProps: { style: { width: '15%' }, className: 'text-end' },
-      cellProps: { className: 'pe-0 py-2' }
+      headerProps: { className: 'align-middle pe-0 text-end w-3/20' },
+      cellProps: {
+        className: 'align-middle text-end whitespace-nowrap pe-0 action py-2'
+      }
     }
   }
 ];
@@ -137,19 +148,19 @@ const DealDetailsCallTable = () => {
     columns,
     pageSize: 5,
     pagination: true,
-    sortable: true,
-    selection: true
+    sortable: true
   });
 
   return (
-    <div>
-      <AdvanceTableProvider {...table}>
-        <div className="border-y border-subtle">
-          <AdvanceTable tableProps={{ className: ' text-md' }} />
-          <AdvanceTableFooter pagination />
-        </div>
-      </AdvanceTableProvider>
-    </div>
+    <AdvanceTableProvider {...table}>
+      <div id="leadDetailsTable" className="border-t border-b border-subtle">
+        <AdvanceTable
+          tableProps={{ className: 'text-md mb-0' }}
+          rowClassName="hover-actions-trigger btn-reveal-trigger static"
+        />
+        <AdvanceTableFooter pagination tableInfo="me-4!" />
+      </div>
+    </AdvanceTableProvider>
   );
 };
 

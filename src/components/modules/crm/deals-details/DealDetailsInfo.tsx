@@ -1,52 +1,43 @@
 import { DealDetailsInfoType } from 'data/crm/dealDetailsInfo';
-import { Col, Row, Table } from 'react-bootstrap';
 import FeatherIcon from 'feather-icons-react';
-import classNames from 'classnames';
+import { cn } from '@hummingbirdui/react';
+
 interface DealDetailsInfoProps {
   data: DealDetailsInfoType[][];
   className?: string;
 }
 
+/** gold border classes per quadrant (`+DealsDetailsInfo` in mixins/crm/DealDetails.pug) */
+const quadrantClasses = [
+  'sm:col-12 2xl:col-6 border-b 2xl:border-e border-subtle py-4 mt-0',
+  'sm:col-12 2xl:col-6 border-b border-subtle py-4 mt-0',
+  'sm:col-12 2xl:col-6 2xl:border-e border-b 2xl:border-b-0 py-4 mt-0 border-subtle',
+  'sm:col-12 2xl:col-6 py-4 mt-0'
+];
+
 const DealDetailsInfo = ({ data, className }: DealDetailsInfoProps) => {
   return (
-    <div className={classNames('xl:px-6', className)}>
-      <Row className="mx-0 sm:mx-4 lg:mx-0 lg:px-0">
+    <div className={cn('xl:px-6', className)}>
+      <div className="row mx-0 sm:mx-4 lg:mx-0 lg:px-0">
         {data.map((category, index) => (
-          <Col
-            key={index}
-            sm={12}
-            xxl={6}
-            className={classNames('py-6 border-subtle', {
-              'sm:col-12 2xl:col-6 border-b 2xl:border-e': index === 0,
-              'border-b': index === 1,
-              '2xl:border-e border-b 2xl:border-b-0 py-6':
-                index === 2
-            })}
-          >
-            <InfoCategory category={category} />
-          </Col>
+          <div key={index} className={quadrantClasses[index]}>
+            {/* the mobile stacking comes from `.table-stats` in crm.css */}
+            <table className="w-full table-stats">
+              <tbody>
+                <tr>
+                  <th />
+                  <th />
+                  <th />
+                </tr>
+                {category.map((item, itemIndex) => (
+                  <InfoItem key={item.id} data={item} index={itemIndex} />
+                ))}
+              </tbody>
+            </table>
+          </div>
         ))}
-      </Row>
+      </div>
     </div>
-  );
-};
-
-const InfoCategory = ({ category }: { category: DealDetailsInfoType[] }) => {
-  return (
-    <Table borderless className="w-full table-stats mb-0">
-      <thead>
-        <tr>
-          <th className="p-0" />
-          <th className="p-0" />
-          <th className="p-0" />
-        </tr>
-      </thead>
-      <tbody>
-        {category.map((item, index) => (
-          <InfoItem key={item.id} data={item} index={index} />
-        ))}
-      </tbody>
-    </Table>
   );
 };
 
@@ -57,23 +48,22 @@ const InfoItem = ({
   data: DealDetailsInfoType;
   index: number;
 }) => {
+  const valueClass = cn('ps-10 sm:ps-0 font-semibold mb-0', {
+    'pb-4 sm:pb-0': index === 0
+  });
   return (
     <tr>
-      <td className="py-2 leading-none">
+      <td className="py-2">
         <div
-          className={classNames('inline-flex items-center p-0', {
-            'flex': index == 1
-          })}
+          className={cn('items-center', index === 0 ? 'inline-flex' : 'flex')}
         >
           <div
-            className={`flex bg-${data.color}-subtle rounded-full flex-center me-4`}
-            style={{ width: '24px', height: '24px' }}
+            className={`flex ${data.bgClass} rounded-full flex-center me-4 size-6`}
           >
             <FeatherIcon
               icon={data.icon}
-              className={`text-${data.color}-dark`}
-              width={16}
-              height={16}
+              size={16}
+              className={`size-4 ${data.textClass}`}
             />
           </div>
           <p className="font-bold mb-0">{data.title}</p>
@@ -81,22 +71,12 @@ const InfoItem = ({
       </td>
       <td className="py-2 hidden sm:block sm:pe-2">:</td>
       <td className="py-2">
-        {data.title === 'Email' ? (
-          <a href={`mailto:${data.value}`} className="font-semibold">
-            {data.value}
-          </a>
-        ) : data.title === 'Phone' ? (
-          <a href={`tel:${data.value}`} className="font-semibold">
+        {data.href ? (
+          <a href={data.href} className={cn(valueClass, 'text-default')}>
             {data.value}
           </a>
         ) : (
-          <p
-            className={classNames('ps-18 sm:ps-0 font-semibold mb-0 py-0 pe-0', {
-              'pb-6 sm:pb-0': index === 0
-            })}
-          >
-            {data.value}
-          </p>
+          <div className={valueClass}>{data.value}</div>
         )}
       </td>
     </tr>

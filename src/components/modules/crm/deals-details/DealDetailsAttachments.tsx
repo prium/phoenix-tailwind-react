@@ -1,8 +1,8 @@
-import classNames from 'classnames';
+import { cn } from '@hummingbirdui/react';
 import FileListItem from 'components/modules/project-management/todo-list/FileListItem';
 import { Attachment } from 'data/project-management/todoListData';
-import React from 'react';
 
+/** `#tab-attachments` + `+FilesAttachments` in mixins/crm/LeadDetails.pug */
 const DealDetailsAttachments = ({
   attachments
 }: {
@@ -16,10 +16,10 @@ const DealDetailsAttachments = ({
           <FileListItem
             key={attachment.name}
             attachment={attachment}
-            className={classNames('border-dashed border-subtle', {
-              'border-top': index === 0,
-              'border-bottom-0': index === attachments.length - 1
-            })}
+            className={cn(
+              'border-dashed border-subtle',
+              index === 0 ? 'pt-4 pb-6' : 'py-6'
+            )}
           />
         ))}
       </div>

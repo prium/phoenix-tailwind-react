@@ -21,6 +21,8 @@ interface TodoListItemProps {
   /** `dashboard` = `+DashboardTodoListItem` (ToDo.pug), `page` = `+TodoPageListItem` (ToDoList.pug) */
   layout?: 'dashboard' | 'page';
   onClick?: (item: ToDoItem) => void;
+  /** initial checked state (the CRM deal-details TasksList gold checks completed items) */
+  defaultChecked?: boolean;
 }
 
 const stop = (e: MouseEvent) => e.stopPropagation();
@@ -31,9 +33,10 @@ const TodoListItem = ({
   isLast,
   className,
   layout = 'page',
-  onClick
+  onClick,
+  defaultChecked = false
 }: TodoListItemProps) => {
-  const [selected, setSelected] = useState(false);
+  const [selected, setSelected] = useState(defaultChecked);
   const handleSelectionChange = (e: ChangeEvent<HTMLInputElement>) =>
     setSelected(e.target.checked);
   const borderClass = isLast ? 'border-t border-b' : 'border-t';

@@ -1,20 +1,20 @@
-import member1 from 'assets/img/team/9.webp';
-import member2 from 'assets/img/team/25.webp';
-import member3 from 'assets/img/team/32.webp';
-import member4 from 'assets/img/team/35.webp';
-import member5 from 'assets/img/team/11.webp';
-import member6 from 'assets/img/team/26.webp';
-import member7 from 'assets/img/team/33.webp';
-import member8 from 'assets/img/team/30.webp';
-import member9 from 'assets/img/team/12.webp';
-import member10 from 'assets/img/team/28.webp';
-import member11 from 'assets/img/team/22.webp';
-import member12 from 'assets/img/team/13.webp';
-import member13 from 'assets/img/team/24.webp';
-import member14 from 'assets/img/team/62.webp';
-import member15 from 'assets/img/team/34.webp';
-import { BadgeBg, BadgeVariant } from 'components/base/Badge';
+import member9 from 'assets/img/team/9.webp';
+import member11 from 'assets/img/team/11.webp';
+import member12 from 'assets/img/team/12.webp';
+import member13 from 'assets/img/team/13.webp';
+import member22 from 'assets/img/team/22.webp';
+import member24 from 'assets/img/team/24.webp';
+import member25 from 'assets/img/team/25.webp';
+import member26 from 'assets/img/team/26.webp';
+import member28 from 'assets/img/team/28.webp';
+import member30 from 'assets/img/team/30.webp';
+import member32 from 'assets/img/team/32.webp';
+import member33 from 'assets/img/team/33.webp';
+import member34 from 'assets/img/team/34.webp';
+import member35 from 'assets/img/team/35.webp';
+import member62 from 'assets/img/team/62.webp';
 import { Status } from 'components/base/Avatar';
+import { ToDoItem } from 'data/project-management/todoListData';
 import {
   faClipboard,
   faEnvelope,
@@ -30,11 +30,14 @@ export interface Activity {
   title: string;
   name: string;
   date: string;
-  variant: string;
+  /** literal classes from the gold `activityData` (icon/iconBg strings) */
+  iconBg: string;
+  iconColor: string;
   icon: IconProp;
   description?: string;
 }
 
+/** `activityData` in apps/crm/deal-details.pug */
 export const dealActivities: Activity[] = [
   {
     id: 1,
@@ -43,7 +46,8 @@ export const dealActivities: Activity[] = [
     date: '22 September, 2022, 4:33 PM',
     description:
       'Utilizing best practices to better leverage our assets, we must engage in black sky leadership thinking, not the usual band-aid solution. ',
-    variant: 'primary',
+    iconBg: 'bg-primary-subtle',
+    iconColor: 'text-primary-dark',
     icon: faClipboard
   },
   {
@@ -51,7 +55,8 @@ export const dealActivities: Activity[] = [
     title: 'Onboarding Meeting',
     name: 'Jackson Pollock',
     date: '20 September, 2022, 5:31pm',
-    variant: 'info',
+    iconBg: 'bg-info-subtle',
+    iconColor: 'text-cyan-600',
     icon: faVideo
   },
   {
@@ -61,7 +66,8 @@ export const dealActivities: Activity[] = [
     date: '19 September, 2022, 4:39pm ',
     description:
       'To get off the runway and paradigm shift, we should take  brass tacks with above-the-board actionable analytics, ramp up with viral partnering, not the usual goat rodeo putting socks on an octopus.  ',
-    variant: 'success',
+    iconBg: 'bg-success-subtle',
+    iconColor: 'text-success-dark',
     icon: faSquareCheck
   },
   {
@@ -69,7 +75,8 @@ export const dealActivities: Activity[] = [
     title: 'Purchasing-Related Vendors',
     name: 'Ansolo Lazinatov',
     date: '22 September, 2022, 4:30pm',
-    variant: 'warning',
+    iconBg: 'bg-warning-subtle',
+    iconColor: 'text-warning-dark',
     icon: faPhoneAlt
   },
   {
@@ -79,7 +86,8 @@ export const dealActivities: Activity[] = [
     date: '15 September, 2022, 3:33pm',
     description:
       'I’ve come across your posts and found some favorable deals on your page. I’ve added a load of products to the cart and I don’t know the payment options you avail. Also, can you enlighten me about any discount.',
-    variant: 'danger',
+    iconBg: 'bg-danger-subtle',
+    iconColor: 'text-danger-dark',
     icon: faEnvelope
   },
   {
@@ -87,7 +95,8 @@ export const dealActivities: Activity[] = [
     title: 'Added image',
     name: 'Ansolo Lazinatov',
     date: '11 September, 2022, 12:15am ',
-    variant: 'primary',
+    iconBg: 'bg-primary-subtle',
+    iconColor: 'text-primary-dark',
     icon: faPaperclip
   }
 ];
@@ -99,6 +108,7 @@ export interface Note {
   description: string;
 }
 
+/** `notesData` in apps/crm/deal-details.pug */
 export const dealNotes: Note[] = [
   {
     id: 1,
@@ -111,21 +121,21 @@ export const dealNotes: Note[] = [
     name: 'Ansolo Lazinatov',
     date: ' 30 Jan, 2019',
     description:
-      'I also want to let you know that I am available to you as your real estate insider from now on. If you have any questions about the market, even if they sound silly, call or text anytime.'
+      'I also want to let you know that I am available to you as your real estate insider from now on. If you have any questions about the market, even if they sound silly, call or text anytime. '
   },
   {
     id: 3,
     name: 'Jackson Pollock',
     date: '19 September, 2022, 4:39pm ',
     description:
-      'To get off the runway and paradigm shift, we should take  brass tacks with above-the-board actionable analytics, ramp up with viral partnering, not the usual goat rodeo putting socks on an octopus.'
+      'To get off the runway and paradigm shift, we should take  brass tacks with above-the-board actionable analytics, ramp up with viral partnering, not the usual goat rodeo putting socks on an octopus.  '
   },
   {
     id: 4,
     name: 'Ansolo Lazinatov',
     date: '22 September, 2022, 4:30pm',
     description:
-      'Utilizing best practices to better leverage our assets, we must engage in black sky leadership thinking, not the usual band-aid solution.'
+      'Utilizing best practices to better leverage our assets, we must engage in black sky leadership thinking, not the usual band-aid solution. '
   }
 ];
 
@@ -138,19 +148,21 @@ export interface Meeting {
     duration: string;
   };
   badge: {
-    variant: BadgeVariant;
-    bg: BadgeBg;
+    /** literal badge class from the gold `meetingData` */
+    className: string;
     text: string;
   };
-  assigness: string[];
-  more: string;
+  /** literal `fa-circle` colour class from the gold `meetingData` */
   priority: {
     label: string;
-    color: string;
+    iconClass: string;
   };
+  assignees: string[];
+  more?: string;
   name?: string;
 }
 
+/** `meetingData` in apps/crm/deal-details.pug */
 export const meetingData: Meeting[] = [
   {
     id: 1,
@@ -161,15 +173,14 @@ export const meetingData: Meeting[] = [
       duration: ' - 1h 30min'
     },
     badge: {
-      variant: 'phoenix',
-      bg: 'primary',
+      className: 'badge-phoenix-primary',
       text: 'today'
     },
-    assigness: [member1, member2, member3, member4, member5],
+    assignees: [member9, member25, member32, member35],
     more: '+1',
     priority: {
       label: 'Urgent',
-      color: 'danger'
+      iconClass: 'text-danger'
     }
   },
   {
@@ -181,15 +192,14 @@ export const meetingData: Meeting[] = [
       duration: ' - 1h 30min'
     },
     badge: {
-      variant: 'phoenix',
-      bg: 'warning',
+      className: 'badge-phoenix-warning',
       text: 'tomorrow'
     },
-    assigness: [member5, member6, member7, member8, member2],
+    assignees: [member11, member26, member33, member30],
     more: '+1',
     priority: {
       label: 'Medium',
-      color: 'success'
+      iconClass: 'text-success'
     }
   },
   {
@@ -201,16 +211,15 @@ export const meetingData: Meeting[] = [
       duration: ' - 1h 20min'
     },
     badge: {
-      variant: 'phoenix',
-      bg: 'warning',
+      className: 'badge-phoenix-warning',
       text: 'tomorrow'
     },
     name: 'R',
-    assigness: [member9, member10, member11, member5, member6],
+    assignees: [member12, member28, member22],
     more: '+2',
     priority: {
       label: 'High',
-      color: 'warning'
+      iconClass: 'text-warning'
     }
   },
   {
@@ -222,77 +231,53 @@ export const meetingData: Meeting[] = [
       duration: ' - 1h 45min'
     },
     badge: {
-      variant: 'phoenix',
-      bg: 'warning',
+      className: 'badge-phoenix-warning',
       text: 'tomorrow'
     },
-    assigness: [
-      member12,
-      member13,
-      member14,
-      member15,
-      member1,
-      member2,
-      member3,
-      member4
-    ],
+    assignees: [member13, member24, member62, member34],
     more: '+4',
     priority: {
       label: 'Low',
-      color: 'info'
+      iconClass: 'text-info'
     }
   }
 ];
 
-export interface Task {
-  id: number;
-  task: string;
-  date: string;
-  time: string;
-  completed?: boolean;
-}
-
-export const taskList: Task[] = [
+/** `taskList` in mixins/crm/LeadDetails.pug (`+TasksList`) */
+export const taskList: ToDoItem[] = [
   {
-    id: 1,
     task: 'Platforms for data administration',
     date: '19 Nov, 2022',
     time: '11:56 PM'
   },
   {
-    id: 2,
     task: 'Make wiser business choices.',
     date: '05 Nov, 2022',
     time: '09:30 PM'
   },
   {
-    id: 3,
     task: 'Market and consumer insights',
     date: '02 Nov, 2022',
     time: '05:25 AM'
   },
   {
-    id: 4,
     task: 'Dashboards for business insights',
     date: '29 Oct, 2022',
     time: '08:21 PM'
   },
   {
-    id: 5,
     task: 'Analytics and consultancy for data',
     date: '21 Oct, 2022',
     time: '03:45 PM',
     completed: true
   },
   {
-    id: 6,
     task: 'Planning your locations Customer data platform',
     date: '14 Oct, 2022',
     time: '10:00 PM',
     completed: true
   },
   {
-    id: 7,
     task: 'Promotion of technology',
     date: '12 Oct, 2022',
     time: '02:00 AM',
@@ -312,10 +297,11 @@ export interface CallTableDataType {
   activity: string;
 }
 
+/** `callTableData` in mixins/crm/DealDetails.pug */
 export const callTableData: CallTableDataType[] = [
   {
     user: {
-      avatar: member4,
+      avatar: member35,
       name: 'Ansolo Lazinatov',
       status: 'online'
     },
@@ -326,7 +312,7 @@ export const callTableData: CallTableDataType[] = [
   },
   {
     user: {
-      avatar: member1,
+      avatar: member9,
       name: 'Jackson Pollock',
       status: 'offline'
     },
@@ -337,7 +323,7 @@ export const callTableData: CallTableDataType[] = [
   },
   {
     user: {
-      avatar: member4,
+      avatar: member35,
       name: 'Ansolo Lazinatov',
       status: 'online'
     },
@@ -348,7 +334,7 @@ export const callTableData: CallTableDataType[] = [
   },
   {
     user: {
-      avatar: member1,
+      avatar: member9,
       name: 'Jackson Pollock',
       status: 'offline'
     },
@@ -359,7 +345,7 @@ export const callTableData: CallTableDataType[] = [
   },
   {
     user: {
-      avatar: member4,
+      avatar: member35,
       name: 'Ansolo Lazinatov',
       status: 'online'
     },
@@ -370,7 +356,7 @@ export const callTableData: CallTableDataType[] = [
   },
   {
     user: {
-      avatar: member4,
+      avatar: member35,
       name: 'Ansolo Lazinatov',
       status: 'online'
     },
