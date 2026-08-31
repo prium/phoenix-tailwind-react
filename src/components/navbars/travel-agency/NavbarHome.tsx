@@ -5,17 +5,16 @@ import {
   IconDefinition
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
-import React from 'react';
-import { Nav } from 'react-bootstrap';
+import { cn } from '@hummingbirdui/react';
 import { Link } from 'react-router';
 
-interface Nav {
+interface NavTab {
   label: string;
   icon: IconDefinition;
   path: string;
 }
-const nav: Nav[] = [
+
+const tabs: NavTab[] = [
   {
     label: 'Hotel',
     icon: faHotel,
@@ -32,26 +31,28 @@ const nav: Nav[] = [
     path: `/apps/travel-agency/trip/homepage`
   }
 ];
+
+/** `+NavbarHome` in phoenix-tailwind mixins/travel-agency/common/NavbarHome.pug */
 const NavbarHome = ({ currentPage }: { currentPage: string }) => {
   return (
-    <>
-      <Nav className="nav-home justify-center py-6 gap-2">
-        {nav.map((item, index) => (
-          <Nav.Item key={index}>
-            <Nav.Link
-              as={Link}
-              className={classNames('font-bold lg:rounded-md', {
-                active: currentPage === item.label
+    <nav className="navbar navbar-landing navbar-home navbar-expand py-6 px-0">
+      <ul className="navbar-nav mx-auto mt-4 lg:mt-0 gap-2">
+        {tabs.map(tab => (
+          <li className="nav-item" key={tab.label}>
+            <Link
+              className={cn('nav-link font-bold rounded-lg', {
+                active: currentPage === tab.label
               })}
-              to={item.path}
+              aria-current="page"
+              to={tab.path}
             >
-              <FontAwesomeIcon icon={item.icon} className="me-2" />
-              {item.label}
-            </Nav.Link>
-          </Nav.Item>
+              <FontAwesomeIcon icon={tab.icon} className="me-2" />
+              {tab.label}
+            </Link>
+          </li>
         ))}
-      </Nav>
-    </>
+      </ul>
+    </nav>
   );
 };
 

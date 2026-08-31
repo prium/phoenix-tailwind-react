@@ -1,295 +1,194 @@
-import Button from 'components/base/Button';
-import Logo from 'components/common/Logo';
-import ThemeToggler from 'components/common/ThemeToggler';
-import React, { useEffect, useMemo, useRef, useState } from 'react';
-import { Dropdown, Nav, Navbar } from 'react-bootstrap';
+import { useEffect, useMemo, useRef, useState } from 'react';
+import { Navbar, cn } from '@hummingbirdui/react';
 import { Link, useLocation } from 'react-router';
 import FeatherIcon from 'feather-icons-react';
-import { useBreakpoints } from 'providers/BreakpointsProvider';
-import classNames from 'classnames';
+import Logo from 'components/common/Logo';
+import ThemeToggler from 'components/common/ThemeToggler';
+import useTopNavDropdown from 'components/navbars/navbar-horizontal/useTopNavDropdown';
 
-interface SubMenuItems {
-  id: number;
+interface SubMenuItem {
   label: string;
   url: string;
 }
+
 interface NavItem {
-  id: number;
   label: string;
-  url?: string;
-  items?: SubMenuItems[];
-}
-interface dropdownItemsProps {
-  label: string;
-  items: SubMenuItems[];
-  isActive: boolean;
-  pathName: string;
+  items?: SubMenuItem[];
 }
 
+/** `+TopNavbar` navLinks in phoenix-tailwind mixins/travel-agency/common/TopNavbar.pug */
 const navItems: NavItem[] = [
   {
-    id: 1,
     label: 'Hotel',
     items: [
       {
-        id: 2,
         label: 'Homepage',
         url: '/apps/travel-agency/hotel/customer/homepage'
       },
       {
-        id: 3,
-        label: 'Hotel details',
+        label: 'Hotel Details',
         url: '/apps/travel-agency/hotel/customer/hotel-details'
       },
       {
-        id: 4,
-        label: 'Hotel compare',
+        label: 'Hotel Compare',
         url: '/apps/travel-agency/hotel/customer/hotel-compare'
       },
       {
-        id: 5,
-        label: 'Checkout',
+        label: 'Check out',
         url: '/apps/travel-agency/hotel/customer/checkout'
       },
       {
-        id: 6,
         label: 'Payment',
         url: '/apps/travel-agency/hotel/customer/payment'
       },
       {
-        id: 7,
         label: 'Gallery',
         url: '/apps/travel-agency/hotel/customer/gallery'
       }
     ]
   },
   {
-    id: 8,
     label: 'Flight',
     items: [
-      {
-        id: 9,
-        label: 'Homepage',
-        url: '/apps/travel-agency/flight/homepage'
-      },
-      {
-        id: 10,
-        label: 'Booking',
-        url: '/apps/travel-agency/flight/booking'
-      },
-      {
-        id: 11,
-        label: 'Payment',
-        url: '/apps/travel-agency/flight/payment'
-      }
+      { label: 'Homepage', url: '/apps/travel-agency/flight/homepage' },
+      { label: 'Booking', url: '/apps/travel-agency/flight/booking' },
+      { label: 'Payment', url: '/apps/travel-agency/flight/payment' }
     ]
   },
   {
-    id: 12,
     label: 'Trip',
     items: [
-      {
-        id: 13,
-        label: 'Homepage',
-        url: '/apps/travel-agency/trip/homepage'
-      },
-      {
-        id: 14,
-        label: 'Trip Details',
-        url: '/apps/travel-agency/trip/trip-details'
-      },
-      {
-        id: 15,
-        label: 'Checkout',
-        url: '/apps/travel-agency/trip/checkout'
-      }
+      { label: 'Homepage', url: '/apps/travel-agency/trip/homepage' },
+      { label: 'Trip Details', url: '/apps/travel-agency/trip/trip-details' },
+      { label: 'Checkout', url: '/apps/travel-agency/trip/checkout' }
     ]
   },
-  {
-    id: 16,
-    label: 'Event',
-    url: '#!'
-  },
-  {
-    id: 17,
-    label: 'Package',
-    url: '#!'
-  }
+  { label: 'Event' },
+  { label: 'Package' }
 ];
 
-const NavDropdownItems = ({
-  label,
-  items,
-  isActive,
-  pathName
-}: dropdownItemsProps) => {
-  const [show, setShow] = useState(false);
-  const { breakpoints } = useBreakpoints();
-
-  const handleMouseEnter = () => {
-    if (breakpoints.up('lg')) {
-      setShow(true);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (breakpoints.up('lg')) {
-      setShow(false);
-    }
-  };
-
-  useEffect(() => {
-    if (show) {
-      setShow(false);
-    }
-  }, [pathName]);
+/** `+NavbarItem` — plain bootstrap dropdown markup driven by hover/click state */
+const NavbarMainItem = ({
+  item,
+  active
+}: {
+  item: NavItem;
+  active: boolean;
+}) => {
+  const { open, toggleProps, containerProps } =
+    useTopNavDropdown<HTMLLIElement>();
 
   return (
-    <Dropdown
-      as="li"
-      className="nav-item dropdown-hoverable"
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      autoClose="outside"
-      onToggle={() => setShow(!show)}
-      show={show}
-    >
-      <Dropdown.Toggle
-        as={Link}
-        className={classNames('nav-link text-base font-bold', {
-          active: isActive
+    <li className="nav-item dropdown" {...containerProps}>
+      <a
+        href="#!"
+        role="button"
+        aria-haspopup="true"
+        className={cn('nav-link text-base font-bold', {
+          'dropdown-toggle': !!item.items,
+          'text-primary': active,
+          show: open
         })}
-        to="#!"
+        {...toggleProps}
       >
-        {label}
-      </Dropdown.Toggle>
-      <Dropdown.Menu className="navbar-dropdown-caret lg:mt-4 mb-4 lg:mb-0">
-        {items.map(dropdownItem => (
-          <Dropdown.Item
-            as={Link}
-            to={dropdownItem.url}
-            key={dropdownItem.id}
-            className={classNames({ active: pathName === dropdownItem.url })}
-          >
-            {dropdownItem.label}
-          </Dropdown.Item>
-        ))}
-      </Dropdown.Menu>
-    </Dropdown>
+        {item.label}
+      </a>
+      {item.items && (
+        <ul
+          className={cn('dropdown-menu navbar-dropdown-caret', { show: open })}
+          data-bs-popper={open ? 'none' : undefined}
+        >
+          {item.items.map(link => (
+            <li key={link.label}>
+              <Link className="dropdown-item" to={link.url}>
+                {link.label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      )}
+    </li>
   );
 };
 
+/**
+ * `+TopNavbar` in phoenix-tailwind mixins/travel-agency/common/TopNavbar.pug.
+ * `currentPage` (Hotel / Flight / Trip) is derived from the pathname.
+ */
 const NavbarMain = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const { pathname } = useLocation();
-  const [isNavItemOpen, setNavItemsOpen] = useState(false);
-  const pathNameList = useMemo(() => {
-    return pathname
-      .split('/')
-      .filter(Boolean)
-      .map(part => part.toLowerCase());
+  const [openCollapse, setOpenCollapse] = useState(false);
+
+  const currentPage = useMemo(() => {
+    if (pathname.includes('/travel-agency/hotel')) return 'Hotel';
+    if (pathname.includes('/travel-agency/flight')) return 'Flight';
+    if (pathname.includes('/travel-agency/trip')) return 'Trip';
+    return '';
   }, [pathname]);
 
   useEffect(() => {
     const toggleShadowClass = () => {
-      if (window.scrollY > 300) {
-        containerRef.current?.classList.add('navbar-shadow');
-      } else {
-        containerRef.current?.classList.remove('navbar-shadow');
-      }
+      containerRef.current?.classList.toggle(
+        'navbar-shadow',
+        window.scrollY > 300
+      );
     };
-
-    document.addEventListener('scroll', () => toggleShadowClass());
-
+    document.addEventListener('scroll', toggleShadowClass);
     return () => document.removeEventListener('scroll', toggleShadowClass);
   }, []);
 
   useEffect(() => {
-    setNavItemsOpen(false);
+    setOpenCollapse(false);
   }, [pathname]);
 
   return (
-    <div className="bg-default sticky top-0 z-1020" ref={containerRef}>
+    <div className="sticky top-0 z-1020 bg-default" ref={containerRef}>
       <Navbar
         expand="lg"
-        className="navbar-landing container-medium border-0 px-4 py-2"
-        expanded={isNavItemOpen}
-        onToggle={() => setNavItemsOpen(!isNavItemOpen)}
+        className="navbar-top container-medium border-0! bg-default! px-4! py-2!"
+        open={openCollapse}
+        onOpenChange={setOpenCollapse}
       >
-        <Navbar.Toggle className="text-base ps-2 sm:me-2 border-0 -ms-2 hover-bg-transparent navbar-toggler-humburger-icon">
-          <span className="navbar-toggle-icon">
-            <span className="toggle-line" />
-          </span>
+        <Navbar.Toggle className="text-base px-2 py-1 pe-3 sm:me-2">
+          <span className="navbar-toggler-icon size-6" />
         </Navbar.Toggle>
         <Navbar.Brand
-          as={Link}
-          to="/"
-          className="flex-1 lg:grow-0 lg:me-14 xl:me-26"
+          asChild
+          className="flex-1 lg:flex-none! lg:grow-0 lg:me-14 xl:me-26"
         >
-          <Logo textClass="hidden d-sm-block" />
+          <Link to="/">
+            <Logo />
+          </Link>
         </Navbar.Brand>
-        <div className="flex items-center gap-4 md:gap-6 my-2 lg:order-1">
+        <div className="flex items-center gap-2 sm:gap-4 md:gap-6 my-2 lg:order-1">
           <ThemeToggler />
-          <Button
-            to="#!"
-            as={Link}
-            variant="link"
-            className="text-subtle p-0"
-          >
+          <Link to="#!" className="btn btn-link text-subtle p-0">
             <FeatherIcon icon="map-pin" size={18} />
-          </Button>
-          <Button
-            to="#!"
-            as={Link}
-            variant="link"
-            className="text-subtle p-0"
-          >
+          </Link>
+          <Link to="#!" className="btn btn-link text-subtle p-0">
             <FeatherIcon icon="bell" size={20} />
-          </Button>
-          <Button
-            to="#!"
-            as={Link}
-            variant="link"
-            className="text-subtle p-0"
-          >
+          </Link>
+          <Link to="#!" className="btn btn-link text-subtle p-0">
             <FeatherIcon icon="log-in" size={20} />
-          </Button>
-          <Button
-            to="#!"
-            as={Link}
-            variant="link"
-            className="text-subtle p-0"
-          >
+          </Link>
+          <Link to="#!" className="btn btn-link text-subtle p-0">
             <FeatherIcon icon="user" size={20} />
-          </Button>
+          </Link>
         </div>
-
-        <Navbar.Collapse id="navbarSupportedContent">
-          <Nav as="ul" className="me-auto travel-nav-top">
-            {navItems.map(item =>
-              item.items ? (
-                <NavDropdownItems
-                  key={item.id}
-                  label={item.label}
-                  items={item.items}
-                  isActive={pathNameList.includes(item.label.toLowerCase())}
-                  pathName={pathname}
-                />
-              ) : (
-                <Nav.Item as="li" key={item.id} className="">
-                  <Nav.Link
-                    as={Link}
-                    to="#!"
-                    className={classNames('font-bold', {
-                      active: pathNameList.includes(item.label.toLowerCase())
-                    })}
-                  >
-                    {item.label}
-                  </Nav.Link>
-                </Nav.Item>
-              )
-            )}
-          </Nav>
+        <Navbar.Collapse
+          id="navbarTopCollapse"
+          className="navbar-top-collapse order-1 lg:order-0 lg:justify-center pb-0"
+        >
+          <ul className="navbar-nav travel-nav-top me-auto">
+            {navItems.map(item => (
+              <NavbarMainItem
+                key={item.label}
+                item={item}
+                active={item.label === currentPage}
+              />
+            ))}
+          </ul>
         </Navbar.Collapse>
       </Navbar>
     </div>

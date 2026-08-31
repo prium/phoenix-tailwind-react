@@ -39,7 +39,7 @@ export const hotelNavItems: ResizableNavItem[] = [
   },
   {
     id: 4,
-    label: 'Checkout',
+    label: 'Check out',
     url: '/apps/travel-agency/hotel/customer/checkout'
   },
   {
