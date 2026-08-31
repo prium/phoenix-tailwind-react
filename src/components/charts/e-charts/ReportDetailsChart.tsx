@@ -4,16 +4,28 @@ import * as echarts from 'echarts/core';
 import { useAppContext } from 'providers/AppProvider';
 import { TooltipComponent } from 'echarts/components';
 import { BarChart } from 'echarts/charts';
-import { sellersReportData } from 'data/crm/reportsData';
 import { tooltipFormatterDefault } from 'helpers/echart-utils';
 import { CallbackDataParams } from 'echarts/types/dist/shared';
 echarts.use([TooltipComponent, BarChart]);
+
+// gold: src/js/theme/charts/echarts/reports-details-chart.js
+const reportStages = [
+  'Analysis',
+  'Statement',
+  'Action',
+  'Offering',
+  'Interlocution'
+];
+const data = [64, 40, 45, 62, 82];
 
 const getDefaultOptions = (
   getThemeColor: (name: string) => string,
   isDark: boolean
 ) => ({
-  color: [getThemeColor('color-primary-lighter'), getThemeColor('color-info-light')],
+  color: [
+    getThemeColor('color-primary-lighter'),
+    getThemeColor('color-info-light')
+  ],
   tooltip: {
     trigger: 'axis',
     padding: [7, 10],
@@ -30,7 +42,7 @@ const getDefaultOptions = (
   },
   xAxis: {
     type: 'category',
-    data: sellersReportData.map(data => data.reportStage),
+    data: reportStages,
     axisLabel: {
       color: getThemeColor('text-color-default'),
       fontFamily: 'Nunito Sans',
@@ -82,7 +94,7 @@ const getDefaultOptions = (
           ? getThemeColor('color-primary-light')
           : getThemeColor('color-primary')
       },
-      data: sellersReportData.map(data => data.totalCount)
+      data
     }
   ],
   grid: {
