@@ -225,5 +225,64 @@ export const pages: VisualPage[] = [
     react: '/apps/project-management/project-board-view',
     gold: '/apps/project-management/project-board-view.html',
     tolerance: 0.02
+  },
+
+  // crm
+  {
+    name: 'dashboard-crm',
+    react: '/dashboard/crm',
+    gold: '/dashboard/crm.html',
+    dark: true,
+    widths: [768]
+  },
+  {
+    name: 'crm-analytics',
+    react: '/apps/crm/analytics',
+    gold: '/apps/crm/analytics.html'
+  },
+  {
+    name: 'crm-leads',
+    react: '/apps/crm/leads',
+    gold: '/apps/crm/leads.html',
+    probes: [
+      '.flatpickr-input-container .flatpickr-icon',
+      '.flatpickr-input-container .form-control'
+    ]
+  },
+  {
+    name: 'crm-lead-details',
+    react: '/apps/crm/lead-details',
+    gold: '/apps/crm/lead-details.html'
+  },
+  {
+    name: 'crm-add-contact',
+    react: '/apps/crm/add-contact',
+    gold: '/apps/crm/add-contact.html'
+  },
+  {
+    name: 'crm-deals',
+    react: '/apps/crm/deals',
+    gold: '/apps/crm/deals.html'
+  },
+  {
+    name: 'crm-deal-details',
+    react: '/apps/crm/deal-details',
+    gold: '/apps/crm/deal-details.html'
+  },
+  {
+    name: 'crm-reports',
+    react: '/apps/crm/reports',
+    gold: '/apps/crm/reports.html',
+    probes: ['.card .form-check-input', '.search-box .search-box-icon']
+  },
+  {
+    name: 'crm-report-details',
+    react: '/apps/crm/report-details',
+    gold: '/apps/crm/report-details.html',
+    probes: [
+      '.circle-progress-svg',
+      '.reports-details-chart-table .badge',
+      '.avatar.avatar-sm img'
+    ]
   }
 ];

@@ -3,6 +3,7 @@ import AdvanceTable from 'components/base/AdvanceTable';
 import AdvanceTableFooter from 'components/base/AdvanceTableFooter';
 import Avatar from 'components/base/Avatar';
 import Badge from 'components/base/Badge';
+import IndeterminateCheckbox from 'components/base/IndeterminateCheckbox';
 import RevealDropdown, {
   RevealDropdownTrigger
 } from 'components/base/RevealDropdown';
@@ -11,7 +12,73 @@ import { LeadDataType } from 'data/crm/leadsTableData';
 import { Link } from 'react-router';
 import FeatherIcon from 'feather-icons-react';
 
+/**
+ * Bulk-select column with the exact gold `th`/`td` classes (the hook's
+ * built-in selection column pins a 30px inline width that the CRM gold
+ * tables don't have).
+ */
+export const buildSelectionColumn = <T,>({
+  headerClassName,
+  cellClassName,
+  checkboxClassName = 'text-base'
+}: {
+  headerClassName: string;
+  cellClassName: string;
+  /** classes for the header `.form-check` wrapper */
+  checkboxClassName?: string;
+}): ColumnDef<T> => ({
+  id: 'select',
+  enableSorting: false,
+  header: ({ table }) => (
+    <IndeterminateCheckbox
+      className={checkboxClassName}
+      checked={table.getIsAllRowsSelected()}
+      indeterminate={table.getIsSomeRowsSelected()}
+      onChange={table.getToggleAllRowsSelectedHandler()}
+    />
+  ),
+  cell: ({ row }) => (
+    <IndeterminateCheckbox
+      className="text-base"
+      checked={row.getIsSelected()}
+      disabled={!row.getCanSelect()}
+      indeterminate={row.getIsSomeSelected()}
+      onChange={row.getToggleSelectedHandler()}
+    />
+  ),
+  meta: {
+    headerProps: { className: headerClassName },
+    cellProps: { className: cellClassName }
+  }
+});
+
+/** `+LealsTable` header icon boxes in mixins/crm/LeadsTable.pug */
+const HeaderIconLabel = ({
+  icon,
+  bgClassName,
+  iconClassName,
+  label
+}: {
+  icon: string;
+  bgClassName: string;
+  iconClassName: string;
+  label: string;
+}) => (
+  <div className="inline-flex flex-center">
+    <div
+      className={`flex items-center px-1 py-1 ${bgClassName} rounded-md me-2`}
+    >
+      <FeatherIcon icon={icon} size={16} className={iconClassName} />
+    </div>
+    <span>{label}</span>
+  </div>
+);
+
 export const leadsTableColumns: ColumnDef<LeadDataType>[] = [
+  buildSelectionColumn<LeadDataType>({
+    headerClassName: 'w-4.5 max-w-5 whitespace-nowrap text-md ps-0',
+    cellClassName: 'text-md'
+  }),
   {
     accessorKey: 'customer.name',
     header: 'Name',
@@ -28,7 +95,10 @@ export const leadsTableColumns: ColumnDef<LeadDataType>[] = [
             <Avatar src={avatar} size="xl" className="me-4" />
           </Link>
           <div>
-            <Link to="/apps/crm/lead-details#tasks" className="text-base font-bold">
+            <Link
+              to="/apps/crm/lead-details#tasks"
+              className="text-base font-bold"
+            >
               {name}
             </Link>
             <div className="flex items-center">
@@ -44,22 +114,20 @@ export const leadsTableColumns: ColumnDef<LeadDataType>[] = [
       );
     },
     meta: {
-      headerProps: { style: { width: '25%' }, className: 'ps-0' },
+      headerProps: { className: 'whitespace-nowrap uppercase ps-0 w-1/4' },
       cellProps: { className: 'whitespace-nowrap ps-0' }
     }
   },
   {
     accessorKey: 'email',
-    header: () => {
-      return (
-        <div className="inline-flex flex-center">
-          <div className="px-1 py-1 bg-success-subtle rounded-md me-2">
-            <FeatherIcon icon="mail" size={16} className="text-success-dark" />
-          </div>
-          <span>Email</span>
-        </div>
-      );
-    },
+    header: () => (
+      <HeaderIconLabel
+        icon="mail"
+        bgClassName="bg-success-subtle"
+        iconClassName="text-success-dark"
+        label="Email"
+      />
+    ),
     cell: ({ row: { original } }) => {
       const { email } = original;
       return (
@@ -70,91 +138,79 @@ export const leadsTableColumns: ColumnDef<LeadDataType>[] = [
     },
     meta: {
       headerProps: {
-        style: { width: '15%' },
-        className: 'ps-4 pe-5 border-end border-subtle'
+        className: 'ps-6 pe-8 uppercase border-e border-subtle w-3/20'
       },
       cellProps: {
-        className:
-          'whitespace-nowrap font-semibold ps-4 border-end border-subtle'
+        className: 'whitespace-nowrap font-semibold ps-6 border-e border-subtle'
       }
     }
   },
   {
     accessorKey: 'phone',
-    header: () => {
-      return (
-        <div className="inline-flex flex-center">
-          <div className="px-1 py-1 bg-primary-subtle rounded-md me-2">
-            <FeatherIcon icon="phone" size={16} className="text-primary-dark" />
-          </div>
-          <span>Phone</span>
-        </div>
-      );
-    },
+    header: () => (
+      <HeaderIconLabel
+        icon="phone"
+        bgClassName="bg-primary-subtle"
+        iconClassName="text-primary-dark"
+        label="Phone"
+      />
+    ),
     cell: ({ row: { original } }) => {
       const { phone } = original;
       return (
-        <Link className="text-highlight" to={`tel:${phone}`}>
+        <Link className="text-highlight" to={`tel:${phone.replace(/\s/g, '')}`}>
           {phone}
         </Link>
       );
     },
     meta: {
       headerProps: {
-        style: { width: '15%', minWidth: '180px' },
-        className: 'ps-4 pe-5 border-end border-subtle'
+        className: 'ps-6 pe-8 uppercase border-e border-subtle w-3/20 min-w-45'
       },
       cellProps: {
-        className:
-          'whitespace-nowrap font-semibold ps-4 border-end border-subtle'
+        className: 'whitespace-nowrap font-semibold ps-6 border-e border-subtle'
       }
     }
   },
   {
     accessorKey: 'contact',
-    header: () => {
-      return (
-        <div className="inline-flex flex-center">
-          <div className="px-1 py-1 bg-info-subtle rounded-md me-2">
-            <FeatherIcon icon="user" size={16} className="text-info-dark" />
-          </div>
-          <span>Contact name</span>
-        </div>
-      );
-    },
+    header: () => (
+      <HeaderIconLabel
+        icon="user"
+        bgClassName="bg-info-subtle"
+        iconClassName="text-info-dark"
+        label="Contact name"
+      />
+    ),
     cell: ({ row: { original } }) => original.contact,
     meta: {
       headerProps: {
-        style: { width: '15%' },
-        className: 'ps-4 pe-5 border-end border-subtle'
+        className: 'ps-6 pe-8 uppercase border-e border-subtle w-3/20'
       },
       cellProps: {
         className:
-          'whitespace-nowrap ps-4 border-end border-subtle font-semibold text-highlight'
+          'whitespace-nowrap ps-6 border-e border-subtle font-semibold text-highlight'
       }
     }
   },
   {
     accessorKey: 'company',
-    header: () => {
-      return (
-        <div className="inline-flex flex-center">
-          <div className="px-1 py-1 bg-warning-subtle rounded-md me-2">
-            <FeatherIcon icon="grid" size={16} className="text-warning-dark" />
-          </div>
-          <span>Company name</span>
-        </div>
-      );
-    },
+    header: () => (
+      <HeaderIconLabel
+        icon="grid"
+        bgClassName="bg-warning-subtle"
+        iconClassName="text-warning-dark"
+        label="Company name"
+      />
+    ),
     cell: ({ row: { original } }) => original.company,
     meta: {
       headerProps: {
-        style: { width: '15%' },
-        className: 'ps-4 pe-5 border-end border-subtle'
+        className: 'ps-6 pe-8 uppercase border-e border-subtle w-3/20'
       },
       cellProps: {
         className:
-          'whitespace-nowrap ps-4 border-end border-subtle font-semibold text-highlight'
+          'whitespace-nowrap ps-6 border-e border-subtle font-semibold text-highlight/85'
       }
     }
   },
@@ -163,30 +219,22 @@ export const leadsTableColumns: ColumnDef<LeadDataType>[] = [
     header: 'Create date',
     cell: ({ row: { original } }) => original.date,
     meta: {
-      headerProps: {
-        style: { width: '15%' },
-        className: 'ps-4 pe-5'
-      },
-      cellProps: {
-        className: 'whitespace-nowrap ps-4 text-subtle'
-      }
+      headerProps: { className: 'ps-6 pe-8 uppercase w-3/20' },
+      cellProps: { className: 'whitespace-nowrap text-subtle/85 ps-6' }
     }
   },
   {
     id: 'leadDropdown',
-    cell: () => {
-      return (
-        <RevealDropdownTrigger>
-          <RevealDropdown>
-            <ActionDropdownItems />
-          </RevealDropdown>
-        </RevealDropdownTrigger>
-      );
-    },
+    cell: () => (
+      <RevealDropdownTrigger className="btn-reveal-trigger static">
+        <RevealDropdown btnClassName="text-sm">
+          <ActionDropdownItems />
+        </RevealDropdown>
+      </RevealDropdownTrigger>
+    ),
     meta: {
-      cellProps: {
-        className: 'text-end pe-0 ps-4'
-      }
+      headerProps: { className: 'text-end pe-0 ps-6' },
+      cellProps: { className: 'whitespace-nowrap text-end pe-0 ps-6' }
     }
   },
   {
@@ -201,12 +249,20 @@ export const leadsTableColumns: ColumnDef<LeadDataType>[] = [
 
 const LeadsTable = () => {
   return (
-    <div className="border-t border-subtle">
+    <div>
       <AdvanceTable
-        tableProps={{ className: ' text-md' }}
-        rowClassName="hover-actions-trigger btn-reveal-trigger"
+        tableProps={{
+          className: 'text-md mb-0 leads-table border-t border-subtle'
+        }}
+        rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />
-      <AdvanceTableFooter pagination className="py-6" />
+      {/* gold: `.row.items-center.justify-end.py-6.pe-0.text-md`, info `me-4` */}
+      <AdvanceTableFooter
+        pagination
+        className="justify-end! py-6!"
+        tableInfo="me-4!"
+        nextPageLinkClassName="pe-0"
+      />
     </div>
   );
 };
