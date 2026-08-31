@@ -1,118 +1,115 @@
-import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircle, faCouch } from '@fortawesome/free-solid-svg-icons';
-import { Card, Row, Col } from 'react-bootstrap';
+import { Card } from '@hummingbirdui/react';
 import longArrowDown from 'assets/img/icons/long-arrow-down.svg';
 import qatarAirlineLogo from 'assets/img/brand/qatar-airline.png';
 
-interface FlightDetailsProps {
+interface FlightPointProps {
   time: string;
   date: string;
-  airportCode: string;
-  airportName: string;
+  airport: string;
+  airportFull: string;
 }
 
-const FlightDetails = ({
+const FlightPoint = ({
   time,
   date,
-  airportCode,
-  airportName
-}: FlightDetailsProps) => (
-  <Row className="items-center">
-    <Col md={3} className="md:text-end mb-2 md:mb-0">
+  airport,
+  airportFull
+}: FlightPointProps) => (
+  <div className="row items-center">
+    <div className="md:col-3 md:text-end mb-2 md:mb-0">
       <h2>{time}</h2>
-      <p className="mb-0 whitespace-nowrap">{date}</p>
-    </Col>
-    <Col md="auto" className="hidden md:block text-center">
+      <p className="mb-0 text-base text-nowrap">{date}</p>
+    </div>
+    <div className="md:col-auto hidden md:block text-center">
       <FontAwesomeIcon icon={faCircle} className="text-soft text-xs" />
-    </Col>
-    <Col md="auto">
+    </div>
+    <div className="md:col-auto">
       <h5>
-        {airportCode} - {airportName}
-        <span className="text-subtle font-normal">
-          {' '}
-          ({airportName} Intl. Airport)
-        </span>
+        {airport}{' '}
+        <span className="text-subtle font-normal">({airportFull})</span>
       </h5>
-    </Col>
-  </Row>
+    </div>
+  </div>
 );
 
-const FlightInfo = () => {
+/** `+FlightInfo` in mixins/travel-agency/flight/booking/FlightInfo.pug */
+const FlightInfo = ({ className }: { className?: string }) => {
   return (
-    <Card className="bg-subtle mb-10">
+    <Card className={`bg-subtle ${className ?? ''}`}>
       <Card.Body className="p-6 lg:p-10">
-        <Row className="g-0 justify-between">
-          <Col lg={8} className="mb-8 lg:mb-0">
-            <Row className="gy-6">
-              <Col xs={12}>
-                <FlightDetails
+        <div className="row g-0 justify-between">
+          <div className="lg:col-8 mb-8 lg:mb-0">
+            <div className="row gy-6">
+              <div className="col-12">
+                <FlightPoint
                   time="13:45"
                   date="23 January, 2023"
-                  airportCode="DAC"
-                  airportName="Dhaka"
+                  airport="DAC - Dhaka"
+                  airportFull="Hazrat Shahjalal Intl. Airport"
                 />
-              </Col>
+              </div>
 
-              <Col xs={12}>
-                <Row className="items-center">
-                  <Col xs="auto" md={3} className="md:text-end">
-                    <p className="mb-0 text-soft">0h 45m</p>
-                  </Col>
-                  <Col xs="auto" className="md:text-center">
+              <div className="col-12">
+                <div className="row items-center">
+                  <div className="col-auto md:col-3 md:text-end">
+                    <p className="mb-0 text-base text-soft">0h 45m</p>
+                  </div>
+                  <div className="col-auto md:text-center">
                     <img src={longArrowDown} alt="" />
-                  </Col>
-                  <Col xs="auto">
-                    <p className="mb-0 text-soft">Qatar Airways</p>
-                  </Col>
-                </Row>
-              </Col>
+                  </div>
+                  <div className="col-auto">
+                    <p className="mb-0 text-base text-soft">Qatar Airways</p>
+                  </div>
+                </div>
+              </div>
 
-              <Col xs={12}>
-                <FlightDetails
+              <div className="col-12">
+                <FlightPoint
                   time="14:15"
                   date="23 January, 2023"
-                  airportCode="CXB"
-                  airportName="Cox’s Bazar"
+                  airport="CXB - Cox’s Bazar"
+                  airportFull="Cox’s Bazar Intl. Airport"
                 />
-              </Col>
-            </Row>
-          </Col>
+              </div>
+            </div>
+          </div>
 
-          {/* Right Panel for Airline Info */}
-          <Col
-            lg={4}
-            className="lg:ps-10 pt-8 lg:pt-0 border-t lg:border-t-0 lg:border-s border-subtle"
-          >
-            <Row className="lg:g-4 md:g-0 g-4 flex-between-center">
-              <Col md="auto" lg={12} className="whitespace-nowrap">
-                <img
-                  src={qatarAirlineLogo}
-                  alt=""
-                  width={32}
-                  className="rounded-md"
-                />
-                <h5 className="whitespace-nowrap font-normal inline-block ms-2 mb-0">
-                  Qatar Airways
-                </h5>
-              </Col>
-              <Col xs="auto" lg={12}>
-                <h5 className="whitespace-nowrap">Flight number</h5>
-                <p className="mb-0">VQ 935</p>
-              </Col>
-              <Col xs="auto" lg={12}>
-                <h5 className="whitespace-nowrap">Flight model</h5>
-                <p className="mb-0">ATR735</p>
-              </Col>
-              <Col xs="auto" lg={12}>
-                <h5 className="mb-0 whitespace-nowrap">
-                  <FontAwesomeIcon icon={faCouch} className="me-2" />
-                  Economy
-                </h5>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
+          <div className="lg:col-4">
+            <div className="lg:ps-10 pt-8 lg:pt-0 border-t lg:border-t-0 lg:border-s border-subtle">
+              <div className="row lg:g-4 md:g-0 g-4 flex-between-center">
+                <div className="md:col-auto lg:col-12">
+                  <div className="text-nowrap">
+                    <img
+                      src={qatarAirlineLogo}
+                      alt=""
+                      width={32}
+                      className="rounded-md"
+                    />
+                    <h5 className="text-nowrap font-normal inline-block ms-2 mb-0">
+                      Qatar Airways
+                    </h5>
+                  </div>
+                </div>
+                <div className="col-auto lg:col-12">
+                  <h5 className="text-nowrap">Flight number</h5>
+                  <p className="mb-0 text-base">VQ 935</p>
+                </div>
+                <div className="col-auto lg:col-12">
+                  <h5 className="text-nowrap">Flight model</h5>
+                  <p className="mb-0 text-base">ATR735</p>
+                </div>
+                <div className="col-auto lg:col-12">
+                  <h5 className="mb-0 text-nowrap">
+                    <FontAwesomeIcon icon={faCouch} className="me-2" />
+                    Economy
+                  </h5>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </Card.Body>
     </Card>
   );

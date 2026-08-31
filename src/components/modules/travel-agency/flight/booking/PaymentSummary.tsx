@@ -1,71 +1,76 @@
-import classNames from 'classnames';
-import React from 'react';
-import { Card, ListGroup, Badge } from 'react-bootstrap';
+import { cn, Card } from '@hummingbirdui/react';
 
 interface SummaryItemProps {
   label: string;
   value: string;
-  isBold?: boolean;
+  bold?: boolean;
   badgeText?: string;
-  isPositive?: boolean;
   className?: string;
 }
 
 const SummaryItem = ({
   label,
   value,
-  isBold = false,
+  bold,
   badgeText,
-  isPositive = false,
   className
 }: SummaryItemProps) => (
-  <ListGroup.Item
-    className={classNames('px-0 py-6 bg-subtle', className)}
-  >
+  <li className={className}>
     <div className="flex flex-between-center">
       <h6 className="mb-0">
         {label}
         {badgeText && (
-          <Badge bg="warning" className="ms-2">
+          <span className="badge border-x-0 border-t-0 bg-warning ms-2">
             {badgeText}
-          </Badge>
+          </span>
         )}
       </h6>
-      <p
-        className={classNames('mb-0 text-emphasis', {
-          'font-semibold': isBold
-        })}
-      >
-        <span className="text-md me-2">BDT</span>
-        {isPositive ? `+${value}` : value}
+      <p className={cn('mb-0 text-emphasis', { 'font-bold': bold })}>
+        <span className={cn('text-md me-2', { 'font-semibold': bold })}>
+          BDT
+        </span>
+        {value}
       </p>
     </div>
-  </ListGroup.Item>
+  </li>
 );
 
-const PaymentSummary = () => {
+/** `+PaymentSummary` in mixins/travel-agency/flight/booking/PaymentSummary.pug */
+const PaymentSummary = ({ className }: { className?: string }) => {
   return (
-    <div className="mb-6 lg:mb-16">
+    <div className={cn(className)}>
       <h3 className="mb-6">Payment Summary</h3>
       <Card className="bg-subtle">
         <Card.Body>
-          <ListGroup variant="flush">
-            <SummaryItem label="Base fare" value="4,074" className="pt-0" />
-            <SummaryItem label="Tax" value="725" isPositive={true} />
+          <ul className="list-group list-group-flush">
+            <SummaryItem
+              label="Base fare"
+              value="4,074"
+              className="p-0 pb-4 list-group-item border-x-0 border-t-0 bg-subtle"
+            />
+            <SummaryItem
+              label="Tax"
+              value="+725"
+              className="px-0 py-4 list-group-item border-x-0 border-t-0 bg-subtle"
+            />
             <SummaryItem
               label="Sub-total"
               value="4,799"
-              isBold={true}
-              className="pb-8"
+              bold
+              className="px-0 pt-4 pb-8 list-group-item border-x-0 border-t-0 bg-subtle"
             />
-            <SummaryItem label="Code" value="-285" badgeText="DOMFLy2023" />
+            <SummaryItem
+              label="Code"
+              value="-285"
+              badgeText="DOMFLy2023"
+              className="px-0 py-4 list-group-item border-x-0 border-t-0 bg-subtle"
+            />
             <SummaryItem
               label="Convenience charge"
-              value="95"
-              isPositive={true}
-              className="pb-0"
+              value="+95"
+              className="px-0 pb-0 pt-4 list-group-item border-0 bg-subtle"
             />
-          </ListGroup>
+          </ul>
         </Card.Body>
       </Card>
     </div>

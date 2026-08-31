@@ -14,7 +14,11 @@ const FlightAlternateLayout = () => {
     <>
       <NavbarMain />
       <Outlet />
-      <ChatWidget />
+      {/* gold passes `attrsSupportChat = { class: 'support-chat-bottom-lg' }` so
+          the chat button clears the fixed .flight-bottom-bar */}
+      <div className="support-chat-bottom-lg">
+        <ChatWidget />
+      </div>
     </>
   );
 };
