@@ -5,26 +5,25 @@ import {
   faUser
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Badge from 'components/base/Badge';
+import { Col, Row } from '@hummingbirdui/react';
 import Button from 'components/base/Button';
 import GenerateStar from 'components/common/GenerateStar';
-import TextTruncate from 'components/common/TextTruncate';
 import TripDetailsAvailabilityModal from 'components/modals/TripDetailsAvailabilityModal';
 import { TripOverview } from 'data/travel-agency/customer/trip';
 import { currencyFormat, numberFormat } from 'helpers/utils';
-import React, { useState } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { useState } from 'react';
 import { Link } from 'react-router';
 
 interface TripDetailsOverviewProps {
   tripOverview: TripOverview;
 }
 
+/** overview block in phoenix-tailwind pug/apps/travel-agency/trip/trip-details.pug */
 const TripDetailsOverview = ({ tripOverview }: TripDetailsOverviewProps) => {
   const [modalShow, setModalShow] = useState(false);
   return (
     <>
-      <div className="flex flex-wrap items-center gap-4">
+      <div className="flex items-center flex-wrap gap-4">
         <h2 className="me-4">
           {currencyFormat(tripOverview.cost)}{' '}
           <span className="text-base font-semibold text-subtle align-middle">
@@ -74,20 +73,25 @@ const TripDetailsOverview = ({ tripOverview }: TripDetailsOverviewProps) => {
               <FontAwesomeIcon icon={faUser} className="me-2" />
               From {tripOverview.minPeoples} to {tripOverview.maxPeoples} people
             </h6>
-            <div className="flex flex-wrap">
-              {tripOverview.tripTags.map(tag => (
-                <Link key={tag} to="#!" className="me-2">
-                  <Badge variant="phoenix" bg="secondary">
-                    {tag}
-                  </Badge>
-                </Link>
-              ))}
-            </div>
+            {tripOverview.tripTags.map((tag, index) => (
+              <Link
+                key={tag}
+                to="#!"
+                className={
+                  index !== tripOverview.tripTags.length - 1
+                    ? 'badge badge-phoenix-secondary no-underline me-2'
+                    : 'badge badge-phoenix-secondary no-underline'
+                }
+              >
+                {tag}
+              </Link>
+            ))}
           </Col>
           <Col md={8} lg={9} className="lg:ps-12">
             <h4 className="text-default mb-4">Overview</h4>
             <p className="mb-0">
-              <TextTruncate text={tripOverview.description} maxLength={313} />
+              {tripOverview.description}
+              <Link to="#!">Read more</Link>
             </p>
           </Col>
         </Row>

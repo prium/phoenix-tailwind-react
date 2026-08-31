@@ -1,12 +1,11 @@
 import { useMemo, type JSX } from 'react';
 import { TripDetailsTabDetailItem } from 'data/travel-agency/customer/trip';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row } from '@hummingbirdui/react';
 import CollapsibleContainer from 'components/common/CollapsibleContainer';
 import TripDetailsTabDetailsExpectation from './details-tab/TripDetailsTabDetailsExpectation';
 import TripDetailsTabDetailsIncluded from './details-tab/TripDetailsTabDetailsIncluded';
 import TripDetailsTabDetailsDeparture from './details-tab/TripDetailsTabDetailsDeparture';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircle } from '@fortawesome/free-solid-svg-icons';
+import TripDetailsListItem from './details-tab/TripDetailsListItem';
 import TripDetailsTabDetailsAccessibility from './details-tab/TripDetailsTabDetailsAccessibility';
 import TripDetailsTabDetailsPolicy from './details-tab/TripDetailsTabDetailsPolicy';
 import TripDetailsSummary from './details-tab/TripDetailsSummary';
@@ -42,7 +41,7 @@ const collapsibleContainerContent = (
       id: 'collapseIncluded',
       title: 'What are included or excluded',
       defaultOpen: false,
-      className: 'mt-4',
+      className: 'mt-6',
       content: (
         <TripDetailsTabDetailsIncluded
           includedItems={tripDetailsItems.includeOrExclude}
@@ -53,7 +52,7 @@ const collapsibleContainerContent = (
       id: 'collapseDeparture',
       title: 'Departure and return',
       defaultOpen: false,
-      className: 'mt-4',
+      className: 'mt-6',
       content: (
         <TripDetailsTabDetailsDeparture
           departureItems={tripDetailsItems.departOrReturn}
@@ -64,7 +63,7 @@ const collapsibleContainerContent = (
       id: 'collapseAccessibility',
       title: 'Accessibility',
       defaultOpen: false,
-      className: 'mt-4',
+      className: 'mt-6',
       content: (
         <TripDetailsTabDetailsAccessibility
           accessibility={tripDetailsItems.accessibility}
@@ -72,22 +71,17 @@ const collapsibleContainerContent = (
       )
     },
     {
-      id: 'collapseAdditionalInformation',
+      id: 'collapseAdditionalInfo',
       title: 'Additional Information',
-      className: 'mt-4',
+      className: 'mt-6',
       defaultOpen: false,
       content: (
         <div className="py-10 px-6">
-          <ul className="px-0">
+          <ul className="list-none mb-0 p-0">
             {tripDetailsItems.additional.map(item => (
-              <li key={item.id} className="mb-1 flex">
-                <FontAwesomeIcon
-                  icon={faCircle}
-                  className="text-secondary-light me-4 text-xs"
-                  transform="down-13 shrink-4"
-                />
+              <TripDetailsListItem key={item.id}>
                 {item.additionalItem}
-              </li>
+              </TripDetailsListItem>
             ))}
           </ul>
         </div>
@@ -97,7 +91,7 @@ const collapsibleContainerContent = (
       id: 'collapsePolicy',
       title: 'Policy',
       defaultOpen: false,
-      className: 'mt-4',
+      className: 'mt-6',
       content: (
         <TripDetailsTabDetailsPolicy policies={tripDetailsItems.policy} />
       )
@@ -105,6 +99,7 @@ const collapsibleContainerContent = (
   ];
 };
 
+/** `+TripDetails` in phoenix-tailwind mixins/travel-agency/trip/TripDetails.pug */
 const TripDetailsTabDetailsContent = ({
   tripDetailsItems
 }: TripDetailsTabDetailsContentProps) => {

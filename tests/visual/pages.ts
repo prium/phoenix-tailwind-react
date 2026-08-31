@@ -359,5 +359,15 @@ export const pages: VisualPage[] = [
       '.echart-trip-review',
       '.avatar.avatar-xs img'
     ]
+  },
+  {
+    name: 'ta-flight-booking',
+    react: '/apps/travel-agency/flight/booking',
+    gold: '/apps/travel-agency/flight/booking.html',
+    probes: [
+      '.theme-wizard .nav-item-circle',
+      '.flight-bottom-bar .btn-primary',
+      '.btn-support-chat'
+    ]
   }
 ];

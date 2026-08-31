@@ -1,6 +1,5 @@
-import React from 'react';
 import type { Comment } from 'data/travel-agency/customer/trip';
-import { Card } from 'react-bootstrap';
+import { Card } from '@hummingbirdui/react';
 import classNames from 'classnames';
 import Avatar from 'components/base/Avatar';
 import { Link } from 'react-router';
@@ -13,6 +12,7 @@ interface TripDetailsTabReviewCommentCardProps {
   comments: Comment[];
 }
 
+/** review cards in phoenix-tailwind mixins/travel-agency/trip/TripReview.pug */
 const TripDetailsTabReviewCommentCard = ({
   comments
 }: TripDetailsTabReviewCommentCardProps) => {
@@ -22,7 +22,7 @@ const TripDetailsTabReviewCommentCard = ({
         <Card
           key={comment.id}
           className={classNames('bg-transparent', {
-            'mb-6': index !== comments.length - 1
+            'mb-3': index !== comments.length - 1
           })}
         >
           <Card.Body>
@@ -31,7 +31,7 @@ const TripDetailsTabReviewCommentCard = ({
                 <Avatar src={comment.profilePic} size="s" rounded="circle" />
                 <Link
                   to="#!"
-                  className="stretched-link font-semibold text-emphasis"
+                  className="text-emphasis text-base font-semibold stretched-link"
                 >
                   {comment.commenter}
                 </Link>
@@ -40,14 +40,14 @@ const TripDetailsTabReviewCommentCard = ({
                 <h6 className="text-subtle mb-0">
                   <FontAwesomeIcon
                     icon={faThumbsUp}
-                    className="text-soft  me-1"
+                    className="text-soft me-1"
                   />
                   {comment.liked}
                 </h6>
-                <h6 className="text-subtle dark__ mb-0">
+                <h6 className="text-subtle mb-0">
                   <FontAwesomeIcon
                     icon={faThumbsDown}
-                    className="text-soft me-1"
+                    className="text-muted-light me-1"
                   />
                   {comment.disliked}
                 </h6>
@@ -61,31 +61,25 @@ const TripDetailsTabReviewCommentCard = ({
               />
             </div>
             <h4 className="mb-2">{comment.commentTitle}</h4>
-            <p className="text-subtle">{comment.commentDate}</p>
-            <p>{comment.commentDes}</p>
+            <p className="text-subtle text-base">{comment.commentDate}</p>
+            <p className="text-base">{comment.commentDes}</p>
             {comment.uploadedImage && (
-              <div className="flex flex-wrap gap-2">
+              <div className="flex gap-2 flex-wrap">
                 <TripDetailsReviewTabCommentUpload
                   uploadedCommentImage={comment.uploadedImage}
                 />
               </div>
             )}
-            {comment.replies.map((replyItem, idx) => (
+            {comment.replies.map(replyItem => (
               <div
                 key={replyItem.id}
-                className={classNames(
-                  'mt-14 border-s border-subtle ps-10',
-                  {
-                    'mt-14': idx === 0,
-                    'mb-6': idx !== comment.replies.length - 1
-                  }
-                )}
+                className="mt-8 border-s border-subtle ps-6"
               >
-                <Link to="#!" className="font-bold">
+                <Link to="#!" className="text-base font-bold">
                   {replyItem.replier}
                 </Link>
-                <span className="text-soft"> replied</span>
-                <p className="mt-2">{replyItem.reply}</p>
+                <span className="ms-1 text-base text-soft">replied</span>
+                <p className="mt-2 text-base">{replyItem.reply}</p>
               </div>
             ))}
           </Card.Body>

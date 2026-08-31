@@ -1,16 +1,13 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { TourSummary } from 'data/travel-agency/customer/trip';
-import { Col, Collapse, Row } from 'react-bootstrap';
+import { Col, Row, cn } from '@hummingbirdui/react';
 import Bg from 'assets/img/bg/bg-41.svg';
-import Button from 'components/base/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faChevronDown,
   faClock,
-  faLocationDot,
   faMapMarkerAlt
 } from '@fortawesome/free-solid-svg-icons';
-import classNames from 'classnames';
 
 interface TripDetailsSummaryProps {
   tourSummary: TourSummary[];
@@ -18,24 +15,19 @@ interface TripDetailsSummaryProps {
 
 interface SummaryContentProps {
   item: TourSummary;
-  index?: number;
+  lineClassName?: string;
 }
 
-const SummaryContent = ({ item, index }: SummaryContentProps) => {
+const SummaryContent = ({ item, lineClassName }: SummaryContentProps) => {
   return (
     <div className="p-2 rounded-md bg-subtle flex items-center gap-2 mb-4 relative">
       <div
-        className={classNames(
+        className={cn(
           'tour-direction-line border-s border-dashed',
-          {
-            'sm:hidden': index === 2
-          }
+          lineClassName
         )}
       />
-      <span
-        className="bg-secondary rounded-full flex flex-center text-white text-md"
-        style={{ width: 23, height: 23 }}
-      >
+      <span className="min-w-5.75 h-5.75 bg-secondary rounded-full flex flex-center text-white text-md">
         {item.serial}
       </span>
       <h6 className="mb-0 text-highlight">{item.label}</h6>
@@ -43,76 +35,67 @@ const SummaryContent = ({ item, index }: SummaryContentProps) => {
   );
 };
 
+/** tour route column in phoenix-tailwind mixins/travel-agency/trip/TripDetails.pug */
 const TripDetailsSummary = ({ tourSummary }: TripDetailsSummaryProps) => {
   const [open, setOpen] = useState(true);
   return (
     <>
-      <h6 className="my-4 py-4 px-2 rounded-md bg-muted text-center">
-        Day 1
-      </h6>
+      <h6 className="my-4 py-4 px-2 rounded-md bg-muted text-center">Day 1</h6>
       <Row className="gx-8 gy-0 relative">
         <div
           className="bg-holder tour-direction-bg hidden sm:block"
-          style={{
-            backgroundImage: `url(${Bg})`
-          }}
+          style={{ backgroundImage: `url(${Bg})` }}
         />
-        <Col sm={6}>
+        <Col sm={6} className="relative">
           <div className="p-2 rounded-md bg-subtle mb-4 relative">
             <div className="tour-direction-line border-s border-dashed" />
-            <Button
-              variant=""
-              className={classNames(
-                'p-0 flex justify-between collapse-indicator',
-                {
-                  collapsed: open
-                }
-              )}
-              aria-controls="collapsePickup"
+            <a
+              className="btn p-0 flex justify-between collapse-indicator"
+              role="button"
+              aria-controls="collapsePicupPoint"
+              aria-expanded={open}
               onClick={() => setOpen(!open)}
             >
               <div className="flex">
-                <span
-                  className="inline-flex flex-center rounded-full border me-2"
-                  style={{ minWidth: 23, height: 23 }}
-                >
-                  <FontAwesomeIcon icon={faLocationDot} className="text-md" />
+                <span className="inline-flex flex-center rounded-full border me-2 min-w-5.75 h-5.75">
+                  <FontAwesomeIcon icon={faMapMarkerAlt} className="text-md" />
                 </span>
                 <div>
                   <h6 className="mb-2 text-start">Pickup point</h6>
                   <h6 className="text-start font-normal text-subtle">
-                    Birnin zana bus terminal
+                    Birnin Zana bus terminal
                   </h6>
                 </div>
               </div>
               <FontAwesomeIcon
                 icon={faChevronDown}
-                className="toggle-icon"
-                style={{ width: 10, height: 10 }}
+                className="toggle-icon size-2.5"
               />
-            </Button>
-            <Collapse in={open}>
-              <div id="collapsePickup">
-                <h6 className="font-normal text-subtle pt-4 ps-1">
-                  <FontAwesomeIcon icon={faClock} className="me-2" />
-                  10:00 am local time
-                </h6>
-              </div>
-            </Collapse>
+            </a>
+            <div
+              className={cn('collapse', { show: open })}
+              id="collapsePicupPoint"
+            >
+              <h6 className="font-normal text-subtle pt-4 ps-1">
+                <FontAwesomeIcon icon={faClock} className="text-soft me-2" />
+                10:00 am local time
+              </h6>
+            </div>
           </div>
           {tourSummary.slice(0, 3).map((item, index) => (
-            <SummaryContent key={item.id} item={item} index={index} />
+            <SummaryContent
+              key={item.id}
+              item={item}
+              lineClassName={index === 2 ? 'sm:hidden' : undefined}
+            />
           ))}
         </Col>
-        <Col sm={6}>
+        <Col sm={6} className="relative">
           {tourSummary.slice(3).map(item => (
             <SummaryContent key={item.id} item={item} />
           ))}
-          <div className="p-2 rounded-md bg-subtle flex items-center gap-2 mb-2">
-            <span
-              className="inline-flex flex-center rounded-full border me-2"
-              style={{ width: 23, height: 23 }}
-            >
+          <div className="p-2 rounded-md bg-subtle flex items-center gap-2 mb-4">
+            <span className="inline-flex flex-center rounded-full border me-2 min-w-5.75 h-5.75">
               <FontAwesomeIcon icon={faMapMarkerAlt} className="text-md" />
             </span>
             <h6 className="mb-0 text-highlight">Drop-off point</h6>

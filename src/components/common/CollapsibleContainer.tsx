@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import Button from 'components/base/Button';
-import { Collapse } from 'react-bootstrap';
 import classNames from 'classnames';
 
 type ContainerSize = 'sm' | 'base' | 'large' | 'trip';
@@ -16,6 +15,7 @@ interface CollapsibleContainerProps {
   defaultOpen?: boolean;
 }
 
+/** gold: `a.btn.collapse-indicator[data-bs-toggle=collapse]` + `.collapse.show` */
 const CollapsibleContainer = ({
   collapseTitle,
   titleClass,
@@ -38,10 +38,11 @@ const CollapsibleContainer = ({
             'py-2 px-6': containerSize === 'sm',
             'p-6': containerSize === 'base',
             'p-10': containerSize === 'large',
-            'px-10 py-6 sm:py-6': containerSize === 'trip'
+            'px-6 py-4 sm:py-6': containerSize === 'trip'
           }
         )}
         aria-controls={id}
+        aria-expanded={open}
         onClick={() => setOpen(!open)}
       >
         <h4 className={classNames('mb-0', titleClass)}>{collapseTitle}</h4>
@@ -50,9 +51,9 @@ const CollapsibleContainer = ({
           className="toggle-icon text-default"
         />
       </Button>
-      <Collapse in={open}>
-        <div id={id}>{children}</div>
-      </Collapse>
+      <div className={classNames('collapse', { show: open })} id={id}>
+        {children}
+      </div>
     </>
   );
 };

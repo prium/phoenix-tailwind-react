@@ -1,5 +1,5 @@
-import { JSX } from 'react';
-import { Tab, Nav } from 'react-bootstrap';
+import { JSX, useState } from 'react';
+import { cn } from '@hummingbirdui/react';
 import TripDetailsTabDetailsContent from './TripDetailsTabDetailsContent';
 import TripDetailsTabReviewContent from './TripDetailsTabReviewContent';
 import {
@@ -8,12 +8,14 @@ import {
 } from 'data/travel-agency/customer/trip';
 
 interface TabItemProps {
+  id: string;
   name: string;
   content: JSX.Element;
 }
 
 const tabItems: TabItemProps[] = [
   {
+    id: 'pills-details',
     name: 'Details',
     content: (
       <TripDetailsTabDetailsContent
@@ -22,6 +24,7 @@ const tabItems: TabItemProps[] = [
     )
   },
   {
+    id: 'pills-review',
     name: 'Review',
     content: (
       <TripDetailsTabReviewContent tripDetailsReviews={tripDetailsReviews} />
@@ -29,24 +32,45 @@ const tabItems: TabItemProps[] = [
   }
 ];
 
+/** gold: `ul.nav.nav-pills.flex-nowrap.my-8` + `.tab-content#trip-details-tab-content` */
 const TripDetailsTab = () => {
+  const [activeTab, setActiveTab] = useState(tabItems[0].id);
   return (
-    <Tab.Container defaultActiveKey="Details">
-      <Nav variant="pills" className="scrollbar flex-nowrap my-8">
+    <>
+      <ul className="nav nav-pills flex-nowrap my-8" role="tablist">
         {tabItems.map(item => (
-          <Nav.Item key={item.name} className="whitespace-nowrap">
-            <Nav.Link eventKey={item.name}>{item.name}</Nav.Link>
-          </Nav.Item>
+          <li className="nav-item" key={item.id}>
+            <button
+              type="button"
+              className={cn('nav-link', { active: activeTab === item.id })}
+              id={`${item.id}-tab`}
+              role="tab"
+              aria-controls={item.id}
+              aria-selected={activeTab === item.id}
+              onClick={() => setActiveTab(item.id)}
+            >
+              {item.name}
+            </button>
+          </li>
         ))}
-      </Nav>
-      <Tab.Content>
+      </ul>
+      <div className="tab-content" id="trip-details-tab-content">
         {tabItems.map(item => (
-          <Tab.Pane key={item.name} eventKey={item.name}>
+          <div
+            key={item.id}
+            className={cn('tab-pane fade', {
+              'show active': activeTab === item.id
+            })}
+            id={item.id}
+            role="tabpanel"
+            aria-labelledby={`${item.id}-tab`}
+            tabIndex={0}
+          >
             {item.content}
-          </Tab.Pane>
+          </div>
         ))}
-      </Tab.Content>
-    </Tab.Container>
+      </div>
+    </>
   );
 };
 

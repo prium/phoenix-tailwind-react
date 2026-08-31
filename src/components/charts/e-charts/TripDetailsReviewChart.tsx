@@ -95,6 +95,7 @@ const TripDetailsReviewChart = ({
 }: TripDetailsReviewChartProps) => {
   const { getThemeColor } = useAppContext();
 
+  // gold: `.echart-trip-review.mx-auto.size-15` — size-15 = 60px
   return (
     <ReactEChartsCore
       echarts={echarts}
@@ -103,7 +104,7 @@ const TripDetailsReviewChart = ({
         stat
       })}
       style={{ height: 60, width: 60 }}
-      className={classNames(className)}
+      className={classNames('echart-trip-review', className)}
     />
   );
 };

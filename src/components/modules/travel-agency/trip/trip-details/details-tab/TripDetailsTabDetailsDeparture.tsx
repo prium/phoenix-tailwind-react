@@ -1,11 +1,12 @@
-import React from 'react';
 import { JourneyDetail } from 'data/travel-agency/customer/trip';
-import { Card } from 'react-bootstrap';
+import { Card } from '@hummingbirdui/react';
 import classNames from 'classnames';
 
 interface TripDetailsTabDetailsDepartureProps {
   departureItems: JourneyDetail[];
 }
+
+/** "Departure and return" body in mixins/travel-agency/trip/TripDetails.pug */
 const TripDetailsTabDetailsDeparture = ({
   departureItems
 }: TripDetailsTabDetailsDepartureProps) => {
@@ -15,11 +16,11 @@ const TripDetailsTabDetailsDeparture = ({
         <Card
           key={item.id}
           className={classNames('bg-transparent', {
-            'mb-6': departureItems.length - 1 !== index
+            'mb-3': departureItems.length - 1 !== index
           })}
         >
           <Card.Body>
-            <h5 className="mb-4">{item.label}</h5>
+            <h5 className="mb-3">{item.label}</h5>
             <p className="mb-0">{item.description}</p>
           </Card.Body>
         </Card>

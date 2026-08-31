@@ -63,7 +63,7 @@ const TripDetailsMapCluster = () => {
     <>
       <Suspense fallback={<PhoenixLoader />}>
         <MapboxCluster
-          className="border border-subtle rounded-md"
+          className="border border-subtle rounded-md h-60"
           mapData={mapData}
           options={{
             center: [-73.102712, 7.102257],

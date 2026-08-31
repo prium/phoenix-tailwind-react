@@ -1,5 +1,4 @@
-import React from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row } from '@hummingbirdui/react';
 import type { TripOverallReview } from 'data/travel-agency/customer/trip';
 import GenerateStar from 'components/common/GenerateStar';
 import Badge from 'components/base/Badge';
@@ -11,11 +10,12 @@ interface TripDetailsTabReviewAllReviewsProps {
   overallReview: TripOverallReview;
 }
 
+/** review summary row in phoenix-tailwind mixins/travel-agency/trip/TripReview.pug */
 const TripDetailsTabReviewAllReviews = ({
   overallReview
 }: TripDetailsTabReviewAllReviewsProps) => {
   return (
-    <Row className="gy-8 items-center">
+    <Row className="items-center gy-8">
       <Col xl={5} xxl={4}>
         <div className="flex items-center gap-4 flex-wrap">
           <h3 className="mb-0">
@@ -41,21 +41,18 @@ const TripDetailsTabReviewAllReviews = ({
       <Col xl={7} xxl={8}>
         <div className="flex gap-8 md:gap-10 xl:gap-14 2xl:gap-10 flex-wrap">
           {overallReview.reviewStates.map((statItem, index) => (
+            // gold prepends the (dead) `ms-xl-auto` class on the first item
             <div
               key={statItem.id}
               className={classNames(
-                'lg:flex xl:block 2xl:flex items-center gap-6',
-                {
-                  'xl:ms-auto': index === 0
-                }
+                'lg:flex xl:block 2xl:flex items-center gap-4',
+                { 'ms-xl-auto': index === 0 }
               )}
             >
-              <div className="lg:order-1 xl:order-0 2xl:order-1">
-                <TripDetailsReviewChart
-                  stat={statItem.count}
-                  className="mx-auto"
-                />
-              </div>
+              <TripDetailsReviewChart
+                stat={statItem.count}
+                className="lg:order-1 xl:order-0 2xl:order-1 mx-auto size-15"
+              />
               <h5 className="mb-0 mt-2 lg:mt-0 xl:mt-2 2xl:mt-0 text-center">
                 {statItem.name}
               </h5>
