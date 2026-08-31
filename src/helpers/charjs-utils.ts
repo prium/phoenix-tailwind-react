@@ -152,8 +152,11 @@ export const externalTooltipHandler = (
     tooltipEl.style.opacity = '1';
     tooltipEl.style.left = `${leftPosition}px`;
     tooltipEl.style.top = `${top}px`;
+    // in the external-tooltip handler options are already resolved, so
+    // bodyFont is a concrete FontSpec (with .string), not a scriptable
     tooltipEl.style.font =
-      tooltip.options?.bodyFont?.string || '12px sans-serif';
+      (tooltip.options?.bodyFont as { string?: string })?.string ||
+      '12px sans-serif';
     tooltipEl.style.padding = `${tooltip.options?.padding || 8}px`;
   }
 };

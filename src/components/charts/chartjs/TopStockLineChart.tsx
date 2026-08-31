@@ -7,7 +7,9 @@ import {
   LineElement,
   Tooltip,
   ChartOptions,
-  Filler
+  Filler,
+  ScriptableContext,
+  ScriptableLineSegmentContext
 } from 'chart.js';
 import { ChartData } from 'data/stock/dashboardTopStocks';
 import { useAppContext } from 'providers/AppProvider';
@@ -61,7 +63,7 @@ const TopStockLineChart = ({
         fill: true,
         pointRadius: 0,
         borderWidth: 1,
-        backgroundColor: context => {
+        backgroundColor: (context: ScriptableContext<'line'>) => {
           const chart = context.chart;
           const { chartArea } = chart;
           if (!chartArea) return undefined;
@@ -69,15 +71,19 @@ const TopStockLineChart = ({
         },
         borderColor: getThemeColor(growth ? 'color-success' : 'color-danger'),
         segment: {
-          borderColor: ctx =>
+          borderColor: (ctx: ScriptableLineSegmentContext) =>
             ctx.p0DataIndex <= index
               ? getThemeColor(growth ? 'color-success' : 'color-danger')
               : getThemeColor('border-color-default'),
-          backgroundColor: ctx =>
-            ctx.p0DataIndex <= index
-              ? ctx.chart.chartArea &&
-                getGradientColor(ctx.chart, getThemeColor, growth)
-              : 'transparent'
+          backgroundColor: (ctx: ScriptableLineSegmentContext) => {
+            if (ctx.p0DataIndex > index) return 'transparent';
+            // segment contexts prototype-chain to the chart context, so
+            // `chart` exists at runtime but not in the declared type
+            const { chart } = ctx as unknown as { chart: ChartJS<'line'> };
+            return chart.chartArea
+              ? getGradientColor(chart, getThemeColor, growth)
+              : undefined;
+          }
         }
       }
     ]
