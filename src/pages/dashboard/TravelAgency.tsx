@@ -40,7 +40,7 @@ const TravelAgency = () => {
               <TravelStatistics />
             </Col>
             <Col xs={12} xl={7} xxl={12}>
-              <FinancialActivities className="mt-8 xl:mt-0 2xl:mt-8 mb-8 2xl:mb-0" />
+              <FinancialActivities className="mt-14 xl:mt-0 2xl:mt-14 mb-14 2xl:mb-0" />
             </Col>
           </Row>
         </Col>

@@ -6,3 +6,8 @@ too, but not yet committed there): components/avatar.css defaults
 --avatar-width/--avatar-height to var(--avatar-size) so .avatar-group avatars
 keep a fixed size for every avatar-* size instead of sizing from each image's
 intrinsic resolution. Drop this note once phoenix-tailwind commits the fix.
+
+Also patched in the phoenix-tailwind working tree (pug, not css):
+dashboard/travel-agency.pug FinancialActivities margins mt-8/mb-8 -> mt-14/mb-14
+(the original Phoenix Bootstrap spacer 8 = 3.5rem; the literal Tailwind mb-8 =
+2rem lost the gap below the chart). Commit it upstream with the avatar fix.
