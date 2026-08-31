@@ -121,8 +121,8 @@ const TopStockLineChart = ({
           maxTicksLimit: breakpoints.down('sm')
             ? 4
             : breakpoints.down('md')
-            ? 7
-            : 12
+              ? 7
+              : 12
         },
         grid: { color: 'transparent' }
       },
@@ -136,7 +136,7 @@ const TopStockLineChart = ({
           callback: value => `${value}     `
         },
         grid: {
-          color: getThemeColor('border-color-light'),
+          color: getThemeColor('border-color-subtle'),
           drawTicks: false
         }
       }

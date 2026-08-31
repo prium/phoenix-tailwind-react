@@ -7,7 +7,10 @@ import { BarChart } from 'echarts/charts';
 echarts.use([TooltipComponent, BarChart]);
 
 const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
-  color: [getThemeColor('color-primary'), getThemeColor('background-color-highlight')],
+  color: [
+    getThemeColor('color-primary'),
+    getThemeColor('background-color-highlight')
+  ],
   tooltip: {
     trigger: 'axis',
     padding: [7, 10],
@@ -33,7 +36,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     },
     axisLine: {
       lineStyle: {
-        color: getThemeColor('border-color-light')
+        color: getThemeColor('border-color-subtle')
       }
     }
   },

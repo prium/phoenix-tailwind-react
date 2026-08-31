@@ -40,7 +40,7 @@ const getDefaultOptions = (
         roundCap: true,
         clip: false,
         itemStyle: {
-          color: getThemeColor(color)
+          color: getThemeColor(`color-${color}`)
         }
       },
       axisLine: {

@@ -136,7 +136,7 @@ const getDefaultOptions = (
       lineStyle: {
         type: 'solid',
         z: 10,
-        color: getThemeColor('border-color-light')
+        color: getThemeColor('border-color-subtle')
       }
     },
     axisTick: {
@@ -145,7 +145,7 @@ const getDefaultOptions = (
     splitLine: {
       show: true,
       lineStyle: {
-        color: getThemeColor('border-color-light')
+        color: getThemeColor('border-color-subtle')
       }
     },
     boundaryGap: 0,
@@ -174,7 +174,7 @@ const getDefaultOptions = (
     },
     splitLine: {
       lineStyle: {
-        color: getThemeColor('border-color-light')
+        color: getThemeColor('border-color-subtle')
       }
     },
     axisLabel: {
@@ -201,7 +201,9 @@ const getDefaultOptions = (
         color: isDark
           ? getThemeColor('color-primary')
           : getThemeColor('color-primary-light'),
-        color0: isDark ? getThemeColor('color-info') : getThemeColor('color-info-light'),
+        color0: isDark
+          ? getThemeColor('color-info')
+          : getThemeColor('color-info-light'),
         borderColor: isDark
           ? getThemeColor('color-primary')
           : getThemeColor('color-primary-light'),

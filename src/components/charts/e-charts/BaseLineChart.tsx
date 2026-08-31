@@ -45,10 +45,10 @@ const getDefaultOptions = (
       data,
       lineStyle: {
         width: 2,
-        color: getThemeColor(color)
+        color: getThemeColor(`color-${color}`)
       },
       itemStyle: {
-        color: getThemeColor(color)
+        color: getThemeColor(`color-${color}`)
       },
       showSymbol: false,
       symbol: 'circle'

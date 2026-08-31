@@ -63,7 +63,10 @@ const getDefaultOptions = (
   range: Range,
   breakpoints: BreakpointsContextInterface
 ) => ({
-  color: [getThemeColor('color-primary'), getThemeColor('background-color-highlight')],
+  color: [
+    getThemeColor('color-primary'),
+    getThemeColor('background-color-highlight')
+  ],
   tooltip: {
     trigger: 'axis',
     padding: [7, 10],
@@ -89,7 +92,7 @@ const getDefaultOptions = (
     boundaryGap: 0,
     axisLine: {
       lineStyle: {
-        color: getThemeColor('border-color-light')
+        color: getThemeColor('border-color-subtle')
       }
     },
     axisTick: {
@@ -123,7 +126,7 @@ const getDefaultOptions = (
     splitLine: {
       show: true,
       lineStyle: {
-        color: getThemeColor('border-color-light')
+        color: getThemeColor('border-color-subtle')
       }
     },
     axisTick: {

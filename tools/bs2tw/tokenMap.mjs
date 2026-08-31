@@ -46,7 +46,7 @@ export const tokenMap = {
   'secondary-bg': 'background-color-muted',
   'tertiary-bg': 'background-color-highlight',
   'emphasis-bg': 'background-color-emphasis',
-  'border-color-translucent': 'border-color-light',
+  'border-color-translucent': 'border-color-subtle',
   'border-color': 'border-color-default',
   'light-text-emphasis': 'text-color-emphasis',
   'dark-text-emphasis': 'text-color-emphasis',

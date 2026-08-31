@@ -45,7 +45,7 @@ const getDefaultOptions = (
       data,
       barWidth: 3,
       itemStyle: {
-        color: getThemeColor(color)
+        color: getThemeColor(`color-${color}`)
       },
       showSymbol: false,
       symbol: 'circle'

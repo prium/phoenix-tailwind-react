@@ -34,7 +34,10 @@ const getDefaultOptions = (
   data: [string, number][],
   range: Range
 ) => ({
-  color: [getThemeColor('color-primary'), getThemeColor('background-color-highlight')],
+  color: [
+    getThemeColor('color-primary'),
+    getThemeColor('background-color-highlight')
+  ],
   tooltip: {
     trigger: 'axis',
     padding: [7, 10],
@@ -60,7 +63,7 @@ const getDefaultOptions = (
     data: data.map(item => item[0]),
     axisLine: {
       lineStyle: {
-        color: getThemeColor('border-color-light'),
+        color: getThemeColor('border-color-subtle'),
         type: 'solid'
       }
     },

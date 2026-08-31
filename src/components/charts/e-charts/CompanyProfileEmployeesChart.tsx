@@ -50,7 +50,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     },
     axisLine: {
       lineStyle: {
-        color: getThemeColor('border-color-light')
+        color: getThemeColor('border-color-subtle')
       }
     }
   },

@@ -70,7 +70,7 @@ const FinancialActivitiesChart = ({
         },
         splitLine: {
           lineStyle: {
-            color: getThemeColor('border-color-light')
+            color: getThemeColor('border-color-subtle')
           }
         }
       },
@@ -97,7 +97,7 @@ const FinancialActivitiesChart = ({
         },
         axisLine: {
           lineStyle: {
-            color: getThemeColor('border-color-light')
+            color: getThemeColor('border-color-subtle')
           }
         }
       },

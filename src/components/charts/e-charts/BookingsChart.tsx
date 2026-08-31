@@ -64,7 +64,7 @@ const getDefaultOptions = (
     data: getPastDates(8),
     axisLine: {
       lineStyle: {
-        color: getThemeColor('border-color-light')
+        color: getThemeColor('border-color-subtle')
       }
     },
     axisTick: false
@@ -79,7 +79,7 @@ const getDefaultOptions = (
     splitLine: {
       interval: 10,
       lineStyle: {
-        color: getThemeColor('border-color-light')
+        color: getThemeColor('border-color-subtle')
       }
     }
   },
@@ -92,7 +92,9 @@ const getDefaultOptions = (
       barWidth: '27%',
       itemStyle: {
         borderRadius: [4, 4, 0, 0],
-        color: isDark ? getThemeColor('color-info') : getThemeColor('color-info-light')
+        color: isDark
+          ? getThemeColor('color-info')
+          : getThemeColor('color-info-light')
       }
     },
     {
@@ -109,13 +111,13 @@ const getDefaultOptions = (
       }
     }
   ],
-  grid: { 
+  grid: {
     left: -3,
     right: 8,
     top: 46,
     bottom: 0,
     outerBoundsMode: 'same',
-    outerBoundsContain: 'axisLabel' 
+    outerBoundsContain: 'axisLabel'
   }
 });
 

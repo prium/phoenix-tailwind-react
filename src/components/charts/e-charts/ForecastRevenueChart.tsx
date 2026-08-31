@@ -10,7 +10,10 @@ const months = [2018, 2019, 2020, 2021, 2022, 2023, 2024];
 const data = [159, 185, 170, 190, 205, 220, 235];
 
 const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
-  color: [getThemeColor('color-info-lighter'), getThemeColor('background-color-highlight')],
+  color: [
+    getThemeColor('color-info-lighter'),
+    getThemeColor('background-color-highlight')
+  ],
   tooltip: {
     trigger: 'axis',
     padding: [7, 10],
@@ -29,7 +32,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     axisLine: {
       show: true,
       lineStyle: {
-        color: getThemeColor('border-color-light')
+        color: getThemeColor('border-color-subtle')
       }
     },
     axisTick: {
@@ -42,7 +45,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     splitLine: {
       show: true,
       lineStyle: {
-        color: getThemeColor('border-color-light')
+        color: getThemeColor('border-color-subtle')
       }
     },
     min: 100,
@@ -60,7 +63,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     splitLine: {
       show: false,
       lineStyle: {
-        color: getThemeColor('border-color-light')
+        color: getThemeColor('border-color-subtle')
       }
     },
     axisTick: {
@@ -68,7 +71,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     },
     axisLine: {
       lineStyle: {
-        color: getThemeColor('border-color-light')
+        color: getThemeColor('border-color-subtle')
       }
     }
   },
@@ -110,7 +113,7 @@ const ForecastRevenueChart = () => {
     <ReactEChartsCore
       echarts={echarts}
       option={getDefaultOptions(getThemeColor)}
-      style={{width: '100%', height: '300px'}}
+      style={{ width: '100%', height: '300px' }}
     />
   );
 };

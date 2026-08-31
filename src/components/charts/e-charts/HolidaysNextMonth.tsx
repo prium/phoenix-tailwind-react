@@ -124,7 +124,7 @@ const getDefaultOptions = (
       show: false
     },
     itemStyle: {
-      color: getThemeColor('text-color-emphasis'),
+      color: getThemeColor('color-contrast'),
       borderColor: getThemeColor('border-color-default')
     }
   },
