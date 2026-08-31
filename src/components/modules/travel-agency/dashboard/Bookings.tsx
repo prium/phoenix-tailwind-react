@@ -23,15 +23,15 @@ const Bookings = () => {
     });
   }, [selectedOption]);
   return (
-    <Card className="h-100">
-      <Card.Header className="pb-3 d-sm-flex d-xl-block d-xxl-flex justify-content-between align-items-start">
+    <Card className="h-full">
+      <Card.Header className="pb-4 sm:flex xl:block 2xl:flex justify-between items-start">
         <div>
           <h3 className="text-highlight">Bookings</h3>
           <p className="mb-0">Completed and canceled bookings</p>
         </div>
         <Form.Select
           size="sm"
-          className="pe-9 w-auto mt-3 mt-sm-0 mt-xl-3 mt-xxl-0"
+          className="pe-16 w-auto mt-4 sm:mt-0 xl:mt-4 2xl:mt-0"
           value={selectedOption}
           onChange={e => setSelectedOption(parseInt(e.target.value))}
         >

@@ -30,16 +30,16 @@ const AccordionItem = (props: PropsWithChildren<AccordionItemInterface>) => {
     <>
       <Accordion.Item
         eventKey={eventKey}
-        className="border rounded-3 bg-soft p-3 p-sm-4 mb-5 scrollbar"
+        className="border rounded-lg bg-soft p-4 sm:p-6 mb-8 scrollbar"
       >
-        <Accordion.Button className="py-0 lh-1 text-highlight">
-          <img src={img1} alt="" className="me-2 d-dark-none" />
-          <img src={img2} alt="" className="me-2 d-light-none" />
+        <Accordion.Button className="py-0 leading-none text-highlight">
+          <img src={img1} alt="" className="me-2 dark:hidden" />
+          <img src={img2} alt="" className="me-2 hidden dark:block" />
           <span className="sm:text-lg">{title}</span>
         </Accordion.Button>
         <Accordion.Collapse eventKey={eventKey} className="scrollbar">
-          <div className="mt-4">
-            <Link to="#!" className="text-md font-semibold mb-2 d-inline-block">
+          <div className="mt-6">
+            <Link to="#!" className="text-md font-semibold mb-2 inline-block">
               Edit Info
             </Link>
             {children}
@@ -398,7 +398,7 @@ const Preview = () => {
   return (
     <>
       <h3 className="mb-2">We’re building your property</h3>
-      <p className="mb-5 text-subtle">
+      <p className="mb-8 text-subtle">
         We're working on getting your property set up and ready for guests. Stay
         tuned for updates and start accepting bookings soon!
       </p>
@@ -407,7 +407,7 @@ const Preview = () => {
           variant="subtle-success"
           onClose={() => setShow(false)}
           dismissible
-          className="mb-5"
+          className="mb-8"
         >
           <p className="mb-0 flex-1 font-semibold text-md sm:text-base">
             Congratulations on your successful listing! Join a community of
@@ -452,14 +452,14 @@ const Preview = () => {
           title="Picture"
           eventKey="3"
         >
-          <Row className="g-2 g-sm-3">
+          <Row className="g-2 sm:g-4">
             {formData?.photos?.map((item, index) => (
               <Col key={index} xs={6} sm={4}>
                 <img
                   src={URL.createObjectURL(item)}
                   alt="item"
                   height={160}
-                  className="rounded-2 w-100 object-fit-cover"
+                  className="rounded-md w-full object-cover"
                 />
               </Col>
             ))}
@@ -474,8 +474,8 @@ const Preview = () => {
           {financeData.map(({ name, data }, index) => (
             <div key={index}>
               <h5
-                className={classNames('mb-3 font-black', {
-                  'mt-4': index !== 0
+                className={classNames('mb-6 font-black', {
+                  'mt-10': index !== 0
                 })}
               >
                 {name}
@@ -493,8 +493,8 @@ const Preview = () => {
           {policiesData.map(({ name, data }, index) => (
             <div key={index}>
               <h5
-                className={classNames('mb-3 font-black', {
-                  'mt-4': index !== 0
+                className={classNames('mb-6 font-black', {
+                  'mt-10': index !== 0
                 })}
               >
                 {name}

@@ -13,22 +13,22 @@ const TripDetailsTabDetailsPolicy = ({
   policies
 }: TripDetailsTabDetailsPolicyProps) => {
   return (
-    <div className="py-6 px-4">
+    <div className="py-10 px-6">
       {policies.map((policy, index) => (
         <Card
           key={policy.id}
           className={classNames('bg-transparent', {
-            'mb-3': index !== policies.length - 1
+            'mb-6': index !== policies.length - 1
           })}
         >
           <Card.Body>
-            <h5 className="mb-3">{policy.label}</h5>
+            <h5 className="mb-4">{policy.label}</h5>
             <ul className="list-unstyled mb-0">
               {policy.policyItems.map(item => (
-                <li key={item.id} className="mb-3 flex">
+                <li key={item.id} className="mb-4 flex">
                   <FontAwesomeIcon
                     icon={faCircle}
-                    className="text-secondary-light me-3 text-xs"
+                    className="text-secondary-light me-4 text-xs"
                     transform="down-13 shrink-4"
                   />
                   {item.policyItem}

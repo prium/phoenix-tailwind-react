@@ -77,13 +77,13 @@ const collapsibleContainerContent = (
       className: 'mt-4',
       defaultOpen: false,
       content: (
-        <div className="py-6 px-4">
+        <div className="py-10 px-6">
           <ul className="px-0">
             {tripDetailsItems.additional.map(item => (
               <li key={item.id} className="mb-1 flex">
                 <FontAwesomeIcon
                   icon={faCircle}
-                  className="text-secondary-light me-3 text-xs"
+                  className="text-secondary-light me-4 text-xs"
                   transform="down-13 shrink-4"
                 />
                 {item.additionalItem}
@@ -112,7 +112,7 @@ const TripDetailsTabDetailsContent = ({
     return collapsibleContainerContent(tripDetailsItems);
   }, [tripDetailsItems]);
   return (
-    <Row className="justify-content-between gx-0 gy-5">
+    <Row className="justify-between gx-0 gy-8">
       <Col xl={7}>
         {contents.map(item => (
           <CollapsibleContainer

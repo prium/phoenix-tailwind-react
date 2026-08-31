@@ -36,7 +36,7 @@ const RoomFilterSearch = ({ items }: { items: roomFiltercheckbox[] }) => {
           placeholder="Search..."
           size="sm"
           onChange={handleSearchInputChange}
-          className="mx-auto mb-4 w-100"
+          className="mx-auto mb-6 w-full"
         />
 
         {table
@@ -50,7 +50,7 @@ const RoomFilterSearch = ({ items }: { items: roomFiltercheckbox[] }) => {
               key={index}
             />
           ))}
-        <Link to="" className="mt-2 font-bold d-inline-block">
+        <Link to="" className="mt-2 font-bold inline-block">
           Show more items
         </Link>
       </AdvanceTableProvider>

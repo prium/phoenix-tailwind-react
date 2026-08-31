@@ -10,14 +10,14 @@ const FilterFormFlightBaggage = () => {
       containerSize="sm"
       id="flightBaggage"
     >
-      <div className="p-3 pb-0">
-        <div className="flex gap-2 justify-content-between">
+      <div className="p-4 pb-0">
+        <div className="flex gap-2 justify-between">
           <div>
-            <h5 className="mb-3 text-highlight">Carry on bag</h5>
+            <h5 className="mb-4 text-highlight">Carry on bag</h5>
             <InputGroupCounter />
           </div>
           <div>
-            <h5 className="mb-3 text-highlight">Checked bag</h5>
+            <h5 className="mb-4 text-highlight">Checked bag</h5>
             <InputGroupCounter />
           </div>
         </div>

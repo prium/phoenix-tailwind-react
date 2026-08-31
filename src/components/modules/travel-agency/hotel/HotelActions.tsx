@@ -22,7 +22,7 @@ export const DropdownItem = ({
   return (
     <Dropdown.Item
       as="div"
-      className={`flex align-items-center px-0 hover-bg-none g-0 border-subtle ${className}`}
+      className={`flex items-center px-0 hover-bg-none g-0 border-subtle ${className}`}
     >
       <h5 className="mb-0 text-default" style={{ minWidth: 100 }}>
         {title}
@@ -38,17 +38,17 @@ const HotelActions = ({ background }: { background: boolean }) => {
   return (
     <div
       className={classNames('container-medium-md px-0', {
-        'px-md-3': background === true
+        'md:px-4': background === true
       })}
     >
       <div
         className={classNames({
-          'px-3 py-8 relative': background === true
+          'px-6 py-28 relative': background === true
         })}
       >
         {background && (
           <div
-            className="bg-holder overlay rounded-md-2"
+            className="bg-holder overlay md:rounded-md"
             style={{
               backgroundImage: `url(${bg42})`,
               backgroundPosition: 'center',
@@ -58,14 +58,14 @@ const HotelActions = ({ background }: { background: boolean }) => {
         )}
         <Row
           className={classNames(
-            'gx-0 gy-3 gy-md-0 align-items-center mx-auto p-3 bg-soft rounded-5 rounded-md-pill relative border',
+            'gx-0 gy-6 md:gy-0 items-center mx-auto p-6 bg-soft rounded-4xl md:rounded-full relative border',
             {
-              'w-lg-75': background === true
+              'lg:w-3/4': background === true
             }
           )}
         >
           <Col xs={12} md>
-            <div className="form-icon-container border-bottom border-bottom-md-0 border-subtle pb-3 pb-md-0">
+            <div className="form-icon-container border-b md:border-b-0 border-subtle pb-4 md:pb-0">
               <Form.Control
                 id="PickPlace"
                 type="text"
@@ -90,7 +90,7 @@ const HotelActions = ({ background }: { background: boolean }) => {
                         placeholder="Pick a date"
                         ref={ref}
                         id="pickDate"
-                        className="form-icon-input border-y-0 border-start-0 border-start-md py-0 shadow-none border-subtle text-base rounded-0"
+                        className="form-icon-input border-y-0 border-s-0 md:border-s py-0 shadow-none border-subtle text-base rounded-none"
                       />
                       <FontAwesomeIcon
                         icon={faCalendar}
@@ -113,28 +113,28 @@ const HotelActions = ({ background }: { background: boolean }) => {
             <Dropdown autoClose="outside">
               <Dropdown.Toggle
                 variant="link"
-                className="btn px-3 text-base font-semibold text-subtle text-decoration-none dropdown-caret-none"
+                className="btn px-4 text-base font-semibold text-subtle no-underline dropdown-caret-none"
               >
                 <FontAwesomeIcon icon={faUser} className="me-2" />1 adult
               </Dropdown.Toggle>
               <Dropdown.Menu
-                className="p-4"
+                className="p-6"
                 align="start"
                 style={{ maxWidth: 320 }}
               >
                 <DropdownItem
                   title="Adults"
-                  className="pb-3 pt-0 border-bottom"
+                  className="pb-4 pt-0 border-b"
                 />
-                <DropdownItem title="Infants" className="py-3 border-bottom" />
-                <DropdownItem title="Children" className="pt-3 pb-0" />
+                <DropdownItem title="Infants" className="py-4 border-b" />
+                <DropdownItem title="Children" className="pt-4 pb-0" />
               </Dropdown.Menu>
             </Dropdown>
           </Col>
           <Col xs={12} md="auto">
             <Button
               variant="phoenix-primary"
-              className="rounded-full w-100 btn-lg"
+              className="rounded-full w-full btn-lg"
             >
               <FontAwesomeIcon icon={faSearch} className="me-2" />
               Search

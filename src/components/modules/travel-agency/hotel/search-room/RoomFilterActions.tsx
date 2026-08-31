@@ -17,7 +17,7 @@ const RoomFilterActions = () => {
       <InputGroup className="gap-2">
         <Button
           variant="phoenix-primary"
-          className="px-3 rounded"
+          className="px-4 rounded-md"
           onClick={() => handleCount('decrease')}
           disabled={value === 0}
         >
@@ -29,11 +29,11 @@ const RoomFilterActions = () => {
           value={value}
           onChange={e => setValue(parseInt(e.target.value))}
           size="lg"
-          className="border-subtle input-spin-none text-center rounded"
+          className="border-subtle input-spin-none text-center rounded-md"
         />
         <Button
           variant="phoenix-primary"
-          className="px-3 rounded"
+          className="px-4 rounded-md"
           onClick={() => handleCount('increase')}
         >
           <FontAwesomeIcon icon={faPlus} className="px-1" />

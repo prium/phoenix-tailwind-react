@@ -15,14 +15,14 @@ const RoomFilterCheckbox = ({
   value
 }: CheckboxItemProps) => {
   return (
-    <Form.Check type={type} id={String(value)} className="mt-3">
+    <Form.Check type={type} id={String(value)} className="mt-4">
       <Form.Check.Input
         type={type}
         value={value}
         name={name}
         className="mt-0"
       />
-      <Form.Check.Label className="block lh-sm text-base text-highlight mb-0">
+      <Form.Check.Label className="block leading-sm text-base text-highlight mb-0">
         {label}
       </Form.Check.Label>
     </Form.Check>

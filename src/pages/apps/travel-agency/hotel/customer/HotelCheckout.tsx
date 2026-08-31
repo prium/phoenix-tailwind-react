@@ -15,19 +15,19 @@ const HotelCheckout = () => {
   return (
     <>
       <ResizableNavbar navItems={hotelNavItems} />
-      <section className="pt-6 pb-9">
+      <section className="pt-10 pb-16">
         <Container fluid="medium">
-          <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-3" />
-          <h2 className="mb-5">Check out</h2>
-          <Row className="justify-content-between">
+          <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-4" />
+          <h2 className="mb-8">Check out</h2>
+          <Row className="justify-between">
             <Col lg={7} xl={6}>
               <Form id="checkoutForm1" onSubmit={e => e.preventDefault()}>
-                <hr className="mt-0 mb-7" />
-                <h3 className="font-bold mb-5">Enter your details</h3>
-                <h5 className="mb-3">Are you travelling for work?</h5>
+                <hr className="mt-0 mb-12" />
+                <h3 className="font-bold mb-8">Enter your details</h3>
+                <h5 className="mb-4">Are you travelling for work?</h5>
                 <Form.Check
                   id="tripTypeRadio"
-                  className="form-check-inline me-4"
+                  className="form-check-inline me-6"
                 >
                   <Form.Check.Input
                     type="radio"
@@ -49,7 +49,7 @@ const HotelCheckout = () => {
                     Yes
                   </Form.Check.Label>
                 </Form.Check>
-                <Row className="g-3 mb-5 mt-1">
+                <Row className="g-4 mb-8 mt-1">
                   <Col sm={6}>
                     <label
                       htmlFor="first-name"
@@ -77,7 +77,7 @@ const HotelCheckout = () => {
                     />
                   </Col>
                 </Row>
-                <Row className="g-3">
+                <Row className="g-4">
                   <Col sm={6}>
                     <label
                       htmlFor="email-address"
@@ -105,10 +105,10 @@ const HotelCheckout = () => {
                     />
                   </Col>
                 </Row>
-                <h5 className="mb-3 mt-7">Who are you booking for?</h5>
+                <h5 className="mb-4 mt-12">Who are you booking for?</h5>
                 <Form.Check
                   id="bookingPersonRadio"
-                  className="form-check-inline me-4"
+                  className="form-check-inline me-6"
                 >
                   <Form.Check.Input
                     type="radio"
@@ -135,8 +135,8 @@ const HotelCheckout = () => {
                     I am booking for somebody else
                   </Form.Check.Label>
                 </Form.Check>
-                <h5 className="mb-3 mt-6">Add to your stay</h5>
-                <Form.Check className="mb-4">
+                <h5 className="mb-4 mt-10">Add to your stay</h5>
+                <Form.Check className="mb-6">
                   <Form.Check.Input type="checkbox" id="airportShuttle" />
                   <Form.Check.Label
                     htmlFor="airportShuttle"
@@ -162,7 +162,7 @@ const HotelCheckout = () => {
                     </span>
                   </Form.Check.Label>
                 </Form.Check>
-                <h5 className="mb-3 mt-6">Your arrival time</h5>
+                <h5 className="mb-4 mt-10">Your arrival time</h5>
                 <Row className="gx-2">
                   <Col xs={6} sm={3}>
                     <Form.Select role="select-box">
@@ -179,7 +179,7 @@ const HotelCheckout = () => {
                     </Form.Select>
                   </Col>
                 </Row>
-                <h5 className="mb-3 mt-7">Review house rules</h5>
+                <h5 className="mb-4 mt-12">Review house rules</h5>
                 <p>
                   Your host would like you to agree to the following house
                   rules:
@@ -200,12 +200,12 @@ const HotelCheckout = () => {
                   />
                   Pets are not allowed
                 </p>
-                <p className="text-info mb-7">
+                <p className="text-info mb-12">
                   By continuing to the next step, you are agreeing to these
                   house rules.
                 </p>
-                <h5 className="mb-3">Special requests</h5>
-                <p className="text-md text-subtle mb-4">
+                <h5 className="mb-4">Special requests</h5>
+                <p className="text-md text-subtle mb-6">
                   Special requests cannot be guaranteed, but the property will
                   do its best to meet your needs. You can always make a special
                   request after your booking is complete!
@@ -217,7 +217,7 @@ const HotelCheckout = () => {
                   id="requestText"
                   placeholder="Type your request"
                 />
-                <hr className="mt-7 mb-5" />
+                <hr className="mt-12 mb-8" />
                 <Link to="/apps/travel-agency/hotel/customer/payment">
                   <Button
                     variant="primary"
@@ -237,7 +237,7 @@ const HotelCheckout = () => {
             <Col lg={5} xl={4}>
               <HotelDetailsSummaryCard
                 showHotelInfo={true}
-                className="mt-5 mt-lg-0"
+                className="mt-8 lg:mt-0"
               />
             </Col>
           </Row>

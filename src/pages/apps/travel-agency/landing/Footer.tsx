@@ -40,7 +40,7 @@ const footerItems: footerItems[] = [
 
 const Footer = () => {
   return (
-    <section className="booking-footer pb-6 pb-md-11 pt-15">
+    <section className="booking-footer pb-10 md:pb-20 pt-30">
       <div
         className="bg-holder"
         style={{
@@ -57,7 +57,7 @@ const Footer = () => {
         }}
       />
       <div className="container-medium">
-        <Row className="gy-3 justify-content-between align-items-center">
+        <Row className="gy-4 justify-between items-center">
           <Col xs="auto">
             <Link to="#!">
               <img src={logo1} alt="" />
@@ -69,7 +69,7 @@ const Footer = () => {
                 <li
                   key={index}
                   className={classNames('', {
-                    'me-sm-5 me-3': index !== footerItems.length - 1
+                    'sm:me-8 me-6': index !== footerItems.length - 1
                   })}
                 >
                   <Link to={item.link} className="text-base font-bold text-white">
@@ -80,16 +80,16 @@ const Footer = () => {
             </ul>
           </Col>
         </Row>
-        <hr className="my-4" />
-        <Row className="gy-3 justify-content-between">
+        <hr className="my-6" />
+        <Row className="gy-4 justify-between">
           <Col xs="auto">
-            <Link to="#!" className="me-4 text-white">
+            <Link to="#!" className="me-6 text-white">
               <FontAwesomeIcon icon={faFacebookF} />
             </Link>
-            <Link to="#!" className="me-4 text-white">
+            <Link to="#!" className="me-6 text-white">
               <FontAwesomeIcon icon={faTwitter} />
             </Link>
-            <Link to="#!" className="me-4 text-white">
+            <Link to="#!" className="me-6 text-white">
               <FontAwesomeIcon icon={faLinkedinIn} />
             </Link>
             <Link to="#!" className="text-white">

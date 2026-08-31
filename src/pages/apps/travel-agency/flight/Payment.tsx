@@ -13,19 +13,19 @@ const FlightPayment = () => {
   return (
     <>
       <ResizableNavbar navItems={flightNavItems} />
-      <Container fluid="small" className="pt-6 pb-9">
-        <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-3" />
-        <h2 className="mb-5">Payment</h2>
-        <Row className="g-3 align-items-sm-center justify-content-between mb-5">
+      <Container fluid="small" className="pt-10 pb-16">
+        <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-4" />
+        <h2 className="mb-8">Payment</h2>
+        <Row className="g-4 sm:items-center justify-between mb-8">
           <Col sm>
             <FlightBookingWizard activeItem="Payment" />
           </Col>
-          <Col sm className="text-sm-end">
+          <Col sm className="sm:text-end">
             <CountdownDisplay />
           </Col>
         </Row>
-        <hr className="mt-5 mb-6" />
-        <Row className="g-0 gap-6">
+        <hr className="mt-8 mb-10" />
+        <Row className="g-0 gap-10">
           <Col lg>
             <FlightPaymentInfo />
           </Col>
@@ -37,7 +37,7 @@ const FlightPayment = () => {
             </Card>
           </Col>
         </Row>
-        <hr className="mt-6 mb-9 hidden d-lg-block" />
+        <hr className="mt-10 mb-16 hidden lg:block" />
       </Container>
       <FlightBottomBar />
     </>

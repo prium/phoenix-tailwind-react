@@ -54,9 +54,9 @@ const FlightsTableHeader = ({
   const [isAllVisible, setIsAllVisible] = useState(false);
 
   return (
-    <Row className={classNames(className, 'align-items-center')}>
+    <Row className={classNames(className, 'items-center')}>
       <Col className="flex">
-        <p className="mb-0 me-3 text-md font-semibold text-default">
+        <p className="mb-0 me-4 text-md font-semibold text-default">
           {pageSize * pageIndex + 1} to{' '}
           {pageSize * pageIndex + getPaginationRowModel().rows.length}
           <span className="text-subtle"> items of </span>
@@ -85,7 +85,7 @@ const FlightsTableHeader = ({
           <Button
             variant="phoenix-primary"
             startIcon={<FontAwesomeIcon icon={faChevronLeft} />}
-            className={classNames('px-3', {
+            className={classNames('px-4', {
               disabled: !getCanPreviousPage()
             })}
             onClick={() => {
@@ -96,7 +96,7 @@ const FlightsTableHeader = ({
           <Button
             variant="phoenix-primary"
             endIcon={<FontAwesomeIcon icon={faChevronRight} />}
-            className={classNames('px-3', {
+            className={classNames('px-4', {
               disabled: !getCanNextPage()
             })}
             onClick={() => {
@@ -107,7 +107,7 @@ const FlightsTableHeader = ({
       )}
       {pagination && (
         <Col xs="auto">
-          <Pagination className="mb-0 justify-content-center">
+          <Pagination className="mb-0 justify-center">
             <Pagination.Prev
               disabled={!getCanPreviousPage()}
               onClick={() => setPageIndex(pageIndex - 1)}

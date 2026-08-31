@@ -17,17 +17,17 @@ const FlightBooking = () => {
   return (
     <>
       <ResizableNavbar navItems={flightNavItems} />
-      <Container fluid="small" className="pt-6 pb-6 pb-9">
-        <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-3" />
-        <h2 className="mb-5">Booking</h2>
-        <Row className="g-3 align-items-sm-center justify-content-between mb-5">
+      <Container fluid="small" className="pt-10 pb-10 pb-16">
+        <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-4" />
+        <h2 className="mb-8">Booking</h2>
+        <Row className="g-4 sm:items-center justify-between mb-8">
           <Col sm>
             <FlightBookingWizard activeItem="Booking" />
           </Col>
-          <Col sm className="text-sm-end">
+          <Col sm className="sm:text-end">
             <div>
               <p className="mb-2 text-info">Book before time runs out</p>
-              <h3 className="mb-0 text-info font-bold flex gap-2 align-items-center justify-content-sm-end">
+              <h3 className="mb-0 text-info font-bold flex gap-2 items-center sm:justify-end">
                 <FontAwesomeIcon icon={faClock} className="text-base" />
                 <span>29</span>
                 <span className="text-md font-normal">min</span>
@@ -39,7 +39,7 @@ const FlightBooking = () => {
         </Row>
         <FlightInfo />
         <FlightDetails />
-        <Row className="justify-content-between">
+        <Row className="justify-between">
           <Col lg={8}>
             <TravelerDetails />
             <PaymentSummary />

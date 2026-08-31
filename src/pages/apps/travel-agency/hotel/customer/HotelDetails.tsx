@@ -25,11 +25,11 @@ const HotelDetails = () => {
   return (
     <>
       <ResizableNavbar navItems={hotelNavItems} />
-      <section className="pt-4 pb-9">
+      <section className="pt-6 pb-16">
         <Container fluid="medium">
-          <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-3" />
-          <h2 className="mb-4">Hotel Details</h2>
-          <Row className="g-4 flex-between-end mb-5">
+          <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-4" />
+          <h2 className="mb-6">Hotel Details</h2>
+          <Row className="g-6 flex-between-end mb-8">
             <Col md={8} lg={9}>
               <h1 className="mb-2 font-semibold">
                 Radisson Blu Water Garden Hotel, Dhaka
@@ -64,8 +64,8 @@ const HotelDetails = () => {
               </div>
             </Col>
             <Col md={4} lg={3}>
-              <div className="flex flex-md-column align-items-center align-items-md-end gap-3">
-                <h5 className="mb-0 text-nowrap">
+              <div className="flex md:flex-col items-center md:items-end gap-4">
+                <h5 className="mb-0 whitespace-nowrap">
                   <span className="text-subtle me-2 font-normal">
                     Rated
                   </span>
@@ -79,7 +79,7 @@ const HotelDetails = () => {
                 </h5>
                 <Button
                   variant="phoenix-primary"
-                  className="px-5 px-lg-8 w-100 w-md-auto"
+                  className="px-8 lg:px-14 w-full md:w-auto"
                   startIcon={<FontAwesomeIcon icon={faMap} className="me-2" />}
                 >
                   Show in map
@@ -87,7 +87,7 @@ const HotelDetails = () => {
               </div>
             </Col>
           </Row>
-          <Row className="g-3">
+          <Row className="g-4">
             <Col xl={8}>
               <HotelDetailsGallery images={hotelImages} />
               <HotelDetailsTab />
@@ -95,7 +95,7 @@ const HotelDetails = () => {
             <Col xl={4}>
               <HotelDetailsSummaryCard
                 showHotelInfo={false}
-                className="mt-3 mt-xl-0"
+                className="mt-4 xl:mt-0"
               />
             </Col>
           </Row>

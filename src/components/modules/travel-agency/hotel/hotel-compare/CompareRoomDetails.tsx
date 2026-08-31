@@ -43,22 +43,22 @@ const CompareRoomDetails = ({
         </thead>
         <tbody>
           <tr>
-            <td colSpan={4} className="ps-4 pt-4 pb-3 font-bold">
+            <td colSpan={4} className="ps-6 pt-6 pb-4 font-bold">
               Accommodation
             </td>
           </tr>
           <tr>
-            <td className="px-4 align-middle border-end-lg border-subtle bg-subtle">
-              <h6 className="text-default font-black text-uppercase mb-0">
+            <td className="px-6 align-middle lg:border-e border-subtle bg-subtle">
+              <h6 className="text-default font-black uppercase mb-0">
                 room type
               </h6>
             </td>
             {hotelInfo.map((info, index) =>
               info.rooms.map(item => (
                 <td
-                  className={classNames('border-subtle px-3', {
-                    'border-end-lg': index === hotelInfo.length - 1,
-                    'border-end': index !== hotelInfo.length - 1
+                  className={classNames('border-subtle px-6', {
+                    'lg:border-e': index === hotelInfo.length - 1,
+                    'border-e': index !== hotelInfo.length - 1
                   })}
                   key={item.id}
                 >
@@ -76,22 +76,22 @@ const CompareRoomDetails = ({
             )}
           </tr>
           <tr>
-            <td className="px-4 align-middle border-end-lg border-subtle bg-subtle">
-              <h6 className="text-default font-black text-uppercase mb-0">
+            <td className="px-6 align-middle lg:border-e border-subtle bg-subtle">
+              <h6 className="text-default font-black uppercase mb-0">
                 room price
               </h6>
             </td>
             {hotelInfo.map((info, index) =>
               info.rooms.map(item => (
                 <td
-                  className={classNames('border-subtle px-3', {
-                    'border-end-lg': index === hotelInfo.length - 1,
-                    'border-end': index !== hotelInfo.length - 1
+                  className={classNames('border-subtle px-6', {
+                    'lg:border-e': index === hotelInfo.length - 1,
+                    'border-e': index !== hotelInfo.length - 1
                   })}
                   key={item.id}
                 >
-                  <h3 className="flex align-items-center gap-2">
-                    <span className="text-md text-soft font-normal text-decoration-line-through">
+                  <h3 className="flex items-center gap-2">
+                    <span className="text-md text-soft font-normal line-through">
                       {currencyFormat(item.price)}
                     </span>
                     {currencyFormat(item.discountPrice)}
@@ -103,17 +103,17 @@ const CompareRoomDetails = ({
             )}
           </tr>
           <tr>
-            <td className="px-4 align-middle border-end-lg border-subtle bg-subtle">
-              <h6 className="text-default font-black text-uppercase mb-0">
+            <td className="px-6 align-middle lg:border-e border-subtle bg-subtle">
+              <h6 className="text-default font-black uppercase mb-0">
                 room picture
               </h6>
             </td>
             {hotelInfo.map((info, index) =>
               info.rooms.map(item => (
                 <td
-                  className={classNames('border-subtle px-3', {
-                    'border-end-lg': index === hotelInfo.length - 1,
-                    'border-end': index !== hotelInfo.length - 1
+                  className={classNames('border-subtle px-6', {
+                    'lg:border-e': index === hotelInfo.length - 1,
+                    'border-e': index !== hotelInfo.length - 1
                   })}
                   key={item.id}
                   style={{
@@ -130,7 +130,7 @@ const CompareRoomDetails = ({
                         <img
                           src={image}
                           alt=""
-                          className="img-fluid rounded-2"
+                          className="img-fluid rounded-md"
                         />
                       </SwiperSlide>
                     ))}
@@ -140,8 +140,8 @@ const CompareRoomDetails = ({
             )}
           </tr>
           <tr>
-            <td className="px-4 align-middle border-end-lg border-subtle bg-subtle">
-              <h6 className="text-default font-black text-uppercase mb-0">
+            <td className="px-6 align-middle lg:border-e border-subtle bg-subtle">
+              <h6 className="text-default font-black uppercase mb-0">
                 room details
               </h6>
             </td>
@@ -149,9 +149,9 @@ const CompareRoomDetails = ({
               info.rooms.map(item => (
                 <td
                   key={item.id}
-                  className={classNames('border-subtle px-3', {
-                    'border-end-lg': index === hotelInfo.length - 1,
-                    'border-end': index !== hotelInfo.length - 1
+                  className={classNames('border-subtle px-6', {
+                    'lg:border-e': index === hotelInfo.length - 1,
+                    'border-e': index !== hotelInfo.length - 1
                   })}
                 >
                   <h6 className="font-semibold text-highlight mb-2">
@@ -199,7 +199,7 @@ const CompareRoomDetails = ({
             )}
           </tr>
           <tr>
-            <td className="pt-4 pb-3 ps-4 font-bold" colSpan={4}>
+            <td className="pt-6 pb-4 ps-6 font-bold" colSpan={4}>
               Popular Amenities
             </td>
           </tr>
@@ -216,8 +216,8 @@ const CompareRoomDetails = ({
           <tr>
             <td className="border-0 pb-0"></td>
             {hotelInfo.map(info => (
-              <td className="border-0 px-3 pb-0" key={info.id}>
-                <Button variant="outline-primary" className="w-100">
+              <td className="border-0 px-4 pb-0" key={info.id}>
+                <Button variant="outline-primary" className="w-full">
                   View room details
                 </Button>
               </td>

@@ -17,10 +17,10 @@ const HotelDetailsAvailability = ({
 }: HotelDetailsAvailabilityProps) => {
   return (
     <>
-      <h3 className="mb-3 font-bold">Availability</h3>
+      <h3 className="mb-4 font-bold">Availability</h3>
       <Card>
         <Card.Body>
-          <Row className="g-3">
+          <Row className="g-4">
             <Col sm={6} lg={3}>
               <label
                 className="font-bold text-subtle mb-1"
@@ -103,8 +103,8 @@ const HotelDetailsAvailability = ({
                 iconClasses=""
               />
             </Col>
-            <Col sm="auto" className="ms-auto align-self-end">
-              <Button variant="primary" className="w-100">
+            <Col sm="auto" className="ms-auto self-end">
+              <Button variant="primary" className="w-full">
                 Update Results
               </Button>
             </Col>
@@ -114,7 +114,7 @@ const HotelDetailsAvailability = ({
 
       {availableRooms.map(room => (
         <Fragment key={room.id}>
-          <hr className="my-6" />
+          <hr className="my-10" />
           <HotelDetailsAvailabilityRoomInfo room={room} />
         </Fragment>
       ))}

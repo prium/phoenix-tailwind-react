@@ -224,7 +224,7 @@ const FlightMap = ({ options, ...rest }: MapboxProps) => {
       let count = 1;
       points.features.forEach(feature => {
         const el = document.createElement('div');
-        el.className = `marker-${count}`;
+        el.className=`marker-${count}`;
         if (map.current) {
           new mapboxgl.Marker(el)
             .setLngLat(feature.geometry.coordinates)
@@ -255,47 +255,47 @@ const FlightMap = ({ options, ...rest }: MapboxProps) => {
 
   return (
     <>
-      <div className="mapbox-container flight-map mt-4" {...rest}>
+      <div className="mapbox-container flight-map mt-6" {...rest}>
         <div className="relative">
           <div
             ref={flightMap}
             id="flightMap"
-            className="map rounded-3 mapboxgl-map"
+            className="map rounded-lg mapboxgl-map"
           />
 
           <div className="mapbox-control-btn flight-map-control-btn">
             <Button
               onClick={() => map.current?.zoomIn()}
-              className="zoomIn hidden d-md-block"
+              className="zoomIn hidden md:block"
             >
               <FontAwesomeIcon icon={faPlus} />
             </Button>
             <Button
               onClick={() => map.current?.zoomOut()}
-              className="zoomOut hidden d-md-block"
+              className="zoomOut hidden md:block"
             >
               <FontAwesomeIcon icon={faMinus} />
             </Button>
             <Button
               onClick={handleFullScreen}
-              className="zoomOut rounded mt-md-3"
+              className="zoomOut rounded-md md:mt-4"
             >
               <FontAwesomeIcon icon={faUpRightAndDownLeftFromCenter} />
             </Button>
           </div>
         </div>
 
-        <div className="absolute top-0 w-100 mt-3 mt-md-5 px-3 px-md-5 px-xl-7">
+        <div className="absolute top-0 w-full mt-4 md:mt-8 px-4 md:px-8 xl:px-12">
           <div
-            className="flex align-items-center bg-secondary overflow-hidden rounded-1"
+            className="flex items-center bg-secondary overflow-hidden rounded-sm"
             style={{ height: 46 }}
           >
-            <div className="h-100 px-3 flex align-items-center bg-danger-subtle relative">
+            <div className="h-full px-4 flex items-center bg-danger-subtle relative">
               <FontAwesomeIcon
                 icon={faCircle}
-                className="text-danger me-md-2"
+                className="text-danger md:me-2"
               />
-              <h3 className="mb-0 font-bold text-nowrap hidden d-md-block">
+              <h3 className="mb-0 font-bold whitespace-nowrap hidden md:block">
                 Live Tracking
               </h3>
             </div>
@@ -314,8 +314,8 @@ const FlightMap = ({ options, ...rest }: MapboxProps) => {
               >
                 {routes.map((route, index) => (
                   <SwiperSlide key={index} className="w-auto">
-                    <div className="flex align-items-center">
-                      <h6 className="px-3 py-2 bg-primary-subtle mb-0 text-sm rounded-1 me-2">
+                    <div className="flex items-center">
+                      <h6 className="px-4 py-2 bg-primary-subtle mb-0 text-sm rounded-sm me-2">
                         {route.flightNo}
                       </h6>
                       <img
@@ -324,7 +324,7 @@ const FlightMap = ({ options, ...rest }: MapboxProps) => {
                         alt=""
                         width={16}
                       />
-                      <h6 className="mb-0 text-white font-semibold me-3 text-nowrap">
+                      <h6 className="mb-0 text-white font-semibold me-4 whitespace-nowrap">
                         {route.airLine}
                       </h6>
                       <h6 className="mb-0 font-semibold text-white">
@@ -334,7 +334,7 @@ const FlightMap = ({ options, ...rest }: MapboxProps) => {
                         icon={faPlane}
                         className="text-primary mx-2"
                       />
-                      <h6 className="mb-0 font-semibold text-white border-end pe-6">
+                      <h6 className="mb-0 font-semibold text-white border-e pe-10">
                         {route.to}
                       </h6>
                     </div>

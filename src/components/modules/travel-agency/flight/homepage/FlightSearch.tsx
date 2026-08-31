@@ -48,9 +48,9 @@ const FlightSearch = () => {
 
   return (
     <Form>
-      <Card className="relative mb-6">
+      <Card className="relative mb-10">
         <Card.Body>
-          <div className="mb-4">
+          <div className="mb-6">
             <FlightTypeCheckbox
               name="flightType"
               id="oneWay"
@@ -72,7 +72,7 @@ const FlightSearch = () => {
             />
           </div>
           <FlightSearchForm />
-          <div className="bg-subtle p-3 p-sm-4 rounded-2">
+          <div className="bg-subtle p-4 sm:p-6 rounded-md">
             <Fade in={detailsVisible} timeout={5000}>
               <div
                 id="flight-preview-form"
@@ -90,12 +90,12 @@ const FlightSearch = () => {
               </div>
             </Fade>
           </div>
-          <div className="flex flex-wrap gap-3 justify-content-between mt-4">
+          <div className="flex flex-wrap gap-4 justify-between mt-6">
             <Button
               variant="link"
               to="#!"
               className={classNames(
-                'flex align-items-center text-base font-semibold text-normal px-0 pt-0 collapse-indicator',
+                'flex items-center text-base font-semibold text-normal px-0 pt-0 collapse-indicator',
                 {
                   collapsed: !detailsVisible
                 }

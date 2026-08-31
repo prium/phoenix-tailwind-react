@@ -19,7 +19,7 @@ const WeeklyPricingCard = () => {
   return (
     <Card className="bg-subtle">
       <Card.Body>
-        <Row className="gx-2 justify-content-between">
+        <Row className="gx-2 justify-between">
           <Col xs sm="auto">
             <Form.Group controlId="roomCategory">
               <Form.Label className="form-label-header mb-1 text-md">

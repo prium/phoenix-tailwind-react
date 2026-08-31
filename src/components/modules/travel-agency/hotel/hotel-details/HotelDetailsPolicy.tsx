@@ -14,10 +14,10 @@ import visa from 'assets/img/logos/visa.png';
 const HotelDetailsPolicy = () => {
   return (
     <>
-      <h3 className="mb-5">Policy</h3>
-      <Card className="bg-subtle mb-3">
+      <h3 className="mb-8">Policy</h3>
+      <Card className="bg-subtle mb-4">
         <Card.Body>
-          <Row className="g-3">
+          <Row className="g-4">
             <Col sm={3}>
               <h5 className="mb-0">
                 <FontAwesomeIcon
@@ -37,11 +37,11 @@ const HotelDetailsPolicy = () => {
                   <ProgressBar
                     now={50}
                     isChild={true}
-                    className="ms-auto overflow-visible rounded"
+                    className="ms-auto overflow-visible rounded-md"
                   />
                 </ProgressBar>
                 <span
-                  className="text-default translate-middle-x absolute text-sm"
+                  className="text-default left-1/2 -translate-x-1/2 absolute text-sm"
                   style={{
                     left: '50%',
                     marginTop: '0.8rem'
@@ -50,7 +50,7 @@ const HotelDetailsPolicy = () => {
                   12 am
                 </span>
               </div>
-              <div className="flex flex-between-center w-100">
+              <div className="flex flex-between-center w-full">
                 <span className="text-default text-sm mt-1">6 am</span>
                 <span className="text-default text-sm mt-1">6 pm</span>
               </div>
@@ -58,9 +58,9 @@ const HotelDetailsPolicy = () => {
           </Row>
         </Card.Body>
       </Card>
-      {/* <Card className="bg-subtle mb-3">
+      {/* <Card className="bg-subtle mb-4">
         <Card.Body>
-          <Row className="g-3">
+          <Row className="g-4">
             <Col sm={3}>
               <h5 className="mb-0">
                 <FontAwesomeIcon
@@ -78,11 +78,11 @@ const HotelDetailsPolicy = () => {
               >
                 <ProgressBar
                   now={50}
-                  className="overflow-visible rounded"
+                  className="overflow-visible rounded-md"
                   isChild={true}
                 />
                 <span
-                  className="text-default translate-middle-x absolute text-sm"
+                  className="text-default left-1/2 -translate-x-1/2 absolute text-sm"
                   style={{
                     left: '50%',
                     marginTop: '0.8rem'
@@ -91,7 +91,7 @@ const HotelDetailsPolicy = () => {
                   12 am
                 </span>
               </ProgressBar>
-              <div className="flex flex-between-center w-100">
+              <div className="flex flex-between-center w-full">
                 <span className="text-default text-sm mt-1">6 am</span>
                 <span className="text-default text-sm mt-1">6 pm</span>
               </div>
@@ -99,9 +99,9 @@ const HotelDetailsPolicy = () => {
           </Row>
         </Card.Body>
       </Card> */}
-      <Card className="bg-subtle mb-3">
+      <Card className="bg-subtle mb-4">
         <Card.Body>
-          <Row className="g-3">
+          <Row className="g-4">
             <Col xs={5} sm={3}>
               <h5 className="mb-0">
                 <FontAwesomeIcon
@@ -126,9 +126,9 @@ const HotelDetailsPolicy = () => {
           </Row>
         </Card.Body>
       </Card>
-      <Card className="bg-subtle mb-3">
+      <Card className="bg-subtle mb-4">
         <Card.Body>
-          <Row className="g-3 align-items-center">
+          <Row className="g-4 items-center">
             <Col xs={5} sm={3}>
               <h5 className="mb-0">
                 <FontAwesomeIcon
@@ -147,7 +147,7 @@ const HotelDetailsPolicy = () => {
       </Card>
       <Card className="bg-subtle">
         <Card.Body>
-          <Row className="g-3 align-items-center">
+          <Row className="g-4 items-center">
             <Col xs={5} sm={3}>
               <h5 className="mb-0">
                 <FontAwesomeIcon
@@ -159,8 +159,8 @@ const HotelDetailsPolicy = () => {
               </h5>
             </Col>
             <Col xs={7} sm={9}>
-              <img src={masterCard} alt="" className="me-3" />
-              <img src={americanExpress} alt="" className="me-3" />
+              <img src={masterCard} alt="" className="me-4" />
+              <img src={americanExpress} alt="" className="me-4" />
               <img src={visa} alt="" />
             </Col>
           </Row>

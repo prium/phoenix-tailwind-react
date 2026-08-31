@@ -17,3 +17,4 @@ class names with different meanings (`mb-4` → `mb-6` → `mb-10` …).
   forms,list-items,grid-list-items,timelines} incl. non-CRM ones (Hotel/Flight/
   Calendar modals, Feed/Pricing/Social/Profile/Mutual items, FileManager/Basic
   timelines) — see commit "chore: run bs2tw codemod over crm tree".
+- src/components/modules/travel-agency, src/pages/apps/travel-agency, src/pages/dashboard/TravelAgency.tsx, src/data/travel-agency

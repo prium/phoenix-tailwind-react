@@ -23,9 +23,9 @@ const HotelHomepage = () => {
       </section>
       <HotelActions background={true} />
       <section className="container-medium py-0">
-        <div className="py-6">
+        <div className="py-10">
           <div className="flex">
-            <Form.Select className="w-sm-auto me-4">
+            <Form.Select className="sm:w-auto me-6">
               <option>Sort by</option>
               <option>Best reviewed and lowest price</option>
               <option>Option 1</option>
@@ -33,22 +33,22 @@ const HotelHomepage = () => {
             </Form.Select>
             <Button
               variant="phoenix-secondary"
-              className="text-nowrap px-3 px-md-4 ms-auto me-2"
+              className="whitespace-nowrap px-4 md:px-6 ms-auto me-2"
             >
-              <FontAwesomeIcon icon={faMap} className="me-md-2" />
-              <span className="hidden d-md-inline-block">Show in map</span>
+              <FontAwesomeIcon icon={faMap} className="md:me-2" />
+              <span className="hidden md:inline-block">Show in map</span>
             </Button>
             <Button
               variant="phoenix-secondary"
-              className="text-nowrap px-3"
+              className="whitespace-nowrap px-4"
               onClick={() => setIsOpen(true)}
             >
-              <FontAwesomeIcon icon={faFilter} className="me-md-2" />
-              <span className="hidden d-md-inline-block">Filters</span>
+              <FontAwesomeIcon icon={faFilter} className="md:me-2" />
+              <span className="hidden md:inline-block">Filters</span>
             </Button>
           </div>
         </div>
-        <Row className="g-3 mb-6">
+        <Row className="g-4 mb-10">
           {hotels.map((hotelInfo, index) => (
             <Col key={index} sm={6} lg={4} xl={3}>
               <HotelCard hotelInfo={hotelInfo} />

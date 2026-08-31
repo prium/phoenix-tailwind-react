@@ -32,9 +32,9 @@ const tabItems: TabItemProps[] = [
 const TripDetailsTab = () => {
   return (
     <Tab.Container defaultActiveKey="Details">
-      <Nav variant="pills" className="scrollbar flex-nowrap my-5">
+      <Nav variant="pills" className="scrollbar flex-nowrap my-8">
         {tabItems.map(item => (
-          <Nav.Item key={item.name} className="text-nowrap">
+          <Nav.Item key={item.name} className="whitespace-nowrap">
             <Nav.Link eventKey={item.name}>{item.name}</Nav.Link>
           </Nav.Item>
         ))}

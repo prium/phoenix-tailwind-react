@@ -14,11 +14,11 @@ interface RoomImageItemProps {
 
 const RoomImageItem = ({ item, handleClick }: RoomImageItemProps) => {
   return (
-    <div className="cursor-pointer h-100" onClick={handleClick}>
+    <div className="cursor-pointer h-full" onClick={handleClick}>
       <img
         src={item}
         alt=""
-        className="w-100 h-100 object-fit-cover rounded-2"
+        className="w-full h-full object-cover rounded-md"
       />
     </div>
   );
@@ -31,7 +31,7 @@ const HotelDetailsRoomImageGallery = ({
 
   return (
     <>
-      <Row className="gx-2 h-100">
+      <Row className="gx-2 h-full">
         {images.map((imageItem, index) => (
           <Col key={index}>
             <RoomImageItem

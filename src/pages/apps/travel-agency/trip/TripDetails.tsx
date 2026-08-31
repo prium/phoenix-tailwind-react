@@ -26,13 +26,13 @@ const TripDetails = () => {
   return (
     <>
       <ResizableNavbar navItems={tripNavItems} />
-      <section className="pt-5 pb-5 pb-md-6 pb-lg-9">
+      <section className="pt-8 pb-8 md:pb-10 lg:pb-16">
         <Container fluid="medium">
-          <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-3" />
-          <h2 className="mb-5">Trip Details</h2>
+          <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-4" />
+          <h2 className="mb-8">Trip Details</h2>
           <h1 className="font-bold">
             Walk where the king walked once in Wakanda{' '}
-            <span className="align-middle text-nowrap text-base">
+            <span className="align-middle whitespace-nowrap text-base">
               <span className="text-soft">by </span>
               <Link to="#!" className="text-subtle">
                 Panther Travels Limited
@@ -43,8 +43,8 @@ const TripDetails = () => {
           <TripDetailsOverview tripOverview={tripOverview} />
           <TripDetailsGallery galleryItems={tripDetailsAlbum} />
           <TripDetailsTab />
-          <h2 className="mt-5 mb-3">Similar tours</h2>
-          <Row className="g-3">
+          <h2 className="mt-8 mb-4">Similar tours</h2>
+          <Row className="g-4">
             {tripHomepageItems
               .slice(tripHomepageItems.length - 3)
               .map(tripItem => (

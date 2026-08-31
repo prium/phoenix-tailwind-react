@@ -28,31 +28,31 @@ const RoomCard = ({
   const [open, setOpen] = useState(false);
 
   return (
-    <Card className={isLastItem ? '' : 'mb-3'}>
+    <Card className={isLastItem ? '' : 'mb-4'}>
       <Card.Body>
-        <Row className="gx-4 justify-content-between">
-          <Col xs="auto" className="mb-4">
-            <div className="flex gap-3">
+        <Row className="gx-6 justify-between">
+          <Col xs="auto" className="mb-6">
+            <div className="flex gap-4">
               <Link to="#!">
                 <img
                   src={data.img}
                   alt=""
                   width={108}
-                  className="rounded-1 border border-subtle"
+                  className="rounded-sm border border-subtle"
                 />
               </Link>
               <div>
                 <Link
                   to="#!"
-                  className="text-base font-black text-emphasis text-nowrap"
+                  className="text-base font-black text-emphasis whitespace-nowrap"
                 >
                   {data.name}
                 </Link>
-                <h6 className="font-semibold text-default text-nowrap mt-1 mb-2">
+                <h6 className="font-semibold text-default whitespace-nowrap mt-1 mb-2">
                   <FontAwesomeIcon icon={faBorderAll} className="me-2" />
                   {data.category}
                 </h6>
-                <div className="flex align-items-baseline gap-1 mb-3">
+                <div className="flex items-baseline gap-1 mb-4">
                   <h6 className="mb-0 font-semibold">Available:</h6>
                   <h4 className="text-warning-dark font-black mb-0">
                     {data.available}
@@ -68,17 +68,17 @@ const RoomCard = ({
           <Col
             xs={{ order: 1 }}
             xxl={{ order: 0, span: 'auto' }}
-            className="flex gap-5 gap-md-6 mb-4"
+            className="flex gap-8 md:gap-10 mb-6"
           >
             <div>
-              <h6 className="mb-3 font-black text-subtle text-uppercase">
-                <span className="hidden d-sm-inline-block">No. of</span> Beds
+              <h6 className="mb-4 font-black text-subtle uppercase">
+                <span className="hidden sm:inline-block">No. of</span> Beds
               </h6>
-              <div className="flex align-items-center gap-3">
-                <div className="d-sm-flex align-items-center gap-2">
+              <div className="flex items-center gap-4">
+                <div className="sm:flex items-center gap-2">
                   <div
                     style={{ height: 24, width: 24 }}
-                    className="flex align-items-center justify-content-center bg-primary-subtle rounded mb-2 mb-sm-0"
+                    className="flex items-center justify-center bg-primary-subtle rounded-md mb-2 sm:mb-0"
                   >
                     <FontAwesomeIcon
                       icon={faPersonShelter}
@@ -89,10 +89,10 @@ const RoomCard = ({
                     {data.bedRooms}
                   </h5>
                 </div>
-                <div className="d-sm-flex align-items-center gap-2">
+                <div className="sm:flex items-center gap-2">
                   <div
                     style={{ height: 24, width: 24 }}
-                    className="flex align-items-center justify-content-center bg-success-subtle rounded mb-2 mb-sm-0"
+                    className="flex items-center justify-center bg-success-subtle rounded-md mb-2 sm:mb-0"
                   >
                     <FontAwesomeIcon
                       icon={faBed}
@@ -104,14 +104,14 @@ const RoomCard = ({
               </div>
             </div>
             <div>
-              <h6 className="mb-3 font-black text-subtle text-uppercase">
-                <span className="hidden d-sm-inline-block">No. of </span> guests
+              <h6 className="mb-4 font-black text-subtle uppercase">
+                <span className="hidden sm:inline-block">No. of </span> guests
               </h6>
-              <div className="flex align-items-center gap-3">
-                <div className="d-sm-flex align-items-center gap-2">
+              <div className="flex items-center gap-4">
+                <div className="sm:flex items-center gap-2">
                   <div
                     style={{ height: 24, width: 24 }}
-                    className="flex align-items-center justify-content-center bg-warning-subtle rounded mb-2 mb-sm-0"
+                    className="flex items-center justify-center bg-warning-subtle rounded-md mb-2 sm:mb-0"
                   >
                     <FontAwesomeIcon
                       icon={faUser}
@@ -120,10 +120,10 @@ const RoomCard = ({
                   </div>
                   <h5 className="text-default font-semibold mb-0">{data.guest}</h5>
                 </div>
-                <div className="d-sm-flex align-items-center gap-2">
+                <div className="sm:flex items-center gap-2">
                   <div
                     style={{ height: 24, width: 24 }}
-                    className="flex align-items-center justify-content-center bg-info-subtle rounded mb-2 mb-sm-0"
+                    className="flex items-center justify-center bg-info-subtle rounded-md mb-2 sm:mb-0"
                   >
                     <FontAwesomeIcon
                       icon={faBaby}
@@ -135,13 +135,13 @@ const RoomCard = ({
               </div>
             </div>
             <div>
-              <h6 className="mb-3 font-black text-subtle text-uppercase">
+              <h6 className="mb-4 font-black text-subtle uppercase">
                 Bathroom
               </h6>
-              <div className="d-sm-flex align-items-center gap-2">
+              <div className="sm:flex items-center gap-2">
                 <div
                   style={{ height: 24, width: 24 }}
-                  className="flex align-items-center justify-content-center bg-danger-subtle rounded mb-2 mb-sm-0"
+                  className="flex items-center justify-center bg-danger-subtle rounded-md mb-2 sm:mb-0"
                 >
                   <FontAwesomeIcon
                     icon={faBath}
@@ -152,13 +152,13 @@ const RoomCard = ({
               </div>
             </div>
           </Col>
-          <Col sm="auto" className="mb-4">
+          <Col sm="auto" className="mb-6">
             <Button
               variant="phoenix-info"
               onClick={() => setOpen(!open)}
               aria-expanded={open}
               aria-controls={`collapseRoomAvailableOnDates`}
-              className="me-2 px-3 d-xxl-block mb-xxl-2"
+              className="me-2 px-4 2xl:block 2xl:mb-2"
               style={{ minWidth: 130 }}
             >
               <FontAwesomeIcon icon={faCalendar} className="me-2" />
@@ -167,7 +167,7 @@ const RoomCard = ({
             <Link to="#!">
               <Button
                 variant="primary"
-                className="px-5 px-md-7 px-xxl-5 flex-1"
+                className="px-8 md:px-12 2xl:px-8 flex-1"
                 style={{ minWidth: 130 }}
               >
                 Book now
@@ -177,7 +177,7 @@ const RoomCard = ({
           <Col xs={12}>
             <Collapse in={open}>
               <div id={`collapseRoomAvailableOnDates`}>
-                <div className="px-4 py-3 border border-subtle rounded mb-4 bg-subtle">
+                <div className="px-6 py-4 border border-subtle rounded-md mb-6 bg-subtle">
                   <Swiper
                     spaceBetween={24}
                     slidesPerView="auto"
@@ -195,14 +195,14 @@ const RoomCard = ({
                       <SwiperSlide className="w-auto" key={dateIndex}>
                         <div
                           className={classNames(
-                            'text-center pe-4 pe-md-5 pe-xl-7',
+                            'text-center pe-10 md:pe-8 xl:pe-12',
                             {
-                              'border-end':
+                              'border-e':
                                 dateIndex !== data.availableOnDates.length - 1
                             }
                           )}
                         >
-                          <h6 className="mb-3 font-black text-default">
+                          <h6 className="mb-4 font-black text-default">
                             {item.date}
                           </h6>
                           <h6 className="mb-2 text-highlight font-semibold">
@@ -230,7 +230,7 @@ const RoomCard = ({
             </Collapse>
           </Col>
         </Row>
-        <div className="p-3 border border-subtle rounded">
+        <div className="p-4 border border-subtle rounded-md">
           {data.amenities.slice(0, 13).map((item, index) => (
             <Link key={index} to="#!">
               <Badge
@@ -243,7 +243,7 @@ const RoomCard = ({
             </Link>
           ))}
           {data.amenities.slice(13).length > 1 && (
-            <Link to="#!" className="font-bold pe-0 text-md text-nowrap">
+            <Link to="#!" className="font-bold pe-0 text-md whitespace-nowrap">
               + {data.amenities.slice(13).length} more
             </Link>
           )}

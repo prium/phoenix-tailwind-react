@@ -41,9 +41,9 @@ const photos: photos[] = [
 
 const LatestPhotos = () => {
   return (
-    <section className="pb-7 pt-0">
+    <section className="pb-12 pt-0">
       <div className="container-medium">
-        <div className="text-center mb-5">
+        <div className="text-center mb-8">
           <h3 className="mb-2 text-emphasis">
             Latest photos from tourists
           </h3>
@@ -52,13 +52,13 @@ const LatestPhotos = () => {
             with Team Phoenix!
           </p>
         </div>
-        <Row className="g-3">
+        <Row className="g-4">
           {photos.map((item, index) => (
             <Col md={6} xl={4} key={index}>
-              <div className="img-zoom-hover relative h-100 rounded-3 overflow-hidden">
+              <div className="img-zoom-hover relative h-full rounded-lg overflow-hidden">
                 <Link to="#!">
                   <img
-                    className="w-100 h-100 object-fit-cover"
+                    className="w-full h-full object-cover"
                     src={item.img}
                     alt=""
                   />

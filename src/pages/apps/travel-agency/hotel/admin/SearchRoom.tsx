@@ -23,23 +23,23 @@ const SearchRoom = () => {
 
   return (
     <>
-      <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-3" />
-      <div className="mb-9">
-        <Row className="align-items-end mb-5 gy-3">
+      <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-4" />
+      <div className="mb-16">
+        <Row className="items-end mb-8 gy-4">
           <Col style={{ maxWidth: 290 }}>
             <h2>Rooms</h2>
           </Col>
           <Col xl>
-            <Row className="gx-2 gx-xl-3 gy-3">
+            <Row className="gx-2 xl:gx-4 gy-4">
               <Col
                 xs={{ order: 1 }}
                 sm={{ span: 'auto', order: 0 }}
-                className="me-sm-2 d-xl-none"
+                className="sm:me-2 xl:hidden"
               >
                 <Button
                   variant="phoenix-secondary"
                   size="lg"
-                  className="text-subtle w-100"
+                  className="text-subtle w-full"
                   onClick={() => setOpenOffcanvas(true)}
                 >
                   <FontAwesomeIcon icon={faFilter} className="me-2" />
@@ -59,12 +59,12 @@ const SearchRoom = () => {
                           placeholder="start date"
                           ref={ref}
                           id="startDatepicker"
-                          className="ps-3"
+                          className="ps-4"
                         />
 
                         <FontAwesomeIcon
                           icon={faCalendarAlt}
-                          className="absolute top-0 end-0 mt-3 me-3"
+                          className="absolute top-0 end-0 mt-4 me-4"
                         />
                       </FloatingLabel>
                     );
@@ -77,24 +77,24 @@ const SearchRoom = () => {
                   }}
                 />
               </Col>
-              <Col xs sm="auto" className="flex-grow-0">
+              <Col xs sm="auto" className="grow-0">
                 <Button
                   variant="phoenix-primary"
                   size="lg"
-                  className="px-xxl-6 text-nowrap"
+                  className="2xl:px-10 whitespace-nowrap"
                 >
-                  <span className="hidden d-xl-inline-block">Update</span>
-                  <FontAwesomeIcon icon={faSearch} className="text-md ms-xl-2" />
+                  <span className="hidden xl:inline-block">Update</span>
+                  <FontAwesomeIcon icon={faSearch} className="text-md xl:ms-2" />
                 </Button>
               </Col>
-              <Col xs sm="auto" className="ms-auto flex-grow-0">
+              <Col xs sm="auto" className="ms-auto grow-0">
                 <Button
                   variant="phoenix-secondary"
                   size="lg"
-                  className="ms-auto text-nowrap"
+                  className="ms-auto whitespace-nowrap"
                 >
-                  <span className="hidden d-xl-inline-block">Refresh</span>
-                  <FontAwesomeIcon icon={faRotate} className="text-md ms-xl-2" />
+                  <span className="hidden xl:inline-block">Refresh</span>
+                  <FontAwesomeIcon icon={faRotate} className="text-md xl:ms-2" />
                 </Button>
               </Col>
             </Row>
@@ -102,15 +102,15 @@ const SearchRoom = () => {
         </Row>
         {/* header section end */}
 
-        <Row className="gx-6">
+        <Row className="gx-10">
           {/* offcanvas start */}
-          <Col xl="auto" className="hidden d-xl-block">
+          <Col xl="auto" className="hidden xl:block">
             <div className="phoenix-room-filter-offcanvas bg-default scrollbar">
               <RoomFilterOffcanvasContent />
             </div>
           </Col>
           {/* offcanvas end */}
-          <Col className="w-xl-25">
+          <Col className="xl:w-1/4">
             {roomsSearchData.map((item, index) => (
               <RoomCard
                 key={index}
@@ -118,7 +118,7 @@ const SearchRoom = () => {
                 isLastItem={roomsSearchData.length - 1 === index}
               />
             ))}
-            <div className="border p-3 rounded-3 mt-5 flex flex-end-center gap-3 gap-sm-6 flex-wrap">
+            <div className="border p-4 rounded-lg mt-8 flex flex-end-center gap-4 sm:gap-10 flex-wrap">
               <h2 className="text-default mb-0">
                 <span className="text-md text-subtle font-bold me-2">
                   Total :
@@ -126,7 +126,7 @@ const SearchRoom = () => {
                 04
               </h2>
               <Link to="#!">
-                <Button variant="primary" className="px-sm-7">
+                <Button variant="primary" className="sm:px-12">
                   Confirm Booking
                   <FontAwesomeIcon icon={faChevronRight} className="ms-2" />
                 </Button>

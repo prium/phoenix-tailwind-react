@@ -12,10 +12,10 @@ const FileUploader = ({ title }: { title: string }) => {
         'image/*': ['.png', '.gif', '.jpeg', '.jpg']
       }}
     >
-      <div className="text-subtle text-opacity-85 px-2 py-4">
+      <div className="text-subtle text-opacity-85 px-2 py-6">
         <h6 className="mb-1 text-soft">Upload or drag</h6>
-        <h6 className="mb-3 text-muted">{title}</h6>
-        <img className="mt-3 me-2" src={imageIcon} width={42} alt="" />
+        <h6 className="mb-4 text-muted">{title}</h6>
+        <img className="mt-4 me-2" src={imageIcon} width={42} alt="" />
       </div>
     </Dropzone>
   );
@@ -23,10 +23,10 @@ const FileUploader = ({ title }: { title: string }) => {
 
 const TravelerInfo = ({ id }: { id: string }) => {
   return (
-    <Card className="bg-default mb-4">
+    <Card className="bg-default mb-6">
       <Card.Header className="bg-subtle">
         <div className="flex flex-between-center">
-          <h5 className="mb-0 text-nowrap">
+          <h5 className="mb-0 whitespace-nowrap">
             <FontAwesomeIcon icon={faUser} className="text-md me-2 text-primary" />
             Person {id}
           </h5>
@@ -43,7 +43,7 @@ const TravelerInfo = ({ id }: { id: string }) => {
           Personal info
         </h6>
         <hr className="my-2" />
-        <Row className="g-3 mb-6">
+        <Row className="g-4 mb-10">
           <Col md={6}>
             <Form.Group controlId={`firstName-${id}`}>
               <Form.Label className="form-label-header mb-2">
@@ -66,7 +66,7 @@ const TravelerInfo = ({ id }: { id: string }) => {
           Contact info
         </h6>
         <hr className="my-2" />
-        <Row className="g-3 mb-6">
+        <Row className="g-4 mb-10">
           <Col md={6}>
             <Form.Group controlId={`email-${id}`}>
               <Form.Label className="form-label-header mb-2">Email</Form.Label>
@@ -85,7 +85,7 @@ const TravelerInfo = ({ id }: { id: string }) => {
           Passport info
         </h6>
         <hr className="my-2" />
-        <Row className="g-3 mb-3">
+        <Row className="g-4 mb-4">
           <Col md={6}>
             <Form.Group controlId={`passportNum-${id}`}>
               <Form.Label className="form-label-header mb-2">
@@ -103,7 +103,7 @@ const TravelerInfo = ({ id }: { id: string }) => {
             </Form.Group>
           </Col>
         </Row>
-        <Row className="g-3">
+        <Row className="g-4">
           <Col md={6}>
             <FileUploader title="The photo of the front page of your passport" />
           </Col>
@@ -118,8 +118,8 @@ const TravelerInfo = ({ id }: { id: string }) => {
 
 const TravelerDetails = () => {
   return (
-    <div className="mb-4">
-      <div className="mb-4">
+    <div className="mb-6">
+      <div className="mb-6">
         <h3>Traveler Details</h3>
         <small>
           <FontAwesomeIcon icon={faInfoCircle} className="me-2 text-info" />

@@ -11,7 +11,7 @@ import { ReactTyped } from 'react-typed';
 
 const HeroHeader = () => {
   return (
-    <div className="booking-hero-header flex align-items-center">
+    <div className="booking-hero-header flex items-center">
       <div
         className="bg-holder overlay bg-opacity-50"
         style={{
@@ -23,10 +23,10 @@ const HeroHeader = () => {
         <video className="bg-video" autoPlay loop muted src={travelVideo} />
       </div>
       <div className="container-medium relative z-5">
-        <h2 className="text-secondary-lighter fs-5 fs-md-3 font-normal mb-3">
+        <h2 className="text-secondary-lighter text-2xl md:text-4xl font-normal mb-4">
           Where is your
         </h2>
-        <h1 className="fs-4 fs-md-1 text-white font-normal mb-6 overflow-hidden">
+        <h1 className="text-3xl md:text-6xl text-white font-normal mb-10 overflow-hidden">
           NEXT{' '}
           <ReactTyped
             strings={[
@@ -41,8 +41,8 @@ const HeroHeader = () => {
             backDelay={1000}
           />
         </h1>
-        <InputGroup className="rounded-2 py-1 ps-2 w-lg-50 border border-subtle">
-          <div className="form-icon-container flex-1 flex align-items-center">
+        <InputGroup className="rounded-md py-1 ps-2 lg:w-1/2 border border-subtle">
+          <div className="form-icon-container flex-1 flex items-center">
             <FontAwesomeIcon
               icon={faLocationDot}
               className="form-icon text-danger-light"
@@ -55,11 +55,11 @@ const HeroHeader = () => {
           </div>
           {/* dropdwon class not added */}
           <Dropdown align="end">
-            <div className="flex align-items-center">
+            <div className="flex items-center">
               <Dropdown.Toggle
                 as="button"
                 id="dropdown-basic"
-                className="btn dropdown-caret-none py-0 bg-transparent text-secondary-light text-base md:text-lg font-semibold border-0 border-start border-subtle rounded-0"
+                className="btn dropdown-caret-none py-0 bg-transparent text-secondary-light text-base md:text-lg font-semibold border-0 border-s border-subtle rounded-none"
               >
                 Flight
                 <FontAwesomeIcon

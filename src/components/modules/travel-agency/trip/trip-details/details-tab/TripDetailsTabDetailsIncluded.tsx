@@ -15,24 +15,24 @@ const TripDetailsTabDetailsIncluded = ({
   includedItems
 }: TripDetailsTabDetailsIncludedProps) => {
   return (
-    <div className="px-4 py-6">
-      <h5 className="mb-3 text-highlight">
+    <div className="px-6 py-10">
+      <h5 className="mb-4 text-highlight">
         <FontAwesomeIcon icon={faThumbsUp} className="me-2" />
         Included
       </h5>
-      <ul className="list-unstyled mb-4">
+      <ul className="list-unstyled mb-6">
         {includedItems.include.map(item => (
           <li key={item.id} className="mb-1 flex">
             <FontAwesomeIcon
               icon={faCircle}
-              className="text-secondary-light me-3 text-xs"
+              className="text-secondary-light me-4 text-xs"
               transform="down-13 shrink-4"
             />
             {item.encompass}
           </li>
         ))}
       </ul>
-      <h5 className="mb-3 text-highlight">
+      <h5 className="mb-4 text-highlight">
         <FontAwesomeIcon icon={faThumbsDown} className="me-2" />
         Excluded
       </h5>
@@ -41,7 +41,7 @@ const TripDetailsTabDetailsIncluded = ({
           <li key={item.id} className="mb-1 flex">
             <FontAwesomeIcon
               icon={faCircle}
-              className="text-secondary-light me-3 text-xs"
+              className="text-secondary-light me-4 text-xs"
               transform="down-13 shrink-4"
             />
             {item.encompass}

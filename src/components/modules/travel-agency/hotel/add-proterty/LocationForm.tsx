@@ -25,8 +25,8 @@ const LocationForm = ({ tabEventKey }: { tabEventKey: number }) => {
 
   return (
     <>
-      <h3 className="mb-6">Location</h3>
-      <div className="form-icon-container mb-3">
+      <h3 className="mb-10">Location</h3>
+      <div className="form-icon-container mb-4">
         <Form.Floating>
           <Form.Control
             id="LacationAddress"
@@ -48,15 +48,15 @@ const LocationForm = ({ tabEventKey }: { tabEventKey: number }) => {
         />
         <FontAwesomeIcon
           icon={faLocationCrosshairs}
-          className="absolute text-primary text-md end-0 top-0 mt-3 me-3"
+          className="absolute text-primary text-md end-0 top-0 mt-4 me-4"
           transform="down-2"
         />
       </div>
-      <div className="mt-3 mb-6">
+      <div className="mt-4 mb-10">
         <Suspense fallback={<PhoenixLoader />}>
           <Mapbox
             mapRef={mapRef}
-            className="rounded-3 border overflow-hidden"
+            className="rounded-lg border overflow-hidden"
             options={{
               attributionControl: false,
               center: [-74.0020158, 40.7228022],
@@ -69,7 +69,7 @@ const LocationForm = ({ tabEventKey }: { tabEventKey: number }) => {
       </div>
 
       <FloatingLabel
-        className="mb-3"
+        className="mb-4"
         controlId="street"
         label="Apartment /Street"
       >
@@ -80,7 +80,7 @@ const LocationForm = ({ tabEventKey }: { tabEventKey: number }) => {
           onChange={onChange}
         />
       </FloatingLabel>
-      <Row className="g-3">
+      <Row className="g-4">
         <Col md={6}>
           <FloatingLabel controlId="lacationCity" label="City">
             <Form.Control
@@ -123,7 +123,7 @@ const LocationForm = ({ tabEventKey }: { tabEventKey: number }) => {
           </FloatingLabel>
         </Col>
       </Row>
-      <div className="flex align-items-center gap-3 mt-6">
+      <div className="flex items-center gap-4 mt-10">
         <h4>Show your specific location</h4>
         <Form.Check
           inline

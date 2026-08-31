@@ -52,9 +52,9 @@ const posts: posts[] = [
 ];
 const LatestPosts = () => {
   return (
-    <section className="pb-7 pt-0 overflow-x-hidden">
+    <section className="pb-12 pt-0 overflow-x-hidden">
       <div
-        className="bg-holder hidden d-xl-block"
+        className="bg-holder hidden xl:block"
         style={{
           backgroundImage: `url(${bgLeft31})`,
           backgroundPosition: 'left',
@@ -63,7 +63,7 @@ const LatestPosts = () => {
         }}
       />
       <div
-        className="bg-holder hidden d-xl-block"
+        className="bg-holder hidden xl:block"
         style={{
           backgroundImage: `url(${bgRight31})`,
           backgroundPosition: 'right bottom',
@@ -76,7 +76,7 @@ const LatestPosts = () => {
         <h3 className="mb-2 text-emphasis">
           Our Latest Posts For Travellers
         </h3>
-        <p className="mb-0 text-subtle mb-13">
+        <p className="mb-0 text-subtle mb-26">
           Find the best travel memories from our past tours and get a clear idea
           of what we do.
         </p>
@@ -114,21 +114,21 @@ const LatestPosts = () => {
             className="theme-slider swiper-container overflow-visible"
           >
             {posts.map((data, index) => (
-              <SwiperSlide className="rounded-3 overflow-hidden" key={index}>
-                <div className="relative w-100 h-100">
+              <SwiperSlide className="rounded-lg overflow-hidden" key={index}>
+                <div className="relative w-full h-full">
                   <img
                     src={data.img}
-                    className="w-100 h-100 object-fit-cover"
+                    className="w-full h-full object-cover"
                     alt=""
                   />
-                  <div className="backdrop-faded p-4 p-md-6">
-                    <div className="flex align-items-center mb-2">
+                  <div className="backdrop-faded p-6 md:p-10">
+                    <div className="flex items-center mb-2">
                       <FeatherIcon
                         icon="calendar"
                         className="text-secondary-lighter me-2"
                         style={{ width: 16 }}
                       />
-                      <h6 className="mb-0 font-semibold text-secondary-lighter pe-3 me-3 border-end">
+                      <h6 className="mb-0 font-semibold text-secondary-lighter pe-4 me-4 border-e">
                         {data.date}
                       </h6>
                       <Rating
@@ -167,7 +167,7 @@ const LatestPosts = () => {
           </div>
         </div>
       </div>
-      <div className="text-center mt-12 relative z-2">
+      <div className="text-center mt-24 relative z-2">
         <Button variant="link" className="p-0 text-base">
           View all
           <FontAwesomeIcon

@@ -20,7 +20,7 @@ const SummaryItem = ({
   className
 }: SummaryItemProps) => (
   <ListGroup.Item
-    className={classNames('px-0 py-3 bg-subtle', className)}
+    className={classNames('px-0 py-6 bg-subtle', className)}
   >
     <div className="flex flex-between-center">
       <h6 className="mb-0">
@@ -45,8 +45,8 @@ const SummaryItem = ({
 
 const PaymentSummary = () => {
   return (
-    <div className="mb-4 mb-lg-9">
-      <h3 className="mb-4">Payment Summary</h3>
+    <div className="mb-6 lg:mb-16">
+      <h3 className="mb-6">Payment Summary</h3>
       <Card className="bg-subtle">
         <Card.Body>
           <ListGroup variant="flush">
@@ -56,7 +56,7 @@ const PaymentSummary = () => {
               label="Sub-total"
               value="4,799"
               isBold={true}
-              className="pb-5"
+              className="pb-8"
             />
             <SummaryItem label="Code" value="-285" badgeText="DOMFLy2023" />
             <SummaryItem

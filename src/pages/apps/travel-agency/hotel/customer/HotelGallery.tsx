@@ -12,10 +12,10 @@ const HotelGallery = () => {
   return (
     <>
       <ResizableNavbar navItems={hotelNavItems} />
-      <section className="pt-6 pb-9">
+      <section className="pt-10 pb-16">
         <Container fluid="medium">
-          <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-3" />
-          <h2 className="mb-5">Gallery</h2>
+          <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-4" />
+          <h2 className="mb-8">Gallery</h2>
           <HotelGalleryImages galleryItems={galleryItems} />
         </Container>
       </section>

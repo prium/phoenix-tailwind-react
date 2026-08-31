@@ -12,7 +12,7 @@ const TripHomepageFilterOffcanvas = ({
 }: TripHomepageFilterOffcanvasProps) => {
   return (
     <Offcanvas show={show} onHide={onHide} placement="end">
-      <Offcanvas.Header className="p-4 bg-subtle" closeButton>
+      <Offcanvas.Header className="p-6 bg-subtle" closeButton>
         <h5 className="mb-0 text-highlight">Filter</h5>
       </Offcanvas.Header>
       <Offcanvas.Body className="scrollbar p-0">

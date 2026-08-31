@@ -34,7 +34,7 @@ const FlightEditForm = ({ formData, setFormData }: FlightEditFormProps) => {
   };
 
   return (
-    <Row className="g-3">
+    <Row className="g-4">
       <Col md={4} lg xl={2}>
         <h5 className="text-emphasis mb-2">Fare Type</h5>
         <Form.Check type="checkbox" id="flightFareType" className="mb-0">
@@ -45,13 +45,13 @@ const FlightEditForm = ({ formData, setFormData }: FlightEditFormProps) => {
             onChange={onchangeHandler}
             className="mt-0"
           />
-          <Form.Check.Label className="block lh-sm text-base text-default font-normal mb-0">
+          <Form.Check.Label className="block leading-sm text-base text-default font-normal mb-0">
             Refundable ticket
           </Form.Check.Label>
         </Form.Check>
       </Col>
       <Col md={4} lg xl={2}>
-        <h5 className="text-emphasis mb-3">Price Range</h5>
+        <h5 className="text-emphasis mb-4">Price Range</h5>
         <PhoenixReactRange
           values={formData.priceRange}
           variant="primary-lighter"
@@ -63,11 +63,11 @@ const FlightEditForm = ({ formData, setFormData }: FlightEditFormProps) => {
         />
         <div className="flex flex-between-center">
           <div>
-            <small className="hidden d-lg-block text-subtle">Min</small>
+            <small className="hidden lg:block text-subtle">Min</small>
             <h6 className="mb-0 text-highlight font-semibold"> $100</h6>
           </div>
           <div className="text-end">
-            <small className="hidden d-lg-block text-subtle">Max</small>
+            <small className="hidden lg:block text-subtle">Max</small>
             <h6 className="mb-0 text-highlight font-semibold">$200</h6>
           </div>
         </div>
@@ -84,7 +84,7 @@ const FlightEditForm = ({ formData, setFormData }: FlightEditFormProps) => {
           <option value="Firstclass">First class</option>
         </Form.Select>
       </Col>
-      <Col md={6} lg xl={2} className="ms-lg-auto">
+      <Col md={6} lg xl={2} className="lg:ms-auto">
         <h5 className="text-emphasis mb-2">Onward depart time</h5>
         <Form.Select
           id="departTime"

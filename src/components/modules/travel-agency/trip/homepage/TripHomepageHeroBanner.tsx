@@ -21,24 +21,24 @@ const TripHomepageHeroBanner = () => {
             backgroundPosition: 'center'
           }}
         />
-        <Container fluid="medium" className="relative pt-11 pb-15">
-          <h2 className="text-center text-white mb-4">
+        <Container fluid="medium" className="relative pt-20 pb-30">
+          <h2 className="text-center text-white mb-6">
             Where do you want to go?
           </h2>
-          <div className="relative w-md-70 w-lg-50 mx-auto mb-4 mb-lg-10">
+          <div className="relative w-md-70 lg:w-1/2 mx-auto mb-6 lg:mb-18">
             <Form.Control
               type="text"
               placeholder="Search for a location"
-              className="py-3 ps-4 pe-6 rounded-full text-base"
+              className="py-4 ps-6 pe-10 rounded-full text-base"
             />
             <FontAwesomeIcon
               icon={faMagnifyingGlass}
-              className="absolute top-0 end-0 mt-4 me-4 text-base text-subtle"
+              className="absolute top-0 end-0 mt-6 me-6 text-base text-subtle"
               transform="up-3"
             />
           </div>
-          <div className="flex justify-content-center">
-            <div className="hidden d-lg-flex gap-2">
+          <div className="flex justify-center">
+            <div className="hidden lg:flex gap-2">
               {homepageFilterCheckboxItems.categories.map((category, index) => (
                 <Fragment key={category.id}>
                   <Form.Check.Input
@@ -50,7 +50,7 @@ const TripHomepageHeroBanner = () => {
                   />
                   <Form.Check.Label
                     htmlFor={category.id}
-                    className="btn btn-phoenix-secondary font-bold text-nowrap px-3"
+                    className="btn btn-phoenix-secondary font-bold whitespace-nowrap px-4"
                   >
                     {category.label}
                   </Form.Check.Label>
@@ -59,7 +59,7 @@ const TripHomepageHeroBanner = () => {
             </div>
             <Button
               variant="phoenix-secondary"
-              className="ms-lg-auto"
+              className="lg:ms-auto"
               onClick={() => setIsOffCanvasOpen(true)}
             >
               <FontAwesomeIcon icon={faFilter} className="text-sm me-2" />

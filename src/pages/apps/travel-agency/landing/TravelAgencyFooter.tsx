@@ -51,22 +51,22 @@ const TravelAgencyFooter = ({ className }: TravelAgencyFooterProps) => {
     <Container fluid="medium">
       <Row
         className={classNames(
-          'flex-center justify-content-md-between align-items-md-center mb-3 gy-2',
+          'flex-center md:justify-between md:items-center mb-6 gy-2',
           className
         )}
       >
         <Col xs="auto">
-          <Navbar.Brand as={Link} to={'/'} className="flex-1 flex-grow-0">
+          <Navbar.Brand as={Link} to={'/'} className="flex-1 grow-0">
             <Logo />
           </Navbar.Brand>
         </Col>
         <Col xs="auto">
-          <ul className="flex flex-center flex-wrap gap-x-5 gap-y-1 list-unstyled mb-0">
+          <ul className="flex flex-center flex-wrap gap-x-8 gap-y-1 list-unstyled mb-0">
             {navItems.map((item, index) => (
               <li key={index}>
                 <Link
                   to={item.link}
-                  className="lh-1 text-subtle font-semibold text-md"
+                  className="leading-none text-subtle font-semibold text-md"
                 >
                   {item.icon && (
                     <FontAwesomeIcon

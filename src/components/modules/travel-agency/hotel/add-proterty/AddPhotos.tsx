@@ -17,7 +17,7 @@ const AddPhotos = ({ title, images }: { title: string; images: File[] }) => {
 
   return (
     <>
-      <h3 className="mb-6">{title}</h3>
+      <h3 className="mb-10">{title}</h3>
 
       <Dropzone
         accept={{

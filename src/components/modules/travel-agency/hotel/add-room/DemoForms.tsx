@@ -9,7 +9,7 @@ const demoForms = () => {
     <>
       <>
         {/* title with floating lavel , select option */}
-        <h5 className="mb-2 mt-5 lh-1 text-highlight font-bold">
+        <h5 className="mb-2 mt-8 leading-none text-highlight font-bold">
           How many people are included in the base rate?
         </h5>
         <FloatingLabel controlId="peopleSelect" label="Select">
@@ -41,19 +41,19 @@ const demoForms = () => {
               <FloatingLabel
                 controlId="financeInvoiceEmail"
                 label="Select The Range"
-                className="mb-4"
+                className="mb-6"
               >
                 <Form.Control
                   type="text"
                   placeholder="start date"
                   ref={ref}
                   id="startDatepicker"
-                  className="ps-3"
+                  className="ps-4"
                 />
 
                 <FontAwesomeIcon
                   icon={faCalendarAlt}
-                  className="absolute top-0 end-0 mt-3 me-3"
+                  className="absolute top-0 end-0 mt-4 me-4"
                 />
               </FloatingLabel>
             );

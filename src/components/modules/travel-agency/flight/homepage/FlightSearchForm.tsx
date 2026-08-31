@@ -7,7 +7,7 @@ import { DropdownItem } from '../../hotel/HotelActions';
 
 const FlightSearchForm = () => {
   return (
-    <Row className="g-3 mb-4">
+    <Row className="g-4 mb-6">
       <Col lg>
         <Row className="flex-center g-2">
           <Col sm>
@@ -53,7 +53,7 @@ const FlightSearchForm = () => {
                       placeholder="dd/mm/yyyy"
                       ref={ref}
                       id="journeyDate"
-                      className="ps-3"
+                      className="ps-4"
                     />
                     <label htmlFor="journeyDate">Journey Date</label>
                   </Form.Floating>
@@ -78,7 +78,7 @@ const FlightSearchForm = () => {
                       placeholder="dd/mm/yyyy"
                       ref={ref}
                       id="returnDate"
-                      className="ps-3"
+                      className="ps-4"
                     />
                     <label htmlFor="returnDate">Return Date</label>
                   </Form.Floating>
@@ -96,7 +96,7 @@ const FlightSearchForm = () => {
       </Col>
       <Col lg="auto">
         <Dropdown autoClose="outside">
-          <Dropdown.Toggle variant="" className="p-0 dropdown-caret-none w-100">
+          <Dropdown.Toggle variant="" className="p-0 dropdown-caret-none w-full">
             <FloatingLabel
               controlId="travelerCount"
               label="Traveler"
@@ -112,14 +112,14 @@ const FlightSearchForm = () => {
             </FloatingLabel>
           </Dropdown.Toggle>
           <Dropdown.Menu
-            className="p-4"
+            className="p-6"
             align="start"
             style={{ maxWidth: 320 }}
           >
-            <DropdownItem title="Adults" className="pb-3 pt-0 border-bottom" />
-            <DropdownItem title="Infants" className="py-3 border-bottom" />
-            <DropdownItem title="Children" className="py-3" />
-            <Button variant="primary" className="w-100">
+            <DropdownItem title="Adults" className="pb-4 pt-0 border-b" />
+            <DropdownItem title="Infants" className="py-4 border-b" />
+            <DropdownItem title="Children" className="py-4" />
+            <Button variant="primary" className="w-full">
               Complete
             </Button>
           </Dropdown.Menu>

@@ -156,7 +156,7 @@ const FlightsInfo: FlightInfo[] = [
 
 const FlightSchedule = ({ schedule }: FlightScheduleProps) => {
   return (
-    <div className="flex gap-4 justify-content-center">
+    <div className="flex gap-6 justify-center">
       <div>
         <p className="mb-2 text-md text-subtle">
           {schedule.departure.date}
@@ -180,22 +180,22 @@ const FlightSchedule = ({ schedule }: FlightScheduleProps) => {
 
 const FlightItem = ({ airline, schedules, price }: FlightInfo) => {
   return (
-    <Row className="g-0 gap-6 align-items-center py-7 border-top">
+    <Row className="g-0 gap-10 items-center py-12 border-t">
       <Col lg>
-        <div className="flex flex-column gap-md-3 gap-6">
+        <div className="flex flex-col md:gap-4 gap-10">
           {schedules.map((schedule, idx) => (
             <Row
               key={idx}
-              className="gy-md-0 gy-4 justify-content-sm-between justify-content-lg-start"
+              className="md:gy-0 gy-6 sm:justify-between lg:justify-start"
             >
               <Col sm="auto" md={5}>
-                <div className="flex flex-center justify-content-sm-start gap-4">
+                <div className="flex flex-center sm:justify-start gap-6">
                   <img
                     src={airline.logo}
                     alt=""
-                    className="flight-list-item-logo img-fluid rounded-3"
+                    className="flight-list-item-logo img-fluid rounded-lg"
                   />
-                  <h5 className="hidden d-md-block text-nowrap text-highlight">
+                  <h5 className="hidden md:block whitespace-nowrap text-highlight">
                     {airline.name}
                   </h5>
                 </div>
@@ -208,16 +208,16 @@ const FlightItem = ({ airline, schedules, price }: FlightInfo) => {
         </div>
       </Col>
       <Col lg="auto">
-        <div className="flex gap-3 flex-column flex-sm-row flex-lg-column flex-xl-row flex-end-center">
-          <h3 className="mb-0 fs-5 fs-sm-6 flex gap-2 flex-column flex-sm-row align-items-center">
-            <span className="text-md text-soft font-normal text-decoration-line-through">
+        <div className="flex gap-4 flex-col sm:flex-row lg:flex-col xl:flex-row flex-end-center">
+          <h3 className="mb-0 text-2xl sm:text-xl flex gap-2 flex-col sm:flex-row items-center">
+            <span className="text-md text-soft font-normal line-through">
               {currencyFormat(price.regular, { minimumFractionDigits: 2 })}
             </span>
             {currencyFormat(price.discounted, { minimumFractionDigits: 2 })}
           </h3>
 
           <Link to="/apps/travel-agency/flight/booking">
-            <Button variant="primary" className="px-9">
+            <Button variant="primary" className="px-16">
               Select
             </Button>
           </Link>
@@ -234,8 +234,8 @@ const FlightListing = () => {
       {FlightsInfo.map((flight, idx) => (
         <FlightItem key={idx} {...flight} />
       ))}
-      <div className="mt-4 relative text-center">
-        <hr className="m-0 absolute top-50 translate-middle-y w-100" />
+      <div className="mt-6 relative text-center">
+        <hr className="m-0 absolute top-1/2 top-1/2 -translate-y-1/2 w-full" />
         <Button
           variant="phoenix-secondary"
           className="rounded-full relative"

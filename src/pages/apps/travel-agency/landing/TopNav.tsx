@@ -32,7 +32,7 @@ const TopNav = () => {
 
   return (
     <div className="bg-primary-subtle py-2">
-      <div className="container-medium flex align-items-center justify-content-between">
+      <div className="container-medium flex items-center justify-between">
         <Button href="#!" variant="link" className="text-default p-0">
           <FontAwesomeIcon
             icon={faArrowRightToBracket}
@@ -45,7 +45,7 @@ const TopNav = () => {
           <Dropdown.Toggle
             size="sm"
             variant=""
-            className="p-0 d-md-none text-base dropdown-caret-none"
+            className="p-0 md:hidden text-base dropdown-caret-none"
           >
             <FontAwesomeIcon icon={faEllipsisH} />
           </Dropdown.Toggle>
@@ -57,12 +57,12 @@ const TopNav = () => {
             <Dropdown.Item href="">+01 123 581321</Dropdown.Item>
           </Dropdown.Menu>
         </Dropdown>
-        <ul className="hidden d-md-flex gap-5 list-unstyled mb-0">
+        <ul className="hidden md:flex gap-8 list-unstyled mb-0">
           {navItems.map((item, index) => (
             <li key={index}>
               <Link
                 to={item.link}
-                className="lh-1 text-subtle font-semibold text-md"
+                className="leading-none text-subtle font-semibold text-md"
               >
                 {item.icon && (
                   <FontAwesomeIcon

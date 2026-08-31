@@ -19,7 +19,7 @@ export const FilterFormFlightStops = () => {
       containerSize="sm"
       id="flightStops"
     >
-      <div className="p-3 pb-0">
+      <div className="p-4 pb-0">
         {flightStops.map(stop => (
           <Form.Check key={stop.id} className={classNames(stop.className)}>
             <Form.Check.Input id={stop.id} />
@@ -41,7 +41,7 @@ export const FilterFormFlightAirlines = () => {
       containerSize="sm"
       id="flightAirlines"
     >
-      <div className="p-3 pb-0">
+      <div className="p-4 pb-0">
         {flightAirlines.map(airline => (
           <Form.Check key={airline.id}>
             <Form.Check.Input id={airline.id} />
@@ -63,7 +63,7 @@ export const FilterFormFlightCabin = () => {
       containerSize="sm"
       id="flightCabin"
     >
-      <div className="p-3 pb-0">
+      <div className="p-4 pb-0">
         {flightCabins.map(cabin => (
           <Form.Check key={cabin.id}>
             <Form.Check.Input id={cabin.id} />
@@ -86,7 +86,7 @@ export const FilterFormFlightDuration = () => {
       containerSize="sm"
       id="flightDuration"
     >
-      <div className="p-3 pb-0">
+      <div className="p-4 pb-0">
         <div className="flex flex-between-center mb-2">
           <h6 className="mb-0 text-highlight font-semibold">0h 45m</h6>
           <h6 className="mb-0 text-highlight font-semibold">0h 55m</h6>
@@ -115,7 +115,7 @@ export const FilterFormFlightPriceCalculator = () => {
       containerSize="sm"
       id="flightPriceCalculator"
     >
-      <div className="p-3 pb-0">
+      <div className="p-4 pb-0">
         <ReactSelect
           placeholder="Select Method"
           isMulti

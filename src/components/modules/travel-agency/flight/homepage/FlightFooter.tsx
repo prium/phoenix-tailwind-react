@@ -66,9 +66,9 @@ const footerNavs: FooterNav[] = [
 
 const FlightFooter = () => {
   return (
-    <footer className="mb-6">
-      <Container fluid="small-md" className="px-0 px-md-3">
-        <div className="relative overflow-hidden rounded-md-2">
+    <footer className="mb-10">
+      <Container fluid="small-md" className="px-0 md:px-4">
+        <div className="relative overflow-hidden md:rounded-md">
           <div
             className="bg-holder overlay bg-opacity-75"
             style={{
@@ -77,7 +77,7 @@ const FlightFooter = () => {
               backgroundSize: 'cover'
             }}
           />
-          <Row className="g-lg-0 gy-3 relative justify-content-center py-9 px-3 px-sm-6 px-xl-15">
+          <Row className="lg:g-0 gy-4 relative justify-center py-16 px-4 sm:px-10 xl:px-30">
             <Col xs={11} sm={8} lg={5}>
               <InputGroup className="gap-2">
                 <div className="form-icon-container flex-1">
@@ -92,17 +92,17 @@ const FlightFooter = () => {
                     transform="up-2"
                   />
                 </div>
-                <Button variant="primary" className="rounded">
+                <Button variant="primary" className="rounded-md">
                   Sign up
                 </Button>
               </InputGroup>
             </Col>
             <Col lg={7} data-bs-theme="light">
-              <div className="flex flex-column flex-lg-row gap-lg-6 gap-2 align-items-center justify-content-lg-end justify-content-center">
+              <div className="flex flex-col lg:flex-row lg:gap-10 gap-2 items-center lg:justify-end justify-center">
                 <Nav as="ul">
                   {footerNavs.map((item, idx) => (
                     <Nav.Item as="li" key={idx}>
-                      <Nav.Link className="link-light" href={item.link}>
+                      <Nav.Link className="link text-white" href={item.link}>
                         {item.title}
                       </Nav.Link>
                     </Nav.Item>
@@ -113,7 +113,7 @@ const FlightFooter = () => {
                     <Link
                       key={idx}
                       to={social.path}
-                      className={classNames('link-light', {
+                      className={classNames('link text-white', {
                         'pe-1 me-2 ': idx !== socialsLinks.length - 1
                       })}
                     >

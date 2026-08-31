@@ -10,8 +10,8 @@ const FilterFormFlightAircraft = () => {
       containerSize="sm"
       id="flightStops"
     >
-      <div className="p-3 pb-0">
-        <div className="flex mb-3">
+      <div className="p-4 pb-0">
+        <div className="flex mb-4">
           <Form.Check type="radio" className="form-check-inline">
             <Form.Check.Input
               type="radio"

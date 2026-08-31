@@ -11,9 +11,9 @@ import appStore from 'assets/img/generic/app-store.png';
 
 const GetApp = () => {
   return (
-    <section className="pb-10 pt-9">
+    <section className="pb-18 pt-16">
       <div
-        className="bg-holder hidden d-xl-block"
+        className="bg-holder hidden xl:block"
         style={{
           backgroundImage: `url(${bgLeft33})`,
           backgroundPosition: '-8% 38px',
@@ -21,7 +21,7 @@ const GetApp = () => {
         }}
       />
       <div
-        className="bg-holder hidden d-xl-block"
+        className="bg-holder hidden xl:block"
         style={{
           backgroundImage: `url(${bgRight33})`,
           backgroundPosition: 'right',
@@ -30,37 +30,37 @@ const GetApp = () => {
       />
       <div className="bg-get-app" />
       <div className="container-medium relative">
-        <Row className="g-0 justify-content-center">
+        <Row className="g-0 justify-center">
           <Col lg={10} xl={8} xxl={7}>
-            <div className="d-md-flex align-items-center gap-5 text-center text-md-start">
+            <div className="md:flex items-center gap-8 text-center md:text-start">
               <img
                 src={iPhone}
                 alt=""
                 style={{ maxHeight: '540px' }}
-                className="d-dark-none img-fluid"
+                className="dark:hidden img-fluid"
               />
               <img
                 src={iPhoneDark}
                 alt=""
                 style={{ maxHeight: '540px' }}
-                className="d-light-none img-fluid"
+                className="hidden dark:block img-fluid"
               />
-              <div className="mt-5 mt-md-0">
-                <div className="hidden d-md-block">
+              <div className="mt-8 md:mt-0">
+                <div className="hidden md:block">
                   <img
                     src={spotIllustration41}
                     alt=""
                     width={200}
-                    className="d-dark-none"
+                    className="dark:hidden"
                   />
                   <img
                     src={spotIllustrationDark41}
                     alt=""
                     width={200}
-                    className="d-light-none"
+                    className="hidden dark:block"
                   />
                 </div>
-                <h3 className="font-black mt-4">Get The App Now</h3>
+                <h3 className="font-black mt-6">Get The App Now</h3>
                 <p className="text-subtle">
                   Designed to provide the best user experience possible to all
                   our customers with activities ranging from anything thinkable

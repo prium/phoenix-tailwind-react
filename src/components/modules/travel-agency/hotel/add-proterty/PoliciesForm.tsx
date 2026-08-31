@@ -22,13 +22,13 @@ const SwitchForm = ({
   name,
   label,
   defaultChecked,
-  className = ''
+  className=''
 }: SwitchForm) => {
   const methods = useWizardFormContext<AddPropertyWizardFormData>();
   const { onChange } = methods;
 
   return (
-    <div className={`border p-3 rounded-2 ${className}`}>
+    <div className={`border p-4 rounded-md ${className}`}>
       <Form.Check type="switch" className="mb-0" id={id}>
         <Form.Check.Input
           defaultChecked={defaultChecked}
@@ -61,8 +61,8 @@ const PoliciesForm = () => {
   };
   return (
     <>
-      <h3 className="mb-6">Policies</h3>
-      <Form.Check className="mb-3 me-5" inline id="policiesCheckInLimited">
+      <h3 className="mb-10">Policies</h3>
+      <Form.Check className="mb-4 me-8" inline id="policiesCheckInLimited">
         <Form.Check.Input
           type="radio"
           defaultChecked
@@ -72,7 +72,7 @@ const PoliciesForm = () => {
         />
         <Form.Check.Label className="text-base">Limited Check-in</Form.Check.Label>
       </Form.Check>
-      <Form.Check className="mb-3" inline id="policiesCheckIn24Hr">
+      <Form.Check className="mb-4" inline id="policiesCheckIn24Hr">
         <Form.Check.Input
           type="radio"
           name="checkInType"
@@ -82,8 +82,8 @@ const PoliciesForm = () => {
         <Form.Check.Label className="text-base">24hr Check-in</Form.Check.Label>
       </Form.Check>
 
-      <Row className="g-3 mb-3 align-items-center">
-        <Col xs={12} sm={6} md="auto" className="flex-md-grow-1">
+      <Row className="g-4 mb-4 items-center">
+        <Col xs={12} sm={6} md="auto" className="md:grow">
           <DatePicker
             render={(_, ref) => {
               return (
@@ -94,7 +94,7 @@ const PoliciesForm = () => {
                     placeholder="H:i"
                     ref={ref}
                     id="policiesCheckInStarts"
-                    className="ps-3"
+                    className="ps-4"
                     defaultValue="12:00"
                   />
                   <label htmlFor="policiesCheckInStarts">Check-In Starts</label>
@@ -115,7 +115,7 @@ const PoliciesForm = () => {
             }}
           />
         </Col>
-        <Col xs={12} sm={6} md="auto" className="flex-md-grow-1">
+        <Col xs={12} sm={6} md="auto" className="md:grow">
           <DatePicker
             render={(_, ref) => {
               return (
@@ -126,7 +126,7 @@ const PoliciesForm = () => {
                     placeholder="H:i"
                     ref={ref}
                     id="policiesCheckInEnds"
-                    className="ps-3"
+                    className="ps-4"
                     defaultValue="12:00"
                   />
                   <label htmlFor="policiesCheckInEnds">Check-In Ends</label>
@@ -171,31 +171,31 @@ const PoliciesForm = () => {
         id="policyAgeRegistration"
         name="ageRegistration"
         label="Age Registration"
-        className="mb-3"
+        className="mb-4"
       />
       <SwitchForm
         id="policyDepositCheckIn"
         name="depositAtCheckin"
         label="Deposit at Check-in"
-        className="mb-3"
+        className="mb-4"
       />
       <SwitchForm
         id="policyDocumentCheckIn"
         name="documentationAtCheckin"
         label="Documentation at Check-in"
-        className="mb-3"
+        className="mb-4"
       />
-      <h4 className="mb-4 mt-6">Checkout Policy</h4>
+      <h4 className="mb-6 mt-10">Checkout Policy</h4>
       <DatePicker
         render={(_, ref) => {
           return (
-            <Form.Floating className="mb-3">
+            <Form.Floating className="mb-4">
               <Form.Control
                 type="text"
                 placeholder="H:i"
                 ref={ref}
                 id="checkoutBefore"
-                className="ps-3"
+                className="ps-4"
                 defaultValue="12:00"
               />
               <label htmlFor="checkoutBefore">Checkout before</label>
@@ -220,8 +220,8 @@ const PoliciesForm = () => {
         name="Flexible Checkout"
         methods={methods}
       />
-      <h4 className="mb-4 mt-6">Cancellation Policy </h4>
-      <Form.Check className="mb-3 me-5" inline id="nonRefundable">
+      <h4 className="mb-6 mt-10">Cancellation Policy </h4>
+      <Form.Check className="mb-4 me-8" inline id="nonRefundable">
         <Form.Check.Input
           type="radio"
           defaultChecked
@@ -231,7 +231,7 @@ const PoliciesForm = () => {
         />
         <Form.Check.Label className="text-base">Non Refundable</Form.Check.Label>
       </Form.Check>
-      <Form.Check className="mb-3" inline id="optionalRefund">
+      <Form.Check className="mb-4" inline id="optionalRefund">
         <Form.Check.Input
           type="radio"
           name="refundPolicy"
@@ -244,16 +244,16 @@ const PoliciesForm = () => {
         id="policyFullRefund"
         name="isFullRefand"
         label="Full Refund"
-        className="mb-3"
+        className="mb-4"
       />
       <SwitchForm
         id="policyPertialRefund"
         name="isPartialRefand"
         label="Pertial Refund"
-        className="mb-3"
+        className="mb-4"
       />
-      <h4 className="mb-4 mt-6">Pet Policy </h4>
-      <Form.Check className="mb-3 me-5" inline id="PolicyNotAllowed">
+      <h4 className="mb-6 mt-10">Pet Policy </h4>
+      <Form.Check className="mb-4 me-8" inline id="PolicyNotAllowed">
         <Form.Check.Input
           type="radio"
           defaultChecked
@@ -263,7 +263,7 @@ const PoliciesForm = () => {
         />
         <Form.Check.Label className="text-base">Not Allowed</Form.Check.Label>
       </Form.Check>
-      <Form.Check className="mb-3" inline id="PolicyAllowed">
+      <Form.Check className="mb-4" inline id="PolicyAllowed">
         <Form.Check.Input
           type="radio"
           name="petPolicyType"
@@ -276,17 +276,17 @@ const PoliciesForm = () => {
         id="petRestictedZone"
         name="petRestictedZone"
         label="Pet Restricted Zones"
-        className="mb-3"
+        className="mb-4"
       />
       <SwitchForm
         id="petAdditionalCharge"
         name="petAdditionalCharge"
         label="Additional Charges"
-        className="mb-3"
+        className="mb-4"
       />
-      <h4 className="mb-4 mt-6">Child Policy</h4>
+      <h4 className="mb-6 mt-10">Child Policy</h4>
       <h5 className="mb-2 text-default">Age Segment 1</h5>
-      <Row className="align-items-center g-3">
+      <Row className="items-center g-4">
         <Col xs={6} sm="auto">
           <Form.Floating>
             <Form.Control
@@ -332,8 +332,8 @@ const PoliciesForm = () => {
           </Form.Floating>
         </Col>
       </Row>
-      <h5 className="mb-2 mt-4 text-default">Age Segment 2</h5>
-      <Row className="align-items-center g-3">
+      <h5 className="mb-2 mt-6 text-default">Age Segment 2</h5>
+      <Row className="items-center g-4">
         <Col xs={6} sm="auto">
           <Form.Floating>
             <Form.Control
@@ -378,8 +378,8 @@ const PoliciesForm = () => {
           </Form.Floating>
         </Col>
       </Row>
-      <h5 className="mb-2 mt-4 text-default">Age Segment 3</h5>
-      <Row className="align-items-center g-3">
+      <h5 className="mb-2 mt-6 text-default">Age Segment 3</h5>
+      <Row className="items-center g-4">
         <Col xs={6} sm="auto">
           <Form.Floating>
             <Form.Control
@@ -425,7 +425,7 @@ const PoliciesForm = () => {
           </Form.Floating>
         </Col>
       </Row>
-      <Button variant="link" className="p-0 mt-3 text-base">
+      <Button variant="link" className="p-0 mt-4 text-base">
         <FontAwesomeIcon icon={faPlus} className="me-2" />
         Add Segment
       </Button>
@@ -433,9 +433,9 @@ const PoliciesForm = () => {
         id="policiesDocRequirment"
         name="childDocPolicy"
         label="Documentation Requirement"
-        className="mt-3"
+        className="mt-4"
       />
-      <h4 className="mb-4 mt-6">Included Taxes in your rate</h4>
+      <h4 className="mb-6 mt-10">Included Taxes in your rate</h4>
       <PriceTierForm id="vat" name="Vat" methods={methods} />
       <PriceTierForm id="gst" name="Gst" methods={methods} />
       <PriceTierForm id="hotelTax" name="Hotel tax" methods={methods} />
@@ -445,9 +445,9 @@ const PoliciesForm = () => {
         methods={methods}
       />
       <PriceTierForm id="touristTax" name="Tourist tax" methods={methods} />
-      <h4 className="mb-4 mt-6">Your Documentations</h4>
+      <h4 className="mb-6 mt-10">Your Documentations</h4>
       <FloatingLabel
-        className="mb-3"
+        className="mb-4"
         controlId="policyPropertyRegNo"
         label="Property Registration No. (OPTIONAL)"
       >
@@ -459,7 +459,7 @@ const PoliciesForm = () => {
         />
       </FloatingLabel>
       <FloatingLabel
-        className="mb-3"
+        className="mb-4"
         controlId="policyBusinessRegNo"
         label="Business Registration No."
       >

@@ -21,20 +21,20 @@ const FligthListHead = () => {
 
   return (
     <>
-      <div className="flex flex-between-center mb-3">
+      <div className="flex flex-between-center mb-4">
         <IsotopeNav
           navItems={navItems}
-          className="justify-content-center w-max-content"
+          className="justify-center w-max-content"
           defaultActiveKey={navItems[1].eventKey}
           // onSelect={handleSelect}
         />
         <Button
           variant="phoenix-secondary"
-          className="text-nowrap px-4"
+          className="whitespace-nowrap px-6"
           onClick={() => setFilterModalOpen(true)}
         >
-          <FontAwesomeIcon icon={faFilter} className="me-md-2" />
-          <span className="hidden d-md-inline-block"> Filters </span>
+          <FontAwesomeIcon icon={faFilter} className="md:me-2" />
+          <span className="hidden md:inline-block"> Filters </span>
         </Button>
       </div>
       <FlightFilterModal

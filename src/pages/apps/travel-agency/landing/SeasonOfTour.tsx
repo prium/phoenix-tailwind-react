@@ -26,10 +26,10 @@ const ImageZoomHoverCard: FC<ImageZoomHoverCard> = ({
   ...rest
 }: ImageZoomHoverCard) => {
   return (
-    <div className="img-zoom-hover relative h-100 rounded-3 overflow-hidden">
+    <div className="img-zoom-hover relative h-full rounded-lg overflow-hidden">
       <Link to="#!">
         <img
-          className={`w-100 object-fit-cover ${imgClass}`}
+          className={`w-full object-cover ${imgClass}`}
           src={src}
           alt=""
           {...rest}
@@ -47,39 +47,39 @@ const ImageZoomHoverCard: FC<ImageZoomHoverCard> = ({
 
 const SeasonOfTour = () => {
   return (
-    <section className="pt-6 pt-md-10 pb-10">
+    <section className="pt-10 md:pt-18 pb-18">
       <div className="container-medium">
         <div
-          className="bg-holder hidden d-xl-block bg-left"
+          className="bg-holder hidden xl:block bg-left"
           style={{
             backgroundImage: `url(${bgLeft27})`,
             backgroundSize: 'auto'
           }}
         />
         <div
-          className="bg-holder hidden d-xl-block bg-right"
+          className="bg-holder hidden xl:block bg-right"
           style={{
             backgroundImage: `url(${bgRight27})`,
             backgroundSize: 'auto'
           }}
         />
-        <Row className="g-3 relative">
+        <Row className="g-4 relative">
           <Col lg={6}>
-            <Row className="g-3">
+            <Row className="g-4">
               <Col md={7}>
-                <h4 className="font-semibold mb-3">Season of </h4>
-                <h2 className="fs-4 font-semibold mb-3 mb-md-4">
+                <h4 className="font-semibold mb-4">Season of </h4>
+                <h2 className="text-3xl font-semibold mb-4 md:mb-6">
                   Tour &{' '}
                   <span className="text-primary-light font-bold">Travel</span>
                 </h2>
-                <p className="mb-3 mb-md-0 text-subtle">
+                <p className="mb-4 md:mb-0 text-subtle">
                   This is the perfect season for tours and travels. At Phoenix,
                   you can easily select the best travel option for your next
                   vacation
-                  <span className="hidden d-lg-inline-block d-xl-none">
+                  <span className="hidden lg:inline-block xl:hidden">
                     ...
                   </span>
-                  <span className="d-lg-none d-xl-inline">
+                  <span className="lg:hidden xl:inline">
                     This will help you with the pricing that you’ll need, the
                     accommodation facilities, food and beverages, and water
                     rides.
@@ -112,7 +112,7 @@ const SeasonOfTour = () => {
             </Row>
           </Col>
           <Col lg={6}>
-            <div className="flex flex-column gap-3 h-100">
+            <div className="flex flex-col gap-4 h-full">
               <ImageZoomHoverCard
                 src={gallery38}
                 title="Bali, Indonesia"
@@ -120,7 +120,7 @@ const SeasonOfTour = () => {
                 imgClass="h-lg-100"
                 style={{ height: 220 }}
               />
-              <Button variant="primary" className="w-100 py-3 text-base">
+              <Button variant="primary" className="w-full py-4 text-base">
                 Explore more
                 <FontAwesomeIcon
                   className="ms-2"

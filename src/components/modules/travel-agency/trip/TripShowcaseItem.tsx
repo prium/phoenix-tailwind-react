@@ -17,25 +17,25 @@ interface TripShowcaseItemProps {
 const TripShowcaseItem = ({ showcaseItem }: TripShowcaseItemProps) => {
   return (
     <Col md={6} xl={4}>
-      <div className="hoverbox rounded">
+      <div className="hoverbox rounded-md">
         <Link to="/apps/travel-agency/trip/trip-details">
           <img src={showcaseItem.image} alt="" className="img-fluid" />
           <div className="backdrop-faded">
-            <h3 className="text-underline text-lg fs-lg-6 text-white font-bold mb-2 pt-4">
+            <h3 className="text-underline text-lg lg:text-xl text-white font-bold mb-2 pt-6">
               {showcaseItem.title}
             </h3>
-            <h5 className="text-secondary-lighter font-normal mb-3">
+            <h5 className="text-secondary-lighter font-normal mb-4">
               <FontAwesomeIcon
                 icon={faLocationDot}
                 className="text-primary me-2"
               />
               {showcaseItem.location}
             </h5>
-            <div className="d-sm-flex d-md-block d-lg-flex flex-between-center pb-4">
-              <h3 className="text-white font-bold mb-3 mb-sm-0 mb-md-3 mb-lg-0 text-lg fs-lg-6">
+            <div className="sm:flex md:block lg:flex flex-between-center pb-6">
+              <h3 className="text-white font-bold mb-4 sm:mb-0 md:mb-4 lg:mb-0 text-lg lg:text-xl">
                 $ {numberFormat(showcaseItem.price)}
               </h3>
-              <div className="flex gap-3">
+              <div className="flex gap-4">
                 <h5 className="text-secondary-lighter font-normal">
                   <FontAwesomeIcon icon={faClock} className="text-md me-2" />
                   {showcaseItem.days} days

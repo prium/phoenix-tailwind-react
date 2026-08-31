@@ -49,7 +49,7 @@ const FlightBookingWizard = ({ activeItem }: FlightBookingWizardProps) => {
       className="theme-wizard flight-booking-wizard"
       style={{ width: '18.125rem' }}
     >
-      <Nav className="justify-content-between nav-wizard nav-wizard-success">
+      <Nav className="justify-between nav-wizard nav-wizard-success">
         {wizardItems.map((item, index) => {
           const isDone = doneItems.some(i => i.name === item.name);
           const isActive = activeItem === item.name;
@@ -62,13 +62,13 @@ const FlightBookingWizard = ({ activeItem }: FlightBookingWizardProps) => {
                 to={item.url}
                 className={`font-semibold ${stepClass}`}
               >
-                <div className="d-inline-block text-center">
+                <div className="inline-block text-center">
                   <span className="nav-item-circle-parent">
                     <span className="block nav-item-circle">
                       <FontAwesomeIcon icon={isDone ? faCheck : item.icon} />
                     </span>
                   </span>
-                  <span className="d-md-block mt-1 text-md">{item.name}</span>
+                  <span className="md:block mt-1 text-md">{item.name}</span>
                 </div>
               </Nav.Link>
             </Nav.Item>

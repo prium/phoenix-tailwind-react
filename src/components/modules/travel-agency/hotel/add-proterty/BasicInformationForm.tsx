@@ -13,8 +13,8 @@ const BasicInformationForm = () => {
 
   return (
     <>
-      <h3 className="mb-6">Basic information</h3>
-      <h4 className="mb-4">Property Information</h4>
+      <h3 className="mb-10">Basic information</h3>
+      <h4 className="mb-6">Property Information</h4>
       <FloatingLabel controlId="propertyName" label="Property Name">
         <Form.Control
           type="text"
@@ -28,7 +28,7 @@ const BasicInformationForm = () => {
       </h5>
       <FloatingLabel
         controlId="propertyDescription"
-        className="my-3"
+        className="my-4"
         label="Description"
       >
         <textarea
@@ -43,7 +43,7 @@ const BasicInformationForm = () => {
         </h5>
       </FloatingLabel>
 
-      <Row className="g-3">
+      <Row className="g-4">
         <Col md={8} lg={12} xl={8}>
           <FloatingLabel
             controlId="propertyType"
@@ -85,8 +85,8 @@ const BasicInformationForm = () => {
           </div>
         </Col>
       </Row>
-      <h4 className="mt-6 mb-3">Contact Information</h4>
-      <Row className="g-3">
+      <h4 className="mt-10 mb-4">Contact Information</h4>
+      <Row className="g-4">
         <Col md={6}>
           <FloatingLabel controlId="contactEmail" label="Email Address">
             <Form.Control
@@ -108,8 +108,8 @@ const BasicInformationForm = () => {
           </FloatingLabel>
         </Col>
       </Row>
-      <h4 className="mt-6 mb-3">Is it part of a hotel / property chain?</h4>
-      <Row className="align-items-center g-3">
+      <h4 className="mt-10 mb-4">Is it part of a hotel / property chain?</h4>
+      <Row className="items-center g-4">
         <Col sm="auto">
           <Form.Check
             inline
@@ -118,7 +118,7 @@ const BasicInformationForm = () => {
             name="isPropertyChain"
             type="radio"
             id="propertyChainNo"
-            className="me-4 me-sm-7 mb-0"
+            className="me-6 sm:me-12 mb-0"
             onChange={() => setIsPropertyChain(false)}
           />
           <Form.Check
@@ -147,8 +147,8 @@ const BasicInformationForm = () => {
           </FloatingLabel>
         </Col>
       </Row>
-      <h4 className="mt-6 mb-3">Do you use a Channel Management Systems?</h4>
-      <Row className="align-items-center g-3">
+      <h4 className="mt-10 mb-4">Do you use a Channel Management Systems?</h4>
+      <Row className="items-center g-4">
         <Col sm="auto">
           <Form.Check
             inline
@@ -156,7 +156,7 @@ const BasicInformationForm = () => {
             name="isChannelManagement"
             type="radio"
             id="channelManagementNo"
-            className="me-4 me-sm-7 mb-0"
+            className="me-6 sm:me-12 mb-0"
             onChange={() => setIsChannelManagement(false)}
             value="No"
           />
@@ -187,7 +187,7 @@ const BasicInformationForm = () => {
 
             <FontAwesomeIcon
               icon={faSearch}
-              className="absolute text-soft text-md end-0 top-0 mt-3 me-3"
+              className="absolute text-soft text-md end-0 top-0 mt-4 me-4"
               transform="down-2"
             />
           </FloatingLabel>

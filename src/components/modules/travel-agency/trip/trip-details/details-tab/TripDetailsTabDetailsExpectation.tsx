@@ -12,15 +12,15 @@ const TripDetailsTabDetailsExpectation = ({
   expectations
 }: TripDetailsTabDetailsExpectationProps) => {
   return (
-    <div className="py-6 px-4">
+    <div className="py-10 px-6">
       {expectations.map((expectation, index) => (
         <div
           key={expectation.id}
           className={classNames({
-            'mb-5': expectations.length - 1 !== index
+            'mb-14': expectations.length - 1 !== index
           })}
         >
-          <div className="flex align-items-center gap-2">
+          <div className="flex items-center gap-2">
             <span
               className="bg-secondary rounded-full flex flex-center text-white"
               style={{ width: 27, height: 27 }}
@@ -30,7 +30,7 @@ const TripDetailsTabDetailsExpectation = ({
             <h5 className="text-highlight mb-0">{expectation.event}</h5>
           </div>
           <p className="my-2">{expectation.description}</p>
-          <div className="flex gap-3 gap-xl-4 flex-wrap">
+          <div className="flex gap-4 xl:gap-6 flex-wrap">
             <h5 className="text-highlight font-semibold mb-0">
               <FontAwesomeIcon
                 icon={faClock}

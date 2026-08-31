@@ -16,11 +16,11 @@ const HotelPayment = () => {
   return (
     <>
       <ResizableNavbar navItems={hotelNavItems} />
-      <section className="pt-6 pb-9">
+      <section className="pt-10 pb-16">
         <Container fluid="medium">
-          <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-3" />
-          <h2 className="mb-5">Payment</h2>
-          <Row className="justify-content-between">
+          <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-4" />
+          <h2 className="mb-8">Payment</h2>
+          <Row className="justify-between">
             <Col lg={7} xl={6}>
               <Form onSubmit={e => e.preventDefault()}>
                 <Link to="/apps/travel-agency/hotel/customer/checkout">
@@ -37,9 +37,9 @@ const HotelPayment = () => {
                     Go back
                   </Button>
                 </Link>
-                <hr className="mt-5 mb-7" />
-                <h3 className="mb-5">Enter your address</h3>
-                <Row className="g-3 mb-5">
+                <hr className="mt-8 mb-12" />
+                <h3 className="mb-8">Enter your address</h3>
+                <Row className="g-4 mb-8">
                   <Col sm={3}>
                     <label
                       htmlFor="country"
@@ -68,7 +68,7 @@ const HotelPayment = () => {
                     />
                   </Col>
                 </Row>
-                <Row className="g-3">
+                <Row className="g-4">
                   <Col sm={8} lg={7}>
                     <label
                       htmlFor="email"
@@ -85,11 +85,11 @@ const HotelPayment = () => {
                   </Col>
                 </Row>
                 <PaymentMethodForm />
-                <hr className="mt-6 mb-5" />
+                <hr className="mt-10 mb-8" />
                 <Link to="/apps/travel-agency/hotel/customer/checkout">
                   <Button
                     variant="phoenix-primary"
-                    className="me-3"
+                    className="me-4"
                     startIcon={
                       <FontAwesomeIcon
                         icon={faChevronLeft}
@@ -101,7 +101,7 @@ const HotelPayment = () => {
                     Go back
                   </Button>
                 </Link>
-                <Button variant="primary" className="px-sm-15">
+                <Button variant="primary" className="sm:px-30">
                   Confirm booking
                 </Button>
               </Form>
@@ -109,7 +109,7 @@ const HotelPayment = () => {
             <Col lg={5} xl={4}>
               <HotelDetailsSummaryCard
                 showHotelInfo={true}
-                className="mt-5 mt-lg-0"
+                className="mt-8 lg:mt-0"
               />
             </Col>
           </Row>

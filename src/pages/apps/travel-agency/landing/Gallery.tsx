@@ -33,17 +33,17 @@ const navItems = [
 
 const GalleryItem = ({ galleryItem }: { galleryItem: GalleryInterface }) => {
   return (
-    <Col xs={12} className="w-100">
-      <div className="img-zoom-hover-lg rounded-2 overflow-hidden relative">
+    <Col xs={12} className="w-full">
+      <div className="img-zoom-hover-lg rounded-md overflow-hidden relative">
         <Link to="#!">
           <img
-            className="w-100 object-fit-cover"
+            className="w-full object-cover"
             height={220}
             src={galleryItem.img}
             alt=""
           />
         </Link>
-        <button className="btn btn-wish absolute top-0 end-0 mt-3 me-3">
+        <button className="btn btn-wish absolute top-0 end-0 mt-4 me-4">
           <FontAwesomeIcon icon={faHeart} />
         </button>
         <div className="backdrop-faded">
@@ -86,9 +86,9 @@ const Gallery = () => {
   };
 
   return (
-    <section className="py-10 overflow-hidden">
+    <section className="py-18 overflow-hidden">
       <div
-        className="bg-holder hidden d-xl-block"
+        className="bg-holder hidden xl:block"
         style={{
           backgroundImage: `url(${bgLeft30})`,
           backgroundPosition: 'left',
@@ -97,7 +97,7 @@ const Gallery = () => {
         }}
       />
       <div
-        className="bg-holder hidden d-xl-block"
+        className="bg-holder hidden xl:block"
         style={{
           backgroundImage: `url(${bgRight30})`,
           backgroundPosition: 'right 25px',
@@ -110,29 +110,29 @@ const Gallery = () => {
         <h3 className="mb-2 text-emphasis text-center">
           Popular Attractions
         </h3>
-        <p className="mb-0 text-subtle text-center mb-5">
+        <p className="mb-0 text-subtle text-center mb-8">
           Explore the most popular and frequently visited destinations around
           the world
         </p>
         <IsotopeNav
           navItems={navItems}
-          className="mb-5 justify-content-center w-max-content mx-auto"
+          className="mb-8 justify-center w-max-content mx-auto"
           onSelect={handleNavItemSelect}
         />
-        <div className="row g-0 justify-content-center">
+        <div className="row g-0 justify-center">
           <Col md={9} lg={7} xl={5}>
-            <Row className="gx-0 gy-3">
+            <Row className="gx-0 gy-4">
               {images.map(gallery => (
                 <GalleryItem galleryItem={gallery} key={gallery.img} />
               ))}
             </Row>
-            <div className="flex align-items-center justify-content-center gap-3 mt-4">
+            <div className="flex items-center justify-center gap-4 mt-6">
               <h5 className="mb-0">Explore more popular destination</h5>
               <div className="btn-ping">
                 <div className="btn-ping-bg" />
                 <Button
                   variant="link"
-                  className="border p-0 text-base flex align-items-center justify-content-center"
+                  className="border p-0 text-base flex items-center justify-center"
                 >
                   <FontAwesomeIcon icon={faArrowRight} />
                 </Button>

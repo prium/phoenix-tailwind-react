@@ -56,7 +56,7 @@ const urlList: URlItem[] = [
 
 const TripCommonCTASection = () => {
   return (
-    <footer className="relative overflow-hidden mb-4">
+    <footer className="relative overflow-hidden mb-6">
       <Container fluid="medium">
         <div className="">
           <div
@@ -67,9 +67,9 @@ const TripCommonCTASection = () => {
               backgroundSize: 'cover'
             }}
           />
-          <Row className="relative flex-center gy-3 py-6">
-            <Col xxl={4} className="order-1 order-xxl-0">
-              <ul className="list-unstyled flex flex-wrap justify-content-center justify-content-xxl-start gap-3 gap-xxl-4 mb-0">
+          <Row className="relative flex-center gy-4 py-10">
+            <Col xxl={4} className="order-1 2xl:order-0">
+              <ul className="list-unstyled flex flex-wrap justify-center 2xl:justify-start gap-4 2xl:gap-6 mb-0">
                 {urlList.slice(0, 4).map(item => (
                   <li key={item.id}>
                     <Link to={item.url} className="text-secondary-lighter">
@@ -79,8 +79,8 @@ const TripCommonCTASection = () => {
                 ))}
               </ul>
             </Col>
-            <Col sm={8} md={7} lg={5} xl={4} className="mb-3 mb-xxl-0 mx-auto">
-              <h2 className="mb-4 font-semibold text-white text-center lh-sm">
+            <Col sm={8} md={7} lg={5} xl={4} className="mb-4 2xl:mb-0 mx-auto">
+              <h2 className="mb-6 font-semibold text-white text-center leading-sm">
                 Subscribe to get notified about the latest news
               </h2>
               <div className="flex gap-2">
@@ -96,13 +96,13 @@ const TripCommonCTASection = () => {
                     className="form-icon text-default text-md"
                   />
                 </div>
-                <Button variant="primary" className="rounded">
+                <Button variant="primary" className="rounded-md">
                   Sign up
                 </Button>
               </div>
             </Col>
-            <Col xxl={4} className="order-2 order-xxl-0">
-              <ul className="list-unstyled flex flex-wrap justify-content-center justify-content-xxl-end gap-3 gap-xxl-4 mb-0">
+            <Col xxl={4} className="order-2 2xl:order-0">
+              <ul className="list-unstyled flex flex-wrap justify-center 2xl:justify-end gap-4 2xl:gap-6 mb-0">
                 {urlList.slice(4).map(item => (
                   <li key={item.id}>
                     <Link to={item.url} className="text-secondary-lighter">

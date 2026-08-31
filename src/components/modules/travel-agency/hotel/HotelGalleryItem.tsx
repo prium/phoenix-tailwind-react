@@ -25,16 +25,16 @@ const HotelGalleryItem = ({ galleryItem, onClick }: HotelGalleryItemProps) => {
       onClick={onClick}
     >
       {galleryItem.video ? (
-        <div className="video-container relative h-100">
+        <div className="video-container relative h-full">
           <video
-            className="w-100 h-100 object-fit-cover overflow-hidden rounded-2"
+            className="w-full h-full object-cover overflow-hidden rounded-md"
             src={galleryItem.video}
             muted
             onMouseEnter={handleMouseEnter}
             onMouseLeave={handleMouseOut}
             ref={ref}
           />
-          <div className="video-icon absolute top-50 start-50 translate-middle bg-soft rounded-full bg-opacity-50">
+          <div className="video-icon absolute top-1/2 start-1/2 top-1/2 left-1/2 -translate-1/2 bg-soft rounded-full bg-opacity-50">
             <FontAwesomeIcon icon={faVideo} />
           </div>
         </div>
@@ -42,7 +42,7 @@ const HotelGalleryItem = ({ galleryItem, onClick }: HotelGalleryItemProps) => {
         <img
           src={galleryItem.img}
           alt=""
-          className="rounded-2 h-100 w-100 object-fit-cover"
+          className="rounded-md h-full w-full object-cover"
         />
       )}
     </div>

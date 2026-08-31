@@ -19,7 +19,7 @@ const HotelGalleryImages = ({ galleryItems }: HotelGalleryImagesProps) => {
 
   return (
     <>
-      <div className="gap-2 gap-sm-3 d-grid grid-cols-12">
+      <div className="gap-2 sm:gap-4 grid grid-cols-12">
         {galleryItems.map((gallery, index) => (
           <GalleryItem
             galleryItem={gallery}

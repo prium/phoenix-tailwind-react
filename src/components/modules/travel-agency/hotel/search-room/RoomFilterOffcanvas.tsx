@@ -16,7 +16,7 @@ const RoomFilterOffcanvas = ({ open, setOpen }: LeadDetailsOffcanvasProps) => {
         <PhoenixOffcanvas
           open={open}
           onHide={() => setOpen(false)}
-          className="p-4 phoenix-offcanvas-content scrollbar phoenix-room-filter-offcanvas"
+          className="p-6 phoenix-offcanvas-content scrollbar phoenix-room-filter-offcanvas"
           placement="start"
           fixed
         >

@@ -14,7 +14,7 @@ export const TravelStatistics = () => {
         xs={6}
         xl={12}
         xxl={6}
-        className="border-bottom border-end border-end-xl-0 border-end-xxl pb-4 pt-4 pt-xl-0 pt-xxl-4 pe-4 pe-sm-5 pe-xl-0 pe-xxl-5"
+        className="border-b border-e xl:border-e-0 2xl:border-e pb-6 pt-6 xl:pt-0 2xl:pt-6 pe-6 sm:pe-8 xl:pe-0 2xl:pe-8"
       >
         <TravelStats
           title="Total Value"
@@ -25,7 +25,7 @@ export const TravelStatistics = () => {
           badgeBg="primary"
         >
           <div
-            className="order-1 order-sm-0 order-md-1"
+            className="order-1 sm:order-0 md:order-1"
             style={{ height: 54, width: 90 }}
           >
             <BaseLineChart
@@ -47,7 +47,7 @@ export const TravelStatistics = () => {
         xs={6}
         xl={12}
         xxl={6}
-        className="border-bottom py-4 ps-4 ps-sm-5 ps-xl-0 ps-xxl-5"
+        className="border-b py-6 ps-6 sm:ps-8 xl:ps-0 2xl:ps-8"
       >
         <TravelStats
           title="Booked Flights"
@@ -55,14 +55,14 @@ export const TravelStatistics = () => {
           badgeLabel="3.98%"
           badgeBg="success"
         >
-          <div className="d-md-flex align-items-center gap-2 order-sm-0 order-md-1">
+          <div className="md:flex items-center gap-2 sm:order-0 md:order-1">
             <FontAwesomeIcon
               icon={faCloudBolt}
-              className="fs-5 text-warning-light dark__text-opacity-75"
+              className="text-2xl text-warning-light dark__text-opacity-75"
               data-bs-theme="light"
             />
-            <div className="flex d-md-block gap-2 align-items-center mt-1 mt-md-0">
-              <p className="text-md mb-0 mb-md-2 text-subtle text-nowrap">
+            <div className="flex md:block gap-2 items-center mt-1 md:mt-0">
+              <p className="text-md mb-0 md:mb-2 text-subtle whitespace-nowrap">
                 Rain Chances
               </p>
               <h4 className="text-highlight mb-0">95%</h4>
@@ -76,7 +76,7 @@ export const TravelStatistics = () => {
         xs={6}
         xl={12}
         xxl={6}
-        className="border-bottom-xl border-bottom-xxl-0 border-end border-end-xl-0 border-end-xxl py-4 pe-4 pe-sm-5 pe-xl-0 pe-xxl-5"
+        className="xl:border-b 2xl:border-b-0 border-e xl:border-e-0 2xl:border-e py-6 pe-6 sm:pe-8 xl:pe-0 2xl:pe-8"
       >
         <TravelStats
           title="Commission"
@@ -86,7 +86,7 @@ export const TravelStatistics = () => {
           badgeIcon={faMinus}
         >
           <div
-            className="order-sm-0 order-md-1"
+            className="sm:order-0 md:order-1"
             style={{ height: 54, width: 54 }}
           >
             <CommissionChart
@@ -101,7 +101,7 @@ export const TravelStatistics = () => {
         xs={6}
         xl={12}
         xxl={6}
-        className="py-4 ps-4 ps-sm-5 ps-xl-0 ps-xxl-5"
+        className="py-6 ps-6 sm:ps-8 xl:ps-0 2xl:ps-8"
       >
         <TravelStats
           title="Canceled Booking"
@@ -110,7 +110,7 @@ export const TravelStatistics = () => {
           badgeBg="danger"
         >
           <div
-            className="order-1 order-sm-0 order-md-1"
+            className="order-1 sm:order-0 md:order-1"
             style={{ height: 54, width: 78 }}
           >
             <BasicEcharts

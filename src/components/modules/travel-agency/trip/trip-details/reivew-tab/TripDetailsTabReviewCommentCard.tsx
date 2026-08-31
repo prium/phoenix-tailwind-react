@@ -22,12 +22,12 @@ const TripDetailsTabReviewCommentCard = ({
         <Card
           key={comment.id}
           className={classNames('bg-transparent', {
-            'mb-3': index !== comments.length - 1
+            'mb-6': index !== comments.length - 1
           })}
         >
           <Card.Body>
-            <div className="flex align-items-center gap-3">
-              <div className="flex align-items-center gap-2 relative">
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2 relative">
                 <Avatar src={comment.profilePic} size="s" rounded="circle" />
                 <Link
                   to="#!"
@@ -53,7 +53,7 @@ const TripDetailsTabReviewCommentCard = ({
                 </h6>
               </div>
             </div>
-            <div className="flex my-3">
+            <div className="flex my-4">
               <GenerateStar
                 filledStars={comment.rate}
                 className="me-1 text-md"
@@ -74,10 +74,10 @@ const TripDetailsTabReviewCommentCard = ({
               <div
                 key={replyItem.id}
                 className={classNames(
-                  'mt-5 border-start border-subtle ps-4',
+                  'mt-14 border-s border-subtle ps-10',
                   {
-                    'mt-5': idx === 0,
-                    'mb-3': idx !== comment.replies.length - 1
+                    'mt-14': idx === 0,
+                    'mb-6': idx !== comment.replies.length - 1
                   }
                 )}
               >

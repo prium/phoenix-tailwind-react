@@ -38,9 +38,9 @@ const HotelDetailsAvailabilityRoomInfo = ({
 }: HotelDetailsAvailabilityRoomInfoProps) => {
   return (
     <>
-      <Row className="g-3 mb-4">
+      <Row className="g-4 mb-6">
         <Col lg={8} xxl={7}>
-          <Row className="flex-lg-nowrap g-3 mb-2">
+          <Row className="lg:flex-nowrap g-4 mb-2">
             <Col md="auto">
               <h4 className="mb-0 font-semibold">
                 <FontAwesomeIcon
@@ -51,21 +51,21 @@ const HotelDetailsAvailabilityRoomInfo = ({
                 {room.name}
               </h4>
             </Col>
-            <Col md="auto" className="flex align-items-center">
-              <div className="vr bg-muted me-3 hidden d-md-block" />
+            <Col md="auto" className="flex items-center">
+              <div className="vr bg-muted me-4 hidden md:block" />
               {renderIcons(room.beds, faBed)}
 
-              <div className="vr bg-muted mx-3" />
+              <div className="vr bg-muted mx-4" />
               {renderIcons(room.person, faUser)}
 
-              <div className="vr bg-muted mx-3" />
+              <div className="vr bg-muted mx-4" />
               {room.breakfast && (
                 <>
                   <FontAwesomeIcon
                     icon={faMugSaucer}
                     className="text-primary text-md"
                   />
-                  <div className="vr bg-muted mx-3" />
+                  <div className="vr bg-muted mx-4" />
                 </>
               )}
               <Badge variant="phoenix" bg="info">
@@ -76,8 +76,8 @@ const HotelDetailsAvailabilityRoomInfo = ({
           <p className="mb-0">{room.desc}</p>
         </Col>
         <Col lg={4} xxl={5}>
-          <h3 className="mb-2 flex align-items-center justify-content-lg-end gap-2">
-            <span className="text-md text-soft font-normal text-decoration-line-through">
+          <h3 className="mb-2 flex items-center lg:justify-end gap-2">
+            <span className="text-md text-soft font-normal line-through">
               {currencyFormat(room.price, {
                 maximumFractionDigits: 2,
                 useGrouping: true
@@ -85,19 +85,19 @@ const HotelDetailsAvailabilityRoomInfo = ({
             </span>
             {currencyFormat(room.discountPrice, { maximumFractionDigits: 2 })}
           </h3>
-          <h5 className="text-default text-lg-end font-normal">
+          <h5 className="text-default lg:text-end font-normal">
             +{currencyFormat(room.tax)} for tax and fees
           </h5>
         </Col>
       </Row>
-      <Row className="g-3">
+      <Row className="g-4">
         <Col lg={7}>
           <HotelDetailsRoomImageGallery images={room.images} />
         </Col>
         <Col lg={4} xl={5} xxl={4} className="ms-auto">
           <Card className="bg-subtle">
             <Card.Body>
-              <ul className="mb-2 list-unstyled flex flex-wrap gap-2 text-highlight text-md lh-1">
+              <ul className="mb-2 list-unstyled flex flex-wrap gap-2 text-highlight text-md leading-none">
                 {room.amenities.slice(0, 6).map((item, index) => (
                   <li key={index} className="me-1 mb-0">
                     <FontAwesomeIcon
@@ -113,7 +113,7 @@ const HotelDetailsAvailabilityRoomInfo = ({
               </Link>
             </Card.Body>
           </Card>
-          <Button variant="outline-primary" className="w-100 mt-3">
+          <Button variant="outline-primary" className="w-full mt-4">
             Add room
           </Button>
         </Col>

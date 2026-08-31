@@ -20,13 +20,13 @@ const HotelCompare = () => {
   return (
     <>
       <ResizableNavbar navItems={hotelNavItems} />
-      <section className="pt-6 pb-9">
+      <section className="pt-10 pb-16">
         <Container fluid="medium">
-          <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-3" />
-          <h2 className="mb-4">Hotel Compare</h2>
+          <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-4" />
+          <h2 className="mb-6">Hotel Compare</h2>
           <HotelActions background={false} />
           <div
-            className="w-100 border rounded-3 overflow-hidden my-5"
+            className="w-full border rounded-lg overflow-hidden my-8"
             style={{
               height: 220
             }}
@@ -46,7 +46,7 @@ const HotelCompare = () => {
             <CollapsibleContainer
               collapseTitle="Room Details"
               id="roomDetailsCollapse"
-              className="mt-8"
+              className="mt-14"
             >
               <CompareRoomDetails
                 hotelInfo={hotelInfo}

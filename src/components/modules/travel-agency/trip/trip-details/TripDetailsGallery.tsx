@@ -9,7 +9,7 @@ interface TripDetailsGalleryProps {
 }
 const TripDetailsGallery = ({ galleryItems }: TripDetailsGalleryProps) => {
   return (
-    <Row className="g-2 g-md-3">
+    <Row className="g-2 md:g-4">
       <Col md={6}>
         <TripDetailsMostHighlights items={galleryItems.mostHighlightedImage} />
       </Col>

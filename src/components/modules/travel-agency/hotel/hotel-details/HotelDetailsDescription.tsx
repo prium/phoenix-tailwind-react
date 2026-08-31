@@ -16,7 +16,7 @@ const HotelDetailsDescription = ({ activeKey }: { activeKey: string }) => {
 
   return (
     <>
-      <h3 className="mb-3 font-bold">Description</h3>
+      <h3 className="mb-4 font-bold">Description</h3>
       <p className="text-default">
         Welcome to our hotel, an opulent and cozy setting with everything you
         need for a comfortable and happy stay. The city's biggest attractions,
@@ -30,7 +30,7 @@ const HotelDetailsDescription = ({ activeKey }: { activeKey: string }) => {
         features a sizeable workstation, making it the perfect accommodation for
         business traveler's who need to remain connected and productive.
       </p>
-      <div className="p-3 border bg-subtle border-subtle rounded-2 flex flex-between-center flex-wrap gap-3">
+      <div className="p-4 border bg-subtle border-subtle rounded-md flex flex-between-center flex-wrap gap-4">
         <h5 className="mb-0">
           <span className="text-subtle font-normal">
             Number of rooms :
@@ -50,13 +50,13 @@ const HotelDetailsDescription = ({ activeKey }: { activeKey: string }) => {
           2018
         </h5>
       </div>
-      <Card className="bg-default mt-5">
+      <Card className="bg-default mt-8">
         <Card.Body>
-          <div className="mb-4">
+          <div className="mb-6">
             <Suspense fallback={<PhoenixLoader />}>
               <Mapbox
                 mapRef={mapRef}
-                className="rounded-2 border border-subtle overflow-hidden w-100"
+                className="rounded-md border border-subtle overflow-hidden w-full"
                 style={{ height: 300 }}
                 options={{
                   center: [-74.0020158, 40.7228022],
@@ -66,7 +66,7 @@ const HotelDetailsDescription = ({ activeKey }: { activeKey: string }) => {
               />
             </Suspense>
           </div>
-          <p className="mb-2 text-subtle text-uppercase">
+          <p className="mb-2 text-subtle uppercase">
             <FontAwesomeIcon
               icon={faMapMarkerAlt}
               className="text-emphasis me-2"
@@ -77,8 +77,8 @@ const HotelDetailsDescription = ({ activeKey }: { activeKey: string }) => {
             1.5 km <span className="text-subtle font-normal">from</span>{' '}
             Museum of Liberation War, Dhaka
           </h5>
-          <hr className="my-4" />
-          <p className="mb-2 text-subtle text-uppercase">
+          <hr className="my-6" />
+          <p className="mb-2 text-subtle uppercase">
             <FontAwesomeIcon
               icon={faMapMarkerAlt}
               className="text-emphasis me-2"

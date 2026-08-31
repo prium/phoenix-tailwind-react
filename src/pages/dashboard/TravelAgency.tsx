@@ -15,17 +15,17 @@ import GrossProfitCard from 'components/cards/GrossProfitCard';
 const TravelAgency = () => {
   return (
     <>
-      <Row className="mb-4 mb-xl-6 mb-xxl-4 gy-3 justify-content-between">
+      <Row className="mb-6 xl:mb-10 2xl:mb-6 gy-4 justify-between">
         <Col xs="auto">
           <h2> Travel Agency </h2>
         </Col>
         <Col xs="auto">
-          <div className="flex gap-3">
+          <div className="flex gap-4">
             <Link to="#!" className="btn btn-phoenix-primary">
               <FontAwesomeIcon icon={faPlus} className="me-2" />
               New Package
             </Link>
-            <Link to="#!" className="btn btn-primary px-4 px-sm-11">
+            <Link to="#!" className="btn btn-primary px-6 sm:px-20">
               <FontAwesomeIcon icon={faCalendarDays} className="me-2" />
               Book Now
             </Link>
@@ -33,9 +33,9 @@ const TravelAgency = () => {
         </Col>
       </Row>
 
-      <Row className="gx-3">
+      <Row className="gx-4">
         <Col xxl={7}>
-          <Row className="gx-7 pe-xxl-3">
+          <Row className="gx-12 2xl:pe-4">
             <Col xs={12} xl={5} xxl={12}>
               <TravelStatistics />
             </Col>
@@ -45,7 +45,7 @@ const TravelAgency = () => {
           </Row>
         </Col>
         <Col xxl={5}>
-          <Row className="g-3">
+          <Row className="g-4">
             <Col xs={12} lg={6} xxl={12}>
               <VisitorsCard />
             </Col>
@@ -58,7 +58,7 @@ const TravelAgency = () => {
           </Row>
         </Col>
       </Row>
-      <Row className="g-3 mb-5">
+      <Row className="g-4 mb-8">
         <Col xl={5} xxl={7}>
           <GrossProfitCard />
         </Col>
@@ -66,7 +66,7 @@ const TravelAgency = () => {
           <Bookings />
         </Col>
       </Row>
-      <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 pb-9 bg-soft border-top">
+      <div className="-mx-6 px-6 lg:-mx-10 lg:px-10 pb-16 bg-soft border-t">
         <Flights />
       </div>
     </>

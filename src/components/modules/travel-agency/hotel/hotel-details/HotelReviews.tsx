@@ -25,16 +25,16 @@ interface HotelReviewsProps {
 const HotelReviews = ({ ratings, reviews }: HotelReviewsProps) => {
   return (
     <>
-      <h3 className="mb-5">Reviews</h3>
-      <Row className="gx-md-6 gx-xl-8 gy-2">
+      <h3 className="mb-8">Reviews</h3>
+      <Row className="md:gx-10 xl:gx-14 gy-2">
         {ratings.map((item, index) => (
           <Col key={index} md={6} lg={5}>
-            <Row className="align-items-center g-0">
+            <Row className="items-center g-0">
               <Col xs={4}>
-                <h5 className="mb-0 text-default text-nowrap">{item.name}</h5>
+                <h5 className="mb-0 text-default whitespace-nowrap">{item.name}</h5>
               </Col>
               <Col xs={8}>
-                <div className="flex align-items-center gap-2">
+                <div className="flex items-center gap-2">
                   <Badge bg="primary" className="text-base">
                     {numberFormat(item.rating, 'standard', {
                       minimumFractionDigits: 1,
@@ -43,7 +43,7 @@ const HotelReviews = ({ ratings, reviews }: HotelReviewsProps) => {
                   </Badge>
                   <ProgressBar
                     now={parseFloat(item.rating.toString()) * 20}
-                    className="w-100"
+                    className="w-full"
                   />
                 </div>
               </Col>
@@ -51,10 +51,10 @@ const HotelReviews = ({ ratings, reviews }: HotelReviewsProps) => {
           </Col>
         ))}
       </Row>
-      <hr className="mt-5 mb-8" />
+      <hr className="mt-8 mb-14" />
       {reviews.map((review, index) => (
         <Fragment key={index}>
-          <div className="flex align-items-center relative gap-2 mb-3">
+          <div className="flex items-center relative gap-2 mb-4">
             <Avatar src={review.avatar} size="s" />
             <Link
               to="#!"
@@ -64,9 +64,9 @@ const HotelReviews = ({ ratings, reviews }: HotelReviewsProps) => {
             </Link>
             <img src={review.flag} alt="" />
           </div>
-          <div className="flex align-items-center flex-wrap gap-5 mb-5">
-            <div className="flex align-items-center gap-4">
-              <div className="border-end pe-4">
+          <div className="flex items-center flex-wrap gap-8 mb-8">
+            <div className="flex items-center gap-6">
+              <div className="border-e pe-6">
                 <Badge bg="primary" className="text-base">
                   {numberFormat(review.rating, 'standard', {
                     minimumFractionDigits: 1,
@@ -79,7 +79,7 @@ const HotelReviews = ({ ratings, reviews }: HotelReviewsProps) => {
                 {review.service}
               </Link>
             </div>
-            <div className="flex align-items-center gap-5">
+            <div className="flex items-center gap-8">
               <h5 className="font-normal text-subtle">
                 <FontAwesomeIcon icon={faCalendar} className="me-2 text-md" />
                 {review.date}
@@ -90,7 +90,7 @@ const HotelReviews = ({ ratings, reviews }: HotelReviewsProps) => {
               </h5>
             </div>
           </div>
-          <div className="flex gap-3 mb-5">
+          <div className="flex gap-4 mb-8">
             <FontAwesomeIcon
               icon={faThumbsUp}
               className="text-success"
@@ -98,7 +98,7 @@ const HotelReviews = ({ ratings, reviews }: HotelReviewsProps) => {
             />
             <p className="mb-0">{review.liked}</p>
           </div>
-          <div className="flex gap-3 mb-5">
+          <div className="flex gap-4 mb-8">
             <FontAwesomeIcon
               icon={faThumbsDown}
               className="text-soft"
@@ -108,7 +108,7 @@ const HotelReviews = ({ ratings, reviews }: HotelReviewsProps) => {
           </div>
           <Card className="bg-subtle">
             <Card.Body>
-              <h6 className="mb-2 font-black text-soft text-uppercase">
+              <h6 className="mb-2 font-black text-soft uppercase">
                 <FontAwesomeIcon icon={faReply} className="me-2" />
                 Hotel's Reply:
               </h6>
@@ -116,14 +116,14 @@ const HotelReviews = ({ ratings, reviews }: HotelReviewsProps) => {
             </Card.Body>
           </Card>
           <hr
-            className={classNames('mt-8', {
-              'mb-8': index !== reviews.length - 1,
+            className={classNames('mt-28', {
+              'mb-28': index !== reviews.length - 1,
               'mb-0': index === reviews.length - 1
             })}
           />
         </Fragment>
       ))}
-      <Button className="bg-default border-subtle text-soft font-black mt-n4">
+      <Button className="bg-default border-subtle text-soft font-black -mt-6">
         Show 2 more replies
       </Button>
     </>

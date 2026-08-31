@@ -24,7 +24,7 @@ const SelectRoomCollapsibleContainer = ({
       <Button
         variant=""
         className={classNames(
-          'p-3 flex flex-between-center collapse-indicator text-highlight bg-subtle w-100',
+          'p-6 flex flex-between-center collapse-indicator text-highlight bg-subtle w-full',
           className,
           {
             collapsed: open

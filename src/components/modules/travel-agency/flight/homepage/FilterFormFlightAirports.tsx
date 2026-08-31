@@ -10,11 +10,11 @@ const FilterFormFlightAirports = () => {
       containerSize="sm"
       id="flightAirports"
     >
-      <div className="p-3 pb-0">
-        <div className="flex gap-3">
+      <div className="p-4 pb-0">
+        <div className="flex gap-4">
           {flightAirports.map(item => (
             <div key={item.id} className="flex-1">
-              <h5 className="mb-3">{item.label}</h5>
+              <h5 className="mb-4">{item.label}</h5>
               {item.airports.map(airport => (
                 <Form.Check key={airport} className="gap-2">
                   <Form.Check.Input
@@ -23,7 +23,7 @@ const FilterFormFlightAirports = () => {
                   />
                   <Form.Check.Label
                     htmlFor={airport.split(' : ')[0]}
-                    className="text-md text-default lh-sm"
+                    className="text-md text-default leading-sm"
                   >
                     {airport}
                   </Form.Check.Label>

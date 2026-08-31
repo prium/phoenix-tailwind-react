@@ -12,10 +12,10 @@ import qatarAirlineLogo from 'assets/img/brand/qatar-airline.png';
 const FlightInfo = () => {
   return (
     <div>
-      <div className="flex justify-content-between mb-4">
+      <div className="flex justify-between mb-6">
         <div>
           <FontAwesomeIcon icon={faPlane} className="text-primary me-2" />
-          <h4 className="mb-0 d-inline-block text-highlight">
+          <h4 className="mb-0 inline-block text-highlight">
             Flight info
           </h4>
         </div>
@@ -25,14 +25,14 @@ const FlightInfo = () => {
         </Button>
       </div>
 
-      <div className="mb-4 flex align-items-center">
+      <div className="mb-6 flex items-center">
         <img
           src={qatarAirlineLogo}
           alt=""
           style={{ height: '3.5rem' }}
-          className="img-fluid rounded-3"
+          className="img-fluid rounded-lg"
         />
-        <h5 className="text-nowrap font-normal d-inline-block ms-2 mb-0">
+        <h5 className="whitespace-nowrap font-normal inline-block ms-2 mb-0">
           Qatar Airways
         </h5>
       </div>
@@ -42,7 +42,7 @@ const FlightInfo = () => {
       </p>
 
       <div className="flex gap-2 flex-wrap">
-        <p className="mb-0 text-emphasis text-nowrap">
+        <p className="mb-0 text-emphasis whitespace-nowrap">
           Tuesday, 29 January
           <FontAwesomeIcon
             icon={faCircle}
@@ -51,7 +51,7 @@ const FlightInfo = () => {
           />
           5:00 pm
         </p>
-        <p className="mb-0 text-emphasis text-nowrap">
+        <p className="mb-0 text-emphasis whitespace-nowrap">
           <span className="text-subtle me-2">-</span>
           Tuesday, 29 January
           <FontAwesomeIcon
@@ -69,10 +69,10 @@ const FlightInfo = () => {
 const PersonalInfo = () => {
   return (
     <div>
-      <div className="flex justify-content-between mb-4">
+      <div className="flex justify-between mb-6">
         <div>
           <FontAwesomeIcon icon={faUser} className="text-primary me-2" />
-          <h4 className="mb-0 d-inline-block text-highlight">
+          <h4 className="mb-0 inline-block text-highlight">
             Personal info
           </h4>
         </div>
@@ -82,10 +82,10 @@ const PersonalInfo = () => {
         </Button>
       </div>
 
-      <div className="bg-subtle rounded-2 p-4">
-        <Row className="g-0 gy-5 flex-column flex-sm-row">
-          <Col className="pe-4">
-            <h5 className="mb-3">Passenger 1</h5>
+      <div className="bg-subtle rounded-md p-6">
+        <Row className="g-0 gy-8 flex-col sm:flex-row">
+          <Col className="pe-6">
+            <h5 className="mb-4">Passenger 1</h5>
             <p className="mb-2">John James Johansen</p>
             <p className="mb-0">
               Adult
@@ -97,8 +97,8 @@ const PersonalInfo = () => {
               Male
             </p>
           </Col>
-          <Col className="border-start-sm border-top-sm-0 border-top border-subtle ps-sm-4 pt-4 pt-sm-0">
-            <h5 className="mb-3">Passenger 2</h5>
+          <Col className="sm:border-s sm:border-t-0 border-t border-subtle sm:ps-6 pt-6 sm:pt-0">
+            <h5 className="mb-4">Passenger 2</h5>
             <p className="mb-2">John James Johansen</p>
             <p className="mb-0">
               Adult
@@ -119,13 +119,13 @@ const PersonalInfo = () => {
 const BaggageInfo = () => {
   return (
     <div>
-      <div className="flex justify-content-between mb-4">
+      <div className="flex justify-between mb-6">
         <div>
           <FontAwesomeIcon
             icon={faSuitcaseRolling}
             className="text-primary me-2"
           />
-          <h4 className="mb-0 d-inline-block text-highlight">
+          <h4 className="mb-0 inline-block text-highlight">
             Included baggage
           </h4>
         </div>
@@ -135,7 +135,7 @@ const BaggageInfo = () => {
         </Button>
       </div>
 
-      <div className="flex gap-3 mb-4">
+      <div className="flex gap-4 mb-6">
         <FontAwesomeIcon
           icon={faCircle}
           className="text-soft text-xs mx-2"
@@ -149,7 +149,7 @@ const BaggageInfo = () => {
         </div>
       </div>
 
-      <div className="flex gap-3 mb-4">
+      <div className="flex gap-4 mb-6">
         <FontAwesomeIcon
           icon={faCircle}
           className="text-soft text-xs mx-2"
@@ -161,7 +161,7 @@ const BaggageInfo = () => {
         </div>
       </div>
 
-      <div className="flex gap-3">
+      <div className="flex gap-4">
         <FontAwesomeIcon
           icon={faCircle}
           className="text-soft text-xs mx-2"
@@ -180,9 +180,9 @@ const FlightPaymentInfo = () => {
   return (
     <div>
       <FlightInfo />
-      <hr className="my-5" />
+      <hr className="my-8" />
       <PersonalInfo />
-      <hr className="my-5" />
+      <hr className="my-8" />
       <BaggageInfo />
     </div>
   );

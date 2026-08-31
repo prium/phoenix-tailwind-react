@@ -16,12 +16,12 @@ const FinanceForm = () => {
   };
   return (
     <>
-      <h3 className="mb-6">Finance</h3>
-      <h4 className="mb-4">Payment from Phoenix Booking Management</h4>
-      <Row className="g-3 mb-3">
+      <h3 className="mb-10">Finance</h3>
+      <h4 className="mb-6">Payment from Phoenix Booking Management</h4>
+      <Row className="g-4 mb-4">
         <Col md={6}>
           <FloatingLabel
-            className="mb-3 mb-md-0"
+            className="mb-4 md:mb-0"
             controlId="paymentCurrency"
             label="Payment Currency"
           >
@@ -60,7 +60,7 @@ const FinanceForm = () => {
           <option value="3">option 3</option>
         </Form.Select>
       </FloatingLabel>
-      <Form.Check className="my-4" id="financeInvoiceChecked">
+      <Form.Check className="my-6" id="financeInvoiceChecked">
         <Form.Check.Input type="checkbox" />
         <Form.Check.Label className="font-normal text-base">
           Invoice to the name and address of property
@@ -69,7 +69,7 @@ const FinanceForm = () => {
       <FloatingLabel
         controlId="invoiceEmail"
         label="Invoice Email"
-        className="mb-4"
+        className="mb-6"
       >
         <Form.Control
           type="text"
@@ -80,12 +80,12 @@ const FinanceForm = () => {
 
         <Link
           to="#!"
-          className="absolute flex align-items-center px-3 font-bold text-md end-0 top-0 mt-3 me-2"
+          className="absolute flex items-center px-4 font-bold text-md end-0 top-0 mt-4 me-2"
         >
           Verify now
         </Link>
       </FloatingLabel>
-      <Form.Check className="mb-3" inline id="financeCreditCard">
+      <Form.Check className="mb-4" inline id="financeCreditCard">
         <Form.Check.Input
           type="radio"
           defaultChecked
@@ -95,7 +95,7 @@ const FinanceForm = () => {
         />
         <Form.Check.Label className="text-base">Credit Card</Form.Check.Label>
       </Form.Check>
-      <Form.Check className="mb-3" inline id="financeBankAccount">
+      <Form.Check className="mb-4" inline id="financeBankAccount">
         <Form.Check.Input
           type="radio"
           name="paymentMethod"
@@ -104,7 +104,7 @@ const FinanceForm = () => {
         />
         <Form.Check.Label className="text-base">Bank Account</Form.Check.Label>
       </Form.Check>
-      <Form.Check className="mb-3" inline id="financeOnlinePayment">
+      <Form.Check className="mb-4" inline id="financeOnlinePayment">
         <Form.Check.Input
           type="radio"
           name="paymentMethod"
@@ -113,7 +113,7 @@ const FinanceForm = () => {
         />
         <Form.Check.Label className="text-base">Online</Form.Check.Label>
       </Form.Check>
-      <Row className="g-3 mb-3">
+      <Row className="g-4 mb-4">
         <Col md={6}>
           <FloatingLabel
             controlId="cardType"
@@ -139,7 +139,7 @@ const FinanceForm = () => {
         </Col>
       </Row>
       <FloatingLabel
-        className="mb-3 mb-md-0"
+        className="mb-4 md:mb-0"
         controlId="cardHolder"
         label="Card Holder Name"
       >
@@ -150,8 +150,8 @@ const FinanceForm = () => {
           onChange={onChange}
         />
       </FloatingLabel>
-      <h4 className="mt-6 mb-4">Payment from Guests (On property)</h4>
-      <div className="border p-3 mb-3 rounded-2">
+      <h4 className="mt-10 mb-6">Payment from Guests (On property)</h4>
+      <div className="border p-4 mb-4 rounded-md">
         <Form.Check type="switch" className="mb-0" id="isCashPayment">
           <Form.Check.Input
             defaultChecked
@@ -163,7 +163,7 @@ const FinanceForm = () => {
           </Form.Check.Label>
         </Form.Check>
       </div>
-      <div className="border p-3 mb-3 rounded-2">
+      <div className="border p-4 mb-4 rounded-md">
         <Form.Check type="switch" className="mb-0" id="isCardPayment">
           <Form.Check.Input name="isCardPayment" onChange={handleChange} />
           <Form.Check.Label className="text-base font-bold text-default ms-2">
@@ -171,7 +171,7 @@ const FinanceForm = () => {
           </Form.Check.Label>
         </Form.Check>
       </div>
-      <div className="border p-3 mb-3 rounded-2">
+      <div className="border p-4 mb-4 rounded-md">
         <Form.Check
           type="switch"
           className="mb-0"

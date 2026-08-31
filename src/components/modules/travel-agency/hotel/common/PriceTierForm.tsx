@@ -13,7 +13,7 @@ interface PriceTierFormProps {
 const PriceTierForm = ({
   id,
   name,
-  className = 'mb-3',
+  className='mb-4',
   methods
 }: PriceTierFormProps) => {
   const { formData, setFormData } = methods;
@@ -27,11 +27,11 @@ const PriceTierForm = ({
 
   return (
     <div
-      className={classNames('form-price-tier border p-3 rounded-2', className, {
+      className={classNames('form-price-tier border p-6 md:rounded-md', className, {
         active: active
       })}
     >
-      <div className="d-sm-flex align-items-center gap-3">
+      <div className="sm:flex items-center gap-4">
         <Form.Check id={id} type="switch" className="mb-0">
           <Form.Check.Input
             onClick={() => {
@@ -45,12 +45,12 @@ const PriceTierForm = ({
           </Form.Check.Label>
         </Form.Check>
         <div
-          className={classNames('ms-auto mt-2 mt-sm-0', {
+          className={classNames('ms-auto mt-2 sm:mt-0', {
             'block': active,
             'hidden': !active
           })}
         >
-          <Form.Check type="radio" className="form-check-inline me-3 mb-0">
+          <Form.Check type="radio" className="form-check-inline me-4 mb-0">
             <Form.Check.Input
               type="radio"
               id={`${name}-free`}

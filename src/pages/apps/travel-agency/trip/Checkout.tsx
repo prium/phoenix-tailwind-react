@@ -12,25 +12,25 @@ const TripCheckout = () => {
   return (
     <>
       <ResizableNavbar navItems={tripNavItems} />
-      <section className="py-5 pb-md-7 pb-lg-9">
+      <section className="py-8 md:pb-12 lg:pb-16">
         <Container fluid="medium">
           <Form onSubmit={e => e.preventDefault()}>
-            <Row className="gy-5 gx-lg-0 justify-content-between">
+            <Row className="gy-8 lg:gx-0 justify-between">
               <Col lg={6}>
                 <PageBreadcrumb
                   items={defaultBreadcrumbItems}
-                  className="mb-3"
+                  className="mb-4"
                 />
-                <h2 className="mb-5">Check out</h2>
+                <h2 className="mb-8">Check out</h2>
                 <TripCheckoutForm />
               </Col>
               <Col lg={5} xl={4}>
-                <div className="sticky-lg-top z-0" style={{ top: '10rem' }}>
+                <div className="lg:sticky lg:top-0 lg:z-1020 z-0" style={{ top: '10rem' }}>
                   <TripSummaryCard selectedTrip={selectedTrip} />
                   <Button
                     type="submit"
                     variant="primary"
-                    className="w-100 mt-3"
+                    className="w-full mt-4"
                   >
                     Book now
                   </Button>

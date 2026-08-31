@@ -50,8 +50,8 @@ export const FinancialActivities = () => {
   }, [chartData]);
 
   return (
-    <div className="mt-5 mt-xl-0 mt-xxl-5 mb-5 mb-xxl-0">
-      <Row className="flex-between-end gy-3 gx-2">
+    <div className="mt-8 xl:mt-0 2xl:mt-8 mb-8 2xl:mb-0">
+      <Row className="flex-between-end gy-4 gx-2">
         <Col xs="auto">
           <h3 className="text-highlight">Financial activities</h3>
           <p className="mb-0 text-subtle"> Yearly Balance</p>
@@ -69,7 +69,7 @@ export const FinancialActivities = () => {
         >
           <Form.Select
             size="sm"
-            className="pe-9 w-auto mt-xl-3 mt-xxl-0"
+            className="pe-16 w-auto xl:mt-4 2xl:mt-0"
             value={selectedOption}
             onChange={e => setSelectedOption(parseInt(e.target.value))}
           >
@@ -91,15 +91,15 @@ export const FinancialActivities = () => {
           md="auto"
           lg={12}
           xxl="auto"
-          className="mx-auto mb-4"
+          className="mx-auto mb-6"
         >
-          <div className="flex justify-content-center gap-6 gap-xxl-4">
+          <div className="flex justify-center gap-10 2xl:gap-6">
             <Button
               variant="link"
               id="profile"
               onClick={() => handleLegend('profit')}
               className={classNames(
-                'flex align-items-center p-0 shadow-none font-semibold text-decoration-none',
+                'flex items-center p-0 shadow-none font-semibold no-underline',
                 {
                   'opacity-50': !legends.profit
                 }
@@ -117,7 +117,7 @@ export const FinancialActivities = () => {
               id="revenue"
               onClick={() => handleLegend('revenue')}
               className={classNames(
-                'flex align-items-center p-0 shadow-none font-semibold text-decoration-none',
+                'flex items-center p-0 shadow-none font-semibold no-underline',
                 {
                   'opacity-50': !legends.revenue
                 }
@@ -135,7 +135,7 @@ export const FinancialActivities = () => {
               id="expenses"
               onClick={() => handleLegend('expenses')}
               className={classNames(
-                'flex align-items-center p-0 shadow-none font-semibold text-decoration-none',
+                'flex items-center p-0 shadow-none font-semibold no-underline',
                 {
                   'opacity-50': !legends.expenses
                 }

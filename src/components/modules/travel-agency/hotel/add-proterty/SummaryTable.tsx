@@ -21,8 +21,8 @@ const SummaryTable = (props: SummaryTableProp) => {
         {tableItems.map((item, index) => (
           <tr key={index}>
             <td
-              className={classNames('border-top pt-3 text-nowrap', {
-                'pb-0 border-bottom-0': index === tableItems.length - 1
+              className={classNames('border-t pt-6 whitespace-nowrap', {
+                'pb-0 border-b-0': index === tableItems.length - 1
               })}
             >
               <h5 className="font-semibold text-highlight mb-0">
@@ -30,15 +30,15 @@ const SummaryTable = (props: SummaryTableProp) => {
               </h5>
             </td>
             <td
-              className={classNames('border-top px-3 pt-3 w-max-conten', {
-                'pb-0 border-bottom-0': index === tableItems.length - 1
+              className={classNames('border-t px-6 pt-6 w-max-conten', {
+                'pb-0 border-b-0': index === tableItems.length - 1
               })}
             >
               <p className="mb-0 w-max-content">:</p>
             </td>
             <td
-              className={classNames('border-top pt-3', {
-                'pb-0 border-bottom-0': index === tableItems.length - 1
+              className={classNames('border-t pt-6', {
+                'pb-0 border-b-0': index === tableItems.length - 1
               })}
             >
               <p className="mb-0 text-muted">{item.value}</p>

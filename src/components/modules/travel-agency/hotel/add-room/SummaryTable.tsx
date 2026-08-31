@@ -5,13 +5,13 @@ import { RoomInfo } from './Preview';
 const PreviewItem = ({ item }: { item: RoomInfo }) => {
   return (
     <tr>
-      <td className="text-nowrap py-2">
+      <td className="whitespace-nowrap py-2">
         <div className="flex gap-2">
           <FontAwesomeIcon icon={item.icon} className="text-md" />
           <h5 className="mb-0">{item.property}</h5>
         </div>
       </td>
-      <td className="py-2 pe-1 px-sm-3">
+      <td className="py-2 pe-1 sm:px-4">
         <h5 className="font-normal mb-0"> :</h5>
       </td>
       <td className="py-2">

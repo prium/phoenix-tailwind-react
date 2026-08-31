@@ -59,9 +59,9 @@ const HotelDetailsTab = () => {
       onSelect={handleSelect}
       mountOnEnter={false}
     >
-      <Nav variant="pills" className="scrollbar flex-nowrap mt-5 pb-3 mb-3">
+      <Nav variant="pills" className="scrollbar flex-nowrap mt-8 pb-4 mb-4">
         {tabItems.map(item => (
-          <Nav.Item key={item.name} className="text-nowrap">
+          <Nav.Item key={item.name} className="whitespace-nowrap">
             <Nav.Link eventKey={item.name.toLowerCase()}>{item.name}</Nav.Link>
           </Nav.Item>
         ))}

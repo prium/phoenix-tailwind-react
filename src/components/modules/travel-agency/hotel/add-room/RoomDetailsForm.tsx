@@ -16,13 +16,13 @@ const RoomDetailsForm = () => {
 
   return (
     <>
-      <h3 className="mb-6">Room Details</h3>
+      <h3 className="mb-10">Room Details</h3>
       <h4 className="mb-2">Share your room details</h4>
-      <p className="mb-4 text-subtle">
+      <p className="mb-6 text-subtle">
         Enjoy a comfortable stay in our well-appointed rooms with a variety of
         options to choose from.
       </p>
-      <Row className="g-3 g-sm-4 mb-6">
+      <Row className="g-4 sm:g-6 mb-10">
         <Col sm={6} md={7}>
           <Form.Group controlId="roomCategory">
             <Form.Label className="form-label-header mb-1">
@@ -49,7 +49,7 @@ const RoomDetailsForm = () => {
           </Form.Group>
         </Col>
       </Row>
-      <Row className="gx-3 gx-sm-4 gy-3 mb-6">
+      <Row className="gx-4 sm:gx-6 gy-4 mb-10">
         <Col xs={6} sm={4}>
           <Form.Group controlId="bedType">
             <Form.Label className="form-label-header mb-1">Bed type</Form.Label>
@@ -82,7 +82,7 @@ const RoomDetailsForm = () => {
           <CounterFormGroup id="balcony" label="Balcony" />
         </Col>
       </Row>
-      <Row className="gx-3 gx-sm-4 gy-3 mb-6">
+      <Row className="gx-4 sm:gx-6 gy-4 mb-10">
         <Col xs={6}>
           <CounterFormGroup id="roomOfThisType" label="Room of this type" />
         </Col>
@@ -110,11 +110,11 @@ const RoomDetailsForm = () => {
           </Form.Group>
         </Col>
       </Row>
-      <h4 className="mt-7 mb-2">Sleeping arrangements</h4>
-      <p className="mb-4 text-subtle">
+      <h4 className="mt-12 mb-2">Sleeping arrangements</h4>
+      <p className="mb-6 text-subtle">
         Sleep well in our comfortable rooms with modern amenities.
       </p>
-      <Row className="gx-3 gx-sm-4 gy-3">
+      <Row className="gx-4 sm:gx-6 gy-4">
         <Col xs={6} sm={4}>
           <CounterFormGroup id="singleBed" label="Single bed" />
         </Col>

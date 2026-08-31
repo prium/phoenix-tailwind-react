@@ -25,15 +25,15 @@ const LightBoxItem = ({
     <div
       onClick={handleImageClick}
       className={classNames('cursor-pointer', {
-        'relative rounded-2 overflow-hidden': isLast
+        'relative md:rounded-md overflow-hidden': isLast
       })}
     >
-      <img src={item.image} alt="" className="img-fluid rounded-2" />
+      <img src={item.image} alt="" className="img-fluid rounded-md" />
       {isLast && (
-        <div className="absolute w-100 h-100 left-0 top-0 flex flex-center bg-black bg-opacity-50">
+        <div className="absolute w-full h-full left-0 top-0 flex flex-center bg-black bg-opacity-50">
           <Link
             to="/apps/travel-agency/hotel/customer/gallery"
-            className="text-white stretched-link text-lg fs-lg-5 font-black"
+            className="text-white stretched-link text-lg lg:text-2xl font-black"
           >
             24+
           </Link>
@@ -49,7 +49,7 @@ const TripDetailsAlbum = ({ imageItems }: TripDetailsAlbumProps) => {
   );
 
   return (
-    <Row className="g-2 g-md-3">
+    <Row className="g-2 md:g-4">
       {imageItems.map((image, index) => (
         <Col key={image.id} xs={4}>
           <LightBoxItem

@@ -15,8 +15,8 @@ const TripHomepageFilterOffcanvasContent = () => {
   const [range, setRange] = useState([110, 200]);
   return (
     <>
-      <div className="px-4 pt-4">
-        <h4 className="text-highlight mb-4">Price Range</h4>
+      <div className="px-6 pt-6">
+        <h4 className="text-highlight mb-6">Price Range</h4>
         <Row className="g-2">
           <Col xs={6}>
             <div className="form-icon-container">
@@ -54,9 +54,9 @@ const TripHomepageFilterOffcanvasContent = () => {
           variant="primary-lighter"
           classNames="phoenix-react-range-large mt-3 ps-5 pe-5"
         />
-        <hr className="my-5" />
-        <div className="d-lg-none">
-          <h4 className="mb-4 text-highlight">Category</h4>
+        <hr className="my-8" />
+        <div className="lg:hidden">
+          <h4 className="mb-6 text-highlight">Category</h4>
           <Row className="g-2">
             {homepageFilterCheckboxItems.categories.map((category, index) => (
               <Col key={category.id} xs={6}>
@@ -70,7 +70,7 @@ const TripHomepageFilterOffcanvasContent = () => {
                   />
                   <Form.Check.Label
                     htmlFor={category.id}
-                    className="btn btn-phoenix-secondary text-nowrap font-bold px-3 w-100"
+                    className="btn btn-phoenix-secondary whitespace-nowrap font-bold px-4 w-full"
                   >
                     {category.label}
                   </Form.Check.Label>
@@ -78,10 +78,10 @@ const TripHomepageFilterOffcanvasContent = () => {
               </Col>
             ))}
           </Row>
-          <hr className="my-5" />
+          <hr className="my-8" />
         </div>
-        <h4 className="mb-4 text-highlight">Duration</h4>
-        <Row className="gx-3">
+        <h4 className="mb-6 text-highlight">Duration</h4>
+        <Row className="gx-4">
           {homepageFilterCheckboxItems.durations.map(duration => (
             <Col xs={6} key={duration.id}>
               <Form.Check className={classNames(duration.className)}>
@@ -96,8 +96,8 @@ const TripHomepageFilterOffcanvasContent = () => {
             </Col>
           ))}
         </Row>
-        <hr className="my-5" />
-        <h4 className="mb-4 text-highlight">Time</h4>
+        <hr className="my-8" />
+        <h4 className="mb-6 text-highlight">Time</h4>
         <Row className="g-2">
           {homepageFilterCheckboxItems.times.map(time => (
             <Col key={time.id} xs={4}>
@@ -109,17 +109,17 @@ const TripHomepageFilterOffcanvasContent = () => {
               />
               <Form.Check.Label
                 htmlFor={time.id}
-                className="btn btn-phoenix-secondary font-bold text-nowrap px-0 w-100"
+                className="btn btn-phoenix-secondary font-bold whitespace-nowrap px-0 w-full"
               >
                 {time.label}
               </Form.Check.Label>
             </Col>
           ))}
         </Row>
-        <hr className="my-5" />
+        <hr className="my-8" />
         <div>
-          <h4 className="mb-4 text-highlight">Travel Style</h4>
-          <Row className="gx-3">
+          <h4 className="mb-6 text-highlight">Travel Style</h4>
+          <Row className="gx-4">
             {homepageFilterCheckboxItems.travelStyles.map(travelStyle => (
               <Col key={travelStyle.id} xs={6}>
                 <Form.Check className={classNames(travelStyle.className)}>
@@ -134,19 +134,19 @@ const TripHomepageFilterOffcanvasContent = () => {
               </Col>
             ))}
           </Row>
-          <Button variant="link" className="text-md mt-3 d-inline-block p-0">
+          <Button variant="link" className="text-md mt-4 inline-block p-0">
             Show more items
           </Button>
         </div>
-        <hr className="my-5" />
+        <hr className="my-8" />
         <div>
-          <h4 className="mb-4">Tags</h4>
+          <h4 className="mb-6">Tags</h4>
           {homepageFilterCheckboxItems.tags.map(tag => (
             <Fragment key={tag.id}>
-              <h5 className="font-normal my-3 text-soft">
+              <h5 className="font-normal my-4 text-soft">
                 {tag.title}
               </h5>
-              <Row className="gx-3">
+              <Row className="gx-4">
                 {tag.children.map(itm => (
                   <Col key={itm.id} xs={6}>
                     <Form.Check>
@@ -163,19 +163,19 @@ const TripHomepageFilterOffcanvasContent = () => {
               </Row>
             </Fragment>
           ))}
-          <Button variant="link" className="text-md mt-3 d-inline-block p-0">
+          <Button variant="link" className="text-md mt-4 inline-block p-0">
             Less items
           </Button>
         </div>
       </div>
-      <div className="mt-5 p-4 border-top border-subtle flex gap-2 bg-soft position-sticky bottom-0">
-        <Button variant="phoenix-primary" className="m-0 text-nowrap" size="lg">
+      <div className="mt-8 p-6 border-t border-subtle flex gap-2 bg-soft sticky bottom-0">
+        <Button variant="phoenix-primary" className="m-0 whitespace-nowrap" size="lg">
           <FontAwesomeIcon icon={faRotate} className="me-2 text-md" />
           Reset
         </Button>
         <Button
           variant="primary"
-          className="m-0 text-nowrap flex-1"
+          className="m-0 whitespace-nowrap flex-1"
           type="submit"
           size="lg"
           startIcon={

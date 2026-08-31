@@ -16,7 +16,7 @@ const TripDetailsTabReviewContent = ({
       <TripDetailsTabReviewAllReviews
         overallReview={tripDetailsReviews.overallReview}
       />
-      <Button variant="phoenix-secondary" className="my-5">
+      <Button variant="phoenix-secondary" className="my-8">
         Write a review
       </Button>
       <TripDetailsTabReviewCommentCard comments={tripDetailsReviews.comments} />

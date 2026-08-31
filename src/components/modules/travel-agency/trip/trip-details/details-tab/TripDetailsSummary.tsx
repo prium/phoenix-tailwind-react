@@ -23,12 +23,12 @@ interface SummaryContentProps {
 
 const SummaryContent = ({ item, index }: SummaryContentProps) => {
   return (
-    <div className="p-2 rounded-2 bg-subtle flex align-items-center gap-2 mb-3 relative">
+    <div className="p-2 rounded-md bg-subtle flex items-center gap-2 mb-4 relative">
       <div
         className={classNames(
-          'tour-direction-line border-start border-dashed',
+          'tour-direction-line border-s border-dashed',
           {
-            'd-sm-none': index === 2
+            'sm:hidden': index === 2
           }
         )}
       />
@@ -47,23 +47,23 @@ const TripDetailsSummary = ({ tourSummary }: TripDetailsSummaryProps) => {
   const [open, setOpen] = useState(true);
   return (
     <>
-      <h6 className="my-3 py-3 px-2 rounded-2 bg-muted text-center">
+      <h6 className="my-4 py-4 px-2 rounded-md bg-muted text-center">
         Day 1
       </h6>
-      <Row className="gx-5 gy-0 relative">
+      <Row className="gx-8 gy-0 relative">
         <div
-          className="bg-holder tour-direction-bg hidden d-sm-block"
+          className="bg-holder tour-direction-bg hidden sm:block"
           style={{
             backgroundImage: `url(${Bg})`
           }}
         />
         <Col sm={6}>
-          <div className="p-2 rounded-2 bg-subtle mb-3 relative">
-            <div className="tour-direction-line border-start border-dashed" />
+          <div className="p-2 rounded-md bg-subtle mb-4 relative">
+            <div className="tour-direction-line border-s border-dashed" />
             <Button
               variant=""
               className={classNames(
-                'p-0 flex justify-content-between collapse-indicator',
+                'p-0 flex justify-between collapse-indicator',
                 {
                   collapsed: open
                 }
@@ -73,7 +73,7 @@ const TripDetailsSummary = ({ tourSummary }: TripDetailsSummaryProps) => {
             >
               <div className="flex">
                 <span
-                  className="d-inline-flex flex-center rounded-full border me-2"
+                  className="inline-flex flex-center rounded-full border me-2"
                   style={{ minWidth: 23, height: 23 }}
                 >
                   <FontAwesomeIcon icon={faLocationDot} className="text-md" />
@@ -93,7 +93,7 @@ const TripDetailsSummary = ({ tourSummary }: TripDetailsSummaryProps) => {
             </Button>
             <Collapse in={open}>
               <div id="collapsePickup">
-                <h6 className="font-normal text-subtle pt-3 ps-1">
+                <h6 className="font-normal text-subtle pt-4 ps-1">
                   <FontAwesomeIcon icon={faClock} className="me-2" />
                   10:00 am local time
                 </h6>
@@ -108,9 +108,9 @@ const TripDetailsSummary = ({ tourSummary }: TripDetailsSummaryProps) => {
           {tourSummary.slice(3).map(item => (
             <SummaryContent key={item.id} item={item} />
           ))}
-          <div className="p-2 rounded-2 bg-subtle flex align-items-center gap-2 mb-2">
+          <div className="p-2 rounded-md bg-subtle flex items-center gap-2 mb-2">
             <span
-              className="d-inline-flex flex-center rounded-full border me-2"
+              className="inline-flex flex-center rounded-full border me-2"
               style={{ width: 23, height: 23 }}
             >
               <FontAwesomeIcon icon={faMapMarkerAlt} className="text-md" />
@@ -119,7 +119,7 @@ const TripDetailsSummary = ({ tourSummary }: TripDetailsSummaryProps) => {
           </div>
         </Col>
       </Row>
-      <h6 className="mb-0 py-3 px-2 rounded-2 bg-muted text-center">
+      <h6 className="mb-0 py-4 px-2 rounded-md bg-muted text-center">
         Tour ends
       </h6>
     </>

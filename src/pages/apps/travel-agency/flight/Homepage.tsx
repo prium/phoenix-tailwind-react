@@ -33,7 +33,7 @@ const FlightHomepage = () => {
         </Container>
         <Container
           fluid="small"
-          className="mb-6"
+          className="mb-10"
           style={{ marginTop: '-12rem' }}
         >
           <FlightSearch />

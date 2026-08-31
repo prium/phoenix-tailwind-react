@@ -24,7 +24,7 @@ const RoomFilterCollapseItem = ({
         onClick={onToggle}
         aria-controls={title.split(' ').join('_')}
         aria-expanded={collapseStatus}
-        className="px-0 py-2 flex align-items-center mt-3 collapse-indicator"
+        className="px-0 py-2 flex items-center mt-4 collapse-indicator"
       >
         <FontAwesomeIcon
           icon={faCaretDown}
@@ -35,9 +35,9 @@ const RoomFilterCollapseItem = ({
       <Collapse in={collapseStatus}>
         <div
           id={title.split(' ').join('_')}
-          className={hideBorderBottom ? undefined : 'border-bottom'}
+          className={hideBorderBottom ? undefined : 'border-b'}
         >
-          <div className="pb-4">{children}</div>
+          <div className="pb-6">{children}</div>
         </div>
       </Collapse>
     </>

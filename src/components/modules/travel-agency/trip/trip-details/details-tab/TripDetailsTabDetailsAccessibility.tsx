@@ -11,13 +11,13 @@ const TripDetailsTabDetailsAccessibility = ({
   accessibility
 }: TripDetailsTabDetailsAccessibilityProps) => {
   return (
-    <div className="py-6 px-4">
+    <div className="py-10 px-6">
       <ul className="list-unstyled">
         {accessibility.items.map(item => (
           <li key={item} className="mb-1 flex">
             <FontAwesomeIcon
               icon={faCircle}
-              className="text-secondary-light me-3 text-xs"
+              className="text-secondary-light me-4 text-xs"
               transform="down-13 shrink-4"
             />
             {item}

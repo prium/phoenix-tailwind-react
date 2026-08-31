@@ -34,7 +34,7 @@ const ExtraBed = () => {
 
   return (
     <>
-      <div className="flex align-items-center gap-2 mt-7">
+      <div className="flex items-center gap-2 mt-12">
         <h4>Extra bed option</h4>
         <Form.Check
           inline
@@ -50,8 +50,8 @@ const ExtraBed = () => {
       <p className="text-md text-subtle mb-0">Can you provide extra bed</p>
       <Collapse in={open}>
         <div>
-          <div className="mt-4">
-            <Row className="gx-3">
+          <div className="mt-6">
+            <Row className="gx-4">
               <Col xs={6} sm={4} xxl={5}>
                 <Form.Group controlId="numberOfBed">
                   <Form.Label className="form-label-header mb-1">
@@ -59,7 +59,7 @@ const ExtraBed = () => {
                   </Form.Label>
                   <InputGroup className="gap-2">
                     <Button
-                      className="border rounded px-3 bg-soft hover:bg-default lh-1"
+                      className="border rounded-md px-4 bg-soft hover:bg-default leading-none"
                       onClick={() => handleCount('decrease')}
                     >
                       <FontAwesomeIcon icon={faMinus} />
@@ -69,10 +69,10 @@ const ExtraBed = () => {
                       type="number"
                       value={value}
                       onChange={onChange}
-                      className="input-spin-none rounded text-center"
+                      className="input-spin-none rounded-md text-center"
                     />
                     <Button
-                      className="border rounded px-3 bg-soft hover:bg-default lh-1"
+                      className="border rounded-md px-4 bg-soft hover:bg-default leading-none"
                       onClick={() => handleCount('increase')}
                     >
                       <FontAwesomeIcon icon={faPlus} />
@@ -100,13 +100,13 @@ const ExtraBed = () => {
               </Col>
             </Row>
           </div>
-          <h5 className="mt-4 mb-3">
+          <h5 className="mt-6 mb-4">
             Check the box(es) if you can accommodate the following guests in
             extra beds.
           </h5>
 
           {extraBedOptions.map((item, index) => (
-            <div key={index} className="row gx-2 gy-0 align-items-center mb-3">
+            <div key={index} className="row gx-2 gy-0 items-center mb-4">
               <Col xs={12} sm="auto" style={{ minWidth: 120 }}>
                 <Form.Check
                   type="checkbox"

@@ -156,7 +156,7 @@ const Preview = () => {
   return (
     <>
       <h3 className="mb-2">We’re building your listing</h3>
-      <p className="mb-5 text-subtle">
+      <p className="mb-8 text-subtle">
         We're working on getting your property set up and ready for guests. Stay
         tuned for updates and start accepting bookings soon!
       </p>
@@ -165,7 +165,7 @@ const Preview = () => {
           variant="subtle-success"
           onClose={() => setShow(false)}
           dismissible
-          className="mb-5"
+          className="mb-8"
         >
           <p className="mb-0 flex-1 font-semibold text-md sm:text-base">
             Congratulations on your successful listing! Join a community of
@@ -175,13 +175,13 @@ const Preview = () => {
           </p>
         </Alert>
       )}
-      <h4 className="text-default mb-3">
+      <h4 className="text-default mb-4">
         Room information
         <Link to="#!" className="text-md mx-2">
           Edit
         </Link>
       </h4>
-      <Row className="gx-7 gx-xl-4 gx-xxl-7">
+      <Row className="gx-12 xl:gx-6 2xl:gx-12">
         <Col md={7} xxl={6}>
           <SummaryTable items={roomInformation.slice(0, 5)} />
         </Col>
@@ -189,7 +189,7 @@ const Preview = () => {
           <SummaryTable items={roomInformation.slice(5)} />
         </Col>
       </Row>
-      <h4 className="text-default mb-4 mt-5">
+      <h4 className="text-default mb-6 mt-8">
         Pricing
         <Link to="#!" className="text-md mx-2">
           Edit
@@ -197,13 +197,13 @@ const Preview = () => {
       </h4>
       <h6 className="mb-2">Across all days</h6>
       <h3 className="mb-0">$894</h3>
-      <h4 className="text-default mb-3 mt-7">
+      <h4 className="text-default mb-4 mt-12">
         Amenities
         <Link to="#!" className="text-md mx-2">
           Edit
         </Link>
       </h4>
-      <Row className="gx-7 gx-xl-4 gx-xxl-7">
+      <Row className="gx-12 xl:gx-6 2xl:gx-12">
         <Col md={7} xxl={6}>
           <SummaryTable items={amenities.slice(0, 7)} />
         </Col>
@@ -211,20 +211,20 @@ const Preview = () => {
           <SummaryTable items={amenities.slice(7)} />
         </Col>
       </Row>
-      <h4 className="text-default mb-4 mt-7">
+      <h4 className="text-default mb-6 mt-12">
         Picture
         <Link to="#!" className="text-md mx-2">
           Edit
         </Link>
       </h4>
-      <Row className="g-3">
+      <Row className="g-4">
         {formData?.pictures?.map((item, index) => (
           <Col key={index} sm={4}>
             <img
               src={URL.createObjectURL(item)}
               alt="item"
               height={160}
-              className="rounded-2 w-100 object-fit-cover"
+              className="rounded-md w-full object-cover"
             />
           </Col>
         ))}

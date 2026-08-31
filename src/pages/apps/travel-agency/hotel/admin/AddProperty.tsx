@@ -49,13 +49,13 @@ const AddProperty = () => {
 
   return (
     <>
-      <div className="mb-9">
+      <div className="mb-16">
         <PageBreadcrumb items={defaultBreadcrumbItems} />
-        <h2 className="fs-5 mb-4 mb-xl-5">Add New Property </h2>
+        <h2 className="text-2xl mb-6 xl:mb-8">Add New Property </h2>
         <WizardFormProvider {...form}>
-          <Row className="gx-0 gx-xl-5 theme-wizard">
+          <Row className="gx-0 xl:gx-8 theme-wizard">
             <Col xl={{ order: 1, span: 4 }}>
-              <div className="scrollbar mb-4">
+              <div className="scrollbar mb-6">
                 <WizardSideNav
                   navItems={addPropertyWizardNav}
                   setTabEventKey={setTabEventKey}
@@ -105,7 +105,7 @@ const AddProperty = () => {
                       </WizardForm>
                     </Tab.Pane>
                   </Tab.Content>
-                  <div className="mt-6">
+                  <div className="mt-10">
                     <WizardFormFooter
                       hidePrevBtn
                       className={classNames({ 'hidden': !form.getCanNextPage })}

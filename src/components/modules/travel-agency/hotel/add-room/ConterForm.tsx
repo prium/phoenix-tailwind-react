@@ -23,7 +23,7 @@ const ConterForm = ({ name }: { name: string }) => {
   return (
     <InputGroup>
       <Button
-        className="border px-3 bg-soft hover:bg-default lh-1"
+        className="border px-4 bg-soft hover:bg-default leading-none"
         onClick={() => handleCount('decrease')}
       >
         <FontAwesomeIcon icon={faMinus} />
@@ -36,7 +36,7 @@ const ConterForm = ({ name }: { name: string }) => {
         className="input-spin-none text-center"
       />
       <Button
-        className="border px-3 bg-soft hover:bg-default lh-1"
+        className="border px-4 bg-soft hover:bg-default leading-none"
         onClick={() => handleCount('increase')}
       >
         <FontAwesomeIcon icon={faPlus} />

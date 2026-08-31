@@ -15,8 +15,8 @@ interface BaggageRowProps {
 
 const BaggageRow: React.FC<BaggageRowProps> = ({ icon, label, weight }) => (
   <tr>
-    <td className="text-nowrap py-1">
-      <p className="mb-0 text-subtle text-nowrap">
+    <td className="whitespace-nowrap py-1">
+      <p className="mb-0 text-subtle whitespace-nowrap">
         <FontAwesomeIcon icon={icon} className="text-emphasis me-2" />
         {label}
       </p>
@@ -32,12 +32,12 @@ const BaggageRow: React.FC<BaggageRowProps> = ({ icon, label, weight }) => (
 
 const FlightDetails = () => {
   return (
-    <div className="mb-6">
-      <h3 className="mb-4">Flight Details</h3>
-      <Row className="g-0 justify-content-between mb-4">
+    <div className="mb-10">
+      <h3 className="mb-6">Flight Details</h3>
+      <Row className="g-0 justify-between mb-6">
         {/* Baggage Weight Limit Section */}
-        <Col lg={3} className="border-end-lg mb-5 mb-lg-0">
-          <h5 className="mb-4">Baggage weight limit</h5>
+        <Col lg={3} className="lg:border-e mb-8 lg:mb-0">
+          <h5 className="mb-6">Baggage weight limit</h5>
           <Table borderless className="mb-0" style={{ maxWidth: '9.375rem' }}>
             <tbody>
               <tr>
@@ -56,9 +56,9 @@ const FlightDetails = () => {
         </Col>
 
         {/* Policy Section */}
-        <Col className="col-auto col-lg-8">
-          <h5 className="mb-4">Policy</h5>
-          <div className="flex flex-column flex-sm-row justify-content-between gap-4">
+        <Col className="col-auto lg:col-8">
+          <h5 className="mb-6">Policy</h5>
+          <div className="flex flex-col sm:flex-row justify-between gap-6">
             <div>
               <p className="mb-2 text-info">Cancellation</p>
               <p className="mb-0">

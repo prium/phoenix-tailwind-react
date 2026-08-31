@@ -21,7 +21,7 @@ interface CategoryListProps {
 const CategoryLists = ({ category, index }: CategoryListProps) => {
   return (
     <Fragment>
-      <h5 className="mb-3">
+      <h5 className="mb-4">
         <FontAwesomeIcon icon={category.icon} className="text-md me-2" />
         {category.title}
       </h5>
@@ -30,8 +30,8 @@ const CategoryLists = ({ category, index }: CategoryListProps) => {
       )}
       <ul
         className={classNames('list-unstyled text-highlight', {
-          'mb-5': index !== 4,
-          'mb-sm-0': index === 4
+          'mb-14': index !== 4,
+          'sm:mb-0': index === 4
         })}
       >
         {category.items.map((item, idx) => (
@@ -54,14 +54,14 @@ const HotelDetailsFacilities = ({
 }: HotelDetailsFacilitiesProps) => {
   return (
     <>
-      <h3 className="mb-5 font-bold">Facilities</h3>
-      <h5 className="mb-3">Most popular</h5>
+      <h3 className="mb-8 font-bold">Facilities</h3>
+      <h5 className="mb-4">Most popular</h5>
       <Row className="g-0">
         {facilities.map(facility => (
           <Col key={facility.id} sm={6} md={4}>
             <div
               className={classNames(
-                'flex align-items-center gap-2 px-4 py-3 h-100 border-subtle',
+                'flex items-center gap-2 px-10 py-6 h-full border-subtle',
                 facility.classes
               )}
             >
@@ -77,11 +77,11 @@ const HotelDetailsFacilities = ({
           </Col>
         ))}
       </Row>
-      <h6 className="text-warning text-uppercase font-normal my-5">
+      <h6 className="text-warning uppercase font-normal my-8">
         <span className="me-2">*</span>
         additional charges
       </h6>
-      <Row className="g-3">
+      <Row className="g-4">
         <Col xs="auto" md={4}>
           {charges.slice(0, 5).map((category, index) => (
             <CategoryLists key={index} category={category} index={index} />

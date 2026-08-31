@@ -42,16 +42,16 @@ const AddRoom = () => {
   }, [images]);
 
   return (
-    <div className="mb-9">
-      <PageBreadcrumb className="mb-3" items={defaultBreadcrumbItems} />
-      <h2 className="fs-5 mb-4 mb-xl-5">Add New Room</h2>
+    <div className="mb-16">
+      <PageBreadcrumb className="mb-4" items={defaultBreadcrumbItems} />
+      <h2 className="text-2xl mb-6 xl:mb-8">Add New Room</h2>
       <WizardFormProvider {...form}>
-        <Row className="gx-0 gx-xl-5 theme-wizard">
+        <Row className="gx-0 xl:gx-8 theme-wizard">
           <Col xl={{ order: 1, span: 4 }}>
             <WizardSideNav navItems={addRoomWizardNav} />
           </Col>
           <Col xl={8} className="flex-1">
-            <Row className="mt-4 mt-xl-0">
+            <Row className="mt-6 xl:mt-0">
               <Col xxl={8}>
                 <Tab.Content>
                   <Tab.Pane eventKey={1}>
