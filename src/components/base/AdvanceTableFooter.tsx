@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Col, Pagination, Row, cn } from '@hummingbirdui/react';
+import { Col, Row, cn } from '@hummingbirdui/react';
 import Button from './Button';
 import { useAdvanceTableContext } from 'providers/AdvanceTableProvider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -56,27 +56,32 @@ const AdvanceTableFooter = ({
 
   const [isAllVisible, setIsAllVisible] = useState(false);
 
+  // gold list.js pagination: [data-list] scope, li(.active) > button.page,
+  // prev/next are sibling .page-link[data-list-pagination] buttons
   const pageButton = (
     key: React.Key,
     label: React.ReactNode,
     onClick: () => void,
-    { active = false, disabled = false, className: linkClass = '' } = {}
+    { active = false, disabled = false } = {}
   ) => (
-    <Pagination.Item key={key} active={active} disabled={disabled}>
-      <Pagination.Link asChild className={linkClass}>
-        <button type="button" onClick={onClick} disabled={disabled}>
-          {label}
-        </button>
-      </Pagination.Link>
-    </Pagination.Item>
+    <li key={key} className={cn({ active, disabled })}>
+      <button
+        type="button"
+        className="page"
+        onClick={onClick}
+        disabled={disabled}
+      >
+        {label}
+      </button>
+    </li>
   );
 
   const ellipsis = (key: React.Key) => (
-    <Pagination.Item key={key} disabled>
-      <Pagination.Link asChild>
-        <span>…</span>
-      </Pagination.Link>
-    </Pagination.Item>
+    <li key={key} className="disabled">
+      <button type="button" className="page" disabled>
+        …
+      </button>
+    </li>
   );
 
   return (
@@ -92,13 +97,13 @@ const AdvanceTableFooter = ({
       <Col xs={pagination ? 'auto' : undefined} className="flex text-md">
         <p
           className={cn(
-            'mb-0 hidden sm:block me-10 font-semibold text-default',
+            'mb-0 hidden sm:block me-4 font-semibold text-default',
             tableInfo
           )}
         >
           {pageSize * pageIndex + 1} to{' '}
           {pageSize * pageIndex + getPaginationRowModel().rows.length}
-          <span className="text-subtle"> items of </span>
+          <span className="text-subtle"> Items of </span>
           {getPrePaginationRowModel().rows.length}
         </p>
         {showViewAllBtn && (
@@ -148,54 +153,57 @@ const AdvanceTableFooter = ({
         </Col>
       )}
       {pagination && (
-        <Col xs="auto" className="flex">
-          <Pagination className="mb-0">
-            <Pagination.Content className="justify-center items-center">
-              {pageButton(
-                'prev',
-                <FontAwesomeIcon icon={faChevronLeft} />,
-                () => setPageIndex(pageIndex - 1),
-                { disabled: !getCanPreviousPage() }
-              )}
+        <Col xs="auto" className="flex" data-list="">
+          <button
+            type="button"
+            className={cn('page-link', { disabled: !getCanPreviousPage() })}
+            data-list-pagination="prev"
+            disabled={!getCanPreviousPage()}
+            onClick={() => setPageIndex(pageIndex - 1)}
+          >
+            <FontAwesomeIcon icon={faChevronLeft} />
+          </button>
+          <ul className="mb-0 pagination">
+            {hasPrevEllipsis && (
+              <>
+                {pageButton('first', 1, () => setPageIndex(0), {
+                  active: pageIndex === 0
+                })}
+                {ellipsis('prev-ellipsis')}
+              </>
+            )}
 
-              {hasPrevEllipsis && (
-                <>
-                  {pageButton('first', 1, () => setPageIndex(0), {
-                    active: pageIndex === 0
-                  })}
-                  {ellipsis('prev-ellipsis')}
-                </>
-              )}
+            {visiblePaginationItems.map(page =>
+              pageButton(page, page, () => setPageIndex(page - 1), {
+                active: pageIndex === page - 1
+              })
+            )}
 
-              {visiblePaginationItems.map(page =>
-                pageButton(page, page, () => setPageIndex(page - 1), {
-                  active: pageIndex === page - 1
-                })
-              )}
-
-              {hasNextEllipsis && (
-                <>
-                  {ellipsis('next-ellipsis')}
-                  {pageButton(
-                    'last',
-                    getPageCount(),
-                    () => setPageIndex(getPageCount() - 1),
-                    { active: pageIndex === getPageCount() - 1 }
-                  )}
-                </>
-              )}
-
-              {pageButton(
-                'next',
-                <FontAwesomeIcon icon={faChevronRight} />,
-                () => setPageIndex(pageIndex + 1),
-                {
-                  disabled: !getCanNextPage(),
-                  className: nextPageLinkClassName
-                }
-              )}
-            </Pagination.Content>
-          </Pagination>
+            {hasNextEllipsis && (
+              <>
+                {ellipsis('next-ellipsis')}
+                {pageButton(
+                  'last',
+                  getPageCount(),
+                  () => setPageIndex(getPageCount() - 1),
+                  { active: pageIndex === getPageCount() - 1 }
+                )}
+              </>
+            )}
+          </ul>
+          <button
+            type="button"
+            className={cn(
+              'page-link',
+              { disabled: !getCanNextPage() },
+              nextPageLinkClassName
+            )}
+            data-list-pagination="next"
+            disabled={!getCanNextPage()}
+            onClick={() => setPageIndex(pageIndex + 1)}
+          >
+            <FontAwesomeIcon icon={faChevronRight} />
+          </button>
         </Col>
       )}
     </Row>

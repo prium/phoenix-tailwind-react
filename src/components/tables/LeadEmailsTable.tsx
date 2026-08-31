@@ -106,12 +106,7 @@ const LeadEmailsTable = () => {
       />
       {/* h pinned: HB's active page-link is 1px taller than the gold list.js
           `.page` button and would shift every section below the table */}
-      <AdvanceTableFooter
-        pagination
-        className="h-[46.3px]"
-        tableInfo="me-4!"
-        nextPageLinkClassName="pe-0"
-      />
+      <AdvanceTableFooter pagination nextPageLinkClassName="pe-0" />
     </div>
   );
 };

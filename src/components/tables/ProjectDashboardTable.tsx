@@ -220,7 +220,7 @@ const ProjectDashboardTable = () => {
           className: 'text-md mb-0 border-t border-subtle'
         }}
       />
-      <AdvanceTableFooter pagination tableInfo="me-4" />
+      <AdvanceTableFooter pagination />
     </AdvanceTableProvider>
   );
 };

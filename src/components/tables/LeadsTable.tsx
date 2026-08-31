@@ -260,7 +260,6 @@ const LeadsTable = () => {
       <AdvanceTableFooter
         pagination
         className="justify-end! py-6!"
-        tableInfo="me-4!"
         nextPageLinkClassName="pe-0"
       />
     </div>
