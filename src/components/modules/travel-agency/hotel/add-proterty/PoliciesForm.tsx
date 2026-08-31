@@ -1,484 +1,341 @@
-import { useWizardFormContext } from 'providers/WizardFormProvider';
-import React, { ChangeEvent, useState } from 'react';
-import { Col, FloatingLabel, Form, Row } from 'react-bootstrap';
-import { AddPropertyWizardFormData } from 'data/travel-agency/addProperty';
-import DatePicker from 'components/base/DatePicker';
-import Button from 'components/base/Button';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FloatingLabel, Input, Row } from '@hummingbirdui/react';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import PhoenixReactRange from 'components/forms/PhoenixReactRange';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Button from 'components/base/Button';
+import DatePicker from 'components/base/DatePicker';
+import NouiSlider from 'components/base/NouiSlider';
+import { useWizardFormContext } from 'providers/WizardFormProvider';
+import { AddPropertyWizardFormData } from 'data/travel-agency/addProperty';
 import PriceTierForm from '../common/PriceTierForm';
 
-interface SwitchForm {
-  id: string;
-  name: string;
-  label: string;
-  defaultChecked?: boolean;
-  className?: string;
-}
-
-const SwitchForm = ({
-  id,
-  name,
-  label,
-  defaultChecked,
-  className=''
-}: SwitchForm) => {
-  const methods = useWizardFormContext<AddPropertyWizardFormData>();
-  const { onChange } = methods;
-
-  return (
-    <div className={`border p-4 rounded-md ${className}`}>
-      <Form.Check type="switch" className="mb-0" id={id}>
-        <Form.Check.Input
-          defaultChecked={defaultChecked}
-          name={name}
-          onChange={onChange}
-        />
-        <Form.Check.Label className="text-base font-bold text-default ms-2">
-          {label}
-        </Form.Check.Label>
-      </Form.Check>
-    </div>
-  );
+const timeOptions = {
+  enableTime: true,
+  noCalendar: true,
+  dateFormat: 'H:i',
+  disableMobile: true
 };
 
+const TimeFloatingInput = ({ id, label }: { id: string; label: string }) => (
+  <DatePicker
+    render={(_, ref) => (
+      <div className="form-floating">
+        <input
+          className="form-control datetimepicker"
+          id={id}
+          type="text"
+          placeholder="H:i"
+          ref={ref}
+        />
+        <label className="form-label" htmlFor={id}>
+          {label}
+        </label>
+      </div>
+    )}
+    hideIcon
+    options={timeOptions}
+  />
+);
+
+const SwitchTier = ({
+  id,
+  label,
+  className = ''
+}: {
+  id: string;
+  label: string;
+  className?: string;
+}) => (
+  <div className={`border p-4 rounded-md ${className}`.trim()}>
+    <div className="form-check form-switch mb-0">
+      <input className="form-check-input" id={id} type="checkbox" />
+      <label
+        className="form-check-label text-base font-bold text-default ms-2"
+        htmlFor={id}
+      >
+        {label}
+      </label>
+    </div>
+  </div>
+);
+
+const ageSegments = [
+  { from: 0, to: 7, fromDisabled: true, toDisabled: false },
+  { from: 8, to: 12, fromDisabled: false, toDisabled: false },
+  { from: 13, to: 18, fromDisabled: false, toDisabled: true }
+];
+
+/** gold `+PoliciesForm` (mixins/travel-agency/add-property/PoliciesForm.pug) */
 const PoliciesForm = () => {
   const methods = useWizardFormContext<AddPropertyWizardFormData>();
-  const { onChange, formData, setFormData } = methods;
-  const [lateCheckIn, setLeteCheckIn] = useState(true);
-  const [values, setValues] = useState({
-    segmentOne: [7],
-    segmentTwo: [8, 12],
-    segmentThree: [13, 18]
-  });
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value || e.target.checked
-    });
-  };
   return (
     <>
       <h3 className="mb-10">Policies</h3>
-      <Form.Check className="mb-4 me-8" inline id="policiesCheckInLimited">
-        <Form.Check.Input
+      <div className="form-check-inline me-8 mb-4">
+        <input
+          className="form-check-input"
+          id="limitedCheckIn"
           type="radio"
+          name="checkIn"
+          value="limitedCheckIn"
           defaultChecked
-          name="checkInType"
-          value="Limited check-in"
-          onChange={handleChange}
         />
-        <Form.Check.Label className="text-base">Limited Check-in</Form.Check.Label>
-      </Form.Check>
-      <Form.Check className="mb-4" inline id="policiesCheckIn24Hr">
-        <Form.Check.Input
+        <label className="form-check-label text-base" htmlFor="limitedCheckIn">
+          Limited Check-in
+        </label>
+      </div>
+      <div className="form-check-inline mb-4">
+        <input
+          className="form-check-input"
+          id="24HrCheckIn"
           type="radio"
-          name="checkInType"
-          value="24hr Check-in"
-          onChange={handleChange}
+          name="checkIn"
+          value="24HrCheckIn"
         />
-        <Form.Check.Label className="text-base">24hr Check-in</Form.Check.Label>
-      </Form.Check>
-
-      <Row className="g-4 mb-4 items-center">
-        <Col xs={12} sm={6} md="auto" className="md:grow">
-          <DatePicker
-            render={(_, ref) => {
-              return (
-                <Form.Floating>
-                  <Form.Control
-                    type="text"
-                    name="checkInStarts"
-                    placeholder="H:i"
-                    ref={ref}
-                    id="policiesCheckInStarts"
-                    className="ps-4"
-                    defaultValue="12:00"
-                  />
-                  <label htmlFor="policiesCheckInStarts">Check-In Starts</label>
-                </Form.Floating>
-              );
-            }}
-            hideIcon={true}
-            options={{
-              enableTime: true,
-              noCalendar: true,
-              dateFormat: 'H:i'
-            }}
-            onChange={([date]) => {
-              setFormData({
-                ...formData,
-                checkInStarts: date
-              });
-            }}
-          />
-        </Col>
-        <Col xs={12} sm={6} md="auto" className="md:grow">
-          <DatePicker
-            render={(_, ref) => {
-              return (
-                <Form.Floating>
-                  <Form.Control
-                    type="text"
-                    name="checkInEnds"
-                    placeholder="H:i"
-                    ref={ref}
-                    id="policiesCheckInEnds"
-                    className="ps-4"
-                    defaultValue="12:00"
-                  />
-                  <label htmlFor="policiesCheckInEnds">Check-In Ends</label>
-                </Form.Floating>
-              );
-            }}
-            hideIcon={true}
-            options={{
-              enableTime: true,
-              noCalendar: true,
-              dateFormat: 'H:i'
-            }}
-            onChange={([date]) => {
-              setFormData({
-                ...formData,
-                checkInEnds: date
-              });
-            }}
-          />
-        </Col>
-        <Col xs={12} md="auto">
-          <Form.Check id="policiesLateCheckIn" className="mb-0">
-            <Form.Check.Input
+        <label className="form-check-label text-base" htmlFor="24HrCheckIn">
+          24hr Check-in
+        </label>
+      </div>
+      <Row className="g-4 items-center">
+        <div className="col-12 sm:col-6 md:col-auto md:grow">
+          <TimeFloatingInput id="checkInStarts" label="Check-in Starts" />
+        </div>
+        <div className="col-12 sm:col-6 md:col-auto md:grow">
+          <TimeFloatingInput id="checkInEnds" label="Check-in Ends" />
+        </div>
+        <div className="col-12 md:col-auto">
+          <div className="form-check mb-0">
+            <input
+              className="form-check-input"
+              id="lateCheckIn"
               type="checkbox"
-              defaultChecked={lateCheckIn}
-              name="lateCheckIn"
-              onChange={() => {
-                setLeteCheckIn(!lateCheckIn);
-                setFormData({
-                  ...formData,
-                  lateCheckIn: !lateCheckIn
-                });
-              }}
+              defaultChecked
             />
-            <Form.Check.Label className="font-normal text-base">
+            <label
+              className="form-check-label font-normal text-base"
+              htmlFor="lateCheckIn"
+            >
               Late Check-in
-            </Form.Check.Label>
-          </Form.Check>
-        </Col>
+            </label>
+          </div>
+        </div>
       </Row>
-      <SwitchForm
-        id="policyAgeRegistration"
-        name="ageRegistration"
-        label="Age Registration"
-        className="mb-4"
+      <SwitchTier
+        id="ageRestriction"
+        label="Age Restriction"
+        className="mt-4"
       />
-      <SwitchForm
-        id="policyDepositCheckIn"
-        name="depositAtCheckin"
-        label="Deposit at Check-in"
-        className="mb-4"
-      />
-      <SwitchForm
-        id="policyDocumentCheckIn"
-        name="documentationAtCheckin"
-        label="Documentation at Check-in"
-        className="mb-4"
-      />
+      <SwitchTier id="deposit" label="Deposit at Check-in" className="my-4" />
+      <SwitchTier id="documentation" label="Documentation at Check-in" />
       <h4 className="mb-6 mt-10">Checkout Policy</h4>
-      <DatePicker
-        render={(_, ref) => {
-          return (
-            <Form.Floating className="mb-4">
-              <Form.Control
-                type="text"
-                placeholder="H:i"
-                ref={ref}
-                id="checkoutBefore"
-                className="ps-4"
-                defaultValue="12:00"
-              />
-              <label htmlFor="checkoutBefore">Checkout before</label>
-            </Form.Floating>
-          );
-        }}
-        hideIcon={true}
-        options={{
-          enableTime: true,
-          noCalendar: true,
-          dateFormat: 'H:i'
-        }}
-        onChange={([date]) => {
-          setFormData({
-            ...formData,
-            checkOutBefore: date
-          });
-        }}
-      />
+      <div className="mb-4">
+        <TimeFloatingInput id="chcckOutBefore" label="Checkout Before" />
+      </div>
       <PriceTierForm
-        id="flexibleCheckout"
+        id="flexible-checkout"
         name="Flexible Checkout"
+        className=""
         methods={methods}
       />
-      <h4 className="mb-6 mt-10">Cancellation Policy </h4>
-      <Form.Check className="mb-4 me-8" inline id="nonRefundable">
-        <Form.Check.Input
+      <h4 className="mb-6 mt-10">Cancellation Policy</h4>
+      <div className="form-check-inline me-8 mb-0">
+        <input
+          className="form-check-input"
+          id="nonRefundable"
           type="radio"
-          defaultChecked
           name="refundPolicy"
           value="nonRefundable"
-          onChange={handleChange}
         />
-        <Form.Check.Label className="text-base">Non Refundable</Form.Check.Label>
-      </Form.Check>
-      <Form.Check className="mb-4" inline id="optionalRefund">
-        <Form.Check.Input
+        <label className="form-check-label text-base" htmlFor="nonRefundable">
+          Non Refundable
+        </label>
+      </div>
+      <div className="form-check-inline mb-0">
+        <input
+          className="form-check-input"
+          id="optionalRefund"
           type="radio"
           name="refundPolicy"
-          value="optional Refund"
-          onChange={handleChange}
-        />
-        <Form.Check.Label className="text-base">Optional Refund</Form.Check.Label>
-      </Form.Check>
-      <SwitchForm
-        id="policyFullRefund"
-        name="isFullRefand"
-        label="Full Refund"
-        className="mb-4"
-      />
-      <SwitchForm
-        id="policyPertialRefund"
-        name="isPartialRefand"
-        label="Pertial Refund"
-        className="mb-4"
-      />
-      <h4 className="mb-6 mt-10">Pet Policy </h4>
-      <Form.Check className="mb-4 me-8" inline id="PolicyNotAllowed">
-        <Form.Check.Input
-          type="radio"
+          value="optionalRefund"
           defaultChecked
-          name="petPolicy"
-          value="Not Allowed"
-          onChange={handleChange}
         />
-        <Form.Check.Label className="text-base">Not Allowed</Form.Check.Label>
-      </Form.Check>
-      <Form.Check className="mb-4" inline id="PolicyAllowed">
-        <Form.Check.Input
+        <label className="form-check-label text-base" htmlFor="optionalRefund">
+          Optional Refund
+        </label>
+      </div>
+      <SwitchTier id="fullRefund" label="Full Refund" className="mt-3 mb-4" />
+      <SwitchTier id="partialRefund" label="Partial Refund" />
+      <h4 className="mb-6 mt-10">Pet Policy</h4>
+      <div className="form-check-inline me-8 mb-0">
+        <input
+          className="form-check-input"
+          id="notAllowed"
           type="radio"
-          name="petPolicyType"
-          value="Allowed"
-          onChange={handleChange}
+          name="petPolicy"
+          value="notAllowed"
         />
-        <Form.Check.Label className="text-base">Allowed</Form.Check.Label>
-      </Form.Check>
-      <SwitchForm
-        id="petRestictedZone"
-        name="petRestictedZone"
+        <label className="form-check-label text-base" htmlFor="notAllowed">
+          Not allowed
+        </label>
+      </div>
+      <div className="form-check-inline mb-0">
+        <input
+          className="form-check-input"
+          id="allowed"
+          type="radio"
+          name="petPolicy"
+          value="allowed"
+          defaultChecked
+        />
+        <label className="form-check-label text-base" htmlFor="allowed">
+          Allowed
+        </label>
+      </div>
+      <SwitchTier
+        id="petRestrickedZone"
         label="Pet Restricted Zones"
-        className="mb-4"
+        className="mt-3 mb-4"
       />
-      <SwitchForm
-        id="petAdditionalCharge"
-        name="petAdditionalCharge"
-        label="Additional Charges"
-        className="mb-4"
-      />
+      <SwitchTier id="AdditionalCharges" label="Additional Charges" />
       <h4 className="mb-6 mt-10">Child Policy</h4>
-      <h5 className="mb-2 text-default">Age Segment 1</h5>
-      <Row className="items-center g-4">
-        <Col xs={6} sm="auto">
-          <Form.Floating>
-            <Form.Control
-              type="number"
-              id="policiesAgeSegment1Form"
-              className="age-segment-input"
-              disabled
-              defaultValue={0}
-            />
-            <label htmlFor="policiesFlexibleCheckout">From (Yrs)</label>
-          </Form.Floating>
-        </Col>
-        <Col
-          xs={{ order: 1, span: 12 }}
-          sm={{ order: 0, span: 'auto' }}
-          className="flex-1"
-        >
-          <PhoenixReactRange
-            values={values['segmentOne']}
-            variant="primary"
-            min={0}
-            max={18}
-            onChange={val => {
-              setValues({ ...values, segmentOne: val });
-              setFormData({
-                ...formData,
-                ageSegment1: val
-              });
-            }}
-            trackHeight={'4px'}
-            classNames={'phoenix-react-range-slim'}
-          />
-        </Col>
-        <Col xs={6} sm="auto">
-          <Form.Floating>
-            <Form.Control
-              type="number"
-              id="policiesAgeSegment1To"
-              className="age-segment-input"
-              defaultValue={values.segmentOne[0]}
-            />
-            <label htmlFor="policiesFlexibleCheckout">To (Yrs)</label>
-          </Form.Floating>
-        </Col>
-      </Row>
-      <h5 className="mb-2 mt-6 text-default">Age Segment 2</h5>
-      <Row className="items-center g-4">
-        <Col xs={6} sm="auto">
-          <Form.Floating>
-            <Form.Control
-              type="number"
-              id="policiesAgeSegment2Form"
-              className="age-segment-input"
-              defaultValue={values.segmentOne[0] + 1}
-            />
-            <label htmlFor="policiesFlexibleCheckout">From (Yrs)</label>
-          </Form.Floating>
-        </Col>
-        <Col
-          xs={{ order: 1, span: 12 }}
-          sm={{ order: 0, span: 'auto' }}
-          className="flex-1"
-        >
-          <PhoenixReactRange
-            values={values['segmentTwo']}
-            variant="primary"
-            min={0}
-            max={18}
-            onChange={val => {
-              setValues({ ...values, segmentTwo: val });
-              setFormData({
-                ...formData,
-                ageSegment2: val
-              });
-            }}
-            trackHeight={'4px'}
-            classNames={'phoenix-react-range-slim'}
-          />
-        </Col>
-        <Col xs={6} sm="auto">
-          <Form.Floating>
-            <Form.Control
-              type="number"
-              id="policiesAgeSegment2To"
-              className="age-segment-input"
-              defaultValue={values.segmentTwo[1]}
-            />
-            <label htmlFor="policiesFlexibleCheckout">To (Yrs)</label>
-          </Form.Floating>
-        </Col>
-      </Row>
-      <h5 className="mb-2 mt-6 text-default">Age Segment 3</h5>
-      <Row className="items-center g-4">
-        <Col xs={6} sm="auto">
-          <Form.Floating>
-            <Form.Control
-              type="number"
-              id="policiesAgeSegment3Form"
-              className="age-segment-input"
-              defaultValue={values.segmentTwo[1] + 1}
-            />
-            <label htmlFor="policiesFlexibleCheckout">From (Yrs)</label>
-          </Form.Floating>
-        </Col>
-        <Col
-          xs={{ order: 1, span: 12 }}
-          sm={{ order: 0, span: 'auto' }}
-          className="flex-1"
-        >
-          <PhoenixReactRange
-            values={values['segmentThree']}
-            variant="primary"
-            min={0}
-            max={18}
-            onChange={val => {
-              setValues({ ...values, segmentThree: val });
-              setFormData({
-                ...formData,
-                ageSegment3: val
-              });
-            }}
-            trackHeight={'4px'}
-            classNames={'phoenix-react-range-slim'}
-          />
-        </Col>
-        <Col xs={6} sm="auto">
-          <Form.Floating>
-            <Form.Control
-              type="number"
-              id="policiesAgeSegment3To"
-              className="age-segment-input"
-              defaultValue={values.segmentThree[1]}
-              disabled={values.segmentThree[1] >= 18}
-            />
-            <label htmlFor="policiesFlexibleCheckout">To (Yrs)</label>
-          </Form.Floating>
-        </Col>
-      </Row>
+      {ageSegments.map((segment, index) => (
+        <div key={index}>
+          <h5 className={`mb-2 text-default${index > 0 ? ' mt-6' : ''}`}>
+            {index === 2 ? (
+              <>
+                <span>Age Segment {index + 1}</span>
+                <Button variant="link" className="p-0 ms-1">
+                  Remove
+                </Button>
+              </>
+            ) : (
+              `Age Segment ${index + 1}`
+            )}
+          </h5>
+          <Row className="items-center g-4">
+            <div className="col-6 sm:col-auto">
+              <div className="form-floating age-segment-input">
+                <Input
+                  type="number"
+                  className="input-spin-none"
+                  id={`wizard-from${index + 1}`}
+                  placeholder="From (Yrs)"
+                  defaultValue={segment.from}
+                  disabled={segment.fromDisabled}
+                />
+                <label
+                  className="form-label"
+                  htmlFor={`wizard-from${index + 1}`}
+                >
+                  From (Yrs)
+                </label>
+              </div>
+            </div>
+            <div
+              className={`${
+                index === 0 ? 'col-12 sm:col-auto' : 'col-auto'
+              } flex-1 order-1 sm:order-0`}
+            >
+              <NouiSlider
+                className="noUi-target-primary noUi-handle-primary noUi-slider-slim noUi-handle-circle px-2"
+                options={{
+                  range: { min: 0, max: 18 },
+                  start: [segment.from, segment.to],
+                  connect: true
+                }}
+              />
+            </div>
+            <div className="col-6 sm:col-auto">
+              <div className="form-floating age-segment-input">
+                <Input
+                  type="number"
+                  className="input-spin-none"
+                  id={`wizard-to${index + 1}`}
+                  placeholder="To (Yrs)"
+                  defaultValue={segment.to}
+                  disabled={segment.toDisabled}
+                />
+                <label className="form-label" htmlFor={`wizard-to${index + 1}`}>
+                  To (Yrs)
+                </label>
+              </div>
+            </div>
+          </Row>
+        </div>
+      ))}
       <Button variant="link" className="p-0 mt-4 text-base">
         <FontAwesomeIcon icon={faPlus} className="me-2" />
         Add Segment
       </Button>
-      <SwitchForm
-        id="policiesDocRequirment"
-        name="childDocPolicy"
-        label="Documentation Requirement"
-        className="mt-4"
-      />
+      <div className="border px-4 py-2 rounded-md mt-6">
+        <div className="form-check form-switch mb-0 py-1">
+          <input
+            className="form-check-input"
+            id="documentation-requirement"
+            type="checkbox"
+          />
+          <label
+            className="form-check-label text-base font-bold text-default ms-2"
+            htmlFor="documentation-requirement"
+          >
+            Documentation Requirement
+          </label>
+        </div>
+      </div>
       <h4 className="mb-6 mt-10">Included Taxes in your rate</h4>
-      <PriceTierForm id="vat" name="Vat" methods={methods} />
-      <PriceTierForm id="gst" name="Gst" methods={methods} />
-      <PriceTierForm id="hotelTax" name="Hotel tax" methods={methods} />
+      <PriceTierForm id="vat" name="VAT" className="mb-4" methods={methods} />
+      <PriceTierForm id="gst" name="GST" className="mb-4" methods={methods} />
       <PriceTierForm
-        id="cityTax"
-        name="City / District tax"
+        id="holet-tax"
+        name="Hotel tax"
+        className="mb-4"
         methods={methods}
       />
-      <PriceTierForm id="touristTax" name="Tourist tax" methods={methods} />
+      <PriceTierForm
+        id="city-tax"
+        name="City / District tax"
+        className="mb-4"
+        methods={methods}
+      />
+      <PriceTierForm
+        id="tourist-tax"
+        name="Tourist tax"
+        className=""
+        methods={methods}
+      />
       <h4 className="mb-6 mt-10">Your Documentations</h4>
       <FloatingLabel
-        className="mb-4"
-        controlId="policyPropertyRegNo"
+        htmlFor="wizard-property-registrations"
         label="Property Registration No. (OPTIONAL)"
       >
-        <Form.Control
-          type="text"
-          name="propertyRegNo"
-          placeholder=""
-          onChange={onChange}
+        <Input
+          type="number"
+          className="input-spin-none"
+          id="wizard-property-registrations"
+          placeholder="Property Registration No. (OPTIONAL)"
         />
       </FloatingLabel>
       <FloatingLabel
-        className="mb-4"
-        controlId="policyBusinessRegNo"
+        className="my-4"
+        htmlFor="wizard-business-registration"
         label="Business Registration No."
       >
-        <Form.Control
-          type="text"
-          name="businessRegNo"
-          placeholder=""
-          onChange={onChange}
+        <Input
+          type="number"
+          className="input-spin-none"
+          id="wizard-business-registration"
+          placeholder="Business Registration No."
         />
       </FloatingLabel>
       <FloatingLabel
-        controlId="policyTaxpayerNo"
+        htmlFor="wizard-taxpaper"
         label="Taxpayer Indentification No."
       >
-        <Form.Control
-          type="text"
-          name="taxpayeerIdNo"
-          placeholder=""
-          onChange={onChange}
+        <Input
+          type="number"
+          className="input-spin-none"
+          id="wizard-taxpaper"
+          placeholder="Taxpayer Indentification No."
         />
       </FloatingLabel>
     </>

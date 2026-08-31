@@ -323,8 +323,8 @@ export const pages: VisualPage[] = [
     name: 'ta-landing',
     react: '/apps/travel-agency/landing',
     gold: '/apps/travel-agency/landing.html',
-    // typed.js hero word is mid-animation at capture time on both sides
-    mask: ['.typed-text'],
+    // typed.js hero word + caret are mid-animation at capture time on both sides
+    mask: ['.typed-text', '.typed-cursor'],
     probes: ['.swiper-nav .swiper-button-next', '.isotope-nav.active']
   },
   {
@@ -426,6 +426,16 @@ export const pages: VisualPage[] = [
       '.theme-wizard .nav-item-circle',
       '.theme-wizard .form-select',
       '.theme-wizard .input-group .btn'
+    ]
+  },
+  {
+    name: 'ta-admin-add-property',
+    react: '/apps/travel-agency/hotel/admin/add-property',
+    gold: '/apps/travel-agency/hotel/admin/add-property.html',
+    probes: [
+      '.theme-wizard .nav-item-circle',
+      '.theme-wizard .form-control-icon-start',
+      '.theme-wizard .form-check-input'
     ]
   }
 ];
