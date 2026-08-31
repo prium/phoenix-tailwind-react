@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import {
   roomTypes,
   type HotelInfo,
@@ -13,10 +13,10 @@ import {
   faBaby,
   faBath
 } from '@fortawesome/free-solid-svg-icons';
-import RoomPictureSlider from './RoomPictureSlider';
 import HotelChangeRoomModal from 'components/modals/HotelChangeRoomModal';
+import Swiper from 'components/base/Swiper';
 import { SwiperSlide } from 'swiper/react';
-import classNames from 'classnames';
+import { cn } from '@hummingbirdui/react';
 import { currencyFormat, numberFormat } from 'helpers/utils';
 import HotelCompareAmenityRow from 'components/tables/HotelCompareAmenityRow';
 
@@ -25,6 +25,17 @@ interface CompareRoomDetailsProps {
   reviewFields: ReviewField[];
 }
 
+const cellClass = (index: number, length: number, extra?: string) =>
+  cn(
+    'border-subtle px-4',
+    index === length - 1 ? 'lg:border-e' : 'border-e',
+    extra
+  );
+
+const padTwo = (value: number) =>
+  numberFormat(value, 'standard', { minimumIntegerDigits: 2 });
+
+/** `+RoomDetailsTable` in mixins/travel-agency/hotel/HotelCompare.pug */
 const CompareRoomDetails = ({
   hotelInfo,
   reviewFields
@@ -35,7 +46,7 @@ const CompareRoomDetails = ({
       <table className="table table-layout-fixed table-compare mb-0">
         <thead>
           <tr>
-            <th className="p-0 border-0" style={{ width: 225 }}></th>
+            <th className="p-0 border-0 w-56.25"></th>
             <th className="p-0 border-0"></th>
             <th className="p-0 border-0"></th>
             <th className="p-0 border-0"></th>
@@ -49,17 +60,14 @@ const CompareRoomDetails = ({
           </tr>
           <tr>
             <td className="px-6 align-middle lg:border-e border-subtle bg-subtle">
-              <h6 className="text-default font-black uppercase mb-0">
+              <h6 className="text-default font-extrabold uppercase mb-0">
                 room type
               </h6>
             </td>
             {hotelInfo.map((info, index) =>
               info.rooms.map(item => (
                 <td
-                  className={classNames('border-subtle px-6', {
-                    'lg:border-e': index === hotelInfo.length - 1,
-                    'border-e': index !== hotelInfo.length - 1
-                  })}
+                  className={cellClass(index, hotelInfo.length)}
                   key={item.id}
                 >
                   <div className="flex flex-wrap flex-between-center gap-2">
@@ -77,17 +85,14 @@ const CompareRoomDetails = ({
           </tr>
           <tr>
             <td className="px-6 align-middle lg:border-e border-subtle bg-subtle">
-              <h6 className="text-default font-black uppercase mb-0">
-                room price
+              <h6 className="text-default font-extrabold uppercase mb-0">
+                Room price
               </h6>
             </td>
             {hotelInfo.map((info, index) =>
               info.rooms.map(item => (
                 <td
-                  className={classNames('border-subtle px-6', {
-                    'lg:border-e': index === hotelInfo.length - 1,
-                    'border-e': index !== hotelInfo.length - 1
-                  })}
+                  className={cellClass(index, hotelInfo.length)}
                   key={item.id}
                 >
                   <h3 className="flex items-center gap-2">
@@ -105,94 +110,74 @@ const CompareRoomDetails = ({
           <tr>
             <td className="px-6 align-middle lg:border-e border-subtle bg-subtle">
               <h6 className="text-default font-black uppercase mb-0">
-                room picture
+                Room picture
               </h6>
             </td>
             {hotelInfo.map((info, index) =>
               info.rooms.map(item => (
                 <td
-                  className={classNames('border-subtle px-6', {
-                    'lg:border-e': index === hotelInfo.length - 1,
-                    'border-e': index !== hotelInfo.length - 1
-                  })}
+                  className={cellClass(index, hotelInfo.length, 'min-w-62.5')}
                   key={item.id}
-                  style={{
-                    minWidth: 250
-                  }}
                 >
-                  <RoomPictureSlider
-                    slidesPerView={3}
+                  <Swiper
+                    loop
                     spaceBetween={8}
-                    className="hotel-compare-slider"
+                    slidesPerView={3}
+                    grabCursor
+                    navClassName="swiper-nav-inside"
+                    navButtonClassName="bg-transparent! border-0!"
+                    navIconClassName="text-white"
+                    navIconTransform="shrink-3"
                   >
                     {item.images.map((image, idx) => (
                       <SwiperSlide key={idx}>
-                        <img
-                          src={image}
-                          alt=""
-                          className="img-fluid rounded-md"
-                        />
+                        <img src={image} alt="" className="rounded-md" />
                       </SwiperSlide>
                     ))}
-                  </RoomPictureSlider>
+                  </Swiper>
                 </td>
               ))
             )}
           </tr>
           <tr>
             <td className="px-6 align-middle lg:border-e border-subtle bg-subtle">
-              <h6 className="text-default font-black uppercase mb-0">
-                room details
+              <h6 className="text-default font-extrabold uppercase mb-0">
+                Room Details
               </h6>
             </td>
             {hotelInfo.map((info, index) =>
               info.rooms.map(item => (
                 <td
                   key={item.id}
-                  className={classNames('border-subtle px-6', {
-                    'lg:border-e': index === hotelInfo.length - 1,
-                    'border-e': index !== hotelInfo.length - 1
-                  })}
+                  className={cellClass(index, hotelInfo.length)}
                 >
                   <h6 className="font-semibold text-highlight mb-2">
                     <FontAwesomeIcon
                       icon={faBed}
                       className="me-2 text-primary"
                     />
-                    {numberFormat(item.beds, 'standard', {
-                      minimumIntegerDigits: 2
-                    })}
-                    &nbsp;Double Bed
+                    {padTwo(item.beds)} Double Bed
                   </h6>
                   <h6 className="font-semibold text-highlight mb-2">
                     <FontAwesomeIcon
                       icon={faUser}
                       className="me-2 text-primary"
                     />
-                    {numberFormat(item.adults, 'standard', {
-                      minimumIntegerDigits: 2
-                    })}
-                    &nbsp;Adults
+                    {padTwo(item.adults)} Adults
                   </h6>
                   <h6 className="font-semibold text-highlight mb-2">
                     <FontAwesomeIcon
                       icon={faBaby}
                       className="me-2 text-primary"
                     />
-                    {numberFormat(item.child, 'standard', {
-                      minimumIntegerDigits: 2
-                    })}
-                    &nbsp;Child
+                    {padTwo(item.child)} Child
                   </h6>
                   <h6 className="font-semibold text-highlight">
                     <FontAwesomeIcon
                       icon={faBath}
                       className="me-2 text-primary"
                     />
-                    {numberFormat(item.bathrooms, 'standard', {
-                      minimumIntegerDigits: 2
-                    })}
-                    &nbsp;Bathroom
+                    {padTwo(item.bathrooms)} Bathroom
                   </h6>
                 </td>
               ))
@@ -217,9 +202,12 @@ const CompareRoomDetails = ({
             <td className="border-0 pb-0"></td>
             {hotelInfo.map(info => (
               <td className="border-0 px-4 pb-0" key={info.id}>
-                <Button variant="outline-primary" className="w-full">
+                <a
+                  href="#!"
+                  className="btn btn-outline-primary text-center w-full"
+                >
                   View room details
-                </Button>
+                </a>
               </td>
             ))}
           </tr>

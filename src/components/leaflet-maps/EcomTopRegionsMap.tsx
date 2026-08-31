@@ -76,7 +76,14 @@ const LayerComponent = ({ data }: { data: MapMarkerPoints[] }) => {
 };
 
 /** `#map` in phoenix-tailwind e-commerce/TopRegions.pug */
-const EcomTopRegionsMap = ({ data, ...rest }: { data: MapMarkerPoints[] }) => {
+const EcomTopRegionsMap = ({
+  data,
+  className = 'h-full bg-soft min-h-75',
+  ...rest
+}: {
+  data: MapMarkerPoints[];
+  className?: string;
+}) => {
   const position: LatLngExpression = [10.737, 0];
   const {
     config: { isRTL }
@@ -90,7 +97,7 @@ const EcomTopRegionsMap = ({ data, ...rest }: { data: MapMarkerPoints[] }) => {
       zoomSnap={0.5}
       center={position}
       {...rest}
-      className="h-full bg-soft min-h-75"
+      className={className}
     >
       <LayerComponent data={data} />
     </MapContainer>

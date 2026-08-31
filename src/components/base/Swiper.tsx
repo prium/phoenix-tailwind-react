@@ -18,6 +18,10 @@ interface SwiperProps extends ReactSwiperProps {
   navigationPosition?: CSSProperties;
   centeredSlide?: boolean;
   parentClassName?: string;
+  /** extra classes on `.swiper-nav` (gold travel pages use `swiper-nav-inside`) */
+  navClassName?: string;
+  /** extra classes on the arrow buttons (gold compare table: `bg-transparent! border-0!`) */
+  navButtonClassName?: string;
   /** classes for the arrow glyphs (gold default `nav-icon`; some pages use `text-primary`) */
   navIconClassName?: string;
   /** FontAwesome transform for the arrow glyphs (e.g. `shrink-3`) */
@@ -29,6 +33,8 @@ const Swiper = ({
   navigation = true,
   navigationPosition,
   parentClassName,
+  navClassName,
+  navButtonClassName,
   navIconClassName = 'nav-icon',
   navIconTransform,
   ...rest
@@ -39,10 +45,10 @@ const Swiper = ({
     <div className={cn('swiper-theme-container', parentClassName)}>
       {/* `.swiper-nav` is what plugins/swiper.css positions the arrows in */}
       {navigation && (
-        <div className="swiper-nav">
+        <div className={cn('swiper-nav', navClassName)}>
           <button
             type="button"
-            className="swiper-button-next"
+            className={cn('swiper-button-next', navButtonClassName)}
             style={navigationPosition}
             ref={navigationNextRef}
           >
@@ -54,7 +60,7 @@ const Swiper = ({
           </button>
           <button
             type="button"
-            className="swiper-button-prev"
+            className={cn('swiper-button-prev', navButtonClassName)}
             style={navigationPosition}
             ref={navigationPrevRef}
           >

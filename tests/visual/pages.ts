@@ -369,5 +369,32 @@ export const pages: VisualPage[] = [
       '.flight-bottom-bar .btn-primary',
       '.btn-support-chat'
     ]
+  },
+  {
+    name: 'ta-hotel-compare',
+    react: '/apps/travel-agency/hotel/customer/hotel-compare',
+    gold: '/apps/travel-agency/hotel/customer/hotel-compare.html',
+    // autoplay swipers: active bullet index depends on capture timing
+    mask: ['.swiper-pagination']
+  },
+  {
+    name: 'ta-flight-payment',
+    react: '/apps/travel-agency/flight/payment',
+    gold: '/apps/travel-agency/flight/payment.html',
+    probes: [
+      '.theme-wizard .nav-item-circle',
+      '#flightCheckoutForm .form-check-input',
+      '.flight-bottom-bar .btn-primary'
+    ]
+  },
+  {
+    name: 'ta-trip-checkout',
+    react: '/apps/travel-agency/trip/checkout',
+    gold: '/apps/travel-agency/trip/checkout.html',
+    probes: [
+      '.input-group-icon .form-control-icon-start',
+      '.form-check .form-check-input',
+      '.relative .form-control.pe-10'
+    ]
   }
 ];
