@@ -76,6 +76,7 @@ Anything unmigrated still compiles through the temporary shim `src/react-bootstr
 - Codemod only rewrites string/template/`cn()` classes; multi-line `classNames({})` objects, class strings in data files and `variant="…"` props need a manual pass.
 - Anything whose CSS keys on structure (`.swiper-nav`, `.timeline-item-bar`, `.dz-message`, `.search-box > form > .search-input`, `.table-list .sort[data-sort]`, `.navbar-vertical ~ .content`) must keep the gold DOM verbatim.
 - Table image columns need the gold `min-w-*` on the `th`, otherwise `max-w-full` shrinks the image.
+- Table header labels: the gold writes them literally in UPPERCASE (no text-transform CSS) — copy the exact case from the gold html into each column's `header:` string. Recurring regression; `InvoiceTable` is the one deliberate sentence-case exception.
 - Avatar groups: `.avatar-group` sizing comes from `--avatar-width/--avatar-height` (now defaulted to `--avatar-size` in `components/avatar.css`); avatars in groups are fixed-size, never driven by image resolution. If group avatars look inconsistent, check for markup that drops the `avatar`/`avatar-*` classes, not the images.
 - Radix portals: dropdown/dialog content lives under `body` — classes go on the content element; measure hidden nav items while visible (`EcommerceNavbar`).
 - Nested / hover menus (top navbar): HB `Dropdown` has no submenus — keep gold's plain `li.dropdown > a.dropdown-toggle + ul.dropdown-menu` markup and drive `show` + `data-bs-popper="none"` from state (`navbar-horizontal/useTopNavDropdown.ts`).

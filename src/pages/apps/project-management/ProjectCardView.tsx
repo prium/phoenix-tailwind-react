@@ -6,7 +6,11 @@ import PageBreadcrumb from 'components/common/PageBreadcrumb';
 import ProjectsTopSection from 'components/modules/project-management/ProjectsTopSection';
 import CardViewItem from 'components/modules/project-management/card-view/CardViewItem';
 import { defaultBreadcrumbItems } from 'data/commonData';
-import { Project, projects } from 'data/project-management/projects';
+import {
+  listViewProjects,
+  Project,
+  projects
+} from 'data/project-management/projects';
 import useAdvanceTable from 'hooks/useAdvanceTable';
 import AdvanceTableProvider from 'providers/AdvanceTableProvider';
 import { Link } from 'react-router';
@@ -26,7 +30,7 @@ export const columns: ColumnDef<Project>[] = [
 /** apps/project-management/project-card-view.pug (`+ProjectCardView`) */
 const ProjectCardView = () => {
   const table = useAdvanceTable<Project>({
-    data: projects,
+    data: listViewProjects,
     columns,
     pageSize: 10,
     pagination: true,

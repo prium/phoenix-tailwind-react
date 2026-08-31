@@ -27,7 +27,7 @@ const statusBars: { key: keyof Status; className: string; title: string }[] = [
 const columns: ColumnDef<Project>[] = [
   {
     accessorKey: 'name',
-    header: 'Project Name',
+    header: 'PROJECT NAME',
     cell: ({ row: { original } }) => {
       const { name } = original;
       return (
@@ -50,16 +50,18 @@ const columns: ColumnDef<Project>[] = [
   },
   {
     id: 'assigness',
-    header: 'assignees',
+    header: 'ASSIGNEES',
     cell: ({ row: { original } }) => {
-      const { assigness } = original;
+      const { assignees, more } = original.summary ?? {
+        assignees: original.assigness
+      };
       return (
         <Avatar.Group
-          total={assigness.length}
+          total={assignees.length + (more ?? 0)}
           size="s"
           className="avatar-group-dense"
         >
-          {assigness.slice(0, 4).map(assigne => (
+          {assignees.map(assigne => (
             <AvatarDropdown user={assigne} size="s" key={assigne.id} />
           ))}
         </Avatar.Group>
@@ -71,7 +73,7 @@ const columns: ColumnDef<Project>[] = [
     }
   },
   {
-    header: 'Start date',
+    header: 'START DATE',
     accessorKey: 'start',
     cell: ({ row: { original } }) => (
       <p className="mb-0 text-md text-default">{original.start}</p>
@@ -82,7 +84,7 @@ const columns: ColumnDef<Project>[] = [
     }
   },
   {
-    header: 'Deadline',
+    header: 'DEADLINE',
     accessorKey: 'deadline',
     cell: ({ row: { original } }) => (
       <p className="mb-0 text-md text-default">{original.deadline}</p>
@@ -94,7 +96,7 @@ const columns: ColumnDef<Project>[] = [
   },
   {
     id: 'calculation',
-    header: 'Calculation',
+    header: 'CALCULATION',
     cell: ({ row: { original } }) => {
       const { calculation } = original;
       if (calculation) {
@@ -127,7 +129,7 @@ const columns: ColumnDef<Project>[] = [
   },
   {
     id: 'progress',
-    header: 'Progress',
+    header: 'PROGRESS',
     cell: ({ row: { original } }) => {
       const { progress } = original;
       return (
@@ -154,7 +156,7 @@ const columns: ColumnDef<Project>[] = [
     }
   },
   {
-    header: 'Status',
+    header: 'STATUS',
     id: 'status',
     enableSorting: false,
     cell: ({ row: { original } }) => {

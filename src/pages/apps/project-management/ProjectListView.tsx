@@ -7,7 +7,7 @@ import ProjectListTable, {
   projectListTableColumns
 } from 'components/tables/ProjectListTable';
 import { defaultBreadcrumbItems } from 'data/commonData';
-import { projects } from 'data/project-management/projects';
+import { listViewProjects, projects } from 'data/project-management/projects';
 import useAdvanceTable from 'hooks/useAdvanceTable';
 import AdvanceTableProvider from 'providers/AdvanceTableProvider';
 import { Link } from 'react-router';
@@ -15,7 +15,7 @@ import { Link } from 'react-router';
 /** apps/project-management/project-list-view.pug (`+ProjectList`) */
 const ProjectListView = () => {
   const table = useAdvanceTable({
-    data: projects,
+    data: listViewProjects,
     columns: projectListTableColumns,
     pageSize: 6,
     pagination: true,

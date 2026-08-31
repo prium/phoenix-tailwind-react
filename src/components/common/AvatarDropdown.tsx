@@ -40,13 +40,19 @@ const AvatarDropdown = ({
           className={cn('inline-block', dropdownClass)}
           onClick={e => e.preventDefault()}
         >
-          {/* gold falls back to the full-size team/avatar.webp placeholder */}
-          <Avatar
-            src={user.avatar ?? avatarPlaceholder}
-            placeholder={!user.avatar}
-            size={size}
-            className={className}
-          />
+          {/* gold: `avatar: ''` renders initials, `team/avatar.webp` a marked placeholder */}
+          {user.avatar ? (
+            <Avatar
+              src={user.avatar}
+              placeholder={user.avatar === avatarPlaceholder}
+              size={size}
+              className={className}
+            />
+          ) : (
+            <Avatar variant="name" size={size} className={className}>
+              {user.name.charAt(0).toUpperCase()}
+            </Avatar>
+          )}
         </a>
       </Dropdown.Trigger>
 
