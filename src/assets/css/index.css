@@ -11,6 +11,10 @@
 @import 'tailwindcss' theme(static);
 @import '@hummingbirdui/react';
 @import '@hummingbirdui/hummingbird/src/plugins/choices.css';
+/* vendor stylesheets the gold loads in <head> BEFORE the theme bundle, so the
+   phoenix skins in ./plugins can override them (importing them from component
+   files would inject them after the skin and win the cascade) */
+@import 'flatpickr/dist/flatpickr.css';
 
 @custom-variant dark (&:where([data-hb-theme=dark], [data-hb-theme=dark] *), [data-hb-theme=dark]);
 @custom-variant active (&:active, &.active);
