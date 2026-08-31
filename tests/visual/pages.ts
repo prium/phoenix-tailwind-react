@@ -437,5 +437,27 @@ export const pages: VisualPage[] = [
       '.theme-wizard .form-control-icon-start',
       '.theme-wizard .form-check-input'
     ]
+  },
+  {
+    name: 'dashboard-stock',
+    react: '/dashboard/stock',
+    gold: '/dashboard/stock.html',
+    dark: true,
+    widths: [768]
+  },
+  {
+    name: 'stock-details',
+    react: '/apps/stock/stock-details',
+    gold: '/apps/stock/stock-details.html'
+  },
+  {
+    name: 'stock-portfolio',
+    react: '/apps/stock/portfolio',
+    gold: '/apps/stock/portfolio.html'
+  },
+  {
+    name: 'stock-watchlist',
+    react: '/apps/stock/watchlist',
+    gold: '/apps/stock/watchlist.html'
   }
 ];
