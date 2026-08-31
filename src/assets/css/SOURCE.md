@@ -8,9 +8,11 @@ keep a fixed size for every avatar-* size instead of sizing from each image's
 intrinsic resolution. Drop this note once phoenix-tailwind commits the fix.
 
 Also patched in the phoenix-tailwind working tree (pug, not css):
-dashboard/travel-agency.pug FinancialActivities margins mt-8/mb-8 -> mt-14/mb-14
-(the original Phoenix Bootstrap spacer 8 = 3.5rem; the literal Tailwind mb-8 =
-2rem lost the gap below the chart). Commit it upstream with the avatar fix.
+dashboard/travel-agency.pug FinancialActivities margins are now
+`mt-8 xl:mt-0 2xl:mt-8 mb-8` — top matches the original Phoenix (mt-5 = 2rem)
+and the `2xl:mb-0` was dropped so the chart keeps a 32px gap above the Gross
+Profit card at 2xl (the original sat nearly flush there; requested change).
+Commit it upstream with the avatar fix.
 
 Third working-tree patch upstream: financial-activities-chart.js tooltip now
 Math.abs()es the diverging revenue/expanses values (bundle rebuilt via gulp
