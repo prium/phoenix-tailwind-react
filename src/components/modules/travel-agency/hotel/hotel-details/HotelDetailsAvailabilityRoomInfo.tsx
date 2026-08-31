@@ -1,7 +1,6 @@
 import { AvailableRoom } from 'data/travel-agency/customer/hotelDetails';
 import { Card, cn, Col, Row } from '@hummingbirdui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Badge from 'components/base/Badge';
 import {
   faBed,
   faCheck,
