@@ -1,78 +1,102 @@
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button from 'components/base/Button';
+import { cn, FloatingLabel, Select } from '@hummingbirdui/react';
 import { useState } from 'react';
-import { Form, Collapse, FloatingLabel } from 'react-bootstrap';
+import { Link } from 'react-router';
 
+/** gold "Breakfast" radio tabs of PricingForm.pug */
 const Breakfast = () => {
-  const [open, setOpen] = useState(true);
+  const [included, setIncluded] = useState(true);
 
   return (
     <>
       <h4 className="mb-2 mt-12">Breakfast</h4>
-      <p className="mb-6 text-subtle">
+      <p className="mb-7 text-subtle">
         Do you own multiple hotels, or are you part of a property management
         company or group?
       </p>
-      <Form.Group className="mb-2">
-        <Form.Check
-          type="radio"
-          label="Yes, it's included in the price"
-          id="breakfastIncluded"
-          value="breakfastIncluded"
-          name="breakfastRadio"
-          inline
-          onClick={() => setOpen(true)}
-          defaultChecked
-        />
-        <Form.Check
-          inline
-          type="radio"
-          id="breakfastNotIncluded"
-          value="breakfastNotIncluded"
-          label="No"
-          name="breakfastRadio"
-          onClick={() => setOpen(false)}
-        />
-      </Form.Group>
-      <Collapse in={open} className="w-sm-60">
-        <div>
-          <h5 className="text-highlight my-6">
+      <div
+        className="nav nav-tabs mb-2 border-0"
+        id="breakfastTab"
+        role="tablist"
+      >
+        <div className="form-check-inline me-4">
+          <input
+            className="form-check-input"
+            type="radio"
+            id="breakfast-included-tab"
+            name="breakfast-radio"
+            checked={included}
+            onChange={() => setIncluded(true)}
+          />
+          <label className="form-check-label" htmlFor="breakfast-included-tab">
+            Yes, it&apos;s included in the price
+          </label>
+        </div>
+        <div className="form-check-inline">
+          <input
+            className="form-check-input"
+            type="radio"
+            id="breakfast-not-included-tab"
+            name="breakfast-radio"
+            checked={!included}
+            onChange={() => setIncluded(false)}
+          />
+          <label
+            className="form-check-label"
+            htmlFor="breakfast-not-included-tab"
+          >
+            No
+          </label>
+        </div>
+      </div>
+      <div className="tab-content">
+        <div
+          className={cn('tab-pane fade sm:w-119', { 'show active': included })}
+          id="breakfastInCluded"
+          role="tabpanel"
+        >
+          <h5 className="text-highlight mt-8 mb-6">
             What type of food is available for breakfast for guests?
           </h5>
-          <FloatingLabel controlId="breakfastType1" label="option 1">
-            <Form.Select>
+          <FloatingLabel htmlFor="breakfast-type-1" label="Option 1">
+            <Select name="breakfast-type-1" id="breakfast-type-1">
               <option value="1">Continental breakfast</option>
               <option value="2">Option 2</option>
-              <option value="3">Option 3</option>
-            </Form.Select>
+              <option value="2">Option 3</option>
+            </Select>
           </FloatingLabel>
           <FloatingLabel
-            controlId="breakfastType2"
+            htmlFor="breakfast-type-2"
+            label="Option 2"
             className="my-2"
-            label="option 2"
           >
-            <Form.Select>
+            <Select name="breakfast-type-2" id="breakfast-type-2">
               <option value="1">American breakfast</option>
               <option value="2">Option 2</option>
-              <option value="3">Option 3</option>
-            </Form.Select>
+              <option value="2">Option 3</option>
+            </Select>
           </FloatingLabel>
-          <FloatingLabel controlId="breakfastType3" label="option 3">
-            <Form.Select>
+          <FloatingLabel htmlFor="breakfast-type-3" label="Option 3">
+            <Select name="breakfast-type-3" id="breakfast-type-3">
               <option value="1">Option 1</option>
               <option value="2">Option 2</option>
-              <option value="3">Option 3</option>
-            </Form.Select>
+              <option value="2">Option 3</option>
+            </Select>
           </FloatingLabel>
           <div className="text-center mt-6">
-            <Button variant="link">
+            <Link to="#!" className="font-bold text-md">
               <FontAwesomeIcon icon={faPlus} className="me-2" />
               Add more
-            </Button>
+            </Link>
           </div>
         </div>
-      </Collapse>
+        <div
+          className={cn('tab-pane', { active: !included })}
+          id="breakfastNotIncluded"
+          role="tabpanel"
+        />
+      </div>
     </>
   );
 };

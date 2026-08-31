@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Alert, Col, Row } from 'react-bootstrap';
+import { Row } from '@hummingbirdui/react';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import {
   faBanSmoking,
@@ -23,6 +23,7 @@ import {
   faWineGlass
 } from '@fortawesome/free-solid-svg-icons';
 import { Link } from 'react-router';
+import Button from 'components/base/Button';
 import SummaryTable from './SummaryTable';
 import { useWizardFormContext } from 'providers/WizardFormProvider';
 import { AddRoomWizardFormData } from 'data/travel-agency/addRoom';
@@ -33,6 +34,12 @@ export interface RoomInfo {
   icon: IconDefinition;
 }
 
+const pad = (value: string | number | undefined, fallback: number) => {
+  const num = Number(value ?? fallback);
+  return Number.isNaN(num) ? String(value) : String(num).padStart(2, '0');
+};
+
+/** gold `+Preview` (mixins/travel-agency/add-room/Preview.pug) */
 const Preview = () => {
   const methods = useWizardFormContext<AddRoomWizardFormData>();
   const { formData } = methods;
@@ -41,47 +48,47 @@ const Preview = () => {
   const roomInformation: RoomInfo[] = [
     {
       property: 'Room type',
-      value: formData?.roomType || '',
+      value: formData?.roomType || 'Presidential suite',
       icon: faBorderAll
     },
     {
       property: 'Room name',
-      value: formData?.roomName || '',
+      value: formData?.roomName || 'Kempinski Jakarta',
       icon: faFilePen
     },
     {
       property: 'Bedroom’s',
-      value: formData?.bedRooms || 1,
+      value: pad(formData?.bedRooms, 1),
       icon: faFilePen
     },
     {
       property: 'Number of beds',
-      value: formData?.noOfBed || 1,
+      value: pad(formData?.noOfBed, 1),
       icon: faBed
     },
     {
       property: 'Room size',
-      value: formData?.roomSize || '',
+      value: formData?.roomSize || '2.13 x 3.66 sq.m',
       icon: faPersonShelter
     },
     {
       property: 'Adults',
-      value: formData?.adults || 1,
+      value: pad(formData?.adults, 2),
       icon: faUser
     },
     {
       property: 'Childs',
-      value: formData?.childs || 0,
+      value: pad(formData?.childs, 1),
       icon: faChildren
     },
     {
       property: 'Bathroom’s',
-      value: formData?.BathRooms || 1,
+      value: pad(formData?.BathRooms, 2),
       icon: faBath
     },
     {
       property: 'Balcony',
-      value: formData?.Balcony || 1,
+      value: pad(formData?.Balcony, 1),
       icon: faPersonBooth
     }
   ];
@@ -98,7 +105,7 @@ const Preview = () => {
     },
     {
       property: 'Pool',
-      value: formData?.pool ? 'paid' : 'Free',
+      value: formData?.pool ? 'Paid' : 'Free',
       icon: faPersonSwimming
     },
     {
@@ -108,7 +115,7 @@ const Preview = () => {
     },
     {
       property: 'Parking',
-      value: formData?.parking ? 'Free' : 'Paid',
+      value: formData?.parking ? 'Paid' : 'Free',
       icon: faSquareParking
     },
     {
@@ -118,12 +125,12 @@ const Preview = () => {
     },
     {
       property: 'Balcony',
-      value: formData?.balcony ? 'Available' : 'Not available',
+      value: formData?.balcony ? 'Sea View' : 'Not available',
       icon: faPersonBooth
     },
     {
       property: 'Hotel bar',
-      value: formData?.hotelBar ? 'Free' : 'Paid',
+      value: formData?.hotelBar ? 'Paid' : 'Free',
       icon: faWineGlass
     },
     {
@@ -148,7 +155,7 @@ const Preview = () => {
     },
     {
       property: 'Flat-screen TV',
-      value: formData?.flatScreenTv ? 'Free' : 'Paid',
+      value: formData?.flatScreenTv ? 'Paid' : 'Free',
       icon: faTv
     }
   ];
@@ -161,11 +168,9 @@ const Preview = () => {
         tuned for updates and start accepting bookings soon!
       </p>
       {show && (
-        <Alert
-          variant="subtle-success"
-          onClose={() => setShow(false)}
-          dismissible
-          className="mb-8"
+        <div
+          className="alert alert-subtle-success alert-dismissible items-start fade show mb-8"
+          role="alert"
         >
           <p className="mb-0 flex-1 font-semibold text-md sm:text-base">
             Congratulations on your successful listing! Join a community of
@@ -173,7 +178,13 @@ const Preview = () => {
             home into a sought-after destination. We anticipate hearing about
             your achievements.
           </p>
-        </Alert>
+          <button
+            className="btn-close bg-size-[1rem] mt-0.5 -me-1"
+            type="button"
+            aria-label="Close"
+            onClick={() => setShow(false)}
+          />
+        </div>
       )}
       <h4 className="text-default mb-4">
         Room information
@@ -182,12 +193,12 @@ const Preview = () => {
         </Link>
       </h4>
       <Row className="gx-12 xl:gx-6 2xl:gx-12">
-        <Col md={7} xxl={6}>
+        <div className="md:col-7 2xl:col-6">
           <SummaryTable items={roomInformation.slice(0, 5)} />
-        </Col>
-        <Col md={5} xxl={6}>
+        </div>
+        <div className="md:col-5 2xl:col-6">
           <SummaryTable items={roomInformation.slice(5)} />
-        </Col>
+        </div>
       </Row>
       <h4 className="text-default mb-6 mt-8">
         Pricing
@@ -196,7 +207,7 @@ const Preview = () => {
         </Link>
       </h4>
       <h6 className="mb-2">Across all days</h6>
-      <h3 className="mb-0">$894</h3>
+      <h3 className="mb-0">${formData?.pricing || 894}</h3>
       <h4 className="text-default mb-4 mt-12">
         Amenities
         <Link to="#!" className="text-md mx-2">
@@ -204,12 +215,12 @@ const Preview = () => {
         </Link>
       </h4>
       <Row className="gx-12 xl:gx-6 2xl:gx-12">
-        <Col md={7} xxl={6}>
+        <div className="md:col-7 2xl:col-6">
           <SummaryTable items={amenities.slice(0, 7)} />
-        </Col>
-        <Col md={5} xxl={6}>
+        </div>
+        <div className="md:col-5 2xl:col-6">
           <SummaryTable items={amenities.slice(7)} />
-        </Col>
+        </div>
       </Row>
       <h4 className="text-default mb-6 mt-12">
         Picture
@@ -219,16 +230,22 @@ const Preview = () => {
       </h4>
       <Row className="g-4">
         {formData?.pictures?.map((item, index) => (
-          <Col key={index} sm={4}>
+          <div className="sm:col-4" key={index}>
             <img
               src={URL.createObjectURL(item)}
-              alt="item"
-              height={160}
-              className="rounded-md w-full object-cover"
+              alt=""
+              className="rounded-md h-40 w-full object-cover"
             />
-          </Col>
+          </div>
         ))}
       </Row>
+      <div className="mt-10 flex flex-wrap gap-2">
+        <Button variant="phoenix-danger">Discard</Button>
+        <Button variant="phoenix-primary">Save draft</Button>
+        <Button type="submit" variant="primary" className="px-10 sm:px-20">
+          Open for Booking
+        </Button>
+      </div>
     </>
   );
 };

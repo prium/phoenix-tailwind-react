@@ -1,7 +1,13 @@
-import { Nav } from 'react-bootstrap';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { cn } from '@hummingbirdui/react';
 import { WizardNav } from 'data/wizard/wizard';
-import WizardNavItem from './WizardNavItem';
+import { useWizardFormContext } from 'providers/WizardFormProvider';
 
+/**
+ * gold `+WizardHeader` (theme-wizard vertical-at-xl nav,
+ * mixins/travel-agency/{add-room,add-property}/…Wizard.pug)
+ */
 const WizardSideNav = ({
   navItems,
   setTabEventKey
@@ -9,25 +15,59 @@ const WizardSideNav = ({
   navItems: WizardNav[];
   setTabEventKey?: (key: number) => void;
 }) => {
-  const setCurrentEventKey = (selectedKey: string | null) => {
-    setTabEventKey && setTabEventKey(parseInt(selectedKey || '0'));
+  const { selectedStep, totalStep, goToStep } = useWizardFormContext();
+
+  const handleSelect = (step: number) => {
+    goToStep(step);
+    setTabEventKey && setTabEventKey(step);
   };
+
   return (
-    <Nav
-      as="ul"
-      onSelect={setCurrentEventKey}
-      className="justify-content-between flex-nowrap nav-wizard nav-wizard-vertical-xl"
-    >
-      {navItems.map((item, index) => (
-        <WizardNavItem
-          key={index}
-          icon={item.icon}
-          step={index + 1}
-          label={item.label}
-          isHorizontal
-        />
-      ))}
-    </Nav>
+    <div className="scrollbar mb-6">
+      <ul className="nav justify-between flex-nowrap nav-wizard nav-wizard-vertical-xl">
+        {navItems.map((item, index) => {
+          const step = index + 1;
+          const isLast = index === navItems.length - 1;
+          return (
+            <li className="nav-item" key={index}>
+              <a
+                role="button"
+                className={cn('nav-link py-0 xl:py-4', {
+                  active: selectedStep === step,
+                  done: selectedStep > step && step !== totalStep,
+                  complete: selectedStep > step && step !== totalStep - 1
+                })}
+                onClick={() => handleSelect(step)}
+              >
+                <div className="text-center inline-block xl:flex items-center gap-4">
+                  <span className="nav-item-circle-parent">
+                    <span className="nav-item-circle">
+                      {isLast ? (
+                        <FontAwesomeIcon icon={faCheck} />
+                      ) : (
+                        <>
+                          <FontAwesomeIcon
+                            icon={item.icon}
+                            className="nav-item-icon"
+                          />
+                          <FontAwesomeIcon
+                            icon={faCheck}
+                            className="check-icon"
+                          />
+                        </>
+                      )}
+                    </span>
+                  </span>
+                  <span className="nav-item-title text-md xl:text-base">
+                    {item.label}
+                  </span>
+                </div>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
   );
 };
 

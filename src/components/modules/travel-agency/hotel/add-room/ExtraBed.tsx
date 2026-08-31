@@ -1,19 +1,25 @@
-import { useWizardFormContext } from 'providers/WizardFormProvider';
-import React, { useState } from 'react';
 import {
+  cn,
   Col,
-  Collapse,
   FloatingLabel,
-  Form,
-  FormControl,
+  Input,
   InputGroup,
-  Row
-} from 'react-bootstrap';
+  Row,
+  Select
+} from '@hummingbirdui/react';
 import Button from 'components/base/Button';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { AddRoomWizardFormData } from 'data/travel-agency/addRoom';
+import { useWizardFormContext } from 'providers/WizardFormProvider';
+import { useState } from 'react';
 
+const extraBedOptions = [
+  '02-06 year olds',
+  '07-12 year olds',
+  '12-16 year olds',
+  'For adults'
+];
+
+/** gold "Extra bed option" switch + `#extraBedCollapse` of PricingForm.pug */
 const ExtraBed = () => {
   const methods = useWizardFormContext<AddRoomWizardFormData>();
   const { onChange } = methods;
@@ -21,125 +27,151 @@ const ExtraBed = () => {
   const [value, setValue] = useState(2);
 
   const handleCount = (type: string) => {
-    type === 'increase' && setValue(value + 1);
-    type === 'decrease' && value >= 1 && setValue(value - 1);
+    if (type === 'increase') setValue(value + 1);
+    if (type === 'decrease' && value >= 1) setValue(value - 1);
   };
-
-  const extraBedOptions = [
-    '02-06 year olds',
-    '07-12 year olds',
-    '12-16 year olds',
-    'For adults'
-  ];
 
   return (
     <>
       <div className="flex items-center gap-2 mt-12">
-        <h4>Extra bed option</h4>
-        <Form.Check
-          inline
-          name="extraBedSwitch"
-          type="switch"
-          id="extraBedSwitch"
-          onChange={onChange}
-          onClick={() => setOpen(!open)}
-          aria-controls="extraBedSwitch"
-          defaultChecked={open}
-        />
+        <label
+          className="text-lg font-bold text-emphasis"
+          htmlFor="extraBedSwitch"
+        >
+          Extra bed option
+        </label>
+        <div className="form-check form-switch mb-0">
+          <input
+            className="form-check-input"
+            id="extraBedSwitch"
+            type="checkbox"
+            role="button"
+            name="extraBedSwitch"
+            aria-expanded={open}
+            checked={open}
+            onChange={e => {
+              onChange(e);
+              setOpen(e.target.checked);
+            }}
+          />
+        </div>
       </div>
       <p className="text-md text-subtle mb-0">Can you provide extra bed</p>
-      <Collapse in={open}>
-        <div>
-          <div className="mt-6">
-            <Row className="gx-4">
-              <Col xs={6} sm={4} xxl={5}>
-                <Form.Group controlId="numberOfBed">
-                  <Form.Label className="form-label-header mb-1">
-                    Number of bed
-                  </Form.Label>
-                  <InputGroup className="gap-2">
-                    <Button
-                      className="border rounded-md px-4 bg-soft hover:bg-default leading-none"
-                      onClick={() => handleCount('decrease')}
-                    >
-                      <FontAwesomeIcon icon={faMinus} />
-                    </Button>
-
-                    <FormControl
-                      type="number"
-                      value={value}
-                      onChange={onChange}
-                      className="input-spin-none rounded-md text-center"
-                    />
-                    <Button
-                      className="border rounded-md px-4 bg-soft hover:bg-default leading-none"
-                      onClick={() => handleCount('increase')}
-                    >
-                      <FontAwesomeIcon icon={faPlus} />
-                    </Button>
-                  </InputGroup>
-                </Form.Group>
-              </Col>
-              <Col xs={6} sm={4} xxl={5}>
-                <Form.Group controlId="roomCategory">
-                  <Form.Label className="form-label-header mb-1">
-                    Bed type
-                  </Form.Label>
-                  <Form.Select name="bedType" onChange={onChange}>
-                    <option>Twin bed</option>
-                    <option>King bed</option>
-                    <option>Queen bed</option>
-                    <option>Single bed</option>
-                    <option>Double bed</option>
-                    <option>Twin bed</option>
-                    <option>Quad bed</option>
-                    <option>Executive Suite</option>
-                    <option>Bunk bed</option>
-                  </Form.Select>
-                </Form.Group>
-              </Col>
-            </Row>
-          </div>
+      <div className={cn('collapse', { show: open })} id="extraBedCollapse">
+        <div className="mt-6">
+          <Row className="gx-4">
+            <div className="col-6 sm:col-4 2xl:col-5">
+              <label
+                className="mb-1 text-highlight font-bold"
+                htmlFor="number-of-bed-pricing"
+              >
+                Number of bed
+              </label>
+              <InputGroup className="gap-1">
+                <Button
+                  variant="phoenix-primary"
+                  className="px-4 bg-soft hover:bg-default rounded-md"
+                  onClick={() => handleCount('decrease')}
+                >
+                  -
+                </Button>
+                <Input
+                  id="number-of-bed-pricing"
+                  type="number"
+                  value={value}
+                  onChange={e => setValue(parseInt(e.target.value) || 0)}
+                  className="flex-1 border-subtle input-spin-none text-center rounded-md"
+                />
+                <Button
+                  variant="phoenix-primary"
+                  className="px-4 bg-soft hover:bg-default rounded-md"
+                  onClick={() => handleCount('increase')}
+                >
+                  +
+                </Button>
+              </InputGroup>
+            </div>
+            <div className="col-6 sm:col-4 2xl:col-5">
+              <label
+                className="mb-1 text-highlight font-bold"
+                htmlFor="pricing-bed-type"
+              >
+                Bed type
+              </label>
+              <Select id="pricing-bed-type" name="bedType" onChange={onChange}>
+                <option>Twin bed</option>
+                <option>King bed</option>
+                <option>Queen bed</option>
+                <option>Single bed</option>
+                <option>Double bed</option>
+                <option>Twin XL bed</option>
+                <option>Quad Bed</option>
+                <option>Quad Bed</option>
+                <option>Executive Suite</option>
+                <option>Bunk Bed</option>
+              </Select>
+            </div>
+          </Row>
           <h5 className="mt-6 mb-4">
             Check the box(es) if you can accommodate the following guests in
             extra beds.
           </h5>
-
           {extraBedOptions.map((item, index) => (
-            <div key={index} className="row gx-2 gy-0 items-center mb-4">
-              <Col xs={12} sm="auto" style={{ minWidth: 120 }}>
-                <Form.Check
-                  type="checkbox"
-                  id={`ageRange${index}`}
-                  label={item}
-                  name={`ageRange${index}`}
-                />
-              </Col>
+            <Row
+              key={index}
+              className={cn('gx-2 gy-0 items-center', {
+                'mb-4': index !== extraBedOptions.length - 1
+              })}
+            >
+              <div className="col-12 sm:col-auto">
+                <div className="form-check">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    id={`age-range-${index + 1}`}
+                  />
+                  <label
+                    className={cn('form-check-label text-emphasis', {
+                      'me-8': index === extraBedOptions.length - 1
+                    })}
+                    htmlFor={`age-range-${index + 1}`}
+                  >
+                    {item}
+                  </label>
+                </div>
+              </div>
               <Col xs="auto">
                 <FloatingLabel
-                  controlId={`roomPrice${index}`}
-                  label="Room Price"
+                  htmlFor={`room-price-${index + 1}`}
+                  label="Room price"
                 >
-                  <Form.Control type="text" placeholder="Room Price" />
+                  <Input
+                    type="text"
+                    name="room-price"
+                    id={`room-price-${index + 1}`}
+                    placeholder="Room price"
+                  />
                 </FloatingLabel>
               </Col>
               <Col xs="auto">
                 <FloatingLabel
-                  controlId={`roomPriceCurrency${index}`}
+                  htmlFor={`room-price-currency-${index + 1}`}
                   label="Currency"
-                  style={{ minWidth: '8rem' }}
                 >
-                  <Form.Select>
+                  <Select
+                    name="room-price-currency"
+                    id={`room-price-currency-${index + 1}`}
+                  >
                     <option value="1">USD</option>
                     <option value="2">EUR</option>
-                    <option value="3">BDT</option>
-                  </Form.Select>
+                    <option value="2">BDT</option>
+                  </Select>
                 </FloatingLabel>
               </Col>
-            </div>
+            </Row>
           ))}
         </div>
-      </Collapse>
+      </div>
     </>
   );
 };

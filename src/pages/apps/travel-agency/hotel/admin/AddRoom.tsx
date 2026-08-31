@@ -1,18 +1,18 @@
 import PageBreadcrumb from 'components/common/PageBreadcrumb';
 import { defaultBreadcrumbItems } from 'data/commonData';
-import React, { useEffect, useState } from 'react';
-import { Row, Col, Tab } from 'react-bootstrap';
+import { useEffect, useState } from 'react';
 import useWizardForm from 'hooks/useWizardForm';
 import WizardForm from 'components/wizard/WizardForm';
 import WizardFormProvider from 'providers/WizardFormProvider';
+import WizardSideNav from 'components/wizard/WizardSideNav';
+import WizardTabPane from 'components/wizard/WizardTabPane';
 import RoomDetailsForm from 'components/modules/travel-agency/hotel/add-room/RoomDetailsForm';
 import { addRoomWizardNav } from 'data/wizard/wizard';
 import RoomWizardFooter from 'components/modules/travel-agency/hotel/add-room/RoomWizardFooter';
 import Pricing from 'components/modules/travel-agency/hotel/add-room/Pricing';
-import Amenities from 'components/modules/travel-agency/hotel/add-room/Amenities';
+import GeneralAmenitiesForm from 'components/modules/travel-agency/hotel/add-proterty/GeneralAmenitiesForm';
 import AddPhotos from 'components/modules/travel-agency/hotel/add-proterty/AddPhotos';
 import Preview from 'components/modules/travel-agency/hotel/add-room/Preview';
-import WizardSideNav from 'components/wizard/WizardSideNav';
 import { urlToFile } from 'helpers/utils';
 import { pictures } from 'data/travel-agency/addProperty';
 import { addRoomDefaultFormData } from 'data/travel-agency/addRoom';
@@ -42,51 +42,71 @@ const AddRoom = () => {
   }, [images]);
 
   return (
-    <div className="mb-16">
+    <>
       <PageBreadcrumb className="mb-4" items={defaultBreadcrumbItems} />
-      <h2 className="text-2xl mb-6 xl:mb-8">Add New Room</h2>
-      <WizardFormProvider {...form}>
-        <Row className="gx-0 xl:gx-8 theme-wizard">
-          <Col xl={{ order: 1, span: 4 }}>
-            <WizardSideNav navItems={addRoomWizardNav} />
-          </Col>
-          <Col xl={8} className="flex-1">
-            <Row className="mt-6 xl:mt-0">
-              <Col xxl={8}>
-                <Tab.Content>
-                  <Tab.Pane eventKey={1}>
-                    <WizardForm step={1}>
-                      <RoomDetailsForm />
-                    </WizardForm>
-                  </Tab.Pane>
-                  <Tab.Pane eventKey={2}>
-                    <WizardForm step={2}>
-                      <Pricing />
-                    </WizardForm>
-                  </Tab.Pane>
-                  <Tab.Pane eventKey={3}>
-                    <WizardForm step={3}>
-                      <Amenities />
-                    </WizardForm>
-                  </Tab.Pane>
-                  <Tab.Pane eventKey={4}>
-                    <WizardForm step={4}>
-                      <AddPhotos title="Add room picture" images={images} />
-                    </WizardForm>
-                  </Tab.Pane>
-                  <Tab.Pane eventKey={5}>
-                    <WizardForm step={5}>
-                      <Preview />
-                    </WizardForm>
-                  </Tab.Pane>
-                </Tab.Content>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-        <RoomWizardFooter />
-      </WizardFormProvider>
-    </div>
+      <div className="mb-16">
+        <h2 className="text-2xl mb-6 xl:mb-8">Add New Room</h2>
+        <WizardFormProvider {...form}>
+          <div className="theme-wizard">
+            <div className="row gx-0 xl:gx-8">
+              <div className="xl:col-4 xl:order-1">
+                <WizardSideNav navItems={addRoomWizardNav} />
+              </div>
+              <div className="xl:col-8 flex-1">
+                <div className="tab-content">
+                  <WizardTabPane step={1}>
+                    <div className="row g-0">
+                      <div className="2xl:col-8">
+                        <WizardForm step={1}>
+                          <RoomDetailsForm />
+                        </WizardForm>
+                      </div>
+                    </div>
+                  </WizardTabPane>
+                  <WizardTabPane step={2}>
+                    <div className="row g-0">
+                      <div className="2xl:col-8">
+                        <WizardForm step={2}>
+                          <Pricing />
+                        </WizardForm>
+                      </div>
+                    </div>
+                  </WizardTabPane>
+                  <WizardTabPane step={3}>
+                    <div className="row g-0">
+                      <div className="2xl:col-8">
+                        <WizardForm step={3}>
+                          <GeneralAmenitiesForm title="Amenities" />
+                        </WizardForm>
+                      </div>
+                    </div>
+                  </WizardTabPane>
+                  <WizardTabPane step={4}>
+                    <div className="row g-0">
+                      <div className="2xl:col-8">
+                        <WizardForm step={4}>
+                          <AddPhotos title="Add room picture" images={images} />
+                        </WizardForm>
+                      </div>
+                    </div>
+                  </WizardTabPane>
+                  <WizardTabPane step={5}>
+                    <div className="row g-0">
+                      <div className="2xl:col-10">
+                        <WizardForm step={5}>
+                          <Preview />
+                        </WizardForm>
+                      </div>
+                    </div>
+                  </WizardTabPane>
+                </div>
+                {form.getCanNextPage && <RoomWizardFooter />}
+              </div>
+            </div>
+          </div>
+        </WizardFormProvider>
+      </div>
+    </>
   );
 };
 
