@@ -55,7 +55,7 @@ const MostRecentForecastTableFooter = ({
         <p
           className={classNames(
             tableInfo,
-            'mb-0 hidden d-sm-block me-3 font-semibold text-default'
+            'mb-0 hidden sm:block me-6 font-semibold text-default'
           )}
         >
           {pageSize * pageIndex + 1} to{' '}
@@ -81,8 +81,8 @@ const MostRecentForecastTableFooter = ({
           </Button>
         )}
       </div>
-      <div className="ms-4">
-        <Pagination className="mb-0 justify-content-center align-items-center">
+      <div className="ms-6">
+        <Pagination className="mb-0 justify-center items-center">
           <Pagination.Prev
             disabled={!getCanPreviousPage()}
             onClick={() => setPageIndex(pageIndex - 1)}
@@ -127,7 +127,7 @@ const MostRecentForecastTableFooter = ({
           <Pagination.Next
             disabled={!getCanNextPage()}
             onClick={() => setPageIndex(pageIndex + 1)}
-            className="me-sm-n2"
+            className="sm:-me-2"
           >
             <FontAwesomeIcon icon={faChevronRight} />
           </Pagination.Next>

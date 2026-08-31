@@ -10,9 +10,9 @@ import { Col, Row } from 'react-bootstrap';
 const Watchlist = () => {
   return (
     <>
-      <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-3" />
-      <h2 className="mb-4">Watchlist</h2>
-      <Row className="g-3 g-lg-5 mb-4 flex-between-center">
+      <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-4" />
+      <h2 className="mb-6">Watchlist</h2>
+      <Row className="g-4 lg:g-8 mb-6 flex-between-center">
         <Col xs="auto">
           <h4>My Watchlist</h4>
           <p className="mb-0 text-subtle me-2">
@@ -30,9 +30,9 @@ const Watchlist = () => {
           </Button>
         </Col>
       </Row>
-      <Row className="pb-5 pb-md-7 pb-xl-9">
+      <Row className="pb-8 md:pb-12 xl:pb-16">
         <Col xs={12}>
-          <WatchlistCollapsibleCard className="mb-3" />
+          <WatchlistCollapsibleCard className="mb-4" />
           <WatchlistTab />
         </Col>
       </Row>

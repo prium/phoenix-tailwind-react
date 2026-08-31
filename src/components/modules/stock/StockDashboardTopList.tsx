@@ -7,16 +7,16 @@ import {
 
 const StockDashboardTopList = () => {
   return (
-    <Row className="gy-5 gx-xl-7 gx-xxl-10">
+    <Row className="gy-8 xl:gx-12 2xl:gx-18">
       <Col xl={6}>
-        <h2 className="mb-4">Top Gainers</h2>
+        <h2 className="mb-6">Top Gainers</h2>
         <StockDashboardTopListTable
           data={topGainersTableData}
           tableType="gainers"
         />
       </Col>
       <Col xl={6}>
-        <h2 className="mb-4">Top Losers</h2>
+        <h2 className="mb-6">Top Losers</h2>
         <StockDashboardTopListTable
           data={topLosersTableData}
           tableType="losers"

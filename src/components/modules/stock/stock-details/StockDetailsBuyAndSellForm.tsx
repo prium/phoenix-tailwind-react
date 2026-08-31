@@ -12,8 +12,8 @@ const StockDetailsBuyAndSellForm = ({
 }: StockDetailsBuyAndSellFormProps) => {
   return (
     <>
-      <div className="mb-3">
-        <label className="text-md lh-sm font-semibold mb-2 text-emphasis ps-0">
+      <div className="mb-4">
+        <label className="text-md leading-sm font-semibold mb-2 text-emphasis ps-0">
           Order type
         </label>
         <Form.Select>
@@ -21,18 +21,18 @@ const StockDetailsBuyAndSellForm = ({
           <option value="share">Share {title}</option>
         </Form.Select>
       </div>
-      <div className="mb-3">
-        <label className="text-md lh-sm font-semibold mb-2 text-emphasis ps-0">
+      <div className="mb-4">
+        <label className="text-md leading-sm font-semibold mb-2 text-emphasis ps-0">
           Shares
         </label>
         <Form.Control type="text" placeholder="Enter shares" />
       </div>
-      <div className="mb-3">
-        <label className="text-md lh-sm font-semibold mb-2 text-emphasis ps-0">
+      <div className="mb-4">
+        <label className="text-md leading-sm font-semibold mb-2 text-emphasis ps-0">
           Amount
         </label>
         <InputGroup>
-          <InputGroup.Text className="border-end-0">$</InputGroup.Text>
+          <InputGroup.Text className="border-e-0">$</InputGroup.Text>
           <Form.Control
             type="number"
             placeholder="Enter amount"
@@ -40,8 +40,8 @@ const StockDetailsBuyAndSellForm = ({
           />
         </InputGroup>
       </div>
-      <div className="mb-3">
-        <label className="text-md lh-sm font-semibold mb-2 text-emphasis ps-0">
+      <div className="mb-4">
+        <label className="text-md leading-sm font-semibold mb-2 text-emphasis ps-0">
           Account
         </label>
         <Form.Select>
@@ -49,7 +49,7 @@ const StockDetailsBuyAndSellForm = ({
           <option value="debit">Debit</option>
         </Form.Select>
       </div>
-      <div className="flex flex-between-center gap-3 mb-3">
+      <div className="flex flex-between-center gap-4 mb-4">
         <h5 className="mb-0 text-default font-semibold">
           {title === 'buy' ? 'Available cash' : 'Available shares'}
         </h5>
@@ -60,7 +60,7 @@ const StockDetailsBuyAndSellForm = ({
         </p>
       </div>
       <div className="flex flex-wrap gap-2">
-        <Button variant="primary" size="sm" className="flex-1 text-capitalize">
+        <Button variant="primary" size="sm" className="flex-1 capitalize">
           {title} Share
         </Button>
         <Button variant="phoenix-secondary" size="sm">

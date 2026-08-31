@@ -22,10 +22,10 @@ interface TopStockMainContentProps {
 const TopStockMainContent = ({ topStockItem }: TopStockMainContentProps) => {
   return (
     <>
-      <Row className="g-3 mb-5 justify-content-between">
+      <Row className="g-4 mb-8 justify-between">
         <Col xs="auto">
-          <h4 className="text-subtle mb-2 lh-sm">{topStockItem.abbr}</h4>
-          <h3 className="text-highlight flex gap-2 flex-between-center lh-sm mb-0">
+          <h4 className="text-subtle mb-2 leading-sm">{topStockItem.abbr}</h4>
+          <h3 className="text-highlight flex gap-2 flex-between-center leading-sm mb-0">
             {currencyFormat(topStockItem.amount, {
               minimumFractionDigits: 2,
               maximumFractionDigits: 2
@@ -33,7 +33,7 @@ const TopStockMainContent = ({ topStockItem }: TopStockMainContentProps) => {
             <Badge
               variant="phoenix"
               bg={topStockItem.growth ? 'success' : 'danger'}
-              className="text-sm flex align-items-center"
+              className="text-sm flex items-center"
             >
               {topStockItem.percent}%
               <FontAwesomeIcon
@@ -44,7 +44,7 @@ const TopStockMainContent = ({ topStockItem }: TopStockMainContentProps) => {
           </h3>
         </Col>
         <Col xs="auto">
-          <div className="flex align-items-center gap-2">
+          <div className="flex items-center gap-2">
             <Link
               to={'/apps/stock/stock-details'}
               className="btn btn-sm btn-phoenix-primary"
@@ -62,27 +62,27 @@ const TopStockMainContent = ({ topStockItem }: TopStockMainContentProps) => {
         </Col>
       </Row>
       <Tab.Container defaultActiveKey="chart">
-        <Nav variant="underline" className="mb-4 gap-0 optionChainTableHeader">
+        <Nav variant="underline" className="mb-6 gap-0 optionChainTableHeader">
           <Nav.Item>
             <Nav.Link eventKey="chart" className="pt-0 pe-2">
               Chart
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link eventKey="optionChain" className="px-3 pt-0">
+            <Nav.Link eventKey="optionChain" className="px-4 pt-0">
               Option Chain
             </Nav.Link>
           </Nav.Item>
           <Nav.Item className="flex-1">
-            <Nav.Link className="h-100" disabled></Nav.Link>
+            <Nav.Link className="h-full" disabled></Nav.Link>
           </Nav.Item>
         </Nav>
         <Tab.Content>
           <Tab.Pane eventKey="chart" unmountOnExit>
-            <div className="scrollbar mb-4">
+            <div className="scrollbar mb-6">
               <ButtonGroup
                 size="sm"
-                className="stock-btn-group text-nowrap"
+                className="stock-btn-group whitespace-nowrap"
                 role="group"
                 aria-label="top-stock-chart-filter"
               >
@@ -92,37 +92,37 @@ const TopStockMainContent = ({ topStockItem }: TopStockMainContentProps) => {
                   type="button"
                 >
                   1 D
-                  <span className="hidden d-sm-inline d-xl-none d-xxl-inline">
+                  <span className="hidden sm:inline xl:hidden 2xl:inline">
                     ay
                   </span>
                 </Button>
                 <Button variant="phoenix-secondary" className="font-black">
                   5 D
-                  <span className="hidden d-sm-inline d-xl-none d-xxl-inline">
+                  <span className="hidden sm:inline xl:hidden 2xl:inline">
                     ays
                   </span>
                 </Button>
                 <Button variant="phoenix-secondary" className="font-black">
                   3 M
-                  <span className="hidden d-sm-inline d-xl-none d-xxl-inline">
+                  <span className="hidden sm:inline xl:hidden 2xl:inline">
                     onths
                   </span>
                 </Button>
                 <Button variant="phoenix-secondary" className="font-black">
                   6 M
-                  <span className="hidden d-sm-inline d-xl-none d-xxl-inline">
+                  <span className="hidden sm:inline xl:hidden 2xl:inline">
                     onths
                   </span>
                 </Button>
                 <Button variant="phoenix-secondary" className="font-black">
                   1 Y
-                  <span className="hidden d-sm-inline d-xl-none d-xxl-inline">
+                  <span className="hidden sm:inline xl:hidden 2xl:inline">
                     ear
                   </span>
                 </Button>
                 <Button variant="phoenix-secondary" className="font-black">
                   5 Y
-                  <span className="hidden d-sm-inline d-xl-none d-xxl-inline">
+                  <span className="hidden sm:inline xl:hidden 2xl:inline">
                     ears
                   </span>
                 </Button>

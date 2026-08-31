@@ -26,7 +26,7 @@ const UpcomingCollapsibleContainer = ({
       <Button
         variant=""
         className={classNames(
-          'px-4 py-3 flex flex-between-center collapse-indicator bg-subtle w-100',
+          'px-10 py-6 flex flex-between-center collapse-indicator bg-subtle w-full',
           className,
           {
             collapsed: open
@@ -41,7 +41,7 @@ const UpcomingCollapsibleContainer = ({
         <FontAwesomeIcon icon={faChevronDown} className="toggle-icon" />
       </Button>
       <Collapse in={open}>
-        <div className="p-4" id={id}>
+        <div className="p-6" id={id}>
           {children}
         </div>
       </Collapse>

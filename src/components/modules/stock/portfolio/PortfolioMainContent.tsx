@@ -10,7 +10,7 @@ const PortfolioMainContent = () => {
         portfolioHoldingItems={portfolioItems.portfolioHoldingItems}
         chartData={portfolioItems.portfolioLineChartData}
       />
-      <Row className="g-4">
+      <Row className="g-6">
         <Col xs={12}>
           <h4>My Portfolio</h4>
           <p className="text-subtle mb-0">

@@ -13,7 +13,7 @@ interface DividendsTabContentProps {
 const DividendsTabContent = ({ dividendContent }: DividendsTabContentProps) => {
   return (
     <>
-      <Alert variant={`phoenix-secondary`} className="mb-4">
+      <Alert variant={`phoenix-secondary`} className="mb-6">
         <Alert.Heading>
           <h4 className="text-subtle mb-2">
             Apple's Dividend Distribution
@@ -25,7 +25,7 @@ const DividendsTabContent = ({ dividendContent }: DividendsTabContentProps) => {
           there was no ex-dividend date.
         </p>
       </Alert>
-      <Card className="mb-4">
+      <Card className="mb-6">
         <Card.Body>
           <Row className="g-0">
             {dividendContent.dividendCardItems.map(item => (
@@ -35,20 +35,20 @@ const DividendsTabContent = ({ dividendContent }: DividendsTabContentProps) => {
                 xxl={3}
                 className={classNames(item.className)}
               >
-                <div className="flex flex-column flex-sm-row flex-xxl-column gap-3">
+                <div className="flex flex-col sm:flex-row 2xl:flex-col gap-4">
                   <div
                     className={classNames(
-                      'icon-item border align-items-end p-2 flex align-items-center rounded font-normal',
+                      'icon-item border items-end p-2 flex items-center md:rounded-md font-normal',
                       item.iconClassName
                     )}
                   >
                     {item.icon}
                   </div>
-                  <div className="text-nowrap">
-                    <h5 className="text-md sm:text-base text-highlight lh-sm">
+                  <div className="whitespace-nowrap">
+                    <h5 className="text-md sm:text-base text-highlight leading-sm">
                       {item.title}
                     </h5>
-                    <h4 className="text-base sm:text-lg mb-0 text-default font-black lh-sm">
+                    <h4 className="text-base sm:text-lg mb-0 text-default font-black leading-sm">
                       {item.content}
                     </h4>
                   </div>
@@ -58,14 +58,14 @@ const DividendsTabContent = ({ dividendContent }: DividendsTabContentProps) => {
           </Row>
         </Card.Body>
       </Card>
-      <Row className="g-3 mb-4">
+      <Row className="g-4 mb-6">
         <Col xxl={6}>
-          <Row className="g-3 g-lg-5 flex-between-center mb-4">
+          <Row className="g-4 lg:g-8 flex-between-center mb-6">
             <Col xs="auto">
               <h4>Dividends</h4>
               <p className="text-subtle mb-0">Dividend Income Basics</p>
             </Col>
-            <Col xs="auto" className="flex align-items-center gap-2">
+            <Col xs="auto" className="flex items-center gap-2">
               <Form.Select size="sm">
                 <option value="9">9 Years</option>
                 <option value="8">8 Years</option>
@@ -84,14 +84,14 @@ const DividendsTabContent = ({ dividendContent }: DividendsTabContentProps) => {
           <DividendBarChart data={dividendContent.dividendChartData} />
         </Col>
         <Col xxl={6}>
-          <Row className="g-3 g-lg-5 flex-between-center mb-4">
+          <Row className="g-4 lg:g-8 flex-between-center mb-6">
             <Col xs="auto">
               <h4>Dividend Growth</h4>
               <p className="text-subtle mb-0">
                 Boosting Dividend Income
               </p>
             </Col>
-            <Col xs="auto" className="flex align-items-center gap-2">
+            <Col xs="auto" className="flex items-center gap-2">
               <Form.Select size="sm">
                 <option value="7">7 Years</option>
                 <option value="8">8 Years</option>
@@ -110,7 +110,7 @@ const DividendsTabContent = ({ dividendContent }: DividendsTabContentProps) => {
           <DividendGrowthChart data={dividendContent.dividendGrowthChartData} />
         </Col>
       </Row>
-      <Row className="g-3 flex-between-center">
+      <Row className="g-4 flex-between-center">
         <Col xs="auto">
           <h4>Dividend Record</h4>
           <p className="text-subtle mb-0">
@@ -124,7 +124,7 @@ const DividendsTabContent = ({ dividendContent }: DividendsTabContentProps) => {
             <option value="remove">Remove</option>
           </Form.Select>
         </Col>
-        <Col xs={12} className="mt-3">
+        <Col xs={12} className="mt-4">
           <DividendRecordTable
             data={dividendContent.dividendRecordDataTableRow}
           />

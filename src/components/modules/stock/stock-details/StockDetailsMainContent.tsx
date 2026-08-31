@@ -81,13 +81,13 @@ const StockDetailsMainContent = () => {
     <Tab.Container defaultActiveKey="chart">
       <Nav
         variant="underline"
-        className="optionChainTableHeader gap-0 flex-nowrap scrollbar mb-4"
+        className="optionChainTableHeader gap-0 flex-nowrap scrollbar mb-6"
       >
         {stockDetailsTabItems.map(item => (
           <Nav.Item key={item.id} className={classNames(item.navItemClassName)}>
             <Nav.Link
               eventKey={item.id}
-              className={classNames('pt-0 text-nowrap', item.className)}
+              className={classNames('pt-0 whitespace-nowrap', item.className)}
             >
               {item.name}
             </Nav.Link>
@@ -99,7 +99,7 @@ const StockDetailsMainContent = () => {
           <Tab.Pane
             key={item.id}
             eventKey={item.id}
-            className="h-100 relative"
+            className="h-full relative"
           >
             {item.content}
           </Tab.Pane>

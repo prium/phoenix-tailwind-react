@@ -15,18 +15,18 @@ const StockDetails = () => {
   const [openOffcanvas, setOpenOffcanvas] = useState(false);
   return (
     <>
-      <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-3" />
-      <h2 className="mb-4 text-emphasis">Stock Details</h2>
-      <Row className="pb-9 gx-4">
-        <Col xl={7} className="pe-lg-2 flex-1">
+      <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-4" />
+      <h2 className="mb-6 text-emphasis">Stock Details</h2>
+      <Row className="pb-16 gx-6">
+        <Col xl={7} className="lg:pe-2 flex-1">
           <h4>Apple Inc. (AAPL)</h4>
-          <h6 className="font-semibold mb-4">
+          <h6 className="font-semibold mb-6">
             NASDAQ: AAPL · Real-Time Price · USD
           </h6>
           <StockDetailsMainContent />
-          <Row className="g-0 gap-3 flex-between-center mx-n4 mx-lg-n6 mt-4 px-4 py-3 px-lg-6 bg-muted border-y position-sticky bottom-0 z-3 d-xl-none stock-details-footer">
+          <Row className="g-0 gap-4 flex-between-center -mx-6 lg:-mx-10 mt-6 px-6 py-4 lg:px-10 bg-muted border-y sticky bottom-0 z-3 xl:hidden stock-details-footer">
             <Col xs="auto">
-              <div className="flex align-items-center gap-2">
+              <div className="flex items-center gap-2">
                 <h3 className="mb-0 text-default">
                   {currencyFormat(226.51, {
                     minimumFractionDigits: 2,
@@ -52,7 +52,7 @@ const StockDetails = () => {
               <div className="flex flex-wrap gap-2">
                 <Button
                   variant="primary"
-                  className="flex-1 h-100"
+                  className="flex-1 h-full"
                   onClick={() => setOpenOffcanvas(true)}
                 >
                   Buy Share
@@ -67,7 +67,7 @@ const StockDetails = () => {
             </Col>
           </Row>
         </Col>
-        <Col xl={5} className="top-stock-card-container hidden d-xl-block">
+        <Col xl={5} className="top-stock-card-container hidden xl:block">
           <div className="stock-details-sidebar stock-offcanvas-xl">
             <StockDetailsSideBarContent />
           </div>

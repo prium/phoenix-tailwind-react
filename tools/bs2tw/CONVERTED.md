@@ -18,3 +18,4 @@ class names with different meanings (`mb-4` → `mb-6` → `mb-10` …).
   Calendar modals, Feed/Pricing/Social/Profile/Mutual items, FileManager/Basic
   timelines) — see commit "chore: run bs2tw codemod over crm tree".
 - src/components/modules/travel-agency, src/pages/apps/travel-agency, src/pages/dashboard/TravelAgency.tsx, src/data/travel-agency
+- src/components/modules/stock, src/pages/apps/stock, src/pages/dashboard/Stock.tsx, src/data/stock

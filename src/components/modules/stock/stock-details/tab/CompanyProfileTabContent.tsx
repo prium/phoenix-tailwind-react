@@ -20,7 +20,7 @@ const CompanyProfileTabContent = ({
         companyDetails={companyProfileItems.companyDetailsItems}
         stockDetails={companyProfileItems.stockDetailsItems}
       />
-      <Row className="flex-between-center g-3 mb-4">
+      <Row className="flex-between-center g-4 mb-6">
         <Col xs="auto">
           <h4>Chart of Employees</h4>
           <p className="mb-0">No. of bookings fulfilled &amp; cancelled</p>
@@ -38,7 +38,7 @@ const CompanyProfileTabContent = ({
       <CompanyProfileEmployeesChart />
       <Card>
         <Card.Body>
-          <Row className="g-3 flex-between-center mb-3">
+          <Row className="g-4 flex-between-center mb-4">
             <Col xs="auto">
               <h4>Employee Records</h4>
               <p className="mb-0">Record of employee's roles and tenure.</p>

@@ -10,7 +10,7 @@ import StockDetailsPagination from 'components/common/StockDetailsPagination';
 const EventsTabContent = ({ eventLists }: { eventLists: EventLists }) => {
   return (
     <>
-      <Row className="g-3 g-md-5 flex-between-center mb-3">
+      <Row className="g-4 md:g-8 flex-between-center mb-4">
         <Col xs="auto">
           <h4 className="font-black">Upcoming Events</h4>
           <p className="mb-0 text-subtle">
@@ -18,7 +18,7 @@ const EventsTabContent = ({ eventLists }: { eventLists: EventLists }) => {
           </p>
         </Col>
         <Col xs={12} sm="auto">
-          <SearchBox placeholder="Search events" className="w-100" />
+          <SearchBox placeholder="Search events" className="w-full" />
         </Col>
       </Row>
       <div>
@@ -26,27 +26,27 @@ const EventsTabContent = ({ eventLists }: { eventLists: EventLists }) => {
           <UpcomingEventCard key={event.id} upcomingEventItem={event} />
         ))}
       </div>
-      <h4 className="mb-3">Later This Week</h4>
-      <Row className="g-4 mb-4">
+      <h4 className="mb-4">Later This Week</h4>
+      <Row className="g-6 mb-6">
         {eventLists.eventsLaterThisWeek.map(event => (
           <Col xxl={6} key={event.id}>
             <EventsLaterThisWeekCard eventsLaterThisWeek={event} />
           </Col>
         ))}
       </Row>
-      <Row className="g-3 g-lg-5 flex-between-center mb-3">
+      <Row className="g-4 lg:g-8 flex-between-center mb-4">
         <Col xs={6}>
           <h4 className="mb-0">Previous Events</h4>
         </Col>
         <Col xs={6} className="flex flex-end-center">
           <DatePicker
             placeholder="dd/mm/yyyy"
-            className="form-control-sm pe-5"
+            className="form-control-sm pe-8"
             style={{ maxWidth: 180 }}
           />
         </Col>
       </Row>
-      <Row className="g-4 gx-xxl-8 mb-3">
+      <Row className="g-6 2xl:gx-14 mb-4">
         {eventLists.previousEvents.map(event => (
           <Col xs={12} sm={6} key={event.id}>
             <PreviousEventItem previousEvent={event} />

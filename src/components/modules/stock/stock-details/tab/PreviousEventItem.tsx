@@ -28,13 +28,13 @@ const PreviousEventItem = ({
   }, [previousEvent]);
 
   return (
-    <div className={classNames('border-dashed py-4', previousEvent.className)}>
+    <div className={classNames('border-dashed py-10', previousEvent.className)}>
       <h6 className="text-soft text-sm">
         {startDate.format('DD')}, {startDate.format('MMM')}{' '}
         {startDate.format('YY')} - {endDate && endDate.format('DD')},{' '}
         {endDate && endDate.format('MMM')} {endDate && endDate.format('YY')}
       </h6>
-      <div className="flex flex-between-center gap-3 mb-2">
+      <div className="flex flex-between-center gap-4 mb-2">
         <h5 className="mb-0 line-clamp-1">{previousEvent.title}</h5>
         <RevealDropdownTrigger>
           <Dropdown>
@@ -52,11 +52,11 @@ const PreviousEventItem = ({
           </Dropdown>
         </RevealDropdownTrigger>
       </div>
-      <p className="text-sm text-soft mb-3">
+      <p className="text-sm text-soft mb-4">
         {previousEvent.interestedToGoing} people going
       </p>
-      <div className="d-xxl-flex mb-3 align-items-center">
-        <h6 className="text-subtle font-semibold mb-2 mb-xxl-0 border-end-xxl border-end-solid-xxl pe-xxl-3 me-xxl-3 text-nowrap">
+      <div className="2xl:flex mb-4 items-center">
+        <h6 className="text-subtle font-semibold mb-2 2xl:mb-0 2xl:border-e border-end-solid-xxl 2xl:pe-4 2xl:me-4 whitespace-nowrap">
           <FeatherIcon
             icon="clock"
             className="me-2"

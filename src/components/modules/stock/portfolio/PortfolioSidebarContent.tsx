@@ -21,15 +21,15 @@ const PortfolioSidebarContent = ({
   setOpen
 }: PortfolioSidebarContentProps) => {
   return (
-    <Card className="border-0 border-xl">
+    <Card className="border-0 xl:border">
       <Card.Body>
-        <Row className="flex-between-center mb-4">
+        <Row className="flex-between-center mb-6">
           <Col xs="auto" xl={12}>
-            <h4 className="mb-0 text-highlight text-xl-center">
+            <h4 className="mb-0 text-highlight xl:text-center">
               Quote Lookup
             </h4>
           </Col>
-          <Col xs="auto" className="d-xl-none">
+          <Col xs="auto" className="xl:hidden">
             <Button
               variant="link"
               size="sm"
@@ -40,17 +40,17 @@ const PortfolioSidebarContent = ({
             </Button>
           </Col>
         </Row>
-        <SearchBox placeholder="Search symbol" className="w-100 mb-3" />
+        <SearchBox placeholder="Search symbol" className="w-full mb-4" />
         <div className="table-responsive scrollbar overflow-x-hidden">
           <Table className="mb-0">
-            <tbody className="border-top">
+            <tbody className="border-t">
               {sidebarItems.map(item => (
                 <tr key={item.id}>
                   <td
                     className="align-middle whitespace-nowrap"
                     style={{ minWidth: 112 }}
                   >
-                    <p className="mb-0 font-semibold text-uppercase">
+                    <p className="mb-0 font-semibold uppercase">
                       {item.companyAbbr}
                     </p>
                   </td>
@@ -79,7 +79,7 @@ const PortfolioSidebarContent = ({
                     </p>
                   </td>
                   <td
-                    className="align-middle whitespace-nowrap flex align-items-center justify-content-end justify-content-xl-start"
+                    className="align-middle whitespace-nowrap flex items-center justify-end xl:justify-start"
                     style={{ minWidth: 112 }}
                   >
                     {item.chartType === 'inverted' && (

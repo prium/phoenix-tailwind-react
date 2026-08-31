@@ -32,17 +32,17 @@ const EventOffcanvas = ({ open, setOpen }: EventOffcanvasProps) => {
       placement="end"
       fixed
     >
-      <Offcanvas.Header className="gap-4 p-4 align-items-start">
+      <Offcanvas.Header className="gap-6 p-6 items-start">
         <h3 className="mb-0">Stock Market Essentials: Company Fundamentals</h3>
         <Button variant="phoenix-secondary" size="sm" onClick={handleClose}>
           <FontAwesomeIcon icon={faXmark} />
         </Button>
       </Offcanvas.Header>
-      <Offcanvas.Body className="p-4 border-top scrollbar">
-        <img src={OffcanvasImage} alt="" className="img-fluid rounded-2 mb-4" />
-        <Row className="g-2 mb-4">
+      <Offcanvas.Body className="p-6 border-t scrollbar">
+        <img src={OffcanvasImage} alt="" className="img-fluid rounded-md mb-6" />
+        <Row className="g-2 mb-6">
           <Col xs={5}>
-            <Button variant="primary" className="w-100">
+            <Button variant="primary" className="w-full">
               <FontAwesomeIcon icon={faTicket} className="me-2" />
               Get Tickets
             </Button>
@@ -60,12 +60,12 @@ const EventOffcanvas = ({ open, setOpen }: EventOffcanvasProps) => {
             </Button>
           </Col>
         </Row>
-        <Card className="mb-4">
+        <Card className="mb-6">
           <Card.Body>
-            <Row className="g-3">
+            <Row className="g-4">
               <Col lg={6}>
-                <div className="flex gap-2 align-items-center mb-2">
-                  <div className="bg-info-subtle px-2 py-1 rounded">
+                <div className="flex gap-2 items-center mb-2">
+                  <div className="bg-info-subtle px-2 py-1 rounded-md">
                     <UilMapMarker
                       fill='currentColor'
                       size={20}
@@ -80,8 +80,8 @@ const EventOffcanvas = ({ open, setOpen }: EventOffcanvasProps) => {
                 </p>
               </Col>
               <Col lg={6}>
-                <div className="flex gap-2 align-items-center mb-2">
-                  <div className="bg-primary-subtle px-2 py-1 rounded">
+                <div className="flex gap-2 items-center mb-2">
+                  <div className="bg-primary-subtle px-2 py-1 rounded-md">
                     <UilClock
                       fill='currentColor'
                       size={20}
@@ -116,10 +116,10 @@ const EventOffcanvas = ({ open, setOpen }: EventOffcanvasProps) => {
         <UpcomingCollapsibleContainer
           collapseTitle="Speaker"
           id="speaker"
-          className="mt-4"
+          className="mt-6"
         >
           <>
-            <div className="flex align-items-center gap-2">
+            <div className="flex items-center gap-2">
               <Avatar
                 src={Img}
                 size="xl"

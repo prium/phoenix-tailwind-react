@@ -16,20 +16,20 @@ const TopStocks = () => {
 
   return (
     <>
-      <h3 className="mb-4 text-emphasis">Top Stock</h3>
+      <h3 className="mb-6 text-emphasis">Top Stock</h3>
       <Tab.Container
         activeKey={activeKey}
         onSelect={handleSelect}
         mountOnEnter={false}
       >
-        <Row className="gx-5">
-          <Col xl={5} xxl={4} className="mb-4 mb-xl-0 top-stock-card-container">
+        <Row className="gx-8">
+          <Col xl={5} xxl={4} className="mb-6 xl:mb-0 top-stock-card-container">
             <SearchBox
               placeholder="Enter Company or Symbol name"
-              className="w-100 mb-3 pe-xl-3"
+              className="w-full mb-4 xl:pe-4"
             />
             <div className="">
-              <Nav className="text-nowrap gap-3 gap-xl-2 flex-nowrap flex-xl-column top-stock-tab w-100 pe-xl-3 scrollbar">
+              <Nav className="whitespace-nowrap gap-4 xl:gap-2 flex-nowrap xl:flex-col top-stock-tab w-full xl:pe-4 scrollbar">
                 {topStockItems.map(item => (
                   <Nav.Link
                     key={item.id}
@@ -43,7 +43,7 @@ const TopStocks = () => {
               </Nav>
             </div>
           </Col>
-          <Col xl={7} xxl={8} className="flex-1 ps-xl-0">
+          <Col xl={7} xxl={8} className="flex-1 xl:ps-0">
             <Tab.Content>
               {topStockItems.map(item => (
                 <Tab.Pane key={item.id} eventKey={item.abbr.toLowerCase()}>

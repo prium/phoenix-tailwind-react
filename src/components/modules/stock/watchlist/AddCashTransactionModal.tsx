@@ -42,7 +42,7 @@ const AddCashTransactionModal = ({
         </Button>
       </Modal.Header>
       <Modal.Body>
-        <Row className="bg-subtle rounded-3 g-0 gap-3 p-3 flex-between-center mb-4">
+        <Row className="bg-subtle rounded-lg g-0 gap-4 p-4 flex-between-center mb-6">
           <Col xs="auto">
             <p className="font-bold mb-0">Stock Name : Apple Inc</p>
           </Col>
@@ -50,7 +50,7 @@ const AddCashTransactionModal = ({
             <p className="mb-0 font-bold">NASDAQ : AAPL</p>
           </Col>
         </Row>
-        <Row className="g-3">
+        <Row className="g-4">
           <Col sm={6}>
             <label className="font-bold text-highlight mb-2">Type</label>
             <Form.Select>
@@ -65,12 +65,12 @@ const AddCashTransactionModal = ({
               placeholder="dd/mm/yyyy"
               style={{ height: 33.06 }}
               options={{ disableMobile: true }}
-              className="px-5"
+              className="px-8"
               hideIcon={true}
               icon={
                 <FontAwesomeIcon
                   icon={faCalendarAlt}
-                  className="text-default text-md flatpickr-icon translate-middle-y"
+                  className="text-default text-md flatpickr-icon top-1/2 -translate-y-1/2"
                   transform="shrink-1 down-1"
                 />
               }
@@ -116,7 +116,7 @@ const AddCashTransactionModal = ({
               <option value="25%">25%</option>
             </Form.Select>
           </Col>
-          <Col xs={12} className="mb-4">
+          <Col xs={12} className="mb-6">
             <label className="font-bold text-highlight mb-2">Note</label>
             <Form.Control
               type="text"
@@ -125,13 +125,13 @@ const AddCashTransactionModal = ({
               placeholder="Write a note..."
               onChange={handleChange}
             />
-            <span className="text-end text-base lh-sm mt-2 block">
+            <span className="text-end text-base leading-sm mt-2 block">
               <span className="font-semibold text-primary">{note.length}</span>
               <span className="text-soft">/60</span>
             </span>
           </Col>
           <Col xs={12}>
-            <Row className="flex-between-center g-3 border-top border-dashed">
+            <Row className="flex-between-center g-4 border-t border-dashed">
               <Col xs="auto">
                 <h4 className="mb-0">Total Cost:</h4>
               </Col>

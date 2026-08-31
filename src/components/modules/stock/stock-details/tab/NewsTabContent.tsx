@@ -11,13 +11,13 @@ interface NewsTabContentProps {
 
 const NewsTabContent = ({ newsItems }: NewsTabContentProps) => {
   return (
-    <Row className="g-3 g-lg-5 flex-between-center">
+    <Row className="g-4 lg:g-8 flex-between-center">
       <Col xs="auto">
         <h4 className="font-black">Apple Stock News</h4>
         <p className="mb-0">Brief summary of all projects</p>
       </Col>
       <Col xs="auto">
-        <div className="flex align-items-center gap-2">
+        <div className="flex items-center gap-2">
           <Form.Select style={{ maxWidth: 140 }}>
             <option value="all">All News</option>
             <option value="orcl">Orcl News</option>
@@ -26,11 +26,11 @@ const NewsTabContent = ({ newsItems }: NewsTabContentProps) => {
             <option value="buy">Buy News</option>
             <option value="sell">Sell News</option>
           </Form.Select>
-          <SearchBox placeholder="Search news" className="w-100" />
+          <SearchBox placeholder="Search news" className="w-full" />
         </div>
       </Col>
       <Col xs={12}>
-        <div className="d-grid grid-cols-12 gap-4">
+        <div className="grid grid-cols-12 gap-6">
           {newsItems.map(newsItem => (
             <div key={newsItem.id} className={classNames(newsItem.className)}>
               <StockDetailsNewsCard newsItem={newsItem} />

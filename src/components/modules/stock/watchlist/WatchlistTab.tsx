@@ -9,17 +9,17 @@ const WatchlistTab = () => {
       <Tab.Container defaultActiveKey="summary">
         <Nav variant="underline" className="optionChainTableHeader text-md gap-0">
           <Nav.Item>
-            <Nav.Link className="pe-3" eventKey="summary">
+            <Nav.Link className="pe-4" eventKey="summary">
               Summary
             </Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link eventKey="cashTransaction" className="px-3">
+            <Nav.Link eventKey="cashTransaction" className="px-4">
               Cash Transaction
             </Nav.Link>
           </Nav.Item>
           <Nav.Item className="flex-1">
-            <Nav.Link eventKey="emptyTab" className="h-100" disabled></Nav.Link>
+            <Nav.Link eventKey="emptyTab" className="h-full" disabled></Nav.Link>
           </Nav.Item>
         </Nav>
         <Tab.Content className="mt-2">

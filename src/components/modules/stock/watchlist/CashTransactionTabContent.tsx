@@ -11,7 +11,7 @@ const CashTransactionTabContent = () => {
   const [show, setShow] = useState(false);
   return (
     <>
-      <Row className="mt-4 flex-between-center">
+      <Row className="mt-6 flex-between-center">
         <Col xs="auto">
           <h4>Cash Transaction Report</h4>
           <p className="mb-0 text-subtle">

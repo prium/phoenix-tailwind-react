@@ -80,7 +80,7 @@ const TopStockOptionChainTabContent = ({
               <button
                 className={classNames(
                   item.className,
-                  'nav-link w-100 text-nowrap text-center rounded-0'
+                  'nav-link w-full whitespace-nowrap text-center rounded-none'
                 )}
               >
                 <span className="text-base">{item.date} </span>

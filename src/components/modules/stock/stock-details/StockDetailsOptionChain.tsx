@@ -73,7 +73,7 @@ const StockDetailsOptionChain = () => {
               <button
                 className={classNames(
                   item.className,
-                  'nav-link w-100 text-md lh-sm text-center'
+                  'nav-link w-full text-md leading-sm text-center'
                 )}
               >
                 {item.date}
@@ -84,7 +84,7 @@ const StockDetailsOptionChain = () => {
       </Nav>
       <StockDetailsOptionChainTable data={stockDetailOptionChainTableData} />
       <Link to="#!">
-        <Button variant="phoenix-primary" size="sm" className="w-100">
+        <Button variant="phoenix-primary" size="sm" className="w-full">
           View full stock details
           <FontAwesomeIcon icon={faUpRightFromSquare} className="ms-2" />
         </Button>

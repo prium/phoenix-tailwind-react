@@ -10,7 +10,7 @@ import { Col, Form, Row } from 'react-bootstrap';
 const ChartTabContent = () => {
   return (
     <>
-      <Row className="flex-between-center g-3 mb-4">
+      <Row className="flex-between-center g-4 mb-6">
         <Col xs="auto">
           <h4>Share Report</h4>
           <p className="text-subtle mb-0">

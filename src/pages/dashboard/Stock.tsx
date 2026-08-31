@@ -6,12 +6,12 @@ import { dashboardOverViewItems } from 'data/stock/stockDashboard';
 const Stock = () => {
   return (
     <>
-      <h2 className="mb-4 text-emphasis">Stock Dashboard</h2>
+      <h2 className="mb-6 text-emphasis">Stock Dashboard</h2>
       <StockOverViewSlider overviewItems={dashboardOverViewItems} />
-      <div className="mx-n4 mx-lg-n6 mt-4 px-4 px-lg-6 py-5 border-top">
+      <div className="-mx-6 lg:-mx-10 mt-6 px-6 lg:px-10 py-8 border-t">
         <TopStocks />
       </div>
-      <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-soft py-5 border-y mb-7 mb-md-8 mb-lg-9">
+      <div className="-mx-6 px-6 lg:-mx-10 lg:px-10 bg-soft py-8 border-y mb-12 md:mb-14 lg:mb-16">
         <StockDashboardTopList />
       </div>
     </>

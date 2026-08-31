@@ -20,15 +20,15 @@ const StockDetailsSideBarContent = ({
   setOpen
 }: StockDetailsSideBarContentProps) => {
   return (
-    <Card className="border-0 border-xl border-gray-300">
+    <Card className="border-0 xl:border border-gray-300">
       <Card.Body>
-        <Row className="g-0 flex-between-center mb-4">
+        <Row className="g-0 flex-between-center mb-6">
           <Col xs="auto">
             <h4 className="text-highlight font-bold mb-0 text-center">
               Stock Details
             </h4>
           </Col>
-          <Col xs="auto" className="d-xl-none">
+          <Col xs="auto" className="xl:hidden">
             <Button
               variant="link"
               size="sm"
@@ -39,9 +39,9 @@ const StockDetailsSideBarContent = ({
             </Button>
           </Col>
         </Row>
-        <Card className="border text-center bg-default mb-3">
-          <Card.Body className="p-3">
-            <h3 className="mb-2 lh-sm text-default flex align-items-center gap-2 justify-content-center">
+        <Card className="border text-center bg-default mb-4">
+          <Card.Body className="p-4">
+            <h3 className="mb-2 leading-sm text-default flex items-center gap-2 justify-center">
               {currencyFormat(226.51, {
                 minimumFractionDigits: 2
               })}
@@ -57,13 +57,13 @@ const StockDetailsSideBarContent = ({
                 %)
               </Badge>
             </h3>
-            <h6 className="lh-sm text-default mb-2">
+            <h6 className="leading-sm text-default mb-2">
               Real time quote: Sep 24, 2024,{' '}
-              <span className="text-nowrap">1:34 PM</span>
+              <span className="whitespace-nowrap">1:34 PM</span>
             </h6>
-            <Row className="py-3">
-              <Col xs={6} className="border-end">
-                <h6 className="lh-sm text-default">Bid x Size</h6>
+            <Row className="py-4">
+              <Col xs={6} className="border-e">
+                <h6 className="leading-sm text-default">Bid x Size</h6>
                 <h5 className="font-semibold text-default mb-0">
                   {numberFormat(226.51, 'standard', {
                     minimumFractionDigits: 2
@@ -72,7 +72,7 @@ const StockDetailsSideBarContent = ({
                 </h5>
               </Col>
               <Col xs={6}>
-                <h6 className="lh-sm text-default">Ask x Size</h6>
+                <h6 className="leading-sm text-default">Ask x Size</h6>
                 <h5 className="font-semibold text-default mb-0">
                   {numberFormat(226.51, 'standard', {
                     minimumFractionDigits: 2
@@ -85,14 +85,14 @@ const StockDetailsSideBarContent = ({
         </Card>
         <Tab.Container defaultActiveKey="buy">
           <Nav variant="underline text-center gap-0 optionChainTableHeader mb-3">
-            <Nav.Item className="w-50">
+            <Nav.Item className="w-1/2">
               <Nav.Link eventKey="buy">Buy</Nav.Link>
             </Nav.Item>
-            <Nav.Item className="w-50">
+            <Nav.Item className="w-1/2">
               <Nav.Link eventKey="sell">Sell</Nav.Link>
             </Nav.Item>
           </Nav>
-          <Tab.Content className="mb-3">
+          <Tab.Content className="mb-4">
             <Tab.Pane eventKey="buy">
               <StockDetailsBuyAndSellForm title="buy" />
             </Tab.Pane>
@@ -101,17 +101,17 @@ const StockDetailsSideBarContent = ({
             </Tab.Pane>
           </Tab.Content>
         </Tab.Container>
-        <div className="flex flex-between-center border-y py-3 mb-4">
+        <div className="flex flex-between-center border-y py-4 mb-6">
           <h5 className="text-default mb-0">Stock available</h5>
           <Link
             to="#!"
-            className="flex align-items-center gap-2 link-primary font-bold"
+            className="flex items-center gap-2 link link-primary font-bold"
           >
             {numberFormat(32432234, 'standard')}
             <FontAwesomeIcon icon={faUpRightFromSquare} />
           </Link>
         </div>
-        <h5 className="lh-sm text-center font-black">Options Chain</h5>
+        <h5 className="leading-sm text-center font-black">Options Chain</h5>
         <StockDetailsOptionChain />
       </Card.Body>
     </Card>
