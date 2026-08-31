@@ -288,5 +288,10 @@ export const pages: VisualPage[] = [
       '.reports-details-chart-table .badge',
       '.avatar.avatar-sm img'
     ]
+  },
+  {
+    name: 'ta-admin-room-listing',
+    react: '/apps/travel-agency/hotel/admin/room-listing',
+    gold: '/apps/travel-agency/hotel/admin/room-listing.html'
   }
 ];
