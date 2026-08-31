@@ -31,7 +31,7 @@ the leftover-Bootstrap grep is empty for its closure, and this table says so.
 |---|---|---|
 | E-commerce `/` | ✅ | `dashboard-ecommerce` (dark, 768) |
 | Project management `/dashboard/project-management` | ✅ | `dashboard-project-management` (dark, 768, probes) |
-| CRM `/dashboard/crm` | ⬜ | |
+| CRM `/dashboard/crm` | ✅ | `dashboard-crm` (dark, 768) |
 | Stock `/dashboard/stock` | ⬜ | |
 | Travel agency `/dashboard/travel-agency` | ⬜ | |
 
@@ -43,7 +43,7 @@ the leftover-Bootstrap grep is empty for its closure, and this table says so.
 | Project management (6 pages) | ✅ | `pm-*` + dashboard (7 entries) |
 | Chat | 🚧 | components codemodded early; not verified, not in pages.ts |
 | Calendar | ⬜ | |
-| CRM app pages | ⬜ | |
+| CRM app pages (8) | ✅ | `crm-*` (8 entries: analytics, deals, deal-details, leads, lead-details, add-contact, reports, report-details) |
 | Email | ⬜ | needs EmailLayout |
 | Events | ⬜ | |
 | File manager | ⬜ | needs FileManagerLayout |
