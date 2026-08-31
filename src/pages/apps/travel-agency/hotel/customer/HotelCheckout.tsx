@@ -1,182 +1,176 @@
-import React from 'react';
 import { Link } from 'react-router';
 import TravelFooter from 'components/footers/TravelFooter';
 import PageBreadcrumb from 'components/common/PageBreadcrumb';
 import { defaultBreadcrumbItems } from 'data/commonData';
-import { Container, Row, Col, Form } from 'react-bootstrap';
+import { Col, Row } from '@hummingbirdui/react';
 import HotelDetailsSummaryCard from 'components/cards/HotelDetailsSummaryCard';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronRight, faCircle } from '@fortawesome/free-solid-svg-icons';
-import Button from 'components/base/Button';
 import ResizableNavbar from 'components/navbars/travel-agency/ResizableNavbar';
 import { hotelNavItems } from 'data/travel-agency/resizableNav';
 
+interface InlineRadioProps {
+  id: string;
+  name: string;
+  value: string;
+  label: string;
+  defaultChecked?: boolean;
+  className?: string;
+}
+
+const InlineRadio = ({
+  id,
+  name,
+  value,
+  label,
+  defaultChecked,
+  className
+}: InlineRadioProps) => (
+  <div className={className ?? 'form-check-inline'}>
+    <input
+      className="form-check-input"
+      id={id}
+      type="radio"
+      name={name}
+      value={value}
+      defaultChecked={defaultChecked}
+    />
+    <label className="form-check-label" htmlFor={id}>
+      {label}
+    </label>
+  </div>
+);
+
+interface StayCheckboxProps {
+  id: string;
+  label: string;
+  helper: string;
+  className?: string;
+}
+
+const StayCheckbox = ({ id, label, helper, className }: StayCheckboxProps) => (
+  <div className={className ?? 'form-check items-start'}>
+    <input className="form-check-input mt-1" id={id} type="checkbox" />
+    <label
+      className="form-check-label font-normal text-base text-default"
+      htmlFor={id}
+    >
+      {label}
+      <span className="block text-md text-subtle">{helper}</span>
+    </label>
+  </div>
+);
+
+interface LabeledInputProps {
+  id: string;
+  label: string;
+  type?: string;
+}
+
+const LabeledInput = ({ id, label, type = 'text' }: LabeledInputProps) => (
+  <>
+    <label htmlFor={id} className="font-bold text-highlight mb-1">
+      {label}
+    </label>
+    <input className="form-control" type={type} id={id} placeholder={label} />
+  </>
+);
+
+/** apps/travel-agency/hotel/customer/checkout.pug */
 const HotelCheckout = () => {
   return (
     <>
       <ResizableNavbar navItems={hotelNavItems} />
       <section className="pt-10 pb-16">
-        <Container fluid="medium">
+        <div className="container-medium">
           <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-4" />
           <h2 className="mb-8">Check out</h2>
           <Row className="justify-between">
             <Col lg={7} xl={6}>
-              <Form id="checkoutForm1" onSubmit={e => e.preventDefault()}>
+              <form id="checkoutForm1" onSubmit={e => e.preventDefault()}>
                 <hr className="mt-0 mb-12" />
                 <h3 className="font-bold mb-8">Enter your details</h3>
-                <h5 className="mb-4">Are you travelling for work?</h5>
-                <Form.Check
-                  id="tripTypeRadio"
+                <h5 className="mb-5">Are you travelling for work?</h5>
+                <InlineRadio
+                  id="no"
+                  name="tripTypeRadio"
+                  value="no"
+                  label="No"
+                  defaultChecked
                   className="form-check-inline me-6"
-                >
-                  <Form.Check.Input
-                    type="radio"
-                    name="tripTypeRadio"
-                    value="no"
-                    defaultChecked
-                  />
-                  <Form.Check.Label htmlFor="tripTypeRadio">
-                    No
-                  </Form.Check.Label>
-                </Form.Check>
-                <Form.Check id="tripTypeRadio" className="form-check-inline">
-                  <Form.Check.Input
-                    type="radio"
-                    name="tripTypeRadio"
-                    value="yes"
-                  />
-                  <Form.Check.Label htmlFor="tripTypeRadio">
-                    Yes
-                  </Form.Check.Label>
-                </Form.Check>
+                />{' '}
+                <InlineRadio
+                  id="yes"
+                  name="tripTypeRadio"
+                  value="yes"
+                  label="Yes"
+                />
                 <Row className="g-4 mb-8 mt-1">
                   <Col sm={6}>
-                    <label
-                      htmlFor="first-name"
-                      className="font-bold text-highlight mb-1"
-                    >
-                      First name
-                    </label>
-                    <Form.Control
-                      type="text"
-                      id="first-name"
-                      placeholder="First name"
-                    />
+                    <LabeledInput id="first-name" label="First name" />
                   </Col>
                   <Col sm={6}>
-                    <label
-                      htmlFor="last-name"
-                      className="font-bold text-highlight mb-1"
-                    >
-                      Last name
-                    </label>
-                    <Form.Control
-                      type="text"
-                      id="last-name"
-                      placeholder="Last name"
-                    />
+                    <LabeledInput id="last-name" label="Last name" />
                   </Col>
                 </Row>
                 <Row className="g-4">
                   <Col sm={6}>
-                    <label
-                      htmlFor="email-address"
-                      className="font-bold text-highlight mb-1"
-                    >
-                      Email address
-                    </label>
-                    <Form.Control
-                      type="email"
+                    <LabeledInput
                       id="email-address"
-                      placeholder="Email address"
+                      label="Email address"
+                      type="email"
                     />
                   </Col>
                   <Col sm={6}>
-                    <label
-                      htmlFor="confirm-email-address"
-                      className="font-bold text-highlight mb-1"
-                    >
-                      Confirm email address
-                    </label>
-                    <Form.Control
-                      type="text"
+                    <LabeledInput
                       id="confirm-email-address"
-                      placeholder="Confirm email address "
+                      label="Confirm email address"
+                      type="email"
                     />
                   </Col>
                 </Row>
-                <h5 className="mb-4 mt-12">Who are you booking for?</h5>
-                <Form.Check
-                  id="bookingPersonRadio"
+                <h5 className="mb-5 mt-12">Who are you booking for?</h5>
+                <InlineRadio
+                  id="me"
+                  name="bookingPersonRadio"
+                  value="no"
+                  label="I am the main guest"
+                  defaultChecked
                   className="form-check-inline me-6"
-                >
-                  <Form.Check.Input
-                    type="radio"
-                    name="bookingPersonRadio"
-                    id="me"
-                    value="no"
-                    defaultChecked
-                  />
-                  <Form.Check.Label htmlFor="me">
-                    I am the main guest
-                  </Form.Check.Label>
-                </Form.Check>
-                <Form.Check
-                  id="bookingPersonRadio"
-                  className="form-check-inline"
-                >
-                  <Form.Check.Input
-                    type="radio"
-                    name="bookingPersonRadio"
-                    value="yes"
-                    id="else"
-                  />
-                  <Form.Check.Label htmlFor="else">
-                    I am booking for somebody else
-                  </Form.Check.Label>
-                </Form.Check>
+                />{' '}
+                <InlineRadio
+                  id="else"
+                  name="bookingPersonRadio"
+                  value="yes"
+                  label="I am booking for somebody else"
+                />
                 <h5 className="mb-4 mt-10">Add to your stay</h5>
-                <Form.Check className="mb-6">
-                  <Form.Check.Input type="checkbox" id="airportShuttle" />
-                  <Form.Check.Label
-                    htmlFor="airportShuttle"
-                    className="font-normal text-base text-default"
-                  >
-                    I am interested in requesting an airport shuttle
-                    <span className="block text-md text-subtle">
-                      We'll tell your accommodation what you're interested in so
-                      they can provide details and costs.
-                    </span>
-                  </Form.Check.Label>
-                </Form.Check>
-                <Form.Check>
-                  <Form.Check.Input type="checkbox" id="rentingCar" />
-                  <Form.Check.Label
-                    htmlFor="rentingCar"
-                    className="font-normal text-base text-default"
-                  >
-                    I'm interested in renting a car
-                    <span className="block text-md text-subtle">
-                      Make the most of your trip and check the car rental
-                      options in your booking confirmation.
-                    </span>
-                  </Form.Check.Label>
-                </Form.Check>
+                <StayCheckbox
+                  id="airportShuttle"
+                  label="I am interested in requesting an airport shuttle"
+                  helper="We'll tell your accommodation what you're interested in so they can provide details and costs."
+                  className="form-check items-start mb-6"
+                />
+                <StayCheckbox
+                  id="rentingCar"
+                  label="I'm interested in renting a car"
+                  helper="Make the most of your trip and check the car rental options in your booking confirmation."
+                />
                 <h5 className="mb-4 mt-10">Your arrival time</h5>
                 <Row className="gx-2">
                   <Col xs={6} sm={3}>
-                    <Form.Select role="select-box">
+                    <select className="form-select" defaultValue="1">
                       <option value="1">12:00</option>
                       <option value="2">03:00</option>
                       <option value="3">06:00</option>
                       <option value="4">09:00</option>
-                    </Form.Select>
+                    </select>
                   </Col>
                   <Col xs={6} sm={3}>
-                    <Form.Select role="select-box">
+                    <select className="form-select" defaultValue="am">
                       <option value="am">AM</option>
                       <option value="pm">PM</option>
-                    </Form.Select>
+                    </select>
                   </Col>
                 </Row>
                 <h5 className="mb-4 mt-12">Review house rules</h5>
@@ -210,29 +204,26 @@ const HotelCheckout = () => {
                   do its best to meet your needs. You can always make a special
                   request after your booking is complete!
                 </p>
-                <Form.Control
-                  as="textarea"
+                <textarea
+                  className="form-control"
                   name="requestText"
                   rows={5}
                   id="requestText"
                   placeholder="Type your request"
                 />
                 <hr className="mt-12 mb-8" />
-                <Link to="/apps/travel-agency/hotel/customer/payment">
-                  <Button
-                    variant="primary"
-                    endIcon={
-                      <FontAwesomeIcon
-                        icon={faChevronRight}
-                        className="ms-2"
-                        transform="shrink-3"
-                      />
-                    }
-                  >
-                    Final details
-                  </Button>
+                <Link
+                  to="/apps/travel-agency/hotel/customer/payment"
+                  className="btn btn-primary"
+                >
+                  Final details
+                  <FontAwesomeIcon
+                    icon={faChevronRight}
+                    className="ms-2"
+                    transform="shrink-3"
+                  />
                 </Link>
-              </Form>
+              </form>
             </Col>
             <Col lg={5} xl={4}>
               <HotelDetailsSummaryCard
@@ -241,7 +232,7 @@ const HotelCheckout = () => {
               />
             </Col>
           </Row>
-        </Container>
+        </div>
       </section>
       <TravelFooter />
     </>
