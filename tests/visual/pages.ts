@@ -322,7 +322,10 @@ export const pages: VisualPage[] = [
   {
     name: 'ta-landing',
     react: '/apps/travel-agency/landing',
-    gold: '/apps/travel-agency/landing.html'
+    gold: '/apps/travel-agency/landing.html',
+    // typed.js hero word is mid-animation at capture time on both sides
+    mask: ['.typed-text'],
+    probes: ['.swiper-nav .swiper-button-next', '.isotope-nav.active']
   },
   {
     name: 'ta-flight-homepage',
