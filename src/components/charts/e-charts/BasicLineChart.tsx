@@ -1,14 +1,15 @@
-import React, { CSSProperties } from 'react';
+import { CSSProperties } from 'react';
 import ReactEChartsCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
 import { rgbaColor } from 'helpers/utils';
 import dayjs from 'dayjs';
 import { useAppContext } from 'providers/AppProvider';
-import { TooltipComponent } from 'echarts/components';
-import { BarChart } from 'echarts/charts';
+import { GridComponent, TooltipComponent } from 'echarts/components';
+import { CanvasRenderer } from 'echarts/renderers';
+import { LineChart } from 'echarts/charts';
 import { tooltipFormatterList } from 'helpers/echart-utils';
 
-echarts.use([TooltipComponent, BarChart]);
+echarts.use([TooltipComponent, GridComponent, LineChart, CanvasRenderer]);
 
 const getDefaultOptions = (
   getThemeColor: (name: string) => string,
@@ -123,11 +124,13 @@ const getDefaultOptions = (
 const BasicLineChart = ({
   style,
   dates,
-  data
+  data,
+  className
 }: {
   data: number[];
   dates: Date[];
-  style: CSSProperties;
+  style?: CSSProperties;
+  className?: string;
 }) => {
   const { getThemeColor } = useAppContext();
 
@@ -135,6 +138,7 @@ const BasicLineChart = ({
     <ReactEChartsCore
       echarts={echarts}
       option={getDefaultOptions(getThemeColor, data, dates)}
+      className={className}
       style={style}
     />
   );

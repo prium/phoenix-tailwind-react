@@ -3,9 +3,11 @@ import ReactEChartsCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
 import { useAppContext } from 'providers/AppProvider';
 import { TooltipComponent } from 'echarts/components';
+import { PieChart } from 'echarts/charts';
+import { CanvasRenderer } from 'echarts/renderers';
 import { contactSourceData } from 'data/crm/dashboardData';
 
-echarts.use([TooltipComponent]);
+echarts.use([TooltipComponent, PieChart, CanvasRenderer]);
 
 const getDefaultOptions = (
   getThemeColor: (name: string) => string,
@@ -15,12 +17,21 @@ const getDefaultOptions = (
     getThemeColor('color-primary'),
     getThemeColor('color-success'),
     getThemeColor('color-info'),
-    !isDark ? getThemeColor('color-info-light') : getThemeColor('color-info-dark'),
-    !isDark ? getThemeColor('color-danger-lighter') : getThemeColor('color-danger-darker'),
-    !isDark ? getThemeColor('color-warning-light') : getThemeColor('color-warning-dark')
+    getThemeColor('color-info-light'),
+    !isDark
+      ? getThemeColor('color-danger-lighter')
+      : getThemeColor('color-danger-darker'),
+    !isDark
+      ? getThemeColor('color-warning-light')
+      : getThemeColor('color-warning-dark')
   ],
   tooltip: {
     trigger: 'item',
+    backgroundColor: getThemeColor('background-color-default'),
+    borderColor: getThemeColor('background-color-muted'),
+    textStyle: {
+      color: getThemeColor('text-color-subtle')
+    },
     borderWidth: 0
   },
   responsive: true,
@@ -61,7 +72,13 @@ const getDefaultOptions = (
   }
 });
 
-const ContactsBySourceChart = ({ style }: { style: CSSProperties }) => {
+const ContactsBySourceChart = ({
+  className,
+  style
+}: {
+  className?: string;
+  style?: CSSProperties;
+}) => {
   const {
     getThemeColor,
     config: { isDark }
@@ -71,6 +88,7 @@ const ContactsBySourceChart = ({ style }: { style: CSSProperties }) => {
     <ReactEChartsCore
       echarts={echarts}
       option={getDefaultOptions(getThemeColor, isDark)}
+      className={className}
       style={style}
     />
   );

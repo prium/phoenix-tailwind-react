@@ -2,18 +2,22 @@ import { CSSProperties } from 'react';
 import ReactEChartsCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
 import { useAppContext } from 'providers/AppProvider';
-import { TooltipComponent } from 'echarts/components';
+import { GridComponent, TooltipComponent } from 'echarts/components';
+import { CanvasRenderer } from 'echarts/renderers';
 import { BarChart } from 'echarts/charts';
 import { CallbackDataParams } from 'echarts/types/dist/shared';
 import { tooltipFormatterDefault } from 'helpers/echart-utils';
 
-echarts.use([TooltipComponent, BarChart]);
+echarts.use([TooltipComponent, GridComponent, BarChart, CanvasRenderer]);
 
 const data1 = [42000, 35000, 35000, 40000];
 const data2 = [30644, 33644, 28644, 38644];
 
 const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
-  color: [getThemeColor('color-primary'), getThemeColor('background-color-highlight')],
+  color: [
+    getThemeColor('color-primary'),
+    getThemeColor('background-color-highlight')
+  ],
   tooltip: {
     trigger: 'axis',
     padding: [7, 10],
@@ -107,7 +111,8 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
         fontWeight: 700,
         fontFamily: 'Nunito Sans',
         fontSize: 12.8,
-        formatter: (value: CallbackDataParams) => `$${value.value && value.value.toLocaleString()}`
+        formatter: (value: CallbackDataParams) =>
+          `$${value.value && value.value.toLocaleString()}`
       },
       backgroundStyle: {
         color: getThemeColor('background-color-subtle')
@@ -132,13 +137,20 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
   animation: false
 });
 
-const RevenueTargetChart = ({ style }: { style: CSSProperties }) => {
+const RevenueTargetChart = ({
+  className,
+  style
+}: {
+  className?: string;
+  style?: CSSProperties;
+}) => {
   const { getThemeColor } = useAppContext();
 
   return (
     <ReactEChartsCore
       echarts={echarts}
       option={getDefaultOptions(getThemeColor)}
+      className={className}
       style={style}
     />
   );

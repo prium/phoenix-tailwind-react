@@ -1,16 +1,17 @@
+import { Card } from '@hummingbirdui/react';
 import RevenueTargetChart from 'components/charts/e-charts/RevenueTargetChart';
-import React from 'react';
-import { Card } from 'react-bootstrap';
 
+/** `+RevenueTarget` in mixins/dashboard/CRM/Crm.pug */
 const RevenueTarget = () => {
   return (
-    <Card className="h-100">
+    <Card className="h-full">
       <Card.Body>
         <h3>Revenue Target</h3>
-        <p className="text-subtle mb-0">
-          Country-wise target fulfilment
-        </p>
-        <RevenueTargetChart style={{ height: 250, width: '100%' }} />
+        <p className="text-subtle">Country-wise target fulfilment</p>
+        <RevenueTargetChart
+          className="min-h-57.5"
+          style={{ height: 'auto', width: '100%' }}
+        />
       </Card.Body>
     </Card>
   );

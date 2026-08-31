@@ -4,12 +4,13 @@ import * as echarts from 'echarts/core';
 import { getPastDates } from 'helpers/utils';
 import dayjs from 'dayjs';
 import { useAppContext } from 'providers/AppProvider';
-import { TooltipComponent } from 'echarts/components';
-import { BarChart } from 'echarts/charts';
+import { GridComponent, TooltipComponent } from 'echarts/components';
+import { CanvasRenderer } from 'echarts/renderers';
+import { LineChart } from 'echarts/charts';
 import { tooltipFormatterList } from 'helpers/echart-utils';
 import { ThemeVariant } from 'config';
 
-echarts.use([TooltipComponent, BarChart]);
+echarts.use([TooltipComponent, GridComponent, LineChart, CanvasRenderer]);
 
 const dates = getPastDates(11);
 const currentMonthData = [
@@ -170,7 +171,13 @@ const getDefaultOptions = (
   animation: false
 });
 
-const AdClicksChart = ({ style }: { style: CSSProperties }) => {
+const AdClicksChart = ({
+  className,
+  style
+}: {
+  className?: string;
+  style?: CSSProperties;
+}) => {
   const {
     config: { theme },
     getThemeColor
@@ -180,6 +187,7 @@ const AdClicksChart = ({ style }: { style: CSSProperties }) => {
     <ReactEChartsCore
       echarts={echarts}
       option={getDefaultOptions(getThemeColor, theme)}
+      className={className}
       style={style}
     />
   );

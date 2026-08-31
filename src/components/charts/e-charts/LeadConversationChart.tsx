@@ -3,11 +3,12 @@ import ReactEChartsCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
 import { getPastDates } from 'helpers/utils';
 import { useAppContext } from 'providers/AppProvider';
-import { TooltipComponent } from 'echarts/components';
+import { GridComponent, TooltipComponent } from 'echarts/components';
+import { CanvasRenderer } from 'echarts/renderers';
 import { BarChart } from 'echarts/charts';
 import { tooltipFormatterList } from 'helpers/echart-utils';
 
-echarts.use([TooltipComponent, BarChart]);
+echarts.use([TooltipComponent, GridComponent, BarChart, CanvasRenderer]);
 
 const dates = getPastDates(4);
 
@@ -15,7 +16,10 @@ const getDefaultOptions = (
   getThemeColor: (name: string) => string,
   isDark: boolean
 ) => ({
-  color: [getThemeColor('color-primary'), getThemeColor('background-color-highlight')],
+  color: [
+    getThemeColor('color-primary'),
+    getThemeColor('background-color-highlight')
+  ],
   tooltip: {
     trigger: 'axis',
     padding: [7, 10],
@@ -274,7 +278,13 @@ const getDefaultOptions = (
   animation: false
 });
 
-const LeadConversationChart = ({ style }: { style: CSSProperties }) => {
+const LeadConversationChart = ({
+  className,
+  style
+}: {
+  className?: string;
+  style?: CSSProperties;
+}) => {
   const {
     getThemeColor,
     config: { isDark }
@@ -284,6 +294,7 @@ const LeadConversationChart = ({ style }: { style: CSSProperties }) => {
     <ReactEChartsCore
       echarts={echarts}
       option={getDefaultOptions(getThemeColor, isDark)}
+      className={className}
       style={style}
     />
   );

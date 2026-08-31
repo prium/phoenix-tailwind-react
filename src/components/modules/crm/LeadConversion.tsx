@@ -1,16 +1,17 @@
+import { Card } from '@hummingbirdui/react';
 import LeadConversationChart from 'components/charts/e-charts/LeadConversationChart';
-import React from 'react';
-import { Card } from 'react-bootstrap';
 
+/** `+LeadConversion` in mixins/dashboard/CRM/Crm.pug */
 const LeadConversion = () => {
   return (
-    <Card className="h-100">
+    <Card className="h-full">
       <Card.Body>
         <h3>Lead Conversion</h3>
-        <p className="text-subtle mb-0">
-          Stages of deals &amp; conversion
-        </p>
-        <LeadConversationChart style={{ height: 250, width: '100%' }} />
+        <p className="text-subtle mb-0">Stages of deals &amp; conversion</p>
+        <LeadConversationChart
+          className="min-h-62.5"
+          style={{ height: 'auto', width: '100%' }}
+        />
       </Card.Body>
     </Card>
   );

@@ -1,6 +1,7 @@
+import { Col, Row, Select } from '@hummingbirdui/react';
 import AdClicksChart from 'components/charts/e-charts/AdClicksChart';
-import { Col, Form, Row } from 'react-bootstrap';
 
+/** "Ad Clicks" section in dashboard/crm.pug */
 const AdClicks = () => {
   return (
     <div>
@@ -12,14 +13,17 @@ const AdClicks = () => {
           </p>
         </Col>
         <Col xs={12} sm={4}>
-          <Form.Select size="sm">
-            <option value="mar">Mar 1 - 31, 2023</option>
-            <option value="apr">April 1 - 30, 2023</option>
-            <option value="may">May 1 - 31, 2023</option>
-          </Form.Select>
+          <Select size="sm" id="select-ad-clicks-month">
+            <option>Mar 1 - 31, 2022</option>
+            <option>April 1 - 30, 2022</option>
+            <option>May 1 - 31, 2022</option>
+          </Select>
         </Col>
       </Row>
-      <AdClicksChart style={{ height: '385px', width: '100%' }} />
+      <AdClicksChart
+        className="min-h-96.25 w-full"
+        style={{ height: 'auto', width: '100%' }}
+      />
     </div>
   );
 };

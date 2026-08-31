@@ -1,15 +1,16 @@
-import React, { CSSProperties } from 'react';
+import { CSSProperties } from 'react';
 import ReactEChartsCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
 import { getPastDates } from 'helpers/utils';
 import dayjs from 'dayjs';
 import { useAppContext } from 'providers/AppProvider';
-import { TooltipComponent } from 'echarts/components';
+import { GridComponent, TooltipComponent } from 'echarts/components';
+import { CanvasRenderer } from 'echarts/renderers';
 import { BarChart } from 'echarts/charts';
 import { CallbackDataParams } from 'echarts/types/dist/shared';
 import { tooltipFormatterDefault } from 'helpers/echart-utils';
 
-echarts.use([TooltipComponent, BarChart]);
+echarts.use([TooltipComponent, GridComponent, BarChart, CanvasRenderer]);
 
 const dates = getPastDates(9);
 
@@ -18,7 +19,10 @@ const data1 = [24, 14, 30, 24, 32, 32, 18, 12, 32];
 const data2 = [36, 28, 36, 39, 54, 38, 22, 34, 52];
 
 const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
-  color: [getThemeColor('color-primary'), getThemeColor('background-color-highlight')],
+  color: [
+    getThemeColor('color-primary'),
+    getThemeColor('background-color-highlight')
+  ],
   tooltip: {
     trigger: 'axis',
     padding: [7, 10],
@@ -140,13 +144,20 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
   animation: false
 });
 
-const ContactsCreatedChart = ({ style }: { style: CSSProperties }) => {
+const ContactsCreatedChart = ({
+  className,
+  style
+}: {
+  className?: string;
+  style?: CSSProperties;
+}) => {
   const { getThemeColor } = useAppContext();
 
   return (
     <ReactEChartsCore
       echarts={echarts}
       option={getDefaultOptions(getThemeColor)}
+      className={className}
       style={style}
     />
   );
