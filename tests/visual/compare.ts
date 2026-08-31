@@ -7,7 +7,7 @@ import path from 'node:path';
 export const REACT = process.env.VISUAL_REACT_URL ?? 'http://localhost:5077';
 export const GOLD = process.env.VISUAL_GOLD_URL ?? 'http://localhost:5088';
 /** Fraction of differing pixels tolerated (0.01 = 1%). */
-export const DEFAULT_TOLERANCE = Number(process.env.VISUAL_TOLERANCE ?? 0.01);
+export const DEFAULT_TOLERANCE = Number(process.env.VISUAL_TOLERANCE ?? 0.005);
 /** Per-pixel colour sensitivity for pixelmatch (0 strict … 1 lax). */
 const PIXEL_THRESHOLD = Number(process.env.VISUAL_PIXEL_THRESHOLD ?? 0.15);
 

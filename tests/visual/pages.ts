@@ -3,9 +3,10 @@
  * phoenix-tailwind HTML (relative to ../phoenix-tailwind/public).
  * Add a line here for every page you migrate.
  *
- * Tolerances above the 1% default are DATA-ONLY deltas (demo content differs
- * between the React app and the gold pug) and are commented per page. Lower a
- * page's tolerance again once its demo data is aligned.
+ * Tolerances above the 0.5% default are DATA-ONLY deltas (demo content differs
+ * between the React app and the gold pug) and are commented per page with the
+ * audited value. Prefer aligning the demo data (data/*, gold row order) over
+ * raising a tolerance; audit exact values with VISUAL_TOLERANCE=0.0001.
  */
 export interface VisualPage {
   name: string;
@@ -80,6 +81,8 @@ export const pages: VisualPage[] = [
     gold: '/dashboard/project-management.html',
     dark: true,
     widths: [768],
+    tolerance: 0.0075, // ~0.45%: demo dates/progress numbers differ per row
+
     probes: [
       '.flatpickr-input-container .flatpickr-icon',
       '.flatpickr-input-container .form-control'
@@ -129,10 +132,12 @@ export const pages: VisualPage[] = [
     '/landing/products-filter.html',
     { tolerance: 0.04 }
   ),
+  // ~0.5%: demo store names/stats differ
   p(
     'ec-favorite-stores',
     '/customer/favorite-stores',
-    '/landing/favourite-stores.html'
+    '/landing/favourite-stores.html',
+    { tolerance: 0.0075 }
   ),
   p('ec-cart', '/customer/cart', '/landing/cart.html'),
   p('ec-checkout', '/customer/checkout', '/landing/checkout.html'),
@@ -141,7 +146,10 @@ export const pages: VisualPage[] = [
     '/customer/shipping-info',
     '/landing/shipping-info.html'
   ),
-  p('ec-profile', '/customer/profile', '/landing/profile.html'),
+  // ~0.9%: demo orders/wishlist rows differ
+  p('ec-profile', '/customer/profile', '/landing/profile.html', {
+    tolerance: 0.01
+  }),
   p(
     'ec-product-details',
     '/customer/product-details',
@@ -153,16 +161,23 @@ export const pages: VisualPage[] = [
     '/customer/order-tracking',
     '/landing/order-tracking.html',
     {
-      mask: ['.mapbox-container', '.mapboxgl-map']
+      mask: ['.mapbox-container', '.mapboxgl-map'],
+      tolerance: 0.01 // 0.4-1.0% run-to-run: mapbox area renders nondeterministically
     }
   ),
-  p('ec-wishlist', '/customer/wishlist', '/landing/wishlist.html'),
+  // ~0.7%: demo wishlist products differ
+  p('ec-wishlist', '/customer/wishlist', '/landing/wishlist.html', {
+    tolerance: 0.01
+  }),
 
   // admin
   p('ec-admin-products', '/admin/products', '/admin/products.html'),
   p('ec-admin-customers', '/admin/customers', '/admin/customers.html'),
   p('ec-admin-orders', '/admin/orders', '/admin/orders.html'),
-  p('ec-admin-add-product', '/admin/add-product', '/admin/add-product.html'),
+  // ~0.55%: editor/select demo content differs
+  p('ec-admin-add-product', '/admin/add-product', '/admin/add-product.html', {
+    tolerance: 0.0075
+  }),
   // data-only: different demo products / row count
   p(
     'ec-admin-order-details',
@@ -193,7 +208,7 @@ export const pages: VisualPage[] = [
     name: 'pm-list-view',
     react: '/apps/project-management/project-list-view',
     gold: '/apps/project-management/project-list-view.html',
-    tolerance: 0.02
+    tolerance: 0.015
   },
   // data-only: demo project names/dates/budgets differ and React has 7 demo
   // projects vs the gold 6 (one extra card in row 2); assignee counts in
