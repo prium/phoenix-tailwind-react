@@ -293,5 +293,15 @@ export const pages: VisualPage[] = [
     name: 'ta-admin-room-listing',
     react: '/apps/travel-agency/hotel/admin/room-listing',
     gold: '/apps/travel-agency/hotel/admin/room-listing.html'
+  },
+  {
+    name: 'ta-hotel-homepage',
+    react: '/apps/travel-agency/hotel/customer/homepage',
+    gold: '/apps/travel-agency/hotel/customer/homepage.html'
+  },
+  {
+    name: 'ta-trip-homepage',
+    react: '/apps/travel-agency/trip/homepage',
+    gold: '/apps/travel-agency/trip/homepage.html'
   }
 ];

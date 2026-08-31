@@ -1,5 +1,6 @@
-import React, { Dispatch, SetStateAction } from 'react';
-import { Offcanvas } from 'react-bootstrap';
+import { Dispatch, SetStateAction } from 'react';
+import { Drawer } from '@hummingbirdui/react';
+import Button from 'components/base/Button';
 import HomepageFilterOffcanvasContent from './HomepageFilterOffcanvasContent';
 
 interface HomepageFilterOffcanvasProps {
@@ -7,25 +8,38 @@ interface HomepageFilterOffcanvasProps {
   setIsOpen: Dispatch<SetStateAction<boolean>>;
 }
 
+/** `+HotelFilterOffcanvas` in mixins/travel-agency/hotel/HotelFilterOffcanvas.pug */
 const HomepageFilterOffcanvas = ({
   isOpen,
-  setIsOpen,
-  ...props
+  setIsOpen
 }: HomepageFilterOffcanvasProps) => {
   return (
-    <Offcanvas
-      show={isOpen}
-      onHide={() => setIsOpen(false)}
-      placement="end"
-      {...props}
-    >
-      <Offcanvas.Header className="p-6 bg-subtle" closeButton>
-        <h5 className="mb-0 text-highlight">Filter</h5>
-      </Offcanvas.Header>
-      <Offcanvas.Body className="scrollbar p-6">
-        <HomepageFilterOffcanvasContent />
-      </Offcanvas.Body>
-    </Offcanvas>
+    <Drawer direction="right" open={isOpen} onOpenChange={setIsOpen}>
+      <Drawer.Content aria-describedby={undefined}>
+        <Drawer.Header className="p-6 bg-subtle">
+          <Drawer.Title asChild>
+            <h5 className="mb-0 text-highlight">Filter</h5>
+          </Drawer.Title>
+          <button
+            type="button"
+            className="btn btn-close"
+            aria-label="Close"
+            onClick={() => setIsOpen(false)}
+          />
+        </Drawer.Header>
+        <Drawer.Body className="scrollbar p-6">
+          <HomepageFilterOffcanvasContent />
+        </Drawer.Body>
+        <div className="p-6 border-t border-subtle flex gap-2">
+          <Button variant="phoenix-primary" size="lg">
+            Reset
+          </Button>
+          <Button variant="primary" size="lg" className="flex-1">
+            Show 445 items
+          </Button>
+        </div>
+      </Drawer.Content>
+    </Drawer>
   );
 };
 

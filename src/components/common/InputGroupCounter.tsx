@@ -1,9 +1,8 @@
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
+import { cn } from '@hummingbirdui/react';
 import Button from 'components/base/Button';
-import React, { useState } from 'react';
-import { Form, InputGroup } from 'react-bootstrap';
+import { useState } from 'react';
 
 interface InputGroupCounterProps {
   id?: string;
@@ -12,44 +11,44 @@ interface InputGroupCounterProps {
   iconClasses?: string;
 }
 
+/** `div(data-quantity).input-group` counter used across the travel-agency gold pages */
 const InputGroupCounter = ({
   id,
   inputGap = 'gap-1',
-  buttonClasses = 'px-2 rounded',
+  buttonClasses = 'px-2 rounded-md',
   iconClasses = 'px-1'
 }: InputGroupCounterProps) => {
   const [value, setValue] = useState(2);
 
   const handleCount = (type: string) => {
-    type === 'increase' && setValue(value + 1);
-    type === 'decrease' && value >= 1 && setValue(value - 1);
+    if (type === 'increase') setValue(value + 1);
+    if (type === 'decrease' && value >= 1) setValue(value - 1);
   };
 
   return (
-    <InputGroup className={classNames(inputGap)}>
+    <div className={cn('input-group', inputGap)}>
       <Button
         variant="phoenix-primary"
-        className={classNames(buttonClasses)}
+        className={cn(buttonClasses)}
         onClick={() => handleCount('decrease')}
       >
-        <FontAwesomeIcon icon={faMinus} className={classNames(iconClasses)} />
+        <FontAwesomeIcon icon={faMinus} className={cn(iconClasses)} />
       </Button>
-
-      <Form.Control
+      <input
         type="number"
         value={value}
-        id={id && id}
+        id={id}
         onChange={e => setValue(parseInt(e.target.value))}
-        className="border-subtle input-spin-none text-center rounded-md"
+        className="form-control border-subtle input-spin-none text-center rounded-md"
       />
       <Button
         variant="phoenix-primary"
-        className={classNames(buttonClasses)}
+        className={cn(buttonClasses)}
         onClick={() => handleCount('increase')}
       >
-        <FontAwesomeIcon icon={faPlus} className={classNames(iconClasses)} />
+        <FontAwesomeIcon icon={faPlus} className={cn(iconClasses)} />
       </Button>
-    </InputGroup>
+    </div>
   );
 };
 

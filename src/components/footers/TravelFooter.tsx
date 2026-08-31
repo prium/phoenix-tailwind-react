@@ -1,10 +1,10 @@
 import { faEnvelope, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Col, Row } from '@hummingbirdui/react';
 import Button from 'components/base/Button';
-import React from 'react';
-import { Col, Form, Row } from 'react-bootstrap';
 import { Link } from 'react-router';
 import bg43 from 'assets/img/bg/43.png';
+
 const footerList1: string[] = [
   'Home',
   'Terms',
@@ -13,27 +13,25 @@ const footerList1: string[] = [
   'Sitemap'
 ];
 const footerList2: string[] = ['Refund policy', 'EMI Policy', 'Privacy Policy'];
+
+/** `+HotelFooter` in phoenix-tailwind mixins/travel-agency/hotel/HotelFooter.pug */
 const TravelFooter = () => {
   return (
     <section className="py-0 mb-8 md:mb-12 lg:mb-16">
-      <div className="container-medium-md px-0 md:px-4">
+      <div className="md:container-medium px-0 md:px-4">
         <div className="p-8 sm:p-12 xl:py-24 xl:px-30 md:rounded-md overflow-hidden relative">
           <div
-            className="bg-holder overlay bg-opacity-85"
-            style={{
-              backgroundImage: `url(${bg43})`,
-              backgroundPosition: 'center',
-              backgroundSize: 'cover'
-            }}
+            className="bg-holder overlay before:bg-(--color-black)/85! bg-cover! bg-center!"
+            style={{ backgroundImage: `url(${bg43})` }}
           />
           <Row className="g-8 relative justify-between">
             <Col md={6} lg={3}>
               <h5 className="text-white mb-4">Discover</h5>
               <Row className="g-4">
                 <Col>
-                  <ul className="list-unstyled mb-0">
-                    {footerList1.map((item, index) => (
-                      <li key={index} className="mb-1">
+                  <ul className="list-none mb-0 p-0">
+                    {footerList1.map(item => (
+                      <li key={item} className="mb-1">
                         <Link to="#!" className="text-secondary-lighter">
                           {item}
                         </Link>
@@ -42,9 +40,9 @@ const TravelFooter = () => {
                   </ul>
                 </Col>
                 <Col>
-                  <ul className="list-unstyled mb-0">
-                    {footerList2.map((item, index) => (
-                      <li key={index} className="mb-1">
+                  <ul className="list-none mb-0 p-0">
+                    {footerList2.map(item => (
+                      <li key={item} className="mb-1">
                         <Link to="#!" className="text-secondary-lighter">
                           {item}
                         </Link>
@@ -56,23 +54,26 @@ const TravelFooter = () => {
             </Col>
             <Col md={6} lg={3}>
               <h5 className="text-white mb-4">Contact</h5>
-              <Link
-                to="mailto:info@phoenixtravels.com"
-                className="block text-secondary-lighter mb-1 whitespace-nowrap"
+              <a
+                href="mailto:info@phoenixtravels.com"
+                className="block text-secondary-lighter mb-1 text-nowrap"
               >
                 <FontAwesomeIcon
                   icon={faEnvelope}
                   className="me-2 lg:me-1 xl:me-2"
                 />
                 info@phoenixtravels.com
-              </Link>
-              <Link
-                to="tel:+13134048290"
+              </a>
+              <a
+                href="tel:+13134048290"
                 className="block text-secondary-lighter mb-1"
               >
-                <FontAwesomeIcon icon={faPhone} className="me-2" />
+                <FontAwesomeIcon
+                  icon={faPhone}
+                  className="me-2 lg:me-1 xl:me-2"
+                />
                 +13134048290
-              </Link>
+              </a>
             </Col>
             <Col lg={5}>
               <h2 className="text-white mb-2 font-semibold">
@@ -83,20 +84,19 @@ const TravelFooter = () => {
                 <br /> about best deals immediately
               </p>
               <div className="flex gap-2">
-                <div className="form-icon-container flex-1">
-                  <Form.Control
-                    id="PickPlace"
-                    type="email"
+                <div className="input-group-icon flex-1">
+                  <input
+                    type="text"
                     placeholder="Your email address"
-                    className="form-icon-input"
+                    className="form-control"
                   />
                   <FontAwesomeIcon
                     icon={faEnvelope}
-                    className="form-icon text-default text-md"
+                    className="form-control-icon-start text-default text-md"
                     transform="up-2"
                   />
                 </div>
-                <Button variant="primary" className="rounded-md md:px-12">
+                <Button variant="primary" className="rounded-md">
                   Sign up
                 </Button>
               </div>

@@ -10,7 +10,7 @@ const HotelCard = ({ hotelInfo }: { hotelInfo: hotelInterFace }) => {
   const { name, location, img, price, rating } = hotelInfo;
   return (
     <div className="hover-actions-trigger mx-auto rounded-lg overflow-hidden">
-      <img src={img} alt="" height={220} className="img-fluid" />
+      <img src={img} alt="" />
       <div className="hover-actions top-0 end-0 mt-6 me-6 z-5">
         <button className="btn btn-wish">
           <FontAwesomeIcon icon={faHeart} transform="down-1" />
@@ -28,20 +28,25 @@ const HotelCard = ({ hotelInfo }: { hotelInfo: hotelInterFace }) => {
           {location}
         </p>
         <div className="flex items-center gap-4">
-          <Badge variant="phoenix" bg="warning" className="text-base font-normal">
-            <FontAwesomeIcon
-              icon={faStar}
-              className="text-warning-emphasis me-1 text-md"
-              transform="up-1"
-            />
+          <Badge
+            variant="phoenix"
+            bg="warning"
+            className="text-base font-normal"
+            icon={
+              <FontAwesomeIcon
+                icon={faStar}
+                className="me-1 text-md"
+                transform="up-1"
+              />
+            }
+          >
             {rating}
           </Badge>
-          <h4 className="mb-0 text-white font-bold whitespace-nowrap">
+          <h4 className="mb-0 text-white font-bold text-nowrap">
             {currencyFormat(parseFloat(price), {
               minimumFractionDigits: 2
-            })}
+            })}{' '}
             <span className="text-secondary-lighter text-base font-normal">
-              {' '}
               / night
             </span>
           </h4>
