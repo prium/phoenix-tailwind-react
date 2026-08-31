@@ -1,5 +1,4 @@
-import React from 'react';
-import { Card, Col, ProgressBar, Row } from 'react-bootstrap';
+import { Card, cn, Col, Row } from '@hummingbirdui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBaby,
@@ -11,98 +10,72 @@ import masterCard from 'assets/img/logos/mastercard.png';
 import americanExpress from 'assets/img/logos/american_express.png';
 import visa from 'assets/img/logos/visa.png';
 
+/** Check in / Check out time bars of `+Policy` (HotelDetailsTabContent.pug) */
+const PolicyTimeCard = ({
+  label,
+  align
+}: {
+  label: string;
+  align: 'start' | 'end';
+}) => (
+  <Card className="bg-subtle mb-4">
+    <Card.Body>
+      <Row className="g-4">
+        <Col sm={3}>
+          <h5 className="mb-0">
+            <FontAwesomeIcon
+              icon={faClock}
+              className="text-md me-1"
+              transform="up-1"
+            />
+            {label}
+          </h5>
+        </Col>
+        <Col sm={9}>
+          <div
+            className="progress overflow-visible h-2"
+            role="progressbar"
+            aria-label="Basic example"
+            aria-valuenow={0}
+            aria-valuemin={0}
+            aria-valuemax={100}
+          >
+            <div
+              className={cn(
+                'progress-bar relative overflow-visible rounded-md w-1/2',
+                { 'ms-auto': align === 'end' }
+              )}
+            >
+              <span
+                className={cn('absolute mt-8 text-default text-sm', {
+                  'end-0': align === 'start'
+                })}
+              >
+                12 am
+              </span>
+            </div>
+          </div>
+          <div className="flex flex-between-center w-full">
+            <span className="text-default text-sm mt-1">6 am</span>
+            <span className="text-default text-sm mt-1">6 pm</span>
+          </div>
+        </Col>
+      </Row>
+    </Card.Body>
+  </Card>
+);
+
+/** `+Policy` in mixins/travel-agency/hotel/HotelDetailsTabContent.pug */
 const HotelDetailsPolicy = () => {
   return (
     <>
       <h3 className="mb-8">Policy</h3>
+      <PolicyTimeCard label="Check in" align="end" />
+      <PolicyTimeCard label="Check out" align="start" />
       <Card className="bg-subtle mb-4">
         <Card.Body>
           <Row className="g-4">
             <Col sm={3}>
-              <h5 className="mb-0">
-                <FontAwesomeIcon
-                  icon={faClock}
-                  className="text-md me-1"
-                  transform="up-1"
-                />
-                Check in
-              </h5>
-            </Col>
-            <Col sm={9}>
-              <div className="relative">
-                <ProgressBar
-                  className="relative align-middle overflow-visible"
-                  style={{ height: 8 }}
-                >
-                  <ProgressBar
-                    now={50}
-                    isChild={true}
-                    className="ms-auto overflow-visible rounded-md"
-                  />
-                </ProgressBar>
-                <span
-                  className="text-default left-1/2 -translate-x-1/2 absolute text-sm"
-                  style={{
-                    left: '50%',
-                    marginTop: '0.8rem'
-                  }}
-                >
-                  12 am
-                </span>
-              </div>
-              <div className="flex flex-between-center w-full">
-                <span className="text-default text-sm mt-1">6 am</span>
-                <span className="text-default text-sm mt-1">6 pm</span>
-              </div>
-            </Col>
-          </Row>
-        </Card.Body>
-      </Card>
-      {/* <Card className="bg-subtle mb-4">
-        <Card.Body>
-          <Row className="g-4">
-            <Col sm={3}>
-              <h5 className="mb-0">
-                <FontAwesomeIcon
-                  icon={faClock}
-                  className="text-md me-1"
-                  transform="up-1"
-                />
-                Check out
-              </h5>
-            </Col>
-            <Col sm={9}>
-              <ProgressBar
-                className="relative align-middle overflow-visible"
-                style={{ height: 8 }}
-              >
-                <ProgressBar
-                  now={50}
-                  className="overflow-visible rounded-md"
-                  isChild={true}
-                />
-                <span
-                  className="text-default left-1/2 -translate-x-1/2 absolute text-sm"
-                  style={{
-                    left: '50%',
-                    marginTop: '0.8rem'
-                  }}
-                >
-                  12 am
-                </span>
-              </ProgressBar>
-              <div className="flex flex-between-center w-full">
-                <span className="text-default text-sm mt-1">6 am</span>
-                <span className="text-default text-sm mt-1">6 pm</span>
-              </div>
-            </Col>
-          </Row>
-        </Card.Body>
-      </Card> */}
-      <Card className="bg-subtle mb-4">
-        <Card.Body>
-          <Row className="g-4">
-            <Col xs={5} sm={3}>
               <h5 className="mb-0">
                 <FontAwesomeIcon
                   icon={faBaby}

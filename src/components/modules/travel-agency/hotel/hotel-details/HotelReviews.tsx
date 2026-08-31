@@ -1,8 +1,7 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import { Link } from 'react-router';
 import type { Rating, Review } from 'data/travel-agency/customer/hotelDetails';
-import { Card, Col, ProgressBar, Row } from 'react-bootstrap';
-import Badge from 'components/base/Badge';
+import { Card, cn, Col, Row } from '@hummingbirdui/react';
 import Avatar from 'components/base/Avatar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -13,8 +12,6 @@ import {
   faThumbsUp,
   faUser
 } from '@fortawesome/free-solid-svg-icons';
-import Button from 'components/base/Button';
-import classNames from 'classnames';
 import { numberFormat } from 'helpers/utils';
 
 interface HotelReviewsProps {
@@ -22,6 +19,13 @@ interface HotelReviewsProps {
   reviews: Review[];
 }
 
+const formatRating = (rating: number) =>
+  numberFormat(rating, 'standard', {
+    minimumFractionDigits: 1,
+    maximumFractionDigits: 1
+  });
+
+/** `+Reviews` in mixins/travel-agency/hotel/HotelDetailsTabContent.pug */
 const HotelReviews = ({ ratings, reviews }: HotelReviewsProps) => {
   return (
     <>
@@ -31,27 +35,33 @@ const HotelReviews = ({ ratings, reviews }: HotelReviewsProps) => {
           <Col key={index} md={6} lg={5}>
             <Row className="items-center g-0">
               <Col xs={4}>
-                <h5 className="mb-0 text-default whitespace-nowrap">{item.name}</h5>
+                <h5 className="mb-0 text-default text-nowrap">{item.name}</h5>
               </Col>
               <Col xs={8}>
                 <div className="flex items-center gap-2">
-                  <Badge bg="primary" className="text-base">
-                    {numberFormat(item.rating, 'standard', {
-                      minimumFractionDigits: 1,
-                      maximumFractionDigits: 1
-                    })}
-                  </Badge>
-                  <ProgressBar
-                    now={parseFloat(item.rating.toString()) * 20}
-                    className="w-full"
-                  />
+                  <span className="badge text-white bg-primary text-base">
+                    {formatRating(item.rating)}
+                  </span>
+                  <div
+                    className="progress w-full h-1.25"
+                    role="progressbar"
+                    aria-label="review"
+                    aria-valuenow={0}
+                    aria-valuemin={0}
+                    aria-valuemax={100}
+                  >
+                    <div
+                      className="progress-bar rounded-md"
+                      style={{ width: `${item.rating * 20}%` }}
+                    />
+                  </div>
                 </div>
               </Col>
             </Row>
           </Col>
         ))}
       </Row>
-      <hr className="mt-8 mb-14" />
+      <hr className="mt-8 mb-14 border-subtle" />
       {reviews.map((review, index) => (
         <Fragment key={index}>
           <div className="flex items-center relative gap-2 mb-4">
@@ -67,12 +77,9 @@ const HotelReviews = ({ ratings, reviews }: HotelReviewsProps) => {
           <div className="flex items-center flex-wrap gap-8 mb-8">
             <div className="flex items-center gap-6">
               <div className="border-e pe-6">
-                <Badge bg="primary" className="text-base">
-                  {numberFormat(review.rating, 'standard', {
-                    minimumFractionDigits: 1,
-                    maximumFractionDigits: 1
-                  })}
-                </Badge>
+                <span className="badge text-white bg-primary text-base">
+                  {formatRating(review.rating)}
+                </span>
               </div>
               <Link to="#!" className="text-subtle">
                 <FontAwesomeIcon icon={faBed} className="me-2 text-md" />
@@ -116,16 +123,15 @@ const HotelReviews = ({ ratings, reviews }: HotelReviewsProps) => {
             </Card.Body>
           </Card>
           <hr
-            className={classNames('mt-28', {
-              'mb-28': index !== reviews.length - 1,
+            className={cn('my-14', {
               'mb-0': index === reviews.length - 1
             })}
           />
         </Fragment>
       ))}
-      <Button className="bg-default border-subtle text-soft font-black -mt-6">
+      <button className="btn bg-default border-subtle text-soft font-black -translate-y-4.5">
         Show 2 more replies
-      </Button>
+      </button>
     </>
   );
 };

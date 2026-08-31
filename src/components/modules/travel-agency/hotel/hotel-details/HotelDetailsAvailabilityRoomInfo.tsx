@@ -1,6 +1,5 @@
-import React from 'react';
 import { AvailableRoom } from 'data/travel-agency/customer/hotelDetails';
-import { Row, Col, Card } from 'react-bootstrap';
+import { Card, cn, Col, Row } from '@hummingbirdui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Badge from 'components/base/Badge';
 import {
@@ -15,10 +14,10 @@ import Button from 'components/base/Button';
 import HotelDetailsRoomImageGallery from './HotelDetailsRoomImageGallery';
 import { currencyFormat, numberFormat } from 'helpers/utils';
 import { Link } from 'react-router';
-import classNames from 'classnames';
 
 interface HotelDetailsAvailabilityRoomInfoProps {
   room: AvailableRoom;
+  index?: number;
 }
 
 const renderIcons = (count: number, iconClass: IconDefinition) => {
@@ -26,13 +25,14 @@ const renderIcons = (count: number, iconClass: IconDefinition) => {
     <FontAwesomeIcon
       icon={iconClass}
       key={index}
-      className={classNames('text-primary text-md', {
+      className={cn('fa-solid text-primary text-md', {
         'me-1': index !== count - 1
       })}
     />
   ));
 };
 
+/** `+RoomInfo` in mixins/travel-agency/hotel/HotelDetailsTabContent.pug */
 const HotelDetailsAvailabilityRoomInfo = ({
   room
 }: HotelDetailsAvailabilityRoomInfoProps) => {
@@ -52,25 +52,24 @@ const HotelDetailsAvailabilityRoomInfo = ({
               </h4>
             </Col>
             <Col md="auto" className="flex items-center">
-              <div className="vr bg-muted me-4 hidden md:block" />
+              <div className="vr min-h-5 bg-muted border-subtle me-4 hidden md:block" />
               {renderIcons(room.beds, faBed)}
-
-              <div className="vr bg-muted mx-4" />
+              <div className="vr min-h-5 border-subtle bg-muted mx-4" />
               {renderIcons(room.person, faUser)}
-
-              <div className="vr bg-muted mx-4" />
+              <div className="vr min-h-5 border-subtle bg-muted mx-4" />
               {room.breakfast && (
                 <>
                   <FontAwesomeIcon
                     icon={faMugSaucer}
                     className="text-primary text-md"
                   />
-                  <div className="vr bg-muted mx-4" />
+                  <div className="vr min-h-5 border-subtle bg-muted mx-4" />
                 </>
               )}
-              <Badge variant="phoenix" bg="info">
+              {/* gold: plain `span.badge.badge-phoenix-info` without .badge-label */}
+              <span className="badge badge-phoenix-info">
                 {numberFormat(room.discount, 'standard')}% OFF
-              </Badge>
+              </span>
             </Col>
           </Row>
           <p className="mb-0">{room.desc}</p>
@@ -97,9 +96,12 @@ const HotelDetailsAvailabilityRoomInfo = ({
         <Col lg={4} xl={5} xxl={4} className="ms-auto">
           <Card className="bg-subtle">
             <Card.Body>
-              <ul className="mb-2 list-unstyled flex flex-wrap gap-2 text-highlight text-md leading-none">
+              <ul className="p-0 mb-2 list-none flex list flex-wrap gap-2">
                 {room.amenities.slice(0, 6).map((item, index) => (
-                  <li key={index} className="me-1 mb-0">
+                  <li
+                    key={index}
+                    className="text-highlight text-md me-1 mb-0 leading-none"
+                  >
                     <FontAwesomeIcon
                       icon={faCheck}
                       className="text-success me-1"

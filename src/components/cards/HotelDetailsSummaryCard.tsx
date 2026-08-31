@@ -1,11 +1,10 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router';
-import { Card } from 'react-bootstrap';
+import { Card } from '@hummingbirdui/react';
 import img1 from 'assets/img/hotels/39.png';
 import { cartItems } from 'data/travel-agency/customer/hotelDetails';
 import HotelDetailsCartItem from './HotelDetailsCartItem';
 import { currencyFormat } from 'helpers/utils';
-import Button from 'components/base/Button';
 
 const discount = 50;
 interface HotelDetailsSummaryCardProps {
@@ -13,6 +12,7 @@ interface HotelDetailsSummaryCardProps {
   showHotelInfo: boolean;
 }
 
+/** `+SummaryCard` in mixins/travel-agency/hotel/SummaryCard.pug */
 const HotelDetailsSummaryCard = ({
   className,
   showHotelInfo
@@ -62,7 +62,7 @@ const HotelDetailsSummaryCard = ({
               })}
             </h6>
           </div>
-          <div className="flex flex-between-center mb-2">
+          <div className="flex flex-between-center">
             <h6 className="text-subtle font-semibold">Discount</h6>
             <h6 className="text-subtle font-semibold">
               -{currencyFormat(discount)}
@@ -71,8 +71,9 @@ const HotelDetailsSummaryCard = ({
           <hr />
           <div className="flex flex-between-center">
             <h4 className="text-default">Total</h4>
+            {/* gold shows the literal `1,756.70` (half the sub-total, no $) */}
             <h4 className="text-default">
-              {currencyFormat(subTotal !== 0 ? subTotal - discount : 0, {
+              {(subTotal / 2).toLocaleString('en-US', {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2
               })}
@@ -80,10 +81,11 @@ const HotelDetailsSummaryCard = ({
           </div>
         </div>
         {!showHotelInfo && (
-          <Link to="/apps/travel-agency/hotel/customer/hotel-compare">
-            <Button variant="primary" className="mt-4 w-full">
-              Proceed with booking
-            </Button>
+          <Link
+            to="/apps/travel-agency/hotel/customer/checkout"
+            className="btn btn-primary text-center mt-4 w-full"
+          >
+            Proceed with booking
           </Link>
         )}
       </Card.Body>

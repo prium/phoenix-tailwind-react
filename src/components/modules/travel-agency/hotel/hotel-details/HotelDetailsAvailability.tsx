@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import { type AvailableRoom } from 'data/travel-agency/customer/hotelDetails';
-import { Card, Col, Form, Row } from 'react-bootstrap';
+import { Card, Col, Row } from '@hummingbirdui/react';
 import DatePicker from 'components/base/DatePicker';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendar } from '@fortawesome/free-solid-svg-icons';
@@ -12,6 +12,33 @@ interface HotelDetailsAvailabilityProps {
   availableRooms: AvailableRoom[];
 }
 
+const AvailabilityDateInput = ({
+  id,
+  label
+}: {
+  id: string;
+  label: string;
+}) => (
+  <>
+    <label className="font-bold text-subtle mb-1" htmlFor={id}>
+      {label}
+    </label>
+    <DatePicker
+      id={id}
+      wrapperClassName="input-group-icon"
+      placeholder="26 Jan, 2023"
+      hideIcon
+      icon={
+        <FontAwesomeIcon
+          icon={faCalendar}
+          className="text-default text-md form-control-icon-start"
+        />
+      }
+    />
+  </>
+);
+
+/** Availability pane of `+HotelDetailsTab` (HotelDetailsTab.pug) */
 const HotelDetailsAvailability = ({
   availableRooms
 }: HotelDetailsAvailabilityProps) => {
@@ -22,84 +49,17 @@ const HotelDetailsAvailability = ({
         <Card.Body>
           <Row className="g-4">
             <Col sm={6} lg={3}>
-              <label
-                className="font-bold text-subtle mb-1"
-                htmlFor="checkIn"
-              >
-                Check in
-              </label>
-              <div className="form-icon-container flatpickr-input-container">
-                <DatePicker
-                  render={(_, ref) => {
-                    return (
-                      <>
-                        <Form.Control
-                          type="text"
-                          placeholder="26 Jan, 2023"
-                          ref={ref}
-                          id="checkIn"
-                          className="form-icon-input "
-                        />
-                        <FontAwesomeIcon
-                          icon={faCalendar}
-                          className="form-icon text-md text-default"
-                        />
-                      </>
-                    );
-                  }}
-                  hideIcon={true}
-                  options={{
-                    minDate: 'today',
-                    dateFormat: 'Y-m-d'
-                  }}
-                />
-              </div>
+              <AvailabilityDateInput id="checkIn" label="Check in" />
             </Col>
             <Col sm={6} lg={3}>
-              <label
-                className="font-bold text-subtle mb-1"
-                htmlFor="checkOut"
-              >
-                Check out
-              </label>
-              <div className="form-icon-container flatpickr-input-container">
-                <DatePicker
-                  render={(_, ref) => {
-                    return (
-                      <>
-                        <Form.Control
-                          type="text"
-                          placeholder="26 Jan, 2023"
-                          ref={ref}
-                          id="checkOut"
-                          className="form-icon-input "
-                        />
-                        <FontAwesomeIcon
-                          icon={faCalendar}
-                          className="form-icon text-md text-default"
-                        />
-                      </>
-                    );
-                  }}
-                  hideIcon={true}
-                  options={{
-                    minDate: 'today',
-                    dateFormat: 'Y-m-d'
-                  }}
-                />
-              </div>
+              <AvailabilityDateInput id="checkOut" label="Check out" />
             </Col>
             <Col sm={6} lg={3}>
-              <label
-                className="font-bold text-subtle mb-1"
-                htmlFor="adults"
-              >
-                Adults
-              </label>
+              <label className="font-bold text-subtle mb-1">Adults</label>
               <InputGroupCounter
-                id="adults"
+                id="adult"
                 inputGap="gap-2"
-                buttonClasses="px-3 rounded"
+                buttonClasses="rounded-md px-4"
                 iconClasses=""
               />
             </Col>
@@ -112,10 +72,10 @@ const HotelDetailsAvailability = ({
         </Card.Body>
       </Card>
 
-      {availableRooms.map(room => (
+      {availableRooms.map((room, index) => (
         <Fragment key={room.id}>
-          <hr className="my-10" />
-          <HotelDetailsAvailabilityRoomInfo room={room} />
+          <hr className="border-subtle my-10" />
+          <HotelDetailsAvailabilityRoomInfo room={room} index={index} />
         </Fragment>
       ))}
     </>

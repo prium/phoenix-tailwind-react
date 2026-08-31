@@ -1,11 +1,12 @@
 import { lazy, Suspense, useEffect, useRef } from 'react';
-import { Card } from 'react-bootstrap';
+import { Card } from '@hummingbirdui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { Map } from 'mapbox-gl';
 import PhoenixLoader from 'components/common/PhoenixLoader';
 const Mapbox = lazy(() => import('components/base/MapBox'));
 
+/** `+Description` in mixins/travel-agency/hotel/HotelDetailsTabContent.pug */
 const HotelDetailsDescription = ({ activeKey }: { activeKey: string }) => {
   const mapRef = useRef<Map | null>(null);
   useEffect(() => {
@@ -32,40 +33,32 @@ const HotelDetailsDescription = ({ activeKey }: { activeKey: string }) => {
       </p>
       <div className="p-4 border bg-subtle border-subtle rounded-md flex flex-between-center flex-wrap gap-4">
         <h5 className="mb-0">
-          <span className="text-subtle font-normal">
-            Number of rooms :
-          </span>{' '}
+          <span className="text-subtle font-normal">Number of rooms : </span>
           70
         </h5>
         <h5 className="mb-0">
-          <span className="text-subtle font-normal">
-            Number of floors :
-          </span>{' '}
+          <span className="text-subtle font-normal">Number of floors : </span>
           14
         </h5>
         <h5 className="mb-0">
-          <span className="text-subtle font-normal">
-            Construction year :
-          </span>{' '}
+          <span className="text-subtle font-normal">Construction year : </span>
           2018
         </h5>
       </div>
       <Card className="bg-default mt-8">
         <Card.Body>
-          <div className="mb-6">
-            <Suspense fallback={<PhoenixLoader />}>
-              <Mapbox
-                mapRef={mapRef}
-                className="rounded-md border border-subtle overflow-hidden w-full"
-                style={{ height: 300 }}
-                options={{
-                  center: [-74.0020158, 40.7228022],
-                  zoom: 14,
-                  scrollZoom: false
-                }}
-              />
-            </Suspense>
-          </div>
+          <Suspense fallback={<PhoenixLoader />}>
+            <Mapbox
+              mapRef={mapRef}
+              className="rounded-md border border-subtle mb-6"
+              style={{ height: 300 }}
+              options={{
+                center: [-74.0020158, 40.7228022],
+                zoom: 14,
+                scrollZoom: false
+              }}
+            />
+          </Suspense>
           <p className="mb-2 text-subtle uppercase">
             <FontAwesomeIcon
               icon={faMapMarkerAlt}
@@ -74,10 +67,10 @@ const HotelDetailsDescription = ({ activeKey }: { activeKey: string }) => {
             Museum
           </p>
           <h5>
-            1.5 km <span className="text-subtle font-normal">from</span>{' '}
-            Museum of Liberation War, Dhaka
+            1.5 km <span className="text-subtle font-normal">from</span> Museum
+            of Liberation War, Dhaka
           </h5>
-          <hr className="my-6" />
+          <hr className="my-6 border-subtle" />
           <p className="mb-2 text-subtle uppercase">
             <FontAwesomeIcon
               icon={faMapMarkerAlt}
@@ -86,8 +79,8 @@ const HotelDetailsDescription = ({ activeKey }: { activeKey: string }) => {
             Historical monument
           </p>
           <h5>
-            3.5 km <span className="text-subtle font-normal">from</span>{' '}
-            Lalbagh Kella
+            3.5 km <span className="text-subtle font-normal">from</span> Lalbagh
+            Kella
           </h5>
         </Card.Body>
       </Card>

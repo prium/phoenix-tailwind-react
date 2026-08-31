@@ -1,11 +1,8 @@
-import React from 'react';
 import { Link } from 'react-router';
 import PageBreadcrumb from 'components/common/PageBreadcrumb';
 import { defaultBreadcrumbItems } from 'data/commonData';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Col, Row } from '@hummingbirdui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Badge from 'components/base/Badge';
-import Button from 'components/base/Button';
 import {
   faEnvelope,
   faMap,
@@ -21,12 +18,13 @@ import TravelFooter from 'components/footers/TravelFooter';
 import ResizableNavbar from 'components/navbars/travel-agency/ResizableNavbar';
 import { hotelNavItems } from 'data/travel-agency/resizableNav';
 
+/** apps/travel-agency/hotel/customer/hotel-details.pug */
 const HotelDetails = () => {
   return (
     <>
       <ResizableNavbar navItems={hotelNavItems} />
       <section className="pt-6 pb-16">
-        <Container fluid="medium">
+        <div className="container-medium">
           <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-4" />
           <h2 className="mb-6">Hotel Details</h2>
           <Row className="g-6 flex-between-end mb-8">
@@ -44,15 +42,18 @@ const HotelDetails = () => {
                 </Link>
               </div>
               <div className="mb-1">
-                <Link className="text-subtle" to="tel:+88029834555">
-                  <FontAwesomeIcon icon={faPhone} className="me-2 text-default" />
+                <a className="text-subtle" href="tel:+88029834555">
+                  <FontAwesomeIcon
+                    icon={faPhone}
+                    className="me-2 text-default"
+                  />
                   +880 29834555
-                </Link>
+                </a>
               </div>
               <div className="mb-1">
-                <Link
+                <a
                   className="text-subtle"
-                  to="mailto:sales.dhaka@radisson.com"
+                  href="mailto:sales.dhaka@radisson.com"
                 >
                   <FontAwesomeIcon
                     icon={faEnvelope}
@@ -60,30 +61,28 @@ const HotelDetails = () => {
                     transform="down-1"
                   />
                   sales.dhaka@radisson.com
-                </Link>
+                </a>
               </div>
             </Col>
             <Col md={4} lg={3}>
               <div className="flex md:flex-col items-center md:items-end gap-4">
-                <h5 className="mb-0 whitespace-nowrap">
-                  <span className="text-subtle me-2 font-normal">
-                    Rated
-                  </span>
+                <h5 className="mb-0 text-nowrap">
+                  <span className="text-subtle me-2 font-normal">Rated</span>
                   <span className="text-primary me-2">Good</span>
-                  <Badge bg="primary">
+                  <span className="badge bg-primary">
                     {numberFormat(4.3, 'standard', {
                       minimumFractionDigits: 1,
                       maximumFractionDigits: 1
                     })}
-                  </Badge>
+                  </span>
                 </h5>
-                <Button
-                  variant="phoenix-primary"
-                  className="px-8 lg:px-14 w-full md:w-auto"
-                  startIcon={<FontAwesomeIcon icon={faMap} className="me-2" />}
+                <a
+                  href="#!"
+                  className="btn btn-phoenix-primary text-center px-8 lg:px-14 w-full md:w-auto"
                 >
+                  <FontAwesomeIcon icon={faMap} className="me-2" />
                   Show in map
-                </Button>
+                </a>
               </div>
             </Col>
           </Row>
@@ -99,7 +98,7 @@ const HotelDetails = () => {
               />
             </Col>
           </Row>
-        </Container>
+        </div>
       </section>
       <TravelFooter />
     </>

@@ -1,5 +1,5 @@
-import { useMemo, useState, type JSX } from 'react';
-import { Tab, Nav } from 'react-bootstrap';
+import { useState, type JSX } from 'react';
+import { cn } from '@hummingbirdui/react';
 import HotelDetailsAvailability from './HotelDetailsAvailability';
 import HotelDetailsDescription from './HotelDetailsDescription';
 import HotelDetailsPolicy from './HotelDetailsPolicy';
@@ -43,37 +43,55 @@ const generateTabItems = (activeKey: string): TabItemProps[] => [
   }
 ];
 
+/** `+HotelDetailsTab` in mixins/travel-agency/hotel/HotelDetailsTab.pug */
 const HotelDetailsTab = () => {
   const [activeKey, setActiveKey] = useState('availability');
 
-  const tabItems = useMemo(() => generateTabItems(activeKey), [activeKey]);
+  const tabItems = generateTabItems(activeKey);
 
-  const handleSelect = (key: string | null) => {
-    if (key) {
-      setActiveKey(key);
-    }
-  };
   return (
-    <Tab.Container
-      activeKey={activeKey}
-      onSelect={handleSelect}
-      mountOnEnter={false}
-    >
-      <Nav variant="pills" className="scrollbar flex-nowrap mt-8 pb-4 mb-4">
-        {tabItems.map(item => (
-          <Nav.Item key={item.name} className="whitespace-nowrap">
-            <Nav.Link eventKey={item.name.toLowerCase()}>{item.name}</Nav.Link>
-          </Nav.Item>
-        ))}
-      </Nav>
-      <Tab.Content>
-        {tabItems.map(item => (
-          <Tab.Pane key={item.name} eventKey={item.name.toLowerCase()}>
-            {item.content}
-          </Tab.Pane>
-        ))}
-      </Tab.Content>
-    </Tab.Container>
+    <>
+      <div className="scrollbar mt-8 mb-3.75 pb-4">
+        <ul className="nav nav-pills flex-nowrap" role="tablist">
+          {tabItems.map(item => {
+            const key = item.name.toLowerCase();
+            return (
+              <li className="nav-item" key={item.name}>
+                <button
+                  type="button"
+                  role="tab"
+                  id={`pills-${key}-tab`}
+                  aria-selected={activeKey === key}
+                  className={cn('nav-link', { active: activeKey === key })}
+                  onClick={() => setActiveKey(key)}
+                >
+                  {item.name}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+      </div>
+      <div className="tab-content" id="hotel-details-tab-content">
+        {tabItems.map(item => {
+          const key = item.name.toLowerCase();
+          return (
+            <div
+              key={item.name}
+              role="tabpanel"
+              id={`pills-${key}`}
+              aria-labelledby={`pills-${key}-tab`}
+              tabIndex={0}
+              className={cn('tab-pane fade', {
+                'show active': activeKey === key
+              })}
+            >
+              {item.content}
+            </div>
+          );
+        })}
+      </div>
+    </>
   );
 };
 
