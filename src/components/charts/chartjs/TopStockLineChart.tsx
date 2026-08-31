@@ -67,11 +67,11 @@ const TopStockLineChart = ({
           if (!chartArea) return undefined;
           return getGradientColor(chart, getThemeColor, growth);
         },
-        borderColor: getThemeColor(growth ? 'success' : 'danger'),
+        borderColor: getThemeColor(growth ? 'color-success' : 'color-danger'),
         segment: {
           borderColor: ctx =>
             ctx.p0DataIndex <= index
-              ? getThemeColor(growth ? 'success' : 'danger')
+              ? getThemeColor(growth ? 'color-success' : 'color-danger')
               : getThemeColor('border-color-default'),
           backgroundColor: ctx =>
             ctx.p0DataIndex <= index

@@ -1,16 +1,20 @@
 import { flexRender } from '@tanstack/react-table';
 import { useAdvanceTableContext } from 'providers/AdvanceTableProvider';
-import { Table, TableProps } from 'react-bootstrap';
-import classNames from 'classnames';
+import { Table, cn } from '@hummingbirdui/react';
 
 interface TopStockAdvanceTableProps {
   headerClassName?: string;
   bodyClassName?: string;
   rowClassName?: string;
-  tableProps?: TableProps;
+  tableProps?: Table.Props;
   hasFooter?: boolean;
 }
 
+/**
+ * Grouped-header advance table renderer (kept for legacy
+ * components/tables/OptionChainTable.tsx; the stock dashboard now renders the
+ * gold `+OptionChainTable` markup directly in TopStockOptionChainTabContent).
+ */
 const TopStockAdvanceTable = ({
   headerClassName,
   bodyClassName,
@@ -23,15 +27,15 @@ const TopStockAdvanceTable = ({
   return (
     <div className="table-responsive scrollbar">
       <Table {...tableProps}>
-        <thead className={headerClassName}>
+        <Table.Header className={headerClassName}>
           {getHeaderGroups().map(headerGroup => (
-            <tr key={headerGroup.id}>
+            <Table.Row key={headerGroup.id}>
               {headerGroup.headers.map(header => (
-                <th
+                <Table.Head
                   key={header.id}
                   colSpan={header.colSpan}
                   {...header.column.columnDef.meta?.headerProps}
-                  className={classNames(
+                  className={cn(
                     header.column.columnDef.meta?.headerProps?.className,
                     {
                       sort: header.column.getCanSort(),
@@ -47,29 +51,35 @@ const TopStockAdvanceTable = ({
                         header.column.columnDef.header,
                         header.getContext()
                       )}
-                </th>
+                </Table.Head>
               ))}
-            </tr>
+            </Table.Row>
           ))}
-        </thead>
-        <tbody className={bodyClassName}>
+        </Table.Header>
+        <Table.Body className={bodyClassName}>
           {getRowModel().rows.map(row => (
-            <tr key={row.id} className={rowClassName}>
+            <Table.Row key={row.id} className={rowClassName}>
               {row.getVisibleCells().map(cell => (
-                <td key={cell.id} {...cell.column.columnDef.meta?.cellProps}>
+                <Table.Cell
+                  key={cell.id}
+                  {...cell.column.columnDef.meta?.cellProps}
+                >
                   {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                </td>
+                </Table.Cell>
               ))}
-            </tr>
+            </Table.Row>
           ))}
-        </tbody>
+        </Table.Body>
         {hasFooter && (
-          <tfoot>
+          <Table.Footer>
             {getFooterGroups().map(footerGroup => (
-              <tr key={footerGroup.id} className="border-0 border-subtle">
+              <Table.Row
+                key={footerGroup.id}
+                className="border-0 border-subtle"
+              >
                 {footerGroup.headers.map(header => {
                   return (
-                    <th
+                    <Table.Head
                       key={header.id}
                       {...header.column.columnDef.meta?.footerProps}
                     >
@@ -79,12 +89,12 @@ const TopStockAdvanceTable = ({
                             header.column.columnDef.footer,
                             header.getContext()
                           )}
-                    </th>
+                    </Table.Head>
                   );
                 })}
-              </tr>
+              </Table.Row>
             ))}
-          </tfoot>
+          </Table.Footer>
         )}
       </Table>
     </div>

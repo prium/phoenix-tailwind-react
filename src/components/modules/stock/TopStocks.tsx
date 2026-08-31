@@ -1,60 +1,110 @@
 import { useState } from 'react';
-import { Row, Col, Nav, Tab, Card } from 'react-bootstrap';
+import { cn } from '@hummingbirdui/react';
 import SearchBox from 'components/common/SearchBox';
-import { topStockItems } from 'data/stock/dashboardTopStocks';
-import TopStocksSidebarCard from 'components/cards/TopStocksSidebarCard';
+import {
+  topStockItems,
+  type TopStockItem
+} from 'data/stock/dashboardTopStocks';
 import TopStockMainContent from './TopStockMainContent';
 
-const TopStocks = () => {
-  const [activeKey, setActiveKey] = useState('aapl');
+/** `+TabItems` company card — mixins/dashboard/stock/TopStocks.pug */
+const TopStockTabItem = ({ item }: { item: TopStockItem }) => (
+  <div className="card-body p-0">
+    <div className="flex gap-4 xl:gap-2 2xl:gap-4 items-center">
+      {item.darkImage ? (
+        <>
+          <img className="dark:hidden" src={item.image} alt="brand" />
+          <img className="hidden dark:block" src={item.darkImage} alt="brand" />
+        </>
+      ) : (
+        <img src={item.image} alt="brand" />
+      )}
+      <div className="flex gap-4 flex-between-center flex-1">
+        <div>
+          <h6 className="font-semibold text-muted mb-2 leading-sm text-nowrap">
+            {item.title}
+          </h6>
+          <h4 className="mb-0"> ${item.amount}</h4>
+        </div>
+        <div className="text-end">
+          <h6 className="font-semibold text-muted mb-2 leading-sm text-uppercase">
+            {item.abbr}
+          </h6>
+          <h6
+            className={cn(
+              item.growth ? 'text-success' : 'text-danger',
+              'font-semibold leading-sm'
+            )}
+          >
+            {' '}
+            {item.growth ? '+' : '-'}
+            {item.profit}({item.percent}%)
+          </h6>
+        </div>
+      </div>
+    </div>
+  </div>
+);
 
-  const handleSelect = (key: string | null) => {
-    if (key) {
-      setActiveKey(key);
-    }
-  };
+/** `+TopStocks` — mixins/dashboard/stock/TopStocks.pug */
+const TopStocks = () => {
+  const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <>
-      <h3 className="mb-6 text-emphasis">Top Stock</h3>
-      <Tab.Container
-        activeKey={activeKey}
-        onSelect={handleSelect}
-        mountOnEnter={false}
-      >
-        <Row className="gx-8">
-          <Col xl={5} xxl={4} className="mb-6 xl:mb-0 top-stock-card-container">
-            <SearchBox
-              placeholder="Enter Company or Symbol name"
-              className="w-full mb-4 xl:pe-4"
-            />
-            <div className="">
-              <Nav className="whitespace-nowrap gap-4 xl:gap-2 flex-nowrap xl:flex-col top-stock-tab w-full xl:pe-4 scrollbar">
-                {topStockItems.map(item => (
-                  <Nav.Link
-                    key={item.id}
-                    as={Card}
-                    eventKey={item.abbr.toLowerCase()}
-                    className="company-card"
-                  >
-                    <TopStocksSidebarCard topStocksItem={item} />
-                  </Nav.Link>
-                ))}
-              </Nav>
+    <div className="row gx-8">
+      <div className="col-12 xl:col-5 2xl:col-4 mb-6 xl:mb-0 top-stock-card-container">
+        <SearchBox
+          placeholder="Enter Company or Symbol name"
+          className="w-full mb-4 xl:pe-4"
+        />
+        <div className="scrollbar top-stock-tab w-full xl:pe-4">
+          <ul
+            className="nav gap-4 xl:gap-2 flex-nowrap xl:flex-col"
+            id="companyTabdiv"
+            role="tablist"
+          >
+            {topStockItems.map((item, index) => (
+              <li className="nav-item" key={item.id}>
+                <a
+                  className={cn('nav-link card company-card', {
+                    active: activeIndex === index
+                  })}
+                  id={`tab-${item.abbr.toLowerCase()}`}
+                  href={`#${item.abbr.toLowerCase()}-tab`}
+                  aria-current="page"
+                  aria-controls={`${item.abbr.toLowerCase()}-tab`}
+                  aria-selected={activeIndex === index}
+                  role="tab"
+                  onClick={e => {
+                    e.preventDefault();
+                    setActiveIndex(index);
+                  }}
+                >
+                  <TopStockTabItem item={item} />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <div className="col-12 xl:col-7 2xl:col-8 xl:ps-0 flex-1">
+        <div className="tab-content" id="topStocksTabContent">
+          {topStockItems.map((item, index) => (
+            <div
+              key={item.id}
+              className={cn('tab-pane fade', {
+                'active show': activeIndex === index
+              })}
+              id={`${item.abbr.toLowerCase()}-tab`}
+              role="tabpanel"
+              aria-labelledby={`tab-${item.abbr.toLowerCase()}`}
+            >
+              <TopStockMainContent topStockItem={item} index={index} />
             </div>
-          </Col>
-          <Col xl={7} xxl={8} className="flex-1 xl:ps-0">
-            <Tab.Content>
-              {topStockItems.map(item => (
-                <Tab.Pane key={item.id} eventKey={item.abbr.toLowerCase()}>
-                  <TopStockMainContent topStockItem={item} />
-                </Tab.Pane>
-              ))}
-            </Tab.Content>
-          </Col>
-        </Row>
-      </Tab.Container>
-    </>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 };
 

@@ -443,7 +443,13 @@ export const pages: VisualPage[] = [
     react: '/dashboard/stock',
     gold: '/dashboard/stock.html',
     dark: true,
-    widths: [768]
+    widths: [768],
+    // anchored icons/controls outside the (masked) autoplay slider
+    probes: [
+      '.top-stock-card-container .search-box-icon',
+      '#companyTabdiv .company-card img',
+      '.stock-btn-group .btn'
+    ]
   },
   {
     name: 'stock-details',

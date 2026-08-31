@@ -30,7 +30,7 @@ export const getGradientColor = (
     chartArea: { top, bottom }
   } = chart;
 
-  const color = growth ? 'success' : 'danger';
+  const color = growth ? 'color-success' : 'color-danger';
 
   const gradientSegment = ctx.createLinearGradient(0, bottom, 0, top);
   gradientSegment.addColorStop(0, rgbaColor(getThemeColor(color), 0.0));
@@ -96,9 +96,10 @@ export const externalTooltipHandler = (
               <tr>
                 <th class="font-bold" style="width: 72px;">Date</th>
                 <th class="text-center px-2 font-semibold">:</th>
-                <th class="font-semibold">${dayjs(data.date, 'YYYY/MM/DD').format(
-                  'D MMM'
-                )}</th>
+                <th class="font-semibold">${dayjs(
+                  data.date,
+                  'YYYY/MM/DD'
+                ).format('D MMM')}</th>
               </tr>
               <tr>
                 <th class="font-bold" style="width: 72px;">Time</th>

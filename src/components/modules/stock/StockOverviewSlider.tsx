@@ -1,8 +1,9 @@
 import Swiper from 'components/base/Swiper';
 import { SwiperSlide } from 'swiper/react';
+import { Autoplay, FreeMode } from 'swiper/modules';
 import type { StockDashboardOverviewItemProps } from 'data/stock/stockDashboard';
 import Badge from 'components/base/Badge';
-import { Card } from 'react-bootstrap';
+import { Card } from '@hummingbirdui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronUp, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { currencyFormat } from 'helpers/utils';
@@ -14,10 +15,16 @@ interface StockOverViewSliderProps {
   overviewItems: StockDashboardOverviewItemProps[];
 }
 
+/** `+OverviewCards` continuous-autoplay slider — mixins/dashboard/stock/Stat.pug */
 const StockOverViewSlider = ({ overviewItems }: StockOverViewSliderProps) => {
+  // gold `.overview-echart` is sized by assets/css/components/stock.css;
+  // the echarts div fills it (skill: wrapper carries the size)
+  const chartStyle = { height: '100%', width: '100%' };
   return (
     <Swiper
-      wrapperClass="swiper-continuous-autoplay"
+      parentClassName="w-full"
+      wrapperClass="swiper-wrapper swiper-continuous-autoplay"
+      modules={[Autoplay, FreeMode]}
       loop={true}
       spaceBetween={24}
       centeredSlides={true}
@@ -35,23 +42,26 @@ const StockOverViewSlider = ({ overviewItems }: StockOverViewSliderProps) => {
         <SwiperSlide key={item.id} className="stock-overview-card">
           <Card>
             <Card.Body>
-              <div className="flex items-center gap-2 lg:gap-4">
+              <div className="flex flex-between-center gap-2 lg:gap-4">
                 <div className="flex-1">
                   <div className="flex items-center gap-2 mb-2">
-                    <h5 className="mb-0 text-subtle whitespace-nowrap">
+                    <h5 className="mb-0 text-subtle text-nowrap">
                       {item.title}
                     </h5>
                     <Badge
                       variant="phoenix"
                       bg={item.isPositive ? 'success' : 'danger'}
-                      className="text-sm"
+                      className="text-sm flex items-center"
+                      iconPosition="end"
+                      icon={
+                        <FontAwesomeIcon
+                          icon={item.isPositive ? faChevronUp : faChevronDown}
+                          className="ms-1"
+                        />
+                      }
                     >
                       {item.isPositive ? '+' : '-'}
                       {item.stockValue}%
-                      <FontAwesomeIcon
-                        icon={item.isPositive ? faChevronUp : faChevronDown}
-                        className="ms-1"
-                      ></FontAwesomeIcon>
                     </Badge>
                   </div>
                   <h4 className="mb-0">
@@ -61,22 +71,28 @@ const StockOverViewSlider = ({ overviewItems }: StockOverViewSliderProps) => {
                   </h4>
                 </div>
                 {item.chartType === 'inverted' && (
-                  <StockOverviewInvertedChart
-                    data={item.echartsData}
-                    className="overview-echart"
-                  />
+                  <div className="overview-echart">
+                    <StockOverviewInvertedChart
+                      data={item.echartsData}
+                      style={chartStyle}
+                    />
+                  </div>
                 )}
                 {item.chartType === 'mixed' && (
-                  <StockOverviewMixedChart
-                    data={item.echartsData}
-                    className="overview-echart"
-                  />
+                  <div className="overview-echart">
+                    <StockOverviewMixedChart
+                      data={item.echartsData}
+                      style={chartStyle}
+                    />
+                  </div>
                 )}
                 {item.chartType === 'default' && (
-                  <StockOverviewChart
-                    data={item.echartsData}
-                    className="overview-echart"
-                  />
+                  <div className="overview-echart">
+                    <StockOverviewChart
+                      data={item.echartsData}
+                      style={chartStyle}
+                    />
+                  </div>
                 )}
               </div>
             </Card.Body>
