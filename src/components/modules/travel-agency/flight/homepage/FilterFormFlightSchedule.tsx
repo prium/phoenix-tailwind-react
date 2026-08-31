@@ -1,40 +1,38 @@
-import { Form, Row, Col } from 'react-bootstrap';
-import CollapsibleContainer from 'components/common/CollapsibleContainer';
+import FilterCollapse from './FilterCollapse';
 import { flightSchedules } from 'data/travel-agency/customer/flight';
 
-const FilterFormFlightSchedule = () => {
+/** `+FlightSchedules` in mixins/travel-agency/flight/homepage/FlightFilters.pug */
+const FilterFormFlightSchedule = ({ className }: { className?: string }) => {
   return (
-    <CollapsibleContainer
-      collapseTitle="Flight Schedules"
-      titleClass="text-base"
-      containerSize="sm"
+    <FilterCollapse
       id="flightTime"
+      title="Flight Schedules"
+      className={className}
     >
-      <div className="p-4 pb-0">
-        {flightSchedules.map(schedule => (
-          <div key={schedule.id} className={schedule.className}>
-            <h5 className="mb-4">{schedule.title}</h5>
-            <Row className="g-2">
-              {schedule.scheduleChecks.map(check => (
-                <Col key={check.id} xs={6} sm={4}>
-                  <Form.Check.Input
-                    className="btn-check flight-filter-checkbox"
-                    name={schedule.name}
-                    id={check.id}
-                  />
-                  <Form.Check.Label
-                    className="btn btn-phoenix-secondary font-bold whitespace-nowrap w-full px-0"
-                    htmlFor={check.id}
-                  >
-                    {check.label}
-                  </Form.Check.Label>
-                </Col>
-              ))}
-            </Row>
+      {flightSchedules.map(schedule => (
+        <div key={schedule.id} className="mb-6">
+          <h5 className="mb-4">{schedule.title}</h5>
+          <div className="row g-2">
+            {schedule.scheduleChecks.map(check => (
+              <div key={check.id} className="col-6 sm:col-4">
+                <input
+                  className="btn-check flight-filter-checkbox"
+                  type="checkbox"
+                  name={schedule.name}
+                  id={check.id}
+                />
+                <label
+                  className="btn btn-phoenix-secondary text-nowrap w-full px-0"
+                  htmlFor={check.id}
+                >
+                  {check.label}
+                </label>
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-    </CollapsibleContainer>
+        </div>
+      ))}
+    </FilterCollapse>
   );
 };
 

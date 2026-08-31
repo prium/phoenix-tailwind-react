@@ -1,55 +1,59 @@
-import { Form } from 'react-bootstrap';
-import CollapsibleContainer from 'components/common/CollapsibleContainer';
+import FilterCollapse from './FilterCollapse';
 import { flightAircraft } from 'data/travel-agency/customer/flight';
 
-const FilterFormFlightAircraft = () => {
+/** `+FlightAircraft` in mixins/travel-agency/flight/homepage/FlightFilters.pug */
+const FilterFormFlightAircraft = ({ className }: { className?: string }) => {
   return (
-    <CollapsibleContainer
-      collapseTitle="Aircraft"
-      titleClass="text-base"
-      containerSize="sm"
-      id="flightStops"
-    >
-      <div className="p-4 pb-0">
+    <FilterCollapse id="flightAircraft" title="Aircraft" className={className}>
+      <>
         <div className="flex mb-4">
-          <Form.Check type="radio" className="form-check-inline">
-            <Form.Check.Input
+          <div className="form-check form-check-inline">
+            <input
+              className="form-check-input"
+              id="includedAircraft"
               type="radio"
-              id="includeAircraft"
               name="aircrafts"
             />
-            <Form.Check.Label
-              htmlFor="includeAircraft"
-              className="text-base text-default"
+            <label
+              className="form-check-label text-base text-default"
+              htmlFor="includedAircraft"
             >
               Include
-            </Form.Check.Label>
-          </Form.Check>
-          <Form.Check type="radio" className="form-check-inline">
-            <Form.Check.Input
+            </label>
+          </div>
+          <div className="form-check form-check-inline">
+            <input
+              className="form-check-input"
+              id="excludedAircraft"
               type="radio"
-              id="excludeAircraft"
               name="aircrafts"
-              defaultChecked={true}
+              defaultChecked
             />
-            <Form.Check.Label
-              htmlFor="excludeAircraft"
-              className="text-base text-default"
+            <label
+              className="form-check-label text-base text-default"
+              htmlFor="excludedAircraft"
             >
               Exclude
-            </Form.Check.Label>
-          </Form.Check>
+            </label>
+          </div>
         </div>
         {flightAircraft.map(aircraft => (
-          <Form.Check key={aircraft.id}>
-            <Form.Check.Input id={aircraft.id} />
-            <Form.Check.Label htmlFor={aircraft.id} className="text-base text-default">
+          <div key={aircraft.id} className="form-check mb-[5.5px]">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              id={aircraft.id}
+            />
+            <label
+              className="form-check-label text-base text-default"
+              htmlFor={aircraft.id}
+            >
               {aircraft.label}
-            </Form.Check.Label>
-          </Form.Check>
+            </label>
+          </div>
         ))}
-      </div>
-    </CollapsibleContainer>
+      </>
+    </FilterCollapse>
   );
 };
 

@@ -1,13 +1,5 @@
-import React from 'react';
-import {
-  Col,
-  Container,
-  FormControl,
-  InputGroup,
-  Nav,
-  Row
-} from 'react-bootstrap';
-import bd45 from 'assets/img/bg/45.png';
+import { cn } from '@hummingbirdui/react';
+import bg45 from 'assets/img/bg/45.png';
 import Button from 'components/base/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router';
@@ -18,7 +10,6 @@ import {
   faYoutube,
   IconDefinition
 } from '@fortawesome/free-brands-svg-icons';
-import classNames from 'classnames';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 interface SocialLink {
@@ -27,94 +18,74 @@ interface SocialLink {
 }
 
 const socialsLinks: SocialLink[] = [
-  {
-    icon: faFacebook,
-    path: '#!'
-  },
-  {
-    icon: faTwitter,
-    path: '#!'
-  },
-  {
-    icon: faInstagram,
-    path: '#!'
-  },
-  {
-    icon: faYoutube,
-    path: '#!'
-  }
+  { icon: faFacebook, path: '#!' },
+  { icon: faTwitter, path: '#!' },
+  { icon: faInstagram, path: '#!' },
+  { icon: faYoutube, path: '#!' }
 ];
+
 interface FooterNav {
   title: string;
   link: string;
 }
 
 const footerNavs: FooterNav[] = [
-  {
-    title: 'About',
-    link: '#!'
-  },
-  {
-    title: 'Policy',
-    link: '#!'
-  },
-  {
-    title: 'Terms & Condition',
-    link: '#!'
-  }
+  { title: 'About', link: '#!' },
+  { title: 'Policy', link: '#!' },
+  { title: 'Terms & Condition', link: '#!' }
 ];
 
-const FlightFooter = () => {
+/** `+FlightFooter` in mixins/travel-agency/flight/homepage/FlightFooter.pug */
+const FlightFooter = ({ className }: { className?: string }) => {
   return (
-    <footer className="mb-10">
-      <Container fluid="small-md" className="px-0 md:px-4">
+    <footer className={className}>
+      <div className="md:container-small px-0 md:px-4">
         <div className="relative overflow-hidden md:rounded-md">
           <div
-            className="bg-holder overlay bg-opacity-75"
-            style={{
-              backgroundImage: `url(${bd45})`,
-              backgroundPosition: 'center',
-              backgroundSize: 'cover'
-            }}
+            className="bg-holder overlay before:bg-(--color-black)/75! bg-cover! bg-center!"
+            style={{ backgroundImage: `url(${bg45})` }}
           />
-          <Row className="lg:g-0 gy-4 relative justify-center py-16 px-4 sm:px-10 xl:px-30">
-            <Col xs={11} sm={8} lg={5}>
-              <InputGroup className="gap-2">
-                <div className="form-icon-container flex-1">
-                  <FormControl
+
+          <div className="row lg:g-0 gy-4 relative justify-center py-16 px-4 sm:px-10 xl:px-30">
+            <div className="col-11 sm:col-8 lg:col-5">
+              <div className="input-group gap-2">
+                <div className="input-group-icon flex-1">
+                  <input
+                    className="form-control form-icon-input bg-soft"
                     type="email"
                     placeholder="Your email address"
-                    className="form-control form-icon-input"
                   />
                   <FontAwesomeIcon
                     icon={faEnvelope}
-                    className="form-icon"
-                    transform="up-2"
+                    className="form-control-icon-start text-default"
                   />
                 </div>
-                <Button variant="primary" className="rounded-md">
+                <Button type="button" variant="primary" className="rounded-md">
                   Sign up
                 </Button>
-              </InputGroup>
-            </Col>
-            <Col lg={7} data-bs-theme="light">
+              </div>
+            </div>
+            <div data-hb-theme="light" className="md:col-7">
               <div className="flex flex-col lg:flex-row lg:gap-10 gap-2 items-center lg:justify-end justify-center">
-                <Nav as="ul">
-                  {footerNavs.map((item, idx) => (
-                    <Nav.Item as="li" key={idx}>
-                      <Nav.Link className="link text-white" href={item.link}>
+                <ul className="nav">
+                  {footerNavs.map(item => (
+                    <li className="nav-item" key={item.title}>
+                      <a
+                        className="nav-link link text-white font-normal no-underline"
+                        href={item.link}
+                      >
                         {item.title}
-                      </Nav.Link>
-                    </Nav.Item>
+                      </a>
+                    </li>
                   ))}
-                </Nav>
+                </ul>
                 <div>
                   {socialsLinks.map((social, idx) => (
                     <Link
                       key={idx}
                       to={social.path}
-                      className={classNames('link text-white', {
-                        'pe-1 me-2 ': idx !== socialsLinks.length - 1
+                      className={cn('link text-white', {
+                        'pe-1 me-2': idx !== socialsLinks.length - 1
                       })}
                     >
                       <FontAwesomeIcon icon={social.icon} />
@@ -122,10 +93,10 @@ const FlightFooter = () => {
                   ))}
                 </div>
               </div>
-            </Col>
-          </Row>
+            </div>
+          </div>
         </div>
-      </Container>
+      </div>
     </footer>
   );
 };

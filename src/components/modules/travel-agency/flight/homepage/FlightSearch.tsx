@@ -1,126 +1,82 @@
-import React, { useState } from 'react';
-import { Card, Form, Fade } from 'react-bootstrap';
+import { useState } from 'react';
+import { faAngleUp } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Card, cn } from '@hummingbirdui/react';
+import Button from 'components/base/Button';
 import FlightSearchForm from './FlightSearchForm';
 import FlightPreviewForm from './FlightPreviewForm';
-import FlightEditForm from './FlightEditForm';
-import Button from 'components/base/Button';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
-import classNames from 'classnames';
 
-interface FlightTypeCheckboxProps {
-  name: string;
+interface FlightTypeRadioProps {
   id: string;
-  value: string;
   label: string;
   defaultChecked?: boolean;
 }
-const FlightTypeCheckbox = ({
-  name,
+
+/** `div.form-check-inline.shrink-0` radio in mixins/travel-agency/flight/homepage/FlightSearch.pug */
+const FlightTypeRadio = ({
   id,
-  value,
   label,
   defaultChecked
-}: FlightTypeCheckboxProps) => {
-  return (
-    <Form.Check type="radio" id={id} inline>
-      <Form.Check.Input
-        type="radio"
-        name={name}
-        value={value}
-        defaultChecked={defaultChecked || false}
-      />
-      <Form.Check.Label className="text-base text-default">{label}</Form.Check.Label>
-    </Form.Check>
-  );
-};
+}: FlightTypeRadioProps) => (
+  <div className="form-check-inline shrink-0">
+    <input
+      className="form-check-input"
+      id={id}
+      type="radio"
+      name="flightType"
+      defaultChecked={defaultChecked}
+    />
+    <label className="form-check-label text-base text-default" htmlFor={id}>
+      {label}
+    </label>
+  </div>
+);
 
 const FlightSearch = () => {
   const [detailsVisible, setDetailsVisible] = useState(true);
 
-  const [formData, setFormData] = useState({
-    flightFareType: true,
-    priceRange: [100, 186],
-    flightClass: 'economy',
-    departTime: '12:00 - 18:00',
-    returnTime: '12:00 - 18:00'
-  });
-
   return (
-    <Form>
+    <form>
       <Card className="relative mb-10">
         <Card.Body>
-          <div className="mb-6">
-            <FlightTypeCheckbox
-              name="flightType"
-              id="oneWay"
-              value="oneway"
-              label="One way"
-            />
-            <FlightTypeCheckbox
-              name="flightType"
-              id="returnTrip"
-              value="returnTrip"
-              label="Return"
-              defaultChecked
-            />
-            <FlightTypeCheckbox
-              name="flightType"
-              id="multiCities"
-              value="multiPleCities"
-              label="Multiple cities"
-            />
+          <div className="flex items-center flex-wrap gap-1 mb-7.25">
+            <FlightTypeRadio id="oneWay" label="One way" />
+            <FlightTypeRadio id="return" label="Return" defaultChecked />
+            <FlightTypeRadio id="multi" label="Multiple cities" />
           </div>
-          <FlightSearchForm />
-          <div className="bg-subtle p-4 sm:p-6 rounded-md">
-            <Fade in={detailsVisible} timeout={5000}>
-              <div
-                id="flight-preview-form"
-                style={{ display: detailsVisible ? 'block' : 'none' }}
-              >
-                <FlightPreviewForm formData={formData} />
-              </div>
-            </Fade>
-            <Fade in={!detailsVisible} timeout={5000}>
-              <div
-                id="flight-edit-form"
-                style={{ display: !detailsVisible ? 'block' : 'none' }}
-              >
-                <FlightEditForm formData={formData} setFormData={setFormData} />
-              </div>
-            </Fade>
-          </div>
-          <div className="flex flex-wrap gap-4 justify-between mt-6">
-            <Button
-              variant="link"
-              to="#!"
-              className={classNames(
-                'flex items-center text-base font-semibold text-normal px-0 pt-0 collapse-indicator',
-                {
-                  collapsed: !detailsVisible
-                }
-              )}
-              onClick={() => setDetailsVisible(!detailsVisible)}
-              aria-controls="flight-preview-form"
-            >
-              {detailsVisible ? 'Edit' : 'Save'} details
-              <FontAwesomeIcon
-                icon={faAngleDown}
-                className="ms-1 toggle-icon"
-              />
-            </Button>
 
+          <FlightSearchForm className="mb-6" />
+
+          {detailsVisible && <FlightPreviewForm className="mb-6" />}
+
+          <div className="flex flex-wrap gap-4 justify-between">
+            <a
+              className="font-semibold text-nowrap text-base"
+              href="#!"
+              onClick={e => {
+                e.preventDefault();
+                setDetailsVisible(!detailsVisible);
+              }}
+            >
+              {detailsVisible ? 'Close' : 'Show'} details{' '}
+              <FontAwesomeIcon
+                icon={faAngleUp}
+                transform="down-1"
+                className={cn('ms-1', { 'rotate-180': !detailsVisible })}
+              />
+            </a>
             <Button
+              type="button"
               variant="primary"
-              className="btn-lg flex-1"
-              style={{ maxWidth: '15rem' }}
+              size="lg"
+              className="flex-1 max-w-60"
             >
               Search
             </Button>
           </div>
         </Card.Body>
       </Card>
-    </Form>
+    </form>
   );
 };
 

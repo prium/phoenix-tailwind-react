@@ -15,6 +15,7 @@
    phoenix skins in ./plugins can override them (importing them from component
    files would inject them after the skin and win the cascade) */
 @import 'flatpickr/dist/flatpickr.css';
+@import 'nouislider/dist/nouislider.css';
 
 @custom-variant dark (&:where([data-hb-theme=dark], [data-hb-theme=dark] *), [data-hb-theme=dark]);
 @custom-variant active (&:active, &.active);

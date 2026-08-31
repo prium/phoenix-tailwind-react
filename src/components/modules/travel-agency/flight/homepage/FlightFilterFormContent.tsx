@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
-import { Form } from 'react-bootstrap';
-import CollapsibleContainer from 'components/common/CollapsibleContainer';
-import PhoenixReactRange from 'components/forms/PhoenixReactRange';
+import FilterCollapse from './FilterCollapse';
+import NouiSlider from 'components/base/NouiSlider';
 import ReactSelect from 'components/base/ReactSelect';
 
 import {
@@ -9,126 +7,128 @@ import {
   flightCabins,
   flightStops
 } from 'data/travel-agency/customer/flight';
-import classNames from 'classnames';
 
-export const FilterFormFlightStops = () => {
-  return (
-    <CollapsibleContainer
-      collapseTitle="Stops"
-      titleClass="text-base"
-      containerSize="sm"
-      id="flightStops"
+interface CheckItem {
+  id: string;
+  label: string;
+}
+
+const FilterCheck = ({ item }: { item: CheckItem }) => (
+  <div className="form-check">
+    <input className="form-check-input" type="checkbox" id={item.id} />
+    <label
+      className="form-check-label text-base text-default"
+      htmlFor={item.id}
     >
-      <div className="p-4 pb-0">
-        {flightStops.map(stop => (
-          <Form.Check key={stop.id} className={classNames(stop.className)}>
-            <Form.Check.Input id={stop.id} />
-            <Form.Check.Label htmlFor={stop.id} className="text-base text-default">
-              {stop.label}
-            </Form.Check.Label>
-          </Form.Check>
-        ))}
-      </div>
-    </CollapsibleContainer>
+      {item.label}
+    </label>
+  </div>
+);
+
+export const FilterFormFlightStops = ({
+  className
+}: {
+  className?: string;
+}) => {
+  return (
+    <FilterCollapse id="flightStops" title="Stops" className={className}>
+      {flightStops.map(stop => (
+        <FilterCheck key={stop.id} item={stop} />
+      ))}
+    </FilterCollapse>
   );
 };
 
-export const FilterFormFlightAirlines = () => {
+export const FilterFormFlightAirlines = ({
+  className
+}: {
+  className?: string;
+}) => {
   return (
-    <CollapsibleContainer
-      collapseTitle="Airlines"
-      titleClass="text-base"
-      containerSize="sm"
-      id="flightAirlines"
-    >
-      <div className="p-4 pb-0">
-        {flightAirlines.map(airline => (
-          <Form.Check key={airline.id}>
-            <Form.Check.Input id={airline.id} />
-            <Form.Check.Label htmlFor={airline.id} className="text-base text-default">
-              {airline.label}
-            </Form.Check.Label>
-          </Form.Check>
-        ))}
-      </div>
-    </CollapsibleContainer>
+    <FilterCollapse id="flightAirlines" title="Airlines" className={className}>
+      {flightAirlines.map(airline => (
+        <FilterCheck key={airline.id} item={airline} />
+      ))}
+    </FilterCollapse>
   );
 };
 
-export const FilterFormFlightCabin = () => {
+export const FilterFormFlightCabin = ({
+  className
+}: {
+  className?: string;
+}) => {
   return (
-    <CollapsibleContainer
-      collapseTitle="Cabin"
-      titleClass="text-base"
-      containerSize="sm"
-      id="flightCabin"
-    >
-      <div className="p-4 pb-0">
-        {flightCabins.map(cabin => (
-          <Form.Check key={cabin.id}>
-            <Form.Check.Input id={cabin.id} />
-            <Form.Check.Label htmlFor={cabin.id} className="text-base text-default">
-              {cabin.label}
-            </Form.Check.Label>
-          </Form.Check>
-        ))}
-      </div>
-    </CollapsibleContainer>
+    <FilterCollapse id="flightCabin" title="Cabin" className={className}>
+      {flightCabins.map(cabin => (
+        <FilterCheck key={cabin.id} item={cabin} />
+      ))}
+    </FilterCollapse>
   );
 };
 
-export const FilterFormFlightDuration = () => {
-  const [values, setValues] = useState([48]);
+/** noUiSlider values array from the gold `data-nouislider-values` */
+const durationValues = [
+  '45m',
+  '46m',
+  '47m',
+  '48m',
+  '49m',
+  '50m',
+  '51m',
+  '52m',
+  '53m',
+  '54m',
+  '55m'
+];
+
+export const FilterFormFlightDuration = ({
+  className
+}: {
+  className?: string;
+}) => {
   return (
-    <CollapsibleContainer
-      collapseTitle="Flight Duration"
-      titleClass="text-base"
-      containerSize="sm"
+    <FilterCollapse
       id="flightDuration"
+      title="Flight Duration"
+      className={className}
     >
-      <div className="p-4 pb-0">
-        <div className="flex flex-between-center mb-2">
-          <h6 className="mb-0 text-highlight font-semibold">0h 45m</h6>
-          <h6 className="mb-0 text-highlight font-semibold">0h 55m</h6>
-        </div>
-        <PhoenixReactRange
-          step={1}
-          min={45}
-          max={55}
-          trackHeight="6px"
-          classNames="phoenix-react-range-medium mt-3"
-          variant="primary-lighter"
-          values={values}
-          onChange={val => setValues(val)}
-          tipFormatter={values => `${values}m`}
-        />
+      <div className="flex flex-between-center mb-2">
+        <h6 className="mb-0 text-highlight font-semibold">0h 45m</h6>
+        <h6 className="mb-0 text-highlight font-semibold">0h 55m</h6>
       </div>
-    </CollapsibleContainer>
+      <NouiSlider
+        className="noUi-primary-lighter noUi-handle-primary noUi-slider-medium noUi-handle-circle px-1 mt-4"
+        values={durationValues}
+        options={{ start: ['48m'], connect: [true, false] }}
+      />
+    </FilterCollapse>
   );
 };
 
-export const FilterFormFlightPriceCalculator = () => {
+export const FilterFormFlightPriceCalculator = ({
+  className
+}: {
+  className?: string;
+}) => {
   return (
-    <CollapsibleContainer
-      collapseTitle="Price Calculator"
-      titleClass="text-base"
-      containerSize="sm"
+    <FilterCollapse
       id="flightPriceCalculator"
+      title="Price Calculator"
+      className={className}
     >
-      <div className="p-4 pb-0">
-        <ReactSelect
-          placeholder="Select Method"
-          isMulti
-          options={[
-            { value: 'mastercarddebit', label: 'Mastercard debit' },
-            { value: 'mastercardcredit', label: 'Mastercard credit' },
-            { value: 'visadebit', label: 'Visa debit' },
-            { value: 'visacredit', label: 'Visa credit' },
-            { value: 'americanexpress', label: 'American Express' },
-            { value: 'paypal', label: 'Paypal' }
-          ]}
-        />
-      </div>
-    </CollapsibleContainer>
+      <ReactSelect
+        placeholder="Select method"
+        isMulti
+        options={[
+          { value: 'mastercarddebit', label: 'Mastercard debit' },
+          { value: 'mastercardcredit', label: 'Mastercard credit' },
+          { value: 'visadebit', label: 'Visa debit' },
+          { value: 'visacredit', label: 'Visa credit' },
+          { value: 'americanexpress', label: 'American Express' },
+          { value: 'paypal', label: 'Paypal' }
+        ]}
+      />
+    </FilterCollapse>
   );
 };
