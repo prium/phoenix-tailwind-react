@@ -1,37 +1,34 @@
 import { useState } from 'react';
 import { faAdd } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Col, Row } from '@hummingbirdui/react';
 import Button from 'components/base/Button';
-import WatchlistCashTransactionTable from 'components/tables/WatchlistCashTransactionTable';
-import { watchlistItems } from 'data/stock/watchlist';
-import { Col, Row } from 'react-bootstrap';
 import AddCashTransactionModal from './AddCashTransactionModal';
+import CashTransactionTable from './CashTransactionTable';
 
+/** `+CashTransactionTable` in mixins/stock/watchlist/CashTransactionTable.pug */
 const CashTransactionTabContent = () => {
   const [show, setShow] = useState(false);
+
   return (
     <>
       <Row className="mt-6 flex-between-center">
         <Col xs="auto">
           <h4>Cash Transaction Report</h4>
-          <p className="mb-0 text-subtle">
-            Brief summary of all projects
-          </p>
+          <p className="mb-0 text-subtle">Brief summary of all projects</p>
         </Col>
         <Col xs="auto">
           <Button
             variant="phoenix-secondary"
             size="sm"
-            startIcon={<FontAwesomeIcon icon={faAdd} className="me-2" />}
             onClick={() => setShow(true)}
           >
+            <FontAwesomeIcon icon={faAdd} className="me-2" />
             Add Cash Transaction
           </Button>
         </Col>
       </Row>
-      <WatchlistCashTransactionTable
-        data={watchlistItems.cashTransactionTableDataRow}
-      />
+      <CashTransactionTable />
       <AddCashTransactionModal show={show} handleClose={() => setShow(false)} />
     </>
   );
