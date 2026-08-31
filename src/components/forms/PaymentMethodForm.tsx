@@ -1,6 +1,4 @@
-import React from 'react';
-import { Row, Col, Form } from 'react-bootstrap';
-
+import { Col, Row } from '@hummingbirdui/react';
 import visaCardImage from 'assets/img/logos/visa.png';
 import discoverImage from 'assets/img/logos/discover.png';
 import masterCardImage from 'assets/img/logos/mastercard.png';
@@ -14,80 +12,94 @@ interface PaymentMethodFormProps {
   marginTop?: marginTop;
 }
 
+/**
+ * "Payment Method" block shared by the trip checkout, flight payment and hotel
+ * payment gold pages (`h3.mt-12.mb-8` — flight renders it flush: `mt-0`).
+ */
 const PaymentMethodForm = ({
   className,
   marginTop = 'default'
 }: PaymentMethodFormProps) => {
   const start_year = 1990;
-  const end_year = new Date().getFullYear();
+  const end_year = 2022; // gold: `while n < 2023`
   return (
     <div className={className}>
       <h3
-        className={classNames('mb-5', {
+        className={classNames('mb-8', {
           'mt-0': marginTop === 'short',
-          'mt-7': marginTop === 'default',
-          'mt-9': marginTop === 'long'
+          'mt-12': marginTop === 'default',
+          'mt-14': marginTop === 'long'
         })}
       >
         Payment Method
       </h3>
-      <Row className="gx-xxl-6 mb-5">
+      <Row className="2xl:gx-10 mb-7">
         <Col md="auto">
-          <Form.Check>
-            <Form.Check.Input
+          <div className="form-check">
+            <input
+              className="form-check-input"
               type="radio"
               name="paymentMethod"
               id="creditCard"
               defaultChecked
             />
-            <Form.Check.Label
-              className="flex gap-2 text-base text-default text-nowrap"
+            <label
+              className="form-check-label text-base text-default text-nowrap flex gap-2"
               htmlFor="creditCard"
             >
               Credit card
-              <img src={visaCardImage} alt="" className="h-100 ms-2" />
-              <img src={discoverImage} alt="" className="h-100" />
-              <img src={masterCardImage} alt="" className="h-100" />
-              <img src={americanExpressImage} alt="" className="h-100" />
-            </Form.Check.Label>
-          </Form.Check>
+              <img src={visaCardImage} alt="" className="h-full" />
+              <img src={discoverImage} alt="" className="h-full" />
+              <img src={masterCardImage} alt="" className="h-full" />
+              <img src={americanExpressImage} alt="" className="h-full" />
+            </label>
+          </div>
         </Col>
         <Col md="auto">
-          <Form.Check>
-            <Form.Check.Input type="radio" name="paymentMethod" id="paypal" />
-            <Form.Check.Label className="text-base text-default" htmlFor="paypal">
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="radio"
+              name="paymentMethod"
+              id="paypal"
+            />
+            <label
+              className="form-check-label text-base text-default"
+              htmlFor="paypal"
+            >
               Paypal
-            </Form.Check.Label>
-          </Form.Check>
+            </label>
+          </div>
         </Col>
         <Col md="auto">
-          <Form.Check>
-            <Form.Check.Input type="radio" name="paymentMethod" id="coupon" />
-            <Form.Check.Label className="text-base text-default" htmlFor="coupon">
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="radio"
+              name="paymentMethod"
+              id="coupon"
+            />
+            <label
+              className="form-check-label text-base text-default"
+              htmlFor="coupon"
+            >
               Coupon
-            </Form.Check.Label>
-          </Form.Check>
+            </label>
+          </div>
         </Col>
       </Row>
-      <Row className="gx-3 gy-4">
+      <Row className="gx-4 gy-6">
         <Col md={6}>
-          <label
-            htmlFor="selectCard"
-            className="font-bold text-highlight mb-1"
-          >
+          <label htmlFor="selectCard" className="font-bold text-highlight mb-1">
             Select card
           </label>
-          <Form.Select
-            className="text-emphasis"
-            id="selectCard"
-            defaultValue=""
-          >
-            <option value="">Select a card</option>
+          <select className="form-select text-emphasis" id="selectCard">
+            <option>Select a card</option>
             <option value="visa">Visa</option>
             <option value="discover">Discover</option>
             <option value="mastercard">Mastercard</option>
             <option value="american-express">American Express</option>
-          </Form.Select>
+          </select>
         </Col>
         <Col md={6}>
           <label
@@ -96,22 +108,20 @@ const PaymentMethodForm = ({
           >
             Card number
           </label>
-          <Form.Control
+          <input
+            className="form-control"
             type="number"
             placeholder="Enter card number"
             aria-label="Card number"
             id="inputCardNumber"
-            className="input-spin-none"
           />
         </Col>
         <Col xs={12}>
-          <label
-            htmlFor="inputName"
-            className="font-bold text-highlight mb-1"
-          >
+          <label htmlFor="inputName" className="font-bold text-highlight mb-1">
             Full name
           </label>
-          <Form.Control
+          <input
+            className="form-control"
             type="text"
             name="inputName"
             placeholder="Ansolo Lazinatov"
@@ -122,13 +132,13 @@ const PaymentMethodForm = ({
         <Col md={6}>
           <label className="font-bold text-highlight mb-1">Expires on</label>
           <div className="flex">
-            <Form.Select className="text-emphasis me-3" defaultValue="">
+            <select className="form-select text-emphasis me-4" defaultValue="">
               <option value="">Month</option>
-              <option value="january">January</option>
-              <option value="february">February</option>
-              <option value="march">March</option>
-            </Form.Select>
-            <Form.Select className="text-emphasis" defaultValue="">
+              <option>January</option>
+              <option>February</option>
+              <option>March</option>
+            </select>
+            <select className="form-select text-emphasis" defaultValue="">
               <option value="">Year</option>
               {Array.from({ length: end_year - start_year + 1 }).map(
                 (_, index) => {
@@ -140,7 +150,7 @@ const PaymentMethodForm = ({
                   );
                 }
               )}
-            </Form.Select>
+            </select>
           </div>
         </Col>
         <Col md={6}>
@@ -150,25 +160,29 @@ const PaymentMethodForm = ({
           >
             CVC
           </label>
-          <Form.Control
+          <input
+            className="form-control"
             type="number"
             name="CVC"
             id="inputCardCVC"
             placeholder="Enter a valid CVC"
             aria-label="CVC"
-            className="input-spin-none"
           />
         </Col>
         <Col xs={12}>
-          <Form.Check>
-            <Form.Check.Input type="checkbox" id="gridCheck" />
-            <Form.Check.Label
-              className="text-emphasis text-base"
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              id="gridCheck"
+            />
+            <label
+              className="form-check-label text-emphasis text-base"
               htmlFor="gridCheck"
             >
               Save Card Details
-            </Form.Check.Label>
-          </Form.Check>
+            </label>
+          </div>
         </Col>
       </Row>
     </div>
