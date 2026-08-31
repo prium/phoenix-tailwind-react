@@ -7,7 +7,10 @@ import { PieChart } from 'echarts/charts';
 echarts.use([TooltipComponent, PieChart]);
 
 const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
-  color: [getThemeColor('color-info-light'), getThemeColor('color-info-lighter')],
+  color: [
+    getThemeColor('color-info-light'),
+    getThemeColor('color-info-lighter')
+  ],
   tooltip: {
     trigger: 'item',
     padding: [7, 10],
@@ -67,6 +70,8 @@ const RevenueThisYearChart = () => {
       echarts={echarts}
       option={getDefaultOptions(getThemeColor)}
       className="revenue-this-year-chart"
+      // size comes from the revenue-this-year-chart CSS class; suppress the library default 300px
+      style={{ height: undefined }}
     />
   );
 };

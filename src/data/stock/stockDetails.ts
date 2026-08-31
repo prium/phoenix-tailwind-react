@@ -136,7 +136,7 @@ export interface CompanyProfileTotalItem {
     title: string;
     badgeBg: BadgeBg;
   };
-  tooltipContent: number;
+  tooltipContent: string;
   className?: string;
 }
 
@@ -169,6 +169,44 @@ export interface CompanyProfileItems {
   employeeRecordTableRows: EmployeeRecordTableRowItem[];
 }
 
+/* Sidebar swiper + option-chain table demo data — hardcoded in
+   mixins/stock/stock-details/StockDetailsSideBar(Table).pug (view-specific,
+   distinct from the dashboard's option chain data). */
+export interface SidebarOptionChainDate {
+  id: number;
+  date: string;
+  className?: string;
+}
+
+export interface SidebarOptionChainTable {
+  calls: { bid: string; ask: string }[];
+  strikePrices: string[];
+  puts: { bid: string; ask: string }[];
+}
+
+export const sidebarOptionChainDates: SidebarOptionChainDate[] = [
+  { id: 1, date: 'May 20, 24', className: 'active' },
+  { id: 2, date: 'Jun 01, 24' },
+  { id: 3, date: 'Jun 15, 24' },
+  { id: 4, date: 'Jun 29, 24' },
+  { id: 5, date: 'Jul 11, 24' },
+  { id: 6, date: 'Jul 28, 24' }
+];
+
+export const sidebarOptionChainTable: SidebarOptionChainTable = {
+  calls: [
+    { bid: '25.15', ask: '25.30' },
+    { bid: '20.80', ask: '20.90' },
+    { bid: '18.90', ask: '19.00' }
+  ],
+  strikePrices: ['1,656.00', '1,657.00', '1,590.00'],
+  puts: [
+    { bid: '1.25', ask: '1.27' },
+    { bid: '1.87', ask: '1.89' },
+    { bid: '2.19', ask: '2.26' }
+  ]
+};
+
 export const newsItems: NewsItem[] = [
   {
     id: 1,
@@ -191,7 +229,7 @@ export const newsItems: NewsItem[] = [
       }
     ],
     newsState: 'featured',
-    className: 'col-span-12 col-span-xxl-6 row-span-2'
+    className: ''
   },
   {
     id: 2,
@@ -208,7 +246,7 @@ export const newsItems: NewsItem[] = [
       }
     ],
     newsState: 'highlight',
-    className: 'col-span-12 col-span-xxl-6 row-span-xxl-1'
+    className: ''
   },
   {
     id: 3,
@@ -225,7 +263,7 @@ export const newsItems: NewsItem[] = [
       }
     ],
     newsState: 'highlight',
-    className: 'col-span-12 col-span-xxl-6 row-span-xxl-1'
+    className: ''
   },
   {
     id: 4,
@@ -252,7 +290,7 @@ export const newsItems: NewsItem[] = [
       }
     ],
     newsState: 'regular',
-    className: 'col-span-12 col-span-sm-6 col-span-xxl-4'
+    className: 'col-12 sm:col-6 2xl:col-4'
   },
   {
     id: 5,
@@ -263,7 +301,7 @@ export const newsItems: NewsItem[] = [
     type: 'The Financial Express',
     tags: [{ id: 40, label: 'orcl', link: '#!' }],
     newsState: 'regular',
-    className: 'col-span-12 col-span-sm-6 col-span-xxl-4'
+    className: 'col-12 sm:col-6 2xl:col-4'
   },
   {
     id: 6,
@@ -274,7 +312,7 @@ export const newsItems: NewsItem[] = [
     type: 'Business Line',
     tags: [],
     newsState: 'regular',
-    className: 'col-span-12 col-span-sm-6 col-span-xxl-4'
+    className: 'col-12 sm:col-6 2xl:col-4'
   },
   {
     id: 7,
@@ -285,7 +323,7 @@ export const newsItems: NewsItem[] = [
     type: 'The Business Standard',
     tags: [],
     newsState: 'regular',
-    className: 'col-span-12 col-span-sm-6 col-span-xxl-4'
+    className: 'col-12 sm:col-6 2xl:col-4'
   },
   {
     id: 8,
@@ -296,7 +334,7 @@ export const newsItems: NewsItem[] = [
     type: `Investor's Business Daily`,
     tags: [{ id: 41, label: 'orcl', link: '#!' }],
     newsState: 'regular',
-    className: 'col-span-12 col-span-sm-6 col-span-xxl-4'
+    className: 'col-12 sm:col-6 2xl:col-4'
   },
   {
     id: 9,
@@ -310,7 +348,7 @@ export const newsItems: NewsItem[] = [
       { id: 43, label: 'ai', link: '#!' }
     ],
     newsState: 'regular',
-    className: 'col-span-12 col-span-sm-6 col-span-xxl-4'
+    className: 'col-12 sm:col-6 2xl:col-4'
   }
 ];
 
@@ -503,7 +541,7 @@ export const eventList: EventLists = {
       },
       location: 'Tavern on the Greend, New York',
       interestedToGoing: 64,
-      className: 'border-top border-bottom'
+      className: 'border-t border-b'
     },
     {
       id: 8,
@@ -517,7 +555,7 @@ export const eventList: EventLists = {
       },
       location: 'Tavern on the Greend, New York',
       interestedToGoing: 64,
-      className: 'border-bottom border-top-sm'
+      className: 'border-b sm:border-t'
     },
     {
       id: 9,
@@ -531,7 +569,7 @@ export const eventList: EventLists = {
       },
       location: 'Tavern on the Greend, New York',
       interestedToGoing: 64,
-      className: 'border-bottom'
+      className: 'border-b'
     },
     {
       id: 10,
@@ -545,7 +583,7 @@ export const eventList: EventLists = {
       },
       location: 'Tavern on the Greend, New York',
       interestedToGoing: 64,
-      className: 'border-bottom'
+      className: 'border-b'
     },
     {
       id: 11,
@@ -559,7 +597,7 @@ export const eventList: EventLists = {
       },
       location: 'Tavern on the Greend, New York',
       interestedToGoing: 64,
-      className: 'border-bottom'
+      className: 'border-b'
     },
     {
       id: 12,
@@ -573,7 +611,7 @@ export const eventList: EventLists = {
       },
       location: 'Tavern on the Greend, New York',
       interestedToGoing: 64,
-      className: 'border-bottom'
+      className: 'border-b'
     },
     {
       id: 13,
@@ -587,7 +625,7 @@ export const eventList: EventLists = {
       },
       location: 'Tavern on the Greend, New York',
       interestedToGoing: 64,
-      className: 'border-bottom'
+      className: 'border-b'
     },
     {
       id: 14,
@@ -601,7 +639,7 @@ export const eventList: EventLists = {
       },
       location: 'Tavern on the Greend, New York',
       interestedToGoing: 64,
-      className: 'border-bottom'
+      className: 'border-b'
     }
   ]
 };
@@ -613,7 +651,7 @@ export const companyProfileItems: CompanyProfileItems = {
       title: 'Total Employees',
       icon: {
         name: faUser,
-        iconClassName: 'bg-info border-info-light',
+        iconClassName: 'bg-info/15  border-info-light',
         iconColor: 'text-info-dark'
       },
       growth: '1.61K',
@@ -621,16 +659,16 @@ export const companyProfileItems: CompanyProfileItems = {
         title: '-1.83',
         badgeBg: 'danger'
       },
-      tooltipContent: 1640,
+      tooltipContent: '1.64k',
       className:
-        'pb-3 border-bottom border-end border-end-lg-0 border-end-xxl pe-3 pe-lg-0 pe-xxl-5'
+        'pb-4 border-b border-e lg:border-e-0 2xl:border-e pe-4 lg:pe-0 2xl:pe-8'
     },
     {
       id: 2,
       title: 'Total Revenue',
       icon: {
         name: faHandHoldingDollar,
-        iconClassName: 'bg-primary border-primary-light',
+        iconClassName: 'bg-primary/15 border-primary-light',
         iconColor: 'text-primary-dark'
       },
       growth: '$2.40M',
@@ -638,15 +676,15 @@ export const companyProfileItems: CompanyProfileItems = {
         title: '+4.71',
         badgeBg: 'success'
       },
-      tooltipContent: 5400,
-      className: 'pb-3  pt-lg-3 pt-xxl-0 ps-3 ps-lg-0 ps-xxl-5 border-bottom'
+      tooltipContent: '5.4k',
+      className: 'pb-4  lg:pt-4 2xl:pt-0 ps-4 lg:ps-0 2xl:ps-8 border-b'
     },
     {
       id: 3,
       title: 'Total Change (1Y)',
       icon: {
         name: faRepeat,
-        iconClassName: 'bg-warning border-warning-light',
+        iconClassName: 'bg-warning/15 border-warning-light',
         iconColor: 'text-warning-dark'
       },
       growth: '-3,000',
@@ -654,16 +692,16 @@ export const companyProfileItems: CompanyProfileItems = {
         title: '+1.71',
         badgeBg: 'success'
       },
-      tooltipContent: 2640,
+      tooltipContent: '2.64k',
       className:
-        'py-3 border-bottom border-end border-end-lg-0 border-end-xxl pe-3 pe-lg-0 pe-xxl-5'
+        'py-4 border-b border-e lg:border-e-0 2xl:border-e pe-4 lg:pe-0 2xl:pe-8'
     },
     {
       id: 4,
       title: 'Total Profits',
       icon: {
         name: faMoneyBillTrendUp,
-        iconClassName: 'bg-info border-info-light',
+        iconClassName: 'bg-info/15  border-info-light',
         iconColor: 'text-info-dark'
       },
       growth: '$6.34M',
@@ -671,15 +709,15 @@ export const companyProfileItems: CompanyProfileItems = {
         title: '+3.71',
         badgeBg: 'success'
       },
-      tooltipContent: 3640,
-      className: 'py-3 ps-3 ps-lg-0 ps-xxl-5 border-bottom'
+      tooltipContent: '3.64k',
+      className: 'py-4 ps-4 lg:ps-0 2xl:ps-8 border-b'
     },
     {
       id: 5,
       title: 'Total Growth (1Y)',
       icon: {
         name: faChartLine,
-        iconClassName: 'bg-primary border-primary-light',
+        iconClassName: 'bg-primary/15 border-primary-light',
         iconColor: 'text-primary-dark'
       },
       growth: '-1.83%',
@@ -687,16 +725,16 @@ export const companyProfileItems: CompanyProfileItems = {
         title: '-2.32',
         badgeBg: 'danger'
       },
-      tooltipContent: 1400,
+      tooltipContent: '1.4k',
       className:
-        'py-3 pb-md-0 pb-lg-3 pb-xxl-0 border-end border-end-lg-0 border-end-xxl pe-3 pe-lg-0 pe-xxl-5 border-bottom-lg border-bottom-xxl-0'
+        'py-4 md:pb-0 lg:pb-4 2xl:pb-0 border-e lg:border-e-0 2xl:border-e pe-4 lg:pe-0 2xl:pe-8 lg:border-b 2xl:border-b-0'
     },
     {
       id: 6,
       title: 'Total Market Cap',
       icon: {
         name: faChartColumn,
-        iconClassName: 'bg-warning border-warning-light',
+        iconClassName: 'bg-warning/15 border-warning-light',
         iconColor: 'text-warning-dark'
       },
       growth: '$3.46T',
@@ -704,8 +742,8 @@ export const companyProfileItems: CompanyProfileItems = {
         title: '+3.71',
         badgeBg: 'success'
       },
-      tooltipContent: 3640,
-      className: 'pt-3 ps-3 ps-lg-0 ps-xxl-5'
+      tooltipContent: '3.64k',
+      className: 'pt-4 ps-4 lg:ps-0 2xl:ps-8'
     }
   ],
   companyDetailsItems: [
@@ -716,56 +754,56 @@ export const companyProfileItems: CompanyProfileItems = {
       image: AppleLogo,
       darkImage: DarkAppleLogo,
       content: 'Apple Inc',
-      className: 'mb-3'
+      className: 'mb-4'
     },
     {
       id: 101,
       title: 'CTO',
       icon: faBriefcase,
       content: 'Timothy Cook',
-      className: 'mb-3'
+      className: 'mb-4'
     },
     {
       id: 102,
       title: 'Country',
       icon: faEarthAmericas,
       content: 'United States',
-      className: 'mb-3'
+      className: 'mb-4'
     },
     {
       id: 104,
       title: 'Founded',
       icon: faFlag,
       content: '1997',
-      className: 'mb-3'
+      className: 'mb-4'
     },
     {
       id: 105,
       title: 'IOP Date',
       icon: faCalendarCheck,
       content: 'Dec 12, 1980',
-      className: 'mb-3'
+      className: 'mb-4'
     },
     {
       id: 106,
       title: 'Industry',
       icon: faCity,
       content: 'Consumer Electronics',
-      className: 'mb-3'
+      className: 'mb-4'
     },
     {
       id: 107,
       title: 'Sector',
       icon: faChartPie,
       content: 'Technology',
-      className: 'mb-3'
+      className: 'mb-4'
     },
     {
       id: 108,
       title: 'Employees',
       icon: faUsers,
       content: '1,61,000',
-      className: 'mb-3'
+      className: 'mb-4'
     },
     {
       id: 109,
@@ -773,14 +811,14 @@ export const companyProfileItems: CompanyProfileItems = {
       icon: faGlobe,
       content: 'apple.com',
       link: 'https://apple.com',
-      className: 'mb-3'
+      className: 'mb-4'
     },
     {
       id: 110,
       title: 'Phone Number',
       icon: faPhone,
       content: '+1234567890',
-      className: 'mb-3'
+      className: 'mb-4'
     },
     {
       id: 111,
@@ -792,59 +830,59 @@ export const companyProfileItems: CompanyProfileItems = {
   stockDetailsItems: [
     {
       id: 112,
-      title: 'Ticket Symbol',
+      title: 'Ticker Symbol',
       icon: faTicket,
       content: 'AAPL',
-      className: 'mb-3'
+      className: 'mb-4'
     },
     {
       id: 113,
       title: 'Exchange',
       icon: faRightLeft,
       content: 'NASDAQ',
-      className: 'mb-3'
+      className: 'mb-4'
     },
     {
       id: 114,
       title: 'Fiscal Year',
       icon: faCalendarWeek,
       content: 'October - September',
-      className: 'mb-3'
+      className: 'mb-4'
     },
     {
       id: 115,
       title: 'Reporting Cur.',
       icon: faChartLine,
       content: 'USD',
-      className: 'mb-3'
+      className: 'mb-4'
     },
     {
       id: 116,
       title: 'CIK Code',
       icon: faCodeCompare,
       content: '0000320193',
-      className: 'mb-3'
+      className: 'mb-4'
     },
     {
       id: 117,
       title: 'CUSIP Number',
       icon: faHashtag,
       content: '037833100',
-      className: 'mb-3'
+      className: 'mb-4'
     },
     {
       id: 118,
       title: 'ISIN Number',
       icon: faHashtag,
       content: 'US0378331005',
-      className: 'mb-3'
+      className: 'mb-4'
     },
     {
       id: 119,
       title: 'Employer ID',
       icon: faIdCard,
       content: '94-2404110',
-      className: 'mb-3'
+      className: 'mb-4'
     },
     {
       id: 120,

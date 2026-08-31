@@ -7,29 +7,23 @@ import classNames from 'classnames';
 import { numberFormat } from 'helpers/utils';
 import AdvanceTableFooter from 'components/base/AdvanceTableFooter';
 
+/** Gold: `#employeeRecord` in mixins/stock/stock-details/CompanyProfileTabContent.pug */
 const columns: ColumnDef<EmployeeRecordTableRowItem>[] = [
   {
     accessorKey: 'date',
-    header: 'Date',
+    header: 'date',
     cell: ({ row: { original } }) => {
       const { date } = original;
-      return (
-        <p className="text-md font-semibold text-muted mb-0">{date}</p>
-      );
+      return <p className="text-md font-semibold text-muted mb-0">{date}</p>;
     },
     meta: {
-      headerProps: {
-        className: 'align-middle whitespace-nowrap',
-        style: { minWidth: '14rem' }
-      },
-      cellProps: {
-        className: 'align-middle whitespace-nowrap'
-      }
+      headerProps: { className: 'whitespace-nowrap ps-0 min-w-56' },
+      cellProps: { className: 'date whitespace-nowrap' }
     }
   },
   {
     accessorKey: 'employees',
-    header: 'Employees',
+    header: 'employees',
     cell: ({ row: { original } }) => {
       const { employees } = original;
       return (
@@ -39,13 +33,8 @@ const columns: ColumnDef<EmployeeRecordTableRowItem>[] = [
       );
     },
     meta: {
-      headerProps: {
-        className: 'align-middle whitespace-nowrap text-center',
-        style: { minWidth: '8rem' }
-      },
-      cellProps: {
-        className: 'align-middle whitespace-nowrap text-center'
-      }
+      headerProps: { className: 'text-center min-w-32' },
+      cellProps: { className: 'employees whitespace-nowrap text-center' }
     }
   },
   {
@@ -60,13 +49,8 @@ const columns: ColumnDef<EmployeeRecordTableRowItem>[] = [
       );
     },
     meta: {
-      headerProps: {
-        className: 'align-middle text-center',
-        style: { minWidth: '8rem' }
-      },
-      cellProps: {
-        className: 'align-middle text-center'
-      }
+      headerProps: { className: 'text-center min-w-32' },
+      cellProps: { className: 'text-center change' }
     }
   },
   {
@@ -77,19 +61,14 @@ const columns: ColumnDef<EmployeeRecordTableRowItem>[] = [
         growth: { value, className }
       } = original;
       return (
-        <p className={classNames('text-md font-semibold mb-0', className)}>
+        <p className={classNames(className, 'text-md font-semibold mb-0')}>
           {numberFormat(value, 'standard', { minimumFractionDigits: 2 })}%
         </p>
       );
     },
     meta: {
-      headerProps: {
-        className: 'align-middle whitespace-nowrap text-end',
-        style: { minWidth: '11rem' }
-      },
-      cellProps: {
-        className: 'align-middle text-end'
-      }
+      headerProps: { className: 'text-end min-w-44' },
+      cellProps: { className: 'text-end growth whitespace-nowrap' }
     }
   }
 ];
@@ -111,14 +90,14 @@ const EmployeeRecordsTable = ({
     <AdvanceTableProvider {...table}>
       <AdvanceTable
         tableProps={{
-          className: ' border-top border-subtle text-md mb-0'
+          className: 'text-md mb-0 border-t border-subtle'
         }}
-        headerClassName="text-uppercase"
+        headerClassName="uppercase"
       />
       <AdvanceTableFooter
         pagination
-        className="py-2 pagination-subtle text-md"
-        nextPageLinkClassName="me-sm-n2"
+        // gold pagination col carries `sm:-me-2`
+        className="pagination-subtle sm:*:data-list:-me-2"
       />
     </AdvanceTableProvider>
   );

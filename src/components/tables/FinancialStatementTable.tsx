@@ -1,47 +1,26 @@
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
-import { Table, Collapse } from 'react-bootstrap';
-import Button from 'components/base/Button';
+import { cn } from '@hummingbirdui/react';
 
+/** Gold: mixins/stock/stock-details/FinancialStatementTabContent.pug */
 const FinancialStatementTable = () => {
   const [openOperating, setOpenOperating] = useState(true);
   return (
-    <div className="scrollbar table-responsive">
-      <Table className=" border-t border-subtle text-md mb-0">
+    <div className="table-responsive scrollbar">
+      <table className="table border-t border-subtle text-md mb-0">
         <thead>
           <tr className="uppercase">
-            <th className="font-bold py-4" style={{ minWidth: '22rem' }}>
-              Breakdown
-            </th>
-            <th
-              className="font-bold text-center bg-subtle py-4"
-              style={{ minWidth: '7.5rem' }}
-            >
+            <th className="font-bold! ps-0 py-4 min-w-88">Breakdown</th>
+            <th className="font-bold! text-center bg-subtle py-4 min-w-30">
               ttm
             </th>
-            <th
-              className="font-bold text-center py-4"
-              style={{ minWidth: '7.5rem' }}
-            >
-              2023-12-31
-            </th>
-            <th
-              className="font-bold text-center bg-subtle py-4"
-              style={{ minWidth: '7.5rem' }}
-            >
+            <th className="font-bold! text-center py-4 min-w-30">2023-12-31</th>
+            <th className="font-bold! text-center bg-subtle py-4 min-w-30">
               2022-12-31
             </th>
-            <th
-              className="font-bold text-center py-4"
-              style={{ minWidth: '7.5rem' }}
-            >
-              2021-12-31
-            </th>
-            <th
-              className="font-bold text-center bg-subtle py-4"
-              style={{ minWidth: '7.5rem' }}
-            >
+            <th className="font-bold! text-center py-4 min-w-30">2021-12-31</th>
+            <th className="font-bold! text-center bg-subtle py-4 min-w-30">
               2020-12-31
             </th>
           </tr>
@@ -76,13 +55,14 @@ const FinancialStatementTable = () => {
 
           <tr>
             <td className="text-start font-bold">
-              <Button
+              <a
                 className="btn px-0 block collapse-indicator py-0"
-                onClick={() => setOpenOperating(!openOperating)}
+                role="button"
                 aria-expanded={openOperating}
                 aria-controls="collapseOperating"
+                onClick={() => setOpenOperating(!openOperating)}
               >
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-2">
                   <div className="text-md text-highlight">
                     Operating Expenses
                   </div>
@@ -91,7 +71,7 @@ const FinancialStatementTable = () => {
                     className="toggle-icon text-muted"
                   />
                 </div>
-              </Button>
+              </a>
             </td>
             <td className="bg-subtle"></td>
             <td></td>
@@ -102,58 +82,46 @@ const FinancialStatementTable = () => {
 
           <tr>
             <td colSpan={6} className="py-0 border-b-0">
-              <Collapse in={openOperating}>
-                <div id="collapseOperating">
-                  <Table className="mb-0">
-                    <tbody>
-                      <tr className="bg-primary-subtle">
-                        <td
-                          className="text-start ps-4 xl:ps-6"
-                          style={{ minWidth: '22rem' }}
-                        >
-                          Selling General and Administration
-                        </td>
-                        <td
-                          className="bg-subtle"
-                          style={{ minWidth: '7.5rem' }}
-                        >
-                          33,981
-                        </td>
-                        <td style={{ minWidth: '7.5rem' }}>40,445</td>
-                        <td
-                          className="bg-subtle"
-                          style={{ minWidth: '7.5rem' }}
-                        >
-                          28,598
-                        </td>
-                        <td style={{ minWidth: '7.5rem' }}>37,770</td>
-                        <td
-                          className="bg-subtle"
-                          style={{ minWidth: '7.5rem' }}
-                        >
-                          31,635
-                        </td>
-                      </tr>
+              <div
+                id="collapseOperating"
+                className={cn('collapse', {
+                  show: openOperating,
+                  hidden: !openOperating
+                })}
+              >
+                <table className="table mb-0 text-md text-center">
+                  <tbody>
+                    <tr className="bg-primary-subtle">
+                      <td className="text-start ps-4 xl:ps-6 w-88">
+                        Selling General and Administration
+                      </td>
+                      <td className="bg-subtle w-30">33,981</td>
+                      <td className="w-30">40,445</td>
+                      <td className="bg-subtle w-30">28,598</td>
+                      <td className="w-30">37,770</td>
+                      <td className="bg-subtle w-30">31,635</td>
+                    </tr>
 
-                      <tr className="font-bold bg-primary-subtle">
-                        <td className="text-start font-black ps-4 xl:ps-6">
-                          Total Operating Expenses
-                        </td>
-                        <td className="bg-subtle">35,464</td>
-                        <td>42,712</td>
-                        <td className="bg-subtle">31,063</td>
-                        <td>39,720</td>
-                        <td className="bg-subtle">33,354</td>
-                      </tr>
-                    </tbody>
-                  </Table>
-                </div>
-              </Collapse>
+                    <tr className="font-bold bg-primary-subtle">
+                      <td className="text-start font-extrabold ps-4 xl:ps-6">
+                        Total Operating Expenses
+                      </td>
+                      <td className="bg-subtle">35,464</td>
+                      <td>42,712</td>
+                      <td className="bg-subtle">31,063</td>
+                      <td>39,720</td>
+                      <td className="bg-subtle">33,354</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
             </td>
           </tr>
 
           <tr className="font-bold">
-            <td className="text-start font-black">Operating Income or Loss</td>
+            <td className="text-start font-extrabold">
+              Operating Income or Loss
+            </td>
             <td className="bg-subtle">4,15,038</td>
             <td>3,92,526</td>
             <td className="bg-subtle">3,49,295</td>
@@ -207,7 +175,7 @@ const FinancialStatementTable = () => {
           </tr>
 
           <tr className="font-bold">
-            <td className="text-start font-black">Net Income</td>
+            <td className="text-start font-extrabold">Net Income</td>
             <td className="bg-subtle">2,25,653</td>
             <td>4,58,693</td>
             <td className="bg-subtle">1,25,489</td>
@@ -260,7 +228,7 @@ const FinancialStatementTable = () => {
             <td className="bg-subtle">61,475</td>
           </tr>
         </tbody>
-      </Table>
+      </table>
     </div>
   );
 };

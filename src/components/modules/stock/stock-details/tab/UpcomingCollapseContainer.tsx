@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import Button from 'components/base/Button';
-import { Collapse } from 'react-bootstrap';
 import classNames from 'classnames';
 
 interface CollapsibleContainerProps {
@@ -13,6 +11,7 @@ interface CollapsibleContainerProps {
   className?: string;
 }
 
+/** Gold: collapse sections of mixins/stock/stock-details/EventsTabOffcanvas.pug */
 const UpcomingCollapsibleContainer = ({
   collapseTitle,
   children,
@@ -23,15 +22,13 @@ const UpcomingCollapsibleContainer = ({
   const [open, setOpen] = useState(defaultOpen);
   return (
     <>
-      <Button
-        variant=""
+      <a
         className={classNames(
-          'px-10 py-6 flex flex-between-center collapse-indicator bg-subtle w-full',
-          className,
-          {
-            collapsed: open
-          }
+          'btn px-6 py-4 flex flex-between-center collapse-indicator bg-subtle',
+          className
         )}
+        role="button"
+        aria-expanded={open}
         aria-controls={id}
         onClick={() => setOpen(!open)}
       >
@@ -39,12 +36,10 @@ const UpcomingCollapsibleContainer = ({
           {collapseTitle}
         </h4>
         <FontAwesomeIcon icon={faChevronDown} className="toggle-icon" />
-      </Button>
-      <Collapse in={open}>
-        <div className="p-6" id={id}>
-          {children}
-        </div>
-      </Collapse>
+      </a>
+      <div id={id} className={classNames('collapse', open ? 'show' : 'hidden')}>
+        <div className="p-6">{children}</div>
+      </div>
     </>
   );
 };

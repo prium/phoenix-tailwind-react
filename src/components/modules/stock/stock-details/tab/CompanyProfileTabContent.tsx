@@ -1,11 +1,11 @@
+import { Select } from '@hummingbirdui/react';
 import { CompanyProfileItems } from 'data/stock/stockDetails';
 import CompanyProfileTotalItemsCard from 'components/cards/CompanyProfileTotalItemsCard';
 import CompanyProfileDescriptionCard from 'components/cards/CompanyProfileDescriptionCard';
-import { Row, Col, ButtonGroup, Card, Form } from 'react-bootstrap';
-import Button from 'components/base/Button';
 import CompanyProfileEmployeesChart from 'components/charts/e-charts/CompanyProfileEmployeesChart';
 import EmployeeRecordsTable from 'components/tables/EmployeeRecordsTable';
 
+/** Gold: mixins/stock/stock-details/CompanyProfileTabContent.pug */
 const CompanyProfileTabContent = ({
   companyProfileItems
 }: {
@@ -20,42 +20,55 @@ const CompanyProfileTabContent = ({
         companyDetails={companyProfileItems.companyDetailsItems}
         stockDetails={companyProfileItems.stockDetailsItems}
       />
-      <Row className="flex-between-center g-4 mb-6">
-        <Col xs="auto">
+      <div className="row flex-between-center g-4 mb-6">
+        <div className="col-auto">
           <h4>Chart of Employees</h4>
           <p className="mb-0">No. of bookings fulfilled &amp; cancelled</p>
-        </Col>
-        <Col xs="auto">
-          <ButtonGroup className="stock-btn-group">
-            <Button variant="phoenix-secondary">Total</Button>
-            <Button variant="phoenix-secondary">Change</Button>
-            <Button variant="phoenix-secondary" className="active">
+        </div>
+        <div className="col-auto">
+          <div
+            className="btn-group stock-btn-group"
+            role="group"
+            aria-label="employees-btn-group"
+          >
+            <button type="button" className="btn btn-phoenix-secondary">
+              Total
+            </button>
+            <button type="button" className="btn btn-phoenix-secondary">
+              Change
+            </button>
+            <button
+              type="button"
+              className="btn btn-phoenix-secondary active text-primary bg-white border-subtle"
+            >
               Growth
-            </Button>
-          </ButtonGroup>
-        </Col>
-      </Row>
+            </button>
+          </div>
+        </div>
+      </div>
+
       <CompanyProfileEmployeesChart />
-      <Card>
-        <Card.Body>
-          <Row className="g-4 flex-between-center mb-4">
-            <Col xs="auto">
+
+      <div className="card">
+        <div className="card-body">
+          <div className="row g-4 flex-between-center mb-4">
+            <div className="col-auto">
               <h4>Employee Records</h4>
-              <p className="mb-0">Record of employee's roles and tenure.</p>
-            </Col>
-            <Col xs="auto">
-              <Form.Select size="sm">
+              <p className="mb-0">Record of employees' roles and tenure.</p>
+            </div>
+            <div className="col-auto">
+              <Select size="sm" name="action" id="action">
                 <option value="export">Export</option>
                 <option value="import">Import</option>
                 <option value="delete">Delete</option>
-              </Form.Select>
-            </Col>
-          </Row>
+              </Select>
+            </div>
+          </div>
           <EmployeeRecordsTable
             data={companyProfileItems.employeeRecordTableRows}
           />
-        </Card.Body>
-      </Card>
+        </div>
+      </div>
     </>
   );
 };

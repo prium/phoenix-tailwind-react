@@ -96,8 +96,8 @@ export const forecastDataItems: ForecastDataItem = {
         )
       },
       chart: <RevenueThisYearChart />,
-      className:
-        'pb-4 border-bottom border-bottom-xxl-0 border-end-sm pe-sm-4  py-xxl-0'
+      // gold: mixins/stock/stock-details/ForecastTabContent.pug forecastCardData
+      className: 'pb-6 border-b 2xl:border-b-0 sm:border-e sm:pe-6 2xl:py-0'
     },
     {
       id: 2,
@@ -118,7 +118,7 @@ export const forecastDataItems: ForecastDataItem = {
       },
       chart: <RevenueNextYearChart />,
       className:
-        'border-bottom border-bottom-xxl-0 border-end-xxl px-sm-4 py-4 pe-xl-3 pe-xxl-4 pt-sm-0 pb-xxl-0'
+        'border-b 2xl:border-b-0 2xl:border-e sm:px-6 py-6 xl:pe-4 2xl:pe-6 sm:pt-0 2xl:pb-0'
     },
     {
       id: 3,
@@ -138,7 +138,7 @@ export const forecastDataItems: ForecastDataItem = {
       },
       chart: <EpsThisYearChart />,
       className:
-        'border-bottom border-bottom-sm-0 border-end-sm pe-sm-4 px-xxl-4 py-4 pb-sm-0 py-xxl-0'
+        'border-b sm:border-b-0 sm:border-e sm:pe-6 2xl:px-6 py-6 sm:pb-0 2xl:py-0'
     },
     {
       id: 4,
@@ -157,7 +157,7 @@ export const forecastDataItems: ForecastDataItem = {
         )
       },
       chart: <EpsNextYearChart />,
-      className: 'ps-sm-4 pt-4 pe-sm-4  pe-xl-3 pe-xxl-4 pt-xxl-0'
+      className: 'sm:ps-6 pt-6 sm:pe-6 xl:pe-4 2xl:pe-6 2xl:pt-0'
     }
   ],
   economicPredicationTableRow: [
@@ -256,7 +256,8 @@ export const forecastDataItems: ForecastDataItem = {
       eps: 10.3,
       epsGrowth: {
         growth: 11.55,
-        className: 'text-danger-dark'
+        // gold: epsGrowthDirection true for the 2025 row
+        className: 'text-success-dark'
       },
       forwardPE: 32.54,
       noAnalysts: 46

@@ -7,7 +7,10 @@ import { BarChart } from 'echarts/charts';
 echarts.use([TooltipComponent, BarChart]);
 
 const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
-  color: [getThemeColor('color-success-lighter'), getThemeColor('color-success-light')],
+  color: [
+    getThemeColor('color-success-lighter'),
+    getThemeColor('color-success-light')
+  ],
   tooltip: {
     trigger: 'axis',
     padding: [7, 10],
@@ -100,6 +103,8 @@ const EpsThisYearChart = () => {
       echarts={echarts}
       option={getDefaultOptions(getThemeColor)}
       className="eps-this-year-chart"
+      // size comes from the eps-this-year-chart CSS class; suppress the library default 300px
+      style={{ height: undefined }}
     />
   );
 };

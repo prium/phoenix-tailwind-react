@@ -454,7 +454,15 @@ export const pages: VisualPage[] = [
   {
     name: 'stock-details',
     react: '/apps/stock/stock-details',
-    gold: '/apps/stock/stock-details.html'
+    gold: '/apps/stock/stock-details.html',
+    // anchored icons/controls of the default (Chart) tab + sidebar
+    probes: [
+      '#stockDetailsTab .nav-link.active',
+      '#stockDetailsSidebar .badge',
+      '#stockDetailsSidebar .input-group-text',
+      '#stockDetailsSidebar .table td.text-info-dark',
+      '#chart-tab .btn-phoenix-secondary'
+    ]
   },
   {
     name: 'stock-portfolio',

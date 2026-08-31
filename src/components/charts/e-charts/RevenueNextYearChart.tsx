@@ -9,7 +9,10 @@ import { tooltipFormatterDefault } from 'helpers/echart-utils';
 echarts.use([TooltipComponent, BarChart]);
 
 const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
-  color: [getThemeColor('color-primary-lighter'), getThemeColor('color-primary-light')],
+  color: [
+    getThemeColor('color-primary-lighter'),
+    getThemeColor('color-primary-light')
+  ],
   tooltip: {
     trigger: 'axis',
     padding: [7, 10],
@@ -113,6 +116,8 @@ const RevenueNextYearChart = () => {
       echarts={echarts}
       option={getDefaultOptions(getThemeColor)}
       className="revenue-next-year-chart"
+      // size comes from the revenue-next-year-chart CSS class; suppress the library default 300px
+      style={{ height: undefined }}
     />
   );
 };

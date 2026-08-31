@@ -1,21 +1,26 @@
 import AdvanceTable from 'components/base/AdvanceTable';
-import useAdvanceTable from 'hooks/useAdvanceTable';
+import useAdvanceTable, { buildSelectionColumn } from 'hooks/useAdvanceTable';
 import AdvanceTableProvider from 'providers/AdvanceTableProvider';
 import AdvanceTableFooter from 'components/base/AdvanceTableFooter';
 import { ColumnDef } from '@tanstack/react-table';
 import { DividendRecordDataTableRowItem } from 'data/stock/dividend';
 import { currencyFormat } from 'helpers/utils';
-import Badge from 'components/base/Badge';
 import Button from 'components/base/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faTrash } from '@fortawesome/free-solid-svg-icons';
 import RevealDropdown from 'components/base/RevealDropdown';
 import ActionDropdownItems from 'components/common/ActionDropdownItems';
 
+/** Gold: `#dividendTable` in mixins/stock/stock-details/DividendsTabContent.pug */
 const columns: ColumnDef<DividendRecordDataTableRowItem>[] = [
+  buildSelectionColumn({
+    headerClassName: 'whitespace-nowrap text-md ps-0 py-3.5',
+    cellClassName: 'text-md ps-0 py-[23px]'
+  }),
   {
     accessorKey: 'exDividendDate',
-    header: 'Ex-Dividend Date',
+    id: 'dividendDate',
+    header: 'Ex-dividend date',
     cell: ({ row: { original } }) => {
       const { exDividendDate } = original;
       return (
@@ -25,18 +30,13 @@ const columns: ColumnDef<DividendRecordDataTableRowItem>[] = [
       );
     },
     meta: {
-      headerProps: {
-        className: 'whitespace-nowrap align-middle text-uppercase',
-        style: { minWidth: '200px' }
-      },
-      cellProps: {
-        className: 'align-middle whitespace-nowrap'
-      }
+      headerProps: { className: 'whitespace-nowrap min-w-50' },
+      cellProps: { className: 'dividendDate whitespace-nowrap' }
     }
   },
   {
     accessorKey: 'cashAmount',
-    header: 'Cash Amount',
+    header: 'Cash amount',
     cell: ({ row: { original } }) => {
       const { cashAmount } = original;
       return (
@@ -49,41 +49,33 @@ const columns: ColumnDef<DividendRecordDataTableRowItem>[] = [
       );
     },
     meta: {
-      headerProps: {
-        className: 'whitespace-nowrap align-middle text-uppercase',
-        style: { minWidth: '200px' }
-      },
-      cellProps: {
-        className: 'align-middle whitespace-nowrap'
-      }
+      headerProps: { className: 'min-w-50' },
+      cellProps: { className: 'cashAmount whitespace-nowrap' }
     }
   },
   {
     accessorKey: 'paymentStatus',
+    id: 'status',
     header: 'Payment Status',
     cell: ({ row: { original } }) => {
       const {
         paymentStatus: { title, badgeBg }
       } = original;
+      // gold badge has no `.badge-label` wrapper
       return (
-        <Badge variant="phoenix" bg={badgeBg} className="text-sm rounded-full">
+        <span className={`badge-phoenix-${badgeBg} badge text-sm rounded-full`}>
           {title}
-        </Badge>
+        </span>
       );
     },
     meta: {
-      headerProps: {
-        className: 'text-center align-middle text-uppercase',
-        style: { minWidth: '200px' }
-      },
-      cellProps: {
-        className: 'align-middle text-center'
-      }
+      headerProps: { className: 'text-center min-w-50' },
+      cellProps: { className: 'text-center status' }
     }
   },
   {
     accessorKey: 'recordDate',
-    header: 'Record Date',
+    header: 'Record date',
     cell: ({ row: { original } }) => {
       const { recordDate } = original;
       return (
@@ -91,18 +83,13 @@ const columns: ColumnDef<DividendRecordDataTableRowItem>[] = [
       );
     },
     meta: {
-      headerProps: {
-        className:
-          'whitespace-nowrap align-middle text-end pe-5 text-uppercase',
-        style: { minWidth: '200px' }
-      },
-      cellProps: {
-        className: 'align-middle text-end pe-5 whitespace-nowrap'
-      }
+      headerProps: { className: 'text-end pe-8 min-w-50' },
+      cellProps: { className: 'text-end recordDate whitespace-nowrap pe-8' }
     }
   },
   {
     accessorKey: 'paymentDate',
+    id: 'payDate',
     header: 'Pay Date',
     cell: ({ row: { original } }) => {
       const { paymentDate } = original;
@@ -113,13 +100,8 @@ const columns: ColumnDef<DividendRecordDataTableRowItem>[] = [
       );
     },
     meta: {
-      headerProps: {
-        className: 'whitespace-nowrap align-middle ps-5 text-uppercase',
-        style: { minWidth: '200px' }
-      },
-      cellProps: {
-        className: 'text-md align-middle ps-5 whitespace-nowrap'
-      }
+      headerProps: { className: 'text-start ps-8 min-w-50' },
+      cellProps: { className: 'payDate whitespace-nowrap ps-8' }
     }
   },
   {
@@ -143,11 +125,18 @@ const columns: ColumnDef<DividendRecordDataTableRowItem>[] = [
               </Button>
             </div>
           </div>
-          <RevealDropdown btnClassName="text-sm">
+          <RevealDropdown
+            className="btn-reveal-trigger static"
+            btnClassName="text-sm"
+          >
             <ActionDropdownItems />
           </RevealDropdown>
         </>
       );
+    },
+    meta: {
+      headerProps: { className: 'text-end pe-0' },
+      cellProps: { className: 'whitespace-nowrap text-end pe-0' }
     }
   }
 ];
@@ -162,8 +151,6 @@ const DividendRecordTable = ({
     columns,
     pageSize: 10,
     pagination: true,
-    selection: true,
-    selectionColumnWidth: '30px',
     sortable: true
   });
 
@@ -171,14 +158,15 @@ const DividendRecordTable = ({
     <AdvanceTableProvider {...table}>
       <AdvanceTable
         tableProps={{
-          className: ' text-md mb-0 border-top border-subtle'
+          className: 'text-md mb-0 border-t border-subtle'
         }}
+        headerClassName="uppercase"
         rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />
       <AdvanceTableFooter
         pagination
-        className="py-2 pe-0 text-md pagination-subtle"
-        nextPageLinkClassName="me-sm-n2"
+        className="pagination-subtle"
+        nextPageLinkClassName="pe-0"
       />
     </AdvanceTableProvider>
   );

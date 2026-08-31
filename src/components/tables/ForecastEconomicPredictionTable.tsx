@@ -5,10 +5,15 @@ import RevealDropdown from 'components/base/RevealDropdown';
 import ActionDropdownItems from 'components/common/ActionDropdownItems';
 import { EconomicPredictionTableRowItem } from 'data/stock/forecast';
 import { currencyFormat, numberFormat } from 'helpers/utils';
-import useAdvanceTable from 'hooks/useAdvanceTable';
+import useAdvanceTable, { buildSelectionColumn } from 'hooks/useAdvanceTable';
 import AdvanceTableProvider from 'providers/AdvanceTableProvider';
 
+/** Gold: `#forecast` table in mixins/stock/stock-details/ForecastTabContent.pug */
 const columns: ColumnDef<EconomicPredictionTableRowItem>[] = [
+  buildSelectionColumn({
+    headerClassName: 'whitespace-nowrap text-md ps-0 py-3.75',
+    cellClassName: 'text-md ps-0 py-5.75'
+  }),
   {
     accessorKey: 'endingYear',
     header: 'Ending year',
@@ -16,27 +21,22 @@ const columns: ColumnDef<EconomicPredictionTableRowItem>[] = [
       const { endingYear } = original;
 
       return (
-        <p className="font-semibold mb-0 text-md text-emphasis">{endingYear}</p>
+        <p className="text-md font-semibold text-emphasis mb-0">{endingYear}</p>
       );
     },
     meta: {
-      headerProps: {
-        className: 'whitespace-nowrap align-middle',
-        style: { minWidth: '7.5rem' }
-      },
-      cellProps: {
-        className: 'align-middle whitespace-nowrap'
-      }
+      headerProps: { className: 'whitespace-nowrap min-w-30' },
+      cellProps: { className: 'endingYear whitespace-nowrap' }
     }
   },
   {
     accessorKey: 'revenue',
-    header: 'Revenue',
+    header: 'revenue',
     cell: ({ row: { original } }) => {
       const { revenue } = original;
 
       return (
-        <p className="font-semibold mb-0 text-md text-emphasis">
+        <p className="text-md font-semibold text-emphasis mb-0">
           {currencyFormat(revenue, {
             minimumFractionDigits: 2
           })}
@@ -45,25 +45,20 @@ const columns: ColumnDef<EconomicPredictionTableRowItem>[] = [
       );
     },
     meta: {
-      headerProps: {
-        className: 'align-middle',
-        style: { minWidth: '7.5rem' }
-      },
-      cellProps: {
-        className: 'align-middle whitespace-nowrap'
-      }
+      headerProps: { className: 'min-w-30' },
+      cellProps: { className: 'revenue whitespace-nowrap' }
     }
   },
   {
     accessorKey: 'revenueGrowth',
-    header: 'Revenue Growth',
+    header: 'revenue growth',
     cell: ({ row: { original } }) => {
       const {
         revenueGrowth: { growth, className }
       } = original;
 
       return (
-        <p className={classNames('font-semibold mb-0 text-md', className)}>
+        <p className={classNames(className, 'text-md font-semibold mb-0')}>
           {numberFormat(growth, 'standard', {
             minimumFractionDigits: 2
           })}
@@ -71,13 +66,8 @@ const columns: ColumnDef<EconomicPredictionTableRowItem>[] = [
       );
     },
     meta: {
-      headerProps: {
-        className: 'align-middle',
-        style: { minWidth: '7.5rem' }
-      },
-      cellProps: {
-        className: 'align-middle'
-      }
+      headerProps: { className: 'min-w-30' },
+      cellProps: { className: 'revenueGrowth' }
     }
   },
   {
@@ -87,19 +77,14 @@ const columns: ColumnDef<EconomicPredictionTableRowItem>[] = [
       const { eps } = original;
 
       return (
-        <p className="font-semibold mb-0 text-md text-emphasis">
+        <p className="text-md font-semibold text-emphasis mb-0">
           {numberFormat(eps, 'standard', { minimumFractionDigits: 2 })}
         </p>
       );
     },
     meta: {
-      headerProps: {
-        className: 'ps-5 align-middle',
-        style: { minWidth: '7.5rem' }
-      },
-      cellProps: {
-        className: 'align-middle ps-5'
-      }
+      headerProps: { className: 'min-w-30 ps-8' },
+      cellProps: { className: 'eps ps-8' }
     }
   },
   {
@@ -111,7 +96,7 @@ const columns: ColumnDef<EconomicPredictionTableRowItem>[] = [
       } = original;
 
       return (
-        <p className={classNames('font-semibold mb-0 text-md', className)}>
+        <p className={classNames(className, 'text-md font-semibold mb-0')}>
           {numberFormat(growth, 'standard', {
             minimumFractionDigits: 2
           })}
@@ -119,13 +104,8 @@ const columns: ColumnDef<EconomicPredictionTableRowItem>[] = [
       );
     },
     meta: {
-      headerProps: {
-        className: 'whitespace-nowrap align-middle ps-5',
-        style: { minWidth: '7.5rem' }
-      },
-      cellProps: {
-        className: 'align-middle whitespace-nowrap ps-5'
-      }
+      headerProps: { className: 'min-w-30 ps-8' },
+      cellProps: { className: 'epsGrowth whitespace-nowrap ps-8' }
     }
   },
   {
@@ -135,7 +115,7 @@ const columns: ColumnDef<EconomicPredictionTableRowItem>[] = [
       const { forwardPE } = original;
 
       return (
-        <p className="font-semibold mb-0 text-md text-emphasis">
+        <p className="text-md font-semibold text-emphasis mb-0">
           {forwardPE
             ? numberFormat(forwardPE, 'standard', { minimumFractionDigits: 2 })
             : 'N/A'}
@@ -143,37 +123,25 @@ const columns: ColumnDef<EconomicPredictionTableRowItem>[] = [
       );
     },
     meta: {
-      headerProps: {
-        className: 'ps-5 align-middle',
-        style: { minWidth: '7.5rem' }
-      },
-      cellProps: {
-        className: 'align-middle ps-5'
-      }
+      headerProps: { className: 'min-w-30 ps-8' },
+      cellProps: { className: 'forwardPE ps-8' }
     }
   },
   {
     accessorKey: 'noAnalysts',
-    header: 'No. analysts',
+    header: 'no. analysts',
     cell: ({ row: { original } }) => {
       const { noAnalysts } = original;
 
       return (
-        <p className="font-semibold mb-0 text-md text-emphasis">
-          {noAnalysts
-            ? numberFormat(noAnalysts, 'standard', { minimumFractionDigits: 2 })
-            : 'N/A'}
+        <p className="text-md font-semibold text-emphasis mb-0">
+          {noAnalysts ?? 'N/A'}
         </p>
       );
     },
     meta: {
-      headerProps: {
-        className: 'ps-5 align-middle',
-        style: { minWidth: '7.5rem' }
-      },
-      cellProps: {
-        className: 'align-middle ps-5'
-      }
+      headerProps: { className: 'min-w-30 ps-8' },
+      cellProps: { className: 'noANalysts ps-8' }
     }
   },
   {
@@ -182,21 +150,17 @@ const columns: ColumnDef<EconomicPredictionTableRowItem>[] = [
     header: '',
     cell: () => {
       return (
-        <>
-          <RevealDropdown className="btn-reveal-trigger" btnClassName="text-sm">
-            <ActionDropdownItems />
-          </RevealDropdown>
-        </>
+        <RevealDropdown
+          className="btn-reveal-trigger static"
+          btnClassName="text-sm"
+        >
+          <ActionDropdownItems />
+        </RevealDropdown>
       );
     },
     meta: {
-      headerProps: {
-        className: 'align-middle pe-0',
-        style: { minWidth: '3rem' }
-      },
-      cellProps: {
-        className: 'align-middle whitespace-nowrap pe-0'
-      }
+      headerProps: { className: 'min-w-12 pe-0' },
+      cellProps: { className: 'whitespace-nowrap pe-0' }
     }
   }
 ];
@@ -211,17 +175,16 @@ const ForecastEconomicPredictionTable = ({
     columns,
     pageSize: 6,
     pagination: true,
-    selection: true,
-    selectionColumnWidth: '30px',
     sortable: true
   });
   return (
     <AdvanceTableProvider {...table}>
       <AdvanceTable
         tableProps={{
-          className: ' text-md mb-0 border-top border-subtle'
+          className: 'text-md mb-0 border-t border-subtle'
         }}
-        headerClassName="text-uppercase"
+        headerClassName="uppercase"
+        rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />
     </AdvanceTableProvider>
   );

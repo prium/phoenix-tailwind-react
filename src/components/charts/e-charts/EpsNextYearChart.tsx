@@ -67,6 +67,8 @@ const EpsNextYearChart = () => {
       echarts={echarts}
       option={getDefaultOptions(getThemeColor)}
       className="eps-next-year-chart"
+      // size comes from the eps-next-year-chart CSS class; suppress the library default 300px
+      style={{ height: undefined }}
     />
   );
 };

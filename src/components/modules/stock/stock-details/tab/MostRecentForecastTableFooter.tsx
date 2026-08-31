@@ -1,9 +1,7 @@
 import { useState } from 'react';
-import { Pagination } from 'react-bootstrap';
-import Button from 'components/base/Button';
+import { cn } from '@hummingbirdui/react';
 import { useAdvanceTableContext } from 'providers/AdvanceTableProvider';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
 import usePagination from 'hooks/usePagination';
 import {
   faAngleRight,
@@ -11,19 +9,18 @@ import {
   faChevronRight
 } from '@fortawesome/free-solid-svg-icons';
 
-interface MostAdvanceTableFooterProps {
+interface MostRecentForecastTableFooterProps {
   className?: string;
-  showViewAllBtn?: boolean;
-  viewAllBtnClass?: string;
-  tableInfo?: string;
 }
 
+/**
+ * Gold list.js footer of `#mostRecentForecast`:
+ * `.flex.flex-end-center.py-1.text-md.pagination-subtle` in
+ * mixins/stock/stock-details/MostRecentForecastTable.pug.
+ */
 const MostRecentForecastTableFooter = ({
-  className,
-  showViewAllBtn = true,
-  viewAllBtnClass,
-  tableInfo
-}: MostAdvanceTableFooterProps) => {
+  className
+}: MostRecentForecastTableFooterProps) => {
   const {
     setPageSize,
     getCanNextPage,
@@ -49,89 +46,112 @@ const MostRecentForecastTableFooter = ({
 
   const [isAllVisible, setIsAllVisible] = useState(false);
 
-  return (
-    <div className={classNames(className, 'flex py-1')}>
-      <div className="flex text-md">
-        <p
-          className={classNames(
-            tableInfo,
-            'mb-0 hidden sm:block me-6 font-semibold text-default'
-          )}
-        >
-          {pageSize * pageIndex + 1} to{' '}
-          {pageSize * pageIndex + getPaginationRowModel().rows.length}
-          <span className="text-subtle"> items of </span>
-          {getPrePaginationRowModel().rows.length}
-        </p>
-        {showViewAllBtn && (
-          <Button
-            variant="link"
-            className={classNames(viewAllBtnClass, 'p-0 font-semibold')}
-            endIcon={
-              <FontAwesomeIcon icon={faAngleRight} className="ms-1 text-md" />
-            }
-            onClick={() => {
-              setIsAllVisible(!isAllVisible);
-              setPageSize(
-                isAllVisible ? perPage : getPrePaginationRowModel().rows.length
-              );
-            }}
-          >
-            View {isAllVisible ? 'less' : 'all'}
-          </Button>
-        )}
-      </div>
-      <div className="ms-6">
-        <Pagination className="mb-0 justify-center items-center">
-          <Pagination.Prev
-            disabled={!getCanPreviousPage()}
-            onClick={() => setPageIndex(pageIndex - 1)}
-            className="m-0"
-          >
-            <FontAwesomeIcon icon={faChevronLeft} />
-          </Pagination.Prev>
+  const pageButton = (
+    key: React.Key,
+    label: React.ReactNode,
+    onClick: () => void,
+    { active = false, disabled = false } = {}
+  ) => (
+    <li key={key} className={cn({ active, disabled })}>
+      <button
+        type="button"
+        className="page"
+        onClick={onClick}
+        disabled={disabled}
+      >
+        {label}
+      </button>
+    </li>
+  );
 
+  return (
+    // `data-list` scopes the gold list.js `.pagination`/`.page` styles (list.css)
+    <div
+      data-list=""
+      className={cn(
+        'flex flex-end-center py-1 text-md pagination-subtle',
+        className
+      )}
+    >
+      <p className="mb-0 hidden sm:block me-4 font-semibold text-default">
+        {pageSize * pageIndex + 1} to{' '}
+        {pageSize * pageIndex + getPaginationRowModel().rows.length}
+        <span className="text-subtle"> Items of </span>
+        {getPrePaginationRowModel().rows.length}
+      </p>
+      <a
+        className="font-semibold"
+        href="#!"
+        onClick={e => {
+          e.preventDefault();
+          setIsAllVisible(!isAllVisible);
+          setPageSize(
+            isAllVisible ? perPage : getPrePaginationRowModel().rows.length
+          );
+        }}
+      >
+        View {isAllVisible ? 'Less' : 'all'}
+        <FontAwesomeIcon
+          icon={faAngleRight}
+          className="ms-1"
+          transform="down-1"
+        />
+      </a>
+      <div className="flex ms-6 sm:-me-2">
+        <button
+          type="button"
+          className={cn('page-link', { disabled: !getCanPreviousPage() })}
+          data-list-pagination="prev"
+          disabled={!getCanPreviousPage()}
+          onClick={() => setPageIndex(pageIndex - 1)}
+        >
+          <FontAwesomeIcon icon={faChevronLeft} />
+        </button>
+        <ul className="mb-0 pagination">
           {hasPrevEllipsis && (
             <>
-              <Pagination.Item
-                active={pageIndex === 0}
-                onClick={() => setPageIndex(0)}
-              >
-                1
-              </Pagination.Item>
-              <Pagination.Ellipsis disabled />
+              {pageButton('first', 1, () => setPageIndex(0), {
+                active: pageIndex === 0
+              })}
+              <li className="disabled">
+                <button type="button" className="page" disabled>
+                  …
+                </button>
+              </li>
             </>
           )}
 
-          {visiblePaginationItems.map(page => (
-            <Pagination.Item
-              key={page}
-              active={pageIndex === page - 1}
-              onClick={() => setPageIndex(page - 1)}
-            >
-              {page}
-            </Pagination.Item>
-          ))}
+          {visiblePaginationItems.map(page =>
+            pageButton(page, page, () => setPageIndex(page - 1), {
+              active: pageIndex === page - 1
+            })
+          )}
 
           {hasNextEllipsis && (
             <>
-              <Pagination.Ellipsis disabled />
-              <Pagination.Item
-                active={pageIndex === getPageCount() - 1}
-                onClick={() => setPageIndex(getPageCount() - 1)}
-              >
-                {getPageCount()}
-              </Pagination.Item>
+              <li className="disabled">
+                <button type="button" className="page" disabled>
+                  …
+                </button>
+              </li>
+              {pageButton(
+                'last',
+                getPageCount(),
+                () => setPageIndex(getPageCount() - 1),
+                { active: pageIndex === getPageCount() - 1 }
+              )}
             </>
           )}
-          <Pagination.Next
-            disabled={!getCanNextPage()}
-            onClick={() => setPageIndex(pageIndex + 1)}
-            className="sm:-me-2"
-          >
-            <FontAwesomeIcon icon={faChevronRight} />
-          </Pagination.Next>
-        </Pagination>
+        </ul>
+        <button
+          type="button"
+          className={cn('page-link', { disabled: !getCanNextPage() })}
+          data-list-pagination="next"
+          disabled={!getCanNextPage()}
+          onClick={() => setPageIndex(pageIndex + 1)}
+        >
+          <FontAwesomeIcon icon={faChevronRight} />
+        </button>
       </div>
     </div>
   );
