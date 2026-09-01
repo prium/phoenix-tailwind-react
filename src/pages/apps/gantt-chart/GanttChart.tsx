@@ -66,6 +66,8 @@ const scales: Record<ViewType, any> = {
  */
 const GanttChart = () => {
   const containerRef = useRef(null);
+  const wrapperRef = useRef<HTMLDivElement>(null);
+  const initialized = useRef(false);
   const [currentView, setCurrentView] = useState<ViewType>(Views.MONTHS);
   const { setContentClass } = useMainLayoutContext();
   const ganttWidth = useGanttChartGridWidth();
@@ -142,8 +144,10 @@ const GanttChart = () => {
     // undoes dhtmlx's `initial_scroll` jump to the first task; React sizes the
     // grid before the first init, so scroll back explicitly instead.
     gantt.scrollTo(0, 0);
+    initialized.current = true;
 
     return () => {
+      initialized.current = false;
       gantt.clearAll();
       gantt.resetLayout();
       gantt.resetSkin();
@@ -156,18 +160,30 @@ const GanttChart = () => {
     gantt.render();
   }, [currentView]);
 
+  // dhtmlx measures its layout once at init() and only recomputes on an
+  // explicit render(), so it keeps whatever size the container had at that
+  // moment. `.gantt-app-container` is sized by `.gantt-content` on `.content`,
+  // which this page sets through the layout provider — a parent state update
+  // that only lands after this component's effects have run, so dhtmlx can
+  // measure the container before it has its final height. Watching the box
+  // itself re-renders on any such change (late class, fonts, devtools docking,
+  // navbar collapse), instead of only on a window resize.
   useEffect(() => {
-    const handleResize = () => {
-      gantt.render();
-    };
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    const wrapper = wrapperRef.current;
+    if (!wrapper) return;
+    const observer = new ResizeObserver(() => {
+      if (initialized.current) {
+        gantt.render();
+      }
+    });
+    observer.observe(wrapper);
+    return () => observer.disconnect();
   }, []);
 
   return (
     <>
       <GanttChartActions setCurrentView={setCurrentView} />
-      <div className="gantt-app-container scrollbar">
+      <div className="gantt-app-container scrollbar" ref={wrapperRef}>
         <div className="size-full" id="gantt-app" ref={containerRef} />
       </div>
       <GanttOffcanvas />
