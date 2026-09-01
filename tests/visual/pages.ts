@@ -627,5 +627,20 @@ export const pages: VisualPage[] = [
       // dropzone prompt box
       '.dz-message'
     ]
+  },
+  {
+    name: 'kanban-board',
+    react: '/apps/kanban/kanban',
+    gold: '/apps/kanban/kanban.html'
+  },
+  {
+    name: 'kanban-boards',
+    react: '/apps/kanban/boards',
+    gold: '/apps/kanban/boards.html'
+  },
+  {
+    name: 'kanban-create-board',
+    react: '/apps/kanban/create-board',
+    gold: '/apps/kanban/create-kanban-board.html'
   }
 ];
