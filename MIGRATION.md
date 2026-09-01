@@ -50,7 +50,7 @@ the leftover-Bootstrap grep is empty for its closure, and this table says so.
 | Gallery | ⬜ | |
 | Gantt chart | ⬜ | dhtmlx engine stays (see ZeroRoadMapChart) |
 | Kanban | ⬜ | |
-| Social | ⬜ | |
+| Social (feed, profile, settings) | ✅ | `social-*` (3 entries, probes); `FloatingIconField` + `SettingsProfileCard` extracted |
 | Stock app pages (stock-details, portfolio, watchlist) | ✅ | `stock-*` (3 entries); orphaned react-bootstrap stock tables/cards deleted |
 | Travel agency (17 pages: landing, 6 hotel customer, 4 hotel admin, 3 flight, 3 trip) | ✅ | `ta-*` (17 entries); own layouts (TravelLanding/TravelAgency/FlightAlternate/Trip) all migrated |
 

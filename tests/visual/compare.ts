@@ -128,21 +128,23 @@ export async function shoot(
   return { png: PNG.sync.read(buf), boxes };
 }
 
+const AWAIT_IMAGES = async () => {
+  await (document as any).fonts?.ready;
+  await Promise.all(
+    Array.from(document.images)
+      .filter(i => !i.complete)
+      .map(
+        i =>
+          new Promise(r => {
+            i.onload = i.onerror = r;
+          })
+      )
+  );
+};
+
 /** Wait for fonts, images, echarts and layout to be stable. */
 async function settle(page: Page) {
-  await page.evaluate(async () => {
-    await (document as any).fonts?.ready;
-    await Promise.all(
-      Array.from(document.images)
-        .filter(i => !i.complete)
-        .map(
-          i =>
-            new Promise(r => {
-              i.onload = i.onerror = r;
-            })
-        )
-    );
-  });
+  await page.evaluate(AWAIT_IMAGES);
   // Scroll through the page so lazy content renders, then back to top.
   await page.evaluate(async () => {
     for (let y = 0; y < document.body.scrollHeight; y += 800) {
@@ -151,6 +153,9 @@ async function settle(page: Page) {
     }
     window.scrollTo(0, 0);
   });
+  // Images mounted after the first wait (swiper loop clones, lazy sections
+  // revealed by the scroll pass) load late and shift layout — wait again.
+  await page.evaluate(AWAIT_IMAGES);
   await page.waitForTimeout(700);
 }
 
