@@ -515,5 +515,35 @@ export const pages: VisualPage[] = [
       '[class="form-check mb-1.5"] .form-check-input',
       '[class="form-check form-switch mb-1.5"] .form-check-input'
     ]
+  },
+  {
+    name: 'chat',
+    react: '/apps/chat',
+    gold: '/apps/chat.html'
+  },
+  {
+    name: 'email-inbox',
+    react: '/apps/email/inbox',
+    gold: '/apps/email/inbox.html'
+  },
+  {
+    name: 'email-detail',
+    react: '/apps/email/email-detail',
+    gold: '/apps/email/email-detail.html'
+  },
+  {
+    name: 'email-compose',
+    react: '/apps/email/compose',
+    gold: '/apps/email/compose.html'
+  },
+  {
+    name: 'event-detail',
+    react: '/apps/events/event-detail',
+    gold: '/apps/events/event-detail.html'
+  },
+  {
+    name: 'event-create',
+    react: '/apps/events/create-an-event',
+    gold: '/apps/events/create-an-event.html'
   }
 ];
