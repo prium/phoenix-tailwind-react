@@ -29,3 +29,41 @@
 
 /* Legacy SCSS is kept for reference only — never scan it for class names. */
 @source not '../scss';
+
+/* React-only Suspense loader (components/common/PhoenixLoader) — ported from
+   the original phoenix-react _mixed.scss; the static gold has no counterpart.
+   The margin centers each 40px logo on the container so the ripple scales from
+   the true center (the keyframes own `transform`, so translate can't be used). */
+.logo-ripple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 40px;
+  width: 40px;
+  margin: -20px 0 0 -20px;
+}
+.ripple-1,
+.ripple-2,
+.ripple-3,
+.ripple-4 {
+  animation: phoenix-ripple 2s ease-out infinite;
+}
+.ripple-2 {
+  animation-delay: 0.5s;
+}
+.ripple-3 {
+  animation-delay: 1s;
+}
+.ripple-4 {
+  animation-delay: 1.5s;
+}
+@keyframes phoenix-ripple {
+  0% {
+    transform: rotate(0) scale(1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: rotate(30deg) scale(4);
+    opacity: 0;
+  }
+}
