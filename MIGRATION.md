@@ -22,7 +22,7 @@ the leftover-Bootstrap grep is empty for its closure, and this table says so.
 | Settings panel + toggle | ✅ | `settings-panel` entry (light+dark) |
 | Base components (Button, Badge, Avatar, AdvanceTable, footer, dropdowns, SearchBox, DatePicker, ReactSelect, CheckButton, PhoenixOffcanvas…) | ✅ | see skill §0 finished examples |
 | Chat widget | ✅ | live in MainLayout, HB-based (tracker note was stale) |
-| Other layouts (FileManagerLayout, Auth simple/split/card, DocPagesLayout) | ⬜ | still on shim; EmailLayout done with the email module |
+| Other layouts (Auth simple/split/card, DocPagesLayout) | ⬜ | still on shim; EmailLayout + FileManagerLayout done with their modules |
 | `src/react-bootstrap/` shim | 🚧 | delete when `grep -rl react-bootstrap src` is empty |
 
 ## Dashboards
@@ -42,13 +42,13 @@ the leftover-Bootstrap grep is empty for its closure, and this table says so.
 | E-commerce (11 customer + 7 admin pages) | ✅ | `ec-*` (18 entries) |
 | Project management (6 pages) | ✅ | `pm-*` + dashboard (7 entries) |
 | Chat | ✅ | `chat` (1540+768) + `chat-details` (offcanvas); ChatHomepage is React-only (no gold page) |
-| Calendar | ⬜ | |
+| Calendar | ✅ | `calendar` (light+dark, probes); both Calendar modals off the shim, dates derived from the same dayjs() expressions as the gold |
 | CRM app pages (8) | ✅ | `crm-*` (8 entries: analytics, deals, deal-details, leads, lead-details, add-contact, reports, report-details) |
 | Email | ✅ | `email-*` (3 entries, probes); EmailLayout keeps the gold phoenix-offcanvas DOM |
 | Events | ✅ | `event-*` (2 entries, probes); `FloatingDatePicker` + `InlineCheckItem` extracted |
-| File manager | ⬜ | needs FileManagerLayout |
-| Gallery | ⬜ | |
-| Gantt chart | ⬜ | dhtmlx engine stays (see ZeroRoadMapChart) |
+| File manager | ✅ | `file-manager-*` (2 entries, 18 probes); FileManagerLayout migrated; modal/offcanvas states verified |
+| Gallery | ✅ | `gallery-*` (6 entries); `PackeryGrid` replays the gold isotope/packery ordering |
+| Gantt chart | ✅ | `gantt-chart` (light+dark, 11 probes); dhtmlx engine stays; vendor CSS moved to index.css |
 | Kanban (board, boards, create-board wizard) | ✅ | `kanban-*` (7 entries incl. wizard steps 2–5, probes); modal/offcanvas states verified; `WizardPager` extracted, `PhoenixFloatingLabel` emits gold DOM |
 | Social (feed, profile, settings) | ✅ | `social-*` (3 entries, probes); `FloatingIconField` + `SettingsProfileCard` extracted |
 | Stock app pages (stock-details, portfolio, watchlist) | ✅ | `stock-*` (3 entries); orphaned react-bootstrap stock tables/cards deleted |
