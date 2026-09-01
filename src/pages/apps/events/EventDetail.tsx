@@ -1,7 +1,7 @@
 import PageBreadcrumb from 'components/common/PageBreadcrumb';
 import { defaultBreadcrumbItems } from 'data/commonData';
 import coverImg from 'assets/img/generic/34.png';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row } from '@hummingbirdui/react';
 import EventTitleCard from 'components/cards/EventTitleCard';
 import ResponsesAndShare from 'components/modules/events/ResponsesAndShare';
 import Location from 'components/modules/events/Location';
@@ -12,6 +12,7 @@ import EventsTopicCovered from 'components/list-items/EventsTopicCovered';
 import EventsOrganized from 'components/modules/events/EventsOrganized';
 import { SingerPhotos, events } from 'data/eventsData';
 
+/** apps/events/event-detail.pug + mixins/events/EventDetail.pug */
 const EventDetail = () => {
   return (
     <div className="pb-16">
@@ -20,8 +21,7 @@ const EventDetail = () => {
       <img
         src={coverImg}
         alt=""
-        className="rounded-md w-full fit-cover mb-8 md:mb-10 xl:mb-14"
-        style={{ minHeight: '250px' }}
+        className="min-h-62.5 rounded-md w-full object-cover mb-8 md:mb-10 xl:mb-14"
       />
       <Row className="lg:gx-16">
         <Col xl={8} className="xl:border-e">
@@ -42,7 +42,7 @@ const EventDetail = () => {
           <h4 className="mb-4 text-highlight 2xl:text-xl">Refund Policy:</h4>
           <ul className="mb-10 ps-6">
             <li>Contact the organizer to request a refund.</li>
-            <li>Eventbrite’s fee is nonrefundable.</li>
+            <li>Eventbrite&apos;s fee is nonrefundable.</li>
           </ul>
           <ResponsesAndShare />
         </Col>
@@ -50,18 +50,18 @@ const EventDetail = () => {
           <EventsOrganized />
           <Location />
           <h3 className="mb-4">Tags</h3>
-          <div className="flex flex-wrap mb-14">
-            <Badge variant="tag" className="me-2">
+          <div className="flex flex-wrap pb-12 border-b border-subtle">
+            <Badge variant="tag" className="me-2 mb-2">
               Music
             </Badge>
-            <Badge variant="tag" className="me-2">
+            <Badge variant="tag" className="me-2 mb-2">
               CONCERT
             </Badge>
-            <Badge variant="tag">Greatest show on earth</Badge>
+            <Badge variant="tag" className="mb-2">
+              Greatest show on earth
+            </Badge>
           </div>
-          <div className="border-t border-subtle">
-            <Events events={events} title="Upcoming events" />
-          </div>
+          <Events events={events} title="Upcoming events" />
         </Col>
       </Row>
     </div>

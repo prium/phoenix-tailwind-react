@@ -1,10 +1,11 @@
-import { Card, Col, Row } from 'react-bootstrap';
+import { Card, Col, Row } from '@hummingbirdui/react';
 import FeatherIcon from 'feather-icons-react';
 import Button from 'components/base/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarPlus } from '@fortawesome/free-regular-svg-icons';
 import { faHeart, faShareNodes } from '@fortawesome/free-solid-svg-icons';
 
+/** `+EventDescription` in mixins/events/EventDetail.pug */
 const EventTitleCard = ({ className }: { className?: string }) => {
   return (
     <Card className={className}>
@@ -13,7 +14,7 @@ const EventTitleCard = ({ className }: { className?: string }) => {
           Brandmyth presents- Shironamhin 25 years celebration with symphony
           orchestra
         </h1>
-        <p className="fs-0 mb-6 text-subtle">
+        <p className="text-base mb-6 text-subtle">
           Tavern on the Greend, New York
         </p>
         <Card className="mb-8 2xl:mb-12">
@@ -34,7 +35,8 @@ const EventTitleCard = ({ className }: { className?: string }) => {
                     </div>
                   </div>
                   <p className="leading-sm mb-0 text-subtle">
-                    36/4A, James Tiberius Auditorium, <br />
+                    36/4A, James Tiberius Auditorium,
+                    <br />
                     Vancouver, British Columbia, Canada
                   </p>
                 </div>
@@ -54,7 +56,8 @@ const EventTitleCard = ({ className }: { className?: string }) => {
                   </div>
                 </div>
                 <p className="leading-sm mb-0 text-subtle">
-                  28th June - 2nd July 2022, <br />
+                  28th June - 2nd July 2022,
+                  <br />
                   10 am - 4 pm Eastern Daylight Time
                 </p>
               </Col>
