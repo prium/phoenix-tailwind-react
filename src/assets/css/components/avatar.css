@@ -48,30 +48,30 @@
   }
 }
 
+/* the core hummingbird .avatar box is size-(--avatar-size); the size utilities
+   must set THAT var (the old --avatar-width/height pair only fed .avatar-group
+   and left standalone avatars at the 40px default). Width/height derive from
+   --avatar-size in the `avatar` utility above. */
 @utility avatar-lg {
-  --avatar-width: --spacing(12);
-  --avatar-height: --spacing(12);
+  --avatar-size: --spacing(12);
   --avatar-font-size: var(--text-xl);
 }
 
 @utility avatar-xl {
-  --avatar-width: --spacing(14);
-  --avatar-height: --spacing(14);
+  --avatar-size: --spacing(14);
   --avatar-font-size: var(--text-2xl);
 }
 
 @utility avatar-2xl {
   @layer base {
-    --avatar-width: --spacing(18);
-    --avatar-height: --spacing(18);
+    --avatar-size: --spacing(18);
     --avatar-font-size: var(--text-3xl);
   }
 }
 
 @utility avatar-3xl {
   @layer base {
-    --avatar-width: --spacing(24);
-    --avatar-height: --spacing(24);
+    --avatar-size: --spacing(24);
     --avatar-font-size: var(--text-4xl);
 
     &[class*='avatar-status-']::before {
@@ -82,8 +82,7 @@
 
 @utility avatar-4xl {
   @layer base {
-    --avatar-width: --spacing(37.5);
-    --avatar-height: --spacing(37.5);
+    --avatar-size: --spacing(37.5);
     --avatar-font-size: var(--text-6xl);
   }
 }

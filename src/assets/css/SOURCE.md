@@ -2,10 +2,17 @@ Copied verbatim from ../phoenix-tailwind/src/css at commit b9ac89e97 (hummingbir
 Only index.css is app-specific; keep the rest in sync with phoenix-tailwind.
 
 Local patch ahead of that commit (applied in the phoenix-tailwind working tree
-too, but not yet committed there): components/avatar.css defaults
---avatar-width/--avatar-height to var(--avatar-size) so .avatar-group avatars
-keep a fixed size for every avatar-* size instead of sizing from each image's
-intrinsic resolution. Drop this note once phoenix-tailwind commits the fix.
+too, but not yet committed there): components/avatar.css
+1. defaults --avatar-width/--avatar-height to var(--avatar-size) so
+   .avatar-group avatars keep a fixed size for every avatar-* size instead of
+   sizing from each image's intrinsic resolution;
+2. the avatar-lg…avatar-4xl size utilities now set --avatar-size (the var the
+   hummingbird core `.avatar` box actually consumes) instead of the
+   --avatar-width/height pair — standalone avatars with those classes rendered
+   at the 40px default (social profile/feed cover avatars were tiny; avatar-lg
+   was 50px instead of the original Phoenix 48px). Gold public CSS rebuilt via
+   `npx gulp style`.
+Drop this note once phoenix-tailwind commits the fix.
 
 Also patched in the phoenix-tailwind working tree (pug, not css):
 dashboard/travel-agency.pug FinancialActivities margins are now
