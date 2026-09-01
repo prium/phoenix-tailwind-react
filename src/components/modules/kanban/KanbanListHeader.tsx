@@ -1,18 +1,13 @@
-import React, {
-  CSSProperties,
-  Dispatch,
-  Fragment,
-  SetStateAction
-} from 'react';
+import { Dispatch, SetStateAction } from 'react';
 import {
   UilArrowFromRight,
   UilLeftArrowToLeft
 } from '@iconscout/react-unicons';
-import Button from 'components/base/Button';
-import { KanbanBoardItem } from 'data/kanban';
-import { Dropdown } from 'react-bootstrap';
+import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faAngleRight, faEllipsisH } from '@fortawesome/free-solid-svg-icons';
+import { Dropdown, cn } from '@hummingbirdui/react';
+import { KanbanBoardItem } from 'data/kanban';
+import KanbanDropdownItems, { KanbanDropdownItem } from './KanbanDropdownItems';
 
 interface KanbanListHeaderProps {
   list: KanbanBoardItem;
@@ -20,7 +15,7 @@ interface KanbanListHeaderProps {
   setCollapsed: Dispatch<SetStateAction<boolean>>;
 }
 
-const kanbanHeaderActions = [
+const kanbanHeaderActions: KanbanDropdownItem[] = [
   {
     id: 1,
     label: 'Sort tasks',
@@ -88,6 +83,7 @@ const kanbanHeaderActions = [
   }
 ];
 
+/** `.kanban-column-header` of apps/kanban/kanban.pug */
 const KanbanListHeader = ({
   list,
   collapsed,
@@ -96,61 +92,40 @@ const KanbanListHeader = ({
   return (
     <div className="kanban-column-header px-6 hover-actions-trigger">
       <div
-        className={`flex items-center border-b border-3 py-6`}
-        style={
-          {
-            '--phoenix-border-color': list.borderColor
-          } as CSSProperties
-        }
+        className={cn('flex items-center border-b-3 py-4', list.borderClass)}
       >
         <h5 className="mb-0 kanban-column-title">
           {list.title}
           <span className="kanban-title-badge">{list.tasks.length}</span>
         </h5>
-        <Dropdown autoClose="outside">
-          <Dropdown.Toggle
-            variant=""
-            size="sm"
-            className="hover-actions dropdown-caret-none kanban-header-dropdown-btn"
-          >
-            <FontAwesomeIcon icon={faEllipsisH} />
-          </Dropdown.Toggle>
-
-          <Dropdown.Menu
-            className="py-2 border-subtle"
-            style={{ width: '15rem' }}
-          >
-            {kanbanHeaderActions.map(action => (
-              <Fragment key={action.id}>
-                {action.hr ? (
-                  <hr className="my-2" />
-                ) : (
-                  <Dropdown.Item
-                    href="#!"
-                    key={action.label}
-                    className="flex flex-between-center"
-                  >
-                    {action.label}
-                    {action.isNested && (
-                      <FontAwesomeIcon icon={faAngleRight} className="text-sm" />
-                    )}
-                  </Dropdown.Item>
-                )}
-              </Fragment>
-            ))}
-          </Dropdown.Menu>
-        </Dropdown>
-
-        <Button
-          className="ms-auto kanban-collapse-icon p-0"
+        <div className="hover-actions-trigger">
+          <Dropdown>
+            <Dropdown.Trigger asChild>
+              <button
+                className="btn btn-sm btn-phoenix-default kanban-header-dropdown-btn hover-actions"
+                type="button"
+              >
+                <FontAwesomeIcon icon={faEllipsisH} />
+              </button>
+            </Dropdown.Trigger>
+            <Dropdown.Content align="end" className="py-2 w-60">
+              <KanbanDropdownItems items={kanbanHeaderActions} />
+            </Dropdown.Content>
+          </Dropdown>
+        </div>
+        {/* the kanban CSS shows one of the two depending on `.collapsed` */}
+        <span
+          className="uil uil-left-arrow-to-left text-base ms-auto kanban-collapse-icon"
           onClick={() => setCollapsed(!collapsed)}
         >
-          {collapsed ? (
-            <UilArrowFromRight fill='currentColor' size={16} />
-          ) : (
-            <UilLeftArrowToLeft fill='currentColor' size={16} />
-          )}
-        </Button>
+          <UilLeftArrowToLeft fill="currentColor" size={16} />
+        </span>
+        <span
+          className="uil uil-arrow-from-right text-base ms-auto kanban-collapse-icon"
+          onClick={() => setCollapsed(!collapsed)}
+        >
+          <UilArrowFromRight fill="currentColor" size={16} />
+        </span>
       </div>
     </div>
   );

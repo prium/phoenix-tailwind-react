@@ -4,14 +4,11 @@ import {
   faTimes
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
-import Button from 'components/base/Button';
+import { cn } from '@hummingbirdui/react';
 import PhoenixOffcanvas from 'components/base/PhoenixOffcanvas';
 import AvatarDropdown from 'components/common/AvatarDropdown';
 import { kanbanBoardMembers } from 'data/kanban';
 import { useKanbanContext } from 'providers/KanbanProvider';
-import { Offcanvas } from 'react-bootstrap';
-import { Link } from 'react-router';
 import { TOGGLE_DETAILS_OFFCANVAS } from 'reducers/KanbanReducer';
 
 const actions = [
@@ -41,9 +38,14 @@ const actions = [
   },
   {
     label: 'Automation'
+  },
+  {
+    label: 'Leave Board',
+    className: 'text-danger pb-0'
   }
 ];
 
+/** `+KanbanOffcanvas` in mixins/kanban/kanban/KanbanOffcanvas.pug */
 const KanbanBoardOffcanvas = () => {
   const { openBoardDetailsOffcanvas, kanbanDispatch } = useKanbanContext();
 
@@ -53,59 +55,82 @@ const KanbanBoardOffcanvas = () => {
       payload: false
     });
   };
+
   return (
     <PhoenixOffcanvas
       open={openBoardDetailsOffcanvas}
       onHide={handleClose}
-      className="bg-subtle"
       placement="end"
-      fixed
-      style={{ maxWidth: 445 }}
+      className="bg-subtle fixed outline-none max-w-111.25"
     >
-      <Offcanvas.Header className="mb-10">
+      <div className="offcanvas-header justify-between">
         <h3 className="offcanvas-title">Phoenix Kanban</h3>
-        <Button className="p-1 font-black ms-auto" onClick={handleClose}>
+        <button
+          className="btn p-1 font-black"
+          type="button"
+          onClick={handleClose}
+          aria-label="Close"
+        >
           <FontAwesomeIcon icon={faTimes} className="text-base" />
-        </Button>
-      </Offcanvas.Header>
-
-      <Offcanvas.Body>
-        <h4 className="text-highlight font-semibold mb-4">Admins</h4>
-        <div className="flex items-center gap-4 mb-8">
-          <AvatarDropdown user={kanbanBoardMembers.admin} size="xl" />
+        </button>
+      </div>
+      <div className="offcanvas-body">
+        <h4 className="text-highlight font-semibold mb-0 mt-10">Admins</h4>
+        <div className="flex items-center mt-4">
+          <div className="dropdown">
+            <AvatarDropdown
+              user={kanbanBoardMembers.admin}
+              size="xl"
+              className="me-4 border border-subtle-subtle rounded-full"
+            />
+          </div>
           <div className="flex-1">
-            <Link
-              to="#!"
+            <a
+              href="#!"
               className="no-underline text-highlight leading-none font-semibold"
             >
               Sasha Blaus
-            </Link>
+            </a>
             <h6 className="mb-0 leading-none text-highlight font-semibold">
               @potatogirl
             </h6>
           </div>
         </div>
 
-        <h4 className="text-highlight font-semibold mb-4">Members</h4>
-        <div className="flex items-center gap-2 mb-6">
+        <h4 className="text-highlight font-semibold mb-0 mt-8 mb-4">Members</h4>
+        <div className="flex">
           {kanbanBoardMembers.members.map(member => (
-            <AvatarDropdown user={member} size="m" key={member.id} />
+            <div className="dropdown" key={member.id}>
+              <AvatarDropdown
+                user={member}
+                size="m"
+                className="me-2 border border-subtle-subtle rounded-full"
+              />
+            </div>
           ))}
         </div>
 
-        <h4 className="text-highlight font-semibold mb-4">Guests</h4>
-        <div className="flex items-center gap-2 mb-12">
+        <h4 className="text-highlight font-semibold mb-0 mt-4 mb-4">Guests</h4>
+        <div className="flex">
           {kanbanBoardMembers.guests.map(member => (
-            <AvatarDropdown user={member} size="m" key={member.id} />
+            <div className="dropdown" key={member.id}>
+              <AvatarDropdown
+                user={member}
+                size="m"
+                className="me-2 border border-subtle-subtle rounded-full"
+              />
+            </div>
           ))}
         </div>
 
-        <div className="flex mb-4 border-b border-subtle pb-4 gap-4">
-          <h4 className="text-highlight font-semibold mb-0">Description</h4>
-          <Button className="p-0">
-            <FontAwesomeIcon icon={faPencil} className="text-default text-md" />
-          </Button>
-        </div>
+        <h4 className="text-highlight font-semibold mb-0 mt-12 mb-4 border-b border-subtle pb-4">
+          Description{' '}
+          <FontAwesomeIcon
+            icon={faPencil}
+            transform="up-2"
+            className="text-default text-md ms-4 cursor-pointer"
+          />
+        </h4>
         <p>
           Phoenix is a rich and complex symbol that continues to capture the
           imagination of people across cultures and time periods. Whether seen
@@ -113,32 +138,29 @@ const KanbanBoardOffcanvas = () => {
           enduring icon of the human spirit.
         </p>
 
-        <ul className="list-unstyled mb-0">
-          {actions.map(action => (
+        <ul className="list-none ps-0 mb-0">
+          {actions.map((action, index) => (
             <li key={action.label}>
-              <Link
-                to="#!"
-                className={classNames(
-                  'text-highlight font-semibold no-underline flex flex-between-center py-6 border-b border-subtle'
+              <a
+                href="#!"
+                className={cn(
+                  'text-highlight font-semibold no-underline flex flex-between-center py-4',
+                  action.className,
+                  index !== actions.length - 1 ? 'border-b' : 'pb-0'
                 )}
               >
                 <span>{action.label}</span>
-                <FontAwesomeIcon icon={faAngleRight} className="text-md" />
-              </Link>
+                {index !== actions.length - 1 && (
+                  <FontAwesomeIcon
+                    icon={faAngleRight}
+                    className="text-md me-4"
+                  />
+                )}
+              </a>
             </li>
           ))}
-          <li>
-            <Link
-              to="#!"
-              className={classNames(
-                'font-semibold no-underline flex flex-between-center text-danger pt-6'
-              )}
-            >
-              Leave Board
-            </Link>
-          </li>
         </ul>
-      </Offcanvas.Body>
+      </div>
     </PhoenixOffcanvas>
   );
 };

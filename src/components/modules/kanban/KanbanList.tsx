@@ -1,11 +1,9 @@
-import classNames from 'classnames';
-import Button from 'components/base/Button';
-import { KanbanBoardItem } from 'data/kanban';
+import { cn, Input } from '@hummingbirdui/react';
+import { KanbanBoardItem, kanbanStatuses } from 'data/kanban';
 import React, { useState } from 'react';
 import KanbanListItemCard from './KanbanListItemCard';
-import { Form } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlus, faSpinner } from '@fortawesome/free-solid-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import KanbanListHeader from './KanbanListHeader';
 import { v4 as uuid } from 'uuid';
 import {
@@ -20,6 +18,7 @@ interface KanbanListProps {
   columnId?: number;
 }
 
+/** `.kanban-column` of apps/kanban/kanban.pug */
 const KanbanList = ({ list, columnId }: KanbanListProps) => {
   const { kanbanDispatch } = useKanbanContext();
   const [collapsed, setCollapsed] = useState(!!list.isCollapsed);
@@ -35,11 +34,7 @@ const KanbanList = ({ list, columnId }: KanbanListProps) => {
     const randomNumber = parseInt(uuid().replace(/-/g, '').slice(0, 12), 16);
     const newTask = {
       id: randomNumber,
-      status: {
-        label: 'Undefined',
-        icon: faSpinner,
-        color: 'secondary'
-      },
+      status: kanbanStatuses.undefined,
       title: taskTitle,
       attachments: 1,
       priority: 'Low' as const
@@ -55,7 +50,7 @@ const KanbanList = ({ list, columnId }: KanbanListProps) => {
 
   return (
     <div
-      className={classNames('kanban-column scrollbar', {
+      className={cn('kanban-column overflow-x-hidden scrollbar', {
         collapsed
       })}
     >
@@ -76,7 +71,7 @@ const KanbanList = ({ list, columnId }: KanbanListProps) => {
         >
           {list.tasks.map(task => (
             <div
-              className="py-2 px-2 border-b border-subtle"
+              className="sortable-item-wrapper border-b border-subtle px-2 py-2"
               key={task.id}
             >
               <KanbanListItemCard list={list} task={task} columnId={columnId} />
@@ -84,21 +79,21 @@ const KanbanList = ({ list, columnId }: KanbanListProps) => {
           ))}
         </SortableContext>
       </div>
-      <Form onSubmit={handleNewTaskAdd} className="py-4 px-6 kanban-add-task">
-        <Button className="bg-highlight me-2 px-0" type="submit">
+      <form onSubmit={handleNewTaskAdd} className="py-4 px-6 kanban-add-task">
+        <button className="btn bg-sm bg-highlight me-2 px-0" type="submit">
           <FontAwesomeIcon
             icon={faPlus}
-            className="text-white dark__text-gray-400"
             transform="grow-4 down-1"
+            className="text-white dark:text-gray-400"
           />
-        </Button>
-        <Form.Control
+        </button>
+        <Input
           className="search-input rounded-lg px-4"
           placeholder="Add new task"
           value={taskTitle}
           onChange={e => setTaskTitle(e.target.value)}
         />
-      </Form>
+      </form>
     </div>
   );
 };

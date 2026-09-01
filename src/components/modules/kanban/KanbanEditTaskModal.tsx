@@ -1,147 +1,158 @@
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button from 'components/base/Button';
+import {
+  Dialog,
+  FloatingLabel,
+  Input,
+  Select,
+  Textarea
+} from '@hummingbirdui/react';
 import Dropzone from 'components/base/Dropzone';
-import { Col, FloatingLabel, Form, Modal, Row } from 'react-bootstrap';
 import imageIcon from 'assets/img/icons/image-icon.png';
 
-interface KanbanTaskDetailsModalProps {
+interface KanbanEditTaskModalProps {
   show: boolean;
   handleClose: () => void;
 }
 
+/** `+KanbanAddTask` in mixins/kanban/kanban/KanbanModal.pug — gold's 'BORAD TYPE' typo kept */
 const KanbanEditTaskModal = ({
   show,
   handleClose
-}: KanbanTaskDetailsModalProps) => {
+}: KanbanEditTaskModalProps) => {
   return (
-    <Modal
-      show={show}
-      onHide={handleClose}
-      fullscreen="md-down"
-      centered
-      className="modal-xl"
-      contentClassName="rounded-3"
-      scrollable
-    >
-      <Modal.Body>
-        <Row className="gx-4 g-6">
-          <Col sm={6} md={12}>
-            <FloatingLabel controlId="kanbanTaskTitle" label="Title">
-              <Form.Control type="text" placeholder="title" />
-            </FloatingLabel>
-          </Col>
-          <Col xs={12}>
-            <FloatingLabel
-              controlId="floatingProjectDescription"
-              label="ADD A DESCRIPTION"
-            >
-              <Form.Control
-                as="textarea"
-                placeholder="Leave a comment here"
-                style={{ height: '128px' }}
-              />
-            </FloatingLabel>
-          </Col>
-
-          <Col xs={12}>
-            <Dropzone
-              size="sm"
-              accept={{
-                'image/*': ['.png', '.gif', '.jpeg', '.jpg']
-              }}
-            >
-              <div className="text-muted">
-                <img className="mb-2" src={imageIcon} width={24} alt="" />
-                <br />
-                Add cover image
-              </div>
-            </Dropzone>
-          </Col>
-
-          <Col sm={4}>
-            <FloatingLabel controlId="TaskType" label="BORAD TYPE">
-              <Form.Select>
-                <option>Phoenix</option>
-                <option value="2">Boreas</option>
-                <option value="3">Erebus</option>
-              </Form.Select>
-            </FloatingLabel>
-          </Col>
-          <Col sm={4} className="gx-2">
-            <FloatingLabel controlId="KanbanColumnType" label="COLUMN">
-              <Form.Select>
-                <option>Unassigned</option>
-                <option value="2">To do</option>
-                <option value="3">Doing</option>
-                <option value="4">Review</option>
-                <option value="5">Release</option>
-              </Form.Select>
-            </FloatingLabel>
-          </Col>
-          <Col sm={4}>
-            <FloatingLabel controlId="KanbanPlaceNumber" label="PLACE">
-              <Form.Select>
-                <option>01</option>
-                <option value="2">02</option>
-                <option value="3">03</option>
-                <option value="4">04</option>
-                <option value="5">05</option>
-              </Form.Select>
-            </FloatingLabel>
-          </Col>
-          <Col xs={12}>
-            <FloatingLabel controlId="KanbanAssignedMember" label="ASSIGNED TO">
-              <Form.Select>
-                <option value="1">Unassigned (Default)</option>
-                <option value="2">Richard Dawkins</option>
-                <option value="3">Ashley Garrett</option>
-                <option value="4">Barbara Lucas</option>
-                <option value="5">Woodrow Burton</option>
-              </Form.Select>
-            </FloatingLabel>
-          </Col>
-          <Col xs={12}>
-            <FloatingLabel controlId="KanbanPriorityLavel" label="PRIORITY">
-              <Form.Select>
-                <option>Low (Default)</option>
-                <option value="2">High</option>
-                <option value="3">Medium</option>
-                <option value="4">Urgent</option>
-              </Form.Select>
-            </FloatingLabel>
-          </Col>
-          <Col xs={12}>
-            <FloatingLabel controlId="KanbanCategoryType" label="CATEGORY">
-              <Form.Select>
-                <option>UNASSIGNED (Default)</option>
-                <option value="2">Feature</option>
-                <option value="3">Bug</option>
-                <option value="4">Issue</option>
-              </Form.Select>
-            </FloatingLabel>
-          </Col>
-        </Row>
-      </Modal.Body>
-      <Modal.Footer className="justify-between">
-        <Button
-          startIcon={<FontAwesomeIcon icon={faTimes} />}
-          onClick={handleClose}
-          className="p-0"
-        >
-          Close
-        </Button>
-        <Button
-          variant="primary"
-          className="px-10"
-          onClick={() => {
-            handleClose();
-          }}
-        >
-          Done
-        </Button>
-      </Modal.Footer>
-    </Modal>
+    <Dialog open={show} onOpenChange={open => !open && handleClose()}>
+      <Dialog.Content
+        centered
+        size="xl"
+        fullscreen="sm-down"
+        aria-describedby={undefined}
+      >
+        <Dialog.Title className="sr-only">Edit task</Dialog.Title>
+        <div className="modal-body">
+          <div className="row gx-4 gy-6">
+            <div className="sm:col-6 md:col-12">
+              <FloatingLabel label="Title" htmlFor="kanbanTaskTitle">
+                <Input
+                  id="kanbanTaskTitle"
+                  type="text"
+                  placeholder="title"
+                  defaultValue=""
+                />
+              </FloatingLabel>
+            </div>
+            <div className="col-12 gy-6">
+              <FloatingLabel
+                label="ADD A DESCRIPTION"
+                htmlFor="floatingProjectDescription"
+              >
+                <Textarea
+                  id="floatingProjectDescription"
+                  className="h-32"
+                  placeholder="Leave a comment here"
+                />
+              </FloatingLabel>
+            </div>
+            <div className="col-12 gy-6">
+              <Dropzone
+                className="bg-transparent p-0"
+                accept={{
+                  'image/*': ['.png', '.gif', '.jpeg', '.jpg']
+                }}
+              >
+                <div className="dz-message py-4!">
+                  <div className="dz-message-text text-center text-muted">
+                    <img src={imageIcon} className="mb-2 w-6" alt="" />
+                    <br />
+                    Add cover image
+                  </div>
+                </div>
+              </Dropzone>
+            </div>
+            <div className="sm:col-4">
+              <FloatingLabel label="BORAD TYPE" htmlFor="TaskType">
+                <Select id="TaskType" defaultValue="Phoenix">
+                  <option>Phoenix</option>
+                  <option value="2">Boreas</option>
+                  <option value="3">Erebus</option>
+                </Select>
+              </FloatingLabel>
+            </div>
+            <div className="sm:col-4">
+              <FloatingLabel label="COLUMN" htmlFor="KanbanColumnType">
+                <Select id="KanbanColumnType" defaultValue="Unassigned">
+                  <option>Unassigned</option>
+                  <option value="2">To do</option>
+                  <option value="3">Doing</option>
+                  <option value="4">Review</option>
+                  <option value="5">Release</option>
+                </Select>
+              </FloatingLabel>
+            </div>
+            <div className="sm:col-4">
+              <FloatingLabel label="PLACE" htmlFor="KanbanPlaceNumber">
+                <Select id="KanbanPlaceNumber" defaultValue="01">
+                  <option>01</option>
+                  <option value="2">02</option>
+                  <option value="3">03</option>
+                </Select>
+              </FloatingLabel>
+            </div>
+            <div className="sm:col-12">
+              <FloatingLabel label="ASSIGNED TO" htmlFor="KanbanAssignedMember">
+                <Select id="KanbanAssignedMember" defaultValue="1">
+                  <option value="1">Unassigned (Default)</option>
+                  <option value="2">Richard Dawkins</option>
+                  <option value="3">Ashley Garrett</option>
+                  <option value="4">Barbara Lucas</option>
+                  <option value="5">Woodrow Burton</option>
+                </Select>
+              </FloatingLabel>
+            </div>
+            <div className="sm:col-12">
+              <FloatingLabel label="PRIORITY" htmlFor="KanbanPriorityLavel">
+                <Select id="KanbanPriorityLavel" defaultValue="Low (Default)">
+                  <option>Low (Default)</option>
+                  <option value="2">High</option>
+                  <option value="3">Medium</option>
+                  <option value="4">Urgent</option>
+                </Select>
+              </FloatingLabel>
+            </div>
+            <div className="sm:col-12">
+              <FloatingLabel label="CATEGORY" htmlFor="KanbanCategoryType">
+                <Select
+                  id="KanbanCategoryType"
+                  defaultValue="UNASSIGNED (Default)"
+                >
+                  <option>UNASSIGNED (Default)</option>
+                  <option value="2">Feature</option>
+                  <option value="3">Bug</option>
+                  <option value="4">Issue</option>
+                </Select>
+              </FloatingLabel>
+            </div>
+          </div>
+        </div>
+        <div className="modal-footer justify-between">
+          <button className="btn p-1" type="button" onClick={handleClose}>
+            <FontAwesomeIcon
+              icon={faTimes}
+              transform="up-1"
+              className="text-sm me-1"
+            />
+            Close
+          </button>
+          <button
+            className="btn btn-primary px-10"
+            type="button"
+            onClick={handleClose}
+          >
+            Done
+          </button>
+        </div>
+      </Dialog.Content>
+    </Dialog>
   );
 };
 

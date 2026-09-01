@@ -4,23 +4,20 @@ import {
   faPlus,
   faTimes
 } from '@fortawesome/free-solid-svg-icons';
+import { faClock } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Badge, { BadgeBg } from 'components/base/Badge';
-import Button from 'components/base/Button';
+import { Dialog, cn } from '@hummingbirdui/react';
 import AvatarDropdown from 'components/common/AvatarDropdown';
 import {
   KanbanBoardItem,
   KanbanBoardTask,
   kanbanActions,
   kanbanActivities,
-  kanbanAttachments
+  kanbanAttachments,
+  kanbanHeaderUsers
 } from 'data/kanban';
-import { Col, Modal, Row } from 'react-bootstrap';
+import modalBg from 'assets/img/kanban/modal-bg.jpg';
 import KanbanAttachment from './KanbanAttachment';
-import { faClock } from '@fortawesome/free-regular-svg-icons';
-import classNames from 'classnames';
-import CoverUpload from 'components/common/CoverUpload';
-import { getPriorityColor } from 'helpers/utils';
 import KanbanEditTaskModal from './KanbanEditTaskModal';
 import { useState } from 'react';
 
@@ -31,6 +28,14 @@ interface KanbanTaskDetailsModalProps {
   list: KanbanBoardItem;
 }
 
+/** literal priority circle classes (gold static shows `text-warning` for High) */
+const priorityClass: Record<KanbanBoardTask['priority'], string> = {
+  High: 'text-warning',
+  Medium: 'text-success',
+  Low: 'text-info'
+};
+
+/** `+KanbanItemDetailsModal` in mixins/kanban/kanban/KanbanModal.pug */
 const KanbanTaskDetailsModal = ({
   show,
   handleClose,
@@ -38,253 +43,245 @@ const KanbanTaskDetailsModal = ({
   list
 }: KanbanTaskDetailsModalProps) => {
   const [openEditModal, setOpenEditModal] = useState(false);
+  const assignedUsers = kanbanHeaderUsers.slice(0, 3);
+
   return (
     <>
-      <Modal
-        show={show}
-        onHide={handleClose}
-        fullscreen="md-down"
-        centered
-        className="modal-md p-0"
-        contentClassName="rounded-top-md-4 rounded-bottom-md-4 overflow-hidden h-100"
-        scrollable
-      >
-        <Modal.Header className="relative p-0" style={{ height: 200 }}>
-          {task.coverImage ? (
-            <img
-              src={task.coverImage}
-              alt=""
-              className="w-full h-full fit-cover"
-            />
-          ) : (
-            <CoverUpload />
-          )}
-        </Modal.Header>
-        <Modal.Body className="p-0 ">
-          <Row className="gy-6 py-0 gx-0 h-full">
-            <Col xs={12} lg={8} className="h-full scrollbar">
-              <Row className="mt-0 top-0 gy-6 pb-4 gx-0 px-4">
-                <Col xs={4} sm={3}>
-                  <h6 className="text-subtle font-black leading-sm mt-1">
-                    TITLE
-                  </h6>
-                </Col>
-                <Col xs={8} sm={9}>
-                  <h4 className="mb-0 text-emphasis leading-sm">
-                    {task.title}
-                  </h4>
-                </Col>
+      <Dialog open={show} onOpenChange={open => !open && handleClose()}>
+        <Dialog.Content
+          centered
+          fullscreen="md-down"
+          dialogClassName="modal-md"
+          className="overflow-hidden"
+          aria-describedby={undefined}
+        >
+          <Dialog.Title className="sr-only">Task details</Dialog.Title>
+          <div className="modal-body p-0">
+            <div className="relative h-50 w-full">
+              <div
+                className="bg-holder"
+                style={{
+                  backgroundImage: `url(${task.coverImage ?? modalBg})`
+                }}
+              />
+            </div>
+            <div className="row gy-6 py-0 gx-0">
+              <div className="lg:col-8 col-12">
+                <div className="row mt-0 gy-6 pb-4 gx-0 px-4">
+                  <div className="col-4 sm:col-3">
+                    <h6 className="text-subtle font-black leading-sm mt-1">
+                      TITLE
+                    </h6>
+                  </div>
+                  <div className="col-8 sm:col-9">
+                    <h4 className="mb-0 text-emphasis leading-sm">
+                      {task.title}
+                    </h4>
+                  </div>
 
-                <Col xs={4} sm={3}>
-                  <h6 className="text-subtle font-black leading-sm mt-1">
-                    DESCRIPTION
-                  </h6>
-                </Col>
-                <Col xs={8} sm={9}>
-                  <p className="text-md mb-0">
-                    {task.desctiption
-                      ? task.desctiption
-                      : 'Reproduced below for those interested" is a phrase used to provide additional content or details for individuals who have expressed interest in a particular topic. It signals that what follows is optional and caters specifically to those who want to delve deeper into the subject matter.'}
-                  </p>
-                </Col>
+                  <div className="col-4 sm:col-3">
+                    <h6 className="text-subtle font-black leading-sm mt-1">
+                      DESCRIPTION
+                    </h6>
+                  </div>
+                  <div className="col-8 sm:col-9">
+                    <p className="text-md mb-0">
+                      {task.desctiption ??
+                        'Reproduced below for those interested" is a phrase used to provide additional content or details for individuals who have expressed interest in a particular topic. It signals that what follows is optional and caters specifically to those who want to delve deeper into the subject matter.'}
+                    </p>
+                  </div>
 
-                <Col xs={4} sm={3}>
-                  <h6 className="text-subtle font-black leading-sm mt-1">
-                    BOARD
-                  </h6>
-                </Col>
-                <Col xs={8} sm={9}>
-                  <p className="mb-0 text-emphasis font-semibold">Phoenix</p>
-                </Col>
+                  <div className="col-4 sm:col-3">
+                    <h6 className="text-subtle font-black leading-sm mt-1">
+                      BOARD
+                    </h6>
+                  </div>
+                  <div className="col-8 sm:col-9">
+                    <p className="mb-0 text-emphasis font-semibold">Phoenix</p>
+                  </div>
 
-                <Col xs={4} sm={3}>
-                  <h6 className="text-subtle font-black leading-sm mt-1">
-                    COLUMN
-                  </h6>
-                </Col>
-                <Col xs={8} sm={9}>
-                  <p
-                    className={`mb-0 text-emphasis font-semibold inline-block kanban-column-underline-${list.borderColor}`}
-                  >
-                    {list.title}
-                  </p>
-                </Col>
+                  <div className="col-4 sm:col-3">
+                    <h6 className="text-subtle font-black leading-sm mt-1">
+                      COLUMN
+                    </h6>
+                  </div>
+                  <div className="col-8 sm:col-9">
+                    <p
+                      className={cn(
+                        "mb-0 text-emphasis font-semibold inline-block relative after:absolute after:content-[''] after:top-full after:left-0 after:h-1 after:w-full after:rounded-md",
+                        list.underlineClass
+                      )}
+                    >
+                      {list.title}
+                    </p>
+                  </div>
 
-                {task.members && (
-                  <>
-                    <Col xs={4} sm={3}>
-                      <h6 className="text-subtle font-black leading-sm mt-1">
-                        ASSAIGNED TO
-                      </h6>
-                    </Col>
-                    <Col xs={8} sm={9} className="flex gap-1">
-                      {task.members?.map(member => (
+                  <div className="col-4 sm:col-3">
+                    <h6 className="text-subtle font-black leading-sm mt-1">
+                      ASSAIGNED TO
+                    </h6>
+                  </div>
+                  <div className="col-8 sm:col-9">
+                    <div className="flex items-center">
+                      {assignedUsers.map(user => (
                         <AvatarDropdown
-                          user={member}
+                          user={user}
                           size="s"
-                          key={member.id}
+                          className="me-1"
+                          key={user.id}
                         />
                       ))}
-                    </Col>
-                  </>
-                )}
+                    </div>
+                  </div>
 
-                <Col xs={4} sm={3}>
-                  <h6 className="text-subtle font-black leading-sm mt-1">
-                    PRIORITY
-                  </h6>
-                </Col>
-                <Col xs={8} sm={9}>
-                  <p className="mb-0 text-emphasis font-semibold">
-                    <FontAwesomeIcon
-                      icon={faCircle}
-                      transform="shrink-6 down-1"
-                      className={`text-${getPriorityColor(task.priority)}`}
-                    />
-                    {task.priority}
-                  </p>
-                </Col>
+                  <div className="col-4 sm:col-3">
+                    <h6 className="text-subtle font-black leading-sm mt-1">
+                      PRIORITY
+                    </h6>
+                  </div>
+                  <div className="col-8 sm:col-9">
+                    <p className="mb-0 text-emphasis font-semibold">
+                      <FontAwesomeIcon
+                        icon={faCircle}
+                        transform="shrink-6 down-1"
+                        className={priorityClass[task.priority]}
+                      />
+                      {task.priority}
+                    </p>
+                  </div>
 
-                <Col xs={4} sm={3}>
-                  <h6 className="text-subtle font-black leading-sm mt-1">
-                    CATEGORY
-                  </h6>
-                </Col>
-                <Col xs={8} sm={9}>
-                  <Badge
-                    variant="phoenix"
-                    bg={task.status.color as BadgeBg}
-                    className="text-sm"
-                  >
-                    {task.status.label}
-                    <FontAwesomeIcon
-                      icon={task.status.icon}
-                      transform="up-2"
-                      className="ms-1 inline-block"
-                      style={{ height: 7.8, width: 7.8 }}
-                    />
-                  </Badge>
-                </Col>
+                  <div className="col-4 sm:col-3">
+                    <h6 className="text-subtle font-black leading-sm mt-1">
+                      CATEGORY
+                    </h6>
+                  </div>
+                  <div className="col-8 sm:col-9">
+                    <span
+                      className={cn(task.status.badgeClass, 'badge text-sm')}
+                    >
+                      <span>{task.status.label}</span>
+                      <FontAwesomeIcon
+                        icon={task.status.icon}
+                        className="size-[7.8px] ms-1"
+                      />
+                    </span>
+                  </div>
 
-                <Col xs={4} sm={3}>
-                  <h6 className="text-subtle font-black leading-sm mt-1">
-                    ATTACHMENTS
-                  </h6>
-                </Col>
-                <Col xs={8} sm={9}>
-                  <div className="flex flex-col gap-4 mb-2">
-                    {kanbanAttachments.map(attachment => (
+                  <div className="col-4 sm:col-3">
+                    <h6 className="text-subtle font-black leading-sm mt-1">
+                      ATTACHMENTS
+                    </h6>
+                  </div>
+                  <div className="col-8 sm:col-9">
+                    {kanbanAttachments.map((attachment, index) => (
                       <KanbanAttachment
                         attachment={attachment}
+                        className={cn({ 'mt-4': index > 0 })}
                         key={attachment.name}
                       />
                     ))}
+                    <button className="btn btn-link ps-0" type="button">
+                      <FontAwesomeIcon
+                        icon={faPlus}
+                        transform="shrink-3"
+                        className="me-2"
+                      />
+                      Add an Attachment
+                    </button>
                   </div>
-                  <Button
-                    variant="link"
-                    className="p-0"
-                    startIcon={<FontAwesomeIcon icon={faPlus} />}
-                  >
-                    Add an Attachment
-                  </Button>
-                </Col>
-              </Row>
-            </Col>
+                </div>
+              </div>
 
-            <Col
-              xs={12}
-              lg={4}
-              className="lg:border-s border-subtle h-full scrollbar"
-            >
-              <div>
-                <div className="px-4">
-                  <div>
+              <div className="lg:col-4 lg:border-s">
+                <div className="scrollbar max-h-166.75">
+                  <div className="px-4">
                     <h5 className="mb-4 mt-6">Actions</h5>
-                    <div className="flex flex-wrap flex-col gap-2 sm:flex-row lg:flex-col">
+                    <ul className="nav flex-col sm:flex-row lg:flex-col list-none">
                       {kanbanActions.map(action => (
-                        <Button
-                          variant="subtle-secondary"
-                          startIcon={
+                        <li
+                          className="kanban-action-item leading-sm nav-item me-2"
+                          key={action.label}
+                        >
+                          <a
+                            href="#!"
+                            className="nav-link text-emphasis font-semibold text-md stretched-link"
+                          >
                             <FontAwesomeIcon
                               icon={action.icon}
                               className="me-2"
                             />
-                          }
-                          className="text-start whitespace-nowrap"
-                          size="sm"
-                          key={action.label}
-                        >
-                          {action.label}
-                        </Button>
+                            {action.label}
+                          </a>
+                        </li>
                       ))}
-                    </div>
-                  </div>
-                  <div>
-                    <h5 className="mb-4 mt-6">Activities</h5>
-                    <div className="flex flex-col gap-4">
-                      {kanbanActivities.map((activity, index) => (
-                        <div
-                          className={classNames(
-                            'flex gap-2 pb-6 border-subtle',
-                            {
-                              'border-b':
-                                index !== kanbanActivities.length - 1
-                            }
-                          )}
-                          key={activity.id}
-                        >
+                    </ul>
+                    <h5 className="mt-10">Activities</h5>
+                    {kanbanActivities.map((activity, index) => (
+                      <div
+                        className={cn('flex', {
+                          'border-bottom': index !== kanbanActivities.length - 1
+                        })}
+                        key={activity.id}
+                      >
+                        <div className={cn('pt-4', activity.iconColorClass)}>
                           <FontAwesomeIcon
                             icon={activity.icon}
-                            className={`border border-subtle rounded-full p-1 text-${activity.iconColor}`}
                             transform="shrink-4"
+                            className="border border-subtle rounded-full p-1"
                           />
-                          <div className="activity-item">
-                            <p
-                              className="mb-1 text-md"
-                              dangerouslySetInnerHTML={{
-                                __html: activity.task
-                              }}
-                            />
-                            <div className="flex gap-2 justify-between text-md">
-                              <p className="mb-0">
-                                <FontAwesomeIcon
-                                  icon={faClock}
-                                  className="me-1"
-                                />
-                                {activity.time}
-                              </p>
-                              <p className="mb-0">{activity.date}</p>
-                            </div>
+                        </div>
+                        <div className="activity-item ps-2 py-4">
+                          <p
+                            className="mb-1 text-md"
+                            dangerouslySetInnerHTML={{
+                              __html: activity.task
+                            }}
+                          />
+                          <div className="flex">
+                            <p className="mb-0 text-md me-4">
+                              <FontAwesomeIcon
+                                icon={faClock}
+                                className="me-1"
+                              />
+                              {activity.time}
+                            </p>
+                            <p className="mb-0 text-md">{activity.date}</p>
                           </div>
                         </div>
-                      ))}
-                    </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
-            </Col>
-          </Row>
-        </Modal.Body>
-        <Modal.Footer className="justify-between">
-          <Button
-            startIcon={<FontAwesomeIcon icon={faTimes} />}
-            onClick={handleClose}
-          >
-            Close
-          </Button>
-          <Button
-            endIcon={<FontAwesomeIcon icon={faEdit} transform="up-1" />}
-            variant="phoenix-primary"
-            className="px-10"
-            onClick={() => {
-              setOpenEditModal(true);
-              handleClose();
-            }}
-          >
-            Edit
-          </Button>
-        </Modal.Footer>
-      </Modal>
+            </div>
+          </div>
+          <div className="modal-footer justify-between">
+            <button className="btn p-1" type="button" onClick={handleClose}>
+              <FontAwesomeIcon
+                icon={faTimes}
+                transform="up-1"
+                className="text-sm me-1"
+              />
+              Close
+            </button>
+            <button
+              className="btn btn-phoenix-primary px-10"
+              type="button"
+              onClick={() => {
+                handleClose();
+                setOpenEditModal(true);
+              }}
+            >
+              Edit
+              <FontAwesomeIcon
+                icon={faEdit}
+                transform="shrink-3"
+                className="ms-2"
+              />
+            </button>
+          </div>
+        </Dialog.Content>
+      </Dialog>
       <KanbanEditTaskModal
         show={openEditModal}
         handleClose={() => setOpenEditModal(false)}
