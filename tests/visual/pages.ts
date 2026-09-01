@@ -699,5 +699,61 @@ export const pages: VisualPage[] = [
   createBoardStep(5, [
     '.kanban-radio-collapse .form-check-input',
     '[data-board-prev-btn]'
-  ])
+  ]),
+
+  // gallery
+  {
+    name: 'gallery-album',
+    react: '/apps/gallery/album',
+    gold: '/apps/gallery/album.html'
+  },
+  {
+    name: 'gallery-column',
+    react: '/apps/gallery/gallery-column',
+    gold: '/apps/gallery/gallery-column.html'
+  },
+  {
+    name: 'gallery-grid',
+    react: '/apps/gallery/gallery-grid',
+    gold: '/apps/gallery/gallery-grid.html'
+  },
+  {
+    name: 'gallery-grid-with-title',
+    react: '/apps/gallery/grid-with-title',
+    gold: '/apps/gallery/grid-with-title.html'
+  },
+  {
+    name: 'gallery-masonry',
+    react: '/apps/gallery/gallery-masonry',
+    gold: '/apps/gallery/gallery-masonry.html'
+  },
+  {
+    name: 'gallery-slider',
+    react: '/apps/gallery/gallery-slider',
+    gold: '/apps/gallery/gallery-slider.html'
+  },
+
+  // file manager
+  {
+    name: 'file-manager-grid',
+    react: '/apps/file-manager/grid-view',
+    gold: '/apps/file-manager/grid-view.html'
+  },
+  {
+    name: 'file-manager-list',
+    react: '/apps/file-manager/list-view',
+    gold: '/apps/file-manager/list-view.html'
+  },
+
+  // calendar + gantt
+  {
+    name: 'calendar',
+    react: '/apps/calendar',
+    gold: '/apps/calendar.html'
+  },
+  {
+    name: 'gantt-chart',
+    react: '/apps/gantt-chart',
+    gold: '/apps/gantt-chart.html'
+  }
 ];
