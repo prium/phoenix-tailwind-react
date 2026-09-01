@@ -34,6 +34,20 @@
    the original phoenix-react _mixed.scss; the static gold has no counterpart.
    The margin centers each 40px logo on the container so the ripple scales from
    the true center (the keyframes own `transform`, so translate can't be used). */
+/* Route-level Suspense fallbacks render as direct children of .content, whose
+   min-height:100vh gives the loader's h-full nothing to inherit (percentages
+   don't resolve against min-height) — size those to the visible content area
+   so the ripple centers. Inline loaders (map/section placeholders) sit deeper
+   in the tree and keep plain h-full against their sized parent. */
+.content > .phoenix-loader {
+  min-height: calc(
+    100vh - var(--content-padding-top) - var(--footer-height) - 2rem
+  );
+  @variant sm {
+    min-height: calc(100vh - var(--content-padding-top) - var(--footer-height));
+  }
+}
+
 .logo-ripple {
   position: absolute;
   top: 50%;

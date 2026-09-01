@@ -4,9 +4,12 @@ import { cn } from '@hummingbirdui/react';
 const PhoenixLoader = ({ fullPage }: { fullPage?: boolean }) => {
   return (
     <div
-      className={cn('flex justify-center items-center h-full w-full', {
-        'h-screen': fullPage
-      })}
+      className={cn(
+        'phoenix-loader flex justify-center items-center h-full w-full',
+        {
+          'h-screen': fullPage
+        }
+      )}
     >
       {/* the ripple logos are absolute; this box anchors and sizes them
           (original phoenix-react .loading-container, 100px) */}
