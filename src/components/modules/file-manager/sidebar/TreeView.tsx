@@ -42,12 +42,16 @@ const TreeviewLeaf = ({ item }: { item: TreeViewItem }) => (
  * the toggle has to keep the gold `data-bs-toggle` + `aria-expanded` attributes
  * and the child list the `collapse`/`show` pair.
  *
- * Every branch starts collapsed like the gold page does: its treeview.js throws
- * on `window.hummingbird.Collapse` before it can honour `data-show`, so nothing
- * is ever expanded there.
+ * Branches with `show` start expanded, and so do their ancestors — the gold's
+ * treeview.js walks up from every `data-show="true"` list and opens the whole
+ * chain. (In a headless browser the gold's own bundle fails to load, so the
+ * static page looks fully collapsed there; that is not its real behaviour.)
  */
+const isInitiallyOpen = (item: TreeViewItem): boolean =>
+  Boolean(item.show) || Boolean(item.children?.some(isInitiallyOpen));
+
 const TreeviewBranch = ({ item }: { item: TreeViewItem }) => {
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(() => isInitiallyOpen(item));
   const listId = `${TREEVIEW_ID}-${item.id}`;
 
   return (

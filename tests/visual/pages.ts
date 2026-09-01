@@ -55,6 +55,18 @@ const SCROLL_CHAT_BODY = `const b=document.querySelector('.chat .card-body');if(
 /** Forces the gold (static JS) offcanvas open the way hummingbird's toggle would. */
 const OPEN_GOLD_OFFCANVAS = `const o=document.querySelector('#settings-offcanvas');o.classList.add('show');o.style.visibility='visible';const b=document.createElement('div');b.className='offcanvas-backdrop fade show';document.body.appendChild(b)`;
 
+/**
+ * Replays the gold's `treeview.js` init, which cannot run headless: its loop
+ * borders every `.treeview-list` and opens each `data-show="true"` list plus
+ * its ancestors, but `hummingbird.Collapse` is undefined in the static bundle
+ * so it throws on the first item — leaving the page fully collapsed and only
+ * the first list bordered. A real browser shows those branches expanded with
+ * every level bordered, which is what React renders.
+ */
+const OPEN_GOLD_TREEVIEW =
+  `document.querySelectorAll('.treeview-list').forEach(l=>l.classList.add('treeview-border'));` +
+  `document.querySelectorAll('.treeview-list[data-show="true"]').forEach(l=>{let el=l;while(el){if(el.classList&&el.classList.contains('treeview-list')){el.classList.add('show','collapse-show');const t=document.querySelector('[href="#'+el.id+'"]');if(t)t.setAttribute('aria-expanded','true')}el=el.parentElement}});`;
+
 const EC = '/apps/e-commerce';
 const p = (
   name: string,
@@ -774,6 +786,7 @@ export const pages: VisualPage[] = [
     name: 'file-manager-grid',
     react: '/apps/file-manager/grid-view',
     gold: '/apps/file-manager/grid-view.html',
+    setup: { gold: { eval: OPEN_GOLD_TREEVIEW } },
     probes: [
       // sidebar: tree-view glyphs, storage meter segments, collapse chevrons
       '.file-manager-sidebar .treeview-icon',
@@ -792,6 +805,7 @@ export const pages: VisualPage[] = [
     name: 'file-manager-list',
     react: '/apps/file-manager/list-view',
     gold: '/apps/file-manager/list-view.html',
+    setup: { gold: { eval: OPEN_GOLD_TREEVIEW } },
     probes: [
       '.file-manager-sidebar .treeview-icon',
       '.progress-stacked .progress',
