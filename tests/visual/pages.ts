@@ -473,5 +473,20 @@ export const pages: VisualPage[] = [
     name: 'stock-watchlist',
     react: '/apps/stock/watchlist',
     gold: '/apps/stock/watchlist.html'
+  },
+  {
+    name: 'social-feed',
+    react: '/apps/social/feed',
+    gold: '/apps/social/feed.html'
+  },
+  {
+    name: 'social-profile',
+    react: '/apps/social/profile',
+    gold: '/apps/social/profile.html'
+  },
+  {
+    name: 'social-settings',
+    react: '/apps/social/settings',
+    gold: '/apps/social/settings.html'
   }
 ];
