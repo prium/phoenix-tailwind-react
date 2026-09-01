@@ -1,54 +1,39 @@
-import classNames from 'classnames';
+import { cn } from '@hummingbirdui/react';
 import Lightbox from 'components/base/LightBox';
-import { GalleryColumnItemType } from 'data/gallery';
+import type { GalleryItem } from 'data/gallery';
 import useLightbox from 'hooks/useLightbox';
-import { Col, Row } from 'react-bootstrap';
+import PackeryGrid from './PackeryGrid';
 
-interface GridItemProps {
-  galleryItem: GalleryColumnItemType;
-  onClick: () => void;
-}
-
-const GridItem = ({ galleryItem, onClick }: GridItemProps) => {
-  return (
-    <Col
-      sm={6}
-      md={4}
-      xl={3}
-      className={classNames('cursor-pointer', galleryItem.className)}
-      onClick={onClick}
-    >
-      <div className="hoverbox img-zoom-hover rounded-md">
-        <img src={galleryItem.image} alt={galleryItem.title} className='img-fluid' />
-        <div className="hoverbox-content flex-col flex-center">
-          <h4 className="text-white">{galleryItem.title}</h4>
-          <p className="mb-0 text-secondary-lighter capitalize">
-            {galleryItem.type}
-          </p>
-        </div>
-      </div>
-    </Col>
-  );
-};
-
-const GalleryGridItems = ({
-  gridItems
-}: {
-  gridItems: GalleryColumnItemType[];
-}) => {
+const GalleryGridItems = ({ gridItems }: { gridItems: GalleryItem[] }) => {
   const { lightboxProps, openLightbox } = useLightbox(
-    gridItems.map(item => item.image)
+    gridItems.map(item => item.largeImage)
   );
+
   return (
     <>
-      <Row className="g-4">
+      <PackeryGrid className="row g-4" id="image_gallery">
         {gridItems.map((item, index) => (
-          <GridItem
-            galleryItem={item}
-            onClick={() => openLightbox(index + 1)}
-          />
+          <a
+            key={item.id}
+            href={item.largeImage}
+            onClick={event => {
+              event.preventDefault();
+              openLightbox(index + 1);
+            }}
+            className={cn(item.category, 'sm:col-6 md:col-4 xl:col-3')}
+          >
+            <div className="hoverbox img-zoom-hover rounded-md">
+              <img src={item.image} alt="" />
+              <div className="hoverbox-content flex-center flex-col">
+                <h4 className="text-white">{item.title}</h4>
+                <p className="mb-0 text-secondary-lighter capitalize">
+                  {item.category.split('-').join(' ')}
+                </p>
+              </div>
+            </div>
+          </a>
         ))}
-      </Row>
+      </PackeryGrid>
       <Lightbox key={gridItems.length} {...lightboxProps} />
     </>
   );

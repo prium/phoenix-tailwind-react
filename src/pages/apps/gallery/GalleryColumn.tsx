@@ -1,28 +1,37 @@
 import FileNotFound from 'components/modules/gallery/FileNotFound';
 import GalleryColumnItems from 'components/modules/gallery/GalleryColumnItems';
 import GalleryLayout from 'components/modules/gallery/GalleryLayout';
-import { defaultIsotopeNavItems, columnItems } from 'data/gallery';
+import GalleryTabs from 'components/modules/gallery/GalleryTabs';
+import GalleryToolbar from 'components/modules/gallery/GalleryToolbar';
+import { columnItems, galleryTabs } from 'data/gallery';
 import { useGalleryItems } from 'hooks/useGalleryItems';
 
 const GalleryColumn = () => {
-  const { filteredItems, setSelectedCategory, setQuery } =
+  const { filteredItems, activeFilter, setActiveFilter, setQuery } =
     useGalleryItems(columnItems);
 
   return (
     <GalleryLayout
       title="Gallery"
-      defaultActiveKey="1"
-      view="column"
-      gridLayouts={true}
-      navClassName="gap-md-5 nav-underline"
-      navItems={defaultIsotopeNavItems}
-      onSelect={key => setSelectedCategory(key ?? '1')}
-      onSearch={str => setQuery(str)}
+      onSearch={setQuery}
+      toolbar={
+        <GalleryToolbar
+          view="column"
+          tabs={
+            <GalleryTabs
+              tabs={galleryTabs}
+              activeFilter={activeFilter}
+              onSelect={setActiveFilter}
+              className="md:gap-8 min-w-100"
+            />
+          }
+        />
+      }
     >
       {filteredItems.length > 0 ? (
         <GalleryColumnItems columnItems={filteredItems} />
       ) : (
-        <div className="min-vh-50 flex justify-center items-center">
+        <div className="flex justify-center items-center">
           <FileNotFound />
         </div>
       )}
