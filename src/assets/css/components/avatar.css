@@ -35,8 +35,10 @@
         }
       }
     }
+    /* original phoenix: the avatar image always fills the box and crops
+       (uploads/non-square sources otherwise render at natural aspect) */
     img {
-      display: block;
+      @apply block size-full object-cover;
     }
   }
 }

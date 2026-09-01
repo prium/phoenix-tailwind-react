@@ -11,7 +11,10 @@ too, but not yet committed there): components/avatar.css
    --avatar-width/height pair — standalone avatars with those classes rendered
    at the 40px default (social profile/feed cover avatars were tiny; avatar-lg
    was 50px instead of the original Phoenix 48px). Gold public CSS rebuilt via
-   `npx gulp style`.
+   `npx gulp style`;
+3. `.avatar img` fills the box and crops (`size-full object-cover`, as the
+   original phoenix `.avatar img { width/height:100%; object-fit:cover }`) —
+   non-square uploads rendered at natural aspect and broke the circle.
 Drop this note once phoenix-tailwind commits the fix.
 
 Also patched in the phoenix-tailwind working tree (pug, not css):
