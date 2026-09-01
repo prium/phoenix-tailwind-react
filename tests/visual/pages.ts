@@ -524,17 +524,45 @@ export const pages: VisualPage[] = [
   {
     name: 'email-inbox',
     react: '/apps/email/inbox',
-    gold: '/apps/email/inbox.html'
+    gold: '/apps/email/inbox.html',
+    probes: [
+      // toolbar refresh / prev / next buttons + bulk-select row controls
+      '.email-toolbar .btn',
+      '.inbox-toolbar + div .form-check-input',
+      '.inbox-toolbar + div .flex.gap-3 .btn',
+      '.hover-actions-trigger .form-check-input',
+      '.hover-actions-trigger .avatar',
+      '.email-sidebar .nav-icons',
+      '.email-sidebar .nav-item-count'
+    ]
   },
   {
     name: 'email-detail',
     react: '/apps/email/email-detail',
-    gold: '/apps/email/email-detail.html'
+    gold: '/apps/email/email-detail.html',
+    probes: [
+      // reply/remove/archive/print/star tooltip buttons + reveal dropdown
+      '.email-detail-content .row .btn',
+      '.email-detail-content img.rounded-full',
+      '.email-detail-content .size-12',
+      '.email-detail-content .btn-phoenix-secondary',
+      '.btn-reveal',
+      '.email-toolbar + div .flex.gap-3 .btn',
+      '.email-sidebar .nav-icons'
+    ]
   },
   {
     name: 'email-compose',
     react: '/apps/email/compose',
-    gold: '/apps/email/compose.html'
+    gold: '/apps/email/compose.html',
+    probes: [
+      '.card .form-control',
+      'label[for="emailAttachment"]',
+      'label[for="emailPhotos"]',
+      '.card .btn-primary',
+      '.email-toolbar + div .flex.gap-3 .btn',
+      '.email-sidebar .nav-icons'
+    ]
   },
   {
     name: 'event-detail',

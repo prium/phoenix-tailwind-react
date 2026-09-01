@@ -4,33 +4,49 @@ import {
   faPaperclip
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Card, Col, Input, Row } from '@hummingbirdui/react';
 import Button from 'components/base/Button';
 import TinymceEditor from 'components/base/TinymceEditor';
 import EmailLayout from 'layouts/EmailLayout';
-import { Card, Col, Form, Row } from 'react-bootstrap';
+import { useEffect, useRef } from 'react';
 
+/**
+ * Gold `apps/email/compose.pug` + `mixin Compose`
+ * (../phoenix-tailwind/src/pug/mixins/email/Compose.pug).
+ */
 const Compose = () => {
+  const editorWrapperRef = useRef<HTMLDivElement>(null);
+
+  // The gold textarea is `textarea.tinymce.email-textarea`; email.css keys
+  // `.email-textarea + .tox` for the editor min-height/header spacing.
+  // @tinymce/tinymce-react owns its textarea, so add the classes here.
+  useEffect(() => {
+    editorWrapperRef.current
+      ?.querySelector('textarea')
+      ?.classList.add('tinymce', 'email-textarea');
+  }, []);
+
   return (
     <EmailLayout page="compose">
-      <Col>
+      <div className="col">
         <Card className="email-content">
           <Card.Body>
             <form className="flex flex-col h-full">
               <Row className="g-4 mb-2">
                 <Col xs={4}>
-                  <Form.Control type="email" placeholder="To" />
+                  <Input type="email" placeholder="To" />
                 </Col>
                 <Col xs={4}>
-                  <Form.Control type="email" placeholder="CC" />
+                  <Input type="email" placeholder="CC" />
                 </Col>
                 <Col xs={4}>
-                  <Form.Control type="email" placeholder="BCC" />
+                  <Input type="email" placeholder="BCC" />
                 </Col>
                 <Col xs={12}>
-                  <Form.Control type="text" placeholder="Subject" />
+                  <Input type="text" placeholder="Subject" />
                 </Col>
               </Row>
-              <div className="mb-4 flex-1">
+              <div className="mb-4 flex-1" ref={editorWrapperRef}>
                 <TinymceEditor
                   options={{
                     height: '100%'
@@ -38,39 +54,27 @@ const Compose = () => {
                 />
               </div>
               <div className="flex justify-between items-center">
-                <div className="flex gap-4">
-                  <div>
-                    <Button className="p-0">
-                      <label
-                        className="text-default text-md cursor-pointer"
-                        htmlFor="attachments"
-                      >
-                        <FontAwesomeIcon icon={faPaperclip} />
-                      </label>
-                    </Button>
-                    <Form.Control
-                      className="hidden"
-                      type="file"
-                      id="attachments"
-                    />
-                  </div>
-
-                  <div>
-                    <Button className="p-0">
-                      <label
-                        className="text-default text-md cursor-pointer"
-                        htmlFor="images"
-                      >
-                        <FontAwesomeIcon icon={faImage} />
-                      </label>
-                    </Button>
-                    <Form.Control
-                      className="hidden"
-                      type="file"
-                      accept="image/*"
-                      id="images"
-                    />
-                  </div>
+                <div className="flex">
+                  <label
+                    className="btn btn-link py-0 px-2 text-default text-md"
+                    htmlFor="emailAttachment"
+                  >
+                    {' '}
+                    <FontAwesomeIcon icon={faPaperclip} />
+                  </label>
+                  <input className="hidden" id="emailAttachment" type="file" />
+                  <label
+                    className="btn btn-link py-0 px-2 text-default text-md"
+                    htmlFor="emailPhotos"
+                  >
+                    <FontAwesomeIcon icon={faImage} />
+                  </label>
+                  <input
+                    className="hidden"
+                    id="emailPhotos"
+                    type="file"
+                    accept="image/*"
+                  />
                 </div>
                 <div className="flex">
                   <Button
@@ -79,20 +83,16 @@ const Compose = () => {
                   >
                     Discard
                   </Button>
-                  <Button
-                    variant="primary"
-                    className="text-sm"
-                    type="submit"
-                    endIcon={<FontAwesomeIcon icon={faPaperPlane} />}
-                  >
+                  <Button variant="primary" className="text-sm" type="submit">
                     Send
+                    <FontAwesomeIcon icon={faPaperPlane} className="ms-1" />
                   </Button>
                 </div>
               </div>
             </form>
           </Card.Body>
         </Card>
-      </Col>
+      </div>
     </EmailLayout>
   );
 };
