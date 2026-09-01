@@ -49,7 +49,7 @@ the leftover-Bootstrap grep is empty for its closure, and this table says so.
 | File manager | ⬜ | needs FileManagerLayout |
 | Gallery | ⬜ | |
 | Gantt chart | ⬜ | dhtmlx engine stays (see ZeroRoadMapChart) |
-| Kanban | ⬜ | |
+| Kanban (board, boards, create-board wizard) | ✅ | `kanban-*` (7 entries incl. wizard steps 2–5, probes); modal/offcanvas states verified; `WizardPager` extracted, `PhoenixFloatingLabel` emits gold DOM |
 | Social (feed, profile, settings) | ✅ | `social-*` (3 entries, probes); `FloatingIconField` + `SettingsProfileCard` extracted |
 | Stock app pages (stock-details, portfolio, watchlist) | ✅ | `stock-*` (3 entries); orphaned react-bootstrap stock tables/cards deleted |
 | Travel agency (17 pages: landing, 6 hotel customer, 4 hotel admin, 3 flight, 3 trip) | ✅ | `ta-*` (17 entries); own layouts (TravelLanding/TravelAgency/FlightAlternate/Trip) all migrated |
