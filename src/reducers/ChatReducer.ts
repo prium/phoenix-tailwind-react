@@ -47,16 +47,18 @@ export const chatReducer = (state: ChatState, action: ACTIONTYPE) => {
         conversation.id === payload.conversationId
           ? {
               ...conversation,
+              // the thread renders messages newest-first (gold pug reverses),
+              // so prepending shows the new message at the bottom
               messages: [
-                ...conversation.messages,
                 {
-                  id: 3,
+                  id: Date.now(),
                   type: 'sent',
                   time: dayjs().toNow(),
                   readAt: null,
                   message: payload.message,
                   attachments: payload.attachments
-                } as Message
+                } as Message,
+                ...conversation.messages
               ]
             }
           : conversation
@@ -85,8 +87,8 @@ export const chatReducer = (state: ChatState, action: ACTIONTYPE) => {
         return payload === 'read'
           ? !hasUnreadMeassages
           : payload === 'unread'
-          ? hasUnreadMeassages
-          : true;
+            ? hasUnreadMeassages
+            : true;
       });
       return {
         ...state,
@@ -99,6 +101,8 @@ export const chatReducer = (state: ChatState, action: ACTIONTYPE) => {
         if (conversation.id === payload.conversationId) {
           return {
             ...conversation,
+            unread: false,
+            badge: undefined,
             messages: conversation.messages.map(message => ({
               ...message,
               readAt: new Date()

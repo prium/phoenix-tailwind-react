@@ -1,17 +1,16 @@
+import { Card } from '@hummingbirdui/react';
 import ChatContent from 'components/modules/chat/chat-content';
-import ChatSidebar from 'components/modules/chat/ChatSidebar';
-import { useBreakpoints } from 'providers/BreakpointsProvider';
 import { useChatContext } from 'providers/ChatProvider';
 import { useEffect } from 'react';
 import { useParams } from 'react-router';
 import { SET_CURRENT_CONVERSATION } from 'reducers/ChatReducer';
 
+/** Gold `.card.tab-content` thread area — phoenix-tailwind apps/chat.pug. */
 const ChatConversation = () => {
   const { userId } = useParams();
 
   const { chatDispatch, conversations } = useChatContext();
 
-  const { breakpoints } = useBreakpoints();
   useEffect(() => {
     chatDispatch({
       type: SET_CURRENT_CONVERSATION,
@@ -22,10 +21,9 @@ const ChatConversation = () => {
   }, [userId, conversations]);
 
   return (
-    <>
-      {breakpoints.up('sm') && <ChatSidebar />}
+    <Card className="tab-content flex-1 phoenix-offcanvas-container">
       <ChatContent />
-    </>
+    </Card>
   );
 };
 

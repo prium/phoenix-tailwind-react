@@ -1,37 +1,43 @@
 import { faPhotoFilm } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button from 'components/base/Button';
 import Lightbox from 'components/base/LightBox';
 import Portal from 'components/base/Portal';
 import { attachments } from 'data/chat';
 import useLightbox from 'hooks/useLightbox';
-import { Col, Row } from 'react-bootstrap';
 
+/** "Shared Media" block — mixins/chat/ChatThreadDetails.pug. */
 const SharedMedia = () => {
   const { lightboxProps, openLightbox } = useLightbox(
     attachments.map(attachment => attachment.image)
   );
 
   return (
-    <div className="flex gap-4 my-4">
-      <FontAwesomeIcon icon={faPhotoFilm} className="text-md" />
+    <div className="flex mb-8">
+      <FontAwesomeIcon icon={faPhotoFilm} className="me-4 text-md" />
       <div>
         <h6 className="font-semibold mb-2">Shared Media</h6>
-        <Row className="g-2">
+        <div className="row g-2">
           {attachments.map((attachment, index) => (
-            <Col xs="auto" key={attachment.image}>
-              <Button className="p-0" onClick={() => openLightbox(index + 1)}>
+            <div className="col-auto" key={index}>
+              <a
+                href={attachment.image}
+                onClick={e => {
+                  e.preventDefault();
+                  openLightbox(index + 1);
+                }}
+              >
+                {/* the gold anchor keeps a leading space text node */}{' '}
                 <img
+                  className="object-cover rounded-md hover:bg-muted"
                   src={attachment.image}
                   alt=""
                   height={100}
                   width={100}
-                  className="fit-cover rounded-md bg-body-secondary-hover"
                 />
-              </Button>
-            </Col>
+              </a>
+            </div>
           ))}
-        </Row>
+        </div>
         <Portal>
           <Lightbox {...lightboxProps} />
         </Portal>

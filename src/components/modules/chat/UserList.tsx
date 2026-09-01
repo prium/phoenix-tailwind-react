@@ -1,27 +1,12 @@
-import classNames from 'classnames';
-import Avatar from 'components/base/Avatar';
-import Badge from 'components/base/Badge';
+import { cn } from '@hummingbirdui/react';
 import { Conversation } from 'data/chat';
 import { useChatContext } from 'providers/ChatProvider';
-import React, { useMemo } from 'react';
-import { Nav } from 'react-bootstrap';
 import { Link } from 'react-router';
 import { MARKED_AS_READ } from 'reducers/ChatReducer';
 
+/** One `li` of the gold thread list — mixins/chat/ChatSidebar.pug. */
 const UserListitem = ({ conversation }: { conversation: Conversation }) => {
   const { currentConversation, chatDispatch } = useChatContext();
-
-  const lastMessage = useMemo(
-    () => conversation.messages[conversation.messages.length - 1],
-    [conversation]
-  );
-  const unseenMessageCount = useMemo(
-    () =>
-      conversation.messages.filter(
-        message => message.type === 'received' && !message.readAt
-      ).length,
-    [conversation]
-  );
 
   const markedAsRead = () => {
     chatDispatch({
@@ -31,75 +16,71 @@ const UserListitem = ({ conversation }: { conversation: Conversation }) => {
   };
 
   return (
-    <Nav.Item
-      key={conversation.id}
-      className={unseenMessageCount > 0 ? 'read' : 'unread'}
+    <li
+      className={cn('nav-item', conversation.unread ? 'unread' : 'read')}
+      role="presentation"
     >
-      <Nav.Link
-        as={Link}
+      <Link
         to={`/apps/chat/${conversation.user.id}/conversation`}
         onClick={markedAsRead}
-        className={classNames(
-          'flex items-center justify-center p-2',
-          {
-            unread: unseenMessageCount > 0,
-            active: currentConversation?.user.id === conversation.user.id
-          }
-        )}
+        className={cn('nav-link flex items-center justify-center p-2', {
+          unread: conversation.unread,
+          active: currentConversation?.user.id === conversation.user.id
+        })}
+        role="tab"
       >
-        <div className="relative me-2 sm:me-0 xl:me-2">
-          <Avatar
+        {/* gold hardcodes avatar-status-online on every thread */}
+        <div className="avatar avatar-lg avatar-status-online relative me-2 sm:me-0 xl:me-2">
+          <img
+            className={cn('rounded-full border border-2 border-subtle-subtle', {
+              'avatar-placeholder': conversation.user.placeholder
+            })}
             src={conversation.user.avatar}
-            size="xl"
-            className="block"
-            imageClassName="border border-2 border-light-subtle"
+            alt=""
           />
-          {unseenMessageCount > 0 && (
-            <span
-              className="bg-primary rounded-full top-0 end-0 absolute text-white flex flex-center text-sm font-semibold hidden sm:flex xl:hidden leading-none"
-              style={{ height: '1rem', width: '1rem' }}
-            >
-              {unseenMessageCount}
+          {conversation.badge && (
+            <span className="size-4 bg-primary rounded-full top-0 end-0 absolute text-white flex-center text-sm font-semibold hidden sm:flex xl:hidden leading-none">
+              {conversation.badge}
             </span>
           )}
         </div>
         <div className="flex-1 sm:hidden xl:block">
           <div className="flex justify-between items-center">
-            <h5 className="text-default font-normal name whitespace-nowrap">
+            <h5 className="text-default font-normal name text-nowrap">
               {conversation.user.name}
             </h5>
-            <p className="text-sm text-subtle text-opacity-85 mb-0 whitespace-nowrap">
-              {lastMessage.time}
+            <p className="text-sm text-subtle/85 mb-0 text-nowrap font-normal">
+              {conversation.time}
             </p>
           </div>
           <div className="flex justify-between">
-            <p className="text-md mb-0 line-clamp-1 text-subtle text-opacity-85 message">
-              {lastMessage.message}
+            <p className="text-md mb-0 line-clamp-1 text-subtle/85 font-normal message">
+              {conversation.message}
             </p>
-            {unseenMessageCount > 0 && (
-              <Badge
-                variant="phoenix"
-                bg="primary"
-                className="px-1 unread-badge ms-1"
-              >
-                {unseenMessageCount}
-              </Badge>
+            {conversation.badge && (
+              <span className="badge badge-phoenix-primary px-1 unread-badge">
+                {conversation.badge}+
+              </span>
             )}
           </div>
         </div>
-      </Nav.Link>
-    </Nav.Item>
+      </Link>
+    </li>
   );
 };
 
 const UserList = ({ conversations }: { conversations: Conversation[] }) => {
   return (
     <div className="scrollbar">
-      <Nav className="chat-conversation-tab flex-col">
-        {conversations.map(conversation => (
-          <UserListitem conversation={conversation} key={conversation.id} />
-        ))}
-      </Nav>
+      <div className="tab-content" id="contactListTabContent">
+        <div>
+          <ul className="nav chat-thread-tab flex-col list">
+            {conversations.map(conversation => (
+              <UserListitem conversation={conversation} key={conversation.id} />
+            ))}
+          </ul>
+        </div>
+      </div>
     </div>
   );
 };

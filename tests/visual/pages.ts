@@ -516,10 +516,30 @@ export const pages: VisualPage[] = [
       '[class="form-check form-switch mb-1.5"] .form-check-input'
     ]
   },
+  // the gold chat.html always shows the first thread's conversation, so the
+  // React side is compared at that thread's route (the index route is a
+  // React-only landing card with no gold counterpart)
   {
     name: 'chat',
-    react: '/apps/chat',
-    gold: '/apps/chat.html'
+    react: '/apps/chat/1/conversation',
+    gold: '/apps/chat.html',
+    widths: [768],
+    probes: [
+      '.chat .card-header .btn-square',
+      '.chat-thread-tab .unread-badge',
+      '.chat .card-footer .btn-primary'
+    ]
+  },
+  // conversation-details offcanvas (same page, opened via the header button on
+  // both sides — the gold static JS binds data-phoenix-toggle="offcanvas")
+  {
+    name: 'chat-details',
+    react: '/apps/chat/1/conversation',
+    gold: '/apps/chat.html',
+    setup: {
+      react: { click: '[data-phoenix-target="#thread-details-0"]' },
+      gold: { click: '[data-phoenix-target="#thread-details-0"]' }
+    }
   },
   {
     name: 'email-inbox',

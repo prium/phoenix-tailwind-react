@@ -1,31 +1,28 @@
 import { useEffect, useRef } from 'react';
-import { Card } from 'react-bootstrap';
+import { cn } from '@hummingbirdui/react';
 import { useChatContext } from 'providers/ChatProvider';
-import PhoenixOffcanvas, {
-  PhoenixOffcanvasContainer
-} from 'components/base/PhoenixOffcanvas';
 import ConversationDetails from '../conversation-details';
-import ChatSidebar from '../ChatSidebar';
-import { useBreakpoints } from 'providers/BreakpointsProvider';
 import ChatContentHeader from './ChatContentHeader';
 import ConversationStarter from './ConversationStarter';
 import ChatContentFooter from './ChatContentFooter';
 import Message from '../message';
-import Scrollbar from 'components/base/Scrollbar';
 import { SET_CHAT_STATE } from 'reducers/ChatReducer';
 
+/**
+ * One `.tab-pane` chat thread — phoenix-tailwind mixins/chat/ChatContent.pug.
+ * The gold pug renders `thread.messages.reverse()`, so the newest data entry
+ * sits at the top; the gold JS then scrolls the card-body to the bottom.
+ */
 const ChatContent = () => {
   const {
     currentConversation,
+    conversations,
     chatDispatch,
     showConversationDetails,
-    showUserListOffcanvas,
     setShowConversationDetails
   } = useChatContext();
 
-  const messageEndRef = useRef<null | HTMLSpanElement>(null);
-
-  const { breakpoints } = useBreakpoints();
+  const bodyRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     chatDispatch({
@@ -36,56 +33,62 @@ const ChatContent = () => {
       }
     });
 
-    messageEndRef.current?.scrollIntoView();
+    // gold chat.js: chatBox.scrollTop = chatBox.scrollHeight — re-applied when
+    // attachment images load (they grow scrollHeight after mount)
+    const body = bodyRef.current;
+    if (!body) return;
+    const toBottom = () => {
+      body.scrollTop = body.scrollHeight;
+    };
+    toBottom();
+    body.addEventListener('load', toBottom, true);
+    return () => body.removeEventListener('load', toBottom, true);
   }, [currentConversation]);
 
-  if (currentConversation) {
-    return (
-      <Card as={PhoenixOffcanvasContainer} className="h-full w-full">
-        <ChatContentHeader />
-        <Card.Body className="p-4 sm:p-6 scrollbar flex flex-col gap-2">
+  if (!currentConversation) return null;
+
+  const index = conversations.findIndex(
+    conversation => conversation.id === currentConversation.id
+  );
+
+  return (
+    <div
+      className="tab-pane h-full fade active show"
+      id={`tab-thread-${currentConversation.id}`}
+      role="tabpanel"
+      aria-labelledby={`tab-thread-${currentConversation.id}`}
+    >
+      <div className="flex flex-col h-full">
+        <ChatContentHeader index={index} />
+        <div
+          ref={bodyRef}
+          className={`chat-content-body-${index} card-body p-4 sm:p-6 scrollbar`}
+        >
           {currentConversation.messages.length === 0 && <ConversationStarter />}
-          {currentConversation.messages.map(message => (
+          {[...currentConversation.messages].reverse().map(message => (
             <Message
               message={message}
               user={currentConversation.user}
               key={message.id}
             />
           ))}
-          <span ref={messageEndRef} />
-        </Card.Body>
-
+        </div>
         <ChatContentFooter />
-
-        <PhoenixOffcanvas
-          open={showConversationDetails}
-          placement="top"
-          noBackdrop
-          className="bg-soft w-full z-index-0 rounded-lg"
+        <div
+          className={cn(
+            'phoenix-offcanvas phoenix-offcanvas-top h-full w-full bg-soft scrollbar z-index-0 rounded-md',
+            { show: showConversationDetails }
+          )}
+          id={`thread-details-${index}`}
         >
-          <Scrollbar>
-            <ConversationDetails
-              conversation={currentConversation}
-              handleClose={() => setShowConversationDetails(false)}
-            />
-          </Scrollbar>
-        </PhoenixOffcanvas>
-
-        {breakpoints.down('sm') && (
-          <PhoenixOffcanvas
-            open={showUserListOffcanvas}
-            placement="start"
-            noBackdrop
-            className="w-full z-index-0"
-          >
-            <ChatSidebar className="border-0 h-full" />
-          </PhoenixOffcanvas>
-        )}
-      </Card>
-    );
-  } else {
-    return <></>;
-  }
+          <ConversationDetails
+            conversation={currentConversation}
+            handleClose={() => setShowConversationDetails(false)}
+          />
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default ChatContent;
