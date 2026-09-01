@@ -21,8 +21,8 @@ the leftover-Bootstrap grep is empty for its closure, and this table says so.
 | Horizontal / combo / dual / slim top navbars | ✅ | `layout-*` entries |
 | Settings panel + toggle | ✅ | `settings-panel` entry (light+dark) |
 | Base components (Button, Badge, Avatar, AdvanceTable, footer, dropdowns, SearchBox, DatePicker, ReactSelect, CheckButton, PhoenixOffcanvas…) | ✅ | see skill §0 finished examples |
-| Chat widget | ⬜ | stubbed `return null` |
-| Other layouts (EmailLayout, FileManagerLayout, Auth simple/split/card, DocPagesLayout) | ⬜ | still on shim |
+| Chat widget | ✅ | live in MainLayout, HB-based (tracker note was stale) |
+| Other layouts (FileManagerLayout, Auth simple/split/card, DocPagesLayout) | ⬜ | still on shim; EmailLayout done with the email module |
 | `src/react-bootstrap/` shim | 🚧 | delete when `grep -rl react-bootstrap src` is empty |
 
 ## Dashboards
@@ -41,11 +41,11 @@ the leftover-Bootstrap grep is empty for its closure, and this table says so.
 |---|---|---|
 | E-commerce (11 customer + 7 admin pages) | ✅ | `ec-*` (18 entries) |
 | Project management (6 pages) | ✅ | `pm-*` + dashboard (7 entries) |
-| Chat | 🚧 | components codemodded early; not verified, not in pages.ts |
+| Chat | ✅ | `chat` (1540+768) + `chat-details` (offcanvas); ChatHomepage is React-only (no gold page) |
 | Calendar | ⬜ | |
 | CRM app pages (8) | ✅ | `crm-*` (8 entries: analytics, deals, deal-details, leads, lead-details, add-contact, reports, report-details) |
-| Email | ⬜ | needs EmailLayout |
-| Events | ⬜ | |
+| Email | ✅ | `email-*` (3 entries, probes); EmailLayout keeps the gold phoenix-offcanvas DOM |
+| Events | ✅ | `event-*` (2 entries, probes); `FloatingDatePicker` + `InlineCheckItem` extracted |
 | File manager | ⬜ | needs FileManagerLayout |
 | Gallery | ⬜ | |
 | Gantt chart | ⬜ | dhtmlx engine stays (see ZeroRoadMapChart) |

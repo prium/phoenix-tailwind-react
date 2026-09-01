@@ -79,6 +79,10 @@ export async function shoot(
     [opts.dark ? 'dark' : 'light', opts.setup?.storage ?? {}] as const
   );
   const page = await context.newPage();
+  // Surface app crashes: a blank React tree (uncaught render error) otherwise
+  // fails only as a cryptic "N% pixels differ / probes found 0 elements".
+  const pageErrors: string[] = [];
+  page.on('pageerror', err => pageErrors.push(err.message));
   await page.goto(url, { waitUntil: 'load', timeout: 60_000 });
   await page.addStyleTag({
     content:
@@ -125,6 +129,13 @@ export async function shoot(
   }
   const buf = await page.screenshot({ fullPage: true, animations: 'disabled' });
   await context.close();
+  // Only the React side gates on errors — the gold's static bundle throws
+  // benign ones (hummingbird Tab/Tooltip constructors, `require`) by design.
+  if (pageErrors.length && url.startsWith(REACT)) {
+    throw new Error(
+      `page crashed during capture (${url}):\n  ${pageErrors.join('\n  ')}`
+    );
+  }
   return { png: PNG.sync.read(buf), boxes };
 }
 
