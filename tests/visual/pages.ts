@@ -754,6 +754,7 @@ export const pages: VisualPage[] = [
     name: 'calendar',
     react: '/apps/calendar',
     gold: '/apps/calendar.html',
+    dark: true, // the plugin skin has a `@variant dark` block for `.fc`
     probes: [
       // toolbar: Today, prev/next, month title, Month/Week switcher
       '.btn-phoenix-primary',
