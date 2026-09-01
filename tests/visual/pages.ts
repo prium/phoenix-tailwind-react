@@ -701,36 +701,69 @@ export const pages: VisualPage[] = [
     '[data-board-prev-btn]'
   ]),
 
-  // gallery
+  // gallery — the tiles are packed by `PackeryGrid` (React port of the gold's
+  // isotope/packery), so probe every tile anchor as well as the toolbar icons.
   {
     name: 'gallery-album',
     react: '/apps/gallery/album',
-    gold: '/apps/gallery/album.html'
+    gold: '/apps/gallery/album.html',
+    probes: [
+      '.search-box-icon',
+      '.album-item .dropdown',
+      '.circle-icon-item',
+      '.photo-stack-bottom'
+    ]
   },
   {
     name: 'gallery-column',
     react: '/apps/gallery/gallery-column',
-    gold: '/apps/gallery/gallery-column.html'
+    gold: '/apps/gallery/gallery-column.html',
+    probes: [
+      '.search-box-icon',
+      'a.btn-square',
+      '.gallery-column-separator',
+      '#image_gallery .title'
+    ]
   },
   {
     name: 'gallery-grid',
     react: '/apps/gallery/gallery-grid',
-    gold: '/apps/gallery/gallery-grid.html'
+    gold: '/apps/gallery/gallery-grid.html',
+    probes: ['.search-box-icon', 'a.btn-square', '.hoverbox']
   },
   {
     name: 'gallery-grid-with-title',
     react: '/apps/gallery/grid-with-title',
-    gold: '/apps/gallery/grid-with-title.html'
+    gold: '/apps/gallery/grid-with-title.html',
+    probes: [
+      '.search-box-icon',
+      'a.btn-square',
+      '.hoverbox',
+      '.hoverbox-content > div'
+    ]
   },
   {
     name: 'gallery-masonry',
     react: '/apps/gallery/gallery-masonry',
-    gold: '/apps/gallery/gallery-masonry.html'
+    gold: '/apps/gallery/gallery-masonry.html',
+    probes: [
+      '.search-box-icon',
+      'a.btn-square',
+      '.circle-icon-item',
+      '.backdrop-faded'
+    ]
   },
   {
     name: 'gallery-slider',
     react: '/apps/gallery/gallery-slider',
-    gold: '/apps/gallery/gallery-slider.html'
+    gold: '/apps/gallery/gallery-slider.html',
+    probes: [
+      '.search-box-icon',
+      'a.btn-square',
+      '.swiper-button-next',
+      '.swiper-button-prev',
+      '.swiper-thumbs .swiper-slide img'
+    ]
   },
 
   // file manager
@@ -807,6 +840,7 @@ export const pages: VisualPage[] = [
     name: 'gantt-chart',
     react: '/apps/gantt-chart',
     gold: '/apps/gantt-chart.html',
+    dark: true,
     probes: [
       // toolbar: Add Task, search input + icon, Auto Fit switch, view select,
       // Filter/Options link buttons
