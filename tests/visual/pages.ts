@@ -652,12 +652,31 @@ export const pages: VisualPage[] = [
   {
     name: 'kanban-board',
     react: '/apps/kanban/kanban',
-    gold: '/apps/kanban/kanban.html'
+    gold: '/apps/kanban/kanban.html',
+    probes: [
+      // header board switcher / avatars / invite / nav icons
+      '.kanban-header .avatar',
+      '.kanban-header .fa-user-plus',
+      '.kanban-header .fa-bars',
+      // column headers and cards
+      '.kanban-title-badge',
+      '.kanban-collapse-icon',
+      '.kanban-status .badge',
+      '.kanban-container .avatar-group .avatar',
+      '.kanban-add-task button'
+    ]
   },
   {
     name: 'kanban-boards',
     react: '/apps/kanban/boards',
-    gold: '/apps/kanban/boards.html'
+    gold: '/apps/kanban/boards.html',
+    probes: [
+      '.search-box-icon',
+      '.kanban-boards-slider .swiper-button-next',
+      '.avatar-group .avatar',
+      '.fa-list-check',
+      '.fa-calendar-xmark'
+    ]
   },
   {
     name: 'kanban-create-board',

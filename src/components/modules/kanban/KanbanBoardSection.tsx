@@ -1,6 +1,5 @@
 import KanbanBoardCard from 'components/modules/kanban/KanbanBoardCard';
 import { KanbanBoard } from 'data/kanban';
-import { Link } from 'react-router';
 import { SwiperSlide } from 'swiper/react';
 import Swiper from 'components/base/Swiper';
 import KanbanAddBoardCard from './KanbanAddBoardCard';
@@ -12,6 +11,7 @@ interface KanbanBoardSectionProps {
   changePreference?: boolean;
 }
 
+/** board sections + `+BoardSlider` of apps/kanban/boards.pug */
 const KanbanBoardSection = ({
   title,
   description,
@@ -19,14 +19,15 @@ const KanbanBoardSection = ({
   changePreference
 }: KanbanBoardSectionProps) => {
   return (
-    <div className="px-6 lg:px-10 py-8 border-b border-subtle">
+    <div className="-mx-6 lg:-mx-10 px-6 lg:px-10 py-8 border-b border-subtle">
       <h4>{title}</h4>
       <p className="mb-6">
-        {description}{' '}
-        {changePreference && <Link to="#!">Change preference</Link>}
+        {description} {changePreference && <a href="#!"> Change preference</a>}
       </p>
 
       <Swiper
+        parentClassName="kanban-boards-slider"
+        navIconClassName="text-xs"
         spaceBetween={24}
         slidesPerView={1}
         speed={800}
