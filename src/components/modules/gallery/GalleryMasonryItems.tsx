@@ -21,7 +21,7 @@ const GalleryMasonryItems = ({ galleryItems }: GalleryMasonryItemsProps) => {
   return (
     <>
       <div
-        className="d-grid grid-cols-12 gap-3"
+        className="grid grid-cols-12 gap-4"
       >
         {galleryItems.map((item, index) => (
           <GalleryItem
@@ -55,11 +55,11 @@ const GalleryItem = ({ item, onClick }: GalleryItemProps) => {
   };
   return (
     <div onClick={onClick} className={classNames(item.className)}>
-      <div className="img-zoom-hover relative rounded-2 overflow-hidden cursor-pointer">
+      <div className="img-zoom-hover relative rounded-md overflow-hidden cursor-pointer">
         {item.srcType === 'video' ? (
           <div className="video-container relative">
             <video
-              className="video block h-100 w-100 overflow-hidden rounded-2"
+              className="video block h-full w-full overflow-hidden rounded-md"
               muted
               poster={item.image}
               onMouseEnter={handleMouseEnter}
@@ -68,7 +68,7 @@ const GalleryItem = ({ item, onClick }: GalleryItemProps) => {
             >
               <source src={item.video} type="video/mp4" />
             </video>
-            <div className="video-icon absolute top-50 start-50 translate-middle bg-soft rounded-full bg-opacity-50">
+            <div className="video-icon absolute top-1/2 start-1/2 top-1/2 left-1/2 -translate-1/2 bg-soft rounded-full bg-opacity-50">
               <FontAwesomeIcon
                 icon={faVideo}
                 className="text-default text-md sm:text-base"
@@ -80,13 +80,13 @@ const GalleryItem = ({ item, onClick }: GalleryItemProps) => {
             <img
               src={item.image}
               alt={item.title}
-              className="rounded-2 w-100 h-100 object-fit-cover"
+              className="rounded-md w-full h-full object-cover"
             />
           </>
         )}
-        <div className="backdrop-faded absolute w-100 bottom-0 start-0 p-3">
+        <div className="backdrop-faded absolute w-full bottom-0 start-0 p-4">
           <h4 className="text-white">{item.title}</h4>
-          <p className="mb-0 text-secondary-lighter text-capitalize">
+          <p className="mb-0 text-secondary-lighter capitalize">
             {item.categoryTitle}
           </p>
         </div>

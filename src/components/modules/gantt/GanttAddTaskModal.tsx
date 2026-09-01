@@ -105,16 +105,16 @@ const GanttAddTaskModal = ({
       aria-labelledby="addTaskModalLabel"
       backdrop={true}
     >
-      <Modal.Header className="p-4 pb-3 align-items-start border-0 bg-subtle">
+      <Modal.Header className="p-6 pb-4 items-start border-0 bg-subtle">
         <h3 className="mb-0 text-highlight">Create New Task</h3>
         <button onClick={() => setShow(false)} className="btn p-1 ms-auto">
           <FontAwesomeIcon icon={faTimes} className="text-sm btn-close" />
         </button>
       </Modal.Header>
 
-      <Modal.Body className="px-4 bg-subtle">
+      <Modal.Body className="px-6 bg-subtle">
         <Form id="addTaskForm">
-          <Form.Group controlId="createTaskName" className="mb-4">
+          <Form.Group controlId="createTaskName" className="mb-6">
             <Form.Label className="form-label-header mb-2">
               Task Name
             </Form.Label>
@@ -126,7 +126,7 @@ const GanttAddTaskModal = ({
             />
           </Form.Group>
 
-          <Row className="g-3">
+          <Row className="g-4">
             <Col xs={7} sm={8}>
               <Form.Group controlId="createTaskStartDate">
                 <Form.Label className="form-label-header mb-2">
@@ -179,7 +179,7 @@ const GanttAddTaskModal = ({
         </Form>
       </Modal.Body>
 
-      <Modal.Footer className="border-0 px-4 pb-3 bg-subtle">
+      <Modal.Footer className="border-0 px-6 pb-4 bg-subtle">
         <Button variant="phoenix-secondary" onClick={() => setShow(false)}>
           Cancel
         </Button>

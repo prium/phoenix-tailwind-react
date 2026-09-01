@@ -15,7 +15,7 @@ const Sidebar = ({ setOpenOffcanvas }: SidebarProps) => {
       <div className="flex flex-between-center">
         <h5 className="mb-2">My Files</h5>
         <Button
-          className="p-0 text-base d-lg-none"
+          className="p-0 text-base lg:hidden"
           onClick={() => setOpenOffcanvas(false)}
         >
           <FontAwesomeIcon icon={faXmark} transform={'up-3'} />

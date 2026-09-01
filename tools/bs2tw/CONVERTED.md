@@ -33,3 +33,10 @@ class names with different meanings (`mb-4` → `mb-6` → `mb-10` …).
 - kanban closure: src/pages/apps/kanban, src/components/modules/kanban,
   src/components/modals/Kanban{AddList,Invite}Modal.tsx, src/data/kanban.ts,
   src/components/base/PhoenixFloatingLabel.tsx
+- gallery/file-manager/gantt/calendar closure: src/pages/apps/{gallery,
+  file-manager,calendar,gantt-chart}, src/components/modules/{gallery,
+  file-manager,gantt}, src/layouts/FileManagerLayout.tsx,
+  src/components/base/FullCalendar.tsx, src/components/charts/dhtmlx,
+  src/data/{gallery,file-manager,treeview,calendarEvents,ganttData}
+  (Calendar{Event,AddNewEvent}Modal + FileManagerTimeline were converted with
+  the crm wave — manual pass only)

@@ -61,22 +61,22 @@ const GanttChartActions = ({
 
   return (
     <>
-      <div className="gantt-header p-4 px-lg-6 py-sm-3">
-        <Row className="gx-0 gy-3 justify-content-between">
-          <Col md="auto" className="flex align-items-center">
+      <div className="gantt-header p-6 lg:px-10 sm:py-4">
+        <Row className="gx-0 gy-4 justify-between">
+          <Col md="auto" className="flex items-center">
             <h3 className="mb-0">Gantt Chart</h3>
             <Button
-              className="btn-sm ms-auto ms-md-3"
+              className="btn-sm ms-auto md:ms-4"
               variant="primary"
               onClick={() => setShowAddTask(true)}
             >
               <FontAwesomeIcon icon={faPlus} />
-              <span className="ms-2 d-md-none d-xl-inline">Add Task</span>
+              <span className="ms-2 md:hidden xl:inline">Add Task</span>
             </Button>
           </Col>
 
           <Col md="auto">
-            <Row className="align-items-center gy-3 gx-0">
+            <Row className="items-center gy-4 gx-0">
               <Col sm="auto">
                 <SearchBox
                   placeholder="Search..."
@@ -86,15 +86,15 @@ const GanttChartActions = ({
                 />
               </Col>
 
-              <Col className="flex align-items-center ms-sm-auto" xs="auto">
+              <Col className="flex items-center sm:ms-auto" xs="auto">
                 <div
-                  className="border-start hidden d-md-inline ms-md-3"
+                  className="border-s hidden md:inline md:ms-4"
                   style={{ height: '20px', width: '2px' }}
                 />
                 <FormCheck
                   type="switch"
                   id="ganttZoomToFit"
-                  className="mb-0 ms-sm-3"
+                  className="mb-0 sm:ms-4"
                 >
                   <FormCheck.Input
                     onChange={e => {
@@ -103,14 +103,14 @@ const GanttChartActions = ({
                     }}
                     defaultChecked
                   />
-                  <FormCheck.Label className="text-nowrap">
+                  <FormCheck.Label className="whitespace-nowrap">
                     Auto Fit
                   </FormCheck.Label>
                 </FormCheck>
 
                 <FormSelect
                   size="sm"
-                  className="ms-3"
+                  className="ms-4"
                   defaultValue="months"
                   onChange={e => setCurrentView(e.target.value)}
                 >
@@ -122,30 +122,30 @@ const GanttChartActions = ({
               </Col>
 
               <Col
-                className="flex align-items-center ms-auto ms-sm-3"
+                className="flex items-center ms-auto sm:ms-4"
                 xs="auto"
               >
                 <div
-                  className="border-start hidden d-sm-inline me-3"
+                  className="border-s hidden sm:inline me-4"
                   style={{ height: '20px', width: '2px' }}
                 />
                 <Button
                   variant="link"
                   size="sm"
-                  className="text-default px-0 text-nowrap ms-n1"
+                  className="text-default px-0 whitespace-nowrap -ms-1"
                   onClick={() => setShowFilter(true)}
                 >
                   <FontAwesomeIcon icon={faFilter} className="text-md" />
-                  <span className="hidden d-xl-inline ms-2">Filter</span>
+                  <span className="hidden xl:inline ms-2">Filter</span>
                 </Button>
                 <Button
                   variant="link"
                   size="sm"
-                  className="text-default px-0 text-nowrap ms-3"
+                  className="text-default px-0 whitespace-nowrap ms-4"
                   onClick={() => setShowOptions(true)}
                 >
                   <FontAwesomeIcon icon={faGear} className="text-md" />
-                  <span className="hidden d-xl-inline ms-2">Options</span>
+                  <span className="hidden xl:inline ms-2">Options</span>
                 </Button>
               </Col>
             </Row>

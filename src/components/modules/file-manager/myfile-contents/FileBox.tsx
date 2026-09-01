@@ -28,7 +28,7 @@ const RenderFileIcon = ({ file }: { file: File }) => {
         <FontAwesomeIcon
           icon={faFolder}
           className={classNames(
-            'fs-3',
+            'text-4xl',
             file.id === 3 ? 'text-info-light' : 'text-subtle'
           )}
         />
@@ -37,7 +37,7 @@ const RenderFileIcon = ({ file }: { file: File }) => {
       return (
         <FontAwesomeIcon
           icon={faFileWord}
-          className="fs-3 text-subtle"
+          className="text-4xl text-subtle"
         />
       );
     case 'xls':
@@ -45,7 +45,7 @@ const RenderFileIcon = ({ file }: { file: File }) => {
       return (
         <FontAwesomeIcon
           icon={faFileExcel}
-          className="fs-3 text-subtle"
+          className="text-4xl text-subtle"
         />
       );
     case 'source-code':
@@ -53,23 +53,23 @@ const RenderFileIcon = ({ file }: { file: File }) => {
       return (
         <FontAwesomeIcon
           icon={faFileInvoice}
-          className="fs-3 text-subtle"
+          className="text-4xl text-subtle"
         />
       );
     case 'zip':
       return (
         <FontAwesomeIcon
           icon={faFileZipper}
-          className="fs-3 text-subtle"
+          className="text-4xl text-subtle"
         />
       );
     case 'pdf':
       return (
-        <FontAwesomeIcon icon={faFilePdf} className="fs-3 text-subtle" />
+        <FontAwesomeIcon icon={faFilePdf} className="text-4xl text-subtle" />
       );
     case 'csv':
       return (
-        <FontAwesomeIcon icon={faFileCsv} className="fs-3 text-subtle" />
+        <FontAwesomeIcon icon={faFileCsv} className="text-4xl text-subtle" />
       );
     default:
       return null;
@@ -150,7 +150,7 @@ const FileBox = ({ file }: { file: File }) => {
         <div className="file-box-wrapper img-zoom-hover">
           <Form.Check.Input
             type="checkbox"
-            className="form-check-input-transparent absolute top-0 start-0 mt-3 ms-3 z-1"
+            className="form-check-input-transparent absolute top-0 start-0 mt-4 ms-4 z-1"
             name={file.id.toString()}
             id={file.id.toString()}
             checked={checkedFileIds.includes(file.id)}
@@ -158,21 +158,21 @@ const FileBox = ({ file }: { file: File }) => {
           />
           <Form.Check.Label
             htmlFor={file.id.toString()}
-            className="stretched-link absolute top-0 start-0 w-100 h-100"
+            className="stretched-link absolute top-0 start-0 w-full h-full"
           />
-          <div className="relative h-100">
+          <div className="relative h-full">
             <div className="file-box overflow-hidden">
               {file.type === 'image' && (
                 <img
                   src={file.img}
                   alt=""
-                  className="w-100 h-100 object-fit-cover"
+                  className="w-full h-full object-cover"
                 />
               )}
               {file.type === 'video' && (
-                <div className="video-container h-100">
+                <div className="video-container h-full">
                   <video
-                    className="video block h-100 w-100 overflow-hidden object-fit-cover"
+                    className="video block h-full w-full overflow-hidden object-cover"
                     muted
                     ref={videoRef}
                     src={file.video}
@@ -184,7 +184,7 @@ const FileBox = ({ file }: { file: File }) => {
             {file.type === 'video' && (
               <Button
                 data-bs-theme="light"
-                className="p-0 circle-icon-item-md absolute top-50 start-50 translate-middle bg-soft bg-opacity-50 z-1"
+                className="p-0 circle-icon-item-md absolute top-1/2 start-1/2 top-1/2 left-1/2 -translate-1/2 bg-soft bg-opacity-50 z-1"
                 onClick={handlePlayPause}
               >
                 <span className="play-icon pointer-events-none">
@@ -205,10 +205,10 @@ const FileBox = ({ file }: { file: File }) => {
               </Button>
             )}
           </div>
-          <FilesDropdown className="lh-1 absolute top-0 end-0 mt-2 me-2" />
+          <FilesDropdown className="leading-none absolute top-0 end-0 mt-2 me-2" />
           <Link
             to="#!"
-            className="block font-bold text-highlight mt-2 text-nowrap text-truncate text-md sm:text-base"
+            className="block font-bold text-highlight mt-2 whitespace-nowrap text-truncate text-md sm:text-base"
           >
             {file.name}
           </Link>

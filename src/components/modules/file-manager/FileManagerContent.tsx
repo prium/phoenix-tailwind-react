@@ -54,15 +54,15 @@ const FileManagerContent = () => {
 
   return (
     <>
-      <Card className="mt-4">
+      <Card className="mt-6">
         {table.getRowCount() > 0 ? (
           <>
-            <Card.Header className="py-3 px-4">
+            <Card.Header className="py-4 px-6">
               <MyFilesHeader />
             </Card.Header>
             <Card.Body className="pt-0">
               <MyFilesActionBar />
-              <Row className="gx-xxl-9">
+              <Row className="2xl:gx-16">
                 {isGridView ? (
                   <Col>
                     {isGrouped ? (
@@ -101,9 +101,9 @@ const FileManagerContent = () => {
                   <Col
                     xs="auto"
                     className={classNames(
-                      'px-0 px-xxl-5 border-start-xxl border-subtle',
+                      'px-0 2xl:px-8 2xl:border-s border-subtle',
                       {
-                        'd-xxl-none': !showFileDetails
+                        '2xl:hidden': !showFileDetails
                       }
                     )}
                   >
@@ -116,12 +116,12 @@ const FileManagerContent = () => {
             </Card.Body>
           </>
         ) : (
-          <Card.Body className="text-center my-9">
+          <Card.Body className="text-center my-16">
             {table.getState().globalFilter ? (
               <>
-                <img src={illustration47} className="d-dark-none" alt="" />
-                <img src={illustration47Dark} className="d-light-none" alt="" />
-                <h2 className="mt-5">Opps! No matches found.</h2>
+                <img src={illustration47} className="dark:hidden" alt="" />
+                <img src={illustration47Dark} className="hidden dark:block" alt="" />
+                <h2 className="mt-8">Opps! No matches found.</h2>
                 <p>
                   Try a different search or adjust the filters to find a file by
                   type, owner, and other criteria.
@@ -129,9 +129,9 @@ const FileManagerContent = () => {
               </>
             ) : (
               <>
-                <img src={illustration48} className="d-dark-none" alt="" />
-                <img src={illustration48Dark} className="d-light-none" alt="" />
-                <h2 className="mt-5">Your file space is empty! </h2>
+                <img src={illustration48} className="dark:hidden" alt="" />
+                <img src={illustration48Dark} className="hidden dark:block" alt="" />
+                <h2 className="mt-8">Your file space is empty! </h2>
                 <p>Get started by clicking the ‘Upload’ button.</p>
               </>
             )}
@@ -147,7 +147,7 @@ const FileManagerContent = () => {
           placement="end"
           fixed
         >
-          <Button className="text-base absolute top-0 end-0 mt-3">
+          <Button className="text-base absolute top-0 end-0 mt-4">
             <FontAwesomeIcon
               icon={faXmark}
               onClick={() => setShowFileDetails(false)}

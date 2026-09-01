@@ -43,7 +43,7 @@ const GanttOptionsModal = ({
       centered
       aria-labelledby="OptionsModal"
     >
-      <Modal.Header className="p-4 pb-3 align-items-start">
+      <Modal.Header className="p-6 pb-4 items-start">
         <h4 className="text-highlight mb-0" id="OptionsModal">
           Options
         </h4>
@@ -52,11 +52,11 @@ const GanttOptionsModal = ({
         </button>
       </Modal.Header>
 
-      <Modal.Body className="p-4">
+      <Modal.Body className="p-6">
         <Form id="ganttOptionsForm">
-          <Row className="g-3">
+          <Row className="g-4">
             <Col xs={12}>
-              <div className="flex align-items-center justify-content-between">
+              <div className="flex items-center justify-between">
                 <Form.Label
                   htmlFor="taskOptionSelect"
                   className="form-label-header"
@@ -84,7 +84,7 @@ const GanttOptionsModal = ({
                   <DatePicker
                     id="optionsDate"
                     options={{ dateFormat: 'd/m/Y' }}
-                    className="form-control ps-6"
+                    className="form-control ps-10"
                     placeholder="dd/mm/yy"
                   />
                 </div>
@@ -92,10 +92,10 @@ const GanttOptionsModal = ({
             </Col>
 
             <Col xs={12}>
-              <div className="flex align-items-center justify-content-between mt-2">
+              <div className="flex items-center justify-between mt-2">
                 <h4 className="mb-0">Show baseline</h4>
-                <div className="flex align-items-center">
-                  <Form.Check type="radio" className="me-3 form-check">
+                <div className="flex items-center">
+                  <Form.Check type="radio" className="me-4 form-check">
                     <Form.Check.Input
                       id="hideBaseline"
                       name="showBaseline"
@@ -120,7 +120,7 @@ const GanttOptionsModal = ({
             </Col>
 
             <Col xs={12}>
-              <div className="flex justify-content-between align-items-center mt-2">
+              <div className="flex justify-between items-center mt-2">
                 <div>
                   <h4>Auto-schedule tasks</h4>
                   <p className="mb-0 text-md">
@@ -138,29 +138,29 @@ const GanttOptionsModal = ({
             <Col xs={12} className="mt-0">
               <hr />
               <div className="card">
-                <div className="card-body p-3">
+                <div className="card-body p-4">
                   <Form.Check
                     type="switch"
                     id="manageDependencies"
-                    className="form-check mb-3"
+                    className="form-check mb-4"
                     label="Manage dependencies"
                   />
-                  <div className="bg-primary-subtle rounded-3 p-4">
+                  <div className="bg-primary-subtle rounded-lg p-6">
                     {dependencies.map((item, index) => (
                       <div
                         key={index}
                         className={classNames({
                           'mb-0': dependencies.length - 1 === index,
-                          'mb-4': dependencies.length - 1 !== index
+                          'mb-10': dependencies.length - 1 !== index
                         })}
                       >
-                        <div className="flex align-items-center">
+                        <div className="flex items-center">
                           <Form.Check type="checkbox" className="mb-0 me-2" />
                           <h5 className="mb-0">{item.title}</h5>
                         </div>
                         <p
-                          className={`text-md font-semibold text-default ms-4 ${
-                            index === dependencies.length - 1 ? 'mb-0' : 'mb-4'
+                          className={`text-md font-semibold text-default ms-6 ${
+                            index === dependencies.length - 1 ? 'mb-0' : 'mb-6'
                           }`}
                         >
                           {item.description}
@@ -172,8 +172,8 @@ const GanttOptionsModal = ({
               </div>
             </Col>
 
-            <Col xs={12} className="mt-4">
-              <div className="flex justify-content-between align-items-center">
+            <Col xs={12} className="mt-6">
+              <div className="flex justify-between items-center">
                 <div>
                   <h4>Weekend awareness</h4>
                   <p className="mb-0 text-md">
@@ -193,7 +193,7 @@ const GanttOptionsModal = ({
         </Form>
       </Modal.Body>
 
-      <Modal.Footer className="p-4">
+      <Modal.Footer className="p-6">
         <Button
           id="optionModal"
           variant="subtle-danger"

@@ -16,7 +16,7 @@ const assigneeTemplate = (task: Task): string => {
         return `
           <div class="assignee-dropdown-container">
             <a href="#!" class="avatar avatar-s">
-              <div class="avatar-name rounded-circle border border-subtle">
+              <div class="avatar-name rounded-full border border-subtle">
                 <span>+${owners.length - 3}</span>
               </div>
             </a>
@@ -24,13 +24,13 @@ const assigneeTemplate = (task: Task): string => {
               ${owners
                 .map(
                   owner => `
-                <div class="dropdown-item py-2 px-3 flex gap-2 align-items-center">
+                <div class="dropdown-item py-2 px-4 flex gap-2 items-center">
                   <div class="avatar avatar-s">
-                    <img class="rounded-circle" src="${owner.img}" alt="${
+                    <img class="rounded-full" src="${owner.img}" alt="${
                       owner.name || 'assignee'
                     }" />
                   </div>
-                  <a href="#" class="font-bold text-default text-decoration-none lh-1">${
+                  <a href="#" class="font-bold text-default no-underline leading-none">${
                     owner.name
                   }</a>
                 </div>
@@ -46,18 +46,18 @@ const assigneeTemplate = (task: Task): string => {
         return `
           <div class="assignee-dropdown-container">
             <div class="avatar avatar-s">
-              <img class="rounded-circle" src="${assignee.img}" alt="${
+              <img class="rounded-full" src="${assignee.img}" alt="${
                 assignee.name || 'assignee'
               }" onerror="this.style.display='none'"/>
             </div>
             <ul class="dropdown-menu py-0">
-              <li class="dropdown-item py-0 px-3 flex gap-3 align-items-center">
+              <li class="dropdown-item py-0 px-4 flex gap-4 items-center">
                 <div class="avatar avatar-s">
-                  <img class="rounded-circle" src="${assignee.img}" alt="${
+                  <img class="rounded-full" src="${assignee.img}" alt="${
                     assignee.name || 'assignee'
                   }" onerror="this.style.display='none'"/>
                 </div>
-                <span class="font-bold text-default text-decoration-none lh-1 py-3">${
+                <span class="font-bold text-default no-underline leading-none py-4">${
                   assignee.name
                 }</span>
               </li>
@@ -70,7 +70,7 @@ const assigneeTemplate = (task: Task): string => {
     })
     .join('');
 
-  return `<div class="flex align-items-center avatar-group">${items}</div>`;
+  return `<div class="flex items-center avatar-group">${items}</div>`;
 };
 
 export const formatDate = (date: Date | undefined): string =>
@@ -94,7 +94,7 @@ export const ganttConfigColumnsData = [
           <span class='gantt-task-title'>${task.text} </span>
           ${
             subTasks
-              ? `<span class="badge text-bg-primary">${subTasks}</span>`
+              ? `<span class="badge text-white bg-primary">${subTasks}</span>`
               : ''
           }
           <button data-gantt-add-subtask id=${

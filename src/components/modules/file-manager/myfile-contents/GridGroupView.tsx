@@ -47,13 +47,13 @@ const GridGroupView = ({ data }: { data: File[] }) => {
         (fileGroup, index) =>
           fileGroup.data.length > 0 && (
             <React.Fragment key={fileGroup.title}>
-              <h4 className="mb-3">{fileGroup.title}</h4>
-              <div className="files-container mb-3">
+              <h4 className="mb-4">{fileGroup.title}</h4>
+              <div className="files-container mb-4">
                 {fileGroup.data.map(file => (
                   <FileBox file={file} key={file.id} />
                 ))}
               </div>
-              {index < fileGroups.length - 1 && <hr className="my-5" />}
+              {index < fileGroups.length - 1 && <hr className="my-8" />}
             </React.Fragment>
           )
       )}

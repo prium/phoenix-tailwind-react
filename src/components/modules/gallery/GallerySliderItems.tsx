@@ -51,7 +51,7 @@ const GallerySliderItems = ({ galleryItems }: GallerySliderItemsProps) => {
           <SwiperSlide
             key={item.id}
             className={classNames(
-              'relative rounded-2 overflow-hidden',
+              'relative md:rounded-md overflow-hidden',
               item.className
             )}
           >
@@ -85,7 +85,7 @@ const GallerySliderItems = ({ galleryItems }: GallerySliderItemsProps) => {
       >
         {items.map(item => (
           <SwiperSlide key={item.id} className="h-auto">
-            <img src={item.image} alt="" className="img-fluid rounded mt-2" />
+            <img src={item.image} alt="" className="img-fluid rounded-md mt-2" />
           </SwiperSlide>
         ))}
       </Swiper>
@@ -112,11 +112,11 @@ const GalleryItems = ({ item, onClick }: GalleryItemsProps) => {
     videoRef.current?.pause();
   };
   return (
-    <div onClick={onClick} className="cursor-pointer h-100">
+    <div onClick={onClick} className="cursor-pointer h-full">
       {item.srcType === 'video' ? (
-        <div className="video-container h-100">
+        <div className="video-container h-full">
           <video
-            className="video w-100 h-100 object-fit-cover overflow-hidden rounded-2"
+            className="video w-full h-full object-cover overflow-hidden rounded-md"
             muted
             poster={item.image}
             ref={videoRef}
@@ -125,7 +125,7 @@ const GalleryItems = ({ item, onClick }: GalleryItemsProps) => {
           >
             <source src={item.video} type="video/mp4" />
           </video>
-          <div className="video-icon absolute top-50 start-50 translate-middle bg-soft rounded-full bg-opacity-50">
+          <div className="video-icon absolute top-1/2 start-1/2 top-1/2 left-1/2 -translate-1/2 bg-soft rounded-full bg-opacity-50">
             <FontAwesomeIcon
               icon={faVideo}
               className="text-default text-md sm:text-base"
@@ -133,9 +133,9 @@ const GalleryItems = ({ item, onClick }: GalleryItemsProps) => {
           </div>
         </div>
       ) : (
-        <img className="w-100 h-100 object-fit-cover" src={item.image} />
+        <img className="w-full h-full object-cover" src={item.image} />
       )}
-      <div className="backdrop-faded flex justify-content-between p-5">
+      <div className="backdrop-faded flex justify-between p-8">
         <div>
           <h3 className="text-white mb-2">{item.title}</h3>
           <p className="mb-0 text-secondary-light">{item.subtitle}</p>

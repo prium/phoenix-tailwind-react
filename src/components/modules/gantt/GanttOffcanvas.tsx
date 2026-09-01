@@ -24,7 +24,7 @@ import { Link } from 'react-router';
 
 const Subtasks = () => (
   <>
-    <h5 className="mb-3 mt-4">Subtasks</h5>
+    <h5 className="mb-4 mt-6">Subtasks</h5>
 
     {[
       { id: '1', label: 'Study Dragons' },
@@ -33,23 +33,23 @@ const Subtasks = () => (
     ].map(({ id, label, isLast }) => (
       <div
         key={id}
-        className={`flex flex-between-center hover-actions-trigger py-3 border-top ${
-          isLast ? ' border-bottom mb-3' : ''
+        className={`flex flex-between-center hover-actions-trigger py-4 border-t ${
+          isLast ? ' border-b mb-4' : ''
         }`}
       >
         <Form.Check
           id={`subtask${id}`}
-          className="mb-1 mb-md-0 flex align-items-center lh-1 min-h-auto"
+          className="mb-1 md:mb-0 flex items-center leading-none min-h-auto"
         >
           <Form.Check.Input
             type="checkbox"
-            className="subtask-checkbox form-check-input form-check-line-through mt-0 me-3"
+            className="subtask-checkbox form-check-input form-check-line-through mt-0 me-4"
           />
           <Form.Check.Label className="mb-0 text-base">{label}</Form.Check.Label>
         </Form.Check>
 
         <div className="hover-actions end-0">
-          <button className="btn btn-sm me-1 text-sm text-subtle px-0 me-3">
+          <button className="btn btn-sm me-1 text-sm text-subtle px-0 me-4">
             <FontAwesomeIcon icon={faPencil} />
           </button>
           <button className="btn btn-sm text-subtle px-0">
@@ -128,8 +128,8 @@ const GanttOffcanvas = () => {
         onHide={handleClose}
         placement="end"
       >
-        <Offcanvas.Header className="border-bottom">
-          <div className="flex justify-content-between w-100">
+        <Offcanvas.Header className="border-b">
+          <div className="flex justify-between w-full">
             <Button variant="phoenix-success" className="me-1 mb-1">
               <FontAwesomeIcon
                 icon={faCheck}
@@ -164,7 +164,7 @@ const GanttOffcanvas = () => {
         </Offcanvas.Header>
         <Offcanvas.Body>
           <Form>
-            <Form.Group className="mb-3">
+            <Form.Group className="mb-4">
               <Form.Control
                 type="text"
                 value={taskTitle}
@@ -173,8 +173,8 @@ const GanttOffcanvas = () => {
                 className="text-base"
               />
             </Form.Group>
-            <div className="mb-3">
-              <h5 className="mb-3">Assignee</h5>
+            <div className="mb-4">
+              <h5 className="mb-4">Assignee</h5>
               <div className="flex">
                 {members.slice(0, 5).map(member => (
                   <AvatarDropdown
@@ -187,7 +187,7 @@ const GanttOffcanvas = () => {
                 ))}
                 <Link
                   to="#!"
-                  className="text-decoration-none text-muted"
+                  className="no-underline text-muted"
                 >
                   <div className="circle-btn bg-muted mx-auto">
                     <FontAwesomeIcon icon={faPlus} transform="shrink-2" />
@@ -195,7 +195,7 @@ const GanttOffcanvas = () => {
                 </Link>
               </div>
             </div>
-            <Row className="mt-3 gy-3">
+            <Row className="mt-4 gy-4">
               <Col xs={6} sm={4}>
                 <Form.Group controlId="editTaskStartDate">
                   <Form.Label className="form-label-header mb-2">
@@ -243,7 +243,7 @@ const GanttOffcanvas = () => {
                     <Form.Control
                       type="number"
                       placeholder="Days"
-                      className="form-icon-input ps-6"
+                      className="form-icon-input ps-10"
                       value={taskDuration}
                       onChange={e => setTaskDuration(parseInt(e.target.value))}
                     />
@@ -297,22 +297,22 @@ const GanttOffcanvas = () => {
                 </Form.Group>
               </Col>
             </Row>
-            <Card className="mt-4">
-              <Card.Body className="p-3">
-                <div className="flex justify-content-between align-items-center">
+            <Card className="mt-6">
+              <Card.Body className="p-4">
+                <div className="flex justify-between items-center">
                   <h4 className="mb-0">Dependency</h4>
                   <Button variant="link" className="pe-0">
                     Add new
                   </Button>
                 </div>
 
-                <div className="bg-default p-3 mt-3 rounded">
+                <div className="bg-default p-4 mt-4 rounded-md">
                   {/* First Dependency Row */}
-                  <Row className="gy-3">
+                  <Row className="gy-4">
                     <Col sm={8}>
                       <Form.Group controlId="Dependency1">
-                        <h5 className="mb-3">Dependency type</h5>
-                        <div className="d-sm-flex gap-3">
+                        <h5 className="mb-4">Dependency type</h5>
+                        <div className="sm:flex gap-4">
                           <Form.Select aria-label="Dependency type 1">
                             <option defaultValue="selected">Blocked by</option>
                             <option value="1">Blocking</option>
@@ -320,7 +320,7 @@ const GanttOffcanvas = () => {
                           </Form.Select>
                           <Form.Select
                             aria-label="Dependency type 2"
-                            className="mt-2 mt-sm-0"
+                            className="mt-2 sm:mt-0"
                           >
                             <option defaultValue="selected">
                               Start to start
@@ -335,7 +335,7 @@ const GanttOffcanvas = () => {
 
                     <Col sm={4}>
                       <Form.Group controlId="selectTask1">
-                        <h5 className="mb-3">Select task</h5>
+                        <h5 className="mb-4">Select task</h5>
                         <Form.Select aria-label="Select task">
                           <option defaultValue="selected">Select Task</option>
                           <option value="1">One</option>
@@ -346,14 +346,14 @@ const GanttOffcanvas = () => {
                     </Col>
                   </Row>
 
-                  <hr className="my-4" />
+                  <hr className="my-6" />
 
                   {/* Second Dependency Row */}
-                  <Row className="gy-3">
+                  <Row className="gy-4">
                     <Col sm={8}>
                       <Form.Group controlId="dependency3">
-                        <h5 className="mb-3">Dependency type</h5>
-                        <div className="d-sm-flex gap-3">
+                        <h5 className="mb-4">Dependency type</h5>
+                        <div className="sm:flex gap-4">
                           <Form.Select aria-label="Dependency type 3">
                             <option defaultValue="selected">Blocking</option>
                             <option value="1">Blocked by</option>
@@ -361,7 +361,7 @@ const GanttOffcanvas = () => {
                           </Form.Select>
                           <Form.Select
                             aria-label="Dependency type 4"
-                            className="mt-2 mt-sm-0"
+                            className="mt-2 sm:mt-0"
                           >
                             <option defaultValue="selected">
                               Start to start
@@ -376,7 +376,7 @@ const GanttOffcanvas = () => {
 
                     <Col sm={4}>
                       <Form.Group controlId="selectTask6">
-                        <h5 className="mb-3">Select task</h5>
+                        <h5 className="mb-4">Select task</h5>
                         <Form.Select aria-label="Select task">
                           <option defaultValue="selected">Select task</option>
                           <option value="1">One</option>
@@ -389,7 +389,7 @@ const GanttOffcanvas = () => {
                 </div>
               </Card.Body>
             </Card>
-            <Form.Group controlId="EditTaskNotes" className="mt-4 mb-3">
+            <Form.Group controlId="EditTaskNotes" className="mt-6 mb-4">
               <Form.Label className="form-label-header font-bold text-highlight mb-2">
                 Description
               </Form.Label>
@@ -410,14 +410,14 @@ const GanttOffcanvas = () => {
               className="block border-0 ps-0 pb-2"
             >
               <div
-                className="dz-message text-subtle text-opacity-85 flex justify-content-center align-items-center"
+                className="dz-message text-subtle text-opacity-85 flex justify-center items-center"
                 data-dz-message
                 style={{ height: '140px', width: '140px' }}
               >
-                <FontAwesomeIcon icon={faPlus} className="fs-4" />
+                <FontAwesomeIcon icon={faPlus} className="text-3xl" />
               </div>
             </Dropzone>
-            <div className="flex border-top pt-4 gap-3 mt-4">
+            <div className="flex border-t pt-6 gap-4 mt-6">
               <Button
                 type="button"
                 id="ganttDeleteTask"
@@ -450,7 +450,7 @@ const GanttOffcanvas = () => {
         centered
         aria-labelledby="deleteTaskModal"
       >
-        <Modal.Header className="p-4 pb-3 align-items-start">
+        <Modal.Header className="p-6 pb-4 items-start">
           <h3 className="mb-2 text-highlight">Delete Task</h3>
           <button
             onClick={() => setShowModal(false)}
@@ -460,14 +460,14 @@ const GanttOffcanvas = () => {
           </button>
         </Modal.Header>
 
-        <Modal.Body className="px-4">
+        <Modal.Body className="px-6">
           <p>
             Are you sure you want to delete this task permanently? Once deleted,
             it cannot be recovered or undone.
           </p>
         </Modal.Body>
 
-        <Modal.Footer className="px-4 pb-3">
+        <Modal.Footer className="px-6 pb-4">
           <Button
             id="ganttConfirmDeleteTask"
             variant="subtle-danger"

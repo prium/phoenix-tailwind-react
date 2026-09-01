@@ -20,14 +20,14 @@ const FileDetails = () => {
       <div className="file-details">
         {checkedFileIds.length !== 1 && (
           <>
-            <div className="text-center px-4">
+            <div className="text-center px-6">
               {checkedFileIds.length > 1 && (
-                <h5 className="mb-3">{checkedFileIds.length} items selected</h5>
+                <h5 className="mb-4">{checkedFileIds.length} items selected</h5>
               )}
-              <img src={lightImg} alt="" className="d-dark-none img-fluid" />
-              <img src={darkImg} alt="" className="d-light-none img-fluid" />
+              <img src={lightImg} alt="" className="dark:hidden img-fluid" />
+              <img src={darkImg} alt="" className="hidden dark:block img-fluid" />
               {checkedFileIds.length < 1 && (
-                <h5 className="mt-4">
+                <h5 className="mt-6">
                   Select an item to view more information
                 </h5>
               )}
@@ -41,12 +41,12 @@ const FileDetails = () => {
               <Tab.Container id="file-details-tab" defaultActiveKey="first">
                 <Nav
                   variant="underline"
-                  className="file-details-tab mt-4 mb-5 gap-0"
+                  className="file-details-tab mt-6 mb-8 gap-0"
                 >
-                  <Nav.Item className="w-50 text-center">
+                  <Nav.Item className="w-1/2 text-center">
                     <Nav.Link eventKey="first">File Details</Nav.Link>
                   </Nav.Item>
-                  <Nav.Item className="w-50 text-center">
+                  <Nav.Item className="w-1/2 text-center">
                     <Nav.Link eventKey="second">File Activity</Nav.Link>
                   </Nav.Item>
                 </Nav>
@@ -54,7 +54,7 @@ const FileDetails = () => {
                 <Tab.Content>
                   <Tab.Pane eventKey="first">
                     <RenderFileIcon file={data} />
-                    <Table className="mt-3" borderless>
+                    <Table className="mt-4" borderless>
                       <thead>
                         <tr>
                           <th className="p-0" style={{ width: '110px' }} />
@@ -87,8 +87,8 @@ const FileDetails = () => {
                         ))}
                       </tbody>
                     </Table>
-                    <hr className="mb-4" />
-                    <h5 className="mb-3">Admin</h5>
+                    <hr className="mb-6" />
+                    <h5 className="mb-4">Admin</h5>
                     <AvatarDropdown
                       user={{
                         ...data.admin,
@@ -99,7 +99,7 @@ const FileDetails = () => {
                       }}
                       size="m"
                     />
-                    <h5 className="mb-3 mt-5">Team members</h5>
+                    <h5 className="mb-4 mt-8">Team members</h5>
                     <Avatar.Group size="m">
                       {data.assignees.map((member, index) => (
                         <AvatarDropdown
@@ -122,8 +122,8 @@ const FileDetails = () => {
                         className="ms-2 mt-2 text-sm"
                       />
                     </Button>
-                    <hr className="my-4" />
-                    <h5 className="mb-3 mb-3">File Link</h5>
+                    <hr className="my-6" />
+                    <h5 className="mb-4 mb-4">File Link</h5>
                     <h6 className="font-normal text-default">{data.fileLink}</h6>
                     <Button variant="phoenix-primary" className="mt-2">
                       <FontAwesomeIcon icon={faLink} className="me-2" />
@@ -131,7 +131,7 @@ const FileDetails = () => {
                     </Button>
                   </Tab.Pane>
                   <Tab.Pane eventKey="second">
-                    <h4 className="mb-3">Today</h4>
+                    <h4 className="mb-4">Today</h4>
                     <FileManagerTimeline data={data.activities} />
                   </Tab.Pane>
                 </Tab.Content>

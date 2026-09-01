@@ -17,27 +17,27 @@ const RenderFileIcon = ({ file }: { file: File }) => {
       return (
         <FontAwesomeIcon
           icon={faFolder}
-          className={classNames('fs-1', file.id === 3 ? 'text-info-light' : '')}
+          className={classNames('text-6xl', file.id === 3 ? 'text-info-light' : '')}
         />
       );
     case 'doc':
-      return <FontAwesomeIcon icon={faFileWord} className="fs-1 mb-3" />;
+      return <FontAwesomeIcon icon={faFileWord} className="text-6xl mb-4" />;
     case 'xls':
     case 'xlx':
-      return <FontAwesomeIcon icon={faFileExcel} className="fs-1 mb-3" />;
+      return <FontAwesomeIcon icon={faFileExcel} className="text-6xl mb-4" />;
     case 'source-code':
     case 'html':
-      return <FontAwesomeIcon icon={faFileInvoice} className="fs-1 mb-3" />;
+      return <FontAwesomeIcon icon={faFileInvoice} className="text-6xl mb-4" />;
     case 'zip':
-      return <FontAwesomeIcon icon={faFileZipper} className="fs-1 mb-3" />;
+      return <FontAwesomeIcon icon={faFileZipper} className="text-6xl mb-4" />;
     case 'pdf':
-      return <FontAwesomeIcon icon={faFilePdf} className="fs-1 mb-3" />;
+      return <FontAwesomeIcon icon={faFilePdf} className="text-6xl mb-4" />;
     case 'csv':
-      return <FontAwesomeIcon icon={faFileCsv} className="fs-1 mb-3" />;
+      return <FontAwesomeIcon icon={faFileCsv} className="text-6xl mb-4" />;
     case 'image':
       return (
         <img
-          className="w-100 h-100 object-fit-cover rounded-2 mb-3"
+          className="w-full h-full object-cover rounded-md mb-4"
           src={file.img}
           alt=""
           style={{ aspectRatio: '16/9' }}
@@ -46,7 +46,7 @@ const RenderFileIcon = ({ file }: { file: File }) => {
     case 'video':
       return (
         <video
-          className="block h-100 w-100 overflow-hidden rounded-2 object-fit-cover mb-3"
+          className="block h-full w-full overflow-hidden rounded-md object-cover mb-4"
           muted
           controls
           style={{ aspectRatio: '16/9' }}

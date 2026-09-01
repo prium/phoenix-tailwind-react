@@ -36,21 +36,21 @@ const GanttDeleteLinkModal = () => {
         centered
         aria-labelledby="deleteLinkModal"
       >
-        <Modal.Header className="p-4 pb-3 align-items-start">
+        <Modal.Header className="p-6 pb-4 items-start">
           <h3 className="mb-2 text-highlight">Delete Link</h3>
           <button onClick={() => setShow(false)} className="btn p-0 ms-auto">
           <FontAwesomeIcon icon={faTimes} className="btn-close" />
         </button>
         </Modal.Header>
 
-        <Modal.Body className="px-4">
+        <Modal.Body className="px-6">
           <p>
             Are you sure you want to delete this link permanently? Once deleted,
             it cannot be recovered or undone.
           </p>
         </Modal.Body>
 
-        <Modal.Footer className="px-4 pb-3">
+        <Modal.Footer className="px-6 pb-4">
           <Button
             id="ganttDeleteLinkBtn"
             variant="subtle-danger"

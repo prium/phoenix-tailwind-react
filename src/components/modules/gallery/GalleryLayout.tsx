@@ -36,16 +36,16 @@ const GalleryLayout = ({
 }: PropsWithChildren<GalleryLayoutProps>) => {
   return (
     <>
-      <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-3" />
-      <div className="mb-9">
-        <h2 className="mb-5">{title}</h2>
-        <div className="flex justify-content-between gap-3 flex-wrap">
+      <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-4" />
+      <div className="mb-16">
+        <h2 className="mb-8">{title}</h2>
+        <div className="flex justify-between gap-4 flex-wrap">
           <div>
-            <Button variant="primary" className="me-4">
+            <Button variant="primary" className="me-6">
               <FontAwesomeIcon icon={faPlus} className="me-2" />
               Add New
             </Button>
-            <Button variant="link" className="px-0 me-4 text-default">
+            <Button variant="link" className="px-0 me-6 text-default">
               <FontAwesomeIcon icon={faFileExport} className="me-2 text-md" />
               Export
             </Button>
@@ -55,7 +55,7 @@ const GalleryLayout = ({
             onChange={e => onSearch?.(e.target.value)}
           />
         </div>
-        <div className="d-md-flex d-lg-block d-xl-flex justify-content-between gap-4 my-4">
+        <div className="md:flex lg:block xl:flex justify-between gap-6 my-6">
           {gridLayouts && (
             <GridLayout view={view} gridClassNames={gridClassName} />
           )}
@@ -96,7 +96,7 @@ const GridLayout = ({ gridClassNames, view }: GridLayoutProps) => {
   return (
     <div
       className={classNames(
-        'flex gap-2 mb-3 mb-md-0 mb-lg-3 mb-xl-0 order-md-1 order-lg-0 order-xl-1',
+        'flex gap-2 mb-6 md:mb-0 lg:mb-4 xl:mb-0 md:order-1 lg:order-0 xl:order-1',
         gridClassNames
       )}
     >

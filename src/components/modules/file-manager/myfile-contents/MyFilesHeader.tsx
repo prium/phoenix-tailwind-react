@@ -22,7 +22,7 @@ const MyFilesHeader = () => {
   const [groupViewTooltip, setGroupViewTooltip] = useState(false);
 
   return (
-    <Row className="g-3 flex-between-center">
+    <Row className="g-4 flex-between-center">
       <Col xs="auto">
         <h5 className="mb-0">
           {table.getState().globalFilter ? 'Top Results' : 'My Files'}
@@ -67,7 +67,7 @@ const MyFilesHeader = () => {
           </Button>
         </OverlayTrigger>
 
-        <Form.Select className="form-select mx-2 mx-sm-3">
+        <Form.Select className="form-select mx-2 sm:mx-4">
           <option>Sort by - Date created</option>
           <option>Sort by - Name</option>
           <option>Sort by - Size</option>
@@ -81,7 +81,7 @@ const MyFilesHeader = () => {
           <Form.Check
             type="switch"
             id="viewAsGroup"
-            className="mb-0 flex align-items-center"
+            className="mb-0 flex items-center"
             checked={isGrouped}
             onChange={() => {
               setIsGrouped(prev => !prev);

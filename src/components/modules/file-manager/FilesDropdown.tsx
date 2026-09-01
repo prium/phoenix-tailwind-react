@@ -14,7 +14,7 @@ const dropdownItems: string[] = [
 ];
 
 const FilesDropdown = ({
-  className = 'static',
+  className='static',
   toggleClass = ''
 }: {
   className?: string;
@@ -35,7 +35,7 @@ const FilesDropdown = ({
               {idx < dropdownItems.length - 1 ? (
                 <Dropdown.Item
                   href="#!"
-                  className="font-semibold text-decoration-none"
+                  className="font-semibold no-underline"
                 >
                   {item}
                 </Dropdown.Item>
@@ -44,7 +44,7 @@ const FilesDropdown = ({
                   <hr className="dropdown-divider" />
                   <Dropdown.Item
                     href="#!"
-                    className="font-semibold text-decoration-none text-danger"
+                    className="font-semibold no-underline text-danger"
                   >
                     Delete
                   </Dropdown.Item>

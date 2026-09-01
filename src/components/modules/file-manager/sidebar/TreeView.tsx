@@ -16,7 +16,7 @@ const TreeviewListItem = ({ item }: { item: TreeViewItem }) => {
     <li className="treeview-list-item">
       <div className="treeview-item">
         <a href="#!" className="flex-1 ps-2 ms-2">
-          <p className="treeview-text text-nowrap">
+          <p className="treeview-text whitespace-nowrap">
             {item.icon ? (
               <FontAwesomeIcon
                 icon={item.icon}
@@ -51,7 +51,7 @@ const TreeviewCollapseItem = ({
         onClick={() => setOpen(!open)}
         className="treeview-collapse-item"
       >
-        <p className="treeview-text text-nowrap">
+        <p className="treeview-text whitespace-nowrap">
           <FontAwesomeIcon
             icon={faFolder}
             className={classNames('treeview-icon', {

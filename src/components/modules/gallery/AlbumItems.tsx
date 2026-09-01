@@ -40,7 +40,7 @@ const AlbumItems = ({ albumItems }: { albumItems: AlbumItem[] }) => {
   return (
     <>
       <Nav
-        className="my-4 gap-0 w-max-content nav-underline"
+        className="my-6 gap-0 w-max-content nav-underline"
         defaultActiveKey={navItems[0].eventKey}
         onSelect={handleNavItemSelect}
       >
@@ -68,21 +68,21 @@ const AlbumItems = ({ albumItems }: { albumItems: AlbumItem[] }) => {
             <div className="album-item relative overflow-hidden">
               <Link
                 to="/apps/gallery/gallery-grid"
-                className="text-decoration-none"
+                className="no-underline"
               >
                 <div className="photo-stack">
                   {album.media.map(item => (
                     <Media item={item} key={item.id} />
                   ))}
                 </div>
-                <h4 className="mt-5 title">{album.title}</h4>
+                <h4 className="mt-8 title">{album.title}</h4>
                 <p className="mb-0 text-md text-default">{album.count} items</p>
               </Link>
-              <Dropdown className="absolute top-0 end-0 mt-3 me-3 z-5">
+              <Dropdown className="absolute top-0 end-0 mt-4 me-4 z-5">
                 <Dropdown.Toggle
                   variant=""
                   size="sm"
-                  className="dropdown-caret-none px-3"
+                  className="dropdown-caret-none px-4"
                 >
                   <FontAwesomeIcon icon={faEllipsisH} />
                 </Dropdown.Toggle>
@@ -119,7 +119,7 @@ const Media = ({ item }: MediaProps) => {
   return (
     <div
       key={item.id}
-      className={classNames('rounded-2 overflow-hidden', item.className)}
+      className={classNames('md:rounded-md overflow-hidden', item.className)}
     >
       {item.type === 'video' ? (
         <div className="video-container">
@@ -128,12 +128,12 @@ const Media = ({ item }: MediaProps) => {
             ref={videoRef}
             onMouseEnter={handleMouseEnter}
             onMouseOut={handleMouseOut}
-            className="video block h-100 w-100 overflow-hidden rounded-2"
+            className="video block h-full w-full overflow-hidden rounded-md"
             poster={item.poster}
           >
             <source src={item.src} type="video/mp4" />
           </video>
-          <div className="video-icon border-0 absolute top-50 start-50 translate-middle bg-soft rounded-full bg-opacity-50">
+          <div className="video-icon border-0 absolute top-1/2 start-1/2 top-1/2 left-1/2 -translate-1/2 bg-soft rounded-full bg-opacity-50">
             <FontAwesomeIcon
               icon={faVideo}
               className="text-md sm:text-base text-default"
@@ -141,7 +141,7 @@ const Media = ({ item }: MediaProps) => {
           </div>
         </div>
       ) : (
-        <img src={item.src} className="w-100 object-fit-cover" />
+        <img src={item.src} className="w-full object-cover" />
       )}
     </div>
   );

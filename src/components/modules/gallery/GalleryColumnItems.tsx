@@ -18,12 +18,12 @@ const ColumnItem = ({ galleryItem, onClick }: ColumnItemProps) => {
       )}
       onClick={onClick}
     >
-      <div className="overflow-hidden rounded">
+      <div className="overflow-hidden rounded-md">
         <img src={galleryItem.image} alt="image" className="img-fluid" />
       </div>
-      <div className="mt-3">
+      <div className="mt-4">
         <h4 className="title">{galleryItem.title}</h4>
-        <p className="text-default text-capitalize mb-0">{galleryItem.type}</p>
+        <p className="text-default capitalize mb-0">{galleryItem.type}</p>
       </div>
     </div>
   );
@@ -48,7 +48,7 @@ const GalleryColumnItems = ({
             media: [575, 767, 1199, 1200],
             useBalancedLayout: true
           }}
-          className="masonry-items row gx-7"
+          className="masonry-items row gx-12"
           render={(item, index) => {
             const realIndex = columnItems.findIndex(i => i.id === item.id);
 

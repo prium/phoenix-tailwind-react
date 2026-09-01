@@ -62,7 +62,7 @@ const StorageDetails = () => {
         to="#!"
         onClick={() => setIsOpen(!isOpen)}
         className={classNames(
-          'collapse-indicator px-0 py-3 mt-3 flex flex-between-center text-decoration-none',
+          'collapse-indicator px-0 py-6 mt-6 flex flex-between-center no-underline',
           {
             collapsed: !isOpen
           }
@@ -85,12 +85,12 @@ const StorageDetails = () => {
 
       <Collapse in={isOpen}>
         <div>
-          <div className="pt-4">
+          <div className="pt-6">
             {categories.map((item, index) => (
               <div
                 key={index}
-                className={`flex align-items-center gap-2 ${
-                  index !== categories.length - 1 ? 'mb-3' : ''
+                className={`flex items-center gap-2 ${
+                  index !== categories.length - 1 ? 'mb-4' : ''
                 }`}
               >
                 <div className={`square-icon-box bg-${item.type}-subtle`}>
@@ -110,25 +110,25 @@ const StorageDetails = () => {
           </div>
         </div>
       </Collapse>
-      <hr className="my-4" />
+      <hr className="my-6" />
       <div className="text-center">
         <img
           src={spotIllustration45}
-          className="d-dark-none"
+          className="dark:hidden"
           alt=""
           width="98"
         />
         <img
           src={spotIllustrationDark45}
-          className="d-light-none"
+          className="hidden dark:block"
           alt=""
           width="98"
         />
-        <h5 className="mt-3 text-default font-black">Upgrade to Pro</h5>
-        <h6 className="mb-3 text-subtle font-normal">
+        <h5 className="mt-4 text-default font-black">Upgrade to Pro</h5>
+        <h6 className="mb-4 text-subtle font-normal">
           Expand your storage capacity with our upgraded storage options.
         </h6>
-        <Button variant="primary" size="sm" className="w-100">
+        <Button variant="primary" size="sm" className="w-full">
           Upgrade Now
         </Button>
       </div>

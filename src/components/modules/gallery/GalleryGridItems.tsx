@@ -18,11 +18,11 @@ const GridItem = ({ galleryItem, onClick }: GridItemProps) => {
       className={classNames('cursor-pointer', galleryItem.className)}
       onClick={onClick}
     >
-      <div className="hoverbox img-zoom-hover rounded-2">
+      <div className="hoverbox img-zoom-hover rounded-md">
         <img src={galleryItem.image} alt={galleryItem.title} className='img-fluid' />
-        <div className="hoverbox-content flex-column flex-center">
+        <div className="hoverbox-content flex-col flex-center">
           <h4 className="text-white">{galleryItem.title}</h4>
-          <p className="mb-0 text-secondary-lighter text-capitalize">
+          <p className="mb-0 text-secondary-lighter capitalize">
             {galleryItem.type}
           </p>
         </div>
@@ -41,7 +41,7 @@ const GalleryGridItems = ({
   );
   return (
     <>
-      <Row className="g-3">
+      <Row className="g-4">
         {gridItems.map((item, index) => (
           <GridItem
             galleryItem={item}

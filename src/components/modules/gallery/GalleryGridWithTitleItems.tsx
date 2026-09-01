@@ -23,7 +23,7 @@ const GridItem = ({ galleryItem, onClick }: GridItemProps) => {
       )}
       onClick={onClick}
     >
-      <div className="hoverbox rounded-2">
+      <div className="hoverbox rounded-md">
         <img
           src={galleryItem.image}
           alt={galleryItem.title}
@@ -42,7 +42,7 @@ const GridItem = ({ galleryItem, onClick }: GridItemProps) => {
         </div>
       </div>
       <h4 className="title mt-2">{galleryItem.title}</h4>
-      <p className="mb-0 text-subtle text-capitalize">
+      <p className="mb-0 text-subtle capitalize">
         {galleryItem.type}
       </p>
     </Col>
@@ -59,7 +59,7 @@ const GalleryGridWithTitleItems = ({
   );
   return (
     <>
-      <Row className="g-3">
+      <Row className="g-4">
         {gridItems.map((item, index) => (
           <GridItem
             galleryItem={item}

@@ -24,7 +24,7 @@ const GanttFilterModal = ({
       centered
       aria-labelledby="ganttFilterModalLabel"
     >
-      <Modal.Header className="p-4 pb-3 align-items-start">
+      <Modal.Header className="p-6 pb-4 items-start">
         <h3 id="ganttFilterModalLabel" className="mb-2 text-highlight">
           Filter
         </h3>
@@ -33,8 +33,8 @@ const GanttFilterModal = ({
         </button>
       </Modal.Header>
 
-      <Modal.Body className="px-4">
-        <Row className="g-3">
+      <Modal.Body className="px-6">
+        <Row className="g-4">
           <Col md={6}>
             <Form.Group controlId="filterStartDate">
               <Form.Label className="form-label-header mb-2">
@@ -127,12 +127,12 @@ const GanttFilterModal = ({
         </Row>
       </Modal.Body>
 
-      <Modal.Footer className="px-4 pb-3 border-0">
+      <Modal.Footer className="px-6 pb-4 border-0">
         <Button
           id="ganttResetFilterBtn"
           variant="subtle-primary"
           size="sm"
-          className="px-4"
+          className="px-6"
         >
           <FontAwesomeIcon icon={faSync} className="me-2" />
           Reset
@@ -140,7 +140,7 @@ const GanttFilterModal = ({
         <Button
           variant="primary"
           size="sm"
-          className="px-8"
+          className="px-14"
           onClick={handleClose}
         >
           Done

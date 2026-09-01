@@ -25,16 +25,16 @@ const Album = () => {
   }, [query]);
   return (
     <>
-      <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-3" />
-      <div className="mb-9">
-        <h2 className="mb-5">Album</h2>
-        <div className="flex justify-content-between gap-3 flex-wrap">
+      <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-4" />
+      <div className="mb-16">
+        <h2 className="mb-8">Album</h2>
+        <div className="flex justify-between gap-4 flex-wrap">
           <div>
-            <Button variant="primary" className="me-4">
+            <Button variant="primary" className="me-6">
               <FontAwesomeIcon icon={faPlus} className="me-2" />
               Add New
             </Button>
-            <Button variant="link" className="px-0 me-4 text-default">
+            <Button variant="link" className="px-0 me-6 text-default">
               <FontAwesomeIcon icon={faFileExport} className="me-2 text-md" />
               Export
             </Button>
@@ -48,7 +48,7 @@ const Album = () => {
         {items.length > 0 ? (
           <AlbumItems albumItems={items} />
         ) : (
-          <div className="min-vh-50 flex justify-content-center align-items-center mt-4">
+          <div className="min-vh-50 flex justify-center items-center mt-6">
             <FileNotFound />
           </div>
         )}

@@ -42,14 +42,14 @@ const CalendarHeader = () => {
   };
 
   return (
-    <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 border-y border-subtle">
-      <Row className="py-3 gy-3 gx-0 justify-content-between">
-        <Col xs={6} md="auto" className="order-1 flex align-items-center">
+    <div className="-mx-6 px-6 lg:-mx-10 lg:px-10 border-y border-subtle">
+      <Row className="py-4 gy-4 gx-0 justify-between">
+        <Col xs={6} md="auto" className="order-1 flex items-center">
           <Button
             onClick={() => handleCalendarUpdate('today')}
             variant="phoenix-primary"
             size="sm"
-            className="px-4"
+            className="px-6"
           >
             Today
           </Button>
@@ -57,7 +57,7 @@ const CalendarHeader = () => {
         <Col
           xs={12}
           md="auto"
-          className="order-md-1 flex align-items-center justify-content-center"
+          className="md:order-1 flex items-center justify-center"
         >
           <Button
             onClick={() => handleCalendarUpdate('prev')}
@@ -66,7 +66,7 @@ const CalendarHeader = () => {
             <FontAwesomeIcon icon={faChevronLeft} />
           </Button>
           {calendarApi && (
-            <h3 className="px-3 text-emphasis font-semibold mb-0">
+            <h3 className="px-4 text-emphasis font-semibold mb-0">
               {title || calendarApi.view.title}
             </h3>
           )}
@@ -77,7 +77,7 @@ const CalendarHeader = () => {
             <FontAwesomeIcon icon={faChevronRight} />
           </Button>
         </Col>
-        <Col xs={6} md="auto" className="order-1 flex justify-content-end">
+        <Col xs={6} md="auto" className="order-1 flex justify-end">
           <ButtonGroup size="sm">
             <Button
               onClick={() => handleCalendarView('dayGridMonth')}

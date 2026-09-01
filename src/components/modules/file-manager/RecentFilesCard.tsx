@@ -46,7 +46,7 @@ const RecentFilesCardItem = ({
           onMouseLeave: () => setIsPlaying(false)
         })}
       >
-        <div className="img-zoom-hover mask-image-none overflow-hidden border rounded-3">
+        <div className="img-zoom-hover mask-image-none overflow-hidden border rounded-lg">
           <div className="relative">
             <div className="mask-image-recent-file overflow-hidden">
               <div className="ratio ratio-16x9">
@@ -54,13 +54,13 @@ const RecentFilesCardItem = ({
                   <img
                     src={file.img}
                     alt=""
-                    className="w-100 h-100 object-fit-cover"
+                    className="w-full h-full object-cover"
                   />
                 )}
                 {file.type === 'video' && (
                   <>
                     <video
-                      className="video block h-100 w-100 object-fit-cover"
+                      className="video block h-full w-full object-cover"
                       loop
                       muted
                       src={file.video}
@@ -69,7 +69,7 @@ const RecentFilesCardItem = ({
                     />
                     <Button
                       data-bs-theme="light"
-                      className="p-0 circle-icon-item-md absolute top-50 start-50 translate-middle bg-soft bg-opacity-50 z-5"
+                      className="p-0 circle-icon-item-md absolute top-1/2 start-1/2 top-1/2 left-1/2 -translate-1/2 bg-soft bg-opacity-50 z-5"
                       onClick={handlePlayPause}
                     >
                       <span className="play-icon pointer-events-none">
@@ -94,14 +94,14 @@ const RecentFilesCardItem = ({
               <Badge
                 bg={file.actionType === 'Edited' ? 'warning' : 'info'}
                 variant="phoenix"
-                className="text-sm absolute top-0 start-0 mt-3 ms-3"
+                className="text-sm absolute top-0 start-0 mt-4 ms-4"
               >
                 {file.actionType} {file.createdAt}
               </Badge>
             </div>
           </div>
-          <div className="bg-default p-3 pe-2 flex justify-content-between align-items-start rounded-bottom-3">
-            <div className="w-75">
+          <div className="bg-default p-4 pe-2 flex justify-between items-start rounded-b-lg">
+            <div className="w-3/4">
               <Link
                 to="#!"
                 className="stretched-link text-highlight font-bold mb-2 block text-truncate"
@@ -160,11 +160,11 @@ const RecentFilesCard = () => {
   return (
     <>
       {table.getState().globalFilter === undefined && (
-        <Card className="mt-4">
+        <Card className="mt-6">
           <Lightbox {...lightboxProps} />
-          <Card.Body className="pb-5">
-            <h4 className="mb-3">Recent Files</h4>
-            <Row className="g-3">
+          <Card.Body className="pb-8">
+            <h4 className="mb-4">Recent Files</h4>
+            <Row className="g-4">
               {recentFiles.slice(0, 4).map((file, index) => (
                 <RecentFilesCardItem
                   key={index}
@@ -174,8 +174,8 @@ const RecentFilesCard = () => {
               ))}
             </Row>
             <Collapse in={!isCollapsed}>
-              <div className="mt-3">
-                <Row className="g-3">
+              <div className="mt-4">
+                <Row className="g-4">
                   {recentFiles.slice(4, 8).map((file, index) => (
                     <RecentFilesCardItem
                       key={index}
@@ -188,7 +188,7 @@ const RecentFilesCard = () => {
             </Collapse>
             <Button
               variant="phoenix-secondary"
-              className="btn collapse-indicator bg-soft text-sm py-1 border rounded-1 px-3 absolute start-50 translate-middle-x"
+              className="btn collapse-indicator bg-soft text-sm py-1 border rounded-sm px-4 absolute start-1/2 left-1/2 -translate-x-1/2"
               style={{ bottom: '-11px' }}
               role="button"
               onClick={toggleCollapse}

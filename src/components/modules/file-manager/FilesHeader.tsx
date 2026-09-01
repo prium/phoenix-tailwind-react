@@ -40,11 +40,11 @@ const FilesHeader = ({
 
   return (
     <>
-      <Row className="g-3 flex-between-center">
+      <Row className="g-4 flex-between-center">
         <Col xs="auto" className="flex gap-2">
           <Button
             variant="phoenix-secondary"
-            className="btn-square d-xl-none"
+            className="btn-square xl:hidden"
             onClick={() => {
               setOpenOffcanvas(true), setShowSidebar(!showSidebar);
             }}
@@ -53,7 +53,7 @@ const FilesHeader = ({
           </Button>
           <input type="file" id="fileUpload" className="hidden" />
           <label htmlFor="fileUpload">
-            <Button as="span" variant="primary" className="px-sm-6">
+            <Button as="span" variant="primary" className="sm:px-10">
               <FontAwesomeIcon icon={faCloudArrowUp} className="me-2" />
               Upload
             </Button>
@@ -122,7 +122,7 @@ const FilesHeader = ({
           >
             Cancel
           </Button>
-          <Button variant="primary" size="sm" className="px-5 ms-0">
+          <Button variant="primary" size="sm" className="px-8 ms-0">
             Apply
           </Button>
         </Modal.Footer>
@@ -146,7 +146,7 @@ const FilesHeader = ({
         </Modal.Header>
         <Modal.Body className="py-2">
           <Form>
-            <Form.Group controlId="selectType" className="mb-3">
+            <Form.Group controlId="selectType" className="mb-4">
               <Form.Label className="form-label-header mb-1">Type</Form.Label>
               <Form.Select name="selectType">
                 <option>Select</option>
@@ -156,7 +156,7 @@ const FilesHeader = ({
                 <option value="4">Audios</option>
               </Form.Select>
             </Form.Group>
-            <Form.Group controlId="selectPeople" className="mb-3">
+            <Form.Group controlId="selectPeople" className="mb-4">
               <Form.Label className="form-label-header mb-1">People</Form.Label>
               <Form.Select name="selectPeople">
                 <option>Select</option>
@@ -165,7 +165,7 @@ const FilesHeader = ({
                 <option value="3">Adrian</option>
               </Form.Select>
             </Form.Group>
-            <Form.Group controlId="lastModified" className="mb-3">
+            <Form.Group controlId="lastModified" className="mb-4">
               <Form.Label className="form-label-header mb-1">
                 Modified
               </Form.Label>
@@ -178,7 +178,7 @@ const FilesHeader = ({
                 <option value="chooseATimePeriod">Choose a time period</option>
               </Form.Select>
             </Form.Group>
-            <Form.Group controlId="location" className="mb-3">
+            <Form.Group controlId="location" className="mb-4">
               <Form.Label className="form-label-header mb-1">
                 Location
               </Form.Label>
@@ -195,13 +195,13 @@ const FilesHeader = ({
         <Modal.Footer className="border-0 pt-0">
           <Button
             variant="link"
-            className="text-muted px-3 mx-0"
+            className="text-muted px-4 mx-0"
             onClick={() => setFilterModal(false)}
           >
             <FontAwesomeIcon icon={faArrowsRotate} className="me-2" />
             Reset
           </Button>
-          <Button variant="primary" size="sm" className="px-5 ms-0">
+          <Button variant="primary" size="sm" className="px-8 ms-0">
             Apply
           </Button>
         </Modal.Footer>

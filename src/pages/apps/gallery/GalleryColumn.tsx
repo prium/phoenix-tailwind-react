@@ -22,7 +22,7 @@ const GalleryColumn = () => {
       {filteredItems.length > 0 ? (
         <GalleryColumnItems columnItems={filteredItems} />
       ) : (
-        <div className="min-vh-50 flex justify-content-center align-items-center">
+        <div className="min-vh-50 flex justify-center items-center">
           <FileNotFound />
         </div>
       )}

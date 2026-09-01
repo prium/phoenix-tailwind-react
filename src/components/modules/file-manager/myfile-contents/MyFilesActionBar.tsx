@@ -33,7 +33,7 @@ const MyFilesActionBar = () => {
   };
 
   return (
-    <div className="myfiles-action-bar mx-n4 mb-4">
+    <div className="myfiles-action-bar -mx-6 mb-6">
       {checkedFileIds.length == 0 && (
         <h6
           className="mb-0 text-subtle"
@@ -49,8 +49,8 @@ const MyFilesActionBar = () => {
         id="file-manager-actions"
         className={checkedFileIds.length ? 'block' : 'hidden'}
       >
-        <div className="flex align-items-center">
-          <button className="btn p-0 text-base me-2 me-sm-3">
+        <div className="flex items-center">
+          <button className="btn p-0 text-base me-2 sm:me-4">
             <FontAwesomeIcon
               onClick={() => {
                 setCheckedFileIds([]);
@@ -60,18 +60,18 @@ const MyFilesActionBar = () => {
               transform="down-1"
             />
           </button>
-          <h6 className="mb-0 me-4 text-nowrap text-subtle">
+          <h6 className="mb-0 me-6 whitespace-nowrap text-subtle">
             {checkedFileIds.length} item selected
           </h6>
 
-          <div className="flex gap-1 gap-sm-2">
+          <div className="flex gap-1 sm:gap-2">
             <OverlayTrigger
               placement="top"
               overlay={<Tooltip id="file-download-tooltip">Download</Tooltip>}
             >
               <Button
                 variant="phoenix-secondary"
-                className="text-sm btn-square-sm hidden d-sm-block"
+                className="text-sm btn-square-sm hidden sm:block"
               >
                 <FontAwesomeIcon icon={faDownload} />
               </Button>
@@ -84,7 +84,7 @@ const MyFilesActionBar = () => {
             >
               <Button
                 variant="phoenix-secondary"
-                className="text-sm btn-square-sm hidden d-sm-block"
+                className="text-sm btn-square-sm hidden sm:block"
                 onClick={handleDeleteFiles}
               >
                 <FontAwesomeIcon icon={faTrash} />
@@ -97,7 +97,7 @@ const MyFilesActionBar = () => {
             >
               <Button
                 variant="phoenix-secondary"
-                className="text-sm btn-square-sm hidden d-sm-block"
+                className="text-sm btn-square-sm hidden sm:block"
               >
                 <FontAwesomeIcon icon={faShareNodes} />
               </Button>

@@ -39,7 +39,7 @@ const Calendar = () => {
     <div>
       <CalendarTop />
       <CalendarHeader />
-      <div className="mt-6 mb-9">
+      <div className="mt-10 mb-16">
         <FullCalendar
           height={800}
           select={info => {
