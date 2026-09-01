@@ -22,14 +22,17 @@ const TinymceEditor = ({
   } = useAppContext();
   const editorRef = useRef<TinyMCEEditor | null>(null);
 
+  // the gold (src/js/theme/tinymce.js) puts the focus ring on the edit-area
+  // wrapper only — the whole editorContainer would ring the toolbar too
+  const focusTarget = () =>
+    editorRef.current?.editorContainer?.querySelector('.tox-sidebar-wrap');
+
   const handleEditorFocus = () => {
-    const editorContainer = editorRef.current?.editorContainer;
-    editorContainer?.classList.add('editor-focused');
+    focusTarget()?.classList.add('editor-focused');
   };
 
   const handleEditorBlur = () => {
-    const editorContainer = editorRef.current?.editorContainer;
-    editorContainer?.classList.remove('editor-focused');
+    focusTarget()?.classList.remove('editor-focused');
   };
 
   const handleEditorStyle = () => {
