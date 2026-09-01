@@ -155,6 +155,14 @@ const AWAIT_IMAGES = async () => {
 
 /** Wait for fonts, images, echarts and layout to be stable. */
 async function settle(page: Page) {
+  // React routes are lazily imported, and `load` fires before those chunks
+  // resolve — under worker contention the vite dev server is slow enough that
+  // we would otherwise screenshot the Suspense fallback (a viewport-tall page
+  // with none of the route's elements). The gold has no loader, so this is a
+  // no-op there.
+  await page.waitForFunction(() => !document.querySelector('.phoenix-loader'), {
+    timeout: 30_000
+  });
   await page.evaluate(AWAIT_IMAGES);
   // Scroll through the page so lazy content renders, then back to top.
   await page.evaluate(async () => {
