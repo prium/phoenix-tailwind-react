@@ -1,6 +1,7 @@
 import { Fragment } from 'react';
 import { cn, Col, Dialog, Row } from '@hummingbirdui/react';
 import Button from 'components/base/Button';
+import DialogHeading from 'components/base/DialogHeading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBaby,
@@ -36,9 +37,9 @@ const HotelChangeRoomModal = ({
     <Dialog open={show} onOpenChange={open => !open && handleClose()}>
       <Dialog.Content size="xl" centered aria-describedby={undefined}>
         <Dialog.Header className="justify-between p-6">
-          <Dialog.Title asChild>
-            <h3 className="mb-0 text-highlight">Select Room</h3>
-          </Dialog.Title>
+          <DialogHeading as="h3" className="mb-0 text-highlight">
+            Select Room
+          </DialogHeading>
           <Button
             variant="phoenix-danger"
             className="px-4"

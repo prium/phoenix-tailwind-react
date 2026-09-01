@@ -1,4 +1,5 @@
 import { Dialog } from '@hummingbirdui/react';
+import DialogHeading from 'components/base/DialogHeading';
 import spotIllustration44 from 'assets/img/spot-illustrations/44.png';
 import spotIllustrationDark44 from 'assets/img/spot-illustrations/44-dark.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -41,9 +42,9 @@ const FlightPromoModal = ({ show, handleClose }: FlightPromoModalProps) => {
               alt=""
               className="hidden dark:block mx-auto mb-6 w-32.5"
             />
-            <Dialog.Title asChild>
-              <h1 className="text-success">Save 20%</h1>
-            </Dialog.Title>
+            <DialogHeading as="h1" className="text-success">
+              Save 20%
+            </DialogHeading>
             <h3 className="mb-2 text-default">
               on your next flight - Join now!
             </h3>

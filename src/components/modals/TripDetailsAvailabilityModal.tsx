@@ -1,4 +1,5 @@
 import { Col, Dialog, Row } from '@hummingbirdui/react';
+import DialogHeading from 'components/base/DialogHeading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCalendar,
@@ -25,9 +26,9 @@ const TripDetailsAvailabilityModal = ({
     <Dialog open={show} onOpenChange={open => !open && onHide()}>
       <Dialog.Content size="md" centered aria-describedby={undefined}>
         <Dialog.Header className="justify-between items-start gap-8 px-6 pt-6 pb-4 border-0">
-          <Dialog.Title asChild>
-            <h2 className="mb-0">Walk where the king walked once in Wakanda</h2>
-          </Dialog.Title>
+          <DialogHeading as="h2" className="mb-0">
+            Walk where the king walked once in Wakanda
+          </DialogHeading>
           <button
             type="button"
             className="btn p-0 text-soft text-xl"

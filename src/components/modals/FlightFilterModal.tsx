@@ -1,4 +1,5 @@
 import { Dialog } from '@hummingbirdui/react';
+import DialogHeading from 'components/base/DialogHeading';
 import Button from 'components/base/Button';
 
 import { faMagnifyingGlass, faRotate } from '@fortawesome/free-solid-svg-icons';
@@ -39,11 +40,13 @@ const FlightFilterModal = ({
         <form>
           <div className="modal-header p-6 pb-4 items-start border-0">
             <div>
-              <Dialog.Title asChild>
-                <h4 className="mb-2 text-highlight" id="flightFilterModalLabel">
-                  Filter
-                </h4>
-              </Dialog.Title>
+              <DialogHeading
+                as="h4"
+                className="mb-2 text-highlight"
+                id="flightFilterModalLabel"
+              >
+                Filter
+              </DialogHeading>
               <p className="mb-0">
                 Search for flights according to your preferences
               </p>

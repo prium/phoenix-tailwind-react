@@ -1,4 +1,5 @@
 import { faAngleRight, faPlus } from '@fortawesome/free-solid-svg-icons';
+import DialogHeading from 'components/base/DialogHeading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   Dialog,
@@ -126,14 +127,12 @@ const CalendarAddNewEventModal = () => {
           <div className="modal-header px-card border-0">
             <div className="w-full flex justify-between items-start">
               <div>
-                {/* the gold h5 carries no `.modal-title`; Dialog.Title always
-                    adds it and `components/modal.css` gives it `text-lg`
-                    (20px), so force the inherited 16px back. */}
-                <Dialog.Title asChild>
-                  <h5 className="mb-0 leading-sm text-base! text-highlight">
-                    Add new
-                  </h5>
-                </Dialog.Title>
+                <DialogHeading
+                  as="h5"
+                  className="mb-0 leading-sm text-highlight"
+                >
+                  Add new
+                </DialogHeading>
                 <div className="mt-2">
                   <div className="form-check-inline">
                     <input
