@@ -1,29 +1,37 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
+import { Tooltip } from '@hummingbirdui/react';
 import Button from 'components/base/Button';
-import React from 'react';
-import { OverlayTrigger, Tooltip } from 'react-bootstrap';
 
+interface TooltipIconButtonProps {
+  title: string;
+  icon: IconProp;
+  /** classes for the `button.btn`, copied verbatim from the gold pug */
+  className?: string;
+  /** classes for the icon `span`, copied verbatim from the gold pug */
+  iconClass?: string;
+}
+
+/**
+ * Gold `button(data-bs-toggle="tooltip" data-bs-placement="top" ...)` icon
+ * buttons (email InboxToolbar / EmailDetails mixins) rendered with the
+ * Hummingbird Tooltip.
+ */
 const TooltipIconButton = ({
   title,
   icon,
+  className,
   iconClass
-}: {
-  title: string;
-  icon: IconProp;
-  iconClass?: string;
-}) => {
+}: TooltipIconButtonProps) => {
   return (
-    <OverlayTrigger
-      overlay={<Tooltip style={{ position: 'fixed' }}>{title}</Tooltip>}
-    >
-      <div>
-        <Button className="p-0 text-soft text-body-tertiary-hover">
-          <FontAwesomeIcon icon={icon} className={classNames(iconClass)} />
+    <Tooltip>
+      <Tooltip.Trigger asChild>
+        <Button className={className}>
+          <FontAwesomeIcon icon={icon} className={iconClass} />
         </Button>
-      </div>
-    </OverlayTrigger>
+      </Tooltip.Trigger>
+      <Tooltip.Content side="top">{title}</Tooltip.Content>
+    </Tooltip>
   );
 };
 

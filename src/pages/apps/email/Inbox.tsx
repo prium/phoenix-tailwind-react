@@ -1,23 +1,27 @@
-import EmailLayout from 'layouts/EmailLayout';
-import { Col } from 'react-bootstrap';
+import EmailRow from 'components/modules/email/EmailRow';
 import InboxToolbar from 'components/modules/email/InboxToolbar';
 import { emails } from 'data/email';
-import EmailRow from 'components/modules/email/EmailRow';
+import EmailLayout from 'layouts/EmailLayout';
 import BulkSelectProvider from 'providers/BulkSelectProvider';
 
 const Inbox = () => {
   return (
     <EmailLayout page="inbox">
-      <Col xs={12} lg>
+      <div className="lg:col">
         <div className="lg:px-1">
           <BulkSelectProvider data={emails}>
-            <InboxToolbar className="inbox-toolbar" />
+            <InboxToolbar inbox />
             {emails.map((email, index) => (
-              <EmailRow index={index} email={email} key={email.id} />
+              <EmailRow
+                email={email}
+                index={index}
+                isLast={index === emails.length - 1}
+                key={email.id}
+              />
             ))}
           </BulkSelectProvider>
         </div>
-      </Col>
+      </div>
     </EmailLayout>
   );
 };

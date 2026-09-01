@@ -1,49 +1,62 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button from 'components/base/Button';
-import PhoenixOffcanvas from 'components/base/PhoenixOffcanvas';
-import SearchBox from 'components/common/SearchBox';
-import EmailSidebar from 'components/modules/email/EmailSidebar';
-import { useBreakpoints } from 'providers/BreakpointsProvider';
-import { useMainLayoutContext } from 'providers/MainLayoutProvider';
-import React, { PropsWithChildren, useEffect, useState } from 'react';
-import { Col, Row } from 'react-bootstrap';
-import InboxToolbar from '../components/modules/email/InboxToolbar';
-import { emails } from 'data/email';
-import EmailRow from '../components/modules/email/EmailRow';
-import { Link } from 'react-router';
 import { faBars, faPlus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { cn } from '@hummingbirdui/react';
+import Button from 'components/base/Button';
+import SearchBox from 'components/common/SearchBox';
+import EmailRow from 'components/modules/email/EmailRow';
+import EmailSidebar from 'components/modules/email/EmailSidebar';
+import InboxToolbar from 'components/modules/email/InboxToolbar';
+import { emails } from 'data/email';
 import BulkSelectProvider from 'providers/BulkSelectProvider';
+import { useMainLayoutContext } from 'providers/MainLayoutProvider';
+import { PropsWithChildren, useEffect, useState } from 'react';
+import { Link } from 'react-router';
 
 interface EmailLayoutProps {
   page: 'inbox' | 'detail' | 'compose';
 }
 
+/**
+ * Gold `layouts/LayoutEmail.pug`. The sidebar keeps the gold
+ * `.phoenix-offcanvas.phoenix-offcanvas-fixed` + sibling backdrop DOM verbatim
+ * (email.css makes it sticky at lg); `show` is toggled from state below lg.
+ */
 const EmailLayout = ({
   children,
   page
 }: PropsWithChildren<EmailLayoutProps>) => {
   const [openSidebar, setOpenSidebar] = useState(false);
-  const { breakpoints } = useBreakpoints();
   const { setContentClass } = useMainLayoutContext();
 
   useEffect(() => {
-    setContentClass('pt-0');
+    setContentClass('pt-0!');
 
     return () => {
       setContentClass('');
     };
   }, []);
+
+  useEffect(() => {
+    if (openSidebar) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.removeProperty('overflow');
+    }
+    return () => {
+      document.body.style.removeProperty('overflow');
+    };
+  }, [openSidebar]);
+
   return (
     <div className="email-container">
-      <Row className="lg:gx-6 xl:gx-10 gx-4 py-6 z-2 sticky bg-default email-header">
-        <Col className="col-auto">
+      <div className="row lg:gx-10 gx-4 py-6 z-2 sticky bg-default email-header">
+        <div className="col-auto">
           <Button
             variant="primary"
-            className="email-sidebar-width hidden lg:block"
-            as={Link}
-            to="/apps/email/compose"
+            className="email-sidebar-width hidden lg:inline-flex"
+            asChild
           >
-            Compose
+            <Link to="/apps/email/compose">Compose</Link>
           </Button>
           <Button
             variant="phoenix-secondary"
@@ -52,56 +65,64 @@ const EmailLayout = ({
           >
             <FontAwesomeIcon icon={faBars} />
           </Button>
-        </Col>
+        </div>
         {page !== 'compose' && (
-          <Col className="col-auto lg:hidden">
-            <Button variant="primary" className="px-4 sm:px-6">
-              <span className="hidden sm:inline-block">Compose</span>
-              <FontAwesomeIcon icon={faPlus} className="sm:hidden" />
+          <div className="col-auto lg:hidden">
+            <Button variant="primary" className="px-4 sm:px-6" asChild>
+              <Link to="/apps/email/compose">
+                {' '}
+                <span className="hidden sm:inline-block">Compose</span>
+                <FontAwesomeIcon icon={faPlus} className="sm:hidden!" />
+              </Link>
             </Button>
-          </Col>
-        )}
-        <Col className="col-auto flex-1">
-          <SearchBox className="w-full" />
-        </Col>
-      </Row>
-      <Row className="lg:g-6 xl:g-10 mb-14">
-        <Col lg="auto">
-          <div
-            className="email-sidebar email-sidebar-width bg-default hidden lg:block"
-            id="emailSidebarColumn"
-          >
-            <EmailSidebar />
           </div>
-          {breakpoints.down('lg') && (
-            <PhoenixOffcanvas
-              open={openSidebar}
-              fixed
-              placement="start"
-              className="email-sidebar email-sidebar-width bg-default"
-              backdropClassName="top-0"
-              onHide={() => setOpenSidebar(false)}
-            >
-              <EmailSidebar hideSidebar={() => setOpenSidebar(false)} />
-            </PhoenixOffcanvas>
-          )}
-        </Col>
+        )}
+        <div className="col-auto flex-1">
+          <SearchBox
+            className="w-full"
+            placeholder="Search ..."
+            aria-label="Search"
+          />
+        </div>
+      </div>
+      <div className="row lg:g-10 mb-14">
+        <div className="lg:col-auto">
+          <div
+            className={cn(
+              'email-sidebar email-sidebar-width bg-default phoenix-offcanvas phoenix-offcanvas-fixed',
+              { show: openSidebar }
+            )}
+            id="emailSidebarColumn"
+            data-breakpoint="lg"
+          >
+            <EmailSidebar hideSidebar={() => setOpenSidebar(false)} />
+          </div>
+          <div
+            className="phoenix-offcanvas-backdrop lg:hidden top-0"
+            onClick={() => setOpenSidebar(false)}
+          />
+        </div>
         {page !== 'inbox' && (
-          <Col xs="3" className="hidden 2xl:block">
+          <div className="col-3 hidden 2xl:block">
             <div className="email-content scrollbar">
               <div className="lg:px-1">
                 <BulkSelectProvider data={emails}>
-                  <InboxToolbar size="sm" />
+                  <InboxToolbar />
                   {emails.map((email, index) => (
-                    <EmailRow email={email} index={index} key={email.id} />
+                    <EmailRow
+                      email={email}
+                      index={index}
+                      isLast={index === emails.length - 1}
+                      key={email.id}
+                    />
                   ))}
                 </BulkSelectProvider>
               </div>
             </div>
-          </Col>
+          </div>
         )}
         {children}
-      </Row>
+      </div>
     </div>
   );
 };
