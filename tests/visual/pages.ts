@@ -49,6 +49,9 @@ const layout = (
   ...extra
 });
 
+/** Scrolls the chat thread body to its bottom (chat.js does this at docReady). */
+const SCROLL_CHAT_BODY = `const b=document.querySelector('.chat .card-body');if(b)b.scrollTop=b.scrollHeight`;
+
 /** Forces the gold (static JS) offcanvas open the way hummingbird's toggle would. */
 const OPEN_GOLD_OFFCANVAS = `const o=document.querySelector('#settings-offcanvas');o.classList.add('show');o.style.visibility='visible';const b=document.createElement('div');b.className='offcanvas-backdrop fade show';document.body.appendChild(b)`;
 
@@ -524,6 +527,13 @@ export const pages: VisualPage[] = [
     react: '/apps/chat/1/conversation',
     gold: '/apps/chat.html',
     widths: [768],
+    // both sides re-scroll the thread body after images settle: the gold
+    // chat.js scrolls at docReady, before its attachment image has loaded,
+    // so its resting scroll position is timing-dependent
+    setup: {
+      react: { eval: SCROLL_CHAT_BODY },
+      gold: { eval: SCROLL_CHAT_BODY }
+    },
     probes: [
       '.chat .card-header .btn-square',
       '.chat-thread-tab .unread-badge',
