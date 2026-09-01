@@ -68,6 +68,27 @@ const p = (
   ...extra
 });
 
+/** Kanban create-board wizard at step `n` (see the step entries below). */
+const createBoardStep = (n: number, probes: string[]): VisualPage => ({
+  name: `kanban-create-board-step${n}`,
+  react: '/apps/kanban/create-board',
+  gold: '/apps/kanban/create-kanban-board.html',
+  probes,
+  setup: {
+    react: {
+      eval: `(async n=>{for(let i=1;i<n;i++){document.querySelector('[data-wizard-next-btn]').click();await new Promise(r=>setTimeout(r,300))}})(${n})`
+    },
+    gold: {
+      eval:
+        `(n=>{document.querySelectorAll('.theme-wizard [id^=create-board-tab]').forEach((p,i)=>p.classList.toggle('active',i===n-1));` +
+        `document.querySelectorAll('[data-wizard-step]').forEach((a,i)=>{a.classList.toggle('active',i===n-1);a.classList.toggle('done',i<n-1);a.classList.toggle('complete',i<n-2)});` +
+        `document.querySelector('[data-kanban-step]').textContent=String(n);` +
+        `document.querySelector('[data-wizard-footer]').classList.toggle('hidden',n===5);` +
+        `document.querySelector('[data-wizard-prev-btn]').classList.toggle('hidden',!(n>1&&n<5))})(${n})`
+    }
+  }
+});
+
 export const pages: VisualPage[] = [
   {
     name: 'dashboard-ecommerce',
@@ -641,6 +662,23 @@ export const pages: VisualPage[] = [
   {
     name: 'kanban-create-board',
     react: '/apps/kanban/create-board',
-    gold: '/apps/kanban/create-kanban-board.html'
-  }
+    gold: '/apps/kanban/create-kanban-board.html',
+    probes: [
+      '.nav-wizard .nav-link',
+      '.theme-wizard .form-floating > .form-control',
+      '.theme-wizard .form-floating > .form-select',
+      '[data-wizard-next-btn]'
+    ]
+  },
+  // create-board wizard steps 2-5: the gold's static tab JS does not run
+  // headless, so the gold side forces the exact classes its wizard JS would
+  // toggle (done/active nav links, active pane, footer/prev visibility) while
+  // the React side really clicks Next.
+  createBoardStep(2, ['.kanban-column-icon', '.kanban-color-picker']),
+  createBoardStep(3, ['.nav-underline .nav-link', '.kanban-swatch-label']),
+  createBoardStep(4, ['.kanban-tag-badge', '.kanban-tag-action-icons']),
+  createBoardStep(5, [
+    '.kanban-radio-collapse .form-check-input',
+    '[data-board-prev-btn]'
+  ])
 ];

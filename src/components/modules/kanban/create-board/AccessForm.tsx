@@ -1,41 +1,20 @@
-import { faPaste } from '@fortawesome/free-regular-svg-icons';
 import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button from 'components/base/Button';
+import { cn, Input, Select, Textarea } from '@hummingbirdui/react';
 import PhoenixFloatingLabel from 'components/base/PhoenixFloatingLabel';
+import { useWizardFormContext } from 'providers/WizardFormProvider';
 import { useState } from 'react';
-import {
-  Accordion,
-  Col,
-  FloatingLabel,
-  Form,
-  FormCheckProps,
-  OverlayTrigger,
-  Row,
-  Tooltip,
-  useAccordionButton
-} from 'react-bootstrap';
-import { Link } from 'react-router';
+import WizardPager from './WizardPager';
 
-interface CustomToggleProps extends FormCheckProps {
-  eventKey: string;
-}
+const shareableLink = 'https://themewagon.com/phoenix';
 
-const CustomToggle = ({ eventKey, ...rest }: CustomToggleProps) => {
-  const decoratedOnClick = useAccordionButton(eventKey);
-
-  return (
-    <Form.Check
-      type="radio"
-      onClick={decoratedOnClick}
-      name="access"
-      {...rest}
-    />
-  );
-};
-
-const shareableLink = `${window.location.origin}/kanban/invite/jd9sklaicijs`;
+/**
+ * Step 5 — board access (`form.kanban-radio-collapse` radio + collapse rows).
+ * Gold: `Step5` in `../phoenix-tailwind/src/pug/mixins/kanban/KanbanWizardForm.pug`.
+ */
 const AccessForm = () => {
+  const { formRefs, selectedStep, goToStep } = useWizardFormContext();
+  const [accessType, setAccessType] = useState('type1');
   const [copied, setCopied] = useState(false);
 
   const handleCopyShareableLink = async () => {
@@ -45,118 +24,166 @@ const AccessForm = () => {
       setCopied(false);
     }, 2000);
   };
+
   return (
-    <div>
-      <p className="mb-6">
-        Add <b>Members</b> or <b>Guests</b> to your Kanban board. They can add,
-        edit, or move tasks in your board. Tasks can also be assigned to them.
+    <>
+      <p className="mb-7">
+        Add <strong className="font-extrabold">Members</strong> or{' '}
+        <strong className="font-extrabold">Guests</strong> to your Kanban board.
+        They can add, edit, or move tasks in your board. Tasks can also be
+        assigned to them.
         <br />
-        <Link className="mb-6" to="#!">
+        <a className="mb-6" href="#!">
           Learn more
-        </Link>
+        </a>
       </p>
-
-      <Accordion defaultActiveKey="0">
-        <CustomToggle
-          eventKey="0"
-          id="anyone"
-          label="Anyone with shareable link can access"
-          className="mb-6"
-          defaultChecked
-        />
-
-        <Accordion.Collapse eventKey="0" className="ms-6">
-          <Row className="g-4 mb-6">
-            <Col md={9}>
-              <PhoenixFloatingLabel
-                label="Shareable Link"
-                className="flex-1"
-                endComponent={
-                  <Button
-                    className="text-base text-soft end-0"
-                    onClick={handleCopyShareableLink}
-                  >
-                    <OverlayTrigger
-                      placement="top"
-                      overlay={
-                        <Tooltip id="ThemeColor" style={{ position: 'fixed' }}>
-                          {copied ? 'Copied' : 'Copy'}
-                        </Tooltip>
-                      }
-                    >
-                      <FontAwesomeIcon icon={faPaste} />
-                    </OverlayTrigger>
-                  </Button>
-                }
-              >
-                <Form.Control
-                  type="text"
-                  readOnly
-                  placeholder="Board Name"
-                  value={shareableLink}
-                  className="pe-12"
-                />
-              </PhoenixFloatingLabel>
-            </Col>
-            <Col md={3}>
-              <FloatingLabel controlId="addTye" label="Add as">
-                <Form.Select>
-                  <option value="guest">Guest</option>
-                  <option value="member">Member</option>
-                </Form.Select>
-              </FloatingLabel>
-            </Col>
-          </Row>
-        </Accordion.Collapse>
-
-        <CustomToggle
-          eventKey="1"
-          id="invited"
-          label="Only invited people can access"
-          className="mb-6"
-        />
-
-        <Accordion.Collapse eventKey="1" className="ms-6">
-          <div className="flex flex-col gap-4">
-            <Row className="g-4">
-              <Col md={9}>
+      <form
+        className="kanban-radio-collapse"
+        id="createBoardForm5"
+        data-wizard-form="5"
+        noValidate
+        ref={el => {
+          formRefs.current[4] = el;
+        }}
+        onSubmit={e => e.preventDefault()}
+      >
+        <div className="mb-7 form-check flex-wrap">
+          <input
+            className="form-check-input"
+            type="radio"
+            checked={accessType === 'type1'}
+            name="accessType"
+            value="type1"
+            id="accessType1"
+            onChange={() => setAccessType('type1')}
+          />
+          <label className="form-check-label" htmlFor="accessType1">
+            Anyone with shareable link can access
+          </label>
+          <div
+            className={cn('collapse accordion-collapse w-full ps-6', {
+              show: accessType === 'type1'
+            })}
+            id="collapseOne"
+            role="tabpanel"
+            aria-labelledby="accessType1"
+          >
+            <div className="row g-4 mt-2">
+              <div className="md:col-9">
                 <PhoenixFloatingLabel
-                  label="ADD PEOPLE (ID OR EMAIL)"
-                  className="flex-1"
+                  label="SHAREABLE LINK"
+                  htmlFor="invite-link"
+                  endComponent={
+                    <button
+                      className="btn btn-link absolute top-1/2 end-0 top-1/2 -translate-y-1/2 text-soft/75"
+                      id="dataCopy"
+                      type="button"
+                      title={copied ? 'Copied' : 'click to copy'}
+                      onClick={handleCopyShareableLink}
+                    >
+                      <span className="fa-regular fa-paste fa-lg" />
+                    </button>
+                  }
                 >
-                  <Form.Control type="text" placeholder="Board Name" />
+                  <Input
+                    id="invite-link"
+                    type="text"
+                    name="shareableLink"
+                    defaultValue={shareableLink}
+                    placeholder="Shareable link"
+                  />
                 </PhoenixFloatingLabel>
-              </Col>
-              <Col md={3}>
-                <FloatingLabel controlId="addTye" label="Add as">
-                  <Form.Select>
+              </div>
+              <div className="md:col-3">
+                <PhoenixFloatingLabel label="ADD AS" htmlFor="guestSelect">
+                  <Select id="guestSelect" name="role" defaultValue="guest">
                     <option value="guest">Guest</option>
                     <option value="member">Member</option>
-                  </Form.Select>
-                </FloatingLabel>
-              </Col>
-            </Row>
-            <FloatingLabel
-              controlId="addAMessage"
-              label="ADD A MESSAGE (OPTIONAL)"
-            >
-              <Form.Control
-                as="textarea"
-                placeholder="ADD A MESSAGE (OPTIONAL)"
-                style={{ height: '128px' }}
-              />
-            </FloatingLabel>
-            <Button
-              variant="outline-primary"
-              endIcon={<FontAwesomeIcon icon={faEnvelope} className="ms-2" />}
-              className="w-full"
-            >
-              Invite
-            </Button>
+                  </Select>
+                </PhoenixFloatingLabel>
+              </div>
+            </div>
           </div>
-        </Accordion.Collapse>
-      </Accordion>
-    </div>
+        </div>
+        <div className="mb-6 form-check flex-wrap">
+          <input
+            className="form-check-input"
+            type="radio"
+            value="type2"
+            checked={accessType === 'type2'}
+            name="accessType"
+            id="accessType2"
+            onChange={() => setAccessType('type2')}
+          />
+          <label className="form-check-label" htmlFor="accessType2">
+            Only invited people can access
+          </label>
+          <div
+            className={cn('collapse accordion-collapse w-full ps-6', {
+              show: accessType === 'type2'
+            })}
+            id="collapseTwo"
+            role="tabpanel"
+            aria-labelledby="accessType2"
+          >
+            <div className="row g-4 mt-2">
+              <div className="md:col-9">
+                <PhoenixFloatingLabel
+                  label="ADD PEOPLE (ID OR EMAIL)"
+                  htmlFor="floatingEventInput"
+                >
+                  <Input
+                    id="floatingEventInput"
+                    type="text"
+                    name="user"
+                    placeholder="Event title"
+                  />
+                </PhoenixFloatingLabel>
+              </div>
+              <div className="md:col-3">
+                <PhoenixFloatingLabel label="ADD AS" htmlFor="memberSelect">
+                  <Select id="memberSelect" defaultValue="member">
+                    <option value="member">Member</option>
+                    <option value="admin">Admin</option>
+                    <option value="developer">Developer</option>
+                  </Select>
+                </PhoenixFloatingLabel>
+              </div>
+              <div className="md:col-12">
+                <PhoenixFloatingLabel
+                  label="ADD A MESSAGE (OPTIONAL)"
+                  htmlFor="create-board-wizard-message"
+                >
+                  <Textarea
+                    className="h-32!"
+                    placeholder="Leave a ME here"
+                    name="message"
+                    id="create-board-wizard-message"
+                  />
+                </PhoenixFloatingLabel>
+                <div className="grid mt-4">
+                  <button className="btn btn-outline-primary" type="button">
+                    Invite
+                    <FontAwesomeIcon
+                      icon={faEnvelope}
+                      transform="shrink-3"
+                      className="ms-2"
+                    />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="border-t-0 mt-1">
+          <WizardPager
+            nextLabel="Submit"
+            onPrev={() => goToStep(selectedStep - 1)}
+            prevButtonProps={{ 'data-board-prev-btn': '' }}
+          />
+        </div>
+      </form>
+    </>
   );
 };
 

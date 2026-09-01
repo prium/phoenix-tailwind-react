@@ -1,56 +1,74 @@
-import classNames from 'classnames';
-import React, { PropsWithChildren, ReactElement } from 'react';
-import { FloatingLabelProps, Form } from 'react-bootstrap';
+import { PropsWithChildren, ReactElement } from 'react';
+import { cn } from '@hummingbirdui/react';
 
-export interface PhoenixFloatingLabelProps extends FloatingLabelProps {
+export interface PhoenixFloatingLabelProps {
+  label: React.ReactNode;
+  className?: string;
+  /** `for` attribute of the floating label */
+  htmlFor?: string;
+  /** Extra classes on the `label.form-label` */
+  labelClassName?: string;
+  /**
+   * Fully-classed leading element, e.g. the gold
+   * `span.fa-solid.fa-bars.kanban-column-icon.form-control-icon-start`
+   * drag handle. Switches to the icon-field wrapper markup.
+   */
   startComponent?: ReactElement;
+  /**
+   * Fully-classed trailing element (absolutely positioned by the caller),
+   * e.g. the gold clear/copy controls.
+   */
   endComponent?: ReactElement;
 }
+
+/**
+ * Gold floating-label field. Emits the same DOM as HB `FloatingLabel` /
+ * `FloatingIconField` instead of delegating, because the icon variants need
+ * extra siblings inside the wrapper:
+ *
+ * - plain:        `.form-floating > control + label.form-label`
+ * - endComponent: `.form-floating.relative > control + label.form-label + end`
+ *   (gold Step5 shareable link, `mixins/kanban/KanbanWizardForm.pug`)
+ * - startComponent: `.input-group-icon.relative > start +
+ *   .form-floating.form-field > control + label.form-label.ps-10` + end
+ *   (gold Step2 column rows, `mixins/kanban/KanbanWizardForm.pug`)
+ */
 const PhoenixFloatingLabel = ({
   children,
   startComponent,
   endComponent,
   className,
   label,
-  ...rest
+  htmlFor,
+  labelClassName
 }: PropsWithChildren<PhoenixFloatingLabelProps>) => {
+  if (startComponent) {
+    return (
+      <div className={cn('input-group-icon relative', className)}>
+        {startComponent}
+        <div className="form-floating form-field">
+          {children}
+          <label
+            className={cn('form-label ps-10', labelClassName)}
+            htmlFor={htmlFor}
+          >
+            {label}
+          </label>
+        </div>
+        {endComponent}
+      </div>
+    );
+  }
   return (
-    <Form.Floating
-      className={classNames(className, 'phoenix-form-floating')}
-      {...rest}
+    <div
+      className={cn('form-floating', { relative: !!endComponent }, className)}
     >
-      {startComponent &&
-        React.cloneElement(startComponent as ReactElement<any>, {
-          className: classNames(
-            (startComponent as ReactElement<any>).props.className,
-            'form-floating-icon form-floating-start-icon'
-          )
-        })}
-
-      {React.Children.map(children, child =>
-        React.cloneElement(child as ReactElement<any>, {
-          className: classNames((child as ReactElement<any>).props.className),
-          style: {
-            paddingLeft: startComponent && '2.25rem'
-          }
-        })
-      )}
-
-      {endComponent &&
-        React.cloneElement(endComponent as ReactElement<any>, {
-          className: classNames(
-            (endComponent as ReactElement<any>).props.className,
-            'form-floating-icon form-floating-end-icon'
-          )
-        })}
-      <label
-        className={classNames({
-          'ps-18': startComponent
-        })}
-      >
+      {children}
+      <label className={cn('form-label', labelClassName)} htmlFor={htmlFor}>
         {label}
       </label>
-    </Form.Floating>
+      {endComponent}
+    </div>
   );
 };
 
