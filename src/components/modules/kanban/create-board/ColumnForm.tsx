@@ -98,7 +98,7 @@ const ColumnItem = ({
 
   return (
     <div ref={setNodeRef} {...attributes} style={styles}>
-      <div className={classNames(className, 'flex gap-3')}>
+      <div className={classNames(className, 'flex gap-6')}>
         <PhoenixFloatingLabel
           label={label}
           className="flex-1"
@@ -108,7 +108,7 @@ const ColumnItem = ({
             </div>
           }
           endComponent={
-            <button className="btn p-0 lh-1" onClick={handleClear}>
+            <button className="btn p-0 leading-none" onClick={handleClear}>
               <FontAwesomeIcon
                 className="text-soft text-opacity-50"
                 icon={faCircleXmark}
@@ -188,7 +188,7 @@ const ColumnForm = () => {
 
   return (
     <div>
-      <p className="mb-4">
+      <p className="mb-6">
         These will be the <b>Columns</b> of your Kanban board. They represent
         discrete stages in work process. Columns can be Edited, Removed,
         Rearranged or Added in future.
@@ -207,7 +207,7 @@ const ColumnForm = () => {
           >
             <ColumnItem
               key={column.id}
-              className="mb-5"
+              className="mb-8"
               label={`Column ${index + 1}`}
               index={index}
               columnItem={column}
@@ -229,7 +229,7 @@ const ColumnForm = () => {
       <Button
         variant="phoenix-secondary"
         startIcon={<FontAwesomeIcon icon={faPlus} />}
-        className="w-100 text-md"
+        className="w-full text-md"
         size="lg"
         onClick={handleAddNewColumn}
       >

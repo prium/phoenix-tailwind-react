@@ -47,11 +47,11 @@ const AccessForm = () => {
   };
   return (
     <div>
-      <p className="mb-4">
+      <p className="mb-6">
         Add <b>Members</b> or <b>Guests</b> to your Kanban board. They can add,
         edit, or move tasks in your board. Tasks can also be assigned to them.
         <br />
-        <Link className="mb-4" to="#!">
+        <Link className="mb-6" to="#!">
           Learn more
         </Link>
       </p>
@@ -61,12 +61,12 @@ const AccessForm = () => {
           eventKey="0"
           id="anyone"
           label="Anyone with shareable link can access"
-          className="mb-4"
+          className="mb-6"
           defaultChecked
         />
 
-        <Accordion.Collapse eventKey="0" className="ms-4">
-          <Row className="g-3 mb-4">
+        <Accordion.Collapse eventKey="0" className="ms-6">
+          <Row className="g-4 mb-6">
             <Col md={9}>
               <PhoenixFloatingLabel
                 label="Shareable Link"
@@ -94,7 +94,7 @@ const AccessForm = () => {
                   readOnly
                   placeholder="Board Name"
                   value={shareableLink}
-                  className="pe-7"
+                  className="pe-12"
                 />
               </PhoenixFloatingLabel>
             </Col>
@@ -113,12 +113,12 @@ const AccessForm = () => {
           eventKey="1"
           id="invited"
           label="Only invited people can access"
-          className="mb-4"
+          className="mb-6"
         />
 
-        <Accordion.Collapse eventKey="1" className="ms-4">
-          <div className="flex flex-column gap-3">
-            <Row className="g-3">
+        <Accordion.Collapse eventKey="1" className="ms-6">
+          <div className="flex flex-col gap-4">
+            <Row className="g-4">
               <Col md={9}>
                 <PhoenixFloatingLabel
                   label="ADD PEOPLE (ID OR EMAIL)"
@@ -149,7 +149,7 @@ const AccessForm = () => {
             <Button
               variant="outline-primary"
               endIcon={<FontAwesomeIcon icon={faEnvelope} className="ms-2" />}
-              className="w-100"
+              className="w-full"
             >
               Invite
             </Button>

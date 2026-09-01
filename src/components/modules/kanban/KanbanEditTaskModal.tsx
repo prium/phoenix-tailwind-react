@@ -25,7 +25,7 @@ const KanbanEditTaskModal = ({
       scrollable
     >
       <Modal.Body>
-        <Row className="gx-3 g-4">
+        <Row className="gx-4 g-6">
           <Col sm={6} md={12}>
             <FloatingLabel controlId="kanbanTaskTitle" label="Title">
               <Form.Control type="text" placeholder="title" />
@@ -123,7 +123,7 @@ const KanbanEditTaskModal = ({
           </Col>
         </Row>
       </Modal.Body>
-      <Modal.Footer className="justify-content-between">
+      <Modal.Footer className="justify-between">
         <Button
           startIcon={<FontAwesomeIcon icon={faTimes} />}
           onClick={handleClose}
@@ -133,7 +133,7 @@ const KanbanEditTaskModal = ({
         </Button>
         <Button
           variant="primary"
-          className="px-6"
+          className="px-10"
           onClick={() => {
             handleClose();
           }}

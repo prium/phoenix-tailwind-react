@@ -6,10 +6,10 @@ import CreateBoardWizardForm from 'components/modules/kanban/create-board/Create
 
 const CreateBoard = () => {
   return (
-    <div className="mb-9">
-      <div className="mb-xl-8">
-        <div className="flex align-items-center mb-3">
-          <img src={boardIcon} alt="" className="me-3" />
+    <div className="mb-16">
+      <div className="xl:mb-14">
+        <div className="flex items-center mb-4">
+          <img src={boardIcon} alt="" className="me-4" />
           <h1 className="mb-0 text-emphasis font-semibold">
             Phoenix Kanban
           </h1>
@@ -23,17 +23,17 @@ const CreateBoard = () => {
           xs={12}
           xl={6}
           xxl={7}
-          className="text-center kanban-board-bg order-xl-1"
+          className="text-center kanban-board-bg xl:order-1"
         >
           <img
             src={boardIllustration}
             alt=""
-            className="d-dark-none mt-5 mb-6 mb-xl-0 position-sticky"
+            className="dark:hidden mt-8 mb-10 xl:mb-0 sticky"
           />
           <img
             src={boardIllustrationDark}
             alt=""
-            className="d-light-none mt-5 mb-6 mb-xl-0 position-sticky"
+            className="hidden dark:block mt-8 mb-10 xl:mb-0 sticky"
           />
         </Col>
         <Col xs={12} xl={6} xxl={5}>

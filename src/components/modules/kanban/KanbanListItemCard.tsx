@@ -110,10 +110,10 @@ const KanbanListItemCard = ({
           { 'bg-soft': isDragging }
         )}
       >
-        <Card.Body className="p-3">
+        <Card.Body className="p-4">
           {task.coverImage && (
             <div
-              className="relative mb-2 overflow-hidden rounded w-100"
+              className="relative mb-2 overflow-hidden rounded-md w-full"
               style={{ height: 200 }}
             >
               <div
@@ -125,11 +125,11 @@ const KanbanListItemCard = ({
               />
             </div>
           )}
-          <div className="kanban-status mb-1 relative lh-1">
+          <div className="kanban-status mb-1 relative leading-none">
             <FontAwesomeIcon
               transform="shrink-1 down-3"
               icon={faCircle}
-              className={`me-2 d-inline-block text-${task.status.color}`}
+              className={`me-2 inline-block text-${task.status.color}`}
             />
             <Badge
               variant="phoenix"
@@ -140,7 +140,7 @@ const KanbanListItemCard = ({
               <FontAwesomeIcon
                 icon={task.status.icon}
                 transform="up-2"
-                className="ms-1 d-inline-block"
+                className="ms-1 inline-block"
                 style={{ height: 7.8, width: 7.8 }}
               />
             </Badge>
@@ -181,30 +181,30 @@ const KanbanListItemCard = ({
           <p className="mb-2 stretched-link" onClick={() => setOpenModal(true)}>
             {task.title}
           </p>
-          <div className="flex mt-2 align-items-center">
+          <div className="flex mt-2 items-center">
             {task.date && (
-              <p className="mb-0 text-subtle text-opactity-85 text-md lh-1 me-3 whitespace-nowrap">
+              <p className="mb-0 text-subtle text-opactity-85 text-md leading-none me-4 whitespace-nowrap">
                 <FontAwesomeIcon
                   icon={faCalendarXmark}
-                  className="fs-0 me-2 d-inline-block"
+                  className="fs-0 me-2 inline-block"
                 />
                 <>{task.date}</>
               </p>
             )}
             {task.attachments && (
-              <p className="mb-0 text-subtle text-opactity-85 text-md lh-1">
+              <p className="mb-0 text-subtle text-opactity-85 text-md leading-none">
                 <FontAwesomeIcon
                   icon={faPaperclip}
-                  className="fs-0 me-2 d-inline-block"
+                  className="fs-0 me-2 inline-block"
                 />
                 {task.attachments}
               </p>
             )}
             {task.completedTasks && (
-              <p className="mb-0 text-subtle text-opactity-85 text-md lh-1">
+              <p className="mb-0 text-subtle text-opactity-85 text-md leading-none">
                 <FontAwesomeIcon
                   icon={faPaperclip}
-                  className="fs-0 me-2 d-inline-block"
+                  className="fs-0 me-2 inline-block"
                 />
                 {task.completedTasks[0]} / {task.completedTasks[1]}
               </p>

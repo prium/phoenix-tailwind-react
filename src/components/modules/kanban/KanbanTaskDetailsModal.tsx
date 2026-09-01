@@ -54,29 +54,29 @@ const KanbanTaskDetailsModal = ({
             <img
               src={task.coverImage}
               alt=""
-              className="w-100 h-100 fit-cover"
+              className="w-full h-full fit-cover"
             />
           ) : (
             <CoverUpload />
           )}
         </Modal.Header>
         <Modal.Body className="p-0 ">
-          <Row className="gy-4 py-0 gx-0 h-100">
-            <Col xs={12} lg={8} className="h-100 scrollbar">
-              <Row className="mt-0 top-0 gy-4 pb-3 gx-0 px-3">
+          <Row className="gy-6 py-0 gx-0 h-full">
+            <Col xs={12} lg={8} className="h-full scrollbar">
+              <Row className="mt-0 top-0 gy-6 pb-4 gx-0 px-4">
                 <Col xs={4} sm={3}>
-                  <h6 className="text-subtle font-black lh-sm mt-1">
+                  <h6 className="text-subtle font-black leading-sm mt-1">
                     TITLE
                   </h6>
                 </Col>
                 <Col xs={8} sm={9}>
-                  <h4 className="mb-0 text-emphasis lh-sm">
+                  <h4 className="mb-0 text-emphasis leading-sm">
                     {task.title}
                   </h4>
                 </Col>
 
                 <Col xs={4} sm={3}>
-                  <h6 className="text-subtle font-black lh-sm mt-1">
+                  <h6 className="text-subtle font-black leading-sm mt-1">
                     DESCRIPTION
                   </h6>
                 </Col>
@@ -89,7 +89,7 @@ const KanbanTaskDetailsModal = ({
                 </Col>
 
                 <Col xs={4} sm={3}>
-                  <h6 className="text-subtle font-black lh-sm mt-1">
+                  <h6 className="text-subtle font-black leading-sm mt-1">
                     BOARD
                   </h6>
                 </Col>
@@ -98,13 +98,13 @@ const KanbanTaskDetailsModal = ({
                 </Col>
 
                 <Col xs={4} sm={3}>
-                  <h6 className="text-subtle font-black lh-sm mt-1">
+                  <h6 className="text-subtle font-black leading-sm mt-1">
                     COLUMN
                   </h6>
                 </Col>
                 <Col xs={8} sm={9}>
                   <p
-                    className={`mb-0 text-emphasis font-semibold d-inline-block kanban-column-underline-${list.borderColor}`}
+                    className={`mb-0 text-emphasis font-semibold inline-block kanban-column-underline-${list.borderColor}`}
                   >
                     {list.title}
                   </p>
@@ -113,7 +113,7 @@ const KanbanTaskDetailsModal = ({
                 {task.members && (
                   <>
                     <Col xs={4} sm={3}>
-                      <h6 className="text-subtle font-black lh-sm mt-1">
+                      <h6 className="text-subtle font-black leading-sm mt-1">
                         ASSAIGNED TO
                       </h6>
                     </Col>
@@ -130,7 +130,7 @@ const KanbanTaskDetailsModal = ({
                 )}
 
                 <Col xs={4} sm={3}>
-                  <h6 className="text-subtle font-black lh-sm mt-1">
+                  <h6 className="text-subtle font-black leading-sm mt-1">
                     PRIORITY
                   </h6>
                 </Col>
@@ -146,7 +146,7 @@ const KanbanTaskDetailsModal = ({
                 </Col>
 
                 <Col xs={4} sm={3}>
-                  <h6 className="text-subtle font-black lh-sm mt-1">
+                  <h6 className="text-subtle font-black leading-sm mt-1">
                     CATEGORY
                   </h6>
                 </Col>
@@ -160,19 +160,19 @@ const KanbanTaskDetailsModal = ({
                     <FontAwesomeIcon
                       icon={task.status.icon}
                       transform="up-2"
-                      className="ms-1 d-inline-block"
+                      className="ms-1 inline-block"
                       style={{ height: 7.8, width: 7.8 }}
                     />
                   </Badge>
                 </Col>
 
                 <Col xs={4} sm={3}>
-                  <h6 className="text-subtle font-black lh-sm mt-1">
+                  <h6 className="text-subtle font-black leading-sm mt-1">
                     ATTACHMENTS
                   </h6>
                 </Col>
                 <Col xs={8} sm={9}>
-                  <div className="flex flex-column gap-3 mb-2">
+                  <div className="flex flex-col gap-4 mb-2">
                     {kanbanAttachments.map(attachment => (
                       <KanbanAttachment
                         attachment={attachment}
@@ -194,13 +194,13 @@ const KanbanTaskDetailsModal = ({
             <Col
               xs={12}
               lg={4}
-              className="border-start-lg border-subtle h-100 scrollbar"
+              className="lg:border-s border-subtle h-full scrollbar"
             >
               <div>
-                <div className="px-3">
+                <div className="px-4">
                   <div>
-                    <h5 className="mb-3 mt-4">Actions</h5>
-                    <div className="flex flex-wrap flex-column gap-2 flex-sm-row flex-lg-column">
+                    <h5 className="mb-4 mt-6">Actions</h5>
+                    <div className="flex flex-wrap flex-col gap-2 sm:flex-row lg:flex-col">
                       {kanbanActions.map(action => (
                         <Button
                           variant="subtle-secondary"
@@ -210,7 +210,7 @@ const KanbanTaskDetailsModal = ({
                               className="me-2"
                             />
                           }
-                          className="text-start text-nowrap"
+                          className="text-start whitespace-nowrap"
                           size="sm"
                           key={action.label}
                         >
@@ -220,14 +220,14 @@ const KanbanTaskDetailsModal = ({
                     </div>
                   </div>
                   <div>
-                    <h5 className="mb-3 mt-4">Activities</h5>
-                    <div className="flex flex-column gap-3">
+                    <h5 className="mb-4 mt-6">Activities</h5>
+                    <div className="flex flex-col gap-4">
                       {kanbanActivities.map((activity, index) => (
                         <div
                           className={classNames(
-                            'flex gap-2 pb-3 border-subtle',
+                            'flex gap-2 pb-6 border-subtle',
                             {
-                              'border-bottom':
+                              'border-b':
                                 index !== kanbanActivities.length - 1
                             }
                           )}
@@ -245,7 +245,7 @@ const KanbanTaskDetailsModal = ({
                                 __html: activity.task
                               }}
                             />
-                            <div className="flex gap-2 justify-content-between text-md">
+                            <div className="flex gap-2 justify-between text-md">
                               <p className="mb-0">
                                 <FontAwesomeIcon
                                   icon={faClock}
@@ -265,7 +265,7 @@ const KanbanTaskDetailsModal = ({
             </Col>
           </Row>
         </Modal.Body>
-        <Modal.Footer className="justify-content-between">
+        <Modal.Footer className="justify-between">
           <Button
             startIcon={<FontAwesomeIcon icon={faTimes} />}
             onClick={handleClose}
@@ -275,7 +275,7 @@ const KanbanTaskDetailsModal = ({
           <Button
             endIcon={<FontAwesomeIcon icon={faEdit} transform="up-1" />}
             variant="phoenix-primary"
-            className="px-6"
+            className="px-10"
             onClick={() => {
               setOpenEditModal(true);
               handleClose();

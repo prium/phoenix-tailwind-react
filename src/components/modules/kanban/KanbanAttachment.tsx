@@ -25,18 +25,18 @@ interface KanbanAttachmentProps {
 
 const KanbanAttachment = ({ attachment }: KanbanAttachmentProps) => {
   return (
-    <div className="border-bottom border-subtle flex flex-row pb-3">
+    <div className="border-b border-subtle flex flex-row pb-4">
       {attachment.preview ? (
         <img
           src={attachment.preview}
           alt=""
-          className="rounded-3"
+          className="rounded-lg"
           height={64}
           width={64}
         />
       ) : (
         <div
-          className="border border-subtle rounded-3 flex-center flex"
+          className="border border-subtle rounded-lg flex-center flex"
           style={{ height: 64, width: 64 }}
         >
           <FontAwesomeIcon
@@ -45,12 +45,12 @@ const KanbanAttachment = ({ attachment }: KanbanAttachmentProps) => {
           />
         </div>
       )}
-      <div className="flex-1 ms-3 flex flex-column">
-        <h5 className="lh-sm">{attachment.name}</h5>
-        <p className="lh-1 text-md text-subtle font-medium mb-0">
+      <div className="flex-1 ms-4 flex flex-col">
+        <h5 className="leading-sm">{attachment.name}</h5>
+        <p className="leading-none text-md text-subtle font-medium mb-0">
           {attachment.date}
         </p>
-        <div className="flex gap-3 mt-auto">
+        <div className="flex gap-4 mt-auto">
           <Button className="p-0 text-subtle">
             <FontAwesomeIcon icon={faComment} />
           </Button>

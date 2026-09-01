@@ -89,9 +89,9 @@ const ImageCheckbox = ({ img, id }: { img: string; id: string }) => {
         checked={formData.backgroundImage === img}
         onChange={handleChange}
       />
-      <label htmlFor={id} className="rounded-3 w-100">
+      <label htmlFor={id} className="rounded-lg w-full">
         <img
-          className="me-2 cursor-pointer rounded-3 fit-cover w-100"
+          className="me-2 cursor-pointer rounded-lg fit-cover w-full"
           src={img}
           style={{ height: 100 }}
         />
@@ -107,7 +107,7 @@ const BackgroundColorForm = () => {
 
   return (
     <div>
-      <p className="mb-4">
+      <p className="mb-6">
         Select a <b>Background</b> Colour or Image. This will also be thumbnail
         for your Kanban board.{' '}
       </p>
@@ -115,7 +115,7 @@ const BackgroundColorForm = () => {
       <Tab.Container id="left-tabs-example" defaultActiveKey="first">
         <Nav
           variant="underline"
-          className="border-bottom border-subtle mb-10"
+          className="border-b border-subtle mb-18"
         >
           <Nav.Item>
             <Nav.Link eventKey="first">
@@ -131,7 +131,7 @@ const BackgroundColorForm = () => {
 
         <Tab.Content>
           <Tab.Pane eventKey="first">
-            <div className="flex flex-wrap gap-x-3 gap-y-4">
+            <div className="flex flex-wrap gap-x-4 gap-y-6">
               {colors.map(color => (
                 <ColorCheckbox color={color} key={color} />
               ))}
@@ -141,7 +141,7 @@ const BackgroundColorForm = () => {
             </div>
           </Tab.Pane>
           <Tab.Pane eventKey="second">
-            <Row className="g-3 mb-4">
+            <Row className="g-4 mb-6">
               <Col xs={6}>
                 <ImageCheckbox img={kanban1} id="img1" />
               </Col>
@@ -184,7 +184,7 @@ const BackgroundColorForm = () => {
                   <div className="text-subtle text-opacity-85">
                     or, Add a custom background
                     <br />
-                    <img className="mt-3" src={imageIcon} width={30} alt="" />
+                    <img className="mt-4" src={imageIcon} width={30} alt="" />
                   </div>
                 </Dropzone>
               </Col>

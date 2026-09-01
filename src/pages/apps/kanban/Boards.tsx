@@ -26,9 +26,9 @@ const Boards = () => {
     };
   }, []);
   return (
-    <div className="mb-9">
-      <div className="border-bottom border-subtle px-4 px-lg-6 pb-5">
-        <Row className="justify-content-between gy-4">
+    <div className="mb-16">
+      <div className="border-b border-subtle px-6 lg:px-10 pb-8">
+        <Row className="justify-between gy-6">
           <Col xs="auto">
             <h2>
               Kanban Boards{' '}
@@ -39,7 +39,7 @@ const Boards = () => {
             <Button
               variant="phoenix-primary"
               startIcon={<FontAwesomeIcon icon={faFilter} />}
-              className="flex px-4"
+              className="flex px-6"
             >
               Filter
             </Button>
@@ -54,10 +54,10 @@ const Boards = () => {
           </Col>
         </Row>
       </div>
-      <div className="flex flex-wrap gap-3 border-bottom border-subtle px-4 px-lg-6 py-5">
+      <div className="flex flex-wrap gap-4 border-b border-subtle px-6 lg:px-10 py-8">
         <Button
           variant="primary"
-          className="px-3 px-sm-5 px-md-10"
+          className="px-4 sm:px-8 md:px-18"
           as={Link}
           to="/apps/kanban/create-board"
           startIcon={<FontAwesomeIcon icon={faPlus} className="me-2" />}
@@ -66,23 +66,23 @@ const Boards = () => {
         </Button>
         <Button
           variant="phoenix-primary"
-          className="px-3 px-sm-4 flex text-default"
+          className="px-4 sm:px-6 flex text-default"
           as={Link}
           to="#!"
         >
-          <FontAwesomeIcon icon={faAnglesDown} className="me-sm-2" />
-          <span className="hidden d-sm-block whitespace-nowrap">
+          <FontAwesomeIcon icon={faAnglesDown} className="sm:me-2" />
+          <span className="hidden sm:block whitespace-nowrap">
             Import Bulk Tasks
           </span>
         </Button>
         <Button
           variant="phoenix-primary"
-          className="px-3 px-sm-4 flex text-default"
+          className="px-4 sm:px-6 flex text-default"
           as={Link}
           to="#!"
         >
-          <FontAwesomeIcon icon={faCalendarXmark} className="me-sm-2" />
-          <span className="hidden d-sm-block">Upcoming Deadlines</span>
+          <FontAwesomeIcon icon={faCalendarXmark} className="sm:me-2" />
+          <span className="hidden sm:block">Upcoming Deadlines</span>
         </Button>
       </div>
       <KanbanBoardSection
@@ -105,7 +105,7 @@ const Boards = () => {
         <Button
           variant="phoenix-primary"
           startIcon={<FontAwesomeIcon icon={faBoxArchive} className="me-2" />}
-          className="mt-4"
+          className="mt-6"
         >
           Open Archive
         </Button>

@@ -30,3 +30,6 @@ class names with different meanings (`mb-4` → `mb-6` → `mb-10` …).
   (modules/chat, chat-widget, EmailLayout, Chat/EventTitle cards, modules/events,
   eventsData were converted in earlier waves — manual pass only; SharedFiles.tsx
   still carries signature classes inside constructs the converter skips)
+- kanban closure: src/pages/apps/kanban, src/components/modules/kanban,
+  src/components/modals/Kanban{AddList,Invite}Modal.tsx, src/data/kanban.ts,
+  src/components/base/PhoenixFloatingLabel.tsx

@@ -80,9 +80,9 @@ const CreateBoardWizardForm = () => {
   );
   return (
     <WizardFormProvider {...form}>
-      <StepProgressBoard className="mb-9" />
+      <StepProgressBoard className="mb-16" />
       <div className="theme-wizard">
-        <Tab.Content className="mb-10">
+        <Tab.Content className="mb-18">
           <Tab.Pane eventKey={1}>
             <WizardForm step={1}>
               <BoardForm />

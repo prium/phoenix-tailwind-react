@@ -6,14 +6,14 @@ const BoardForm = () => {
   const { formData, onChange } = useWizardFormContext<CreateBoardFormData>();
   return (
     <>
-      <div className="mt-6 border-bottom-0 border-subtle">
-        <p className="mb-4">
+      <div className="mt-10 border-b-0 border-subtle">
+        <p className="mb-6">
           This will be the <b>Name</b> and description of your Kanban board. You
           and other admins can edit the name in future. The name can contain
           letters, numbers &amp; punctuation.{' '}
         </p>
       </div>
-      <FloatingLabel label="Board Name" className="mb-4">
+      <FloatingLabel label="Board Name" className="mb-6">
         <Form.Control
           type="text"
           placeholder="Board Name"
@@ -22,7 +22,7 @@ const BoardForm = () => {
           onChange={onChange}
         />
       </FloatingLabel>
-      <FloatingLabel label="Board type" className="mb-4">
+      <FloatingLabel label="Board type" className="mb-6">
         <Form.Select value={formData.type} name="type" onChange={onChange}>
           <option>Open this select menu</option>
           <option value="1">One</option>

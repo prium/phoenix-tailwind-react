@@ -11,20 +11,20 @@ const TagsForm = () => {
 
   return (
     <div>
-      <p className="mb-4">
+      <p className="mb-6">
         These will be the <b>Tags</b> for your tasks/cards of your Kanban board.
         Tags are labels to allow easy &amp; simpler classification of tasks.
       </p>
-      <div className="flex flex-column gap-5">
+      <div className="flex flex-col gap-8">
         {formData.tags.map(tag => (
           <div className="relative kanban-tag" key={tag.label}>
             <Badge
               variant="phoenix"
               bg={tag.color as BadgeBg}
-              className="flex flex-between-center text-md px-4 py-2 kanban-tag-badge"
+              className="flex flex-between-center text-md px-6 py-2 kanban-tag-badge"
               iconPosition="end"
             >
-              <span className="badge-label text-capitalize lh-base">
+              <span className="badge-label capitalize leading-base">
                 {tag.label}
               </span>
               <FeatherIcon icon={tag.icon} size={12} className="ms-1" />
@@ -32,13 +32,13 @@ const TagsForm = () => {
             <div className="absolute top-0 end-0 flex">
               <Button
                 variant="phoenix-secondary"
-                className="text-md bg-transparent lh-1 kanban-tag-action-icons me-1"
+                className="text-md bg-transparent leading-none kanban-tag-action-icons me-1"
               >
                 <FontAwesomeIcon icon={faPencil} transform="shrink-5" />
               </Button>
               <Button
                 variant="phoenix-danger"
-                className="text-md bg-transparent lh-1 kanban-tag-action-icons"
+                className="text-md bg-transparent leading-none kanban-tag-action-icons"
               >
                 <FontAwesomeIcon icon={faTrash} transform="shrink-5" />
               </Button>
@@ -48,7 +48,7 @@ const TagsForm = () => {
         <Button
           variant="phoenix-secondary"
           startIcon={<FontAwesomeIcon icon={faPlus} className="me-2" />}
-          className="w-100 bg-subtle text-md"
+          className="w-full bg-subtle text-md"
         >
           Create Custom Tag
         </Button>

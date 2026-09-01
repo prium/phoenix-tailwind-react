@@ -166,9 +166,9 @@ const KanbanContent = () => {
           {boardLists.map(list => (
             <KanbanList list={list} key={list.id} columnId={list.id} />
           ))}
-          <div className="kanban-column scrollbar relative bg-transparent flex flex-column h-100 flex-center hover:bg-default">
+          <div className="kanban-column scrollbar relative bg-transparent flex flex-col h-full flex-center hover:bg-default">
             <Button
-              className="stretched-link btn-icon btn-icon bg-muted rounded-circle mb-1"
+              className="stretched-link btn-icon btn-icon bg-muted rounded-full mb-1"
               onClick={() =>
                 kanbanDispatch({
                   type: TOGGLE_ADD_LIST_MODAL,

@@ -76,7 +76,7 @@ const KanbanList = ({ list, columnId }: KanbanListProps) => {
         >
           {list.tasks.map(task => (
             <div
-              className="py-2 px-2 border-bottom border-subtle"
+              className="py-2 px-2 border-b border-subtle"
               key={task.id}
             >
               <KanbanListItemCard list={list} task={task} columnId={columnId} />
@@ -84,7 +84,7 @@ const KanbanList = ({ list, columnId }: KanbanListProps) => {
           ))}
         </SortableContext>
       </div>
-      <Form onSubmit={handleNewTaskAdd} className="py-3 px-4 kanban-add-task">
+      <Form onSubmit={handleNewTaskAdd} className="py-4 px-6 kanban-add-task">
         <Button className="bg-highlight me-2 px-0" type="submit">
           <FontAwesomeIcon
             icon={faPlus}
@@ -93,7 +93,7 @@ const KanbanList = ({ list, columnId }: KanbanListProps) => {
           />
         </Button>
         <Form.Control
-          className="search-input rounded-3 px-3"
+          className="search-input rounded-lg px-4"
           placeholder="Add new task"
           value={taskTitle}
           onChange={e => setTaskTitle(e.target.value)}

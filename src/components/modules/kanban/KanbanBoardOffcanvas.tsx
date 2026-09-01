@@ -62,7 +62,7 @@ const KanbanBoardOffcanvas = () => {
       fixed
       style={{ maxWidth: 445 }}
     >
-      <Offcanvas.Header className="mb-6">
+      <Offcanvas.Header className="mb-10">
         <h3 className="offcanvas-title">Phoenix Kanban</h3>
         <Button className="p-1 font-black ms-auto" onClick={handleClose}>
           <FontAwesomeIcon icon={faTimes} className="text-base" />
@@ -70,37 +70,37 @@ const KanbanBoardOffcanvas = () => {
       </Offcanvas.Header>
 
       <Offcanvas.Body>
-        <h4 className="text-highlight font-semibold mb-3">Admins</h4>
-        <div className="flex align-items-center gap-3 mb-5">
+        <h4 className="text-highlight font-semibold mb-4">Admins</h4>
+        <div className="flex items-center gap-4 mb-8">
           <AvatarDropdown user={kanbanBoardMembers.admin} size="xl" />
           <div className="flex-1">
             <Link
               to="#!"
-              className="text-decoration-none text-highlight lh-1 font-semibold"
+              className="no-underline text-highlight leading-none font-semibold"
             >
               Sasha Blaus
             </Link>
-            <h6 className="mb-0 lh-1 text-highlight font-semibold">
+            <h6 className="mb-0 leading-none text-highlight font-semibold">
               @potatogirl
             </h6>
           </div>
         </div>
 
-        <h4 className="text-highlight font-semibold mb-3">Members</h4>
-        <div className="flex align-items-center gap-2 mb-4">
+        <h4 className="text-highlight font-semibold mb-4">Members</h4>
+        <div className="flex items-center gap-2 mb-6">
           {kanbanBoardMembers.members.map(member => (
             <AvatarDropdown user={member} size="m" key={member.id} />
           ))}
         </div>
 
-        <h4 className="text-highlight font-semibold mb-3">Guests</h4>
-        <div className="flex align-items-center gap-2 mb-7">
+        <h4 className="text-highlight font-semibold mb-4">Guests</h4>
+        <div className="flex items-center gap-2 mb-12">
           {kanbanBoardMembers.guests.map(member => (
             <AvatarDropdown user={member} size="m" key={member.id} />
           ))}
         </div>
 
-        <div className="flex mb-3 border-bottom border-subtle pb-3 gap-3">
+        <div className="flex mb-4 border-b border-subtle pb-4 gap-4">
           <h4 className="text-highlight font-semibold mb-0">Description</h4>
           <Button className="p-0">
             <FontAwesomeIcon icon={faPencil} className="text-default text-md" />
@@ -119,7 +119,7 @@ const KanbanBoardOffcanvas = () => {
               <Link
                 to="#!"
                 className={classNames(
-                  'text-highlight font-semibold text-decoration-none flex flex-between-center py-3 border-bottom border-subtle'
+                  'text-highlight font-semibold no-underline flex flex-between-center py-6 border-b border-subtle'
                 )}
               >
                 <span>{action.label}</span>
@@ -131,7 +131,7 @@ const KanbanBoardOffcanvas = () => {
             <Link
               to="#!"
               className={classNames(
-                'font-semibold text-decoration-none flex flex-between-center text-danger pt-3'
+                'font-semibold no-underline flex flex-between-center text-danger pt-6'
               )}
             >
               Leave Board

@@ -19,9 +19,9 @@ const KanbanBoardSection = ({
   changePreference
 }: KanbanBoardSectionProps) => {
   return (
-    <div className="px-4 px-lg-6 py-5 border-bottom border-subtle">
+    <div className="px-6 lg:px-10 py-8 border-b border-subtle">
       <h4>{title}</h4>
-      <p className="mb-4">
+      <p className="mb-6">
         {description}{' '}
         {changePreference && <Link to="#!">Change preference</Link>}
       </p>

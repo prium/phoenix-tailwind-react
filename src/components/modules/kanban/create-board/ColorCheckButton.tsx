@@ -51,7 +51,7 @@ export const CustomColorButton = () => {
         variant="outline-secondary"
         as="label"
         htmlFor="customColor"
-        className="rounded-full text-uppercase"
+        className="rounded-full uppercase"
         startIcon={<FontAwesomeIcon icon={faPlus} className="me-2" />}
         style={{
           background: color,
@@ -95,7 +95,7 @@ export const RandomColorButton = () => {
         variant="outline-danger"
         as="label"
         htmlFor="randomColor"
-        className="rounded-full text-uppercase"
+        className="rounded-full uppercase"
         startIcon={<FontAwesomeIcon icon={faShuffle} className="me-2" />}
         style={{
           background: color,

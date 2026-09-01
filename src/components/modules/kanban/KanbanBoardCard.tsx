@@ -11,7 +11,7 @@ import { Link } from 'react-router';
 
 const KanbanBoardCard = ({ board }: { board: KanbanBoard }) => {
   return (
-    <Card className="overflow-hidden bg-transparent h-100 relative">
+    <Card className="overflow-hidden bg-transparent h-full relative">
       <div className="relative">
         {board.coverImage ? (
           <>
@@ -19,7 +19,7 @@ const KanbanBoardCard = ({ board }: { board: KanbanBoard }) => {
               src={board.coverImage}
               alt=""
               height={128}
-              className="w-100 fit-cover"
+              className="w-full fit-cover"
             />
           </>
         ) : (
@@ -28,24 +28,24 @@ const KanbanBoardCard = ({ board }: { board: KanbanBoard }) => {
         <Avatar.Group
           total={board.users.length}
           size="m"
-          className="absolute bottom-0 mb-3 ms-4"
+          className="absolute bottom-0 mb-4 ms-6"
         >
           {board.users.map(user => (
             <Avatar
               size="m"
-              className="border rounded-circle border-light-subtle"
+              className="border rounded-full border-light-subtle"
               src={user.avatar}
               key={user.id}
             />
           ))}
         </Avatar.Group>
       </div>
-      <Card.Body className="flex flex-column rounded-bottom-lg justify-content-between">
+      <Card.Body className="flex flex-col lg:rounded-b-md justify-between">
         <div>
           <h3 className="text-default">{board.title}</h3>
-          <p className="text-subtle mb-4">{board.category}</p>
+          <p className="text-subtle mb-6">{board.category}</p>
         </div>
-        <div className="flex gap-4">
+        <div className="flex gap-6">
           <h5 className="text-default">
             <FontAwesomeIcon
               icon={faListCheck}

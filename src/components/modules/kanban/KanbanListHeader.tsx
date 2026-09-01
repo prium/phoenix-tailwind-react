@@ -94,9 +94,9 @@ const KanbanListHeader = ({
   setCollapsed
 }: KanbanListHeaderProps) => {
   return (
-    <div className="kanban-column-header px-4 hover-actions-trigger">
+    <div className="kanban-column-header px-6 hover-actions-trigger">
       <div
-        className={`flex align-items-center border-bottom border-3 py-3`}
+        className={`flex items-center border-b border-3 py-6`}
         style={
           {
             '--phoenix-border-color': list.borderColor
