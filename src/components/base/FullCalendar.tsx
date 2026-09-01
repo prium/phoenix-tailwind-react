@@ -30,6 +30,8 @@ const FullCalendar = ({ ...rest }: FullCalendarProps) => {
       ref={calendarRef}
       plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
       initialView={view}
+      /* gold `theme/fullcalendar.js` — ISO also makes Monday the first day */
+      weekNumberCalculation="ISO"
       headerToolbar={false}
       dayMaxEvents={3}
       stickyHeaderDates={false}

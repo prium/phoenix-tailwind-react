@@ -3,11 +3,27 @@ import {
   faChevronRight
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
+import { CalendarApi } from '@fullcalendar/core';
+import { cn } from '@hummingbirdui/react';
 import Button from 'components/base/Button';
 import { CalendarView, useCalendarContext } from 'providers/CalendarProvider';
-import { ButtonGroup, Col, Row } from 'react-bootstrap';
 import { SET_CALENDAR_STATE } from 'reducers/CalendarReducer';
+
+/**
+ * The gold `updateTitle()` (`theme/calendar/app-calendar.js`) prints the plain
+ * view title everywhere except the week view, where it prints
+ * `Sep 1 - Sep 8` from the current range (end is exclusive).
+ */
+const getTitle = (api: CalendarApi) => {
+  if (api.view.type !== 'timeGridWeek') {
+    return api.view.title;
+  }
+  const start = api.view.currentStart;
+  const end = api.view.currentEnd;
+  const month = (date: Date) =>
+    date.toLocaleString('en-US', { month: 'short' });
+  return `${month(start)} ${start.getDate()} - ${month(end)} ${end.getDate()}`;
+};
 
 const CalendarHeader = () => {
   const { calendarApi, title, view, calendarDispatch } = useCalendarContext();
@@ -19,7 +35,7 @@ const CalendarHeader = () => {
         type: SET_CALENDAR_STATE,
         payload: {
           view: viewType,
-          title: calendarApi.view.title
+          title: getTitle(calendarApi)
         }
       });
     }
@@ -30,12 +46,12 @@ const CalendarHeader = () => {
       actionType === 'next'
         ? calendarApi.next()
         : actionType === 'prev'
-        ? calendarApi.prev()
-        : calendarApi.today();
+          ? calendarApi.prev()
+          : calendarApi.today();
       calendarDispatch({
         type: SET_CALENDAR_STATE,
         payload: {
-          title: calendarApi.view.title
+          title: getTitle(calendarApi)
         }
       });
     }
@@ -43,8 +59,8 @@ const CalendarHeader = () => {
 
   return (
     <div className="-mx-6 px-6 lg:-mx-10 lg:px-10 border-y border-subtle">
-      <Row className="py-4 gy-4 gx-0 justify-between">
-        <Col xs={6} md="auto" className="order-1 flex items-center">
+      <div className="row py-4 gy-4 gx-0">
+        <div className="col-6 md:col-4 order-1 flex items-center">
           <Button
             onClick={() => handleCalendarUpdate('today')}
             variant="phoenix-primary"
@@ -53,53 +69,47 @@ const CalendarHeader = () => {
           >
             Today
           </Button>
-        </Col>
-        <Col
-          xs={12}
-          md="auto"
-          className="md:order-1 flex items-center justify-center"
-        >
+        </div>
+        <div className="col-12 md:col-4 md:order-1 flex items-center justify-center">
           <Button
             onClick={() => handleCalendarUpdate('prev')}
             className="icon-item icon-item-sm shadow-none text-emphasis p-0"
+            title="Previous"
           >
             <FontAwesomeIcon icon={faChevronLeft} />
           </Button>
-          {calendarApi && (
-            <h3 className="px-4 text-emphasis font-semibold mb-0">
-              {title || calendarApi.view.title}
-            </h3>
-          )}
+          <h3 className="px-4 text-emphasis font-semibold calendar-title mb-0">
+            {title || (calendarApi ? getTitle(calendarApi) : '')}
+          </h3>
           <Button
             onClick={() => handleCalendarUpdate('next')}
             className="icon-item icon-item-sm shadow-none text-emphasis p-0"
+            title="Next"
           >
             <FontAwesomeIcon icon={faChevronRight} />
           </Button>
-        </Col>
-        <Col xs={6} md="auto" className="order-1 flex justify-end">
-          <ButtonGroup size="sm">
-            <Button
-              onClick={() => handleCalendarView('dayGridMonth')}
-              variant="phoenix-secondary"
-              className={classNames({
-                active: view === 'dayGridMonth'
-              })}
-            >
-              Month
-            </Button>
-            <Button
-              onClick={() => handleCalendarView('timeGridWeek')}
-              variant="phoenix-secondary"
-              className={classNames({
-                active: view === 'timeGridWeek'
-              })}
-            >
-              Week
-            </Button>
-          </ButtonGroup>
-        </Col>
-      </Row>
+        </div>
+        <div className="col-6 md:col-4 ms-auto order-1 flex justify-end">
+          <div>
+            <div className="btn-group btn-group-sm" role="group">
+              <Button
+                onClick={() => handleCalendarView('dayGridMonth')}
+                variant="phoenix-secondary"
+                className={cn({ 'active-view': view === 'dayGridMonth' })}
+              >
+                Month
+              </Button>
+              <Button
+                onClick={() => handleCalendarView('timeGridWeek')}
+                variant="phoenix-secondary"
+                className={cn({ 'active-view': view === 'timeGridWeek' })}
+              >
+                Week
+              </Button>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
