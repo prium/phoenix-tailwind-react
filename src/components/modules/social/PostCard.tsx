@@ -24,11 +24,11 @@ interface PostCardProps {
 
 const PostCard = ({ post }: PostCardProps) => {
   return (
-    <div className="mb-5">
-      <Card className="mb-4 overflow-hidden">
-        <Card.Body className="p-3 p-sm-4">
-          <div className="border-bottom border-subtle mb-3">
-            <div className="flex align-items-center mb-3">
+    <div className="mb-8">
+      <Card className="mb-6 overflow-hidden">
+        <Card.Body className="p-4 sm:p-6">
+          <div className="border-b border-subtle mb-4">
+            <div className="flex items-center mb-4">
               <Link to="/apps/social/profile" style={{ lineHeight: 0 }}>
                 <Avatar size="xl" src={post.author.avatar} className="me-2" />
               </Link>
@@ -77,27 +77,27 @@ const PostCard = ({ post }: PostCardProps) => {
             <Button
               variant="link"
               startIcon={<FontAwesomeIcon icon={faHeart} />}
-              className="p-0 me-3 text-sm font-black"
+              className="p-0 me-4 text-sm font-black"
             >
               {post.interactions.likes} Likes
             </Button>
             <Button
               variant="link"
               startIcon={<FontAwesomeIcon icon={faComment} />}
-              className="p-0 me-3 text-sm font-black text-default"
+              className="p-0 me-4 text-sm font-black text-default"
             >
               {post.interactions.comments} Comments
             </Button>
             <Button
               variant="link"
               startIcon={<FontAwesomeIcon icon={faShare} />}
-              className="p-0 me-3 text-sm font-black text-default"
+              className="p-0 me-4 text-sm font-black text-default"
             >
               {post.interactions.shares} Shares
             </Button>
           </div>
         </Card.Body>
-        <div className="bg-subtle border-top border-subtle p-3 p-sm-4">
+        <div className="bg-subtle border-t border-subtle p-4 sm:p-6">
           {post.comments && <PostComments comments={post.comments} />}
           <CommentField />
         </div>

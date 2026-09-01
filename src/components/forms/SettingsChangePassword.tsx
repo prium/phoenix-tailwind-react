@@ -6,8 +6,8 @@ import { Form } from 'react-bootstrap';
 const SettingsChangePassword = () => {
   return (
     <>
-      <h4 className="mb-4">Change Password</h4>
-      <div className="form-icon-container mb-3">
+      <h4 className="mb-6">Change Password</h4>
+      <div className="form-icon-container mb-4">
         <Form.Floating>
           <Form.Control
             id="oldPassword"
@@ -24,7 +24,7 @@ const SettingsChangePassword = () => {
         </Form.Floating>
         <FontAwesomeIcon icon={faLock} className="text-default text-md form-icon" />
       </div>
-      <div className="form-icon-container mb-3">
+      <div className="form-icon-container mb-4">
         <Form.Floating>
           <Form.Control
             id="newPassword"

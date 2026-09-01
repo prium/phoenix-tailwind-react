@@ -9,7 +9,7 @@ interface SocialPostsProps {
 const SocialPosts = ({ posts }: SocialPostsProps) => {
   return (
     <>
-      <div className="mb-9">
+      <div className="mb-16">
         {posts.map(post => (
           <PostCard key={post.id} post={post} />
         ))}

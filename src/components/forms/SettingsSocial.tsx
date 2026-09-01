@@ -13,9 +13,9 @@ import { Col, Row } from 'react-bootstrap';
 
 const SettingsSocial = () => {
   return (
-    <div className="mb-6">
-      <h4 className="mb-4">Social</h4>
-      <Row className="g-3">
+    <div className="mb-10">
+      <h4 className="mb-6">Social</h4>
+      <Row className="g-4">
         <Col xs={12} sm={6}>
           <div className="form-icon-container">
             <Form.Floating>

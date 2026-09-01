@@ -26,30 +26,30 @@ const Feed = () => {
 
   return (
     <>
-      <div className="mb-9">
-        <Row className="gy-3 gx-5 gx-xxl-6">
-          <Col lg={5} xl={4} className="hidden d-lg-block">
+      <div className="mb-16">
+        <Row className="gy-4 gx-8 2xl:gx-10">
+          <Col lg={5} xl={4} className="hidden lg:block">
             <SocialProfileCard
               showAbout={true}
               avatar={profileImage}
-              className="mb-5"
+              className="mb-8"
             />
             <ProfileNavigation />
-            <div className="mb-8 mt-6">
+            <div className="mb-14 mt-10">
               <SocialMessages messages={messages} />
             </div>
-            <div className="mb-8">
+            <div className="mb-14">
               <SocialPhotos photos={socialPhotos} />
             </div>
             <Events events={events} title="Events" />
           </Col>
           <Col lg={7} xl={8}>
-            <FeedTextarea className="mb-5" />
+            <FeedTextarea className="mb-8" />
             <SocialPosts posts={feedPosts} />
           </Col>
         </Row>
       </div>
-      <NavbarBottom active="home" className="d-lg-none" />
+      <NavbarBottom active="home" className="lg:hidden" />
     </>
   );
 };

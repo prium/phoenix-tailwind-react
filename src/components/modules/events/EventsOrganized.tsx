@@ -8,19 +8,19 @@ import { faUserPlus } from '@fortawesome/free-solid-svg-icons';
 const EventsOrganized = () => {
   return (
     <>
-      <h3 className="mb-5 mb-xl-4">Organized by</h3>
-      <Row className="g-2 mb-6 align-items-center">
+      <h3 className="mb-8 xl:mb-6">Organized by</h3>
+      <Row className="g-2 mb-10 items-center">
         <Col xs="auto">
           <img
             src={brandImg}
             alt=""
-            className="rounded img-fluid"
+            className="rounded-md img-fluid"
             width="40"
             height="40"
           />
         </Col>
         <Col sm="auto" className="flex-1">
-          <Link to="#!" className="mb-0 text-primary font-semibold lh-sm">
+          <Link to="#!" className="mb-0 text-primary font-semibold leading-sm">
             Bass Events, Inc.
           </Link>
         </Col>
@@ -30,7 +30,7 @@ const EventsOrganized = () => {
           </Button>
           <Button
             variant="phoenix-primary"
-            className="px-3"
+            className="px-4"
             startIcon={<FontAwesomeIcon icon={faUserPlus} className="me-2" />}
           >
             Follow

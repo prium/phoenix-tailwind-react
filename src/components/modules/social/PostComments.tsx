@@ -14,12 +14,12 @@ const PostComments = ({ comments }: PostCommentsProps) => {
   return (
     <>
       {comments.map((comment, index) => (
-        <div key={index} className="flex align-items-start">
+        <div key={index} className="flex items-start">
           <Link to="/apps/social/profile">
             <Avatar size="m" src={comment.avatar} className="me-2" />
           </Link>
           <div className="flex-1">
-            <div className="flex align-items-center">
+            <div className="flex items-center">
               <Link
                 to="/apps/social/profile"
                 className="font-bold mb-0 text-emphasis"
@@ -32,7 +32,7 @@ const PostComments = ({ comments }: PostCommentsProps) => {
             </div>
             <p className="mb-0">{comment.comment}</p>
             {comment.reply && (
-              <div className="mb-3">
+              <div className="mb-4">
                 <Button
                   variant="link"
                   className="p-0 text-default mb-2 text-sm"

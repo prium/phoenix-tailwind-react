@@ -16,11 +16,11 @@ const Events = ({ events, title, className }: EventsProps) => {
       <Row
         className={classNames(
           className,
-          'g-0 py-3 border-bottom border-dashed align-items-end justify-content-between'
+          'g-0 py-6 border-b border-dashed items-end justify-between'
         )}
       >
         <Col xs="auto">
-          <h3 className="flex-1 mb-0 text-nowrap me-3">{title}</h3>
+          <h3 className="flex-1 mb-0 whitespace-nowrap me-4">{title}</h3>
         </Col>
         <Col xs="auto">
           <Link to="#!" className="font-bold text-md">

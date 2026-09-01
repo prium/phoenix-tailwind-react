@@ -6,7 +6,7 @@ import avatar from 'assets/img/team/20.webp';
 
 const CommentField = () => {
   return (
-    <div className="flex align-items-center">
+    <div className="flex items-center">
       <Link to="/apps/social/profile" style={{ lineHeight: 0 }}>
         <Avatar size="m" src={avatar} className="me-2" />
       </Link>

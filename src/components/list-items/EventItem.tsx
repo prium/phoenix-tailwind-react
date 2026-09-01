@@ -16,7 +16,7 @@ const EventItem = ({ event }: EventItemProps) => {
   return (
     <div
       key={event.title}
-      className="py-3 border-bottom border-subtle border-dashed"
+      className="py-4 border-b border-subtle border-dashed"
     >
       <div className="flex flex-between-center">
         <p className="text-warning text-sm mb-0 font-bold mb-1">{event.date}</p>
@@ -33,7 +33,7 @@ const EventItem = ({ event }: EventItemProps) => {
       </div>
       <Link
         to="#!"
-        className="hover-primary text-highlight font-bold mb-2 line-clamp-1 me-5 lh-base"
+        className="hover-primary text-highlight font-bold mb-2 line-clamp-1 me-8 leading-base"
       >
         {event.title}
       </Link>

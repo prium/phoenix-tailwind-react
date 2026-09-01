@@ -19,3 +19,8 @@ class names with different meanings (`mb-4` → `mb-6` → `mb-10` …).
   timelines) — see commit "chore: run bs2tw codemod over crm tree".
 - src/components/modules/travel-agency, src/pages/apps/travel-agency, src/pages/dashboard/TravelAgency.tsx, src/data/travel-agency
 - src/components/modules/stock, src/pages/apps/stock, src/pages/dashboard/Stock.tsx, src/data/stock
+- social closure: src/pages/apps/social, src/components/modules/{social,events},
+  src/components/image-gallery/{SocialPhotos,PostGallery}.tsx,
+  src/components/list-items/EventItem.tsx, src/components/forms/Settings*.tsx,
+  src/data/social, src/data/eventsData.ts (SocialCoverCard/SocialProfileCard/
+  FeedTextarea/Mutual+ProfileNavigation/SocialMessages were converted in earlier waves)

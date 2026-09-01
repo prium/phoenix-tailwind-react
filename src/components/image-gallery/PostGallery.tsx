@@ -14,13 +14,13 @@ const PostGallery = ({ images }: PostGalleryProps) => {
   return (
     <>
       <Lightbox {...lightboxProps} />
-      <Row className="g-1 mb-5">
+      <Row className="g-1 mb-8">
         {images?.map((image, index) => (
           <Col key={index} xs={image.cols}>
             <img
               src={image.src}
               alt=""
-              className="rounded h-100 w-100 cursor-pointer"
+              className="rounded-md h-full w-full cursor-pointer"
               onClick={() => openLightbox(index + 1)}
             />
           </Col>

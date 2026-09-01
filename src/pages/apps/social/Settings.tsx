@@ -10,16 +10,16 @@ import profileImage from 'assets/img/team/20.webp';
 
 const Settings = () => {
   return (
-    <div className="mb-9">
-      <Row className="g-6">
+    <div className="mb-16">
+      <Row className="g-10">
         <Col xs={12} xl={4}>
-          <SocialProfileCard avatar={profileImage} className="mb-5" />
+          <SocialProfileCard avatar={profileImage} className="mb-8" />
           <SocialSettingsSideBar />
         </Col>
         <Col xs={12} xl={8}>
-          <div className="border-bottom mb-4">
+          <div className="border-b mb-6">
             <SettingsPersonalInfo />
-            <Row className="gx-3 mb-6 gy-6 gy-sm-3">
+            <Row className="gx-4 mb-10 gy-10 sm:gy-4">
               <Col xs={12} sm={6}>
                 <SettingsCompanyInfo />
               </Col>
@@ -28,14 +28,14 @@ const Settings = () => {
               </Col>
             </Row>
             <SettingsSocial />
-            <div className="text-end mb-6">
+            <div className="text-end mb-10">
               <Button variant="phoenix-secondary" className="me-2">
                 Cancel Changes
               </Button>
               <Button variant="phoenix-primary">Save Information</Button>
             </div>
           </div>
-          <Row className="gy-5">
+          <Row className="gy-8">
             <Col xs={12} md={6}>
               <h4 className="text-emphasis">Transfer Ownership</h4>
               <p className="text-subtle">

@@ -6,8 +6,8 @@ import { Form } from 'react-bootstrap';
 const SettingsCompanyInfo = () => {
   return (
     <>
-      <h4 className="mb-4">Company Info</h4>
-      <div className="form-icon-container mb-3">
+      <h4 className="mb-6">Company Info</h4>
+      <div className="form-icon-container mb-4">
         <Form.Floating>
           <Form.Control
             id="companyName"

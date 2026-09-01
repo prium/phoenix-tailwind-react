@@ -22,12 +22,12 @@ const SocialProfile = () => {
 
   return (
     <>
-      <div className="mb-9">
+      <div className="mb-16">
         <SocialCoverCard />
-        <Row className="gy-3 gx-5 gx-xxl-6">
-          <Col xl={4} className="hidden d-xl-block">
-            <ProfileNavigation className="mb-8" />
-            <SocialPhotos className="mb-8" photos={socialPhotos} />
+        <Row className="gy-4 gx-8 2xl:gx-10">
+          <Col xl={4} className="hidden xl:block">
+            <ProfileNavigation className="mb-14" />
+            <SocialPhotos className="mb-14" photos={socialPhotos} />
             <MutualNavigation />
           </Col>
           <Col xl={8}>
@@ -35,7 +35,7 @@ const SocialProfile = () => {
           </Col>
         </Row>
       </div>
-      <NavbarBottom active="profile" className="d-xl-none" />
+      <NavbarBottom active="profile" className="xl:hidden" />
     </>
   );
 };

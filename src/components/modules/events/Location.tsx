@@ -9,12 +9,12 @@ const Mapbox = lazy(() => import('components/base/MapBox'));
 
 const Location = () => {
   return (
-    <div className="mb-8">
-      <h3 className="mb-5 mb-xl-4">Location</h3>
-      <div className="mb-3 mb-xl-4 location-map border border-subtle overflow-hidden">
+    <div className="mb-14">
+      <h3 className="mb-8 xl:mb-6">Location</h3>
+      <div className="mb-4 xl:mb-6 location-map border border-subtle overflow-hidden">
         <Suspense fallback={<PhoenixLoader />}>
           <Mapbox
-            className="border rounded-3"
+            className="border rounded-lg"
             options={{
               center: [-74.0020158, 40.7228022],
               zoom: 14,
@@ -23,7 +23,7 @@ const Location = () => {
           />
         </Suspense>
       </div>
-      <Row className="flex-between-center gx-0 gy-3">
+      <Row className="flex-between-center gx-0 gy-4">
         <Col xs={12} sm="auto" className="me-1">
           <div className="flex">
             <h5 className="font-bold text-highlight me-2 mb-0">
@@ -35,7 +35,7 @@ const Location = () => {
         <Col xs={12} sm="auto" xl={12}>
           <Button
             variant="phoenix-primary"
-            className="w-100"
+            className="w-full"
             startIcon={<FontAwesomeIcon icon={faRotate} className="me-2" />}
           >
             Get directions

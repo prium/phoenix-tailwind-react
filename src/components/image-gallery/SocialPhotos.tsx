@@ -12,9 +12,9 @@ const SocialPhotos = ({ className, photos }: SocialPhotosProps) => {
   const { lightboxProps, openLightbox } = useLightbox(photos);
   return (
     <div className={className}>
-      <div className="flex pb-4 align-items-end">
+      <div className="flex pb-6 items-end">
         <h3 className="flex-1 mb-0">Photos</h3>
-        <Link to="#!" className="font-bold text-md me-4">
+        <Link to="#!" className="font-bold text-md me-6">
           Albums
         </Link>
         <Link to="#!" className="font-bold text-md">
@@ -22,13 +22,13 @@ const SocialPhotos = ({ className, photos }: SocialPhotosProps) => {
         </Link>
       </div>
       <Lightbox {...lightboxProps} />
-      <Row className="g-3">
+      <Row className="g-4">
         {photos.map((img, index) => (
           <Col key={img} xs={4}>
             <img
               src={img}
               alt=""
-              className="w-100 rounded-3 cursor-pointer"
+              className="w-full rounded-lg cursor-pointer"
               onClick={() => openLightbox(index + 1)}
             />
           </Col>
