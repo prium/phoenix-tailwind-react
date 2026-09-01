@@ -734,15 +734,44 @@ export const pages: VisualPage[] = [
   },
 
   // file manager
+  // the "Total N items" counts are hardcoded in the gold pug (16 / 12) while
+  // React counts the rows it actually renders (20 / 16) — same digit count, so
+  // only two glyphs differ and the default tolerance covers it
   {
     name: 'file-manager-grid',
     react: '/apps/file-manager/grid-view',
-    gold: '/apps/file-manager/grid-view.html'
+    gold: '/apps/file-manager/grid-view.html',
+    probes: [
+      // sidebar: tree-view glyphs, storage meter segments, collapse chevrons
+      '.file-manager-sidebar .treeview-icon',
+      '.progress-stacked .progress',
+      '.collapse-indicator .toggle-icon',
+      // toolbar + card header controls
+      '.search-box .search-box-icon',
+      '.card-header .btn-phoenix-secondary',
+      // action bar info button and the per-file checkboxes / action menus
+      '.myfiles-action-bar .btn',
+      '.files-container .form-check-input',
+      '.file-box-wrapper .dropdown .btn'
+    ]
   },
   {
     name: 'file-manager-list',
     react: '/apps/file-manager/list-view',
-    gold: '/apps/file-manager/list-view.html'
+    gold: '/apps/file-manager/list-view.html',
+    probes: [
+      '.file-manager-sidebar .treeview-icon',
+      '.progress-stacked .progress',
+      '.collapse-indicator .toggle-icon',
+      '.search-box .search-box-icon',
+      '.card-header .btn-phoenix-secondary',
+      '.myfiles-action-bar .btn',
+      // table: bulk-select header box, row icon boxes, avatars, reveal menus
+      '.my-files-table thead .form-check-input',
+      '.my-files-table .square-icon-box',
+      '.my-files-table .avatar-group .avatar',
+      '.my-files-table .btn-reveal'
+    ]
   },
 
   // calendar + gantt
