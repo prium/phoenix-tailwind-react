@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { Editor as TinyMCEEditor } from 'tinymce';
 import { getColor } from 'helpers/utils';
@@ -53,6 +53,7 @@ const TinymceEditor = ({
 
   return (
     <Editor
+      licenseKey="gpl"
       tinymceScriptSrc="/tinymce/tinymce.min.js"
       apiKey={import.meta.env.VITE_TINYMCE_APIKEY}
       onFocus={handleEditorFocus}
@@ -63,7 +64,6 @@ const TinymceEditor = ({
       onEditorChange={onChange}
       init={{
         skin: 'oxide',
-        license_key: 'gpl',
         menubar: false,
         content_style: `
         body { 
