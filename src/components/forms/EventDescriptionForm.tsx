@@ -11,7 +11,7 @@ const options = [
 const EventDescriptionForm = () => {
   return (
     <>
-      <Col xs={12} className="gy-6">
+      <Col xs={12} className="gy-10">
         <FloatingLabel controlId="eventDescription" label="Description">
           <Form.Control
             as="textarea"
@@ -20,24 +20,24 @@ const EventDescriptionForm = () => {
           />
         </FloatingLabel>
       </Col>
-      <Col sm={6} className="gy-6">
+      <Col sm={6} className="gy-10">
         <FloatingLabel controlId="floatingOrganizersInput" label="ORGANIZERS">
           <Form.Control type="text" placeholder="ORGANIZERS" />
         </FloatingLabel>
       </Col>
-      <Col sm={6} className="gy-sm-6">
+      <Col sm={6} className="sm:gy-10">
         <FloatingLabel controlId="floatingSponsorsInput" label="SPONSORS">
           <Form.Control type="text" placeholder="SPONSORS" />
         </FloatingLabel>
       </Col>
-      <Col xs={12} className="gy-6">
+      <Col xs={12} className="gy-10">
         <Dropzone
           accept={{
             'image/*': ['.png', '.gif', '.jpeg', '.jpg']
           }}
         />
       </Col>
-      <Col xs={12} className="gy-6">
+      <Col xs={12} className="gy-10">
         <ReactSelect
           options={options}
           isMulti

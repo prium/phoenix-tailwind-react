@@ -30,19 +30,19 @@ const EmailDetail = () => {
       <Col>
         <Card className="email-content">
           <Card.Header className="border-0">
-            <div className="flex flex-between-center pb-3 border-bottom border-subtle">
+            <div className="flex flex-between-center pb-4 border-b border-subtle">
               <Button
                 as={Link}
                 to="/apps/email/inbox"
                 variant="link"
-                className="p-0 text-muted me-3"
+                className="p-0 text-muted me-4"
               >
                 <FontAwesomeIcon
                   icon={faAngleLeft}
                   className="font-black text-base"
                 />
               </Button>
-              <h3 className="flex-1 mb-0 lh-sm line-clamp-1">
+              <h3 className="flex-1 mb-0 leading-sm line-clamp-1">
                 Query about recently purchased soccer socks
               </h3>
 
@@ -56,15 +56,15 @@ const EmailDetail = () => {
               </RevealDropdownTrigger>
             </div>
           </Card.Header>
-          <Card.Body className="p-0 pb-4 scrollbar">
-            <div className="email-detail-content px-4">
-              <Row className="align-items-center gy-3 gx-2 mb-10">
+          <Card.Body className="p-0 pb-6 scrollbar">
+            <div className="email-detail-content px-6">
+              <Row className="items-center gy-4 gx-2 mb-18">
                 <Col
                   xs={12}
                   sm="auto"
                   lg={12}
                   xl="auto"
-                  className="flex gap-4 gap-lg-3 gap-xl-4 order-sm-1 order-lg-0 order-xl-1"
+                  className="flex gap-6 lg:gap-4 xl:gap-6 sm:order-1 lg:order-0 xl:order-1"
                 >
                   <TooltipIconButton title="Reply" icon={faReply} />
                   <TooltipIconButton title="Remove" icon={faTrashCan} />
@@ -80,7 +80,7 @@ const EmailDetail = () => {
                     <h5 className="mb-0 text-highlight me-2">
                       Jessica Ball
                     </h5>
-                    <p className="mb-0 lh-sm text-subtle text-md hidden d-md-block text-nowrap">
+                    <p className="mb-0 leading-sm text-subtle text-md hidden md:block whitespace-nowrap">
                       &lt; jessica.ball@email.com &gt;
                     </p>
                   </div>
@@ -100,7 +100,7 @@ const EmailDetail = () => {
                   </p>
                 </Col>
               </Row>
-              <div className="text-highlight text-md w-100 w-md-75 mb-8">
+              <div className="text-highlight text-md w-full md:w-3/4 mb-14">
                 <p>Dear Simp sons,</p>
                 <p>
                   Something in a thirty-acre thermal thicket of thorns and
@@ -119,10 +119,10 @@ const EmailDetail = () => {
                 <p className="mb-0">Best regards,</p>
                 <p>Jess</p>
               </div>
-              <div className="flex align-items-center mb-5">
+              <div className="flex items-center mb-8">
                 <Button
                   variant="link"
-                  className="text-highlight text-base text-decoration-none p-0"
+                  className="text-highlight text-base no-underline p-0"
                   type="button"
                   startIcon={
                     <FontAwesomeIcon icon={faPaperclip} className="me-2" />
@@ -131,8 +131,8 @@ const EmailDetail = () => {
                   2 Attachments
                 </Button>
               </div>
-              <Row className="pb-11 border-bottom border-subtle mb-4 gx-0 gy-2">
-                <Col xs="auto" className="me-3">
+              <Row className="pb-20 border-b border-subtle mb-6 gx-0 gy-2">
+                <Col xs="auto" className="me-4">
                   <AttachmentPreview
                     attachment={{
                       name: 'workflow-data.pdf',
@@ -143,7 +143,7 @@ const EmailDetail = () => {
                   />
                 </Col>
 
-                <Col xs="auto" className="me-3">
+                <Col xs="auto" className="me-4">
                   <AttachmentPreview
                     attachment={{
                       name: 'forest.jpg',
@@ -155,10 +155,10 @@ const EmailDetail = () => {
                   />
                 </Col>
               </Row>
-              <div className="flex justify-content-between">
+              <div className="flex justify-between">
                 <Button
                   variant="phoenix-secondary"
-                  className="me-1 text-nowrap px-2 px-sm-4"
+                  className="me-1 whitespace-nowrap px-2 sm:px-6"
                   endIcon={
                     <FontAwesomeIcon icon={faReply} className="ms-2 text-sm" />
                   }
@@ -167,7 +167,7 @@ const EmailDetail = () => {
                 </Button>
                 <Button
                   variant="phoenix-secondary"
-                  className="me-1 text-nowrap px-2 px-sm-4"
+                  className="me-1 whitespace-nowrap px-2 sm:px-6"
                   endIcon={
                     <FontAwesomeIcon icon={faReplyAll} className="ms-2 text-sm" />
                   }
@@ -176,7 +176,7 @@ const EmailDetail = () => {
                 </Button>
                 <Button
                   variant="phoenix-secondary"
-                  className="ms-auto text-nowrap px-2 px-sm-4"
+                  className="ms-auto whitespace-nowrap px-2 sm:px-6"
                   endIcon={
                     <FontAwesomeIcon icon={faShare} className="ms-2 text-sm" />
                   }

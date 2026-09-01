@@ -14,20 +14,20 @@ import { SingerPhotos, events } from 'data/eventsData';
 
 const EventDetail = () => {
   return (
-    <div className="pb-9">
+    <div className="pb-16">
       <PageBreadcrumb items={defaultBreadcrumbItems} />
-      <h2 className="mb-4 mb-lg-6">Event details</h2>
+      <h2 className="mb-6 lg:mb-10">Event details</h2>
       <img
         src={coverImg}
         alt=""
-        className="rounded w-100 fit-cover mb-5 mb-md-6 mb-xl-8"
+        className="rounded-md w-full fit-cover mb-8 md:mb-10 xl:mb-14"
         style={{ minHeight: '250px' }}
       />
-      <Row className="gx-lg-9">
-        <Col xl={8} className="border-end-xl">
-          <EventTitleCard className="mb-9" />
-          <h2 className="mb-3">About this event</h2>
-          <p className="text-justify text-muted mb-6 mb-xxl-8">
+      <Row className="lg:gx-16">
+        <Col xl={8} className="xl:border-e">
+          <EventTitleCard className="mb-16" />
+          <h2 className="mb-4">About this event</h2>
+          <p className="text-justify text-muted mb-10 2xl:mb-14">
             The Festival Season hopes to continue its rescheduled events in 2023
             during the spring block. This will be a continuation of the
             tradition for the loyal fanbase to watch a jam-packed day full of
@@ -39,8 +39,8 @@ const EventDetail = () => {
           </p>
           <EventsSingersSection photos={SingerPhotos} />
           <EventsTopicCovered />
-          <h4 className="mb-3 text-highlight fs-xxl-6">Refund Policy:</h4>
-          <ul className="mb-6 ps-4">
+          <h4 className="mb-4 text-highlight 2xl:text-xl">Refund Policy:</h4>
+          <ul className="mb-10 ps-6">
             <li>Contact the organizer to request a refund.</li>
             <li>Eventbrite’s fee is nonrefundable.</li>
           </ul>
@@ -49,8 +49,8 @@ const EventDetail = () => {
         <Col xl={4}>
           <EventsOrganized />
           <Location />
-          <h3 className="mb-3">Tags</h3>
-          <div className="flex flex-wrap mb-8">
+          <h3 className="mb-4">Tags</h3>
+          <div className="flex flex-wrap mb-14">
             <Badge variant="tag" className="me-2">
               Music
             </Badge>
@@ -59,7 +59,7 @@ const EventDetail = () => {
             </Badge>
             <Badge variant="tag">Greatest show on earth</Badge>
           </div>
-          <div className="border-top border-subtle">
+          <div className="border-t border-subtle">
             <Events events={events} title="Upcoming events" />
           </div>
         </Col>

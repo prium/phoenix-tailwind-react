@@ -24,3 +24,9 @@ class names with different meanings (`mb-4` → `mb-6` → `mb-10` …).
   src/components/list-items/EventItem.tsx, src/components/forms/Settings*.tsx,
   src/data/social, src/data/eventsData.ts (SocialCoverCard/SocialProfileCard/
   FeedTextarea/Mutual+ProfileNavigation/SocialMessages were converted in earlier waves)
+- chat/email/events closure: src/pages/apps/{chat,email,events},
+  src/components/modules/email, src/components/forms/Event*.tsx,
+  src/components/list-items/EventsTopicCovered.tsx, src/data/{chat.ts,email.tsx}
+  (modules/chat, chat-widget, EmailLayout, Chat/EventTitle cards, modules/events,
+  eventsData were converted in earlier waves — manual pass only; SharedFiles.tsx
+  still carries signature classes inside constructs the converter skips)

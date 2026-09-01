@@ -12,16 +12,16 @@ import { Link } from 'react-router';
 const CreateAnEvent = () => {
   return (
     <div>
-      <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-3" />
-      <Form className="mb-9">
-        <Row className="justify-content-between align-items-end g-3 mb-5">
+      <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-4" />
+      <Form className="mb-16">
+        <Row className="justify-between items-end g-4 mb-8">
           <Col xs={12} sm="auto" xl={8}>
             <h2 className="mb-0">Create an Event</h2>
           </Col>
           <Col xs={12} sm="auto" xl={4}>
             <div className="flex">
               <Button
-                className="px-5 me-2"
+                className="px-8 me-2"
                 variant="phoenix-primary"
                 type="button"
               >
@@ -31,24 +31,24 @@ const CreateAnEvent = () => {
                 variant="primary"
                 as={Link}
                 to="/apps/events/event-details"
-                className="px-5 w-100 text-nowrap"
+                className="px-8 w-full whitespace-nowrap"
               >
                 Publish Event
               </Button>
             </div>
           </Col>
         </Row>
-        <Row className="g-5">
+        <Row className="g-8">
           <Col xl={8}>
-            <Row className="gx-3 gy-4">
+            <Row className="gx-4 gy-6">
               <EventDetailsForm />
               <EventsSchedule />
               <EventDescriptionForm />
             </Row>
           </Col>
           <Col xl={4}>
-            <div className="border-bottom border-subtle pb-6 mb-6">
-              <h4 className="mb-4">Privacy</h4>
+            <div className="border-b border-subtle pb-10 mb-10">
+              <h4 className="mb-6">Privacy</h4>
               <Form.Check type="radio" id="privacy1" className="mb-2">
                 <Form.Check.Input
                   type="radio"
@@ -75,7 +75,7 @@ const CreateAnEvent = () => {
                 </Form.Check.Label>
               </Form.Check>
             </div>
-            <div className="border-bottom border-subtle mb-6">
+            <div className="border-b border-subtle mb-10">
               <Form.Check type="checkbox" id="flexChecked">
                 <Form.Check.Input
                   type="checkbox"
@@ -83,7 +83,7 @@ const CreateAnEvent = () => {
                   defaultChecked
                 />
                 <Form.Check.Label
-                  className="font-bold text-base mb-5"
+                  className="font-bold text-base mb-8"
                   htmlFor="flexChecked"
                 >
                   Show the number of available tickets

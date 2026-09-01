@@ -26,18 +26,18 @@ const InboxToolbar = ({ size = 'lg', className }: InboxToolbarProps) => {
       <div
         className={classNames(
           className,
-          'flex align-items-center flex-wrap position-sticky pb-2 bg-default z-2 email-toolbar'
+          'flex items-center flex-wrap sticky pb-2 bg-default z-2 email-toolbar'
         )}
       >
-        <div className="flex align-items-center flex-1 me-2">
+        <div className="flex items-center flex-1 me-2">
           <Button className="p-0 me-2" onClick={() => location.reload()}>
             <FontAwesomeIcon icon={faRedo} className="text-primary text-sm" />
           </Button>
-          <p className="font-semibold text-sm text-subtle text-opacity-85 mb-0 lh-sm text-nowrap">
+          <p className="font-semibold text-sm text-subtle text-opacity-85 mb-0 leading-sm whitespace-nowrap">
             Last refreshed 1m ago
           </p>
         </div>
-        <div className="flex gap-3">
+        <div className="flex gap-4">
           <p className="text-subtle text-opacity-85 text-md font-semibold mb-0">
             {size === 'lg' ? 'Showing : ' : ' '}
             <span className="text-default">1-7</span>
@@ -58,7 +58,7 @@ const InboxToolbar = ({ size = 'lg', className }: InboxToolbarProps) => {
           </Button>
         </div>
       </div>
-      <div className="border-y border-subtle py-2 flex justify-content-between">
+      <div className="border-y border-subtle py-2 flex justify-between">
         <IndeterminateCheckbox {...getParentCheckboxProps()} />
         <div className="flex gap-2">
           <TooltipIconButton

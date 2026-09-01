@@ -18,14 +18,14 @@ const EmailSidebarItem = ({ item }: { item: SidebarItem }) => {
       <Nav.Link
         as={Link}
         className={classNames(
-          'py-2 ps-0 pe-3 border-end border-bottom border-subtle text-start outline-none',
+          'py-2 ps-0 pe-6 border-e border-b border-subtle text-start outline-none',
           {
             active: item.active
           }
         )}
         to={item.link ? item.link : '#!'}
       >
-        <div className="flex gap-2 align-items-center">
+        <div className="flex gap-2 items-center">
           {item.icon}
           <span className="flex-1">{item.label}</span>
           {item.count && <span className="nav-item-count">{item.count}</span>}
@@ -40,12 +40,12 @@ const EmailSidebar = ({ hideSidebar }: { hideSidebar?: () => void }) => {
     <div>
       <div className="email-content scrollbar">
         <div className="flex flex-between-center mb-2">
-          <p className="text-uppercase text-sm text-subtle text-opacity-85 mb-0 font-bold">
+          <p className="uppercase text-sm text-subtle text-opacity-85 mb-0 font-bold">
             Mailbox
           </p>
           {hideSidebar && (
             <Button
-              className="d-lg-none p-0 mb-1"
+              className="lg:hidden p-0 mb-1"
               onClick={() => hideSidebar()}
             >
               <UilTimes fill='currentColor' size={16} />
@@ -53,14 +53,14 @@ const EmailSidebar = ({ hideSidebar }: { hideSidebar?: () => void }) => {
           )}
         </div>
 
-        <Nav className="flex-column border-top border-subtle text-md vertical-nav mb-4">
+        <Nav className="flex-col border-t border-subtle text-md vertical-nav mb-6">
           {mailboxItems.map(item => (
             <EmailSidebarItem item={item} key={item.label} />
           ))}
         </Nav>
 
         <div className="flex flex-between-center mb-2">
-          <p className="text-uppercase text-sm text-subtle text-opacity-85 mb-0 font-bold">
+          <p className="uppercase text-sm text-subtle text-opacity-85 mb-0 font-bold">
             Filtered
           </p>
           <Button
@@ -72,14 +72,14 @@ const EmailSidebar = ({ hideSidebar }: { hideSidebar?: () => void }) => {
           </Button>
         </div>
 
-        <Nav className="flex-column border-top border-subtle text-md vertical-nav mb-4">
+        <Nav className="flex-col border-t border-subtle text-md vertical-nav mb-6">
           {filteredItems.map(item => (
             <EmailSidebarItem item={item} key={item.label} />
           ))}
         </Nav>
 
         <div className="flex flex-between-center mb-2">
-          <p className="text-uppercase text-sm text-subtle text-opacity-85 mb-0 font-bold">
+          <p className="uppercase text-sm text-subtle text-opacity-85 mb-0 font-bold">
             Labels
           </p>
           <Button
@@ -91,7 +91,7 @@ const EmailSidebar = ({ hideSidebar }: { hideSidebar?: () => void }) => {
           </Button>
         </div>
 
-        <Nav className="flex-column border-top border-subtle text-md vertical-nav">
+        <Nav className="flex-col border-t border-subtle text-md vertical-nav">
           {labelItems.map(item => (
             <EmailSidebarItem item={item} key={item.label} />
           ))}

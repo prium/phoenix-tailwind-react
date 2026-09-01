@@ -15,8 +15,8 @@ const Compose = () => {
       <Col>
         <Card className="email-content">
           <Card.Body>
-            <form className="flex flex-column h-100">
-              <Row className="g-3 mb-2">
+            <form className="flex flex-col h-full">
+              <Row className="g-4 mb-2">
                 <Col xs={4}>
                   <Form.Control type="email" placeholder="To" />
                 </Col>
@@ -30,15 +30,15 @@ const Compose = () => {
                   <Form.Control type="text" placeholder="Subject" />
                 </Col>
               </Row>
-              <div className="mb-3 flex-1">
+              <div className="mb-4 flex-1">
                 <TinymceEditor
                   options={{
                     height: '100%'
                   }}
                 />
               </div>
-              <div className="flex justify-content-between align-items-center">
-                <div className="flex gap-3">
+              <div className="flex justify-between items-center">
+                <div className="flex gap-4">
                   <div>
                     <Button className="p-0">
                       <label
@@ -75,7 +75,7 @@ const Compose = () => {
                 <div className="flex">
                   <Button
                     variant="link"
-                    className="text-default text-sm text-decoration-none"
+                    className="text-default text-sm no-underline"
                   >
                     Discard
                   </Button>

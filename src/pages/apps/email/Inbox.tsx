@@ -9,7 +9,7 @@ const Inbox = () => {
   return (
     <EmailLayout page="inbox">
       <Col xs={12} lg>
-        <div className="px-lg-1">
+        <div className="lg:px-1">
           <BulkSelectProvider data={emails}>
             <InboxToolbar className="inbox-toolbar" />
             {emails.map((email, index) => (

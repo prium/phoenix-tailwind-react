@@ -7,10 +7,10 @@ import { Col, Form, Row } from 'react-bootstrap';
 const EventCustomFields = () => {
   return (
     <>
-      <h4 className="mb-3">Custom fields</h4>
-      <Row className="gx-3">
+      <h4 className="mb-4">Custom fields</h4>
+      <Row className="gx-4">
         <Col md={6} lg={12} xl={6}>
-          <Form.Group controlId="formFileSm" className="mb-3">
+          <Form.Group controlId="formFileSm" className="mb-4">
             <Form.Label>Name</Form.Label>
             <Form.Control
               type="text"
@@ -19,7 +19,7 @@ const EventCustomFields = () => {
           </Form.Group>
         </Col>
         <Col md={6} lg={12} xl={6}>
-          <Form.Group controlId="formFileSm" className="mb-3">
+          <Form.Group controlId="formFileSm" className="mb-4">
             <Form.Label>Type</Form.Label>
             <Form.Select>
               <option>Choose...</option>
@@ -29,13 +29,13 @@ const EventCustomFields = () => {
           </Form.Group>
         </Col>
         <Col xs={12}>
-          <Form.Group controlId="formFileSm" className="mb-3">
+          <Form.Group controlId="formFileSm" className="mb-4">
             <Form.Label>Field options</Form.Label>
             <Form.Control as="textarea" rows={6} placeholder="Description" />
           </Form.Group>
         </Col>
         <Col md={6} lg={12} xl={6}>
-          <Form.Group controlId="formFileSm" className="mb-3">
+          <Form.Group controlId="formFileSm" className="mb-4">
             <Form.Label>Name</Form.Label>
             <Form.Control
               type="text"
@@ -44,7 +44,7 @@ const EventCustomFields = () => {
           </Form.Group>
         </Col>
         <Col md={6} lg={12} xl={6}>
-          <Form.Group controlId="formFileSm" className="mb-3">
+          <Form.Group controlId="formFileSm" className="mb-4">
             <Form.Label>Type</Form.Label>
             <Form.Select>
               <option>Choose...</option>
@@ -54,7 +54,7 @@ const EventCustomFields = () => {
           </Form.Group>
         </Col>
         <Col xs={12}>
-          <Form.Group controlId="formFileSm" className="mb-3">
+          <Form.Group controlId="formFileSm" className="mb-4">
             <Form.Label>Field options</Form.Label>
             <Form.Control as="textarea" rows={6} placeholder="Description" />
           </Form.Group>

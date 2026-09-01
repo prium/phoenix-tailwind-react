@@ -6,7 +6,7 @@ import { Col, Form, Row } from 'react-bootstrap';
 const EventTicketPricing = () => {
   return (
     <>
-      <h4 className="mb-4">Ticket pricing</h4>
+      <h4 className="mb-6">Ticket pricing</h4>
       <Form.Check type="radio" id="freeTicket" className="form-check-inline">
         <Form.Check.Input type="radio" name="pricingRadio" defaultChecked />
         <Form.Check.Label htmlFor="freeTicket">Free</Form.Check.Label>
@@ -15,7 +15,7 @@ const EventTicketPricing = () => {
         <Form.Check.Input type="radio" name="pricingRadio" />
         <Form.Check.Label htmlFor="paidTicket">Paid</Form.Check.Label>
       </Form.Check>
-      <Row className="g-3 mb-7 mt-1 border-bottom border-subtle pb-5">
+      <Row className="g-4 mb-12 mt-1 border-b border-subtle pb-8">
         <Col xs={6} xl={7}>
           <h6 className="text-md">Option</h6>
         </Col>

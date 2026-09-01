@@ -84,7 +84,7 @@ export const labelItems: SidebarItem[] = [
     icon: (
       <FontAwesomeIcon
         icon={faCircle}
-        className="text-primary ms-n1"
+        className="text-primary -ms-1"
         transform="shrink-10"
       />
     ),
@@ -94,7 +94,7 @@ export const labelItems: SidebarItem[] = [
     icon: (
       <FontAwesomeIcon
         icon={faCircle}
-        className="text-primary-dark ms-n1"
+        className="text-primary-dark -ms-1"
         transform="shrink-10"
       />
     ),
@@ -104,7 +104,7 @@ export const labelItems: SidebarItem[] = [
     icon: (
       <FontAwesomeIcon
         icon={faCircle}
-        className="text-success ms-n1"
+        className="text-success -ms-1"
         transform="shrink-10"
       />
     ),
@@ -114,7 +114,7 @@ export const labelItems: SidebarItem[] = [
     icon: (
       <FontAwesomeIcon
         icon={faCircle}
-        className="text-warning ms-n1"
+        className="text-warning -ms-1"
         transform="shrink-10"
       />
     ),
@@ -124,7 +124,7 @@ export const labelItems: SidebarItem[] = [
     icon: (
       <FontAwesomeIcon
         icon={faCircle}
-        className="text-danger ms-n1"
+        className="text-danger -ms-1"
         transform="shrink-10"
       />
     ),
@@ -134,7 +134,7 @@ export const labelItems: SidebarItem[] = [
     icon: (
       <FontAwesomeIcon
         icon={faCircle}
-        className="text-info ms-n1"
+        className="text-info -ms-1"
         transform="shrink-10"
       />
     ),

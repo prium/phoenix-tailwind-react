@@ -4,7 +4,7 @@ import { Col, FloatingLabel, Form } from 'react-bootstrap';
 const EventsSchedule = () => {
   return (
     <>
-      <h4 className="mt-7">Schedule</h4>
+      <h4 className="mt-12">Schedule</h4>
       <Col sm={6}>
         <DatePicker
           render={(_, ref) => {
@@ -16,7 +16,7 @@ const EventsSchedule = () => {
                   ref={ref}
                   id="startDatepicker"
                 />
-                <label htmlFor="startDatepicker" className="ps-6">
+                <label htmlFor="startDatepicker" className="ps-10">
                   Start date
                 </label>
               </Form.Floating>
@@ -34,7 +34,7 @@ const EventsSchedule = () => {
                   placeholder="H:i"
                   ref={ref}
                   id="startTimepickerEvent"
-                  className="ps-3"
+                  className="ps-4"
                 />
                 <label htmlFor="startTimepickerEvent">Start Time</label>
               </Form.Floating>
@@ -59,7 +59,7 @@ const EventsSchedule = () => {
                   ref={ref}
                   id="endDatepicker"
                 />
-                <label htmlFor="endDatepicker" className="ps-6">
+                <label htmlFor="endDatepicker" className="ps-10">
                   End date
                 </label>
               </Form.Floating>
@@ -77,7 +77,7 @@ const EventsSchedule = () => {
                   placeholder="H:i"
                   ref={ref}
                   id="endTimepickerEvent"
-                  className="ps-3"
+                  className="ps-4"
                 />
                 <label htmlFor="endTimepickerEvent">End Time</label>
               </Form.Floating>
@@ -111,7 +111,7 @@ const EventsSchedule = () => {
                   placeholder="registration deadline"
                   ref={ref}
                   id="registrationDatepicker"
-                  className="ps-3"
+                  className="ps-4"
                 />
                 <label htmlFor="registrationDatepicker">
                   registration deadline

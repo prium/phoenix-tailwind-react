@@ -19,13 +19,13 @@ interface EmailRowProps {
 const EmailRow = ({ email, index }: EmailRowProps) => {
   const { getRowCheckboxProps } = useBulkSelect();
   return (
-    <div className="border-bottom border-subtle hover-actions-trigger py-3">
+    <div className="border-b border-subtle hover-actions-trigger py-4">
       <Row className="gx-2">
         <Col xs="auto">
-          <div className="flex flex-column flex-sm-row">
+          <div className="flex flex-col sm:flex-row">
             <IndeterminateCheckbox
               {...getRowCheckboxProps(String(index))}
-              className="mb-2 m-sm-0 me-sm-2"
+              className="mb-2 sm:m-0 sm:me-2"
             />
             <Button className="btn p-0">
               <StarCheckbox defaultChecked={email.starred} iconClass="text-md" />
@@ -91,7 +91,7 @@ const EmailRow = ({ email, index }: EmailRowProps) => {
           </span>
         </Col>
       </Row>
-      <div className="ms-4 mt-n3 mt-sm-0 ms-sm-11">
+      <div className="ms-6 -mt-4 sm:mt-0 sm:ms-20">
         <Link to="/apps/email/email-detail" className="block inbox-link">
           <span
             className={classNames('text-md line-clamp-1', {
@@ -109,7 +109,7 @@ const EmailRow = ({ email, index }: EmailRowProps) => {
         {email.attachments?.map(attachment => (
           <a
             href="#!"
-            className="d-inline-flex align-items-center border border-subtle rounded-full px-3 py-1 me-2 mt-2 inbox-link"
+            className="inline-flex items-center border border-subtle rounded-full px-4 py-1 me-2 mt-2 inbox-link"
             key={attachment.id}
           >
             <FontAwesomeIcon
