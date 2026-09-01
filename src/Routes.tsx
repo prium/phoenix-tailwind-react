@@ -530,15 +530,25 @@ const routes: RouteObject[] = [
                   },
                   {
                     path: 'gallery-masonry',
-                    element: <Suspense key="galleryMasonry" fallback={<PhoenixLoader />}>
-                      <GalleryMasonry />
-                    </Suspense>
+                    element: (
+                      <Suspense
+                        key="galleryMasonry"
+                        fallback={<PhoenixLoader />}
+                      >
+                        <GalleryMasonry />
+                      </Suspense>
+                    )
                   },
                   {
                     path: 'gallery-slider',
-                    element: <Suspense key="gallerySlider" fallback={<PhoenixLoader />}>
-                      <GallerySlider />
-                    </Suspense>
+                    element: (
+                      <Suspense
+                        key="gallerySlider"
+                        fallback={<PhoenixLoader />}
+                      >
+                        <GallerySlider />
+                      </Suspense>
+                    )
                   }
                 ]
               },

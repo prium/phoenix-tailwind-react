@@ -1,7 +1,6 @@
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'components/base/Button';
-import React from 'react';
 import { Modal } from 'react-bootstrap';
 import stopIcon from 'assets/img/icons/stop.png';
 import { useWizardFormContext } from 'providers/WizardFormProvider';
