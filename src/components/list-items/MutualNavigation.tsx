@@ -1,9 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button from 'components/base/Button';
+import { Col, Row } from '@hummingbirdui/react';
 import { mutualData } from 'data/social/dropdownData';
-import { Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router';
 
+/** `+ProfileNavigationTwo` in mixins/social/Profile.pug */
 const MutualNavigation = () => {
   return (
     <>
@@ -15,18 +15,14 @@ const MutualNavigation = () => {
       </div>
       <Row className="g-0 mb-8 lg:mb-0">
         {mutualData.map(item => (
-          <Col
-            xs={12}
-            key={item.label}
-            className="border-b border-subtle py-2"
-          >
-            <Button
-              variant="link"
-              className="ps-0 text-base text-muted hover-primary font-semibold"
-              startIcon={<FontAwesomeIcon icon={item.icon} className="me-2" />}
+          <Col xs={12} key={item.label} className="border-b border-subtle py-2">
+            <a
+              href="#!"
+              className="btn btn-link justify-start px-0 text-base text-muted text-primary-hover font-semibold"
             >
+              <FontAwesomeIcon icon={item.icon} className="me-2" />
               {item.label}
-            </Button>
+            </a>
           </Col>
         ))}
       </Row>

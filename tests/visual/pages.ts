@@ -477,12 +477,31 @@ export const pages: VisualPage[] = [
   {
     name: 'social-feed',
     react: '/apps/social/feed',
-    gold: '/apps/social/feed.html'
+    gold: '/apps/social/feed.html',
+    probes: [
+      // post reaction buttons + comment Reply buttons
+      'button.btn-link.font-extrabold',
+      // "Add comment" fields in the post footers
+      '.bg-subtle .form-control',
+      // reveal (ellipsis) buttons on posts / messages / events
+      '.btn-reveal',
+      // feed textarea action icons + privacy dropdown toggle
+      '.card-footer .btn.p-0'
+    ]
   },
   {
     name: 'social-profile',
     react: '/apps/social/profile',
-    gold: '/apps/social/profile.html'
+    gold: '/apps/social/profile.html',
+    probes: [
+      'button.btn-link.font-extrabold',
+      '.bg-subtle .form-control',
+      '.btn-reveal',
+      // profile cover card action buttons
+      '.card-body .btn-primary',
+      '.card-body .btn-phoenix-primary',
+      '.card-body .btn-phoenix-secondary'
+    ]
   },
   {
     name: 'social-settings',
