@@ -1,12 +1,15 @@
+import { cn } from '@hummingbirdui/react';
 import PostCard from 'components/modules/social/PostCard';
 import { Post } from 'data/social/postsData';
-import { Button } from 'react-bootstrap';
 
 interface SocialPostsProps {
   posts: Post[];
+  /** Gold feed adds `text-primary` to the Load more link; profile does not. */
+  loadMoreClassName?: string;
 }
 
-const SocialPosts = ({ posts }: SocialPostsProps) => {
+/** `+PostList` / `+ProfilePostList` + the page-level Load more link */
+const SocialPosts = ({ posts, loadMoreClassName }: SocialPostsProps) => {
   return (
     <>
       <div className="mb-16">
@@ -15,9 +18,12 @@ const SocialPosts = ({ posts }: SocialPostsProps) => {
         ))}
       </div>
       <div className="text-center">
-        <Button variant="link" className="text-base p-0">
+        <a
+          href="#!"
+          className={cn('btn btn-link text-base p-0', loadMoreClassName)}
+        >
           Load more
-        </Button>
+        </a>
       </div>
     </>
   );

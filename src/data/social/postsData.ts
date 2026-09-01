@@ -1,9 +1,11 @@
 import team9 from 'assets/img/team/9.webp';
 import team14 from 'assets/img/team/14.webp';
+import team20 from 'assets/img/team/20.webp';
 import team23 from 'assets/img/team/23.webp';
 import team27 from 'assets/img/team/27.webp';
 import team30 from 'assets/img/team/30.webp';
 import team59 from 'assets/img/team/59.webp';
+import team61 from 'assets/img/team/61.webp';
 import team62 from 'assets/img/team/62.webp';
 import gallery17 from 'assets/img/gallery/17.png';
 import gallery18 from 'assets/img/gallery/18.png';
@@ -23,7 +25,8 @@ import img5 from 'assets/img/gallery/15.png';
 import img6 from 'assets/img/gallery/16.png';
 
 export interface Image {
-  cols: number;
+  /** Gold column span classes: `col-3` / `col-6`. */
+  cols: 3 | 6;
   src: string;
 }
 export interface Reply {
@@ -53,10 +56,13 @@ export interface Post {
   caption: string;
   images?: Image[];
   comments?: Comment[];
+  /** Avatar shown beside the "Add comment" input (gold `commentInputAvatar`). */
+  commentInputAvatar: string;
+  /** Literal gold strings — the pug hardcodes casing (e.g. '56 shares'). */
   interactions: {
-    likes: number;
-    comments: number;
-    shares: number;
+    likes: string;
+    comments: string;
+    shares: string;
   };
 }
 
@@ -101,10 +107,11 @@ export const feedPosts: Post[] = [
         ]
       }
     ],
+    commentInputAvatar: team59,
     interactions: {
-      likes: 345,
-      comments: 45,
-      shares: 56
+      likes: '345 Likes',
+      comments: '45 Comments',
+      shares: '56 Shares'
     }
   },
   {
@@ -117,10 +124,11 @@ export const feedPosts: Post[] = [
     caption: `A guy enters a bakery while carrying a 25-pound haddock.
       He asks the baker if he makes fish cakes. The rather perplexed baker responds in the negative.
       The guy responds "That's unfortunate.Today is his birthday"`,
+    commentInputAvatar: team61,
     interactions: {
-      likes: 23,
-      comments: 9,
-      shares: 3
+      likes: '23 Likes',
+      comments: '9 Comments',
+      shares: '3 Shares'
     }
   },
   {
@@ -159,10 +167,11 @@ export const feedPosts: Post[] = [
         ]
       }
     ],
+    commentInputAvatar: team59,
     interactions: {
-      likes: 345,
-      comments: 45,
-      shares: 56
+      likes: '345 Likes',
+      comments: '45 Comments',
+      shares: '56 Shares'
     }
   }
 ];
@@ -209,10 +218,11 @@ export const profilePosts: Post[] = [
         ]
       }
     ],
+    commentInputAvatar: team9,
     interactions: {
-      likes: 345,
-      comments: 45,
-      shares: 56
+      likes: '345 Likes',
+      comments: '45 Comments',
+      shares: '56 shares'
     }
   },
   {
@@ -226,10 +236,11 @@ export const profilePosts: Post[] = [
     caption: `A guy enters a bakery while carrying a 25-pound haddock.
       He asks the baker if he makes fish cakes. The rather perplexed baker responds in the negative.
       The guy responds "That's unfortunate.Today is his birthday"`,
+    commentInputAvatar: team20,
     interactions: {
-      likes: 23,
-      comments: 9,
-      shares: 3
+      likes: '23 Likes',
+      comments: '9 Comments',
+      shares: '3 shares'
     }
   },
   {
@@ -268,10 +279,11 @@ export const profilePosts: Post[] = [
         ]
       }
     ],
+    commentInputAvatar: team14,
     interactions: {
-      likes: 345,
-      comments: 45,
-      shares: 56
+      likes: '345 Likes',
+      comments: '45 Comments',
+      shares: '56 shares'
     }
   }
 ];

@@ -1,12 +1,13 @@
+import { Col, Row } from '@hummingbirdui/react';
 import Lightbox from 'components/base/LightBox';
 import { Image } from 'data/social/postsData';
 import useLightbox from 'hooks/useLightbox';
-import { Col, Row } from 'react-bootstrap';
 
 interface PostGalleryProps {
   images: Image[];
 }
 
+/** Post image grid of `+Post` in mixins/social/Feed.pug */
 const PostGallery = ({ images }: PostGalleryProps) => {
   const imageArray = images.map(image => image.src);
   const { lightboxProps, openLightbox } = useLightbox(imageArray);

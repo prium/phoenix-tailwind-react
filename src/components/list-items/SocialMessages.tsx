@@ -1,31 +1,30 @@
+import { Dropdown } from '@hummingbirdui/react';
 import Avatar from 'components/base/Avatar';
 import RevealDropdown, {
   RevealDropdownTrigger
 } from 'components/base/RevealDropdown';
 import { Message } from 'data/social/messages';
-import { Dropdown } from 'react-bootstrap';
 import { Link } from 'react-router';
 
 interface SocialMessagesProps {
   messages: Message[];
 }
 
+/** `+Messages` in mixins/social/Feed.pug */
 const SocialMessages = ({ messages }: SocialMessagesProps) => {
   return (
     <>
-      <div className="flex flex-between-center pb-4 border-b border-dashed">
+      <div className="flex flex-between-center pb-4 border-b border-subtle border-dashed">
         <h3 className="mb-0">
           Messages
           <span className="text-subtle ms-2 font-normal">(97)</span>
         </h3>
         <RevealDropdownTrigger>
-          <RevealDropdown>
-            <Dropdown.Item eventKey="1">Edit</Dropdown.Item>
-            <Dropdown.Item eventKey="2" className="text-danger">
-              Delete
-            </Dropdown.Item>
-            <Dropdown.Item eventKey="2">Download</Dropdown.Item>
-            <Dropdown.Item eventKey="2">Report abuse</Dropdown.Item>
+          <RevealDropdown btnClassName="flex">
+            <Dropdown.Item>Edit</Dropdown.Item>
+            <Dropdown.Item className="text-danger">Delete</Dropdown.Item>
+            <Dropdown.Item>Download</Dropdown.Item>
+            <Dropdown.Item>Report abuse</Dropdown.Item>
           </RevealDropdown>
         </RevealDropdownTrigger>
       </div>
@@ -39,6 +38,7 @@ const SocialMessages = ({ messages }: SocialMessagesProps) => {
               size={message.avatar.size}
               src={message.avatar.img}
               status={message.avatar.status}
+              placeholder={message.avatar.imgClass === 'avatar-placeholder'}
             />
           </div>
           <Link to="/apps/chat" className="no-underline flex-1">

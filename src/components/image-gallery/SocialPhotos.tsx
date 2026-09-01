@@ -1,6 +1,6 @@
+import { Col, Row } from '@hummingbirdui/react';
 import { Link } from 'react-router';
 import useLightbox from 'hooks/useLightbox';
-import { Col, Row } from 'react-bootstrap';
 import Lightbox from 'components/base/LightBox';
 
 interface SocialPhotosProps {
@@ -8,6 +8,7 @@ interface SocialPhotosProps {
   photos: string[];
 }
 
+/** `+Photos` in mixins/social/Feed.pug */
 const SocialPhotos = ({ className, photos }: SocialPhotosProps) => {
   const { lightboxProps, openLightbox } = useLightbox(photos);
   return (
