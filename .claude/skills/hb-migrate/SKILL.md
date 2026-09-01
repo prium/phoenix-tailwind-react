@@ -38,8 +38,16 @@ repeatedly across pages** — create or extend a named component under
 and use that everywhere. Existing wrappers: `IndeterminateCheckbox`,
 `CheckboxItem`, `CheckButton`, `Avatar`/`AvatarDropdown`, `Unicon` (`lineBox`
 for the gold `span.uil` 1lh box), `buildSelectionColumn` (hooks/useAdvanceTable),
-`AdvanceTableFooter` (gold list.js pagination), `DatePicker`, `ReactSelect`.
+`AdvanceTableFooter` (gold list.js pagination), `DatePicker`, `ReactSelect`,
+`FloatingIconField`, `FloatingDatePicker`, `PhoenixFloatingLabel`,
+`InlineCheckItem`, `WizardPager`, `DialogHeading`.
 Check for one of these before writing gold markup by hand.
+
+**Modal headings:** HB `Dialog.Title` always emits `.modal-title`, and the
+phoenix skin styles that utility (`text-lg text-muted`). Most gold modal
+headings do **not** carry `.modal-title`, so `<Dialog.Title asChild><h3 …>`
+silently resizes them — use `components/base/DialogHeading` (renders the gold
+heading + an sr-only Radix title) unless the gold heading really has the class.
 
 **Never guess a class from Bootstrap memory.** Bootstrap `mb-4` ≠ Tailwind `mb-4`.
 Open the pug mixin and copy its class string.
