@@ -1,62 +1,60 @@
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Col, Input, Row } from '@hummingbirdui/react';
 import Button from 'components/base/Button';
-import { Col, Form, Row } from 'react-bootstrap';
+import InlineCheckItem from 'components/common/InlineCheckItem';
 
+/** "Ticket pricing" block of `+CreateEvent` in mixins/events/CreateEvent.pug */
 const EventTicketPricing = () => {
   return (
     <>
-      <h4 className="mb-6">Ticket pricing</h4>
-      <Form.Check type="radio" id="freeTicket" className="form-check-inline">
-        <Form.Check.Input type="radio" name="pricingRadio" defaultChecked />
-        <Form.Check.Label htmlFor="freeTicket">Free</Form.Check.Label>
-      </Form.Check>
-      <Form.Check type="radio" id="paidTicket" className="form-check-inline">
-        <Form.Check.Input type="radio" name="pricingRadio" />
-        <Form.Check.Label htmlFor="paidTicket">Paid</Form.Check.Label>
-      </Form.Check>
+      <h4 className="text-lg mb-7">Ticket pricing</h4>
+      <InlineCheckItem
+        className="me-4"
+        id="freeTicket"
+        name="ticketPricing"
+        value="freeTicket"
+        label="Free"
+        defaultChecked
+      />{' '}
+      <InlineCheckItem
+        className="me-4"
+        id="paidTicket"
+        name="ticketPricing"
+        value="paidTicket"
+        label="Paid"
+      />
       <Row className="g-4 mb-12 mt-1 border-b border-subtle pb-8">
-        <Col xs={6} xl={7}>
-          <h6 className="text-md">Option</h6>
+        {/* the stray `col` class is verbatim from the gold pug */}
+        <Col xs={6} xl={7} className="col">
+          <h4 className="text-md">Option</h4>
         </Col>
         <Col xs={6} xl={5}>
-          <h6 className="text-md">Price</h6>
+          <h4 className="text-md">Price</h4>
         </Col>
         <Col xs={6} xl={7}>
-          <Form.Control type="text" placeholder="Top Gallery" />
+          <Input type="text" placeholder="Top Gallery" />
         </Col>
         <Col xs={6} xl={5}>
-          <Form.Control
-            type="number"
-            placeholder="$0.0"
-            className="input-spin-none"
-          />
+          <Input type="number" placeholder="$0.0" />
         </Col>
         <Col xs={6} xl={7}>
-          <Form.Control type="text" placeholder="VIP" />
+          <Input type="text" placeholder="VIP" />
         </Col>
         <Col xs={6} xl={5}>
-          <Form.Control
-            type="number"
-            placeholder="$0.0"
-            className="input-spin-none"
-          />
+          <Input type="number" placeholder="$0.0" />
         </Col>
         <Col xs={6} xl={7}>
-          <Form.Control type="text" placeholder="Front row" />
+          <Input type="text" placeholder="Front row" />
         </Col>
         <Col xs={6} xl={5}>
-          <Form.Control
-            type="number"
-            placeholder="$0.0"
-            className="input-spin-none"
-          />
+          <Input type="number" placeholder="$0.0" />
         </Col>
         <Col xs={12}>
           <Button
+            variant="link"
             className="p-0"
             startIcon={<FontAwesomeIcon icon={faPlus} className="me-2" />}
-            variant="link"
           >
             Add an option
           </Button>

@@ -587,11 +587,35 @@ export const pages: VisualPage[] = [
   {
     name: 'event-detail',
     react: '/apps/events/event-detail',
-    gold: '/apps/events/event-detail.html'
+    gold: '/apps/events/event-detail.html',
+    probes: [
+      // feather icon chips + button glyphs of the title card / sidebar
+      '.bg-info-subtle',
+      '.bg-primary-subtle',
+      '.fa-heart',
+      '.fa-share-nodes',
+      '.fa-calendar-plus',
+      '.fa-user-plus',
+      '.fa-route',
+      // "Share with Friends" square buttons + sidebar tag badges
+      '.btn-square',
+      '.badge-tag'
+    ]
   },
   {
     name: 'event-create',
     react: '/apps/events/create-an-event',
-    gold: '/apps/events/create-an-event.html'
+    gold: '/apps/events/create-an-event.html',
+    probes: [
+      // schedule datepicker glyphs + their floating inputs
+      '.form-control-icon-start',
+      '.input-group-icon .form-control',
+      '.datetimepicker',
+      // inline Online/Offline/Both + Free/Paid radios; privacy radios
+      '[class="form-check-inline me-4"] .form-check-input',
+      '.form-check-input.mt-1',
+      // dropzone prompt box
+      '.dz-message'
+    ]
   }
 ];
