@@ -1,108 +1,108 @@
 import { faFolder } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
+import { cn } from '@hummingbirdui/react';
 import { TreeViewItem, treeviewItems } from 'data/treeview';
 import { useState } from 'react';
-import { Collapse } from 'react-bootstrap';
-import { Link } from 'react-router';
 
-interface TreeviewCollapseItemProps {
-  item: TreeViewItem;
-  treeviewId: string;
-}
-
-const TreeviewListItem = ({ item }: { item: TreeViewItem }) => {
-  return (
-    <li className="treeview-list-item">
-      <div className="treeview-item">
-        <a href="#!" className="flex-1 ps-2 ms-2">
-          <p className="treeview-text whitespace-nowrap">
-            {item.icon ? (
-              <FontAwesomeIcon
-                icon={item.icon}
-                className={classNames('treeview-icon', {
-                  'text-info-light': item.id === '2-3'
-                })}
-              />
-            ) : (
-              <span className={`treeview-icon}`} />
-            )}
-
-            {item.name}
-            {item.dot && <span className={`treeview-dot bg-${item.dot}`} />}
-          </p>
-        </a>
-      </div>
-    </li>
-  );
+/** literal classes so Tailwind can see them (`bg-${dot}` would be pruned) */
+const dotClass: Record<string, string> = {
+  danger: 'bg-danger',
+  warning: 'bg-warning',
+  success: 'bg-success',
+  info: 'bg-info',
+  primary: 'bg-primary'
 };
 
-const TreeviewCollapseItem = ({
-  item,
-  treeviewId
-}: TreeviewCollapseItemProps) => {
-  const [open, setOpen] = useState(item.show);
+const TREEVIEW_ID = 'treeviewExample';
+
+const TreeviewDot = ({ dot }: { dot: string }) => (
+  <span className={cn('treeview-dot', dotClass[dot])} />
+);
+
+/** Gold `+TreeviewListItem` in mixins/file-manager/FileManagerOffcanvas.pug. */
+const TreeviewLeaf = ({ item }: { item: TreeViewItem }) => (
+  <li className="treeview-list-item">
+    <div className="treeview-item">
+      <a href="#!" className="flex-1 ps-2 ms-2">
+        <p className="treeview-text text-nowrap">
+          {item.icon && (
+            <FontAwesomeIcon icon={item.icon} className="treeview-icon" />
+          )}
+          {item.name}
+          {item.dot && <TreeviewDot dot={item.dot} />}
+        </p>
+      </a>
+    </div>
+  </li>
+);
+
+/**
+ * Gold `+SingleItem`. The chevron is drawn by
+ * `.treeview [data-bs-toggle='collapse']::after` (components/treeview.css), so
+ * the toggle has to keep the gold `data-bs-toggle` + `aria-expanded` attributes
+ * and the child list the `collapse`/`show` pair.
+ *
+ * Every branch starts collapsed like the gold page does: its treeview.js throws
+ * on `window.hummingbird.Collapse` before it can honour `data-show`, so nothing
+ * is ever expanded there.
+ */
+const TreeviewBranch = ({ item }: { item: TreeViewItem }) => {
+  const [open, setOpen] = useState(false);
+  const listId = `${TREEVIEW_ID}-${item.id}`;
+
   return (
     <li className="treeview-list-item">
-      <Link
-        to=""
+      <a
+        data-bs-toggle="collapse"
+        href={`#${listId}`}
         role="button"
         aria-expanded={open}
-        onClick={() => setOpen(!open)}
-        className="treeview-collapse-item"
+        onClick={event => {
+          event.preventDefault();
+          setOpen(prev => !prev);
+        }}
       >
-        <p className="treeview-text whitespace-nowrap">
+        <p className="treeview-text text-nowrap">
           <FontAwesomeIcon
             icon={faFolder}
-            className={classNames('treeview-icon', {
-              'text-info-light': item.id === '2-3'
+            className={cn('treeview-icon', {
+              'text-info-light!': item.id === '2-3'
             })}
           />
           {item.name}
           {item.badge && <span className="treeview-badge">{item.badge}</span>}
-          {item.dot && <span className={`treeview-dot bg-${item.dot}`} />}
+          {item.dot && <TreeviewDot dot={item.dot} />}
         </p>
-      </Link>
-      <Collapse in={open}>
-        <ul
-          className="treeview-list treeview-border"
-          id={`${treeviewId}-${item.id}`}
-        >
-          {item.children?.map((child, index) =>
-            child.children ? (
-              <TreeviewCollapseItem
-                key={index}
-                item={child}
-                treeviewId="treeviewExample"
-              />
-            ) : (
-              <TreeviewListItem key={index} item={child} />
-            )
-          )}
-        </ul>
-      </Collapse>
+      </a>
+      <ul
+        className={cn('collapse treeview-list treeview-border', {
+          'show collapse-show': open
+        })}
+        id={listId}
+        data-show={String(Boolean(item.show))}
+      >
+        {item.children?.map((child, index) =>
+          child.children ? (
+            <TreeviewBranch key={index} item={child} />
+          ) : (
+            <TreeviewLeaf key={index} item={child} />
+          )
+        )}
+      </ul>
     </li>
   );
 };
 
-const TreeView = () => {
-  return (
-    <>
-      <ul className="mb-0 treeview" id="treeviewExample">
-        {treeviewItems.map((item, index) =>
-          item.children ? (
-            <TreeviewCollapseItem
-              key={index}
-              item={item}
-              treeviewId={`tree${index}`}
-            />
-          ) : (
-            <TreeviewListItem key={index} item={item} />
-          )
-        )}
-      </ul>
-    </>
-  );
-};
+const TreeView = () => (
+  <ul className="mb-0 treeview" id={TREEVIEW_ID}>
+    {treeviewItems.map((item, index) =>
+      item.children ? (
+        <TreeviewBranch key={index} item={item} />
+      ) : (
+        <TreeviewLeaf key={index} item={item} />
+      )
+    )}
+  </ul>
+);
 
 export default TreeView;

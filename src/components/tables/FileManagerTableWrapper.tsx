@@ -1,295 +1,199 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import AdvanceTableProvider from 'providers/AdvanceTableProvider';
-import React, { PropsWithChildren } from 'react';
-import { Link } from 'react-router';
-import {
-  faFolder,
-  faFileWord,
-  faFileExcel,
-  faFileInvoice,
-  faFileZipper,
-  faFilePdf,
-  faFileCsv
-} from '@fortawesome/free-solid-svg-icons';
-import Avatar from 'components/base/Avatar';
-import AvatarDropdown from 'components/common/AvatarDropdown';
-import RevealDropdown, {
-  RevealDropdownTrigger
-} from 'components/base/RevealDropdown';
-import { Dropdown } from 'react-bootstrap';
-import useLightbox from 'hooks/useLightbox';
-import Lightbox from 'components/base/LightBox';
-import useAdvanceTable from 'hooks/useAdvanceTable';
-import { File } from 'data/file-manager';
+import { faEllipsisH } from '@fortawesome/free-solid-svg-icons';
 import { ColumnDef } from '@tanstack/react-table';
-import { useEffect, useRef } from 'react';
+import Avatar from 'components/base/Avatar';
+import IndeterminateCheckbox from 'components/base/IndeterminateCheckbox';
+import AvatarDropdown from 'components/common/AvatarDropdown';
+import FilesDropdown from 'components/modules/file-manager/FilesDropdown';
+import FileIcon from 'components/modules/file-manager/myfile-contents/FileIcon';
+import { File } from 'data/file-manager';
+import useAdvanceTable from 'hooks/useAdvanceTable';
+import AdvanceTableProvider from 'providers/AdvanceTableProvider';
 import { useFileManagerContext } from 'providers/FileManagerProvider';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
+import { PropsWithChildren } from 'react';
 
-const RenderFileIcon = ({ file }: { file: File }) => {
-  switch (file.type) {
-    case 'folder':
-      return (
-        <FontAwesomeIcon
-          icon={faFolder}
-          className={classNames(
-            'text-md',
-            file.id === 3 ? 'text-info-light' : 'text-subtle'
-          )}
-        />
-      );
-    case 'doc':
-      return (
-        <FontAwesomeIcon
-          icon={faFileWord}
-          className="text-md text-subtle"
-        />
-      );
-    case 'xls':
-    case 'xlx':
-      return (
-        <FontAwesomeIcon
-          icon={faFileExcel}
-          className="text-md text-subtle"
-        />
-      );
-    case 'source-code':
-    case 'html':
-      return (
-        <FontAwesomeIcon
-          icon={faFileInvoice}
-          className="text-md text-subtle"
-        />
-      );
-    case 'zip':
-      return (
-        <FontAwesomeIcon
-          icon={faFileZipper}
-          className="text-md text-subtle"
-        />
-      );
-    case 'pdf':
-      return (
-        <FontAwesomeIcon icon={faFilePdf} className="text-md text-subtle" />
-      );
-    case 'csv':
-      return (
-        <FontAwesomeIcon icon={faFileCsv} className="text-md text-subtle" />
-      );
-    case 'image':
-      return (
-        <img
-          className="w-full h-full pointer-events-none"
-          src={file.img}
-          alt=""
-          style={{ aspectRatio: '16/9' }}
-        />
-      );
-    case 'video':
-      return (
-        <img
-          className="w-full h-full pointer-events-none"
-          src={file.thumb}
-          alt=""
-          style={{ aspectRatio: '16/9' }}
-        />
-      );
-    default:
-      return null;
-  }
+/** the gold list view only renders the first 16 of the 20 demo files */
+export const LIST_VIEW_ROWS = 16;
+
+const NameCell = ({ file }: { file: File }) => {
+  const { checkedFileIds, setCheckedFileIds } = useFileManagerContext();
+  const fileId = String(file.id);
+
+  return (
+    <div className="underline-on-hover flex items-center relative gap-4">
+      <input
+        className="form-check-input text-base mt-0 me-0"
+        type="checkbox"
+        id={fileId}
+        data-bulk-select-row
+        data-file={fileId}
+        checked={checkedFileIds.includes(file.id)}
+        onChange={() =>
+          setCheckedFileIds(prev =>
+            prev.includes(file.id)
+              ? prev.filter(id => id !== file.id)
+              : [...prev, file.id]
+          )
+        }
+      />
+      <label
+        className="square-icon-box border border-subtle overflow-hidden stretched-link"
+        htmlFor={fileId}
+        data-file={fileId}
+        data-file-thumbnail={
+          file.type === 'video'
+            ? file.video
+            : file.type === 'image'
+              ? file.img
+              : undefined
+        }
+      >
+        <FileIcon file={file} className="text-md" />
+        {file.img && (
+          <img
+            className="w-full h-full pointer-events-none"
+            src={file.img}
+            alt=""
+          />
+        )}
+        {file.video && (
+          <img
+            className="w-full h-full pointer-events-none"
+            src={file.thumb}
+            alt=""
+          />
+        )}
+      </label>
+      <a className="font-semibold text-highlight name" href="#!">
+        {file.name}
+      </a>
+    </div>
+  );
 };
+
+const SharedCell = ({ file }: { file: File }) => (
+  <div className="avatar-group avatar-group-dense">
+    {file.assignees.map((member, index) => (
+      <AvatarDropdown
+        key={index}
+        user={{
+          ...member,
+          id: index,
+          username: 'tyrion222',
+          connections: 224,
+          mutual: 23
+        }}
+        size="s"
+        dropdownClass="dropdown-toggle dropdown-caret-none"
+        className="border border-subtle-subtle"
+      />
+    ))}
+    {file.more && (
+      <Avatar size="s" variant="name">
+        {file.more}
+      </Avatar>
+    )}
+  </div>
+);
+
+/**
+ * Columns of the gold `+MyFilesTable` (mixins/file-manager/MyFilesTable.pug).
+ * The gold has no separate bulk-select column — the checkbox lives in the NAME
+ * header/cell — and its header labels are literally uppercase.
+ */
 const columns: ColumnDef<File>[] = [
   {
-    id: 'Name',
-    header: 'Name',
+    id: 'name',
     accessorFn: ({ name }) => name,
-    cell: ({ row }: any) => {
-      const { original } = row;
-      const file = original;
-      const clickTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-
-      const attachment = () => {
-        if (file.type === 'pdf' && file.pdf) {
-          return (
-            <iframe
-              key={file.name}
-              src={file.pdf}
-              title="PDF Viewer"
-              width="1900px"
-              height="1920px"
-            />
-          );
-        }
-        if (file.type === 'video' && file.video) {
-          return file.video;
-        }
-        if (file.type === 'image' && file.img) {
-          return file.img;
-        }
-        return '';
-      };
-      const { lightboxProps, openLightbox } = useLightbox([attachment()]);
-
-      return (
-        <>
-          <Lightbox {...lightboxProps} />
-          <Link
-            to="#!"
-            className={`flex items-center gap-4 font-semibold text-highlight ${
-              row.getIsSelected() ? 'file-checked' : ''
-            }`}
-            onClick={e => {
-              if (clickTimeoutRef.current)
-                clearTimeout(clickTimeoutRef.current);
-              clickTimeoutRef.current = setTimeout(() => {
-                row.getToggleSelectedHandler()(e);
-              }, 250);
-            }}
-            onDoubleClick={e => {
-              if (clickTimeoutRef.current)
-                clearTimeout(clickTimeoutRef.current);
-              if (['image', 'video', 'pdf'].includes(file.type)) {
-                openLightbox(1);
-                !row.getIsSelected() && row.getToggleSelectedHandler()(e);
-              }
-            }}
-          >
-            <div className="square-icon-box border border-subtle overflow-hidden relative">
-              <RenderFileIcon file={original} />
-            </div>
-            <p className="mb-0">{original.name}</p>
-          </Link>
-        </>
-      );
-    },
-    meta: {
-      cellProps: { className: 'py-0 ps-0' },
-      headerProps: {
-        style: { minWidth: 210 },
-        className: 'whitespace-nowrap text-subtle ps-0'
-      }
-    },
-    enableSorting: true
-  },
-  {
-    accessorKey: 'shared',
-    header: 'Shared',
-    cell: ({ row: { original } }) => {
-      const data = original;
-      return (
-        <Avatar.Group size="s">
-          {data.assignees.map((member, index) => (
-            <AvatarDropdown
-              key={index}
-              user={{
-                ...member,
-                id: index,
-                username: '',
-                connections: 23,
-                mutual: 4
-              }}
-              size="s"
-            />
-          ))}
-        </Avatar.Group>
-      );
-    },
     enableSorting: false,
+    header: ({ table }) => (
+      <>
+        <IndeterminateCheckbox
+          className="text-base"
+          id="bulk-select-file-manager"
+          checked={table.getIsAllRowsSelected()}
+          indeterminate={table.getIsSomeRowsSelected()}
+          onChange={table.getToggleAllRowsSelectedHandler()}
+        />
+        <span className="sort ms-14" data-sort="name">
+          NAME
+        </span>
+      </>
+    ),
+    cell: ({ row }) => <NameCell file={row.original} />,
     meta: {
       headerProps: {
-        style: { minWidth: 150 },
-        className: 'py-2 text-subtle'
+        scope: 'col',
+        className: 'ps-0 pt-1 whitespace-nowrap flex items-center pb-3.5'
+      },
+      cellProps: { className: 'whitespace-nowrap py-0' }
+    }
+  },
+  {
+    id: 'shared',
+    accessorFn: ({ assignees }) => assignees.length,
+    header: 'SHARED',
+    cell: ({ row }) => <SharedCell file={row.original} />,
+    meta: {
+      headerProps: { scope: 'col', className: 'pt-1 pb-3.5 min-w-37.5' },
+      cellProps: { className: 'shared whitespace-nowrap ps-4' }
+    }
+  },
+  {
+    id: 'modified',
+    accessorKey: 'modified',
+    header: 'LAST MODIFIED',
+    meta: {
+      headerProps: { scope: 'col', className: 'pt-1 pb-3.5 min-w-37.5' },
+      cellProps: {
+        className: 'modified time whitespace-nowrap font-semibold text-subtle'
       }
     }
   },
   {
-    accessorKey: 'modified',
-    header: 'Last Modified',
-    cell: ({ row: { original } }) => {
-      const { modified } = original;
-      return <div className="">{modified}</div>;
-    },
+    id: 'file-size',
+    accessorFn: ({ size, itemCount }) => size ?? itemCount,
+    header: 'FILE SIZE',
     meta: {
-      headerProps: { style: { minWidth: 150 }, className: 'text-subtle' }
-    }
-  },
-  {
-    accessorKey: 'size',
-    header: 'File Size',
-    cell: ({ row: { original } }) => {
-      const { size, itemCount } = original;
-      return <div>{size || itemCount}</div>;
-    },
-    meta: {
-      headerProps: {
-        style: { minWidth: 130 },
-        className: 'text-subtle'
+      headerProps: { scope: 'col', className: 'pt-1 pb-3.5 max-w-32.5' },
+      cellProps: {
+        className: 'file-size whitespace-nowrap font-semibold text-subtle'
       }
     }
   },
   {
     id: 'action',
+    enableSorting: false,
+    header: '',
     cell: () => (
-      <RevealDropdownTrigger>
-        <RevealDropdown>
-          <Dropdown.Item href="#">Share</Dropdown.Item>
-          <Dropdown.Item href="#">Download</Dropdown.Item>
-          <Dropdown.Item href="#">Duplicate</Dropdown.Item>
-          <Dropdown.Item href="#">Move</Dropdown.Item>
-          <Dropdown.Item href="#">Rename</Dropdown.Item>
-          <Dropdown.Item href="#">Move to Bin</Dropdown.Item>
-          <Dropdown.Divider />
-          <Dropdown.Item href="#" className="text-danger">
-            Delete
-          </Dropdown.Item>
-        </RevealDropdown>
-      </RevealDropdownTrigger>
+      <FilesDropdown
+        className="btn-reveal-trigger"
+        triggerClassName="btn-sm btn-reveal"
+        icon={faEllipsisH}
+        iconClassName="text-subtle"
+        menuClassName="py-2"
+        itemClassName="dropdown-item font-semibold"
+      />
     ),
     meta: {
-      headerProps: { style: { width: '10%' }, className: 'text-end' },
-      cellProps: { className: 'text-end' }
+      headerProps: { scope: 'col', className: 'sort text-end pe-0' },
+      cellProps: { className: 'text-end time whitespace-nowrap' }
     }
   }
 ];
 
 const FileManagerTableWrapper = ({ children }: PropsWithChildren) => {
-  const { fileCollection, setCheckedFileIds, isGridView } =
-    useFileManagerContext();
+  const { fileCollection, isGridView } = useFileManagerContext();
+  const data = isGridView
+    ? fileCollection
+    : fileCollection.slice(0, LIST_VIEW_ROWS);
 
   const table = useAdvanceTable<File>({
-    data: fileCollection,
+    data,
     columns,
-    selection: true,
-    selectionColumnWidth: '30px',
     sortable: true,
-    state: {
-      pagination: {
-        pageIndex: 0,
-        pageSize: fileCollection.length
-      }
-    }
+    pagination: true,
+    pageSize: 100
   });
-
-  useEffect(() => {
-    if (!isGridView) {
-      const allRows = table.getRowModel().rows.map(row => row.original);
-      const selectedRows = table.getSelectedRowModel().flatRows;
-
-      allRows.map(rows => {
-        const isSelected = selectedRows
-          .map(file => file.original.id)
-          .includes(rows.id);
-        setCheckedFileIds(prevFilesId =>
-          isSelected
-            ? !prevFilesId.includes(rows.id)
-              ? [...prevFilesId, rows.id]
-              : [...prevFilesId]
-            : prevFilesId.filter(id => id !== rows.id)
-        );
-      });
-    }
-  }, [table.getState().rowSelection]);
 
   return <AdvanceTableProvider {...table}>{children}</AdvanceTableProvider>;
 };
