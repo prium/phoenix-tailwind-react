@@ -1,5 +1,4 @@
 import { gantt } from 'dhtmlx-gantt';
-import 'dhtmlx-gantt/codebase/dhtmlxgantt.css';
 import { useEffect, useRef, useState } from 'react';
 import GanttChartActions from 'components/modules/gantt/GanttActions';
 import GanttOffcanvas from 'components/modules/gantt/GanttOffcanvas';
@@ -30,6 +29,7 @@ const Views = {
 export type ViewType = (typeof Views)[keyof typeof Views];
 export type ViewKey = keyof typeof Views;
 
+/* eslint-disable @typescript-eslint/no-explicit-any */
 const scales: Record<ViewType, any> = {
   days: [
     { unit: 'week', step: 1, format: '%W' },
@@ -57,6 +57,13 @@ const scales: Record<ViewType, any> = {
   ]
 };
 
+/**
+ * `apps/gantt-chart.pug` — `+GanttChartActions` plus
+ * `.gantt-app-container.scrollbar > #gantt-app.size-full`. The dhtmlx-gantt
+ * engine and its config mirror `src/js/theme/ganttchart/gantt-chart.js`; the
+ * task data is fully date-pinned (see data/ganttData.ts), so both sides always
+ * render the same Apr–Aug 2023 window regardless of the current date.
+ */
 const GanttChart = () => {
   const containerRef = useRef(null);
   const [currentView, setCurrentView] = useState<ViewType>(Views.MONTHS);
@@ -75,7 +82,7 @@ const GanttChart = () => {
 
   useEffect(() => {
     if (!containerRef.current || !ganttWidth) return;
-    resetGanttConfig()
+    resetGanttConfig();
     gantt.plugins({});
     gantt.config.scales = scales[currentView];
     gantt.config.row_height = 48;
@@ -124,21 +131,25 @@ const GanttChart = () => {
     }
 
     taskTextHandler(isRTL);
-    gantt.scrollTo(0);
+
+    gantt.init(containerRef.current);
     gantt.parse(tasks);
-    gantt.render();
-    gantt.init(containerRef?.current);
 
     gantt.templates.grid_header_class = columnName =>
       columnName === 'assignee' ? 'sort-btn-none' : '';
-    gantt.resetLayout();
+    gantt.render();
+    // the gold re-inits once from its resize handler right after parsing, which
+    // undoes dhtmlx's `initial_scroll` jump to the first task; React sizes the
+    // grid before the first init, so scroll back explicitly instead.
+    gantt.scrollTo(0, 0);
+
     return () => {
       gantt.clearAll();
       gantt.resetLayout();
       gantt.resetSkin();
       gantt._events = [];
     };
-  }, [ganttWidth]);
+  }, [ganttWidth, isRTL]);
 
   useEffect(() => {
     gantt.config.scales = scales[currentView];
@@ -156,8 +167,8 @@ const GanttChart = () => {
   return (
     <>
       <GanttChartActions setCurrentView={setCurrentView} />
-      <div className="gantt-app-container">
-        <div id="gantt-app" ref={containerRef} style={{ width: '100%' }} />
+      <div className="gantt-app-container scrollbar">
+        <div className="size-full" id="gantt-app" ref={containerRef} />
       </div>
       <GanttOffcanvas />
       <GanttDeleteLinkModal />

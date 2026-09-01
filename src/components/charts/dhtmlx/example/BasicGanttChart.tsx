@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 import { gantt } from 'dhtmlx-gantt';
-import 'dhtmlx-gantt/codebase/dhtmlxgantt.css';
 import { useAppContext } from 'providers/AppProvider';
 import { resetGanttConfig } from '../resetGanttConfig';
 
@@ -155,9 +154,9 @@ const BasicGanttChart = () => {
     return () => {
       gantt.clearAll();
       gantt.resetSkin();
-      gantt.resetLayout()
+      gantt.resetLayout();
       gantt._events = [];
-    }
+    };
   }, []);
 
   useEffect(() => {

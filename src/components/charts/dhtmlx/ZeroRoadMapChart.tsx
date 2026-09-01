@@ -1,6 +1,5 @@
 import { useEffect, useRef } from 'react';
 import { gantt } from 'dhtmlx-gantt';
-import 'dhtmlx-gantt/codebase/dhtmlxgantt.css';
 import { useAppContext } from 'providers/AppProvider';
 import { resetGanttConfig } from './resetGanttConfig';
 

@@ -17,6 +17,7 @@
 @import 'flatpickr/dist/flatpickr.css';
 @import 'nouislider/dist/nouislider.css';
 @import 'swiper/css/bundle';
+@import 'dhtmlx-gantt/codebase/dhtmlxgantt.css';
 
 @custom-variant dark (&:where([data-hb-theme=dark], [data-hb-theme=dark] *), [data-hb-theme=dark]);
 @custom-variant active (&:active, &.active);

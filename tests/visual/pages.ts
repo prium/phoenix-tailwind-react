@@ -747,13 +747,53 @@ export const pages: VisualPage[] = [
 
   // calendar + gantt
   {
+    // Both sides derive the demo events from "today" with dayjs, so they always
+    // render the same month — nothing pinned or masked. Default 0.5% tolerance;
+    // audited at VISUAL_TOLERANCE=0.0001 → 0.047%, all of it the shared footer
+    // wording ("Phoenix Tailwind" vs "Phoenix React", version string).
     name: 'calendar',
     react: '/apps/calendar',
-    gold: '/apps/calendar.html'
+    gold: '/apps/calendar.html',
+    probes: [
+      // toolbar: Today, prev/next, month title, Month/Week switcher
+      '.btn-phoenix-primary',
+      '.icon-item-sm',
+      '.calendar-title',
+      '.btn-group .btn-phoenix-secondary',
+      // calendar chrome: weekday headers, day numbers, event pills, "+n more"
+      '.fc-col-header-cell-cushion',
+      '.fc-daygrid-day-number',
+      '.fc-daygrid-event',
+      '.fc-daygrid-more-link'
+    ]
   },
   {
+    // dhtmlx-gantt is deterministic here: every task in data/ganttData.ts is
+    // pinned to a fixed 2023 date (the gold's gantt-data.js uses the same
+    // `%d-%m-%Y` strings), so both sides always render the same Mar–Nov window.
+    // Default 0.5% tolerance; audited at VISUAL_TOLERANCE=0.0001 → 0.06%, all of
+    // it the shared footer wording ("Phoenix Tailwind" vs "Phoenix React") and
+    // version string.
     name: 'gantt-chart',
     react: '/apps/gantt-chart',
-    gold: '/apps/gantt-chart.html'
+    gold: '/apps/gantt-chart.html',
+    probes: [
+      // toolbar: Add Task, search input + icon, Auto Fit switch, view select,
+      // Filter/Options link buttons
+      '[data-gantt-add-task]',
+      '.gantt-search-box .search-input',
+      '.gantt-search-box .search-box-icon',
+      '#ganttZoomToFit',
+      '[data-gantt-view]',
+      '.gantt-header .btn-link',
+      // grid chrome: sortable column headers, task titles, subtask-count badges
+      '.gantt_grid_head_cell',
+      '.gantt-task-title',
+      '.gantt-task-title-wrapper .badge',
+      // assignee avatars and the "+n" overflow avatar
+      '.avatar-group .avatar',
+      // timeline bars
+      '.gantt_task_line'
+    ]
   }
 ];
