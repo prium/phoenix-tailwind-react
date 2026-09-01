@@ -487,6 +487,14 @@ export const pages: VisualPage[] = [
   {
     name: 'social-settings',
     react: '/apps/social/settings',
-    gold: '/apps/social/settings.html'
+    gold: '/apps/social/settings.html',
+    probes: [
+      '.input-group-icon .form-control-icon-start',
+      '.input-group-icon .form-control',
+      // exact-class scoping keeps the navbar's own form-switches out of the count
+      '[class="form-check mb-1.25"] .form-check-input',
+      '[class="form-check mb-1.5"] .form-check-input',
+      '[class="form-check form-switch mb-1.5"] .form-check-input'
+    ]
   }
 ];

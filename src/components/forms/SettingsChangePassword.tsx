@@ -1,63 +1,33 @@
-import { faKey, faLock } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
-import { Form } from 'react-bootstrap';
+import FloatingIconField from 'components/base/FloatingIconField';
 
+/** Gold: mixin `ChangePassword` in `../phoenix-tailwind/src/pug/mixins/social/Settings.pug` */
 const SettingsChangePassword = () => {
   return (
     <>
       <h4 className="mb-6">Change Password</h4>
-      <div className="form-icon-container mb-4">
-        <Form.Floating>
-          <Form.Control
-            id="oldPassword"
-            type="password"
-            placeholder="Old Password"
-            className="form-icon-input"
-          />
-          <label
-            htmlFor="oldPassword"
-            className="form-icon-label text-subtle"
-          >
-            OLD PASSWORD
-          </label>
-        </Form.Floating>
-        <FontAwesomeIcon icon={faLock} className="text-default text-md form-icon" />
-      </div>
-      <div className="form-icon-container mb-4">
-        <Form.Floating>
-          <Form.Control
-            id="newPassword"
-            type="password"
-            placeholder="New password"
-            className="form-icon-input"
-          />
-          <label
-            htmlFor="newPassword"
-            className="form-icon-label text-subtle"
-          >
-            NEW PASSWORD
-          </label>
-        </Form.Floating>
-        <FontAwesomeIcon icon={faKey} className="text-default text-md form-icon" />
-      </div>
-      <div className="form-icon-container">
-        <Form.Floating>
-          <Form.Control
-            id="newPassword2"
-            type="password"
-            placeholder="Confirm New password"
-            className="form-icon-input"
-          />
-          <label
-            htmlFor="newPassword2"
-            className="form-icon-label text-subtle"
-          >
-            CONFIRM NEW PASSWORD
-          </label>
-        </Form.Floating>
-        <FontAwesomeIcon icon={faKey} className="text-default text-md form-icon" />
-      </div>
+      <FloatingIconField
+        className="mb-4"
+        id="oldPassword"
+        icon="fa-solid fa-lock"
+        type="password"
+        placeholder="Old password"
+        label="Old Password"
+      />
+      <FloatingIconField
+        className="mb-4"
+        id="newPassword"
+        icon="fa-solid fa-key"
+        type="password"
+        placeholder="New password"
+        label="New Password"
+      />
+      <FloatingIconField
+        id="newPassword2"
+        icon="fa-solid fa-key"
+        type="password"
+        placeholder="Confirm New password"
+        label="Confirm New Password"
+      />
     </>
   );
 };

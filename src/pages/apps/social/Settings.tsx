@@ -1,19 +1,18 @@
+import { Col, Row } from '@hummingbirdui/react';
 import Button from 'components/base/Button';
-import SocialProfileCard from 'components/cards/SocialProfileCard';
 import SettingsChangePassword from 'components/forms/SettingsChangePassword';
 import SettingsCompanyInfo from 'components/forms/SettingsCompanyInfo';
 import SettingsPersonalInfo from 'components/forms/SettingsPersonalInfo';
 import SettingsSocial from 'components/forms/SettingsSocial';
+import SettingsProfileCard from 'components/modules/social/SettingsProfileCard';
 import SocialSettingsSideBar from 'components/modules/social/SocialSettingsSideBar';
-import { Col, Row } from 'react-bootstrap';
-import profileImage from 'assets/img/team/20.webp';
 
 const Settings = () => {
   return (
     <div className="mb-16">
       <Row className="g-10">
         <Col xs={12} xl={4}>
-          <SocialProfileCard avatar={profileImage} className="mb-8" />
+          <SettingsProfileCard className="mb-8" />
           <SocialSettingsSideBar />
         </Col>
         <Col xs={12} xl={8}>
@@ -29,10 +28,12 @@ const Settings = () => {
             </Row>
             <SettingsSocial />
             <div className="text-end mb-10">
-              <Button variant="phoenix-secondary" className="me-2">
-                Cancel Changes
-              </Button>
-              <Button variant="phoenix-primary">Save Information</Button>
+              <div>
+                <Button variant="phoenix-secondary" className="me-2">
+                  Cancel Changes
+                </Button>{' '}
+                <Button variant="phoenix-primary">Save Information</Button>
+              </div>
             </div>
           </div>
           <Row className="gy-8">

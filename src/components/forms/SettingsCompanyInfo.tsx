@@ -1,49 +1,25 @@
-import { faBuilding, faGlobe } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
-import { Form } from 'react-bootstrap';
+import FloatingIconField from 'components/base/FloatingIconField';
 
+/** Gold: mixin `CompanyInfo` in `../phoenix-tailwind/src/pug/mixins/social/Settings.pug` */
 const SettingsCompanyInfo = () => {
   return (
     <>
       <h4 className="mb-6">Company Info</h4>
-      <div className="form-icon-container mb-4">
-        <Form.Floating>
-          <Form.Control
-            id="companyName"
-            type="text"
-            placeholder="Company Name"
-            className="form-icon-input"
-          />
-          <label
-            htmlFor="companyName"
-            className="form-icon-label text-subtle"
-          >
-            COMPANY NAME
-          </label>
-        </Form.Floating>
-        <FontAwesomeIcon
-          icon={faBuilding}
-          className="text-default text-md form-icon"
-        />
-      </div>
-      <div className="form-icon-container">
-        <Form.Floating>
-          <Form.Control
-            id="website"
-            type="text"
-            placeholder="Website"
-            className="form-icon-input"
-          />
-          <label
-            htmlFor="website"
-            className="form-icon-label text-subtle"
-          >
-            WEBSITE
-          </label>
-        </Form.Floating>
-        <FontAwesomeIcon icon={faGlobe} className="text-default text-md form-icon" />
-      </div>
+      <FloatingIconField
+        className="mb-4"
+        id="companyName"
+        icon="fa-solid fa-building"
+        type="text"
+        placeholder="Company Name"
+        label="COMPANY NAME"
+      />
+      <FloatingIconField
+        id="website"
+        icon="fa-solid fa-globe"
+        type="text"
+        placeholder="Website"
+        label="Website"
+      />
     </>
   );
 };
