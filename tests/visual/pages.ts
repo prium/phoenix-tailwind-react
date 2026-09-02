@@ -873,5 +873,41 @@ export const pages: VisualPage[] = [
       // timeline bars
       '.gantt_task_line'
     ]
+  },
+  // pages section — starter / faq / pricing / landing
+  {
+    name: 'starter',
+    react: '/pages/starter',
+    gold: '/pages/starter.html'
+  },
+  {
+    name: 'faq-accordion',
+    react: '/pages/faq/faq-accordion',
+    gold: '/pages/faq/faq-accordion.html'
+  },
+  {
+    name: 'faq-tab',
+    react: '/pages/faq/faq-tab',
+    gold: '/pages/faq/faq-tab.html'
+  },
+  {
+    name: 'pricing-column',
+    react: '/pages/pricing/pricing-column',
+    gold: '/pages/pricing/pricing-column.html'
+  },
+  {
+    name: 'pricing-grid',
+    react: '/pages/pricing/pricing-grid',
+    gold: '/pages/pricing/pricing-grid.html'
+  },
+  {
+    name: 'landing-default',
+    react: '/pages/landing/default',
+    gold: '/pages/landing/default.html'
+  },
+  {
+    name: 'landing-alternate',
+    react: '/pages/landing/alternate',
+    gold: '/pages/landing/alternate.html'
   }
 ];
