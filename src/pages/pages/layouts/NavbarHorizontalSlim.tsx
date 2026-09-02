@@ -1,6 +1,6 @@
 import useConfigMountEffect from 'hooks/useConfigMountEffect';
 import useSettingsMountEffect from 'hooks/useSettingsMountEffect';
-import Ecommerce from 'pages/dashboard/ecommerce';
+import ProjectManagement from 'pages/dashboard/ProjectManagement';
 
 const NavbarHorizontalSlim = () => {
   useSettingsMountEffect({
@@ -19,7 +19,9 @@ const NavbarHorizontalSlim = () => {
     navbarTopAppearance: 'darker'
   });
 
-  return <Ecommerce />;
+  // the gold `demo/horizontal-slim.html` demos this layout over the project
+  // management dashboard, not the e-commerce one
+  return <ProjectManagement />;
 };
 
 export default NavbarHorizontalSlim;
