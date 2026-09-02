@@ -893,7 +893,16 @@ export const pages: VisualPage[] = [
   {
     name: 'pricing-column',
     react: '/pages/pricing/pricing-column',
-    gold: '/pages/pricing/pricing-column.html'
+    gold: '/pages/pricing/pricing-column.html',
+    dark: true,
+    widths: [768],
+    probes: [
+      'img.w-30', // plan illustrations
+      '.fa-ul .fa-stack', // stacked check/cross feature glyphs
+      '.fa-ul .fa-li', // the fa-ul list gutter icons
+      'button.btn-lg', // Buy buttons
+      '.badge-phoenix-primary' // "New" badges
+    ]
   },
   {
     name: 'pricing-grid',
