@@ -3,7 +3,7 @@ import AuthCardLayout from 'layouts/AuthCardLayout';
 
 const SignUp = () => {
   return (
-    <AuthCardLayout className="card-sign-up">
+    <AuthCardLayout page="sign-up">
       <SignUpForm layout="card" />
     </AuthCardLayout>
   );

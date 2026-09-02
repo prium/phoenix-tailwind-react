@@ -3,7 +3,7 @@ import AuthCardLayout from 'layouts/AuthCardLayout';
 
 const SignIn = () => {
   return (
-    <AuthCardLayout className="md:pb-12">
+    <AuthCardLayout page="sign-in">
       <SignInForm layout="card" />
     </AuthCardLayout>
   );
