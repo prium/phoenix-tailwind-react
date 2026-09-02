@@ -22,7 +22,8 @@ the leftover-Bootstrap grep is empty for its closure, and this table says so.
 | Settings panel + toggle | ✅ | `settings-panel` entry (light+dark) |
 | Base components (Button, Badge, Avatar, AdvanceTable, footer, dropdowns, SearchBox, DatePicker, ReactSelect, CheckButton, PhoenixOffcanvas…) | ✅ | see skill §0 finished examples |
 | Chat widget | ✅ | live in MainLayout, HB-based (tracker note was stale) |
-| Other layouts (Auth simple/split/card, DocPagesLayout) | ⬜ | still on shim; EmailLayout + FileManagerLayout done with their modules |
+| Auth layouts (simple / split / card) | ✅ | done with the authentication pages; `PasswordField` + `AuthLogoLink` extracted |
+| DocPagesLayout | ⬜ | still on shim; EmailLayout + FileManagerLayout done with their modules |
 | `src/react-bootstrap/` shim | 🚧 | delete when `grep -rl react-bootstrap src` is empty |
 
 ## Dashboards
@@ -62,9 +63,13 @@ the leftover-Bootstrap grep is empty for its closure, and this table says so.
 | FAQ (accordion + tab) | ✅ | `faq-accordion`, `faq-tab` (light+dark, 768); `data/faq.ts` regenerated from the gold pug — the React copy was entirely different content; the tab page now uses the gold's pure-CSS `offcanvas-md` instead of a `useBreakpoints` double render |
 | Pricing (column + grid) | ✅ | `pricing-column`, `pricing-grid` (light+dark, 768); `FaStack` extracted; grid cards split into the gold's separate monthly/yearly sets |
 | Landing (default + alternate) | ✅ | `landing-default`, `landing-alternate` (light+dark); both testimonial carousels ported to HB `Carousel` (embla) with `--carousel-item-spacing: 0`; count-up/lottie/googlemap masked as non-deterministic |
-| pages/pages remainder (notifications, members, timeline, layouts demo) | ⬜ | |
+| Notifications, Members, Timeline | ✅ | `notifications`, `members`, `timeline`; gold-only notification/member data added alongside the navbar's; `NotificationItem` gained a `pageItem` branch (navbar pages re-verified) |
+| Coming soon | ✅ | `coming-soon` (light+dark, lottie masked); replaced an older React-only newsletter variant that has no gold page; `spot-illustrations/42.png` refreshed from the gold |
+| Errors (403 / 404 / 500) | ✅ | `error-403`, `error-404`, `error-500` — zero differing pixels at `VISUAL_TOLERANCE=0.0000001`; gold copy restored verbatim, upstream typo included |
+| Authentication (7 pages × simple/split/card) | ✅ | `auth-*` (21 entries × light/dark/768); split+card wait on the 5.5 MB `.bg-holder` image before capture |
+| Layout demos (`/pages/demo/*`, 11 routes) | ✅ | `demo-*` (11 entries); 4 were wrong — 2 missing `navbarTopAppearance: 'darker'`, 2 rendering the e-commerce dashboard where the gold demos the PM one. `/pages/demo/horizontal-slim` and `/navbar-top-slim` are now duplicates (gold has one page) |
 | Documentation | ⬜ | migrate last; some content describes Bootstrap |
-| Showcase, ComingSoon, errors | ⬜ | |
+| Showcase | ⬜ | shares `data/showcase.ts` with the layout demos |
 | pages/modules (component demo pages, 43 files) | ⬜ | low priority; huge but mechanical |
 
 ## Conventions (details in `.claude/skills/hb-migrate/SKILL.md`)

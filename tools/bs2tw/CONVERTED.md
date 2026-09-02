@@ -50,4 +50,14 @@ class names with different meanings (`mb-4` → `mb-6` → `mb-10` …).
   src/data/landing, src/components/sliders/{TestimonialCarousel,
   AlternateTestimonialCarousel}.tsx — DefaultLandingNavbar.tsx was NOT re-run
   (converted with the layout shell); its leftovers were fixed by hand
+- notifications/members/timeline/coming-soon closure: src/pages/notifications,
+  src/pages/Members.tsx, src/pages/pages/Timeline.tsx, src/pages/ComingSoon.tsx,
+  src/data/{members,notifications,timelineData}.ts — BasicTimeline.tsx,
+  MembersTable.tsx and common/NotificationItem.tsx were NOT re-run (earlier
+  waves); manual pass only
+- error pages: src/pages/error
+- authentication closure: src/pages/pages/authentication,
+  src/components/modules/auth — layouts/Auth{Simple,Split,Card}Layout and
+  common/AuthSocialButtons were NOT re-run (converted with the layout shell);
+  fixed by hand
 
