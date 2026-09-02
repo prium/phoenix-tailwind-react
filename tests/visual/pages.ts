@@ -81,6 +81,17 @@ const auth = (
     ...extra
   }));
 
+/**
+ * A `/pages/demo/*` layout demo route vs its gold `demo/*.html`. The React page
+ * sets the navbar config through `useConfigMountEffect` instead of localStorage,
+ * so this gates the route itself rather than the settings-panel state.
+ */
+const demo = (route: string, gold = route): VisualPage => ({
+  name: `demo-${route}`,
+  react: `/pages/demo/${route}`,
+  gold: `/demo/${gold}.html`
+});
+
 /** React `/` with a navbar config vs a gold `demo/*.html` layout page. */
 const layout = (
   name: string,
@@ -1149,5 +1160,21 @@ export const pages: VisualPage[] = [
     widths: [768],
     probes: AUTH_PROBES,
     setup: AWAIT_BG
-  })
+  }),
+  // layout demo pages (`/pages/demo/*`) — the routes themselves, as opposed to
+  // the `layout-*` entries above which drive `/` through localStorage. Each one
+  // renders the Ecommerce dashboard under a different navbar config.
+  demo('vertical-sidenav'),
+  demo('dark-mode'),
+  demo('sidenav-collapse'),
+  demo('darknav'),
+  demo('topnav-slim'),
+  demo('combo-nav'),
+  demo('combo-nav-slim'),
+  demo('dual-nav'),
+  demo('navbar-top', 'navbar-horizontal'),
+  demo('horizontal-slim'),
+  // React carries an 11th route that renders exactly what `horizontal-slim`
+  // does; the gold has no separate page for it.
+  demo('navbar-top-slim', 'horizontal-slim')
 ];
