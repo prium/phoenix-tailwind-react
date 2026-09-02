@@ -29,12 +29,12 @@ const Members = () => {
   return (
     <div>
       <PageBreadcrumb items={memberBreadcrumbItems} />
-      <div className="mb-9">
-        <h2 className="mb-5">Members</h2>
+      <div className="mb-16">
+        <h2 className="mb-8">Members</h2>
 
         <AdvanceTableProvider {...table}>
-          <div className="mb-4">
-            <Row className="g-3">
+          <div className="mb-6">
+            <Row className="g-4">
               <Col xs="auto">
                 <SearchBox
                   placeholder="Search members"
@@ -43,10 +43,10 @@ const Members = () => {
               </Col>
               <Col
                 xs="auto"
-                className="scrollbar overflow-hidden-y flex-grow-1"
+                className="scrollbar overflow-hidden-y grow"
               ></Col>
               <Col xs="auto">
-                <Button variant="link" className="text-default me-4 px-0">
+                <Button variant="link" className="text-default me-6 px-0">
                   <FontAwesomeIcon icon={faFileExport} className="text-md me-2" />
                   Export
                 </Button>
@@ -58,7 +58,7 @@ const Members = () => {
             </Row>
           </div>
 
-          <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-soft border-top border-bottom border-subtle relative top-1">
+          <div className="-mx-6 px-6 lg:-mx-10 lg:px-10 bg-soft border-t border-b border-subtle relative top-1">
             <MembersTable />
           </div>
         </AdvanceTableProvider>

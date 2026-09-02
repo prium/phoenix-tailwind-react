@@ -25,21 +25,21 @@ const Timeline = () => {
         items={timelineBreadcrumb}
         className="breadcrumb-sticky-top"
       />
-      <h2 className="text-bold mb-5 page-title-sticky-top">Timeline</h2>
-      <Row className="gx-xl-8 gx-xxl-11">
-        <Col xl={5} className="p-xxl-7">
+      <h2 className="text-bold mb-8 page-title-sticky-top">Timeline</h2>
+      <Row className="xl:gx-14 2xl:gx-20">
+        <Col xl={5} className="2xl:p-12">
           <div
-            className="ms-xxl-3 hidden d-xl-block position-sticky"
+            className="2xl:ms-4 hidden xl:block sticky"
             style={{ top: '30%' }}
           >
-            <img src={img} alt="" className="d-dark-none img-fluid" />
-            <img src={imgDark} alt="" className="d-light-none img-fluid" />
+            <img src={img} alt="" className="dark:hidden img-fluid" />
+            <img src={imgDark} alt="" className="hidden dark:block img-fluid" />
           </div>
         </Col>
         <Col xl={7} className="scrollbar">
           {timelineData.map(timeline => (
             <div key={timeline.id}>
-              <h4 className="py-3 border-y mb-5 ms-8">{timeline.date}</h4>
+              <h4 className="py-4 border-y mb-8 ms-14">{timeline.date}</h4>
               <BasicTimeline data={timeline.items} />
             </div>
           ))}

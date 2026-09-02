@@ -15,44 +15,44 @@ const ComingSoon = () => {
   } = useAppContext();
 
   return (
-    <Row className="flex-center content-min-h pb-9">
+    <Row className="flex-center content-min-h pb-16">
       <Col xs={12} xxl={10}>
-        <Row className="align-items-xl-center g-2">
-          <Col xs={12} xl={6} className="order-xl-1">
+        <Row className="xl:items-center g-2">
+          <Col xs={12} xl={6} className="xl:order-1">
             <div className="flex flex-center">
               <Lottie
                 animationData={
                   theme === 'light' ? comingSoonLight : comingSoonDark
                 }
                 loop={true}
-                className="w-xl-100 animation"
+                className="xl:w-full animation"
               />
             </div>
           </Col>
           <Col xs={12} xl={6}>
-            <div className="flex justify-content-center mt-xl-15">
-              <div className="text-container text-center text-xl-start">
+            <div className="flex justify-center xl:mt-30">
+              <div className="text-container text-center xl:text-start">
                 <img
                   src={comingSoonText}
                   alt=""
-                  className="mb-5 w-75 w-lg-50 w-xl-75 w-xxl-100 d-dark-none"
+                  className="mb-8 w-3/4 lg:w-1/2 xl:w-3/4 2xl:w-full dark:hidden"
                   style={{ maxWidth: 415 }}
                 />
                 <img
                   src={comingSoonTextDark}
                   alt=""
-                  className="mb-5 w-75 w-lg-50 w-xl-75 w-xxl-100 d-light-none"
+                  className="mb-8 w-3/4 lg:w-1/2 xl:w-3/4 2xl:w-full hidden dark:block"
                   style={{ maxWidth: 415 }}
                 />
 
-                <h2 className="text-muted fs-xl-6 mb-3">
+                <h2 className="text-muted xl:text-xl mb-4">
                   Get notified when we launch
                 </h2>
-                <p className="mb-6 w-xxl-75">
+                <p className="mb-10 2xl:w-3/4">
                   <b>Something in the way!</b> Subscribe to our newsletter to be
                   the first to know about upcoming features and discounts.
                 </p>
-                <Row className="g-3 w-md-75 w-xl-100 w-xxl-75 mx-auto mx-xl-0">
+                <Row className="g-4 md:w-3/4 xl:w-full 2xl:w-3/4 mx-auto xl:mx-0">
                   <Col className="ps-0">
                     <Form.Control />
                   </Col>

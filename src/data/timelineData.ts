@@ -135,7 +135,7 @@ export const timelineData: Timeline[] = [
         time: '4:33pm',
         icon: faClipboard,
         iconColor: 'success',
-        title: `Assigned to serve as the <br class='d-sm-none'> project's director`,
+        title: `Assigned to serve as the <br class='sm:hidden'> project's director`,
         content:
           'Utilizing best practices to better leverage our assets, we must engage in black sky leadership thinking, not the usual band-aid solution.',
         tasker: 'John N. Ward'
@@ -145,7 +145,7 @@ export const timelineData: Timeline[] = [
         time: '6:30pm',
         icon: faEnvelope,
         iconColor: 'danger',
-        title: 'Quary about purchased <br class="d-sm-none"> soccer socks',
+        title: 'Quary about purchased <br class="sm:hidden"> soccer socks',
         content:
           'I’ve come across your posts and found some favorable deals on your page. I’ve added a load of products to the cart and I don’t know the payment options you avail. Also, can you enlighten me about any discount.',
         tasker: 'Edward Hopper'
@@ -180,7 +180,7 @@ export const timelineData: Timeline[] = [
         time: '8:32pm',
         icon: faSkullCrossbones,
         iconColor: 'danger',
-        title: 'How to take the headache <br class="d-sm-none"> out of Order',
+        title: 'How to take the headache <br class="sm:hidden"> out of Order',
         content:
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.',
         tasker: 'Edward Hopper'
