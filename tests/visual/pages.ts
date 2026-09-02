@@ -46,6 +46,30 @@ const AUTH_PAGES = [
   '2FA'
 ] as const;
 
+/**
+ * The split/card layouts paint their photo through `.bg-holder`'s CSS
+ * `background-image` — up to 5.5 MB, requested only once React has rendered
+ * the div, so `settle()`'s `<img>` wait cannot see it and the shot can catch a
+ * half-painted photo. Decode every bg-holder URL explicitly first.
+ */
+const AWAIT_BG_HOLDER =
+  `(async()=>{await Promise.all([...document.querySelectorAll('.bg-holder')]` +
+  `.map(el=>{const m=/url\("?(.*?)"?\)/.exec(getComputedStyle(el).backgroundImage);` +
+  `return m&&new Promise(r=>{const i=new Image();i.onload=i.onerror=r;i.src=m[1]})}))})()`;
+
+const AWAIT_BG = {
+  react: { eval: AWAIT_BG_HOLDER },
+  gold: { eval: AWAIT_BG_HOLDER }
+};
+
+/** Anchors shared by every authentication page (see the `auth(...)` entries). */
+const AUTH_PROBES = [
+  '[data-password-toggle]',
+  '.form-control-icon-start',
+  '.avatar',
+  '.divider-content-center'
+];
+
 const auth = (
   variant: 'simple' | 'split' | 'card',
   extra: Partial<VisualPage> = {}
@@ -1108,7 +1132,22 @@ export const pages: VisualPage[] = [
     // gold settings panel's purchase link)
     probes: ['a.btn-lg.btn-primary']
   },
-  ...auth('simple'),
-  ...auth('split'),
-  ...auth('card')
+  // Authentication: the same 7 forms in 3 layouts. The probes anchor the
+  // password eye toggle, the sign-in input icons, the lock-screen avatar and
+  // the "or use email" divider — a few px of drift there is invisible to a
+  // page-level tolerance. Selectors that match nothing on a given page are a
+  // no-op (0 === 0), so one probe set covers all 7 pages of a variant.
+  ...auth('simple', { dark: true, widths: [768], probes: AUTH_PROBES }),
+  ...auth('split', {
+    dark: true,
+    widths: [768],
+    probes: AUTH_PROBES,
+    setup: AWAIT_BG
+  }),
+  ...auth('card', {
+    dark: true,
+    widths: [768],
+    probes: AUTH_PROBES,
+    setup: AWAIT_BG
+  })
 ];
