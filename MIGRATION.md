@@ -58,8 +58,11 @@ the leftover-Bootstrap grep is empty for its closure, and this table says so.
 
 | Area | Status | Notes |
 |---|---|---|
-| pages/pages (starter, pricing, notifications, members…) | ⬜ | |
-| FAQ | ⬜ | |
+| Starter | ✅ | `starter` (light+dark) |
+| FAQ (accordion + tab) | ✅ | `faq-accordion`, `faq-tab` (light+dark, 768); `data/faq.ts` regenerated from the gold pug — the React copy was entirely different content; the tab page now uses the gold's pure-CSS `offcanvas-md` instead of a `useBreakpoints` double render |
+| Pricing (column + grid) | ✅ | `pricing-column`, `pricing-grid` (light+dark, 768); `FaStack` extracted; grid cards split into the gold's separate monthly/yearly sets |
+| Landing (default + alternate) | ✅ | `landing-default`, `landing-alternate` (light+dark); both testimonial carousels ported to HB `Carousel` (embla) with `--carousel-item-spacing: 0`; count-up/lottie/googlemap masked as non-deterministic |
+| pages/pages remainder (notifications, members, timeline, layouts demo) | ⬜ | |
 | Documentation | ⬜ | migrate last; some content describes Bootstrap |
 | Showcase, ComingSoon, errors | ⬜ | |
 | pages/modules (component demo pages, 43 files) | ⬜ | low priority; huge but mechanical |
