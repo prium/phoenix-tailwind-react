@@ -1,33 +1,38 @@
 import { faClock } from '@fortawesome/free-regular-svg-icons';
 import { faFilePdf } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
+import { Col, Row, cn } from '@hummingbirdui/react';
 import Timeline from 'components/base/Timeline';
 import { TimelineItem } from 'data/timelineData';
-import { Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router';
 
+/**
+ * `+Timeline` in phoenix-tailwind pages/timeline.pug. The bar column and the
+ * content column are written out here rather than through
+ * `Timeline.Separator`/`Timeline.Content`, whose vertical-timeline margins
+ * (`me-4 md:me-0`, `timeline-item-content ps-10 md:ps-4`) this basic variant
+ * does not have.
+ */
 const BasicTimeline = ({ data }: { data: TimelineItem[] }) => {
   return (
     <Timeline variant="basic" className="mb-16">
-      {data.map((item, index) => (
-        <Timeline.Item key={item.id}>
-          <Row className="g-4">
-            <Col xs="auto">
-              <Timeline.Separator className="relative">
-                <Timeline.Dot className="icon-item-md border border-subtle bg-default">
-                  <FontAwesomeIcon
-                    icon={item.icon}
-                    className={`text-md text-${item.iconColor}`}
-                  />
-                </Timeline.Dot>
-                {index !== data.length - 1 && (
-                  <Timeline.Bar className="h-full border-dashed" />
-                )}
-              </Timeline.Separator>
-            </Col>
-            <Col>
-              <Timeline.Content>
+      {data.map((item, index) => {
+        const isLast = index === data.length - 1;
+        return (
+          <Timeline.Item key={item.id}>
+            <Row className="g-4">
+              <Col xs="auto">
+                <div className="timeline-item-bar relative">
+                  <div className="icon-item icon-item-md rounded-7 border border-subtle">
+                    <FontAwesomeIcon
+                      icon={item.icon}
+                      className={cn(item.iconColor, 'text-md')}
+                    />
+                  </div>
+                  {!isLast && <Timeline.Bar className="border-dashed" />}
+                </div>
+              </Col>
+              <Col>
                 <div className="flex justify-between">
                   <div className="flex mb-2">
                     <h6
@@ -44,36 +49,30 @@ const BasicTimeline = ({ data }: { data: TimelineItem[] }) => {
                       </h6>
                     )}
                   </div>
-                  <div className="text-soft text-md whitespace-nowrap timeline-time">
+                  <p className="text-soft text-md mb-0 text-nowrap timeline-time">
                     <FontAwesomeIcon icon={faClock} className="me-1" />
                     {item.time}
-                  </div>
+                  </p>
                 </div>
-                <h6
-                  className={classNames('text-sm font-normal', {
-                    'mb-6': index !== data.length - 1
-                  })}
-                >
+                <h6 className={cn('text-sm font-normal', { 'mb-4': !isLast })}>
                   by{' '}
                   <Link to="#!" className="font-semibold">
                     {item.tasker}
                   </Link>
                 </h6>
                 <p
-                  className={classNames(
-                    'text-md text-muted w-sm-60 mb-0',
-                    {
-                      'mb-14': index !== data.length - 1
-                    }
+                  className={cn(
+                    isLast ? 'mb-0' : 'mb-8',
+                    'text-md text-muted sm:w-6/10'
                   )}
                 >
                   {item.content}
                 </p>
-              </Timeline.Content>
-            </Col>
-          </Row>
-        </Timeline.Item>
-      ))}
+              </Col>
+            </Row>
+          </Timeline.Item>
+        );
+      })}
     </Timeline>
   );
 };

@@ -1,7 +1,7 @@
 import PageBreadcrumb, {
   PageBreadcrumbItem
 } from 'components/common/PageBreadcrumb';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row } from '@hummingbirdui/react';
 import img from 'assets/img/spot-illustrations/timeline.png';
 import imgDark from 'assets/img/spot-illustrations/timeline-dark.png';
 import { timelineData } from 'data/timelineData';
@@ -28,12 +28,9 @@ const Timeline = () => {
       <h2 className="text-bold mb-8 page-title-sticky-top">Timeline</h2>
       <Row className="xl:gx-14 2xl:gx-20">
         <Col xl={5} className="2xl:p-12">
-          <div
-            className="2xl:ms-4 hidden xl:block sticky"
-            style={{ top: '30%' }}
-          >
-            <img src={img} alt="" className="dark:hidden img-fluid" />
-            <img src={imgDark} alt="" className="hidden dark:block img-fluid" />
+          <div className="top-3/10 2xl:ms-4 hidden xl:block sticky">
+            <img src={img} alt="" className="dark:hidden" />
+            <img src={imgDark} alt="" className="hidden dark:block" />
           </div>
         </Col>
         <Col xl={7} className="scrollbar">
