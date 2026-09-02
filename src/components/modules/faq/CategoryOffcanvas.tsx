@@ -1,24 +1,28 @@
-import PhoenixOffcanvas from 'components/base/PhoenixOffcanvas';
+import { cn } from '@hummingbirdui/react';
 import { useFaqTabContext } from 'providers/FaqTabProvider';
 import CategoryTab from './CategoryTab';
 import SubCategoryTab from './SubCategoryTab';
-import { Row } from 'react-bootstrap';
 
+/**
+ * Gold: `div#faq-offcanvas.offcanvas-md.offcanvas-start`. `offcanvas-md` is a
+ * pure-CSS responsive offcanvas (`offcanvas` below `md`, `offcanvas-static`
+ * from `md` up), so a single DOM serves both — only the `show` class is
+ * state-driven, and the gold sets `data-bs-backdrop="false"`.
+ */
 const CategoryOffcanvas = () => {
   const { isOpenOffcanvas } = useFaqTabContext();
   return (
-    <PhoenixOffcanvas
-      open={isOpenOffcanvas}
-      placement="start"
-      noBackdrop
-      className="faq-offcanvas w-full"
-      fixed
+    <div
+      id="faq-offcanvas"
+      data-vertical-category-offcanvas="data-vertical-category-offcanvas"
+      className={cn(
+        'offcanvas-md offcanvas-start bg-default z-5 w-full overflow-auto md:overflow-visible',
+        { show: isOpenOffcanvas }
+      )}
     >
-      <Row className="g-0">
-        <CategoryTab />
-        <SubCategoryTab />
-      </Row>
-    </PhoenixOffcanvas>
+      <CategoryTab />
+      <SubCategoryTab />
+    </div>
   );
 };
 

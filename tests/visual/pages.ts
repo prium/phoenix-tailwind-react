@@ -878,17 +878,55 @@ export const pages: VisualPage[] = [
   {
     name: 'starter',
     react: '/pages/starter',
-    gold: '/pages/starter.html'
+    gold: '/pages/starter.html',
+    dark: true,
+    probes: [
+      // the light/dark spot illustration (only one is visible per theme)
+      '.content-min-h img',
+      '.content-min-h h1',
+      '.content-min-h .btn'
+    ]
   },
   {
     name: 'faq-accordion',
     react: '/pages/faq/faq-accordion',
-    gold: '/pages/faq/faq-accordion.html'
+    gold: '/pages/faq/faq-accordion.html',
+    dark: true,
+    widths: [768],
+    probes: [
+      '.breadcrumb-item',
+      '.search-box .search-input',
+      '.search-box .search-box-icon',
+      // item boxes + their headers: catches accordion padding/border drift
+      '.accordion-item',
+      '.accordion-button',
+      '.accordion-body',
+      // CTA button and its icon (`.py-20` excludes the floating chat widget,
+      // which also carries `.btn-support-chat`)
+      '.py-20 .btn-support-chat',
+      '.py-20 .btn-support-chat .svg-inline--fa'
+    ]
   },
   {
     name: 'faq-tab',
     react: '/pages/faq/faq-tab',
-    gold: '/pages/faq/faq-tab.html'
+    gold: '/pages/faq/faq-tab.html',
+    dark: true,
+    widths: [768],
+    probes: [
+      '.faq-title-box',
+      '.faq-title-box .search-input',
+      '.faq-title-box .search-box-icon',
+      // filter tabs + the nine category cards and their anchored icons
+      '.faq-category-tab .nav-link',
+      '.faq-subcategory-tab .nav-item',
+      '.faq-subcategory-tab .nav-link',
+      '.faq-subcategory-tab .category-icon',
+      // visible pane: star / bullet icons and their headings
+      '.faq-subcategory-content .fa-star',
+      '.faq-subcategory-content .fa-circle',
+      '.faq-subcategory-content h4'
+    ]
   },
   {
     name: 'pricing-column',
