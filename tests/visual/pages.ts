@@ -1059,17 +1059,32 @@ export const pages: VisualPage[] = [
   {
     name: 'error-403',
     react: '/pages/errors/403',
-    gold: '/pages/errors/403.html'
+    gold: '/pages/errors/403.html',
+    dark: true,
+    widths: [768],
+    // anchor the "Go Home" button (`.btn-primary` alone also matches the
+    // gold settings panel's purchase link)
+    probes: ['a.btn-lg.btn-primary']
   },
   {
     name: 'error-404',
     react: '/pages/errors/404',
-    gold: '/pages/errors/404.html'
+    gold: '/pages/errors/404.html',
+    dark: true,
+    widths: [768],
+    // anchor the "Go Home" button (`.btn-primary` alone also matches the
+    // gold settings panel's purchase link)
+    probes: ['a.btn-lg.btn-primary']
   },
   {
     name: 'error-500',
     react: '/pages/errors/500',
-    gold: '/pages/errors/500.html'
+    gold: '/pages/errors/500.html',
+    dark: true,
+    widths: [768],
+    // anchor the "Go Home" button (`.btn-primary` alone also matches the
+    // gold settings panel's purchase link)
+    probes: ['a.btn-lg.btn-primary']
   },
   ...auth('simple'),
   ...auth('split'),
