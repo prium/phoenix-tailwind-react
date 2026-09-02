@@ -12,15 +12,15 @@ import {
 const Footer = () => {
   return (
     <section data-bs-theme="dark" className="bg-dark dark__bg-gray-1000">
-      <div className="container-small px-lg-7 px-xxl-3">
-        <Row className="gx-xxl-8 gy-5 align-items-center mb-5">
+      <div className="container-small lg:px-12 2xl:px-4">
+        <Row className="2xl:gx-14 gy-8 items-center mb-8">
           <Col xl="auto" className="text-center">
             <Link to="/">
               <img src={logo} alt="" height={48} />
             </Link>
           </Col>
           <Col xl="auto" className="flex-1">
-            <ul className="list-unstyled flex justify-content-center flex-wrap mb-0 border-end-xl border-dashed gap-3 gap-xl-8 pe-xl-5 pe-xxl-8 w-75 w-md-100 mx-auto">
+            <ul className="list-unstyled flex justify-center flex-wrap mb-0 xl:border-e border-dashed gap-4 xl:gap-14 xl:pe-8 2xl:pe-14 w-3/4 md:w-full mx-auto">
               {[
                 'Contact us',
                 'Newsroom',
@@ -39,7 +39,7 @@ const Footer = () => {
             </ul>
           </Col>
           <Col xl="auto">
-            <div className="flex align-items-center justify-content-center gap-8">
+            <div className="flex items-center justify-center gap-14">
               <Link to="#!" className="text-white">
                 <FontAwesomeIcon icon={faFacebook} />
               </Link>
@@ -52,8 +52,8 @@ const Footer = () => {
             </div>
           </Col>
         </Row>
-        <hr className="border-top" />
-        <div className="d-sm-flex flex-between-center text-center">
+        <hr className="border-t" />
+        <div className="sm:flex flex-between-center text-center">
           <p className="text-subtle mb-0">Copyright © Company Name</p>
           <p className="text-subtle mb-0">
             Made with love by{' '}

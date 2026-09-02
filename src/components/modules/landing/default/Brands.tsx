@@ -14,10 +14,10 @@ const Brand = ({ image, className }: { image: string; className?: string }) => {
     <div
       className={classNames(
         className,
-        'p-2 p-lg-5 flex flex-center h-100 border-dashed border-subtle'
+        'p-2 lg:p-8 flex flex-center h-full border-dashed border-subtle'
       )}
     >
-      <img src={image} alt="" className="w-100" />
+      <img src={image} alt="" className="w-full" />
     </div>
   );
 };
@@ -25,51 +25,51 @@ const Brand = ({ image, className }: { image: string; className?: string }) => {
 const Brands = ({ className }: { className?: string }) => {
   return (
     <section className={className}>
-      <div className="container-small px-lg-7 px-xxl-3">
+      <div className="container-small lg:px-12 2xl:px-4">
         <Row className="g-0">
           <Col xs={6} md={3}>
             <Brand
               image={netflix}
-              className="border-bottom border-end border-subtle"
+              className="border-b border-e border-subtle"
             />
           </Col>
           <Col xs={6} md={3}>
             <Brand
               image={blender}
-              className="border-bottom border-end-md border-subtle"
+              className="border-b md:border-e border-subtle"
             />
           </Col>
           <Col xs={6} md={3}>
             <Brand
               image={upwork}
-              className="border-bottom border-end border-end-md border-subtle"
+              className="border-b border-e md:border-e border-subtle"
             />
           </Col>
           <Col xs={6} md={3}>
             <Brand
               image={facebook}
-              className="border-bottom border-end-lg-0 border-subtle"
+              className="border-b lg:border-e-0 border-subtle"
             />
           </Col>
           <Col xs={6} md={3}>
             <Brand
               image={pocket}
-              className="border-end border-bottom border-bottom-md-0 border-subtle"
+              className="border-e border-b md:border-b-0 border-subtle"
             />
           </Col>
           <Col xs={6} md={3}>
             <Brand
               image={mailBluster}
-              className="border-end-md border-bottom border-bottom-md-0 border-subtle"
+              className="md:border-e border-b md:border-b-0 border-subtle"
             />
           </Col>
           <Col xs={6} md={3}>
-            <Brand image={discord} className="border-end border-subtle" />
+            <Brand image={discord} className="border-e border-subtle" />
           </Col>
           <Col xs={6} md={3}>
             <Brand
               image={google}
-              className="border-end-lg-0 border-subtle"
+              className="lg:border-e-0 border-subtle"
             />
           </Col>
         </Row>

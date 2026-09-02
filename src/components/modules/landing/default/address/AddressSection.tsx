@@ -9,13 +9,13 @@ const Mapbox = lazy(() => import('components/base/MapBox'));
 const AddressSection = () => {
   return (
     <section>
-      <div className="container-small px-lg-7 px-xxl-3">
-        <div className="mb-4">
-          <h4 className="text-primary font-black mb-3">Address</h4>
+      <div className="container-small lg:px-12 2xl:px-4">
+        <div className="mb-6">
+          <h4 className="text-primary font-black mb-4">Address</h4>
           <h2>If you need to find us:</h2>
         </div>
 
-        <Row className="mb-3 text-center text-sm-start">
+        <Row className="mb-4 text-center sm:text-start">
           <Col md={6}>
             <p>
               Do not lose your potential customers to others. Tell them exactly
@@ -30,10 +30,10 @@ const AddressSection = () => {
             </p>
           </Col>
         </Row>
-        <div className="mb-15">
+        <div className="mb-30">
           <Suspense fallback={<PhoenixLoader />}>
             <Mapbox
-              className="rounded-4"
+              className="rounded-2xl"
               style={{ height: 380 }}
               options={{
                 center: [-74.0020158, 40.7228022],
@@ -43,15 +43,15 @@ const AddressSection = () => {
             />
           </Suspense>
         </div>
-        <Row className="g-5 g-lg-5">
+        <Row className="g-8 lg:g-8">
           <Col
             xs={12}
             md={6}
-            className="mb-5 mb-md-0 text-center text-md-start"
+            className="mb-8 md:mb-0 text-center md:text-start"
           >
             <HelpCenter />
           </Col>
-          <Col xs={12} md={6} className="text-center text-md-start">
+          <Col xs={12} md={6} className="text-center md:text-start">
             <QueryForm />
           </Col>
         </Row>

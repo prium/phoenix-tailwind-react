@@ -7,18 +7,18 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 const PricingOffer = () => {
   return (
-    <Card className="rounded-4 border-0 offer-card">
-      <Card.Body className="d-md-flex align-items-center gap-4 py-5">
+    <Card className="rounded-2xl border-0 offer-card">
+      <Card.Body className="md:flex items-center gap-6 py-8">
         <img
           src={plane}
           alt=""
-          className="mb-4 mb-md-0 d-dark-none"
+          className="mb-6 md:mb-0 dark:hidden"
           width={155}
         />
         <img
           src={planeDark}
           alt=""
-          className="mb-4 mb-md-0 d-light-none"
+          className="mb-6 md:mb-0 hidden dark:block"
           width={155}
         />
         <div>
@@ -27,7 +27,7 @@ const PricingOffer = () => {
             purchased for a maximum of 300 users. There is no minimum or maximum
             user limit for Enterprise plans.
           </p>
-          <p className="mb-6">
+          <p className="mb-10">
             Phoenix customers may have access to additional features for a
             limited promotional period
           </p>

@@ -14,14 +14,14 @@ const PricingItem = ({ pricing }: { pricing: PricingAlternate }) => {
     <div className="pricing-card">
       <Card
         className={classNames('bg-transparent', {
-          'border border-2 border-info rounded-4':
+          'border border-2 border-info rounded-2xl':
             pricing.category === 'Business',
           'border-0 border-subtle': pricing.category !== 'Business'
         })}
       >
-        <Card.Body className="p-7">
-          <h3 className="mb-5">{pricing.category}</h3>
-          <h1 className="fs-3 flex align-items-center gap-1 mb-3">
+        <Card.Body className="p-12">
+          <h3 className="mb-8">{pricing.category}</h3>
+          <h1 className="text-4xl flex items-center gap-1 mb-4">
             ${pricing.price}
             <span className="text-base font-normal"> / month</span>
           </h1>
@@ -30,17 +30,17 @@ const PricingItem = ({ pricing }: { pricing: PricingAlternate }) => {
               pricing.category === 'Business' ? 'primary' : 'outline-primary'
             }
             size="lg"
-            className="w-100 mb-7"
+            className="w-full mb-12"
           >
             Buy
           </Button>
-          <h5 className="mb-4">What’s included</h5>
-          <ul className="fa-ul ps-4 m-0 pricing">
+          <h5 className="mb-6">What’s included</h5>
+          <ul className="fa-ul ps-6 m-0 pricing">
             {pricingFeaturesAlternate.map((feature, index) => (
               <li
                 key={feature.id}
-                className={classNames('flex align-items-center', {
-                  'mb-3': index !== pricingFeaturesAlternate.length - 1
+                className={classNames('flex items-center', {
+                  'mb-6': index !== pricingFeaturesAlternate.length - 1
                 })}
               >
                 {pricing.features.includes(feature.id) && (

@@ -18,7 +18,7 @@ const StatItem = ({ stat }: { stat: Stat }) => {
       {({ countUpRef }) => (
         <div>
           <h1
-            className="fs-3 fs-lg-1 font-black text-info mb-3"
+            className="text-4xl lg:text-6xl font-black text-info mb-4"
             ref={countUpRef as Ref<HTMLHeadingElement>}
           />
           <h4>{stat.title}</h4>
@@ -31,9 +31,9 @@ const StatItem = ({ stat }: { stat: Stat }) => {
 const Stats = () => {
   return (
     <section className="counter-container">
-      <div className="absolute start-0 end-0 w-100 counter-overlay" />
+      <div className="absolute start-0 end-0 w-full counter-overlay" />
       <div
-        className="bg-holder hidden d-lg-block"
+        className="bg-holder hidden lg:block"
         style={{
           backgroundImage: `url(${bgLeft})`,
           backgroundSize: 'auto',
@@ -41,7 +41,7 @@ const Stats = () => {
         }}
       />
       <div
-        className="bg-holder hidden d-lg-block"
+        className="bg-holder hidden lg:block"
         style={{
           backgroundImage: `url(${bgRight})`,
           backgroundSize: 'auto',
@@ -49,16 +49,16 @@ const Stats = () => {
         }}
       />
       <div className="container-small relative">
-        <Row className="gx-0 gy-8 justify-content-center">
+        <Row className="gx-0 gy-14 justify-center">
           {stats.map((stat, index) => (
             <Col
               sm={6}
               md="auto"
               key={stat.id}
               className={classNames('text-center', {
-                'order-2 order-md-0': index === 0,
-                'order-1 order-md-0': index === 1,
-                'me-md-5 pe-md-5 border-end-md border-dashed border-subtle':
+                'order-2 md:order-0': index === 0,
+                'order-1 md:order-0': index === 1,
+                'md:me-8 md:pe-8 md:border-e border-dashed border-subtle':
                   index !== stats.length - 1
               })}
             >

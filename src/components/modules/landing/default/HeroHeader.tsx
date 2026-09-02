@@ -12,15 +12,15 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 const HeroHeader = () => {
   return (
-    <section className="pb-8" id="home">
-      <div className="container-small hero-header-container px-lg-7 px-xxl-3">
-        <Row className="align-items-center">
+    <section className="pb-14" id="home">
+      <div className="container-small hero-header-container lg:px-12 2xl:px-4">
+        <Row className="items-center">
           <Col
             xs={12}
             lg="auto"
-            className="text-end order-0 order-md-1 order-1"
+            className="text-end order-0 md:order-1 order-1"
           >
-            <div className="relative p-5 p-md-7 d-lg-none">
+            <div className="relative p-8 md:p-12 lg:hidden">
               <div
                 className="bg-holder banner-bg"
                 style={{
@@ -30,34 +30,34 @@ const HeroHeader = () => {
               />
               <div className="relative">
                 <img
-                  className="w-100 shadow-lg d-dark-none rounded-2"
+                  className="w-full shadow-lg dark:hidden rounded-md"
                   src={bg31}
                   alt="hero-header"
                 />
                 <img
-                  className="w-100 shadow-lg d-light-none rounded-2"
+                  className="w-full shadow-lg hidden dark:block rounded-md"
                   src={bg30}
                   alt="hero-header"
                 />
               </div>
             </div>
-            <div className="hero-image-container absolute top-0 bottom-0 end-0 hidden d-lg-block">
-              <div className="relative h-100 w-100">
-                <div className="absolute h-100 top-0 flex align-items-center end-0 hero-image-container-bg">
+            <div className="hero-image-container absolute top-0 bottom-0 end-0 hidden lg:block">
+              <div className="relative h-full w-full">
+                <div className="absolute h-full top-0 flex items-center end-0 hero-image-container-bg">
                   <img
-                    className="pt-7 pt-md-0 w-100"
+                    className="pt-12 md:pt-0 w-full"
                     src={bg12}
                     alt="hero-header"
                   />
                 </div>
-                <div className="absolute h-100 top-0 flex align-items-center end-0">
+                <div className="absolute h-full top-0 flex items-center end-0">
                   <img
-                    className="pt-7 pt-md-0 w-100 shadow-lg d-dark-none rounded-2"
+                    className="pt-12 md:pt-0 w-full shadow-lg dark:hidden rounded-md"
                     src={bg28}
                     alt="hero-header"
                   />
                   <img
-                    className="pt-7 pt-md-0 w-100 shadow-lg d-light-none rounded-2"
+                    className="pt-12 md:pt-0 w-full shadow-lg hidden dark:block rounded-md"
                     src={bg29}
                     alt="hero-header"
                   />
@@ -68,21 +68,21 @@ const HeroHeader = () => {
           <Col
             xs={12}
             lg={6}
-            className="text-lg-start text-center pt-8 pb-6 order-0 relative"
+            className="lg:text-start text-center pt-14 pb-10 order-0 relative"
           >
             <div>
-              <h1 className="fs-3 fs-lg-2 fs-md-1 fs-lg-2 fs-xl-1 font-black mb-4">
-                <span className="text-primary me-3">Elegance</span>for
+              <h1 className="text-4xl lg:text-5xl md:text-6xl lg:text-5xl xl:text-6xl font-black mb-6">
+                <span className="text-primary me-4">Elegance</span>for
                 <br />
                 your web app
               </h1>
-              <p className="mb-5">
+              <p className="mb-8">
                 Standard, modern and Elegant solution for your next web app so
                 you don’t have to look further. Sign up or check the demo below.
               </p>
               <Link
                 to="#!"
-                className="btn btn-lg btn-primary rounded-full me-3"
+                className="btn btn-lg btn-primary rounded-full me-4"
               >
                 Sign up
               </Link>
@@ -90,7 +90,7 @@ const HeroHeader = () => {
                 as={Link}
                 variant="link"
                 to="#!"
-                className="me-2 text-base p-0 text-decoration-none"
+                className="me-2 text-base p-0 no-underline"
               >
                 Check Demo
                 <FontAwesomeIcon icon={faAngleRight} className="ms-2 text-md" />

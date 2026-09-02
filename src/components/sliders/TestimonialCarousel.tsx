@@ -6,9 +6,9 @@ import bg2 from 'assets/img/bg/bg-2.png';
 
 const TestimonialItem = ({ testimonial }: { testimonial: Testimonial }) => {
   return (
-    <Row className="g-1 g-lg-0 g-xl-1 pb-lg-3 pb-xl-0 ps-lg-1 ps-xl-0">
+    <Row className="g-1 lg:g-0 xl:g-1 lg:pb-4 xl:pb-0 lg:ps-1 xl:ps-0">
       <Col lg={6} xl={5} className="text-center">
-        <div className="testimonial-avatar-container d-inline-block relative">
+        <div className="testimonial-avatar-container inline-block relative">
           <div
             className="bg-holder"
             style={{
@@ -22,12 +22,12 @@ const TestimonialItem = ({ testimonial }: { testimonial: Testimonial }) => {
             alt=""
             height={153}
             width={153}
-            className="rounded-3 mb-lg-0 opacity-100 relative"
+            className="rounded-lg lg:mb-0 opacity-100 relative"
           />
         </div>
       </Col>
-      <Col lg={6} xl={7} className="text-center text-lg-start">
-        <div className="mb-4" data-bs-theme="light">
+      <Col lg={6} xl={7} className="text-center lg:text-start">
+        <div className="mb-6" data-bs-theme="light">
           <Rating
             readonly
             initialValue={testimonial.rating}
@@ -35,7 +35,7 @@ const TestimonialItem = ({ testimonial }: { testimonial: Testimonial }) => {
             emptyIconColor="primary-light"
           />
         </div>
-        <h3 className="text-lg fs-xl-6 mb-5 lh-sm me-md-7 me-lg-0">
+        <h3 className="text-lg xl:text-xl mb-8 leading-sm md:me-12 lg:me-0">
           {testimonial.comment}
         </h3>
         <h6>{testimonial.name}</h6>

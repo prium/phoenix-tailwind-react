@@ -10,28 +10,28 @@ import { Link } from 'react-router';
 const HelpCenter = () => {
   return (
     <>
-      <h3 className="mb-3">Stay connected</h3>
-      <p className="mb-5">
+      <h3 className="mb-4">Stay connected</h3>
+      <p className="mb-8">
         Stay connected with Phoenix's Help Center. Phoenix is available for your
         necessities at all times.
       </p>
-      <div className="flex flex-column align-items-center align-items-md-start gap-4">
-        <div className="flex flex-column flex-md-row gap-2 align-items-center">
+      <div className="flex flex-col items-center md:items-start gap-6">
+        <div className="flex flex-col md:flex-row gap-2 items-center">
           <div className="icon-wrapper shadow-info">
             <UilPhone
               fill='currentColor'
               size={40}
-              className="text-primary fs-4 z-1 ms-2"
+              className="text-primary text-3xl z-1 ms-2"
               data-bs-theme="light"
             />
           </div>
-          <div className="flex-1 ms-3">
+          <div className="flex-1 ms-4">
             <a href="tel:+8714067509" className="link-900">
               (871) 406-7509
             </a>
           </div>
         </div>
-        <div className="flex flex-column flex-md-row gap-2 align-items-center">
+        <div className="flex flex-col md:flex-row gap-2 items-center">
           <div className="icon-wrapper shadow-info">
             <UilEnvelope
               fill='currentColor'
@@ -40,7 +40,7 @@ const HelpCenter = () => {
               data-bs-theme="light"
             />
           </div>
-          <div className="flex-1 ms-3">
+          <div className="flex-1 ms-4">
             <Link
               to="mailto:phoenix@email.com"
               className="font-semibold text-default"
@@ -49,7 +49,7 @@ const HelpCenter = () => {
             </Link>
           </div>
         </div>
-        <div className="mb-6 flex flex-column flex-md-row gap-2 align-items-center">
+        <div className="mb-10 flex flex-col md:flex-row gap-2 items-center">
           <div className="icon-wrapper shadow-info">
             <UilMapMarker
               fill='currentColor'
@@ -58,13 +58,13 @@ const HelpCenter = () => {
               data-bs-theme="light"
             />
           </div>
-          <div className="flex-1 ms-3">
+          <div className="flex-1 ms-4">
             <Link to="#!" className="font-semibold text-default">
               39163 Amir Drive Suite 802
             </Link>
           </div>
         </div>
-        <div className="flex gap-3">
+        <div className="flex gap-4">
           <a href="#!">
             <FontAwesomeIcon icon={faFacebook} className="text-primary text-xl" />
           </a>

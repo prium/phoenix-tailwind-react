@@ -8,12 +8,12 @@ import Avatar from 'components/base/Avatar';
 
 const TestimonialItem = ({ testimonial }: { testimonial: Testimonial }) => {
   return (
-    <div className="text-center py-8 px-5 px-xl-15">
+    <div className="text-center py-14 px-8 xl:px-30">
       <Rating initialValue={testimonial.rating} readonly />
-      <h3 className="font-semibold fst-italic mt-3 mb-8 w-xl-70 mx-auto lh-base">
+      <h3 className="font-semibold italic mt-4 mb-14 w-xl-70 mx-auto leading-base">
         {testimonial.comment}
       </h3>
-      <div className="flex align-items-center justify-content-center gap-3 mx-auto">
+      <div className="flex items-center justify-center gap-4 mx-auto">
         <Avatar
           src={testimonial.avatar}
           size="3xl"
@@ -32,7 +32,7 @@ const AlternateTestimonialCarousel = () => {
   return (
     <div className="testimonial-carousel relative dark__bg-gray-1100">
       <div
-        className="bg-holder hidden d-xl-block"
+        className="bg-holder hidden xl:block"
         style={{
           backgroundImage: `url(${bg39})`,
           backgroundSize: '186px',
@@ -42,14 +42,14 @@ const AlternateTestimonialCarousel = () => {
       <img
         src={bgLeft}
         alt=""
-        className="absolute hidden d-lg-block"
+        className="absolute hidden lg:block"
         width={150}
         style={{ top: '-100px', left: '-70px' }}
       />
       <img
         src={bgRight}
         alt=""
-        className="absolute hidden d-lg-block"
+        className="absolute hidden lg:block"
         width={150}
         style={{ bottom: '-80px', right: '-80px' }}
       />

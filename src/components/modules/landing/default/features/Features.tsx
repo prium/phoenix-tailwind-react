@@ -10,18 +10,18 @@ import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
 const Features = () => {
   return (
-    <section className="bg-default pt-15 pb-18" id="features">
-      <div className="container-small px-lg-7 px-xxl-3">
+    <section className="bg-default pt-30 pb-18" id="features">
+      <div className="container-small lg:px-12 2xl:px-4">
         <div className="relative z-2">
-          <Row className="mb-12">
-            <Col lg={6} className="text-center text-lg-start pe-xxl-3">
-              <h4 className="text-primary font-black mb-4">Features</h4>
-              <h2 className="mb-3 text-emphasis lh-base">
+          <Row className="mb-24">
+            <Col lg={6} className="text-center lg:text-start 2xl:pe-4">
+              <h4 className="text-primary font-black mb-6">Features</h4>
+              <h2 className="mb-4 text-emphasis leading-base">
                 A fully integrated suite
                 <br />
                 of payments products
               </h2>
-              <p className="mb-5">
+              <p className="mb-8">
                 With the power of Phoenix, you can now focus only on
                 functionaries for your digital products, while leaving the UI
                 design on us!With the power of Phoenix, you can now focus only
@@ -41,11 +41,11 @@ const Features = () => {
                 Find out more
               </Button>
             </Col>
-            <Col sm={6} lg={3} className="mt-7 text-center text-lg-start">
-              <div className="h-100 flex flex-column justify-content-between">
-                <div className="border-start-lg border-dashed border-subtle ps-4">
+            <Col sm={6} lg={3} className="mt-12 text-center lg:text-start">
+              <div className="h-full flex flex-col justify-between">
+                <div className="lg:border-s border-dashed border-subtle ps-6">
                   <img
-                    className="mb-4"
+                    className="mb-6"
                     src={boltIlls}
                     width={48}
                     height={48}
@@ -53,7 +53,7 @@ const Features = () => {
                   />
                   <div>
                     <h5 className="font-black mb-2">Lightning Speed</h5>
-                    <p className="font-semibold lh-sm">
+                    <p className="font-semibold leading-sm">
                       Present everything you need in one place within minutes!
                       Grow with Phoenix!
                     </p>
@@ -65,11 +65,11 @@ const Features = () => {
                 </div>
               </div>
             </Col>
-            <Col sm={6} lg={3} className="mt-7 text-center text-lg-start">
-              <div className="h-100 flex flex-column">
-                <div className="border-start-lg border-dashed border-subtle ps-4">
+            <Col sm={6} lg={3} className="mt-12 text-center lg:text-start">
+              <div className="h-full flex flex-col">
+                <div className="lg:border-s border-dashed border-subtle ps-6">
                   <img
-                    className="mb-4"
+                    className="mb-6"
                     src={pie}
                     width={48}
                     height={48}
@@ -77,7 +77,7 @@ const Features = () => {
                   />
                   <div>
                     <h5 className="font-black mb-2">All-in-one solution</h5>
-                    <p className="font-semibold lh-sm">
+                    <p className="font-semibold leading-sm">
                       Show your production and growth graph in one place with
                       Phoenix!
                     </p>

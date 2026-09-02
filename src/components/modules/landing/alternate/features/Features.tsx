@@ -6,19 +6,19 @@ import FeatureSection from './FeatureSection';
 
 const Features = () => {
   return (
-    <section id="features" className="pt-13 pb-10">
-      <div className="container-small px-lg-7 px-xxl-3">
-        <div className="text-center mb-10 mb-md-5">
-          <h5 className="text-info mb-3">Features</h5>
-          <h2 className="mb-3 lh-base">
-            Complete suite of <br className="d-sm-none" />
+    <section id="features" className="pt-26 pb-18">
+      <div className="container-small lg:px-12 2xl:px-4">
+        <div className="text-center mb-18 md:mb-8">
+          <h5 className="text-info mb-4">Features</h5>
+          <h2 className="mb-4 leading-base">
+            Complete suite of <br className="sm:hidden" />
             payment products.
           </h2>
           <p className="mb-0">
             Focus only on functionalities for your digital products with
             Phoenix! Leave the UIs for us.
           </p>
-          <div className="text-center mt-5">
+          <div className="text-center mt-8">
             <Button
               variant="outline-primary"
               endIcon={

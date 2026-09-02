@@ -13,17 +13,17 @@ interface FeatureSectionProps {
 const FeatureSection = ({ feature, isLast }: FeatureSectionProps) => {
   return (
     <Row
-      className={classNames('flex-between-center px-xl-11', {
-        'mb-10 mb-md-9': !isLast
+      className={classNames('flex-between-center xl:px-20', {
+        'mb-18 md:mb-16': !isLast
       })}
     >
       <Col
         xs={{ order: 1 }}
         md={{ span: 6, order: 0 }}
-        className="text-center text-md-start"
+        className="text-center md:text-start"
       >
-        <h4 className="mb-3">{feature.title}</h4>
-        <p className="mb-5">{feature.description}</p>
+        <h4 className="mb-4">{feature.title}</h4>
+        <p className="mb-8">{feature.description}</p>
         <Button
           variant="link"
           endIcon={<FontAwesomeIcon icon={faAngleRight} />}
@@ -32,16 +32,16 @@ const FeatureSection = ({ feature, isLast }: FeatureSectionProps) => {
           Check Demo
         </Button>
       </Col>
-      <Col md={5} className="mb-5 mb-md-0 text-center">
+      <Col md={5} className="mb-8 md:mb-0 text-center">
         <img
           src={feature.lightImg}
           alt=""
-          className="w-75 w-md-100 d-dark-none"
+          className="w-3/4 md:w-full dark:hidden"
         />
         <img
           src={feature.darkImg}
           alt=""
-          className="w-75 w-md-100 d-light-none"
+          className="w-3/4 md:w-full hidden dark:block"
         />
       </Col>
     </Row>

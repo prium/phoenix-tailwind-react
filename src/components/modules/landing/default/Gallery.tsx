@@ -107,7 +107,7 @@ const GalleryItem = ({
       <img
         src={galleryItem.img}
         alt=""
-        className="rounded h-100 w-100 fit-cover"
+        className="rounded-md h-full w-full fit-cover"
       />
     </div>
   );
@@ -135,11 +135,11 @@ const Gallery = () => {
   };
 
   return (
-    <section className="pt-15">
-      <div className="container-small relative px-lg-7 px-xxl-3">
-        <Row className="mb-8 text-center text-sm-start">
-          <Col xs={12} className="mb-4">
-            <h4 className="text-primary font-black mb-3">Gallery</h4>
+    <section className="pt-30">
+      <div className="container-small relative lg:px-12 2xl:px-4">
+        <Row className="mb-14 text-center sm:text-start">
+          <Col xs={12} className="mb-6">
+            <h4 className="text-primary font-black mb-4">Gallery</h4>
             <h2>Some of Our Best Works</h2>
           </Col>
           <Col lg={6}>
@@ -161,11 +161,11 @@ const Gallery = () => {
 
         <IsotopeNav
           navItems={navItems}
-          className="mb-5 justify-content-center justify-content-sm-start w-max-content"
+          className="mb-8 justify-center sm:justify-start w-max-content"
           onSelect={handleNavItemSelect}
         />
 
-        <div className="d-grid grid-cols-12 gap-3">
+        <div className="grid grid-cols-12 gap-4">
           {images.map((gallery, index) => (
             <GalleryItem
               galleryItem={gallery}

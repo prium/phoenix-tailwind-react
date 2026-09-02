@@ -96,7 +96,7 @@ const GalleryItem = ({
       <img
         src={galleryItem.img}
         alt=""
-        className="rounded h-100 w-100 fit-cover"
+        className="rounded-md h-full w-full fit-cover"
       />
     </div>
   );
@@ -124,9 +124,9 @@ const Gallery = () => {
   };
   return (
     <section className="gallery">
-      <div className="absolute left-0 w-100 gallery-overlay" />
+      <div className="absolute left-0 w-full gallery-overlay" />
       <div
-        className="bg-holder hidden d-xl-block"
+        className="bg-holder hidden xl:block"
         style={{
           backgroundImage: `url(${bgLeft})`,
           backgroundSize: 'auto',
@@ -134,24 +134,24 @@ const Gallery = () => {
         }}
       />
       <div
-        className="bg-holder hidden d-xl-block"
+        className="bg-holder hidden xl:block"
         style={{
           backgroundImage: `url(${bgRight})`,
           backgroundSize: 'auto',
           backgroundPosition: 'right 62%'
         }}
       />
-      <div className="container-small relative px-lg-7 px-xxl-3">
-        <div className="text-center mb-7">
-          <h5 className="text-info mb-3">Gallery</h5>
+      <div className="container-small relative lg:px-12 2xl:px-4">
+        <div className="text-center mb-12">
+          <h5 className="text-info mb-4">Gallery</h5>
           <h2 className="mb-2">Our best works</h2>
         </div>
         <IsotopeNav
           navItems={navItems}
-          className="mb-5 justify-content-center w-max-content mx-auto"
+          className="mb-8 justify-center w-max-content mx-auto"
           onSelect={handleNavItemSelect}
         />
-        <div className="d-grid grid-cols-12 gap-3">
+        <div className="grid grid-cols-12 gap-4">
           {images.map((gallery, index) => (
             <GalleryItem
               galleryItem={gallery}

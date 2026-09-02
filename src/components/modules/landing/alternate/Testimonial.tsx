@@ -3,11 +3,11 @@ import React from 'react';
 
 const Testimonial = () => {
   return (
-    <section className="pb-14 overflow-x-hidden">
-      <div className="container-small px-lg-7 px-xxl-3">
-        <div className="text-center mb-5 relative">
-          <h5 className="text-info mb-3">Testimonial</h5>
-          <h2 className="mb-2 lh-base">
+    <section className="pb-28 overflow-x-hidden">
+      <div className="container-small lg:px-12 2xl:px-4">
+        <div className="text-center mb-8 relative">
+          <h5 className="text-info mb-4">Testimonial</h5>
+          <h2 className="mb-2 leading-base">
             What our customers has to say about us
           </h2>
         </div>

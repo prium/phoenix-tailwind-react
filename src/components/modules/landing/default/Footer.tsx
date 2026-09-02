@@ -20,11 +20,11 @@ const FooterList = ({
     <div
       className={classNames(
         className,
-        'border-dashed border-start border-primary-light ps-3'
+        'border-dashed border-s border-primary-light ps-6'
       )}
       style={{ '--phoenix-border-opacity': '.2' } as CSSProperties}
     >
-      <h5 className="lh-lg font-black mb-2 text-light">{label}</h5>
+      <h5 className="leading-lg font-black mb-2 text-light">{label}</h5>
       <ul className="list-unstyled mb-1">
         {items.map((item, index) => (
           <li className="mb-1" key={index}>
@@ -68,7 +68,7 @@ const Footer = () => {
 
       <div className="relative">
         <svg
-          className="w-100 text-white dark__text-gray-1100"
+          className="w-full text-white dark__text-gray-1100"
           preserveAspectRatio="none"
           viewBox="0 0 1920 368"
           fill="none"
@@ -77,11 +77,11 @@ const Footer = () => {
           <path d="M1920 0.44L0 367.74V0H1920V0.44Z" fill="currentColor" />
         </svg>
         <section className="footer-default">
-          <div className="container-small px-lg-7 px-xxl-3">
+          <div className="container-small lg:px-12 2xl:px-4">
             <Row className="relative">
-              <Col xs={{ span: 12, order: 0 }} lg={5} className="mb-4">
+              <Col xs={{ span: 12, order: 0 }} lg={5} className="mb-6">
                 <Link to="#!">
-                  <img className="mb-3" src={logoWhite} height="48" alt="" />
+                  <img className="mb-4" src={logoWhite} height="48" alt="" />
                 </Link>
                 <h3 className="text-white">Phoenix</h3>
                 <p className="text-white opacity-50">
@@ -91,16 +91,16 @@ const Footer = () => {
                 </p>
               </Col>
               <Col lg={7}>
-                <Row className="justify-content-between">
+                <Row className="justify-between">
                   <Col
                     xs={{ span: 6, order: 2 }}
                     sm={{ span: 4, order: 1 }}
                     lg={3}
-                    className="mb-3"
+                    className="mb-4"
                   >
                     <FooterList
                       label="Help"
-                      className="mb-4"
+                      className="mb-6"
                       items={['About', 'Contact', 'Developers']}
                     />
                     <FooterList
@@ -112,7 +112,7 @@ const Footer = () => {
                     xs={{ span: 6, order: 3 }}
                     sm={{ span: 4, order: 2 }}
                     lg={3}
-                    className="mb-3"
+                    className="mb-4"
                   >
                     <FooterList
                       label="Support"
@@ -132,7 +132,7 @@ const Footer = () => {
                     sm={{ order: 2 }}
                     md={4}
                     lg={3}
-                    className="mb-3"
+                    className="mb-4"
                   >
                     <FooterList
                       label="Info"

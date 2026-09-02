@@ -11,10 +11,10 @@ import bgRight from 'assets/img/bg/bg-right-24.png';
 
 const Cta = () => {
   return (
-    <section className="dark__bg-gray-1000 pb-10 overflow-hidden">
-      <div className="container-small px-lg-7 px-xxl-3">
+    <section className="dark__bg-gray-1000 pb-18 overflow-hidden">
+      <div className="container-small lg:px-12 2xl:px-4">
         <div
-          className="absolute w-100 h-100 start-0 end-0 opacity-50"
+          className="absolute w-full h-full start-0 end-0 opacity-50"
           style={{
             bottom: '-350px',
             transform: 'skewY(-8deg)',
@@ -38,9 +38,9 @@ const Cta = () => {
             backgroundPosition: 'right center'
           }}
         />
-        <Row className="justify-content-center">
+        <Row className="justify-center">
           <Col xs={12} className="text-center">
-            <Card className="py-md-9 px-md-13 border-0 z-1 shadow-lg">
+            <Card className="md:py-16 md:px-26 border-0 z-1 shadow-lg">
               <div
                 className="bg-holder"
                 style={{
@@ -52,18 +52,18 @@ const Cta = () => {
 
               <Card.Body className="relative">
                 <img
-                  className="img-fluid mb-5 d-dark-none"
+                  className="img-fluid mb-8 dark:hidden"
                   src={illustrations37}
                   width={260}
                   alt="..."
                 />
                 <img
-                  className="img-fluid mb-5 d-light-none"
+                  className="img-fluid mb-8 hidden dark:block"
                   src={illustrations37dark}
                   width={260}
                   alt="..."
                 />
-                <div className="flex align-items-center font-bold justify-content-center mb-3">
+                <div className="flex items-center font-bold justify-center mb-4">
                   <p className="mb-0">2008 Premium Icons</p>
                   <FontAwesomeIcon
                     icon={faCircle}
@@ -72,12 +72,12 @@ const Cta = () => {
                   />
                   <p className="mb-0">Included FREE with it</p>
                 </div>
-                <h1 className="text-xl fs-sm-4 fs-lg-2 font-black lh-sm mb-3">
+                <h1 className="text-xl sm:text-3xl lg:text-5xl font-black leading-sm mb-4">
                   Join
                   <span className="gradient-text-primary mx-2">Phoenix</span>
                   Today
                 </h1>
-                <Form className="flex gap-3 justify-content-center mb-3 px-xxl-15">
+                <Form className="flex gap-4 justify-center mb-4 2xl:px-30">
                   <Form.Control
                     type="email"
                     placeholder="Email"

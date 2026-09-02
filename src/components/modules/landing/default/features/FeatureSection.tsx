@@ -14,28 +14,28 @@ interface FeatureSectionProps {
 const FeatureSection = ({ feature, orderReverse }: FeatureSectionProps) => {
   const { lightImage, darkImage, label, title, details, link } = feature;
   return (
-    <Row className="align-items-center justify-content-between text-center text-lg-start mb-6 mb-lg-2">
+    <Row className="items-center justify-between text-center lg:text-start mb-10 lg:mb-2">
       <Col
         lg={5}
         className={classNames({
-          'order-lg-1': orderReverse
+          'lg:order-1': orderReverse
         })}
       >
         <img
-          className="feature-image mb-9 mb-lg-0 d-dark-none"
+          className="feature-image mb-16 lg:mb-0 dark:hidden"
           src={lightImage}
           alt=""
         />
         <img
-          className="feature-image mb-9 mb-lg-0 d-light-none"
+          className="feature-image mb-16 lg:mb-0 hidden dark:block"
           src={darkImage}
           alt=""
         />
       </Col>
       <Col lg={6}>
-        <h6 className="text-primary mb-2 ls-2">{label}</h6>
-        <h3 className="font-black mb-3">{title}</h3>
-        <p className="mb-4 px-md-7 px-lg-0">{details}</p>
+        <h6 className="text-primary mb-2 tracking-[0.165em]">{label}</h6>
+        <h3 className="font-black mb-4">{title}</h3>
+        <p className="mb-6 md:px-12 lg:px-0">{details}</p>
         <Link to={link} className="me-2 p-0 text-md font-bold">
           Check Demo
           <FontAwesomeIcon icon={faAngleRight} className="ms-2" />

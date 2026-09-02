@@ -4,12 +4,12 @@ import { Form } from 'react-bootstrap';
 const QueryForm = () => {
   return (
     <>
-      <h3 className="mb-3">Drop us a line</h3>
-      <p className="mb-7">
+      <h3 className="mb-4">Drop us a line</h3>
+      <p className="mb-12">
         If you have any query or suggestion, we are open to learn from you.
         Let's talk, reach us anytime.
       </p>
-      <Form className="flex flex-column gap-4">
+      <Form className="flex flex-col gap-6">
         <Form.Control type="text" name="name" placeholder="Name" required />
         <Form.Control type="email" name="email" placeholder="Email" required />
         <Form.Control

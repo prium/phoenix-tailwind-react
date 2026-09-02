@@ -8,10 +8,10 @@ import bgRight15 from 'assets/img/bg/bg-right-15.png';
 
 const Pricing = () => {
   return (
-    <section className="pt-lg-0 pt-xl-8">
+    <section className="lg:pt-0 xl:pt-14">
       <div>
         <div
-          className="bg-holder hidden d-md-block"
+          className="bg-holder hidden md:block"
           style={{
             backgroundImage: `url(${bgLeft15})`,
             backgroundPosition: 'left',
@@ -19,7 +19,7 @@ const Pricing = () => {
           }}
         />
         <div
-          className="bg-holder hidden d-md-block"
+          className="bg-holder hidden md:block"
           style={{
             backgroundImage: `url(${bgRight15})`,
             backgroundPosition: 'right',
@@ -28,13 +28,13 @@ const Pricing = () => {
         />
       </div>
 
-      <div className="container-small relative px-lg-7 px-xxl-3">
+      <div className="container-small relative lg:px-12 2xl:px-4">
         <Row>
-          <Col xs={12} className="mb-4 text-center text-sm-start">
-            <h4 className="text-primary font-black mb-3">Pricing</h4>
+          <Col xs={12} className="mb-6 text-center sm:text-start">
+            <h4 className="text-primary font-black mb-4">Pricing</h4>
             <h2>Choose the best deal for you</h2>
           </Col>
-          <Col md={6} className="text-center text-sm-start">
+          <Col md={6} className="text-center sm:text-start">
             <p>
               Entice your customers with {import.meta.env.VITE_TITLE} admin
               dashboard. Show your best deal in this section to help customers
@@ -44,7 +44,7 @@ const Pricing = () => {
               they need to get. Show offer details here and entice them to buy.
             </p>
           </Col>
-          <Col md={6} className="text-center text-sm-start">
+          <Col md={6} className="text-center sm:text-start">
             <p>
               offer to your customers, let them compare among them and search
               for what they need to get. Show offer details here and entice them
@@ -52,24 +52,24 @@ const Pricing = () => {
             </p>
           </Col>
         </Row>
-        <Row className="pt-9 g-3 g-xl-0 mb-4 mb-md-8">
+        <Row className="pt-16 g-4 xl:g-0 mb-6 md:mb-14">
           {pricingItems.slice(0, 3).map((item, index) => (
             <Col key={item.id} md={6} xl={3}>
               <>
                 <Card
-                  className={classNames('h-100', {
-                    'border border-2 border-primary mt-5 mt-md-0': item.popular,
-                    'rounded-end-xl-0 rounded-start': index === 0,
-                    'rounded-top-0 rounded-xl-0': index === 1,
-                    'rounded-start rounded-start-xl-0 mt-5 mt-md-0': index === 2
+                  className={classNames('h-full', {
+                    'border border-2 border-primary mt-14 md:mt-0': item.popular,
+                    'xl:rounded-e-none rounded-s-md': index === 0,
+                    'rounded-t-none xl:rounded-none': index === 1,
+                    'rounded-s-md xl:rounded-s-none mt-14 md:mt-0': index === 2
                   })}
                 >
                   {item.popular && (
-                    <div className="absolute flex flex-center bg-primary-subtle rounded-top py-1 end-0 start-0 badge-pricing">
+                    <div className="absolute flex flex-center bg-primary-subtle rounded-t-md py-1 end-0 start-0 badge-pricing">
                       <p className="text-primary-dark mb-0">Most popular</p>
                     </div>
                   )}
-                  <Card.Body className="px-6">
+                  <Card.Body className="px-10">
                     <PricingItem pricing={item} />
                   </Card.Body>
                 </Card>
@@ -77,9 +77,9 @@ const Pricing = () => {
             </Col>
           ))}
 
-          <Col xs={12} md={6} xl={3} className="ps-xl-3">
-            <Card className="mt-5 mt-md-0">
-              <Card.Body className="px-6">
+          <Col xs={12} md={6} xl={3} className="xl:ps-4">
+            <Card className="mt-8 md:mt-0">
+              <Card.Body className="px-10">
                 <PricingItem pricing={pricingItems[3]} />
               </Card.Body>
             </Card>
