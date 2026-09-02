@@ -1,59 +1,76 @@
 import { faKey, faUser } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Col, Input, Row, cn } from '@hummingbirdui/react';
 import Button from 'components/base/Button';
+import PasswordField from 'components/base/PasswordField';
+import AuthLogoLink from 'components/common/AuthLogoLink';
 import AuthSocialButtons from 'components/common/AuthSocialButtons';
-import { Col, Form, Row } from 'react-bootstrap';
 import { Link } from 'react-router';
 
-const SignInForm = ({ layout }: { layout: 'simple' | 'card' | 'split' }) => {
+export type AuthLayout = 'simple' | 'card' | 'split';
+
+/** pug: pages/authentication/{simple,split,card}/sign-in.pug */
+const SignInForm = ({ layout }: { layout: AuthLayout }) => {
   return (
     <>
       <div className="text-center mb-12">
+        {layout === 'card' && <AuthLogoLink />}
         <h3 className="text-highlight">Sign In</h3>
         <p className="text-subtle">Get access to your account</p>
       </div>
       <AuthSocialButtons title="Sign in" />
       <div className="relative">
         <hr className="bg-muted mt-8 mb-6" />
-        <div className="divider-content-center">or use email</div>
+        <div
+          className={cn('divider-content-center', {
+            'bg-soft': layout === 'card'
+          })}
+        >
+          or use email
+        </div>
       </div>
-      <Form.Group className="mb-4 text-start">
-        <Form.Label htmlFor="email">Email address</Form.Label>
-        <div className="form-icon-container">
-          <Form.Control
-            id="email"
-            type="email"
-            className="form-icon-input"
-            placeholder="name@example.com"
+      <div className="mb-4 text-start">
+        <label className="form-label" htmlFor="email">
+          Email address
+        </label>
+        <div className="input-group-icon">
+          <FontAwesomeIcon
+            icon={faUser}
+            className="text-default text-md form-control-icon-start"
           />
-          <FontAwesomeIcon icon={faUser} className="text-default text-md form-icon" />
+          <Input id="email" type="email" placeholder="name@example.com" />
         </div>
-      </Form.Group>
-      <Form.Group className="mb-4 text-start">
-        <Form.Label htmlFor="password">Password</Form.Label>
-        <div className="form-icon-container">
-          <Form.Control
-            id="password"
-            type="password"
-            className="form-icon-input"
-            placeholder="Password"
-          />
-          <FontAwesomeIcon icon={faKey} className="text-default text-md form-icon" />
-        </div>
-      </Form.Group>
+      </div>
+      <div className="mb-4 text-start">
+        <label className="form-label" htmlFor="password">
+          Password
+        </label>
+        <PasswordField
+          className="input-group-icon"
+          id="password"
+          placeholder="Password"
+          inputClassName="pe-10"
+          startIcon={
+            <FontAwesomeIcon
+              icon={faKey}
+              className="text-default text-md form-control-icon-start"
+            />
+          }
+        />
+      </div>
       <Row className="flex-between-center mb-12">
         <Col xs="auto">
-          <Form.Check type="checkbox" className="mb-0">
-            <Form.Check.Input
+          <div className="form-check mb-0">
+            <input
+              className="form-check-input"
+              id="basic-checkbox"
               type="checkbox"
-              name="remember-me"
-              id="remember-me"
               defaultChecked
             />
-            <Form.Check.Label htmlFor="remember-me" className="mb-0">
+            <label className="form-check-label mb-0" htmlFor="basic-checkbox">
               Remember me
-            </Form.Check.Label>
-          </Form.Check>
+            </label>
+          </div>
         </Col>
         <Col xs="auto">
           <Link

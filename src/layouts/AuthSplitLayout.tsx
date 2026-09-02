@@ -1,13 +1,13 @@
-import Logo from 'components/common/Logo';
+import { Col, Row } from '@hummingbirdui/react';
+import AuthLogoLink from 'components/common/AuthLogoLink';
 import { PropsWithChildren } from 'react';
-import { Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router';
 
 interface AuthSplitLayoutProps {
   logo?: boolean;
   bg: string;
 }
 
+/** pug: layouts/LayoutSplitAuth.pug — `mixin LayoutSplitBasic`. */
 const AuthSplitLayout = ({
   logo = true,
   bg,
@@ -16,30 +16,12 @@ const AuthSplitLayout = ({
   return (
     <Row className="h-screen g-0">
       <Col lg={6} className="relative hidden lg:block">
-        <div
-          className="bg-holder"
-          style={{
-            backgroundImage: `url(${bg})`
-          }}
-        />
+        <div className="bg-holder" style={{ backgroundImage: `url(${bg})` }} />
       </Col>
       <Col lg={6}>
         <Row className="flex-center h-full g-0 px-6 sm:px-0">
-          <Col sm={6} lg={7} xl={6}>
-            {logo && (
-              <div className="text-center">
-                <Link
-                  to="/"
-                  className="inline-block no-underline mb-6"
-                >
-                  <Logo
-                    text={false}
-                    width={58}
-                    className="font-black text-2xl inline-block"
-                  />
-                </Link>
-              </div>
-            )}
+          <Col xs sm={6} lg={7} xl={6}>
+            {logo && <AuthLogoLink />}
             {children}
           </Col>
         </Row>

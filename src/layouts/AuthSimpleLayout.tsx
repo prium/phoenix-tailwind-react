@@ -1,35 +1,24 @@
-import classNames from 'classnames';
-import Logo from 'components/common/Logo';
+import { Col, Row } from '@hummingbirdui/react';
+import AuthLogoLink from 'components/common/AuthLogoLink';
 import { PropsWithChildren } from 'react';
-import { Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router';
 
 interface AuthSimpleLayoutProps {
   logo?: boolean;
+  /** Replaces the default column width, exactly like the pug `columnClass`. */
   className?: string;
 }
 
+/** pug: layouts/LayoutSimpleAuth.pug — `mixin LayoutBasic`. */
 const AuthSimpleLayout = ({
   logo = true,
-  className='xl:col-5 2xl:col-3',
+  className = 'xl:col-5 2xl:col-3',
   children
 }: PropsWithChildren<AuthSimpleLayoutProps>) => {
   return (
     <div className="container">
       <Row className="flex-center min-h-screen py-8">
-        <Col sm={10} md={8} lg={5} className={classNames(className)}>
-          {logo && (
-            <Link
-              to="/"
-              className="flex flex-center no-underline mb-6"
-            >
-              <Logo
-                text={false}
-                width={58}
-                className="font-black text-2xl inline-block"
-              />
-            </Link>
-          )}
+        <Col sm={10} md={8} lg={5} className={className}>
+          {logo && <AuthLogoLink />}
           {children}
         </Col>
       </Row>
