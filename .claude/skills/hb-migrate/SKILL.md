@@ -40,7 +40,7 @@ and use that everywhere. Existing wrappers: `IndeterminateCheckbox`,
 for the gold `span.uil` 1lh box), `buildSelectionColumn` (hooks/useAdvanceTable),
 `AdvanceTableFooter` (gold list.js pagination), `DatePicker`, `ReactSelect`,
 `FloatingIconField`, `FloatingDatePicker`, `PhoenixFloatingLabel`,
-`InlineCheckItem`, `WizardPager`, `DialogHeading`.
+`InlineCheckItem`, `WizardPager`, `DialogHeading`, `FaStack`.
 Check for one of these before writing gold markup by hand.
 
 **Modal headings:** HB `Dialog.Title` always emits `.modal-title`, and the
@@ -104,6 +104,19 @@ Anything unmigrated still compiles through the temporary shim `src/react-bootstr
 - Table image columns need the gold `min-w-*` on the `th`, otherwise `max-w-full` shrinks the image.
 - Table header labels: the gold writes them literally in UPPERCASE (no text-transform CSS) — copy the exact case from the gold html into each column's `header:` string. Recurring regression; `InvoiceTable` is the one deliberate sentence-case exception.
 - Avatar groups: `.avatar-group` sizing comes from `--avatar-width/--avatar-height` (now defaulted to `--avatar-size` in `components/avatar.css`); avatars in groups are fixed-size, never driven by image resolution. If group avatars look inconsistent, check for markup that drops the `avatar`/`avatar-*` classes, not the images.
+- **FontAwesome renders differently on the two sides.** The gold loads FA's
+  SVG-with-JS bundle (`vendors/fontawesome/all.min.js`), which *replaces* every
+  `span.fa-solid` with an `svg.svg-inline--fa`; this app links the FA **webfont**
+  stylesheet from `index.html` instead. Consequences, both measured:
+  - A webfont `<span>` has a different line box than the gold's SVG (25px vs
+    37.25px on `text-xl`), so copying the gold's `span.fa-*` verbatim drifts
+    ~1px per icon and accumulates down a vertical stack (~8px over nine FAQ
+    cards). Use `FontAwesomeIcon`, not a raw span, wherever the icon sits in a
+    stack whose height matters.
+  - The webfont sheet's `.fa-stack-2x{font-size:2em}` doubles the em the SVG
+    rules size against, so a `fa-stack` background renders at 2× the gold's size.
+    Use `components/base/FaStack` (bakes in the `text-[1em]!` compensation);
+    never hand-write `fa-stack-2x`.
 - Radix portals: dropdown/dialog content lives under `body` — classes go on the content element; measure hidden nav items while visible (`EcommerceNavbar`).
 - Nested / hover menus (top navbar): HB `Dropdown` has no submenus — keep gold's plain `li.dropdown > a.dropdown-toggle + ul.dropdown-menu` markup and drive `show` + `data-bs-popper="none"` from state (`navbar-horizontal/useTopNavDropdown.ts`).
 - HB `Navbar.Collapse` is a `grid` below its breakpoint (gold is `display:block`): use `lg:justify-center`, not `justify-center`.
