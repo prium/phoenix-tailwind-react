@@ -11,9 +11,12 @@ const NavbarHorizontalSlim = () => {
     disableResetButton: true
   });
 
+  // the gold demo page sets `phoenixNavbarTopStyle: 'darker'` alongside the
+  // slim shape (see ../phoenix-tailwind/public/demo/*.html config.set block)
   useConfigMountEffect({
     navbarTopShape: 'slim',
-    navbarPosition: 'horizontal'
+    navbarPosition: 'horizontal',
+    navbarTopAppearance: 'darker'
   });
 
   return <Ecommerce />;

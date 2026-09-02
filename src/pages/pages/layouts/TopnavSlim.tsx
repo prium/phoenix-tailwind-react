@@ -11,8 +11,11 @@ const TopnavSlim = () => {
     disableResetButton: true
   });
 
+  // the gold demo page sets `phoenixNavbarTopStyle: 'darker'` alongside the
+  // slim shape (see ../phoenix-tailwind/public/demo/*.html config.set block)
   useConfigMountEffect({
-    navbarTopShape: 'slim'
+    navbarTopShape: 'slim',
+    navbarTopAppearance: 'darker'
   });
 
   return <Ecommerce />;
