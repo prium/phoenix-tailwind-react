@@ -1,51 +1,40 @@
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
-import Button from 'components/base/Button';
-import { Feature } from 'data/landing/alternate-landing-data';
-import { Col, Row } from 'react-bootstrap';
+import { cn } from '@hummingbirdui/react';
+import type { Feature } from 'data/landing/alternate-landing-data';
 
 interface FeatureSectionProps {
   feature: Feature;
-  isLast: boolean;
+  /** the gold drops the bottom margin on the last row */
+  last?: boolean;
 }
 
-const FeatureSection = ({ feature, isLast }: FeatureSectionProps) => {
-  return (
-    <Row
-      className={classNames('flex-between-center xl:px-20', {
-        'mb-18 md:mb-16': !isLast
-      })}
-    >
-      <Col
-        xs={{ order: 1 }}
-        md={{ span: 6, order: 0 }}
-        className="text-center md:text-start"
-      >
-        <h4 className="mb-4">{feature.title}</h4>
-        <p className="mb-8">{feature.description}</p>
-        <Button
-          variant="link"
-          endIcon={<FontAwesomeIcon icon={faAngleRight} />}
-          className="me-2 p-0 text-md"
-        >
-          Check Demo
-        </Button>
-      </Col>
-      <Col md={5} className="mb-8 md:mb-0 text-center">
-        <img
-          src={feature.lightImg}
-          alt=""
-          className="w-3/4 md:w-full dark:hidden"
-        />
-        <img
-          src={feature.darkImg}
-          alt=""
-          className="w-3/4 md:w-full hidden dark:block"
-        />
-      </Col>
-    </Row>
-  );
-};
+/** One row of `+Features` in landing-2/Features.pug */
+const FeatureSection = ({ feature, last }: FeatureSectionProps) => (
+  <div
+    className={cn('row flex-between-center xl:px-20', {
+      'mb-10 md:mb-16': !last
+    })}
+  >
+    <div className="md:col-6 order-1 md:order-0 text-center md:text-start">
+      <h4 className="mb-4">{feature.title}</h4>
+      <p className="mb-8">{feature.description}</p>
+      <a className="btn btn-link me-2 p-0 text-md" href="#!" role="button">
+        Check Demo
+        <i className="fa-solid fa-angle-right ms-2" />
+      </a>
+    </div>
+    <div className="md:col-5 mb-8 md:mb-0 text-center">
+      <img
+        className="w-3/4 md:w-full dark:hidden"
+        src={feature.lightImg}
+        alt=""
+      />
+      <img
+        className="w-3/4 md:w-full hidden dark:block"
+        src={feature.darkImg}
+        alt=""
+      />
+    </div>
+  </div>
+);
 
 export default FeatureSection;

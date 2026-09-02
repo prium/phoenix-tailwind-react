@@ -1,145 +1,36 @@
-import bgLeft from 'assets/img/bg/bg-left-26.png';
-import bgRight from 'assets/img/bg/bg-right-26.png';
-import IsotopeNav from 'components/navs/IsotopeNav';
-import useLightbox from 'hooks/useLightbox';
 import { useState } from 'react';
-import img1 from 'assets/img/gallery/27.png';
-import img2 from 'assets/img/gallery/28.png';
-import img3 from 'assets/img/gallery/29.png';
-import img4 from 'assets/img/gallery/30.png';
-import img5 from 'assets/img/gallery/31.png';
-import img6 from 'assets/img/gallery/32.png';
-import img7 from 'assets/img/gallery/33.png';
-import img8 from 'assets/img/gallery/34.png';
+
+import bgLeft26 from 'assets/img/bg/bg-left-26.png';
+import bgRight26 from 'assets/img/bg/bg-right-26.png';
 import Lightbox from 'components/base/LightBox';
+import PackeryGrid from 'components/modules/gallery/PackeryGrid';
+import IsotopeNav from 'components/navs/IsotopeNav';
+import { galleryItems } from 'data/landing/alternate-landing-data';
+import { galleryFilters } from 'data/landing/default-landing-data';
+import useLightbox from 'hooks/useLightbox';
 
-type GalleryItemType = {
-  img: string;
-  className: string;
-  category: string[];
-};
-
-const navItems = [
-  {
-    eventKey: '1',
-    label: 'First'
-  },
-  {
-    eventKey: '2',
-    label: 'Second'
-  },
-  {
-    eventKey: '3',
-    label: 'Third'
-  },
-  {
-    eventKey: '4',
-    label: 'Fourth'
-  }
-];
-
-const galleryItems: GalleryItemType[] = [
-  {
-    img: img1,
-    className: 'col-span-6 col-span-md-4 row-span-2',
-    category: ['1', '4']
-  },
-  {
-    img: img2,
-    className: 'col-span-6 col-span-md-4 row-span-1',
-    category: ['1', '3']
-  },
-  {
-    img: img3,
-    className: 'col-span-6 col-span-md-4 row-span-2',
-    category: ['1', '2']
-  },
-  {
-    img: img4,
-    className: 'col-span-6 col-span-md-4 row-span-1',
-    category: ['1', '3']
-  },
-  {
-    img: img6,
-    className: 'col-span-6 col-span-md-4 row-span-2',
-    category: ['1', '2']
-  },
-  {
-    img: img5,
-    className: 'col-span-6 col-span-md-4 row-span-1',
-    category: ['1', '3']
-  },
-  {
-    img: img7,
-    className: 'col-span-6 col-span-md-4 row-span-2',
-    category: ['1', '4']
-  },
-  {
-    img: img8,
-    className: 'col-span-6 col-span-md-4 row-span-1',
-    category: ['1', '3']
-  }
-];
-
-const GalleryItem = ({
-  galleryItem,
-  onClick
-}: {
-  galleryItem: GalleryItemType;
-  onClick: () => void;
-}) => {
-  return (
-    <div
-      className={`${galleryItem.className} cursor-pointer`}
-      onClick={onClick}
-    >
-      <img
-        src={galleryItem.img}
-        alt=""
-        className="rounded-md h-full w-full fit-cover"
-      />
-    </div>
-  );
-};
-
+/** `+Gallery` in landing-2/Gallery.pug */
 const Gallery = () => {
-  const [images, setImages] = useState(galleryItems);
-  const [selectedCategory, setSelectedCategory] = useState('1');
+  const [filter, setFilter] = useState('*');
+  const images =
+    filter === '*'
+      ? galleryItems
+      : galleryItems.filter(item => item.filters.includes(filter));
 
   const { lightboxProps, openLightbox } = useLightbox(
-    images.map(image => image.img)
+    images.map(item => item.image)
   );
 
-  const handleNavItemSelect = (category: string | null) => {
-    setSelectedCategory(category || '1');
-    setImages(
-      galleryItems.filter(item =>
-        category ? item.category.includes(category) : true
-      )
-    );
-  };
-
-  const handleItemClick = (index: number) => {
-    openLightbox(index);
-  };
   return (
     <section className="gallery">
-      <div className="absolute left-0 w-full gallery-overlay" />
+      <div className="gallery-overlay absolute start-0 w-full" />
       <div
-        className="bg-holder hidden xl:block"
-        style={{
-          backgroundImage: `url(${bgLeft})`,
-          backgroundSize: 'auto',
-          backgroundPosition: 'left 65%'
-        }}
+        className="bg-holder bg-auto! bg-position-[left_65%]! hidden xl:block"
+        style={{ backgroundImage: `url(${bgLeft26})` }}
       />
       <div
-        className="bg-holder hidden xl:block"
-        style={{
-          backgroundImage: `url(${bgRight})`,
-          backgroundSize: 'auto',
-          backgroundPosition: 'right 62%'
-        }}
+        className="bg-holder bg-auto! bg-position-[right_62%]! hidden xl:block"
+        style={{ backgroundImage: `url(${bgRight26})` }}
       />
       <div className="container-small relative lg:px-12 2xl:px-4">
         <div className="text-center mb-12">
@@ -147,20 +38,34 @@ const Gallery = () => {
           <h2 className="mb-2">Our best works</h2>
         </div>
         <IsotopeNav
-          navItems={navItems}
-          className="mb-8 justify-center w-max-content mx-auto"
-          onSelect={handleNavItemSelect}
+          navItems={galleryFilters}
+          className="mb-10 w-max mx-auto"
+          onSelect={key => setFilter(key ?? '*')}
         />
-        <div className="grid grid-cols-12 gap-4">
-          {images.map((gallery, index) => (
-            <GalleryItem
-              galleryItem={gallery}
-              key={gallery.img}
-              onClick={() => handleItemClick(index + 1)}
-            />
+
+        <PackeryGrid className="row g-4" id="image_gallery">
+          {images.map((item, index) => (
+            // `.isotope-item` is `visibility: hidden` until the gold's
+            // isotope.js reveals it after imagesLoaded (plugins/isotope.css)
+            <div
+              className={item.className}
+              key={item.image}
+              style={{ visibility: 'visible' }}
+            >
+              <a
+                href="#!"
+                onClick={event => {
+                  event.preventDefault();
+                  openLightbox(index + 1);
+                }}
+              >
+                <img className="rounded-md w-full" src={item.image} alt="" />
+              </a>
+            </div>
           ))}
-        </div>
-        <Lightbox {...lightboxProps} key={selectedCategory} />
+        </PackeryGrid>
+
+        <Lightbox key={filter} {...lightboxProps} />
       </div>
     </section>
   );

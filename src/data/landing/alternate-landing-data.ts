@@ -24,6 +24,15 @@ import team74 from 'assets/img/team/74.webp';
 import team75 from 'assets/img/team/75.webp';
 import team76 from 'assets/img/team/76.webp';
 import team20 from 'assets/img/team/20.webp';
+import gallery27 from 'assets/img/gallery/27.png';
+import gallery28 from 'assets/img/gallery/28.png';
+import gallery29 from 'assets/img/gallery/29.png';
+import gallery30 from 'assets/img/gallery/30.png';
+import gallery31 from 'assets/img/gallery/31.png';
+import gallery32 from 'assets/img/gallery/32.png';
+import gallery33 from 'assets/img/gallery/33.png';
+import gallery34 from 'assets/img/gallery/34.png';
+import type { GalleryItem } from './default-landing-data';
 
 export interface Feature {
   id: number;
@@ -37,8 +46,14 @@ export interface Stat {
   id: number;
   title: string;
   value: number;
+  /** countUp duration in seconds, copied from the gold `data-countup` */
+  duration: number;
+  /** static text before the counter (its own span in the gold) */
   prefix?: string;
+  /** static text after the counter (its own span in the gold) */
   suffix?: string;
+  /** suffix countUp itself appends to the animated value */
+  countSuffix?: string;
 }
 
 export interface Blog {
@@ -61,7 +76,7 @@ export interface TeamMember {
 export const features: Feature[] = [
   {
     id: 1,
-    title: 'Recieve the signals instantly',
+    title: 'Receive the signals instantly',
     description:
       'Phoenix allows you to receive every signal instantly and fruitfully. No need for long waits.',
     lightImg: illustration34,
@@ -121,24 +136,28 @@ export const stats: Stat[] = [
     id: 1,
     title: 'Revenue',
     value: 8976,
+    duration: 5,
     prefix: '$'
   },
   {
     id: 2,
     title: 'User',
     value: 308,
+    duration: 10,
     suffix: 'K'
   },
   {
     id: 3,
     title: 'Countries',
-    value: 12
+    value: 12,
+    duration: 0.5
   },
   {
     id: 4,
     title: 'Stories',
     value: 125,
-    suffix: '+'
+    duration: 15,
+    countSuffix: '+'
   }
 ];
 
@@ -226,5 +245,49 @@ export const team: TeamMember[] = [
     image: team76,
     name: 'Scooby',
     designation: 'Dog'
+  }
+];
+
+/** `+Gallery` in landing-2/Gallery.pug */
+export const galleryItems: GalleryItem[] = [
+  {
+    image: gallery27,
+    className: 'col-6 md:col-4 px-2 isotope-item fourth',
+    filters: ['fourth']
+  },
+  {
+    image: gallery28,
+    className: 'col-6 md:col-4 px-2 isotope-item third',
+    filters: ['third']
+  },
+  {
+    image: gallery29,
+    className: 'col-6 md:col-4 px-2 isotope-item second',
+    filters: ['second']
+  },
+  {
+    image: gallery30,
+    className: 'col-6 md:col-4 px-2 isotope-item third',
+    filters: ['third']
+  },
+  {
+    image: gallery31,
+    className: 'col-6 md:col-4 px-2 isotope-item third',
+    filters: ['third']
+  },
+  {
+    image: gallery32,
+    className: 'col-6 md:col-4 px-2 isotope-item second',
+    filters: ['second']
+  },
+  {
+    image: gallery33,
+    className: 'col-6 md:col-4 px-2 isotope-item fourth',
+    filters: ['fourth']
+  },
+  {
+    image: gallery34,
+    className: 'col-6 md:col-4 px-2 isotope-item third',
+    filters: ['third']
   }
 ];

@@ -961,6 +961,7 @@ export const pages: VisualPage[] = [
     name: 'landing-default',
     react: '/pages/landing/default',
     gold: '/pages/landing/default.html',
+    dark: true,
     // `[data-countup]`: the gold animates 0 → 125+/308k over 10s (countUp.js,
     // not a CSS animation, so `animations: 'disabled'` cannot freeze it) — the
     // digits shown depend on when the shot is taken on either side.
@@ -986,6 +987,30 @@ export const pages: VisualPage[] = [
   {
     name: 'landing-alternate',
     react: '/pages/landing/alternate',
-    gold: '/pages/landing/alternate.html'
+    gold: '/pages/landing/alternate.html',
+    dark: true,
+    probes: [
+      '.navbar-brand',
+      '.btn-phoenix-primary',
+      // gallery filter nav + the gold's own carousel indicator markup
+      '.isotope-nav',
+      '.carousel-indicators button',
+      // pricing bullet glyphs, contact glyphs and the blog cards
+      '.fa-li',
+      '.icon-wrapper',
+      '.blog-card'
+    ],
+    mask: [
+      // same countUp.js figures as the default landing (5–15s, JS driven)
+      '[data-countup]',
+      // the rotating-earth lottie animates continuously on both sides and is
+      // never on the same frame twice; it is absolutely positioned decoration,
+      // so hiding it costs no layout (0.07–0.29% of the page unmasked)
+      '.lottie',
+      // the gold's Google map only renders when the CDN key resolves — its
+      // street labels come and go between runs (`.mapboxgl-map` is already
+      // masked globally for the React side)
+      '.googlemap'
+    ]
   }
 ];
