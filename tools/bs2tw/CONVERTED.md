@@ -40,3 +40,14 @@ class names with different meanings (`mb-4` → `mb-6` → `mb-10` …).
   src/data/{gallery,file-manager,treeview,calendarEvents,ganttData}
   (Calendar{Event,AddNewEvent}Modal + FileManagerTimeline were converted with
   the crm wave — manual pass only)
+- faq/starter closure: src/pages/pages/Starter.tsx, src/pages/faq,
+  src/components/modules/faq, src/components/cta/FaqCta.tsx, src/data/faq.ts
+  (commit "chore: run bs2tw codemod over the faq/starter closure")
+- pricing closure: src/pages/pages/pricing, src/components/pricing-items,
+  src/data/pricing.ts — PricingPackageList.tsx was NOT re-run (already converted
+  with the crm tree); manual pass only
+- landing closure: src/pages/pages/landing, src/components/modules/landing,
+  src/data/landing, src/components/sliders/{TestimonialCarousel,
+  AlternateTestimonialCarousel}.tsx — DefaultLandingNavbar.tsx was NOT re-run
+  (converted with the layout shell); its leftovers were fixed by hand
+
