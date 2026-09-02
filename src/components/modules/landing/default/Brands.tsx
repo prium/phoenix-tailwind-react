@@ -1,81 +1,71 @@
-import classNames from 'classnames';
-import { Col, Row } from 'react-bootstrap';
-import netflix from 'assets/img/brands/netflix.png';
-import blender from 'assets/img/brands/blender.png';
-import upwork from 'assets/img/brands/upwork.png';
-import facebook from 'assets/img/brands/facebook.png';
-import pocket from 'assets/img/brands/pocket.png';
-import mailBluster from 'assets/img/brands/mail-bluster.png';
-import discord from 'assets/img/brands/discord.png';
-import google from 'assets/img/brands/google.png';
+import { cn } from '@hummingbirdui/react';
 
-const Brand = ({ image, className }: { image: string; className?: string }) => {
-  return (
-    <div
-      className={classNames(
-        className,
-        'p-2 lg:p-8 flex flex-center h-full border-dashed border-subtle'
-      )}
-    >
-      <img src={image} alt="" className="w-full" />
-    </div>
-  );
-};
+import netflix from 'assets/img/brand2/netflix-n.png';
+import blender from 'assets/img/brand2/blender.png';
+import upwork from 'assets/img/brand2/upwork.png';
+import facebook from 'assets/img/brand2/facebook-f.png';
+import pocket from 'assets/img/brand2/pocket.png';
+import mailBluster from 'assets/img/brand2/mail-bluster-1.png';
+import discord from 'assets/img/brand2/discord.png';
+import google from 'assets/img/brand2/google-g.png';
 
-const Brands = ({ className }: { className?: string }) => {
-  return (
-    <section className={className}>
-      <div className="container-small lg:px-12 2xl:px-4">
-        <Row className="g-0">
-          <Col xs={6} md={3}>
-            <Brand
-              image={netflix}
-              className="border-b border-e border-subtle"
-            />
-          </Col>
-          <Col xs={6} md={3}>
-            <Brand
-              image={blender}
-              className="border-b md:border-e border-subtle"
-            />
-          </Col>
-          <Col xs={6} md={3}>
-            <Brand
-              image={upwork}
-              className="border-b border-e md:border-e border-subtle"
-            />
-          </Col>
-          <Col xs={6} md={3}>
-            <Brand
-              image={facebook}
-              className="border-b lg:border-e-0 border-subtle"
-            />
-          </Col>
-          <Col xs={6} md={3}>
-            <Brand
-              image={pocket}
-              className="border-e border-b md:border-b-0 border-subtle"
-            />
-          </Col>
-          <Col xs={6} md={3}>
-            <Brand
-              image={mailBluster}
-              className="md:border-e border-b md:border-b-0 border-subtle"
-            />
-          </Col>
-          <Col xs={6} md={3}>
-            <Brand image={discord} className="border-e border-subtle" />
-          </Col>
-          <Col xs={6} md={3}>
-            <Brand
-              image={google}
-              className="lg:border-e-0 border-subtle"
-            />
-          </Col>
-        </Row>
+/** Cell border classes, copied verbatim from the gold `+Brand` calls. */
+const brands = [
+  {
+    image: netflix,
+    className: 'border-dashed border-b border-subtle border-e'
+  },
+  {
+    image: blender,
+    className: 'border-dashed border-b border-subtle md:border-e'
+  },
+  {
+    image: upwork,
+    className: 'border-dashed border-b border-subtle border-e md:border-e'
+  },
+  {
+    image: facebook,
+    className: 'border-dashed border-b border-subtle lg:border-e-0'
+  },
+  {
+    image: pocket,
+    className: 'border-dashed border-e border-b border-subtle md:border-b-0'
+  },
+  {
+    image: mailBluster,
+    className: 'border-dashed md:border-e border-b border-subtle md:border-b-0'
+  },
+  { image: discord, className: 'border-dashed border-e border-subtle' },
+  { image: google, className: 'border-dashed lg:border-e-0 border-subtle' }
+];
+
+export interface BrandsProps {
+  /** section classes — the default landing adds `py-8 xl:pt-26 bg-soft` */
+  className?: string;
+  /** the default landing stretches the logos (`w-full`), the alternate does not */
+  imageClassName?: string;
+}
+
+/** `+Brands` in landing-1/Brands.pug and landing-2/Brands.pug. */
+const Brands = ({ className, imageClassName }: BrandsProps) => (
+  <section className={className}>
+    <div className="container-small lg:px-12 2xl:px-4">
+      <div className="row g-0">
+        {brands.map(brand => (
+          <div className="col-6 md:col-3" key={brand.image}>
+            <div
+              className={cn(
+                'p-2 lg:p-8 flex flex-center h-full',
+                brand.className
+              )}
+            >
+              <img src={brand.image} alt="" className={imageClassName} />
+            </div>
+          </div>
+        ))}
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default Brands;

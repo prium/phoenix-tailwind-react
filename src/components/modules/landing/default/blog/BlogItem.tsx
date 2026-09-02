@@ -1,76 +1,48 @@
-import {
-  faAngleRight,
-  faComment,
-  faEye,
-  faHeart
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Badge from 'components/base/Badge';
-import Button from 'components/base/Button';
-import { Blog } from 'data/landing/default-landing-data';
-import React from 'react';
-import { Card } from 'react-bootstrap';
-import { Link } from 'react-router';
+import type { Blog } from 'data/landing/default-landing-data';
 
-const BlogItem = ({ blog }: { blog: Blog }) => {
-  return (
-    <Card className="text-white h-full">
-      <Card.Img
-        variant="top"
+const Stat = ({ icon, value }: { icon: string; value: number }) => (
+  <a className="btn-link no-underline flex items-center" href="#!">
+    <span className={`fa-solid ${icon} text-soft me-1`} />
+    <span className="text-default text-sm lh-1">{value}</span>
+  </a>
+);
+
+/** `+BlogItems` in landing-1/Blog.pug */
+const BlogItem = ({ blog }: { blog: Blog }) => (
+  <div className="sm:col-6 lg:col-3 mb-4 md:mb-0">
+    <div className="card text-contrast h-full">
+      <img
+        className="rounded-t-md h-full object-cover"
         src={blog.image}
         alt="..."
-        className="rounded-t-md h-full fit-cover"
       />
-      <Card.Body className="rounded-t-md">
-        <div className="flex items-center mb-4">
+      <div className="card-body rounded-t-md">
+        <div className="flex items-center mb-4.5">
           <div className="flex items-center me-4">
-            <Link
-              to="#!"
-              className="btn-link no-underline flex items-center"
-            >
-              <FontAwesomeIcon
-                icon={faEye}
-                className="text-soft me-1"
-              />
-              <span className="text-default text-sm leading-none">{blog.views}</span>
-            </Link>
+            <Stat icon="fa-eye" value={blog.views} />
           </div>
           <div className="flex items-center me-4">
-            <Link
-              to="#!"
-              className="btn-link no-underline flex items-center"
-            >
-              <FontAwesomeIcon
-                icon={faHeart}
-                className="text-soft me-1"
-              />
-              <span className="text-default text-sm leading-none">{blog.likes}</span>
-            </Link>
+            <Stat icon="fa-heart" value={blog.likes} />
           </div>
           <div className="flex items-center">
-            <Link
-              to="#!"
-              className="btn-link no-underline flex items-center"
-            >
-              <FontAwesomeIcon
-                icon={faComment}
-                className="text-soft me-1"
-              />
-              <span className="text-default text-sm leading-none">{blog.comments}</span>
-            </Link>
+            <Stat icon="fa-comment" value={blog.comments} />
           </div>
         </div>
-        <Badge variant="phoenix" bg="primary" className="mb-2">
+        <span className="badge badge-phoenix-primary mb-2">
           {blog.category}
-        </Badge>
+        </span>
         <h4 className="font-bold mb-4 leading-sm line-clamp-2">{blog.title}</h4>
-        <Button as={Link} to="#!" className="p-0" variant="link">
+        <a
+          className="btn-link px-0 flex items-center text-md font-bold"
+          href="#!"
+          role="button"
+        >
           Read more
-          <FontAwesomeIcon icon={faAngleRight} className="ms-2" />
-        </Button>
-      </Card.Body>
-    </Card>
-  );
-};
+          <span className="fa-solid fa-angle-right ms-2" />
+        </a>
+      </div>
+    </div>
+  </div>
+);
 
 export default BlogItem;

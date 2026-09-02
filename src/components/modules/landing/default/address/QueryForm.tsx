@@ -1,30 +1,52 @@
-import Button from 'components/base/Button';
-import { Form } from 'react-bootstrap';
+import { Input, Textarea } from '@hummingbirdui/react';
 
-const QueryForm = () => {
-  return (
-    <>
-      <h3 className="mb-4">Drop us a line</h3>
-      <p className="mb-12">
-        If you have any query or suggestion, we are open to learn from you.
-        Let's talk, reach us anytime.
-      </p>
-      <Form className="flex flex-col gap-6">
-        <Form.Control type="text" name="name" placeholder="Name" required />
-        <Form.Control type="email" name="email" placeholder="Email" required />
-        <Form.Control
-          as="textarea"
+/**
+ * "Drop us a line" column — `+Address` in landing-1/Address.pug, reused
+ * verbatim by `+Contact` in landing-2/Contact.pug.
+ */
+const QueryForm = () => (
+  <>
+    <h3 className="mb-4">Drop us a line</h3>
+    <p className="mb-12">
+      If you have any query or suggestion , we are open to learn from you, Lets
+      talk, reach us anytime.
+    </p>
+    <form className="row g-6">
+      <div className="col-12">
+        <Input
+          className="bg-soft"
+          type="text"
+          name="name"
+          placeholder="Name"
+          required
+        />
+      </div>
+      <div className="col-12">
+        <Input
+          className="bg-soft"
+          type="email"
+          name="email"
+          placeholder="Email"
+          required
+        />
+      </div>
+      <div className="col-12">
+        <Textarea
+          className="bg-soft"
           rows={6}
           name="message"
           placeholder="Message"
           required
         />
-        <Button type="submit" variant="outline-primary">
+      </div>
+      <div className="col-12 grid">
+        <button className="btn btn-outline-primary" type="submit">
           Submit
-        </Button>
-      </Form>
-    </>
-  );
-};
+        </button>
+      </div>
+      <div className="feedback" />
+    </form>
+  </>
+);
 
 export default QueryForm;

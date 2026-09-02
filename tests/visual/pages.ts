@@ -960,7 +960,28 @@ export const pages: VisualPage[] = [
   {
     name: 'landing-default',
     react: '/pages/landing/default',
-    gold: '/pages/landing/default.html'
+    gold: '/pages/landing/default.html',
+    // `[data-countup]`: the gold animates 0 → 125+/308k over 10s (countUp.js,
+    // not a CSS animation, so `animations: 'disabled'` cannot freeze it) — the
+    // digits shown depend on when the shot is taken on either side.
+    mask: ['[data-countup]'],
+    probes: [
+      // navbar brand + sign-up button
+      '.navbar-brand',
+      '.btn-phoenix-primary',
+      // feature illustrations and the isotope filter nav
+      '.feature-image',
+      '.isotope-nav',
+      // team avatars in their decorated boxes (the testimonial ones are not
+      // comparable: the gold only lays out the active carousel slide, embla
+      // keeps all three in flow)
+      '.team-avatar-container',
+      // pricing ribbon + the `fa-ul` bullet glyphs
+      '.badge-pricing',
+      '.fa-li',
+      // address contact glyphs (unicons webfont in the gold, svg here)
+      '.icon-wrapper'
+    ]
   },
   {
     name: 'landing-alternate',
