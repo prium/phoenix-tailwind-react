@@ -16,41 +16,41 @@ const Error404 = () => {
   });
   return (
     <div>
-      <div className="px-3">
-        <Row className="min-vh-100 flex-center p-5">
+      <div className="px-4">
+        <Row className="min-h-screen flex-center p-8">
           <Col xs={12} xl={10} xxl={8}>
-            <Row className="justify-content-center align-items-center g-5">
-              <Col xs={12} lg={6} className="text-center order-lg-1">
+            <Row className="justify-center items-center g-8">
+              <Col xs={12} lg={6} className="text-center lg:order-1">
                 <img
                   src={errorIllustration}
                   alt=""
                   width={400}
-                  className="img-fluid w-lg-100 d-dark-none"
+                  className="img-fluid lg:w-full dark:hidden"
                 />
                 <img
                   src={dark404illustrations}
                   alt=""
                   width={540}
-                  className="img-fluid w-md-50 w-lg-100 d-light-none"
+                  className="img-fluid md:w-1/2 lg:w-full hidden dark:block"
                 />
               </Col>
-              <Col xs={12} lg={6} className="text-center text-lg-start">
+              <Col xs={12} lg={6} className="text-center lg:text-start">
                 <img
                   src={error404}
-                  className="img-fluid mb-6 w-50 w-lg-75 d-dark-none"
+                  className="img-fluid mb-10 w-1/2 lg:w-3/4 dark:hidden"
                   alt=""
                 />
                 <img
                   src={darkError40}
-                  className="img-fluid mb-6 w-50 w-lg-75 d-light-none"
+                  className="img-fluid mb-10 w-1/2 lg:w-3/4 hidden dark:block"
                   alt=""
                 />
-                <h2 className="text-muted font-black mb-3">
+                <h2 className="text-muted font-black mb-4">
                   Page Missing!
                 </h2>
-                <p className="text-default mb-5">
+                <p className="text-default mb-8">
                   But no worries! Our ostrich is looking everywhere
-                  <br className="hidden d-sm-block" />
+                  <br className="hidden sm:block" />
                   while you wait safely.
                 </p>
                 <Button variant="primary" size="lg" as={Link} to="/">
