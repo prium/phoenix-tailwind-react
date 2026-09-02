@@ -38,10 +38,10 @@ const TwoFAForm = ({ layout }: { layout?: 'simple' | 'card' | 'split' }) => {
 
   return (
     <div>
-      <div className={classNames({ 'px-xxl-5': !(layout === 'split') })}>
+      <div className={classNames({ '2xl:px-8': !(layout === 'split') })}>
         <div
           className={classNames('text-center', {
-            'mb-6': !(layout === 'split')
+            'mb-10': !(layout === 'split')
           })}
         >
           <h4 className="text-highlight">Enter the verification code</h4>
@@ -49,12 +49,12 @@ const TwoFAForm = ({ layout }: { layout?: 'simple' | 'card' | 'split' }) => {
             An email containing a 6-digit verification code has been sent to the
             email address - exa*********.com
           </p>
-          <p className="text-sm mb-5">
+          <p className="text-sm mb-8">
             Don’t have access?
             <Link to="#!"> Use another method</Link>
           </p>
           <div className="verification-form">
-            <div className="flex align-items-center gap-2 mb-3">
+            <div className="flex items-center gap-2 mb-4">
               {Array(totalInputLength)
                 .fill('')
                 .map((_, index) => (
@@ -73,7 +73,7 @@ const TwoFAForm = ({ layout }: { layout?: 'simple' | 'card' | 'split' }) => {
                   </React.Fragment>
                 ))}
             </div>
-            <Form.Check type="checkbox" className="text-start mb-4">
+            <Form.Check type="checkbox" className="text-start mb-6">
               <Form.Check.Input
                 type="checkbox"
                 name="2fa-checkbox"
@@ -88,7 +88,7 @@ const TwoFAForm = ({ layout }: { layout?: 'simple' | 'card' | 'split' }) => {
             </Form.Check>
             <Button
               variant="primary"
-              className="w-100 mb-5"
+              className="w-full mb-8"
               type="submit"
               disabled={otp.length < totalInputLength}
             >

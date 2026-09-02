@@ -11,16 +11,16 @@ const ForgotPasswordForm = ({
   layout?: 'simple' | 'card' | 'split';
 }) => {
   return (
-    <div className={classNames({ 'px-xxl-5': !(layout === 'split') })}>
+    <div className={classNames({ '2xl:px-8': !(layout === 'split') })}>
       <div
-        className={classNames('text-center', { 'mb-6': !(layout === 'split') })}
+        className={classNames('text-center', { 'mb-10': !(layout === 'split') })}
       >
         <h4 className="text-highlight">Forgot your password?</h4>
-        <p className="text-subtle mb-5">
-          Enter your email below and we will send <br className="d-sm-none" />
+        <p className="text-subtle mb-8">
+          Enter your email below and we will send <br className="sm:hidden" />
           you a reset link
         </p>
-        <Form className="flex align-items-center mb-5">
+        <Form className="flex items-center mb-8">
           <Form.Control
             type="email"
             id="email"

@@ -7,8 +7,8 @@ import { Link } from 'react-router';
 const LockScreenForm = () => {
   return (
     <div>
-      <div className="text-center mb-5">
-        <Avatar size="4xl" src={avatar} className="mb-3 d-inline-block" />
+      <div className="text-center mb-8">
+        <Avatar size="4xl" src={avatar} className="mb-4 inline-block" />
         <h2 className="text-highlight">
           <span className="font-normal">Hello </span>
           John Smith
@@ -19,12 +19,12 @@ const LockScreenForm = () => {
       </div>
       <Form>
         <Form.Control
-          className="mb-3"
+          className="mb-4"
           id="password"
           type="password"
           placeholder="Enter Password"
         />
-        <Button variant="primary" as={Link} to="/" className="w-100">
+        <Button variant="primary" as={Link} to="/" className="w-full">
           Sign In
         </Button>
       </Form>

@@ -3,7 +3,7 @@ import LockScreenForm from 'components/modules/auth/LockScreenForm';
 
 const LockScreen = () => {
   return (
-    <AuthSimpleLayout logo={false} className="col-xl-5 col-xxl-3">
+    <AuthSimpleLayout logo={false} className="xl:col-5 2xl:col-3">
       <LockScreenForm />
     </AuthSimpleLayout>
   );

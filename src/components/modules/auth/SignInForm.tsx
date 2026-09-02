@@ -8,16 +8,16 @@ import { Link } from 'react-router';
 const SignInForm = ({ layout }: { layout: 'simple' | 'card' | 'split' }) => {
   return (
     <>
-      <div className="text-center mb-7">
+      <div className="text-center mb-12">
         <h3 className="text-highlight">Sign In</h3>
         <p className="text-subtle">Get access to your account</p>
       </div>
       <AuthSocialButtons title="Sign in" />
       <div className="relative">
-        <hr className="bg-muted mt-5 mb-4" />
+        <hr className="bg-muted mt-8 mb-6" />
         <div className="divider-content-center">or use email</div>
       </div>
-      <Form.Group className="mb-3 text-start">
+      <Form.Group className="mb-4 text-start">
         <Form.Label htmlFor="email">Email address</Form.Label>
         <div className="form-icon-container">
           <Form.Control
@@ -29,7 +29,7 @@ const SignInForm = ({ layout }: { layout: 'simple' | 'card' | 'split' }) => {
           <FontAwesomeIcon icon={faUser} className="text-default text-md form-icon" />
         </div>
       </Form.Group>
-      <Form.Group className="mb-3 text-start">
+      <Form.Group className="mb-4 text-start">
         <Form.Label htmlFor="password">Password</Form.Label>
         <div className="form-icon-container">
           <Form.Control
@@ -41,7 +41,7 @@ const SignInForm = ({ layout }: { layout: 'simple' | 'card' | 'split' }) => {
           <FontAwesomeIcon icon={faKey} className="text-default text-md form-icon" />
         </div>
       </Form.Group>
-      <Row className="flex-between-center mb-7">
+      <Row className="flex-between-center mb-12">
         <Col xs="auto">
           <Form.Check type="checkbox" className="mb-0">
             <Form.Check.Input
@@ -64,7 +64,7 @@ const SignInForm = ({ layout }: { layout: 'simple' | 'card' | 'split' }) => {
           </Link>
         </Col>
       </Row>
-      <Button variant="primary" className="w-100 mb-3">
+      <Button variant="primary" className="w-full mb-4">
         Sign In
       </Button>
       <div className="text-center">

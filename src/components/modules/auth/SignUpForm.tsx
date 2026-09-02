@@ -6,21 +6,21 @@ import { Link } from 'react-router';
 const SignUpForm = ({ layout }: { layout: 'simple' | 'card' | 'split' }) => {
   return (
     <>
-      <div className="text-center mb-7">
+      <div className="text-center mb-12">
         <h3 className="text-highlight">Sign Up</h3>
         <p className="text-subtle">Create your account today</p>
       </div>
       <AuthSocialButtons title="Sign up" />
-      <div className="relative mt-4">
+      <div className="relative mt-6">
         <hr className="bg-muted" />
         <div className="divider-content-center">or use email</div>
       </div>
       <Form>
-        <Form.Group className="mb-3 text-start">
+        <Form.Group className="mb-4 text-start">
           <Form.Label htmlFor="name">Name</Form.Label>
           <Form.Control id="name" type="text" placeholder="Name" />
         </Form.Group>
-        <Form.Group className="mb-3 text-start">
+        <Form.Group className="mb-4 text-start">
           <Form.Label htmlFor="email">Email address</Form.Label>
           <Form.Control
             id="email"
@@ -28,7 +28,7 @@ const SignUpForm = ({ layout }: { layout: 'simple' | 'card' | 'split' }) => {
             placeholder="name@example.com"
           />
         </Form.Group>
-        <Row className="g-3 mb-3">
+        <Row className="g-4 mb-4">
           <Col sm={layout === 'card' ? 12 : 6} lg={6}>
             <Form.Group>
               <Form.Label htmlFor="password">Password</Form.Label>
@@ -48,7 +48,7 @@ const SignUpForm = ({ layout }: { layout: 'simple' | 'card' | 'split' }) => {
             </Form.Group>
           </Col>
         </Row>
-        <Form.Check type="checkbox" className="mb-3">
+        <Form.Check type="checkbox" className="mb-4">
           <Form.Check.Input
             type="checkbox"
             name="termsService"
@@ -62,7 +62,7 @@ const SignUpForm = ({ layout }: { layout: 'simple' | 'card' | 'split' }) => {
             <Link to="#!">privacy policy</Link>
           </Form.Check.Label>
         </Form.Check>
-        <Button variant="primary" className="w-100 mb-3">
+        <Button variant="primary" className="w-full mb-4">
           Sign up
         </Button>
         <div className="text-center">

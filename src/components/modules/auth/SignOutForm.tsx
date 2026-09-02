@@ -7,17 +7,17 @@ import { faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 
 const SignOutForm = ({ layout }: { layout: 'simple' | 'card' | 'split' }) => {
   return (
-    <div className="text-center mb-6 mx-auto">
-      <img className="mb-7 d-dark-none" src={lightImg} alt="phoenix" />
-      <img className="mb-7 d-light-none" src={darkImg} alt="phoenix" />
-      <div className="mb-6">
+    <div className="text-center mb-10 mx-auto">
+      <img className="mb-12 dark:hidden" src={lightImg} alt="phoenix" />
+      <img className="mb-12 hidden dark:block" src={darkImg} alt="phoenix" />
+      <div className="mb-10">
         <h4 className="text-highlight">Come back soon!</h4>
         <p className="text-subtle">
-          Thanks for using Phoenix. <br className="d-lg-none" />
+          Thanks for using Phoenix. <br className="lg:hidden" />
           You are now successfully signed out.
         </p>
       </div>
-      <div className="d-grid">
+      <div className="grid">
         <Button
           variant="primary"
           as={Link}
