@@ -1,12 +1,16 @@
+import { Accordion, cn } from '@hummingbirdui/react';
+import FaqCta from 'components/cta/FaqCta';
+import PageBreadcrumb from 'components/common/PageBreadcrumb';
 import SearchBox from 'components/common/SearchBox';
 import { faqBreadcrumbItems, faqs } from 'data/faq';
-import { Accordion } from 'react-bootstrap';
-import FaqCta from 'components/cta/FaqCta';
+import { Fragment, useState } from 'react';
 import { Link } from 'react-router';
-import classNames from 'classnames';
-import PageBreadcrumb from 'components/common/PageBreadcrumb';
 
 const FaqAccordion = () => {
+  // The gold opens the first panel and lets it be closed again
+  // (`data-bs-parent` + `.collapse.show`).
+  const [openItem, setOpenItem] = useState(faqs[0].id);
+
   return (
     <div>
       <PageBreadcrumb items={faqBreadcrumbItems} />
@@ -16,25 +20,40 @@ const FaqAccordion = () => {
         Search for the topic you need help with or{' '}
         <Link to="#!">contact our support</Link>
       </p>
-      <SearchBox
-        placeholder="Search"
-        className="w-full mb-14"
-        style={{ maxWidth: '25rem' }}
-      />
-      <Accordion className="" defaultActiveKey="0">
+      <SearchBox placeholder="Search" className="mb-14 w-full! max-w-100" />
+      <Accordion
+        type="single"
+        collapsible
+        id="faqAccordion"
+        value={openItem}
+        onValueChange={setOpenItem}
+      >
         {faqs.map((faq, index) => (
           <Accordion.Item
-            className={classNames({
-              'border-t': index === 0
-            })}
-            eventKey={String(index)}
             key={faq.id}
+            value={faq.id}
+            className={cn({ 'border-t': index === 0 })}
           >
-            <Accordion.Header>{faq.title}</Accordion.Header>
-            <Accordion.Body
-              className="pt-0"
-              dangerouslySetInnerHTML={{ __html: faq.details }}
-            />
+            <Accordion.Header asChild>
+              <h2 id={`heading${faq.id}`}>
+                <Accordion.Trigger
+                  className={cn('after:size-5 after:bg-center', {
+                    // phoenix keys the active icon on `:not(.collapsed)`
+                    collapsed: openItem !== faq.id
+                  })}
+                >
+                  {faq.title.map((segment, i) => (
+                    <Fragment key={segment}>
+                      {i > 0 && <br className="sm:hidden" />}
+                      {segment}
+                    </Fragment>
+                  ))}
+                </Accordion.Trigger>
+              </h2>
+            </Accordion.Header>
+            <Accordion.Content className="pt-0" id={`collapse${faq.id}`}>
+              <span dangerouslySetInnerHTML={{ __html: faq.details }} />
+            </Accordion.Content>
           </Accordion.Item>
         ))}
       </Accordion>
