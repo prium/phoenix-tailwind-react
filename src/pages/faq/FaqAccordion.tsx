@@ -10,22 +10,22 @@ const FaqAccordion = () => {
   return (
     <div>
       <PageBreadcrumb items={faqBreadcrumbItems} />
-      <h2 className="mb-5">FAQ</h2>
-      <h5 className="mb-3">How can we help?</h5>
+      <h2 className="mb-8">FAQ</h2>
+      <h5 className="mb-4">How can we help?</h5>
       <p className="text-subtle">
         Search for the topic you need help with or{' '}
         <Link to="#!">contact our support</Link>
       </p>
       <SearchBox
         placeholder="Search"
-        className="w-100 mb-8"
+        className="w-full mb-14"
         style={{ maxWidth: '25rem' }}
       />
       <Accordion className="" defaultActiveKey="0">
         {faqs.map((faq, index) => (
           <Accordion.Item
             className={classNames({
-              'border-top': index === 0
+              'border-t': index === 0
             })}
             eventKey={String(index)}
             key={faq.id}

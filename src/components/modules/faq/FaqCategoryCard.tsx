@@ -9,7 +9,7 @@ const FaqCategoryCard = ({ category }: { category: FaqCategory }) => {
   return (
     <Nav.Link
       eventKey={category.id}
-      className={`btn bg-soft w-100 px-3 pt-4 pb-3 text-base ${
+      className={`btn bg-soft w-full px-4 pt-6 pb-4 text-base ${
         subCategoryActiveKey === category.id && 'active'
       }`}
     >
@@ -17,7 +17,7 @@ const FaqCategoryCard = ({ category }: { category: FaqCategory }) => {
         icon={category.icon}
         className="category-icon text-muted text-xl"
       />
-      <span className="block text-xl font-black lh-1 text-default mt-3 mb-2">
+      <span className="block text-xl font-black leading-none text-default mt-4 mb-2">
         {category.name}
       </span>
       <span className="block text-default font-normal mb-0 text-md">

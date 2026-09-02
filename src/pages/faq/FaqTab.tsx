@@ -29,32 +29,32 @@ const FaqTab = () => {
   } = useFaqTabContext();
 
   return (
-    <div className="mb-9">
+    <div className="mb-16">
       <div
-        className="mx-n4 mx-lg-n6 mt-n5 relative mb-md-9"
+        className="-mx-6 lg:-mx-10 -mt-8 relative md:mb-16"
         style={{ height: '208px' }}
       >
         <div
-          className="bg-holder d-dark-none"
+          className="bg-holder dark:hidden"
           style={{
             backgroundImage: `url(${bg})`,
             backgroundSize: 'cover'
           }}
         />
         <div
-          className="bg-holder d-light-none"
+          className="bg-holder hidden dark:block"
           style={{
             backgroundImage: `url(${bgDark})`,
             backgroundSize: 'cover'
           }}
         />
-        <div className="faq-title-box relative bg-soft border border-subtle p-6 rounded-3 text-center mx-auto">
+        <div className="faq-title-box relative bg-soft border border-subtle p-10 rounded-lg text-center mx-auto">
           <h1>How can we help?</h1>
-          <p className="my-3">
+          <p className="my-4">
             Search for the topic you need help with or
             <Link to="mailto:support@themewagon.com"> contact our support</Link>
           </p>
-          <SearchBox className="w-100" placeholder="" />
+          <SearchBox className="w-full" placeholder="" />
         </div>
       </div>
       <Tab.Container
@@ -62,13 +62,13 @@ const FaqTab = () => {
         onSelect={(key: string | null) => setActiveKey(key || '')}
         activeKey={activeKey}
       >
-        <Row className="gx-xl-8 gx-xxl-11">
+        <Row className="xl:gx-14 2xl:gx-20">
           {breakpoints.up('md') && <CategoryTab />}
           <Col
             md={6}
             xl={7}
             xxl={8}
-            className="empty-header hidden d-md-block"
+            className="empty-header hidden md:block"
           />
           <Col xs={12} className="m-0">
             <Tab.Container
@@ -79,7 +79,7 @@ const FaqTab = () => {
               id="sub-category"
               activeKey={subCategoryActiveKey}
             >
-              <Row className="gx-xl-8 gx-xxl-11 gy-6">
+              <Row className="xl:gx-14 2xl:gx-20 gy-10">
                 {breakpoints.up('md') && <SubCategoryTab />}
                 <Col md={6} xl={7} xxl={8} className="mt-0">
                   <SubCategoryContent />

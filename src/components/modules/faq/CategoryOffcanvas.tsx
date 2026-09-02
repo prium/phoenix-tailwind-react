@@ -11,7 +11,7 @@ const CategoryOffcanvas = () => {
       open={isOpenOffcanvas}
       placement="start"
       noBackdrop
-      className="faq-offcanvas w-100"
+      className="faq-offcanvas w-full"
       fixed
     >
       <Row className="g-0">

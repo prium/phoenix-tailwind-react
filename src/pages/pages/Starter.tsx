@@ -7,20 +7,20 @@ import { Link } from 'react-router';
 const Starter = () => {
   return (
     <Stack className="flex-center content-min-h">
-      <div className="text-center py-9">
+      <div className="text-center py-16">
         <img
           src={starterImg}
           width={470}
-          className="img-fluid mb-7 d-dark-none"
+          className="img-fluid mb-12 dark:hidden"
           alt="starter"
         />
         <img
           src={starterDarkImg}
           width={470}
-          className="img-fluid mb-7 d-light-none"
+          className="img-fluid mb-12 hidden dark:block"
           alt="starter"
         />
-        <h1 className="text-muted font-normal mb-5">
+        <h1 className="text-muted font-normal mb-8">
           Create Something Beautiful.
         </h1>
         <Button

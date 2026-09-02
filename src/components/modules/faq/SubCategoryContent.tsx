@@ -17,7 +17,7 @@ const SubCategoryContent = () => {
       <Button
         onClick={() => setIsOpenOffcanvas(true)}
         variant="link"
-        className="d-md-none mt-15 mt-md-6 text-base ps-0"
+        className="md:hidden mt-30 md:mt-10 text-base ps-0"
         startIcon={
           <FontAwesomeIcon icon={faChevronLeft} className="text-md me-2" />
         }
@@ -31,7 +31,7 @@ const SubCategoryContent = () => {
               <FaqItem key={item.question} item={item} type="topFaq" />
             ))}
           </ul>
-          <hr className="border-top mt-6" />
+          <hr className="border-t mt-10" />
           <ul className="faq-list list-inline">
             {category.faqs.map(item => (
               <FaqItem key={item.question} item={item} />
@@ -45,13 +45,13 @@ const SubCategoryContent = () => {
 
 const FaqItem = ({ item, type }: { item: FaqType; type?: string }) => {
   return (
-    <li className="flex mt-6">
+    <li className="flex mt-10">
       <FontAwesomeIcon
         icon={type === 'topFaq' ? faStar : faCircle}
         className={classNames({ 'text-base text-primary me-2': type === 'topFaq' })}
       />
       <div>
-        <h4 className="mb-3 text-highlight">{item.question}</h4>
+        <h4 className="mb-4 text-highlight">{item.question}</h4>
         <p className="mb-0 text-subtle">{item.answer}</p>
       </div>
     </li>

@@ -24,7 +24,7 @@ const SubCategoryTab = () => {
   return (
     <Col md={6} xl={5} xxl={4}>
       <Nav
-        className="faq-subcategory-tab scrollbar align-content-start w-sm-75 w-md-100 mx-auto mb-4 gap-3"
+        className="faq-subcategory-tab scrollbar content-start sm:w-3/4 md:w-full mx-auto mb-6 gap-4"
         style={{ width: '90%' }}
       >
         {categories?.map(category => (
@@ -35,7 +35,7 @@ const SubCategoryTab = () => {
               setSubCategoryActiveKey(category.id);
             }}
             key={category.id}
-            className="w-100"
+            className="w-full"
           >
             <FaqCategoryCard category={category} />
           </Nav.Item>
