@@ -37,6 +37,19 @@ export const pricingBreadcrumbItems: PageBreadcrumbItem[] = [
   }
 ];
 
+/** The grid view's gold breadcrumb reads `Pricing-grid`, not `Pricing`. */
+export const pricingGridBreadcrumbItems: PageBreadcrumbItem[] = [
+  {
+    label: 'Pages',
+    url: '#!'
+  },
+  {
+    label: 'Pricing-grid',
+    url: '#!',
+    active: true
+  }
+];
+
 export type Feature = {
   id: string;
   label: string;
@@ -98,15 +111,15 @@ export const pricingGridFeatures: Feature[] = [
   },
   {
     id: 'bandwidth',
-    label: 'Bandwidth of  Upto 1 Gbps'
+    label: 'Bandwidth of Upto 1 Gbps'
   },
   {
     id: 'private_teams',
     label: 'Private teams & projects'
   },
   {
-    id: 'early-access',
-    label: 'Early Access / Beta Features'
+    id: 'customer-support',
+    label: 'Customer Support and Training'
   }
 ];
 
@@ -157,49 +170,68 @@ export const pricingColumnItems: PricingColumn[] = [
   }
 ];
 
-export interface PricingGrid {
-  id: number;
+export interface PricingGridPlan {
+  /** radio input id — the gold's `data.value` */
+  id: string;
   title: string;
+  /** contains the gold's hard `<br>` */
   description: string;
   img: string;
   imgDark: string;
   bg: string;
   darkBg: string;
-  monthlyPrice: number;
-  yearlyPrice: number;
-  features: string[];
+  price: number;
+  duration: string;
+  /**
+   * Literal border class of the feature list — kept in the data because the
+   * gold sets it per card (and gets it "wrong" on the yearly Business Plus).
+   */
+  borderClass: string;
   badge?: {
     label: string;
     badgeBg: BadgeBg;
   };
-  selected?: boolean;
+  /** card carries the warning highlight (gold `data.selected`) */
+  highlighted?: boolean;
+  /** the radio that starts checked (gold `data.defaultChecked`) */
+  defaultChecked?: boolean;
+  /**
+   * The gold renders this card through its `PricingRecommendedCard` mixin,
+   * which stacks the title/badge at `md` and drops the bg-holder offset.
+   */
+  recommendedLayout?: boolean;
+  /** feature strings — may carry inline markup */
+  features: string[];
 }
 
-export const pricingGridItems: PricingGrid[] = [
+export const pricingGridMonthlyItems: PricingGridPlan[] = [
   {
-    id: 1,
+    id: 'startup',
     title: 'Startup',
-    description: `For individuals who are interested <br/> in giving it a shot first.`,
+    description:
+      'For individuals who are interested <br> in giving it a shot first.',
     img: rocket,
     imgDark: rocketDark,
     bg: bg8,
     darkBg: darkBg8,
-    monthlyPrice: 0,
-    yearlyPrice: 0,
-    features: ['Up to 4 Members', '3 Collaboration projects'],
-    selected: true
+    price: 0,
+    duration: 'Per month',
+    borderClass: 'border-subtle',
+    defaultChecked: true,
+    features: ['Up to 4 Members', '3 Collaboration projects']
   },
   {
-    id: 2,
+    id: 'standard',
     title: 'Standard',
     description:
-      'For teams that need to create <br/> project plans with confidence.',
+      'For teams that need to create <br> project plans with confidence.',
     img: bag,
     imgDark: bagDark,
     bg: bg9,
     darkBg: darkBg9,
-    monthlyPrice: 14.99,
-    yearlyPrice: 179.88,
+    price: 14.99,
+    duration: 'Per month',
+    borderClass: 'border-subtle',
     features: [
       'Up to 8 Members',
       'Create & Share libraries',
@@ -207,19 +239,22 @@ export const pricingGridItems: PricingGrid[] = [
     ]
   },
   {
-    id: 3,
+    id: 'businessPlus',
     title: 'Business Plus',
-    description: 'For teams that need to manage <br/> work across initiatives.',
+    description: 'For teams that need to manage <br> work across initiatives.',
     img: star,
     imgDark: starDark,
     bg: bg11,
     darkBg: darkBg11,
-    monthlyPrice: 49.99,
-    yearlyPrice: 599.88,
+    price: 49.99,
+    duration: 'Per month',
+    borderClass: 'border-warning-subtle',
     badge: {
       label: 'recommended',
       badgeBg: 'warning'
     },
+    highlighted: true,
+    recommendedLayout: true,
     features: [
       'Technical Supports',
       'Up to 20 Members',
@@ -228,16 +263,98 @@ export const pricingGridItems: PricingGrid[] = [
     ]
   },
   {
-    id: 4,
+    id: 'enterprise',
     title: 'Enterprise',
     description:
-      'For organizations that need <br/> additional security and support.',
+      'For organizations that need <br> additional security and support.',
     img: shield,
     imgDark: shieldDark,
     bg: bg10,
     darkBg: darkBg10,
-    monthlyPrice: 149.99,
-    yearlyPrice: 1799.88,
+    price: 149.99,
+    duration: 'Per month',
+    borderClass: 'border-subtle',
+    features: [
+      '24/7 VIP Support',
+      'Automated analytics',
+      '<span class="font-bold">Unlimited</span> Members*',
+      'Create & Share libraries',
+      'Centralized billing'
+    ]
+  }
+];
+
+export const pricingGridYearlyItems: PricingGridPlan[] = [
+  {
+    id: 'startupYearly',
+    title: 'Startup',
+    description:
+      'For individuals who are interested <br> in giving it a shot first.',
+    img: rocket,
+    imgDark: rocketDark,
+    bg: bg8,
+    darkBg: darkBg8,
+    price: 0,
+    duration: 'Per year',
+    borderClass: 'border-subtle',
+    defaultChecked: true,
+    features: ['Up to 4 Members', '3 Collaboration projects']
+  },
+  {
+    id: 'standardYearly',
+    title: 'Standard',
+    description:
+      'For teams that need to create <br> project plans with confidence.',
+    img: bag,
+    imgDark: bagDark,
+    bg: bg9,
+    darkBg: darkBg9,
+    price: 179.88,
+    duration: 'Per year',
+    borderClass: 'border-subtle',
+    features: [
+      'Up to 8 Members',
+      'Create & Share libraries',
+      '10 Collaboration projects'
+    ]
+  },
+  {
+    id: 'businessPlusYearly',
+    title: 'Business Plus',
+    description: 'For teams that need to manage <br> work across initiatives.',
+    img: star,
+    imgDark: starDark,
+    bg: bg11,
+    darkBg: darkBg11,
+    price: 599.88,
+    duration: 'Per year',
+    // the gold's yearly card keeps the neutral border even though it is the
+    // highlighted plan — mirrored verbatim
+    borderClass: 'border-subtle',
+    badge: {
+      label: 'recommended',
+      badgeBg: 'warning'
+    },
+    highlighted: true,
+    features: [
+      'Technical Supports',
+      'Up to 20 Members',
+      'Create & Share libraries',
+      '<span class="font-bold">Unlimited</span> Collaboration'
+    ]
+  },
+  {
+    id: 'enterpriseYearly',
+    title: 'Enterprise',
+    description:
+      'For organizations that need <br> additional security and support.',
+    img: shield,
+    imgDark: shieldDark,
+    bg: bg10,
+    darkBg: darkBg10,
+    price: 1799.88,
+    duration: 'Per year',
+    borderClass: 'border-subtle',
     features: [
       '24/7 VIP Support',
       'Automated analytics',

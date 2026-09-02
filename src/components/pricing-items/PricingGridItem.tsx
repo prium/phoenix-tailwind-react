@@ -1,139 +1,127 @@
 import { UilCheckCircle } from '@iconscout/react-unicons';
-import classNames from 'classnames';
+import { Card, Col, Row, cn } from '@hummingbirdui/react';
 import Badge from 'components/base/Badge';
 import Unicon from 'components/base/Unicon';
-import { PricingGrid } from 'data/pricing';
+import { PricingGridPlan } from 'data/pricing';
 import { currencyFormat } from 'helpers/utils';
-import { Card, Col, Form, Row } from 'react-bootstrap';
 
 interface PricingGridItemProps {
-  item: PricingGrid;
-  pricingType: string;
+  plan: PricingGridPlan;
+  /** radio group name — the gold uses `pricingMonthly` / `pricingYearly` */
+  name: string;
 }
 
-const PricingGridItem = ({ item, pricingType }: PricingGridItemProps) => {
+const PricingGridItem = ({ plan, name }: PricingGridItemProps) => {
+  // The gold has two nearly identical mixins: `PricingCard` and
+  // `PricingRecommendedCard`. The recommended one stacks the title/badge at
+  // `md` and drops the bg-holder's 1px bottom offset.
+  const recommended = plan.recommendedLayout;
+
   return (
     <div className="h-full">
-      <Form.Control
+      {/* `.card-form-check-input:checked + div .card` — the input must stay the
+          previous sibling of the `.relative` wrapper */}
+      <input
         type="radio"
-        name={pricingType}
-        className={classNames('pricing-plan-radio hidden', {
-          'pricing-plan-recommended': item.badge?.label === 'recommended'
-        })}
-        defaultChecked={item.selected}
-        id={`${item.title.split(' ')[0]}-${pricingType}`}
+        name={name}
+        id={plan.id}
+        defaultChecked={plan.defaultChecked}
+        className={cn(
+          'card-form-check-input hidden',
+          plan.badge && 'pricing-plan-recommended'
+        )}
       />
       <div className="relative h-full">
-        <Form.Label
-          htmlFor={`${item.title.split(' ')[0]}-${pricingType}`}
-          className="stretched-link"
-        />
+        <label className="stretched-link" htmlFor={plan.id} />
         <Card
-          className={classNames('h-full overflow-hidden cursor-pointer', {
-            'bg-warning-subtle border-warning warning-boxshadow pricing-business-plus':
-              item.badge?.label === 'recommended'
-          })}
+          className={cn(
+            'h-full overflow-hidden cursor-pointer',
+            plan.highlighted &&
+              'bg-warning-subtle border-warning! warning-boxshadow pricing-business-plus'
+          )}
         >
           <div
-            className="bg-holder dark:hidden"
-            style={{
-              backgroundImage: `url(${item.bg})`,
-              backgroundPosition: 'left bottom',
-              backgroundSize: 'auto'
-            }}
+            className={cn(
+              'bg-holder bg-left-bottom! bg-auto!',
+              !recommended && '-bottom-0.25!',
+              'dark:hidden'
+            )}
+            style={{ backgroundImage: `url(${plan.bg})` }}
           />
           <div
-            className="bg-holder hidden dark:block"
-            style={{
-              backgroundImage: `url(${item.darkBg})`,
-              backgroundPosition: 'left bottom',
-              backgroundSize: 'auto'
-            }}
+            className={cn(
+              'bg-holder bg-left-bottom! bg-auto!',
+              !recommended && '-bottom-0.25!',
+              'hidden dark:block'
+            )}
+            style={{ backgroundImage: `url(${plan.darkBg})` }}
           />
           <Card.Body className="flex flex-col justify-between relative">
             <div className="flex justify-between">
               <div className="mb-8 md:mb-0 lg:mb-8 me-4">
-                <div className="sm:flex items-center mb-4">
-                  <h3 className="mb-0">{item.title}</h3>
-                  {item.badge && (
+                <div
+                  className={cn(
+                    'sm:flex items-center mb-4',
+                    recommended && 'md:block lg:flex'
+                  )}
+                >
+                  <h3 className="mb-0">{plan.title}</h3>
+                  {plan.badge && (
                     <Badge
                       variant="default"
-                      bg={item.badge.badgeBg}
-                      className="sm:ms-4 text-sm uppercase"
+                      bg={plan.badge.badgeBg}
+                      className={cn(
+                        'sm:ms-4 uppercase text-sm',
+                        recommended && 'md:ms-0 lg:ms-4'
+                      )}
                     >
-                      {item.badge.label}
+                      {plan.badge.label}
                     </Badge>
                   )}
                 </div>
                 <p
                   className="text-md text-subtle"
-                  dangerouslySetInnerHTML={{ __html: item.description }}
+                  dangerouslySetInnerHTML={{ __html: plan.description }}
                 />
                 <div className="flex items-end md:mb-8 lg:mb-0">
-                  {item.monthlyPrice === 0 || item.yearlyPrice === 0 ? (
-                    <h4 className="font-black me-1">Free</h4>
-                  ) : (
-                    <h4 className="font-black me-1">{`${
-                      pricingType === 'monthly'
-                        ? currencyFormat(item.monthlyPrice)
-                        : currencyFormat(item.yearlyPrice)
-                    }`}</h4>
-                  )}
-                  {item.monthlyPrice === 0 || item.yearlyPrice === 0 ? (
-                    <h5 className="text-md font-normal text-subtle ms-1">
-                      Forever
-                    </h5>
-                  ) : (
-                    <h5 className="text-md font-normal text-subtle ms-1">
-                      {pricingType === 'monthly' ? 'Per month' : 'Per year'}
-                    </h5>
-                  )}
+                  <h4 className="font-extrabold me-1">
+                    {plan.price === 0 ? 'Free' : currencyFormat(plan.price)}
+                  </h4>
+                  <h5 className="text-md font-normal text-subtle ms-1">
+                    {plan.price === 0 ? 'Forever' : plan.duration}
+                  </h5>
                 </div>
               </div>
+              <img src={plan.img} alt="" className="dark:hidden size-13.5" />
               <img
-                src={item.img}
-                className="dark:hidden"
-                width={54}
-                height={54}
+                src={plan.imgDark}
                 alt=""
-              />
-              <img
-                src={item.imgDark}
-                className="hidden dark:block"
-                width={54}
-                height={54}
-                alt=""
+                className="hidden dark:block size-13.5"
               />
             </div>
             <Row className="flex-1 justify-end">
               <Col sm={8} md={12}>
                 <div className="sm:flex md:block lg:flex justify-end items-end h-full">
                   <ul
-                    className={classNames(
-                      'list-unstyled mb-0 sm:border-s md:border-s-0 lg:border-s sm:ps-8 md:ps-0 lg:ps-8',
-                      {
-                        'border-warning-subtle':
-                          item.badge?.label === 'recommended',
-                        'border-subtle':
-                          item.badge?.label !== 'recommended'
-                      }
+                    className={cn(
+                      plan.borderClass,
+                      'list-none',
+                      !recommended && 'ps-0',
+                      'mb-0 sm:border-s md:border-s-0 lg:border-s sm:ps-8 md:ps-0 lg:ps-8'
                     )}
                   >
-                    {item.features.map((feature, index) => (
-                      <li
-                        key={feature}
-                        className={classNames('flex items-center', {
-                          'mb-2': index !== item.features.length - 1
-                        })}
-                      >
+                    {plan.features.map(feature => (
+                      <li key={feature} className="flex items-center">
                         <Unicon
                           icon={UilCheckCircle}
-                          fill='currentColor'
-                          className="text-success me-2"
                           size={16}
+                          fill="currentColor"
+                          className="text-success"
+                          lineBox
+                          wrapperClassName="me-2"
                         />
                         <span
-                          className="text-subtle font-semibold leading-none"
+                          className="text-subtle font-semibold"
                           dangerouslySetInnerHTML={{ __html: feature }}
                         />
                       </li>

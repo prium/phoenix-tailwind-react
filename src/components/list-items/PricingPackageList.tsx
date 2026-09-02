@@ -1,9 +1,8 @@
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Col, Row } from '@hummingbirdui/react';
 import Badge from 'components/base/Badge';
 import { Feature } from 'data/pricing';
-import React from 'react';
-import { Col, Row } from 'react-bootstrap';
 
 const PricingPackageList = ({ features }: { features: Feature[] }) => {
   return (

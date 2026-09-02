@@ -907,7 +907,17 @@ export const pages: VisualPage[] = [
   {
     name: 'pricing-grid',
     react: '/pages/pricing/pricing-grid',
-    gold: '/pages/pricing/pricing-grid.html'
+    gold: '/pages/pricing/pricing-grid.html',
+    dark: true,
+    widths: [768],
+    probes: [
+      '.nav-underline .nav-link', // Yearly/Monthly tabs (underline sits on these)
+      '.card-body img', // plan illustrations
+      '.card-body li > span:first-child', // check-circle glyphs
+      '.card .badge', // "recommended" badge
+      '.bg-soft .badge', // "New" badge in the package list
+      'button.btn-lg' // Subscribe / free-trial CTAs
+    ]
   },
   {
     name: 'landing-default',
