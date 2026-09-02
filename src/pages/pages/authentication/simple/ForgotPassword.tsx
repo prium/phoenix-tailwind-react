@@ -4,7 +4,7 @@ import AuthSimpleLayout from 'layouts/AuthSimpleLayout';
 const ForgotPassword = () => {
   return (
     <AuthSimpleLayout className="2xl:col-4">
-      <ForgotPasswordForm />
+      <ForgotPasswordForm layout="simple" />
     </AuthSimpleLayout>
   );
 };

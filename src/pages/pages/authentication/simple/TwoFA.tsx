@@ -4,7 +4,7 @@ import AuthSimpleLayout from 'layouts/AuthSimpleLayout';
 const TwoFA = () => {
   return (
     <AuthSimpleLayout className="2xl:col-4">
-      <TwoFAForm />
+      <TwoFAForm layout="simple" />
     </AuthSimpleLayout>
   );
 };
