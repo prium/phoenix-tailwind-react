@@ -1039,22 +1039,44 @@ export const pages: VisualPage[] = [
   {
     name: 'notifications',
     react: '/pages/notifications',
-    gold: '/pages/notifications.html'
+    gold: '/pages/notifications.html',
+    // the per-row ellipsis toggle is the only anchored control on the page
+    probes: ['.notification-dropdown-toggle']
   },
   {
     name: 'members',
     react: '/pages/members',
-    gold: '/pages/members.html'
+    gold: '/pages/members.html',
+    // sortable headers (list.js caret), the search icon and the pagination
+    // controls are the anchored bits a page tolerance cannot see
+    probes: [
+      '.search-box-icon',
+      'thead .sort',
+      '[data-list-pagination="prev"]',
+      '[data-list-pagination="next"]'
+    ]
   },
   {
     name: 'timeline',
     react: '/pages/timeline',
-    gold: '/pages/timeline.html'
+    gold: '/pages/timeline.html',
+    // the page swaps its illustration on `dark:`
+    dark: true,
+    // the dot icons and the right-aligned times are the anchored elements
+    probes: ['.timeline-item-bar .icon-item', '.timeline-time']
   },
   {
     name: 'coming-soon',
     react: '/pages/coming-soon',
-    gold: '/coming-soon.html'
+    gold: '/coming-soon.html',
+    // the page swaps its illustration and its player on `dark:`
+    dark: true,
+    // the lottie player never settles on a frame (both sides animate from
+    // their own clock), so only its box is compared, not its pixels
+    mask: ['.lottie'],
+    // the CTA is the anchored control below the animation (scoped to the page:
+    // the gold's settings panel carries a second .btn-primary)
+    probes: ['.text-container .btn-primary']
   },
   {
     name: 'error-403',
