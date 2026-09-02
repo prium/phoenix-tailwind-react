@@ -35,6 +35,28 @@ export interface SideSetup {
   storage?: Record<string, string>;
 }
 
+/** The 7 authentication pages, each rendered by all three layouts. */
+const AUTH_PAGES = [
+  'sign-in',
+  'sign-up',
+  'sign-out',
+  'forgot-password',
+  'reset-password',
+  'lock-screen',
+  '2FA'
+] as const;
+
+const auth = (
+  variant: 'simple' | 'split' | 'card',
+  extra: Partial<VisualPage> = {}
+): VisualPage[] =>
+  AUTH_PAGES.map(page => ({
+    name: `auth-${variant}-${page.toLowerCase()}`,
+    react: `/pages/authentication/${variant}/${page}`,
+    gold: `/pages/authentication/${variant}/${page}.html`,
+    ...extra
+  }));
+
 /** React `/` with a navbar config vs a gold `demo/*.html` layout page. */
 const layout = (
   name: string,
@@ -1012,5 +1034,44 @@ export const pages: VisualPage[] = [
       // masked globally for the React side)
       '.googlemap'
     ]
-  }
+  },
+  // pages section — misc, errors, authentication
+  {
+    name: 'notifications',
+    react: '/pages/notifications',
+    gold: '/pages/notifications.html'
+  },
+  {
+    name: 'members',
+    react: '/pages/members',
+    gold: '/pages/members.html'
+  },
+  {
+    name: 'timeline',
+    react: '/pages/timeline',
+    gold: '/pages/timeline.html'
+  },
+  {
+    name: 'coming-soon',
+    react: '/pages/coming-soon',
+    gold: '/coming-soon.html'
+  },
+  {
+    name: 'error-403',
+    react: '/pages/errors/403',
+    gold: '/pages/errors/403.html'
+  },
+  {
+    name: 'error-404',
+    react: '/pages/errors/404',
+    gold: '/pages/errors/404.html'
+  },
+  {
+    name: 'error-500',
+    react: '/pages/errors/500',
+    gold: '/pages/errors/500.html'
+  },
+  ...auth('simple'),
+  ...auth('split'),
+  ...auth('card')
 ];
