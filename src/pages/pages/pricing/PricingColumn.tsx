@@ -7,8 +7,8 @@ const PricingColumn = () => {
   return (
     <>
       <PageBreadcrumb items={pricingBreadcrumbItems} />
-      <h2 className="mb-7">Pricing</h2>
-      <Row className="g-7 g-lg-11 mb-7">
+      <h2 className="mb-12">Pricing</h2>
+      <Row className="g-12 lg:g-20 mb-12">
         {pricingColumnItems.map(item => (
           <PricingColumnItem key={item.id} pricing={item} />
         ))}

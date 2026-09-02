@@ -13,13 +13,13 @@ import { Col, Nav, Row, Tab } from 'react-bootstrap';
 
 const PricingGrid = () => {
   return (
-    <div className="mb-9">
+    <div className="mb-16">
       <PageBreadcrumb items={pricingBreadcrumbItems} />
-      <h2 className="mb-7">Pricing</h2>
+      <h2 className="mb-12">Pricing</h2>
       <Row>
         <Col xl={12} xxl={9} className="mb-1">
           <Tab.Container defaultActiveKey="monthly">
-            <Nav variant="underline" className="mb-3">
+            <Nav variant="underline" className="mb-4">
               <Nav.Item>
                 <Nav.Link eventKey="yearly">Yearly</Nav.Link>
               </Nav.Item>
@@ -29,7 +29,7 @@ const PricingGrid = () => {
             </Nav>
             <Tab.Content>
               <Tab.Pane eventKey="yearly">
-                <Row className="g-3">
+                <Row className="g-4">
                   {pricingGridItems.map(item => (
                     <Col key={item.id} md={6} lg={12} xl={6}>
                       <PricingGridItem item={item} pricingType="yearly" />
@@ -38,7 +38,7 @@ const PricingGrid = () => {
                 </Row>
               </Tab.Pane>
               <Tab.Pane eventKey="monthly">
-                <Row className="g-3">
+                <Row className="g-4">
                   {pricingGridItems.map(item => (
                     <Col key={item.id} md={6} lg={12} xl={6}>
                       <PricingGridItem item={item} pricingType="monthly" />
@@ -49,36 +49,36 @@ const PricingGrid = () => {
             </Tab.Content>
           </Tab.Container>
           <div>
-            <p className="mb-0 mt-7">
+            <p className="mb-0 mt-12">
               Business Starter, Business Standard, and Business Plus plans can
               be purchased for a maximum of 300 users. There is no{' '}
-              <br className="hidden d-xl-block d-xxl-none" />
+              <br className="hidden xl:block 2xl:hidden" />
               maximum user limit for Enterprise plans.
             </p>
             <p className="font-semibold">
               Phoenix customers may have access to additional features for a
-              limited <br className="hidden d-sm-block d-lg-none" />
+              limited <br className="hidden sm:block lg:hidden" />
               promotional period.
             </p>
-            <div className="d-grid d-sm-flex">
+            <div className="grid sm:flex">
               <Button
                 variant="primary"
                 size="lg"
-                className="mb-3 mb-sm-0 me-sm-3 px-sm-8"
+                className="mb-4 sm:mb-0 sm:me-4 sm:px-14"
                 endIcon={
                   <FontAwesomeIcon icon={faAngleRight} transform="down-2" />
                 }
               >
                 Subscribe Now
               </Button>
-              <Button variant="outline-primary" size="lg" className="px-sm-7">
+              <Button variant="outline-primary" size="lg" className="sm:px-12">
                 Start 7 days free Trial
               </Button>
             </div>
           </div>
         </Col>
-        <Col xxl={3} className="mt-8">
-          <h3 className="font-semibold mb-3">Included in our all packages</h3>
+        <Col xxl={3} className="mt-14">
+          <h3 className="font-semibold mb-4">Included in our all packages</h3>
           <PricingPackageList features={pricingGridFeatures} />
         </Col>
       </Row>

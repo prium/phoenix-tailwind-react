@@ -13,7 +13,7 @@ interface PricingGridItemProps {
 
 const PricingGridItem = ({ item, pricingType }: PricingGridItemProps) => {
   return (
-    <div className="h-100">
+    <div className="h-full">
       <Form.Control
         type="radio"
         name={pricingType}
@@ -23,19 +23,19 @@ const PricingGridItem = ({ item, pricingType }: PricingGridItemProps) => {
         defaultChecked={item.selected}
         id={`${item.title.split(' ')[0]}-${pricingType}`}
       />
-      <div className="relative h-100">
+      <div className="relative h-full">
         <Form.Label
           htmlFor={`${item.title.split(' ')[0]}-${pricingType}`}
           className="stretched-link"
         />
         <Card
-          className={classNames('h-100 overflow-hidden cursor-pointer', {
+          className={classNames('h-full overflow-hidden cursor-pointer', {
             'bg-warning-subtle border-warning warning-boxshadow pricing-business-plus':
               item.badge?.label === 'recommended'
           })}
         >
           <div
-            className="bg-holder d-dark-none"
+            className="bg-holder dark:hidden"
             style={{
               backgroundImage: `url(${item.bg})`,
               backgroundPosition: 'left bottom',
@@ -43,23 +43,23 @@ const PricingGridItem = ({ item, pricingType }: PricingGridItemProps) => {
             }}
           />
           <div
-            className="bg-holder d-light-none"
+            className="bg-holder hidden dark:block"
             style={{
               backgroundImage: `url(${item.darkBg})`,
               backgroundPosition: 'left bottom',
               backgroundSize: 'auto'
             }}
           />
-          <Card.Body className="flex flex-column justify-content-between relative">
-            <div className="flex justify-content-between">
-              <div className="mb-5 mb-md-0 mb-lg-5 me-3">
-                <div className="d-sm-flex align-items-center mb-3">
+          <Card.Body className="flex flex-col justify-between relative">
+            <div className="flex justify-between">
+              <div className="mb-8 md:mb-0 lg:mb-8 me-4">
+                <div className="sm:flex items-center mb-4">
                   <h3 className="mb-0">{item.title}</h3>
                   {item.badge && (
                     <Badge
                       variant="default"
                       bg={item.badge.badgeBg}
-                      className="ms-sm-3 text-sm text-uppercase"
+                      className="sm:ms-4 text-sm uppercase"
                     >
                       {item.badge.label}
                     </Badge>
@@ -69,7 +69,7 @@ const PricingGridItem = ({ item, pricingType }: PricingGridItemProps) => {
                   className="text-md text-subtle"
                   dangerouslySetInnerHTML={{ __html: item.description }}
                 />
-                <div className="flex align-items-end mb-md-5 mb-lg-0">
+                <div className="flex items-end md:mb-8 lg:mb-0">
                   {item.monthlyPrice === 0 || item.yearlyPrice === 0 ? (
                     <h4 className="font-black me-1">Free</h4>
                   ) : (
@@ -92,25 +92,25 @@ const PricingGridItem = ({ item, pricingType }: PricingGridItemProps) => {
               </div>
               <img
                 src={item.img}
-                className="d-dark-none"
+                className="dark:hidden"
                 width={54}
                 height={54}
                 alt=""
               />
               <img
                 src={item.imgDark}
-                className="d-light-none"
+                className="hidden dark:block"
                 width={54}
                 height={54}
                 alt=""
               />
             </div>
-            <Row className="flex-1 justify-content-end">
+            <Row className="flex-1 justify-end">
               <Col sm={8} md={12}>
-                <div className="d-sm-flex d-md-block d-lg-flex justify-content-end align-items-end h-100">
+                <div className="sm:flex md:block lg:flex justify-end items-end h-full">
                   <ul
                     className={classNames(
-                      'list-unstyled mb-0 border-start-sm border-start-md-0 border-start-lg ps-sm-5 ps-md-0 ps-lg-5',
+                      'list-unstyled mb-0 sm:border-s md:border-s-0 lg:border-s sm:ps-8 md:ps-0 lg:ps-8',
                       {
                         'border-warning-subtle':
                           item.badge?.label === 'recommended',
@@ -122,7 +122,7 @@ const PricingGridItem = ({ item, pricingType }: PricingGridItemProps) => {
                     {item.features.map((feature, index) => (
                       <li
                         key={feature}
-                        className={classNames('flex align-items-center', {
+                        className={classNames('flex items-center', {
                           'mb-2': index !== item.features.length - 1
                         })}
                       >
@@ -133,7 +133,7 @@ const PricingGridItem = ({ item, pricingType }: PricingGridItemProps) => {
                           size={16}
                         />
                         <span
-                          className="text-subtle font-semibold lh-1"
+                          className="text-subtle font-semibold leading-none"
                           dangerouslySetInnerHTML={{ __html: feature }}
                         />
                       </li>

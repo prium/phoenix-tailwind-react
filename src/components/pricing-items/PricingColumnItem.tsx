@@ -18,22 +18,22 @@ const PricingColumnItem = ({ pricing }: PricingColumnItemProps) => {
       <img
         src={pricing.icon}
         alt=""
-        className="mb-4 d-dark-none"
+        className="mb-6 dark:hidden"
         width={120}
         height={96}
       />
       <img
         src={pricing.iconDark}
         alt=""
-        className="mb-4 d-light-none"
+        className="mb-6 hidden dark:block"
         width={120}
         height={96}
       />
-      <div className="pricing-column-title-box mb-sm-5">
+      <div className="pricing-column-title-box sm:mb-8">
         <h3 className="mb-2">{pricing.title}</h3>
-        <p className="text-muted mb-0 pe-3">{pricing.description}</p>
+        <p className="text-muted mb-0 pe-4">{pricing.description}</p>
       </div>
-      <div className="flex align-items-center mb-4">
+      <div className="flex items-center mb-6">
         {pricing.price === 0 ? (
           <h3 className="display-3 font-black">Free</h3>
         ) : (
@@ -48,11 +48,11 @@ const PricingColumnItem = ({ pricing }: PricingColumnItemProps) => {
       <Button
         variant={pricing.selected ? 'primary' : 'outline-primary'}
         size="lg"
-        className="w-100 mb-6"
+        className="w-full mb-10"
       >
         Buy
       </Button>
-      <h5 className="mb-4">What’s included</h5>
+      <h5 className="mb-6">What’s included</h5>
       <ul
         className="fa-ul"
         style={{ '--fa-li-margin': '1.5em' } as CSSProperties}
