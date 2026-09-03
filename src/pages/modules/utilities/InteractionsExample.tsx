@@ -1,33 +1,33 @@
 import PhoenixDocCard from 'components/base/PhoenixDocCard';
 import DocPageHeader from 'components/docs/DocPageHeader';
 import DocPagesLayout from 'layouts/DocPagesLayout';
-import { Link } from 'react-router';
 
 const textSelectionCode = `
 <>
-  <p className="user-select-all">This paragraph will be entirely selected when clicked by the user.</p>
-  <p className="user-select-auto">This paragraph has default select behavior.</p>
-  <p className="user-select-none">This paragraph will not be selectable when clicked by the user.</p>
+  <p className="select-all">This paragraph will be entirely selected when clicked by the user.</p>
+  <p className="select-auto">This paragraph has default select behavior.</p>
+  <p className="select-text">This paragraph will select text in an element and its children.</p>
+  <p className="select-none">This paragraph will not be selectable when clicked by the user.</p>
 </>
 `;
 
 const pointerEventsCode = `
 <>
   <p>
-    <Link className="pe-none" to="#!"> This link </Link>
+    <a className="pointer-events-none" href="#!" tabIndex={-1} aria-disabled="true">
+      This link
+    </a>{' '}
     can not be clicked.
   </p>
   <p>
-    <Link className="pe-auto" to="#!"> This link </Link>{' '}
+    <a className="pointer-events-auto" href="#!">This link</a>{' '}
     can be clicked (this is default behavior).
   </p>
-  <p className="pe-none">
-    <Link to="#!">This link</Link> can not be clicked because the{' '}
-    <code>pointer-events</code> property is inherited from its parent. However,{' '}
-    <Link className="pe-auto" to="#!">
-      this link
-    </Link>{' '}
-    has a <code>pe-auto</code> class and can be clicked.
+  <p className="pointer-events-none">
+    <a href="#!" tabIndex={-1} aria-disabled="true">This link</a> can not be clicked
+    because the <code>pointer-events</code> property is inherited from its parent.
+    However, <a className="pointer-events-auto" href="#!">this link</a> has a{' '}
+    <code>pointer-events-auto</code> class and can be clicked.
   </p>
 </>
 `;
@@ -38,25 +38,36 @@ const InteractionsExample = () => {
       <DocPageHeader
         title="Interactions"
         description="Utility classes that change how users interact with contents of a website."
+        link={{
+          text: 'Interactions on Tailwind',
+          url: 'https://tailwindcss.com/docs/user-select'
+        }}
       />
 
       <DocPagesLayout>
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header
-            title="Text selection"
-            description="Change the way in which the content is selected when the user interacts with it."
-          />
+          <PhoenixDocCard.Header title="Text selection">
+            <p className="mb-0 mt-2 text-muted">
+              Change the way in which the content is selected when the user
+              interacts with it. Tailwind ships four <code>user-select</code>{' '}
+              utilities: <code>select-all</code>, <code>select-auto</code>,{' '}
+              <code>select-text</code> and <code>select-none</code>.
+            </p>
+          </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={textSelectionCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Pointer events">
-            <p className="mb-0 text-muted">
-              Bootstrap provides <code>.pe-none</code> and <code>.pe-auto</code>{' '}
-              classes to prevent or add element interactions.
+            <p className="mb-0 mt-2 text-muted">
+              Tailwind provides <code>pointer-events-none</code> and{' '}
+              <code>pointer-events-auto</code> classes to prevent or add element
+              interactions. <code>pointer-events</code> is inherited, so{' '}
+              <code>pointer-events-auto</code> on a child re-enables it inside a
+              disabled subtree.
             </p>
           </PhoenixDocCard.Header>
-          <PhoenixDocCard.Body code={pointerEventsCode} scope={{ Link }} />
+          <PhoenixDocCard.Body code={pointerEventsCode} />
         </PhoenixDocCard>
       </DocPagesLayout>
     </div>

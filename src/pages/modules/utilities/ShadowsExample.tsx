@@ -4,11 +4,12 @@ import DocPagesLayout from 'layouts/DocPagesLayout';
 
 const exampleCode = `
 <>
-    <div className="shadow-none p-3 mb-5 bg-light rounded">No shadow</div>
-    <div className="shadow-sm p-3 mb-5 bg-light rounded">Small shadow</div>
-    <div className="shadow p-3 mb-5 bg-light rounded">Regular shadow</div>
-    <div className="shadow-lg p-3 mb-5 bg-light rounded">Larger shadow</div>
-</>`;
+  <div className="shadow-none p-4 mb-8 bg-subtle rounded-md">No shadow</div>
+  <div className="shadow-sm p-4 mb-8 bg-subtle rounded-md">Small shadow</div>
+  <div className="shadow-base p-4 mb-8 bg-subtle rounded-md">Regular shadow</div>
+  <div className="shadow-lg p-4 mb-8 bg-subtle rounded-md">Larger shadow</div>
+</>
+`;
 
 const ShadowsExample = () => {
   return (
@@ -16,17 +17,22 @@ const ShadowsExample = () => {
       <DocPageHeader
         title="Shadows"
         description="Add or remove shadows to elements with box-shadow utilities."
+        link={{
+          text: 'Shadows on Hummingbird',
+          url: 'https://hbui.dev/docs/content/shadows/'
+        }}
       />
       <DocPagesLayout>
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header title="Example">
-            <p className="mb-0 text-muted">
-              While shadows on components are disabled by default in Bootstrap
-              and can be enabled via <code>$enable-shadows</code>, you can also
-              quickly add or remove a shadow with our <code>box-shadow</code>{' '}
-              utility classes. Includes support for <code>.shadow-none</code>{' '}
-              and three default sizes (which have associated variables to
-              match).
+          <PhoenixDocCard.Header title="Examples">
+            <p className="mb-0 mt-2 text-muted">
+              The theme defines three shadows in{' '}
+              <code>assets/css/theme.css</code> — <code>--shadow-sm</code>,{' '}
+              <code>--shadow-base</code> and <code>--shadow-lg</code> — which
+              Tailwind exposes as <code>shadow-sm</code>,{' '}
+              <code>shadow-base</code> and <code>shadow-lg</code>.{' '}
+              <code>shadow-none</code> removes a shadow again; the cards on
+              these documentation pages use it.
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={exampleCode} />
