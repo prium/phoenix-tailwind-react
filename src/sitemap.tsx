@@ -1270,9 +1270,9 @@ export const routes: RouteItems[] = [
             active: true,
             pages: [
               {
-                name: 'bootstrap',
-                path: '/modules/components/carousel/bootstrap',
-                pathName: 'components-bs-carousel',
+                name: 'hummingbird',
+                path: '/modules/components/carousel/hummingbird',
+                pathName: 'components-hb-carousel',
                 active: true
               },
               {

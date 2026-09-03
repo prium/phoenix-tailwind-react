@@ -7,7 +7,7 @@ import AvatarExample from 'pages/modules/components/AvatarExample';
 import BadgeExample from 'pages/modules/components/BadgeExample';
 import BreadcrumbExample from 'pages/modules/components/BreadcrumbExample';
 import CardExample from 'pages/modules/components/CardExample';
-import BootstrapCarousel from 'pages/modules/components/BootstrapCarousel';
+import HummingbirdCarousel from 'pages/modules/components/HummingbirdCarousel';
 import CollapseExample from 'pages/modules/components/CollapseExample';
 import DropdownExample from 'pages/modules/components/DropdownExample';
 import ListGroupExample from 'pages/modules/components/ListGroupExample';
@@ -859,8 +859,8 @@ const routes: RouteObject[] = [
                     element: <CardExample />
                   },
                   {
-                    path: 'carousel/bootstrap',
-                    element: <BootstrapCarousel />
+                    path: 'carousel/hummingbird',
+                    element: <HummingbirdCarousel />
                   },
                   {
                     path: 'carousel/swiper',
