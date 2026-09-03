@@ -1,205 +1,175 @@
-import { UilTimes } from '@iconscout/react-unicons';
 import PhoenixDocCard from 'components/base/PhoenixDocCard';
 import DocPageHeader from 'components/docs/DocPageHeader';
 import DocPagesLayout from 'layouts/DocPagesLayout';
-import Button from 'components/base/Button';
+import { Toaster } from '@hummingbirdui/react';
 
 const exampleCode = `
+<Button
+  variant="outline"
+  onClick={() =>
+    toast('Event has been created', {
+      description: 'Sunday, December 03, 2023 at 9:00 AM',
+      action: { label: 'Undo', onClick: () => console.log('Undo') }
+    })
+  }
+>
+  Show Toast
+</Button>
+`;
+
+const placementCode = `
 () => {
-  const [show, setShow] = useState(true);
+  const positions = [
+    'top-left',
+    'top-center',
+    'top-right',
+    'bottom-left',
+    'bottom-center',
+    'bottom-right'
+  ];
+
   return (
-    <Toast show={show} onClose={() => setShow(!show)}>
-      <Toast.Header closeButton={false}>
-        <strong className="me-auto">Bootstrap</strong>
-        <small>11 mins ago</small>
-        <Button className="ms-2 p-0 " onClick={() => setShow(false)} >
-          <UilTimes className="text-lg"/>
+    <div className="flex flex-wrap gap-2">
+      {positions.map(position => (
+        <Button
+          key={position}
+          variant="outline"
+          onClick={() => toast('Event has been created', { position })}
+        >
+          {position}
         </Button>
-      </Toast.Header>
-      <Toast.Body>Hello, world! This is a toast message.</Toast.Body>
-    </Toast>
+      ))}
+    </div>
   );
 }`;
-const transcluentCode = `
+
+const typesCode = `
 () => {
-  const [show, setShow] = useState(true);
+  const promise = () =>
+    new Promise(resolve => setTimeout(() => resolve({ name: 'Event' }), 2000));
+
   return (
-    <div className='bg-dark p-3'>
-      <Toast show={show} onClose={() => setShow(!show)}>
-        <Toast.Header closeButton={false}>
-          <strong className="me-auto">Bootstrap</strong>
-          <small>11 mins ago</small>
-          <Button className="ms-2 p-0 " onClick={() => setShow(false)} >
-            <UilTimes className="text-lg"/>
-          </Button>
-        </Toast.Header>
-        <Toast.Body>Hello, world! This is a toast message.</Toast.Body>
-      </Toast>
+    <div className="flex flex-wrap gap-2">
+      <Button variant="outline" onClick={() => toast.success('Event has been created')}>
+        Success
+      </Button>
+      <Button
+        variant="outline"
+        onClick={() => toast.info('Be at the area 10 minutes before the event time')}
+      >
+        Info
+      </Button>
+      <Button
+        variant="outline"
+        onClick={() => toast.warning('Event start time cannot be earlier than 8am')}
+      >
+        Warning
+      </Button>
+      <Button variant="outline" onClick={() => toast.error('Event has not been created')}>
+        Error
+      </Button>
+      <Button
+        variant="outline"
+        onClick={() =>
+          toast.message('Event has been created', {
+            description: 'Monday, January 3rd at 6:00pm'
+          })
+        }
+      >
+        Message
+      </Button>
+      <Button
+        variant="outline"
+        onClick={() =>
+          toast.promise(promise, {
+            loading: 'Loading...',
+            success: data => \`\${data.name} has been added\`,
+            error: 'Error'
+          })
+        }
+      >
+        Promise
+      </Button>
     </div>
   );
 }`;
 
 const stackingCode = `
-() => {
-  const [showA, setShowA] = useState(true);
-  const [showB, setShowB] = useState(true);
-
-  return (
-    <ToastContainer className="static">
-      <Toast show={showA} className="mb-4" onClose={() => setShowA(!showA)}>
-        <Toast.Header closeButton={false}>
-          <strong className="me-auto">Bootstrap</strong>
-          <small className="text-muted">just now</small>
-          <Button className="ms-2 p-0 " onClick={() => setShowA(false)} >
-            <UilTimes className="text-lg"/>
-          </Button>
-        </Toast.Header>
-        <Toast.Body>See? Just like this.</Toast.Body>
-      </Toast>
-      <Toast show={showB} onClose={() => setShowB(!showB)}>
-        <Toast.Header closeButton={false}>
-          <strong className="me-auto">Bootstrap</strong>
-          <small className="text-muted">2 seconds ago</small>
-          <Button className="ms-2 p-0 " onClick={() => setShowB(false)} >
-            <UilTimes className="text-lg"/>
-          </Button>
-        </Toast.Header>
-        <Toast.Body>Heads up, toasts will stack automatically</Toast.Body>
-      </Toast>
-    </ToastContainer>
-  );
-}`;
-
-const placementCode = `
-() => {
-  const [position, setPosition] = useState('top-start');
-
-  return (
-    <>
-      <div className="mb-3">
-        <Form.Select
-          id="selectToastPlacement"
-          className="mt-2"
-          onChange={(e) => setPosition(e.currentTarget.value)}
-        >
-          {[
-            'top-start',
-            'top-center',
-            'top-end',
-            'middle-start',
-            'middle-center',
-            'middle-end',
-            'bottom-start',
-            'bottom-center',
-            'bottom-end',
-          ].map((p) => (
-            <option key={p} value={p}>
-              {p}
-            </option>
-          ))}
-        </Form.Select>
-      </div>
-
-      <div
-        aria-live="polite"
-        aria-atomic="true"
-        className="relative"
-        style={{ minHeight: '240px' }}
-      >
-        <ToastContainer className="p-3" position={position}>
-          <Toast>
-            <Toast.Header closeButton={false}>
-              <img
-                className="rounded me-2"
-                alt=""
-              />
-              <strong className="me-auto">Bootstrap</strong>
-              <small>11 mins ago</small>
-            </Toast.Header>
-            <Toast.Body>Hello, world! This is a toast message.</Toast.Body>
-          </Toast>
-        </ToastContainer>
-      </div>
-    </>
-  );
-}`;
-
-const autoHideCode = `
-() => {
-  const [show, setShow] = useState(false);
-  return (
-    <>
-      <Button variant="primary" onClick={() => setShow(true)}>Show Toast</Button>
-      <div className="position-fixed bottom-0 end-0 p-3">
-        <Toast onClose={() => setShow(false)} show={show} delay={3000} autohide>
-          <Toast.Header closeButton={false}>
-            <strong className="me-auto">Bootstrap</strong>
-            <small>11 mins ago</small>
-            <Button className="ms-2 p-0 " onClick={() => setShow(false)} >
-              <UilTimes className="text-lg"/>
-            </Button>
-          </Toast.Header>
-          <Toast.Body>Woohoo, you're reading this text in a Toast!</Toast.Body>
-        </Toast>
-      </div>
-    </>
-  );
-}
+<Button
+  variant="outline"
+  onClick={() => {
+    toast('See? Just like this.');
+    toast('Heads up, toasts will stack automatically');
+    toast('The oldest one leaves once the stack is full');
+  }}
+>
+  Show three toasts
+</Button>
 `;
 
 const dismissibleCode = `
-()=> {
-  const [showA, setShowA] = useState(true);
-  const [showB, setShowB] = useState(true);
+<div className="flex flex-wrap gap-2">
+  <Button
+    variant="outline"
+    onClick={() =>
+      toast('Woohoo, you are reading this text in a toast!', {
+        closeButton: true
+      })
+    }
+  >
+    With close button
+  </Button>
+  <Button
+    variant="outline"
+    onClick={() =>
+      toast.custom(t => (
+        <div className="toast show">
+          <div className="toast-header">
+            <strong className="me-auto">Hummingbird</strong>
+            <small>just now</small>
+            <CloseButton onClick={() => toast.dismiss(t)} />
+          </div>
+          <div className="toast-body">
+            A fully custom toast, dismissed by its own button.
+          </div>
+        </div>
+      ))
+    }
+  >
+    Custom content
+  </Button>
+  <Button variant="outline" onClick={() => toast.dismiss()}>
+    Dismiss all
+  </Button>
+</div>
+`;
 
-  const toggleShowA = () => setShowA(!showA);
-  const toggleShowB = () => setShowB(!showB);
-
-  return (
-    <Row>
-      <Col md={6} className="mb-2">
-        <Button variant="primary" onClick={toggleShowA} className="mb-2">
-          Toggle Toast <strong>with</strong> Animation
-        </Button>
-        <Toast show={showA} onClose={toggleShowA}>
-          <Toast.Header closeButton={false}>
-            <img
-              src="holder.js/20x20?text=%20"
-              className="rounded me-2"
-              alt=""
-            />
-            <strong className="me-auto">Bootstrap</strong>
-            <small>11 mins ago</small>
-            <Button className="ms-2 p-0 " onClick={() => setShowA(false)} >
-              <UilTimes className="text-lg"/>
-            </Button>
-          </Toast.Header>
-          <Toast.Body>Woohoo, you're reading this text in a Toast!</Toast.Body>
-        </Toast>
-      </Col>
-      <Col md={6} className="mb-2">
-        <Button variant="primary" onClick={toggleShowB} className="mb-2">
-          Toggle Toast <strong>without</strong> Animation
-        </Button>
-        <Toast onClose={toggleShowB} show={showB} animation={false}>
-          <Toast.Header closeButton={false}>
-            <img
-              src="holder.js/20x20?text=%20"
-              className="rounded me-2"
-              alt=""
-            />
-            <strong className="me-auto">Bootstrap</strong>
-            <small>11 mins ago</small>
-            <Button className="ms-2 p-0 " onClick={() => setShowB(false)} >
-              <UilTimes className="text-lg"/>
-            </Button>
-          </Toast.Header>
-          <Toast.Body>Woohoo, you're reading this text in a Toast!</Toast.Body>
-        </Toast>
-      </Col>
-    </Row>
-  );
-}
+const autoHideCode = `
+<div className="flex flex-wrap gap-2">
+  <Button
+    variant="outline"
+    onClick={() => toast('I disappear after 1 second', { duration: 1000 })}
+  >
+    Short
+  </Button>
+  <Button
+    variant="outline"
+    onClick={() => toast('I disappear after 10 seconds', { duration: 10000 })}
+  >
+    Long
+  </Button>
+  <Button
+    variant="outline"
+    onClick={() =>
+      toast('I stay until you dismiss me', {
+        duration: Infinity,
+        closeButton: true
+      })
+    }
+  >
+    Never
+  </Button>
+</div>
 `;
 
 const ToastsExample = () => {
@@ -209,74 +179,88 @@ const ToastsExample = () => {
         title="Toasts"
         description="Push notifications to your visitors with a toast, a lightweight and easily customizable alert message."
         link={{
-          text: 'Toasts on react-bootstrap',
-          url: `${import.meta.env.VITE_RB_URL_PREFIX || ''}/components/toasts/`
+          text: 'Toast on hb-react',
+          url: 'https://react.hbui.dev/docs/components/toast'
         }}
       />
 
+      {/* The examples below fire toasts imperatively, so the page mounts the
+          single Toaster they all render into. Sonner wraps it in a bare
+          `<section>`, which the theme's reboot pads by `--spacing(10)`; the
+          wrapper zeroes that so the mount point takes no layout space. */}
+      <div className="[&>section]:p-0">
+        <Toaster />
+      </div>
+
       <DocPagesLayout>
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header title="Basic Example" />
-          <PhoenixDocCard.Body
-            code={exampleCode}
-            scope={{ UilTimes, Button }}
-          />
+          <PhoenixDocCard.Header title="Basic Example">
+            <p className="mb-0">
+              Render one <code>&lt;Toaster /&gt;</code> at the app root — this
+              page mounts it for you — then fire toasts from anywhere with the{' '}
+              <code>toast()</code> function. Every call accepts options such as{' '}
+              <code>description</code>, <code>action</code>,{' '}
+              <code>duration</code> and <code>position</code>.
+            </p>
+          </PhoenixDocCard.Header>
+          <PhoenixDocCard.Body code={exampleCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Placement">
             <p className="mb-0">
-              Place toasts by setting a <code>position</code> in a{' '}
-              <code>ToastContainer</code>. The top right is often used for
-              notifications, as is the top middle.
+              Place a toast with the <code>position</code> option, or set a
+              default for all of them with <code>position</code> on the{' '}
+              <code>Toaster</code>. The bottom right is the default; the top
+              right is often used for notifications, as is the top center.
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={placementCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header
-            title="Translucent"
-            description="Toasts are slightly translucent, too, so they blend over whatever they might appear over."
-          />
-          <PhoenixDocCard.Body
-            code={transcluentCode}
-            scope={{ UilTimes, Button }}
-          />
+          <PhoenixDocCard.Header title="Types">
+            <p className="mb-0">
+              <code>toast.success</code>, <code>toast.info</code>,{' '}
+              <code>toast.warning</code> and <code>toast.error</code> render
+              typed toasts with a matching icon, <code>toast.message</code> adds
+              a supporting description, and <code>toast.promise</code> tracks a
+              promise through its loading, success and error states.
+            </p>
+          </PhoenixDocCard.Header>
+          <PhoenixDocCard.Body code={typesCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header
             title="Stacking"
-            description="When you have multiple toasts, we default to vertically stacking them in a readable manner."
+            description="When you have multiple toasts they stack automatically. The Toaster's visibleToasts prop caps how many are on screen at once, and expand shows the stack unfolded by default."
           />
-          <PhoenixDocCard.Body
-            code={stackingCode}
-            scope={{ UilTimes, Button }}
-          />
+          <PhoenixDocCard.Body code={stackingCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header title="Dismissible" />
-          <PhoenixDocCard.Body
-            code={dismissibleCode}
-            scope={{ UilTimes, Button }}
-          />
+          <PhoenixDocCard.Header title="Dismissible">
+            <p className="mb-0">
+              The <code>closeButton</code> option adds a close control to a
+              toast, and <code>toast.dismiss(id)</code> removes one by id —
+              without an id it clears them all. <code>toast.custom</code>{' '}
+              renders fully custom JSX while the <code>Toaster</code> keeps
+              handling stacking, timing and dismissal.
+            </p>
+          </PhoenixDocCard.Header>
+          <PhoenixDocCard.Body code={dismissibleCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Autohide">
             <p className="mb-0">
-              A Toast can also automatically hide after X milliseconds using the{' '}
-              <code>autohide</code> prop with the <code>delay</code> prop to
-              specify the delay. To open the toast, manually change the show
-              property.
+              A toast hides itself after four seconds. Pass{' '}
+              <code>duration</code> in milliseconds to change that, or{' '}
+              <code>Infinity</code> to keep it up until it is dismissed.
             </p>
           </PhoenixDocCard.Header>
-          <PhoenixDocCard.Body
-            code={autoHideCode}
-            scope={{ UilTimes, Button }}
-          />
+          <PhoenixDocCard.Body code={autoHideCode} />
         </PhoenixDocCard>
       </DocPagesLayout>
     </div>
