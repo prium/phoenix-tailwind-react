@@ -6,107 +6,115 @@ import PhoenixDocProvider from 'providers/PhoenixDocProvider';
 const flexCode = `
 <>
   <div className="flex p-2 bg-muted mb-2">Flexbox container!</div>
-  <div className="d-inline-flex p-2 bg-muted">
-    Inline flexbox container!
-  </div>
+  <div className="inline-flex p-2 bg-muted">Inline flexbox container!</div>
 </>`;
 
 const flexDirectionRowCode = `<>
-  <div className="flex p-2 bg-muted mb-2">  
+  <div className="flex flex-row bg-muted mb-4">
     <div className="p-2 bg-muted border">Flex item 1</div>
     <div className="p-2 bg-muted border">Flex item 2</div>
     <div className="p-2 bg-muted border">Flex item 3</div>
   </div>
-  <div className="flex flex-row-reverse p-2 bg-muted mb-2">  
+  <div className="flex flex-row-reverse bg-muted mb-4">
     <div className="p-2 bg-muted border">Flex item 1</div>
     <div className="p-2 bg-muted border">Flex item 2</div>
     <div className="p-2 bg-muted border">Flex item 3</div>
   </div>
-  <div className="flex flex-lg-row-reverse p-2 bg-muted mb-2">  
+  <div className="flex lg:flex-row-reverse bg-muted">
     <div className="p-2 bg-muted border">
-      Flex Item (<code>flex-direction:row-reverse</code> in <code>lg</code> screen )
+      Flex item (<code>flex-direction: row-reverse</code> from <code>lg</code> up)
     </div>
   </div>
 </>`;
 
 const flexDirectionColumnCode = `<>
-  <div className="flex flex-column p-2 mb-2">  
+  <div className="flex flex-col bg-muted mb-4">
     <div className="p-2 bg-muted border">Flex item 1</div>
     <div className="p-2 bg-muted border">Flex item 2</div>
     <div className="p-2 bg-muted border">Flex item 3</div>
   </div>
-  <div className="flex flex-column-reverse p-2 mb-2">  
+  <div className="flex flex-col-reverse bg-muted mb-4">
     <div className="p-2 bg-muted border">Flex item 1</div>
     <div className="p-2 bg-muted border">Flex item 2</div>
     <div className="p-2 bg-muted border">Flex item 3</div>
   </div>
-  <div className="flex flex-column flex-lg-column-reverse p-2 mb-2">  
-    <div className="p-2 bg-muted border">Flex item 1 (<code>column-reverse</code> in <code>lg</code> screen )</div>
-    <div className="p-2 bg-muted border">Flex item 2 (<code>column-reverse</code> in <code>lg</code> screen )</div>
-    <div className="p-2 bg-muted border">Flex item 3 (<code>column-reverse</code> in <code>lg</code> screen )</div>
+  <div className="flex flex-col lg:flex-col-reverse bg-muted">
+    <div className="p-2 bg-muted border">Flex item 1 (<code>column-reverse</code> from <code>lg</code> up)</div>
+    <div className="p-2 bg-muted border">Flex item 2 (<code>column-reverse</code> from <code>lg</code> up)</div>
+    <div className="p-2 bg-muted border">Flex item 3 (<code>column-reverse</code> from <code>lg</code> up)</div>
+  </div>
+</>`;
+
+const justifyContentCode = `<>
+  <div className="flex justify-start bg-muted mb-2">
+    <div className="p-2 bg-muted border">Flex Item</div>
+  </div>
+  <div className="flex justify-end bg-muted mb-2">
+    <div className="p-2 bg-muted border">Flex Item</div>
+  </div>
+  <div className="flex justify-center bg-muted mb-2">
+    <div className="p-2 bg-muted border">Flex Item</div>
+  </div>
+  <div className="flex justify-between bg-muted mb-2">
+    <div className="p-2 bg-muted border">Flex Item</div>
+  </div>
+  <div className="flex justify-around bg-muted mb-2">
+    <div className="p-2 bg-muted border">Flex Item</div>
   </div>
 </>`;
 
 const alignItemsCode = `<>
-  <div className="flex align-items-start bg-muted mb-2" style={{height:'5rem'}}>  
+  <div className="flex items-start bg-muted mb-2 h-20">
     <div className="p-2 bg-muted border">Flex item</div>
   </div>
-  <div className="flex align-items-end bg-muted mb-2" style={{height:'5rem'}}>  
+  <div className="flex items-end bg-muted mb-2 h-20">
     <div className="p-2 bg-muted border">Flex item</div>
   </div>
-  <div className="flex align-items-center bg-muted mb-2" style={{height:'5rem'}}>  
+  <div className="flex items-center bg-muted mb-2 h-20">
     <div className="p-2 bg-muted border">Flex item</div>
   </div>
-  <div className="flex align-items-baseline bg-muted mb-2" style={{height:'5rem'}}>  
+  <div className="flex items-baseline bg-muted mb-2 h-20">
     <div className="p-2 bg-muted border">Flex item</div>
   </div>
-  <div className="flex align-items-stretch bg-muted mb-2" style={{height:'5rem'}}>  
+  <div className="flex items-stretch bg-muted mb-2 h-20">
     <div className="p-2 bg-muted border">Flex item</div>
   </div>
-  <div className="flex align-items-lg-center bg-muted mb-2" style={{height:'5rem'}}>  
-    <div className="p-2 bg-muted border">Flex item (<code>align-items:center</code> in <code>lg</code> screen)</div>
+  <div className="flex lg:items-center bg-muted mb-2 h-20">
+    <div className="p-2 bg-muted border">Flex item (<code>align-items: center</code> from <code>lg</code> up)</div>
   </div>
 </>`;
 
 const alignSelfCode = `<>
-  <div className="flex bg-muted mb-2" style={{height:'5rem'}}>  
+  <div className="flex bg-muted mb-2 h-20">
     <div className="border p-2 bg-muted">Flex Item</div>
-    <div className="border p-2 bg-muted align-self-start">Align self start</div>
-    <div className="border p-2 bg-muted">Flex Item</div>
-  </div>
-  <div className="flex bg-muted mb-2" style={{height:'5rem'}}>  
-    <div className="border p-2 bg-muted">Flex Item</div>
-    <div className="border p-2 bg-muted align-self-end">Align self end</div>
+    <div className="border p-2 bg-muted self-start">Align self start</div>
     <div className="border p-2 bg-muted">Flex Item</div>
   </div>
-  <div className="flex bg-muted mb-2" style={{height:'5rem'}}>  
+  <div className="flex bg-muted mb-2 h-20">
     <div className="border p-2 bg-muted">Flex Item</div>
-    <div className="border p-2 bg-muted align-self-center">Align self center</div>
-    <div className="border p-2 bg-muted">Flex Item</div>
-  </div>
-  <div className="flex bg-muted mb-2" style={{height:'5rem'}}>  
-    <div className="border p-2 bg-muted">Flex Item</div>
-    <div className="border p-2 bg-muted align-self-baseline">Align self baseline</div>
+    <div className="border p-2 bg-muted self-end">Align self end</div>
     <div className="border p-2 bg-muted">Flex Item</div>
   </div>
-  <div className="flex bg-muted mb-2" style={{height:'5rem'}}>  
+  <div className="flex bg-muted mb-2 h-20">
     <div className="border p-2 bg-muted">Flex Item</div>
-    <div className="border p-2 bg-muted align-self-stretch">Align self stretch</div>
+    <div className="border p-2 bg-muted self-center">Align self center</div>
     <div className="border p-2 bg-muted">Flex Item</div>
   </div>
-</>`;
-
-const fillCode = `<>
-  <div className="flex bg-muted">
-    <div className="p-2 flex-fill bg-muted border">Flex item with a lot of content</div>
-    <div className="p-2 flex-fill bg-muted border">Flex item</div>
-    <div className="p-2 flex-fill bg-muted border">Flex item</div>
+  <div className="flex bg-muted mb-2 h-20">
+    <div className="border p-2 bg-muted">Flex Item</div>
+    <div className="border p-2 bg-muted self-baseline">Align self baseline</div>
+    <div className="border p-2 bg-muted">Flex Item</div>
+  </div>
+  <div className="flex bg-muted mb-2 h-20">
+    <div className="border p-2 bg-muted">Flex Item</div>
+    <div className="border p-2 bg-muted self-stretch">Align self stretch</div>
+    <div className="border p-2 bg-muted">Flex Item</div>
   </div>
 </>`;
 
 const growCode = `
   <div className="flex bg-muted">
-    <div className="p-2 flex-grow-1 bg-muted border">Flex item</div>
+    <div className="p-2 grow bg-muted border">Flex item</div>
     <div className="p-2 bg-muted border">Flex item</div>
     <div className="p-2 bg-muted border">Third flex item</div>
   </div>
@@ -114,8 +122,8 @@ const growCode = `
 
 const shrinkCode = `
   <div className="flex bg-muted">
-    <div className="p-2 w-100 bg-muted border">Flex item</div>
-    <div className="p-2 flex-shrink-1 bg-muted border">Flex item</div>
+    <div className="p-2 w-full bg-muted border">Flex item</div>
+    <div className="p-2 shrink bg-muted border">Flex item</div>
   </div>
 `;
 
@@ -141,12 +149,12 @@ const autoMarginCode = `
 
 const autoMarginWithAlignItemsCode = `
 <>
-  <div className="flex flex-column bg-muted mb-3 align-items-start" style={{height: '200px'}}>
+  <div className="flex flex-col bg-muted mb-4 h-50 items-start">
     <div className="mb-auto p-2 bg-muted border">Flex item</div>
     <div className="p-2 bg-muted border">Flex item</div>
     <div className="p-2 bg-muted border">Flex item</div>
   </div>
-  <div className="flex flex-column bg-muted mb-3 align-items-end" style={{height: '200px'}}>
+  <div className="flex flex-col bg-muted mb-4 h-50 items-end">
     <div className="mb-auto p-2 bg-muted border">Flex item</div>
     <div className="p-2 bg-muted border">Flex item</div>
     <div className="p-2 bg-muted border">Flex item</div>
@@ -155,14 +163,14 @@ const autoMarginWithAlignItemsCode = `
 `;
 
 const wrapCode = `<>
-  <div className="flex flex-nowrap mb-3 bg-muted border py-3" style={{width: '8rem'}}>
+  <div className="flex flex-nowrap mb-4 bg-muted border py-4 w-32">
     <div className="p-2 bg-muted border">Flex item</div>
     <div className="p-2 bg-muted border">Flex item</div>
     <div className="p-2 bg-muted border">Flex item</div>
     <div className="p-2 bg-muted border">Flex item</div>
     <div className="p-2 bg-muted border">Flex item</div>
   </div>
-  <div className="flex flex-wrap mb-3 bg-muted border">
+  <div className="flex flex-wrap mb-4 bg-muted border">
     <div className="p-2 bg-muted border">Flex item</div>
     <div className="p-2 bg-muted border">Flex item</div>
     <div className="p-2 bg-muted border">Flex item</div>
@@ -178,7 +186,7 @@ const wrapCode = `<>
     <div className="p-2 bg-muted border">Flex item</div>
     <div className="p-2 bg-muted border">Flex item</div>
   </div>
-  <div className="flex flex-wrap-reverse mb-3 bg-muted border">
+  <div className="flex flex-wrap-reverse mb-4 bg-muted border">
     <div className="p-2 bg-muted border">Flex item</div>
     <div className="p-2 bg-muted border">Flex item</div>
     <div className="p-2 bg-muted border">Flex item</div>
@@ -197,7 +205,7 @@ const wrapCode = `<>
 </>`;
 
 const orderCode = `
-  <div className="flex bg-muted p-2 mb-2">  
+  <div className="flex flex-nowrap bg-muted p-2">
     <div className="order-3 p-2 bg-muted border">First flex item</div>
     <div className="order-2 p-2 bg-muted border">Second flex item</div>
     <div className="order-1 p-2 bg-muted border">Third flex item</div>
@@ -205,20 +213,21 @@ const orderCode = `
 `;
 
 const responsiveOrderCode = `
-  <div className="flex bg-muted p-2 mb-2">  
-    <div className="order-sm-3 p-2 bg-muted border">
-      First flex item (<code>order:3</code> in <code>sm</code> screen)</div>
-    <div className="order-md-2 p-2 bg-muted border">
-      Second flex item (<code>order:2</code> in <code>md</code> screen)
+  <div className="flex flex-nowrap bg-muted p-2">
+    <div className="sm:order-3 p-2 bg-muted border">
+      First flex item (<code>order: 3</code> from <code>sm</code> up)
     </div>
-    <div className="order-lg-1 p-2 bg-muted border">
-      Third flex item (<code>order:1</code> in <code>lg</code> screen)
+    <div className="md:order-2 p-2 bg-muted border">
+      Second flex item (<code>order: 2</code> from <code>md</code> up)
+    </div>
+    <div className="lg:order-1 p-2 bg-muted border">
+      Third flex item (<code>order: 1</code> from <code>lg</code> up)
     </div>
   </div>
 `;
 
 const alignContentCode = `<>
-  <div className="flex flex-wrap bg-muted mb-3 align-content-start" style={{ height: '300px' }}>
+  <div className="flex flex-wrap content-start bg-muted mb-4 h-75">
     <div className="p-2 bg-muted border">Flex item</div>
     <div className="p-2 bg-muted border">Flex item</div>
     <div className="p-2 bg-muted border">Flex item</div>
@@ -234,7 +243,7 @@ const alignContentCode = `<>
     <div className="p-2 bg-muted border">Flex item</div>
     <div className="p-2 bg-muted border">Flex item</div>
   </div>
-  <div className="flex flex-wrap bg-muted mb-3 align-content-end" style={{ height: '300px' }}>
+  <div className="flex flex-wrap content-end bg-muted mb-4 h-75">
     <div className="p-2 bg-muted border">Flex item</div>
     <div className="p-2 bg-muted border">Flex item</div>
     <div className="p-2 bg-muted border">Flex item</div>
@@ -250,7 +259,7 @@ const alignContentCode = `<>
     <div className="p-2 bg-muted border">Flex item</div>
     <div className="p-2 bg-muted border">Flex item</div>
   </div>
-  <div className="flex flex-wrap bg-muted mb-3 align-content-center" style={{ height: '300px' }}>
+  <div className="flex flex-wrap content-center bg-muted mb-4 h-75">
     <div className="p-2 bg-muted border">Flex item</div>
     <div className="p-2 bg-muted border">Flex item</div>
     <div className="p-2 bg-muted border">Flex item</div>
@@ -266,7 +275,7 @@ const alignContentCode = `<>
     <div className="p-2 bg-muted border">Flex item</div>
     <div className="p-2 bg-muted border">Flex item</div>
   </div>
-  <div className="flex flex-wrap bg-muted mb-3 align-content-between" style={{ height: '300px' }}>
+  <div className="flex flex-wrap content-between bg-muted mb-4 h-75">
     <div className="p-2 bg-muted border">Flex item</div>
     <div className="p-2 bg-muted border">Flex item</div>
     <div className="p-2 bg-muted border">Flex item</div>
@@ -282,7 +291,7 @@ const alignContentCode = `<>
     <div className="p-2 bg-muted border">Flex item</div>
     <div className="p-2 bg-muted border">Flex item</div>
   </div>
-  <div className="flex flex-wrap bg-muted mb-3 align-content-around" style={{ height: '300px' }}>
+  <div className="flex flex-wrap content-around bg-muted mb-4 h-75">
     <div className="p-2 bg-muted border">Flex item</div>
     <div className="p-2 bg-muted border">Flex item</div>
     <div className="p-2 bg-muted border">Flex item</div>
@@ -298,7 +307,7 @@ const alignContentCode = `<>
     <div className="p-2 bg-muted border">Flex item</div>
     <div className="p-2 bg-muted border">Flex item</div>
   </div>
-  <div className="flex flex-wrap bg-muted mb-3 align-content-stretch" style={{ height: '300px' }}>
+  <div className="flex flex-wrap content-stretch bg-muted mb-4 h-75">
     <div className="p-2 bg-muted border">Flex item</div>
     <div className="p-2 bg-muted border">Flex item</div>
     <div className="p-2 bg-muted border">Flex item</div>
@@ -321,17 +330,21 @@ const FlexExample = () => {
     <div>
       <DocPageHeader
         title="Flex"
-        description="Quickly manage the layout, alignment, and sizing of grid columns, navigation, components, and more with a full suite of responsive flexbox utilities. For more complex implementations, custom CSS may be necessary."
+        description="Quickly manage the layout, alignment and sizing of grid columns, navigation, components and more with the responsive flexbox utilities. For more complex implementations, custom CSS may still be necessary."
+        link={{
+          text: 'Flex on Tailwind',
+          url: 'https://tailwindcss.com/docs/flex'
+        }}
       />
 
       <DocPagesLayout>
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Flex Behaviors">
             <p className="mb-0">
-              Apply <code> display </code> utilities to create a flexbox
-              container and transform direct children elements into flex items.
-              Flex containers and items are able to be modified further with
-              additional flex properties.
+              Apply the <code>display</code> utilities <code>.flex</code> or{' '}
+              <code>.inline-flex</code> to create a flexbox container and turn
+              its direct children into flex items. Containers and items can then
+              be adjusted further with the utilities below.
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={flexCode} />
@@ -340,9 +353,11 @@ const FlexExample = () => {
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Direction Row">
             <p className="mb-0 text-muted">
-              Use <code> .flex-row </code> to set a horizontal direction (the
-              browser default), or .flex-row-reverse to start the horizontal
-              direction from the opposite side.
+              Use <code>.flex-row</code> to set a horizontal direction (the
+              browser default), or <code>.flex-row-reverse</code> to start the
+              horizontal direction from the opposite side. Every direction
+              utility takes a breakpoint prefix —{' '}
+              <code>.lg:flex-row-reverse</code>.
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={flexDirectionRowCode} />
@@ -351,25 +366,37 @@ const FlexExample = () => {
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Direction Column">
             <p className="mb-0 text-muted">
-              Use
-              <code> .flex-column </code>
-              to set a vertical direction, or
-              <code> .flex-column-reverse </code>
-              to start the vertical direction from the opposite side
+              Use <code>.flex-col</code> to set a vertical direction, or{' '}
+              <code>.flex-col-reverse</code> to start the vertical direction
+              from the opposite side.
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={flexDirectionColumnCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
+          <PhoenixDocCard.Header title="Justify Content">
+            <p className="mb-0 text-muted">
+              Use the <code>justify-*</code> utilities on a flex container to
+              change the alignment of its items on the main axis (the x-axis to
+              start with, the y-axis if <code>flex-direction: column</code>).
+              Choose from <code>start</code> (browser default), <code>end</code>
+              , <code>center</code>, <code>between</code>, <code>around</code>{' '}
+              or <code>evenly</code>.
+            </p>
+          </PhoenixDocCard.Header>
+          <PhoenixDocCard.Body code={justifyContentCode} />
+        </PhoenixDocCard>
+
+        <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Align items">
             <p className="mb-0 text-muted">
-              Use <code>align-items </code>utilities on flexbox containers to
-              change the alignment of flex items on the cross axis (the y-axis
-              to start, x-axis if <code>flex-direction: column </code>). Choose
-              from <code>start </code>,<code>end </code>,<code>center </code>,
-              <code>baseline </code>, or{' '}
-              <code>stretch (browser default). </code>
+              Use the <code>items-*</code> utilities on a flex container to
+              change the alignment of its items on the cross axis (the y-axis to
+              start with, the x-axis if <code>flex-direction: column</code>).
+              Choose from <code>start</code>, <code>end</code>,{' '}
+              <code>center</code>, <code>baseline</code> or <code>stretch</code>{' '}
+              (browser default).
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={alignItemsCode} />
@@ -378,37 +405,23 @@ const FlexExample = () => {
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Align self">
             <p className="mb-0 text-muted">
-              Use <code>align-self </code>utilities on flexbox items to
-              individually change their alignment on the cross axis (the y-axis
-              to start, x-axis if <code>flex-direction: column </code>). Choose
-              from the same options as <code>align-items: start, </code>
-              <code>end </code>,<code>center </code>,<code>baseline </code>, or{' '}
-              <code>stretch (browser default).</code>
+              Use the <code>self-*</code> utilities on an individual flex item
+              to change its own alignment on the cross axis. The options are the
+              same as <code>items-*</code>: <code>start</code>, <code>end</code>
+              , <code>center</code>, <code>baseline</code> or{' '}
+              <code>stretch</code> (browser default).
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={alignSelfCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header title="Fill">
-            <p className="mb-0 text-muted">
-              Use the <code>.flex-fill</code> class on a series of sibling
-              elements to force them into widths equal to their content (or
-              equal widths if their content does not surpass their border-boxes)
-              while taking up all available horizontal space.
-            </p>
-          </PhoenixDocCard.Header>
-          <PhoenixDocCard.Body code={fillCode} />
-        </PhoenixDocCard>
-
-        <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Flex Grow">
             <p className="mb-0 text-muted">
-              Use <code>.flex-grow-* </code>utilities to toggle a flex item’s
-              ability to grow to fill available space. In the example below, the
-              <code>.flex-grow-1 </code>elements uses all available space it
-              can, while allowing the remaining two flex items their necessary
-              space.
+              Use <code>.grow</code> to let a flex item grow to fill the
+              available space, and <code>.grow-0</code> to stop it. In the
+              example below the <code>.grow</code> element takes all the space
+              it can while leaving the other two items the room they need.
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={growCode} />
@@ -417,40 +430,35 @@ const FlexExample = () => {
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Flex Shrink">
             <p className="mb-0 text-muted">
-              Use <code>.flex-shrink-*</code> utilities to toggle a flex item’s
-              ability to shrink if necessary. In the example below, the second
-              flex item with <code>.flex-shrink-1</code> is forced to wrap its
-              contents to a new line, “shrinking” to allow more space for the
-              previous flex item with <code>.w-100</code>.
+              Use <code>.shrink</code> to let a flex item shrink when it has to,
+              and <code>.shrink-0</code> to keep it at its natural size. In the
+              example below the second item with <code>.shrink</code> is forced
+              to wrap its contents onto a new line, making room for the first
+              item with <code>.w-full</code>.
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={shrinkCode} />
         </PhoenixDocCard>
 
-        <PhoenixDocCard className="mb-4">
+        <PhoenixDocCard className="mb-4" noProvider>
           <PhoenixDocProvider>
             <PhoenixDocCard.Header title="Auto margins">
               <p className="mb-0 text-muted">
-                Flexbox can do some pretty awesome things when you mix flex
-                alignments with auto margins. Shown below are three examples of
-                controlling flex items via auto margins: default (no auto
-                margin), pushing two items to the right ( <code>.me-auto </code>
-                ), and pushing two items to the left (<code>.ms-auto </code>).
+                Flexbox can do some useful things when you mix flex alignment
+                with auto margins. Shown below are three examples of controlling
+                flex items with auto margins: the default (no auto margin),
+                pushing two items to the right (<code>.me-auto</code>), and
+                pushing two items to the left (<code>.ms-auto</code>).
               </p>
             </PhoenixDocCard.Header>
             <PhoenixDocCard.Body code={autoMarginCode} />
           </PhoenixDocProvider>
           <PhoenixDocProvider>
-            <PhoenixDocCard.Header
-              title="With align-items"
-              className="border-bottom-0"
-            >
+            <PhoenixDocCard.Header title="With align-items">
               <p className="mb-0 text-muted">
-                Vertically move one flex item to the top or bottom of a
-                container by mixing <code>align-items</code>,{' '}
-                <code>flex-direction: column</code>, and{' '}
-                <code>margin-top: auto</code> or{' '}
-                <code>margin-bottom: auto</code>.
+                Move a single flex item to the top or bottom of its container by
+                mixing <code>items-*</code>, <code>flex-col</code> and{' '}
+                <code>mt-auto</code> or <code>mb-auto</code>.
               </p>
             </PhoenixDocCard.Header>
             <PhoenixDocCard.Body code={autoMarginWithAlignItemsCode} />
@@ -460,11 +468,10 @@ const FlexExample = () => {
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Wrap">
             <p className="mb-0 text-muted">
-              Change how flex items wrap in a flex container. Choose from no
-              wrapping at all (the browser default) with{' '}
-              <code>.flex-nowrap </code>, wrapping with
-              <code>.flex-wrap </code>, or reverse wrapping with
-              <code>.flex-wrap-reverse </code>.
+              Change how flex items wrap in a container. Choose from no wrapping
+              at all (the browser default) with <code>.flex-nowrap</code>,
+              wrapping with <code>.flex-wrap</code>, or reverse wrapping with{' '}
+              <code>.flex-wrap-reverse</code>.
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={wrapCode} />
@@ -474,24 +481,25 @@ const FlexExample = () => {
           <PhoenixDocProvider>
             <PhoenixDocCard.Header title="Order">
               <p className="mb-0 text-muted">
-                Change the <em>visual</em> order of specific flex items with a
-                handful of <code>order</code> utilities. We only provide options
-                for making an item first or last, as well as a reset to use the
-                DOM order. As <code>order</code> takes any integer value from 0
-                to 5, add custom CSS for any additional values needed.
+                Change the <em>visual</em> order of specific flex items with the{' '}
+                <code>order-*</code> utilities. <code>order-1</code> through{' '}
+                <code>order-12</code> are generated, plus{' '}
+                <code>order-first</code>, <code>order-last</code> and{' '}
+                <code>order-none</code> to reset to DOM order.
               </p>
             </PhoenixDocCard.Header>
             <PhoenixDocCard.Body code={orderCode} />
           </PhoenixDocProvider>
 
           <PhoenixDocProvider>
-            <PhoenixDocCard.Header className="border-bottom-0">
+            <PhoenixDocCard.Header>
               <p className="mb-0 text-muted">
-                Responsive variations also exist for <code>order</code>. Use{' '}
+                Responsive variants exist for <code>order</code> too — prefix
+                the utility with a breakpoint, as in{' '}
                 <code>
-                  order-{`{breakpoint}`}-{`{value}`}
-                </code>{' '}
-                classes for responsive behaviors.
+                  {'{breakpoint}'}:order-{'{value}'}
+                </code>
+                .
               </p>
             </PhoenixDocCard.Header>
             <PhoenixDocCard.Body code={responsiveOrderCode} />
@@ -499,18 +507,15 @@ const FlexExample = () => {
         </PhoenixDocCard>
 
         <PhoenixDocCard>
-          <PhoenixDocCard.Header
-            title="Align content"
-            className="border-bottom-0"
-          >
+          <PhoenixDocCard.Header title="Align content">
             <p className="mb-0 text-muted">
-              Use <code>align-content</code> utilities on flexbox containers to
-              align flex items <em>together</em> on the cross axis. Choose from{' '}
-              <code>start</code> (browser default), <code>end</code>,{' '}
-              <code>center</code>, <code>between</code>, <code>around</code>, or{' '}
-              <code>stretch</code>. To demonstrate these utilities, we’ve
-              enforced <code>flex-wrap: wrap</code> and increased the number of
-              flex items.
+              Use the <code>content-*</code> utilities on a flex container to
+              align its lines <em>together</em> on the cross axis. Choose from{' '}
+              <code>start</code>, <code>end</code>, <code>center</code>,{' '}
+              <code>between</code>, <code>around</code> or <code>stretch</code>{' '}
+              (browser default). These only do anything once the container
+              wraps, so the examples below force <code>flex-wrap</code> and use
+              a lot of items.
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={alignContentCode} />
