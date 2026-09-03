@@ -29,21 +29,28 @@ interface UseAdvanceTableProps<T> {
   pageCount?: number;
 }
 
+/** The gold's bulk-select `th`/`td`, shared by every table that has one. */
+export const SELECTION_COLUMN_HEADER_CLASS =
+  'whitespace-nowrap text-md ps-0 py-3.5';
+export const SELECTION_COLUMN_CELL_CLASS = 'text-md ps-0';
+
 /**
- * Bulk-select column with the exact gold `th`/`td` classes. Use this when the
- * gold table defines its own selection column widths; `selection: true` on the
- * hook keeps the legacy 30px variant below.
+ * The one bulk-select column: same `IndeterminateCheckbox` and the same
+ * `th`/`td` classes everywhere. Pass `headerClassName`/`cellClassName` only
+ * where the gold table really differs — its own row padding or column width —
+ * never to restyle the checkbox itself. `selection: true` on the hook builds
+ * this same column.
  */
 export const buildSelectionColumn = <T,>({
-  headerClassName,
-  cellClassName,
+  headerClassName = SELECTION_COLUMN_HEADER_CLASS,
+  cellClassName = SELECTION_COLUMN_CELL_CLASS,
   checkboxClassName = 'text-base'
 }: {
-  headerClassName: string;
-  cellClassName: string;
+  headerClassName?: string;
+  cellClassName?: string;
   /** classes for the header `.form-check` wrapper */
   checkboxClassName?: string;
-}): ColumnDef<T> => ({
+} = {}): ColumnDef<T> => ({
   id: 'select',
   enableSorting: false,
   header: ({ table }) => (
@@ -69,43 +76,16 @@ export const buildSelectionColumn = <T,>({
   }
 });
 
-const getSelectionColumn = ({
+const getSelectionColumn = <T,>({
   headerClassName,
   cellClassName
 }: NonNullable<
   UseAdvanceTableProps<unknown>['selectionColumnProps']
-> = {}) => ({
-  id: 'select',
-  accessorKey: '',
-  header: ({ table }: any) => (
-    <IndeterminateCheckbox
-      className="text-base"
-      {...{
-        checked: table.getIsAllRowsSelected(),
-        indeterminate: table.getIsSomeRowsSelected(),
-        onChange: table.getToggleAllRowsSelectedHandler()
-      }}
-    />
-  ),
-  cell: ({ row }: any) => (
-    <IndeterminateCheckbox
-      className="text-base"
-      {...{
-        checked: row.getIsSelected(),
-        disabled: !row.getCanSelect(),
-        indeterminate: row.getIsSomeSelected(),
-        onChange: row.getToggleSelectedHandler()
-      }}
-    />
-  ),
-  meta: {
-    headerProps: {
-      style: { width: '30px' },
-      className: cn('whitespace-nowrap text-md ps-0 py-3.5', headerClassName)
-    },
-    cellProps: { className: cn('text-md ps-0', cellClassName) }
-  }
-});
+> = {}): ColumnDef<T> =>
+  buildSelectionColumn<T>({
+    headerClassName: cn(SELECTION_COLUMN_HEADER_CLASS, headerClassName),
+    cellClassName: cn(SELECTION_COLUMN_CELL_CLASS, cellClassName)
+  });
 
 const useAdvanceTable = <T,>({
   columns,
@@ -127,7 +107,7 @@ const useAdvanceTable = <T,>({
   const table = useReactTable<T>({
     data,
     columns: selection
-      ? [getSelectionColumn(selectionColumnProps), ...columns]
+      ? [getSelectionColumn<T>(selectionColumnProps), ...columns]
       : columns,
     enableSorting: sortable,
     getCoreRowModel: getCoreRowModel(),

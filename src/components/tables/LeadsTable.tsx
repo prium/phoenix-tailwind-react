@@ -35,10 +35,7 @@ const HeaderIconLabel = ({
 );
 
 export const leadsTableColumns: ColumnDef<LeadDataType>[] = [
-  buildSelectionColumn<LeadDataType>({
-    headerClassName: 'w-4.5 max-w-5 whitespace-nowrap text-md ps-0',
-    cellClassName: 'text-md'
-  }),
+  buildSelectionColumn<LeadDataType>(),
   {
     accessorKey: 'customer.name',
     header: 'Name',
