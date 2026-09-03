@@ -1,10 +1,9 @@
 import { PropsWithChildren, useEffect, useState } from 'react';
-import { Card, Col, Nav, Row, Collapse, Toast } from 'react-bootstrap';
+import { Card, Col, Collapsible, Row, cn } from '@hummingbirdui/react';
 import Button from './Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import FeatherIcon from 'feather-icons-react';
 import { LiveEditor, LiveError, LivePreview } from 'react-live';
-import classNames from 'classnames';
 import { snakeCase } from 'helpers/utils';
 import { Link } from 'react-router';
 import PhoenixDocProvider, {
@@ -34,15 +33,14 @@ interface PhoenixDocCardBodyProps extends PhoenixLiveProviderProps {
   transformCode?: (code: string) => string | Promise<string>;
 }
 
+/** Gold `+ComponentCard` (`../phoenix-tailwind/src/pug/mixins/common/Card.pug`). */
 const PhoenixDocCard = ({
   children,
   className,
   noProvider
 }: PropsWithChildren<PhoenixDocCardProps>) => {
   return (
-    <Card
-      className={classNames(className, 'shadow-none border overflow-visible')}
-    >
+    <Card className={cn(className, 'shadow-none border border-default')}>
       {noProvider ? (
         children
       ) : (
@@ -57,7 +55,7 @@ const PhoenixDocCardHeader = ({
   description,
   id,
   noPreview,
-  alignItems = 'center',
+  alignItems,
   children,
   className
 }: PropsWithChildren<PhoenixDocCardHeaderProps>) => {
@@ -78,19 +76,22 @@ const PhoenixDocCardHeader = ({
     setShowPreviewBtn(!noPreview);
   }, [noPreview]);
 
+  // the gold aligns the row to the end only when the card carries a description
+  const align = alignItems ?? (children || description ? 'end' : 'center');
+
   return (
     <Card.Header
-      className={classNames(
+      className={cn(
         className,
-        'p-10 border-b bg-default hover-actions-trigger'
+        'p-6 border-b bg-default rounded-t-md hover-actions-trigger'
       )}
       id={headerId}
     >
-      <Row className={`g-4 justify-between align-items-${alignItems}`}>
+      <Row className={cn('g-4 justify-between', `items-${align}`)}>
         <Col xs={12} md>
           {title && (
             <h4
-              className={classNames('text-default whitespace-nowrap', {
+              className={cn('text-default whitespace-nowrap', {
                 'mb-0': !children && !description,
                 'mb-2': children || description
               })}
@@ -101,14 +102,12 @@ const PhoenixDocCardHeader = ({
               </Link>
             </h4>
           )}
-          {description && (
-            <p className="mb-0 text-muted">{description}</p>
-          )}
+          {description && <p className="mb-0 text-muted">{description}</p>}
           {children}
         </Col>
         {showPreviewBtn && (
           <Col md="auto">
-            <Nav className="nav-underline justify-end doc-tab-nav items-center">
+            <nav className="nav justify-end doc-tab-nav items-center">
               <Button
                 variant="link"
                 size="sm"
@@ -137,30 +136,45 @@ const PhoenixDocCardHeader = ({
                   </>
                 )}
               </Button>
-            </Nav>
+            </nav>
           </Col>
         )}
       </Row>
 
-      <Toast
-        show={showToast}
-        onClose={() => setShowToast(false)}
-        className="items-center bg-dark border-0 bottom-0 end-0 mb-4 me-4 fixed text-white z-5"
-        delay={3000}
-        data-bs-theme="light"
-        autohide
+      {/* gold `+CopyNotificationToast`, which lives once per doc layout there;
+          here each card owns its own so the copy button stays self-contained */}
+      {showToast && (
+        <CopyNotificationToast onDone={() => setShowToast(false)} />
+      )}
+    </Card.Header>
+  );
+};
+
+const CopyNotificationToast = ({ onDone }: { onDone: () => void }) => {
+  useEffect(() => {
+    const timer = setTimeout(onDone, 3000);
+    return () => clearTimeout(timer);
+  }, [onDone]);
+
+  return (
+    <div className="fixed bottom-0 end-0 p-4 z-1050">
+      <div
+        className="toast show items-center text-white bg-dark border-0"
+        role="alert"
+        aria-live="assertive"
+        aria-atomic="true"
       >
-        <div className="flex">
-          <Toast.Body className="P-3">
+        <div className="flex" data-hb-theme="dark">
+          <div className="toast-body p-4">
             <span className="font-black">
               <code className="text-soft">
                 Code has been copied to clipboard.
               </code>
             </span>
-          </Toast.Body>
+          </div>
         </div>
-      </Toast>
-    </Card.Header>
+      </div>
+    </div>
   );
 };
 
@@ -173,7 +187,8 @@ const PhoenixDocCardBody = ({
   className,
   transformCode
 }: PropsWithChildren<PhoenixDocCardBodyProps>) => {
-  const { open, showPreviewBtn, setTextToCopy } = usePhoenixDocContext();
+  const { open, setOpen, showPreviewBtn, setTextToCopy } =
+    usePhoenixDocContext();
 
   useEffect(() => {
     if (code) {
@@ -181,7 +196,7 @@ const PhoenixDocCardBody = ({
     }
   }, []);
   return (
-    <Card.Body className={classNames(className, 'p-0')}>
+    <Card.Body className={cn(className, 'p-0')}>
       {code && (
         <PhoenixLiveProvider
           transformCode={transformCode}
@@ -193,16 +208,24 @@ const PhoenixDocCardBody = ({
             <LiveEditor />
           ) : (
             <>
-              <Collapse in={open}>
-                <div>
+              <Collapsible open={open} onOpenChange={setOpen}>
+                <Collapsible.Content className="code-collapse">
                   <LiveEditor />
-                  {!hidePreview && <LiveError />}
-                </div>
-              </Collapse>
+                </Collapsible.Content>
+              </Collapsible>
               {!hidePreview && (
-                <div className="p-6">
-                  <LivePreview />
-                </div>
+                <>
+                  {/* outside the collapse: an example that fails to compile has
+                      to be visible without opening the code panel, and
+                      `tools/verify/docs.mjs` gates on this attribute */}
+                  <LiveError
+                    data-live-error
+                    className="px-6 pt-6 mb-0 text-danger whitespace-pre-wrap"
+                  />
+                  <div className="p-6">
+                    <LivePreview />
+                  </div>
+                </>
               )}
             </>
           )}

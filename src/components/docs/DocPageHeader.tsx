@@ -1,6 +1,6 @@
-import React, { PropsWithChildren } from 'react';
+import { PropsWithChildren } from 'react';
 import FeatherIcon from 'feather-icons-react';
-import classNames from 'classnames';
+import { cn } from '@hummingbirdui/react';
 
 interface DocPageHeaderProps {
   title: string;
@@ -22,10 +22,12 @@ const DocPageHeader = ({
   className = 'mb-5'
 }: PropsWithChildren<DocPageHeaderProps>) => {
   return (
-    <div className={classNames(className)} id={id}>
-      <h2 className="mb-2 lh-sm">{title}</h2>
+    <div className={cn(className)} id={id}>
+      <h2 className="mb-2 leading-sm">{title}</h2>
       {description && (
-        <p className="text-subtle lead mb-2">{description}</p>
+        <p className="text-lg text-subtle font-semibold lead mb-2">
+          {description}
+        </p>
       )}
       {children}
       {link && (
