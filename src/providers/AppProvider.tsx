@@ -3,17 +3,24 @@ import {
   Dispatch,
   PropsWithChildren,
   use,
+  useCallback,
   useEffect,
   useReducer
 } from 'react';
+import { useThemeMode } from '@hummingbirdui/react';
 import { getColor, getItemFromStore } from 'helpers/utils';
-import { Config, initialConfig } from 'config';
+import { Config, ThemeVariant, initialConfig } from 'config';
 import { ACTIONTYPE, configReducer, SET_CONFIG } from 'reducers/ConfigReducer';
 
 interface AppContextInterFace {
   config: Config;
   configDispatch: Dispatch<ACTIONTYPE>;
+  /** Flip between light and dark, ignoring `auto`. */
   toggleTheme: () => void;
+  /** Set the colour scheme. `auto` follows the OS. */
+  setTheme: (theme: ThemeVariant) => void;
+  /** The theme actually painted: `auto` resolved to light or dark. */
+  computedTheme: 'light' | 'dark';
   setConfig: (payload: Partial<Config>) => void;
   getThemeColor: (name: string) => string;
 }
@@ -21,13 +28,33 @@ interface AppContextInterFace {
 export const AppContext = createContext({} as AppContextInterFace);
 
 const AppProvider = ({ children }: PropsWithChildren) => {
+  /**
+   * hb-react owns the colour scheme. `useThemeMode` is the single source of
+   * truth: it persists the `theme` key, resolves `system` against
+   * `prefers-color-scheme`, syncs across tabs (storage event) and within the
+   * tab (its own document event), and suppresses transitions while switching.
+   * It writes `.dark` on <html>; the phoenix CSS keys on `[data-hb-theme]`,
+   * so `useToggleStyle` mirrors the computed value onto that attribute and
+   * `index.css` teaches the `dark:` variant to accept either.
+   *
+   * hb-react calls the follow-the-OS mode `system`; the settings panel and
+   * the gold call it `auto`. That is the only translation here.
+   */
+  const { mode, computedMode, setMode, toggleMode } = useThemeMode();
+  const theme: ThemeVariant = mode === 'system' ? 'auto' : mode;
+
+  const setTheme = useCallback(
+    (next: ThemeVariant) => setMode(next === 'auto' ? 'system' : next),
+    [setMode]
+  );
+
   const configState: Config = {
     isNavbarVerticalCollapsed: getItemFromStore(
       'isNavbarVerticalCollapsed',
       initialConfig.isNavbarVerticalCollapsed
     ),
     openNavbarVertical: initialConfig.openNavbarVertical,
-    theme: getItemFromStore('theme', initialConfig.theme),
+    theme,
     navbarTopAppearance: getItemFromStore(
       'navbarTopAppearance',
       initialConfig.navbarTopAppearance
@@ -45,7 +72,7 @@ const AppProvider = ({ children }: PropsWithChildren) => {
       initialConfig.navbarTopShape
     ),
     isRTL: getItemFromStore('isRTL', initialConfig.isRTL),
-    isDark: getItemFromStore('isDark', initialConfig.isDark),
+    isDark: computedMode === 'dark',
     isChatWidgetVisible: getItemFromStore(
       'isChatWidgetVisible',
       initialConfig.isChatWidgetVisible
@@ -61,14 +88,15 @@ const AppProvider = ({ children }: PropsWithChildren) => {
     });
   };
 
-  const toggleTheme = () => {
-    configDispatch({
-      type: SET_CONFIG,
-      payload: {
-        theme: config.isDark ? 'light' : 'dark'
-      }
-    });
-  };
+  const toggleTheme = toggleMode;
+
+  // keep the mirrored copies in config in step with hb-react's state, so the
+  // charts and maps reading `config.isDark` still see one consistent value
+  useEffect(() => {
+    const isDark = computedMode === 'dark';
+    if (config.theme === theme && config.isDark === isDark) return;
+    configDispatch({ type: SET_CONFIG, payload: { theme, isDark } });
+  }, [theme, computedMode, config.theme, config.isDark]);
 
   const getThemeColor = (name: string) => {
     return getColor(name);
@@ -113,7 +141,15 @@ const AppProvider = ({ children }: PropsWithChildren) => {
 
   return (
     <AppContext
-      value={{ config, setConfig, toggleTheme, getThemeColor, configDispatch }}
+      value={{
+        config,
+        setConfig,
+        toggleTheme,
+        setTheme,
+        computedTheme: computedMode,
+        getThemeColor,
+        configDispatch
+      }}
     >
       {children}
     </AppContext>

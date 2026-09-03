@@ -19,7 +19,11 @@
 @import 'swiper/css/bundle';
 @import 'dhtmlx-gantt/codebase/dhtmlxgantt.css';
 
-@custom-variant dark (&:where([data-hb-theme=dark], [data-hb-theme=dark] *), [data-hb-theme=dark]);
+/* The copied phoenix CSS keys dark mode on [data-hb-theme=dark]; hb-react's
+   useThemeMode writes `.dark` on <html>. Accepting both means hummingbird's
+   own `@variant dark` blocks, this app's `dark:` utilities and hb-react's
+   DarkThemeToggle all resolve to the same thing. */
+@custom-variant dark (&:where([data-hb-theme=dark], [data-hb-theme=dark] *, .dark, .dark *), [data-hb-theme=dark], .dark);
 @custom-variant active (&:active, &.active);
 
 @import './theme.css';

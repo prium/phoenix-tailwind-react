@@ -10,15 +10,14 @@ import { ThemeVariant } from 'config';
 const ColorScheme = () => {
   const {
     config: { theme },
-    setConfig
+    setTheme
   } = useAppContext();
 
-  const handleThemeChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { value } = e.target;
-    setConfig({
-      theme: value as ThemeVariant
-    });
-  };
+  // `setTheme` goes through hb-react's useThemeMode rather than writing the
+  // config directly, so the choice persists, resolves `auto` against the OS
+  // and syncs to other tabs
+  const handleThemeChange = (e: ChangeEvent<HTMLInputElement>) =>
+    setTheme(e.target.value as ThemeVariant);
 
   return (
     <div className="setting-panel-item mt-0!">

@@ -1,20 +1,29 @@
 import { useAppContext } from 'providers/AppProvider';
 import { useEffect, useLayoutEffect } from 'react';
 import is from 'is_js';
-import { REFRESH, SET_CONFIG } from 'reducers/ConfigReducer';
-import { getSystemTheme } from 'helpers/utils';
+import { REFRESH } from 'reducers/ConfigReducer';
 
 /**
  * Mirrors the app config onto <html>:
  *  - browser classes (windows / chrome / osx …)
  *  - `dir` for RTL (styles use logical properties, no separate stylesheet)
- *  - `data-hb-theme` for dark mode (the selector used by assets/css)
- * The REFRESH dispatch after a theme change forces consumers (charts, maps)
- * to re-read design tokens via getColor().
+ *  - `data-hb-theme` for dark mode
+ *
+ * The colour scheme itself is owned by hb-react's `useThemeMode`, called once
+ * in AppProvider. That hook writes `.dark` on <html>; the copied phoenix CSS
+ * keys on `[data-hb-theme=dark]`, so the computed mode is mirrored onto that
+ * attribute here and `index.css` teaches the `dark:` variant to accept either.
+ * Mirroring rather than rewriting the selector keeps assets/css a verbatim
+ * copy of the gold (see SOURCE.md).
+ *
+ * The REFRESH dispatch after a theme change forces consumers that read design
+ * tokens imperatively (charts, the Leaflet tile filter) to re-read them via
+ * getColor().
  */
 const useToggleStyle = () => {
   const {
-    config: { theme, isRTL },
+    config: { isRTL },
+    computedTheme,
     configDispatch
   } = useAppContext();
 
@@ -35,23 +44,9 @@ const useToggleStyle = () => {
   }, [isRTL]);
 
   useLayoutEffect(() => {
-    const applyTheme = () => {
-      const mode = theme === 'auto' ? getSystemTheme() : theme;
-      configDispatch({
-        type: SET_CONFIG,
-        payload: { isDark: mode === 'dark' }
-      });
-      html.setAttribute('data-hb-theme', mode);
-      configDispatch({ type: REFRESH });
-    };
-
-    applyTheme();
-
-    if (theme !== 'auto') return;
-    const media = window.matchMedia('(prefers-color-scheme: dark)');
-    media.addEventListener('change', applyTheme);
-    return () => media.removeEventListener('change', applyTheme);
-  }, [theme]);
+    html.setAttribute('data-hb-theme', computedTheme);
+    configDispatch({ type: REFRESH });
+  }, [computedTheme]);
 };
 
 export default useToggleStyle;

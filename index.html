@@ -16,10 +16,32 @@
     -->
     <link rel="manifest" href="/manifest.json" />
     <script>
-      // Apply persisted theme / direction before first paint to avoid a flash.
-      // Keys mirror the ones AppProvider persists via setItemToStore.
+      // Pre-paint theme / direction, so the first frame is already correct.
+      // This is the plain-HTML equivalent of hb-react's <ThemeModeScript />
+      // and MUST follow the same contract as its useThemeMode hook:
+      //   localStorage 'theme' = 'light' | 'dark'; anything else (missing,
+      //   legacy 'auto') means follow the OS, and <html data-theme-default>
+      //   supplies the fallback when it is not 'system'.
+      // It writes both the `.dark` class the hook manages and the
+      // `data-hb-theme` attribute the phoenix CSS keys on, so neither the
+      // hook mounting nor a re-render changes what is already painted.
       (function () {
         try {
+          var html = document.documentElement;
+          var stored = localStorage.getItem('theme');
+          var mode = stored === 'light' || stored === 'dark' ? stored : 'system';
+          if (mode === 'system') {
+            var fallback = html.getAttribute('data-theme-default');
+            mode =
+              fallback === 'light' || fallback === 'dark'
+                ? fallback
+                : window.matchMedia('(prefers-color-scheme: dark)').matches
+                  ? 'dark'
+                  : 'light';
+          }
+          html.classList.toggle('dark', mode === 'dark');
+          html.setAttribute('data-hb-theme', mode);
+
           var read = function (key) {
             var raw = localStorage.getItem(key);
             if (raw === null) return null;
@@ -29,14 +51,6 @@
               return raw;
             }
           };
-          var theme = read('theme') || 'light';
-          if (theme === 'auto') {
-            theme = window.matchMedia('(prefers-color-scheme: dark)').matches
-              ? 'dark'
-              : 'light';
-          }
-          var html = document.documentElement;
-          html.setAttribute('data-hb-theme', theme);
           html.setAttribute('dir', read('isRTL') ? 'rtl' : 'ltr');
           if (read('isNavbarVerticalCollapsed')) {
             html.classList.add('navbar-vertical-collapsed');
