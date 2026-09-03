@@ -4,7 +4,7 @@ import PhoenixLoader from 'components/common/PhoenixLoader';
 import HelpCenter from '../default/address/HelpCenter';
 import QueryForm from '../default/address/QueryForm';
 
-const Mapbox = lazy(() => import('components/base/MapBox'));
+const Mapbox = lazy(() => import('components/base/Mapbox'));
 
 /**
  * `+Contact` in landing-2/Contact.pug. The gold embeds a Google map

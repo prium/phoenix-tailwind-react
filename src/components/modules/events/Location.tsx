@@ -5,7 +5,7 @@ import Button from 'components/base/Button';
 import { Suspense, lazy } from 'react';
 import PhoenixLoader from 'components/common/PhoenixLoader';
 
-const Mapbox = lazy(() => import('components/base/MapBox'));
+const Mapbox = lazy(() => import('components/base/Mapbox'));
 
 /**
  * "Location" block of `+EventDetail` in mixins/events/EventDetail.pug.

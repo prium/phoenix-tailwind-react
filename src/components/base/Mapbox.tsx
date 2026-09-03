@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import React, {  HTMLAttributes, useEffect, useRef } from 'react';
+import React, { HTMLAttributes, useEffect, useRef } from 'react';
 import mapboxgl, { Map, MapboxOptions } from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import Button from 'components/base/Button';
@@ -20,7 +20,7 @@ interface MapboxProps extends HTMLAttributes<HTMLDivElement> {
   mapRef?: React.Ref<Map | null>;
 }
 
-const Mapbox = ({ className, options, mapRef, ...rest } : MapboxProps) => {
+const Mapbox = ({ className, options, mapRef, ...rest }: MapboxProps) => {
   const mapContainer = useRef<HTMLDivElement | null>(null);
   const map = useRef<Map | null>(null);
   const {

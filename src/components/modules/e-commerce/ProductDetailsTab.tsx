@@ -12,7 +12,7 @@ import ReviewModal from 'components/modals/ReviewModal';
 import UsuallyBoughtTogetherCard from 'components/cards/UsuallyBoughtTogetherCard';
 import { suggestedProducts } from 'data/e-commerce/products';
 import useLightbox from 'hooks/useLightbox';
-import Lightbox from 'components/base/LightBox';
+import Lightbox from 'components/base/Lightbox';
 import {
   faChevronLeft,
   faChevronRight
@@ -134,7 +134,9 @@ const ProductDetailsTab = () => {
                           </Pagination.Item>
                           {[1, 2, 3, 4, 5].map(page => (
                             <Pagination.Item key={page} active={page === 4}>
-                              <Pagination.Link href="#!">{page}</Pagination.Link>
+                              <Pagination.Link href="#!">
+                                {page}
+                              </Pagination.Link>
                             </Pagination.Item>
                           ))}
                           <Pagination.Item>

@@ -3,7 +3,7 @@ import { useAppContext } from 'providers/AppProvider';
 import { useMemo } from 'react';
 import { CircleLayer, SymbolLayer } from 'mapbox-gl';
 import PhoenixLoader from 'components/common/PhoenixLoader';
-const MapboxCluster = lazy(() => import('components/base/MapBoxCluster'));
+const MapboxCluster = lazy(() => import('components/base/MapboxCluster'));
 
 const getMapData = (getThemeColor: (name: string) => string) => {
   return [

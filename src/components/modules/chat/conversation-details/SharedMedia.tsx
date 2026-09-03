@@ -1,6 +1,6 @@
 import { faPhotoFilm } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Lightbox from 'components/base/LightBox';
+import Lightbox from 'components/base/Lightbox';
 import Portal from 'components/base/Portal';
 import { attachments } from 'data/chat';
 import useLightbox from 'hooks/useLightbox';

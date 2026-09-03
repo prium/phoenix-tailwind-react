@@ -10,7 +10,7 @@ import {
 import { Map } from 'mapbox-gl';
 import PhoenixLoader from 'components/common/PhoenixLoader';
 
-const Mapbox = lazy(() => import('components/base/MapBox'));
+const Mapbox = lazy(() => import('components/base/Mapbox'));
 
 /** gold `+LocationForm` (mixins/travel-agency/add-property/LocationForm.pug) */
 const LocationForm = ({ tabEventKey }: { tabEventKey: number }) => {

@@ -6,7 +6,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { cn } from '@hummingbirdui/react';
 import Button from 'components/base/Button';
-import Lightbox from 'components/base/LightBox';
+import Lightbox from 'components/base/Lightbox';
 import Rating from 'components/base/Rating';
 import RevealDropdown, {
   RevealDropdownTrigger

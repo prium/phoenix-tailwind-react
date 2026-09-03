@@ -10,7 +10,7 @@ import { Dispatch, SetStateAction } from 'react';
 import OffcanvasImage from 'assets/img/stock/offcanvas-image.jpeg';
 import { UilClock, UilMapMarker } from '@iconscout/react-unicons';
 import Unicon from 'components/base/Unicon';
-import UpcomingCollapsibleContainer from './UpcomingCollapseContainer';
+import UpcomingCollapsibleContainer from './UpcomingCollapsibleContainer';
 import { Link } from 'react-router';
 import Img from 'assets/img/team/30.webp';
 import { useAppContext } from 'providers/AppProvider';

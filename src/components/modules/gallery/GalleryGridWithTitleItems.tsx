@@ -1,7 +1,7 @@
 import { faMagnifyingGlassPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { cn } from '@hummingbirdui/react';
-import Lightbox from 'components/base/LightBox';
+import Lightbox from 'components/base/Lightbox';
 import type { GalleryItem } from 'data/gallery';
 import useLightbox from 'hooks/useLightbox';
 import PackeryGrid from './PackeryGrid';

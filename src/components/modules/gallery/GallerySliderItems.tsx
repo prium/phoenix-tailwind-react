@@ -6,7 +6,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Dropdown, cn } from '@hummingbirdui/react';
-import Lightbox from 'components/base/LightBox';
+import Lightbox from 'components/base/Lightbox';
 import type { GallerySliderItem } from 'data/gallery';
 import useLightbox from 'hooks/useLightbox';
 import { useRef, useState, type MouseEvent } from 'react';

@@ -1,4 +1,4 @@
-import Lightbox from 'components/base/LightBox';
+import Lightbox from 'components/base/Lightbox';
 import useLightbox from 'hooks/useLightbox';
 import { Col, Row } from '@hummingbirdui/react';
 

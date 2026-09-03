@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { Map } from 'mapbox-gl';
 import PhoenixLoader from 'components/common/PhoenixLoader';
-const Mapbox = lazy(() => import('components/base/MapBox'));
+const Mapbox = lazy(() => import('components/base/Mapbox'));
 
 /** `+Description` in mixins/travel-agency/hotel/HotelDetailsTabContent.pug */
 const HotelDetailsDescription = ({ activeKey }: { activeKey: string }) => {

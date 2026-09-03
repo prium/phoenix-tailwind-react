@@ -1,6 +1,6 @@
 import { Col, Row } from '@hummingbirdui/react';
 import useLightbox from 'hooks/useLightbox';
-import Lightbox from 'components/base/LightBox';
+import Lightbox from 'components/base/Lightbox';
 
 interface HotelDetailsRoomImageGalleryProps {
   images: string[];

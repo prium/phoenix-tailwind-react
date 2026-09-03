@@ -4,7 +4,7 @@ import PhoenixLoader from 'components/common/PhoenixLoader';
 import HelpCenter from './HelpCenter';
 import QueryForm from './QueryForm';
 
-const Mapbox = lazy(() => import('components/base/MapBox'));
+const Mapbox = lazy(() => import('components/base/Mapbox'));
 
 /** `+Address` in landing-1/Address.pug */
 const AddressSection = () => (

@@ -188,7 +188,7 @@ const EmojiButtonExample = lazy(
   () => import('pages/modules/forms/advance/EmojiButtonExample')
 );
 const ReactRangeExample = lazy(
-  () => import('pages/modules/forms/advance/RangeExample')
+  () => import('pages/modules/forms/advance/ReactRangeExample')
 );
 const LightboxExample = lazy(
   () => import('pages/modules/components/LightboxExample')

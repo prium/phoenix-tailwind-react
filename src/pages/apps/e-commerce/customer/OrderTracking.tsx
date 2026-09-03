@@ -10,7 +10,7 @@ import { orderTrackingTimelineData } from 'data/timelineData';
 import { lazy, Suspense } from 'react';
 import { Col, Row } from '@hummingbirdui/react';
 
-const Mapbox = lazy(() => import('components/base/MapBox'));
+const Mapbox = lazy(() => import('components/base/Mapbox'));
 
 const OrderTracking = () => {
   return (

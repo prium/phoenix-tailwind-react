@@ -1,7 +1,7 @@
 import { Col, Row } from '@hummingbirdui/react';
 import { Link } from 'react-router';
 import useLightbox from 'hooks/useLightbox';
-import Lightbox from 'components/base/LightBox';
+import Lightbox from 'components/base/Lightbox';
 
 interface SocialPhotosProps {
   className?: string;

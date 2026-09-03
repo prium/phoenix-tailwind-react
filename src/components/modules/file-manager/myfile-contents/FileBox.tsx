@@ -1,7 +1,7 @@
 import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { cn } from '@hummingbirdui/react';
-import Lightbox from 'components/base/LightBox';
+import Lightbox from 'components/base/Lightbox';
 import { File } from 'data/file-manager';
 import useLightbox from 'hooks/useLightbox';
 import { useFileManagerContext } from 'providers/FileManagerProvider';

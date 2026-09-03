@@ -2,7 +2,7 @@ import { HighlightItem } from 'data/travel-agency/customer/trip';
 import useLightbox from 'hooks/useLightbox';
 import { Row } from '@hummingbirdui/react';
 import { Link } from 'react-router';
-import Lightbox from 'components/base/LightBox';
+import Lightbox from 'components/base/Lightbox';
 
 interface TripDetailsAlbumProps {
   imageItems: HighlightItem[];

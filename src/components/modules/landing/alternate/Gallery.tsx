@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import bgLeft26 from 'assets/img/bg/bg-left-26.png';
 import bgRight26 from 'assets/img/bg/bg-right-26.png';
-import Lightbox from 'components/base/LightBox';
+import Lightbox from 'components/base/Lightbox';
 import PackeryGrid from 'components/modules/gallery/PackeryGrid';
 import IsotopeNav from 'components/navs/IsotopeNav';
 import { galleryItems } from 'data/landing/alternate-landing-data';

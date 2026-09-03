@@ -17,7 +17,7 @@ import AdvanceTableProvider from 'providers/AdvanceTableProvider';
 import { ChangeEvent } from 'react';
 import { Link } from 'react-router';
 import FeatherIcon from 'feather-icons-react';
-import FlightsTableHeader from 'components/modules/travel-agency/dashboard/FlightsHeader';
+import FlightsTableHeader from 'components/modules/travel-agency/dashboard/FlightsTableHeader';
 import { FlightInterface, flightsData } from 'data/travel-agency/travelAgency';
 
 const columns: ColumnDef<FlightInterface>[] = [

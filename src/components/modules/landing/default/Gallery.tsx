@@ -4,7 +4,7 @@ import bg5 from 'assets/img/bg/bg-5.png';
 import bgDark5 from 'assets/img/bg/bg-dark-5.png';
 import bgLeft5 from 'assets/img/bg/bg-left-5.png';
 import bgRight6 from 'assets/img/bg/bg-right-6.png';
-import Lightbox from 'components/base/LightBox';
+import Lightbox from 'components/base/Lightbox';
 import PackeryGrid from 'components/modules/gallery/PackeryGrid';
 import IsotopeNav from 'components/navs/IsotopeNav';
 import {

@@ -6,9 +6,7 @@ const CouponCard = () => {
     <Card className="bg-info-subtle border-info-subtle coupon-card-sticky-top mb-16 lg:mb-0">
       <Card.Body>
         <h4>Have a coupon?</h4>
-        <p className="mb-6 text-md text-subtle">
-          Enter code to get a discount
-        </p>
+        <p className="mb-6 text-md text-subtle">Enter code to get a discount</p>
         <InputGroup className="gap-2">
           <Form.Control type="text" placeholder="Coupon Code" />
           <Button variant="primary" className="rounded-md">

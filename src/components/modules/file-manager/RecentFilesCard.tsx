@@ -5,7 +5,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Card, cn } from '@hummingbirdui/react';
-import Lightbox from 'components/base/LightBox';
+import Lightbox from 'components/base/Lightbox';
 import { RecentFiles, recentFiles } from 'data/file-manager';
 import useLightbox from 'hooks/useLightbox';
 import { useEffect, useRef, useState } from 'react';

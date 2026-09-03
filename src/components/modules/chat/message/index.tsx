@@ -1,6 +1,6 @@
 import { cn } from '@hummingbirdui/react';
 import Avatar from 'components/base/Avatar';
-import Lightbox from 'components/base/LightBox';
+import Lightbox from 'components/base/Lightbox';
 import { Message as MessageType, User } from 'data/chat';
 import useLightbox from 'hooks/useLightbox';
 import MessageActionButtons from './MessageActionButtons';

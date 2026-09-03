@@ -8,11 +8,11 @@ import img13 from 'assets/img/gallery/13.png';
 import img9 from 'assets/img/gallery/9.png';
 import img10 from 'assets/img/gallery/10.png';
 import img24 from 'assets/img/gallery/24.png';
-import Lightbox from 'components/base/LightBox';
+import Lightbox from 'components/base/Lightbox';
 import PhoenixLiveEditor from 'components/docs/PhoenixLiveEditor';
 
 const useLightboxCode = `
-import Lightbox from 'components/base/LightBox';
+import Lightbox from 'components/base/Lightbox';
 import useLightbox from 'hooks/useLightbox';
 
 function LightboxExample () {
@@ -40,7 +40,7 @@ function LightboxExample () {
 };`;
 
 const galleryCode = `
-import Lightbox from 'components/base/LightBox';
+import Lightbox from 'components/base/Lightbox';
 import useLightbox from 'hooks/useLightbox';
 
 function SocialPhotos () {
@@ -68,7 +68,7 @@ function SocialPhotos () {
 };`;
 
 const simpleImageCode = `
-import Lightbox from 'components/base/LightBox';
+import Lightbox from 'components/base/Lightbox';
 import useLightbox from 'hooks/useLightbox';
 
 function SocialPhotos () {

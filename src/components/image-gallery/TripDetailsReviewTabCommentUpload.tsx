@@ -1,6 +1,6 @@
 import type { UploadedImage } from 'data/travel-agency/customer/trip';
 import useLightbox from 'hooks/useLightbox';
-import Lightbox from 'components/base/LightBox';
+import Lightbox from 'components/base/Lightbox';
 
 interface TripDetailsReviewTabCommentUploadProps {
   uploadedCommentImage: UploadedImage[];

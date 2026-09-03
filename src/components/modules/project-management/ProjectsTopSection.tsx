@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Col, Row } from '@hummingbirdui/react';
 import FilterTab, { FilterTabItem } from 'components/common/FilterTab';
 import SearchBox from 'components/common/SearchBox';
-import ToggleViewButton from 'components/common/ToggleViewbutton';
+import ToggleViewButton from 'components/common/ToggleViewButton';
 import FourGrid from 'components/icons/FourGrid';
 import NineGrid from 'components/icons/NineGrid';
 import { Project } from 'data/project-management/projects';

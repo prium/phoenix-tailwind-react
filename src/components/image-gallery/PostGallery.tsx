@@ -1,5 +1,5 @@
 import { Col, Row } from '@hummingbirdui/react';
-import Lightbox from 'components/base/LightBox';
+import Lightbox from 'components/base/Lightbox';
 import { Image } from 'data/social/postsData';
 import useLightbox from 'hooks/useLightbox';
 

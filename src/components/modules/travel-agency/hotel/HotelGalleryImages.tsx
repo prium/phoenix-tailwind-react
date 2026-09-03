@@ -1,7 +1,7 @@
 import { GalleryItemType } from 'data/travel-agency/customer/gallery';
 import { cn, Col, Row } from '@hummingbirdui/react';
 import useLightbox from 'hooks/useLightbox';
-import Lightbox from 'components/base/LightBox';
+import Lightbox from 'components/base/Lightbox';
 import GalleryItem from './HotelGalleryItem';
 
 interface HotelGalleryImagesProps {

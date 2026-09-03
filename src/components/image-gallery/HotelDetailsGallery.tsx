@@ -2,7 +2,7 @@ import { Col, Row } from '@hummingbirdui/react';
 import { Link } from 'react-router';
 import { HotelImageType } from 'data/travel-agency/customer/hotelDetails';
 import useLightbox from 'hooks/useLightbox';
-import Lightbox from 'components/base/LightBox';
+import Lightbox from 'components/base/Lightbox';
 
 interface HotelDetailsGalleryProps {
   images: HotelImageType[];
