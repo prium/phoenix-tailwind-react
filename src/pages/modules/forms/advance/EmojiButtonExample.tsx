@@ -55,10 +55,10 @@ const EmojiButtonExample = () => {
         title="Emoji button"
         description={`${
           import.meta.env.VITE_TITLE
-        }-React uses Picmo as a emoji picker component. It displays a panel of emojis where one can be selected. What is done with the selected emoji is up to you.`}
+        }-React uses emoji-picker-react as a emoji picker component. It displays a panel of emojis where one can be selected. What is done with the selected emoji is up to you.`}
         link={{
-          text: 'Documentation for Picmo',
-          url: 'https://picmojs.com/docs/api/overview/'
+          text: 'Documentation for emoji-picker-react',
+          url: 'https://github.com/ealush/emoji-picker-react'
         }}
       />
       <DocPagesLayout>
