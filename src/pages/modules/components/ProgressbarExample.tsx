@@ -1,69 +1,98 @@
 import PhoenixDocCard from 'components/base/PhoenixDocCard';
 import DocPageHeader from 'components/docs/DocPageHeader';
 import DocPagesLayout from 'layouts/DocPagesLayout';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row } from '@hummingbirdui/react';
 
 const exampleCode = `
-  <ProgressBar now={60} style={{ height:'15px' }} />
+  <Progress value={60} className="h-3.75" aria-label="60 percent complete" />
 `;
 
 const labelCode = `
-  <ProgressBar now={60} label='60%' style={{ height:'15px' }} />;
+  <Progress value={50} className="h-3.75" aria-label="Half way there">
+    <Progress.Bar className="rounded-lg">50%</Progress.Bar>
+  </Progress>
 `;
+
 const heightCode = `
   <>
-    <ProgressBar now={60} style={{ height:'1px' }} className='mb-3' />
-    <ProgressBar now={60} style={{ height:'10px' }} className='mb-3' />
-    <ProgressBar now={60} style={{ height:'20px' }} className='mb-3' />
+    <Progress value={70} className="h-px mb-4" aria-label="Thin track" />
+    <Progress value={70} className="h-2.5 mb-4" aria-label="Default track" />
+    <Progress value={70} className="h-5 mb-4" aria-label="Tall track" />
   </>
 `;
-const bgCode = `
+
+const colorCode = `
   <>
-    <ProgressBar variant="success" now={30} className='mb-3' style={{ height:'15px' }} />
-    <ProgressBar variant="info" now={40} className='mb-3' style={{ height:'15px' }} />
-    <ProgressBar variant="warning" now={50} className='mb-3' style={{ height:'15px' }} />
-    <ProgressBar variant="danger" now={60} className='mb-3' style={{ height:'15px' }} />
+    <Progress value={30} className="h-3.75 mb-4" aria-label="Success">
+      <Progress.Bar color="success" />
+    </Progress>
+    <Progress value={40} className="h-3.75 mb-4" aria-label="Info">
+      <Progress.Bar color="info" />
+    </Progress>
+    <Progress value={50} className="h-3.75 mb-4" aria-label="Warning">
+      <Progress.Bar color="warning" />
+    </Progress>
+    <Progress value={60} className="h-3.75 mb-4" aria-label="Danger">
+      <Progress.Bar color="danger" />
+    </Progress>
   </>
 `;
+
 const stripedCode = `
   <>
-    <ProgressBar striped  variant="success" now={30} className='mb-3' style={{ height:'15px' }} />
-    <ProgressBar striped  variant="info" now={40} className='mb-3' style={{ height:'15px' }} />
-    <ProgressBar striped  variant="warning" now={50} className='mb-3' style={{ height:'15px' }} />
-    <ProgressBar striped  variant="danger" now={60} className='mb-3' style={{ height:'15px' }} />
+    <Progress value={30} className="h-3.75 mb-4" aria-label="Striped success">
+      <Progress.Bar color="success" striped />
+    </Progress>
+    <Progress value={40} className="h-3.75 mb-4" aria-label="Striped info">
+      <Progress.Bar color="info" striped />
+    </Progress>
+    <Progress value={50} className="h-3.75 mb-4" aria-label="Striped warning">
+      <Progress.Bar color="warning" striped />
+    </Progress>
+    <Progress value={60} className="h-3.75 mb-4" aria-label="Striped danger">
+      <Progress.Bar color="danger" striped />
+    </Progress>
   </>
 `;
-const stackedCode = `
-  <ProgressBar style={{ height:'15px' }}>
-    <ProgressBar variant="primary" now={35} key={1} />
-    <ProgressBar variant="success" now={20} key={2} />
-    <ProgressBar variant="info" now={10} key={3} />
-  </ProgressBar>
-`;
+
 const animatedCode = `
 () => {
   const [animated, setAnimated] = useState(true);
   return (
     <>
-      <ProgressBar animated={animated} now={45}  style={{ height:'15px' }}/>
-      <Button variant="secondary" onClick={() => setAnimated(!animated)} className="mt-2">
+      <Progress value={45} className="h-3.75" aria-label="Uploading">
+        <Progress.Bar striped animated={animated} />
+      </Progress>
+      <Button variant="outline" onClick={() => setAnimated(!animated)} className="mt-4">
         Toggle Animation
       </Button>
     </>
   );
 }`;
 
+const stackedCode = `
+  <Progress.Stacked className="h-3.75">
+    <Progress value={35} aria-label="Segment one">
+      <Progress.Bar />
+    </Progress>
+    <Progress value={20} aria-label="Segment two">
+      <Progress.Bar color="success" />
+    </Progress>
+    <Progress value={10} aria-label="Segment three">
+      <Progress.Bar color="info" />
+    </Progress>
+  </Progress.Stacked>
+`;
+
 const ProgressbarExample = () => {
   return (
     <div>
       <DocPageHeader
         title="Progress"
-        description="Provide up-to-date feedback on the progress of a workflow or action with simple yet flexible progress bars."
+        description="Documentation and examples for using Hummingbird React progress bars, featuring support for stacked bars, animated backgrounds, and text labels."
         link={{
-          text: 'Progress on react-bootstrap',
-          url: `${
-            import.meta.env.VITE_RB_URL_PREFIX || ''
-          }/components/progress/`
+          text: 'Progress on hb-react',
+          url: 'https://react.hbui.dev/docs/components/progress'
         }}
       />
 
@@ -71,44 +100,64 @@ const ProgressbarExample = () => {
         <Row>
           <Col md={6}>
             <PhoenixDocCard className="mb-4">
-              <PhoenixDocCard.Header title="Example" />
+              <PhoenixDocCard.Header title="Example">
+                <p className="mb-0">
+                  A <code>Progress</code> without children renders its{' '}
+                  <code>Progress.Bar</code> for you.
+                </p>
+              </PhoenixDocCard.Header>
               <PhoenixDocCard.Body code={exampleCode} />
             </PhoenixDocCard>
           </Col>
           <Col md={6}>
             <PhoenixDocCard className="mb-4">
-              <PhoenixDocCard.Header title="With Label" />
+              <PhoenixDocCard.Header title="With Label">
+                <p className="mb-0">
+                  Content placed inside <code>Progress.Bar</code> renders as a
+                  label on the bar.
+                </p>
+              </PhoenixDocCard.Header>
               <PhoenixDocCard.Body code={labelCode} />
             </PhoenixDocCard>
           </Col>
         </Row>
 
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header title="Height" />
+          <PhoenixDocCard.Header
+            title="Height"
+            description="The track height is set with a height utility on the root."
+          />
           <PhoenixDocCard.Body code={heightCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header
-            title="Contextual alternatives"
-            description="Progress bars use some of the same button and alert classes for consistent styles."
-          />
-          <PhoenixDocCard.Body code={bgCode} />
+          <PhoenixDocCard.Header title="Colors">
+            <p className="mb-0">
+              The <code>color</code> prop on <code>Progress.Bar</code> changes
+              the bar&apos;s background: <code>primary</code>,{' '}
+              <code>secondary</code>, <code>info</code>, <code>success</code>,{' '}
+              <code>warning</code> or <code>danger</code>.
+            </p>
+          </PhoenixDocCard.Header>
+          <PhoenixDocCard.Body code={colorCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header
-            title="Striped"
-            description="Uses a gradient to create a striped effect."
-          />
+          <PhoenixDocCard.Header title="Striped">
+            <p className="mb-0">
+              Setting <code>striped</code> overlays a gradient stripe pattern on
+              the bar.
+            </p>
+          </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={stripedCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Animated">
             <p className="mb-0">
-              Add <code>animated</code> prop to animate the stripes right to
-              left.
+              Combine <code>animated</code> with <code>striped</code> to animate
+              the stripes right to left. The animation pauses when reduced
+              motion is preferred.
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={animatedCode} />
@@ -117,7 +166,9 @@ const ProgressbarExample = () => {
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Stacked">
             <p className="mb-0">
-              Nest <code>&lt;ProgressBar /&gt;</code>s to stack them.
+              <code>Progress.Stacked</code> combines several segments in one
+              track; each nested <code>Progress</code> is sized by its own{' '}
+              <code>value</code>.
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={stackedCode} />

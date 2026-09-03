@@ -3,13 +3,11 @@ import DocPageHeader from 'components/docs/DocPageHeader';
 import DocPagesLayout from 'layouts/DocPagesLayout';
 import generic53 from 'assets/img/generic/53.png';
 
-const exampleCode = `<div className="flex justify-content-center">
-  <Card style={{width: '20rem'}} className='overflow-hidden'>
-    <Card.Img src={generic53} variant='top'/>
+const exampleCode = `<div className="flex justify-center">
+  <Card className="w-80 overflow-hidden">
+    <Card.Image src={generic53} position="top" />
     <Card.Body>
-      <Card.Title as='h5'>
-        Card title
-      </Card.Title>
+      <Card.Title>Card title</Card.Title>
       <Card.Text>
         Some quick example text to build on the card
         title and make up the bulk of the card's
@@ -21,57 +19,56 @@ const exampleCode = `<div className="flex justify-content-center">
     </Card.Body>
   </Card>
 
-  <Card style={{ width: '20rem' }} className='ms-3 overflow-hidden'>
-    <Card.Header variant="top" style={{width: 320,height: 180}} className='p-0'>
-      <span className="placeholder w-100 h-100"/>
-    </Card.Header>
+  <Card className="w-80 ms-4 overflow-hidden" aria-hidden="true">
+    <div className="card-img-top w-80 h-45">
+      <Skeleton className="w-full h-full" />
+    </div>
     <Card.Body>
-      <Placeholder as={Card.Title} animation="glow" className='mb-2'>
-        <Placeholder xs={6} />
-      </Placeholder>
-      <Placeholder as={Card.Text} animation="glow">
-        <Placeholder xs={7} /> 
-        <Placeholder xs={4} /> 
-        <Placeholder xs={4} />
-        <Placeholder xs={6} /> 
-        <Placeholder xs={8} />
-      </Placeholder>
-      <Placeholder.Button variant="primary" xs={6} />
+      <Skeleton.Group>
+        <Card.Title>
+          <Skeleton className="col-6" />
+        </Card.Title>
+        <Card.Text>
+          <Skeleton className="col-7" /> <Skeleton className="col-4" />{' '}
+          <Skeleton className="col-4" /> <Skeleton className="col-6" />{' '}
+          <Skeleton className="col-8" />
+        </Card.Text>
+        <Button variant="text" disabled aria-hidden="true" className="placeholder col-6 text-primary" />
+      </Skeleton.Group>
     </Card.Body>
   </Card>
 </div>`;
 
 const widthCode = `<>
-  <Placeholder xs={6} />
-  <Placeholder className="w-75" /> <Placeholder style={{ width: '25%' }} />
+  <Skeleton className="col-6" />
+  <Skeleton className="w-3/4" /> <Skeleton style={{ width: '25%' }} />
 </>`;
 
 const colorCode = `<>
-  <Placeholder xs={12} />
-  <Placeholder xs={12} bg="primary" />
-  <Placeholder xs={12} bg="secondary" />
-  <Placeholder xs={12} bg="success" />
-  <Placeholder xs={12} bg="danger" />
-  <Placeholder xs={12} bg="warning" />
-  <Placeholder xs={12} bg="info" />
-  <Placeholder xs={12} bg="light" />
-  <Placeholder xs={12} bg="dark" />
+  <Skeleton className="col-12 bg-primary" />
+  <Skeleton className="col-12 bg-secondary" />
+  <Skeleton className="col-12 bg-success" />
+  <Skeleton className="col-12 bg-danger" />
+  <Skeleton className="col-12 bg-warning" />
+  <Skeleton className="col-12 bg-info" />
+  <Skeleton className="col-12 bg-subtle" />
+  <Skeleton className="col-12 bg-dark" />
 </>`;
 
 const sizingCode = `<>
-  <Placeholder xs={12} size="lg" />
-  <Placeholder xs={12} />
-  <Placeholder xs={12} size="sm" />
-  <Placeholder xs={12} size="xs" />
+  <Skeleton size="lg" className="col-12" />
+  <Skeleton className="col-12" />
+  <Skeleton size="sm" className="col-12" />
+  <Skeleton size="xs" className="col-12" />
 </>`;
 
 const animationCode = `<>
-  <Placeholder as="p" animation="glow">
-    <Placeholder xs={12} />
-  </Placeholder>
-  <Placeholder as="p" animation="wave">
-    <Placeholder xs={12} />
-  </Placeholder>
+  <Skeleton.Group animation="glow" className="mb-2">
+    <Skeleton className="col-12" />
+  </Skeleton.Group>
+  <Skeleton.Group animation="wave">
+    <Skeleton className="col-12" />
+  </Skeleton.Group>
 </>`;
 
 const PlaceholderExample = () => {
@@ -81,10 +78,8 @@ const PlaceholderExample = () => {
         title="Placeholders"
         description="Use loading placeholders for your components or pages to indicate something may still be loading."
         link={{
-          text: 'Placeholder on react-bootstrap',
-          url: `${
-            import.meta.env.VITE_RB_URL_PREFIX || ''
-          }/components/placeholder/`
+          text: 'Skeleton on hb-react',
+          url: 'https://react.hbui.dev/docs/components/skeleton'
         }}
       />
 
@@ -92,7 +87,7 @@ const PlaceholderExample = () => {
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header
             title="Example"
-            description="In the example below, we take a typical card component and recreate it with placeholders applied to create a “loading card”. Size and proportions are the same between the two."
+            description="In the example below, we take a typical card component and recreate it with Skeleton bars to create a “loading card”. Size and proportions are the same between the two."
           />
           <PhoenixDocCard.Body code={exampleCode} scope={{ generic53 }} />
         </PhoenixDocCard>
@@ -110,9 +105,8 @@ const PlaceholderExample = () => {
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Color">
             <p className="mb-0">
-              By default, the <code>Placeholder</code> uses{' '}
-              <code>currentColor</code>. This can be overridden with a custom
-              color or utility class.
+              By default, a <code>Skeleton</code> uses <code>currentColor</code>
+              . This can be overridden with a custom color or utility class.
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={colorCode} />
@@ -121,9 +115,10 @@ const PlaceholderExample = () => {
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Sizing">
             <p className="mb-0">
-              The size of <code>Placeholder</code>s are based on the typographic
-              style of the parent element. Customize them with sizing props:{' '}
-              <code>lg</code>, <code>sm</code>, or <code>xs</code>.
+              The height of a <code>Skeleton</code> is based on the typographic
+              style of the parent element. Customize it with the{' '}
+              <code>size</code> prop: <code>xs</code>, <code>sm</code>,{' '}
+              <code>md</code> (default) or <code>lg</code>.
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={sizingCode} />
@@ -132,9 +127,10 @@ const PlaceholderExample = () => {
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Animation">
             <p className="mb-0">
-              Animate placeholders by setting the prop <code>animation</code> to{' '}
-              <code>glow</code> or <code>wave</code> to better convey the
-              perception of something being <em>actively</em> loaded.
+              Animate the bars by setting <code>animation</code> on{' '}
+              <code>Skeleton.Group</code> to <code>glow</code> (default) or{' '}
+              <code>wave</code>, to better convey the perception of something
+              being <em>actively</em> loaded.
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={animationCode} />
