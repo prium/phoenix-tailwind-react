@@ -1,6 +1,29 @@
 import changelogList from './changelogList';
 
-export default [
+/** One release, as rendered by `pages/documentation/ChangeLog`. */
+export interface ChangelogEntry {
+  version: string;
+  /** Release code name shown next to the version. */
+  title: string;
+  publishDate: string;
+  /** Optional callout above the log, e.g. "back up before upgrading". */
+  alertText?: string;
+  /** Optional sentence appended to the callout, wrapped around a router link. */
+  alertLink?: {
+    prefix?: string;
+    linkText?: string;
+    link?: string;
+    suffix?: string;
+  };
+  /** Log lines, grouped by kind. Each entry is trusted HTML. */
+  logs: {
+    new?: string[];
+    update?: string[];
+    fix?: string[];
+  };
+}
+
+const changelog: ChangelogEntry[] = [
   {
     version: '2.2.0',
     title: 'Solara',
@@ -354,3 +377,5 @@ export default [
     }
   }
 ];
+
+export default changelog;
