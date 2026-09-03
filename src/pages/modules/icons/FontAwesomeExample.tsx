@@ -1,14 +1,3 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import PhoenixDocCard from 'components/base/PhoenixDocCard';
-import IconCard from 'components/cards/IconCard';
-import DocPageHeader from 'components/docs/DocPageHeader';
-import PhoenixLiveEditor from 'components/docs/PhoenixLiveEditor';
-import { faSolidIconList } from 'data/icons/faSolidIconList';
-import DocPagesLayout from 'layouts/DocPagesLayout';
-import { Card, Col, Row } from 'react-bootstrap';
-import { faHome } from '@fortawesome/free-solid-svg-icons';
-import { faRegularIconList } from 'data/icons/faRegularIconList';
-import { faBrandIconList } from 'data/icons/faBrandIconList';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   fab,
@@ -16,80 +5,112 @@ import {
   faTwitter,
   faYoutube
 } from '@fortawesome/free-brands-svg-icons';
+import { faHome } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import PhoenixDocCard from 'components/base/PhoenixDocCard';
+import IconCardList from 'components/cards/IconCardList';
+import DocPageHeader from 'components/docs/DocPageHeader';
+import PhoenixLiveEditor from 'components/docs/PhoenixLiveEditor';
+import { faBrandIconList } from 'data/icons/faBrandIconList';
+import { faRegularIconList } from 'data/icons/faRegularIconList';
+import { faSolidIconList } from 'data/icons/faSolidIconList';
+import DocPagesLayout from 'layouts/DocPagesLayout';
 
 library.add(fab, faFacebook, faTwitter, faYoutube);
 
 const importFromLibrary = `
 import { library } from '@fortawesome/fontawesome-svg-core';
-import {
-  fab,
-  facebook,
-} from '@fortawesome/free-brands-svg-icons';
- library.add(fab, faFacebook, faTwitter);
+import { fab, faFacebook, faTwitter } from '@fortawesome/free-brands-svg-icons';
 
-<FontAwesomeIcon icon={['fab', 'facebook']} className="text-facebook fs-5 me-3" />`;
+library.add(fab, faFacebook, faTwitter);
 
-const individualAddIconCode = `import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+const element = <FontAwesomeIcon icon={['fab', 'facebook']} />;
+`;
 
-const element = <FontAwesomeIcon icon={faCoffee} />`;
+const individualAddIconCode = `
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+
+const element = <FontAwesomeIcon icon={faCoffee} />;
+`;
+
+const solidImportCode = `import { faHome } from '@fortawesome/free-solid-svg-icons';`;
+const regularImportCode = `import { faBell } from '@fortawesome/free-regular-svg-icons';`;
+const brandImportCode = `import { faGithub } from '@fortawesome/free-brands-svg-icons';`;
 
 const exampleCode = `
 <div>
   <div>
-    <FontAwesomeIcon icon={faHome} className="text-success fs-5 me-3" />
-    <FontAwesomeIcon icon={faHome} className="text-success text-xl me-3" />
+    <FontAwesomeIcon icon={faHome} className="text-success text-2xl me-4" />
+    <FontAwesomeIcon icon={faHome} className="text-success text-xl me-4" />
     <FontAwesomeIcon icon={faHome} className="text-success text-lg" />
   </div>
-  <div className='mt-3'>
-    <FontAwesomeIcon icon={['fab', 'facebook']} className="text-facebook fs-5 me-3" />
-    <FontAwesomeIcon icon={['fab', 'twitter']} className="text-twitter fs-5 me-3"/>
-    <FontAwesomeIcon icon={['fab', 'youtube']} className="text-youtube fs-5 me-3"/>
+  <div className="mt-4">
+    <FontAwesomeIcon icon={['fab', 'facebook']} className="text-primary text-2xl me-4" />
+    <FontAwesomeIcon icon={['fab', 'twitter']} className="text-info text-2xl me-4" />
+    <FontAwesomeIcon icon={['fab', 'youtube']} className="text-danger text-2xl me-4" />
   </div>
-</div>`;
+</div>
+`;
 
 const FontAwesomeExample = () => {
   return (
-    <div className="mb-9">
+    <div>
       <DocPageHeader
-        title="React Fontawesome"
+        title="React Font Awesome"
         description="Font Awesome 6 React component using SVG with JS"
         link={{
-          text: 'React Fontawesome Documentation',
-          url: `https://fontawesome.com/v5/docs/web/use-with/react`
+          text: 'React Font Awesome Documentation',
+          url: 'https://docs.fontawesome.com/web/use-with/react'
         }}
-      />
+      >
+        <p className="mb-2">
+          Font Awesome icons come from the{' '}
+          <code>@fortawesome/react-fontawesome</code> package, not from
+          hb-react. <code>FontAwesomeIcon</code> renders an inline{' '}
+          <code>svg</code> sized in <code>em</code>, so a text size utility on
+          the icon sets its dimensions and a text colour utility sets its
+          colour.
+        </p>
+      </DocPageHeader>
 
       <DocPagesLayout>
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Usage" noPreview />
           <PhoenixDocCard.Body>
-            <p className="mb-3">
-              Import your icon from your desired icon module and then pass it to
-              <code>library.add()</code> function.
+            <p className="mb-2">
+              Import the icons you need from their icon package and register
+              them once with <code>library.add()</code>. Registered icons can
+              then be referenced by name from anywhere.
             </p>
             <PhoenixLiveEditor code={importFromLibrary} />
 
-            <p className="my-3">
-              you can explicitly import icons into each component for individual
-              use.
+            <p className="mt-6 mb-2">
+              Or import an icon into the component that uses it and pass the
+              icon object itself.
             </p>
             <PhoenixLiveEditor code={individualAddIconCode} />
-            <p className="mb-0 mt-3">
-              For better understanding you can visit{' '}
+            <p className="mb-0 mt-4">
+              Both approaches are described in{' '}
               <a
                 target="_blank"
                 rel="noreferrer"
-                href="https://fontawesome.com/v5/docs/web/use-with/react#using-icons-via-individual-use"
+                href="https://docs.fontawesome.com/web/use-with/react/add-icons"
               >
-                fontawesome usage
+                Font Awesome&apos;s React guide
               </a>
+              .
             </p>
           </PhoenixDocCard.Body>
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header title="Example" />
+          <PhoenixDocCard.Header title="Example">
+            <p className="mb-0">
+              The first row sizes the same icon with text size utilities; the
+              second uses brand icons registered through the library.
+            </p>
+          </PhoenixDocCard.Header>
           <PhoenixDocCard.Body
             code={exampleCode}
             scope={{ FontAwesomeIcon, faHome }}
@@ -98,74 +119,47 @@ const FontAwesomeExample = () => {
 
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Solid Icons" noPreview />
-          <Card.Body>
+          <PhoenixDocCard.Body>
             <p className="mb-2">
               Import solid icons from{' '}
-              <code>@fortawesome/free-solid-svg-icons.</code>
+              <code>@fortawesome/free-solid-svg-icons</code>.
             </p>
-            <PhoenixLiveEditor
-              code={`import {faHome} from @fortawesome/free-solid-svg-icons'`}
-            />
-            <Row className="mt-3">
-              {Object.keys(faSolidIconList).map(icon => (
-                <Col xs={12} sm={6} md={4} lg={3} key={icon}>
-                  <IconCard
-                    iconFamily="font-awesome"
-                    icon={faSolidIconList[icon]}
-                    name={icon}
-                  />
-                </Col>
-              ))}
-            </Row>
-          </Card.Body>
+            <PhoenixLiveEditor code={solidImportCode} />
+            <div className="mt-4">
+              <IconCardList icons={faSolidIconList} iconFamily="font-awesome" />
+            </div>
+          </PhoenixDocCard.Body>
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Regular Icons" noPreview />
-          <Card.Body>
+          <PhoenixDocCard.Body>
             <p className="mb-2">
               Import regular icons from{' '}
-              <code>@fortawesome/free-regular-svg-icons.</code>
+              <code>@fortawesome/free-regular-svg-icons</code>.
             </p>
-            <PhoenixLiveEditor
-              code={`import {faHome} from @fortawesome/free-regular-svg-icons'`}
-            />
-            <Row className="mt-3">
-              {Object.keys(faRegularIconList).map(icon => (
-                <Col xs={12} sm={6} md={4} lg={3} key={icon}>
-                  <IconCard
-                    iconFamily="font-awesome"
-                    icon={faRegularIconList[icon]}
-                    name={icon}
-                  />
-                </Col>
-              ))}
-            </Row>
-          </Card.Body>
+            <PhoenixLiveEditor code={regularImportCode} />
+            <div className="mt-4">
+              <IconCardList
+                icons={faRegularIconList}
+                iconFamily="font-awesome"
+              />
+            </div>
+          </PhoenixDocCard.Body>
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Brand Icons" noPreview />
-          <Card.Body>
+          <PhoenixDocCard.Body>
             <p className="mb-2">
               Import brand icons from{' '}
-              <code>@fortawesome/free-brands-svg-icons.</code>
+              <code>@fortawesome/free-brands-svg-icons</code>.
             </p>
-            <PhoenixLiveEditor
-              code={`import {faHome} from @fortawesome/free-brands-svg-icons'`}
-            />
-            <Row className="mt-3">
-              {Object.keys(faBrandIconList).map(icon => (
-                <Col xs={12} sm={6} md={4} lg={3} key={icon}>
-                  <IconCard
-                    iconFamily="font-awesome"
-                    icon={faBrandIconList[icon]}
-                    name={icon}
-                  />
-                </Col>
-              ))}
-            </Row>
-          </Card.Body>
+            <PhoenixLiveEditor code={brandImportCode} />
+            <div className="mt-4">
+              <IconCardList icons={faBrandIconList} iconFamily="font-awesome" />
+            </div>
+          </PhoenixDocCard.Body>
         </PhoenixDocCard>
       </DocPagesLayout>
     </div>

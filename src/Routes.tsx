@@ -162,14 +162,12 @@ import Widgets from 'pages/modules/Widgets';
 import ComingSoon from 'pages/ComingSoon';
 
 const FontAwesomeExample = lazy(
-  () => import('pages/modules/components/FontAwesomeExample')
+  () => import('pages/modules/icons/FontAwesomeExample')
 );
 const FeatherIconsExample = lazy(
-  () => import('pages/modules/components/FeatherIconsExample')
+  () => import('pages/modules/icons/FeatherIconsExample')
 );
-const UniconsExample = lazy(
-  () => import('pages/modules/components/UniconsExample')
-);
+const UniconsExample = lazy(() => import('pages/modules/icons/UniconsExample'));
 const ECharts = lazy(() => import('pages/modules/charts/ECharts'));
 const Calendar = lazy(() => import('pages/apps/calendar/Calendar'));
 const CalendarExample = lazy(
