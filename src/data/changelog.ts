@@ -18,7 +18,7 @@ export default [
       update: [
         'SCSS: <code>src/assets/scss/theme/plugins/_swiper.scss</code>',
         'SCSS: <code>src/assets/scss/theme/_landing.scss</code>',
-        'SCSS: <code>src/assets/scss/theme/_mixed.scss</code>',
+        'SCSS: <code>src/assets/scss/theme/_mixed.scss</code>'
       ]
     }
   },
@@ -28,7 +28,7 @@ export default [
     publishDate: '17 Nov 2025',
     logs: {
       new: [
-        'PACKAGE: <code>emoji-picker-react</code>', 
+        'PACKAGE: <code>emoji-picker-react</code>',
         'SCSS: <code>_emoji-picker.scss</code>'
       ],
       update: [
@@ -70,7 +70,7 @@ export default [
         'PACKAGE: <code>vite</code> from <code>6.3.5</code> to <code>7.2.1</code>',
         'PACKAGE: <code>web-vitals</code> from <code>5.0.3</code> to <code>5.1.0</code>',
         'SCSS: Removed <code>_picmo.scss</code>',
-        'Picmo replaced by emoji-picker-react',
+        'Picmo replaced by emoji-picker-react'
       ],
       fix: [
         'Replaced the deprecated <code>containLabel</code> option in the Echarts grid configuration with the new <code>outerBoundsMode</code>.',
@@ -90,7 +90,7 @@ export default [
         'PACKAGE: <code>echarts</code>',
         'PACKAGE: <code>react-leaflet-markercluster</code>',
         'PACKAGE: <code>simplebar</code>',
-        'PACKAGE: <code>simplebar-react</code>',
+        'PACKAGE: <code>simplebar-react</code>'
       ],
       update: [
         'PACKAGE: React Updated to <code>v19</code>.',
