@@ -3,215 +3,212 @@ import DocPageHeader from 'components/docs/DocPageHeader';
 import DocPagesLayout from 'layouts/DocPagesLayout';
 
 const exampleCode = `
-() => {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  return (
-    <>
-      <Button variant="primary" onClick={handleShow}>
-        Launch
-      </Button>
-
-      <Offcanvas show={show} onHide={handleClose}>
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-          Some text as placeholder. In real life you can have the elements you
-          have chosen. Like, text, images, lists, etc.
-        </Offcanvas.Body>
-      </Offcanvas>
-    </>
-  );
-}`;
+<Drawer direction="left">
+  <Drawer.Trigger asChild>
+    <Button color="primary">Launch</Button>
+  </Drawer.Trigger>
+  <Drawer.Content>
+    <Drawer.Header>
+      <Drawer.Title>Drawer</Drawer.Title>
+      <Drawer.Close asChild>
+        <CloseButton />
+      </Drawer.Close>
+    </Drawer.Header>
+    <Drawer.Body>
+      <Drawer.Description>
+        Some text as placeholder. In real life you can have the elements you
+        have chosen. Like, text, images, lists, etc.
+      </Drawer.Description>
+    </Drawer.Body>
+  </Drawer.Content>
+</Drawer>
+`;
 
 const placementCode = `
-const OffCanvasExample = ({ name, ...props }) => {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  return (
-    <>
-      <Button variant="primary" onClick={handleShow} className="me-2">
-        {name}
-      </Button>
-      <Offcanvas show={show} onHide={handleClose} {...props}>
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-          Some text as placeholder. In real life you can have the elements you
-          have chosen. Like, text, images, lists, etc.
-        </Offcanvas.Body>
-      </Offcanvas>
-    </>
-  );
-}
-
-const Example = () => {
-  return (
-    <>
-      {['start', 'end', 'bottom', 'top'].map((placement, idx) => (
-        <OffCanvasExample key={idx} placement={placement} name={placement} />
-      ))}
-    </>
-  );
-}
-render(<Example />)`;
+<div className="flex flex-wrap gap-2">
+  {['left', 'right', 'top', 'bottom'].map((direction) => (
+    <Drawer key={direction} direction={direction}>
+      <Drawer.Trigger asChild>
+        <Button color="primary" className="capitalize">
+          {direction}
+        </Button>
+      </Drawer.Trigger>
+      <Drawer.Content>
+        <Drawer.Header>
+          <Drawer.Title className="capitalize">{direction} drawer</Drawer.Title>
+          <Drawer.Close asChild>
+            <CloseButton />
+          </Drawer.Close>
+        </Drawer.Header>
+        <Drawer.Body>
+          <Drawer.Description>
+            Slides in from the {direction} edge of the viewport.
+          </Drawer.Description>
+        </Drawer.Body>
+      </Drawer.Content>
+    </Drawer>
+  ))}
+</div>
+`;
 
 const backdropCode = `
-const options = [
-  {
-    name: 'Enable backdrop (default)',
-    scroll: false,
-    backdrop: true,
-  },
-  {
-    name: 'Disable backdrop',
-    scroll: false,
-    backdrop: false,
-  },
-  {
-    name: 'Enable body scrolling',
-    scroll: true,
-    backdrop: false,
-  },
-  {
-    name: 'Enable both scrolling & backdrop',
-    scroll: true,
-    backdrop: true,
-  },
-];
+<div className="flex flex-wrap gap-2">
+  <Drawer direction="right">
+    <Drawer.Trigger asChild>
+      <Button color="primary">Backdrop (default)</Button>
+    </Drawer.Trigger>
+    <Drawer.Content>
+      <Drawer.Header>
+        <Drawer.Title>Drawer</Drawer.Title>
+        <Drawer.Close asChild>
+          <CloseButton />
+        </Drawer.Close>
+      </Drawer.Header>
+      <Drawer.Body>
+        <Drawer.Description>
+          The backdrop dims the page and scrolling is locked while the drawer is
+          open.
+        </Drawer.Description>
+      </Drawer.Body>
+    </Drawer.Content>
+  </Drawer>
 
-function OffCanvasExample({ name, ...props }) {
-  const [show, setShow] = useState(false);
+  <Drawer direction="right">
+    <Drawer.Trigger asChild>
+      <Button color="primary">No backdrop</Button>
+    </Drawer.Trigger>
+    <Drawer.Content overlay={false}>
+      <Drawer.Header>
+        <Drawer.Title>Drawer</Drawer.Title>
+        <Drawer.Close asChild>
+          <CloseButton />
+        </Drawer.Close>
+      </Drawer.Header>
+      <Drawer.Body>
+        <Drawer.Description>
+          {'overlay={false}'} hides the backdrop so the page behind stays
+          visible.
+        </Drawer.Description>
+      </Drawer.Body>
+    </Drawer.Content>
+  </Drawer>
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  return (
-    <>
-      <Button variant="primary" onClick={handleShow} className="me-2 mb-1">
-        {name}
-      </Button>
-      <Offcanvas show={show} onHide={handleClose} {...props}>
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-          Some text as placeholder. In real life you can have the elements you
-          have chosen. Like, text, images, lists, etc.
-        </Offcanvas.Body>
-      </Offcanvas>
-    </>
-  );
-}
-
-function Example() {
-  return (
-    <>
-      {options.map((props, idx) => (
-        <OffCanvasExample key={idx} {...props} />
-      ))}
-    </>
-  );
-}
-
-render(<Example />);
+  <Drawer direction="right" modal={false}>
+    <Drawer.Trigger asChild>
+      <Button color="primary">Body scrolling</Button>
+    </Drawer.Trigger>
+    <Drawer.Content overlay={false}>
+      <Drawer.Header>
+        <Drawer.Title>Drawer</Drawer.Title>
+        <Drawer.Close asChild>
+          <CloseButton />
+        </Drawer.Close>
+      </Drawer.Header>
+      <Drawer.Body>
+        <Drawer.Description>
+          {'modal={false}'} leaves the rest of the page scrollable and clickable.
+        </Drawer.Description>
+      </Drawer.Body>
+    </Drawer.Content>
+  </Drawer>
+</div>
 `;
 
 const staticBackdropCode = `
-() => {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  return (
-    <>
-      <Button variant="primary" onClick={handleShow}>
-        Toggle static offcanvas
-      </Button>
-
-      <Offcanvas show={show} onHide={handleClose} backdrop="static">
-        <Offcanvas.Header closeButton>
-          <Offcanvas.Title>Offcanvas</Offcanvas.Title>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-          I will not close if you click outside of me.
-        </Offcanvas.Body>
-      </Offcanvas>
-    </>
-  );
-}
-
+<Drawer direction="left" dismissible={false}>
+  <Drawer.Trigger asChild>
+    <Button color="primary">Toggle static drawer</Button>
+  </Drawer.Trigger>
+  <Drawer.Content>
+    <Drawer.Header>
+      <Drawer.Title>Drawer</Drawer.Title>
+      <Drawer.Close asChild>
+        <CloseButton />
+      </Drawer.Close>
+    </Drawer.Header>
+    <Drawer.Body>
+      <Drawer.Description>
+        I will not close if you click outside of me — use the close button.
+      </Drawer.Description>
+    </Drawer.Body>
+  </Drawer.Content>
+</Drawer>
 `;
 
 const OffcanvasExample = () => {
   return (
     <div>
       <DocPageHeader
-        title="Offcanvas"
-        description="Build hidden sidebars into your project for navigation, shopping carts, and more."
+        title="Drawer"
+        description="A draggable, dismissible panel that slides in from any edge of the screen — hidden sidebars for navigation, shopping carts, and more."
         link={{
-          text: 'Offcanvas on react-bootstrap',
-          url: `${
-            import.meta.env.VITE_RB_URL_PREFIX || ''
-          }/components/offcanvas/`
+          text: 'Drawer on hb-react',
+          url: 'https://react.hbui.dev/docs/components/drawer'
         }}
       />
 
       <DocPagesLayout>
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header title="Example" />
+          <PhoenixDocCard.Header title="Example">
+            <p className="mb-0">
+              A drawer is a <code>Drawer</code> root with a{' '}
+              <code>Drawer.Trigger</code> and a <code>Drawer.Content</code>{' '}
+              holding <code>Drawer.Header</code> and <code>Drawer.Body</code>.
+              The panel is portaled to <code>document.body</code>; drag it back
+              towards its edge, click the backdrop, press Escape or use{' '}
+              <code>Drawer.Close</code> to dismiss it.
+            </p>
+          </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={exampleCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Placement">
-            <p>Offcanvas supports a few different placements:</p>
+            <p>
+              The <code>direction</code> prop on the <code>Drawer</code> root
+              picks the edge the panel slides from:
+            </p>
             <ul className="mb-0">
               <li>
-                <code>start</code> places offcanvas on the left of the viewport
+                <code>left</code> places the drawer on the left of the viewport
               </li>
               <li>
-                <code>end</code> places offcanvas on the right of the viewport
+                <code>right</code> places the drawer on the right of the
+                viewport
               </li>
               <li>
-                <code>top</code> places offcanvas on the top of the viewport
+                <code>top</code> places the drawer on the top of the viewport
               </li>
               <li>
-                <code>bottom</code> places offcanvas on the bottom of the
+                <code>bottom</code> places the drawer on the bottom of the
                 viewport
               </li>
             </ul>
           </PhoenixDocCard.Header>
-          <PhoenixDocCard.Body code={placementCode} noInline />
+          <PhoenixDocCard.Body code={placementCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Backdrop">
             <p className="mb-0">
-              Scrolling the <code>&lt;body&gt;</code> element is disabled when
-              an offcanvas and its backdrop are visible. Use the{' '}
-              <code>scroll</code> prop to toggle <code>&lt;body&gt;</code>{' '}
-              scrolling and the <code>backdrop</code> prop to toggle the
-              backdrop.
+              Scrolling the <code>&lt;body&gt;</code> element is disabled while
+              a drawer and its backdrop are visible. Set{' '}
+              <code>overlay=&#123;false&#125;</code> on{' '}
+              <code>Drawer.Content</code> to drop the backdrop, and{' '}
+              <code>modal=&#123;false&#125;</code> on the <code>Drawer</code>{' '}
+              root to leave the rest of the page scrollable and interactive.
             </p>
           </PhoenixDocCard.Header>
-          <PhoenixDocCard.Body code={backdropCode} noInline />
+          <PhoenixDocCard.Body code={backdropCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Static backdrop">
             <p className="mb-0">
-              When <code>backdrop</code> is set to <code>static</code>, the
-              offcanvas will not close when clicking outside of it.
+              Set <code>dismissible=&#123;false&#125;</code> on the{' '}
+              <code>Drawer</code> root and the drawer will not close when you
+              click outside it, press Escape or drag it — only an explicit{' '}
+              <code>Drawer.Close</code> dismisses it.
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={staticBackdropCode} />

@@ -3,219 +3,218 @@ import DocPageHeader from 'components/docs/DocPageHeader';
 import DocPagesLayout from 'layouts/DocPagesLayout';
 
 const exampleCode = `
-function DemoModal() {
-  const [modalShow, setModalShow] = React.useState(false);
-
-  return (
-    <>
-      <Button variant="primary" onClick={() => setModalShow(true)}>
-        Launch demo modal
-      </Button>
-
-      <Modal
-        show={modalShow}
-        onHide={() => setModalShow(false)}
-        size="lg"
-        aria-labelledby="contained-modal-title-vcenter"
-        centered
-      >
-        <Modal.Header closeButton>
-          <Modal.Title id="contained-modal-title-vcenter">Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <h4>Centered Modal</h4>
-          <p>
-            Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
-            in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-          </p>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={() => setModalShow(false)}>Close</Button>
-        </Modal.Footer>
-      </Modal>
-    </>
-  );
-}
-
-`;
-const focusCode = `
-() => {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  return (
-    <>
-      <Button variant="primary" onClick={handleShow}>
-        Launch demo modal
-      </Button>
-
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Form>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="name@example.com" autoFocus />
-            </Form.Group>
-            <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-              <Form.Label>Example textarea</Form.Label>
-              <Form.Control as="textarea" rows={3} />
-            </Form.Group>
-          </Form>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </>
-  );
-}
-`;
-const staticBackdropCode = `
-function StaticBackdropModal() {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
-  return (
-    <>
-      <Button variant="primary" onClick={handleShow}>
-        Launch static backdrop modal
-      </Button>
-
-      <Modal show={show} onHide={handleClose} backdrop="static" keyboard={false}>
-        <Modal.Header>
-          <Modal.Title>Modal title</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          I will not close if you click outside me. Don't even try to press escape key.
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary">Understood</Button>
-        </Modal.Footer>
-      </Modal>
-    </>
-  );
-}`;
-
-const fullscreenCode = `
-function Example() {
-  const values: ModalProps['fullscreen'][] = [true, 'sm-down', 'md-down', 'lg-down', 'xl-down', 'xxl-down'];
-  const [fullscreen, setFullscreen] = useState<ModalProps['fullscreen']>(true);
-  const [show, setShow] = useState(false);
-
-  function handleShow(breakpoint: ModalProps['fullscreen']) {
-    setFullscreen(breakpoint);
-    setShow(true);
-  }
-
-  return (
-    <>
-      {values.map((v, idx) => (
-        <Button key={idx} className="me-2 mb-1" onClick={() => handleShow(v)}>
-          Full screen
-          {typeof v === 'string' && 'below ' + v.split('-')[0] }
+<Dialog>
+  <Dialog.Trigger asChild>
+    <Button color="primary">Launch demo dialog</Button>
+  </Dialog.Trigger>
+  <Dialog.Content size="lg" centered>
+    <Dialog.Header>
+      <Dialog.Title>Dialog heading</Dialog.Title>
+      <Dialog.Close asChild>
+        <CloseButton />
+      </Dialog.Close>
+    </Dialog.Header>
+    <Dialog.Body>
+      <h4 className="mb-2">Centered dialog</h4>
+      <Dialog.Description>
+        Cras mattis consectetur purus sit amet fermentum. Cras justo odio,
+        dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac
+        consectetur ac, vestibulum at eros.
+      </Dialog.Description>
+    </Dialog.Body>
+    <Dialog.Footer>
+      <Dialog.Close asChild>
+        <Button color="secondary" variant="subtle" className="me-2">
+          Cancel
         </Button>
-      ))}
-      <Modal show={show} fullscreen={fullscreen} onHide={() => setShow(false)}>
-        <Modal.Header>
-          <Modal.Title>Modal</Modal.Title>
-          <CloseButton
-          className="btn btn-circle btn-sm transition-base p-0"
-          onClick={() => setShow(false)}
-        />
-        </Modal.Header>
-        <Modal.Body>Modal body content</Modal.Body>
-      </Modal>
-    </>
+      </Dialog.Close>
+      <Dialog.Close asChild>
+        <Button color="primary">Save changes</Button>
+      </Dialog.Close>
+    </Dialog.Footer>
+  </Dialog.Content>
+</Dialog>
+`;
+
+const staticBackdropCode = `
+<Dialog>
+  <Dialog.Trigger asChild>
+    <Button color="primary">Launch static backdrop dialog</Button>
+  </Dialog.Trigger>
+  <Dialog.Content
+    onInteractOutside={(event) => event.preventDefault()}
+    onEscapeKeyDown={(event) => event.preventDefault()}
+  >
+    <Dialog.Header>
+      <Dialog.Title>Dialog title</Dialog.Title>
+    </Dialog.Header>
+    <Dialog.Body>
+      I will not close if you click outside me. Don't even try to press the
+      escape key.
+    </Dialog.Body>
+    <Dialog.Footer>
+      <Dialog.Close asChild>
+        <Button color="secondary" variant="subtle" className="me-2">
+          Close
+        </Button>
+      </Dialog.Close>
+      <Dialog.Close asChild>
+        <Button color="primary">Understood</Button>
+      </Dialog.Close>
+    </Dialog.Footer>
+  </Dialog.Content>
+</Dialog>
+`;
+
+const focusCode = `
+function FocusExample() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <Dialog open={open} onOpenChange={setOpen}>
+      <Dialog.Trigger asChild>
+        <Button color="primary">Launch demo dialog</Button>
+      </Dialog.Trigger>
+      <Dialog.Content>
+        <Dialog.Header>
+          <Dialog.Title>Dialog heading</Dialog.Title>
+          <Dialog.Close asChild>
+            <CloseButton />
+          </Dialog.Close>
+        </Dialog.Header>
+        <Dialog.Body>
+          <Field className="mb-4">
+            <Field.Label htmlFor="dialogEmail">Email address</Field.Label>
+            <Input
+              id="dialogEmail"
+              type="email"
+              placeholder="name@example.com"
+              autoFocus
+            />
+          </Field>
+          <Field>
+            <Field.Label htmlFor="dialogMessage">Example textarea</Field.Label>
+            <Textarea id="dialogMessage" rows={3} />
+          </Field>
+        </Dialog.Body>
+        <Dialog.Footer>
+          <Button
+            color="secondary"
+            variant="subtle"
+            className="me-2"
+            onClick={() => setOpen(false)}
+          >
+            Close
+          </Button>
+          <Button color="primary" onClick={() => setOpen(false)}>
+            Save changes
+          </Button>
+        </Dialog.Footer>
+      </Dialog.Content>
+    </Dialog>
   );
-}`;
+}
+`;
 
 const sizeCode = `
-function Example() {
-  const [smShow, setSmShow] = useState(false);
-  const [lgShow, setLgShow] = useState(false);
+<div className="flex flex-wrap gap-2">
+  {['sm', 'md', 'lg', 'xl'].map((size) => (
+    <Dialog key={size}>
+      <Dialog.Trigger asChild>
+        <Button variant="outline" color="primary">
+          {size.toUpperCase()} dialog
+        </Button>
+      </Dialog.Trigger>
+      <Dialog.Content size={size}>
+        <Dialog.Header>
+          <Dialog.Title>{size.toUpperCase()} dialog</Dialog.Title>
+          <Dialog.Close asChild>
+            <CloseButton />
+          </Dialog.Close>
+        </Dialog.Header>
+        <Dialog.Body>A dialog rendered with size="{size}".</Dialog.Body>
+      </Dialog.Content>
+    </Dialog>
+  ))}
+</div>
+`;
 
-  return (
-    <>
-      <Button onClick={() => setSmShow(true)}>Small modal</Button>{' '}
-      <Button onClick={() => setLgShow(true)}>Large modal</Button>
-      <Modal
-        size="sm"
-        show={smShow}
-        onHide={() => setSmShow(false)}
-        aria-labelledby="example-modal-sizes-title-sm"
-      >
-        <Modal.Header>
-          <Modal.Title id="example-modal-sizes-title-sm">
-            Small Modal
-          </Modal.Title>
-          <CloseButton onClick={() => setSmShow(false)}/>
-        </Modal.Header>
-        <Modal.Body>...</Modal.Body>
-      </Modal>
-      <Modal
-        size="lg"
-        show={lgShow}
-        onHide={() => setLgShow(false)}
-        aria-labelledby="example-modal-sizes-title-lg"
-      >
-        <Modal.Header>
-          <Modal.Title id="example-modal-sizes-title-lg">
-            Large Modal
-          </Modal.Title>
-          <CloseButton onClick={() => setLgShow(false)}/>
-        </Modal.Header>
-        <Modal.Body>...</Modal.Body>
-      </Modal>
-    </>
-  );
-}`;
+const fullscreenCode = `
+<div className="flex flex-wrap gap-2">
+  {[true, 'sm-down', 'md-down', 'lg-down', 'xl-down', '2xl-down'].map(
+    (fullscreen) => (
+      <Dialog key={String(fullscreen)}>
+        <Dialog.Trigger asChild>
+          <Button color="primary">
+            Full screen
+            {typeof fullscreen === 'string'
+              ? ' below ' + fullscreen.split('-')[0]
+              : ''}
+          </Button>
+        </Dialog.Trigger>
+        <Dialog.Content fullscreen={fullscreen} scrollable>
+          <Dialog.Header>
+            <Dialog.Title>Dialog</Dialog.Title>
+            <Dialog.Close asChild>
+              <CloseButton />
+            </Dialog.Close>
+          </Dialog.Header>
+          <Dialog.Body>Dialog body content</Dialog.Body>
+        </Dialog.Content>
+      </Dialog>
+    )
+  )}
+</div>
+`;
 
 const ModalExample = () => {
   return (
     <div>
       <DocPageHeader
-        title="Modals"
-        description="Add dialogs to your site for lightboxes, user notifications, or completely custom content."
+        title="Dialog"
+        description="A modal dialog that traps focus, locks scroll, and dismisses on backdrop click or Escape — for lightboxes, user notifications, or completely custom content."
         link={{
-          text: 'Modals on react-bootstrap',
-          url: `${import.meta.env.VITE_RB_URL_PREFIX || ''}/components/modal/`
+          text: 'Dialog on hb-react',
+          url: 'https://react.hbui.dev/docs/components/dialog'
         }}
       />
 
       <DocPagesLayout>
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header title="Basic Modal" />
+          <PhoenixDocCard.Header title="Basic Dialog">
+            <p className="mb-0">
+              A dialog is a <code>Dialog</code> root wrapping a{' '}
+              <code>Dialog.Trigger</code> and a <code>Dialog.Content</code>. The
+              content is portaled to <code>document.body</code> together with
+              its overlay, so every class you need belongs on{' '}
+              <code>Dialog.Content</code> itself. <code>centered</code>{' '}
+              vertically centres it in the viewport.
+            </p>
+          </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={exampleCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header
-            title="Static backdrop"
-            description="When backdrop is set to static, the modal will not close when clicking outside it. Click the button below to try it."
-          />
+          <PhoenixDocCard.Header title="Static backdrop">
+            <p className="mb-0">
+              There is no <code>backdrop="static"</code> flag — cancel the
+              dismiss events instead. Preventing <code>onInteractOutside</code>{' '}
+              keeps a click on the backdrop from closing the dialog, and
+              preventing <code>onEscapeKeyDown</code> does the same for the
+              escape key.
+            </p>
+          </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={staticBackdropCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Focus on specific element">
             <p className="mb-0">
-              You can focus on an element inside the modal using{' '}
-              <code>autoFocus</code> attribute on the element.
+              The dialog moves focus into its content on open. Put{' '}
+              <code>autoFocus</code> on the control you want focused to choose
+              which one that is; <code>onOpenAutoFocus</code> on{' '}
+              <code>Dialog.Content</code> takes over completely when you need
+              full control.
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={focusCode} />
@@ -224,19 +223,23 @@ const ModalExample = () => {
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Optional Sizes">
             <p className="mb-0">
-              You can specify a Bootstrap large or small modal by using the
-              <code> size </code> prop.
+              The <code>size</code> prop on <code>Dialog.Content</code> sets the
+              dialog width across <code>sm</code>, <code>md</code>,{' '}
+              <code>lg</code> and <code>xl</code>.
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={sizeCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header title="Fullscreen Modal">
+          <PhoenixDocCard.Header title="Fullscreen Dialog">
             <p className="mb-0">
-              You can use the <code>fullscreen</code> prop to make the modal
-              fullscreen. Specifying a breakpoint will only set the modal as
-              fullscreen <strong>below</strong> the breakpoint size.
+              Use the <code>fullscreen</code> prop on{' '}
+              <code>Dialog.Content</code> to fill the viewport. Passing a
+              breakpoint (<code>sm-down</code> … <code>2xl-down</code>) only
+              makes the dialog fullscreen <strong>below</strong> that width, and{' '}
+              <code>scrollable</code> keeps the header pinned while the body
+              scrolls.
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={fullscreenCode} />
