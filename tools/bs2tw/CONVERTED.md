@@ -61,3 +61,11 @@ class names with different meanings (`mb-4` → `mb-6` → `mb-10` …).
   common/AuthSocialButtons were NOT re-run (converted with the layout shell);
   fixed by hand
 
+- modules doc pages wave: src/pages/modules/tables, src/pages/modules/icons,
+  src/pages/modules/charts. src/components/cards/IconCard.tsx was NOT re-run
+  (components/cards already listed); manual pass only.
+  NOT codemodded, deliberately: all 17 src/pages/modules/utilities pages and
+  src/components/modules/widgets. On the utilities pages the documented class
+  names ARE the content, so the converter would rewrite the strings the page
+  exists to show; the widgets components were already half-converted, so a pass
+  would have double-shifted their spacing. Both rewritten by hand from the pug.
