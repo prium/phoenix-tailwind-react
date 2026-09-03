@@ -16,7 +16,7 @@ import GanttAddTaskModal from './GanttAddTaskModal';
 import GanttSearchBox from './GanttSearchBox';
 
 /** `+GanttChartActions` (`.gantt-header`) in mixins/gantt-chart/GanttChart.pug */
-const GanttChartActions = ({
+const GanttActions = ({
   setCurrentView
 }: {
   setCurrentView: Dispatch<SetStateAction<string>>;
@@ -156,4 +156,4 @@ const GanttChartActions = ({
   );
 };
 
-export default GanttChartActions;
+export default GanttActions;

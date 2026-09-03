@@ -1,6 +1,6 @@
 import { gantt } from 'dhtmlx-gantt';
 import { useEffect, useRef, useState } from 'react';
-import GanttChartActions from 'components/modules/gantt/GanttActions';
+import GanttActions from 'components/modules/gantt/GanttActions';
 import GanttOffcanvas from 'components/modules/gantt/GanttOffcanvas';
 import GanttDeleteLinkModal from 'components/modules/gantt/GanttDeleteLinkModal';
 import { ganttData as tasks } from 'data/ganttData';
@@ -182,7 +182,7 @@ const GanttChart = () => {
 
   return (
     <>
-      <GanttChartActions setCurrentView={setCurrentView} />
+      <GanttActions setCurrentView={setCurrentView} />
       <div className="gantt-app-container scrollbar" ref={wrapperRef}>
         <div className="size-full" id="gantt-app" ref={containerRef} />
       </div>
