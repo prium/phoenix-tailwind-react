@@ -71,11 +71,11 @@ const animationCode = `<>
   </Skeleton.Group>
 </>`;
 
-const PlaceholderExample = () => {
+const SkeletonExample = () => {
   return (
     <div>
       <DocPageHeader
-        title="Placeholders"
+        title="Skeleton"
         description="Use loading placeholders for your components or pages to indicate something may still be loading."
         link={{
           text: 'Skeleton on hb-react',
@@ -140,4 +140,4 @@ const PlaceholderExample = () => {
   );
 };
 
-export default PlaceholderExample;
+export default SkeletonExample;

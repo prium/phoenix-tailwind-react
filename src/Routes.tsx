@@ -8,20 +8,20 @@ import BadgeExample from 'pages/modules/components/BadgeExample';
 import BreadcrumbExample from 'pages/modules/components/BreadcrumbExample';
 import CardExample from 'pages/modules/components/CardExample';
 import HummingbirdCarousel from 'pages/modules/components/HummingbirdCarousel';
-import CollapseExample from 'pages/modules/components/CollapseExample';
+import CollapsibleExample from 'pages/modules/components/CollapsibleExample';
 import DropdownExample from 'pages/modules/components/DropdownExample';
 import ListGroupExample from 'pages/modules/components/ListGroupExample';
-import ModalExample from 'pages/modules/components/ModalExample';
-import OffcanvasExample from 'pages/modules/components/OffcanvasExample';
-import ProgressbarExample from 'pages/modules/components/ProgressbarExample';
-import PlaceholderExample from 'pages/modules/components/PlaceholderExample';
+import DialogExample from 'pages/modules/components/DialogExample';
+import DrawerExample from 'pages/modules/components/DrawerExample';
+import ProgressExample from 'pages/modules/components/ProgressExample';
+import SkeletonExample from 'pages/modules/components/SkeletonExample';
 import PaginationExample from 'pages/modules/components/PaginationExample';
 import PopoversExample from 'pages/modules/components/PopoversExample';
-import SpinnerExample from 'pages/modules/components/SpinnerExample';
+import LoaderExample from 'pages/modules/components/LoaderExample';
 import ToastsExample from 'pages/modules/components/ToastsExample';
 import TooltipExample from 'pages/modules/components/TooltipExample';
 import AlertsExample from 'pages/modules/components/AlertsExample';
-import FormControlExample from 'pages/modules/forms/basic/FormControlExample';
+import InputExample from 'pages/modules/forms/basic/InputExample';
 import InputGroupExample from 'pages/modules/forms/basic/InputGroupExample';
 import SelectExample from 'pages/modules/components/SelectExample';
 import ChecksExample from 'pages/modules/components/ChecksExample';
@@ -867,8 +867,8 @@ const Routes: RouteObject[] = [
                     element: <SwiperCarousel />
                   },
                   {
-                    path: 'collapse',
-                    element: <CollapseExample />
+                    path: 'collapsible',
+                    element: <CollapsibleExample />
                   },
                   {
                     path: 'dropdown',
@@ -887,20 +887,20 @@ const Routes: RouteObject[] = [
                     element: <DraggableExample />
                   },
                   {
-                    path: 'modal',
-                    element: <ModalExample />
+                    path: 'dialog',
+                    element: <DialogExample />
                   },
                   {
-                    path: 'offcanvas',
-                    element: <OffcanvasExample />
+                    path: 'drawer',
+                    element: <DrawerExample />
                   },
                   {
-                    path: 'progress-bar',
-                    element: <ProgressbarExample />
+                    path: 'progress',
+                    element: <ProgressExample />
                   },
                   {
-                    path: 'placeholder',
-                    element: <PlaceholderExample />
+                    path: 'skeleton',
+                    element: <SkeletonExample />
                   },
                   {
                     path: 'pagination',
@@ -911,8 +911,8 @@ const Routes: RouteObject[] = [
                     element: <PopoversExample />
                   },
                   {
-                    path: 'spinners',
-                    element: <SpinnerExample />
+                    path: 'loader',
+                    element: <LoaderExample />
                   },
                   {
                     path: 'toast',
@@ -956,8 +956,8 @@ const Routes: RouteObject[] = [
                 path: 'forms',
                 children: [
                   {
-                    path: 'form-control',
-                    element: <FormControlExample />
+                    path: 'input',
+                    element: <InputExample />
                   },
                   {
                     path: 'input-group',

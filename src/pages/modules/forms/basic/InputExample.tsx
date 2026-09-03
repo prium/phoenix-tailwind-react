@@ -106,11 +106,11 @@ const datalistCode = `
 </Field>
 `;
 
-const FormControlExample = () => {
+const InputExample = () => {
   return (
     <div>
       <DocPageHeader
-        title="Form Control"
+        title="Input"
         description="Give textual form controls like Input and Textarea an upgrade with custom styles, sizing, focus states, and more."
         link={{
           text: 'Input on hb-react',
@@ -205,4 +205,4 @@ const FormControlExample = () => {
   );
 };
 
-export default FormControlExample;
+export default InputExample;

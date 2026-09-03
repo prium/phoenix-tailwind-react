@@ -135,7 +135,7 @@ const staticBackdropCode = `
 </Drawer>
 `;
 
-const OffcanvasExample = () => {
+const DrawerExample = () => {
   return (
     <div>
       <DocPageHeader
@@ -218,4 +218,4 @@ const OffcanvasExample = () => {
   );
 };
 
-export default OffcanvasExample;
+export default DrawerExample;

@@ -84,7 +84,7 @@ const stackedCode = `
   </Progress.Stacked>
 `;
 
-const ProgressbarExample = () => {
+const ProgressExample = () => {
   return (
     <div>
       <DocPageHeader
@@ -178,4 +178,4 @@ const ProgressbarExample = () => {
   );
 };
 
-export default ProgressbarExample;
+export default ProgressExample;

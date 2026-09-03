@@ -84,7 +84,7 @@ function MultipleTargets() {
 }
 `;
 
-const CollapseExample = () => {
+const CollapsibleExample = () => {
   return (
     <div>
       <DocPageHeader
@@ -134,4 +134,4 @@ const CollapseExample = () => {
   );
 };
 
-export default CollapseExample;
+export default CollapsibleExample;

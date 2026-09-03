@@ -67,11 +67,11 @@ const buttonsCode = `
 </div>
 `;
 
-const SpinnerExample = () => {
+const LoaderExample = () => {
   return (
     <div>
       <DocPageHeader
-        title="Loaders"
+        title="Loader"
         description="Indicate the loading state of a component or page with Hummingbird React loaders, built entirely with CSS and no animation library."
         link={{
           text: 'Loader on hb-react',
@@ -144,4 +144,4 @@ const SpinnerExample = () => {
   );
 };
 
-export default SpinnerExample;
+export default LoaderExample;

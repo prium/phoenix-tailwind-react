@@ -167,7 +167,7 @@ const fullscreenCode = `
 </div>
 `;
 
-const ModalExample = () => {
+const DialogExample = () => {
   return (
     <div>
       <DocPageHeader
@@ -249,4 +249,4 @@ const ModalExample = () => {
   );
 };
 
-export default ModalExample;
+export default DialogExample;
