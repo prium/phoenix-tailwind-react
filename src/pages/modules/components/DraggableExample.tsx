@@ -2,7 +2,7 @@ import PhoenixDocCard from 'components/base/PhoenixDocCard';
 import DocPageHeader from 'components/docs/DocPageHeader';
 import DocPagesLayout from 'layouts/DocPagesLayout';
 import { useState, PropsWithChildren } from 'react';
-import { Card, Col, Row } from 'react-bootstrap';
+import { Card, Col, Row } from '@hummingbirdui/react';
 import { Link } from 'react-router';
 import {
   DndContext,
@@ -88,6 +88,7 @@ const data: ColumnDataType[] = [
 
 const exampleCode = `
 import { useState, PropsWithChildren } from 'react';
+import { Card, Col, Row } from '@hummingbirdui/react';
 import {
   DndContext,
   closestCorners,
