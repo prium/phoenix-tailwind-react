@@ -9,7 +9,7 @@ import PaymentSummary from 'components/modules/travel-agency/flight/booking/Paym
 import TravelerDetails from 'components/modules/travel-agency/flight/booking/TravelerDetails';
 import ResizableNavbar from 'components/navbars/travel-agency/ResizableNavbar';
 import { flightNavItems } from 'data/travel-agency/resizableNav';
-import FlightBottomBar from './BottomBar';
+import FlightBottomBar from './FlightBottomBar';
 
 /** apps/travel-agency/flight/booking.pug */
 const FlightBooking = () => {

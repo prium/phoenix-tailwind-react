@@ -2,9 +2,9 @@ import PageBreadcrumb from 'components/common/PageBreadcrumb';
 import { defaultBreadcrumbItems } from 'data/commonData';
 import FlightBookingWizard from '../payment/FlightBookingWizard';
 import CountdownDisplay from '../payment/CountdownDisplay';
-import FlightPaymentInfo from './PaymentInfo';
+import FlightPaymentInfo from './FlightPaymentInfo';
 import FlightPaymentForm from 'components/modules/travel-agency/flight/payment/FlightPaymentForm';
-import FlightBottomBar from './BottomBar';
+import FlightBottomBar from './FlightBottomBar';
 import ResizableNavbar from 'components/navbars/travel-agency/ResizableNavbar';
 import { flightNavItems } from 'data/travel-agency/resizableNav';
 
