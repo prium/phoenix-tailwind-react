@@ -1,106 +1,85 @@
+import FeatherIcon from 'feather-icons-react';
 import PhoenixDocCard from 'components/base/PhoenixDocCard';
 import DocPageHeader from 'components/docs/DocPageHeader';
 import DocPagesLayout from 'layouts/DocPagesLayout';
 
 const exampleCode = `
 <>
-  <FloatingLabel
-    controlId="floatingInput"
-    label="Email address"
-    className="mb-3"
-  >
-    <Form.Control type="email" placeholder="name@example.com" />
+  <FloatingLabel htmlFor="floatingInput" label="Email address" className="mb-4">
+    <Input id="floatingInput" type="email" size="lg" />
   </FloatingLabel>
-  <FloatingLabel controlId="floatingPassword" label="Password">
-    <Form.Control type="password" placeholder="Password" />
+  <FloatingLabel htmlFor="floatingPassword" label="Password">
+    <Input id="floatingPassword" type="password" />
   </FloatingLabel>
 </>
 `;
+
 const textAreaCode = `
-<>
-  <FloatingLabel controlId="floatingTextarea" label="Comments" className="mb-3">
-    <Form.Control as="textarea" placeholder="Leave a comment here" />
-  </FloatingLabel>
-  <FloatingLabel controlId="floatingTextarea2" label="Comments">
-    <Form.Control
-      as="textarea"
-      placeholder="Leave a comment here"
-      style={{ height: '100px' }}
-    />
-  </FloatingLabel>
-</>
+<FloatingLabel htmlFor="floatingTextarea" label="Comments">
+  <Textarea id="floatingTextarea" className="h-25!" />
+</FloatingLabel>
 `;
+
 const selectsCode = `
-<FloatingLabel controlId="floatingSelect" label="Works with selects">
-  <Form.Select aria-label="Floating label select example">
-    <option>Open this select menu</option>
+<FloatingLabel htmlFor="floatingSelect" label="Works with selects">
+  <Select id="floatingSelect" defaultValue="">
+    <option value="">Open this select menu</option>
     <option value="1">One</option>
     <option value="2">Two</option>
     <option value="3">Three</option>
-  </Form.Select>
+  </Select>
 </FloatingLabel>
 `;
+
 const layoutCode = `
 <Row className="g-2">
   <Col md>
-    <FloatingLabel controlId="floatingInputGrid" label="Email address">
-      <Form.Control type="email" placeholder="name@example.com" />
+    <FloatingLabel htmlFor="floatingInputGrid" label="Email address">
+      <Input id="floatingInputGrid" type="email" />
     </FloatingLabel>
   </Col>
   <Col md>
-    <FloatingLabel controlId="floatingSelectGrid" label="Works with selects">
-      <Form.Select aria-label="Floating label select example">
-        <option>Open this select menu</option>
+    <FloatingLabel htmlFor="floatingSelectGrid" label="Works with selects">
+      <Select id="floatingSelectGrid" defaultValue="">
+        <option value="">Open this select menu</option>
         <option value="1">One</option>
         <option value="2">Two</option>
         <option value="3">Three</option>
-      </Form.Select>
+      </Select>
     </FloatingLabel>
   </Col>
 </Row>
 `;
 
-const customizingRenderCode = `
-<>
-  <Form.Floating className="mb-3">
-    <Form.Control
-      id="floatingInputCustom"
-      type="email"
-      placeholder="name@example.com"
-    />
-    <label htmlFor="floatingInputCustom">Email address</label>
-  </Form.Floating>
-  <Form.Floating>
-    <Form.Control
-      id="floatingPasswordCustom"
-      type="password"
-      placeholder="Password"
-    />
-    <label htmlFor="floatingPasswordCustom">Password</label>
-  </Form.Floating>
-</>
+const iconCode = `
+<InputIcon>
+  <InputIcon.Start>
+    <FeatherIcon icon="mail" size={16} />
+  </InputIcon.Start>
+  <FloatingLabel htmlFor="floatingInputIcon" label="Email address">
+    <Input id="floatingInputIcon" type="email" />
+  </FloatingLabel>
+</InputIcon>
 `;
 
 const validationCode = `
 <>
-  <Form.Floating className="mb-3">
-    <Form.Control
-      id="floatingInputInvalid"
-      type="email"
-      defaultValue="name"
-      isInvalid
-    />
-    <label htmlFor="floatingInputCustom">Email address</label>
-  </Form.Floating>
-  <Form.Floating>
-    <Form.Control
+  <FloatingLabel htmlFor="floatingInputValid" label="Valid input" className="mb-4">
+    <Input
       id="floatingInputValid"
       type="email"
-      defaultValue="name@example.com"
-      isValid
+      state="valid"
+      defaultValue="test@example.com"
     />
-    <label htmlFor="floatingPasswordCustom">Email address</label>
-  </Form.Floating>
+  </FloatingLabel>
+  <FloatingLabel htmlFor="floatingInputInvalid" label="Invalid input">
+    <Input
+      id="floatingInputInvalid"
+      type="email"
+      state="invalid"
+      defaultValue="test"
+    />
+  </FloatingLabel>
 </>
 `;
 
@@ -109,12 +88,10 @@ const FloatingLabelExample = () => {
     <div>
       <DocPageHeader
         title="Floating labels"
-        description="Create beautifully simple form labels that float over your input fields."
+        description="A label that floats over the control once the field is focused or filled."
         link={{
-          text: 'Floating labels on react-bootstrap',
-          url: `${
-            import.meta.env.VITE_RB_URL_PREFIX || ''
-          }/forms/floating-labels/`
+          text: 'Floating Label on hb-react',
+          url: 'https://react.hbui.dev/docs/forms/floating-label'
         }}
       />
 
@@ -122,12 +99,12 @@ const FloatingLabelExample = () => {
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Example">
             <p className="mb-0">
-              Wrap a <code>&lt;Form.Control&gt;</code> element in{' '}
-              <code>&lt;FloatingLabel&gt;</code> to enable floating labels with
-              Bootstrap’s textual form fields. A <code>placeholder</code> is
-              required on each <code>&lt;Form.Control&gt;</code> as our method
-              of CSS-only floating labels uses the{' '}
-              <code>:placeholder-shown</code> pseudo-element.
+              Wrap a control in <code>FloatingLabel</code> and give it a{' '}
+              <code>label</code> plus an <code>htmlFor</code> matching the
+              control’s <code>id</code>. The floating effect keys off{' '}
+              <code>:placeholder-shown</code>, so <code>FloatingLabel</code>{' '}
+              fills in a blank <code>placeholder</code> for you when the child
+              has none.
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={exampleCode} />
@@ -136,11 +113,10 @@ const FloatingLabelExample = () => {
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Textareas">
             <p className="mb-0">
-              By default, <code>&lt;textarea&gt;</code>s will be the same height
-              as <code>&lt;input&gt;</code>s. To set a custom height on your{' '}
-              <code>&lt;textarea&gt;</code>, do not use the <code>rows</code>{' '}
-              attribute. Instead, set an explicit <code>height</code> (either
-              inline or via custom CSS).
+              A <code>Textarea</code> is the same height as an{' '}
+              <code>Input</code> by default. To make it taller do not use the{' '}
+              <code>rows</code> attribute — set an explicit height instead, for
+              example <code>className="h-25"</code>.
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={textAreaCode} />
@@ -149,11 +125,9 @@ const FloatingLabelExample = () => {
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Selects">
             <p className="mb-0">
-              Other than <code>&lt;Form.Control&gt;</code>, floating labels are
-              only available on <code>&lt;Form.Select&gt;</code>s. They work in
-              the same way, but unlike <code>&lt;input&gt;</code>s, they’ll
-              always show the <code>&lt;label&gt;</code>
-              in its floated state.
+              <code>FloatingLabel</code> also wraps a <code>Select</code>. It
+              works the same way, except that a select always shows its label in
+              the floated state.
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={selectsCode} />
@@ -162,31 +136,29 @@ const FloatingLabelExample = () => {
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header
             title="Layout"
-            description="When working with the Bootstrap grid system, be sure to place form elements within column classes."
+            description="Floating labels stretch to their container, so place them in Col elements when you lay a form out on the grid."
           />
           <PhoenixDocCard.Body code={layoutCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header
-            title="Customizing rendering"
-            description="When working with the Bootstrap grid system, be sure to place form elements within column classes."
-          >
+          <PhoenixDocCard.Header title="Icon example">
             <p className="mb-0">
-              If you need greater control over the rendering, use the{' '}
-              <code>&lt;FormFloating&gt;</code> component to wrap your input and
-              label. Also note that the <code>&lt;Form.Control&gt;</code> must
-              come first so we can utilize a sibling selector (e.g., ~).
+              Put the <code>FloatingLabel</code> inside an{' '}
+              <code>InputIcon</code> to add a leading icon; the{' '}
+              <code>InputIcon.Start</code> must come before it so the label
+              offsets around the icon.
             </p>
           </PhoenixDocCard.Header>
-          <PhoenixDocCard.Body code={customizingRenderCode} />
+          <PhoenixDocCard.Body code={iconCode} scope={{ FeatherIcon }} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Validation">
             <p className="mb-0">
-              Use <code>isValid</code> or <code>isInvalid</code> props for
-              validation.
+              Use the <code>state</code> prop on the wrapped control —{' '}
+              <code>valid</code> or <code>invalid</code> — to colour the border
+              and the floating label.
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={validationCode} />
