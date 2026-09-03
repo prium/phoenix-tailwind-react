@@ -390,8 +390,12 @@
   --focus-ring-box-shadow: 0 0 0 0.25rem
     --alpha(var(--form-check-input-checked-bg) / 25%);
 
+  /* hummingbird core rings the box at 50% alpha on :focus-visible, on top of
+     this 25% shadow — a keyboard focus stacked both and read as a heavy halo.
+     The original phoenix has a single `0 0 0 .25rem rgba(56,116,255,.25)`. */
   @apply me-(--form-check-input-margin-right)
-  focus:shadow-(--focus-ring-box-shadow);
+  focus:shadow-(--focus-ring-box-shadow)
+  focus-visible:ring-0;
 
   &:disabled + .form-check-label {
     @apply opacity-50;

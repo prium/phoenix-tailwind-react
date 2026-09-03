@@ -23,6 +23,13 @@ too, but not yet committed there): components/avatar.css
    per-size `.avatar-{s..5xl} .avatar-emoji` steps did.
 Drop this note once phoenix-tailwind commits the fix.
 
+Fifth working-tree patch upstream: components/forms.css adds
+`focus-visible:ring-0` to `.form-check-input`. Hummingbird core rings the box at
+`ring-4` / 50% alpha on `:focus-visible` while the phoenix skin adds its own
+`0 0 0 .25rem` / 25% shadow, so a keyboard-focused checkbox or radio stacked
+both and read as a heavy halo. The original phoenix has a single
+`0 0 0 .25rem rgba(56,116,255,.25)`.
+
 Also patched in the phoenix-tailwind working tree (pug, not css):
 dashboard/travel-agency.pug FinancialActivities margins are now
 `mt-8 xl:mt-0 2xl:mt-8 mb-8` — top matches the original Phoenix (mt-5 = 2rem)
