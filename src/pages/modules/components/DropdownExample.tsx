@@ -1,330 +1,304 @@
 import PhoenixDocCard from 'components/base/PhoenixDocCard';
 import DocPageHeader from 'components/docs/DocPageHeader';
 import DocPagesLayout from 'layouts/DocPagesLayout';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row } from '@hummingbirdui/react';
 
 const exampleCode = `
 <Dropdown>
-    <Dropdown.Toggle variant="phoenix-primary">
+  <Dropdown.Trigger asChild>
+    <Button color="primary" className="dropdown-toggle">
       Dropdown
-    </Dropdown.Toggle>
-    <Dropdown.Menu className='py-2'>
-        <Dropdown.Item href="#/action-1">
-          Action
-        </Dropdown.Item>
-        <Dropdown.Item href="#/action-2">
-          Another action
-        </Dropdown.Item>
-        <Dropdown.Item href="#/action-3">
-          Something else
-        </Dropdown.Item>
-        <Dropdown.Divider />
-        <Dropdown.Item href="#/action-4">
-          Separated link
-        </Dropdown.Item>
-    </Dropdown.Menu>
+    </Button>
+  </Dropdown.Trigger>
+  <Dropdown.Content className="min-w-48">
+    <Dropdown.Item>Action</Dropdown.Item>
+    <Dropdown.Item>Another action</Dropdown.Item>
+    <Dropdown.Item>Something else</Dropdown.Item>
+    <Dropdown.Separator />
+    <Dropdown.Item>Separated link</Dropdown.Item>
+  </Dropdown.Content>
 </Dropdown>
 `;
-const dropdownBtnCode = `
-<DropdownButton id="dropdown-basic-button" title="Dropdown button" variant='phoenix-primary'>
-    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-    <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-    <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-    <Dropdown.Divider />
-    <Dropdown.Item href="#/action-4">Separated link</Dropdown.Item>
-</DropdownButton>
+
+const dropdownLinkCode = `
+<Dropdown>
+  <Dropdown.Trigger asChild>
+    <Button variant="outline" color="primary" className="dropdown-toggle">
+      Dropdown link
+    </Button>
+  </Dropdown.Trigger>
+  <Dropdown.Content className="min-w-48">
+    <Dropdown.Item asChild>
+      <a href="#!">Action</a>
+    </Dropdown.Item>
+    <Dropdown.Item asChild>
+      <a href="#!">Another action</a>
+    </Dropdown.Item>
+    <Dropdown.Item asChild>
+      <a href="#!">Something else</a>
+    </Dropdown.Item>
+  </Dropdown.Content>
+</Dropdown>
 `;
 
 const btnVariantCode = `
-<>
-  {['Primary', 'Secondary', 'Success', 'Info', 'Warning', 'Danger'].map(
-    (variant) => (
-      <DropdownButton
-        as={ButtonGroup}
-        key={variant}
-        id={'dropdown-variants-' + variant}
-        variant={variant.toLowerCase()}
-        title={variant}
-        className='me-2 mb-2'
-      >
-        <Dropdown.Item eventKey="1">Action</Dropdown.Item>
-        <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
-        <Dropdown.Item eventKey="3" active>
-          Active Item
-        </Dropdown.Item>
-        <Dropdown.Divider />
-        <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
-      </DropdownButton>
-    ),
+<div className="flex flex-wrap gap-2">
+  {['primary', 'secondary', 'success', 'info', 'warning', 'danger'].map(
+    (color) => (
+      <Dropdown key={color}>
+        <Dropdown.Trigger asChild>
+          <Button color={color} className="capitalize dropdown-toggle">
+            {color}
+          </Button>
+        </Dropdown.Trigger>
+        <Dropdown.Content className="min-w-48">
+          <Dropdown.Item>Action</Dropdown.Item>
+          <Dropdown.Item>Another action</Dropdown.Item>
+          <Dropdown.Item className="active">Active item</Dropdown.Item>
+          <Dropdown.Separator />
+          <Dropdown.Item>Separated link</Dropdown.Item>
+        </Dropdown.Content>
+      </Dropdown>
+    )
   )}
-</>
+</div>
 `;
 
 const splitBtnCode = `
-<>
-  {['Primary', 'Secondary', 'Success', 'Info', 'Warning', 'Danger'].map(
-    (variant) => (
-      <SplitButton
-        as={ButtonGroup}
-        key={variant}
-        id={'dropdown-variants-' + variant}
-        variant={variant.toLowerCase()}
-        title={variant}
-        className='me-2 mb-2'
-      >
-        <Dropdown.Item eventKey="1">Action</Dropdown.Item>
-        <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
-        <Dropdown.Item eventKey="3" active>
-          Active Item
-        </Dropdown.Item>
-        <Dropdown.Divider />
-        <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
-      </SplitButton>
-    ),
+<div className="flex flex-wrap gap-2">
+  {['primary', 'secondary', 'success', 'info', 'warning', 'danger'].map(
+    (color) => (
+      <ButtonGroup key={color}>
+        <Button color={color} className="capitalize">
+          {color}
+        </Button>
+        <Dropdown>
+          <Dropdown.Trigger asChild>
+            <Button color={color} className="dropdown-toggle px-3">
+              <span className="sr-only">Toggle dropdown</span>
+            </Button>
+          </Dropdown.Trigger>
+          <Dropdown.Content align="end" className="min-w-48">
+            <Dropdown.Item>Action</Dropdown.Item>
+            <Dropdown.Item>Another action</Dropdown.Item>
+            <Dropdown.Item className="active">Active item</Dropdown.Item>
+            <Dropdown.Separator />
+            <Dropdown.Item>Separated link</Dropdown.Item>
+          </Dropdown.Content>
+        </Dropdown>
+      </ButtonGroup>
+    )
   )}
-</>
+</div>
 `;
 
 const sizingCode = `
-<>
-  <div className="mb-2">
-    <DropdownButton
-      as={ButtonGroup}
-      size='lg'
-      title="Large Button"
-      className='me-2 mb-1'
-    >
-      <Dropdown.Item eventKey="1">Action</Dropdown.Item>
-      <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
-      <Dropdown.Item eventKey="3">Something else here</Dropdown.Item>
-      <Dropdown.Divider />
-      <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
-    </DropdownButton>
-
-    <DropdownButton
-      as={ButtonGroup}
-      title="Regular Button"
-      className='me-2 mb-1'
-    >
-      <Dropdown.Item eventKey="1">Action</Dropdown.Item>
-      <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
-      <Dropdown.Item eventKey="3">Something else here</Dropdown.Item>
-      <Dropdown.Divider />
-      <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
-    </DropdownButton>
-
-    <DropdownButton
-      as={ButtonGroup}
-      size='sm'
-      title="Small Button"
-      className='mb-1'
-    >
-      <Dropdown.Item eventKey="1">Action</Dropdown.Item>
-      <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
-      <Dropdown.Item eventKey="3">Something else here</Dropdown.Item>
-      <Dropdown.Divider />
-      <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
-    </DropdownButton>
-  </div>
-  <hr/>
-  <div className="mb-2">
-    <SplitButton
-      as={ButtonGroup}
-      size='lg'
-      title="Large Split Button"
-      className='me-2 mb-1'
-    >
-      <Dropdown.Item eventKey="1">Action</Dropdown.Item>
-      <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
-      <Dropdown.Item eventKey="3">Something else here</Dropdown.Item>
-      <Dropdown.Divider />
-      <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
-    </SplitButton>
-
-    <SplitButton
-      as={ButtonGroup}
-      title="Regular Split Button"
-      className='me-2 mb-1'
-    >
-      <Dropdown.Item eventKey="1">Action</Dropdown.Item>
-      <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
-      <Dropdown.Item eventKey="3">Something else here</Dropdown.Item>
-      <Dropdown.Divider />
-      <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
-    </SplitButton>
-
-    <SplitButton
-      as={ButtonGroup}
-      size='sm'
-      title="Small Split Button"
-      className='mb-1'
-    >
-      <Dropdown.Item eventKey="1">Action</Dropdown.Item>
-      <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
-      <Dropdown.Item eventKey="3">Something else here</Dropdown.Item>
-      <Dropdown.Divider />
-      <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
-    </SplitButton>
-  </div>
-</>
+<div className="flex flex-wrap items-center gap-2">
+  {['lg', 'md', 'sm'].map((size) => (
+    <Dropdown key={size}>
+      <Dropdown.Trigger asChild>
+        <Button size={size} color="secondary" className="dropdown-toggle">
+          {size.toUpperCase()} button
+        </Button>
+      </Dropdown.Trigger>
+      <Dropdown.Content className="min-w-48">
+        <Dropdown.Item>Action</Dropdown.Item>
+        <Dropdown.Item>Another action</Dropdown.Item>
+        <Dropdown.Item>Something else here</Dropdown.Item>
+        <Dropdown.Separator />
+        <Dropdown.Item>Separated link</Dropdown.Item>
+      </Dropdown.Content>
+    </Dropdown>
+  ))}
+</div>
 `;
 
 const directionCode = `
-<>
-  <div className="mb-2">
-    {['up', 'down', 'start', 'end'].map((direction) => (
-      <DropdownButton
-        as={ButtonGroup}
-        key={direction}
-        drop={direction}
-        title={'Drop' + direction }
-        className='me-2 mb-1'
-      >
-        <Dropdown.Item eventKey="1">Action</Dropdown.Item>
-        <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
-        <Dropdown.Item eventKey="3">Something else here</Dropdown.Item>
-        <Dropdown.Divider />
-        <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
-      </DropdownButton>
-    ))}
-  </div>
-  <hr />
-  <div>
-    {['up', 'down', 'start', 'end'].map((direction) => (
-      <SplitButton
-        key={direction}
-        drop={direction}
-        title={'Drop' + direction }
-        className='me-2 mb-1'
-      >
-        <Dropdown.Item eventKey="1">Action</Dropdown.Item>
-        <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
-        <Dropdown.Item eventKey="3">Something else here</Dropdown.Item>
-        <Dropdown.Divider />
-        <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
-      </SplitButton>
-    ))}
-  </div>
-</>
+<div className="flex flex-wrap gap-2 py-16">
+  {['top', 'bottom', 'left', 'right'].map((side) => (
+    <Dropdown key={side}>
+      <Dropdown.Trigger asChild>
+        <Button variant="outline" color="secondary" className="capitalize">
+          Drop {side}
+        </Button>
+      </Dropdown.Trigger>
+      <Dropdown.Content side={side} className="min-w-48">
+        <Dropdown.Item>Action</Dropdown.Item>
+        <Dropdown.Item>Another action</Dropdown.Item>
+        <Dropdown.Item>Something else here</Dropdown.Item>
+        <Dropdown.Separator />
+        <Dropdown.Item>Separated link</Dropdown.Item>
+      </Dropdown.Content>
+    </Dropdown>
+  ))}
+</div>
 `;
 
 const dropdownItemsCode = `
-<DropdownButton id="dropdown-item-button" title="Dropdown button">
-  <Dropdown.ItemText>Dropdown item text</Dropdown.ItemText>
-  <Dropdown.Item as="button">Action</Dropdown.Item>
-  <Dropdown.Item as="button">Another action</Dropdown.Item>
-  <Dropdown.Item as="button">Something else</Dropdown.Item>
-</DropdownButton>
+<Dropdown>
+  <Dropdown.Trigger asChild>
+    <Button color="primary" className="dropdown-toggle">
+      Menu items
+    </Button>
+  </Dropdown.Trigger>
+  <Dropdown.Content className="min-w-56">
+    <Dropdown.ItemText>Dropdown item text</Dropdown.ItemText>
+    <Dropdown.Item asChild>
+      <a href="#!">A link item</a>
+    </Dropdown.Item>
+    <Dropdown.Item onSelect={() => alert('Action')}>A button item</Dropdown.Item>
+    <Dropdown.Item className="active">Active item</Dropdown.Item>
+    <Dropdown.Item disabled>Disabled item</Dropdown.Item>
+  </Dropdown.Content>
+</Dropdown>
 `;
 
 const menuAlignMentCode = `
-<DropdownButton
-  align="end"
-  title="Right-aligned menu"
-  id="dropdown-menu-align-right"
->
-  <Dropdown.Item eventKey="1">Action</Dropdown.Item>
-  <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
-  <Dropdown.Item eventKey="3">Something else here</Dropdown.Item>
-  <Dropdown.Divider />
-  <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
-</DropdownButton>
-`;
-
-const headerCode = `
-<DropdownButton id="dropdown-item-button" title="Dropdown button">
-  <Dropdown.Header>Dropdown Header</Dropdown.Header>
-  <Dropdown.Item as="button">Action</Dropdown.Item>
-  <Dropdown.Item as="button">Another action</Dropdown.Item>
-  <Dropdown.Item as="button">Something else</Dropdown.Item>
-</DropdownButton>
-`;
-const dividerCode = `
-<DropdownButton id="dropdown-item-button" title="Dropdown button">
-  <Dropdown.Item as="button">Action</Dropdown.Item>
-  <Dropdown.Item as="button">Another action</Dropdown.Item>
-  <Dropdown.Divider />
-  <Dropdown.Item as="button">Something else</Dropdown.Item>
-</DropdownButton>
+<div className="flex flex-wrap gap-2">
+  {['start', 'center', 'end'].map((align) => (
+    <Dropdown key={align}>
+      <Dropdown.Trigger asChild>
+        <Button variant="outline" color="secondary" className="dropdown-toggle">
+          Aligned to {align}
+        </Button>
+      </Dropdown.Trigger>
+      <Dropdown.Content align={align} className="min-w-64">
+        <Dropdown.Item>Action</Dropdown.Item>
+        <Dropdown.Item>Another action</Dropdown.Item>
+        <Dropdown.Item>Something else here</Dropdown.Item>
+        <Dropdown.Separator />
+        <Dropdown.Item>Separated link</Dropdown.Item>
+      </Dropdown.Content>
+    </Dropdown>
+  ))}
+</div>
 `;
 
 const responsiveAlignmentCode = `
-<>
-  <div>
-    <DropdownButton
-      as={ButtonGroup}
-      align={{ lg: 'end' }}
-      title="Left-aligned but right aligned when large screen"
-      id="dropdown-menu-align-responsive-1"
-    >
-      <Dropdown.Item eventKey="1">Action 1</Dropdown.Item>
-      <Dropdown.Item eventKey="2">Action 2</Dropdown.Item>
-    </DropdownButton>
-  </div>
-  <div className="mt-2">
-    <SplitButton
-      align={{ lg: 'start' }}
-      title="Right-aligned but left aligned when large screen"
-      id="dropdown-menu-align-responsive-2"
-    >
-      <Dropdown.Item eventKey="1">Action 1</Dropdown.Item>
-      <Dropdown.Item eventKey="2">Action 2</Dropdown.Item>
-    </SplitButton>
-  </div>
-</>
+function ResponsiveAlignment() {
+  const [align, setAlign] = useState('start');
+
+  useEffect(() => {
+    const query = window.matchMedia('(min-width: 992px)');
+    const sync = () => setAlign(query.matches ? 'end' : 'start');
+    sync();
+    query.addEventListener('change', sync);
+    return () => query.removeEventListener('change', sync);
+  }, []);
+
+  return (
+    <Dropdown>
+      <Dropdown.Trigger asChild>
+        <Button color="primary" className="dropdown-toggle">
+          Start aligned, end aligned from lg up
+        </Button>
+      </Dropdown.Trigger>
+      <Dropdown.Content align={align} className="min-w-48">
+        <Dropdown.Item>Action 1</Dropdown.Item>
+        <Dropdown.Item>Action 2</Dropdown.Item>
+      </Dropdown.Content>
+    </Dropdown>
+  );
+}
 `;
 
 const autoCloseCode = `
-<>
-  <Dropdown className="d-inline mx-2">
-    <Dropdown.Toggle id="dropdown-autoclose-true">
-      Default Dropdown
-    </Dropdown.Toggle>
+function AutoClose() {
+  const [open, setOpen] = useState(false);
 
-    <Dropdown.Menu>
-      <Dropdown.Item href="#">Menu Item</Dropdown.Item>
-      <Dropdown.Item href="#">Menu Item</Dropdown.Item>
-      <Dropdown.Item href="#">Menu Item</Dropdown.Item>
-    </Dropdown.Menu>
-  </Dropdown>
+  return (
+    <div className="flex flex-wrap gap-2">
+      <Dropdown>
+        <Dropdown.Trigger asChild>
+          <Button variant="outline" color="secondary" className="dropdown-toggle">
+            Default
+          </Button>
+        </Dropdown.Trigger>
+        <Dropdown.Content className="min-w-48">
+          <Dropdown.Item>Menu item</Dropdown.Item>
+          <Dropdown.Item>Menu item</Dropdown.Item>
+          <Dropdown.Item>Menu item</Dropdown.Item>
+        </Dropdown.Content>
+      </Dropdown>
 
-  <Dropdown className="d-inline mx-2" autoClose="inside">
-    <Dropdown.Toggle id="dropdown-autoclose-inside">
-      Clickable Outside
-    </Dropdown.Toggle>
+      <Dropdown>
+        <Dropdown.Trigger asChild>
+          <Button variant="outline" color="secondary" className="dropdown-toggle">
+            Stays open on select
+          </Button>
+        </Dropdown.Trigger>
+        <Dropdown.Content className="min-w-48">
+          {[1, 2, 3].map((item) => (
+            <Dropdown.Item key={item} onSelect={(event) => event.preventDefault()}>
+              Menu item
+            </Dropdown.Item>
+          ))}
+        </Dropdown.Content>
+      </Dropdown>
 
-    <Dropdown.Menu>
-      <Dropdown.Item href="#">Menu Item</Dropdown.Item>
-      <Dropdown.Item href="#">Menu Item</Dropdown.Item>
-      <Dropdown.Item href="#">Menu Item</Dropdown.Item>
-    </Dropdown.Menu>
-  </Dropdown>
+      <Dropdown open={open} onOpenChange={setOpen}>
+        <Dropdown.Trigger asChild>
+          <Button variant="outline" color="secondary" className="dropdown-toggle">
+            Manual close
+          </Button>
+        </Dropdown.Trigger>
+        <Dropdown.Content
+          className="min-w-48"
+          onInteractOutside={(event) => event.preventDefault()}
+          onEscapeKeyDown={(event) => event.preventDefault()}
+        >
+          <Dropdown.Item onSelect={(event) => event.preventDefault()}>
+            Menu item
+          </Dropdown.Item>
+          <Dropdown.Item onSelect={(event) => event.preventDefault()}>
+            Menu item
+          </Dropdown.Item>
+          <Dropdown.Separator />
+          <Dropdown.Item onSelect={() => setOpen(false)}>Close menu</Dropdown.Item>
+        </Dropdown.Content>
+      </Dropdown>
+    </div>
+  );
+}
+`;
 
-  <Dropdown className="d-inline mx-2" autoClose="outside">
-    <Dropdown.Toggle id="dropdown-autoclose-outside">
-      Clickable Inside
-    </Dropdown.Toggle>
+const headerCode = `
+<Dropdown>
+  <Dropdown.Trigger asChild>
+    <Button color="primary" className="dropdown-toggle">
+      Grouped menu
+    </Button>
+  </Dropdown.Trigger>
+  <Dropdown.Content className="min-w-56">
+    <Dropdown.Group>
+      <Dropdown.Label>Documents</Dropdown.Label>
+      <Dropdown.Item>New file</Dropdown.Item>
+      <Dropdown.Item>Import</Dropdown.Item>
+    </Dropdown.Group>
+    <Dropdown.Separator />
+    <Dropdown.Group>
+      <Dropdown.Label>Team</Dropdown.Label>
+      <Dropdown.Item>Invite member</Dropdown.Item>
+      <Dropdown.Item>Manage roles</Dropdown.Item>
+    </Dropdown.Group>
+  </Dropdown.Content>
+</Dropdown>
+`;
 
-    <Dropdown.Menu>
-      <Dropdown.Item href="#">Menu Item</Dropdown.Item>
-      <Dropdown.Item href="#">Menu Item</Dropdown.Item>
-      <Dropdown.Item href="#">Menu Item</Dropdown.Item>
-    </Dropdown.Menu>
-  </Dropdown>
-
-  <Dropdown className="d-inline mx-2" autoClose={false}>
-    <Dropdown.Toggle id="dropdown-autoclose-false">
-      Manual Close
-    </Dropdown.Toggle>
-
-    <Dropdown.Menu>
-      <Dropdown.Item href="#">Menu Item</Dropdown.Item>
-      <Dropdown.Item href="#">Menu Item</Dropdown.Item>
-      <Dropdown.Item href="#">Menu Item</Dropdown.Item>
-    </Dropdown.Menu>
-  </Dropdown>
-</>
-
+const dividerCode = `
+<Dropdown>
+  <Dropdown.Trigger asChild>
+    <Button color="primary" className="dropdown-toggle">
+      Divided menu
+    </Button>
+  </Dropdown.Trigger>
+  <Dropdown.Content className="min-w-48">
+    <Dropdown.Item>Action</Dropdown.Item>
+    <Dropdown.Item>Another action</Dropdown.Item>
+    <Dropdown.Separator />
+    <Dropdown.Item>Something else</Dropdown.Item>
+  </Dropdown.Content>
+</Dropdown>
 `;
 
 const DropdownExample = () => {
@@ -332,12 +306,10 @@ const DropdownExample = () => {
     <div className="mb-9">
       <DocPageHeader
         title="Dropdowns"
-        description="Toggle contextual overlays for displaying lists of links and more with the Bootstrap dropdown plugin"
+        description="A toggleable menu of actions or links, anchored to a trigger and positioned by Radix UI."
         link={{
-          text: 'Dropdowns on react-bootstrap',
-          url: `${
-            import.meta.env.VITE_RB_URL_PREFIX || ''
-          }/components/dropdowns/`
+          text: 'Dropdown on hb-react',
+          url: 'https://react.hbui.dev/docs/components/dropdown'
         }}
       />
 
@@ -345,50 +317,85 @@ const DropdownExample = () => {
         <Row className="g-3">
           <Col md>
             <PhoenixDocCard className="mb-4">
-              <PhoenixDocCard.Header title="Example" />
+              <PhoenixDocCard.Header title="Example">
+                <p className="mb-0">
+                  A dropdown is composed of a <code>Dropdown</code> root, a{' '}
+                  <code>Dropdown.Trigger</code> and a{' '}
+                  <code>Dropdown.Content</code>. Use{' '}
+                  <code>Dropdown.Trigger asChild</code> so your own button keeps
+                  its markup.
+                </p>
+              </PhoenixDocCard.Header>
               <PhoenixDocCard.Body code={exampleCode} />
             </PhoenixDocCard>
           </Col>
           <Col md>
             <PhoenixDocCard className="mb-4">
-              <PhoenixDocCard.Header title="Dropwdown Button" />
-              <PhoenixDocCard.Body code={dropdownBtnCode} />
+              <PhoenixDocCard.Header title="Dropdown link">
+                <p className="mb-0">
+                  <code>Dropdown.Item</code> renders a <code>div</code> with the{' '}
+                  <code>dropdown-item</code> class. Add <code>asChild</code> to
+                  render it as an <code>&lt;a&gt;</code> or a router{' '}
+                  <code>&lt;Link&gt;</code> instead.
+                </p>
+              </PhoenixDocCard.Header>
+              <PhoenixDocCard.Body code={dropdownLinkCode} />
             </PhoenixDocCard>
           </Col>
         </Row>
 
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header title="Button Variant" />
+          <PhoenixDocCard.Header
+            title="Button variant"
+            description="The trigger is an ordinary Button, so every colour and style the button supports is available to a dropdown."
+          />
           <PhoenixDocCard.Body code={btnVariantCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header title="Button Split" />
+          <PhoenixDocCard.Header title="Button split">
+            <p className="mb-0">
+              Split buttons are a <code>ButtonGroup</code> holding the primary
+              action and a second button that is the{' '}
+              <code>Dropdown.Trigger</code>. Only the caret button opens the
+              menu.
+            </p>
+          </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={splitBtnCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header title="Sizing" />
+          <PhoenixDocCard.Header
+            title="Sizing"
+            description="Sizing lives on the trigger button — pass size='sm', 'md' or 'lg'. The menu itself is sized by its own width classes."
+          />
           <PhoenixDocCard.Body code={sizingCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header title="Directions" />
+          <PhoenixDocCard.Header title="Directions">
+            <p className="mb-0">
+              The <code>side</code> prop on <code>Dropdown.Content</code> picks
+              the edge the menu opens from — <code>top</code>,{' '}
+              <code>bottom</code> (default), <code>left</code> or{' '}
+              <code>right</code>. The menu flips automatically when it would
+              overflow the viewport.
+            </p>
+          </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={directionCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header title="Dropdown items">
+          <PhoenixDocCard.Header title="Menu items">
             <p>
-              Historically dropdown menu contents had to be links, but that’s no
-              longer the case with v4. Now you can optionally use
-              <code>&lt;button&gt;</code> elements in your dropdowns instead of
-              just <code>&lt;a&gt;</code>s.
+              Menu contents do not have to be links. An item is interactive by
+              default and fires <code>onSelect</code>; add <code>asChild</code>{' '}
+              when you need a real <code>&lt;a&gt;</code>.
             </p>
             <p className="mb-0">
-              You can also create non-interactive dropdown items with{' '}
-              <code>&lt;Dropdown.ItemText&gt;</code>. Feel free to style further
-              with custom CSS or text utilities.
+              <code>Dropdown.ItemText</code> renders non-interactive text,{' '}
+              <code>disabled</code> mutes an item, and the <code>active</code>{' '}
+              class marks the current one.
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={dropdownItemsCode} />
@@ -397,10 +404,10 @@ const DropdownExample = () => {
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Menu alignment">
             <p className="mb-0">
-              By default, a dropdown menu is aligned to the left, but you can
-              switch it by passing <code>align="end"</code> to a{' '}
-              <code>&lt;Dropdown&gt;</code>, <code>&lt;DropdownButton&gt;</code>
-              , or <code>&lt;SplitButton&gt;</code>.
+              By default a menu is centred on its trigger. Pass{' '}
+              <code>align="start"</code>, <code>"center"</code> or{' '}
+              <code>"end"</code> to <code>Dropdown.Content</code> to line the
+              menu up with either edge of the trigger.
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={menuAlignMentCode} />
@@ -409,37 +416,27 @@ const DropdownExample = () => {
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Responsive alignment">
             <p className="mb-0">
-              If you want to use responsive menu alignment, pass an object
-              containing a breakpoint to the
-              <code>align</code> prop on the <code>&lt;DropdownMenu&gt;</code>,{' '}
-              <code>&lt;DropdownButton&gt;</code>, or{' '}
-              <code>&lt;SplitButton&gt;</code>. You can specify{' '}
-              <code>start</code> or <code>end</code> for the various
-              breakpoints.
+              <code>align</code> takes a single value rather than a map of
+              breakpoints, so responsive alignment is driven from React: watch a
+              media query and feed the result to <code>Dropdown.Content</code>.
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={responsiveAlignmentCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header title="Auto Close">
+          <PhoenixDocCard.Header title="Auto close">
             <p>
-              By default, the dropdown menu is closed when selecting a menu item
-              or clicking outside of the dropdown menu. This behaviour can be
-              changed by using the <code>autoClose</code> property.
-            </p>
-            <p>
-              By default, <code>autoClose</code> is set to the default value{' '}
-              <code>true</code> and behaves like expected. By choosing{' '}
-              <code>false</code>, the dropdown menu can only be toggled by
-              clicking on the dropdown button. <code>inside</code> makes the
-              dropdown disappear <strong>only</strong>
-              by choosing a menu item and <code>outside</code> closes the
-              dropdown menu <strong>only</strong> by clicking outside.
+              A menu closes when an item is selected or when you click outside
+              it. Call <code>event.preventDefault()</code> in an item&apos;s{' '}
+              <code>onSelect</code> to keep the menu open after a choice — handy
+              for menus of checkboxes or filters.
             </p>
             <p className="mb-0">
-              <strong>Notice</strong> how the dropdown is toggled in each
-              scenario by clicking on the button.
+              For a menu that only the button can close, control it with{' '}
+              <code>open</code> / <code>onOpenChange</code> and cancel{' '}
+              <code>onInteractOutside</code> and <code>onEscapeKeyDown</code> on{' '}
+              <code>Dropdown.Content</code>.
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={autoCloseCode} />
@@ -448,13 +445,23 @@ const DropdownExample = () => {
         <Row className="g-3">
           <Col md>
             <PhoenixDocCard className="overflow-visible">
-              <PhoenixDocCard.Header title="Dropwdown Headers" />
+              <PhoenixDocCard.Header title="Dropdown headers">
+                <p className="mb-0">
+                  <code>Dropdown.Group</code> bundles related items under a{' '}
+                  <code>Dropdown.Label</code> section header.
+                </p>
+              </PhoenixDocCard.Header>
               <PhoenixDocCard.Body code={headerCode} />
             </PhoenixDocCard>
           </Col>
           <Col md>
             <PhoenixDocCard className="overflow-visible">
-              <PhoenixDocCard.Header title="Dropwdown Divider" />
+              <PhoenixDocCard.Header title="Dropdown divider">
+                <p className="mb-0">
+                  <code>Dropdown.Separator</code> draws the rule between two
+                  sets of items.
+                </p>
+              </PhoenixDocCard.Header>
               <PhoenixDocCard.Body code={dividerCode} />
             </PhoenixDocCard>
           </Col>
