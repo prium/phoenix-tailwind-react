@@ -1,11 +1,11 @@
 import { useEffect, useRef } from 'react';
 import { cn } from '@hummingbirdui/react';
 import { useChatContext } from 'providers/ChatProvider';
-import ConversationDetails from '../conversation-details';
+import ConversationDetails from '../conversation-details/ConversationDetails';
 import ChatContentHeader from './ChatContentHeader';
 import ConversationStarter from './ConversationStarter';
 import ChatContentFooter from './ChatContentFooter';
-import Message from '../message';
+import Message from '../message/Message';
 import { SET_CHAT_STATE } from 'reducers/ChatReducer';
 
 /**

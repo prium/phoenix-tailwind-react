@@ -5,7 +5,7 @@ import { cn } from '@hummingbirdui/react';
 import { suggestions } from 'data/chat';
 import Button from 'components/base/Button';
 import { useChatWidgetContext } from 'providers/ChatWidgetProvider';
-import Message from 'components/modules/chat/message';
+import Message from 'components/modules/chat/message/Message';
 import { useEffect, useRef } from 'react';
 
 /** `+SupportContent` in phoenix-tailwind SupportChat.pug (column-reverse layout) */

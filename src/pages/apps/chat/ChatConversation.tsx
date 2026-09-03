@@ -1,5 +1,5 @@
 import { Card } from '@hummingbirdui/react';
-import ChatContent from 'components/modules/chat/chat-content';
+import ChatContent from 'components/modules/chat/chat-content/ChatContent';
 import { useChatContext } from 'providers/ChatProvider';
 import { useEffect } from 'react';
 import { useParams } from 'react-router';

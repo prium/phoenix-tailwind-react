@@ -1,6 +1,6 @@
 import useConfigMountEffect from 'hooks/useConfigMountEffect';
 import useSettingsMountEffect from 'hooks/useSettingsMountEffect';
-import Ecommerce from 'pages/dashboard/ecommerce';
+import Ecommerce from 'pages/dashboard/ecommerce/Ecommerce';
 
 const DualNav = () => {
   useSettingsMountEffect({

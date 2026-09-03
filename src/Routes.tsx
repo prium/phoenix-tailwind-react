@@ -178,7 +178,7 @@ const CalendarExample = lazy(
 const AdvanceTableExample = lazy(
   () => import('pages/modules/tables/AdvanceTableExample')
 );
-const Ecommerce = lazy(() => import('pages/dashboard/ecommerce'));
+const Ecommerce = lazy(() => import('pages/dashboard/ecommerce/Ecommerce'));
 const TravelAgency = lazy(() => import('pages/dashboard/TravelAgency'));
 const Chat = lazy(() => import('pages/apps/chat/Chat'));
 const GanttChartExample = lazy(
