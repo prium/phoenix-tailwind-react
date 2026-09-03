@@ -6,6 +6,7 @@ export interface CheckboxItemProps {
   label: string | ReactNode;
   value: string | number;
   defaultChecked?: boolean;
+  disabled?: boolean;
 }
 
 /** `div.form-check.items-start.mb-1.25` in apps/e-commerce/landing/products-filter.pug */
@@ -14,7 +15,8 @@ const CheckboxItem = ({
   name,
   label,
   value,
-  defaultChecked
+  defaultChecked,
+  disabled
 }: CheckboxItemProps) => {
   const id = `${name}-${value}`;
   return (
@@ -25,6 +27,7 @@ const CheckboxItem = ({
         value={value}
         name={name}
         defaultChecked={defaultChecked}
+        disabled={disabled}
         className="form-check-input mt-0"
       />
       <label
