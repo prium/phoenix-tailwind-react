@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import IndeterminateCheckbox from 'components/base/IndeterminateCheckbox';
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, useMemo } from 'react';
 import { cn } from '@hummingbirdui/react';
 import {
   useReactTable,
@@ -104,11 +104,28 @@ const useAdvanceTable = <T,>({
       ? { pageSize: pagination ? pageSize : data.length }
       : undefined
   };
+  const { headerClassName, cellClassName } = selectionColumnProps ?? {};
+  /**
+   * `flexRender` renders `columnDef.cell` as a component *type*, so a column
+   * rebuilt on every render is a new type at the same position and React
+   * remounts the cell. That threw away the checkbox mid-click: the input was
+   * replaced, focus fell to `<body>` and the focus ring flashed off instead of
+   * holding until blur. Keyed on the class strings because the pages pass
+   * `selectionColumnProps` as an inline object literal.
+   */
+  const tableColumns = useMemo(
+    () =>
+      selection
+        ? [
+            getSelectionColumn<T>({ headerClassName, cellClassName }),
+            ...columns
+          ]
+        : columns,
+    [selection, columns, headerClassName, cellClassName]
+  );
   const table = useReactTable<T>({
     data,
-    columns: selection
-      ? [getSelectionColumn<T>(selectionColumnProps), ...columns]
-      : columns,
+    columns: tableColumns,
     enableSorting: sortable,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
