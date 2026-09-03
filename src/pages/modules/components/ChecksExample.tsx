@@ -7,24 +7,63 @@ import CheckboxItem from 'components/common/CheckboxItem';
 import InlineCheckItem from 'components/common/InlineCheckItem';
 
 const exampleCode = `
-// components/common/CheckboxItem
 <>
-  <CheckboxItem name="check" value="default" label="Default checkbox" />
-  <CheckboxItem name="check" value="checked" label="Checked checkbox" defaultChecked />
-  <CheckboxItem name="check" value="disabled" label="Disabled checkbox" disabled />
+  <div className="form-check">
+    <input className="form-check-input" type="checkbox" id="flexCheckDefault" />
+    <label className="form-check-label text-base text-default" htmlFor="flexCheckDefault">
+      Default checkbox
+    </label>
+  </div>
+  <div className="form-check">
+    <input
+      className="form-check-input"
+      type="checkbox"
+      id="flexCheckChecked"
+      defaultChecked
+    />
+    <label className="form-check-label text-base text-default" htmlFor="flexCheckChecked">
+      Checked checkbox
+    </label>
+  </div>
+  <div className="form-check">
+    <input
+      className="form-check-input"
+      type="checkbox"
+      id="flexCheckDisabled"
+      disabled
+    />
+    <label className="form-check-label text-base text-default" htmlFor="flexCheckDisabled">
+      Disabled checkbox
+    </label>
+  </div>
 </>
 `;
 
 const radioExampleCode = `
 <>
-  <CheckboxItem type="radio" name="flexRadioDefault" value="1" label="Default radio" />
-  <CheckboxItem
-    type="radio"
-    name="flexRadioDefault"
-    value="2"
-    label="Default checked radio"
-    defaultChecked
-  />
+  <div className="form-check">
+    <input
+      className="form-check-input"
+      type="radio"
+      name="flexRadioDefault"
+      id="flexRadioDefault1"
+    />
+    <label className="form-check-label text-base text-default" htmlFor="flexRadioDefault1">
+      Default radio
+    </label>
+  </div>
+  <div className="form-check">
+    <input
+      className="form-check-input"
+      type="radio"
+      name="flexRadioDefault"
+      id="flexRadioDefault2"
+      defaultChecked
+    />
+    <label className="form-check-label text-base text-default" htmlFor="flexRadioDefault2">
+      Default checked radio
+    </label>
+  </div>
 </>
 `;
 
@@ -153,28 +192,27 @@ const ChecksExample = () => {
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Checks">
             <p className="mb-0">
-              <code>CheckboxItem</code> is the check used throughout the app —
-              product, room and trip filters, the create-event forms, the kanban
-              and gantt option lists. It builds its own <code>id</code> from{' '}
-              <code>name</code> and <code>value</code>, and top-aligns the box
-              so a wrapping label still lines up.
+              The base check: <code>div.form-check</code> around an{' '}
+              <code>input.form-check-input</code> and a{' '}
+              <code>label.form-check-label</code>. This is what most of the app
+              writes directly — the checkout delivery and payment options, the
+              product-details and settings toggles. The label carries whatever
+              type utilities the context needs (
+              <code>text-base text-default</code> here); the box itself is
+              always 16px.
             </p>
           </PhoenixDocCard.Header>
-          <PhoenixDocCard.Body code={exampleCode} scope={{ CheckboxItem }} />
+          <PhoenixDocCard.Body code={exampleCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Radios">
             <p className="mb-0">
-              Pass <code>type=&quot;radio&quot;</code> for a single-choice
-              group; every item sharing a <code>name</code> belongs to the same
-              group.
+              Same markup with <code>type=&quot;radio&quot;</code>; every input
+              sharing a <code>name</code> belongs to the same group.
             </p>
           </PhoenixDocCard.Header>
-          <PhoenixDocCard.Body
-            code={radioExampleCode}
-            scope={{ CheckboxItem }}
-          />
+          <PhoenixDocCard.Body code={radioExampleCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
@@ -222,9 +260,13 @@ const ChecksExample = () => {
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Filter checkbox">
             <p className="mb-0">
-              <code>label</code> accepts a node, so a result count or a rating
-              can sit beside the text — this is how the e-commerce and
-              travel-agency filter groups are built.
+              <code>CheckboxItem</code> is the filter-list variant:{' '}
+              <code>items-start</code> so a wrapping label still lines up with
+              the box, a block label, and its own <code>id</code> built from{' '}
+              <code>name</code> and <code>value</code>. The e-commerce
+              products-filter column alone renders 44 of them, and the room and
+              trip filters use the same component. <code>label</code> accepts a
+              node, so a result count or a rating can sit beside the text.
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body
