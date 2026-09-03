@@ -60,6 +60,13 @@ for (const route of routes) {
       timeout: 30_000
     })
     .catch(() => {});
+  // a doc page that rendered nothing has no `[data-live-error]` either, so it
+  // would otherwise be reported clean — wait for the page's own content first
+  await page
+    .waitForFunction(() => document.querySelectorAll('.card').length > 0, {
+      timeout: 20_000
+    })
+    .catch(() => {});
   await page.waitForTimeout(600);
 
   const liveErrors = await page.$$eval('[data-live-error]', els =>
@@ -72,7 +79,8 @@ for (const route of routes) {
 
   page.off('pageerror', onError);
 
-  const bad = liveErrors.length || pageErrors.length;
+  // zero cards means the page never rendered its examples at all
+  const bad = liveErrors.length || pageErrors.length || previews === 0;
   if (bad) failed += 1;
   console.log(
     `${bad ? 'FAIL' : ' ok '}  ${route.padEnd(52)} cards=${String(previews).padStart(2)}` +
