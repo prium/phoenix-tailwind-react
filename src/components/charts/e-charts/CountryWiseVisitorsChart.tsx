@@ -94,7 +94,7 @@ const getDefaultOptions = (
   }
 });
 
-const CountryWiseVitorsChart = ({
+const CountryWiseVisitorsChart = ({
   style,
   updateUserCounder
 }: {
@@ -142,4 +142,4 @@ const CountryWiseVitorsChart = ({
   );
 };
 
-export default CountryWiseVitorsChart;
+export default CountryWiseVisitorsChart;

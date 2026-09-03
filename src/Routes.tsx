@@ -91,7 +91,7 @@ import FaqAccordion from 'pages/faq/FaqAccordion';
 import Inbox from 'pages/apps/email/Inbox';
 import EmailDetail from 'pages/apps/email/EmailDetail';
 import Compose from 'pages/apps/email/Compose';
-import Notification from 'pages/notifications/Notifications';
+import Notifications from 'pages/notifications/Notifications';
 import PricingColumn from 'pages/pages/pricing/PricingColumn';
 import SocialProfile from 'pages/apps/social/SocialProfile';
 import Settings from 'pages/apps/social/Settings';
@@ -244,7 +244,7 @@ const GalleryGridWithTitle = lazy(
 const GalleryMasonry = lazy(() => import('pages/apps/gallery/GalleryMasonry'));
 const GallerySlider = lazy(() => import('pages/apps/gallery/GallerySlider'));
 
-const routes: RouteObject[] = [
+const Routes: RouteObject[] = [
   {
     element: <App />,
     children: [
@@ -689,7 +689,7 @@ const routes: RouteObject[] = [
               },
               {
                 path: 'notifications',
-                element: <Notification />
+                element: <Notifications />
               },
               {
                 path: 'members',
@@ -1460,8 +1460,8 @@ const routes: RouteObject[] = [
   }
 ];
 
-export const router = createBrowserRouter(routes, {
+export const router = createBrowserRouter(Routes, {
   basename: import.meta.env.VITE_BASENAME || '/'
 });
 
-export default routes;
+export default Routes;

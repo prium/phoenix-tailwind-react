@@ -10,15 +10,15 @@ import { HANDLE_SELECT, SET_CALENDAR_STATE } from 'reducers/CalendarReducer';
 import FullCalendar from 'components/base/FullCalendar';
 import { eventList } from 'data/calendarEvents';
 
-const index = () => {
+const Calendar = () => {
   return (
     <CalendarProvider>
-      <Calendar />
+      <CalendarContent />
     </CalendarProvider>
   );
 };
 
-const Calendar = () => {
+const CalendarContent = () => {
   const { calendarDispatch } = useCalendarContext();
 
   const handleEventClick = (info: EventClickArg) => {
@@ -61,4 +61,4 @@ const Calendar = () => {
   );
 };
 
-export default index;
+export default Calendar;

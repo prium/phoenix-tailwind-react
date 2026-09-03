@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Card, Dropdown } from '@hummingbirdui/react';
 import { useState } from 'react';
 import Button from 'components/base/Button';
-import CountryWiseVitorsChart from 'components/charts/e-charts/CountryWiseVisitorsChart';
+import CountryWiseVisitorsChart from 'components/charts/e-charts/CountryWiseVisitorsChart';
 import {
   VisitorsTable,
   visitorsTableColumns
@@ -58,7 +58,7 @@ export const VisitorsCard = () => {
             <span className="text-md font-normal">User per second</span>
           </h4>
           <div className="echart-country-wise-visitors w-full h-10.75">
-            <CountryWiseVitorsChart
+            <CountryWiseVisitorsChart
               updateUserCounder={updateUserCounder}
               style={{ height: '100%', width: '100%' }}
             />

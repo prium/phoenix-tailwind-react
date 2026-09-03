@@ -1,4 +1,4 @@
-const changelogListElips = `
+const changelogList = `
     <ul> 
       <li> Text 
         <ul>
@@ -88,4 +88,4 @@ const changelogListElips = `
     </ul>
     `;
 
-export default changelogListElips;
+export default changelogList;

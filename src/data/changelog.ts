@@ -1,4 +1,4 @@
-import changelogListElips from './changelogList';
+import changelogList from './changelogList';
 
 export default [
   {
@@ -258,7 +258,7 @@ export default [
       new: [
         'New theme color shades.',
         'DOC : Color page',
-        `Utility Classes ${changelogListElips}`
+        `Utility Classes ${changelogList}`
       ],
       update: [
         'Bootstrap to 5.3.2',

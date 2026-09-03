@@ -11,12 +11,12 @@ import StockOverviewChart from 'components/charts/e-charts/StockOverviewChart';
 import StockOverviewInvertedChart from 'components/charts/e-charts/StockOverviewInvertedChart';
 import StockOverviewMixedChart from 'components/charts/e-charts/StockOverviewMixedChart';
 
-interface StockOverViewSliderProps {
+interface StockOverviewSliderProps {
   overviewItems: StockDashboardOverviewItemProps[];
 }
 
 /** `+OverviewCards` continuous-autoplay slider — mixins/dashboard/stock/Stat.pug */
-const StockOverViewSlider = ({ overviewItems }: StockOverViewSliderProps) => {
+const StockOverviewSlider = ({ overviewItems }: StockOverviewSliderProps) => {
   // gold `.overview-echart` is sized by assets/css/components/stock.css;
   // the echarts div fills it (skill: wrapper carries the size)
   const chartStyle = { height: '100%', width: '100%' };
@@ -103,4 +103,4 @@ const StockOverViewSlider = ({ overviewItems }: StockOverViewSliderProps) => {
   );
 };
 
-export default StockOverViewSlider;
+export default StockOverviewSlider;

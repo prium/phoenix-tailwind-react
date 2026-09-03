@@ -15,22 +15,22 @@ import DealColumn from 'components/modules/crm/deals/DealColumn';
 import AddDealModal from 'components/modules/crm/deals/AddDealModal';
 import FilterDealsModal from 'components/modals/FilterDealsModal';
 import DealsAddStageModal from 'components/modals/DealsAddStageModal';
-import DealsProvider, { useDealsContext } from 'providers/CrmDealsProvider';
+import CrmDealsProvider, { useDealsContext } from 'providers/CrmDealsProvider';
 import { DndContext, closestCorners, DragOverlay } from '@dnd-kit/core';
 import DealCard from 'components/cards/DealCard';
 import { useGetDndSensor } from 'hooks/useGetDndSensor';
 
-const index = () => {
+const Deals = () => {
   return (
-    <DealsProvider data={dealColumnsData}>
-      <Deals />
-    </DealsProvider>
+    <CrmDealsProvider data={dealColumnsData}>
+      <DealsContent />
+    </CrmDealsProvider>
   );
 };
 
 /** apps/crm/deals.pug — the fixed `.content.kanban-deals-content` layout and
  *  the `.deals` board sizing live in assets/css/components/{crm,kanban}.css. */
-const Deals = () => {
+const DealsContent = () => {
   const { setContentClass } = useMainLayoutContext();
   const {
     dealColumns,
@@ -174,4 +174,4 @@ const Deals = () => {
   );
 };
 
-export default index;
+export default Deals;

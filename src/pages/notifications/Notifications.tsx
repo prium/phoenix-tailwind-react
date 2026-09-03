@@ -6,7 +6,7 @@ import {
   notificationsPageYesterday
 } from 'data/notifications';
 
-const Notification = () => {
+const Notifications = () => {
   return (
     <div>
       <PageBreadcrumb items={notificationsBreadcrumbItems} />
@@ -35,4 +35,4 @@ const Notification = () => {
   );
 };
 
-export default Notification;
+export default Notifications;
