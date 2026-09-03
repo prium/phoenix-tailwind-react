@@ -1,57 +1,67 @@
 import PhoenixDocCard from 'components/base/PhoenixDocCard';
 import DocPageHeader from 'components/docs/DocPageHeader';
 import DocPagesLayout from 'layouts/DocPagesLayout';
-import { Card } from 'react-bootstrap';
+import { Card } from '@hummingbirdui/react';
 
 const exampleCode = `
-() => {
-  const [show, setShow] = useState(false);
-  const target = useRef(null);
-
-  return (
-    <>
-      <Button ref={target} onClick={() => setShow(!show)}>
-        Click me!
-      </Button>
-      <Overlay target={target.current} show={show} placement="right">
-        {(props) => (
-          <Tooltip id="overlay-example" {...props}>
-            My Tooltip
-          </Tooltip>
-        )}
-      </Overlay>
-    </>
-  );
-}
+<Tooltip>
+  <Tooltip.Trigger asChild>
+    <Button variant="outline" color="secondary">
+      Hover me!
+    </Button>
+  </Tooltip.Trigger>
+  <Tooltip.Content>My Tooltip</Tooltip.Content>
+</Tooltip>
 `;
-const overlayTriggerCode = `
-<OverlayTrigger
-  overlay={
-    <Tooltip id="overlay-trigger-example">
-      My Tooltip
+
+const providerCode = `
+<Tooltip.Provider delayDuration={200} skipDelayDuration={300}>
+  <div className="flex flex-wrap gap-2">
+    <Tooltip>
+      <Tooltip.Trigger asChild>
+        <Button variant="outline" color="secondary">
+          Save
+        </Button>
+      </Tooltip.Trigger>
+      <Tooltip.Content>Save changes</Tooltip.Content>
     </Tooltip>
-  }
->
-  <Button>Click me!</Button>
-</OverlayTrigger>
+
+    <Tooltip>
+      <Tooltip.Trigger asChild>
+        <Button variant="outline" color="secondary">
+          Copy
+        </Button>
+      </Tooltip.Trigger>
+      <Tooltip.Content>Copy to clipboard</Tooltip.Content>
+    </Tooltip>
+
+    <Tooltip>
+      <Tooltip.Trigger asChild>
+        <Button variant="outline" color="secondary">
+          Delete
+        </Button>
+      </Tooltip.Trigger>
+      <Tooltip.Content>Delete item</Tooltip.Content>
+    </Tooltip>
+  </div>
+</Tooltip.Provider>
 `;
 
 const placementCode = `
-<>
-  {['top', 'right', 'bottom', 'left'].map((placement) => (
-    <OverlayTrigger
-      key={placement}
-      placement={placement}
-      overlay={
-        <Tooltip id={'tooltip-'+ placement}>
-          Tooltip on <strong>{placement}</strong>.
-        </Tooltip>
-      }
-    >
-      <Button variant="phoenix-secondary" className='mb-1 me-2'>Tooltip on {placement}</Button>
-    </OverlayTrigger>
+<div className="flex flex-wrap gap-2 py-8">
+  {['top', 'right', 'bottom', 'left'].map((side) => (
+    <Tooltip key={side}>
+      <Tooltip.Trigger asChild>
+        <Button variant="outline" color="secondary">
+          Tooltip on {side}
+        </Button>
+      </Tooltip.Trigger>
+      <Tooltip.Content side={side}>
+        Tooltip on <strong>{side}</strong>.
+      </Tooltip.Content>
+    </Tooltip>
   ))}
-</>
+</div>
 `;
 
 const TooltipExample = () => {
@@ -59,12 +69,10 @@ const TooltipExample = () => {
     <div>
       <DocPageHeader
         title="Tooltips"
-        description="A tooltip component for a more stylish alternative to that anchor tag title attribute."
+        description="A small label that appears on hover or keyboard focus to describe the element beneath the pointer."
         link={{
-          text: 'Tooltips on react-bootstrap',
-          url: `${
-            import.meta.env.VITE_RB_URL_PREFIX || ''
-          }/components/overlays/#tooltips`
+          text: 'Tooltip on hb-react',
+          url: 'https://react.hbui.dev/docs/components/tooltip'
         }}
       />
 
@@ -72,11 +80,14 @@ const TooltipExample = () => {
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Overview" noPreview />
           <Card.Body>
-            <p>
-              The <code>&lt;Tooltip&gt;</code> component do not position
-              themselves. Instead the <code>&lt;Overlay&gt;</code> (or{' '}
-              <code>&lt;OverlayTrigger&gt;</code>) components, inject{' '}
-              <code>ref</code> and <code>style</code> props.
+            <p className="mb-0">
+              A tooltip is three parts: a <code>Tooltip</code> root, a{' '}
+              <code>Tooltip.Trigger</code> and a <code>Tooltip.Content</code>.
+              The trigger positions the label for you, and the content is
+              portaled to <code>document.body</code> — so any class you add
+              belongs on <code>Tooltip.Content</code> itself, never on an
+              ancestor. Tooltips open on hover and on keyboard focus, and close
+              on Escape.
             </p>
           </Card.Body>
         </PhoenixDocCard>
@@ -84,27 +95,35 @@ const TooltipExample = () => {
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Example">
             <p className="mb-0">
-              You can pass the <code>Overlay</code> injected props directly to
-              the Tooltip component.
+              Use <code>Tooltip.Trigger asChild</code> so the tooltip attaches
+              to your own element instead of wrapping it in an extra button.
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={exampleCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header title="OverlayTrigger Example">
+          <PhoenixDocCard.Header title="Provider Example">
             <p className="mb-0">
-              You pass a Tooltip element to <code>OverlayTrigger</code> instead.
+              Every <code>Tooltip</code> wraps its own provider, so{' '}
+              <code>delayDuration</code> on a single tooltip tunes how long the
+              pointer must rest before it opens. Mounting one shared{' '}
+              <code>Tooltip.Provider</code> instead gives a group of tooltips
+              the same delay and the skip-delay behaviour — move between the
+              buttons below and the second one opens immediately.
             </p>
           </PhoenixDocCard.Header>
-          <PhoenixDocCard.Body code={overlayTriggerCode} />
+          <PhoenixDocCard.Body code={providerCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Placement">
             <p className="mb-0">
-              Use <code>placement</code> prop to set your <code>Tooltip</code>'s
-              position.
+              Pass <code>side</code> (<code>top</code>, <code>right</code>,{' '}
+              <code>bottom</code> or <code>left</code>) to{' '}
+              <code>Tooltip.Content</code> to choose which edge of the trigger
+              the tooltip points from; <code>align</code> and{' '}
+              <code>sideOffset</code> fine-tune it from there.
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={placementCode} />
