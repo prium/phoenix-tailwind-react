@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AvatarUpload from 'components/common/AvatarUpload';
-import { Card, Col, Row } from '@hummingbirdui/react';
+import { Card, Col, Row, cn } from '@hummingbirdui/react';
 import team15 from 'assets/img/team/15.webp';
 import {
   faFacebook,
@@ -9,9 +9,9 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import { Link } from 'react-router';
 
-const CustomerProfileCard = () => {
+const CustomerProfileCard = ({ className }: { className?: string }) => {
   return (
-    <Card className="h-full">
+    <Card className={cn('h-full', className)}>
       <Card.Body className="flex flex-col justify-between pb-4">
         <Row className="items-center g-8 mb-4 text-center sm:text-start">
           <Col xs={12} sm="auto" className="sm:mb-2">

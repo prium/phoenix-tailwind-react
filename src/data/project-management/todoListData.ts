@@ -140,3 +140,72 @@ export const attachments: Attachment[] = [
     date: '12th Dec, 12:56 PM'
   }
 ];
+
+/**
+ * `todoList` in mixins/dashboard/project-management/ToDo.pug — the set the
+ * WIDGETS page renders. Pug's per-page `append variables` shadowing means the
+ * gold shows this 9-row list on widgets.html but the 11-row `todoList` above
+ * on dashboard/project-management.html: no `list` counts on rows 6/9,
+ * lowercase "warming up" and an info CLOSE badge. Below `xl` the card body has
+ * no fixed height, so every extra row shifts the page.
+ */
+export const widgetsTodoList: ToDoItem[] = [
+  {
+    task: 'Designing the dungeon',
+    badge: { label: 'DRAFT', className: 'badge-phoenix-primary' },
+    attachment: 2,
+    date: '12 Nov, 2021',
+    time: '12:00 PM'
+  },
+  {
+    task: 'Hiring a motion graphic designer',
+    badge: { label: 'URGENT', className: 'badge-phoenix-warning' },
+    date: '12 Nov, 2021',
+    time: '12:00 PM',
+    attachment: 2,
+    listitems: 3
+  },
+  {
+    task: 'Daily Meetings Purpose, participants',
+    badge: { label: 'ON PROCESS', className: 'badge-phoenix-info' },
+    date: '12 Dec, 2021',
+    time: '05:00 AM',
+    attachment: 4
+  },
+  {
+    task: 'Finalizing the geometric shapes',
+    date: '12 Nov, 2021',
+    time: '12:00 PM',
+    attachment: 3
+  },
+  {
+    task: 'Daily meeting with team members',
+    date: '1 Nov, 2021',
+    time: '12:00 PM'
+  },
+  {
+    task: 'Daily Standup Meetings',
+    date: '13 Nov, 2021',
+    time: '10:00 PM'
+  },
+  {
+    task: 'Procrastinate for a month',
+    badge: { label: 'ON PROCESS', className: 'badge-phoenix-info' },
+    date: '12 Nov, 2021',
+    time: '12:00 PM',
+    attachment: 3
+  },
+  {
+    task: 'warming up',
+    date: '12 Nov, 2021',
+    time: '12:00 PM',
+    attachment: 3,
+    badge: { label: 'CLOSE', className: 'badge-phoenix-info' }
+  },
+  {
+    task: 'Make ready for release',
+    date: '2o Nov, 2021',
+    time: '1:00 AM',
+    attachment: 2
+  }
+];

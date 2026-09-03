@@ -8,7 +8,7 @@ import TodoItemDetailsModal from './TodoItemDetailsModal';
 import { faFilter, faPlus, faSort } from '@fortawesome/free-solid-svg-icons';
 
 /** `+CardToDoListManagement` in mixins/dashboard/project-management/ToDo.pug */
-const TodoList = () => {
+const TodoList = ({ items = todoList }: { items?: ToDoItem[] }) => {
   const [selectedItem, setSelectedItem] = useState<ToDoItem | null>(null);
   return (
     <>
@@ -53,12 +53,12 @@ const TodoList = () => {
           </Row>
         </Card.Header>
         <Card.Body className="py-0 scrollbar xl:h-67.5">
-          {todoList.map((todo, index) => (
+          {items.map((todo, index) => (
             <TodoListItem
               key={todo.task}
               todo={todo}
               index={index}
-              isLast={index === todoList.length - 1}
+              isLast={index === items.length - 1}
               layout="dashboard"
               onClick={setSelectedItem}
             />

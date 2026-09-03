@@ -1,12 +1,12 @@
 import Button from 'components/base/Button';
-import Dropzone from 'components/base/Dropzone';
-import TinymceEditor from 'components/base/TinymceEditor';
 import OrganizeFormCard from 'components/cards/OrganizeFormCard';
 import VariantFormCard from 'components/cards/VariantFormCard';
 import PageBreadcrumb from 'components/common/PageBreadcrumb';
-import InventoryTab from 'components/tabs/InventoryTab';
+import ProductDescriptionFields from 'components/modules/e-commerce/add-product/ProductDescriptionFields';
+import ProductDisplayImages from 'components/modules/e-commerce/add-product/ProductDisplayImages';
+import ProductInventory from 'components/modules/e-commerce/add-product/ProductInventory';
 import { defaultBreadcrumbItems } from 'data/commonData';
-import { Col, Input, Row } from '@hummingbirdui/react';
+import { Col, Row } from '@hummingbirdui/react';
 
 const AddProduct = () => {
   return (
@@ -34,30 +34,9 @@ const AddProduct = () => {
         </div>
         <Row className="g-8">
           <Col xs={12} xl={8}>
-            <h4 className="mb-4">Product Title</h4>
-            <Input type="text" placeholder="Write title here..." className="mb-8" />
-            <div className="mb-10">
-              <h4 className="mb-4">Product Description</h4>
-              <TinymceEditor
-                options={{
-                  height: '15rem',
-                  placeholder: 'Write a description here...'
-                }}
-              />
-            </div>
-            <div className="mb-8">
-              <h4 className="mb-4">Display images</h4>
-              <Dropzone
-                className="mb-4"
-                accept={{
-                  'image/*': ['.png', '.gif', '.jpeg', '.jpg']
-                }}
-              />
-            </div>
-            <div>
-              <h4 className="mb-4">Inventory</h4>
-              <InventoryTab />
-            </div>
+            <ProductDescriptionFields />
+            <ProductDisplayImages />
+            <ProductInventory />
           </Col>
           <Col xs={12} xl={4}>
             <Row className="g-2">

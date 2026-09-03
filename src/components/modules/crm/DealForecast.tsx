@@ -3,7 +3,7 @@ import DealForecasrProgressBar from 'components/progress-bars/DealForecasrProgre
 import DealForecastTable from 'components/tables/DealForecastTable';
 
 /** `+DealForecast` in mixins/dashboard/CRM/Crm.pug */
-const DealForecast = () => {
+const DealForecast = ({ pageSize }: { pageSize?: number }) => {
   return (
     <>
       <Row className="items-start justify-between mb-6 g-4">
@@ -23,7 +23,7 @@ const DealForecast = () => {
       </Row>
       <DealForecasrProgressBar />
       <h4 className="mt-6 mb-4">Deal Forecast by Owner </h4>
-      <DealForecastTable />
+      <DealForecastTable pageSize={pageSize} />
     </>
   );
 };

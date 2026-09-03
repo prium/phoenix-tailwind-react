@@ -30,6 +30,14 @@ interface DropzoneProps {
   reactDropZoneProps?: ReactDropZoneProps;
   accept?: Accept;
   noPreview?: boolean;
+  /**
+   * Typography classes for the default `.dz-message` prompt. The gold writes
+   * most of them plain (`dz-message text-subtle/85`, 16px/23.84px line box);
+   * product-details shrinks its prompt with `font-bold text-md`, which is the
+   * default here for the call sites that predate this prop. Pass `''` for the
+   * gold's plain prompt — the 3px line-box delta cascades down a long page.
+   */
+  messageClassName?: string;
   defaultFiles?: File[];
   multiple?: boolean;
   previewHight?: number;
@@ -49,6 +57,7 @@ const Dropzone = ({
   accept,
   defaultFiles = [],
   noPreview,
+  messageClassName = 'font-bold text-md',
   reactDropZoneProps,
   multiple = true,
   previewHight,
@@ -107,7 +116,7 @@ const Dropzone = ({
         {children ? (
           <>{children}</>
         ) : (
-          <div className="dz-message text-subtle/85 font-bold text-md">
+          <div className={cn('dz-message text-subtle/85', messageClassName)}>
             Drag your {imageOnly ? 'photo' : 'files'} here{' '}
             <span className="text-muted">or </span>
             <Button variant="link" className="p-0" type="button">

@@ -1,40 +1,41 @@
-import WidgetsSectionTitle from './WidgetsSectionTitle';
 import { faPercentage } from '@fortawesome/free-solid-svg-icons';
+import { Col, Row } from '@hummingbirdui/react';
 import AnalyticsStats from 'components/stats/AnalyticsStats';
-import { stats } from 'data/crm/stats';
-import { Col, Row } from 'react-bootstrap';
-import EcomTotalOrdersCard from 'components/cards/EcomTotalOrdersCard';
 import EcomNewCustomersCard from 'components/cards/EcomNewCustomersCard';
-import EcomTopCouponsCard from 'components/cards/EcomTopCouponsCard';
 import EcomPayingVsNonPayingCard from 'components/cards/EcomPayingVsNonPayingCard';
-import NewUsersAndLeads from '../crm/NewUsersAndLeads';
+import EcomTopCouponsCard from 'components/cards/EcomTopCouponsCard';
+import EcomTotalOrdersCard from 'components/cards/EcomTotalOrdersCard';
+import { stats } from 'data/crm/stats';
 import ContactsBySource from '../crm/ContactsBySource';
-import EcomProjectionVsActual from '../e-commerce/dashboard/EcomProjectionVsActual';
-import EcomReturningCustomerRate from '../e-commerce/dashboard/EcomReturningCustomerRate';
-import EcomTotalSells from '../e-commerce/dashboard/EcomTotalSells';
-import ZeroRoadMap from '../project-management/dashboard/ZeroRoadMap';
-import IssuesDiscovered from '../project-management/dashboard/IssuesDiscovered';
-import ProjectElevenProgress from '../project-management/dashboard/ProjectElevenProgress';
 import LeadConversion from '../crm/LeadConversion';
+import NewUsersAndLeads from '../crm/NewUsersAndLeads';
 import RevenueTarget from '../crm/RevenueTarget';
+import CallCampaignReport from '../crm/analytics/CallCampaignReport';
 import EmailCampaign from '../crm/analytics/EmailCampaign';
 import MarketingCampaign from '../crm/analytics/MarketingCampaign';
 import SalesTrends from '../crm/analytics/SalesTrends';
-import CallCampaignReport from '../crm/analytics/CallCampaignReport';
+import EcomProjectionVsActual from '../e-commerce/dashboard/EcomProjectionVsActual';
+import EcomReturningCustomerRate from '../e-commerce/dashboard/EcomReturningCustomerRate';
+import EcomTotalSells from '../e-commerce/dashboard/EcomTotalSells';
+import IssuesDiscovered from '../project-management/dashboard/IssuesDiscovered';
+import ProjectElevenProgress from '../project-management/dashboard/ProjectElevenProgress';
+import ZeroRoadMap from '../project-management/dashboard/ZeroRoadMap';
+import WidgetsSectionTitle from './WidgetsSectionTitle';
 
+/** `+Stats` in mixins/widgets/Stats.pug */
 const WidgetStats = () => {
   return (
-    <div>
+    <>
       <WidgetsSectionTitle
         title="Number Stats & Charts"
         subtitle="You can easily show your stats content by using these cards."
         icon={faPercentage}
-        className="my-5"
+        className="mb-8 pt-14"
       />
-      <div className="px-3 mb-5">
+      <div className="px-4 mb-8">
         <AnalyticsStats stats={stats} />
       </div>
-      <Row className="g-3 mb-5">
+      <Row className="g-4 mb-8">
         <Col md={6} xxl={3}>
           <EcomTotalOrdersCard />
         </Col>
@@ -48,7 +49,7 @@ const WidgetStats = () => {
           <EcomPayingVsNonPayingCard />
         </Col>
       </Row>
-      <Row className="gx-4 gy-6 pb-5">
+      <Row className="gx-6 gy-10 pb-8">
         <Col xxl={6}>
           <NewUsersAndLeads />
         </Col>
@@ -56,17 +57,17 @@ const WidgetStats = () => {
           <ContactsBySource />
         </Col>
       </Row>
-      <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-soft py-5">
-        <Row className="g-6">
-          <Col xl={6}>
+      <div className="-mx-6 px-6 lg:-mx-10 lg:px-10 bg-soft py-8">
+        <Row className="g-10">
+          <Col xs={12} xl={6}>
             <EcomProjectionVsActual />
           </Col>
-          <Col xl={6}>
+          <Col xs={12} xl={6}>
             <EcomReturningCustomerRate />
           </Col>
         </Row>
       </div>
-      <Row className="g-6 pt-6 align-items-center">
+      <Row className="g-10 pt-10 items-center">
         <Col xxl={6}>
           <EcomTotalSells />
         </Col>
@@ -74,18 +75,18 @@ const WidgetStats = () => {
           <ZeroRoadMap />
         </Col>
       </Row>
-      <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-soft pt-6 pb-3 mt-6">
+      <div className="-mx-6 px-6 lg:-mx-10 lg:px-10 bg-soft pt-10 pb-4 mt-10">
         <Row>
-          <Col xl={7} xxl={6}>
+          <Col xs={12} xl={7} xxl={6}>
             <IssuesDiscovered />
           </Col>
-          <Col xl={7} xxl={6}>
+          <Col xs={12} xl={5} xxl={6}>
             <ProjectElevenProgress />
           </Col>
         </Row>
       </div>
-      <div className="mx-lg-n4">
-        <Row className="g-3 pt-3">
+      <div className="lg:-mx-6">
+        <Row className="g-4 pt-4">
           <Col xl={5}>
             <LeadConversion />
           </Col>
@@ -94,30 +95,31 @@ const WidgetStats = () => {
           </Col>
         </Row>
       </div>
-      <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-soft pt-6 pb-3 mt-3">
-        <Row className="gx-6">
+      <div className="-mx-6 px-6 lg:-mx-10 lg:px-10 bg-soft pt-10 pb-4 mt-4">
+        <Row className="gx-10">
           <Col
+            xs={12}
             md={6}
             lg={12}
             xl={6}
-            className="mb-5 mb-md-3 mb-lg-5 mb-xl-2 mb-xxl-3"
+            className="mb-8 md:mb-4 lg:mb-8 xl:mb-2 2xl:mb-4"
           >
             <EmailCampaign />
           </Col>
-          <Col md={6} lg={12} xl={6} className="mb-1 mb-sm-0">
+          <Col xs={12} md={6} lg={12} xl={6} className="mb-1 sm:mb-0">
             <MarketingCampaign />
           </Col>
         </Row>
       </div>
-      <Row className="g-6 mt-0">
-        <Col md={6}>
+      <Row className="g-10 mt-0">
+        <Col xs={12} md={6}>
           <SalesTrends />
         </Col>
-        <Col md={6}>
+        <Col xs={12} md={6}>
           <CallCampaignReport />
         </Col>
       </Row>
-    </div>
+    </>
   );
 };
 

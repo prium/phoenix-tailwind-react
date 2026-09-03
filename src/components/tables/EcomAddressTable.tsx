@@ -1,5 +1,6 @@
 import { Table, cn } from '@hummingbirdui/react';
 import FeatherIcon from 'feather-icons-react';
+import { Fragment } from 'react';
 
 interface AddressTableDataType {
   labelIcon: string;
@@ -24,14 +25,22 @@ const TableRow = ({ rowData }: { rowData: AddressTableDataType }) => {
         </div>
       </Table.Cell>
       <Table.Cell className="py-2 font-bold leading-sm align-top">:</Table.Cell>
-      <Table.Cell className="py-2 px-4" style={{ maxWidth: 260 }}>
+      <Table.Cell className="py-2 px-4">
         <h5
           className={cn('font-normal text-muted', {
             'leading-lg': multiline,
             'leading-sm': !multiline
           })}
         >
-          {rowData.value}
+          {/* the gold breaks the address with an explicit `<br>`; `max-width`
+              on a `td` is ignored in auto table layout, so relying on wrapping
+              collapses the row to one line on a wide column (768px widgets) */}
+          {rowData.value.split('\n').map((line, i) => (
+            <Fragment key={line}>
+              {i > 0 && <br />}
+              {line}
+            </Fragment>
+          ))}
         </h5>
       </Table.Cell>
     </Table.Row>

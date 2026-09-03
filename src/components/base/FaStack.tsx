@@ -1,4 +1,4 @@
-import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
+import { IconDefinition, Transform } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { cn } from '@hummingbirdui/react';
 
@@ -9,6 +9,8 @@ export interface FaStackProps {
   /** the `fa-stack-1x` icon painted on top */
   icon: IconDefinition;
   iconClassName?: string;
+  /** the gold's `data-fa-transform` on the foreground icon (e.g. `shrink-2`) */
+  iconTransform?: string | Transform;
   /** adds `fa-inverse` to the foreground icon, like the gold's markup */
   inverse?: boolean;
   /** classes for the `span.fa-stack` wrapper */
@@ -29,6 +31,7 @@ const FaStack = ({
   backgroundClassName,
   icon,
   iconClassName,
+  iconTransform,
   inverse,
   className
 }: FaStackProps) => (
@@ -40,6 +43,7 @@ const FaStack = ({
     <FontAwesomeIcon
       icon={icon}
       inverse={inverse}
+      transform={iconTransform}
       className={cn('fa-stack-1x', iconClassName)}
     />
   </span>

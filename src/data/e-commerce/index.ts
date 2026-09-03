@@ -377,7 +377,7 @@ export const shippingDetailsAddress: AddressTableDataType[] = [
   {
     labelIcon: 'home',
     label: 'Address',
-    value: 'Apt: 6/B, 192 Edsel Road, Van Nuys California, USA 96580'
+    value: 'Apt: 6/B, 192 Edsel Road, Van Nuys \nCalifornia, USA 96580'
   },
   {
     labelIcon: 'phone',

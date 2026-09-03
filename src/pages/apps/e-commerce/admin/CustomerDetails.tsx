@@ -1,6 +1,7 @@
-import { faKey, faPen, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import { faKey, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'components/base/Button';
+import CustomerDefaultAddressCard from 'components/cards/CustomerDefaultAddressCard';
 import CustomerNotesCard from 'components/cards/CustomerNotesCard';
 import CustomerProfileCard from 'components/cards/CustomerProfileCard';
 import PageBreadcrumb from 'components/common/PageBreadcrumb';
@@ -8,7 +9,7 @@ import CustomerOrdersTable from 'components/tables/CustomerOrdersTable';
 import CustomerRatingsTable from 'components/tables/CustomerRatingsTable';
 import CustomerWishlistTable from 'components/tables/CustomerWishlistTable';
 import { defaultBreadcrumbItems } from 'data/commonData';
-import { Card, Col, Row } from '@hummingbirdui/react';
+import { Col, Row } from '@hummingbirdui/react';
 
 const CustomerDetails = () => {
   return (
@@ -43,37 +44,7 @@ const CustomerDetails = () => {
                 <CustomerProfileCard />
               </Col>
               <Col xs={12} md={5} xxl={12}>
-                <Card className="h-full">
-                  <Card.Body>
-                    <div className="flex items-center mb-4">
-                      <h3 className="me-1">Default Address</h3>
-                      <Button variant="link" className="p-0">
-                        <FontAwesomeIcon
-                          icon={faPen}
-                          className="text-base ms-4 text-soft"
-                        />
-                      </Button>
-                    </div>
-                    <h5 className="text-muted">Address</h5>
-                    <p className="text-muted">
-                      Shatinon Mekalan
-                      <br />
-                      Vancouver, British Columbia
-                      <br />
-                      Canada
-                    </p>
-                    <div className="mb-4">
-                      <h5 className="text-muted">Email</h5>
-                      <a href="mailto:shatinon@jeemail.com">
-                        shatinon@jeemail.com
-                      </a>
-                    </div>
-                    <h5 className="text-muted">Phone</h5>
-                    <a href="tel:+1234567890" className="text-muted">
-                      +1234567890
-                    </a>
-                  </Card.Body>
-                </Card>
+                <CustomerDefaultAddressCard />
               </Col>
               <Col xs={12}>
                 <CustomerNotesCard className="h-full" />
@@ -84,15 +55,13 @@ const CustomerDetails = () => {
             <div className="flex flex-col gap-10">
               <div>
                 <h3 className="mb-6">
-                  Orders{' '}
-                  <span className="text-subtle font-normal">(97)</span>
+                  Orders <span className="text-subtle font-normal">(97)</span>
                 </h3>
                 <CustomerOrdersTable />
               </div>
               <div>
                 <h3 className="mb-6">
-                  Wishlist{' '}
-                  <span className="text-subtle font-normal">(43)</span>
+                  Wishlist <span className="text-subtle font-normal">(43)</span>
                 </h3>
                 <CustomerWishlistTable />
               </div>

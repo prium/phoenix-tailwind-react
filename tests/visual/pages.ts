@@ -124,6 +124,16 @@ const OPEN_GOLD_TREEVIEW =
   `document.querySelectorAll('.treeview-list').forEach(l=>l.classList.add('treeview-border'));` +
   `document.querySelectorAll('.treeview-list[data-show="true"]').forEach(l=>{let el=l;while(el){if(el.classList&&el.classList.contains('treeview-list')){el.classList.add('show','collapse-show');const t=document.querySelector('[href="#'+el.id+'"]');if(t)t.setAttribute('aria-expanded','true')}el=el.parentElement}});`;
 
+/**
+ * The widgets page marks its section strip with Bootstrap's `data-bs-spy`, but
+ * hummingbird's ScrollSpy never binds to it, so the gold never highlights a
+ * link — not on load, not after a scroll (measured). `.active` adds a 1px
+ * bottom border to the sticky strip, so without this the whole 13,800px page
+ * sits 1px lower on one side and every glyph differs. Activate the first link,
+ * which is what a working scrollspy (and React) shows at scroll 0.
+ */
+const ACTIVATE_GOLD_SCROLLSPY = `document.querySelector('#widgets-scrollspy .nav-link').classList.add('active')`;
+
 const EC = '/apps/e-commerce';
 const p = (
   name: string,
@@ -1176,5 +1186,30 @@ export const pages: VisualPage[] = [
   demo('horizontal-slim'),
   // React carries an 11th route that renders exactly what `horizontal-slim`
   // does; the gold has no separate page for it.
-  demo('navbar-top-slim', 'horizontal-slim')
+  demo('navbar-top-slim', 'horizontal-slim'),
+
+  // modules > widgets: the aggregate page that collects every widget in the
+  // theme (widgets.pug). Unlike the other /modules pages it is a real page,
+  // so it is pixel-compared.
+  {
+    name: 'widgets',
+    react: '/widgets',
+    gold: '/widgets.html',
+    dark: true,
+    widths: [768],
+    setup: { gold: { eval: ACTIVATE_GOLD_SCROLLSPY } },
+    probes: [
+      // section-title fa-stack circles (the webfont sheet doubles fa-stack-2x)
+      '.fa-stack',
+      // sticky section nav links
+      '.widgets-scrollspy-nav .nav-link',
+      // deal-forecast / top-regions legend squares
+      '.fa-square',
+      // the Forms section's dropzone prompt (its line box drives the section
+      // height, see Dropzone.messageClassName)
+      '.dz-message',
+      // to-do / project search boxes
+      '.search-box .search-box-icon'
+    ]
+  }
 ];

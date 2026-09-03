@@ -1,4 +1,6 @@
 import { Col, Input, Row, Select } from '@hummingbirdui/react';
+import Button from 'components/base/Button';
+import { currencyFormat } from 'helpers/utils';
 import visa from 'assets/img/logos/visa.png';
 import discover from 'assets/img/logos/discover.png';
 import mastercard from 'assets/img/logos/mastercard.png';
@@ -7,7 +9,13 @@ import dayjs from 'dayjs';
 import localeData from 'dayjs/plugin/localeData';
 dayjs.extend(localeData);
 
-const FieldLabel = ({ htmlFor, children }: { htmlFor?: string; children: string }) => (
+const FieldLabel = ({
+  htmlFor,
+  children
+}: {
+  htmlFor?: string;
+  children: string;
+}) => (
   <label
     htmlFor={htmlFor}
     className="form-label text-base text-highlight ps-0 normal-case"
@@ -42,7 +50,11 @@ export const PaymentMethod = () => {
                   <img className="h-full" src={visa} alt="visa" />
                   <img className="h-full" src={discover} alt="discover" />
                   <img className="h-full" src={mastercard} alt="mastercard" />
-                  <img className="h-full" src={american_express} alt="american express" />
+                  <img
+                    className="h-full"
+                    src={american_express}
+                    alt="american express"
+                  />
                 </label>
               </div>
             </Col>
@@ -55,7 +67,10 @@ export const PaymentMethod = () => {
                   value="paypal"
                   className="form-check-input"
                 />
-                <label htmlFor="paypal" className="form-check-label text-base text-default">
+                <label
+                  htmlFor="paypal"
+                  className="form-check-label text-base text-default"
+                >
                   Paypal
                 </label>
               </div>
@@ -69,7 +84,10 @@ export const PaymentMethod = () => {
                   value="coupon"
                   className="form-check-input"
                 />
-                <label htmlFor="coupon" className="form-check-label text-base text-default">
+                <label
+                  htmlFor="coupon"
+                  className="form-check-label text-base text-default"
+                >
                   Coupon
                 </label>
               </div>
@@ -142,10 +160,30 @@ export const PaymentMethod = () => {
               value="save"
               className="form-check-input"
             />
-            <label htmlFor="gridCheck" className="form-check-label text-emphasis text-base">
+            <label
+              htmlFor="gridCheck"
+              className="form-check-label text-emphasis text-base"
+            >
               Save Card Details
             </label>
           </div>
+        </Col>
+      </Row>
+      <Row className="g-2 mb-8 lg:mb-0">
+        <Col md={8} lg={9} className="grid">
+          <Button variant="primary" type="submit">
+            Pay {currencyFormat(695.2, { minimumFractionDigits: 2 })}
+          </Button>
+        </Col>
+        <Col md={4} lg={3} className="grid">
+          <Button
+            variant="phoenix"
+            color="secondary"
+            type="submit"
+            className="whitespace-nowrap"
+          >
+            Save Order and Exit
+          </Button>
         </Col>
       </Row>
     </>

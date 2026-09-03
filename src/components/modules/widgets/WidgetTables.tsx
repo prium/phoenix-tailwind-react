@@ -1,19 +1,21 @@
-import WidgetsSectionTitle from './WidgetsSectionTitle';
 import { faList } from '@fortawesome/free-solid-svg-icons';
+import { Col, Row } from '@hummingbirdui/react';
+import ProjectActivityCard from 'components/cards/ProjectActivityCard';
 import DealsReportTable, {
   dealsReportColumns
 } from 'components/tables/DealsReportTable';
-import AdvanceTableProvider from 'providers/AdvanceTableProvider';
-import useAdvanceTable from 'hooks/useAdvanceTable';
+import EcomLatestReviewsTable from 'components/tables/EcomLatestReviewsTable';
 import { dealsReportData } from 'data/crm/reportsData';
-import { Col, Row } from 'react-bootstrap';
-import EcomTopRegions from '../e-commerce/dashboard/EcomTopRegions';
+import { widgetsTodoList } from 'data/project-management/todoListData';
+import useAdvanceTable from 'hooks/useAdvanceTable';
+import AdvanceTableProvider from 'providers/AdvanceTableProvider';
 import DealForecast from '../crm/DealForecast';
+import EcomTopRegions from '../e-commerce/dashboard/EcomTopRegions';
 import ProjectDashboard from '../project-management/dashboard/ProjectDashboard';
 import TodoList from '../project-management/todo-list/TodoList';
-import ProjectActivityCard from 'components/cards/ProjectActivityCard';
-import EcomLatestReviewsTable from 'components/tables/EcomLatestReviewsTable';
+import WidgetsSectionTitle from './WidgetsSectionTitle';
 
+/** `+Tables` in mixins/widgets/Tables.pug */
 const WidgetTables = () => {
   const table = useAdvanceTable({
     data: dealsReportData,
@@ -24,41 +26,43 @@ const WidgetTables = () => {
     sortable: true
   });
   return (
-    <div>
+    <>
       <WidgetsSectionTitle
         title="Tables, Files, and Lists"
-        subtitle="Phoenix's styled components are dedicatedly made for displaying your contents and lists."
+        subtitle="Phoenix Tailwind's styled components are dedicatedly made for displaying your contents and lists."
         icon={faList}
-        className="mb-5 mt-7"
+        transform="shrink-2"
+        className="mb-8 pt-12"
       />
+      <h3 className="mb-4">Purchasers and sellers</h3>
       <AdvanceTableProvider {...table}>
         <DealsReportTable />
       </AdvanceTableProvider>
-      <Row className="gx-6 mt-n3 pb-5">
+      <Row className="gx-10 -mt-4 pb-8">
         <Col xl={6}>
           <EcomTopRegions />
         </Col>
-        <Col xl={6} className="mt-7">
-          <DealForecast />
+        <Col xl={6} className="mt-12">
+          <DealForecast pageSize={6} />
         </Col>
       </Row>
-      <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-soft py-5 border-y">
+      <div className="-mx-6 px-6 lg:-mx-10 lg:px-10 bg-soft py-8 border-y">
         <ProjectDashboard />
       </div>
-      <div className="mt-3 mx-lg-n4">
-        <Row className="g-3">
-          <Col xl={6} xxl={7}>
-            <TodoList />
+      <div className="mt-4 lg:-mx-6">
+        <Row className="g-4">
+          <Col xs={12} xl={6} xxl={7}>
+            <TodoList items={widgetsTodoList} />
           </Col>
-          <Col xl={6} xxl={5}>
+          <Col xs={12} xl={6} xxl={5}>
             <ProjectActivityCard />
           </Col>
         </Row>
       </div>
-      <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-soft pt-7 mt-3 border-y">
+      <div className="-mx-6 px-6 lg:-mx-10 lg:px-10 bg-soft pt-12 mt-4 border-y">
         <EcomLatestReviewsTable />
       </div>
-    </div>
+    </>
   );
 };
 

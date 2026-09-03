@@ -170,11 +170,11 @@ const columns: ColumnDef<ForecastTableData>[] = [
 ];
 
 /** `+DealForecastTable` in mixins/dashboard/CRM/Crm.pug */
-const DealForecastTable = () => {
+const DealForecastTable = ({ pageSize = 5 }: { pageSize?: number }) => {
   const table = useAdvanceTable({
     data: dealForecastTableData,
     columns,
-    pageSize: 5,
+    pageSize,
     pagination: true,
     sortable: true
   });
