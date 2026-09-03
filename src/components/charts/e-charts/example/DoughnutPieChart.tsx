@@ -71,6 +71,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
   }
 });
 
+/** Gold `.echart-doughnut-chart-example.min-h-80` on modules/echarts/pie-charts. */
 const DoughnutPieChart = () => {
   const { getThemeColor } = useAppContext();
 
@@ -78,7 +79,8 @@ const DoughnutPieChart = () => {
     <ReactEChartsCore
       echarts={echarts}
       option={getDefaultOptions(getThemeColor)}
-      style={{ minHeight: '320px', width: '100%' }}
+      className="w-full min-h-80"
+      style={{ height: 'auto', width: '100%' }}
     />
   );
 };

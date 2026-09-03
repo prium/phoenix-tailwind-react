@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactEChartsCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
 import { getPastDates } from 'helpers/utils';
@@ -18,7 +17,10 @@ const data1 = [3500, 4100, 5400, 4000, 5000, 2000, 3000, 1000, 5500, 4500];
 const data2 = [2500, 3000, 6000, 3500, 4000, 3000, 1500, 1500, 4200, 1000];
 
 const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
-  color: [getThemeColor('color-primary'), getThemeColor('background-color-highlight')],
+  color: [
+    getThemeColor('color-primary'),
+    getThemeColor('background-color-highlight')
+  ],
   tooltip: {
     trigger: 'axis',
     padding: [7, 10],
@@ -122,20 +124,16 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
   animation: false
 });
 
-const SeriesBarChart = ({
-  height,
-  width
-}: {
-  height: string;
-  width: string;
-}) => {
+/** Gold `.echart-series-bar-chart-example.min-h-75` on modules/echarts/bar-charts. */
+const SeriesBarChart = () => {
   const { getThemeColor } = useAppContext();
 
   return (
     <ReactEChartsCore
       echarts={echarts}
       option={getDefaultOptions(getThemeColor)}
-      style={{ height, width }}
+      className="w-full min-h-75"
+      style={{ height: 'auto', width: '100%' }}
     />
   );
 };

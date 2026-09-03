@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactEChartsCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
 import { getDates } from 'helpers/utils';
@@ -160,6 +159,7 @@ const getDefaultOptions = (
   animation: false
 });
 
+/** Gold `.echart-line-chart-example.min-h-75` on modules/echarts/line-charts. */
 const SimpleLineChart = () => {
   const {
     config: { theme },
@@ -170,6 +170,8 @@ const SimpleLineChart = () => {
     <ReactEChartsCore
       echarts={echarts}
       option={getDefaultOptions(theme, getThemeColor)}
+      className="w-full min-h-75"
+      style={{ height: 'auto', width: '100%' }}
     />
   );
 };

@@ -1,3 +1,4 @@
+import { Col, Row } from '@hummingbirdui/react';
 import PhoenixDocCard from 'components/base/PhoenixDocCard';
 import DoughnutPieChart from 'components/charts/e-charts/example/DoughnutPieChart';
 import SeriesBarChart from 'components/charts/e-charts/example/SeriesBarChart';
@@ -6,7 +7,6 @@ import StackedLineChart from 'components/charts/e-charts/example/StackedLineChar
 import DocPageHeader from 'components/docs/DocPageHeader';
 import PhoenixLiveEditor from 'components/docs/PhoenixLiveEditor';
 import DocPagesLayout from 'layouts/DocPagesLayout';
-import { Col, Row } from 'react-bootstrap';
 
 const structureCode = `// import the core library.
 import ReactEChartsCore from 'echarts-for-react/lib/core';
@@ -38,34 +38,37 @@ echarts.use([
   LegendComponent
 ]);
 
-// The usage of ReactEChartsCore are same with above.
+// Read the chart palette from the theme tokens, so the chart follows light/dark.
+const { getThemeColor } = useAppContext();
+
+// The chart element carries its own size, the way the static theme sizes its
+// .echart-* containers (min-h-75, min-h-80 and so on).
 <ReactEChartsCore
   echarts={echarts}
-  option={getOption()}
-  style={{ height: '20rem' }}
+  option={getOption(getThemeColor)}
+  className="w-full min-h-75"
+  style={{ height: 'auto', width: '100%' }}
 />`;
 
-const basicImportString = `
+/* The four snippets below are the sources of the components imported above, so
+   the code panel and the chart rendered next to it cannot drift apart. */
+
+const simpleLineChartCode = `
 import ReactEChartsCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
+import { getDates } from 'helpers/utils';
+import dayjs from 'dayjs';
 import { useAppContext } from 'providers/AppProvider';
-import { tooltipFormatterDefault } from 'helpers/echart-utils';
-import { CallbackDataParams } from 'echarts/types/dist/shared';
-`;
-
-const SimpleLineChartCode = `
-${basicImportString}
 import {
   GridComponent,
   LegendComponent,
   TitleComponent,
   TooltipComponent
 } from 'echarts/components';
-import { getDates } from 'helpers/utils';
-import dayjs from 'dayjs';
 import { LineChart } from 'echarts/charts';
 import { CanvasRenderer } from 'echarts/renderers';
 import { ThemeVariant } from 'config';
+import { tooltipFormatterList } from 'helpers/echart-utils';
 
 echarts.use([
   TitleComponent,
@@ -101,14 +104,14 @@ const getDefaultOptions = (
     trigger: 'axis',
     padding: 10,
     backgroundColor: getThemeColor('background-color-subtle'),
-    borderColor: getThemeColor('border-color-default'),
+    borderColor: getThemeColor('background-color-highlight'),
     textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,
     axisPointer: {
       type: 'none'
     },
-    formatter: tooltipFormatterDefault
+    formatter: tooltipFormatterList
   },
   xAxis: [
     {
@@ -222,17 +225,23 @@ const SimpleLineChart = () => {
     <ReactEChartsCore
       echarts={echarts}
       option={getDefaultOptions(theme, getThemeColor)}
+      className="w-full min-h-75"
+      style={{ height: 'auto', width: '100%' }}
     />
   );
 };
 `;
 
 const seriesBarChartCode = `
-${basicImportString}
+import ReactEChartsCore from 'echarts-for-react/lib/core';
+import * as echarts from 'echarts/core';
 import { getPastDates } from 'helpers/utils';
 import dayjs from 'dayjs';
+import { useAppContext } from 'providers/AppProvider';
 import { TooltipComponent } from 'echarts/components';
 import { BarChart } from 'echarts/charts';
+import { CallbackDataParams } from 'echarts/types/dist/shared';
+import { tooltipFormatterDefault } from 'helpers/echart-utils';
 
 echarts.use([TooltipComponent, BarChart]);
 
@@ -243,19 +252,22 @@ const data1 = [3500, 4100, 5400, 4000, 5000, 2000, 3000, 1000, 5500, 4500];
 const data2 = [2500, 3000, 6000, 3500, 4000, 3000, 1500, 1500, 4200, 1000];
 
 const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
-  color: [getThemeColor('color-primary'), getThemeColor('background-color-highlight')],
+  color: [
+    getThemeColor('color-primary'),
+    getThemeColor('background-color-highlight')
+  ],
   tooltip: {
     trigger: 'axis',
     padding: [7, 10],
     backgroundColor: getThemeColor('background-color-subtle'),
-    borderColor: getThemeColor('border-color-default'),
+    borderColor: getThemeColor('background-color-highlight'),
     textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,
     axisPointer: {
       type: 'none'
     },
-    formatter: tooltipFormatterDefault
+    formatter: (params: CallbackDataParams[]) => tooltipFormatterDefault(params)
   },
   legend: {
     data: ['Expenses', 'Income'],
@@ -338,36 +350,33 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
   ],
   grid: {
     right: 0,
-    left: 3,
+    left: 0,
     bottom: 0,
-    top: '15%',
+    top: '11%',
     outerBoundsMode: 'same',
     outerBoundsContain: 'axisLabel'
   },
   animation: false
 });
 
-const SeriesBarChart = ({
-  height,
-  width
-}: {
-  height: string;
-  width: string;
-}) => {
+const SeriesBarChart = () => {
   const { getThemeColor } = useAppContext();
 
   return (
     <ReactEChartsCore
       echarts={echarts}
       option={getDefaultOptions(getThemeColor)}
-      style={{ height, width }}
+      className="w-full min-h-75"
+      style={{ height: 'auto', width: '100%' }}
     />
   );
 };
 `;
 
 const doughnutPieChartCode = `
-${basicImportString}
+import ReactEChartsCore from 'echarts-for-react/lib/core';
+import * as echarts from 'echarts/core';
+import { useAppContext } from 'providers/AppProvider';
 import { TooltipComponent } from 'echarts/components';
 import { PieChart } from 'echarts/charts';
 echarts.use([TooltipComponent, PieChart]);
@@ -445,18 +454,23 @@ const DoughnutPieChart = () => {
     <ReactEChartsCore
       echarts={echarts}
       option={getDefaultOptions(getThemeColor)}
-      style={{ minHeight: '320px', width: '100%' }}
+      className="w-full min-h-80"
+      style={{ height: 'auto', width: '100%' }}
     />
   );
 };
 `;
 
 const stackedLineChartCode = `
-${basicImportString}
+import ReactEChartsCore from 'echarts-for-react/lib/core';
+import * as echarts from 'echarts/core';
+import { useAppContext } from 'providers/AppProvider';
 import { TooltipComponent } from 'echarts/components';
 import { PieChart } from 'echarts/charts';
 import dayjs from 'dayjs';
 import { getPastDates } from 'helpers/utils';
+import { tooltipFormatterDefault } from 'helpers/echart-utils';
+import { CallbackDataParams } from 'echarts/types/dist/shared';
 echarts.use([TooltipComponent, PieChart]);
 
 const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
@@ -470,7 +484,8 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     trigger: 'axis',
     backgroundColor: getThemeColor('background-color-default'),
     bordercolor: getThemeColor('background-color-muted'),
-    formatter: tooltipFormatterDefault,
+    formatter: (params: CallbackDataParams[]) =>
+      tooltipFormatterDefault(params),
     axisPointer: {
       shadowStyle: {
         color: 'red'
@@ -622,9 +637,9 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
   ],
   grid: {
     right: 5,
-    left: 0,
+    left: -3,
     bottom: '15%',
-    top: 20,
+    top: 14,
     outerBoundsMode: 'same',
     outerBoundsContain: 'axisLabel'
   }
@@ -637,51 +652,88 @@ const StackedLineChart = () => {
     <ReactEChartsCore
       echarts={echarts}
       option={getDefaultOptions(getThemeColor)}
-      style={{ minHeight: '320px', width: '100%' }}
+      className="w-full min-h-80"
+      style={{ height: 'auto', width: '100%' }}
     />
   );
 };
 `;
 
+/**
+ * One aggregate page for the gold's ten `modules/echarts/*` pages, because this
+ * app's nav exposes a single `/modules/charts/e-charts` route. The header and
+ * the "Usage" card come from `how-to-use`; the four examples are the React
+ * ports of `line-charts` (Basic line chart, Stacked line chart), `bar-charts`
+ * (Series bar chart) and `pie-charts` (Doughnut chart).
+ */
 const ECharts = () => {
   return (
-    <div className="mb-9">
+    <div>
       <DocPageHeader
         title="ECharts"
-        description="The simplest, and the best React wrapper for Apache ECharts. Apache ECharts is a free, powerful charting and visualization library offering an easy way of adding intuitive, interactive, and highly customizable charts to your commercial products."
+        description="A powerful, interactive charting and visualization library for browser."
         link={{
           text: 'Documentation for ECharts',
-          url: `https://github.com/hustcc/echarts-for-react`
+          url: 'https://echarts.apache.org/en/option.html'
         }}
-      />
+      >
+        <p className="mb-2">
+          Charts are rendered with <code>echarts-for-react</code>&apos;s{' '}
+          <code>ReactEChartsCore</code> on top of the tree-shakable{' '}
+          <code>echarts/core</code> build, so each chart registers only the
+          series types, components and renderer it uses. Colours are read from
+          the theme tokens through <code>useAppContext().getThemeColor</code>,
+          which resolves a CSS custom property on the document element, so a
+          chart follows the light/dark switch without a second option set.
+        </p>
+      </DocPageHeader>
       <DocPagesLayout>
-        <PhoenixDocCard className="mb-5">
-          <PhoenixDocCard.Header title="Usage" noPreview />
+        <PhoenixDocCard className="mb-4">
+          <PhoenixDocCard.Header title="Usage" noPreview>
+            <p className="mb-0">
+              Import the core module, register the pieces the chart needs with{' '}
+              <code>echarts.use()</code>, then render{' '}
+              <code>ReactEChartsCore</code>. Give the chart element a height —
+              echarts measures its container, the same way the static theme
+              sizes its <code>.echart-*</code> divs with <code>min-h-75</code>{' '}
+              or <code>min-h-80</code>.
+            </p>
+          </PhoenixDocCard.Header>
           <PhoenixDocCard.Body>
             <PhoenixLiveEditor code={structureCode} />
           </PhoenixDocCard.Body>
         </PhoenixDocCard>
-        <h3 className="mb-4">Examples</h3>
-        <Row className="g-4">
+
+        <h3 className="mb-6">Examples</h3>
+        <Row className="g-6">
           <Col xl={6}>
             <PhoenixDocCard>
-              <PhoenixDocCard.Header title="Simple line chart" />
-              <PhoenixDocCard.Body code={SimpleLineChartCode} hidePreview>
+              <PhoenixDocCard.Header
+                title="Simple line chart"
+                description="Two line series over a month of dates."
+              />
+              <PhoenixDocCard.Body code={simpleLineChartCode} hidePreview>
                 <SimpleLineChart />
               </PhoenixDocCard.Body>
             </PhoenixDocCard>
           </Col>
           <Col xl={6}>
             <PhoenixDocCard>
-              <PhoenixDocCard.Header title="Series bar chart" />
+              <PhoenixDocCard.Header
+                title="Series bar chart"
+                description="Two bar series drawn side by side."
+              />
               <PhoenixDocCard.Body code={seriesBarChartCode} hidePreview>
-                <SeriesBarChart height="300px" width="100%" />
+                <SeriesBarChart />
               </PhoenixDocCard.Body>
             </PhoenixDocCard>
           </Col>
           <Col xl={6}>
             <PhoenixDocCard>
-              <PhoenixDocCard.Header title="Doughnut pie chart" />
+              <PhoenixDocCard.Header
+                title="Doughnut pie chart"
+                description="A pie series with an inner radius, labelled on hover."
+              />
               <PhoenixDocCard.Body code={doughnutPieChartCode} hidePreview>
                 <DoughnutPieChart />
               </PhoenixDocCard.Body>
@@ -689,7 +741,10 @@ const ECharts = () => {
           </Col>
           <Col xl={6}>
             <PhoenixDocCard>
-              <PhoenixDocCard.Header title="Stacked line chart" />
+              <PhoenixDocCard.Header
+                title="Stacked line chart"
+                description="Four line series stacked on a shared total."
+              />
               <PhoenixDocCard.Body code={stackedLineChartCode} hidePreview>
                 <StackedLineChart />
               </PhoenixDocCard.Body>

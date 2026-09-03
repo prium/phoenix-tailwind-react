@@ -181,6 +181,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
   }
 });
 
+/** Gold `.echart-stacked-line-chart-example` on modules/echarts/line-charts (min-h-80 here: this variant carries a bottom legend). */
 const StackedLineChart = () => {
   const { getThemeColor } = useAppContext();
 
@@ -188,7 +189,8 @@ const StackedLineChart = () => {
     <ReactEChartsCore
       echarts={echarts}
       option={getDefaultOptions(getThemeColor)}
-      style={{ minHeight: '320px', width: '100%' }}
+      className="w-full min-h-80"
+      style={{ height: 'auto', width: '100%' }}
     />
   );
 };
