@@ -1,7 +1,6 @@
 import PhoenixDocCard from 'components/base/PhoenixDocCard';
 import DocPageHeader from 'components/docs/DocPageHeader';
 import DocPagesLayout from 'layouts/DocPagesLayout';
-import React from 'react';
 import ReactSelect from 'components/base/ReactSelect';
 import Button from 'components/base/Button';
 
@@ -11,7 +10,7 @@ import ReactSelect from 'components/base/ReactSelect';
 function MultipleSelect(){
   return(
     <>
-      <Form.Label>Multiple</Form.Label>
+      <Field.Label>Multiple</Field.Label>
       <ReactSelect
         options={[
           {
@@ -39,7 +38,7 @@ import ReactSelect from 'components/base/ReactSelect';
 function SingleSelect(){
   return(
     <>
-      <Form.Label>Single</Form.Label>
+      <Field.Label>Single</Field.Label>
       <ReactSelect
         options={[
           {
@@ -66,8 +65,8 @@ import Button from 'components/base/Button';
 
 function Validation(){
   return(
-    <Form>
-      <Form.Label>Multiple</Form.Label>
+    <form>
+      <Field.Label>Multiple</Field.Label>
       <ReactSelect
         options={[
           {
@@ -85,7 +84,7 @@ function Validation(){
         placeholder="Select organizer..."
         required
       />
-      <Form.Label className="mt-4">Single</Form.Label>
+      <Field.Label className="mt-4">Single</Field.Label>
       <ReactSelect
         options={[
           {
@@ -103,7 +102,7 @@ function Validation(){
         required
       />
       <Button type="submit" variant="primary" className="mt-4">Submit</Button>
-    </Form>
+    </form>
   )
 }
 `;
@@ -123,7 +122,15 @@ const AdvanceSelectExample = () => {
       />
       <DocPagesLayout>
         <PhoenixDocCard className="overflow-visible mb-4">
-          <PhoenixDocCard.Header title="Multiple Select Example" />
+          <PhoenixDocCard.Header title="Multiple Select Example">
+            <p className="mb-0">
+              <code>ReactSelect</code> is the app wrapper around{' '}
+              <code>react-select</code>; it renders the same{' '}
+              <code>choices</code> markup the static theme produces, so the
+              control matches the rest of the form skin. Labels around it are
+              plain hb-react <code>Field.Label</code>s.
+            </p>
+          </PhoenixDocCard.Header>
           <PhoenixDocCard.Body
             code={multipleSelectCode}
             scope={{ ReactSelect }}
@@ -137,7 +144,13 @@ const AdvanceSelectExample = () => {
           />
         </PhoenixDocCard>
         <PhoenixDocCard className="overflow-visible">
-          <PhoenixDocCard.Header title="Validation Example" />
+          <PhoenixDocCard.Header title="Validation Example">
+            <p className="mb-0">
+              <code>required</code> is forwarded to the hidden native select, so
+              the surrounding <code>&lt;form&gt;</code> validates it with the
+              browser’s own constraint validation.
+            </p>
+          </PhoenixDocCard.Header>
           <PhoenixDocCard.Body
             code={validationCode}
             scope={{ ReactSelect, Button }}

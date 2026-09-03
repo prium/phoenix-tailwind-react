@@ -1,4 +1,3 @@
-import React from 'react';
 import PhoenixDocCard from 'components/base/PhoenixDocCard';
 import DocPageHeader from 'components/docs/DocPageHeader';
 import DocPagesLayout from 'layouts/DocPagesLayout';
@@ -127,7 +126,24 @@ const ReactRangeExample = () => {
       />
       <DocPagesLayout>
         <PhoenixDocCard className="overflow-visible mb-4">
-          <PhoenixDocCard.Header title="Default" />
+          <PhoenixDocCard.Header title="Default">
+            <p className="mb-0">
+              <code>PhoenixReactRange</code> is the app wrapper around{' '}
+              <code>react-range</code>: it owns its <code>values</code> array,
+              so drive it from state through <code>onChange</code>. For a
+              single-value native slider use the hb-react <code>Range</code> on
+              the <a href="/modules/forms/range">Range</a> page; hb-react also
+              ships a{' '}
+              <a
+                href="https://react.hbui.dev/docs/advanced-forms/slider"
+                target="_blank"
+                rel="noreferrer"
+              >
+                Slider
+              </a>
+              , which this project does not use.
+            </p>
+          </PhoenixDocCard.Header>
           <PhoenixDocCard.Body
             code={defaultRangeCode}
             scope={{ PhoenixReactRange }}

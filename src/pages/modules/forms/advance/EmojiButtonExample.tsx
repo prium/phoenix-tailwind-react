@@ -1,7 +1,7 @@
 import { faFaceSmile } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'components/base/Button';
-import EmojiPicker, { EmojiStyle, Theme} from 'emoji-picker-react';
+import EmojiPicker, { EmojiStyle, Theme } from 'emoji-picker-react';
 import PhoenixDocCard from 'components/base/PhoenixDocCard';
 import DocPageHeader from 'components/docs/DocPageHeader';
 import DocPagesLayout from 'layouts/DocPagesLayout';

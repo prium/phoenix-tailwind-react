@@ -1,7 +1,6 @@
 import PhoenixDocCard from 'components/base/PhoenixDocCard';
 import DocPageHeader from 'components/docs/DocPageHeader';
 import DocPagesLayout from 'layouts/DocPagesLayout';
-import React from 'react';
 import Dropzone from 'components/base/Dropzone';
 
 const singleFileUploadCode = `
@@ -38,7 +37,21 @@ const FileUploaderExample = () => {
       />
       <DocPagesLayout>
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header title="Single File Upload" />
+          <PhoenixDocCard.Header title="Single File Upload">
+            <p className="mb-0">
+              <code>Dropzone</code> is the app wrapper around{' '}
+              <code>react-dropzone</code> and renders the theme’s dropzone
+              markup. hb-react also ships a{' '}
+              <a
+                href="https://react.hbui.dev/docs/advanced-forms/file-uploader"
+                target="_blank"
+                rel="noreferrer"
+              >
+                FileUploader
+              </a>
+              , but the pages in this project use this one.
+            </p>
+          </PhoenixDocCard.Header>
           <PhoenixDocCard.Body
             code={singleFileUploadCode}
             scope={{ Dropzone }}

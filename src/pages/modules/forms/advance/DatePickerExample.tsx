@@ -1,8 +1,7 @@
 import PhoenixDocCard from 'components/base/PhoenixDocCard';
 import DocPageHeader from 'components/docs/DocPageHeader';
 import DocPagesLayout from 'layouts/DocPagesLayout';
-import React from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row } from '@hummingbirdui/react';
 import DatePicker from 'components/base/DatePicker';
 
 const datePickerCode = `
@@ -105,12 +104,31 @@ const DatePickerExample = () => {
           text: 'React Flatpickr Documentation',
           url: 'https://github.com/Hacker0x01/react-datepicker'
         }}
-      />
+      >
+        <p className="mb-2 text-muted">
+          hb-react also ships a{' '}
+          <a
+            href="https://react.hbui.dev/docs/advanced-forms/date-picker"
+            target="_blank"
+            rel="noreferrer"
+          >
+            DatePicker
+          </a>{' '}
+          built on its own calendar; the pages in this project use the flatpickr
+          one.
+        </p>
+      </DocPageHeader>
       <DocPagesLayout>
         <Row className="g-4">
           <Col md={6}>
             <PhoenixDocCard>
-              <PhoenixDocCard.Header title="Date picker" />
+              <PhoenixDocCard.Header title="Date picker">
+                <p className="mb-0">
+                  <code>DatePicker</code> wraps <code>react-flatpickr</code>;
+                  every flatpickr option goes through its <code>options</code>{' '}
+                  prop.
+                </p>
+              </PhoenixDocCard.Header>
               <PhoenixDocCard.Body
                 code={datePickerCode}
                 scope={{ DatePicker }}
