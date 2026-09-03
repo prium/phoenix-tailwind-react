@@ -102,7 +102,7 @@ const DatePickerExample = () => {
         }-React uses React Flatpickr as datepicker. React Flatpickr is a simple and reusable Datepicker component for React.`}
         link={{
           text: 'React Flatpickr Documentation',
-          url: 'https://github.com/Hacker0x01/react-datepicker'
+          url: 'https://github.com/haoxins/react-flatpickr'
         }}
       >
         <p className="mb-2 text-muted">
