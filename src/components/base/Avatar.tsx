@@ -47,7 +47,9 @@ interface AvatarGroupProps {
 }
 
 const roundedClass = (rounded: Rounded) =>
-  ({ circle: 'rounded-full', soft: 'rounded-soft', square: '' })[rounded];
+  // gold `+Avatar({round: 'rounded-lg'})`; `rounded-soft` was invented here
+  // and has no --radius-soft token, so it rendered square
+  ({ circle: 'rounded-full', soft: 'rounded-lg', square: '' })[rounded];
 
 const Avatar = ({
   size,

@@ -15,6 +15,12 @@ too, but not yet committed there): components/avatar.css
 3. `.avatar img` fills the box and crops (`size-full object-cover`, as the
    original phoenix `.avatar img { width/height:100%; object-fit:cover }`) —
    non-square uploads rendered at natural aspect and broke the circle.
+4. `.avatar-emoji` is restored: the Tailwind port kept the markup
+   (mixins/common/Avatar.pug still emits `.avatar-emoji > span`) but never
+   ported the rule, so an emoji avatar rendered as bare text with no plate —
+   the rule only survives in the stale bootstrap build
+   (public/assets/css/theme.min.css). Sized at ~0.75 of the box, as the old
+   per-size `.avatar-{s..5xl} .avatar-emoji` steps did.
 Drop this note once phoenix-tailwind commits the fix.
 
 Also patched in the phoenix-tailwind working tree (pug, not css):

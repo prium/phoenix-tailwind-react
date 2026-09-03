@@ -23,6 +23,18 @@
     .avatar-placeholder {
       @apply bg-muted;
     }
+    /* original phoenix `.avatar .avatar-emoji`: the Tailwind port kept the
+       markup (mixins/common/Avatar.pug) but dropped the rule, so an emoji
+       avatar rendered as bare text with no plate. Old build sized the glyph at
+       ~0.75 of the box for every avatar-* step. */
+    .avatar-emoji {
+      @apply size-full flex items-center justify-center;
+      font-size: calc(var(--avatar-size) / 1.33);
+
+      > span {
+        @apply inline-block translate-y-[2%];
+      }
+    }
     &[class*='avatar-status-'] {
       &::before {
         @apply end-[14%] bottom-[14%] size-3
