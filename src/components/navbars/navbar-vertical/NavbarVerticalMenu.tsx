@@ -1,5 +1,5 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { useEffect } from 'react';
+import { memo, useEffect } from 'react';
 import { cn } from '@hummingbirdui/react';
 import FeatherIcon from 'feather-icons-react';
 import { Route } from 'sitemap';
@@ -9,7 +9,6 @@ import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { useNavbarVerticalCollapse } from './NavbarVerticalCollapseProvider';
 import Badge from 'components/base/Badge';
-import { useAppContext } from 'providers/AppProvider';
 
 interface NavbarVerticalMenuProps {
   routes: Route[];
@@ -30,12 +29,20 @@ const RouteBadges = ({
 }) => (
   <>
     {route.new && (
-      <Badge variant="phoenix" color="warning" className={cn('ms-2', className)}>
+      <Badge
+        variant="phoenix"
+        color="warning"
+        className={cn('ms-2', className)}
+      >
         New
       </Badge>
     )}
     {route.isNext && (
-      <Badge variant="phoenix" color="primary" className={cn('ms-2', className)}>
+      <Badge
+        variant="phoenix"
+        color="primary"
+        className={cn('ms-2', className)}
+      >
         Next
       </Badge>
     )}
@@ -51,9 +58,6 @@ const RouteIcon = ({ route }: { route: Route }) =>
 
 /** Leaf link — `a.nav-link(.label-1)` in NavbarVertical.pug */
 const NavItem = ({ route, level }: NavItemProps) => {
-  const {
-    config: { isNavbarVerticalCollapsed }
-  } = useAppContext();
   const { setOpenItems, openItems } = useNavbarVerticalCollapse();
 
   return (
@@ -80,9 +84,8 @@ const NavItem = ({ route, level }: NavItemProps) => {
             </span>
             <span className="nav-link-text-wrapper">
               <span className="nav-link-text">{capitalize(route.name)}</span>
-              {!isNavbarVerticalCollapsed && (
-                <RouteBadges route={route} className="nav-link-badge" />
-              )}
+              {/* `.navbar-vertical-collapsed .nav-link-badge` hides this */}
+              <RouteBadges route={route} className="nav-link-badge" />
             </span>
           </>
         ) : (
@@ -100,9 +103,6 @@ const NavItem = ({ route, level }: NavItemProps) => {
 const CollapsableNavItem = ({ route, level }: NavItemProps) => {
   const { pathname } = useLocation();
   const { setOpenItems, openItems } = useNavbarVerticalCollapse();
-  const {
-    config: { isNavbarVerticalCollapsed }
-  } = useAppContext();
 
   const isOpen = openItems[level] === route.name;
 
@@ -175,9 +175,10 @@ const CollapsableNavItem = ({ route, level }: NavItemProps) => {
           )}
           <span className={cn('nav-link-text', { new: route.hasNew })}>
             {capitalize(route.name)}
-            {(!isNavbarVerticalCollapsed || level !== 1) && (
-              <RouteBadges route={route} />
-            )}
+            <RouteBadges
+              route={route}
+              className={level === 1 ? 'nav-link-badge' : undefined}
+            />
           </span>
         </div>
       </a>
@@ -193,7 +194,7 @@ const CollapsableNavItem = ({ route, level }: NavItemProps) => {
           {level === 1 && (
             <li className="collapsed-nav-item-title hidden">
               {capitalize(route.name)}
-              {isNavbarVerticalCollapsed && <RouteBadges route={route} />}
+              <RouteBadges route={route} />
             </li>
           )}
           <NavbarVerticalMenu routes={route.pages || []} level={level + 1} />
@@ -203,27 +204,34 @@ const CollapsableNavItem = ({ route, level }: NavItemProps) => {
   );
 };
 
-const NavbarVerticalMenu = ({ routes, level }: NavbarVerticalMenuProps) => {
-  return (
-    <>
-      {routes.map(route => {
-        const item = route.pages ? (
-          <CollapsableNavItem route={route} level={level} />
-        ) : (
-          <NavItem route={route} level={level} />
-        );
-        return level === 1 ? (
-          <div className="nav-item-wrapper" key={route.name}>
-            {item}
-          </div>
-        ) : (
-          <li className="nav-item" key={route.name}>
-            {item}
-          </li>
-        );
-      })}
-    </>
-  );
-};
+/**
+ * Memoised: `routes` comes from the static sitemap, so a re-render of
+ * `NavbarVertical` (theme, collapse, RTL…) must not re-walk the whole tree.
+ */
+const NavbarVerticalMenu = memo(
+  ({ routes, level }: NavbarVerticalMenuProps) => {
+    return (
+      <>
+        {routes.map(route => {
+          const item = route.pages ? (
+            <CollapsableNavItem route={route} level={level} />
+          ) : (
+            <NavItem route={route} level={level} />
+          );
+          return level === 1 ? (
+            <div className="nav-item-wrapper" key={route.name}>
+              {item}
+            </div>
+          ) : (
+            <li className="nav-item" key={route.name}>
+              {item}
+            </li>
+          );
+        })}
+      </>
+    );
+  }
+);
+NavbarVerticalMenu.displayName = 'NavbarVerticalMenu';
 
 export default NavbarVerticalMenu;

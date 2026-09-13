@@ -4,6 +4,7 @@ import {
   SetStateAction,
   createContext,
   use,
+  useMemo,
   useState
 } from 'react';
 
@@ -18,8 +19,14 @@ const NavbarVerticalCollapseContext = createContext(
 
 const NavbarVerticalCollapseProvider = ({ children }: PropsWithChildren) => {
   const [openItems, setOpenItems] = useState(['']);
+  /**
+   * A fresh object here re-renders every `NavItem`/`CollapsableNavItem` each
+   * time `NavbarVertical` renders. That is ~460ms of blocked main thread on a
+   * sitemap this size, which ate the sidenav's 200ms width transition whole.
+   */
+  const value = useMemo(() => ({ openItems, setOpenItems }), [openItems]);
   return (
-    <NavbarVerticalCollapseContext value={{ openItems, setOpenItems }}>
+    <NavbarVerticalCollapseContext value={value}>
       {children}
     </NavbarVerticalCollapseContext>
   );

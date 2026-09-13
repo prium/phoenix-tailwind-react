@@ -1,3 +1,4 @@
+import { startTransition } from 'react';
 import { Navbar, cn } from '@hummingbirdui/react';
 import { routes } from 'sitemap';
 import { capitalize } from 'helpers/utils';
@@ -71,8 +72,22 @@ const NavbarVertical = () => {
           <Button
             className="navbar-vertical-toggle border-0 font-semibold w-full whitespace-nowrap flex items-center justify-start"
             onClick={() => {
-              setConfig({
-                isNavbarVerticalCollapsed: !isNavbarVerticalCollapsed
+              /*
+                Toggle the class synchronously, as navbar-vertical.js does in
+                the gold. `width` transitions run on wall-clock time, so waiting
+                for the config effect costs the animation its first frames.
+                The AppProvider effect then re-applies the same class, idempotently.
+              */
+              document.documentElement.classList.toggle(
+                'navbar-vertical-collapsed',
+                !isNavbarVerticalCollapsed
+              );
+              // Non-urgent: lets React yield so the browser can paint the
+              // transition instead of blocking it with the config re-render.
+              startTransition(() => {
+                setConfig({
+                  isNavbarVerticalCollapsed: !isNavbarVerticalCollapsed
+                });
               });
             }}
           >
