@@ -142,7 +142,7 @@ const DrawerExample = () => {
         title="Drawer"
         description="A draggable, dismissible panel that slides in from any edge of the screen — hidden sidebars for navigation, shopping carts, and more."
         link={{
-          text: 'Drawer on hb-react',
+          text: 'Drawer on Hummingbird',
           url: 'https://react.hbui.dev/docs/components/drawer'
         }}
       />

@@ -174,7 +174,7 @@ const DialogExample = () => {
         title="Dialog"
         description="A modal dialog that traps focus, locks scroll, and dismisses on backdrop click or Escape — for lightboxes, user notifications, or completely custom content."
         link={{
-          text: 'Dialog on hb-react',
+          text: 'Dialog on Hummingbird',
           url: 'https://react.hbui.dev/docs/components/dialog'
         }}
       />

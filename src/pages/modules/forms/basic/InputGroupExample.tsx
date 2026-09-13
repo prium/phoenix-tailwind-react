@@ -198,7 +198,7 @@ const InputGroupExample = () => {
         title="Input group"
         description="Easily extend form controls by adding text, buttons, or button groups on either side of textual inputs, selects, and file inputs."
         link={{
-          text: 'Input Group on hb-react',
+          text: 'Input Group on Hummingbird',
           url: 'https://react.hbui.dev/docs/forms/input-group'
         }}
       />

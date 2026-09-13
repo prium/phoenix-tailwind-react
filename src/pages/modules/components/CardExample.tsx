@@ -189,7 +189,7 @@ const CardExample = () => {
         title="Cards"
         description="Cards provide a flexible and extensible content container with multiple variants and options."
         link={{
-          text: 'Card on hb-react',
+          text: 'Card on Hummingbird',
           url: 'https://react.hbui.dev/docs/components/card'
         }}
       />

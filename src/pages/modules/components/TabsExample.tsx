@@ -79,7 +79,7 @@ const TabsExample = () => {
         title="Tabs"
         description="A set of layered panels whose triggers switch which panel is shown."
         link={{
-          text: 'Tabs on hb-react',
+          text: 'Tabs on Hummingbird',
           url: 'https://react.hbui.dev/docs/components/tabs'
         }}
       />

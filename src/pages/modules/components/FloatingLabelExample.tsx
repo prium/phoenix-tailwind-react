@@ -90,7 +90,7 @@ const FloatingLabelExample = () => {
         title="Floating labels"
         description="A label that floats over the control once the field is focused or filled."
         link={{
-          text: 'Floating Label on hb-react',
+          text: 'Floating Label on Hummingbird',
           url: 'https://react.hbui.dev/docs/forms/floating-label'
         }}
       />

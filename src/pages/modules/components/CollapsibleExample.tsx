@@ -91,7 +91,7 @@ const CollapsibleExample = () => {
         title="Collapsible"
         description="An interactive component that expands and collapses a single panel of content."
         link={{
-          text: 'Collapsible on hb-react',
+          text: 'Collapsible on Hummingbird',
           url: 'https://react.hbui.dev/docs/components/collapsible'
         }}
       />

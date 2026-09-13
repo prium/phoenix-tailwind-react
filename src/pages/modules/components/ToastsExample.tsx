@@ -179,7 +179,7 @@ const ToastsExample = () => {
         title="Toasts"
         description="Push notifications to your visitors with a toast, a lightweight and easily customizable alert message."
         link={{
-          text: 'Toast on hb-react',
+          text: 'Toast on Hummingbird',
           url: 'https://react.hbui.dev/docs/components/toast'
         }}
       />

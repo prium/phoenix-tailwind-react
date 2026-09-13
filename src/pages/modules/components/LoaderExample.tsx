@@ -1,7 +1,6 @@
 import PhoenixDocCard from 'components/base/PhoenixDocCard';
 import DocPageHeader from 'components/docs/DocPageHeader';
 import DocPagesLayout from 'layouts/DocPagesLayout';
-import { Col, Row } from '@hummingbirdui/react';
 
 const exampleCode = `
 <Loader />
@@ -9,6 +8,10 @@ const exampleCode = `
 
 const growingCode = `
 <Loader variant="grow" />
+`;
+
+const loadingBarCode = `
+<Loader variant="bar" />
 `;
 
 const variantsCode = `
@@ -21,18 +24,6 @@ const variantsCode = `
     <Loader color="warning" />
     <Loader color="info" />
     <Loader color="neutral" />
-    <Loader variant="grow" color="primary" />
-    <Loader variant="grow" color="secondary" />
-    <Loader variant="grow" color="success" />
-    <Loader variant="grow" color="danger" />
-    <Loader variant="grow" color="warning" />
-    <Loader variant="grow" color="info" />
-    <Loader variant="grow" color="neutral" />
-  </div>
-  <div className="flex flex-col gap-4 mt-6 max-w-sm">
-    <Loader variant="bar" label="Loading" />
-    <Loader variant="bar" color="success" label="Loading" />
-    <Loader variant="bar" color="danger" label="Loading" />
   </div>
 </>
 `;
@@ -42,9 +33,6 @@ const sizingCode = `
   <Loader size="sm" />
   <Loader />
   <Loader className="size-12" />
-  <Loader variant="grow" size="sm" />
-  <Loader variant="grow" />
-  <Loader variant="grow" className="size-12" />
 </div>
 `;
 
@@ -57,13 +45,6 @@ const buttonsCode = `
     <Loader size="sm" label="" aria-hidden="true" className="me-2" />
     Loading...
   </Button>
-  <Button color="primary" shape="square" disabled aria-label="Loading">
-    <Loader variant="grow" size="sm" label="" aria-hidden="true" />
-  </Button>
-  <Button color="primary" disabled>
-    <Loader variant="grow" size="sm" label="" aria-hidden="true" className="me-2" />
-    Loading...
-  </Button>
 </div>
 `;
 
@@ -74,36 +55,39 @@ const LoaderExample = () => {
         title="Loader"
         description="Indicate the loading state of a component or page with Hummingbird React loaders, built entirely with CSS and no animation library."
         link={{
-          text: 'Loader on hb-react',
+          text: 'Loader on Hummingbird',
           url: 'https://react.hbui.dev/docs/components/loader'
         }}
       />
 
       <DocPagesLayout>
-        <Row>
-          <Col md={6}>
-            <PhoenixDocCard className="mb-4">
-              <PhoenixDocCard.Header title="Example">
-                <p className="mb-0">
-                  The default <code>Loader</code> is a circular border spinner
-                  with a screen-reader only &ldquo;Loading…&rdquo; label.
-                </p>
-              </PhoenixDocCard.Header>
-              <PhoenixDocCard.Body code={exampleCode} />
-            </PhoenixDocCard>
-          </Col>
-          <Col md={6}>
-            <PhoenixDocCard className="mb-4">
-              <PhoenixDocCard.Header title="Growing spinner">
-                <p className="mb-0">
-                  <code>variant=&quot;grow&quot;</code> renders an indicator
-                  that repeatedly grows and fades instead of spinning.
-                </p>
-              </PhoenixDocCard.Header>
-              <PhoenixDocCard.Body code={growingCode} />
-            </PhoenixDocCard>
-          </Col>
-        </Row>
+        <PhoenixDocCard className="mb-4">
+          <PhoenixDocCard.Header title="Example">
+            <p className="mb-0">
+              The default <code>Loader</code> is a circular border spinner with
+              a screen-reader only &ldquo;Loading…&rdquo; label.
+            </p>
+          </PhoenixDocCard.Header>
+          <PhoenixDocCard.Body code={exampleCode} />
+        </PhoenixDocCard>
+        <PhoenixDocCard className="mb-4">
+          <PhoenixDocCard.Header title="Growing spinner">
+            <p className="mb-0">
+              <code>variant=&quot;grow&quot;</code> renders an indicator that
+              repeatedly grows and fades instead of spinning.
+            </p>
+          </PhoenixDocCard.Header>
+          <PhoenixDocCard.Body code={growingCode} />
+        </PhoenixDocCard>
+        <PhoenixDocCard className="mb-4">
+          <PhoenixDocCard.Header title="Loading bar">
+            <p className="mb-0">
+              <code>variant=&quot;bar&quot;</code> renders a horizontal
+              indeterminate bar.
+            </p>
+          </PhoenixDocCard.Header>
+          <PhoenixDocCard.Body code={loadingBarCode} />
+        </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Variants">

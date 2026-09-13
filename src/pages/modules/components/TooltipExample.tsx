@@ -71,7 +71,7 @@ const TooltipExample = () => {
         title="Tooltips"
         description="A small label that appears on hover or keyboard focus to describe the element beneath the pointer."
         link={{
-          text: 'Tooltip on hb-react',
+          text: 'Tooltip on Hummingbird',
           url: 'https://react.hbui.dev/docs/components/tooltip'
         }}
       />

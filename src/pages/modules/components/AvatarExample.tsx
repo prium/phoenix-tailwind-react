@@ -99,7 +99,7 @@ const AvatarExample = () => {
         title="Avatars"
         description="Use avatars of different shapes and sizes with a single component."
         link={{
-          text: 'Avatar on hb-react',
+          text: 'Avatar on Hummingbird',
           url: 'https://react.hbui.dev/docs/components/avatar'
         }}
       >

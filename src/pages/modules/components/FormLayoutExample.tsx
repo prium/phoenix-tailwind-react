@@ -282,7 +282,7 @@ const FormLayoutExample = () => {
         title="Layout"
         description="Give your forms some structure — from inline to horizontal to custom grid implementations — with the Row and Col layout components."
         link={{
-          text: 'Grid on hb-react',
+          text: 'Grid on Hummingbird',
           url: 'https://react.hbui.dev/docs/layout/grid'
         }}
       />

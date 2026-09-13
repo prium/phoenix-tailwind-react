@@ -100,7 +100,7 @@ const AccordionExample = () => {
         title="Accordion"
         description="A vertically stacked set of interactive headings that each reveal a section of content."
         link={{
-          text: 'Accordion on hb-react',
+          text: 'Accordion on Hummingbird',
           url: 'https://react.hbui.dev/docs/components/accordion'
         }}
       />

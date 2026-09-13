@@ -308,7 +308,7 @@ const DropdownExample = () => {
         title="Dropdowns"
         description="A toggleable menu of actions or links, anchored to a trigger and positioned by Radix UI."
         link={{
-          text: 'Dropdown on hb-react',
+          text: 'Dropdown on Hummingbird',
           url: 'https://react.hbui.dev/docs/components/dropdown'
         }}
       />

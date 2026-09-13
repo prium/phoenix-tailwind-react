@@ -107,7 +107,7 @@ const PopoversExample = () => {
         title="Popovers"
         description="A floating panel anchored to a trigger, like those found in iOS, with Hummingbird's popover styling."
         link={{
-          text: 'Popover on hb-react',
+          text: 'Popover on Hummingbird',
           url: 'https://react.hbui.dev/docs/components/popover'
         }}
       />

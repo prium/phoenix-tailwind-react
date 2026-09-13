@@ -79,7 +79,7 @@ const SelectExample = () => {
         title="Select"
         description="A styled native select for choosing one option from a list."
         link={{
-          text: 'Select on hb-react',
+          text: 'Select on Hummingbird',
           url: 'https://react.hbui.dev/docs/forms/select'
         }}
       />

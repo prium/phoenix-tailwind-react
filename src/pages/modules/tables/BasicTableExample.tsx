@@ -205,7 +205,7 @@ const BasicTableExample = () => {
         title="Tables"
         description="Documentation and examples for opt-in styling of tables with hb-react."
         link={{
-          text: 'Table on hb-react',
+          text: 'Table on Hummingbird',
           url: 'https://react.hbui.dev/docs/components/table'
         }}
       >

@@ -91,7 +91,7 @@ const ProgressExample = () => {
         title="Progress"
         description="Documentation and examples for using Hummingbird React progress bars, featuring support for stacked bars, animated backgrounds, and text labels."
         link={{
-          text: 'Progress on hb-react',
+          text: 'Progress on Hummingbird',
           url: 'https://react.hbui.dev/docs/components/progress'
         }}
       />

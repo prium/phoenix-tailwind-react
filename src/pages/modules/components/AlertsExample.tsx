@@ -147,7 +147,7 @@ const AlertsExample = () => {
         title="Alert"
         description="Provide contextual feedback messages for typical user actions with the handful of available and flexible alert messages."
         link={{
-          text: 'Alert on hb-react',
+          text: 'Alert on Hummingbird',
           url: 'https://react.hbui.dev/docs/components/alert'
         }}
       />

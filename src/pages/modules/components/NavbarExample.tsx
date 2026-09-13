@@ -84,7 +84,7 @@ const NavbarExample = () => {
         title="Navbar"
         description="A responsive navigation header with a brand, links, text, and a collapsible menu."
         link={{
-          text: 'Navbar on hb-react',
+          text: 'Navbar on Hummingbird',
           url: 'https://react.hbui.dev/docs/components/navbar'
         }}
       />

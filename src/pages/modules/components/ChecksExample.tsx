@@ -175,7 +175,7 @@ const ChecksExample = () => {
         title="Checks"
         description="Create consistent cross-browser and cross-device checkboxes and radios with our completely rewritten checks component."
         link={{
-          text: 'Checkbox on hb-react',
+          text: 'Checkbox on Hummingbird',
           url: 'https://react.hbui.dev/docs/forms/checkbox'
         }}
       >

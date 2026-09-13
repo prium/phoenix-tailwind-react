@@ -166,7 +166,7 @@ const HummingbirdCarousel = () => {
         title="Carousel"
         description="A slideshow component for cycling through elements—images or slides of text—like a carousel."
         link={{
-          text: 'Carousel on hb-react',
+          text: 'Carousel on Hummingbird',
           url: 'https://react.hbui.dev/docs/components/carousel'
         }}
       />

@@ -191,7 +191,7 @@ const FormValidationExample = () => {
         title="Validation"
         description="Provide valuable, actionable feedback to your users with native form validation, either through the browser defaults or with custom styles."
         link={{
-          text: 'Input on hb-react',
+          text: 'Input on Hummingbird',
           url: 'https://react.hbui.dev/docs/forms/input'
         }}
       />

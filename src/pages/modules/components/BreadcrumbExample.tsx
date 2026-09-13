@@ -79,7 +79,7 @@ const BreadcrumbExample = () => {
         title="Breadcrumb"
         description="Indicate the current page’s location within a navigational hierarchy that automatically adds separators via CSS."
         link={{
-          text: 'Breadcrumb on hb-react',
+          text: 'Breadcrumb on Hummingbird',
           url: 'https://react.hbui.dev/docs/components/breadcrumb'
         }}
       />

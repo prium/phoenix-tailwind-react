@@ -140,7 +140,7 @@ const PaginationExample = () => {
         title="Pagination"
         description="Navigation that splits content across a sequence of numbered pages."
         link={{
-          text: 'Pagination on hb-react',
+          text: 'Pagination on Hummingbird',
           url: 'https://react.hbui.dev/docs/components/pagination'
         }}
       />

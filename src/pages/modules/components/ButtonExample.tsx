@@ -383,7 +383,7 @@ const ButtonExample = () => {
         title="Buttons"
         description="Buttons let users trigger an action or event with a single click, with support for multiple styles, colours, sizes and states."
         link={{
-          text: 'Button on hb-react',
+          text: 'Button on Hummingbird',
           url: 'https://react.hbui.dev/docs/components/button'
         }}
       />
@@ -542,7 +542,7 @@ const ButtonExample = () => {
           id="button_group"
           description="Group a series of buttons together on a single line or stack them in a vertical column."
           link={{
-            text: 'Button Group on hb-react',
+            text: 'Button Group on Hummingbird',
             url: 'https://react.hbui.dev/docs/components/button-group'
           }}
         />

@@ -123,8 +123,8 @@ const DarkMode = () => {
         title="Dark mode"
         description="The colour scheme is owned by hb-react's useThemeMode. It persists the choice, resolves auto against the operating system, and keeps every tab in step."
         link={{
-          text: 'useThemeMode on hb-react',
-          url: 'https://react.hbui.dev/docs/hooks/use-theme-mode'
+          text: 'Hummingbird dark mode',
+          url: 'https://react.hbui.dev/docs/customize/dark-mode/'
         }}
       />
 

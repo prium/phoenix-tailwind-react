@@ -180,7 +180,7 @@ const ListGroupExample = () => {
         title="List group"
         description="A flexible container for displaying a series of related content as a vertical list. Modify and extend them to support just about any content within."
         link={{
-          text: 'List Group on hb-react',
+          text: 'List Group on Hummingbird',
           url: 'https://react.hbui.dev/docs/components/list-group'
         }}
       />

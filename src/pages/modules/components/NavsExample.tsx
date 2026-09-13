@@ -180,7 +180,7 @@ const NavsExample = () => {
         title="Navs"
         description="A styled navigation list of links with active and disabled states."
         link={{
-          text: 'Nav on hb-react',
+          text: 'Nav on Hummingbird',
           url: 'https://react.hbui.dev/docs/components/nav'
         }}
       />

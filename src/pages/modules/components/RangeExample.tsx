@@ -38,7 +38,7 @@ const RangeExample = () => {
         title="Range"
         description="A styled native range slider for picking a value from a range, with consistent cross-browser styling."
         link={{
-          text: 'Range on hb-react',
+          text: 'Range on Hummingbird',
           url: 'https://react.hbui.dev/docs/forms/range'
         }}
       />

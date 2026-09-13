@@ -113,7 +113,7 @@ const InputExample = () => {
         title="Input"
         description="Give textual form controls like Input and Textarea an upgrade with custom styles, sizing, focus states, and more."
         link={{
-          text: 'Input on hb-react',
+          text: 'Input on Hummingbird',
           url: 'https://react.hbui.dev/docs/forms/input'
         }}
       />

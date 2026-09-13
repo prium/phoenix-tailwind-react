@@ -187,7 +187,7 @@ const BadgeExample = () => {
         title="Badges"
         description="Documentation and examples for badges, the small count and labeling component."
         link={{
-          text: 'Badge on hb-react',
+          text: 'Badge on Hummingbird',
           url: 'https://react.hbui.dev/docs/components/badge'
         }}
       />

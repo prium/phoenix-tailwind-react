@@ -78,7 +78,7 @@ const SkeletonExample = () => {
         title="Skeleton"
         description="Use loading placeholders for your components or pages to indicate something may still be loading."
         link={{
-          text: 'Skeleton on hb-react',
+          text: 'Skeleton on Hummingbird',
           url: 'https://react.hbui.dev/docs/components/skeleton'
         }}
       />
