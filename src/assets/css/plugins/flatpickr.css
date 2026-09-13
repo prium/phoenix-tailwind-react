@@ -68,7 +68,8 @@
   .flatpickr-am-pm,
   input {
     color: var(--background-color-emphasis);
-    @include hover-focus {
+    &:hover,
+    &:focus {
       background-color: var(--background-color-subtle) !important;
     }
   }
@@ -117,7 +118,8 @@
     background-color: var(--dtp-calendar-day-hover-bg);
   }
   &.today {
-    @include hover-focus {
+    &:hover,
+    &:focus {
       background: var(--color-primary-dark) !important;
       color: var(--color-white);
     }
@@ -126,7 +128,8 @@
     background-color: var(--background-color-highlight);
     color: var(--text-color-default);
     border: 0;
-    @include hover-focus {
+    &:hover,
+    &:focus {
       background-color: --alpha(var(--color-primary) / 35%);
     }
   }
@@ -225,7 +228,8 @@ span.flatpickr-weekday,
       }
       .cur-month,
       .numInputWrapper {
-        @include hover-focus {
+        &:hover,
+        &:focus {
           background: transparent;
         }
       }

@@ -7,12 +7,19 @@
 .stock-overview-card {
   width: --spacing(75) !important;
 
-  @include media-breakpoint-up(sm) {
-    min-width: --spacing(20);
-  }
-  @include media-breakpoint-up(xxl) {
-    min-width: --spacing(90);
-  }
+  /*
+    Never converted from the SCSS source, so `@include` reached Tailwind as an
+    unknown at-rule and these min-widths have never applied. Left inert (as the
+    other unconverted blocks in this theme are) to keep the shipped sizing: the
+    2xl rule would widen the card from 300px to 360px at >= 1540px.
+
+    @variant sm {
+      min-width: --spacing(20);
+    }
+    @variant 2xl {
+      min-width: --spacing(90);
+    }
+  */
 }
 
 .overview-echart {

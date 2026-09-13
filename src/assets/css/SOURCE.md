@@ -50,3 +50,32 @@ these classes, but only `.noUi-primary-lighter` was ever written, so the
 Verified: success #25b003, info #0097eb, warning #e5780b, danger #fa3b1d.
 Rebuild the gold's public/assets/css before comparing that page visually.
 
+
+Seventh working-tree patch upstream: unconverted SCSS that Tailwind reported as
+build warnings and that had therefore never applied.
+1. Seven `> {` / `+ {` blocks (navbar-top, mixed x2, treeview, showcase x2,
+   google-map) are SCSS's "children of the parent" shorthand, which is an
+   invalid empty selector in native CSS nesting — the whole block was dropped.
+   Merged into the child selector (`+ label`, `> div`, ...).
+2. Four `@include hover-focus` blocks in plugins/flatpickr.css became
+   `&:hover, &:focus` — the flatpickr hover/focus styling had never applied.
+3. components/stock.css kept two `@include media-breakpoint-up` calls that were
+   never converted. Left inert (commented, as this theme's other unconverted
+   blocks are) rather than enabled: the xxl one would widen
+   `.stock-overview-card` from 300px to 360px at >= 1540px, a design change.
+   Enable it there if that sizing was the intent.
+Gold public CSS rebuilt via `npx gulp style`.
+
+APP-ONLY DEVIATION (not upstream, re-apply after every sync) — three `url()`
+paths. Upstream writes them for phoenix-tailwind's *build output*, where the
+stylesheet sits in public/assets/css/ beside public/assets/img/; Vite resolves
+them against the source file, so they failed to resolve and shipped as broken
+background images. No single path satisfies both layouts, and Tailwind rebases
+relative urls while inlining @import, so a Vite plugin cannot intercept them.
+Rewritten to this app's src/assets/img:
+  components/navbar-top.css  ../img/icons/logo-bg.png   -> ../../img/icons/logo-bg.png
+  components/feed.css        generic/59.png             -> ../../img/generic/59.png
+  plugins/rater.css          /assets/img/icons/star.svg -> ../../img/icons/star.svg
+(components/landing.css and components/travel-agency.css already use the
+source-relative form upstream, so they need no patch — they are the ones that
+are broken in the gold instead.)

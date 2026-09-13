@@ -141,16 +141,34 @@ export async function shoot(
 
 const AWAIT_IMAGES = async () => {
   await (document as any).fonts?.ready;
-  await Promise.all(
-    Array.from(document.images)
-      .filter(i => !i.complete)
-      .map(
-        i =>
-          new Promise(r => {
-            i.onload = i.onerror = r;
-          })
-      )
-  );
+  const settled = (img: HTMLImageElement) =>
+    new Promise(r => {
+      img.onload = img.onerror = r;
+    });
+
+  const pending: Promise<unknown>[] = Array.from(document.images)
+    .filter(i => !i.complete)
+    .map(settled);
+
+  // CSS background images are not in `document.images`, so nothing waited for
+  // them. The auth split and landing covers are large, and under worker
+  // contention we screenshotted the page before they painted — auth-split-sign-in
+  // failed at 34% in a full run and passed on its own.
+  const urls = new Set<string>();
+  for (const el of Array.from(document.querySelectorAll('*'))) {
+    const bg = getComputedStyle(el).backgroundImage;
+    if (!bg || bg === 'none') continue;
+    for (const m of bg.matchAll(/url\((['"]?)(.*?)\1\)/g)) {
+      if (m[2] && !m[2].startsWith('data:')) urls.add(m[2]);
+    }
+  }
+  urls.forEach(url => {
+    const img = new Image();
+    img.src = url;
+    if (!img.complete) pending.push(settled(img));
+  });
+
+  await Promise.all(pending);
 };
 
 /** Wait for fonts, images, echarts and layout to be stable. */

@@ -16,10 +16,8 @@
     background: var(--color-primary-subtle);
     transition: 0.2s;
     .img-container {
-      + {
-        h5 {
-          color: var(--color-primary) !important;
-        }
+      + h5 {
+        color: var(--color-primary) !important;
       }
     }
     .side-panel-thumb {
@@ -165,10 +163,8 @@
     background: var(--color-primary-subtle);
     transition: 0.2s;
     .img-container {
-      + {
-        h5 {
-          color: var(--color-primary) !important;
-        }
+      + h5 {
+        color: var(--color-primary) !important;
       }
     }
   }

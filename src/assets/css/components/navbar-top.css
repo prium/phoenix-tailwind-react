@@ -572,11 +572,9 @@
       }
     }
     &.navbar-nav {
-      > {
-        .nav-item {
-          &:not(:first-child) {
-            margin-top: 0.3rem;
-          }
+      > .nav-item {
+        &:not(:first-child) {
+          margin-top: 0.3rem;
         }
       }
     }
@@ -675,7 +673,7 @@
   }
 }
 .img-dropdown {
-  background-image: url('../img/icons/logo-bg.png');
+  background-image: url('../../img/icons/logo-bg.png');
   background-position: inset-inline-end -14px bottom -20px;
   background-repeat: no-repeat;
 }

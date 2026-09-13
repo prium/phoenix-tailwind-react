@@ -459,22 +459,18 @@
 }
 
 .rating-radio {
-  + {
-    label {
-      padding: --spacing(4);
-      border: 1px solid var(--border-color-subtle) !important;
-      .check-icon {
-        display: none;
-      }
+  + label {
+    padding: --spacing(4);
+    border: 1px solid var(--border-color-subtle) !important;
+    .check-icon {
+      display: none;
     }
   }
   &:checked {
-    + {
-      label {
-        border: 1px solid var(--color-primary) !important;
-        .check-icon {
-          display: block;
-        }
+    + label {
+      border: 1px solid var(--color-primary) !important;
+      .check-icon {
+        display: block;
       }
     }
   }
