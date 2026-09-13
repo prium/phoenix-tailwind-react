@@ -1,0 +1,10 @@
+.tooltip {
+  --tooltip-padding-x: --spacing(2);
+  --tooltip-bg: var(--color-gray-950);
+  --tooltip-font-size: var(--text-md);
+  --tooltip-margin: --spacing(0.5);
+  --tooltip-opacity: 0.9;
+  --tooltip-border-radius: var(--radius-sm);
+  --tooltip-arrow-border-radius: 0;
+  @apply leading-base;
+}

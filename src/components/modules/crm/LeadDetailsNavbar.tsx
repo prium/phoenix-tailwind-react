@@ -1,32 +1,30 @@
 import ScrollSpy from 'components/base/ScrollSpy';
-import { Nav } from 'react-bootstrap';
 
+/** `nav#navbar-deals-detail` in apps/crm/lead-details.pug */
 const LeadDetailsNavbar = () => {
   return (
-    <div className="pt-3 pb-4 px-0 sticky-top bg-body nav-underline-scrollspy z-5">
-      <Nav className="nav-underline">
-        <Nav.Item>
-          <ScrollSpy.NavLink className="pt-0" href="#tasks">
+    <nav className="navbar pb-6 px-0 sticky top-0 bg-default nav-underline-scrollspy">
+      <ul className="nav nav-underline text-md">
+        <li className="nav-item">
+          <ScrollSpy.NavLink className="me-2" href="#tasks">
             Tasks
           </ScrollSpy.NavLink>
-        </Nav.Item>
-        <Nav.Item>
-          <ScrollSpy.NavLink className="pt-0" href="#deals">
+        </li>
+        <li className="nav-item">
+          <ScrollSpy.NavLink className="me-2" href="#deals">
             Deals
           </ScrollSpy.NavLink>
-        </Nav.Item>
-        <Nav.Item>
-          <ScrollSpy.NavLink className="pt-0" href="#emails">
+        </li>
+        <li className="nav-item">
+          <ScrollSpy.NavLink className="me-2" href="#emails">
             Emails
           </ScrollSpy.NavLink>
-        </Nav.Item>
-        <Nav.Item>
-          <ScrollSpy.NavLink className="pt-0" href="#attachments">
-            Attachments
-          </ScrollSpy.NavLink>
-        </Nav.Item>
-      </Nav>
-    </div>
+        </li>
+        <li className="nav-item">
+          <ScrollSpy.NavLink href="#attachments">Attachments</ScrollSpy.NavLink>
+        </li>
+      </ul>
+    </nav>
   );
 };
 

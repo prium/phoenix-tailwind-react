@@ -1,73 +1,74 @@
 import { faFilter, faPlus, faSort } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
-import Button from 'components/base/Button';
+import { Col, Row } from '@hummingbirdui/react';
 import SearchBox from 'components/common/SearchBox';
 import TodoItemDetailsOffcanvas from 'components/modules/project-management/todo-list/TodoItemDetailsOffcanvas';
 import TodoListItem from 'components/modules/project-management/todo-list/TodoListItem';
 import { ToDoItem, todoList } from 'data/project-management/todoListData';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
+/** apps/project-management/todo-list.pug */
 const ProjectTodoList = () => {
-  const [selectedItem, setSelectedItem] = useState<ToDoItem | null>(null);
-
-  useEffect(() => {
-    if (selectedItem) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'auto';
-    }
-  }, [selectedItem]);
+  const [selected, setSelected] = useState<{
+    item: ToDoItem;
+    index: number;
+  } | null>(null);
+  const items = todoList.slice(0, 9);
 
   return (
-    <div className="mb-9">
-      <h2 className="mb-4">
-        Todo list<span className="text-body-tertiary fw-normal">(23)</span>
+    <div className="mb-16">
+      <h2 className="mb-6">
+        Todo list<span className="text-subtle font-normal">(23)</span>
       </h2>
-      <div className="d-flex align-items-center flex-wrap gap-x-5 gap-y-3 mb-3">
-        <SearchBox placeholder="Search tasks" style={{ maxWidth: '30rem' }} />
-        <div>
-          <Button
-            variant="link"
-            className="p-0 fs-9 text-body-tertiary text-decoration-none me-3"
-            startIcon={
-              <FontAwesomeIcon icon={faFilter} className="fs-10 me-1" />
-            }
-          >
-            23 tasks
-          </Button>
-          <Button
-            variant="link"
-            className="p-0 fs-9 text-primary text-decoration-none"
-            startIcon={<FontAwesomeIcon icon={faSort} className="fs-10" />}
-          >
-            Sorting
-          </Button>
-        </div>
-      </div>
-      <div className="todolist-container ms-n1 ps-1 scrollbar">
-        {todoList.map((todo, index) => (
+      <Row className="items-center g-4 mb-4">
+        <Col sm="auto">
+          <SearchBox placeholder="Search tasks" />
+        </Col>
+        <Col sm="auto">
+          <div className="flex">
+            <a
+              href="#!"
+              className="btn btn-link p-0 sm:ms-4 text-md text-subtle font-bold"
+            >
+              <FontAwesomeIcon
+                icon={faFilter}
+                className="me-1 fw-extra-bold text-sm"
+              />
+              23 tasks
+            </a>
+            <a
+              href="#!"
+              className="btn btn-link p-0 ms-4 text-md text-subtle font-bold"
+            >
+              <FontAwesomeIcon
+                icon={faSort}
+                className="me-1 fw-extra-bold text-sm"
+              />
+              Sorting
+            </a>
+          </div>
+        </Col>
+      </Row>
+      <div className="mb-6 todo-list">
+        {items.map((todo, index) => (
           <TodoListItem
             key={todo.task}
             todo={todo}
-            className={classNames({
-              'border-top': index === 0
-            })}
-            fullLayoutBreakpoints={['md']}
-            onClick={item => setSelectedItem(item)}
+            index={index}
+            isLast={index === todoList.length - 1}
+            layout="page"
+            onClick={item => setSelected({ item, index })}
           />
         ))}
       </div>
-      <Button
-        startIcon={<FontAwesomeIcon icon={faPlus} />}
-        variant="link"
-        className="text-decoration-none p-0 mt-4"
-      >
+      <a href="#!" className="font-bold text-md mt-6">
+        <FontAwesomeIcon icon={faPlus} className="me-1" />
         Add new task
-      </Button>
+      </a>
       <TodoItemDetailsOffcanvas
-        handleClose={() => setSelectedItem(null)}
-        item={selectedItem}
+        handleClose={() => setSelected(null)}
+        item={selected?.item ?? null}
+        index={selected?.index}
       />
     </div>
   );

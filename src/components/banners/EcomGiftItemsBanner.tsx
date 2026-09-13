@@ -1,26 +1,22 @@
-import React from 'react';
 import giftItemsBannerBg from 'assets/img/e-commerce/gift-items-banner-bg.png';
 import { Link } from 'react-router';
 
 const EcomGiftItemsBanner = () => {
   return (
-    <div className="gift-items-banner w-100 rounded-3 overflow-hidden">
+    <div className="gift-items-banner w-full rounded-lg overflow-hidden">
       <div
-        className="bg-holder banner-bg"
+        className="bg-holder -z-1! banner-bg"
         style={{
           backgroundImage: `url(${giftItemsBannerBg})`
         }}
       />
-      <div
-        data-bs-theme="light"
-        className="position-relative banner-text text-md-center"
-      >
-        <h2 className="text-white fw-bolder fs-xl-4">
+      <div className="banner-text md:text-center">
+        <h2 className="text-white font-extrabold xl:text-3xl">
           Get <span className="gradient-text">10% Off</span>
-          <br className="d-md-none" /> on gift items
+          <br className="md:hidden" /> on gift items
         </h2>
         <Link
-          className="btn btn-lg btn-primary rounded-pill banner-button"
+          className="btn btn-lg btn-primary rounded-full banner-button"
           to="#!"
         >
           Buy Now

@@ -1,69 +1,73 @@
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Col, Input, Row, Select, Textarea } from '@hummingbirdui/react';
 import Button from 'components/base/Button';
-import React from 'react';
-import { Col, Form, Row } from 'react-bootstrap';
 
+/** "Custom fields" block of `+CreateEvent` in mixins/events/CreateEvent.pug */
 const EventCustomFields = () => {
   return (
     <>
-      <h4 className="mb-3">Custom fields</h4>
-      <Row className="gx-3">
+      <h4 className="text-lg mb-4">Custom fields</h4>
+      <Row className="g-4 mb-4">
         <Col md={6} lg={12} xl={6}>
-          <Form.Group controlId="formFileSm" className="mb-3">
-            <Form.Label>Name</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Item name (e.g. Special T-shirt)"
-            />
-          </Form.Group>
+          <label className="form-label" htmlFor="inputName">
+            Name
+          </label>
+          <Input
+            id="inputName"
+            type="text"
+            placeholder="Item name (e.g. Special T-shirt)"
+          />
         </Col>
         <Col md={6} lg={12} xl={6}>
-          <Form.Group controlId="formFileSm" className="mb-3">
-            <Form.Label>Type</Form.Label>
-            <Form.Select>
-              <option>Choose...</option>
-              <option value="1">Type One</option>
-              <option value="2">Type Two</option>
-            </Form.Select>
-          </Form.Group>
+          <label className="form-label" htmlFor="inputState1">
+            Type
+          </label>
+          <Select id="inputState1">
+            <option value="">Choose...</option>
+            <option value="">Type One</option>
+            <option value="">Type Two</option>
+          </Select>
         </Col>
         <Col xs={12}>
-          <Form.Group controlId="formFileSm" className="mb-3">
-            <Form.Label>Field options</Form.Label>
-            <Form.Control as="textarea" rows={6} placeholder="Description" />
-          </Form.Group>
+          <label className="form-label" htmlFor="filedOptions">
+            Field options
+          </label>
+          <Textarea id="filedOptions" placeholder="Description" rows={6} />
+        </Col>
+      </Row>
+      <Row className="g-4">
+        <Col md={6} lg={12} xl={6}>
+          <label className="form-label" htmlFor="inputName2">
+            Name
+          </label>
+          <Input
+            id="inputName2"
+            type="text"
+            placeholder="Item name (e.g. Special T-shirt)"
+          />
         </Col>
         <Col md={6} lg={12} xl={6}>
-          <Form.Group controlId="formFileSm" className="mb-3">
-            <Form.Label>Name</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Item name (e.g. Special T-shirt)"
-            />
-          </Form.Group>
-        </Col>
-        <Col md={6} lg={12} xl={6}>
-          <Form.Group controlId="formFileSm" className="mb-3">
-            <Form.Label>Type</Form.Label>
-            <Form.Select>
-              <option>Choose...</option>
-              <option value="1">Type One</option>
-              <option value="2">Type Two</option>
-            </Form.Select>
-          </Form.Group>
+          <label className="form-label" htmlFor="inputState2">
+            Type
+          </label>
+          <Select id="inputState2">
+            <option value="">Choose...</option>
+            <option value="">Type Three</option>
+            <option value="">Type Four</option>
+          </Select>
         </Col>
         <Col xs={12}>
-          <Form.Group controlId="formFileSm" className="mb-3">
-            <Form.Label>Field options</Form.Label>
-            <Form.Control as="textarea" rows={6} placeholder="Description" />
-          </Form.Group>
+          <label className="form-label" htmlFor="filedOptions2">
+            Field options
+          </label>
+          <Textarea id="filedOptions2" placeholder="Description" rows={6} />
         </Col>
         <Col xs={12}>
           <Button
+            variant="link"
             className="p-0"
             startIcon={<FontAwesomeIcon icon={faPlus} className="me-2" />}
-            variant="link"
           >
             Add an item
           </Button>

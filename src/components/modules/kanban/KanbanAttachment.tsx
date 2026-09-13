@@ -4,62 +4,52 @@ import {
   faTrash
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button from 'components/base/Button';
+import { cn } from '@hummingbirdui/react';
+import { FileAttachment } from 'components/common/AttachmentPreview';
 import { getFileIcon } from 'helpers/utils';
-import React from 'react';
-
-export interface FileAttachment {
-  name: string;
-  size: string;
-  format: string;
-  date?: string;
-  preview?: string;
-}
 
 interface KanbanAttachmentProps {
   attachment: FileAttachment;
-  type?: 'primary' | 'secondary';
-  size?: 'lg' | 'xl';
-  handleRemove?: () => void;
+  className?: string;
 }
 
-const KanbanAttachment = ({ attachment }: KanbanAttachmentProps) => {
+/** ATTACHMENTS rows of mixins/kanban/kanban/KanbanModal.pug */
+const KanbanAttachment = ({ attachment, className }: KanbanAttachmentProps) => {
   return (
-    <div className="border-bottom border-translucent d-flex flex-row pb-3">
+    <div className={cn('border-b border-subtle flex flex-row pb-4', className)}>
       {attachment.preview ? (
-        <img
-          src={attachment.preview}
-          alt=""
-          className="rounded-3"
-          height={64}
-          width={64}
-        />
+        <a href={attachment.preview}>
+          <img
+            src={attachment.preview}
+            width={64}
+            height={64}
+            alt=""
+            className="rounded-lg"
+          />
+        </a>
       ) : (
-        <div
-          className="border border-translucent rounded-3 flex-center d-flex"
-          style={{ height: 64, width: 64 }}
-        >
+        <div className="border border-subtle rounded-lg flex-center flex size-16">
           <FontAwesomeIcon
             icon={getFileIcon(attachment.format)}
-            className="fa-2x text-body-quaternary"
+            className="fa-2x text-soft/75"
           />
         </div>
       )}
-      <div className="flex-1 ms-3 d-flex flex-column">
-        <h5 className="lh-sm">{attachment.name}</h5>
-        <p className="lh-1 fs-9 text-body-tertiary fw-medium mb-0">
+      <div className="flex-1 ms-4 flex flex-col">
+        <h5 className="leading-sm">{attachment.name}</h5>
+        <p className="leading-none text-md text-subtle font-medium mb-0">
           {attachment.date}
         </p>
-        <div className="d-flex gap-3 mt-auto">
-          <Button className="p-0 text-body-tertiary">
-            <FontAwesomeIcon icon={faComment} />
-          </Button>
-          <Button className="p-0 text-body-tertiary">
-            <FontAwesomeIcon icon={faTrash} />
-          </Button>
-          <Button className="p-0 text-body-tertiary">
-            <FontAwesomeIcon icon={faPencil} />
-          </Button>
+        <div className="flex mt-auto">
+          <button className="btn p-0 text-base text-subtle me-4" type="button">
+            <FontAwesomeIcon icon={faComment} transform="shrink-4" />
+          </button>
+          <button className="btn p-0 text-base text-subtle me-4" type="button">
+            <FontAwesomeIcon icon={faTrash} transform="shrink-4" />
+          </button>
+          <button className="btn p-0 text-base text-subtle" type="button">
+            <FontAwesomeIcon icon={faPencil} transform="shrink-4" />
+          </button>
         </div>
       </div>
     </div>

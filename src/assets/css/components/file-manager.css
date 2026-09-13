@@ -1,0 +1,170 @@
+.files-container {
+  display: grid;
+  gap: --spacing(4);
+  grid-template-columns: repeat(auto-fill, minmax(126px, 1fr));
+  @variant sm {
+    gap: --spacing(6);
+    grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+  }
+  .file-box-wrapper {
+    position: relative;
+    aspect-ratio: 1/1;
+    .form-check-input:checked {
+      + .file-box {
+        background-color: var(--color-primary-subtle);
+        border: 1px solid var(--color-primary) !important;
+        box-shadow: 0px 0px 0px 4px rgba(56, 116, 255, 0.2);
+      }
+    }
+    .file-box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      background: var(--background-color-default);
+      border: 1px solid var(--border-color-default);
+      border-radius: var(--radius-md);
+      mask-image: radial-gradient(var(--color-white), var(--color-black));
+    }
+    &:hover {
+      .file-box {
+        background-color: var(--background-color-subtle);
+      }
+    }
+  }
+}
+
+[data-collapse-filemanager-sidebar] {
+  .file-manager-sidebar {
+    padding: 0;
+    transition-property: width, opacity;
+    transition: 0.3s ease;
+    .phoenix-offcanvas {
+      top: calc(var(--navbar-top-height));
+      padding: --spacing(6);
+      width: 300px;
+    }
+  }
+
+  @variant lg {
+    .my-files {
+      max-width: calc(100% - 15.875rem);
+    }
+    .file-manager-sidebar {
+      .phoenix-offcanvas {
+        width: 100%;
+        position: sticky !important;
+        top: calc(var(--navbar-top-height) + 1.5rem) !important;
+        translate: none !important;
+        height: 100vh;
+        z-index: 7;
+        padding: 0;
+      }
+    }
+  }
+  @variant xl {
+    .file-manager-sidebar {
+      width: 15.875rem;
+      padding: 0 --spacing(3);
+    }
+  }
+  @variant lg {
+    @variant max-xl {
+      .file-manager-sidebar {
+        padding: 0;
+        width: 0;
+        opacity: 0;
+      }
+      .my-files {
+        max-width: 100%;
+        transition: 0.3s ease max-width;
+      }
+      &.show-sidebar {
+        .file-manager-sidebar {
+          padding: 0 --spacing(3);
+          width: 15.875rem;
+          opacity: 1;
+        }
+        .my-files {
+          max-width: calc(100% - 15.875rem);
+        }
+      }
+    }
+  }
+}
+
+.file-details-offcanvas {
+  top: calc(var(--navbar-top-height) + 1px);
+  padding: 0;
+  z-index: 1040;
+  width: 100%;
+  height: auto;
+  padding: --spacing(6);
+  position: fixed;
+  translate: 100%;
+  right: 0;
+  &.show {
+    translate: none;
+  }
+  @variant sm {
+    width: 25rem;
+  }
+  @variant 2xl {
+    width: 21.875rem;
+    position: static !important;
+    translate: none !important;
+    z-index: 0;
+    padding: 0;
+  }
+}
+
+.my-files-table {
+  @variant 2xl {
+    width: calc(100% - 25.95rem);
+  }
+  [data-bulk-select-row='data-bulk-select-row']:checked {
+    + .square-icon-box {
+      background-color: var(--color-primary-subtle);
+      border: 1px solid var(--color-primary) !important;
+      box-shadow: 0px 0px 0px 4px rgba(56, 116, 255, 0.2);
+    }
+  }
+}
+
+.myfiles-action-bar {
+  position: sticky;
+  top: var(--navbar-top-height);
+  z-index: 4;
+  border-bottom: 1px solid var(--border-color-subtle);
+  padding: --spacing(2) --spacing(6);
+  background-color: var(--background-color-default);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.file-manager {
+  &.glightbox-open {
+    overflow: visible !important;
+  }
+}
+.windows {
+  &.chrome {
+    &.file-manager.glightbox-open {
+      margin-right: 0 !important;
+    }
+  }
+}
+
+.safari,
+.iphone,
+.ipad {
+  .mask-image-recent-file {
+    border-top-left-radius: var(--radius-lg);
+    border-top-right-radius: var(--radius-lg);
+    mask-image: radial-gradient(var(--color-white), var(--color-black));
+    border-top: 1px solid var(--border-color-default);
+    margin-top: -1px;
+  }
+}

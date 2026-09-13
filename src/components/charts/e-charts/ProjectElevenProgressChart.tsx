@@ -11,15 +11,15 @@ echarts.use([TooltipComponent, PieChart]);
 
 const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
   color: [
-    getThemeColor('gray-400'),
-    getThemeColor('success'),
-    getThemeColor('info'),
-    getThemeColor('warning')
+    getThemeColor('color-gray-400'),
+    getThemeColor('color-success'),
+    getThemeColor('color-info'),
+    getThemeColor('color-warning')
   ],
   tooltip: {
     trigger: 'axis',
-    backgroundColor: getThemeColor('body-bg'),
-    bordercolor: getThemeColor('secondary-bg'),
+    backgroundColor: getThemeColor('background-color-default'),
+    bordercolor: getThemeColor('background-color-muted'),
     formatter: (params: CallbackDataParams[]) =>
       tooltipFormatterDefault(params, 'MMM DD, YYYY', 'color'),
     axisPointer: {
@@ -47,10 +47,10 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     itemWidth: 16,
     itemHeight: 8,
     itemGap: 10,
-    inactiveColor: getThemeColor('quaternary-color'),
+    inactiveColor: getThemeColor('text-color-soft'),
     inactiveBorderWidth: 0,
     textStyle: {
-      color: getThemeColor('body-color'),
+      color: getThemeColor('text-color-default'),
       fontWeight: 600,
       fontSize: 16,
       fontFamily: 'Nunito Sans'
@@ -63,11 +63,11 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       axisLine: {
         lineStyle: {
           type: 'solid',
-          color: getThemeColor('tertiary-bg')
+          color: getThemeColor('background-color-highlight')
         }
       },
       axisLabel: {
-        color: getThemeColor('body-color'),
+        color: getThemeColor('text-color-default'),
         formatter: (data: string) => dayjs(data).format('D MMM'),
         interval: 5,
         align: 'left',
@@ -83,7 +83,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
         interval: 0,
         show: true,
         lineStyle: {
-          color: getThemeColor('tertiary-bg'),
+          color: getThemeColor('background-color-highlight'),
           type: 'dashed'
         }
       },
@@ -107,7 +107,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
         interval: 1,
         show: true,
         lineStyle: {
-          color: getThemeColor('tertiary-bg'),
+          color: getThemeColor('background-color-highlight'),
           type: 'solid'
         }
       },
@@ -121,11 +121,11 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     axisLine: {
       lineStyle: {
         type: 'solid',
-        color: getThemeColor('tertiary-bg')
+        color: getThemeColor('background-color-highlight')
       }
     },
     axisLabel: {
-      color: getThemeColor('body-color'),
+      color: getThemeColor('text-color-default'),
       margin: 20,
       fontSize: 12.8,
       interval: 0
@@ -133,7 +133,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     splitLine: {
       show: true,
       lineStyle: {
-        color: getThemeColor('tertiary-bg'),
+        color: getThemeColor('background-color-highlight'),
         type: 'solid'
       }
     },
@@ -142,7 +142,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       length: 15,
       alignWithLabel: true,
       lineStyle: {
-        color: getThemeColor('tertiary-bg')
+        color: getThemeColor('background-color-highlight')
       }
     }
     // data: ['0', '10', '20']
@@ -157,7 +157,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
         width: 0
       },
       areaStyle: {
-        color: getThemeColor('primary-light'),
+        color: getThemeColor('color-primary-light'),
         opacity: 0.075
       },
       tooltip: {
@@ -209,7 +209,8 @@ const ProjectElevenProgressChart = () => {
     <ReactEChartsCore
       echarts={echarts}
       option={getDefaultOptions(getThemeColor)}
-      style={{ minHeight: '320px', width: '100%' }}
+      className="echart-zero-burnout-chart w-full min-h-80"
+      style={{ height: 'auto', width: '100%' }}
     />
   );
 };

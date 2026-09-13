@@ -1,0 +1,222 @@
+.stock-btn-group .active {
+  background-color: var(--background-color-soft);
+  color: var(--color-primary);
+  border-color: var(--border-color-subtle);
+}
+
+.stock-overview-card {
+  width: --spacing(75) !important;
+
+  @include media-breakpoint-up(sm) {
+    min-width: --spacing(20);
+  }
+  @include media-breakpoint-up(xxl) {
+    min-width: --spacing(90);
+  }
+}
+
+.overview-echart {
+  height: --spacing(11);
+  width: --spacing(27.5);
+}
+
+.top-stock-tab {
+  .company-card {
+    min-width: --spacing(75);
+    border: 1px solid var(--border-color-subtle);
+    padding: --spacing(5);
+    position: relative;
+    &.active {
+      position: relative;
+      border: 1px solid var(--color-primary);
+      @variant xl {
+        &::after,
+        &::before {
+          content: '';
+          display: block;
+          position: absolute;
+          background-color: inherit;
+        }
+        &::before {
+          inset-inline-end: 0;
+          top: 50%;
+          transform: translateY(-50%);
+          width: --spacing(2.5);
+          height: --spacing(12.5);
+          z-index: 2;
+        }
+        &::after {
+          z-index: 1;
+          inset-inline-end: -13px;
+          top: 50%;
+          transform: translateY(-50%) rotate(230deg);
+          width: 27.5px;
+          height: 23px;
+          border: inherit;
+          border-radius: 0px 6px;
+          clip-path: polygon(0% 0%, 0% 100%, 100% 100%);
+        }
+      }
+    }
+    @variant sm {
+      min-width: --spacing(78.5);
+    }
+    @variant xl {
+      min-width: --spacing(82);
+    }
+  }
+}
+
+html[dir='rtl'] {
+  .top-stock-tab {
+    .company-card {
+      &.active {
+        @variant xl {
+          &::after {
+            transform: translateY(-50%) rotate(48deg);
+            border-radius: 0px 6px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.swiper-theme-container {
+  &.optionChainTableHeader,
+  &.tabDetailsOptionChainTab {
+    .swiper-nav {
+      [class*='swiper-'] {
+        border: 0;
+        color: var(--color-info);
+        background-color: transparent;
+        box-shadow: none;
+        &:hover,
+        &:focus {
+          background-color: transparent;
+          color: var(--color-primary);
+        }
+      }
+    }
+    .swiper-button-prev {
+      inset-inline-start: -0.5rem !important;
+    }
+    .swiper-button-next {
+      inset-inline-end: -0.5rem !important;
+      [dir='rtl'] & {
+        inset-inline-start: calc(100% - 1.25rem) !important;
+      }
+    }
+  }
+}
+
+.stock-news-tab {
+  &.backdrop-faded {
+    background: linear-gradient(
+      180deg,
+      --alpha(var(--color-black) / 0) 0%,
+      var(--color-black) 100%
+    );
+  }
+}
+
+.custom-calendar-container {
+  .custom-calender {
+    width: --spacing(18);
+    height: --spacing(18);
+    &::after,
+    &::before {
+      content: '';
+      position: absolute;
+      height: 10px;
+      width: 2px;
+      background-color: var(--border-color-default);
+      bottom: 93%;
+      border-radius: var(--radius-sm);
+    }
+
+    &::before {
+      left: 16px;
+    }
+    &::after {
+      right: 16px;
+    }
+  }
+  @variant sm {
+    max-width: --spacing(18);
+  }
+}
+
+.stock-events-offcanvas {
+  @variant lg {
+    width: --spacing(137.5) !important;
+  }
+}
+
+.top-stock-card-container {
+  @variant xl {
+    max-width: --spacing(95);
+  }
+}
+
+.stock-details-footer {
+  min-height: --spacing(12);
+}
+
+.portfolio-sidebar-container {
+  @variant xl {
+    max-width: --spacing(96);
+  }
+}
+.stock-offcanvas-xl {
+  @variant xl {
+    @apply translate-0;
+    background-color: transparent;
+    position: sticky;
+    top: calc(var(--navbar-top-height) + 1rem) !important;
+    transform: none !important;
+    visibility: visible;
+    background-color: transparent;
+    box-shadow: none !important;
+    z-index: 1014;
+  }
+}
+
+.pagination-subtle {
+  .page {
+    font-weight: var(--font-weight-semibold) !important;
+    font-size: var(--text-md) !important;
+  }
+  .active .page {
+    background-color: var(--background-color-default) !important;
+    border: 1px solid var(--border-color-subtle);
+    color: var(--color-primary) !important;
+  }
+  .page-link.disabled {
+    color: var(--background-color-emphasis);
+  }
+}
+
+.watchlist-collapsible[aria-expanded='true'] + .summery-statistics {
+  display: none;
+}
+
+.revenue-this-year-chart {
+  height: --spacing(10);
+  width: --spacing(10);
+}
+
+.revenue-next-year-chart {
+  width: --spacing(9);
+  height: --spacing(12);
+}
+
+.eps-this-year-chart {
+  width: --spacing(6);
+  height: --spacing(12);
+}
+
+.eps-next-year-chart {
+  width: --spacing(12);
+  height: --spacing(12);
+}

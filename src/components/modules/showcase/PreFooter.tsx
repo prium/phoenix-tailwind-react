@@ -4,7 +4,7 @@ import { Link } from 'react-router';
 
 const PreFooter = () => {
   return (
-    <section className="bg-body-highlight py-6">
+    <section className="bg-subtle py-6">
       <div className="container-small">
         <Row className="align-items-center">
           <Col md={6} className="text-center text-md-start">

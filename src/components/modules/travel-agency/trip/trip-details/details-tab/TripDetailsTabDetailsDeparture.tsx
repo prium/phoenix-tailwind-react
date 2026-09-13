@@ -1,16 +1,17 @@
-import React from 'react';
 import { JourneyDetail } from 'data/travel-agency/customer/trip';
-import { Card } from 'react-bootstrap';
+import { Card } from '@hummingbirdui/react';
 import classNames from 'classnames';
 
 interface TripDetailsTabDetailsDepartureProps {
   departureItems: JourneyDetail[];
 }
+
+/** "Departure and return" body in mixins/travel-agency/trip/TripDetails.pug */
 const TripDetailsTabDetailsDeparture = ({
   departureItems
 }: TripDetailsTabDetailsDepartureProps) => {
   return (
-    <div className="py-6 px-4">
+    <div className="py-10 px-6">
       {departureItems.map((item, index) => (
         <Card
           key={item.id}

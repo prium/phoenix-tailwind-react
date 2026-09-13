@@ -1,13 +1,11 @@
-import React from 'react';
-import { Col, Form, Modal } from 'react-bootstrap';
-import Button from 'components/base/Button';
+import { Col, Dialog, Row } from '@hummingbirdui/react';
+import DialogHeading from 'components/base/DialogHeading';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faCalendar,
   faChevronRight,
   faXmark
 } from '@fortawesome/free-solid-svg-icons';
-import { Row } from 'react-bootstrap';
 import DatePicker from 'components/base/DatePicker';
 import InputGroupCounter from 'components/common/InputGroupCounter';
 import { tripDetailsModalPricingPlan } from 'data/travel-agency/customer/trip';
@@ -19,89 +17,77 @@ interface TripDetailsAvailabilityModalProps {
   onHide: () => void;
 }
 
+/** `+TripAvailabilityModal` in phoenix-tailwind mixins/travel-agency/trip/TripAvailabilityModal.pug */
 const TripDetailsAvailabilityModal = ({
   show,
   onHide
 }: TripDetailsAvailabilityModalProps) => {
   return (
-    <Modal show={show} onHide={onHide} centered dialogClassName="modal-md">
-      <Modal.Header className="border-0 justify-content-between align-items-start gap-5 px-4 pt-4 pb-3">
-        <div>
-          <h2 id="flightFilterModalLabel" className="mb-0">
+    <Dialog open={show} onOpenChange={open => !open && onHide()}>
+      <Dialog.Content size="md" centered aria-describedby={undefined}>
+        <Dialog.Header className="justify-between items-start gap-8 px-6 pt-6 pb-4 border-0">
+          <DialogHeading as="h2" className="mb-0">
             Walk where the king walked once in Wakanda
-          </h2>
-        </div>
-        <Button
-          className="ms-auto p-0 fs-6 text-body-quaternary"
-          onClick={onHide}
-        >
-          <FontAwesomeIcon icon={faXmark} />
-        </Button>
-      </Modal.Header>
-      <Modal.Body className="p-4">
-        <Form>
-          <Row className="g-5 mb-4">
+          </DialogHeading>
+          <button
+            type="button"
+            className="btn p-0 text-soft text-xl"
+            aria-label="Close"
+            onClick={onHide}
+          >
+            <FontAwesomeIcon icon={faXmark} />
+          </button>
+        </Dialog.Header>
+        <Dialog.Body className="p-6">
+          <Row className="g-8 mb-6">
             <Col md={5}>
               <label
                 htmlFor="tripDate"
-                className="fw-bold mb-2 fs-7 text-body-emphasis px-0"
+                className="font-bold mb-2 text-lg text-emphasis"
               >
                 Choose your preferred date
               </label>
-              <div className="form-icon-container flatpickr-input-container">
-                <DatePicker
-                  render={(_, ref) => {
-                    return (
-                      <>
-                        <Form.Control
-                          type="text"
-                          placeholder="22 May, 2024"
-                          ref={ref}
-                          id="tripDate"
-                          className="form-icon-input"
-                        />
-                        <FontAwesomeIcon
-                          icon={faCalendar}
-                          className="form-icon text-body fs-9"
-                          transform="up-2"
-                        />
-                      </>
-                    );
-                  }}
-                  hideIcon={true}
-                  options={{
-                    dateFormat: 'd-m-Y'
-                  }}
-                />
-              </div>
+              <DatePicker
+                wrapperClassName="input-group-icon"
+                hideIcon
+                icon={
+                  <FontAwesomeIcon
+                    icon={faCalendar}
+                    className="text-default text-md form-control-icon-start"
+                  />
+                }
+                id="tripDate"
+                placeholder="22 May, 2024"
+                options={{ disableMobile: true }}
+              />
             </Col>
             <Col md={7}>
-              <Row className="g-3">
+              <Row className="g-4">
                 <Col xs="auto" sm={6}>
                   <label
-                    htmlFor="adults"
-                    className="fw-bold mb-2 fs-7 text-body-emphasis"
+                    htmlFor="adult"
+                    className="font-bold mb-2 text-lg text-emphasis"
                   >
                     Adults
                   </label>
                   <InputGroupCounter
-                    id="adults"
+                    id="adult"
                     inputGap="gap-2"
-                    buttonClasses="rounded px-3"
+                    buttonClasses="rounded-md px-4"
                     iconClasses="px-0"
                   />
                 </Col>
                 <Col xs="auto" sm={6}>
                   <label
                     htmlFor="children"
-                    className="fw-bold mb-2 fs-7 text-body-emphasis"
+                    className="font-bold mb-2 text-lg text-emphasis"
                   >
                     Children
                   </label>
                   <InputGroupCounter
                     id="children"
                     inputGap="gap-2"
-                    buttonClasses="rounded px-3"
+                    buttonClasses="rounded-md px-4"
                     iconClasses="px-0"
                   />
                 </Col>
@@ -114,15 +100,27 @@ const TripDetailsAvailabilityModal = ({
               pricingPlan={pricingPlan}
             />
           ))}
-          <Link to="/apps/travel-agency/trip/checkout">
-            <Button variant="primary" className="w-100 mt-6" size="lg">
-              Proceed to booking
-              <FontAwesomeIcon icon={faChevronRight} className="fs-9 ms-2" />
-            </Button>
+          <label
+            htmlFor="selectTime"
+            className="font-bold mb-2 mt-8 text-lg text-emphasis"
+          >
+            Select time
+          </label>
+          <select className="form-select sm:w-1/2" id="selectTime">
+            <option value="">8:00 AM</option>
+            <option value="">12:00 PM</option>
+            <option value="">3:00 PM</option>
+          </select>
+          <Link
+            to="/apps/travel-agency/trip/checkout"
+            className="btn btn-primary btn-lg text-center w-full mt-10"
+          >
+            Proceed to booking
+            <FontAwesomeIcon icon={faChevronRight} className="text-md ms-2" />
           </Link>
-        </Form>
-      </Modal.Body>
-    </Modal>
+        </Dialog.Body>
+      </Dialog.Content>
+    </Dialog>
   );
 };
 

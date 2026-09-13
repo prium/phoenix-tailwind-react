@@ -1,10 +1,11 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Icon } from '@iconscout/react-unicons';
+import { Input } from '@hummingbirdui/react';
 import Unicon from 'components/base/Unicon';
-import { PropsWithChildren, useEffect, useState } from 'react';
-import { Form, Toast } from 'react-bootstrap';
+import CopyToast from 'components/common/CopyToast';
 import FeatherIcon from 'feather-icons-react';
+import { PropsWithChildren, useEffect, useState } from 'react';
 
 interface IconCardProps {
   icon: IconProp | Icon | string;
@@ -12,6 +13,11 @@ interface IconCardProps {
   iconFamily: 'font-awesome' | 'unicons' | 'feather';
 }
 
+/**
+ * Gold `+IconCard` (`../phoenix-tailwind/src/pug/mixins/icons/IconCards.pug`):
+ * the icon over a readonly input that copies on click. The gold copies the
+ * font-icon class name; the React theme copies the JSX you would write instead.
+ */
 const IconCard = ({
   icon,
   name,
@@ -34,46 +40,46 @@ const IconCard = ({
       setText(`<Unicon icon={${name}} />`);
     }
     if (iconFamily === 'feather') {
-      setText(`<FeatherIcon icon='${name}' />`);
+      setText(`<FeatherIcon icon="${name}" />`);
     }
   }, []);
 
   return (
-    <div className="border rounded-2 p-3 mb-4 text-center bg-body-emphasis dark__bg-gray-1000 shadow-sm">
+    <div className="border rounded-md p-4 mb-6 text-center bg-soft dark:bg-subtle shadow-sm">
       {iconFamily === 'font-awesome' && (
-        <FontAwesomeIcon icon={icon as IconProp} className="text-body fs-5" />
+        <FontAwesomeIcon
+          icon={icon as IconProp}
+          className="text-default text-2xl"
+        />
       )}
       {iconFamily === 'unicons' && (
-        <Unicon fill="currentColor" icon={icon as Icon} style={{ height: 31.25}} className="text-body fs-5" />
+        <Unicon
+          fill="currentColor"
+          icon={icon as Icon}
+          style={{ height: 31.25 }}
+          className="text-default text-2xl"
+        />
       )}
       {iconFamily === 'feather' && (
-        <FeatherIcon icon={icon} className="text-body" size={16} />
+        <FeatherIcon icon={icon as string} className="text-default" size={24} />
       )}
       {children}
-      <Form.Control
-        onClick={handleClick}
+      <Input
+        size="sm"
         type="text"
         readOnly
         value={text}
-        className="text-center text-body-emphasis bg-body-secondary dark__bg-gray-1100 mt-3"
+        onClick={handleClick}
+        className="mt-4 text-center w-full text-emphasis bg-muted dark:bg-soft"
       />
 
-      <Toast
-        show={showCopyToast}
-        onClose={() => setShowCopyToast(false)}
-        className="align-items-center bg-dark border-0 bottom-0 end-0 mb-3 me-3 position-fixed text-white z-5"
-        data-bs-theme="light"
-        delay={3000}
-        autohide
-      >
-        <div className="d-flex">
-          <Toast.Body className="P-3">
-            <span className="fw-black">
-              Copied: <code className="text-body-quaternary">{text}</code>
-            </span>
-          </Toast.Body>
-        </div>
-      </Toast>
+      {showCopyToast && (
+        <CopyToast onDone={() => setShowCopyToast(false)}>
+          <span className="font-black">
+            Copied: <code className="text-soft">{text}</code>
+          </span>
+        </CopyToast>
+      )}
     </div>
   );
 };

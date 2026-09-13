@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import { cn } from '@hummingbirdui/react';
 import {
   Accept,
   DropEvent,
@@ -30,6 +30,14 @@ interface DropzoneProps {
   reactDropZoneProps?: ReactDropZoneProps;
   accept?: Accept;
   noPreview?: boolean;
+  /**
+   * Typography classes for the default `.dz-message` prompt. The gold writes
+   * most of them plain (`dz-message text-subtle/85`, 16px/23.84px line box);
+   * product-details shrinks its prompt with `font-bold text-md`, which is the
+   * default here for the call sites that predate this prop. Pass `''` for the
+   * gold's plain prompt — the 3px line-box delta cascades down a long page.
+   */
+  messageClassName?: string;
   defaultFiles?: File[];
   multiple?: boolean;
   previewHight?: number;
@@ -49,6 +57,7 @@ const Dropzone = ({
   accept,
   defaultFiles = [],
   noPreview,
+  messageClassName = 'font-bold text-md',
   reactDropZoneProps,
   multiple = true,
   previewHight,
@@ -98,7 +107,7 @@ const Dropzone = ({
     <>
       <div
         {...getRootProps()}
-        className={classNames(className, 'dropzone', {
+        className={cn(className, 'dropzone', {
           'dropzone-sm': size === 'sm',
           'dropzone-multiple': multiple
         })}
@@ -107,17 +116,17 @@ const Dropzone = ({
         {children ? (
           <>{children}</>
         ) : (
-          <div className="text-body-tertiary text-opacity-85 fw-bold fs-9">
+          <div className={cn('dz-message text-subtle/85', messageClassName)}>
             Drag your {imageOnly ? 'photo' : 'files'} here{' '}
-            <span className="text-body-secondary">or </span>
-            <Button variant="link" className="p-0">
+            <span className="text-muted">or </span>
+            <Button variant="link" className="p-0" type="button">
               Browse from device
             </Button>
             <br />
             <img
-              className="mt-3"
+              className="mt-4 me-2"
               src={imageIcon}
-              width={classNames({ 24: size === 'sm', 40: size !== 'sm' })}
+              width={size === 'sm' ? 24 : 40}
               alt=""
             />
           </div>
@@ -127,20 +136,20 @@ const Dropzone = ({
         previews.map((file, index) => (
           <div
             key={index}
-            className={classNames(
-              'border-bottom border-translucent d-flex align-items-center justify-content-between py-3'
+            className={cn(
+              'border-b border-subtle flex items-center justify-between py-6'
             )}
           >
             <AttachmentPreview attachment={file} />
 
             <button className="btn p-0" onClick={() => handleRemoveFile(index)}>
-              <FontAwesomeIcon icon={faTrashAlt} className="fs-0" />
+              <FontAwesomeIcon icon={faTrashAlt} className="text-base" />
             </button>
           </div>
         ))}
 
       {imageOnly && !noPreview && files.length > 0 && (
-        <div className="d-flex flex-wrap gap-2 mt-3">
+        <div className="flex flex-wrap gap-2 mt-4">
           {files.map((file, index) => (
             <ImageAttachmentPreview
               key={file.name}

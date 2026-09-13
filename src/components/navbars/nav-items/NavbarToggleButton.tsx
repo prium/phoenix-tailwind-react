@@ -1,8 +1,8 @@
 import { useAppContext } from 'providers/AppProvider';
 import { useEffect } from 'react';
-import { Navbar } from 'react-bootstrap';
 import { useLocation } from 'react-router';
 
+/** `+NavbarToggleIcon` in phoenix-tailwind Mixins.pug */
 const NavbarToggleButton = () => {
   const {
     config: { openNavbarVertical },
@@ -33,14 +33,18 @@ const NavbarToggleButton = () => {
   }, [pathname]);
 
   return (
-    <Navbar.Toggle
-      className="hover-bg-transparent navbar-toggler-humburger-icon"
+    <button
+      type="button"
+      className="btn navbar-toggler navbar-toggler-humburger-icon hover-bg-transparent"
+      aria-controls="navbarVerticalCollapse"
+      aria-expanded={openNavbarVertical}
+      aria-label="Toggle Navigation"
       onClick={toggleOpenNavbarVertical}
     >
       <span className="navbar-toggle-icon">
         <span className="toggle-line" />
       </span>
-    </Navbar.Toggle>
+    </button>
   );
 };
 

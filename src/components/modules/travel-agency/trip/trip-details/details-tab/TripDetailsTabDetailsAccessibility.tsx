@@ -1,38 +1,30 @@
-import React from 'react';
 import { Accessibility } from 'data/travel-agency/customer/trip';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircle } from '@fortawesome/free-solid-svg-icons';
-import { Link } from 'react-router';
+import TripDetailsListItem from './TripDetailsListItem';
 
 interface TripDetailsTabDetailsAccessibilityProps {
   accessibility: Accessibility;
 }
+
+/** "Accessibility" body in mixins/travel-agency/trip/TripDetails.pug */
 const TripDetailsTabDetailsAccessibility = ({
   accessibility
 }: TripDetailsTabDetailsAccessibilityProps) => {
   return (
-    <div className="py-6 px-4">
-      <ul className="list-unstyled">
+    <div className="py-10 px-6">
+      <ul className="list-none p-0">
         {accessibility.items.map(item => (
-          <li key={item} className="mb-1 d-flex">
-            <FontAwesomeIcon
-              icon={faCircle}
-              className="text-secondary-light me-3 fs-11"
-              transform="down-13 shrink-4"
-            />
-            {item}
-          </li>
+          <TripDetailsListItem key={item}>{item}</TripDetailsListItem>
         ))}
       </ul>
       <p>
         {accessibility.query}{' '}
-        <span className="text-body-emphasis fw-semibold">
+        <span className="text-emphasis font-semibold">
           {accessibility.promo}
         </span>
       </p>
-      <Link to={`to:${accessibility.tel.split(' ').join('')}`}>
+      <a href={`tel:${accessibility.tel.split(' ').join('')}`}>
         {accessibility.tel}
-      </Link>
+      </a>
     </div>
   );
 };

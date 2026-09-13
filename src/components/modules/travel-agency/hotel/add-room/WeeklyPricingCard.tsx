@@ -1,69 +1,92 @@
-import React from 'react';
+import { faCalendarAlt } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Card, Col, Input, Row, Select } from '@hummingbirdui/react';
 import DatePicker from 'components/base/DatePicker';
-import { Card, Col, Form, Row } from 'react-bootstrap';
-import { useWizardFormContext } from 'providers/WizardFormProvider';
 import { AddPropertyWizardFormData } from 'data/travel-agency/addProperty';
+import { useWizardFormContext } from 'providers/WizardFormProvider';
+
+const days = [
+  'Sunday',
+  'Monday',
+  'Tuesday',
+  'Wednesday',
+  'Thursday',
+  'Friday',
+  'Saturday'
+];
+
+/** gold "By day of week" card of PricingForm.pug */
 const WeeklyPricingCard = () => {
   const methods = useWizardFormContext<AddPropertyWizardFormData>();
   const { onChange } = methods;
-  const days: string[] = [
-    'sunday',
-    'monday',
-    'tuesday',
-    'wednesday',
-    'thirsday',
-    'friday',
-    'saturday'
-  ];
 
   return (
-    <Card className="bg-body-highlight">
+    <Card className="bg-subtle">
       <Card.Body>
-        <Row className="gx-2 justify-content-between">
-          <Col xs sm="auto">
-            <Form.Group controlId="roomCategory">
-              <Form.Label className="form-label-header mb-1 fs-9">
-                Date
-              </Form.Label>
+        <Row className="gx-2 justify-between">
+          <div className="col sm:col-auto">
+            <label
+              className="form-label mb-1 text-highlight font-bold text-md"
+              htmlFor="date"
+            >
+              Date
+            </label>
+            <div className="input-group-icon">
               <DatePicker
+                id="date"
+                placeholder="Start date"
+                hideIcon
+                wrapperClassName="contents"
                 options={{
+                  disableMobile: true,
                   mode: 'range',
                   minDate: 'today',
-                  dateFormat: 'Y-m-d'
+                  dateFormat: 'd-m-y'
                 }}
-                placeholder="Select date"
               />
-            </Form.Group>
-          </Col>
+              <FontAwesomeIcon
+                icon={faCalendarAlt}
+                transform="up-1"
+                className="form-control-icon-start text-md text-subtle"
+              />
+            </div>
+          </div>
           <Col xs="auto">
-            <Form.Group controlId="weeklyPricingUsd">
-              <Form.Label className="form-label-header mb-1 fs-9">
-                Currency
-              </Form.Label>
-              <Form.Select onChange={onChange}>
-                <option value="USD">USD</option>
-                <option value="EUR">EUR</option>
-                <option value="BDT">BDT</option>
-              </Form.Select>
-            </Form.Group>
+            <label
+              className="form-label mb-1 text-highlight font-bold text-md"
+              htmlFor="day-of-week-currency"
+            >
+              Currency
+            </label>
+            <Select
+              name="day-of-week-currency"
+              id="day-of-week-currency"
+              onChange={onChange}
+            >
+              <option value="1">USD</option>
+              <option value="2">EUR</option>
+              <option value="2">BDT</option>
+            </Select>
           </Col>
         </Row>
         <hr className="mb-2" />
         <Row className="g-2">
-          {days.map((item, index) => (
-            <Col xs={4} sm key={index}>
-              <Form.Group controlId="weeklyPricingUsd">
-                <Form.Label className="form-label-header mb-1 fs-9">
-                  {item}
-                </Form.Label>
-                <Form.Control
-                  type="number"
-                  className="input-spin-none"
-                  onChange={onChange}
-                  defaultValue={100}
-                />
-              </Form.Group>
-            </Col>
+          {days.map(day => (
+            <div className="col-4 sm:col" key={day}>
+              <label
+                className="form-label mb-1 text-highlight font-bold text-md"
+                htmlFor={day.toLowerCase()}
+              >
+                {day}
+              </label>
+              <Input
+                id={day.toLowerCase()}
+                type="number"
+                defaultValue={100}
+                className="input-spin-none"
+                onChange={onChange}
+              />
+            </div>
           ))}
         </Row>
       </Card.Body>

@@ -14,7 +14,7 @@ const WizardSuccessStep = () => {
       </Col>
       <Col xs={12} sm="auto" className="text-center text-sm-start">
         <h5 className="mb-3">You are all set!</h5>
-        <p className="text-body-emphasis fs--1">
+        <p className="text-emphasis text-md">
           Now you can access your account
           <br />
           anytime anywhere

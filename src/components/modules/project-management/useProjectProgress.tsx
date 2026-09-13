@@ -1,25 +1,42 @@
-import classNames from 'classnames';
+import { BadgeBg } from 'components/base/Badge';
 import { Project } from 'data/project-management/projects';
 import { useMemo } from 'react';
+
+/** Literal class strings (Tailwind can't see `bg-${type}`). */
+const progressBarClass: Record<BadgeBg, string> = {
+  primary: 'bg-primary',
+  secondary: 'bg-secondary',
+  success: 'bg-success',
+  danger: 'bg-danger',
+  warning: 'bg-warning',
+  info: 'bg-info'
+};
+
+const progressTrackClass: Record<BadgeBg, string> = {
+  primary: 'bg-primary-subtle',
+  secondary: 'bg-muted',
+  success: 'bg-success-subtle',
+  danger: 'bg-danger-subtle',
+  warning: 'bg-warning-subtle',
+  info: 'bg-info-subtle'
+};
 
 const useProjectProgress = (project: Project) => {
   const progress = useMemo(() => {
     return Math.ceil((project.progress.min / project.progress.max) * 100);
   }, [project]);
 
-  const variant = useMemo(() => {
-    return classNames({
-      [project.status.type]: project.status.type !== 'secondary',
-      '700': project.status.type === 'secondary'
-    });
-  }, [project]);
+  /** `.progress-bar` colour class (gold `progressBarBg`). */
+  const variant = useMemo(
+    () => progressBarClass[project.status.type],
+    [project]
+  );
 
-  const bgClassName = useMemo(() => {
-    return classNames({
-      [`bg-${project.status.type}-subtle`]: project.status.type !== 'secondary',
-      'bg-body-secondary': project.status.type === 'secondary'
-    });
-  }, [project]);
+  /** `.progress` track colour class (gold `progressbarBgColor`). */
+  const bgClassName = useMemo(
+    () => progressTrackClass[project.status.type],
+    [project]
+  );
 
   return { progress, variant, bgClassName };
 };

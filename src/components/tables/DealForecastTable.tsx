@@ -6,183 +6,190 @@ import {
   ForecastTableData,
   dealForecastTableData
 } from 'data/crm/dashboardData';
-import { currencyFormat, numberFormat } from 'helpers/utils';
 import useAdvanceTable from 'hooks/useAdvanceTable';
 import AdvanceTableProvider from 'providers/AdvanceTableProvider';
 import { Link } from 'react-router';
 
+/* footer totals are hardcoded in the gold pug (mixins/dashboard/CRM/Crm.pug);
+   `font-bold!` because the gold row is a td (700) while AdvanceTable renders
+   tfoot th, which resolves to font-weight 800 */
+const FOOTER_CELL_CLASSES =
+  'align-middle border-b-0 border-e border-subtle whitespace-nowrap text-end font-bold! text-emphasis pt-2 leading-sm pb-0 px-4';
+
 const columns: ColumnDef<ForecastTableData>[] = [
   {
-    header: 'Contacts',
+    id: 'contact',
+    header: 'Contact',
     accessorFn: rowData => rowData.contact.name,
     cell: ({ row: { original } }) => {
       const { contact } = original;
       return (
-        <Link to={contact.profileLink} className="fw-semibold">
+        <Link to={contact.profileLink} className="font-semibold">
           {contact.name}
         </Link>
       );
     },
     meta: {
       headerProps: {
-        style: { width: '15%', minWidth: '100px' },
-        className: 'text-start text-body-tertiary'
+        className:
+          'border-e border-subtle whitespace-nowrap ps-0 uppercase text-subtle min-w-25 w-3/20'
       },
-      cellProps: { className: 'pe-3 white-space-nowrap py-2' },
-      footerProps: {
-        className: 'text-end px-3 border-bottom-0'
-      }
-    }
+      cellProps: {
+        className: 'border-e border-subtle whitespace-nowrap py-2 ps-0 px-4'
+      },
+      footerProps: { className: FOOTER_CELL_CLASSES }
+    },
+    footer: () => ' '
   },
   {
     id: 'appointment',
     header: () => (
-      <div className="d-inline-flex flex-center gap-2">
-        <FontAwesomeIcon icon={faSquare} className="fs-11 text-primary" />
-        Appoinment
-      </div>
+      <>
+        <div className="inline-flex items-center justify-center">
+          <FontAwesomeIcon
+            icon={faSquare}
+            className="text-xs text-primary me-2"
+            transform="up-2"
+          />
+          <span className="mb-0 text-md">Appointment</span>
+        </div>
+        {/* the gold pug pretty-prints a whitespace text node between the
+          header div and the `.sort::after` caret — keep it (3.6px wide) */}{' '}
+      </>
     ),
     accessorKey: 'appointment',
-    cell: ({ row: { original } }) => numberFormat(original.appointment),
+    cell: ({ row: { original } }) => original.appointment,
     meta: {
       headerProps: {
-        style: { width: '15%', minWidth: '95px' },
-        className: 'text-end px-3 text-body-tertiary'
+        className:
+          'border-e border-subtle text-end px-4 uppercase text-subtle w-3/20 min-w-23.75'
       },
       cellProps: {
-        className: 'text-end fw-semibold text-body py-2 px-3'
+        className:
+          'border-e border-subtle whitespace-nowrap text-end font-semibold text-default py-2 px-4'
       },
-      footerProps: {
-        className: 'text-end px-3 border-bottom-0'
-      }
+      footerProps: { className: FOOTER_CELL_CLASSES }
     },
-    footer: ({ table }) =>
-      numberFormat(
-        table
-          .getFilteredRowModel()
-          .rows.reduce(
-            (total, row) => total + (row.getValue('appointment') as number),
-            0
-          )
-      )
+    footer: () => '4,744'
   },
   {
     id: 'qualified',
     header: () => (
-      <div className="d-inline-flex flex-center gap-2">
-        <FontAwesomeIcon icon={faSquare} className="fs-11 text-primary-light" />
-        Qualified
-      </div>
+      <>
+        <div className="inline-flex items-center justify-center">
+          <FontAwesomeIcon
+            icon={faSquare}
+            className="text-xs text-primary-light me-2"
+            transform="up-2"
+          />
+          <span className="mb-0 text-md">Qualified</span>
+        </div>
+        {/* the gold pug pretty-prints a whitespace text node between the
+          header div and the `.sort::after` caret — keep it (3.6px wide) */}{' '}
+      </>
     ),
     accessorKey: 'qualified',
-    cell: ({ row: { original } }) => currencyFormat(original.qualified),
+    cell: ({ row: { original } }) => `$${original.qualified}`,
     meta: {
       headerProps: {
-        style: { width: '20%', minWidth: '100px' },
-        className: 'text-end px-3 text-body-tertiary'
+        className:
+          'border-e border-subtle text-end px-4 uppercase text-subtle min-w-25 w-1/5'
       },
       cellProps: {
-        className: 'text-end fw-semibold text-body py-2 px-3'
+        className:
+          'border-e border-subtle whitespace-nowrap text-end font-semibold text-default py-2 px-4'
       },
-      footerProps: {
-        className: 'text-end px-3 py-2'
-      }
+      footerProps: { className: FOOTER_CELL_CLASSES }
     },
-    footer: ({ table }) =>
-      currencyFormat(
-        table
-          .getFilteredRowModel()
-          .rows.reduce(
-            (total, row) => total + (row.getValue('qualified') as number),
-            0
-          )
-      )
+    footer: () => '$5,665'
   },
   {
-    id: 'closed_won',
+    id: 'closed-won',
     header: () => (
-      <div className="d-inline-flex flex-center gap-2">
-        <FontAwesomeIcon icon={faSquare} className="fs-11 text-success" />
-        Closed Won
-      </div>
+      <>
+        <div className="inline-flex items-center justify-center">
+          <FontAwesomeIcon
+            icon={faSquare}
+            className="text-xs text-success me-2"
+            transform="up-2"
+          />
+          <span className="mb-0 text-md">Closed Won</span>
+        </div>
+        {/* the gold pug pretty-prints a whitespace text node between the
+          header div and the `.sort::after` caret — keep it (3.6px wide) */}{' '}
+      </>
     ),
     accessorKey: 'closed_won',
-    cell: ({ row: { original } }) => currencyFormat(original.closed_won),
+    cell: ({ row: { original } }) => `$${original.closed_won}`,
     meta: {
       headerProps: {
-        style: { width: '20%', minWidth: '100px' },
-        className: 'text-end px-3 text-body-tertiary'
+        className:
+          'border-e border-subtle text-end px-4 uppercase text-subtle min-w-25 w-1/5'
       },
       cellProps: {
-        className: 'text-end fw-semibold text-body py-2 px-3'
+        className:
+          'border-e border-subtle whitespace-nowrap text-end font-semibold text-default py-2 px-4'
       },
-      footerProps: {
-        className: 'text-end px-3'
-      }
+      footerProps: { className: FOOTER_CELL_CLASSES }
     },
-    footer: ({ table }) =>
-      currencyFormat(
-        table
-          .getFilteredRowModel()
-          .rows.reduce(
-            (total, row) => total + (row.getValue('closed_won') as number),
-            0
-          )
-      )
+    footer: () => '$4630'
   },
   {
-    id: 'contact_sent',
+    id: 'contact-sent',
     header: () => (
-      <div className="d-inline-flex flex-center gap-2">
-        <FontAwesomeIcon icon={faSquare} className="fs-11 text-info" />
-        Contact Sent
-      </div>
+      <>
+        <div className="inline-flex items-center justify-center">
+          <FontAwesomeIcon
+            icon={faSquare}
+            className="text-xs text-info me-2"
+            transform="up-2"
+          />
+          <span className="mb-0 text-md">Contact Sent</span>
+        </div>
+        {/* the gold pug pretty-prints a whitespace text node between the
+          header div and the `.sort::after` caret — keep it (3.6px wide) */}{' '}
+      </>
     ),
     accessorKey: 'contact_sent',
-    cell: ({ row: { original } }) => currencyFormat(original.contact_sent),
+    cell: ({ row: { original } }) => `$${original.contact_sent}`,
     meta: {
       headerProps: {
-        style: { width: '20%', minWidth: '100px' },
-        className: 'text-end text-body-tertiary'
+        className: 'text-end ps-4 uppercase text-subtle min-w-25 w-1/5'
       },
       cellProps: {
-        className: 'text-end fw-semibold text-body py-2 ps-3'
+        className:
+          'border-e-0 whitespace-nowrap text-end font-semibold text-default ps-4 py-2'
       },
       footerProps: {
-        className: 'text-end ps-3 pe-0 border-bottom-0'
+        className:
+          'align-middle border-b-0 whitespace-nowrap text-end font-bold! text-emphasis pt-2 pb-0 ps-4 pe-0'
       }
     },
-    footer: ({ table }) =>
-      currencyFormat(
-        table
-          .getFilteredRowModel()
-          .rows.reduce(
-            (total, row) => total + (row.getValue('contact_sent') as number),
-            0
-          )
-      )
+    footer: () => '$4630'
   }
 ];
 
-const DealForecastTable = () => {
+/** `+DealForecastTable` in mixins/dashboard/CRM/Crm.pug */
+const DealForecastTable = ({ pageSize = 5 }: { pageSize?: number }) => {
   const table = useAdvanceTable({
     data: dealForecastTableData,
     columns,
-    pageSize: 5,
+    pageSize,
     pagination: true,
-    selectionColumnWidth: '30px',
     sortable: true
   });
 
   return (
     <AdvanceTableProvider {...table}>
-      <AdvanceTable
-        hasFooter
-        tableProps={{
-          size: 'sm',
-          className: 'phoenix-table phoenix-table-bordered fs-9 mb-0 border-top'
-        }}
-      />
+      {/* overflow-hidden: AdvanceTable's -mx-1 wrapper would reveal 4px of the
+          clipped Contact Sent column that the gold hides at the column edge */}
+      <div className="border-t overflow-hidden">
+        <AdvanceTable
+          hasFooter
+          rowClassName="hover-actions-trigger btn-reveal-trigger static"
+          tableProps={{ className: 'text-md mb-0' }}
+        />
+      </div>
     </AdvanceTableProvider>
   );
 };

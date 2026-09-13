@@ -12,11 +12,11 @@ const Demos = () => {
             <Col
               key={demo.variantName}
               lg={6}
-              className="position-relative variant-container"
+              className="relative variant-container"
             >
               <div
                 className={classNames(
-                  'd-flex px-4 pt-6 justify-content-center',
+                  'flex px-4 pt-6 justify-content-center',
                   {
                     'justify-content-lg-end': (index + 1) % 2 !== 0,
                     'justify-content-lg-start': (index + 1) % 2 === 0
@@ -38,7 +38,7 @@ const Demos = () => {
                       />
                     </div>
                   </div>
-                  <h5 className="py-4 text-body-highlight">
+                  <h5 className="py-4 text-highlight">
                     {demo.variantName}
                   </h5>
                 </div>

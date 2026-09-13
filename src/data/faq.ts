@@ -3,10 +3,10 @@ import {
   faBell,
   faBullhorn,
   faCalendarXmark,
+  faChartPie,
   faCircleNodes,
   faFileInvoiceDollar,
   faPeace,
-  faPieChart,
   faSliders,
   faTruckFast
 } from '@fortawesome/free-solid-svg-icons';
@@ -22,67 +22,78 @@ export const faqBreadcrumbItems: PageBreadcrumbItem[] = [
     active: true
   }
 ];
+
 export interface Faq {
-  id: number;
-  title: string;
+  /** Suffix of the gold's `heading*` / `collapse*` ids. */
+  id: string;
+  /**
+   * Accordion button label. The gold breaks long labels with
+   * `<br class="sm:hidden">`, so every segment after the first is preceded by
+   * that responsive break.
+   */
+  title: string[];
+  /** Gold body markup (contains anchors) — rendered as HTML like the pug `!=`. */
   details: string;
 }
 
+/** Mirrors `../phoenix-tailwind/src/pug/pages/faq/faq-accordion.pug`. */
 export const faqs: Faq[] = [
   {
-    id: 1,
-    title: 'What’s your return policy?',
-    details: `At the time of shipment, we assure that your product will be free
-	of defects in materials and workmanship and will conform to the
-	specifications outlined on the lot-specific datasheet included
-	with the product. Please contact our technical support services if
-	you have a technical issue with a product: Email: 
-	<a href="mailto:phoenix@email.com">phoenix@support.com</a>. If the team concludes that the product does not adhere to the
-	requirements mentioned on the datasheet, we will provide a free
-	replacement or a full refund of the product's invoice price.`
+    id: 'One',
+    title: ['What\u2019s your return policy?'],
+    details:
+      'At the time of shipment, we assure that your product will be free of defects in materials and workmanship and will conform to the specifications outlined on the lot-specific datasheet included with the product. Please contact our technical support services if you have a technical issue with a product :<a href="mailto:phoenix@email.com">Email: phoenix@support.com.</a>If the team concludes that the product does not adhere to the requirements mentioned on the datasheet, we will provide a free replacement or a full refund of the product\'s invoice price.'
   },
   {
-    id: 2,
-    title: `I ordered the wrong product. What should I do?`,
-    details: `We would consider accepting the return of the merchandise, subject to an 20% restocking fee plus any shipping and handling fees. The customer is liable for shipping costs for both the returned product and the new replacement product, both to and from our facility. All returns require prior authorisation from us and must be mailed back to us within seven business days of receiving the goods. Products must be returned in the same or equivalent packing (i.e., cold and insulated) in which they were shipped (i.e., cold and insulated). Once we get the item, we will ship out the replacement item.`
+    id: 'Two',
+    title: ['I ordered the wrong product. ', 'What should I do?'],
+    details:
+      'We would consider accepting the return of the merchandise, subject to an 20% restocking fee plus any shipping and handling fees. The customer is liable for shipping costs for both the returned product and the new replacement product, both to and from our facility. All returns require prior authorisation from us and must be mailed back to us within seven business days of receiving the goods. Products must be returned in the same or equivalent packing (i.e., cold and insulated) in which they were shipped (i.e., cold and insulated). Once we get the item, we will ship out the replacement item.'
   },
   {
-    id: 3,
-    title: `How do I cancel my order?`,
-    details: `If you must cancel your order, please call <a href="tel:+871406-7509">(871) 406-7509</a> Please note that we attempt to process and dispatch orders the same day (if received before 1pm PST), and once your product has shipped, our return policy will apply.`
+    id: 'Three',
+    title: ['How do I cancel my order?'],
+    details:
+      'If you must cancel your order, please call <a href="tel:+871406-7509">(871) 406-7509</a> Please note that we attempt to process and dispatch orders the same day (if received before 1pm PST), and once your product has shipped, our return policy will apply.'
   },
   {
-    id: 4,
-    title: `What are your shipping & handling charges?`,
-    details: `Our handling fee is a flat rate of $20. The shipping costs vary depending on your location and the items you've purchased. For an exact shipping cost estimate, please proceed through the checkout process and enter your items and address.`
+    id: 'Four',
+    title: ['What are your shipping & ', 'handling charges?'],
+    details:
+      "Our handling fee is a flat rate of $20. The shipping costs vary depending on your location and the items you've purchased. For an exact shipping cost estimate, please proceed through the checkout process and enter your items and address."
   },
   {
-    id: 6,
-    title: `Do you accept purchase orders?`,
-    details: `Yes. Please include your purchase order number at online checkout, or clearly label it on a faxed or emailed purchase order. Please give the relevant email or mailing address for your accounts payable department so that the invoice can be sent to the appropriate location.`
+    id: 'Five',
+    title: ['Do you accept purchase orders?'],
+    details:
+      'Yes. Please include your purchase order number at online checkout, or clearly label it on a faxed or emailed purchase order. Please give the relevant email or mailing address for your accounts payable department so that the invoice can be sent to the appropriate location.'
   }
 ];
 
 export interface FaqType {
   question: string;
+  /** Gold answer markup (contains anchors) — rendered as HTML like the pug `!=`. */
   answer: string;
 }
 
 export interface FaqCategory {
   id: string;
   name: string;
+  /** The gold loads Font Awesome in SVG/JS mode, so icons must be `FontAwesomeIcon`s. */
   icon: IconProp;
   description: string;
+  /** Filter group used by the "Popular Categories" tab. */
   category?: string;
   topFaqs: FaqType[];
   faqs: FaqType[];
 }
 
+/** Mirrors the `categories` block of `../phoenix-tailwind/src/pug/pages/faq/faq-tab.pug`. */
 export const faqCategories: FaqCategory[] = [
   {
     id: 'sale-101',
     name: 'Sales',
-    icon: faPieChart,
+    icon: faChartPie,
     description:
       'Answer the most frequently asked questions about your products & services here.',
     category: 'popular',
@@ -90,12 +101,12 @@ export const faqCategories: FaqCategory[] = [
       {
         question: 'How can I purchase your services?',
         answer:
-          'You can mail us at info@phoenix.template or go to our services page to directly choose and pay to buy the services we provide.'
+          'You can mail us at <a href="mailto:info@phoenix.template">info@phoenix.template</a>  or go to our services page to directly choose and pay to buy the services we provide.'
       },
       {
         question: 'How much do your service cost?',
         answer:
-          'Our services can be availed at a minimum cost. Please visit info.phoenix-tw.com to get insights into the better purchase plans.'
+          'Our services can be availed at a minimum cost. Please visit <a href="mailto:info.phoenix-tw.com">info.phoenix-tw.com</a> to get insights into the better purchase plans.'
       },
       {
         question: 'Do you offer any money-back guarantee?',
@@ -105,34 +116,34 @@ export const faqCategories: FaqCategory[] = [
     ],
     faqs: [
       {
-        question: 'Do you offer any customer service for your customers?',
+        question: 'Do you offer any free trial?',
         answer:
-          'We do. We have an enthusiastic team of customer service providers to help you resolve any relevant issues that might arise while using the services. Please contact support.phoenix.themewagon for further info'
+          'No, we don’t avail of any pre-booking or free trial option. You can contact at <a href="mailto:support.phoenix.themewagon">support.phoenix.themewagon</a> for further info.'
       },
       {
-        question: 'Do you offer any demo/trial version of your services?',
-        answer:
-          'No, we don’t avail any prebooking or trial option. You can contact our support team for further info. '
+        question: 'Is it compatible with all available browsers?',
+        answer: 'Yes, it is a cross-browser compatible product.'
       },
       {
-        question: 'What currencies does Phoenix work with?',
+        question: 'What level of customer service do you provide?',
         answer:
-          'We allow the return of all items within 30 days of your original order’s date. If you’re interested in returning your items, send us an email with your order number '
+          'Our customer service is available 24/7 for your concerns. You can communicate through live chat, email, or phone for any queries at support.phoenix.themewagon.'
       },
       {
-        question: 'How can I dropship with Phoenix?',
+        question: 'Is my data privacy secure with your product?',
         answer:
-          'We allow the return of all items within 30 days of your original order’s date. If you’re interested in returning your items, send us an email with your o'
+          'Yes. We constantly update and cross-check security audits and assessments to ensure the highest security standards.'
       },
       {
-        question: 'What is Phoenix and how does it work?',
+        question: 'Do you provide any refund?',
         answer:
-          'We allow the return of all items within 30 days of your original order’s date. I'
+          'Yes, we offer refunds to our customers under our terms and policies. Contact <a href="mailto:info@phoenix.template">info@phoenix.template</a> for more information.'
       },
       {
-        question: 'How much does Shopify cost?',
+        question:
+          'Do I need to complete the full payment at a time, or is any installment or discount available?',
         answer:
-          'original order’s date. If you’re interested in returning your items, send us an email with your order numb'
+          'Contact <a href="mailto:info@phoenix.template">info@phoenix.template</a> for more information.'
       }
     ]
   },
@@ -335,7 +346,7 @@ export const faqCategories: FaqCategory[] = [
         question:
           'Can I customize the checkout process on the e-commerce site template?',
         answer:
-          'You can edit and choose custom modules or import any from the Bootstrap components and customize the design as you want to.'
+          'You can edit and choose custom modules or import any from the Hummingbird components and customize the design as you want to.'
       },
       {
         question:

@@ -12,38 +12,47 @@ export type Testimonial = {
   occupation: string;
   comment: string;
   rating: number;
+  /** landing-1 sizes its avatars with width/height attributes */
+  avatarWidth?: number;
+  avatarHeight?: number;
 };
 
+/** `+Testimonial` in landing-1/Testimonial.pug */
 export const testimonials: Testimonial[] = [
   {
     id: 1,
     avatar: team61,
+    avatarWidth: 153,
+    avatarHeight: 153,
     rating: 5,
     comment:
-      'Brilliant app! Will definitely be my first choice starting from today',
+      'Brilliant app! Will definitely going to be my first choice starting from today',
     name: 'Monica Gomez',
     occupation: 'UX designer, Google'
   },
   {
     id: 2,
     avatar: team8,
-    rating: 4,
+    avatarWidth: 154,
+    rating: 5,
     comment:
-      'Excellent to work with and comfortable to customize. This is what I was looking for till the date!',
+      '“Excellent to work with and comfortable to customize. This is what I was looking for till the date!”',
     name: 'Marc Chiasson',
     occupation: 'UX designer, Adobe'
   },
   {
     id: 3,
     avatar: team35,
+    avatarWidth: 154,
     rating: 5,
     comment:
-      'Phoenix is all you can ask for. This is a perfect fit for everything you might want to work on!',
+      '“Phoenix is all you can ask for. This is perfect fit for everything you might want to work on!”',
     name: 'Axel Barry',
     occupation: 'UX designer, Apple'
   }
 ];
 
+/** `+Testimonial` in landing-2/Testimonial.pug */
 export const alternateTestimonial: Testimonial[] = [
   {
     id: 1,
@@ -68,7 +77,7 @@ export const alternateTestimonial: Testimonial[] = [
     name: 'Marc Chiasson',
     occupation: 'CTO',
     comment:
-      'Amazing support system with quickest reply and steady communication of the concerned. Really loved working with Phoenix!',
+      'Amazing support system with quickest reply and steady communication of the concerned.',
     avatar: team14,
     rating: 4
   }

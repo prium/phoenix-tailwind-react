@@ -30,7 +30,7 @@ interface DealsContextInterface {
 
 export const DealsContext = createContext({} as DealsContextInterface);
 
-const DealsProvider = ({
+const CrmDealsProvider = ({
   children,
   data
 }: PropsWithChildren<{ data: DealColumn[] }>) => {
@@ -189,4 +189,4 @@ const DealsProvider = ({
 
 export const useDealsContext = () => use(DealsContext);
 
-export default DealsProvider;
+export default CrmDealsProvider;

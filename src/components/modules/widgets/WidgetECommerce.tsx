@@ -1,47 +1,47 @@
-import WidgetsSectionTitle from './WidgetsSectionTitle';
 import { faCartPlus } from '@fortawesome/free-solid-svg-icons';
+import { Col, Row } from '@hummingbirdui/react';
+import EcomCartSummaryCard from 'components/cards/EcomCartSummaryCard';
+import BillingDetails from 'components/modules/e-commerce/checkout/BillingDetails';
+import DeliveryType from 'components/modules/e-commerce/checkout/DeliveryType';
+import { PaymentMethod } from 'components/modules/e-commerce/checkout/PaymentMethod';
 import EcomCartTable from 'components/tables/EcomCartTable';
 import { cartItems } from 'data/e-commerce/products';
-import { Col, Row } from 'react-bootstrap';
-import { PaymentMethod } from '../e-commerce/checkout/PaymentMethod';
-import EcomCartSummaryCard from 'components/cards/EcomCartSummaryCard';
-import DeliveryType from '../e-commerce/checkout/DeliveryType';
-import EcomAddressTable from 'components/tables/EcomAddressTable';
-import { shippingDetailsAddress } from 'data/e-commerce';
-import EcomInvoiceTable from 'components/tables/EcomInvoiceTable';
-import OrderDetailsSummaryCard from 'components/cards/OrderDetailsSummaryCard';
+import WidgetsSectionTitle from './WidgetsSectionTitle';
 
+/** `+ECommerce` in mixins/widgets/ECommerce.pug */
 const WidgetECommerce = () => {
   return (
-    <div>
+    <>
       <WidgetsSectionTitle
         title="E-commerce"
         subtitle="Find more cards which are dedicatedly made for E-commerce."
         icon={faCartPlus}
-        className="mb-5 mt-7"
+        transform="shrink-4"
+        className="mb-8 pt-12"
       />
-      <EcomCartTable products={cartItems} />
-      <div className="my-6">
-        <Row className="g-5">
+      <div>
+        <h3 className="mb-4">Cart</h3>
+        <EcomCartTable products={cartItems} />
+      </div>
+      <div className="my-10">
+        <Row className="g-8">
           <Col xl={8}>
             <PaymentMethod />
-            <EcomAddressTable data={shippingDetailsAddress} />
           </Col>
           <Col xl={4}>
             <EcomCartSummaryCard />
           </Col>
         </Row>
       </div>
-      <Row className="g-6 mb-4">
-        <Col xl={6}>
-          <OrderDetailsSummaryCard />
-        </Col>
+      <Row className="g-10">
         <Col xl={6}>
           <DeliveryType />
         </Col>
+        <Col xl={6}>
+          <BillingDetails />
+        </Col>
       </Row>
-      <EcomInvoiceTable />
-    </div>
+    </>
   );
 };
 

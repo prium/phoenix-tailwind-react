@@ -3,10 +3,11 @@ import team32 from 'assets/img/team/32.webp';
 import team35 from 'assets/img/team/35.webp';
 import team59 from 'assets/img/team/59.webp';
 import team18 from 'assets/img/team/18.webp';
+import teamAvatar from 'assets/img/team/avatar.webp';
 
 export interface SellerReport {
   reportStage: string;
-  totalCount: number;
+  totalCount: string;
   status: {
     label: string;
     type: BadgeBg;
@@ -16,25 +17,32 @@ export interface SellerReport {
 export interface DealsReport {
   dealName: string;
   dealOwner: {
-    avatar?: string;
+    avatar: string;
     name: string;
-    profileLink: string;
+    /** gold marks the generic silhouette with `.avatar-placeholder` */
+    placeholder?: boolean;
   };
   accountName: string;
   stage: {
     label: string;
+    /** literal stroke colour from the gold pug (per stage) */
+    color: string;
+    /** --phoenix-circle-progress-bar value */
     value: number;
   };
   amount: {
-    value: number;
-    trending: 'up' | 'down';
+    label: string;
+    icon: 'trending-up' | 'trending-down';
+    /** literal colour class from the gold pug */
+    iconClass: string;
   };
 }
 
+/** `ChartReportsTable` demo rows in mixins/crm/ReportsDetails.pug */
 export const sellersReportData: SellerReport[] = [
   {
     reportStage: 'Analysis',
-    totalCount: 64,
+    totalCount: '03',
     status: {
       label: '+15.21%',
       type: 'info'
@@ -42,7 +50,7 @@ export const sellersReportData: SellerReport[] = [
   },
   {
     reportStage: 'Statement',
-    totalCount: 40,
+    totalCount: '01',
     status: {
       label: '+05.21%',
       type: 'warning'
@@ -50,7 +58,7 @@ export const sellersReportData: SellerReport[] = [
   },
   {
     reportStage: 'Action',
-    totalCount: 45,
+    totalCount: '02',
     status: {
       label: '+22.12%',
       type: 'primary'
@@ -58,15 +66,15 @@ export const sellersReportData: SellerReport[] = [
   },
   {
     reportStage: 'Offering',
-    totalCount: 62,
+    totalCount: '02',
     status: {
       label: '-14.21%',
       type: 'danger'
     }
   },
   {
-    reportStage: 'Interlocation',
-    totalCount: 82,
+    reportStage: 'Interlocution',
+    totalCount: '02',
     status: {
       label: '-14.21%',
       type: 'danger'
@@ -74,269 +82,130 @@ export const sellersReportData: SellerReport[] = [
   }
 ];
 
+/** `PurchasersSellersTable` demo rows in mixins/crm/ReportsDetails.pug */
 export const dealsReportData: DealsReport[] = [
   {
     dealName: 'Jo_Td01',
-    dealOwner: {
-      name: 'Ally Aagaard',
-      profileLink: '#!'
-    },
+    dealOwner: { avatar: teamAvatar, name: 'Ally Aagaard', placeholder: true },
     accountName: 'Themewagon',
-    stage: {
-      label: 'Analysis',
-      value: 20
-    },
-    amount: {
-      value: 140,
-      trending: 'down'
-    }
+    stage: { label: 'Analysis', color: '#3874FF', value: 20 },
+    amount: { label: '$140', icon: 'trending-down', iconClass: 'text-danger' }
   },
   {
     dealName: 'Printing Dimensions',
-    dealOwner: {
-      avatar: team35,
-      name: 'Alex Abadi',
-      profileLink: '#!'
-    },
+    dealOwner: { avatar: team35, name: 'Alex Abadi' },
     accountName: 'Black Box',
-    stage: {
-      label: 'Statement',
-      value: 40
-    },
-    amount: {
-      value: 214,
-      trending: 'up'
-    }
+    stage: { label: 'Statement', color: '#0097EB', value: 40 },
+    amount: { label: '$214', icon: 'trending-up', iconClass: 'text-success' }
   },
   {
     dealName: 'MM_TD_120',
-    dealOwner: {
-      avatar: team32,
-      name: 'Kylia Abbott',
-      profileLink: '#!'
-    },
+    dealOwner: { avatar: team32, name: 'Kylia Abbott' },
     accountName: 'Hunter Leader',
-    stage: {
-      label: 'Action',
-      value: 50
-    },
-    amount: {
-      value: 412,
-      trending: 'up'
-    }
+    stage: { label: 'Action', color: '#E5780B', value: 50 },
+    amount: { label: '$412', icon: 'trending-up', iconClass: 'text-success' }
   },
   {
     dealName: 'Truhlar And Truhlar Attys',
-    dealOwner: {
-      avatar: team32,
-      name: 'Kylia Abbott',
-      profileLink: '#!'
-    },
+    dealOwner: { avatar: team32, name: 'Kylia Abbott' },
     accountName: 'Eagle Eye',
-    stage: {
-      label: 'Offering',
-      value: 60
-    },
-    amount: {
-      value: 110,
-      trending: 'up'
-    }
+    stage: { label: 'Offering', color: '#6E7891', value: 60 },
+    amount: { label: '$110', icon: 'trending-up', iconClass: 'text-success' }
   },
   {
     dealName: 'Morlong Associates',
-    dealOwner: {
-      avatar: team59,
-      name: 'Lyla Nicole',
-      profileLink: '#!'
-    },
+    dealOwner: { avatar: team59, name: 'Lyla Nicole' },
     accountName: 'Black Box',
-    stage: {
-      label: 'Negotiation',
-      value: 100
-    },
-    amount: {
-      value: 325,
-      trending: 'down'
-    }
+    stage: { label: 'Negotiation', color: '#25B003', value: 100 },
+    amount: { label: '$325', icon: 'trending-down', iconClass: 'text-danger' }
   },
   {
     dealName: 'Product Order',
-    dealOwner: {
-      avatar: team18,
-      name: 'Hunter Leader',
-      profileLink: '#!'
-    },
+    dealOwner: { avatar: team18, name: 'Hunter Leader' },
     accountName: 'Themewagon',
-    stage: {
-      label: 'Negotiation',
-      value: 100
-    },
-    amount: {
-      value: 198,
-      trending: 'down'
-    }
+    stage: { label: 'Negotiation', color: '#25B003', value: 100 },
+    amount: { label: '$198', icon: 'trending-down', iconClass: 'text-warning' }
   },
   {
     dealName: 'Feltz Printing Service',
-    dealOwner: {
-      name: 'Ally Aagaard',
-      profileLink: '#!'
-    },
+    dealOwner: { avatar: teamAvatar, name: 'Ally Aagaard', placeholder: true },
     accountName: 'Themewagon',
-    stage: {
-      label: 'Offering',
-      value: 80
-    },
-    amount: {
-      value: 142,
-      trending: 'up'
-    }
+    stage: { label: 'Offering', color: '#6E7891', value: 80 },
+    amount: { label: '$142', icon: 'trending-up', iconClass: 'text-success' }
   },
   {
     dealName: 'Flat Plate SP',
-    dealOwner: {
-      name: 'Ally Aagaard',
-      profileLink: '#!'
-    },
+    dealOwner: { avatar: teamAvatar, name: 'Ally Aagaard', placeholder: true },
     accountName: 'Eagle Eye',
-    stage: {
-      label: 'Offering',
-      value: 80
-    },
-    amount: {
-      value: 457,
-      trending: 'up'
-    }
+    stage: { label: 'Offering', color: '#6E7891', value: 80 },
+    amount: { label: '$457', icon: 'trending-up', iconClass: 'text-success' }
   },
   {
     dealName: 'Evacuated Tube',
-    dealOwner: {
-      name: 'Ally Aagaard',
-      profileLink: '#!'
-    },
+    dealOwner: { avatar: teamAvatar, name: 'Ally Aagaard' },
     accountName: 'Hunter Leader',
-    stage: {
-      label: 'Action',
-      value: 100
-    },
-    amount: {
-      value: 120,
-      trending: 'down'
-    }
+    stage: { label: 'Action', color: '#E5780B', value: 100 },
+    amount: { label: '$120', icon: 'trending-down', iconClass: 'text-warning' }
   },
   {
     dealName: 'Product Delivery',
-    dealOwner: {
-      avatar: team35,
-      name: 'Alex Abadi',
-      profileLink: '#!'
-    },
+    dealOwner: { avatar: team35, name: 'Alex Abadi' },
     accountName: 'Themewagon',
-    stage: {
-      label: 'Analysis',
-      value: 100
-    },
-    amount: {
-      value: 150,
-      trending: 'down'
-    }
+    stage: { label: 'Analysis', color: '#3874FF', value: 100 },
+    amount: { label: '$150', icon: 'trending-down', iconClass: 'text-danger' }
   },
   {
     dealName: 'Product Order',
-    dealOwner: {
-      avatar: team18,
-      name: 'Hunter Leader',
-      profileLink: '#!'
-    },
+    dealOwner: { avatar: team18, name: 'Hunter Leader' },
     accountName: 'Themewagon',
-    stage: {
-      label: 'Negotiation',
-      value: 100
-    },
-    amount: {
-      value: 140,
-      trending: 'down'
-    }
+    stage: { label: 'Negotiation', color: '#25B003', value: 100 },
+    amount: { label: '$140', icon: 'trending-down', iconClass: 'text-warning' }
   },
   {
     dealName: 'Feltz Printing Service',
-    dealOwner: {
-      name: 'Ally Aagaard',
-      profileLink: '#!'
-    },
+    dealOwner: { avatar: teamAvatar, name: 'Ally Aagaard', placeholder: true },
     accountName: 'Themewagon',
-    stage: {
-      label: 'Offering',
-      value: 80
-    },
-    amount: {
-      value: 122,
-      trending: 'up'
-    }
+    stage: { label: 'Offering', color: '#6E7891', value: 80 },
+    amount: { label: '$122', icon: 'trending-up', iconClass: 'text-success' }
   },
   {
     dealName: 'Flat Plate SP',
-    dealOwner: {
-      name: 'Ally Aagaard',
-      profileLink: '#!'
-    },
+    dealOwner: { avatar: teamAvatar, name: 'Ally Aagaard', placeholder: true },
     accountName: 'Eagle Eye',
-    stage: {
-      label: 'Offering',
-      value: 80
-    },
-    amount: {
-      value: 321,
-      trending: 'up'
-    }
+    stage: { label: 'Offering', color: '#6E7891', value: 80 },
+    amount: { label: '$321', icon: 'trending-up', iconClass: 'text-success' }
   },
   {
     dealName: 'Evacuated Tube',
-    dealOwner: {
-      name: 'Ally Aagaard',
-      profileLink: '#!'
-    },
+    dealOwner: { avatar: teamAvatar, name: 'Ally Aagaard' },
     accountName: 'Hunter Leader',
-    stage: {
-      label: 'Action',
-      value: 100
-    },
-    amount: {
-      value: 104,
-      trending: 'down'
-    }
+    stage: { label: 'Action', color: '#E5780B', value: 100 },
+    amount: { label: '$104', icon: 'trending-down', iconClass: 'text-warning' }
   },
   {
     dealName: 'Product Delivery',
-    dealOwner: {
-      avatar: team35,
-      name: 'Alex Abadi',
-      profileLink: '#!'
-    },
+    dealOwner: { avatar: team35, name: 'Alex Abadi' },
     accountName: 'Themewagon',
-    stage: {
-      label: 'Analysis',
-      value: 100
-    },
-    amount: {
-      value: 124,
-      trending: 'down'
-    }
+    stage: { label: 'Analysis', color: '#3874FF', value: 100 },
+    amount: { label: '$124', icon: 'trending-down', iconClass: 'text-danger' }
   }
 ];
+
 export interface Report {
   id: number;
   title: string;
   subTitle: string;
   priority: {
     label: string;
-    type: string;
+    /** literal colour class from the gold pug */
+    iconClass: string;
   };
   reportsby: string;
   category: string;
   date: string;
 }
 
+/** `reportsDataList` in apps/crm/reports.pug */
 export const reports: Report[] = [
   {
     id: 1,
@@ -344,7 +213,7 @@ export const reports: Report[] = [
     subTitle: 'Purchasing-Related Vendors',
     priority: {
       label: 'Urgent',
-      type: 'danger'
+      iconClass: 'text-danger'
     },
     reportsby: 'Reports by email',
     category: 'Sales Reports',
@@ -356,7 +225,7 @@ export const reports: Report[] = [
     subTitle: 'Obtaining leads today',
     priority: {
       label: 'Urgent',
-      type: 'danger'
+      iconClass: 'text-danger'
     },
     reportsby: 'Reports by email',
     category: 'HR Reports',
@@ -368,7 +237,7 @@ export const reports: Report[] = [
     subTitle: 'Based on the percentage of recipients',
     priority: {
       label: 'Medium',
-      type: 'success'
+      iconClass: 'text-success'
     },
     reportsby: 'Reports on Sales Orders',
     category: 'Marketing Reports',
@@ -380,7 +249,7 @@ export const reports: Report[] = [
     subTitle: 'Sales for Today',
     priority: {
       label: 'Medium',
-      type: 'success'
+      iconClass: 'text-success'
     },
     reportsby: 'Reviews of Products',
     category: 'Sales Reports',
@@ -392,7 +261,7 @@ export const reports: Report[] = [
     subTitle: 'Obtaining leads today',
     priority: {
       label: 'Low',
-      type: 'info'
+      iconClass: 'text-info'
     },
     reportsby: 'Reports by email',
     category: 'HR Reports',
@@ -404,7 +273,7 @@ export const reports: Report[] = [
     subTitle: 'Sums up the many existing businesses.',
     priority: {
       label: 'Low',
-      type: 'info'
+      iconClass: 'text-info'
     },
     reportsby: 'Reports by email',
     category: 'Service Reports',
@@ -416,7 +285,7 @@ export const reports: Report[] = [
     subTitle: 'Emails sent by users to all records,',
     priority: {
       label: 'High',
-      type: 'warning'
+      iconClass: 'text-warning'
     },
     reportsby: 'Reports on Deals',
     category: 'Sales Reports',
@@ -428,7 +297,7 @@ export const reports: Report[] = [
     subTitle: 'Contracts closed by a salesman',
     priority: {
       label: 'Low',
-      type: 'info'
+      iconClass: 'text-info'
     },
     reportsby: 'Reports on Deals',
     category: 'Marketing Reports',
@@ -440,7 +309,7 @@ export const reports: Report[] = [
     subTitle: 'Based on Status Sales Orders',
     priority: {
       label: 'Medium',
-      type: 'success'
+      iconClass: 'text-success'
     },
     reportsby: 'Reviews of Products',
     category: 'Sales Reports',
@@ -452,7 +321,7 @@ export const reports: Report[] = [
     subTitle: 'Products support will stop this month',
     priority: {
       label: 'Medium',
-      type: 'success'
+      iconClass: 'text-success'
     },
     reportsby: 'Reports by email',
     category: 'Marketing Reports',
@@ -464,7 +333,7 @@ export const reports: Report[] = [
     subTitle: 'Based on the percentage of recipients',
     priority: {
       label: 'High',
-      type: 'warning'
+      iconClass: 'text-warning'
     },
     reportsby: 'Reports on Sales Orders',
     category: 'Marketing Reports',
@@ -476,7 +345,7 @@ export const reports: Report[] = [
     subTitle: 'Sales for Today',
     priority: {
       label: 'Urgent',
-      type: 'danger'
+      iconClass: 'text-danger'
     },
     reportsby: 'Reviews of Products',
     category: 'Sales Reports',
@@ -488,7 +357,7 @@ export const reports: Report[] = [
     subTitle: 'Contracts closed by a salesman',
     priority: {
       label: 'Urgent',
-      type: 'danger'
+      iconClass: 'text-danger'
     },
     reportsby: 'Reports on Deals',
     category: 'Marketing Reports',
@@ -500,7 +369,7 @@ export const reports: Report[] = [
     subTitle: 'Obtaining leads today',
     priority: {
       label: 'Urgent',
-      type: 'danger'
+      iconClass: 'text-danger'
     },
     reportsby: 'Reports by email',
     category: 'HR Reports',

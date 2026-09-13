@@ -29,6 +29,11 @@ export interface CalendarEvent {
   url?: string;
 }
 
+/**
+ * Demo events, verbatim from the gold `src/js/theme/calendar/events.js`.
+ * Both sides derive their dates from "today" with dayjs, so the React app and
+ * the static gold always render the same month — nothing is pinned.
+ */
 export const events: CalendarEvent[] = [
   {
     id: '1',
@@ -149,5 +154,18 @@ export const events: CalendarEvent[] = [
     className: 'text-primary'
   }
 ];
+
+/**
+ * What FullCalendar is actually fed. The gold `app-calendar.js` flattens every
+ * event's `schedules` into the top-level list (schedules first, then their
+ * parent) so the sub-events render as their own pills:
+ *   `events.reduce((acc, val) => val.schedules ? acc.concat(val.schedules.concat(val)) : acc.concat(val), [])`
+ * The parent keeps its `schedules` so the details modal can list them.
+ */
+export const eventList: CalendarEvent[] = events.reduce<CalendarEvent[]>(
+  (acc, event) =>
+    event.schedules ? acc.concat(event.schedules, event) : acc.concat(event),
+  []
+);
 
 export default events;

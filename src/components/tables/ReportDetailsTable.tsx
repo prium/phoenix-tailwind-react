@@ -5,31 +5,32 @@ import AdvanceTableProvider from 'providers/AdvanceTableProvider';
 import Badge from 'components/base/Badge';
 import { SellerReport, sellersReportData } from 'data/crm/reportsData';
 
+/** `+ChartReportsTable` in ../phoenix-tailwind/src/pug/mixins/crm/ReportsDetails.pug */
 const columns: ColumnDef<SellerReport>[] = [
   {
     header: 'Report stage',
     accessorKey: 'reportStage',
     meta: {
       cellProps: {
-        className: 'fw-semibold text-body-highlight py-2'
+        className: 'whitespace-nowrap font-semibold text-highlight py-2'
       },
       headerProps: {
-        style: { width: '35%' },
-        className: 'fs-10 text-body-tertiary fw-bold text-nowrap'
+        className:
+          'w-7/20 text-subtle font-bold! text-sm uppercase text-nowrap ps-0'
       }
     }
   },
   {
     accessorKey: 'totalCount',
-    header: 'Total count',
+    header: 'total count',
     meta: {
       cellProps: {
-        className: 'text-end fw-semibold text-body-highlight ps-4 py-2'
+        className:
+          'text-end whitespace-nowrap font-semibold text-highlight ps-6 py-2'
       },
       headerProps: {
-        style: { width: '35%' },
         className:
-          'text-end ps-4 text-body-tertiary fw-bold fs-10 text-uppercase text-nowrap'
+          'w-7/20 text-end ps-6 text-subtle font-bold! text-sm uppercase text-nowrap'
       }
     }
   },
@@ -44,11 +45,12 @@ const columns: ColumnDef<SellerReport>[] = [
     ),
     meta: {
       headerProps: {
-        style: { width: '30%' },
-        className: 'text-end ps-4 text-body-tertiary fw-bold fs-10 text-nowrap'
+        className:
+          'w-3/10 text-end ps-6 text-subtle font-bold! text-sm uppercase pe-0'
       },
       cellProps: {
-        className: 'text-end ps-4 text-body-highlight'
+        className:
+          'text-end whitespace-nowrap ps-6 font-semibold text-highlight'
       }
     }
   }
@@ -62,13 +64,14 @@ const ReportDetailsTable = () => {
   });
 
   return (
-    <div>
-      <AdvanceTableProvider {...table}>
-        <AdvanceTable
-          tableProps={{ className: 'phoenix-table fs-9', size: 'sm' }}
-        />
-      </AdvanceTableProvider>
-    </div>
+    <AdvanceTableProvider {...table}>
+      <AdvanceTable
+        tableProps={{
+          size: 'sm',
+          className: 'reports-details-chart-table text-md mb-0'
+        }}
+      />
+    </AdvanceTableProvider>
   );
 };
 

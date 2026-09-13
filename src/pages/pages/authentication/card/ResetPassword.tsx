@@ -4,7 +4,7 @@ import AuthCardLayout from 'layouts/AuthCardLayout';
 const ResetPassword = () => {
   return (
     <AuthCardLayout>
-      <ResetPasswordForm />
+      <ResetPasswordForm layout="card" />
     </AuthCardLayout>
   );
 };

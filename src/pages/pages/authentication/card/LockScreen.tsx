@@ -3,8 +3,8 @@ import AuthCardLayout from 'layouts/AuthCardLayout';
 
 const LockScreen = () => {
   return (
-    <AuthCardLayout logo={false}>
-      <LockScreenForm />
+    <AuthCardLayout>
+      <LockScreenForm layout="card" />
     </AuthCardLayout>
   );
 };

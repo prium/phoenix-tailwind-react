@@ -7,21 +7,21 @@ import AvatarExample from 'pages/modules/components/AvatarExample';
 import BadgeExample from 'pages/modules/components/BadgeExample';
 import BreadcrumbExample from 'pages/modules/components/BreadcrumbExample';
 import CardExample from 'pages/modules/components/CardExample';
-import BootstrapCarousel from 'pages/modules/components/BootstrapCarousel';
-import CollapseExample from 'pages/modules/components/CollapseExample';
+import HummingbirdCarousel from 'pages/modules/components/HummingbirdCarousel';
+import CollapsibleExample from 'pages/modules/components/CollapsibleExample';
 import DropdownExample from 'pages/modules/components/DropdownExample';
 import ListGroupExample from 'pages/modules/components/ListGroupExample';
-import ModalExample from 'pages/modules/components/ModalExample';
-import OffcanvasExample from 'pages/modules/components/OffcanvasExample';
-import ProgressbarExample from 'pages/modules/components/ProgressbarExample';
-import PlaceholderExample from 'pages/modules/components/PlaceholderExample';
+import DialogExample from 'pages/modules/components/DialogExample';
+import DrawerExample from 'pages/modules/components/DrawerExample';
+import ProgressExample from 'pages/modules/components/ProgressExample';
+import SkeletonExample from 'pages/modules/components/SkeletonExample';
 import PaginationExample from 'pages/modules/components/PaginationExample';
 import PopoversExample from 'pages/modules/components/PopoversExample';
-import SpinnerExample from 'pages/modules/components/SpinnerExample';
+import LoaderExample from 'pages/modules/components/LoaderExample';
 import ToastsExample from 'pages/modules/components/ToastsExample';
 import TooltipExample from 'pages/modules/components/TooltipExample';
 import AlertsExample from 'pages/modules/components/AlertsExample';
-import FormControlExample from 'pages/modules/forms/basic/FormControlExample';
+import InputExample from 'pages/modules/forms/basic/InputExample';
 import InputGroupExample from 'pages/modules/forms/basic/InputGroupExample';
 import SelectExample from 'pages/modules/components/SelectExample';
 import ChecksExample from 'pages/modules/components/ChecksExample';
@@ -91,7 +91,7 @@ import FaqAccordion from 'pages/faq/FaqAccordion';
 import Inbox from 'pages/apps/email/Inbox';
 import EmailDetail from 'pages/apps/email/EmailDetail';
 import Compose from 'pages/apps/email/Compose';
-import Notification from 'pages/notifications/Notifications';
+import Notifications from 'pages/notifications/Notifications';
 import PricingColumn from 'pages/pages/pricing/PricingColumn';
 import SocialProfile from 'pages/apps/social/SocialProfile';
 import Settings from 'pages/apps/social/Settings';
@@ -162,14 +162,12 @@ import Widgets from 'pages/modules/Widgets';
 import ComingSoon from 'pages/ComingSoon';
 
 const FontAwesomeExample = lazy(
-  () => import('pages/modules/components/FontAwesomeExample')
+  () => import('pages/modules/icons/FontAwesomeExample')
 );
 const FeatherIconsExample = lazy(
-  () => import('pages/modules/components/FeatherIconsExample')
+  () => import('pages/modules/icons/FeatherIconsExample')
 );
-const UniconsExample = lazy(
-  () => import('pages/modules/components/UniconsExample')
-);
+const UniconsExample = lazy(() => import('pages/modules/icons/UniconsExample'));
 const ECharts = lazy(() => import('pages/modules/charts/ECharts'));
 const Calendar = lazy(() => import('pages/apps/calendar/Calendar'));
 const CalendarExample = lazy(
@@ -178,7 +176,7 @@ const CalendarExample = lazy(
 const AdvanceTableExample = lazy(
   () => import('pages/modules/tables/AdvanceTableExample')
 );
-const Ecommerce = lazy(() => import('pages/dashboard/ecommerce'));
+const Ecommerce = lazy(() => import('pages/dashboard/ecommerce/Ecommerce'));
 const TravelAgency = lazy(() => import('pages/dashboard/TravelAgency'));
 const Chat = lazy(() => import('pages/apps/chat/Chat'));
 const GanttChartExample = lazy(
@@ -187,8 +185,8 @@ const GanttChartExample = lazy(
 const EmojiButtonExample = lazy(
   () => import('pages/modules/forms/advance/EmojiButtonExample')
 );
-const ReactRangeExample = lazy(
-  () => import('pages/modules/forms/advance/RangeExample')
+const RangeSliderExample = lazy(
+  () => import('pages/modules/forms/advance/RangeSliderExample')
 );
 const LightboxExample = lazy(
   () => import('pages/modules/components/LightboxExample')
@@ -212,7 +210,7 @@ const Watchlist = lazy(() => import('pages/apps/stock/Watchlist'));
 import Color from './pages/documentation/customization/Color';
 import TravelLanding from 'pages/apps/travel-agency/landing/Landing';
 import RoomListing from 'pages/apps/travel-agency/hotel/admin/RoomListing';
-import HotelHomepage from 'pages/apps/travel-agency/hotel/customer/homepage/Homepage';
+import HotelHomepage from 'pages/apps/travel-agency/hotel/customer/homepage/HotelHomepage';
 import HotelGallery from 'pages/apps/travel-agency/hotel/customer/HotelGallery';
 import HotelCompare from 'pages/apps/travel-agency/hotel/customer/HotelCompare';
 import HotelDetails from 'pages/apps/travel-agency/hotel/customer/HotelDetails';
@@ -223,14 +221,14 @@ import TravelAgencyLayout from 'layouts/TravelAgencyLayout';
 import TravelLandingLayout from 'layouts/TravelLandingLayout';
 import HotelCheckout from 'pages/apps/travel-agency/hotel/customer/HotelCheckout';
 import HotelPayment from 'pages/apps/travel-agency/hotel/customer/HotelPayment';
-import FlightHomepage from 'pages/apps/travel-agency/flight/Homepage';
-import FlightBooking from 'pages/apps/travel-agency/flight/Booking';
-import FlightPayment from 'pages/apps/travel-agency/flight/Payment';
+import FlightHomepage from 'pages/apps/travel-agency/flight/FlightHomepage';
+import FlightBooking from 'pages/apps/travel-agency/flight/FlightBooking';
+import FlightPayment from 'pages/apps/travel-agency/flight/FlightPayment';
 import FlightAlternateLayout from 'layouts/FlightAlternateLayout';
 
-import TripHomepage from 'pages/apps/travel-agency/trip/Homepage';
+import TripHomepage from 'pages/apps/travel-agency/trip/TripHomepage';
 import TripDetails from 'pages/apps/travel-agency/trip/TripDetails';
-import TripCheckout from 'pages/apps/travel-agency/trip/Checkout';
+import TripCheckout from 'pages/apps/travel-agency/trip/TripCheckout';
 import TripLayout from 'layouts/TripLayout';
 import FileManagerProvider from 'providers/FileManagerProvider';
 import GanttChart from 'pages/apps/gantt-chart/GanttChart';
@@ -244,7 +242,7 @@ const GalleryGridWithTitle = lazy(
 const GalleryMasonry = lazy(() => import('pages/apps/gallery/GalleryMasonry'));
 const GallerySlider = lazy(() => import('pages/apps/gallery/GallerySlider'));
 
-const routes: RouteObject[] = [
+const Routes: RouteObject[] = [
   {
     element: <App />,
     children: [
@@ -530,15 +528,25 @@ const routes: RouteObject[] = [
                   },
                   {
                     path: 'gallery-masonry',
-                    element: <Suspense key="galleryMasonry" fallback={<PhoenixLoader />}>
-                      <GalleryMasonry />
-                    </Suspense>
+                    element: (
+                      <Suspense
+                        key="galleryMasonry"
+                        fallback={<PhoenixLoader />}
+                      >
+                        <GalleryMasonry />
+                      </Suspense>
+                    )
                   },
                   {
                     path: 'gallery-slider',
-                    element: <Suspense key="gallerySlider" fallback={<PhoenixLoader />}>
-                      <GallerySlider />
-                    </Suspense>
+                    element: (
+                      <Suspense
+                        key="gallerySlider"
+                        fallback={<PhoenixLoader />}
+                      >
+                        <GallerySlider />
+                      </Suspense>
+                    )
                   }
                 ]
               },
@@ -679,7 +687,7 @@ const routes: RouteObject[] = [
               },
               {
                 path: 'notifications',
-                element: <Notification />
+                element: <Notifications />
               },
               {
                 path: 'members',
@@ -849,16 +857,16 @@ const routes: RouteObject[] = [
                     element: <CardExample />
                   },
                   {
-                    path: 'carousel/bootstrap',
-                    element: <BootstrapCarousel />
+                    path: 'carousel/hummingbird',
+                    element: <HummingbirdCarousel />
                   },
                   {
                     path: 'carousel/swiper',
                     element: <SwiperCarousel />
                   },
                   {
-                    path: 'collapse',
-                    element: <CollapseExample />
+                    path: 'collapsible',
+                    element: <CollapsibleExample />
                   },
                   {
                     path: 'dropdown',
@@ -877,20 +885,20 @@ const routes: RouteObject[] = [
                     element: <DraggableExample />
                   },
                   {
-                    path: 'modal',
-                    element: <ModalExample />
+                    path: 'dialog',
+                    element: <DialogExample />
                   },
                   {
-                    path: 'offcanvas',
-                    element: <OffcanvasExample />
+                    path: 'drawer',
+                    element: <DrawerExample />
                   },
                   {
-                    path: 'progress-bar',
-                    element: <ProgressbarExample />
+                    path: 'progress',
+                    element: <ProgressExample />
                   },
                   {
-                    path: 'placeholder',
-                    element: <PlaceholderExample />
+                    path: 'skeleton',
+                    element: <SkeletonExample />
                   },
                   {
                     path: 'pagination',
@@ -901,8 +909,8 @@ const routes: RouteObject[] = [
                     element: <PopoversExample />
                   },
                   {
-                    path: 'spinners',
-                    element: <SpinnerExample />
+                    path: 'loader',
+                    element: <LoaderExample />
                   },
                   {
                     path: 'toast',
@@ -946,8 +954,8 @@ const routes: RouteObject[] = [
                 path: 'forms',
                 children: [
                   {
-                    path: 'form-control',
-                    element: <FormControlExample />
+                    path: 'input',
+                    element: <InputExample />
                   },
                   {
                     path: 'input-group',
@@ -1001,7 +1009,7 @@ const routes: RouteObject[] = [
                     path: 'advance/range',
                     element: (
                       <Suspense key="range" fallback={<PhoenixLoader />}>
-                        <ReactRangeExample />
+                        <RangeSliderExample />
                       </Suspense>
                     )
                   },
@@ -1450,8 +1458,8 @@ const routes: RouteObject[] = [
   }
 ];
 
-export const router = createBrowserRouter(routes, {
+export const router = createBrowserRouter(Routes, {
   basename: import.meta.env.VITE_BASENAME || '/'
 });
 
-export default routes;
+export default Routes;

@@ -1,79 +1,66 @@
-import classNames from 'classnames';
-import { useAdvanceTableContext } from 'providers/AdvanceTableProvider';
-import { Table, TableProps } from 'react-bootstrap';
+import { Table, cn } from '@hummingbirdui/react';
 import { flexRender } from '@tanstack/react-table';
 import { File } from 'data/file-manager';
-import React from 'react';
+import { useAdvanceTableContext } from 'providers/AdvanceTableProvider';
+import { Fragment } from 'react';
 
-interface AdvanceTableProps {
+const KNOWN_TYPES = ['folder', 'image', 'video', 'doc', 'zip', 'csv', 'xlx'];
+
+interface ListViewGroupTableProps {
   headerClassName?: string;
   bodyClassName?: string;
   rowClassName?: string;
-  tableProps?: TableProps;
-  hasFooter?: boolean;
+  tableProps?: Table.Props;
 }
 
+/**
+ * App-only grouped variant of the gold `+MyFilesTable`, shown by the
+ * `#viewAsGroup` switch. Header/cell classes come from the column meta so the
+ * two variants stay identical.
+ */
 const ListViewGroupTable = ({
   headerClassName,
   bodyClassName,
   rowClassName,
   tableProps
-}: AdvanceTableProps) => {
-  const table = useAdvanceTableContext();
-  const { getRowModel, getFlatHeaders } = table;
-  const fileTypes = ['folder', 'image', 'video', 'doc', 'zip', 'csv', 'xlx'];
-  const rows = getRowModel().rows;
-  const folderRows = rows.filter(
-    row => (row.original as File).type === 'folder'
-  );
-  const imageRows = rows.filter(row => (row.original as File).type === 'image');
-  const videoRows = rows.filter(row => (row.original as File).type === 'video');
-  const fileRows = rows.filter(row =>
-    ['doc', 'zip', 'csc', 'xlx'].includes((row.original as File).type)
-  );
-  const otherRows = rows.filter(
-    row => !fileTypes.some(type => (row.original as File).type.includes(type))
-  );
-  const tableGroups = [
-    {
-      title: 'Folder',
-      rows: folderRows
-    },
-    {
-      title: 'Images',
-      rows: imageRows
-    },
-    {
-      title: 'Video',
-      rows: videoRows
-    },
+}: ListViewGroupTableProps) => {
+  const table = useAdvanceTableContext<File>();
+  const rows = table.getRowModel().rows;
+  const groups = [
+    { title: 'Folder', rows: rows.filter(r => r.original.type === 'folder') },
+    { title: 'Images', rows: rows.filter(r => r.original.type === 'image') },
+    { title: 'Video', rows: rows.filter(r => r.original.type === 'video') },
     {
       title: 'Files',
-      rows: fileRows
+      rows: rows.filter(r =>
+        ['doc', 'zip', 'csv', 'xlx'].includes(r.original.type)
+      )
     },
     {
       title: 'Others',
-      rows: otherRows
+      rows: rows.filter(r => !KNOWN_TYPES.includes(r.original.type))
     }
   ];
+
   return (
-    <div className="scrollbar ms-n1 ps-1">
+    <div className="table-list overflow-x-auto -mx-1 px-1 scrollbar">
       <Table {...tableProps}>
-        <thead className={headerClassName}>
-          <tr>
-            {getFlatHeaders().map(header => {
+        <Table.Header className={headerClassName}>
+          <Table.Row>
+            {table.getFlatHeaders().map(header => {
+              const { className, ...headerProps } =
+                header.column.columnDef.meta?.headerProps ?? {};
+              const canSort = header.column.getCanSort();
               return (
-                <th
+                <Table.Head
                   key={header.id}
-                  {...header.column.columnDef.meta?.headerProps}
-                  className={classNames(
-                    header.column.columnDef.meta?.headerProps?.className,
-                    {
-                      sort: header.column.getCanSort(),
-                      desc: header.column.getIsSorted() === 'desc',
-                      asc: header.column.getIsSorted() === 'asc'
-                    }
-                  )}
+                  {...headerProps}
+                  data-sort={canSort ? header.id : undefined}
+                  className={cn(className, 'align-middle', {
+                    sort: canSort,
+                    desc: header.column.getIsSorted() === 'desc',
+                    asc: header.column.getIsSorted() === 'asc'
+                  })}
                   onClick={header.column.getToggleSortingHandler()}
                 >
                   {header.isPlaceholder
@@ -82,44 +69,44 @@ const ListViewGroupTable = ({
                         header.column.columnDef.header,
                         header.getContext()
                       )}
-                </th>
+                </Table.Head>
               );
             })}
-          </tr>
-        </thead>
-        <tbody className={bodyClassName}>
-          {tableGroups.map(({ title, rows }) =>
-            rows.length > 0 ? (
-              <React.Fragment key={title}>
-                <tr>
-                  <td colSpan={table.getAllColumns().length}>
-                    <h4 className="mt-2 mb-0">{title}</h4>
-                  </td>
-                </tr>
-                {rows.map((row, index) => (
-                  <tr
-                    key={row.id}
-                    className={classNames(rowClassName, {
-                      'list-group-last-item': rows.length - 1 === index
+          </Table.Row>
+        </Table.Header>
+        <Table.Body className={bodyClassName}>
+          {groups.map(group =>
+            group.rows.length ? (
+              <Fragment key={group.title}>
+                <Table.Row>
+                  <Table.Cell colSpan={table.getAllColumns().length}>
+                    <h4 className="mt-2 mb-0">{group.title}</h4>
+                  </Table.Cell>
+                </Table.Row>
+                {group.rows.map(row => (
+                  <Table.Row key={row.id} className={rowClassName}>
+                    {row.getVisibleCells().map(cell => {
+                      const { className, ...cellProps } =
+                        cell.column.columnDef.meta?.cellProps ?? {};
+                      return (
+                        <Table.Cell
+                          key={cell.id}
+                          {...cellProps}
+                          className={cn('align-middle', className)}
+                        >
+                          {flexRender(
+                            cell.column.columnDef.cell,
+                            cell.getContext()
+                          )}
+                        </Table.Cell>
+                      );
                     })}
-                  >
-                    {row.getVisibleCells().map(cell => (
-                      <td
-                        key={cell.id}
-                        {...cell.column.columnDef.meta?.cellProps}
-                      >
-                        {flexRender(
-                          cell.column.columnDef.cell,
-                          cell.getContext()
-                        )}
-                      </td>
-                    ))}
-                  </tr>
+                  </Table.Row>
                 ))}
-              </React.Fragment>
+              </Fragment>
             ) : null
           )}
-        </tbody>
+        </Table.Body>
       </Table>
     </div>
   );

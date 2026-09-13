@@ -23,7 +23,7 @@ const columns: ColumnDef<LatestReviewsTableDataType>[] = [
     cell: ({ row: { original } }) => {
       const { product } = original;
       return (
-        <Link to="#!" className="fw-semibold line-clamp-1">{`${product.slice(
+        <Link to="#!" className="font-semibold line-clamp-1">{`${product.slice(
           0,
           46
         )}${product.length > 46 ? '...' : ''}`}</Link>
@@ -39,7 +39,7 @@ const columns: ColumnDef<LatestReviewsTableDataType>[] = [
     header: 'RATING',
     cell: ({ row: { original } }) => {
       const { rating } = original;
-      return <Rating readonly initialValue={rating} iconClass="fs-10" />;
+      return <Rating readonly initialValue={rating} iconClass="text-sm" />;
     },
     meta: {
       headerProps: { style: { maxWidth: '10%' } }
@@ -51,7 +51,7 @@ const columns: ColumnDef<LatestReviewsTableDataType>[] = [
     cell: ({ row: { original } }) => {
       const { review } = original;
       return (
-        <p className="fs--1 fw-semibold text-body-highlight mb-0 line-clamp-3">
+        <p className="text-md font-semibold text-highlight mb-0 line-clamp-3">
           {review.slice(0, 134)}
           {review.length > 134 && (
             <>
@@ -79,7 +79,7 @@ const columns: ColumnDef<LatestReviewsTableDataType>[] = [
           bg={badgeBg}
           variant="phoenix"
           iconPosition="end"
-          className="fs-10"
+          className="text-sm"
           icon={<FeatherIcon icon={icon} size={12} className="ms-1" />}
         >
           {title}
@@ -93,10 +93,10 @@ const columns: ColumnDef<LatestReviewsTableDataType>[] = [
   },
   {
     accessorKey: 'time',
-    header: 'Date',
+    header: 'DATE',
     meta: {
       headerProps: { className: 'text-end', style: { maxWidth: '10%' } },
-      cellProps: { className: 'text-end text-body-tertiary white-space-nowrap' }
+      cellProps: { className: 'text-end text-subtle whitespace-nowrap' }
     }
   },
   {
@@ -127,8 +127,8 @@ const EcomProfileReviewsTable = () => {
   return (
     <>
       <AdvanceTableProvider {...table}>
-        <div className="border-y border-translucent">
-          <AdvanceTable tableProps={{ className: 'phoenix-table fs-9' }} />
+        <div className="border-y border-subtle">
+          <AdvanceTable tableProps={{ className: ' text-md' }} />
           <AdvanceTableFooter pagination />
         </div>
       </AdvanceTableProvider>

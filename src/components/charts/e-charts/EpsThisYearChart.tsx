@@ -7,12 +7,15 @@ import { BarChart } from 'echarts/charts';
 echarts.use([TooltipComponent, BarChart]);
 
 const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
-  color: [getThemeColor('success-lighter'), getThemeColor('success-light')],
+  color: [
+    getThemeColor('color-success-lighter'),
+    getThemeColor('color-success-light')
+  ],
   tooltip: {
     trigger: 'axis',
     padding: [7, 10],
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('border-color'),
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('border-color-default'),
     borderWidth: 1,
     transitionDuration: 0,
     axisPointer: {
@@ -25,7 +28,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     axisLine: {
       show: false,
       lineStyle: {
-        color: getThemeColor('tertiary-bg'),
+        color: getThemeColor('background-color-highlight'),
         type: 'solid'
       }
     },
@@ -34,7 +37,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     },
     axisLabel: {
       show: false,
-      color: getThemeColor('body-color'),
+      color: getThemeColor('text-color-default'),
       margin: 15
     },
     splitLine: {
@@ -44,12 +47,12 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
   yAxis: {
     axisLabel: {
       show: false,
-      color: getThemeColor('quaternary-color')
+      color: getThemeColor('text-color-soft')
     },
     splitLine: {
       show: false,
       lineStyle: {
-        color: getThemeColor('secondary-bg')
+        color: getThemeColor('background-color-muted')
       }
     },
     axisTick: {
@@ -67,9 +70,9 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       data: [2500],
       barWidth: 24,
       barGap: '-100%',
-      lineStyle: { color: getThemeColor('success-lighter') },
+      lineStyle: { color: getThemeColor('color-success-lighter') },
       itemStyle: {
-        color: getThemeColor('success-lighter')
+        color: getThemeColor('color-success-lighter')
       }
     },
     {
@@ -77,9 +80,9 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       type: 'bar',
       stack: 'one',
       data: [3000],
-      lineStyle: { color: getThemeColor('success-light') },
+      lineStyle: { color: getThemeColor('color-success-light') },
       itemStyle: {
-        color: getThemeColor('success-light'),
+        color: getThemeColor('color-success-light'),
         borderRadius: [3, 3, 0, 0]
       }
     }
@@ -100,6 +103,8 @@ const EpsThisYearChart = () => {
       echarts={echarts}
       option={getDefaultOptions(getThemeColor)}
       className="eps-this-year-chart"
+      // size comes from the eps-this-year-chart CSS class; suppress the library default 300px
+      style={{ height: undefined }}
     />
   );
 };

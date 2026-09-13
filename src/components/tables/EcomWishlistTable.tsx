@@ -20,7 +20,7 @@ const columns: ColumnDef<WishlistProductType>[] = [
     cell: ({ row: { original } }) => {
       const { productImage } = original;
       return (
-        <div className="rounded-2 border border-translucent d-inline-block">
+        <div className="rounded-md border border-subtle inline-block">
           <img src={productImage} alt="" width={53} />
         </div>
       );
@@ -32,11 +32,11 @@ const columns: ColumnDef<WishlistProductType>[] = [
   },
   {
     accessorKey: 'product',
-    header: 'Products',
+    header: 'PRODUCTS',
     cell: ({ row: { original } }) => {
       const { product } = original;
       return (
-        <Link to="#!" className="fw-semibold line-clamp-1">
+        <Link to="#!" className="font-semibold line-clamp-1">
           {product}
         </Link>
       );
@@ -48,18 +48,18 @@ const columns: ColumnDef<WishlistProductType>[] = [
   },
   {
     accessorKey: 'color',
-    header: 'Color',
+    header: 'COLOR',
     meta: {
       headerProps: { style: { width: '16%' } },
-      cellProps: { className: 'white-space-nowrap' }
+      cellProps: { className: 'whitespace-nowrap' }
     }
   },
   {
     accessorKey: 'size',
-    header: 'Size',
+    header: 'SIZE',
     meta: {
       headerProps: { style: { width: '10%' } },
-      cellProps: { className: 'text-body-tertiary fw-semibold' }
+      cellProps: { className: 'text-subtle font-semibold' }
     }
   },
   {
@@ -68,22 +68,22 @@ const columns: ColumnDef<WishlistProductType>[] = [
     cell: ({ row: { original } }) => currencyFormat(original.price),
     meta: {
       headerProps: { style: { width: '10%' }, className: 'text-end' },
-      cellProps: { className: 'text-end fw-semibold' }
+      cellProps: { className: 'text-end font-semibold' }
     }
   },
   {
     id: 'action',
     cell: () => (
-      <div className="d-flex gap-2 justify-content-end">
+      <div className="flex gap-2 justify-end">
         <Button
           size="sm"
-          className="text-body-quaternary text-body-tertiary-hover"
+          className="text-soft text-body-tertiary-hover"
         >
           <FontAwesomeIcon icon={faTrash} />
         </Button>
         <Button
           variant="primary"
-          className="fs-10 text-nowrap"
+          className="text-sm whitespace-nowrap"
           startIcon={<FontAwesomeIcon icon={faShoppingCart} />}
         >
           Add to cart
@@ -108,8 +108,8 @@ const EcomWishlistTable = () => {
   return (
     <div>
       <AdvanceTableProvider {...table}>
-        <div className="border-y border-translucent">
-          <AdvanceTable tableProps={{ className: 'phoenix-table fs-9' }} />
+        <div className="border-y border-subtle">
+          <AdvanceTable tableProps={{ className: ' text-md' }} />
           <AdvanceTableFooter pagination />
         </div>
       </AdvanceTableProvider>

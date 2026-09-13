@@ -19,7 +19,7 @@ const ImportantApplications = () => {
   return (
     <section className="py-md-10" ref={containerRef}>
       <div
-        className="bg-holder d-none d-lg-block"
+        className="bg-holder hidden d-lg-block"
         style={{
           backgroundImage: `url(${bg29})`,
           backgroundPosition: 'left 10%',
@@ -32,7 +32,7 @@ const ImportantApplications = () => {
       />
 
       <div
-        className="bg-holder d-none d-lg-block"
+        className="bg-holder hidden d-lg-block"
         style={{
           backgroundImage: `url(${bg28})`,
           backgroundPosition: 'right 10%',
@@ -48,7 +48,7 @@ const ImportantApplications = () => {
         <Row className="justify-content-center">
           <Col xs={12} lg={9} xl={8} xxl={6} className="text-center">
             <h2 className="mb-6 lh-lg">
-              <span className="text-primary position-relative">
+              <span className="text-primary relative">
                 Important applications
                 <img
                   src={illustration31}
@@ -56,7 +56,7 @@ const ImportantApplications = () => {
                   className="text-illustration-underline"
                 />
               </span>
-              <span className="text-body-highlight fw-normal ms-2">
+              <span className="text-highlight font-normal ms-2">
                 you’re definitely gonna need
               </span>
             </h2>
@@ -77,7 +77,7 @@ const ImportantApplications = () => {
                       className="mx-auto mb-5 mb-lg-7 mw-100"
                       style={{ width: '550px' }}
                     >
-                      <div className="position-relative overflow-hidden">
+                      <div className="relative overflow-hidden">
                         <img
                           src={application.thumb}
                           alt=""
@@ -85,17 +85,17 @@ const ImportantApplications = () => {
                         />
                       </div>
                     </div>
-                    <div className="d-flex flex-center mb-3">
-                      <h4 className="text-body-highlight mb-0">
+                    <div className="flex flex-center mb-3">
+                      <h4 className="text-highlight mb-0">
                         {application.title}
                       </h4>
                       {application.badge && (
-                        <Badge variant="phoenix" bg={application.badge.bg} className='ms-2 fs-10'>
+                        <Badge variant="phoenix" bg={application.badge.bg} className='ms-2 text-sm'>
                           {application.badge.label}
                         </Badge>
                       )}
                     </div>
-                    <p className="text-body-tertiary lh-sm pb-2 pb-lg-4">
+                    <p className="text-subtle lh-sm pb-2 pb-lg-4">
                       {application.details}
                     </p>
                     <Button

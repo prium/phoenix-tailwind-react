@@ -1,6 +1,6 @@
-import { Row, Col, Button, FormCheck, FormSelect } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faFilter, faGear } from '@fortawesome/free-solid-svg-icons';
+import { Select } from '@hummingbirdui/react';
 import {
   ChangeEvent,
   Dispatch,
@@ -9,12 +9,14 @@ import {
   useState
 } from 'react';
 import { gantt, Task } from 'dhtmlx-gantt';
+import Button from 'components/base/Button';
 import GanttFilterModal from './GanttFilterModal';
 import GanttOptionsModal from './GanttOptionsModal';
-import SearchBox from 'components/common/SearchBox';
 import GanttAddTaskModal from './GanttAddTaskModal';
+import GanttSearchBox from './GanttSearchBox';
 
-const GanttChartActions = ({
+/** `+GanttChartActions` (`.gantt-header`) in mixins/gantt-chart/GanttChart.pug */
+const GanttActions = ({
   setCurrentView
 }: {
   setCurrentView: Dispatch<SetStateAction<string>>;
@@ -46,7 +48,7 @@ const GanttChartActions = ({
   };
 
   useEffect(() => {
-    const eventId = gantt.attachEvent('onBeforeTaskDisplay', (id, task) => {
+    const eventId = gantt.attachEvent('onBeforeTaskDisplay', (_id, task) => {
       if (!filterValue) {
         return true;
       }
@@ -61,56 +63,57 @@ const GanttChartActions = ({
 
   return (
     <>
-      <div className="gantt-header p-4 px-lg-6 py-sm-3">
-        <Row className="gx-0 gy-3 justify-content-between">
-          <Col md="auto" className="d-flex align-items-center">
-            <h3 className="mb-0">Gantt Chart</h3>
+      <div className="gantt-header p-6 lg:px-10 sm:py-4">
+        <div className="row gx-0 gy-4 justify-between">
+          <div className="md:col-auto flex items-center">
+            <h3 className="mb-0">Gantt Chart </h3>
             <Button
-              className="btn-sm ms-auto ms-md-3"
               variant="primary"
+              size="sm"
+              className="ms-auto md:ms-4"
+              data-gantt-add-task
               onClick={() => setShowAddTask(true)}
             >
               <FontAwesomeIcon icon={faPlus} />
-              <span className="ms-2 d-md-none d-xl-inline">Add Task</span>
+              <span className="ms-2 md:hidden xl:inline">Add Task</span>
             </Button>
-          </Col>
+          </div>
 
-          <Col md="auto">
-            <Row className="align-items-center gy-3 gx-0">
-              <Col sm="auto">
-                <SearchBox
-                  placeholder="Search..."
-                  className="gantt-search-box"
-                  inputClassName='form-control-sm'
+          <div className="md:col-auto">
+            <div className="row items-center gy-4 gx-0">
+              <div className="sm:col-auto">
+                <GanttSearchBox
+                  value={filterValue}
                   onChange={handleSearchInputChange}
+                  onClear={() => setFilterValue('')}
                 />
-              </Col>
+              </div>
 
-              <Col className="d-flex align-items-center ms-sm-auto" xs="auto">
-                <div
-                  className="border-start d-none d-md-inline ms-md-3"
-                  style={{ height: '20px', width: '2px' }}
-                />
-                <FormCheck
-                  type="switch"
-                  id="ganttZoomToFit"
-                  className="mb-0 ms-sm-3"
-                >
-                  <FormCheck.Input
-                    onChange={e => {
-                      const view = e.target.checked ? 'months' : 'days';
-                      setCurrentView(view);
-                    }}
+              <div className="col-auto flex items-center sm:ms-auto">
+                <div className="h-5 w-0.5 border-s hidden md:inline md:ms-4" />
+                <div className="form-check form-switch mb-0 sm:ms-4">
+                  <input
+                    className="form-check-input"
+                    data-gantt-zoom="fit"
+                    id="ganttZoomToFit"
                     defaultChecked
+                    type="checkbox"
+                    onChange={e =>
+                      setCurrentView(e.target.checked ? 'months' : 'days')
+                    }
                   />
-                  <FormCheck.Label className="text-nowrap">
+                  <label
+                    className="form-check-label text-nowrap"
+                    htmlFor="ganttZoomToFit"
+                  >
                     Auto Fit
-                  </FormCheck.Label>
-                </FormCheck>
-
-                <FormSelect
+                  </label>
+                </div>
+                <Select
                   size="sm"
-                  className="ms-3"
+                  className="ms-4"
+                  aria-label="Default select example"
+                  data-gantt-view
                   defaultValue="months"
                   onChange={e => setCurrentView(e.target.value)}
                 >
@@ -118,39 +121,33 @@ const GanttChartActions = ({
                   <option value="weeks">Weekly</option>
                   <option value="months">Monthly</option>
                   <option value="years">Year</option>
-                </FormSelect>
-              </Col>
+                </Select>
+              </div>
 
-              <Col
-                className="d-flex align-items-center ms-auto ms-sm-3"
-                xs="auto"
-              >
-                <div
-                  className="border-start d-none d-sm-inline me-3"
-                  style={{ height: '20px', width: '2px' }}
-                />
+              <div className="col-auto flex items-center ms-auto sm:ms-4">
+                <div className="h-5 w-0.5 border-s hidden sm:inline me-4" />
                 <Button
                   variant="link"
                   size="sm"
-                  className="text-body px-0 text-nowrap ms-n1"
+                  className="text-default px-0 text-nowrap -ms-1"
                   onClick={() => setShowFilter(true)}
                 >
-                  <FontAwesomeIcon icon={faFilter} className="fs-9" />
-                  <span className="d-none d-xl-inline ms-2">Filter</span>
+                  <FontAwesomeIcon icon={faFilter} className="text-md" />
+                  <span className="hidden xl:inline ms-2">Filter</span>
                 </Button>
                 <Button
                   variant="link"
                   size="sm"
-                  className="text-body px-0 text-nowrap ms-3"
+                  className="text-default px-0 text-nowrap ms-4"
                   onClick={() => setShowOptions(true)}
                 >
-                  <FontAwesomeIcon icon={faGear} className="fs-9" />
-                  <span className="d-none d-xl-inline ms-2">Options</span>
+                  <FontAwesomeIcon icon={faGear} className="text-md" />
+                  <span className="hidden xl:inline ms-2">Options </span>
                 </Button>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
       <GanttAddTaskModal show={showAddTask} setShow={setShowAddTask} />
       <GanttFilterModal show={showFilter} setShow={setShowFilter} />
@@ -159,4 +156,4 @@ const GanttChartActions = ({
   );
 };
 
-export default GanttChartActions;
+export default GanttActions;

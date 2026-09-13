@@ -10,7 +10,7 @@ import thumb9 from 'assets/img/hotels/83.png';
 import img1 from 'assets/img/hotels/84.jpg';
 import img2 from 'assets/img/hotels/85.jpg';
 import img3 from 'assets/img/hotels/86.jpg';
-import vid1 from 'assets/img/hotels/77.mp4';
+import vid1 from 'assets/video/3.mp4';
 import img4 from 'assets/img/hotels/87.jpg';
 import img5 from 'assets/img/hotels/88.jpg';
 import img6 from 'assets/img/hotels/89.jpg';
@@ -23,69 +23,66 @@ export interface GalleryItemType {
   img?: string;
   largeImg?: string;
   video?: string;
-  classNames: string;
+  /** column classes from the gold gallery.pug `images[].classes` */
+  classNames?: string;
 }
 
+/** demo set of apps/travel-agency/hotel/customer/gallery.pug (gold order) */
 export const galleryItems: GalleryItemType[] = [
   {
     id: 1,
     img: thumb1,
-    largeImg: img1,
-    classNames: 'col-span-12 col-span-md-6 row-span-md-1'
+    largeImg: img1
   },
   {
     id: 2,
-    video: vid1,
-    classNames: 'col-span-12 col-span-md-6 row-span-md-2'
+    img: thumb2,
+    largeImg: img2,
+    classNames: 'col-6'
   },
   {
     id: 3,
-    img: thumb2,
-    largeImg: img2,
-    classNames:
-      'row-start-2 row-start-md-auto col-span-6 col-span-md-3 row-span-md-1'
+    img: thumb3,
+    largeImg: img3,
+    classNames: 'col-6'
   },
   {
     id: 4,
-    img: thumb3,
-    largeImg: img3,
-    classNames:
-      'row-start-2 row-start-md-auto col-span-6 col-span-md-3 row-md-span-1'
+    video: vid1
   },
   {
     id: 5,
     img: thumb4,
     largeImg: img4,
-    classNames: 'col-span-12 col-span-md-6'
+    classNames: 'sm:col-6'
   },
   {
     id: 6,
     img: thumb5,
     largeImg: img5,
-    classNames: 'col-span-12 col-span-md-6'
+    classNames: 'sm:col-6'
   },
   {
     id: 7,
     img: thumb6,
     largeImg: img6,
-    classNames: 'col-span-12 col-span-md-6 row-span-md-2'
+    classNames: 'md:col-6'
   },
   {
     id: 8,
     img: thumb7,
-    largeImg: img7,
-    classNames: 'col-span-12 col-span-md-6 row-span-md-1'
+    largeImg: img7
   },
   {
     id: 9,
     img: thumb8,
     largeImg: img8,
-    classNames: 'col-span-6 col-span-md-3 row-span-md-1'
+    classNames: 'col-6'
   },
   {
     id: 10,
     img: thumb9,
     largeImg: img9,
-    classNames: 'col-span-6 col-span-md-3 row-span-md-1'
+    classNames: 'col-6'
   }
 ];

@@ -1,14 +1,12 @@
-import { Dropdown } from 'react-bootstrap';
+import { Dropdown } from '@hummingbirdui/react';
 
 const ActionDropdownItems = () => {
   return (
     <>
-      <Dropdown.Item eventKey="1">View</Dropdown.Item>
-      <Dropdown.Item eventKey="2">Export</Dropdown.Item>
-      <Dropdown.Divider />
-      <Dropdown.Item eventKey="4" className="text-danger">
-        Remove
-      </Dropdown.Item>
+      <Dropdown.Item>View</Dropdown.Item>
+      <Dropdown.Item>Export</Dropdown.Item>
+      <Dropdown.Separator />
+      <Dropdown.Item className="text-danger">Remove</Dropdown.Item>
     </>
   );
 };

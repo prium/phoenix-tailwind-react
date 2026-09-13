@@ -1,4 +1,3 @@
-import React from 'react';
 import { Expectation } from 'data/travel-agency/customer/trip';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,46 +7,41 @@ interface TripDetailsTabDetailsExpectationProps {
   expectations: Expectation[];
 }
 
+/** "What to expect" body in mixins/travel-agency/trip/TripDetails.pug */
 const TripDetailsTabDetailsExpectation = ({
   expectations
 }: TripDetailsTabDetailsExpectationProps) => {
   return (
-    <div className="py-6 px-4">
+    <div className="py-10 px-6">
       {expectations.map((expectation, index) => (
         <div
           key={expectation.id}
           className={classNames({
-            'mb-5': expectations.length - 1 !== index
+            'mb-8': expectations.length - 1 !== index
           })}
         >
-          <div className="d-flex align-items-center gap-2">
-            <span
-              className="bg-secondary rounded-pill d-flex flex-center text-white"
-              style={{ width: 27, height: 27 }}
-            >
+          <div className="flex items-center gap-2">
+            <span className="bg-secondary rounded-full flex flex-center text-white size-6.75">
               {index + 1}
             </span>
-            <h5 className="text-body-highlight mb-0">{expectation.event}</h5>
+            <h5 className="text-highlight mb-0">{expectation.event}</h5>
           </div>
           <p className="my-2">{expectation.description}</p>
-          <div className="d-flex gap-3 gap-xl-4 flex-wrap">
-            <h5 className="text-body-highlight fw-semibold mb-0">
-              <FontAwesomeIcon
-                icon={faClock}
-                className="text-body-quaternary me-2"
-              />
+          <div className="flex gap-4 xl:gap-6 flex-wrap">
+            <h5 className="text-highlight font-semibold mb-0">
+              <FontAwesomeIcon icon={faClock} className="text-soft me-2" />
               Duration :{' '}
-              <span className="text-body-tertiary fw-normal">
+              <span className="text-subtle font-normal">
                 {expectation.duration}
               </span>
             </h5>
-            <h5 className="text-body-highlight fw-semibold mb-0">
+            <h5 className="text-highlight font-semibold mb-0">
               <FontAwesomeIcon
                 icon={faLocationDot}
-                className="text-body-quaternary me-2"
+                className="text-soft me-2"
               />
               Location :{' '}
-              <span className="text-body-tertiary fw-normal">
+              <span className="text-subtle font-normal">
                 {expectation.location}
               </span>
             </h5>

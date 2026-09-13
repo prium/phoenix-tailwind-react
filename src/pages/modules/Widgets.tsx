@@ -7,37 +7,37 @@ import WidgetTables from 'components/modules/widgets/WidgetTables';
 import WidgetUserAndFeed from 'components/modules/widgets/WidgetUserAndFeed';
 import WidgetsScrollspyNav from 'components/modules/widgets/WidgetsScrollspyNav';
 
+/** `widgets.pug` — the aggregate of every widget in the theme. */
 const Widgets = () => {
   return (
-    <div className="mb-9">
-      <ScrollSpy>
-        <WidgetsScrollspyNav />
-
-        <ScrollSpy.Content id="stats" className="widgets-scrollspy">
+    <ScrollSpy>
+      <WidgetsScrollspyNav />
+      <div className="mb-16">
+        <ScrollSpy.Content id="scrollspyStats">
           <WidgetStats />
         </ScrollSpy.Content>
 
-        <ScrollSpy.Content id="tables" className="widgets-scrollspy">
+        <ScrollSpy.Content id="scrollspyTables">
           <WidgetTables />
         </ScrollSpy.Content>
 
-        <ScrollSpy.Content id="e-commerce" className="widgets-scrollspy">
+        <ScrollSpy.Content id="scrollspyEcommerce">
           <WidgetECommerce />
         </ScrollSpy.Content>
 
-        <ScrollSpy.Content id="users-and-feed" className="widgets-scrollspy">
+        <ScrollSpy.Content id="scrollspyUsers">
           <WidgetUserAndFeed />
         </ScrollSpy.Content>
 
-        <ScrollSpy.Content id="forms" className="widgets-scrollspy">
+        <ScrollSpy.Content id="scrollspyForms">
           <WidgetForms />
         </ScrollSpy.Content>
 
-        <ScrollSpy.Content id="others" className="widgets-scrollspy">
+        <ScrollSpy.Content id="scrollspyOthers">
           <WidgetOthers />
         </ScrollSpy.Content>
-      </ScrollSpy>
-    </div>
+      </div>
+    </ScrollSpy>
   );
 };
 

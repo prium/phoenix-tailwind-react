@@ -6,7 +6,7 @@ import { productColorVariants } from 'data/e-commerce';
 import { currencyFormat } from 'helpers/utils';
 import ProductGallery from 'components/modules/e-commerce/ProductGallery';
 import { useMemo, useState } from 'react';
-import { Col, Row, Stack } from 'react-bootstrap';
+import { Col, Row } from '@hummingbirdui/react';
 import { Link } from 'react-router';
 import QuantityButtons from 'components/common/QuantityButtons';
 import { faHeart } from '@fortawesome/free-regular-svg-icons';
@@ -23,14 +23,14 @@ const ProductDescription = () => {
   }, [selectedVariantKey]);
 
   return (
-    <Row className="g-5 mb-5 mb-lg-8">
+    <Row className="g-8 mb-8 lg:mb-14">
       <Col xs={12} lg={6}>
         {selectedVariant && <ProductGallery images={selectedVariant.images} />}
-        <div className="d-flex">
+        <div className="flex">
           <Button
             variant="outline-warning"
             size="lg"
-            className="rounded-pill w-100 me-3 px-2 px-sm-4 fs--1 fs-sm-0"
+            className="rounded-full w-full me-4 px-2 sm:px-6 text-md sm:text-base"
           >
             <FontAwesomeIcon icon={faHeart} className="me-2" />
             Add to wishlist
@@ -38,7 +38,7 @@ const ProductDescription = () => {
           <Button
             variant="warning"
             size="lg"
-            className="rounded-pill w-100 px-2 px-sm-4 fs--1 fs-sm-0"
+            className="rounded-full w-full text-md sm:text-base"
           >
             <FontAwesomeIcon icon={faShoppingCart} className="me-2" />
             Add to cart
@@ -46,63 +46,63 @@ const ProductDescription = () => {
         </div>
       </Col>
       <Col xs={12} lg={6}>
-        <Stack className="justify-content-between h-100">
-          <div className="mb-3">
-            <div className="d-flex flex-wrap">
+        <div className="flex flex-col justify-between h-full">
+          <div className="mb-4">
+            <div className="flex flex-wrap">
               <div className="me-2">
                 <Rating readonly initialValue={5} />
               </div>
-              <p className="text-primary fw-semibold mb-2">
+              <p className="text-primary font-semibold mb-2">
                 6548 People rated and reviewed
               </p>
             </div>
-            <h3 className="mb-3 lh-sm">
+            <h3 className="mb-4 leading-sm">
               24" iMac® with Retina 4.5K display - Apple M1 8GB Memory - 256GB
               SSD - w/Touch ID (Latest Model) - Blue
             </h3>
-            <div className="d-flex flex-wrap align-items-start mb-3">
-              <span className="badge bg-success fs-9 rounded-pill me-2 fw-semibold">
+            <div className="flex flex-wrap items-start mb-4">
+              <span className="badge bg-success text-md rounded-full me-2 font-semibold">
                 #1 Best seller
               </span>
-              <Link to="#!" className="fw-semibold">
+              <Link to="#!" className="font-semibold">
                 in Phoenix sell analytics 2021
               </Link>
             </div>
-            <div className="d-flex flex-wrap align-items-center">
-              <h1 className="me-3">{currencyFormat(1349.99)}</h1>
-              <p className="text-body-quaternary text-decoration-line-through fs-6 mb-0 me-3">
+            <div className="flex flex-wrap items-center">
+              <h1 className="me-4">{currencyFormat(1349.99)}</h1>
+              <p className="text-soft line-through text-xl mb-0 me-4">
                 {currencyFormat(1499.99)}
               </p>
-              <p className="text-warning-dark fw-bolder fs-6 mb-0">10% off</p>
+              <p className="text-warning font-extrabold text-xl mb-0">10% off</p>
             </div>
-            <p className="text-success fw-semibold fs-7 mb-2"> In stock</p>
-            <p className="mb-2 text-body-secondary">
-              <strong className="text-body-highlight">
+            <p className="text-success font-semibold text-lg mb-2"> In stock</p>
+            <p className="mb-2 text-muted">
+              <strong className="text-highlight">
                 Do you want it on Saturday, July 29th?
               </strong>{' '}
               Choose{' '}
-              <strong className="text-body-highlight">
+              <strong className="text-highlight">
                 Saturday Delivery{' '}
               </strong>
               at checkout if you want your order delivered within 12 hours 43
               minutes,{' '}
-              <Link className="fw-bold" to="#!">
+              <Link className="font-bold" to="#!">
                 Details.{' '}
               </Link>
-              <strong className="text-body-highlight">
+              <strong className="text-highlight">
                 Gift wrapping is available.
               </strong>
             </p>
-            <p className="text-danger-dark fw-bold mb-5 mb-lg-0">
+            <p className="text-danger-dark font-bold mb-8 lg:mb-0">
               Special offer ends in 23:00:45 hours
             </p>
           </div>
 
           <div>
-            <div className="mb-3">
-              <p className="fw-semibold mb-2 text-body">
+            <div className="mb-4">
+              <p className="font-semibold mb-2 text-default">
                 Color :{' '}
-                <span className="text-body-emphasis">
+                <span className="text-emphasis">
                   {selectedVariant?.name}
                 </span>
               </p>
@@ -111,35 +111,35 @@ const ProductDescription = () => {
                 setSelectedVariantKey={setSelectedVariantKey}
               />
             </div>
-            <div className="row g-3 g-sm-5 align-items-end">
-              <div className="col-12 col-sm-auto">
-                <p className="fw-semibold mb-2 text-body">Size : </p>
-                <div className="d-flex align-items-center">
+            <div className="row g-4 sm:g-8 items-end">
+              <div className="col-12 sm:col-auto">
+                <p className="font-semibold mb-2 text-default">Size : </p>
+                <div className="flex items-center">
                   <select className="form-select w-auto">
                     <option value="44">44</option>
                     <option value="22">22</option>
                     <option value="18">18</option>
                   </select>
-                  <a className="ms-2 fs-9 fw-semibold" href="#!">
+                  <a className="ms-2 text-md font-semibold" href="#!">
                     Size chart
                   </a>
                 </div>
               </div>
-              <div className="col-12 col-sm">
-                <p className="fw-semibold mb-2 text-body">Quantity : </p>
-                <div className="d-flex justify-content-between align-items-end">
+              <div className="col-12 sm:col-auto flex-1">
+                <p className="font-semibold mb-2 text-default">Quantity : </p>
+                <div className="flex justify-between items-end">
                   <QuantityButtons
                     quantity={quantity}
                     setQuantity={setQuantity}
                   />
-                  <Button variant="phoenix-primary" className="px-3 border-0">
-                    <FontAwesomeIcon icon={faShareAlt} className="fs-7" />
+                  <Button variant="phoenix" color="primary" className="px-4 border-0">
+                    <FontAwesomeIcon icon={faShareAlt} className="text-lg" />
                   </Button>
                 </div>
               </div>
             </div>
           </div>
-        </Stack>
+        </div>
       </Col>
     </Row>
   );

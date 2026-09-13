@@ -1,6 +1,10 @@
-import classNames from 'classnames';
-import { HTMLAttributes, PropsWithChildren, useEffect } from 'react';
-import { Nav, NavLinkProps } from 'react-bootstrap';
+import { cn } from '@hummingbirdui/react';
+import {
+  AnchorHTMLAttributes,
+  HTMLAttributes,
+  PropsWithChildren,
+  useEffect
+} from 'react';
 import { useInView } from 'react-intersection-observer';
 import ScrollSpyProvider, {
   useScrollSpyContext
@@ -53,19 +57,22 @@ const ScrollSpyContent = ({
 const ScrollSpyNavLink = ({
   className,
   href,
-  children
-}: PropsWithChildren<NavLinkProps>) => {
+  children,
+  ...rest
+}: PropsWithChildren<AnchorHTMLAttributes<HTMLAnchorElement>>) => {
   const { activeElemId } = useScrollSpyContext();
   const targetId = href?.replace('#', '');
 
   return (
-    <Nav.Link
-      className={classNames(className)}
-      active={activeElemId === targetId}
+    <a
+      className={cn('nav-link', className, {
+        active: activeElemId === targetId
+      })}
       href={href}
+      {...rest}
     >
       {children}
-    </Nav.Link>
+    </a>
   );
 };
 

@@ -11,9 +11,9 @@ const NecessaryPages = () => {
       <Container fluid>
         <Row className="justify-content-center">
           <Col xs={12} lg={9} xl={8} xxl={6} className="text-center">
-            <h2 className="mb-6 text-body-highlight fw-normal">
+            <h2 className="mb-6 text-highlight font-normal">
               Smartly designed
-              <span className="text-primary position-relative fw-bolder ms-2">
+              <span className="text-primary relative font-black ms-2">
                 necessary pages
                 <img
                   src={illustration31}
@@ -29,11 +29,11 @@ const NecessaryPages = () => {
             <Col
               key={page.pageName}
               lg={6}
-              className="position-relative page-container"
+              className="relative page-container"
             >
               <div
                 className={classNames(
-                  'd-flex px-4 pt-6 justify-content-center',
+                  'flex px-4 pt-6 justify-content-center',
                   {
                     'justify-content-lg-end': (index + 1) % 2 !== 0,
                     'justify-content-lg-start': (index + 1) % 2 === 0
@@ -48,7 +48,7 @@ const NecessaryPages = () => {
                       className="img-fluid page-thumb rounded z-2"
                     />
                   </div>
-                  <h5 className="py-4 text-body-highlight">{page.pageName}</h5>
+                  <h5 className="py-4 text-highlight">{page.pageName}</h5>
                 </div>
               </div>
               <Link

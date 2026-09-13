@@ -1,107 +1,101 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button from 'components/base/Button';
-import { Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router';
 import boltIlls from 'assets/img/icons/illustrations/bolt.png';
 import pie from 'assets/img/icons/illustrations/pie.png';
 import { defaultFeatures } from 'data/landing/default-landing-data';
 import FeatureSection from './FeatureSection';
-import { faAngleRight } from '@fortawesome/free-solid-svg-icons';
 
-const Features = () => {
-  return (
-    <section className="bg-body pt-15 pb-18" id="features">
-      <div className="container-small px-lg-7 px-xxl-3">
-        <div className="position-relative z-2">
-          <Row className="mb-12">
-            <Col lg={6} className="text-center text-lg-start pe-xxl-3">
-              <h4 className="text-primary fw-bolder mb-4">Features</h4>
-              <h2 className="mb-3 text-body-emphasis lh-base">
-                A fully integrated suite
-                <br />
-                of payments products
-              </h2>
-              <p className="mb-5">
-                With the power of Phoenix, you can now focus only on
-                functionaries for your digital products, while leaving the UI
-                design on us!With the power of Phoenix, you can now focus only
-                on functionaries for your digital products, while leaving the UI
-                design on us!
-              </p>
-              <Button
-                as={Link}
-                to="#!"
-                size="lg"
-                variant="outline-primary"
-                className="rounded-pill me-2"
-                endIcon={
-                  <FontAwesomeIcon icon={faAngleRight} className="ms-2" />
-                }
-              >
-                Find out more
-              </Button>
-            </Col>
-            <Col sm={6} lg={3} className="mt-7 text-center text-lg-start">
-              <div className="h-100 d-flex flex-column justify-content-between">
-                <div className="border-start-lg border-dashed border-translucent ps-4">
-                  <img
-                    className="mb-4"
-                    src={boltIlls}
-                    width={48}
-                    height={48}
-                    alt=""
-                  />
-                  <div>
-                    <h5 className="fw-bolder mb-2">Lightning Speed</h5>
-                    <p className="fw-semibold lh-sm">
-                      Present everything you need in one place within minutes!
-                      Grow with Phoenix!
-                    </p>
-                  </div>
-                  <Link to="#!" className="me-2 p-0 fs-9 fw-bold">
+/** `+Features` in landing-1/Features.pug */
+const Features = () => (
+  <section className="pt-30 pb-0" id="feature">
+    <div className="container-small lg:px-12 2xl:px-4">
+      <div className="relative z-2">
+        <div className="row">
+          <div className="lg:col-6 text-center lg:text-start 2xl:pe-4">
+            <h4 className="text-primary font-extrabold mb-6">Features</h4>
+            <h2 className="mb-4 text-emphasis leading-normal">
+              Seamless Payments: A Fully <br className="md:hidden" />
+              Integrated Suite
+            </h2>
+            <p className="mb-8">
+              With the power of Phoenix, you can now focus only on functionaries
+              for your digital products, while leaving the UI design on us!With
+              the power of Phoenix, you can now focus only on functionaries for
+              your digital products, while leaving the UI design on us!
+            </p>
+            <a
+              className="btn btn-lg btn-outline-primary rounded-full me-2"
+              href="#!"
+              role="button"
+            >
+              Find out more
+              <i className="fa-solid fa-angle-right ms-2" />
+            </a>
+          </div>
+          <div className="sm:col-6 lg:col-3 mt-12 text-center lg:text-start">
+            <div className="h-full flex flex-col justify-between">
+              <div className="lg:border-s border-subtle border-dashed ps-6">
+                <img
+                  className="mb-6"
+                  src={boltIlls}
+                  width={48}
+                  height={48}
+                  alt=""
+                />
+                <div>
+                  <h5 className="font-black mb-2">Lightning Speed</h5>
+                  <p className="font-semibold leading-sm">
+                    Present everything you need in one place within minutes!
+                    Grow with Phoenix!
+                  </p>
+                </div>
+                <div>
+                  <a
+                    className="btn btn-link me-2 p-0 text-md"
+                    href="#!"
+                    role="button"
+                  >
                     Check Demo
-                    <FontAwesomeIcon icon={faAngleRight} className="ms-2" />
-                  </Link>
+                    <span className="fa-solid fa-angle-right ms-2" />
+                  </a>
                 </div>
               </div>
-            </Col>
-            <Col sm={6} lg={3} className="mt-7 text-center text-lg-start">
-              <div className="h-100 d-flex flex-column">
-                <div className="border-start-lg border-dashed border-translucent ps-4">
-                  <img
-                    className="mb-4"
-                    src={pie}
-                    width={48}
-                    height={48}
-                    alt=""
-                  />
-                  <div>
-                    <h5 className="fw-bolder mb-2">All-in-one solution</h5>
-                    <p className="fw-semibold lh-sm">
-                      Show your production and growth graph in one place with
-                      Phoenix!
-                    </p>
-                  </div>
-                  <Link to="#!" className="me-2 p-0 fs-9 fw-bold">
+            </div>
+          </div>
+          <div className="sm:col-6 lg:col-3 mt-12 text-center lg:text-start">
+            <div className="h-full flex flex-col">
+              <div className="lg:border-s border-subtle border-dashed ps-6">
+                <img className="mb-6" src={pie} width={48} height={48} alt="" />
+                <div>
+                  <h5 className="font-black mb-2">All-in-one solution</h5>
+                  <p className="font-semibold leading-sm">
+                    Show your production and growth graph in one place with
+                    Phoenix!
+                  </p>
+                </div>
+                <div>
+                  <a
+                    className="btn btn-link me-2 p-0 text-md"
+                    href="#!"
+                    role="button"
+                  >
                     Check Demo
-                    <FontAwesomeIcon icon={faAngleRight} className="ms-2" />
-                  </Link>
+                    <i className="fa-solid fa-angle-right ms-2" />
+                  </a>
                 </div>
               </div>
-            </Col>
-          </Row>
-
-          {defaultFeatures.map((feature, index) => (
-            <FeatureSection
-              key={feature.label}
-              feature={feature}
-              orderReverse={index === 1}
-            />
-          ))}
+            </div>
+          </div>
         </div>
+
+        {defaultFeatures.map((feature, index) => (
+          <FeatureSection
+            key={feature.label}
+            feature={feature}
+            first={index === 0}
+          />
+        ))}
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default Features;

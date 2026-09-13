@@ -1,0 +1,35 @@
+/*-----------------------------------------------
+|   Hover Box
+-----------------------------------------------*/
+@utility hoverbox {
+  @layer base {
+    @apply relative overflow-hidden;
+    .hoverbox-content {
+      @apply m-0! absolute top-0 left-0 flex size-full bg-black/60 opacity-0 transition-opacity duration-200 ease-in-out;
+    }
+    .hoverbox-primary-content {
+      @apply absolute top-0 left-0 w-full min-h-full;
+    }
+    &:hover,
+    &:focus {
+      .hover-box-content-initial {
+        @apply opacity-0;
+      }
+      .hoverbox-content {
+        @apply opacity-100;
+      }
+      .as-hoverbox-content {
+        @apply z-10;
+      }
+      .text-underline {
+        @apply underline;
+      }
+    }
+  }
+}
+
+@utility hoverbox-content-gradient {
+  @layer base {
+    @apply bg-[linear-gradient(transparent,var(--color-black))];
+  }
+}

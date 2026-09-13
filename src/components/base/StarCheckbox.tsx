@@ -27,7 +27,7 @@ const StarCheckbox = ({
   return (
     <Rating
       key={rating}
-      iconClass="fs-8"
+      iconClass="text-base"
       {...rest}
       initialValue={rating}
       iconsCount={1}

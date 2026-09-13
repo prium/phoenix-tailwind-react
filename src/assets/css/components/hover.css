@@ -1,0 +1,171 @@
+.hover-actions {
+  @apply hidden absolute;
+  &.show {
+    @apply inline-block;
+
+    & + .hover-hide {
+      @apply opacity-100 transition-opacity duration-300;
+    }
+  }
+}
+
+a[href] {
+  &.bg-muted {
+    &:hover,
+    &:focus {
+      @apply bg-highlight!;
+    }
+  }
+}
+
+.text-primary-hover {
+  &:hover,
+  &:focus {
+    @apply text-primary!;
+  }
+}
+
+.hover-danger {
+  &:hover,
+  &:focus {
+    @apply text-danger!;
+  }
+}
+
+.hover-shadow {
+  &:hover,
+  &:focus {
+    @apply shadow-[0_0_0.5rem_0_rgba(var(--color-black),0.1)];
+  }
+}
+
+.hover-actions-trigger {
+  @apply relative;
+
+  .inbox-link {
+    @apply text-inherit no-underline;
+  }
+
+  &:hover,
+  &:focus {
+    .hover-actions {
+      @apply z-1 flex;
+      &.btn {
+        @apply inline-block;
+      }
+      @apply animate-[fade] duration-150 ease-in-out;
+    }
+
+    .hover-hide {
+      @apply opacity-0;
+    }
+    /* .hover-xs-hide {
+      @variant xs {
+        @apply opacity-0;
+      }
+    } */
+    .hover-sm-hide {
+      @variant sm {
+        @apply opacity-0;
+      }
+    }
+    .hover-md-hide {
+      @variant md {
+        @apply opacity-0;
+      }
+    }
+    .hover-lg-hide {
+      @variant lg {
+        @apply opacity-0;
+      }
+    }
+    .hover-xl-hide {
+      @variant xl {
+        @apply opacity-0;
+      }
+    }
+    .hover-2xl-hide {
+      @variant 2xl {
+        @apply opacity-0;
+      }
+    }
+    /* .hover-xs-show {
+      @variant xs {
+        @apply opacity-100;
+      }
+    } */
+    .hover-sm-show {
+      @variant sm {
+        @apply opacity-100;
+      }
+    }
+    .hover-md-show {
+      @variant md {
+        @apply opacity-100;
+      }
+    }
+    .hover-lg-show {
+      @variant lg {
+        @apply opacity-100;
+      }
+    }
+    .hover-xl-show {
+      @variant xl {
+        @apply opacity-100;
+      }
+    }
+    .hover-2xl-show {
+      @variant 2xl {
+        @apply opacity-100;
+      }
+    }
+  }
+}
+
+/* .bg {
+  @each $color, $value in $hover-bg-colors {
+    &-#{$color}-hover {
+      &:hover {
+        background-color: #{$value} !important;
+      }
+    }
+  }
+}
+
+.text {
+  @each $color, $value in $hover-text-colors {
+    &-#{$color}-hover {
+      &:hover {
+        color: #{$value} !important;
+      }
+    }
+  }
+} */
+
+/* TODO: Change with Tailwind utilities */
+.d-toggle-container {
+  .d-none-hover {
+    @apply block!;
+  }
+  .d-block-hover {
+    @apply hidden!;
+  }
+  &:hover,
+  &:focus {
+    .d-none-hover {
+      @apply hidden!;
+    }
+    .d-block-hover {
+      @apply block!;
+    }
+  }
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

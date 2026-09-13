@@ -1,27 +1,71 @@
+import { Table } from '@hummingbirdui/react';
 import PhoenixDocCard from 'components/base/PhoenixDocCard';
 import DocPageHeader from 'components/docs/DocPageHeader';
 import DocPagesLayout from 'layouts/DocPagesLayout';
-import { Table } from 'react-bootstrap';
 
 const exampleCode = `
 <>
-  <div className="d-inline bg-primary p-2 text-white">d-inline</div>
-  <div className="d-block bg-primary p-2 text-white mt-3">d-inline-block</div>
+  <div className="inline bg-primary p-2 text-white">inline</div>
+  <div className="block bg-primary p-2 text-white mt-4">block</div>
 </>`;
 
 const displayInPrintCode = `
 <>
-  <div className="d-print-none">Screen Only (Hide on print only)</div>
-  <div className="d-none d-print-block">Print Only (Hide on screen only)</div>
-  <div className="d-none d-lg-block d-print-block">Hide up to large on screen, but always show on print</div>
+  <div className="print:hidden">Screen only (hidden when printing)</div>
+  <div className="hidden print:block">Print only (hidden on screen)</div>
+  <div className="hidden lg:block print:block">
+    Hidden below lg on screen, but always shown when printing
+  </div>
 </>`;
+
+/** The display values Tailwind ships a utility for. */
+const displayValues = [
+  'hidden',
+  'inline',
+  'inline-block',
+  'block',
+  'flow-root',
+  'table',
+  'inline-table',
+  'table-cell',
+  'table-row',
+  'flex',
+  'inline-flex',
+  'grid',
+  'inline-grid',
+  'contents',
+  'list-item'
+];
+
+/** Screen-size recipes. `hidden`/`block` are plain utilities; the `sm:`…`2xl:`
+ *  prefixes are Tailwind breakpoint variants of the same two classes. */
+const hidingRecipes = [
+  { size: 'Hidden on all', classes: 'hidden' },
+  { size: 'Hidden only on xs', classes: 'hidden sm:block' },
+  { size: 'Hidden only on sm', classes: 'sm:hidden md:block' },
+  { size: 'Hidden only on md', classes: 'md:hidden lg:block' },
+  { size: 'Hidden only on lg', classes: 'lg:hidden xl:block' },
+  { size: 'Hidden only on xl', classes: 'xl:hidden 2xl:block' },
+  { size: 'Hidden only on 2xl', classes: '2xl:hidden' },
+  { size: 'Visible on all', classes: 'block' },
+  { size: 'Visible only on xs', classes: 'block sm:hidden' },
+  { size: 'Visible only on sm', classes: 'hidden sm:block md:hidden' },
+  { size: 'Visible only on md', classes: 'hidden md:block lg:hidden' },
+  { size: 'Visible only on lg', classes: 'hidden lg:block xl:hidden' },
+  { size: 'Visible only on xl', classes: 'hidden xl:block 2xl:hidden' },
+  { size: 'Visible only on 2xl', classes: 'hidden 2xl:block' }
+];
 
 const DisplayExample = () => {
   return (
     <div>
       <DocPageHeader
         title="Display"
-        description="Quickly and responsively toggle the display value of components and more with our display utilities. Includes support for some of the more common values, as well as some extras for controlling display when printing."
+        description="Quickly and responsively toggle the display value of components and more with the display utilities. Includes support for the common display values as well as a print variant."
+        link={{
+          text: 'Display on Tailwind',
+          url: 'https://tailwindcss.com/docs/display'
+        }}
       />
 
       <DocPagesLayout>
@@ -29,179 +73,93 @@ const DisplayExample = () => {
           <PhoenixDocCard.Header title="Notation" noPreview />
           <PhoenixDocCard.Body>
             <p>
-              Display utility classes that apply to all breakpoints, from{' '}
-              <code>xs </code>to <code>xl</code>, have no breakpoint
-              abbreviation in them. This is because those classes are applied
-              from <code>min-width: 0; </code>
-              and up, and thus are not bound by a media query. The remaining
-              breakpoints, however, do include a breakpoint abbreviation.
+              A display utility with no prefix applies at every breakpoint, from{' '}
+              <code>xs</code> up to <code>2xl</code>: it is not wrapped in a
+              media query, so it holds from <code>min-width: 0</code> and up. To
+              change the value at a breakpoint, prefix the same class with that
+              breakpoint.
             </p>
-            <p className="mt-3">
-              As such, the classes are named using the format:
-            </p>
+            <p className="mt-4">As such, the classes are named:</p>
             <ul>
               <li>
-                <code>.d-{'{value}'} </code> for <code>xs</code>
+                <code>.block</code> for <code>xs</code>
               </li>
               <li>
-                <code>
-                  .d-{'{breakpoint}'}-{'{value}'}
-                </code>{' '}
-                for<code> sm</code>,<code> md</code>,<code> lg</code>, and{' '}
-                <code> xl</code>,
+                <code>.{'{breakpoint}'}:block</code> for <code>sm</code>,{' '}
+                <code>md</code>, <code>lg</code>, <code>xl</code> and{' '}
+                <code>2xl</code>
               </li>
             </ul>
-            <p className="mt-3">Where value is one of:</p>
+            <p className="mt-4">Where the value is one of:</p>
             <ul>
-              <li>
-                <code>none</code>
-              </li>
-              <li>
-                <code>inline</code>
-              </li>
-              <li>
-                <code>inline-block</code>
-              </li>
-              <li>
-                <code>block</code>
-              </li>
-              <li>
-                <code>table</code>
-              </li>
-              <li>
-                <code>table-cell</code>
-              </li>
-              <li>
-                <code>table-row</code>
-              </li>
-              <li>
-                <code>flex</code>
-              </li>
-              <li>
-                <code>inline-flex</code>
-              </li>
+              {displayValues.map(value => (
+                <li key={value}>
+                  <code>{value}</code>
+                </li>
+              ))}
             </ul>
-
             <p>
-              The display values can be altered by changing the{' '}
-              <code>$displays </code>variable and recompiling the SCSS.
+              Note that the &quot;none&quot; value is spelled{' '}
+              <code>hidden</code>, not <code>none</code>.
             </p>
-            <p>
-              The media queries effect screen widths with the given breakpoint
-              or larger. For example,
-              <code>.d-lg-none </code>sets <code>display: none;</code>on both{' '}
-              <code>lg </code>and <code>xl </code>screens.
+            <p className="mb-0">
+              A breakpoint variant is a <code>min-width</code> media query, so
+              it affects that breakpoint and every larger one. For example,{' '}
+              <code>lg:hidden</code> sets <code>display: none</code> on{' '}
+              <code>lg</code>, <code>xl</code> and <code>2xl</code> screens. The
+              breakpoints are defined in <code>src/assets/css/theme.css</code>:{' '}
+              <code>sm</code> 576px, <code>md</code> 768px, <code>lg</code>{' '}
+              992px, <code>xl</code> 1200px, <code>2xl</code> 1540px.
             </p>
           </PhoenixDocCard.Body>
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header title="How it works" />
+          <PhoenixDocCard.Header title="Example">
+            <p className="mb-0">
+              The utility name is the CSS value: <code>.inline</code> makes an
+              element flow with the text around it, <code>.block</code> makes it
+              take the full width of its parent.
+            </p>
+          </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={exampleCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Hiding Elements" noPreview />
-          <PhoenixDocCard.Body code={exampleCode}>
+          <PhoenixDocCard.Body>
             <p>
               For faster mobile-friendly development, use responsive display
               classes for showing and hiding elements by device. Avoid creating
-              entirely different versions of the same site, instead hide
-              elements responsively for each screen size.
+              entirely different versions of the same page — hide elements
+              responsively for each screen size instead.
             </p>
             <p>
-              To hide elements simply use the <code>.d-none </code>class or one
-              of the
-              <code>.d-{'{sm,md,lg,xl}'}-none </code>classes for any responsive
-              screen variation.
+              To hide an element use <code>.hidden</code>, or one of the{' '}
+              <code>.{'{sm,md,lg,xl,2xl}'}:hidden</code> variants for a
+              particular screen size and up.
             </p>
             <p>
-              To show an element only on a given interval of screen sizes you
-              can combine one <code>.d-*-none class with a </code>
-              <code>.d-*-* class, for example </code>
-              <code>.d-none .d-md-block .d-xl-none </code>will hide the element
-              for all screen sizes except on medium and large devices.
+              To show an element only over an interval of screen sizes, combine
+              the two: <code>.hidden .md:block .xl:hidden</code> hides the
+              element everywhere except on medium and large screens.
             </p>
-            <Table className="table-bordered">
+            <Table bordered className="mb-0">
               <thead>
                 <tr>
-                  <th>Screen Size</th>
+                  <th className="ps-2">Screen Size</th>
                   <th>Class</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td className="ps-2">Hidden on all</td>
-                  <td>
-                    <code>.d-none</code>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="ps-2">Hidden only on xs</td>
-                  <td>
-                    <code>.d-none .d-sm-block</code>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="ps-2">Hidden only on sm</td>
-                  <td>
-                    <code>.d-sm-none .d-md-block</code>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="ps-2">Hidden only on md</td>
-                  <td>
-                    <code>.d-md-none .d-lg-block</code>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="ps-2">Hidden only on lg</td>
-                  <td>
-                    <code>.d-lg-none .d-xl-block</code>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="ps-2">Hidden only on xl</td>
-                  <td>
-                    <code>.d-xl-none</code>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="ps-2">Visible on all</td>
-                  <td>
-                    <code>.d-block</code>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="ps-2">Visible only on xs</td>
-                  <td>
-                    <code>.d-block .d-sm-none</code>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="ps-2">Visible only on sm</td>
-                  <td>
-                    <code>.d-none .d-sm-block .d-md-none</code>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="ps-2">Visible only on md</td>
-                  <td>
-                    <code>.d-none .d-md-block .d-lg-none</code>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="ps-2">Visible only on lg</td>
-                  <td>
-                    <code>.d-none .d-lg-block .d-xl-none</code>
-                  </td>
-                </tr>
-                <tr>
-                  <td className="ps-2">Visible only on xl</td>
-                  <td>
-                    <code>.d-none .d-xl-block</code>
-                  </td>
-                </tr>
+                {hidingRecipes.map(recipe => (
+                  <tr key={recipe.size}>
+                    <td className="ps-2">{recipe.size}</td>
+                    <td>
+                      <code>{recipe.classes}</code>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </Table>
           </PhoenixDocCard.Body>
@@ -210,42 +168,43 @@ const DisplayExample = () => {
         <PhoenixDocCard>
           <PhoenixDocCard.Header title="Display in print" alignItems="end">
             <p className="mt-2">
-              Change the <code>display </code>value of elements when printing
-              with our print display utility classes. Includes support for the
-              same <code>display </code>values as our responsive{' '}
-              <code>.d-* utilities.</code>
+              Tailwind has no separate set of print classes. Instead, prefix any
+              display utility with the <code>print:</code> variant, which wraps
+              it in <code>@media print</code>:
             </p>
             <ul>
               <li>
-                <code>.d-print-none</code>
+                <code>.print:hidden</code>
               </li>
               <li>
-                <code>.d-print-inline</code>
+                <code>.print:inline</code>
               </li>
               <li>
-                <code>.d-print-inline-block</code>
+                <code>.print:inline-block</code>
               </li>
               <li>
-                <code>.d-print-block</code>
+                <code>.print:block</code>
               </li>
               <li>
-                <code>.d-print-table</code>
+                <code>.print:table</code>
               </li>
               <li>
-                <code>.d-print-table-row</code>
+                <code>.print:table-row</code>
               </li>
               <li>
-                <code>.d-print-table-cell</code>
+                <code>.print:table-cell</code>
               </li>
               <li>
-                <code>.d-print-flex</code>
+                <code>.print:flex</code>
               </li>
               <li>
-                <code>.d-print-inline-flex</code>
+                <code>.print:inline-flex</code>
               </li>
             </ul>
             <p className="mb-0">
-              The print and display classes can be combined.
+              The print variant and the breakpoint variants combine — the third
+              example below is hidden below <code>lg</code> on screen but always
+              printed.
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={displayInPrintCode} />

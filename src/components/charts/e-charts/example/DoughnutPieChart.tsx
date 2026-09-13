@@ -7,11 +7,11 @@ echarts.use([TooltipComponent, PieChart]);
 
 const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
   color: [
-    getThemeColor('info-light'),
-    getThemeColor('warning-light'),
-    getThemeColor('danger-light'),
-    getThemeColor('success-light'),
-    getThemeColor('primary')
+    getThemeColor('color-info-light'),
+    getThemeColor('color-warning-light'),
+    getThemeColor('color-danger-light'),
+    getThemeColor('color-success-light'),
+    getThemeColor('color-primary')
   ],
   tooltip: {
     trigger: 'item'
@@ -35,12 +35,12 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
           x: {
             fontSize: 31.25,
             fontWeight: 800,
-            color: getThemeColor('tertiary-color'),
+            color: getThemeColor('text-color-subtle'),
             padding: [0, 0, 5, 15]
           },
           y: {
             fontSize: 12.8,
-            color: getThemeColor('tertiary-color'),
+            color: getThemeColor('text-color-subtle'),
             fontWeight: 600
           }
         }
@@ -71,6 +71,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
   }
 });
 
+/** Gold `.echart-doughnut-chart-example.min-h-80` on modules/echarts/pie-charts. */
 const DoughnutPieChart = () => {
   const { getThemeColor } = useAppContext();
 
@@ -78,7 +79,8 @@ const DoughnutPieChart = () => {
     <ReactEChartsCore
       echarts={echarts}
       option={getDefaultOptions(getThemeColor)}
-      style={{ minHeight: '320px', width: '100%' }}
+      className="w-full min-h-80"
+      style={{ height: 'auto', width: '100%' }}
     />
   );
 };

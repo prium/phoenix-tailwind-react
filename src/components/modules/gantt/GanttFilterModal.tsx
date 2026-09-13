@@ -1,9 +1,12 @@
-import { Modal, Button, Row, Col, Form } from 'react-bootstrap';
+import { faSync } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSync, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { Dispatch, SetStateAction } from 'react';
+import { Dialog, Select } from '@hummingbirdui/react';
+import { UilCalendarAlt } from '@iconscout/react-unicons';
+import Button from 'components/base/Button';
 import DatePicker from 'components/base/DatePicker';
+import { Dispatch, SetStateAction } from 'react';
 
+/** `+TaskFilterModal` (#ganttTaskFilterModal) in mixins/gantt-chart/GanttChart.pug */
 const GanttFilterModal = ({
   show,
   setShow
@@ -11,142 +14,160 @@ const GanttFilterModal = ({
   show: boolean;
   setShow: Dispatch<SetStateAction<boolean>>;
 }) => {
-  const handleClose = () => {
-    setShow(false);
-  };
+  const handleClose = () => setShow(false);
 
   return (
-    <Modal
-      id="ganttTaskFilterModal"
-      show={show}
-      onHide={handleClose}
-      size="lg"
-      centered
-      aria-labelledby="ganttFilterModalLabel"
-    >
-      <Modal.Header className="p-4 pb-3 align-items-start">
-        <h3 id="ganttFilterModalLabel" className="mb-2 text-body-highlight">
-          Filter
-        </h3>
-        <button onClick={handleClose} className="btn p-0 ms-auto">
-          <FontAwesomeIcon icon={faTimes} className="btn-close" />
-        </button>
-      </Modal.Header>
+    <Dialog open={show} onOpenChange={open => !open && handleClose()}>
+      <Dialog.Content centered size="lg" aria-describedby={undefined}>
+        {/* the gold heading is a plain h3, not `.modal-title` */}
+        <Dialog.Title className="sr-only">Filter</Dialog.Title>
+        <div className="modal-header p-6 pb-4 items-start">
+          <h3 className="mb-2 text-highlight" id="ganttFilterModalLabel">
+            Filter
+          </h3>
+          <button
+            type="button"
+            aria-label="Close"
+            className="btn btn-close"
+            onClick={handleClose}
+          />
+        </div>
 
-      <Modal.Body className="px-4">
-        <Row className="g-3">
-          <Col md={6}>
-            <Form.Group controlId="filterStartDate">
-              <Form.Label className="form-label-header mb-2">
+        <div className="modal-body px-6">
+          <div className="row g-4">
+            <div className="col-6">
+              <label
+                className="font-bold text-highlight mb-2"
+                htmlFor="filterStartDate"
+              >
                 Start Date
-              </Form.Label>
+              </label>
               <DatePicker
-                id="filterStartDate"
-                options={{
-                  defaultDate: new Date(2022, 2, 2)
-                }}
+                hideIcon
+                noContainer
+                options={{ defaultDate: new Date(2022, 2, 2) }}
+                render={(_, ref) => (
+                  <div className="input-group-icon">
+                    <UilCalendarAlt
+                      fill="currentColor"
+                      size={16}
+                      className="text-default form-control-icon-start"
+                    />
+                    <input
+                      id="filterStartDate"
+                      type="text"
+                      className="form-control ps-10 datetimepicker"
+                      ref={ref}
+                    />
+                  </div>
+                )}
               />
-            </Form.Group>
-          </Col>
+            </div>
 
-          <Col md={6}>
-            <Form.Group controlId="completedOn">
-              <Form.Label className="form-label-header text-body-highlight mb-2">
+            <div className="col-6">
+              <label
+                className="font-bold text-highlight mb-2"
+                htmlFor="completedOn"
+              >
                 Completed on
-              </Form.Label>
-              <Form.Select aria-label="Default select example">
+              </label>
+              <Select id="completedOn" aria-label="Default select example">
                 <option>Last 7 Days</option>
                 <option value="1">Last 30 Days</option>
                 <option value="2">Last 90 Days</option>
                 <option value="3">Last 6 Months</option>
                 <option value="4">Last 12 Months</option>
-              </Form.Select>
-            </Form.Group>
-          </Col>
+              </Select>
+            </div>
 
-          <Col md={6}>
-            <Form.Group controlId="completionStatus">
-              <Form.Label className="form-label-header text-body-highlight mb-2">
+            <div className="col-6">
+              <label
+                className="font-bold text-highlight mb-2"
+                htmlFor="completionStatus"
+              >
                 Completion Status
-              </Form.Label>
-              <Form.Select>
+              </label>
+              <Select id="completionStatus" aria-label="Default select example">
                 <option>Not Started</option>
                 <option value="1">In Progress</option>
                 <option value="2">Completed</option>
                 <option value="3">Overdue</option>
                 <option value="4">Cancelled</option>
                 <option value="5">On Hold</option>
-              </Form.Select>
-            </Form.Group>
-          </Col>
+              </Select>
+            </div>
 
-          <Col md={6}>
-            <Form.Group controlId="filterPriority">
-              <Form.Label className="form-label-header text-body-highlight mb-2">
+            <div className="col-6">
+              <label
+                className="font-bold text-highlight mb-2"
+                htmlFor="filterPriority"
+              >
                 Priority
-              </Form.Label>
-              <Form.Select>
+              </label>
+              <Select id="filterPriority" aria-label="Default select example">
                 <option>Urgent</option>
                 <option value="1">High</option>
                 <option value="2">Medium</option>
                 <option value="3">Low</option>
-              </Form.Select>
-            </Form.Group>
-          </Col>
+              </Select>
+            </div>
 
-          <Col md={6}>
-            <Form.Group controlId="lastModifiedON">
-              <Form.Label className="form-label-header text-body-highlight mb-2">
+            <div className="col-6">
+              <label
+                className="font-bold text-highlight mb-2"
+                htmlFor="lastModifiedON"
+              >
                 Last modified on
-              </Form.Label>
-              <Form.Select>
+              </label>
+              <Select id="lastModifiedON" aria-label="Default select example">
                 <option>Last 7 Days</option>
                 <option value="1">Last 30 Days</option>
                 <option value="2">Last 90 Days</option>
                 <option value="3">Last 6 Months</option>
                 <option value="4">Last 12 Months</option>
-              </Form.Select>
-            </Form.Group>
-          </Col>
+              </Select>
+            </div>
 
-          <Col md={6}>
-            <Form.Group controlId="filterTaskType">
-              <Form.Label className="form-label-header text-body-highlight mb-2">
+            <div className="col-6">
+              <label
+                className="font-bold text-highlight mb-2"
+                htmlFor="filterTaskType"
+              >
                 Task type
-              </Form.Label>
-              <Form.Select>
+              </label>
+              <Select id="filterTaskType" aria-label="Default select example">
                 <option>Administrative</option>
                 <option value="1">Development</option>
                 <option value="2">Design</option>
                 <option value="3">Testing</option>
                 <option value="4">Deployment</option>
                 <option value="5">Research</option>
-              </Form.Select>
-            </Form.Group>
-          </Col>
-        </Row>
-      </Modal.Body>
+              </Select>
+            </div>
+          </div>
+        </div>
 
-      <Modal.Footer className="px-4 pb-3 border-0">
-        <Button
-          id="ganttResetFilterBtn"
-          variant="subtle-primary"
-          size="sm"
-          className="px-4"
-        >
-          <FontAwesomeIcon icon={faSync} className="me-2" />
-          Reset
-        </Button>
-        <Button
-          variant="primary"
-          size="sm"
-          className="px-8"
-          onClick={handleClose}
-        >
-          Done
-        </Button>
-      </Modal.Footer>
-    </Modal>
+        <div className="modal-footer px-6 pb-4 border-0 gap-2">
+          <Button
+            id="ganttResetFilterBtn"
+            variant="subtle-primary"
+            size="sm"
+            className="px-6"
+          >
+            <FontAwesomeIcon icon={faSync} className="me-2" />
+            Reset
+          </Button>
+          <Button
+            variant="primary"
+            size="sm"
+            className="px-14"
+            onClick={handleClose}
+          >
+            Done
+          </Button>
+        </div>
+      </Dialog.Content>
+    </Dialog>
   );
 };
 

@@ -1,134 +1,172 @@
-import React, { useState } from 'react';
-import { Collapse, ProgressBar } from 'react-bootstrap';
-import { Link } from 'react-router';
-import classNames from 'classnames';
-import spotIllustration45 from 'assets/img/spot-illustrations/45.png';
-import spotIllustrationDark45 from 'assets/img/spot-illustrations/dark_45.png';
-
 import {
   faChevronRight,
   faFile,
   faFilePdf,
   faMusic,
   faRectangleList,
-  faVideo
+  faVideo,
+  IconDefinition
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { cn } from '@hummingbirdui/react';
 import Button from 'components/base/Button';
-const categories = [
+import spotIllustration45 from 'assets/img/spot-illustrations/45.png';
+import spotIllustrationDark45 from 'assets/img/spot-illustrations/dark_45.png';
+import { useState } from 'react';
+
+interface StorageCategory {
+  category: string;
+  count: string;
+  storage: string;
+  icon: IconDefinition;
+  /** literal classes — Tailwind cannot see `bg-${type}-subtle` */
+  boxClass: string;
+  iconClass: string;
+}
+
+const categories: StorageCategory[] = [
   {
     category: 'Images',
     count: '22k',
     storage: '13GB',
     icon: faFilePdf,
-    type: 'primary'
+    boxClass: 'bg-primary-subtle',
+    iconClass: 'text-primary-darker'
   },
   {
     category: 'Videos',
     count: '534',
     storage: '8.3GB',
     icon: faVideo,
-    type: 'info'
+    boxClass: 'bg-info-subtle',
+    iconClass: 'text-info-darker'
   },
   {
     category: 'Audio',
     count: '55',
     storage: '4GB',
     icon: faMusic,
-    type: 'warning'
+    boxClass: 'bg-warning-subtle',
+    iconClass: 'text-warning-darker'
   },
   {
     category: 'Documents',
     count: '65k',
     storage: '15.5GB',
     icon: faFile,
-    type: 'danger'
+    boxClass: 'bg-danger-subtle',
+    iconClass: 'text-danger-darker'
   },
   {
     category: 'Others',
     count: '12k',
     storage: '5GB',
     icon: faRectangleList,
-    type: 'success'
+    boxClass: 'bg-success-subtle',
+    iconClass: 'text-success-darker'
   }
 ];
 
+/** Stacked meter segments, literal so Tailwind keeps the fractional widths. */
+const segments = [
+  { width: 'w-1/5', bar: 'bg-primary-light', value: 20 },
+  { width: 'w-4/25', bar: 'bg-info-lighter', value: 16 },
+  { width: 'w-9/50', bar: 'bg-warning-lighter', value: 18 },
+  { width: 'w-3/25', bar: 'bg-danger-lighter', value: 12 },
+  { width: 'w-[11%]', bar: 'bg-success-lighter', value: 11 }
+];
+
+/**
+ * Gold `mixins/file-manager/FileManagerOffcanvas.pug` (storage details block).
+ * `.collapse-indicator[aria-expanded]` is what rotates `.toggle-icon`, so the
+ * anchor keeps the gold attributes instead of swapping the icon from state.
+ */
 const StorageDetails = () => {
-  const [isOpen, setIsOpen] = useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
     <>
-      <Link
-        to="#!"
-        onClick={() => setIsOpen(!isOpen)}
-        className={classNames(
-          'collapse-indicator px-0 py-3 mt-3 d-flex flex-between-center text-decoration-none',
-          {
-            collapsed: !isOpen
-          }
-        )}
+      <a
+        className="btn collapse-indicator px-0 py-4 mt-4 flex flex-between-center"
+        data-bs-toggle="collapse"
+        href="#collapseStorageDetails"
+        role="button"
+        aria-expanded={open}
+        aria-controls="collapseStorageDetails"
+        onClick={event => {
+          event.preventDefault();
+          setOpen(prev => !prev);
+        }}
       >
-        <h5 className="mb-0 text-body-highlight">Storage details</h5>
+        <h5 className="mb-0 text-highlight">Storage details</h5>
         <FontAwesomeIcon
           icon={faChevronRight}
-          className={`toggle-icon text-primary`}
+          className="toggle-icon storate-details-toggle text-md text-primary"
         />
-      </Link>
-      <ProgressBar style={{ height: '10px' }}>
-        <ProgressBar variant="primary-light" now={20} key={1} />
-        <ProgressBar variant="info-lighter" now={16} key={2} />
-        <ProgressBar variant="warning-lighter" now={18} key={3} />
-        <ProgressBar variant="danger-lighter" now={12} key={4} />
-        <ProgressBar variant="success-lighter" now={11} key={5} />
-      </ProgressBar>
-      <h6 className="text-body mt-2 mb-0">Used: 45.8 GB (92%) of the 50 GB.</h6>
-
-      <Collapse in={isOpen}>
-        <div>
-          <div className="pt-4">
-            {categories.map((item, index) => (
-              <div
-                key={index}
-                className={`d-flex align-items-center gap-2 ${
-                  index !== categories.length - 1 ? 'mb-3' : ''
-                }`}
-              >
-                <div className={`square-icon-box bg-${item.type}-subtle`}>
-                  <FontAwesomeIcon
-                    icon={item.icon}
-                    className={`text-${item.type}-darker`}
-                  />
-                </div>
-                <div>
-                  <h6 className="text-body">{item.category}</h6>
-                  <h6 className="mb-0 text-body fw-semibold">
-                    {item.count} Files - {item.storage} Used
-                  </h6>
-                </div>
-              </div>
-            ))}
+      </a>
+      <div className="progress-stacked h-2.5">
+        {segments.map(segment => (
+          <div
+            key={segment.bar}
+            className={cn('progress h-full', segment.width)}
+            role="progressbar"
+            aria-label="Segment one"
+            aria-valuenow={segment.value}
+            aria-valuemin={0}
+            aria-valuemax={100}
+          >
+            <div className={cn('progress-bar', segment.bar)} />
           </div>
+        ))}
+      </div>
+      <h6 className="text-default mt-2 mb-0">
+        Used: 45.8 GB (92%) of the 50 GB.
+      </h6>
+      <div
+        className={cn('collapse', { show: open })}
+        id="collapseStorageDetails"
+      >
+        <div className="pt-6">
+          {categories.map((item, index) => (
+            <div
+              key={item.category}
+              className={cn('flex items-center gap-2', {
+                'mb-3': index !== categories.length - 1
+              })}
+            >
+              <div className={cn('square-icon-box', item.boxClass)}>
+                <FontAwesomeIcon icon={item.icon} className={item.iconClass} />
+              </div>
+              <div>
+                <h6 className="text-default">{item.category}</h6>
+                {/* gold reads `item.storate`, so the size never prints — kept verbatim */}
+                <h6 className="mb-0 text-default font-semibold">
+                  {item.count} Files - Used
+                </h6>
+              </div>
+            </div>
+          ))}
         </div>
-      </Collapse>
-      <hr className="my-4" />
+      </div>
+      <hr className="my-6" />
       <div className="text-center">
         <img
           src={spotIllustration45}
-          className="d-dark-none"
           alt=""
-          width="98"
+          width={98}
+          className="dark:hidden mx-auto"
         />
         <img
           src={spotIllustrationDark45}
-          className="d-light-none"
           alt=""
-          width="98"
+          width={98}
+          className="hidden dark:block mx-auto"
         />
-        <h5 className="mt-3 text-body fw-bolder">Upgrade to Pro</h5>
-        <h6 className="mb-3 text-body-tertiary fw-normal">
+        <h5 className="mt-4 text-default font-black">Upgrade to Pro</h5>
+        <h6 className="mb-4 text-subtle font-normal">
           Expand your storage capacity with our upgraded storage options.
         </h6>
-        <Button variant="primary" size="sm" className="w-100">
+        <Button variant="primary" size="sm" className="w-full">
           Upgrade Now
         </Button>
       </div>

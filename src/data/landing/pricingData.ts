@@ -1,150 +1,150 @@
-import pie from 'assets/img/icons/illustrations/pie.png';
 import bolt from 'assets/img/icons/illustrations/bolt.png';
 import edit from 'assets/img/icons/illustrations/edit.png';
+import pie from 'assets/img/icons/illustrations/pie.png';
 import shield from 'assets/img/icons/illustrations/shield.png';
-import { faCheck, faStar } from '@fortawesome/free-solid-svg-icons';
 
-export type Feature = {
+/**
+ * A feature row of the pricing lists. `icon` absent = the greyed-out
+ * "not included" row the gold renders without a `.fa-li` bullet.
+ */
+export interface PricingFeature {
   label: string;
+  icon?: 'check' | 'star';
+  /** landing-1 tags "Custom fields" with a `badge-phoenix-warning` New badge */
   newBadge?: boolean;
-  supported: boolean;
-};
+  /** landing-2 tags "Custom fields" with a `badge-phoenix-info` Info badge */
+  infoBadge?: boolean;
+}
 
-export type Pricing = {
+export interface Pricing {
   id: number;
-  icon: string;
+  image: string;
   category: string;
+  price: string;
+  /** literal gold class string for the `.card` */
+  cardClass?: string;
+  buyBtnClass: string;
+  /** renders the `.badge-pricing` "Most popular" ribbon */
   popular?: boolean;
-  price: number;
-  features: string[];
-};
+  features: PricingFeature[];
+}
 
 export interface PricingAlternate {
   id: number;
   category: string;
-  price: number;
-  features: string[];
+  price: string;
+  cardClass: string;
+  buyBtnClass: string;
+  features: PricingFeature[];
 }
 
-export const pricingFeatures = [
-  {
-    id: 'timeline',
-    label: 'Timeline',
-    icon: faCheck
-  },
-  {
-    id: 'adv_search',
-    label: 'Advanced Search',
-    icon: faCheck
-  },
-  {
-    id: 'custom_fields',
-    label: 'Custom fields',
-    new: true,
-    icon: faCheck
-  },
-  {
-    id: 'task_dependencies',
-    label: 'Task dependencies',
-    icon: faStar
-  },
-  {
-    id: 'private_teams_projects',
-    label: 'Private teams & projects',
-    icon: faStar
-  }
-];
-
+/** `pricingCards` in landing-1/Pricing.pug */
 export const pricingItems: Pricing[] = [
   {
     id: 1,
-    icon: pie,
+    image: pie,
     category: 'Starter',
-    price: 6,
-    features: ['timeline', 'adv_search']
+    price: '6',
+    cardClass: 'xl:rounded-e-none rounded-s',
+    buyBtnClass: 'btn-outline-primary',
+    features: [
+      { label: 'Timeline', icon: 'check' },
+      { label: 'Advanced Search', icon: 'check' },
+      { label: 'Custom fields', newBadge: true },
+      { label: 'Task dependencies' },
+      { label: 'Private teams & projects' }
+    ]
   },
   {
     id: 2,
-    icon: bolt,
+    image: bolt,
     category: 'Team',
+    price: '12',
+    cardClass:
+      'rounded-t-none xl:rounded-none border border-2 border-primary mt-8 md:mt-0',
+    buyBtnClass: 'btn-primary',
     popular: true,
-    price: 12,
-    features: ['timeline', 'adv_search', 'custom_fields']
+    features: [
+      { label: 'Timeline', icon: 'check' },
+      { label: 'Advanced Search', icon: 'check' },
+      { label: 'Custom fields', icon: 'check', newBadge: true },
+      { label: 'Task dependencies' },
+      { label: 'Private teams & projects' }
+    ]
   },
   {
     id: 3,
-    icon: edit,
+    image: edit,
     category: 'Business',
-    price: 23,
-    features: ['timeline', 'adv_search', 'custom_fields', 'task_dependencies']
+    price: '23',
+    cardClass: 'rounded-s xl:rounded-s-none mt-8 md:mt-0',
+    buyBtnClass: 'btn-outline-primary',
+    features: [
+      { label: 'Timeline', icon: 'check' },
+      { label: 'Advanced Search', icon: 'check' },
+      { label: 'Custom fields', icon: 'check', newBadge: true },
+      { label: 'Task dependencies', icon: 'star' },
+      { label: 'Private teams & projects' }
+    ]
   },
   {
     id: 4,
-    icon: shield,
+    image: shield,
     category: 'Enterprise',
-    price: 40,
+    price: '40',
+    buyBtnClass: 'btn-outline-primary',
     features: [
-      'timeline',
-      'adv_search',
-      'custom_fields',
-      'task_dependencies',
-      'private_teams_projects'
+      { label: 'Timeline', icon: 'check' },
+      { label: 'Advanced Search', icon: 'check' },
+      { label: 'Custom fields', icon: 'check', newBadge: true },
+      { label: 'Task dependencies', icon: 'star' },
+      { label: 'Private teams & projects', icon: 'star' }
     ]
   }
 ];
 
-export const pricingFeaturesAlternate = [
-  {
-    id: 'timeline',
-    label: 'Timeline',
-    icon: faCheck
-  },
-  {
-    id: 'adv_search',
-    label: 'Advanced Search',
-    icon: faCheck
-  },
-  {
-    id: 'custom_fields',
-    label: 'Custom fields',
-    new: true,
-    icon: faCheck
-  },
-  {
-    id: 'task_dependencies',
-    label: 'Task dependencies',
-    icon: faCheck
-  },
-  {
-    id: 'private_teams_projects',
-    label: 'Private teams & projects',
-    icon: faCheck
-  }
-];
-
+/** `pricingItems` in landing-2/Pricing.pug */
 export const pricingItemsAlternate: PricingAlternate[] = [
   {
     id: 1,
     category: 'Starter',
-    price: 15,
-    features: ['timeline']
+    price: '15',
+    cardClass: 'border-0',
+    buyBtnClass: 'btn-outline-primary',
+    features: [
+      { label: 'Timeline', icon: 'check' },
+      { label: 'Advanced Search' },
+      { label: 'Custom fields' },
+      { label: 'Task dependencies' },
+      { label: 'Private teams & projects' }
+    ]
   },
   {
     id: 2,
     category: 'Business',
-    price: 23,
-    features: ['timeline', 'adv_search', 'custom_fields']
+    price: '23',
+    cardClass: 'border border-2 border-info rounded-4',
+    buyBtnClass: 'btn-primary',
+    features: [
+      { label: 'Timeline', icon: 'check' },
+      { label: 'Advanced Search', icon: 'check' },
+      { label: 'Custom fields', icon: 'check', infoBadge: true },
+      { label: 'Task dependencies' },
+      { label: 'Private teams & projects' }
+    ]
   },
   {
     id: 3,
     category: 'Enterprise',
-    price: 40,
+    price: '40',
+    cardClass: 'border-0',
+    buyBtnClass: 'btn-outline-primary',
     features: [
-      'timeline',
-      'adv_search',
-      'custom_fields',
-      'task_dependencies',
-      'private_teams_projects'
+      { label: 'Timeline', icon: 'check' },
+      { label: 'Advanced Search', icon: 'check' },
+      { label: 'Custom fields', icon: 'check' },
+      { label: 'Task dependencies', icon: 'check' },
+      { label: 'Private teams & projects', icon: 'check' }
     ]
   }
 ];

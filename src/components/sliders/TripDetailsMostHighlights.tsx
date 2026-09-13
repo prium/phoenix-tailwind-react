@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { NavigationOptions } from 'swiper/types';
@@ -12,21 +12,20 @@ import {
 interface TripDetailsMostHighlightsProps {
   items: MostHighlightedImage[];
 }
+
+/** slider half of `+TripGallery` in mixins/travel-agency/trip/TripGallery.pug */
 const TripDetailsMostHighlights = ({
   items
 }: TripDetailsMostHighlightsProps) => {
   const navigationNextRef = useRef(null);
   const navigationPrevRef = useRef(null);
   return (
-    <div className="position-relative swiper-theme-container hotel-compare-slider overflow-hidden rounded-2">
+    <div className="swiper-theme-container rounded-md overflow-hidden">
       <Swiper
-        dir="horizontal"
+        className="theme-slider"
         slidesPerView={1}
         loop
-        autoplay={{
-          delay: 5000,
-          disableOnInteraction: false
-        }}
+        autoplay
         pagination={{
           clickable: true
         }}
@@ -43,23 +42,29 @@ const TripDetailsMostHighlights = ({
           }
         }}
       >
-        {items.map((item, index) => (
-          <SwiperSlide key={index}>
+        {items.map(item => (
+          <SwiperSlide key={item.id}>
             <img
               src={item.image}
               alt=""
-              className="img-fluid object-fit-cover"
+              className="w-full h-full object-cover"
             />
           </SwiperSlide>
         ))}
       </Swiper>
       <div className="swiper-nav swiper-nav-inside">
-        <button className="swiper-button-next" ref={navigationNextRef}>
-          <FontAwesomeIcon icon={faChevronRight} />
-        </button>
-        <button className="swiper-button-prev" ref={navigationPrevRef}>
-          <FontAwesomeIcon icon={faChevronLeft} />
-        </button>
+        <div
+          className="swiper-button-next bg-transparent! border-0! text-white!"
+          ref={navigationNextRef}
+        >
+          <FontAwesomeIcon icon={faChevronRight} className="nav-icon" />
+        </div>
+        <div
+          className="swiper-button-prev bg-transparent! border-0! text-white!"
+          ref={navigationPrevRef}
+        >
+          <FontAwesomeIcon icon={faChevronLeft} className="nav-icon" />
+        </div>
       </div>
     </div>
   );

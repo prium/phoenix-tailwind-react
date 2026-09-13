@@ -1,19 +1,20 @@
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Input, InputGroup } from '@hummingbirdui/react';
 import Button from 'components/base/Button';
 import { AddRoomWizardFormData } from 'data/travel-agency/addRoom';
 import { useWizardFormContext } from 'providers/WizardFormProvider';
-import React, { useEffect, useState } from 'react';
-import { FormControl, InputGroup } from 'react-bootstrap';
+import { useEffect, useState } from 'react';
 
-const ConterForm = ({ name }: { name: string }) => {
+/** gold `.input-group(data-quantity)` counter of RoomDetailsForm.pug */
+const ConterForm = ({ name, id }: { name: string; id?: string }) => {
   const methods = useWizardFormContext<AddRoomWizardFormData>();
   const { formData, setFormData } = methods;
   const [value, setValue] = useState(2);
 
   const handleCount = (type: string) => {
-    type === 'increase' && setValue(value + 1);
-    type === 'decrease' && value >= 1 && setValue(value - 1);
+    if (type === 'increase') setValue(value + 1);
+    if (type === 'decrease' && value >= 1) setValue(value - 1);
   };
 
   useEffect(() => {
@@ -23,20 +24,21 @@ const ConterForm = ({ name }: { name: string }) => {
   return (
     <InputGroup>
       <Button
-        className="border px-3 bg-body-emphasis bg-body-hover lh-1"
+        className="border border-default px-4 bg-soft hover:bg-default leading-none"
         onClick={() => handleCount('decrease')}
       >
         <FontAwesomeIcon icon={faMinus} />
       </Button>
-
-      <FormControl
+      <Input
+        id={id}
         type="number"
         name={name}
-        defaultValue={value}
+        value={value}
+        onChange={e => setValue(parseInt(e.target.value) || 0)}
         className="input-spin-none text-center"
       />
       <Button
-        className="border px-3 bg-body-emphasis bg-body-hover lh-1"
+        className="border border-default px-4 bg-soft hover:bg-default leading-none"
         onClick={() => handleCount('increase')}
       >
         <FontAwesomeIcon icon={faPlus} />

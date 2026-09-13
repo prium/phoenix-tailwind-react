@@ -572,7 +572,7 @@ export const routes: RouteItems[] = [
         icon: faChartGantt,
         path: 'apps/gantt-chart',
         pathName: 'app-gantt-chart',
-        active: true,
+        active: true
       },
       {
         name: 'social',
@@ -963,7 +963,7 @@ export const routes: RouteItems[] = [
             name: 'sidenav-collapse',
             path: '/pages/demo/sidenav-collapse',
             pathName: 'demo-sidenav-collapse',
-            active: true,
+            active: true
           },
           {
             name: 'darknav',
@@ -1041,9 +1041,9 @@ export const routes: RouteItems[] = [
             active: true,
             pages: [
               {
-                name: 'form-control',
-                path: '/modules/forms/form-control',
-                pathName: 'form-control',
+                name: 'input',
+                path: '/modules/forms/input',
+                pathName: 'forms-input',
                 active: true
               },
               {
@@ -1270,9 +1270,9 @@ export const routes: RouteItems[] = [
             active: true,
             pages: [
               {
-                name: 'bootstrap',
-                path: '/modules/components/carousel/bootstrap',
-                pathName: 'components-bs-carousel',
+                name: 'hummingbird',
+                path: '/modules/components/carousel/hummingbird',
+                pathName: 'components-hb-carousel',
                 active: true
               },
               {
@@ -1284,20 +1284,20 @@ export const routes: RouteItems[] = [
             ]
           },
           {
-            name: 'collapse',
-            pathName: 'components-bs-collapse',
-            path: '/modules/components/collapse',
+            name: 'collapsible',
+            pathName: 'components-collapsible',
+            path: '/modules/components/collapsible',
             active: true
           },
           {
             name: 'dropdown',
-            pathName: 'components-bs-dropdown',
+            pathName: 'components-dropdown',
             path: '/modules/components/dropdown',
             active: true
           },
           {
             name: 'list-group',
-            pathName: 'components-bs-list-group',
+            pathName: 'components-list-group',
             path: '/modules/components/list-group',
             active: true
           },
@@ -1315,9 +1315,9 @@ export const routes: RouteItems[] = [
             new: true
           },
           {
-            name: 'modals',
-            pathName: 'components-modal',
-            path: '/modules/components/modal',
+            name: 'dialog',
+            pathName: 'components-dialog',
+            path: '/modules/components/dialog',
             active: true
           },
           {
@@ -1357,21 +1357,21 @@ export const routes: RouteItems[] = [
             ]
           },
           {
-            name: 'offcanvas',
-            pathName: 'components-offcanvas',
-            path: '/modules/components/offcanvas',
+            name: 'drawer',
+            pathName: 'components-drawer',
+            path: '/modules/components/drawer',
             active: true
           },
           {
-            name: 'progress-bar',
-            pathName: 'basic-progress-bar',
-            path: '/modules/components/progress-bar',
+            name: 'progress',
+            pathName: 'components-progress',
+            path: '/modules/components/progress',
             active: true
           },
           {
-            name: 'placeholder',
-            pathName: 'components-placeholder',
-            path: '/modules/components/placeholder',
+            name: 'skeleton',
+            pathName: 'components-skeleton',
+            path: '/modules/components/skeleton',
             active: true
           },
           {
@@ -1387,8 +1387,8 @@ export const routes: RouteItems[] = [
             active: true
           },
           {
-            name: 'spinners',
-            path: '/modules/components/spinners',
+            name: 'loader',
+            path: '/modules/components/loader',
             pathName: 'components-spinners',
             active: true
           },
@@ -1401,7 +1401,7 @@ export const routes: RouteItems[] = [
           {
             name: 'tooltips',
             path: '/modules/components/tooltips',
-            pathName: 'components-bs-tooltips',
+            pathName: 'components-tooltips',
             active: true
           }
         ]

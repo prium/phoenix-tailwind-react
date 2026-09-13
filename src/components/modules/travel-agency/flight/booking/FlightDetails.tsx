@@ -1,5 +1,4 @@
-import React from 'react';
-import { Table, Row, Col } from 'react-bootstrap';
+import { cn } from '@hummingbirdui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faSuitcaseRolling,
@@ -13,16 +12,16 @@ interface BaggageRowProps {
   weight: string;
 }
 
-const BaggageRow: React.FC<BaggageRowProps> = ({ icon, label, weight }) => (
+const BaggageRow = ({ icon, label, weight }: BaggageRowProps) => (
   <tr>
     <td className="text-nowrap py-1">
-      <p className="mb-0 text-body-tertiary text-nowrap">
-        <FontAwesomeIcon icon={icon} className="text-body-emphasis me-2" />
+      <p className="mb-0 text-subtle text-nowrap">
+        <FontAwesomeIcon icon={icon} className="text-emphasis me-2" />
         {label}
       </p>
     </td>
-    <td className="w-max-content py-1 pe-1">
-      <p className="mb-0 text-body-tertiary">:</p>
+    <td className="w-max py-1 pe-1">
+      <p className="mb-0 text-subtle">:</p>
     </td>
     <td className="py-1 align-middle">
       <h5 className="mb-0">{weight}</h5>
@@ -30,15 +29,15 @@ const BaggageRow: React.FC<BaggageRowProps> = ({ icon, label, weight }) => (
   </tr>
 );
 
-const FlightDetails = () => {
+/** `+FlightDetails` in mixins/travel-agency/flight/booking/FlightDetails.pug */
+const FlightDetails = ({ className }: { className?: string }) => {
   return (
-    <div className="mb-6">
-      <h3 className="mb-4">Flight Details</h3>
-      <Row className="g-0 justify-content-between mb-4">
-        {/* Baggage Weight Limit Section */}
-        <Col lg={3} className="border-end-lg mb-5 mb-lg-0">
-          <h5 className="mb-4">Baggage weight limit</h5>
-          <Table borderless className="mb-0" style={{ maxWidth: '9.375rem' }}>
+    <div className={cn(className)}>
+      <h3 className="mb-6">Flight Details</h3>
+      <div className="row g-0 justify-between mb-6">
+        <div className="lg:col-3 lg:border-e mb-8 lg:mb-0">
+          <h5 className="mb-6">Baggage weight limit</h5>
+          <table className="table table-borderless mb-0 max-w-37.5">
             <tbody>
               <tr>
                 <th className="p-0" />
@@ -52,13 +51,12 @@ const FlightDetails = () => {
               />
               <BaggageRow icon={faBriefcase} label="Carry" weight="7 kgs" />
             </tbody>
-          </Table>
-        </Col>
+          </table>
+        </div>
 
-        {/* Policy Section */}
-        <Col className="col-auto col-lg-8">
-          <h5 className="mb-4">Policy</h5>
-          <div className="d-flex flex-column flex-sm-row justify-content-between gap-4">
+        <div className="col-auto lg:col-8">
+          <h5 className="mb-6">Policy</h5>
+          <div className="flex flex-col sm:flex-row justify-between gap-6">
             <div>
               <p className="mb-2 text-info">Cancellation</p>
               <p className="mb-0">
@@ -72,12 +70,12 @@ const FlightDetails = () => {
               </p>
             </div>
           </div>
-        </Col>
-      </Row>
+        </div>
+      </div>
 
       <p className="mb-0 text-info">
         *The airline’s fee is indicative and per person. Convenience fee is
-        non-refundable.
+        nom-refundable
       </p>
     </div>
   );

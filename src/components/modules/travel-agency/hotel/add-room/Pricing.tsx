@@ -1,92 +1,117 @@
+import {
+  cn,
+  Col,
+  FloatingLabel,
+  Input,
+  Row,
+  Select
+} from '@hummingbirdui/react';
 import { AddPropertyWizardFormData } from 'data/travel-agency/addProperty';
 import { useWizardFormContext } from 'providers/WizardFormProvider';
-import React, { useState } from 'react';
-import { Col, FloatingLabel, Form, Row, Tab } from 'react-bootstrap';
+import { useState } from 'react';
 import WeeklyPricingCard from './WeeklyPricingCard';
 import ExtraBed from './ExtraBed';
 import Breakfast from './Breakfast';
 
+/** gold `+PricingForm` (mixins/travel-agency/add-room/PricingForm.pug) */
 const Pricing = () => {
   const methods = useWizardFormContext<AddPropertyWizardFormData>();
   const { onChange } = methods;
-  const [selectedTab, setSelectedTab] = useState('allDayPricing');
+  const [allDayPricing, setAllDayPricing] = useState(true);
 
   return (
     <>
-      <h3 className="mb-6">Pricing</h3>
+      <h3 className="mb-10">Pricing</h3>
       <h4 className="mb-2">Base price per night</h4>
-      <p className="mb-5 text-body-tertiary">
+      <p className="mb-9 text-subtle">
         Get a great value stay with us, starting at our base price per night.
       </p>
-      <Tab.Container activeKey={selectedTab}>
-        <Form.Group className="mb-2">
-          <Form.Check
+      <div
+        className="nav nav-tabs mb-4 border-0"
+        id="day-week-pricing"
+        role="tablist"
+      >
+        <div className="form-check-inline me-4">
+          <input
+            className="form-check-input"
             type="radio"
-            label="Across all days"
-            id="allDayPricing"
-            value="allDayPricing"
-            name="isAllDayPricing"
-            inline
-            checked={selectedTab === 'allDayPricing'}
-            onChange={e => setSelectedTab(e.target.value)}
+            id="all-day-tab"
+            name="dayWeekPricing"
+            checked={allDayPricing}
+            onChange={() => setAllDayPricing(true)}
           />
-          <Form.Check
-            inline
+          <label className="form-check-label" htmlFor="all-day-tab">
+            Across all days
+          </label>
+        </div>
+        <div className="form-check-inline">
+          <input
+            className="form-check-input"
             type="radio"
-            id="weeklyPricing"
-            value="weeklyPricing"
-            label="By day of week"
-            name="isAllDayPricing"
-            checked={selectedTab === 'weeklyPricing'}
-            onChange={e => setSelectedTab(e.target.value)}
+            id="day-of-week-tab"
+            name="dayWeekPricing"
+            checked={!allDayPricing}
+            onChange={() => setAllDayPricing(false)}
           />
-        </Form.Group>
-        <Tab.Content>
-          <Tab.Pane eventKey="allDayPricing">
-            <Row className="gx-2 w-sm-60">
-              <Col xs={8}>
-                <FloatingLabel controlId="roomPrice" label="Room Price">
-                  <Form.Control
-                    type="number"
-                    placeholder=""
-                    name="roomPrice"
-                    onChange={onChange}
-                    className="input-spin-none"
-                  />
-                </FloatingLabel>
-              </Col>
-              <Col xs={4}>
-                <FloatingLabel controlId="currency" label="Currency">
-                  <Form.Select name="currency" onChange={onChange}>
-                    <option value="USD">USD</option>
-                    <option value="EUR">EUR</option>
-                    <option value="BDT">BDT</option>
-                  </Form.Select>
-                </FloatingLabel>
-              </Col>
-            </Row>
-          </Tab.Pane>
-          <Tab.Pane eventKey="weeklyPricing">
-            <WeeklyPricingCard />
-          </Tab.Pane>
-        </Tab.Content>
-      </Tab.Container>
-      <>
-        <h5 className="mb-2 mt-5 lh-1 text-body-highlight fw-bold">
-          How many people are included in the base rate?
-        </h5>
-        <FloatingLabel
-          controlId="peopleSelect"
-          label="Select"
-          className="w-sm-60"
+          <label className="form-check-label" htmlFor="day-of-week-tab">
+            By day of week
+          </label>
+        </div>
+      </div>
+      <div className="tab-content">
+        <div
+          className={cn('tab-pane fade', { 'show active': allDayPricing })}
+          id="allDayPricing"
+          role="tabpanel"
         >
-          <Form.Select name="peopleInBaseRate" onChange={onChange}>
-            <option value="1">05 People</option>
-            <option value="2">10 People</option>
-            <option value="3">15 People</option>
-          </Form.Select>
-        </FloatingLabel>
-      </>
+          <Row className="gx-2 sm:w-119">
+            <Col xs={8}>
+              <FloatingLabel htmlFor="room-price" label="Room price">
+                <Input
+                  type="text"
+                  name="roomPrice"
+                  id="room-price"
+                  placeholder="Room price"
+                  onChange={onChange}
+                />
+              </FloatingLabel>
+            </Col>
+            <Col xs={4}>
+              <FloatingLabel htmlFor="room-price-currency" label="Currency">
+                <Select
+                  name="currency"
+                  id="room-price-currency"
+                  onChange={onChange}
+                >
+                  <option value="1">USD</option>
+                  <option value="2">EUR</option>
+                  <option value="2">BDT</option>
+                </Select>
+              </FloatingLabel>
+            </Col>
+          </Row>
+        </div>
+        <div
+          className={cn('tab-pane fade', { 'show active': !allDayPricing })}
+          id="dayOfWeekPricing"
+          role="tabpanel"
+        >
+          <WeeklyPricingCard />
+        </div>
+      </div>
+      <label className="mb-2 mt-8 leading-none text-highlight font-bold">
+        How many people are included in the base rate?
+      </label>
+      <div className="form-floating sm:w-119">
+        <Select name="peopleInBaseRate" id="people-select" onChange={onChange}>
+          <option value="1">05 People</option>
+          <option value="2">10 People</option>
+          <option value="2">15 People</option>
+        </Select>
+        <label className="form-label" htmlFor="people-select">
+          Select
+        </label>
+      </div>
       <ExtraBed />
       <Breakfast />
     </>

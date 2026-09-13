@@ -16,12 +16,12 @@ const EcommerceLayout = () => {
   return (
     <>
       <EcommerceTopbar />
-      <div className="position-relative">
+      <div className="relative">
         <EcommerceNavbar />
         <Outlet />
       </div>
       <EcommerceFooter />
-      <Footer className="bg-body-emphasis" />
+      <Footer className="bg-soft" />
       <ChatWidget />
     </>
   );

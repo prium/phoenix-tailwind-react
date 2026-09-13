@@ -1,4 +1,4 @@
-import { Row, Col } from 'react-bootstrap';
+import { Col, Row, cn } from '@hummingbirdui/react';
 import { Link } from 'react-router';
 import logo1 from 'assets/img/icons/logo-1.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,14 +8,13 @@ import {
   faLinkedinIn,
   faTwitter
 } from '@fortawesome/free-brands-svg-icons';
-import bg41 from 'assets/img/bg/41.jpg';
-import classNames from 'classnames';
 
-interface footerItems {
+interface FooterItem {
   title: string;
   link: string;
 }
-const footerItems: footerItems[] = [
+
+const footerItems: FooterItem[] = [
   {
     title: 'Home',
     link: '#!'
@@ -38,41 +37,31 @@ const footerItems: footerItems[] = [
   }
 ];
 
+/** `+FooterLanding` — the `.booking-footer` background/clip-path comes from
+ * assets/css/components/landing.css */
 const Footer = () => {
   return (
-    <section className="booking-footer pb-6 pb-md-11 pt-15">
-      <div
-        className="bg-holder"
-        style={{
-          backgroundImage: `linear-gradient(
-            0deg,
-            rgba(0, 0, 0, 0.8) 0%,
-            rgba(0, 0, 0, 0.8) 100%
-          ),
-          url(${bg41})`,
-          backgroundPosition: 'center',
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
-          zIndex: '-1'
-        }}
-      />
+    <section className="booking-footer pb-10 md:pb-20 pt-30">
       <div className="container-medium">
-        <Row className="gy-3 justify-content-between align-items-center">
+        <Row className="gy-4 justify-between items-center">
           <Col xs="auto">
             <Link to="#!">
               <img src={logo1} alt="" />
             </Link>
           </Col>
           <Col xs="auto">
-            <ul className="mb-0 list-unstyled d-flex flex-wrap">
+            <ul className="p-0 mb-0 list-none flex flex-wrap">
               {footerItems.map((item, index) => (
                 <li
                   key={index}
-                  className={classNames('', {
-                    'me-sm-5 me-3': index !== footerItems.length - 1
+                  className={cn({
+                    'me-4 sm:me-8': index !== footerItems.length - 1
                   })}
                 >
-                  <Link to={item.link} className="fs-8 fw-bold text-white">
+                  <Link
+                    to={item.link}
+                    className="text-base font-bold text-white"
+                  >
                     {item.title}
                   </Link>
                 </li>
@@ -80,16 +69,16 @@ const Footer = () => {
             </ul>
           </Col>
         </Row>
-        <hr className="my-4" />
-        <Row className="gy-3 justify-content-between">
+        <hr className="my-6 border-subtle" />
+        <Row className="gy-4 justify-between">
           <Col xs="auto">
-            <Link to="#!" className="me-4 text-white">
+            <Link to="#!" className="text-white me-6">
               <FontAwesomeIcon icon={faFacebookF} />
             </Link>
-            <Link to="#!" className="me-4 text-white">
+            <Link to="#!" className="text-white me-6">
               <FontAwesomeIcon icon={faTwitter} />
             </Link>
-            <Link to="#!" className="me-4 text-white">
+            <Link to="#!" className="text-white me-6">
               <FontAwesomeIcon icon={faLinkedinIn} />
             </Link>
             <Link to="#!" className="text-white">
@@ -98,9 +87,9 @@ const Footer = () => {
           </Col>
           <Col xs="auto">
             <p className="mb-0 text-white">
-              Thank you for creating with Phoenix | 2023 ©{' '}
+              Thank you for creating with Phoenix | 2026 ©{' '}
               <Link to="https://themewagon.com/" className="text-white">
-                Themewagon
+                ThemeWagon
               </Link>
             </p>
           </Col>

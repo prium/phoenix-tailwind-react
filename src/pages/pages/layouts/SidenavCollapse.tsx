@@ -1,6 +1,6 @@
 import useConfigMountEffect from 'hooks/useConfigMountEffect';
 import useSettingsMountEffect from 'hooks/useSettingsMountEffect';
-import Ecommerce from 'pages/dashboard/ecommerce';
+import ProjectManagement from 'pages/dashboard/ProjectManagement';
 
 const SidenavCollapse = () => {
   useSettingsMountEffect({
@@ -15,7 +15,9 @@ const SidenavCollapse = () => {
     isNavbarVerticalCollapsed: true
   });
 
-  return <Ecommerce />;
+  // the gold `demo/sidenav-collapse.html` demos this layout over the project
+  // management dashboard, not the e-commerce one
+  return <ProjectManagement />;
 };
 
 export default SidenavCollapse;

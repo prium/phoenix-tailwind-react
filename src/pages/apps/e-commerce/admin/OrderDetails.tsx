@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'components/base/Button';
 import OrderDetailsTable from 'components/tables/OrderDetailsTable';
-import { Card, Col, Dropdown, Form, Row } from 'react-bootstrap';
+import { Card, Col, Dropdown, Row, Select } from '@hummingbirdui/react';
 import { Link } from 'react-router';
 import OrderDetailsSummaryCard from 'components/cards/OrderDetailsSummaryCard';
 import {
@@ -21,55 +21,57 @@ const OrderDetails = () => {
   return (
     <div>
       <PageBreadcrumb items={defaultBreadcrumbItems} />
-      <div className="mb-9">
-        <h2 className="mb-1">
+      <div className="mb-16">
+        <h2 className="mb-0">
           Order <span>#349</span>
         </h2>
-        <div className="d-flex flex-wrap flex-between-center mb-3 gap-2">
-          <p className="text-body-secondary lh-sm mb-0">
+        <div className="sm:flex flex-between-center mb-4">
+          <p className="text-muted leading-sm mb-0 mt-2 sm:mt-0">
             Customer ID :{' '}
-            <Link className="fw-bold" to="#!">
+            <Link className="font-bold" to="#!">
               {' '}
               2364847
             </Link>
           </p>
-          <div className="d-flex">
+          <div className="flex">
             <Button
               variant="link"
-              className="ps-0 pe-3 text-body text-decoration-none"
+              className="ps-0 pe-4 text-default no-underline"
               startIcon={<FontAwesomeIcon icon={faPrint} className="me-2" />}
             >
               Print
             </Button>
             <Button
               variant="link"
-              className="px-3 text-body text-decoration-none"
+              className="px-4 text-default no-underline"
               startIcon={<FontAwesomeIcon icon={faUndo} className="me-2" />}
             >
               Refund
             </Button>
             <Dropdown>
-              <Dropdown.Toggle
-                variant=""
-                className="ps-3 pe-0 dropdown-caret-none text-decoration-none"
-              >
-                More action
-                <FontAwesomeIcon icon={faChevronDown} className="ms-2" />
-              </Dropdown.Toggle>
-              <Dropdown.Menu align="end">
-                <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-              </Dropdown.Menu>
+              <Dropdown.Trigger asChild>
+                <button
+                  type="button"
+                  className="btn text-default dropdown-caret-none ps-4 pe-0"
+                >
+                  More action
+                  <FontAwesomeIcon icon={faChevronDown} className="ms-2" />
+                </button>
+              </Dropdown.Trigger>
+              <Dropdown.Content align="end">
+                <Dropdown.Item>Action</Dropdown.Item>
+                <Dropdown.Item>Another action</Dropdown.Item>
+                <Dropdown.Item>Something else here</Dropdown.Item>
+              </Dropdown.Content>
             </Dropdown>
           </div>
         </div>
-        <Row className="g-5 gy-7">
+        <Row className="g-8 gy-12">
           <Col xs={12} xl={8} xxl={9}>
-            <div className="mb-6">
+            <div className="mb-10">
               <OrderDetailsTable />
             </div>
-            <Row className="gx-4 gy-6 g-xl-7 justify-content-sm-center justify-content-xl-start">
+            <Row className="gx-6 gy-10 xl:g-12 sm:justify-center xl:justify-start">
               <Col xs={12} sm="auto">
                 <BillingDetails />
               </Col>
@@ -87,21 +89,19 @@ const OrderDetails = () => {
             <OrderDetailsSummaryCard className="mb-4" />
             <Card>
               <Card.Body>
-                <Card.Title as="h3" className="mb-4">
-                  Order Status
-                </Card.Title>
+                <h3 className="card-title mb-6">Order Status</h3>
                 <h6 className="mb-2">Payment status</h6>
-                <Form.Select className="mb-4">
+                <Select className="mb-6" aria-label="payment status">
                   <option value="processing">Processing</option>
                   <option value="canceled">Canceled</option>
                   <option value="completed">Completed</option>
-                </Form.Select>
+                </Select>
                 <h6 className="mb-2">Fulfillment status</h6>
-                <Form.Select>
+                <Select aria-label="fulfillment status">
                   <option value="unfulfilled">Unfulfilled</option>
                   <option value="fulfilled">Fulfilled</option>
                   <option value="Pending">Pending</option>
-                </Form.Select>
+                </Select>
               </Card.Body>
             </Card>
           </Col>

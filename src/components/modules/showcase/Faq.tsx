@@ -17,11 +17,11 @@ const Faq = () => {
             >
               {showcaseFaqs.map((faq, index) => (
                 <Accordion.Item
-                  className={classNames('border-bottom border-translucent')}
+                  className={classNames('border-bottom border-subtle')}
                   eventKey={String(index)}
                   key={faq.id}
                 >
-                  <Accordion.Button className="fs-7">
+                  <Accordion.Button className="text-lg">
                     {faq.question}
                   </Accordion.Button>
                   <Accordion.Body className="pt-0">{faq.answer}</Accordion.Body>

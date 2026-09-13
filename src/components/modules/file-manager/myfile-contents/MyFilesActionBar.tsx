@@ -1,146 +1,166 @@
-import { Dropdown, Button, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faXmark,
   faDownload,
-  faTrash,
-  faShareNodes,
   faEllipsis,
-  faInfoCircle
+  faInfoCircle,
+  faShareNodes,
+  faTrash,
+  faXmark
 } from '@fortawesome/free-solid-svg-icons';
-import { useFileManagerContext } from 'providers/FileManagerProvider';
-import { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Tooltip, cn } from '@hummingbirdui/react';
+import Button from 'components/base/Button';
+import { File } from 'data/file-manager';
 import { useAdvanceTableContext } from 'providers/AdvanceTableProvider';
+import { useFileManagerContext } from 'providers/FileManagerProvider';
+import FilesDropdown from '../FilesDropdown';
 
-const MyFilesActionBar = () => {
+const BULK_BTN =
+  'btn-phoenix-secondary text-sm btn-square size-7.5 hidden sm:block';
+
+/**
+ * Gold action bar of `apps/file-manager/{grid,list}-view.pug`. The two pages
+ * ship slightly different class strings (the grid one greys the item count and
+ * left-aligns its dropdown items), so they are switched on the current view.
+ */
+interface MyFilesActionBarProps {
+  /** `2xl` and up: hides/shows the static details column */
+  onToggleDetails: () => void;
+  /** below `2xl`: opens the `#fileDetailsOffcanvas` drawer */
+  onOpenDetailsOffcanvas: () => void;
+}
+
+const MyFilesActionBar = ({
+  onToggleDetails,
+  onOpenDetailsOffcanvas
+}: MyFilesActionBarProps) => {
   const {
     showFileDetails,
-    setShowFileDetails,
-    setCheckedFileIds,
     checkedFileIds,
+    setCheckedFileIds,
     fileCollection,
-    setFileCollection
+    setFileCollection,
+    isGridView
   } = useFileManagerContext();
-  const table = useAdvanceTableContext();
-  const [deleteTooltip, setDeleteTooltip] = useState(false);
-  const handleDeleteFiles = () => {
-    const updatedFiles = fileCollection.filter(
-      file => !checkedFileIds.includes(file.id)
+  const table = useAdvanceTableContext<File>();
+
+  const handleDelete = () => {
+    setFileCollection(
+      fileCollection.filter(file => !checkedFileIds.includes(file.id))
     );
-    setFileCollection(updatedFiles);
     setCheckedFileIds([]);
-    setDeleteTooltip(!deleteTooltip);
+    table.setRowSelection({});
   };
 
-  return (
-    <div className="myfiles-action-bar mx-n4 mb-4">
-      {checkedFileIds.length == 0 && (
-        <h6
-          className="mb-0 text-body-tertiary"
-          id="file-manager-replace-element"
-        >
-          {table.getState().globalFilter
-            ? ` ${table.getRowCount()} items found`
-            : ` Total ${table.getRowCount()} items`}
-        </h6>
-      )}
+  const clearSelection = () => {
+    setCheckedFileIds([]);
+    table.setRowSelection({});
+  };
 
-      <div
-        id="file-manager-actions"
-        className={checkedFileIds.length ? 'd-block' : 'd-none'}
-      >
-        <div className="d-flex align-items-center">
-          <button className="btn p-0 fs-8 me-2 me-sm-3">
-            <FontAwesomeIcon
-              onClick={() => {
-                setCheckedFileIds([]);
-                table.setRowSelection({});
-              }}
-              icon={faXmark}
-              transform="down-1"
-            />
-          </button>
-          <h6 className="mb-0 me-4 text-nowrap text-body-tertiary">
-            {checkedFileIds.length} item selected
-          </h6>
-
-          <div className="d-flex gap-1 gap-sm-2">
-            <OverlayTrigger
-              placement="top"
-              overlay={<Tooltip id="file-download-tooltip">Download</Tooltip>}
-            >
-              <Button
-                variant="phoenix-secondary"
-                className="fs-10 btn-square-sm d-none d-sm-block"
-              >
-                <FontAwesomeIcon icon={faDownload} />
-              </Button>
-            </OverlayTrigger>
-            <OverlayTrigger
-              placement="top"
-              show={deleteTooltip}
-              onToggle={setDeleteTooltip}
-              overlay={<Tooltip id="file-download-tooltip">Delete</Tooltip>}
-            >
-              <Button
-                variant="phoenix-secondary"
-                className="fs-10 btn-square-sm d-none d-sm-block"
-                onClick={handleDeleteFiles}
-              >
-                <FontAwesomeIcon icon={faTrash} />
-              </Button>
-            </OverlayTrigger>
-
-            <OverlayTrigger
-              placement="top"
-              overlay={<Tooltip id="file-download-tooltip">Share</Tooltip>}
-            >
-              <Button
-                variant="phoenix-secondary"
-                className="fs-10 btn-square-sm d-none d-sm-block"
-              >
-                <FontAwesomeIcon icon={faShareNodes} />
-              </Button>
-            </OverlayTrigger>
-
-            <Dropdown align="end">
-              <Dropdown.Toggle
-                variant="phoenix-secondary"
-                className="fs-10 btn-square-sm dropdown-caret-none"
-              >
-                <FontAwesomeIcon icon={faEllipsis} />
-              </Dropdown.Toggle>
-              <Dropdown.Menu
-                className="dropdown-menu-end"
-                style={{ zIndex: 6 }}
-              >
-                <Dropdown.Item href="#">Share</Dropdown.Item>
-                <Dropdown.Item href="#">Download</Dropdown.Item>
-                <Dropdown.Item href="#">Duplicate</Dropdown.Item>
-                <Dropdown.Item href="#">Move</Dropdown.Item>
-                <Dropdown.Item href="#">Rename</Dropdown.Item>
-                <Dropdown.Item href="#">Move to Bin</Dropdown.Item>
-                <Dropdown.Divider />
-                <Dropdown.Item href="#" className="text-danger">
-                  Delete
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </div>
-        </div>
-      </div>
-      <OverlayTrigger
-        placement="top"
-        overlay={<Tooltip id="file-details-tooltip">File Details</Tooltip>}
-      >
+  const detailsButton = (className: string, onClick: () => void) => (
+    <Tooltip>
+      <Tooltip.Trigger asChild>
         <Button
           variant="phoenix-secondary"
-          className="fs-10 btn-square-sm"
-          onClick={() => setShowFileDetails(!showFileDetails)}
+          className={className}
+          data-toggle-file-details
+          onClick={onClick}
         >
           <FontAwesomeIcon icon={faInfoCircle} />
         </Button>
-      </OverlayTrigger>
+      </Tooltip.Trigger>
+      <Tooltip.Content>
+        {showFileDetails ? 'Hide details' : 'Show details'}
+      </Tooltip.Content>
+    </Tooltip>
+  );
+
+  return (
+    <div className="myfiles-action-bar -mx-6 mb-6">
+      <h6
+        className={cn('mb-0', {
+          'text-subtle': isGridView,
+          hidden: checkedFileIds.length > 0
+        })}
+        id="file-manager-replace-element"
+      >
+        {table.getState().globalFilter
+          ? `${table.getRowCount()} items found`
+          : `Total ${table.getRowCount()} items`}
+      </h6>
+      <div
+        id="file-manager-actions"
+        className={cn({ hidden: checkedFileIds.length === 0 })}
+      >
+        <div className="flex items-center">
+          <button
+            type="button"
+            className="btn p-0 text-muted text-base me-2 sm:me-4"
+            data-remove-bulk-check
+            onClick={clearSelection}
+          >
+            <FontAwesomeIcon icon={faXmark} transform="down-1" />
+          </button>
+          <h6
+            className={cn('mb-0 me-6 text-nowrap', {
+              'text-subtle': isGridView
+            })}
+            data-files-selected
+          >
+            {checkedFileIds.length}{' '}
+            {checkedFileIds.length === 1 ? 'item' : 'items'} selected
+          </h6>
+          <div className="flex gap-1 sm:gap-2">
+            <Tooltip>
+              <Tooltip.Trigger asChild>
+                <Button variant="phoenix-secondary" className={BULK_BTN}>
+                  <FontAwesomeIcon icon={faDownload} />
+                </Button>
+              </Tooltip.Trigger>
+              <Tooltip.Content>Download</Tooltip.Content>
+            </Tooltip>
+            <Tooltip>
+              <Tooltip.Trigger asChild>
+                <Button
+                  variant="phoenix-secondary"
+                  className={BULK_BTN}
+                  onClick={handleDelete}
+                >
+                  <FontAwesomeIcon icon={faTrash} />
+                </Button>
+              </Tooltip.Trigger>
+              <Tooltip.Content>Delete</Tooltip.Content>
+            </Tooltip>
+            <Tooltip>
+              <Tooltip.Trigger asChild>
+                <Button variant="phoenix-secondary" className={BULK_BTN}>
+                  <FontAwesomeIcon icon={faShareNodes} />
+                </Button>
+              </Tooltip.Trigger>
+              <Tooltip.Content>Share</Tooltip.Content>
+            </Tooltip>
+            <FilesDropdown
+              className="dropdown"
+              triggerClassName={cn(
+                'btn-phoenix-secondary btn-square size-7.5',
+                isGridView && 'text-sm'
+              )}
+              icon={faEllipsis}
+              itemClassName={cn(
+                'dropdown-item font-semibold',
+                isGridView && 'text-start'
+              )}
+            />
+          </div>
+        </div>
+      </div>
+      {detailsButton(
+        'btn-phoenix-secondary text-sm btn-square size-7.5 hidden 2xl:block',
+        onToggleDetails
+      )}
+      {detailsButton(
+        'btn-phoenix-secondary text-sm btn-square size-7.5 2xl:hidden',
+        onOpenDetailsOffcanvas
+      )}
     </div>
   );
 };

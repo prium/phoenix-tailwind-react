@@ -1,6 +1,5 @@
-import React from 'react';
 import type { Comment } from 'data/travel-agency/customer/trip';
-import { Card } from 'react-bootstrap';
+import { Card } from '@hummingbirdui/react';
 import classNames from 'classnames';
 import Avatar from 'components/base/Avatar';
 import { Link } from 'react-router';
@@ -13,6 +12,7 @@ interface TripDetailsTabReviewCommentCardProps {
   comments: Comment[];
 }
 
+/** review cards in phoenix-tailwind mixins/travel-agency/trip/TripReview.pug */
 const TripDetailsTabReviewCommentCard = ({
   comments
 }: TripDetailsTabReviewCommentCardProps) => {
@@ -26,66 +26,60 @@ const TripDetailsTabReviewCommentCard = ({
           })}
         >
           <Card.Body>
-            <div className="d-flex align-items-center gap-3">
-              <div className="d-flex align-items-center gap-2 position-relative">
+            <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2 relative">
                 <Avatar src={comment.profilePic} size="s" rounded="circle" />
                 <Link
                   to="#!"
-                  className="stretched-link fw-semibold text-body-emphasis"
+                  className="text-emphasis text-base font-semibold stretched-link"
                 >
                   {comment.commenter}
                 </Link>
               </div>
-              <div className="d-flex gap-2">
-                <h6 className="text-body-tertiary mb-0">
+              <div className="flex gap-2">
+                <h6 className="text-subtle mb-0">
                   <FontAwesomeIcon
                     icon={faThumbsUp}
-                    className="text-body-quaternary  me-1"
+                    className="text-soft me-1"
                   />
                   {comment.liked}
                 </h6>
-                <h6 className="text-body-tertiary dark__ mb-0">
+                <h6 className="text-subtle mb-0">
                   <FontAwesomeIcon
                     icon={faThumbsDown}
-                    className="text-body-quaternary me-1"
+                    className="text-muted-light me-1"
                   />
                   {comment.disliked}
                 </h6>
               </div>
             </div>
-            <div className="d-flex my-3">
+            <div className="flex my-4">
               <GenerateStar
                 filledStars={comment.rate}
-                className="me-1 fs-9"
+                className="me-1 text-md"
                 emptyVariant="text-warning-light"
               />
             </div>
             <h4 className="mb-2">{comment.commentTitle}</h4>
-            <p className="text-body-tertiary">{comment.commentDate}</p>
-            <p>{comment.commentDes}</p>
+            <p className="text-subtle text-base">{comment.commentDate}</p>
+            <p className="text-base">{comment.commentDes}</p>
             {comment.uploadedImage && (
-              <div className="d-flex flex-wrap gap-2">
+              <div className="flex gap-2 flex-wrap">
                 <TripDetailsReviewTabCommentUpload
                   uploadedCommentImage={comment.uploadedImage}
                 />
               </div>
             )}
-            {comment.replies.map((replyItem, idx) => (
+            {comment.replies.map(replyItem => (
               <div
                 key={replyItem.id}
-                className={classNames(
-                  'mt-5 border-start border-translucent ps-4',
-                  {
-                    'mt-5': idx === 0,
-                    'mb-3': idx !== comment.replies.length - 1
-                  }
-                )}
+                className="mt-8 border-s border-subtle ps-6"
               >
-                <Link to="#!" className="fw-bold">
+                <Link to="#!" className="text-base font-bold">
                   {replyItem.replier}
                 </Link>
-                <span className="text-body-quaternary"> replied</span>
-                <p className="mt-2">{replyItem.reply}</p>
+                <span className="ms-1 text-base text-soft">replied</span>
+                <p className="mt-2 text-base">{replyItem.reply}</p>
               </div>
             ))}
           </Card.Body>

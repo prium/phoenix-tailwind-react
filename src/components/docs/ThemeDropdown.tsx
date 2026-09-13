@@ -1,80 +1,59 @@
-import { useEffect, useState } from 'react';
-
-import { Dropdown } from 'react-bootstrap';
+import { Dropdown, cn } from '@hummingbirdui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAdjust, faMoon, faSun } from '@fortawesome/free-solid-svg-icons';
+import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { useAppContext } from 'providers/AppProvider';
+import Button from 'components/base/Button';
+import { ThemeVariant } from 'config';
 
+const OPTIONS: { value: ThemeVariant; label: string; icon: IconDefinition }[] =
+  [
+    { value: 'light', label: 'Light', icon: faSun },
+    { value: 'dark', label: 'Dark', icon: faMoon },
+    { value: 'auto', label: 'Auto', icon: faAdjust }
+  ];
+
+/**
+ * A colour-scheme picker, shown on the dark-mode documentation page as one of
+ * the ways to drive the theme. It writes through `setTheme`, which is backed
+ * by hb-react's `useThemeMode` — the same path the settings panel and the
+ * navbar toggler take, so all three stay in step.
+ */
 const ThemeDropdown = () => {
   const {
     config: { theme },
-    setConfig
-  } = useAppContext(); // import AppContext from 'src/context/Context.js'
+    setTheme
+  } = useAppContext();
 
-  const [iconLight, setIconLight] = useState(false);
-  const [iconDark, setIconDark] = useState(false);
-  const [iconAuto, setIconAuto] = useState(false);
-
-  useEffect(() => {
-    theme === 'light' ? setIconLight(true) : setIconLight(false);
-    theme === 'dark' ? setIconDark(true) : setIconDark(false);
-    theme === 'auto' ? setIconAuto(true) : setIconAuto(false);
-  }, [theme]);
+  const active = OPTIONS.find(option => option.value === theme) ?? OPTIONS[0];
 
   return (
-    <Dropdown className="theme-control-dropdown">
-      <Dropdown.Toggle
-        variant="phoenix-secondary"
-        size="sm"
-        style={{
-          minWidth: '40px'
-        }}
-        className="dropdown-caret-none"
-      >
-        <FontAwesomeIcon
-          id="iconLight"
-          className={iconLight !== true ? 'd-none' : 'd-inline'}
-          icon={faSun}
-        />
-        <FontAwesomeIcon
-          id="iconDark"
-          className={iconDark !== true ? 'd-none' : 'd-inline'}
-          icon={faMoon}
-        />
-        <FontAwesomeIcon
-          id="iconAuto"
-          className={iconAuto !== true ? 'd-none' : 'd-inline'}
-          icon={faAdjust}
-        />
-      </Dropdown.Toggle>
-      <Dropdown.Menu
-        className="dropdown-caret border border-translucent py-0 mt-2"
-        aria-labelledby="themeSwitchDropdown"
-      >
-        <div className="rounded-2 py-2">
+    <Dropdown>
+      <Dropdown.Trigger asChild>
+        <Button
+          variant="phoenix"
+          color="secondary"
+          size="sm"
+          className="dropdown-caret-none min-w-10"
+          aria-label={`Colour scheme: ${active.label}`}
+        >
+          <FontAwesomeIcon icon={active.icon} />
+        </Button>
+      </Dropdown.Trigger>
+      <Dropdown.Content align="end" className="py-2">
+        {OPTIONS.map(option => (
           <Dropdown.Item
-            onClick={() => setConfig({ theme: 'light' })}
-            className="d-flex align-items-center gap-2"
+            key={option.value}
+            onClick={() => setTheme(option.value)}
+            className={cn('flex items-center gap-2', {
+              active: option.value === theme
+            })}
           >
-            <FontAwesomeIcon icon={faSun} />
-            light
+            <FontAwesomeIcon icon={option.icon} />
+            {option.label}
           </Dropdown.Item>
-          <Dropdown.Item
-            onClick={() => setConfig({ theme: 'dark' })}
-            className="d-flex align-items-center gap-2"
-          >
-            <FontAwesomeIcon icon={faMoon} />
-            Dark
-          </Dropdown.Item>
-          <Dropdown.Item
-            onClick={() => setConfig({ theme: 'auto' })}
-            className="d-flex align-items-center gap-2"
-          >
-            <FontAwesomeIcon icon={faAdjust} />
-            Auto
-          </Dropdown.Item>
-        </div>
-      </Dropdown.Menu>
+        ))}
+      </Dropdown.Content>
     </Dropdown>
   );
 };

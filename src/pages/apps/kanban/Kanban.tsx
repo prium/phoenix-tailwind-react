@@ -1,13 +1,12 @@
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button from 'components/base/Button';
 import KanbanAddListModal from 'components/modals/KanbanAddListModal';
 import KanbanBoardOffcanvas from 'components/modules/kanban/KanbanBoardOffcanvas';
 import KanbanHeader from 'components/modules/kanban/KanbanHeader';
 import KanbanList from 'components/modules/kanban/KanbanList';
 import KanbanProvider, { useKanbanContext } from 'providers/KanbanProvider';
 import { useMainLayoutContext } from 'providers/MainLayoutProvider';
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { TOGGLE_ADD_LIST_MODAL } from 'reducers/KanbanReducer';
 import { KanbanBoardItem, KanbanBoardTask } from 'data/kanban';
 import {
@@ -160,33 +159,42 @@ const KanbanContent = () => {
       onDragOver={handleDragOver}
       onDragEnd={handleDragEnd}
     >
-      <div>
-        <KanbanHeader />
-        <div className="kanban-container scrollbar">
-          {boardLists.map(list => (
-            <KanbanList list={list} key={list.id} columnId={list.id} />
-          ))}
-          <div className="kanban-column scrollbar position-relative bg-transparent d-flex flex-column h-100 flex-center bg-body-hover">
-            <Button
-              className="stretched-link btn-icon btn-icon bg-body-secondary rounded-circle mb-1"
-              onClick={() =>
+      <KanbanHeader />
+      <div className="kanban-container scrollbar">
+        {/* the columns are inline-blocks: the gold keeps a whitespace text
+              node between them, worth ~4px each — keep it */}
+        {boardLists.map(list => (
+          <Fragment key={list.id}>
+            <KanbanList list={list} columnId={list.id} />{' '}
+          </Fragment>
+        ))}
+        <div className="kanban-column scrollbar relative bg-transparent!">
+          <div className="flex h-full items-center justify-center font-bold hover:bg-default dark:bg-transparent">
+            <a
+              href="#!"
+              className="flex flex-col gap-1 no-underline stretched-link text-muted"
+              onClick={e => {
+                e.preventDefault();
                 kanbanDispatch({
                   type: TOGGLE_ADD_LIST_MODAL,
                   payload: true
-                })
-              }
+                });
+              }}
             >
-              <FontAwesomeIcon
-                icon={faPlus}
-                className="text-body-secondary fs-8"
-              />
-            </Button>
-            <h5 className="text-body-secondary">Add another list</h5>
+              <div className="btn btn-circle btn-sm bg-muted mx-auto flex flex-center">
+                <FontAwesomeIcon
+                  icon={faPlus}
+                  transform="shrink-2"
+                  className="text-lg"
+                />
+              </div>
+              <span>Add another list</span>
+            </a>
           </div>
         </div>
-        <KanbanBoardOffcanvas />
-        <KanbanAddListModal />
       </div>
+      <KanbanBoardOffcanvas />
+      <KanbanAddListModal />
       <DragOverlay className="drag-overlay">
         {activeList && activeTask && (
           <KanbanListItemCard list={activeList} task={activeTask} />

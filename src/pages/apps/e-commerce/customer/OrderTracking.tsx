@@ -8,37 +8,37 @@ import OrderTrackingTimeline from 'components/timelines/OrderTrackingTimeline';
 import { defaultBreadcrumbItems } from 'data/commonData';
 import { orderTrackingTimelineData } from 'data/timelineData';
 import { lazy, Suspense } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row } from '@hummingbirdui/react';
 
-const Mapbox = lazy(() => import('components/base/MapBox'));
+const Mapbox = lazy(() => import('components/base/Mapbox'));
 
 const OrderTracking = () => {
   return (
-    <div className="pt-5 mb-9">
+    <div className="pt-8 mb-16">
       <Section small className="py-0">
         <PageBreadcrumb items={defaultBreadcrumbItems} />
-        <div className="d-flex gap-3 flex-wrap justify-content-between align-items-end mb-5">
+        <div className="flex flex-wrap justify-between items-end mb-8">
           <div>
             <h2>Order #234 Status</h2>
-            <p className="text-body-secondary mb-0">
+            <p className="text-muted mb-0">
               Payment Via{' '}
-              <a className="fw-bold" href="#!">
+              <a className="font-bold" href="#!">
                 Cash on delivery
               </a>
-              ,<br className="d-sm-none" />
-              <span className="ms-sm-1">Nov 12, 2021, 8:54AM.</span>
+              ,<br className="sm:hidden" />
+              <span className="sm:ms-1">Nov 12, 2021, 8:54AM.</span>
             </p>
           </div>
-          <Button variant="outline-primary">
+          <Button variant="outline" color="primary" className="mt-4">
             <FontAwesomeIcon icon={faPhone} className="me-2" />
             Call Support
           </Button>
         </div>
-        <Row className="gy-9 gx-5">
+        <Row className="gy-16 gx-8">
           <Col xs={12} lg={6}>
             <Suspense fallback={<PhoenixLoader />}>
               <Mapbox
-                className="border rounded-3 min-vh-50"
+                className="border rounded-lg overflow-hidden h-full min-h-[50vh]"
                 options={{
                   center: [-74.0020158, 40.7228022],
                   zoom: 15,

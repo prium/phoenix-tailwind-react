@@ -55,7 +55,7 @@ const Showcase = () => {
       <Faq />
       <Cta />
       <PreFooter />
-      <Footer className="d-flex justify-content-center bg-body border-0" />
+      <Footer className="flex justify-content-center bg-default border-0" />
     </>
   );
 };

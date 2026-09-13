@@ -88,15 +88,15 @@ const getDefaultOptions = (
   tooltip: {
     trigger: 'axis',
     padding: [7, 10],
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('border-color'),
-    textStyle: { color: getThemeColor('light-text-emphasis') },
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('border-color-default'),
+    textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,
     axisPointer: {
       type: 'cross',
       label: {
-        backgroundColor: getThemeColor('secondary')
+        backgroundColor: getThemeColor('color-secondary')
       }
     },
     formatter: stockShareReportTooltipFormatter,
@@ -119,7 +119,7 @@ const getDefaultOptions = (
     show: true,
     scale: true,
     axisLabel: {
-      color: getThemeColor('body-color'),
+      color: getThemeColor('text-color-default'),
       formatter: (value: Date) => dayjs(value).format('MMM DD'),
       margin: 15
     },
@@ -127,7 +127,7 @@ const getDefaultOptions = (
       show: true,
       lineStyle: {
         type: 'solid',
-        color: getThemeColor('secondary-color')
+        color: getThemeColor('text-color-muted')
       },
       label: { show: false }
     },
@@ -136,7 +136,7 @@ const getDefaultOptions = (
       lineStyle: {
         type: 'solid',
         z: 10,
-        color: getThemeColor('border-color-translucent')
+        color: getThemeColor('border-color-subtle')
       }
     },
     axisTick: {
@@ -145,7 +145,7 @@ const getDefaultOptions = (
     splitLine: {
       show: true,
       lineStyle: {
-        color: getThemeColor('border-color-translucent')
+        color: getThemeColor('border-color-subtle')
       }
     },
     boundaryGap: 0,
@@ -158,12 +158,12 @@ const getDefaultOptions = (
       show: true,
       lineStyle: {
         type: 'solid',
-        color: getThemeColor('secondary-color')
+        color: getThemeColor('text-color-muted')
       },
       label: {
         precision: '0',
         show: true,
-        backgroundColor: getThemeColor('secondary'),
+        backgroundColor: getThemeColor('color-secondary'),
         textStyle: {
           fontWeight: 'semibold',
           fontSize: '10.24px'
@@ -174,12 +174,12 @@ const getDefaultOptions = (
     },
     splitLine: {
       lineStyle: {
-        color: getThemeColor('border-color-translucent')
+        color: getThemeColor('border-color-subtle')
       }
     },
     axisLabel: {
       show: true,
-      color: getThemeColor('body-color'),
+      color: getThemeColor('text-color-default'),
       margin: 25,
       fontWeight: 700
     },
@@ -199,15 +199,17 @@ const getDefaultOptions = (
       data: data.map(item => item.slice(1)),
       itemStyle: {
         color: isDark
-          ? getThemeColor('primary')
-          : getThemeColor('primary-light'),
-        color0: isDark ? getThemeColor('info') : getThemeColor('info-light'),
+          ? getThemeColor('color-primary')
+          : getThemeColor('color-primary-light'),
+        color0: isDark
+          ? getThemeColor('color-info')
+          : getThemeColor('color-info-light'),
         borderColor: isDark
-          ? getThemeColor('primary')
-          : getThemeColor('primary-light'),
+          ? getThemeColor('color-primary')
+          : getThemeColor('color-primary-light'),
         borderColor0: isDark
-          ? getThemeColor('info')
-          : getThemeColor('info-light')
+          ? getThemeColor('color-info')
+          : getThemeColor('color-info-light')
       },
       clipOverflow: true
     }

@@ -1,6 +1,5 @@
 import { UseWizardFormResult } from 'hooks/useWizardForm';
 import { Context, PropsWithChildren, createContext, use } from 'react';
-import { Tab } from 'react-bootstrap';
 
 interface WizardFormContextInterface<T> extends UseWizardFormResult<T> {}
 interface WizardFormProviderInterface<T>
@@ -15,22 +14,7 @@ const WizardFormProvider = <T,>({
   children,
   ...rest
 }: PropsWithChildren<WizardFormProviderInterface<T>>) => {
-  const { selectedStep, goToStep } = rest;
-  return (
-    <WizardFormContext value={{ ...rest }}>
-      <Tab.Container
-        activeKey={selectedStep}
-        onSelect={(eventKey: string | null) => {
-          if (eventKey) {
-            goToStep(Number(eventKey));
-          }
-        }}
-      >
-        {children}
-      </Tab.Container>
-      {/* <WizardAccessDeniedModal /> */}
-    </WizardFormContext>
-  );
+  return <WizardFormContext value={{ ...rest }}>{children}</WizardFormContext>;
 };
 
 export const useWizardFormContext = <T,>() =>

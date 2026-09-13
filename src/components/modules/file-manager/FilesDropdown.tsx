@@ -1,61 +1,71 @@
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
-import { Dropdown } from 'react-bootstrap';
+import { Dropdown, cn } from '@hummingbirdui/react';
 
-const dropdownItems: string[] = [
+const items = [
   'Share',
   'Download',
   'Duplicate',
   'Move',
   'Rename',
-  'Move to Bin',
-  'Delete'
+  'Move to Bin'
 ];
 
-const FilesDropdown = ({
-  className = 'position-static',
-  toggleClass = ''
-}: {
+export interface FilesDropdownProps {
+  /** classes for the gold `.dropdown` wrapper; omit to render the trigger bare */
   className?: string;
-  toggleClass?: string;
-}) => {
-  return (
-    <>
-      <Dropdown className={className}>
-        <Dropdown.Toggle
-          variant=""
-          className={`btn-square-sm position-relative dropdown-caret-none z-1 ${toggleClass}`}
-        >
-          <FontAwesomeIcon icon={faEllipsisVertical} />
-        </Dropdown.Toggle>
-        <Dropdown.Menu className="py-2" style={{ zIndex: 6 }}>
-          {dropdownItems.map((item, idx) => (
-            <React.Fragment key={idx}>
-              {idx < dropdownItems.length - 1 ? (
-                <Dropdown.Item
-                  href="#!"
-                  className="fw-semibold text-decoration-none"
-                >
-                  {item}
-                </Dropdown.Item>
-              ) : (
-                <>
-                  <hr className="dropdown-divider" />
-                  <Dropdown.Item
-                    href="#!"
-                    className="fw-semibold text-decoration-none text-danger"
-                  >
-                    Delete
-                  </Dropdown.Item>
-                </>
-              )}
-            </React.Fragment>
-          ))}
-        </Dropdown.Menu>
-      </Dropdown>
-    </>
+  /** classes for the trigger `button` (after the base `btn`) */
+  triggerClassName?: string;
+  icon?: IconProp;
+  iconClassName?: string;
+  iconTransform?: string;
+  /** extra classes for the portaled `.dropdown-menu` */
+  menuClassName?: string;
+  /** gold item classes — they differ per call site (`text-start`, `no-underline!` …) */
+  itemClassName: string;
+}
+
+/**
+ * The file/row action menu of `mixins/file-manager/{MyFile,RecentFiles,
+ * MyFilesTable}.pug` and the bulk-action bar. Content is portaled, so every
+ * class lives on `Dropdown.Content` / the items themselves.
+ */
+const FilesDropdown = ({
+  className,
+  triggerClassName,
+  icon = faEllipsisVertical,
+  iconClassName,
+  iconTransform,
+  menuClassName,
+  itemClassName
+}: FilesDropdownProps) => {
+  const dropdown = (
+    <Dropdown>
+      <Dropdown.Trigger asChild>
+        <button type="button" className={cn('btn', triggerClassName)}>
+          <FontAwesomeIcon
+            icon={icon}
+            className={iconClassName}
+            transform={iconTransform}
+          />
+        </button>
+      </Dropdown.Trigger>
+      <Dropdown.Content align="end" className={menuClassName}>
+        {items.map(item => (
+          <Dropdown.Item key={item} asChild className={itemClassName}>
+            <a href="#!">{item}</a>
+          </Dropdown.Item>
+        ))}
+        <Dropdown.Separator />
+        <Dropdown.Item asChild className={cn(itemClassName, 'text-danger')}>
+          <a href="#!">Delete</a>
+        </Dropdown.Item>
+      </Dropdown.Content>
+    </Dropdown>
   );
+
+  return className ? <div className={className}>{dropdown}</div> : dropdown;
 };
 
 export default FilesDropdown;

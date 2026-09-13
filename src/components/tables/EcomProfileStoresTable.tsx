@@ -28,11 +28,11 @@ const columns: ColumnDef<StoreProductType>[] = [
   },
   {
     accessorKey: 'product',
-    header: 'Vendor',
+    header: 'VENDOR',
     cell: ({ row: { original } }) => {
       const { product } = original;
       return (
-        <Link to="#!" className="fw-semibold line-clamp-1">
+        <Link to="#!" className="font-semibold line-clamp-1">
           {product}
         </Link>
       );
@@ -44,10 +44,10 @@ const columns: ColumnDef<StoreProductType>[] = [
   },
   {
     accessorKey: 'rating',
-    header: 'Store rating',
+    header: 'STORE RATING',
     cell: ({ row: { original } }) => {
       const { rating } = original;
-      return <Rating readonly initialValue={rating} iconClass="fs-9" />;
+      return <Rating readonly initialValue={rating} iconClass="text-md" />;
     },
     meta: {
       headerProps: { style: { width: '15%', minWidth: 150 } }
@@ -55,13 +55,13 @@ const columns: ColumnDef<StoreProductType>[] = [
   },
   {
     accessorKey: 'orders',
-    header: 'orders',
+    header: 'ORDERS',
     meta: {
       headerProps: {
         style: { width: '12%', minWidth: 150 },
         className: 'text-end'
       },
-      cellProps: { className: 'text-primary fw-bold text-end' }
+      cellProps: { className: 'text-primary font-bold text-end' }
     }
   },
   {
@@ -73,18 +73,18 @@ const columns: ColumnDef<StoreProductType>[] = [
         style: { width: '15%', minWidth: 150 },
         className: 'text-end'
       },
-      cellProps: { className: 'text-end fw-semibold' }
+      cellProps: { className: 'text-end font-semibold' }
     }
   },
   {
     accessorKey: 'lastOrderDate',
-    header: 'Last Order',
+    header: 'LAST ORDER',
     meta: {
       headerProps: {
         style: { width: '15%', minWidth: 150 },
         className: 'text-end'
       },
-      cellProps: { className: 'text-end text-body-tertiary' }
+      cellProps: { className: 'text-end text-subtle' }
     }
   },
   {
@@ -117,9 +117,9 @@ const EcomProfileStoresTable = () => {
   return (
     <div>
       <AdvanceTableProvider {...table}>
-        <div className="border-y border-translucent mb-6">
+        <div className="border-y border-subtle mb-10">
           <AdvanceTable
-            tableProps={{ className: 'phoenix-table table-sm fs-9' }}
+            tableProps={{ className: ' table-sm text-md' }}
           />
           <AdvanceTableFooter pagination />
         </div>

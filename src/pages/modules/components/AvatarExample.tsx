@@ -1,8 +1,8 @@
+import { Col, Row } from '@hummingbirdui/react';
 import Avatar from 'components/base/Avatar';
 import PhoenixDocCard from 'components/base/PhoenixDocCard';
 import DocPageHeader from 'components/docs/DocPageHeader';
 import DocPagesLayout from 'layouts/DocPagesLayout';
-import { Col, Row } from 'react-bootstrap';
 import team30 from 'assets/img/team/30.webp';
 import team57 from 'assets/img/team/57.webp';
 import team25 from 'assets/img/team/25.webp';
@@ -18,13 +18,13 @@ import Avatar from 'components/base/Avatar';
 const squareCode = `
 import Avatar from 'components/base/Avatar';
 
-  <Avatar src={team30} size="xl" rounded='square' />
+  <Avatar src={team30} size="xl" rounded="square" />
 `;
 
 const softCode = `
 import Avatar from 'components/base/Avatar';
 
-  <Avatar src={team30} size="xl" rounded='soft' />
+  <Avatar src={team30} size="xl" rounded="soft" />
 `;
 
 const contentCode = `
@@ -48,17 +48,18 @@ import Avatar from 'components/base/Avatar';
 const statusCode = `
 import Avatar from 'components/base/Avatar';
 
-  <div className="d-flex gap-4">
+  <div className="flex gap-4">
     <Avatar src={team30} size="xl" status="online" />
     <Avatar src={team30} size="xl" status="offline" />
     <Avatar src={team30} size="xl" status="away" />
     <Avatar src={team30} size="xl" status="do-not-disturb" />
   </div>
 `;
+
 const sizesCode = `
 import Avatar from 'components/base/Avatar';
 
-  <div className="d-flex gap-2 flex-wrap">
+  <div className="flex items-center gap-2 flex-wrap">
     <Avatar src={team30} size="5xl" />
     <Avatar src={team30} size="4xl" />
     <Avatar src={team30} size="3xl" />
@@ -69,23 +70,21 @@ import Avatar from 'components/base/Avatar';
     <Avatar src={team30} size="s" />
   </div>
 `;
+
 const avatarGroupCode = `
 import Avatar from 'components/base/Avatar';
 
 () => {
-  const [sizes] = useState(['5xl', '4xl', '3xl', '2xl', 'xl', 'l', 'm', 's']);
+  const sizes = ['5xl', '4xl', '3xl', '2xl', 'xl', 'l', 'm', 's'];
   return (
-    <div className="d-flex flex-column gap-4">
+    <div className="flex flex-col gap-4">
       {sizes.map(size => (
-        <Avatar.Group key={size}>
+        <Avatar.Group key={size} size={size} total={8}>
           <Avatar src={team30} size={size} />
           <Avatar src={team57} size={size} />
           <Avatar src={team25} size={size} />
           <Avatar src={team8} size={size} />
           <Avatar src={team58} size={size} />
-          <Avatar size={size} variant="name">
-            +3
-          </Avatar>
         </Avatar.Group>
       ))}
     </div>
@@ -98,8 +97,22 @@ const AvatarExample = () => {
     <div>
       <DocPageHeader
         title="Avatars"
-        description="Use avater of different shapes and sizes with a single component."
-      />
+        description="Use avatars of different shapes and sizes with a single component."
+        link={{
+          text: 'Avatar on Hummingbird',
+          url: 'https://react.hbui.dev/docs/components/avatar'
+        }}
+      >
+        <p className="mb-2">
+          Every example below uses this theme&apos;s{' '}
+          <code>components/base/Avatar</code> wrapper, which renders
+          phoenix&apos;s own avatar markup and adds the <code>name</code> and{' '}
+          <code>emoji</code> variants, the eight-step size scale and{' '}
+          <code>Avatar.Group</code>. hb-react&apos;s <code>Avatar</code> is a
+          different, Radix-backed component built from <code>Avatar.Image</code>{' '}
+          and <code>Avatar.Fallback</code>.
+        </p>
+      </DocPageHeader>
 
       <DocPagesLayout>
         <Row>
@@ -165,7 +178,14 @@ const AvatarExample = () => {
           </Col>
           <Col xs={12}>
             <PhoenixDocCard className="mb-4">
-              <PhoenixDocCard.Header title="Avatar Group" />
+              <PhoenixDocCard.Header title="Avatar Group">
+                <p className="mb-0">
+                  <code>Avatar.Group</code> overlaps its avatars into a single
+                  row. Give it the same <code>size</code> as its children and a{' '}
+                  <code>total</code>, and it appends a counted <code>+n</code>{' '}
+                  avatar for the members it does not show.
+                </p>
+              </PhoenixDocCard.Header>
               <PhoenixDocCard.Body
                 code={avatarGroupCode}
                 scope={{ Avatar, team30, team57, team25, team8, team58 }}

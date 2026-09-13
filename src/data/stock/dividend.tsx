@@ -45,13 +45,15 @@ export interface DividendContent {
   dividendRecordDataTableRow: DividendRecordDataTableRowItem[];
 }
 
+/* Class strings below are copied verbatim from
+   ../phoenix-tailwind/src/pug/mixins/stock/stock-details/DividendsTabContent.pug */
 export const dividendContent: DividendContent = {
   dividendCardItems: [
     {
       id: 1,
       icon: (
         <UilUsdCircle
-          fill='currentColor'
+          fill="currentColor"
           style={{ width: 16, height: 23.828 }}
           className="text-success-darker"
         />
@@ -59,13 +61,13 @@ export const dividendContent: DividendContent = {
       title: 'Dividend Yield',
       content: '2.80%',
       iconClassName: 'border-success-light bg-success-subtle',
-      className: 'pe-5 pb-4 border-bottom border-end'
+      className: 'pe-8 pb-6 border-b border-e'
     },
     {
       id: 2,
       icon: (
         <UilDollarSign
-          fill='currentColor'
+          fill="currentColor"
           style={{ width: 16, height: 23.828 }}
           className="text-warning-darker"
         />
@@ -73,13 +75,13 @@ export const dividendContent: DividendContent = {
       title: 'Annual Dividend',
       content: '$1.00',
       iconClassName: 'border-warning-light bg-warning-subtle',
-      className: 'pb-4 ps-5 px-xxl-5 border-bottom border-end-xxl'
+      className: 'pb-6 ps-8 2xl:px-8 border-b 2xl:border-e'
     },
     {
       id: 3,
       icon: (
         <UilDollarAlt
-          fill='currentColor'
+          fill="currentColor"
           style={{ width: 16, height: 23.828 }}
           className="text-danger-darker"
         />
@@ -87,13 +89,13 @@ export const dividendContent: DividendContent = {
       title: 'Ex-Dividend Date',
       content: 'Aug 12, 2024',
       iconClassName: 'border-danger-light bg-danger-subtle',
-      className: 'py-4 pt-xxl-0 px-xxl-5 pe-5 border-bottom border-end'
+      className: 'py-6 2xl:pt-0 2xl:px-8 pe-8 border-b border-e'
     },
     {
       id: 4,
       icon: (
         <UilBill
-          fill='currentColor'
+          fill="currentColor"
           style={{ width: 16, height: 23.828 }}
           className="text-primary-darker"
         />
@@ -101,13 +103,13 @@ export const dividendContent: DividendContent = {
       title: 'Payout Frequency',
       content: 'Quarterly',
       iconClassName: 'border-primary-light bg-primary-subtle',
-      className: 'py-4 pt-xxl-0 ps-5  border-bottom'
+      className: 'py-6 2xl:pt-0 ps-8  border-b'
     },
     {
       id: 5,
       icon: (
         <UilInvoice
-          fill='currentColor'
+          fill="currentColor"
           style={{ width: 16, height: 23.828 }}
           className="text-info-darker"
         />
@@ -116,28 +118,29 @@ export const dividendContent: DividendContent = {
       content: '15.23%',
       iconClassName: 'border-info-light bg-info-subtle',
       className:
-        'py-4 pb-xxl-0 pe-5 pe-md-0 pe-lg-5 border-bottom border-end  border-end-xxl border-bottom-xxl-0'
+        'py-6 2xl:pb-0 2xl:pe-8 md:pe-0 lg:pe-8 border-b border-e 2xl:border-e 2xl:border-b-0'
     },
     {
       id: 6,
       icon: (
+        // this package version has no UilArrowGrowth (gold `uil-arrow-growth`)
         <FontAwesomeIcon
           icon={faArrowTrendUp}
           className="text-success-darker"
-          fontSize={12}
+          style={{ height: 16 }}
         />
       ),
       title: 'Dividend Growth',
       content: '4.26%',
       iconClassName: 'border-success-light bg-success-subtle',
       className:
-        'py-4 ps-5 pe-xxl-5 pb-xxl-0 border-bottom border-bottom-xxl-0 border-end-xxl'
+        'py-6 ps-8 2xl:pe-8 2xl:pb-0 border-b 2xl:border-b-0 2xl:border-e'
     },
     {
       id: 7,
       icon: (
         <UilProcess
-          fill='currentColor'
+          fill="currentColor"
           style={{ width: 16, height: 23.828 }}
           className="text-primary-darker"
         />
@@ -145,13 +148,13 @@ export const dividendContent: DividendContent = {
       title: 'Buyback Yield',
       content: '2.57%',
       iconClassName: 'border-primary-light bg-primary-subtle',
-      className: 'pt-4 pe-5 px-xxl-5 border-end'
+      className: 'pt-6 pe-8 2xl:px-8 border-e'
     },
     {
       id: 8,
       icon: (
         <UilChartLine
-          fill='currentColor'
+          fill="currentColor"
           style={{ width: 16, height: 23.828 }}
           className="text-warning-darker"
         />
@@ -159,7 +162,7 @@ export const dividendContent: DividendContent = {
       title: 'Shareholder Yield',
       content: '3.00%',
       iconClassName: 'border-warning-light bg-warning-subtle',
-      className: 'pt-4 ps-5'
+      className: 'pt-6 ps-8'
     }
   ],
   dividendChartData: [
@@ -236,7 +239,7 @@ export const dividendContent: DividendContent = {
       exDividendDate: 'Sep 6, 2024',
       cashAmount: 0.12,
       paymentStatus: {
-        title: 'Pending',
+        title: 'pending',
         badgeBg: 'warning'
       },
       recordDate: 'Sep 19, 2024',
@@ -247,7 +250,7 @@ export const dividendContent: DividendContent = {
       exDividendDate: 'Jun 7, 2024',
       cashAmount: 0.2,
       paymentStatus: {
-        title: 'Pending',
+        title: 'pending',
         badgeBg: 'warning'
       },
       recordDate: 'Jun 20, 2024',
@@ -258,7 +261,7 @@ export const dividendContent: DividendContent = {
       exDividendDate: 'Nov 30, 2023',
       cashAmount: 1.78,
       paymentStatus: {
-        title: 'Done',
+        title: 'done',
         badgeBg: 'success'
       },
       recordDate: 'Mar 14, 2024',
@@ -273,7 +276,7 @@ export const dividendContent: DividendContent = {
         badgeBg: 'success'
       },
       recordDate: 'Dec 14, 2023',
-      paymentDate: 'Dec 14, 2024'
+      paymentDate: 'Dec 14, 2023'
     },
     {
       id: 5,

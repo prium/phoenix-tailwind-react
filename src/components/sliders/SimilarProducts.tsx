@@ -7,22 +7,22 @@ import Button from 'components/base/Button';
 const SimilarProducts = ({ products }: { products: Product[] }) => {
   return (
     <>
-      <div className="d-flex flex-between-center mb-3">
+      <div className="flex flex-between-center mb-4">
         <div>
           <h3>Similar Products</h3>
-          <p className="mb-0 text-body-tertiary fw-semibold">
+          <p className="mb-0 text-subtle font-semibold">
             Essential for a better life
           </p>
         </div>
-        <Button variant="phoenix-primary" size="sm">
+        <Button variant="phoenix" color="primary" size="sm">
           View all
         </Button>
       </div>
 
       <Swiper
+        parentClassName="products-slider"
         slidesPerView={1}
         spaceBetween={16}
-        navigationPosition={{ top: '25%' }}
         breakpoints={{
           0: {
             slidesPerView: 1,

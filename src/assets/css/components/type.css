@@ -1,0 +1,84 @@
+h1,
+.h1 {
+  @layer base {
+    font-weight: var(--font-weight-extrabold);
+    @variant max-xl {
+      font-size: calc(1.369140625rem + 1.4296875vw);
+    }
+  }
+}
+
+h2,
+.h2 {
+  @layer base {
+    font-weight: var(--font-weight-extrabold);
+    @variant max-xl {
+      font-size: calc(1.3203125rem + 0.84375vw);
+    }
+  }
+}
+
+h3,
+.h3 {
+  @layer base {
+    font-weight: var(--font-weight-extrabold);
+    @variant max-xl {
+      font-size: calc(1.28125rem + 0.375vw);
+    }
+  }
+}
+
+@utility display-1 {
+  @layer base {
+    font-weight: var(--font-weight-normal);
+    font-size: var(--text-6xl);
+    @variant max-xl {
+      font-size: calc(1.6018371582rem + 4.2220458984vw);
+    }
+  }
+}
+@utility display-2 {
+  @layer base {
+    font-weight: var(--font-weight-normal);
+    font-size: var(--text-5xl);
+    @variant max-xl {
+      font-size: calc(1.5064697266rem + 3.0776367188vw);
+    }
+  }
+}
+@utility display-3 {
+  @layer base {
+    font-weight: var(--font-weight-normal);
+    font-size: var(--text-4xl);
+    @variant max-xl {
+      font-size: calc(1.4301757813rem + 2.162109375vw);
+    }
+  }
+}
+@utility display-4 {
+  @layer base {
+    font-weight: var(--font-weight-normal);
+    font-size: var(--text-3xl);
+    @variant max-xl {
+      font-size: calc(1.369140625rem + 1.4296875vw);
+    }
+  }
+}
+@utility display-5 {
+  @layer base {
+    font-weight: var(--font-weight-normal);
+    font-size: var(--text-2xl);
+    @variant max-xl {
+      font-size: calc(1.3203125rem + 0.84375vw);
+    }
+  }
+}
+@utility display-6 {
+  @layer base {
+    font-weight: var(--font-weight-normal);
+    font-size: var(--text-xl);
+    @variant max-xl {
+      font-size: calc(1.28125rem + 0.375vw);
+    }
+  }
+}

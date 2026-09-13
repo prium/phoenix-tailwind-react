@@ -4,11 +4,13 @@ import { defaultBreadcrumbItems } from 'data/commonData';
 
 const RoomListing = () => {
   return (
-    <div className="mb-9">
-      <PageBreadcrumb className="mb-3" items={defaultBreadcrumbItems} />
-      <h2>Room Listing</h2>
-      <RoomListingTable />
-    </div>
+    <>
+      <PageBreadcrumb className="mb-4" items={defaultBreadcrumbItems} />
+      <div className="mb-12">
+        <h2>Room Listing</h2>
+        <RoomListingTable />
+      </div>
+    </>
   );
 };
 

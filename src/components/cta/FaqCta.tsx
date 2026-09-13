@@ -3,22 +3,25 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'components/base/Button';
 import { useChatWidgetContext } from 'providers/ChatWidgetProvider';
 
+/**
+ * Gold: `../phoenix-tailwind/src/pug/pages/faq/faq-accordion.pug` — the
+ * `.text-center.py-20` block that closes the FAQ pages.
+ */
 const FaqCta = () => {
   const { setIsOpenChat, isOpenChat } = useChatWidgetContext();
   return (
-    <div>
-      <div className="text-center py-11">
-        <h3 className="text-body-emphasis">Still can’t find your answer?</h3>
-        <p className="text-body">We are happy to help</p>
-        <Button
-          onClick={() => setIsOpenChat(!isOpenChat)}
-          variant="outline-primary"
-          size="sm"
-          startIcon={<FontAwesomeIcon icon={faComment} className="me-2" />}
-        >
-          Chat with us
-        </Button>
-      </div>
+    <div className="text-center py-20">
+      <h3 className="text-emphasis">Still can’t find your answer?</h3>
+      <p className="text-default">We are happy to help</p>
+      <Button
+        onClick={() => setIsOpenChat(!isOpenChat)}
+        variant="outline-primary"
+        size="sm"
+        className="btn-support-chat"
+      >
+        <FontAwesomeIcon icon={faComment} className="me-2" />
+        Chat with us
+      </Button>
     </div>
   );
 };

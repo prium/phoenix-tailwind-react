@@ -16,7 +16,8 @@ export interface RoomListingInterface {
   guest: string;
   child: string;
   bathRooms: string;
-  totalRooms: number;
+  // gold RoomListingTable.pug mixes numbers and zero-padded strings ('08', '06')
+  totalRooms: number | string;
   amenities: string[];
 }
 export const RoomListingData: RoomListingInterface[] = [
@@ -233,7 +234,7 @@ export const RoomListingData: RoomListingInterface[] = [
     guest: '04',
     child: '00',
     bathRooms: '02',
-    totalRooms: 8,
+    totalRooms: '08',
     amenities: [
       'wifi',
       'tv',
@@ -266,7 +267,7 @@ export const RoomListingData: RoomListingInterface[] = [
     guest: '04',
     child: '01',
     bathRooms: '02',
-    totalRooms: 6,
+    totalRooms: '06',
     amenities: [
       'wifi',
       'tv',

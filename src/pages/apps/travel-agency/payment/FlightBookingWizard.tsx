@@ -6,7 +6,7 @@ import {
   faUser
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Nav } from 'react-bootstrap';
+import { cn } from '@hummingbirdui/react';
 import { Link } from 'react-router';
 
 interface WizardItem {
@@ -37,44 +37,38 @@ const wizardItems: WizardItem[] = [
   }
 ];
 
+/** `+FlightBookingWizard` in mixins/travel-agency/flight/FlightBookingWizard.pug */
 const FlightBookingWizard = ({ activeItem }: FlightBookingWizardProps) => {
-  const doneItems = wizardItems.filter(
-    item =>
-      wizardItems.indexOf(item) <
-      wizardItems.findIndex(i => i.name === activeItem)
-  );
+  const activeIndex = wizardItems.findIndex(i => i.name === activeItem);
 
   return (
-    <div
-      className="theme-wizard flight-booking-wizard"
-      style={{ width: '18.125rem' }}
-    >
-      <Nav className="justify-content-between nav-wizard nav-wizard-success">
+    <div className="theme-wizard flight-booking-wizard w-72.5">
+      <ul className="nav justify-between nav-wizard nav-wizard-success">
         {wizardItems.map((item, index) => {
-          const isDone = doneItems.some(i => i.name === item.name);
-          const isActive = activeItem === item.name;
-          const stepClass = isDone ? 'done complete' : isActive ? 'active' : '';
-
+          const isDone = index < activeIndex;
           return (
-            <Nav.Item key={index}>
-              <Nav.Link
-                as={Link}
+            <li className="nav-item" key={item.name}>
+              <Link
                 to={item.url}
-                className={`fw-semibold ${stepClass}`}
+                data-wizard-step={index + 1}
+                className={cn('nav-link font-semibold', {
+                  'done complete': isDone,
+                  active: activeItem === item.name
+                })}
               >
-                <div className="d-inline-block text-center">
+                <div className="inline-block text-center">
                   <span className="nav-item-circle-parent">
-                    <span className="d-block nav-item-circle">
+                    <span className="block nav-item-circle">
                       <FontAwesomeIcon icon={isDone ? faCheck : item.icon} />
                     </span>
                   </span>
-                  <span className="d-md-block mt-1 fs-9">{item.name}</span>
+                  <span className="mt-1 text-md">{item.name}</span>
                 </div>
-              </Nav.Link>
-            </Nav.Item>
+              </Link>
+            </li>
           );
         })}
-      </Nav>
+      </ul>
     </div>
   );
 };

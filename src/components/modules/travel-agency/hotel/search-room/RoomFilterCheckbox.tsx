@@ -1,5 +1,4 @@
-import React, { ReactNode } from 'react';
-import { Form } from 'react-bootstrap';
+import { ReactNode } from 'react';
 
 export interface CheckboxItemProps {
   type?: 'checkbox' | 'radio';
@@ -8,24 +7,27 @@ export interface CheckboxItemProps {
   value: string | number;
 }
 
+/** gold `.form-check.mt-4` items of RoomFilterOffcanvas.pug */
 const RoomFilterCheckbox = ({
   type = 'checkbox',
   name,
   label,
   value
 }: CheckboxItemProps) => {
+  const id = String(value);
   return (
-    <Form.Check type={type} id={String(value)} className="mt-3">
-      <Form.Check.Input
+    <div className="form-check mt-4">
+      <input
+        className="form-check-input"
         type={type}
-        value={value}
+        value=""
         name={name}
-        className="mt-0"
+        id={id}
       />
-      <Form.Check.Label className="d-block lh-sm fs-8 text-body-highlight mb-0">
+      <label className="form-check-label text-base text-highlight" htmlFor={id}>
         {label}
-      </Form.Check.Label>
-    </Form.Check>
+      </label>
+    </div>
   );
 };
 

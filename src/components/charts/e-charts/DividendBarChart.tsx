@@ -11,13 +11,13 @@ const getDefaultOptions = (
   getThemeColor: (name: string) => string,
   data: DividendChartData[]
 ) => ({
-  color: [getThemeColor('primary'), getThemeColor('tertiary-bg')],
+  color: [getThemeColor('color-primary'), getThemeColor('background-color-highlight')],
   tooltip: {
     trigger: 'axis',
     padding: [7, 10],
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('border-color'),
-    textStyle: { color: getThemeColor('light-text-emphasis') },
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('border-color-default'),
+    textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,
     axisPointer: {
@@ -29,7 +29,7 @@ const getDefaultOptions = (
     data: data.map(item => item.year),
     axisLine: {
       lineStyle: {
-        color: getThemeColor('tertiary-bg'),
+        color: getThemeColor('background-color-highlight'),
         type: 'solid'
       }
     },
@@ -37,7 +37,7 @@ const getDefaultOptions = (
       show: false
     },
     axisLabel: {
-      color: getThemeColor('body-color'),
+      color: getThemeColor('text-color-default'),
       margin: 15
     },
     splitLine: {
@@ -49,7 +49,7 @@ const getDefaultOptions = (
     boundaryGap: 0,
     axisLabel: {
       show: true,
-      color: getThemeColor('body-color'),
+      color: getThemeColor('text-color-default'),
       fontWeight: 700,
       formatter: (value: number) => `0.${value}`,
       margin: 15
@@ -57,7 +57,7 @@ const getDefaultOptions = (
     splitLine: {
       show: true,
       lineStyle: {
-        color: getThemeColor('secondary-bg')
+        color: getThemeColor('background-color-muted')
       }
     },
     axisTick: {
@@ -74,10 +74,10 @@ const getDefaultOptions = (
       type: 'bar',
       data: data.map(item => item.value),
       lineStyle: {
-        color: getThemeColor('info-lighter')
+        color: getThemeColor('color-info-lighter')
       },
       itemStyle: {
-        color: getThemeColor('info-lighter'),
+        color: getThemeColor('color-info-lighter'),
         borderRadius: [4, 4, 0, 0]
       },
       barMaxWidth: 24,

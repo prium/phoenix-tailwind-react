@@ -54,7 +54,7 @@ export const activityTimelineData: ActivityTimelineData[] = [
     id: 3,
     oppositeContent: {
       date: '15 DEC, 2023',
-      time: '2:30 PM'
+      time: '2:30 AM'
     },
     content: {
       title: 'Phoenix Template: Simplified Design, Maximum Impact',

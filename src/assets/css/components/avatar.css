@@ -1,0 +1,102 @@
+@utility avatar {
+  @layer base {
+    /* default the phoenix group sizing vars to the core box size so
+       .avatar-group avatars keep a fixed size for every avatar-* size
+       (undefined vars collapsed w/h to auto and let the image's intrinsic
+       size drive the layout) */
+    --avatar-width: var(--avatar-size);
+    --avatar-height: var(--avatar-size);
+    --avatar-font-weight: var(--font-weight-extrabold);
+    --avatar-color: var(--color-primary-dark);
+    --avatar-bg: var(--color-primary-subtle);
+
+    @variant dark {
+      --avatar-color: var(--color-primary-light);
+    }
+
+    .avatar-name {
+      font-size: calc(var(--avatar-width) / 1.9);
+      > span {
+        @apply font-black leading-none absolute;
+      }
+    }
+    .avatar-placeholder {
+      @apply bg-muted;
+    }
+    /* original phoenix `.avatar .avatar-emoji`: the Tailwind port kept the
+       markup (mixins/common/Avatar.pug) but dropped the rule, so an emoji
+       avatar rendered as bare text with no plate. Old build sized the glyph at
+       ~0.75 of the box for every avatar-* step. */
+    .avatar-emoji {
+      @apply size-full flex items-center justify-center;
+      font-size: calc(var(--avatar-size) / 1.33);
+
+      > span {
+        @apply inline-block translate-y-[2%];
+      }
+    }
+    &[class*='avatar-status-'] {
+      &::before {
+        @apply end-[14%] bottom-[14%] size-3
+        border-2 border-(--background-color-soft)
+        scale-100 translate-x-[50%] translate-y-[50%];
+      }
+      @variant rtl {
+        &::before {
+          @apply translate-x-[-50%];
+        }
+      }
+    }
+    /* original phoenix: the avatar image always fills the box and crops
+       (uploads/non-square sources otherwise render at natural aspect) */
+    img {
+      @apply block size-full object-cover;
+    }
+  }
+}
+
+@utility avatar-group {
+  :where(.avatar) {
+    @apply border-0 w-(--avatar-width)
+    h-(--avatar-height) -ms-2;
+  }
+}
+
+/* the core hummingbird .avatar box is size-(--avatar-size); the size utilities
+   must set THAT var (the old --avatar-width/height pair only fed .avatar-group
+   and left standalone avatars at the 40px default). Width/height derive from
+   --avatar-size in the `avatar` utility above. */
+@utility avatar-lg {
+  --avatar-size: --spacing(12);
+  --avatar-font-size: var(--text-xl);
+}
+
+@utility avatar-xl {
+  --avatar-size: --spacing(14);
+  --avatar-font-size: var(--text-2xl);
+}
+
+@utility avatar-2xl {
+  @layer base {
+    --avatar-size: --spacing(18);
+    --avatar-font-size: var(--text-3xl);
+  }
+}
+
+@utility avatar-3xl {
+  @layer base {
+    --avatar-size: --spacing(24);
+    --avatar-font-size: var(--text-4xl);
+
+    &[class*='avatar-status-']::before {
+      @apply w-6 h-6 border-3 end-[16%] bottom-[16%];
+    }
+  }
+}
+
+@utility avatar-4xl {
+  @layer base {
+    --avatar-size: --spacing(37.5);
+    --avatar-font-size: var(--text-6xl);
+  }
+}

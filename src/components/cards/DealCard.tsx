@@ -4,18 +4,18 @@ import {
   faSquarePhone
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Deal } from 'data/crm/deals';
-import { currencyFormat } from 'helpers/utils';
-import { Card, Collapse, Form, ProgressBar, Table } from 'react-bootstrap';
+import Unicon from 'components/base/Unicon';
+import { Deal, dealAgents } from 'data/crm/deals';
+import { cn } from '@hummingbirdui/react';
 import FeatherIcon from 'feather-icons-react';
 import { UilHeadphones, UilUser } from '@iconscout/react-unicons';
-import classNames from 'classnames';
 import { Link } from 'react-router';
-import Badge, { BadgeBg } from 'components/base/Badge';
+import Badge from 'components/base/Badge';
 import { faWhatsappSquare } from '@fortawesome/free-brands-svg-icons';
 import { useDealsContext } from 'providers/CrmDealsProvider';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
+import { MouseEvent } from 'react';
 
 interface DealCardProps {
   deal: Deal;
@@ -23,6 +23,10 @@ interface DealCardProps {
   cursor?: boolean;
 }
 
+/** `+DealsCol(data)` in mixins/crm/Deals.pug — the collapse show/hide of
+ *  revenue/category/company rows is driven by crm.css sibling selectors keyed
+ *  on `[aria-expanded]` of `.dropdown-indicator-icon`, so the DOM order inside
+ *  `.card-body` must stay exactly as in the gold. */
 const DealCard = ({ deal, columnId, cursor }: DealCardProps) => {
   const { dealColumns, setDealColumns } = useDealsContext();
 
@@ -42,7 +46,8 @@ const DealCard = ({ deal, columnId, cursor }: DealCardProps) => {
     }
   });
 
-  const handleOpenDetails = () => {
+  const handleOpenDetails = (e: MouseEvent) => {
+    e.preventDefault();
     const updatedColumns = structuredClone(dealColumns);
     const column = updatedColumns.find(c => c.id === columnId);
     if (column) {
@@ -60,208 +65,215 @@ const DealCard = ({ deal, columnId, cursor }: DealCardProps) => {
     cursor: isDragging || cursor ? 'grabbing' : 'pointer',
     opacity: isDragging ? 0 : 1
   };
+
   return (
     <div ref={setNodeRef} style={styles} {...attributes} {...listeners}>
-      <Card className="mb-3">
-        <Card.Body>
-          <div className="d-flex align-items-center justify-content-between mb-3">
-            <FeatherIcon icon="clock" size={16} className="me-2" />
-
-            <p className="mb-0 fs-9 fw-semibold text-body-tertiary flex-1">
-              {deal.date} .{' '}
-              <span className="text-body-quaternary">{deal.time}</span>
-            </p>
-            <button
-              className="btn p-0 deal-collapse-btn"
-              onClick={handleOpenDetails}
-            >
-              <FontAwesomeIcon
-                icon={faAngleDown}
-                className={classNames('text-body-tertiary fs-8', {
-                  show: deal.openDetails
-                })}
-              />
-            </button>
+      <div className="card mb-4">
+        <div className="card-body">
+          <a
+            className="dropdown-indicator-icon absolute text-subtle"
+            href={`#collapseWidthDeals-${deal.id}`}
+            role="button"
+            aria-expanded={deal.openDetails ?? false}
+            aria-controls={`collapseWidthDeals-${deal.id}`}
+            onClick={handleOpenDetails}
+          >
+            <FontAwesomeIcon icon={faAngleDown} className="fa-angle-down" />
+          </a>
+          <div className="flex items-center justify-between mb-4">
+            <div className="flex">
+              <FeatherIcon icon="clock" size={16} className="me-2 stroke-2" />
+              <p className="mb-0 text-md font-semibold text-subtle date">
+                {deal.date}
+                <span className="text-soft"> . {deal.time}</span>
+              </p>
+            </div>
           </div>
-          <div className="d-flex align-items-center mb-2">
+
+          <div className="deals-items-head flex items-center mb-2">
             <Link
               to="/apps/crm/deal-details"
-              className="fw-bold line-clamp-1 me-3 fs-7"
+              className="text-primary font-bold line-clamp-1 me-4 mb-0 text-lg"
             >
               {deal.title}
             </Link>
-            <p
-              className={classNames('fs-10 mb-0', {
-                'd-none': !deal.openDetails
-              })}
-            >
+            <p className="deals-category text-sm mb-0 mt-1 hidden">
               <FeatherIcon
                 icon="grid"
                 size={12}
-                className="text-body-quaternary me-1"
+                className="me-1 text-soft stroke-2 size-3"
               />
               {deal.category}
             </p>
-            <p
-              className={classNames(
-                'ms-auto fs-9 text-body-emphasis fw-semibold mb-0',
-                {
-                  'd-none': deal.openDetails
-                }
-              )}
-            >
-              {currencyFormat(deal.revenue, { minimumFractionDigits: 2 })}
+            <p className="ms-auto text-md text-emphasis font-semibold mb-0 deals-revenue">
+              {deal.revenue}
             </p>
           </div>
-
-          <div
-            className={classNames('d-flex flex-between-center mb-2', {
-              'd-none': deal.openDetails
-            })}
-          >
-            <div className="d-flex align-items-center">
-              <UilUser fill='currentColor' className="me-2" size={16} />
-              <p className="text-body-secondary fw-bold fs-9 mb-0">
+          <div className="deals-company-agent flex items-center justify-between">
+            <div className="flex items-center">
+              <Unicon
+                icon={UilUser}
+                lineBox
+                wrapperClassName="me-2"
+                fill="currentColor"
+                size={16}
+              />
+              <p className="text-muted font-bold text-md mb-0">
                 {deal.company}
               </p>
             </div>
-            <div className="d-flex align-items-center">
-              <UilHeadphones fill='currentColor' className="me-2" size={16} />
-              <p className="text-body-secondary fw-bold fs-9 mb-0">
-                {deal.agent}
-              </p>
+            <div className="flex items-center">
+              <Unicon
+                icon={UilHeadphones}
+                lineBox
+                wrapperClassName="me-2"
+                fill="currentColor"
+                size={16}
+              />
+              <p className="text-muted font-bold text-md mb-0">{deal.agent}</p>
             </div>
           </div>
 
-          <Collapse in={deal.openDetails}>
-            <div>
-              <div className="d-flex gap-2 mb-5">
-                <Badge variant="phoenix" bg={deal.status.variant as BadgeBg}>
-                  {deal.status.label}
-                </Badge>
-                <Badge variant="phoenix" bg={deal.priority.variant as BadgeBg}>
-                  {deal.priority.label}
-                </Badge>
-              </div>
-              <div className="scrollbar mb-4">
-                <Table className="mb-0 w-100 align-middle" borderless size="sm">
-                  <tbody>
-                    <tr>
-                      <td className="d-flex gap-2 align-items-center">
-                        <FeatherIcon
-                          icon="dollar-sign"
-                          size={16}
-                          className="text-body-tertiary"
+          <div
+            className={cn('collapse', { show: deal.openDetails })}
+            id={`collapseWidthDeals-${deal.id}`}
+          >
+            <div className="flex gap-2 mb-8">
+              <Badge variant="phoenix" bg={deal.status.variant}>
+                {deal.status.label}
+              </Badge>
+              <Badge variant="phoenix" bg={deal.priority.variant}>
+                {deal.priority.label}
+              </Badge>
+            </div>
+            <table className="mb-6 w-full table-stats">
+              <tbody>
+                <tr>
+                  <th />
+                  <th />
+                  <th />
+                </tr>
+                <tr>
+                  <td className="py-1">
+                    <div className="flex items-center">
+                      <FeatherIcon
+                        icon="dollar-sign"
+                        size={16}
+                        className="me-2 text-subtle"
+                      />
+                      <p className="font-semibold text-md mb-0 text-subtle">
+                        Expected Revenue
+                      </p>
+                    </div>
+                  </td>
+                  <td className="py-1 sm:pe-2">:</td>
+                  <td className="py-1">
+                    <p className="ps-10 sm:ps-0 font-semibold text-md mb-0 pb-4 sm:pb-0 text-emphasis">
+                      {deal.revenue}
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="py-1">
+                    <div className="flex items-center">
+                      <FeatherIcon
+                        icon="user"
+                        size={16}
+                        className="me-2 text-subtle size-4"
+                      />
+                      <p className="font-semibold text-md mb-0 text-subtle">
+                        Company Name
+                      </p>
+                    </div>
+                  </td>
+                  <td className="py-1 sm:pe-2">:</td>
+                  <td className="py-1">
+                    <p className="ps-10 sm:ps-0 font-semibold text-md mb-0 pb-4 sm:pb-0 text-emphasis flex items-center gap-2">
+                      {deal.company}
+                      <a href="#!">
+                        <FontAwesomeIcon
+                          icon={faSquarePhone}
+                          className="text-subtle"
                         />
-                        <p className="fw-semibold fs-9 mb-0 text-body-tertiary">
-                          Expected Revenue
-                        </p>
-                      </td>
-                      <td>:</td>
-                      <td className="fw-semibold fs-9 mb-0 text-body-emphasis">
-                        {currencyFormat(deal.revenue, {
-                          minimumFractionDigits: 2
-                        })}
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="d-flex gap-2 align-items-center">
-                        <FeatherIcon
-                          icon="user"
-                          size={16}
-                          className="text-body-tertiary"
+                      </a>
+                      <a href="#!">
+                        <FontAwesomeIcon
+                          icon={faSquareEnvelope}
+                          className="text-subtle"
                         />
-                        <p className="fw-semibold fs-9 mb-0 text-body-tertiary">
-                          Company Name
-                        </p>
-                      </td>
-                      <td>:</td>
-                      <td className="fw-semibold fs-9 mb-0 text-body-emphasis">
-                        <p className="align-items-center d-flex fs-9 fw-semibold gap-2 mb-0 text-body-emphasis">
-                          {deal.company}
-                          <Link to="#!">
-                            <FontAwesomeIcon
-                              icon={faSquarePhone}
-                              className="text-body-tertiary"
-                            />
-                          </Link>
-                          <Link to="#!">
-                            <FontAwesomeIcon
-                              icon={faSquareEnvelope}
-                              className="text-body-tertiary"
-                            />
-                          </Link>
-                          <Link to="#!">
-                            <FontAwesomeIcon
-                              icon={faWhatsappSquare}
-                              className="text-body-tertiary"
-                            />
-                          </Link>
-                        </p>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="d-flex gap-2 align-items-center">
-                        <FeatherIcon
-                          icon="calendar"
-                          size={16}
-                          className="text-body-tertiary"
+                      </a>
+                      <a href="#!">
+                        <FontAwesomeIcon
+                          icon={faWhatsappSquare}
+                          className="text-subtle"
                         />
-                        <p className="fw-semibold fs-9 mb-0 text-body-tertiary">
-                          Closing Date & Time
-                        </p>
-                      </td>
-                      <td>:</td>
-                      <td className="fw-semibold fs-9 mb-0 text-body-emphasis">
-                        {deal.closingDate} . <span>{deal.closingTime}</span>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td className="d-flex gap-2 align-items-center">
-                        <FeatherIcon
-                          icon="headphones"
-                          size={16}
-                          className="text-body-tertiary"
-                        />
-                        <p className="fw-semibold fs-9 mb-0 text-body-tertiary">
-                          Assigned Agent
-                        </p>
-                      </td>
-                      <td>:</td>
-                      <td className="fw-semibold fs-9 mb-0 text-body-emphasis">
-                        <Form.Select
-                          size="sm"
-                          className="py-0 ms-n3 border-0 shadow-none"
-                        >
-                          {[
-                            'Ally Aagaard',
-                            'Lonnie Kub',
-                            'Aida Moen',
-                            'Niko Koss',
-                            'Alec Haag',
-                            'Ola Smith',
-                            'Leif Walsh',
-                            'Brain Cole',
-                            'Reese Mann'
-                          ].map(agent => (
-                            <option key={agent}>{agent}</option>
-                          ))}
-                        </Form.Select>
-                      </td>
-                    </tr>
-                  </tbody>
-                </Table>
-              </div>
-              <p className="fs-9 mb-1">Probability:</p>
-              <ProgressBar
-                style={{ height: '8px' }}
-                now={Number(deal.probability.value)}
-                variant={deal.probability.variant}
+                      </a>
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="py-1">
+                    <div className="flex items-center">
+                      <FeatherIcon
+                        icon="calendar"
+                        size={16}
+                        className="me-2 text-subtle size-4"
+                      />
+                      <p className="font-semibold text-md mb-0 text-subtle">
+                        Closing Date &amp; Time
+                      </p>
+                    </div>
+                  </td>
+                  <td className="py-1 sm:pe-2">:</td>
+                  <td className="py-1">
+                    <p className="ps-10 sm:ps-0 font-semibold text-md mb-0 pb-4 sm:pb-0 text-emphasis">
+                      {deal.closingDate}
+                      <span> . {deal.closingTime}</span>
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="py-1">
+                    <div className="flex items-center">
+                      <FeatherIcon
+                        icon="headphones"
+                        size={16}
+                        className="me-2 text-subtle size-4"
+                      />
+                      <p className="font-semibold text-md mb-0 text-subtle">
+                        Assigned Agent
+                      </p>
+                    </div>
+                  </td>
+                  <td className="py-1 sm:pe-2">:</td>
+                  <td className="py-1">
+                    <select
+                      className="form-select form-select-sm py-0 -ms-4 border-0 shadow-none"
+                      defaultValue={deal.agent}
+                    >
+                      {dealAgents.map(agent => (
+                        <option key={agent}>{agent}</option>
+                      ))}
+                    </select>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+
+            <p className="text-md mb-1">Probability:</p>
+            <div className="progress h-2">
+              <div
+                className={`progress-bar rounded-full ${deal.probability.barClass}`}
+                role="progressbar"
+                style={{ width: `${deal.probability.value}%` }}
+                aria-valuenow={deal.probability.value}
+                aria-valuemin={0}
+                aria-valuemax={100}
               />
             </div>
-          </Collapse>
-        </Card.Body>
-      </Card>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

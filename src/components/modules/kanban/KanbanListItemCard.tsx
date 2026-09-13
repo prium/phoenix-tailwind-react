@@ -1,18 +1,17 @@
 import {
-  faAngleRight,
   faCalendarXmark,
+  faCheckSquare,
   faCircle,
-  faEllipsisV,
+  faEllipsisH,
   faPaperclip
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Card, Dropdown, cn } from '@hummingbirdui/react';
 import Avatar from 'components/base/Avatar';
-import Badge, { BadgeBg } from 'components/base/Badge';
 import { KanbanBoardItem, KanbanBoardTask } from 'data/kanban';
-import { Card, Dropdown } from 'react-bootstrap';
 import KanbanTaskDetailsModal from './KanbanTaskDetailsModal';
-import { Fragment, useState } from 'react';
-import classNames from 'classnames';
+import KanbanDropdownItems, { KanbanDropdownItem } from './KanbanDropdownItems';
+import { useState } from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
 
@@ -23,7 +22,7 @@ interface KanbanListItemCardProps {
   columnId?: number;
 }
 
-const actions = [
+const actions: KanbanDropdownItem[] = [
   {
     id: 1,
     label: 'Move',
@@ -66,10 +65,11 @@ const actions = [
   {
     id: 10,
     label: 'Delete',
-    class: 'text-danger'
+    className: 'text-danger'
   }
 ];
 
+/** `.card.sortable-item` of apps/kanban/kanban.pug */
 const KanbanListItemCard = ({
   task,
   list,
@@ -104,121 +104,120 @@ const KanbanListItemCard = ({
   return (
     <div ref={setNodeRef} style={styles} {...attributes} {...listeners}>
       <Card
-        className={classNames(
-          className,
-          'sortable-item hover-actions-trigger',
-          { 'bg-body-emphasis': isDragging }
-        )}
+        className={cn(className, 'sortable-item hover-actions-trigger', {
+          'bg-soft': isDragging
+        })}
       >
-        <Card.Body className="p-3">
+        <Card.Body className="py-4 px-4">
           {task.coverImage && (
-            <div
-              className="position-relative mb-2 overflow-hidden rounded w-100"
-              style={{ height: 200 }}
-            >
+            <div className="relative mb-2 overflow-hidden rounded-md h-50 w-full">
               <div
-                className="bg-holder banner-bg"
-                style={{
-                  backgroundImage: `url(${task.coverImage})`,
-                  backgroundPosition: 'bottom left'
-                }}
+                className="bg-holder"
+                style={{ backgroundImage: `url(${task.coverImage})` }}
               />
             </div>
           )}
-          <div className="kanban-status mb-1 position-relative lh-1">
+          <div className="kanban-status mb-1 relative leading-none">
             <FontAwesomeIcon
-              transform="shrink-1 down-3"
               icon={faCircle}
-              className={`me-2 d-inline-block text-${task.status.color}`}
+              transform="shrink-1 down-3"
+              className={cn(
+                'me-2 inline-block min-w-4 text-base',
+                task.status.circleClass
+              )}
             />
-            <Badge
-              variant="phoenix"
-              bg={task.status.color as BadgeBg}
-              className="fs-10"
+            <span
+              className={cn(
+                task.status.badgeClass,
+                'badge items-center text-sm leading-none'
+              )}
             >
-              {task.status.label}
+              <span>{task.status.label}</span>
               <FontAwesomeIcon
                 icon={task.status.icon}
                 transform="up-2"
-                className="ms-1 d-inline-block"
-                style={{ height: 7.8, width: 7.8 }}
+                className="size-[7.8px]! ms-1"
               />
-            </Badge>
-            <Dropdown autoClose="outside" className="position-static">
-              <Dropdown.Toggle
-                variant=""
-                size="sm"
-                className="hover-actions dropdown-caret-none kanban-item-dropdown-btn"
-              >
-                <FontAwesomeIcon icon={faEllipsisV} />
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu className="py-2" style={{ width: '15rem' }}>
-                {actions.map(action => (
-                  <Fragment key={action.id}>
-                    {action.hr ? (
-                      <hr className="my-2" />
-                    ) : (
-                      <Dropdown.Item
-                        href="#!"
-                        key={action.label}
-                        className="d-flex flex-between-center"
-                      >
-                        {action.label}
-                        {action.isNested && (
-                          <FontAwesomeIcon
-                            icon={faAngleRight}
-                            className="fs-10"
-                          />
-                        )}
-                      </Dropdown.Item>
-                    )}
-                  </Fragment>
-                ))}
-              </Dropdown.Menu>
+            </span>
+            <Dropdown>
+              <Dropdown.Trigger asChild>
+                <button
+                  className="btn btn-sm btn-phoenix-default kanban-item-dropdown-btn hover-actions"
+                  type="button"
+                >
+                  <FontAwesomeIcon
+                    icon={faEllipsisH}
+                    rotation={90}
+                    transform="shrink-2"
+                  />
+                </button>
+              </Dropdown.Trigger>
+              <Dropdown.Content align="end" className="py-2 w-60">
+                <KanbanDropdownItems items={actions} />
+              </Dropdown.Content>
             </Dropdown>
           </div>
-          <p className="mb-2 stretched-link" onClick={() => setOpenModal(true)}>
+          <p
+            className="mb-0 stretched-link text-base"
+            onClick={() => setOpenModal(true)}
+          >
             {task.title}
           </p>
-          <div className="d-flex mt-2 align-items-center">
-            {task.date && (
-              <p className="mb-0 text-body-tertiary text-opactity-85 fs-9 lh-1 me-3 white-space-nowrap">
+          <div className="flex mt-2 items-center">
+            {task.footerDate && (
+              <p className="mb-0 text-subtle/85 text-md leading-none me-4 whitespace-nowrap">
                 <FontAwesomeIcon
                   icon={faCalendarXmark}
-                  className="fs-0 me-2 d-inline-block"
+                  className="min-w-4 text-md me-2 inline-block"
                 />
-                <>{task.date}</>
+                {task.footerDate}
               </p>
             )}
             {task.attachments && (
-              <p className="mb-0 text-body-tertiary text-opactity-85 fs-9 lh-1">
+              <p className="mb-0 text-subtle/85 text-md leading-none">
                 <FontAwesomeIcon
                   icon={faPaperclip}
-                  className="fs-0 me-2 d-inline-block"
+                  className="min-w-4 text-md me-2 inline-block"
                 />
                 {task.attachments}
               </p>
             )}
-            {task.completedTasks && (
-              <p className="mb-0 text-body-tertiary text-opactity-85 fs-9 lh-1">
+            {task.footerChecked && (
+              <p className="mb-0 text-subtle/85 text-md leading-none">
                 <FontAwesomeIcon
-                  icon={faPaperclip}
-                  className="fs-0 me-2 d-inline-block"
+                  icon={faCheckSquare}
+                  className="min-w-4 text-md me-2 inline-block"
                 />
-                {task.completedTasks[0]} / {task.completedTasks[1]}
+                {task.footerChecked}
               </p>
             )}
-            {task.members && (
-              <Avatar.Group
-                total={task.members.length}
-                size="s"
-                className="ms-auto"
-              >
-                {task.members.slice(0, 4).map(member => (
-                  <Avatar key={member.id} size="s" src={member.avatar} />
-                ))}
-              </Avatar.Group>
+            {task.users && (
+              <div className="avatar-group ms-auto">
+                {task.users.map((user, index) =>
+                  user.more ? (
+                    <div
+                      className="avatar avatar-xs border border-subtle-subtle"
+                      key={index}
+                    >
+                      <div
+                        className={cn(
+                          'avatar-name rounded-full',
+                          user.contentClass
+                        )}
+                      >
+                        <span>{user.more}</span>
+                      </div>
+                    </div>
+                  ) : (
+                    <Avatar
+                      size="s"
+                      src={user.img}
+                      className="border border-subtle-subtle"
+                      key={index}
+                    />
+                  )
+                )}
+              </div>
             )}
           </div>
         </Card.Body>

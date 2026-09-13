@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { Editor } from '@tinymce/tinymce-react';
 import { Editor as TinyMCEEditor } from 'tinymce';
 import { getColor } from 'helpers/utils';
@@ -22,21 +22,24 @@ const TinymceEditor = ({
   } = useAppContext();
   const editorRef = useRef<TinyMCEEditor | null>(null);
 
+  // the gold (src/js/theme/tinymce.js) puts the focus ring on the edit-area
+  // wrapper only — the whole editorContainer would ring the toolbar too
+  const focusTarget = () =>
+    editorRef.current?.editorContainer?.querySelector('.tox-sidebar-wrap');
+
   const handleEditorFocus = () => {
-    const editorContainer = editorRef.current?.editorContainer;
-    editorContainer?.classList.add('editor-focused');
+    focusTarget()?.classList.add('editor-focused');
   };
 
   const handleEditorBlur = () => {
-    const editorContainer = editorRef.current?.editorContainer;
-    editorContainer?.classList.remove('editor-focused');
+    focusTarget()?.classList.remove('editor-focused');
   };
 
   const handleEditorStyle = () => {
     if (editorRef.current) {
       editorRef.current.dom.addStyle(
         `.mce-content-body{
-          color: ${getColor('emphasis-color')} !important;
+          color: ${getColor('text-color-emphasis')} !important;
           background-color: ${getColor('tinymce-bg')} !important;
         }
         `
@@ -50,6 +53,7 @@ const TinymceEditor = ({
 
   return (
     <Editor
+      licenseKey="gpl"
       tinymceScriptSrc="/tinymce/tinymce.min.js"
       apiKey={import.meta.env.VITE_TINYMCE_APIKEY}
       onFocus={handleEditorFocus}
@@ -60,17 +64,16 @@ const TinymceEditor = ({
       onEditorChange={onChange}
       init={{
         skin: 'oxide',
-        license_key: 'gpl',
         menubar: false,
         content_style: `
         body { 
-          color: ${getColor('emphasis-color')};
+          color: ${getColor('text-color-emphasis')};
         }
         .mce-content-body{
           background-color: ${getColor('tinymce-bg')};
         }
         .mce-content-body[data-mce-placeholder]:not(.mce-visualblocks)::before {
-          color: ${getColor('gray-400')};
+          color: ${getColor('color-gray-400')};
           font-weight: 400;
           font-size: 12.8px;
         }

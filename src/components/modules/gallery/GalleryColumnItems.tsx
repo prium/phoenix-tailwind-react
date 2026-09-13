@@ -1,66 +1,68 @@
-import classNames from 'classnames';
-import Lightbox from 'components/base/LightBox';
-import { GalleryColumnItemType } from 'data/gallery';
+import { cn } from '@hummingbirdui/react';
+import Lightbox from 'components/base/Lightbox';
+import type { GalleryItem } from 'data/gallery';
 import useLightbox from 'hooks/useLightbox';
-import { Masonry } from 'react-plock';
+import PackeryGrid from './PackeryGrid';
 
-interface ColumnItemProps {
-  galleryItem: GalleryColumnItemType;
-  onClick: () => void;
-}
-
-const ColumnItem = ({ galleryItem, onClick }: ColumnItemProps) => {
-  return (
-    <div
-      className={classNames(
-        'img-zoom-hover cursor-pointer',
-        galleryItem.className
-      )}
-      onClick={onClick}
-    >
-      <div className="overflow-hidden rounded">
-        <img src={galleryItem.image} alt="image" className="img-fluid" />
-      </div>
-      <div className="mt-3">
-        <h4 className="title">{galleryItem.title}</h4>
-        <p className="text-body text-capitalize mb-0">{galleryItem.type}</p>
-      </div>
-    </div>
-  );
-};
+/**
+ * The gold appends up to three `span.gallery-column-separator-N` rules to the
+ * grid (see `isotopeInit` in phoenix-tailwind `src/js/theme/isotope.js`).
+ */
+const ColumnSeparators = ({ count }: { count: number }) => (
+  <>
+    {Array.from({ length: Math.max(0, Math.min(count, 4) - 1) }, (_, i) => (
+      <span
+        key={i}
+        className={`gallery-column-separator gallery-column-separator-${i + 1}`}
+      />
+    ))}
+  </>
+);
 
 const GalleryColumnItems = ({
   columnItems
 }: {
-  columnItems: GalleryColumnItemType[];
+  columnItems: GalleryItem[];
 }) => {
   const { lightboxProps, openLightbox } = useLightbox(
-    columnItems.map(item => item.image)
+    columnItems.map(item => item.largeImage)
   );
+
   return (
     <>
-      <div className="position-relative">
-        <Masonry
-          items={columnItems}
-          config={{
-            columns: [1, 2, 3, 4],
-            gap: 0,
-            media: [575, 767, 1199, 1200],
-            useBalancedLayout: true
-          }}
-          className="masonry-items row gx-7"
-          render={(item, index) => {
-            const realIndex = columnItems.findIndex(i => i.id === item.id);
-
-            return (
-              <ColumnItem
-                galleryItem={item}
-                key={item.id}
-                onClick={() => openLightbox(realIndex + 1)}
-              />
-            );
-          }}
-        />
+      <div className="relative">
+        <PackeryGrid
+          className="row gx-12 gy-8 overflow-hidden"
+          id="image_gallery"
+          after={<ColumnSeparators count={columnItems.length} />}
+        >
+          {columnItems.map((item, index) => (
+            <a
+              key={item.id}
+              href={item.largeImage}
+              onClick={event => {
+                event.preventDefault();
+                openLightbox(index + 1);
+              }}
+              className={cn(
+                item.category,
+                'sm:col-6 md:col-4 xl:col-3 img-zoom-hover no-underline'
+              )}
+            >
+              <div className="overflow-hidden rounded-md">
+                <img src={item.image} alt="" />
+              </div>
+              <div className="flex mt-4">
+                <div>
+                  <h4 className="title">{item.title}</h4>
+                  <p className="mb-0 capitalize text-default">
+                    {item.category.split('-').join(' ')}
+                  </p>
+                </div>
+              </div>
+            </a>
+          ))}
+        </PackeryGrid>
       </div>
       <Lightbox key={columnItems.length} {...lightboxProps} />
     </>

@@ -30,8 +30,8 @@ const CoverUpload = ({
   return (
     <>
       {!src && (
-        <div className="text-body-tertiary fw-bold d-flex flex-center flex-column gap-3 fs-9 w-100 h-100">
-          <img className="mt-3" src={imageIcon} width={40} alt="" />
+        <div className="text-subtle font-bold flex flex-center flex-col gap-4 text-md w-full h-full">
+          <img className="mt-4" src={imageIcon} width={40} alt="" />
           <Button variant="link" className="p-0">
             Add cover image
           </Button>
@@ -40,7 +40,7 @@ const CoverUpload = ({
       <div
         className={classNames(
           className,
-          'bg-holder rounded-top hover-actions-trigger position-absolute'
+          'bg-holder rounded-t-md hover-actions-trigger absolute'
         )}
         style={{
           backgroundImage: `${gradient ? gradient + ',' : ''}url(${
@@ -49,7 +49,7 @@ const CoverUpload = ({
         }}
       >
         <input
-          className="d-none"
+          className="hidden"
           id="coverFile"
           type="file"
           accept="image/*"

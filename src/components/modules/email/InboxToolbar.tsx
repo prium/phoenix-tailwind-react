@@ -8,67 +8,89 @@ import {
   faTrash
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
+import { cn } from '@hummingbirdui/react';
 import Button from 'components/base/Button';
 import IndeterminateCheckbox from 'components/base/IndeterminateCheckbox';
 import TooltipIconButton from 'components/common/TooltipIconButton';
 import { useBulkSelect } from 'providers/BulkSelectProvider';
 
 interface InboxToolbarProps {
-  size?: 'sm' | 'lg';
-  className?: string;
+  /** the inbox page variant ("Showing :" label + sticky inbox-toolbar offset) */
+  inbox?: boolean;
 }
 
-const InboxToolbar = ({ size = 'lg', className }: InboxToolbarProps) => {
+/**
+ * Gold `mixin InboxToolbar` (../phoenix-tailwind/src/pug/mixins/email/Common.pug).
+ */
+const InboxToolbar = ({ inbox }: InboxToolbarProps) => {
   const { getParentCheckboxProps } = useBulkSelect();
   return (
     <>
       <div
-        className={classNames(
-          className,
-          'd-flex align-items-center flex-wrap position-sticky pb-2 bg-body z-2 email-toolbar'
+        className={cn(
+          'flex items-center flex-wrap sticky pb-2 bg-default z-2 email-toolbar',
+          { 'inbox-toolbar': inbox }
         )}
       >
-        <div className="d-flex align-items-center flex-1 me-2">
-          <Button className="p-0 me-2" onClick={() => location.reload()}>
-            <FontAwesomeIcon icon={faRedo} className="text-primary fs-10" />
+        <div className="flex items-center flex-1 me-2">
+          <Button
+            size="sm"
+            className="p-0 me-2"
+            onClick={() => location.reload()}
+          >
+            <FontAwesomeIcon icon={faRedo} className="text-primary text-sm" />
           </Button>
-          <p className="fw-semibold fs-10 text-body-tertiary text-opacity-85 mb-0 lh-sm text-nowrap">
+          <p className="font-semibold text-sm text-subtle/85 mb-0 leading-sm text-nowrap">
             Last refreshed 1m ago
           </p>
         </div>
-        <div className="d-flex gap-3">
-          <p className="text-body-tertiary text-opacity-85 fs-9 fw-semibold mb-0">
-            {size === 'lg' ? 'Showing : ' : ' '}
-            <span className="text-body">1-7</span>
-            {' of '}
-            <span className="text-body">205</span>
+        <div className="flex">
+          <p className="text-subtle/85 text-md font-semibold mb-0 me-4">
+            {inbox ? 'Showing :' : ''}{' '}
+            <span className="text-default">1-7 </span>
+            of <span className="text-default">205</span>
           </p>
-          <Button className="p-0" type="button">
-            <FontAwesomeIcon
-              icon={faAngleLeft}
-              className="text-body-quaternary fs-10"
-            />
+          <Button className="p-0 me-4">
+            <FontAwesomeIcon icon={faAngleLeft} className="text-soft text-sm" />
           </Button>
-          <Button className="p-0" type="button">
+          <Button className="p-0">
             <FontAwesomeIcon
               icon={faAngleRight}
-              className="text-primary fs-10"
+              className="text-primary text-sm"
             />
           </Button>
         </div>
       </div>
-      <div className="border-y border-translucent py-2 d-flex justify-content-between">
-        <IndeterminateCheckbox {...getParentCheckboxProps()} />
-        <div className="d-flex gap-2">
+      <div className="border-t border-subtle py-2.75 flex justify-between">
+        <IndeterminateCheckbox
+          className="text-base"
+          {...getParentCheckboxProps()}
+        />
+        <div className="flex gap-3">
           <TooltipIconButton
-            iconClass="fs-10"
             title="Archive"
             icon={faArchive}
+            className="p-0 text-soft/85 hover:text-subtle/85"
+            iconClass="text-sm"
           />
-          <TooltipIconButton iconClass="fs-10" title="Delete" icon={faTrash} />
-          <TooltipIconButton iconClass="fs-10" title="Star" icon={faStar} />
-          <TooltipIconButton iconClass="fs-10" title="Tags" icon={faTag} />
+          <TooltipIconButton
+            title="Delete"
+            icon={faTrash}
+            className="p-0 text-soft/85 hover:text-subtle/85"
+            iconClass="text-sm"
+          />
+          <TooltipIconButton
+            title="Star"
+            icon={faStar}
+            className="p-0 text-soft/85 hover:text-subtle/85"
+            iconClass="text-sm"
+          />
+          <TooltipIconButton
+            title="Tags"
+            icon={faTag}
+            className="p-0 text-soft/85 hover:text-subtle/85"
+            iconClass="text-sm"
+          />
         </div>
       </div>
     </>

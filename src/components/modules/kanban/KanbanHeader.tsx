@@ -1,3 +1,4 @@
+import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import {
   faAngleDown,
   faBars,
@@ -7,20 +8,19 @@ import {
   faFilter,
   faPalette,
   faRightLeft,
+  faSearch,
   faUserPlus
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Avatar from 'components/base/Avatar';
-import Button from 'components/base/Button';
+import { Dropdown } from '@hummingbirdui/react';
 import AvatarDropdown from 'components/common/AvatarDropdown';
-import { kanbanBoardMembers } from 'data/kanban';
-import { Col, Dropdown, Nav, Row } from 'react-bootstrap';
+import KanbanInviteModal from 'components/modals/KanbanInviteModal';
+import { kanbanHeaderUsers } from 'data/kanban';
 import { useKanbanContext } from 'providers/KanbanProvider';
 import { useState } from 'react';
-import KanbanInviteModal from 'components/modals/KanbanInviteModal';
 import { TOGGLE_DETAILS_OFFCANVAS } from 'reducers/KanbanReducer';
 
-const navItems = [
+const navItems: { icon: IconProp; title: string }[] = [
   {
     icon: faFilter,
     title: 'Filter'
@@ -47,6 +47,7 @@ const navItems = [
   }
 ];
 
+/** `+KanbanHeader` in mixins/kanban/kanban/KanbanHeader.pug */
 const KanbanHeader = () => {
   const [openInviteModal, setOpenInviteModal] = useState(false);
   const { kanbanDispatch } = useKanbanContext();
@@ -54,74 +55,115 @@ const KanbanHeader = () => {
   return (
     <>
       <div className="kanban-header">
-        <Row className="gx-0 justify-content-between justify-content-md-start">
-          <Col xs="auto">
-            <Dropdown>
-              <Dropdown.Toggle
-                variant="link"
-                className="text-decoration-none dropdown-caret-none text-body-emphasis fs-8 ps-0"
-              >
-                <span className="fs-7 me-2">Phoenix</span>
-                <FontAwesomeIcon
-                  icon={faAngleDown}
-                  className="text-body-quaternary d-inline-block"
+        <div className="row gx-0 justify-between md:justify-start">
+          <div className="col-auto">
+            <div className="dropdown me-2">
+              <Dropdown>
+                <Dropdown.Trigger asChild>
+                  <button
+                    className="btn btn-link hover:no-underline text-emphasis text-base ps-0"
+                    type="button"
+                  >
+                    <span className="text-lg me-2">Phoenix</span>
+                    <FontAwesomeIcon
+                      icon={faAngleDown}
+                      transform="up-2"
+                      className="text-soft inline-block min-w-3"
+                    />
+                  </button>
+                </Dropdown.Trigger>
+                <Dropdown.Content className="py-0">
+                  <Dropdown.Item asChild>
+                    <a href="#!">Sparrow</a>
+                  </Dropdown.Item>
+                  <Dropdown.Item asChild>
+                    <a href="#!">Boreas</a>
+                  </Dropdown.Item>
+                  <Dropdown.Item asChild>
+                    <a href="#!">Erebus</a>
+                  </Dropdown.Item>
+                </Dropdown.Content>
+              </Dropdown>
+            </div>
+          </div>
+          <div className="col-auto flex items-center">
+            <div className="avatar-group">
+              {kanbanHeaderUsers.map(user => (
+                <AvatarDropdown
+                  user={user}
+                  size="m"
+                  dropdownClass="flex"
+                  key={user.id}
                 />
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu className="py-0">
-                <Dropdown.Item href="#/action-1">Sparrow</Dropdown.Item>
-                <Dropdown.Item href="#/action-2">Boreas</Dropdown.Item>
-                <Dropdown.Item href="#/action-3">Erebus</Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </Col>
-          <Col xs="auto" className="d-flex align-items-center gap-4">
-            <Avatar.Group
-              total={
-                kanbanBoardMembers.members.length +
-                kanbanBoardMembers.guests.length
-              }
-              size="m"
-            >
-              {kanbanBoardMembers.members.slice(0, 3).map(member => (
-                <AvatarDropdown user={member} size="m" key={member.id} />
               ))}
-            </Avatar.Group>
-            <Button
-              startIcon={<FontAwesomeIcon icon={faUserPlus} />}
-              variant="primary"
-              className="fs-10 px-3"
-              onClick={() => setOpenInviteModal(!openInviteModal)}
+            </div>
+            <button
+              className="btn btn-primary ms-6 text-sm px-4"
+              type="button"
+              onClick={() => setOpenInviteModal(true)}
             >
-              <span className="d-none d-sm-inline">invite</span>
-            </Button>
-          </Col>
-          <Col md="auto" className="d-flex align-items-center gap-4 ms-auto">
-            <Nav className="w-100 fs-9">
+              <FontAwesomeIcon
+                icon={faUserPlus}
+                className="inline-block min-w-3.5"
+              />
+              <span className="hidden sm:inline ms-2">invite</span>
+            </button>
+          </div>
+          <div className="md:col-auto flex items-center ms-auto mt-2 md:mt-0">
+            <ul className="nav w-full">
+              <li className="nav-item">
+                <a
+                  href="#!"
+                  className="nav-link flex items-center text-default ps-0 pe-2 xl:px-4 font-bold"
+                >
+                  <FontAwesomeIcon
+                    icon={faSearch}
+                    transform="up-2"
+                    className="me-1 min-w-3.5 text-md"
+                  />
+                  <span className="hidden 2xl:inline text-md">Search</span>
+                </a>
+              </li>
               {navItems.map(item => (
-                <Nav.Item key={item.title}>
-                  <Nav.Link className="d-flex gap-2 align-items-center text-body px-2 px-xl-3 fw-bold">
-                    <FontAwesomeIcon icon={item.icon} transform="up-2" />
-                    <span className="d-none d-xxl-inline">{item.title}</span>
-                  </Nav.Link>
-                </Nav.Item>
+                <li className="nav-item" key={item.title}>
+                  <a
+                    href="#!"
+                    className="nav-link flex items-center text-default px-2 xl:px-4 font-bold"
+                  >
+                    <FontAwesomeIcon
+                      icon={item.icon}
+                      transform="up-2"
+                      className="me-1 min-w-3.5 text-md"
+                    />
+                    <span className="hidden 2xl:inline text-md">
+                      {item.title}
+                    </span>
+                  </a>
+                </li>
               ))}
-              <Nav.Item className="my-auto ms-auto">
-                <Nav.Link
-                  className="d-flex gap-2 align-items-center text-body px-2 px-xl-3 fw-bold"
-                  onClick={() => {
+              <li className="nav-item ms-auto">
+                <a
+                  href="#offcanvasKanban"
+                  role="button"
+                  className="nav-link flex items-center pe-0 ps-1 xl:ps-4 text-default h-full"
+                  onClick={e => {
+                    e.preventDefault();
                     kanbanDispatch({
                       type: TOGGLE_DETAILS_OFFCANVAS,
                       payload: true
                     });
                   }}
                 >
-                  <FontAwesomeIcon icon={faBars} transform="up-2" />
-                </Nav.Link>
-              </Nav.Item>
-            </Nav>
-          </Col>
-        </Row>
+                  <FontAwesomeIcon
+                    icon={faBars}
+                    transform="up-2"
+                    className="inline min-w-3.5 text-md"
+                  />
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
       <KanbanInviteModal
         show={openInviteModal}

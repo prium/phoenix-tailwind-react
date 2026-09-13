@@ -1,8 +1,8 @@
+import { Col, Row } from '@hummingbirdui/react';
 import DatePicker from 'components/base/DatePicker';
 import EarlyBirdCard from 'components/cards/EarlyBirdCard';
 import ZeroRoadMap from 'components/modules/project-management/dashboard/ZeroRoadMap';
 import IssuesDiscovered from 'components/modules/project-management/dashboard/IssuesDiscovered';
-import { Col, Row } from 'react-bootstrap';
 import TodoList from 'components/modules/project-management/todo-list/TodoList';
 import { stats } from 'data/project-management/stats';
 import Stat from 'components/modules/project-management/dashboard/Stat';
@@ -10,27 +10,28 @@ import ProjectElevenProgress from 'components/modules/project-management/dashboa
 import ProjectDashboard from 'components/modules/project-management/dashboard/ProjectDashboard';
 import ProjectActivityCard from 'components/cards/ProjectActivityCard';
 
+/** dashboard/project-management.pug */
 const ProjectManagement = () => {
   return (
     <>
-      <Row className="gy-3 mb-6 justify-content-between">
+      <Row className="gy-4 mb-10 justify-between">
         <Col md={9} xs="auto">
-          <h2 className="mb-2 text-body-emphasis">Projects Dashboard</h2>
-          <h5 className="text-body-tertiary fw-semibold">
+          <h2 className="mb-2 text-emphasis">Projects Dashboard</h2>
+          <h5 className="text-subtle font-semibold mb-1">
             Here’s what’s going on at your business right now
           </h5>
         </Col>
         <Col md={3} xs="auto">
           <DatePicker
-            options={{
-              defaultDate: 'May 1, 2023'
-            }}
+            id="datepicker"
+            options={{ defaultDate: 'Mar 1, 2022' }}
           />
         </Col>
       </Row>
-      <Row className="mb-3 gy-6">
+
+      <Row className="mb-4 gy-10">
         <Col xs={12} xxl={2}>
-          <Row className="align-items-center g-3 g-xxl-0 h-100 align-content-between">
+          <Row className="items-center g-4 2xl:g-0 h-full content-between">
             {stats.map(stat => (
               <Col
                 xs={12}
@@ -41,7 +42,7 @@ const ProjectManagement = () => {
                 xxl={12}
                 key={stat.title}
               >
-                <Stat stat={stat} key={stat.title} />
+                <Stat stat={stat} />
               </Col>
             ))}
           </Row>
@@ -53,7 +54,8 @@ const ProjectManagement = () => {
           <EarlyBirdCard />
         </Col>
       </Row>
-      <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-body-emphasis pt-7 pb-3 border-y mb-3">
+
+      <div className="-mx-6 px-6 lg:-mx-10 lg:px-10 bg-soft pt-12 pb-4 border-y">
         <Row>
           <Col xs={12} xl={7} xxl={6}>
             <IssuesDiscovered />
@@ -63,8 +65,8 @@ const ProjectManagement = () => {
           </Col>
         </Row>
       </div>
-      <div className="mx-lg-n4 mb-3">
-        <Row className="g-3">
+      <div className="lg:-mx-6 mt-4">
+        <Row className="g-4">
           <Col xs={12} xl={6} xxl={7}>
             <TodoList />
           </Col>
@@ -73,10 +75,13 @@ const ProjectManagement = () => {
           </Col>
         </Row>
       </div>
-
-      <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-body-emphasis pt-6 border-top">
-        <ProjectDashboard />
-      </div>
+      <Row className="mt-4">
+        <Col xs={12}>
+          <div className="-mx-6 px-6 lg:-mx-10 lg:px-10 bg-soft pt-10 border-t">
+            <ProjectDashboard />
+          </div>
+        </Col>
+      </Row>
     </>
   );
 };

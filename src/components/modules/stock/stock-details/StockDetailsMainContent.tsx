@@ -1,5 +1,5 @@
 import { JSX } from 'react';
-import { Tab, Nav } from 'react-bootstrap';
+import { Tabs, cn } from '@hummingbirdui/react';
 import ChartTabContent from './tab/ChartTabContent';
 import DividendsTabContent from './tab/DividendsTabContent';
 import FinancialStatementTabContent from './tab/FinancialStatementTabContent';
@@ -7,7 +7,6 @@ import ForecastTabContent from './tab/ForecastTabContent';
 import NewsTabContent from './tab/NewsTabContent';
 import EventsTabContent from './tab/EventsTabContent';
 import CompanyProfileTabContent from './tab/CompanyProfileTabContent';
-import classNames from 'classnames';
 import { dividendContent } from 'data/stock/dividend';
 import { forecastDataItems } from 'data/stock/forecast';
 import {
@@ -15,97 +14,122 @@ import {
   eventList,
   companyProfileItems
 } from 'data/stock/stockDetails';
+
 export interface StockDetailsTabItem {
   id: string;
-  name: string;
+  href: string;
+  label: string;
   className?: string;
-  navItemClassName?: string;
+  navItemClass?: string;
   content: JSX.Element | null;
 }
 
+/** Gold: `navItems` in mixins/stock/stock-details/StockDetailsTab.pug */
 const stockDetailsTabItems: StockDetailsTabItem[] = [
   {
-    id: 'chart',
-    name: 'Chart',
-    className: 'ps-0 pe-3',
+    id: 'tab-chart',
+    href: 'chart-tab',
+    label: 'Chart',
+    className: 'ps-0 pe-4',
     content: <ChartTabContent />
   },
   {
-    id: 'dividends',
-    name: 'Dividends',
-    content: <DividendsTabContent dividendContent={dividendContent} />,
-    className: 'px-3'
+    id: 'tab-dividend',
+    href: 'dividend-tab',
+    label: 'Dividends',
+    className: 'px-4',
+    content: <DividendsTabContent dividendContent={dividendContent} />
   },
   {
-    id: 'financial',
-    name: 'Financial Statement',
-    content: <FinancialStatementTabContent />,
-    className: 'px-3'
+    id: 'tab-finStates',
+    href: 'finStates-tab',
+    label: 'Financial Statement',
+    className: 'px-4',
+    content: <FinancialStatementTabContent />
   },
   {
-    id: 'forecast',
-    name: 'Forecast',
-    content: <ForecastTabContent forecastDataItems={forecastDataItems} />,
-    className: 'px-3'
+    id: 'tab-forecast',
+    href: 'forecast-tab',
+    label: 'Forecast',
+    className: 'px-4',
+    content: <ForecastTabContent forecastDataItems={forecastDataItems} />
   },
   {
-    id: 'news',
-    name: 'News',
-    content: <NewsTabContent newsItems={newsItems} />,
-    className: 'px-3'
+    id: 'tab-news',
+    href: 'news-tab',
+    label: 'News',
+    className: 'px-4',
+    content: <NewsTabContent newsItems={newsItems} />
   },
   {
-    id: 'events',
-    name: 'Events',
-    content: <EventsTabContent eventLists={eventList} />,
-    className: 'px-3'
+    id: 'tab-events',
+    href: 'events-tab',
+    label: 'Events',
+    className: 'px-4',
+    content: <EventsTabContent eventLists={eventList} />
   },
   {
-    id: 'company-profile',
-    name: 'Company Profile',
+    id: 'tab-comProfile',
+    href: 'comProfile-tab',
+    label: 'Company Profile',
+    className: 'px-4',
     content: (
       <CompanyProfileTabContent companyProfileItems={companyProfileItems} />
-    ),
-    className: 'px-3'
+    )
   },
   {
-    id: 'empty-1',
-    name: '',
-    content: null,
-    className: 'disabled h-100 px-3',
-    navItemClassName: 'flex-1 d-none d-md-inline'
+    id: 'tab-empty1',
+    href: 'empty1-tab',
+    label: '',
+    className: 'px-4 disabled h-100 w-full h-[29.06px]',
+    navItemClass: 'flex-1 hidden md:inline',
+    content: null
   }
 ];
+
+/** Gold: `+StockDetailsTab` in mixins/stock/stock-details/StockDetailsTab.pug */
 const StockDetailsMainContent = () => {
   return (
-    <Tab.Container defaultActiveKey="chart">
-      <Nav
+    <Tabs defaultValue="chart-tab">
+      <Tabs.List
+        asChild
         variant="underline"
-        className="optionChainTableHeader gap-0 flex-nowrap scrollbar mb-4"
+        className="optionChainTableHeader gap-0 flex-nowrap scrollbar mb-6"
+        id="stockDetailsTab"
       >
-        {stockDetailsTabItems.map(item => (
-          <Nav.Item key={item.id} className={classNames(item.navItemClassName)}>
-            <Nav.Link
-              eventKey={item.id}
-              className={classNames('pt-0 text-nowrap', item.className)}
-            >
-              {item.name}
-            </Nav.Link>
-          </Nav.Item>
-        ))}
-      </Nav>
-      <Tab.Content>
-        {stockDetailsTabItems.map(item => (
-          <Tab.Pane
-            key={item.id}
-            eventKey={item.id}
-            className="h-100 position-relative"
-          >
-            {item.content}
-          </Tab.Pane>
-        ))}
-      </Tab.Content>
-    </Tab.Container>
+        <ul>
+          {stockDetailsTabItems.map(item => (
+            <li key={item.id} className={cn('nav-item', item.navItemClass)}>
+              <Tabs.Trigger asChild value={item.href}>
+                <a
+                  className={cn('pt-0 text-nowrap', item.className)}
+                  id={item.id}
+                  href={`#${item.href}`}
+                  onClick={e => e.preventDefault()}
+                >
+                  {item.label}
+                </a>
+              </Tabs.Trigger>
+            </li>
+          ))}
+        </ul>
+      </Tabs.List>
+      <div className="tab-content" id="stockDetailsTabContent">
+        {stockDetailsTabItems.map(
+          item =>
+            item.content && (
+              <Tabs.Content
+                key={item.id}
+                value={item.href}
+                id={item.href}
+                className="tab-pane fade show active"
+              >
+                {item.content}
+              </Tabs.Content>
+            )
+        )}
+      </div>
+    </Tabs>
   );
 };
 

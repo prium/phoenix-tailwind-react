@@ -30,10 +30,10 @@ const QuantityButtons = ({
 
   if (type === 'default') {
     return (
-      <div className="d-flex flex-between-center">
+      <div className="flex flex-between-center">
         <Button
           variant="phoenix-primary"
-          className="px-3"
+          className="px-4"
           onClick={handleDecrease}
         >
           <FontAwesomeIcon icon={faMinus} />
@@ -48,7 +48,7 @@ const QuantityButtons = ({
         />
         <Button
           variant="phoenix-primary"
-          className="px-3"
+          className="px-4"
           onClick={handleIncrease}
         >
           <FontAwesomeIcon icon={faPlus} />

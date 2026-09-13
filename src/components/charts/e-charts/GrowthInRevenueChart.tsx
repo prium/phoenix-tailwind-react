@@ -7,13 +7,16 @@ import { BarChart } from 'echarts/charts';
 echarts.use([TooltipComponent, BarChart]);
 
 const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
-  color: [getThemeColor('primary'), getThemeColor('tertiary-bg')],
+  color: [
+    getThemeColor('color-primary'),
+    getThemeColor('background-color-highlight')
+  ],
   tooltip: {
     trigger: 'axis',
     padding: [7, 10],
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('border-color'),
-    textStyle: { color: getThemeColor('light-text-emphasis') },
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('border-color-default'),
+    textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,
     axisPointer: {
@@ -26,14 +29,14 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     splitArea: { show: false },
 
     axisLabel: {
-      color: getThemeColor('body-color')
+      color: getThemeColor('text-color-default')
     },
     axisTick: {
       show: false
     },
     axisLine: {
       lineStyle: {
-        color: getThemeColor('border-color-translucent')
+        color: getThemeColor('border-color-subtle')
       }
     }
   },
@@ -41,11 +44,11 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     position: 'right',
     splitLine: {
       lineStyle: {
-        color: getThemeColor('secondary-bg')
+        color: getThemeColor('background-color-muted')
       }
     },
     axisLabel: {
-      color: getThemeColor('tertiary-color'),
+      color: getThemeColor('text-color-subtle'),
       formatter: (value: number) => `${value}%`
     }
   },
@@ -59,17 +62,17 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
         },
         {
           value: -12,
-          lineStyle: { color: getThemeColor('info-light') },
+          lineStyle: { color: getThemeColor('color-info-light') },
           itemStyle: {
-            color: getThemeColor('info-light'),
+            color: getThemeColor('color-info-light'),
             borderRadius: [0, 0, 3, 3]
           }
         },
         {
           value: -15,
-          lineStyle: { color: getThemeColor('info-light') },
+          lineStyle: { color: getThemeColor('color-info-light') },
           itemStyle: {
-            color: getThemeColor('info-light'),
+            color: getThemeColor('color-info-light'),
             borderRadius: [0, 0, 3, 3]
           }
         },
@@ -90,10 +93,10 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
         }
       ],
       lineStyle: {
-        color: getThemeColor('primary-light')
+        color: getThemeColor('color-primary-light')
       },
       itemStyle: {
-        color: getThemeColor('primary-light'),
+        color: getThemeColor('color-primary-light'),
         borderRadius: [3, 3, 0, 0]
       },
       barWidth: 24,

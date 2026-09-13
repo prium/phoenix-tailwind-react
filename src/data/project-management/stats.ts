@@ -10,36 +10,38 @@ export interface ProjectManagementStat {
   title: string;
   count: string;
   icon: Icon;
-  iconColor: string;
+  /** literal colour class (Tailwind can't see `text-${color}`) */
+  iconClass: string;
   subtitle: string;
 }
 
+/** `stats` in mixins/dashboard/project-management/Stats.pug */
 export const stats: ProjectManagementStat[] = [
   {
     title: 'Projects',
     count: '32',
     icon: UilBooks,
-    iconColor: 'primary-dark',
+    iconClass: 'text-primary-dark',
     subtitle: 'Awating processing'
   },
   {
     title: 'Members',
     icon: UilUsersAlt,
-    iconColor: 'success-dark',
+    iconClass: 'text-success-dark',
     count: '94',
     subtitle: 'Working hard'
   },
   {
     title: 'Invoices',
     icon: UilInvoice,
-    iconColor: 'warning-dark',
+    iconClass: 'text-warning-dark',
     count: '23',
     subtitle: 'Soon to be cleared'
   },
   {
     title: 'Refunds',
     icon: UilRefresh,
-    iconColor: 'danger-dark',
+    iconClass: 'text-danger-dark',
     count: '3',
     subtitle: 'Fresh start'
   }

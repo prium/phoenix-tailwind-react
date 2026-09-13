@@ -1,0 +1,62 @@
+@utility icon-indicator {
+  @layer base {
+    position: relative;
+    &::before {
+      position: absolute;
+      content: '';
+      right: -3px;
+      top: 1px;
+      height: 19px;
+      width: 19px;
+      border-radius: 50%;
+    }
+    &.icon-indicator-sm {
+      &::before {
+        height: 0.5rem;
+        width: 0.5rem;
+        right: 9px;
+        top: 8px;
+      }
+    }
+    .icon-indicator-number {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      right: -1.5px;
+      top: 3.5px;
+      height: 1rem;
+      width: 1rem;
+      font-size: var(--text-md);
+      color: var(--color-white);
+      font-weight: var(--font-weight-bold);
+    }
+    &.icon-indicator-primary::before {
+      background-color: var(--color-blue-500);
+    }
+    &.icon-indicator-secondary::before {
+      background-color: var(--color-gray-900);
+    }
+    &.icon-indicator-success::before {
+      background-color: var(--color-green-500);
+    }
+    &.icon-indicator-info::before {
+      background-color: var(--color-cyan-500);
+    }
+    &.icon-indicator-warning::before {
+      background-color: var(--color-orange-500);
+    }
+    &.icon-indicator-danger::before {
+      background-color: var(--color-red-500);
+    }
+    &.icon-indicator-light::before {
+      background-color: var(--color-gray-100);
+    }
+    &.icon-indicator-dark::before {
+      background-color: var(--color-gray-1100);
+    }
+    &.icon-indicator-fill::before {
+      border: 0;
+    }
+  }
+}

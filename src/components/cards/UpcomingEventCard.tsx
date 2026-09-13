@@ -1,14 +1,9 @@
 import { useMemo, useState } from 'react';
-import Badge from 'components/base/Badge';
 import { UpcomingEventsItem } from 'data/stock/stockDetails';
-import { Card, Col, Row } from 'react-bootstrap';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import FeatherIcon from 'feather-icons-react';
-import Avatar from 'components/base/Avatar';
-import { Link } from 'react-router';
 import { numberFormat } from 'helpers/utils';
-import Button from 'components/base/Button';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBookmark, faCircleCheck } from '@fortawesome/free-regular-svg-icons';
@@ -16,6 +11,7 @@ import EventOffcanvas from 'components/modules/stock/stock-details/tab/EventOffc
 
 dayjs.extend(customParseFormat);
 
+/** Gold: `highlightEvents` cards in mixins/stock/stock-details/EventsTabContent.pug */
 const UpcomingEventCard = ({
   upcomingEventItem
 }: {
@@ -25,57 +21,49 @@ const UpcomingEventCard = ({
   const startDate = useMemo(() => {
     return dayjs(upcomingEventItem.scheduled.startDate, 'DD/MM/YYYY');
   }, [upcomingEventItem]);
-  const endDate = useMemo(() => {
-    return (
-      upcomingEventItem.scheduled.endDate &&
-      dayjs(upcomingEventItem.scheduled.endDate, 'DD/MM/YYYY')
-    );
-  }, [upcomingEventItem]);
 
   return (
     <>
-      <Card className="mb-4">
-        <Card.Body>
-          <Row className="g-0">
-            <Col xs={12} sm={3} className="me-sm-4 custom-calendar-container">
-              <div className="position-relative custom-calender border rounded d-flex flex-column flex-center mb-4 mb-sm-0 px-0">
-                <h5 className="fw-bolder lh-sm text-body-tertiary">
-                  {startDate.format('D')}{' '}
-                  {endDate && `- ${endDate.format('D')}`}
+      <div className="card mb-6">
+        <div className="card-body">
+          <div className="row g-0">
+            <div className="col-12 sm:col-3 sm:me-6 custom-calendar-container">
+              <div className="relative custom-calender border rounded-md flex flex-col flex-center mb-6 sm:mb-0 px-0">
+                <h5 className="font-extrabold leading-sm text-subtle">
+                  {startDate.format('DD')}
                 </h5>
-                <p className="mb-0 fs-10 text-body-tertiary fw-semibold">
+                <p className="mb-0 text-sm text-subtle font-semibold">
                   {startDate.format('MMM')}, {startDate.format('YYYY')}
                 </p>
               </div>
-            </Col>
-            <Col xs={12} sm={9} className="flex-1">
-              <Row className="g-4">
-                <Col xs={12} xxl={9}>
-                  <div className="d-xxl-flex align-items-center gap-2 mb-2">
+            </div>
+            <div className="col-12 sm:col-9 grow">
+              <div className="row g-6">
+                <div className="col-12 2xl:col-9">
+                  <div className="2xl:flex items-center gap-2 mb-2">
                     <h5
-                      className="mb-2 mb-xxl-0 cursor-pointer"
+                      className="mb-2 2xl:mb-0 cursor-pointer"
                       onClick={() => setOpen(true)}
                     >
                       {upcomingEventItem.title}
                     </h5>
-                    <Badge
-                      variant="phoenix"
-                      bg={
+                    <div
+                      className={classNames(
                         upcomingEventItem.status === 'interested'
-                          ? 'info'
-                          : 'warning'
-                      }
-                      className="fs-10"
+                          ? 'badge-phoenix-info'
+                          : 'badge-phoenix-warning',
+                        'badge text-sm'
+                      )}
                     >
                       {upcomingEventItem.status}
-                    </Badge>
+                    </div>
                   </div>
-                  <div className="d-sm-flex mb-3 align-items-center">
-                    <h6 className="text-body-tertiary fw-semibold mb-2 mb-sm-0 border-end-sm pe-sm-3 me-sm-3 text-nowrap">
+                  <div className="sm:flex mb-4 items-center">
+                    <h6 className="text-subtle font-semibold mb-2 sm:mb-0 sm:border-e sm:pe-4 sm:me-4 text-nowrap">
                       <FeatherIcon
                         icon="clock"
-                        className="me-2"
-                        style={{ width: 16, height: 16 }}
+                        size={16}
+                        className="me-2 size-4"
                       />
                       <span>
                         {upcomingEventItem.scheduled.startTime} -{' '}
@@ -83,34 +71,45 @@ const UpcomingEventCard = ({
                         {upcomingEventItem.scheduled.displayTimeZone}
                       </span>
                     </h6>
-                    <h6 className="text-body-tertiary fw-semibold mb-0 line-clamp-1">
+                    <h6 className="text-subtle font-semibold mb-0 line-clamp-1">
                       <FeatherIcon
                         icon="map-pin"
-                        className="me-2"
-                        style={{ width: 16, height: 16 }}
+                        size={16}
+                        className="me-2 size-4"
                       />
                       <span>{upcomingEventItem.location}</span>
                     </h6>
                   </div>
-                  <p className="fs-9 text-body-tertiary">
+                  <p className="text-md text-subtle">
                     {upcomingEventItem.description}
                   </p>
-                  <div className="d-flex align-items-center gap-1">
-                    <Avatar.Group size="s" className="align-items-center">
+                  <div className="flex items-center gap-1">
+                    <div className="avatar-group items-center ms-2">
                       {upcomingEventItem.interestedToGoing.map(people => (
-                        <Avatar src={people.image} key={people.id} size="s" />
+                        <a
+                          key={people.id}
+                          href="#!"
+                          className="avatar avatar-xs border-0 h-6"
+                        >
+                          <img
+                            className="rounded-full h-full"
+                            src={people.image}
+                            alt=""
+                          />
+                        </a>
                       ))}
-                      <Link
-                        to="#!"
-                        className="fs-10 ms-1 fw-semibold text-body-quaternary"
+                      <a
+                        href="#!"
+                        className="text-sm font-semibold text-soft d-i ms-1"
                       >
+                        {' '}
                         +
                         {upcomingEventItem.totalUserCount -
                           upcomingEventItem.interestedToGoing.length}{' '}
                         people going
-                      </Link>
-                    </Avatar.Group>
-                    <ul className="ps-3 mb-0 text-body-quaternary fs-10">
+                      </a>
+                    </div>
+                    <ul className="ps-4 mb-0 text-soft text-sm">
                       <li>
                         {numberFormat(upcomingEventItem.interested, 'compact', {
                           compactDisplay: 'short'
@@ -119,14 +118,16 @@ const UpcomingEventCard = ({
                       </li>
                     </ul>
                   </div>
-                </Col>
-                <Col xxl={3}>
-                  <Button
-                    className={classNames('me-2 me-xxl-0 mb-xxl-2 w-xxl-100', {
-                      'btn-primary': upcomingEventItem.status === 'interested',
-                      'btn-phoenix-primary':
-                        upcomingEventItem.status === 'featured'
-                    })}
+                </div>
+                <div className="2xl:col-3">
+                  <button
+                    type="button"
+                    className={classNames(
+                      upcomingEventItem.status === 'interested'
+                        ? 'btn-primary'
+                        : 'btn-phoenix-primary',
+                      'btn me-2 2xl:me-0 2xl:mb-2 2xl:w-full'
+                    )}
                   >
                     <FontAwesomeIcon
                       icon={
@@ -137,17 +138,20 @@ const UpcomingEventCard = ({
                       className="me-2"
                     />
                     Interested
-                  </Button>
-                  <Button variant="phoenix-primary" className="w-xxl-100">
+                  </button>
+                  <button
+                    type="button"
+                    className="btn btn-phoenix-primary 2xl:w-full"
+                  >
                     <FontAwesomeIcon icon={faCircleCheck} className="me-2" />
                     Going
-                  </Button>
-                </Col>
-              </Row>
-            </Col>
-          </Row>
-        </Card.Body>
-      </Card>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <EventOffcanvas open={open} setOpen={setOpen} />
     </>
   );

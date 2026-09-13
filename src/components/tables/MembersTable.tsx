@@ -5,95 +5,84 @@ import AdvanceTableFooter from 'components/base/AdvanceTableFooter';
 import Avatar from 'components/base/Avatar';
 import { Member } from 'data/members';
 
+/** Columns of `+MembersTable` in phoenix-tailwind mixins/pages/members. */
 export const membersTablecolumns: ColumnDef<Member>[] = [
   {
     accessorKey: 'name',
-    header: 'Member',
+    header: 'CUSTOMER',
     cell: ({ row: { original } }) => {
-      const { name, avatar } = original;
+      const { name, avatar, avatarPlaceholder } = original;
       return (
-        <Link to="#!" className=" d-flex align-items-center text-body">
-          <Avatar src={avatar} size="m" />
-          <p className="mb-0 ms-3 text-body-emphasis fw-semibold">{name}</p>
+        <Link
+          to="#!"
+          className="flex items-center text-default text-hover-1000"
+        >
+          {avatar ? (
+            <Avatar src={avatar} size="m" placeholder={avatarPlaceholder} />
+          ) : (
+            <Avatar size="m" variant="name">
+              {name.charAt(0).toUpperCase()}
+            </Avatar>
+          )}
+          <h6 className="mb-0 ms-4 font-semibold">{name}</h6>
         </Link>
       );
     },
     meta: {
-      headerProps: {
-        style: { width: '15%', minWidth: '200px' },
-        className: 'px-1'
-      },
-      cellProps: { className: 'align-middle white-space-nowrap py-2' }
+      headerProps: { className: 'w-3/20 min-w-50' },
+      cellProps: { className: 'customer whitespace-nowrap' }
     }
   },
   {
     accessorKey: 'email',
-    header: 'Email',
-    cell: ({ row: { original } }) => {
-      const { email } = original;
-      return (
-        <Link to={`mailto:${email}`} className="fw-semibold">
-          {email}
-        </Link>
-      );
-    },
+    header: 'EMAIL',
+    cell: ({ row: { original } }) => (
+      <Link to={`mailto:${original.email}`} className="font-semibold">
+        {original.email}
+      </Link>
+    ),
     meta: {
-      headerProps: {
-        style: { width: '15%', minWidth: '200px' }
-      },
-      cellProps: { className: 'white-space-nowrap' }
+      headerProps: { className: 'w-3/20 min-w-50' },
+      cellProps: { className: 'email whitespace-nowrap' }
     }
   },
   {
     accessorKey: 'mobile',
-    header: 'Mobile Number',
-    cell: ({ row: { original } }) => {
-      const { mobile } = original;
-      return (
-        <Link to={`tel:${mobile}`} className="fw-bold text-body-emphasis">
-          {mobile}
-        </Link>
-      );
-    },
+    header: 'MOBILE NUMBER',
+    cell: ({ row: { original } }) => (
+      <Link to={`tel:${original.mobile}`} className="font-bold text-emphasis">
+        {original.mobile}
+      </Link>
+    ),
     meta: {
-      headerProps: {
-        style: { width: '20%', minWidth: '200px' },
-        className: 'pe-3'
-      }
+      headerProps: { className: 'pe-4 w-1/5 min-w-50' },
+      cellProps: { className: 'mobile_number whitespace-nowrap' }
     }
   },
   {
     accessorKey: 'city',
-    header: 'City',
+    header: 'CITY',
     meta: {
-      headerProps: { style: { width: '10%' } },
-      cellProps: { className: 'text-body' }
+      headerProps: { className: 'w-1/10' },
+      cellProps: { className: 'city whitespace-nowrap text-default' }
     }
   },
   {
     accessorKey: 'lastActive',
-    header: 'Last Active',
+    header: 'LAST ACTIVE',
     meta: {
-      headerProps: {
-        style: { width: '21%', minWidth: '200px' },
-        className: 'text-end'
-      },
+      headerProps: { className: 'text-end w-[21%] min-w-50' },
       cellProps: {
-        className: 'text-end text-body-tertiary'
+        className: 'last_active text-end whitespace-nowrap text-subtle'
       }
     }
   },
   {
     accessorKey: 'joined',
-    header: 'Joined',
+    header: 'JOINED',
     meta: {
-      headerProps: {
-        style: { width: '19%', minWidth: '200px' },
-        className: 'text-end pe-0'
-      },
-      cellProps: {
-        className: 'text-body-tertiary text-end'
-      }
+      headerProps: { className: 'text-end pe-0 w-[19%] min-w-50' },
+      cellProps: { className: 'joined whitespace-nowrap text-subtle text-end' }
     }
   }
 ];
@@ -101,8 +90,13 @@ export const membersTablecolumns: ColumnDef<Member>[] = [
 const MembersTable = () => {
   return (
     <div>
-      <AdvanceTable tableProps={{ className: 'phoenix-table fs-9' }} />
-      <AdvanceTableFooter pagination />
+      <AdvanceTable
+        tableProps={{ size: 'sm', className: 'text-md mb-0' }}
+        bodyClassName="list"
+        rowClassName="hover-actions-trigger btn-reveal-trigger static"
+      />
+      {/* gold next button is `.page-link.pe-0` */}
+      <AdvanceTableFooter pagination nextPageLinkClassName="pe-0" />
     </div>
   );
 };

@@ -12,49 +12,125 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 const exampleCode = `
-<Pagination className='mb-0 justify-content-center'>
-  <Pagination.Prev>
-    <FontAwesomeIcon icon={faChevronLeft} />
-  </Pagination.Prev>
-  <Pagination.Item>1</Pagination.Item>
-  <Pagination.Item>2</Pagination.Item>
-  <Pagination.Item>3</Pagination.Item>
-  <Pagination.Item active>4</Pagination.Item>
-  <Pagination.Item>5</Pagination.Item>
-  <Pagination.Next>
-    <FontAwesomeIcon icon={faChevronRight} />
-  </Pagination.Next>
+<Pagination>
+  <Pagination.Content className="mb-0 justify-center">
+    <Pagination.Item disabled>
+      <Pagination.Link href="#!">
+        <FontAwesomeIcon icon={faChevronLeft} />
+      </Pagination.Link>
+    </Pagination.Item>
+    <Pagination.Item>
+      <Pagination.Link href="#!">1</Pagination.Link>
+    </Pagination.Item>
+    <Pagination.Item>
+      <Pagination.Link href="#!">2</Pagination.Link>
+    </Pagination.Item>
+    <Pagination.Item>
+      <Pagination.Link href="#!">3</Pagination.Link>
+    </Pagination.Item>
+    <Pagination.Item active>
+      <Pagination.Link href="#!">4</Pagination.Link>
+    </Pagination.Item>
+    <Pagination.Item>
+      <Pagination.Link href="#!">5</Pagination.Link>
+    </Pagination.Item>
+    <Pagination.Item>
+      <Pagination.Link href="#!">
+        <FontAwesomeIcon icon={faChevronRight} />
+      </Pagination.Link>
+    </Pagination.Item>
+  </Pagination.Content>
 </Pagination>
 `;
 
 const moreOptionsCode = `
+<div className="flex flex-col gap-6">
   <Pagination>
-    <Pagination.First>
-      <FontAwesomeIcon icon={faAnglesLeft} />
-    </Pagination.First>
-
-    <Pagination.Prev>
-      <FontAwesomeIcon icon={faAngleLeft} />
-    </Pagination.Prev>
-    <Pagination.Item>{1}</Pagination.Item>
-    <Pagination.Ellipsis />
-
-    <Pagination.Item>{10}</Pagination.Item>
-    <Pagination.Item>{11}</Pagination.Item>
-    <Pagination.Item active>{12}</Pagination.Item>
-    <Pagination.Item>{13}</Pagination.Item>
-    <Pagination.Item disabled>{14}</Pagination.Item>
-
-    <Pagination.Ellipsis />
-    <Pagination.Item>{20}</Pagination.Item>
-    <Pagination.Next>
-      <FontAwesomeIcon icon={faAngleRight} />
-    </Pagination.Next>
-    <Pagination.Last>
-      <FontAwesomeIcon icon={faAnglesRight} />
-    </Pagination.Last>
+    <Pagination.Content>
+      <Pagination.Item>
+        <Pagination.Link href="#!">
+          <FontAwesomeIcon icon={faAnglesLeft} />
+        </Pagination.Link>
+      </Pagination.Item>
+      <Pagination.Item>
+        <Pagination.Link href="#!">
+          <FontAwesomeIcon icon={faAngleLeft} />
+        </Pagination.Link>
+      </Pagination.Item>
+      <Pagination.Item>
+        <Pagination.Link href="#!">1</Pagination.Link>
+      </Pagination.Item>
+      <Pagination.Item disabled>
+        <Pagination.Link href="#!">&hellip;</Pagination.Link>
+      </Pagination.Item>
+      <Pagination.Item>
+        <Pagination.Link href="#!">11</Pagination.Link>
+      </Pagination.Item>
+      <Pagination.Item active>
+        <Pagination.Link href="#!">12</Pagination.Link>
+      </Pagination.Item>
+      <Pagination.Item>
+        <Pagination.Link href="#!">13</Pagination.Link>
+      </Pagination.Item>
+      <Pagination.Item disabled>
+        <Pagination.Link href="#!">&hellip;</Pagination.Link>
+      </Pagination.Item>
+      <Pagination.Item>
+        <Pagination.Link href="#!">20</Pagination.Link>
+      </Pagination.Item>
+      <Pagination.Item>
+        <Pagination.Link href="#!">
+          <FontAwesomeIcon icon={faAngleRight} />
+        </Pagination.Link>
+      </Pagination.Item>
+      <Pagination.Item>
+        <Pagination.Link href="#!">
+          <FontAwesomeIcon icon={faAnglesRight} />
+        </Pagination.Link>
+      </Pagination.Item>
+    </Pagination.Content>
   </Pagination>
 
+  <Pagination size="sm" shape="circle">
+    <Pagination.Content>
+      <Pagination.Item disabled>
+        <Pagination.Link href="#!">Prev</Pagination.Link>
+      </Pagination.Item>
+      <Pagination.Item>
+        <Pagination.Link href="#!">1</Pagination.Link>
+      </Pagination.Item>
+      <Pagination.Item active>
+        <Pagination.Link href="#!">2</Pagination.Link>
+      </Pagination.Item>
+      <Pagination.Item>
+        <Pagination.Link href="#!">3</Pagination.Link>
+      </Pagination.Item>
+      <Pagination.Item>
+        <Pagination.Link href="#!">Next</Pagination.Link>
+      </Pagination.Item>
+    </Pagination.Content>
+  </Pagination>
+
+  <Pagination size="lg">
+    <Pagination.Content>
+      <Pagination.Item disabled>
+        <Pagination.Link href="#!">Prev</Pagination.Link>
+      </Pagination.Item>
+      <Pagination.Item>
+        <Pagination.Link href="#!">1</Pagination.Link>
+      </Pagination.Item>
+      <Pagination.Item active>
+        <Pagination.Link href="#!">2</Pagination.Link>
+      </Pagination.Item>
+      <Pagination.Item>
+        <Pagination.Link href="#!">3</Pagination.Link>
+      </Pagination.Item>
+      <Pagination.Item>
+        <Pagination.Link href="#!">Next</Pagination.Link>
+      </Pagination.Item>
+    </Pagination.Content>
+  </Pagination>
+</div>
 `;
 
 const PaginationExample = () => {
@@ -62,18 +138,25 @@ const PaginationExample = () => {
     <div>
       <DocPageHeader
         title="Pagination"
-        description="A set of presentational components for building pagination UI."
+        description="Navigation that splits content across a sequence of numbered pages."
         link={{
-          text: 'Pagination on react-bootstrap',
-          url: `${
-            import.meta.env.VITE_RB_URL_PREFIX || ''
-          }/components/pagination/`
+          text: 'Pagination on Hummingbird',
+          url: 'https://react.hbui.dev/docs/components/pagination'
         }}
       />
 
       <DocPagesLayout>
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header title="Pagination Example" />
+          <PhoenixDocCard.Header title="Pagination Example">
+            <p className="mb-0">
+              <code>Pagination</code> is an accessible <code>&lt;nav&gt;</code>{' '}
+              wrapping a <code>Pagination.Content</code> list of{' '}
+              <code>Pagination.Item</code>s. Mark the current page with{' '}
+              <code>active</code> and a dead control with <code>disabled</code>;
+              alignment and spacing classes go on{' '}
+              <code>Pagination.Content</code>, which is the list itself.
+            </p>
+          </PhoenixDocCard.Header>
           <PhoenixDocCard.Body
             code={exampleCode}
             scope={{ FontAwesomeIcon, faChevronLeft, faChevronRight }}
@@ -81,10 +164,23 @@ const PaginationExample = () => {
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header
-            title="More options"
-            description='For building more complex pagination UI, there are few convenient sub-components for adding "First", "Previous", "Next", and "Last" buttons, as well as an "Ellipsis" item for indicating previous or continuing results.'
-          />
+          <PhoenixDocCard.Header title="More options">
+            <p>
+              There are no separate first, previous, next, last or ellipsis
+              parts — every control is a <code>Pagination.Item</code> whose{' '}
+              <code>Pagination.Link</code> holds an icon, a label or an
+              ellipsis, and a non-clickable step is just a <code>disabled</code>{' '}
+              item.
+            </p>
+            <p className="mb-0">
+              The look is set on the <code>Pagination</code> root:{' '}
+              <code>size</code> (<code>sm</code>, <code>md</code>,{' '}
+              <code>lg</code>) and <code>shape="circle"</code>. The root also
+              takes <code>variant</code> and <code>color</code>, but the Phoenix
+              skin pins the active page to its own blue, so neither changes
+              anything here.
+            </p>
+          </PhoenixDocCard.Header>
           <PhoenixDocCard.Body
             code={moreOptionsCode}
             scope={{

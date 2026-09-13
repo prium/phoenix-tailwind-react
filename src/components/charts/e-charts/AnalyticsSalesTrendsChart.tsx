@@ -3,13 +3,20 @@ import ReactEChartsCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
 import { getPastDates, rgbaColor } from 'helpers/utils';
 import { useAppContext } from 'providers/AppProvider';
-import { TooltipComponent } from 'echarts/components';
+import { GridComponent, TooltipComponent } from 'echarts/components';
+import { CanvasRenderer } from 'echarts/renderers';
 import { BarChart, LineChart } from 'echarts/charts';
 import dayjs from 'dayjs';
 import { CallbackDataParams } from 'echarts/types/dist/shared';
 import { tooltipFormatterDefault } from 'helpers/echart-utils';
 
-echarts.use([TooltipComponent, BarChart, LineChart]);
+echarts.use([
+  TooltipComponent,
+  GridComponent,
+  BarChart,
+  LineChart,
+  CanvasRenderer
+]);
 
 const dates = getPastDates(7);
 
@@ -20,13 +27,16 @@ const getDefaultOptions = (
   getThemeColor: (name: string) => string,
   isDark: boolean
 ) => ({
-  color: [getThemeColor('primary-lighter'), getThemeColor('info-light')],
+  color: [
+    getThemeColor('color-primary-lighter'),
+    getThemeColor('color-info-light')
+  ],
   tooltip: {
     trigger: 'axis',
     padding: [7, 10],
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('border-color'),
-    textStyle: { color: getThemeColor('light-text-emphasis') },
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('border-color-default'),
+    textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,
     axisPointer: {
@@ -39,7 +49,7 @@ const getDefaultOptions = (
     type: 'category',
     data: dates,
     axisLabel: {
-      color: getThemeColor('body-color'),
+      color: getThemeColor('text-color-default'),
       formatter: (value: number) => dayjs(value).format('ddd'),
       fontFamily: 'Nunito Sans',
       fontWeight: 400,
@@ -48,7 +58,7 @@ const getDefaultOptions = (
     },
     axisLine: {
       lineStyle: {
-        color: getThemeColor('secondary-bg')
+        color: getThemeColor('background-color-muted')
       }
     },
     axisTick: false
@@ -57,11 +67,11 @@ const getDefaultOptions = (
     type: 'value',
     splitLine: {
       lineStyle: {
-        color: getThemeColor('secondary-bg')
+        color: getThemeColor('background-color-muted')
       }
     },
     axisLabel: {
-      color: getThemeColor('body-color'),
+      color: getThemeColor('text-color-default'),
       fontFamily: 'Nunito Sans',
       fontWeight: 700,
       fontSize: 12.8,
@@ -80,8 +90,8 @@ const getDefaultOptions = (
       },
       itemStyle: {
         color: !isDark
-          ? getThemeColor('primary-lighter')
-          : getThemeColor('primary'),
+          ? getThemeColor('color-primary-lighter')
+          : getThemeColor('color-primary'),
 
         borderRadius: [4, 4, 0, 0]
       },
@@ -93,10 +103,10 @@ const getDefaultOptions = (
       symbol: 'circle',
       symbolSize: 11,
       itemStyle: {
-        color: getThemeColor('info-light'),
+        color: getThemeColor('color-info-light'),
         borderColor: !isDark
-          ? getThemeColor('white')
-          : getThemeColor('light-text-emphasis'),
+          ? getThemeColor('color-white')
+          : getThemeColor('text-color-emphasis'),
         borderWidth: 2
       },
       areaStyle: {
@@ -109,11 +119,11 @@ const getDefaultOptions = (
           colorStops: [
             {
               offset: 0,
-              color: rgbaColor(getThemeColor('info-light'), 0.2)
+              color: rgbaColor(getThemeColor('color-info-light'), 0.2)
             },
             {
               offset: 1,
-              color: rgbaColor(getThemeColor('info-light'), 0.2)
+              color: rgbaColor(getThemeColor('color-info-light'), 0.2)
             }
           ]
         }
@@ -132,7 +142,13 @@ const getDefaultOptions = (
   animation: false
 });
 
-const AnalyticsSalesTrendsChart = ({ style }: { style: CSSProperties }) => {
+const AnalyticsSalesTrendsChart = ({
+  className,
+  style
+}: {
+  className?: string;
+  style?: CSSProperties;
+}) => {
   const {
     getThemeColor,
     config: { isDark }
@@ -141,6 +157,7 @@ const AnalyticsSalesTrendsChart = ({ style }: { style: CSSProperties }) => {
     <ReactEChartsCore
       echarts={echarts}
       option={getDefaultOptions(getThemeColor, isDark)}
+      className={className}
       style={style}
     />
   );

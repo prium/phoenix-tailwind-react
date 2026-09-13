@@ -22,6 +22,19 @@ import team66 from 'assets/img/team/66.webp';
 import team67 from 'assets/img/team/67.webp';
 import team68 from 'assets/img/team/68.webp';
 import team69 from 'assets/img/team/69.webp';
+import team1 from 'assets/img/team/1.webp';
+import team2 from 'assets/img/team/2.webp';
+import team5 from 'assets/img/team/5.webp';
+import team11 from 'assets/img/team/11.webp';
+import team12 from 'assets/img/team/12.webp';
+import team13 from 'assets/img/team/13.webp';
+import team14 from 'assets/img/team/14.webp';
+import team16 from 'assets/img/team/16.webp';
+import team18 from 'assets/img/team/18.webp';
+import team20 from 'assets/img/team/20.webp';
+import team21 from 'assets/img/team/21.webp';
+import team23 from 'assets/img/team/23.webp';
+import teamPlaceholder from 'assets/img/team/avatar.webp';
 
 export interface Member {
   id: number;
@@ -189,6 +202,117 @@ export const members: Member[] = [
     username: 'alex_johnson',
     connections: 60,
     mutual: 12
+  },
+  {
+    id: 21,
+    name: 'Luis Bunuel',
+    avatar: team1,
+    username: 'luis_bunuel',
+    connections: 32,
+    mutual: 6
+  },
+  {
+    id: 22,
+    name: 'Salvador Dali',
+    avatar: team2,
+    username: 'salvador_dali',
+    connections: 41,
+    mutual: 8
+  },
+  {
+    id: 23,
+    name: 'Ricky Antony',
+    avatar: team5,
+    username: 'ricky_antony5',
+    connections: 27,
+    mutual: 4
+  },
+  {
+    id: 24,
+    name: 'Roy Anderson',
+    avatar: team11,
+    username: 'roy_anderson11',
+    connections: 53,
+    mutual: 9
+  },
+  {
+    id: 25,
+    name: 'Marc Chiasson',
+    avatar: team12,
+    username: 'marc_chiasson',
+    connections: 38,
+    mutual: 5
+  },
+  {
+    id: 26,
+    name: 'Jean Renoir',
+    avatar: team13,
+    username: 'jean_renoir13',
+    connections: 45,
+    mutual: 11
+  },
+  {
+    id: 27,
+    name: 'Ricky Antony',
+    avatar: team14,
+    username: 'ricky_antony14',
+    connections: 22,
+    mutual: 3
+  },
+  {
+    id: 28,
+    name: 'Jane Smith',
+    avatar: team16,
+    username: 'jane_smith16',
+    connections: 34,
+    mutual: 7
+  },
+  {
+    id: 29,
+    name: 'John Smith',
+    avatar: team18,
+    username: 'john_smith18',
+    connections: 29,
+    mutual: 5
+  },
+  {
+    id: 30,
+    name: 'Alex Johnson',
+    avatar: team20,
+    username: 'alex_johnson20',
+    connections: 48,
+    mutual: 10
+  },
+  {
+    id: 31,
+    name: 'Michael Jenkins',
+    avatar: team21,
+    username: 'michael_jenkins21',
+    connections: 31,
+    mutual: 6
+  },
+  {
+    id: 32,
+    name: 'Kristine Cadena',
+    avatar: team23,
+    username: 'kristine_cadena23',
+    connections: 26,
+    mutual: 4
+  },
+  {
+    id: 33,
+    name: 'Kristine Cadena',
+    avatar: teamPlaceholder,
+    username: 'kristine_cadena',
+    connections: 19,
+    mutual: 2
+  },
+  {
+    id: 34,
+    name: 'Raymond Mims',
+    username: 'raymond_mims',
+    connections: 24,
+    mutual: 3
   }
 ];
 

@@ -1,80 +1,74 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button from 'components/base/Button';
+import { Card, Col, Row } from '@hummingbirdui/react';
 import SearchBox from 'components/common/SearchBox';
-import React, { useState } from 'react';
-import { Card, Col, Row } from 'react-bootstrap';
+import { useState } from 'react';
 import TodoListItem from './TodoListItem';
 import { ToDoItem, todoList } from 'data/project-management/todoListData';
-import classNames from 'classnames';
 import TodoItemDetailsModal from './TodoItemDetailsModal';
 import { faFilter, faPlus, faSort } from '@fortawesome/free-solid-svg-icons';
 
-const TodoList = () => {
+/** `+CardToDoListManagement` in mixins/dashboard/project-management/ToDo.pug */
+const TodoList = ({ items = todoList }: { items?: ToDoItem[] }) => {
   const [selectedItem, setSelectedItem] = useState<ToDoItem | null>(null);
   return (
     <>
-      <Card className="h-100 todo-list">
-        <Card.Header className="border-bottom-0 pb-0">
-          <Row className="justify-content-between align-items-center mb-4 gy-2">
+      <Card className="todo-list h-full">
+        <Card.Header className="border-b-0 pb-0">
+          <Row className="justify-between items-center mb-6">
             <Col xs="auto">
-              <h3 className="text-body-emphasis">To do</h3>
-              <p className="mb-0 text-body-tertiary">Task assigned to me</p>
+              <h3 className="mb-1 text-emphasis">To do</h3>
+              <p className="mb-2 md:mb-0 lg:mb-2 text-base text-subtle">
+                Task assigned to me
+              </p>
             </Col>
-            <Col xs="auto" className="w-100 w-md-auto">
-              <div className="d-flex justify-content-between align-items-center flex-wrap gap-x-3 gap-y-3">
-                <SearchBox
-                  placeholder="Search tasks"
-                  style={{ maxWidth: '30rem' }}
-                />
-                <div>
-                  <Button
-                    variant="link"
-                    className="p-0 fs-9 text-body-tertiary text-decoration-none me-3"
-                    startIcon={
-                      <FontAwesomeIcon icon={faFilter} className="fs-10 me-1" />
-                    }
-                  >
+            <Col xs="auto" className="w-full md:w-auto">
+              <Row className="items-center g-0 justify-between">
+                <Col xs={12} sm="auto">
+                  <SearchBox
+                    placeholder="Search tasks"
+                    className="w-full mb-2 sm:mb-0 max-w-55"
+                  />
+                </Col>
+                <Col xs="auto" className="flex">
+                  <p className="mb-0 sm:ms-4 text-md text-subtle font-bold">
+                    <FontAwesomeIcon
+                      icon={faFilter}
+                      className="me-1 fw-extra-bold text-sm"
+                    />
                     23 tasks
-                  </Button>
-                  <Button
-                    variant="link"
-                    className="p-0 fs-9 text-primary text-decoration-none"
-                    startIcon={
-                      <FontAwesomeIcon icon={faSort} className="fs-10" />
-                    }
+                  </p>
+                  <button
+                    type="button"
+                    className="btn btn-link p-0 ms-4 text-md text-primary font-bold"
                   >
+                    <FontAwesomeIcon
+                      icon={faSort}
+                      className="me-1 fw-extra-bold text-sm"
+                    />
                     Sorting
-                  </Button>
-                </div>
-              </div>
+                  </button>
+                </Col>
+              </Row>
             </Col>
           </Row>
         </Card.Header>
-        {/* <Scrollbar style={{ minHeight: 300 }}> */}
-        <Card.Body className="py-0 scrollbar to-do-list-body">
-          {todoList.map((todo, index) => (
+        <Card.Body className="py-0 scrollbar xl:h-67.5">
+          {items.map((todo, index) => (
             <TodoListItem
               key={todo.task}
               todo={todo}
-              className={classNames({
-                'border-top border-translucent': index === 0
-              })}
-              labelClassName="text-body"
-              fullLayoutBreakpoints={['md', 'xxl']}
-              halfLayoutBreakpoints={['xl']}
+              index={index}
+              isLast={index === items.length - 1}
+              layout="dashboard"
               onClick={setSelectedItem}
             />
           ))}
         </Card.Body>
-        {/* </Scrollbar> */}
         <Card.Footer className="border-0">
-          <Button
-            startIcon={<FontAwesomeIcon icon={faPlus} />}
-            variant="link"
-            className="text-decoration-none p-0"
-          >
+          <a href="#!" className="font-bold text-md mt-6">
+            <FontAwesomeIcon icon={faPlus} className="me-1" />
             Add new task
-          </Button>
+          </a>
         </Card.Footer>
       </Card>
 

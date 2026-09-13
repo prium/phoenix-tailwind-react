@@ -17,20 +17,23 @@ const columns: ColumnDef<WishlistProductType>[] = [
     cell: ({ row: { original } }) => {
       const { productImage } = original;
       return (
-        <div className="rounded-2 border border-translucent d-inline-block">
+        <div className="rounded-md border border-subtle inline-block">
           <img src={productImage} alt="" width={53} />
         </div>
       );
     },
-    meta: { cellProps: { className: 'py-2' } }
+    meta: {
+      headerProps: { className: 'whitespace-nowrap min-w-[63px]' },
+      cellProps: { className: 'whitespace-nowrap py-0' }
+    }
   },
   {
     accessorKey: 'product',
-    header: 'Products',
+    header: 'PRODUCTS',
     cell: ({ row: { original } }) => {
       const { product } = original;
       return (
-        <Link to="#!" className="fw-semibold line-clamp-2">
+        <Link to="#!" className="font-semibold line-clamp-2">
           {product}
         </Link>
       );
@@ -42,48 +45,48 @@ const columns: ColumnDef<WishlistProductType>[] = [
   },
   {
     accessorKey: 'color',
-    header: 'Color',
+    header: 'COLOR',
     meta: {
       headerProps: { style: { width: 150 }, className: 'ps-4' },
-      cellProps: { className: 'white-space-nowrap text-body ps-4' }
+      cellProps: { className: 'whitespace-nowrap text-default ps-4' }
     }
   },
   {
     accessorKey: 'size',
-    header: 'Size',
+    header: 'SIZE',
     meta: {
       headerProps: { style: { width: 300 }, className: 'ps-4' },
       cellProps: {
-        className: 'white-space-nowrap text-body-tertiary fw-semibold ps-4'
+        className: 'whitespace-nowrap text-subtle font-semibold ps-4'
       }
     }
   },
   {
     accessorKey: 'price',
-    header: 'Price',
+    header: 'PRICE',
     cell: ({ row: { original } }) => currencyFormat(original.price),
     meta: {
       headerProps: { style: { width: 150 }, className: 'ps-4 text-end' },
-      cellProps: { className: 'text-body fw-semibold text-end ps-4' }
+      cellProps: { className: 'text-default font-semibold text-end ps-4' }
     }
   },
   {
     accessorKey: 'quantity',
-    header: 'Quantity',
+    header: 'QUANTITY',
     meta: {
       headerProps: { style: { width: 200 }, className: 'ps-4 text-end' },
-      cellProps: { className: 'text-end ps-4 text-body-tertiary' }
+      cellProps: { className: 'text-end ps-4 text-subtle' }
     }
   },
   {
     id: 'total',
     accessorFn: ({ price, quantity }) => price * quantity,
-    header: 'Total',
+    header: 'TOTAL',
     cell: ({ row: { original } }) =>
       currencyFormat(original.price * original.quantity),
     meta: {
       headerProps: { style: { width: 250 }, className: 'ps-4 text-end' },
-      cellProps: { className: 'fw-bold text-body-highlight text-end ps-4' }
+      cellProps: { className: 'font-bold text-highlight text-end ps-4' }
     }
   }
 ];
@@ -107,13 +110,13 @@ const OrderDetailsTable = () => {
   return (
     <div>
       <AdvanceTableProvider {...table}>
-        <div className="border-y border-translucent">
-          <AdvanceTable tableProps={{ className: 'phoenix-table fs-9' }} />
-          <div className="d-flex flex-between-center py-3">
-            <p className="text-body-emphasis fw-semibold lh-sm mb-0">
+        <div className="border-y border-subtle">
+          <AdvanceTable tableProps={{ className: ' text-md' }} />
+          <div className="flex flex-between-center py-4">
+            <p className="text-emphasis font-semibold leading-sm mb-0">
               Items subtotal :
             </p>
-            <p className="text-body-emphasis fw-bold lh-sm mb-0">
+            <p className="text-emphasis font-bold leading-sm mb-0">
               {currencyFormat(subtotal)}
             </p>
           </div>

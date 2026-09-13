@@ -34,23 +34,37 @@ const FinancialActivitiesChart = ({
 
   const getDefaultOptions = useMemo(
     () => ({
-      color: [getThemeColor('primary'), getThemeColor('tertiary-bg')],
+      color: [
+        getThemeColor('color-primary'),
+        getThemeColor('background-color-highlight')
+      ],
       tooltip: {
         trigger: 'axis',
         padding: 10,
-        backgroundColor: getThemeColor('body-highlight-bg'),
-        borderColor: getThemeColor('border-color'),
-        textStyle: { color: getThemeColor('light-text-emphasis') },
+        backgroundColor: getThemeColor('background-color-subtle'),
+        borderColor: getThemeColor('border-color-default'),
+        textStyle: { color: getThemeColor('text-color-emphasis') },
         borderWidth: 1,
         transitionDuration: 0,
         axisPointer: {
           type: 'none'
         },
+        // revenue/expanses are plotted negative for the diverging layout;
+        // show absolute values like the axis labels
         formatter: (params: CallbackDataParams[]) =>
-          tooltipFormatterDefault(params, 'MMM DD', 'color')
+          tooltipFormatterDefault(
+            params.map(el => ({
+              ...el,
+              value: Math.abs(
+                (Array.isArray(el.value) ? el.value[1] : el.value) as number
+              )
+            })),
+            'MMM DD',
+            'color'
+          )
       },
       legend: {
-        data: ['Profit', 'Revenue', 'Expenses'],
+        data: ['Profit', 'Revenue', 'Expanses'], // gold copy really says Expanses
         show: false
       },
 
@@ -59,7 +73,7 @@ const FinancialActivitiesChart = ({
         axisLabel: {
           show: true,
           margin: 12,
-          color: getThemeColor('secondary-text-emphasis'),
+          color: getThemeColor('text-color-muted'),
           formatter: (value: number) =>
             `${Math.abs(Math.round((value / 1000) * 10) / 10)}k`,
           fontFamily: 'Nunito Sans',
@@ -67,7 +81,7 @@ const FinancialActivitiesChart = ({
         },
         splitLine: {
           lineStyle: {
-            color: getThemeColor('border-color-translucent')
+            color: getThemeColor('border-color-subtle')
           }
         }
       },
@@ -87,14 +101,14 @@ const FinancialActivitiesChart = ({
         ],
         axisLabel: {
           show: true,
-          color: getThemeColor('secondary-text-emphasis'),
+          color: getThemeColor('text-color-muted'),
           margin: 8,
           fontFamily: 'Nunito Sans',
           fontWeight: 700
         },
         axisLine: {
           lineStyle: {
-            color: getThemeColor('border-color-translucent')
+            color: getThemeColor('border-color-subtle')
           }
         }
       },
@@ -111,8 +125,8 @@ const FinancialActivitiesChart = ({
           itemStyle: {
             borderRadius: [0, 4, 4, 0],
             color: isDark
-              ? getThemeColor('primary')
-              : getThemeColor('primary-light')
+              ? getThemeColor('color-primary')
+              : getThemeColor('color-primary-light')
           },
           data: chartData.profit
         },
@@ -128,13 +142,13 @@ const FinancialActivitiesChart = ({
           itemStyle: {
             borderRadius: [4, 0, 0, 4],
             color: isDark
-              ? getThemeColor('success')
-              : getThemeColor('success-light')
+              ? getThemeColor('color-success')
+              : getThemeColor('color-success-light')
           },
           data: chartData.revenue
         },
         {
-          name: 'Expenses',
+          name: 'Expanses',
           type: 'bar',
           barWidth: 8,
           emphasis: {
@@ -142,7 +156,9 @@ const FinancialActivitiesChart = ({
           },
           itemStyle: {
             borderRadius: [4, 0, 0, 4],
-            color: isDark ? getThemeColor('info') : getThemeColor('info-light')
+            color: isDark
+              ? getThemeColor('color-info')
+              : getThemeColor('color-info-light')
           },
           data: chartData.expenses
         }
@@ -202,7 +218,7 @@ const FinancialActivitiesChart = ({
           }
         },
         grid: {
-          left: -2,
+          left: -2
         }
       });
     } else {
@@ -224,7 +240,7 @@ const FinancialActivitiesChart = ({
       if (chartRef.current) {
         updateDimensions();
       }
-    }, 0)
+    }, 0);
     window.addEventListener('resize', updateDimensions);
     return () => {
       clearTimeout(initialRun);
@@ -232,15 +248,12 @@ const FinancialActivitiesChart = ({
     };
   }, [updateDimensions]);
 
-  
-
   return (
     <ReactEChartsCore
       echarts={echarts}
       ref={chartRef}
       option={getDefaultOptions}
       style={style}
-      className="echart-financial-Activities"
     />
   );
 };

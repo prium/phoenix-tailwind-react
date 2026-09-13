@@ -1,13 +1,11 @@
 import ChatHomepageCard from 'components/cards/ChatHomepageCard';
-import ChatSidebar from 'components/modules/chat/ChatSidebar';
 
+/**
+ * React-only index view (no gold counterpart — the gold chat page always
+ * shows the first thread); the sidebar is rendered by the Chat layout.
+ */
 const ChatHomepage = () => {
-  return (
-    <>
-      <ChatSidebar />
-      <ChatHomepageCard />
-    </>
-  );
+  return <ChatHomepageCard />;
 };
 
 export default ChatHomepage;

@@ -3,8 +3,8 @@ import AuthSimpleLayout from 'layouts/AuthSimpleLayout';
 
 const TwoFA = () => {
   return (
-    <AuthSimpleLayout className="col-xxl-4">
-      <TwoFAForm />
+    <AuthSimpleLayout className="2xl:col-4">
+      <TwoFAForm layout="simple" />
     </AuthSimpleLayout>
   );
 };

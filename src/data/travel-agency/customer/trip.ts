@@ -536,15 +536,9 @@ export const tripOverview: TripOverview = {
   tripDuration: '3 Days, 1 Night',
   minPeoples: 1,
   maxPeoples: 12,
-  tripTags: ['sightseeing', 'eco-tourism'],
-  description: `A private guide will allow you to fully experience Wakanda's native culture 
-  without having to worry about getting lost. Set out on a full-day tour that concentrates on 
-  off-the-beaten-path sites like the active wholesale markets for produce and seafood. The 
-  old-fashioned way to get around is via rickshaw, which allows for a slower, more immersive 
-  journey through the bustling streets. Visitors can also explore local art workshops, 
-  historic landmarks, and enjoy traditional cuisine prepared with fresh, local ingredients. 
-  The experience promises a unique look at the hidden treasures of Wakanda that most travelers 
-  miss out on, giving you stories and memories that last a lifetime.`
+  tripTags: ['Sightseeing', 'Eco-tourism'],
+  // gold truncates the copy at "...rickshaw..." and appends a `Read more` link
+  description: `A private guide will allow you to fully experience Wakanda's native culture without having to worry about getting lost. Set out on a full-day tour that concentrates on off-the-beaten-path sites like the active wholesale markets for produce and seafood. The old-fashioned way to get around is via rickshaw...`
 };
 
 export const tripDetailsModalPricingPlan: TripDetailsModalPricingPlan[] = [
@@ -758,7 +752,8 @@ export const tripDetailsTabDetailItems: TripDetailsTabDetailItem = {
     {
       id: 23,
       additionalItem:
-        'This is a private tour / activity. Only your group will participate.'
+        // gold typo kept for pixel parity
+        'This is a private tour / activity. Only your group will particiapte.'
     }
   ],
   policy: [

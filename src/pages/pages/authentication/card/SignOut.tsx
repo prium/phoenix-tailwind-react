@@ -3,7 +3,7 @@ import AuthCardLayout from 'layouts/AuthCardLayout';
 
 const SignOut = () => {
   return (
-    <AuthCardLayout logo={false}>
+    <AuthCardLayout>
       <SignOutForm layout="card" />
     </AuthCardLayout>
   );

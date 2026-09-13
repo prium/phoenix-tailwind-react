@@ -18,9 +18,9 @@ const Cta = () => {
                 width="422"
                 alt=""
               />
-              <h2 className="mb-8 text-body-highlight fw-normal">
+              <h2 className="mb-8 text-highlight font-normal">
                 Still have questions? We are
-                <span className="text-primary position-relative fw-bolder ms-2">
+                <span className="text-primary relative font-black ms-2">
                   happy to help
                   <img
                     src={spotIllustration31}

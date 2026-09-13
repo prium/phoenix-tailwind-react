@@ -1,49 +1,47 @@
-import classNames from 'classnames';
-import { Col, FloatingLabel, Form, Row } from 'react-bootstrap';
+import { Col, FloatingLabel, Input, Select } from '@hummingbirdui/react';
 
-const AddressInformation = ({ className }: { className?: string }) => {
+/** address information fields of apps/crm/add-contact.pug (rendered inside `form.row.g-4`) */
+const AddressInformation = () => {
   return (
     <>
-      <h4 className="mb-3">Address Information</h4>
-      <Row className={classNames('g-3', className)}>
-        <Col sm={6} md={4}>
-          <FloatingLabel controlId="street" label="Street">
-            <Form.Control type="text" placeholder="Street" />
-          </FloatingLabel>
-        </Col>
-        <Col sm={6} md={4}>
-          <FloatingLabel controlId="city" label="City">
-            <Form.Select>
-              <option value="1">Neo centrola</option>
-              <option value="2">London</option>
-              <option value="3">New York</option>
-            </Form.Select>
-          </FloatingLabel>
-        </Col>
-        <Col sm={6} md={4}>
-          <FloatingLabel controlId="state" label="state">
-            <Form.Select>
-              <option value="1">Qualimando</option>
-              <option value="2">Sovereign</option>
-              <option value="3">Northeastern United States</option>
-            </Form.Select>
-          </FloatingLabel>
-        </Col>
-        <Col sm={6}>
-          <FloatingLabel controlId="country" label="Country">
-            <Form.Select>
-              <option value="1">United Empire of Brekania</option>
-              <option value="2">UK</option>
-              <option value="3">USA</option>
-            </Form.Select>
-          </FloatingLabel>
-        </Col>
-        <Col sm={6}>
-          <FloatingLabel controlId="zip-code" label="Zip code">
-            <Form.Control type="text" placeholder="Zip code" />
-          </FloatingLabel>
-        </Col>
-      </Row>
+      <h4 className="mt-10">Address Information</h4>
+      <Col sm={6} md={4}>
+        <FloatingLabel htmlFor="floatingInputStreet" label="Street">
+          <Input type="text" id="floatingInputStreet" placeholder="street" />
+        </FloatingLabel>
+      </Col>
+      <Col sm={6} md={4}>
+        <FloatingLabel htmlFor="floatingSelectCity" label="City">
+          <Select id="floatingSelectCity">
+            <option>Neo centrola</option>
+            <option value="1">London</option>
+            <option value="2">New York</option>
+          </Select>
+        </FloatingLabel>
+      </Col>
+      <Col sm={6} md={4}>
+        <FloatingLabel htmlFor="floatingSelectState" label="State">
+          <Select id="floatingSelectState">
+            <option>Qualimando</option>
+            <option value="1">Sovereign</option>
+            <option value="2">Northeastern United States</option>
+          </Select>
+        </FloatingLabel>
+      </Col>
+      <Col sm={6}>
+        <FloatingLabel htmlFor="floatingSelectCountry" label="Country">
+          <Select id="floatingSelectCountry">
+            <option>United Empire of Brekania</option>
+            <option value="1">UK</option>
+            <option value="2">USA</option>
+          </Select>
+        </FloatingLabel>
+      </Col>
+      <Col sm={6}>
+        <FloatingLabel htmlFor="floatingInputZipcode" label="zip code">
+          <Input type="text" id="floatingInputZipcode" placeholder="zip code" />
+        </FloatingLabel>
+      </Col>
     </>
   );
 };

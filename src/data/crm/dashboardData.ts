@@ -9,13 +9,45 @@ export type ForecastTableData = {
   contact_sent: number;
 };
 
+/* literal `text-*`/border class strings from mixins/dashboard/CRM/Crm.pug
+   (Tailwind cannot see interpolated class names) */
 export const contactSourceData = [
-  { name: 'Organic', value: 80, color: 'primary' },
-  { name: 'Paid Search', value: 65, color: 'success' },
-  { name: 'Direct', value: 40, color: 'info' },
-  { name: 'Social', value: 220, color: 'info-light' },
-  { name: 'Referrals', value: 120, color: 'danger-lighter' },
-  { name: 'Others', value: 35, color: 'warning-light' }
+  {
+    name: 'Organic',
+    value: 80,
+    iconClass: 'text-primary',
+    borderClass: 'border-b border-e border-subtle'
+  },
+  {
+    name: 'Paid Search',
+    value: 65,
+    iconClass: 'text-success',
+    borderClass: 'border-b border-subtle'
+  },
+  {
+    name: 'Direct',
+    value: 40,
+    iconClass: 'text-info',
+    borderClass: 'border-e xl:border-s xl:border-e-0 border-b border-subtle'
+  },
+  {
+    name: 'Social',
+    value: 220,
+    iconClass: 'text-info-light',
+    borderClass: 'border-b xl:border-b-0 xl:border-e border-subtle'
+  },
+  {
+    name: 'Referrals',
+    value: 120,
+    iconClass: 'text-danger-lighter',
+    borderClass: 'border-e xl:border-e-0 border-subtle'
+  },
+  {
+    name: 'Others',
+    value: 35,
+    iconClass: 'text-warning-light',
+    borderClass: 'xl:border-s border-subtle'
+  }
 ];
 
 export const dealForecastTableData: ForecastTableData[] = [

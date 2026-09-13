@@ -3,8 +3,8 @@ import AuthSimpleLayout from 'layouts/AuthSimpleLayout';
 
 const ForgotPassword = () => {
   return (
-    <AuthSimpleLayout className="col-xxl-4">
-      <ForgotPasswordForm />
+    <AuthSimpleLayout className="2xl:col-4">
+      <ForgotPasswordForm layout="simple" />
     </AuthSimpleLayout>
   );
 };

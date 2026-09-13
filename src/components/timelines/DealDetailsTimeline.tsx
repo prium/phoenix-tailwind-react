@@ -1,49 +1,52 @@
-import { faCalendarDays } from '@fortawesome/free-solid-svg-icons';
+import { faCalendarDays } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
 import { Activity } from 'data/crm/dealDetailsData';
-import { Link } from 'react-router';
 
+/** `+Activity(data, isLast)` in mixins/crm/DealDetails.pug */
 const DealDetailsTimeline = ({ activities }: { activities: Activity[] }) => {
   return (
     <>
       {activities.map((activity, index) => (
         <div
           key={activity.id}
-          className={classNames('border-bottom border-translucent py-4', {
-            'pb-0 border-bottom-0': index === activities.length - 1
-          })}
+          className={
+            index === activities.length - 1
+              ? 'pt-6'
+              : 'border-b border-subtle py-6'
+          }
         >
-          <div className="d-flex">
+          <div className="flex">
             <div
-              className={`d-flex bg-${activity.variant}-subtle rounded-circle flex-center me-3`}
-              style={{ width: '25px', height: '25px' }}
+              className={`flex rounded-full flex-center me-4 size-6.25 ${activity.iconBg}`}
             >
               <FontAwesomeIcon
                 icon={activity.icon}
-                className={`text-${activity.variant}-dark fs-9`}
+                className={`${activity.iconColor} text-md`}
               />
             </div>
             <div className="flex-1">
-              <div className="d-flex justify-content-between flex-column flex-xl-row mb-2 mb-sm-0">
+              <div className="flex justify-between flex-col xl:flex-row mb-2 sm:mb-0">
                 <div className="flex-1 me-2">
-                  <h5 className="text-body-highlight lh-sm">
+                  <h5 className="text-highlight leading-sm">
                     {activity.title}
                   </h5>
-                  <p className="fs-9 mb-0">
-                    by <Link to="#!">{activity.name}</Link>
+                  <p className="text-md mb-0">
+                    by
+                    <a href="#!" className="ms-1">
+                      {activity.name}
+                    </a>
                   </p>
                 </div>
-                <div className="fs-9">
+                <div className="text-md">
                   <FontAwesomeIcon
                     icon={faCalendarDays}
                     className="text-primary me-2"
                   />
-                  <span className="fw-semibold">{activity.date}</span>
+                  <span className="font-semibold">{activity.date}</span>
                 </div>
               </div>
               {activity.description && (
-                <p className="fs-9 mb-0">{activity.description}</p>
+                <p className="text-md mb-0">{activity.description}</p>
               )}
             </div>
           </div>

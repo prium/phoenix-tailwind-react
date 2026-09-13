@@ -1,20 +1,25 @@
-import { useMemo, useState, useEffect } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 export interface UseGalleryItemsResult<T> {
   filteredItems: T[];
-  selectedCategory: string;
-  setSelectedCategory: (category: string) => void;
+  /** gold `data-filter` value without the dot; `*` is "All" */
+  activeFilter: string;
+  setActiveFilter: (filter: string) => void;
   query: string;
   setQuery: (value: string) => void;
 }
 
-export function useGalleryItems<
-  T extends { title: string; category: string[] }
->(items: T[], debounceDelay = 300): UseGalleryItemsResult<T> {
-  const [selectedCategory, setSelectedCategory] = useState('1');
+/**
+ * Filter nav + search-box state for the gallery pages. `category` holds the
+ * gold filter class(es) of an item, space separated when it belongs to several.
+ */
+export function useGalleryItems<T extends { title: string; category: string }>(
+  items: T[],
+  debounceDelay = 300
+): UseGalleryItemsResult<T> {
+  const [activeFilter, setActiveFilter] = useState('*');
   const [query, setQuery] = useState('');
   const [debouncedQuery, setDebouncedQuery] = useState(query);
-
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -24,23 +29,21 @@ export function useGalleryItems<
     return () => clearTimeout(timeout);
   }, [query, debounceDelay]);
 
-  const filteredItems = useMemo(() => {
-    return items.filter(item => {
-      const matchCategory =
-        selectedCategory === '1' || item.category.includes(selectedCategory);
-
-      const matchSearch = item.title
-        .toLowerCase()
-        .includes(debouncedQuery.toLowerCase());
-
-      return matchCategory && matchSearch;
-    });
-  }, [items, selectedCategory, debouncedQuery]);
+  const filteredItems = useMemo(
+    () =>
+      items.filter(
+        item =>
+          (activeFilter === '*' ||
+            item.category.split(' ').includes(activeFilter)) &&
+          item.title.toLowerCase().includes(debouncedQuery.toLowerCase())
+      ),
+    [items, activeFilter, debouncedQuery]
+  );
 
   return {
     filteredItems,
-    selectedCategory,
-    setSelectedCategory,
+    activeFilter,
+    setActiveFilter,
     query,
     setQuery
   };

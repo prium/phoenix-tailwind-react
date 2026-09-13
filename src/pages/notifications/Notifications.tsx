@@ -1,37 +1,32 @@
 import PageBreadcrumb from 'components/common/PageBreadcrumb';
-import { notificationsBreadcrumbItems } from 'data/notifications';
-import React from 'react';
 import NotificationItem from 'components/common/NotificationItem';
-import { notifications } from 'data/notifications';
-import classNames from 'classnames';
+import {
+  notificationsBreadcrumbItems,
+  notificationsPageToday,
+  notificationsPageYesterday
+} from 'data/notifications';
 
-const Notification = () => {
+const Notifications = () => {
   return (
     <div>
       <PageBreadcrumb items={notificationsBreadcrumbItems} />
-      <h2 className="mb-5">Notifications</h2>
-      <h5 className="text-body-emphasis mb-3 ">Today</h5>
-      <div className="mx-n4 mx-lg-n6 mb-5 border-top">
-        {notifications.slice(0, 3).map((notification, index) => (
+      <h2 className="mb-8">Notifications</h2>
+      <h5 className="text-emphasis mb-4">Today</h5>
+      <div className="-mx-6 lg:-mx-10 mb-8 border-b">
+        {notificationsPageToday.map(notification => (
           <NotificationItem
             notification={notification}
             type="pageItem"
-            className={classNames({
-              'border-bottom': index !== notifications.length - 1
-            })}
             key={notification.id}
           />
         ))}
       </div>
-      <h5 className="text-body-emphasis mb-3 ">Yesterday</h5>
-      <div className="mx-n4 mx-lg-n6 mb-9 border-top">
-        {notifications.slice(3, 7).map((notification, index) => (
+      <h5 className="text-semibold text-emphasis mb-4">Yesterday</h5>
+      <div className="-mx-6 lg:-mx-10 mb-16 border-b">
+        {notificationsPageYesterday.map(notification => (
           <NotificationItem
             notification={notification}
             type="pageItem"
-            className={classNames({
-              'border-bottom': index !== notifications.length - 1
-            })}
             key={notification.id}
           />
         ))}
@@ -40,4 +35,4 @@ const Notification = () => {
   );
 };
 
-export default Notification;
+export default Notifications;

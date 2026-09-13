@@ -1,0 +1,219 @@
+/* The markup on modules/forms/advance/range.html (and the theme's own demos)
+   uses .noUi-primary / -success / -info / -warning / -danger to colour the
+   connected part of the track, but only -lighter was ever written, so the
+   "Colored Sliders" card rendered five identical blue sliders. */
+.noUi-primary {
+  .noUi-connect {
+    background: var(--color-primary) !important;
+  }
+}
+
+.noUi-success {
+  .noUi-connect {
+    background: var(--color-success) !important;
+  }
+}
+
+.noUi-info {
+  .noUi-connect {
+    background: var(--color-info) !important;
+  }
+}
+
+.noUi-warning {
+  .noUi-connect {
+    background: var(--color-warning) !important;
+  }
+}
+
+.noUi-danger {
+  .noUi-connect {
+    background: var(--color-danger) !important;
+  }
+}
+
+.noUi-primary-lighter {
+  .noUi-connect {
+    background: var(--color-primary-lighter) !important;
+  }
+}
+
+.noUi-target {
+  --noUi-track-height: 0.75rem;
+  --noUi-handle-top: -6px;
+  --noUi-box-shadow-inset: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+  background: var(--background-color-subtle);
+  border: none;
+  box-shadow: var(--noUi-box-shadow-inset);
+
+  &.noUi-target-primary {
+    background: var(--color-primary-lighter);
+    [data-hb-theme='dark'] & {
+      background: var(--color-primary-subtle);
+    }
+  }
+
+  &.noUi-horizontal {
+    height: var(--noUi-track-height);
+
+    .noUi-handle {
+      inset-inline-end: -8px;
+    }
+  }
+
+  .noUi-connect {
+    background: var(--color-primary);
+  }
+
+  .noUi-handle {
+    width: 1rem;
+    height: 1.5rem;
+    background: white;
+    box-shadow: none;
+    border: 1px solid var(--border-color-default);
+    top: var(--noUi-handle-top);
+    cursor: grab;
+
+    &:hover {
+      .noUi-tooltip {
+        display: block;
+      }
+    }
+
+    &::after,
+    &::before {
+      background: var(--color-secondary-lighter);
+      height: 10px;
+      top: 6px;
+    }
+    &::after {
+      inset-inline-start: 9px;
+    }
+    &::before {
+      inset-inline-start: 4px;
+    }
+
+    .noUi-tooltip {
+      display: none;
+      background: var(--background-color-soft);
+      border: 1px solid var(--border-color-default);
+      color: var(--text-color-default);
+      /* font-size: $tooltip-font-size; */
+    }
+
+    &:active {
+      cursor: grabbing;
+    }
+
+    &.noUi-active {
+      .noUi-tooltip {
+        display: block;
+      }
+    }
+  }
+
+  .noUi-pips {
+    color: var(--text-color-soft);
+    margin-top: 0.25rem;
+    .noUi-value-sub {
+      color: var(--text-color-soft);
+    }
+    .noUi-marker,
+    .noUi-marker-large {
+      background: var(--background-color-emphasis);
+    }
+  }
+}
+
+.noUi-handle-square {
+  &.noUi-target {
+    --noUi-handle-top: -2px;
+    .noUi-handle {
+      height: 16px;
+      width: 16px;
+
+      &::after,
+      &::before {
+        display: none;
+      }
+    }
+  }
+}
+
+.noUi-handle-circle {
+  &.noUi-target {
+    --noUi-handle-top: -3px;
+    .noUi-handle {
+      height: 18px;
+      width: 18px;
+
+      border-radius: 50%;
+      &::after,
+      &::before {
+        display: none;
+      }
+    }
+  }
+}
+
+.noUi-slider-slim {
+  &.noUi-target {
+    --noUi-track-height: 4px;
+    --noUi-handle-top: -10px;
+    &.noUi-handle-circle {
+      --noUi-handle-top: -7px;
+    }
+  }
+}
+
+.noUi-slider-medium {
+  &.noUi-target {
+    --noUi-track-height: 14px;
+    --noUi-handle-top: -5px !important;
+    /* background: var(--#{$prefix}body-highlight-bg) !important; */
+    border-radius: 1.25rem;
+    .noUi-handle {
+      height: 1.5rem;
+      width: 1.5rem;
+    }
+    .noUi-connects {
+      height: 6px;
+      top: 30%;
+    }
+  }
+}
+
+.noUi-slider-large {
+  &.noUi-target {
+    --noUi-track-height: 2.5rem;
+    --noUi-handle-top: 3.5px !important;
+    background: var(--background-color-subtle);
+    border-radius: 1.25rem;
+    .noUi-handle {
+      height: 2rem;
+      width: 2rem;
+      box-shadow: none;
+      border: none;
+    }
+    .noUi-connects {
+      height: 1.5rem;
+      top: 20%;
+    }
+  }
+}
+
+.noUi-handle-primary {
+  .noUi-handle {
+    background-color: var(--color-primary);
+    box-shadow: none;
+    border: none;
+  }
+}
+/* .range-slider-primary {
+  &.noUi-target {
+    background: var(--#{$prefix}primary-lighter);
+    [data-hb-theme='dark'] & {
+      background: var(--#{$prefix}primary-bg-subtle);
+    }
+  }
+} */

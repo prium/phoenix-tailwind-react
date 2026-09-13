@@ -7,7 +7,9 @@ import {
   LineElement,
   Tooltip,
   ChartOptions,
-  Filler
+  Filler,
+  ScriptableContext,
+  ScriptableLineSegmentContext
 } from 'chart.js';
 import { ChartData } from 'data/stock/dashboardTopStocks';
 import { useAppContext } from 'providers/AppProvider';
@@ -61,23 +63,27 @@ const TopStockLineChart = ({
         fill: true,
         pointRadius: 0,
         borderWidth: 1,
-        backgroundColor: context => {
+        backgroundColor: (context: ScriptableContext<'line'>) => {
           const chart = context.chart;
           const { chartArea } = chart;
           if (!chartArea) return undefined;
           return getGradientColor(chart, getThemeColor, growth);
         },
-        borderColor: getThemeColor(growth ? 'success' : 'danger'),
+        borderColor: getThemeColor(growth ? 'color-success' : 'color-danger'),
         segment: {
-          borderColor: ctx =>
+          borderColor: (ctx: ScriptableLineSegmentContext) =>
             ctx.p0DataIndex <= index
-              ? getThemeColor(growth ? 'success' : 'danger')
-              : getThemeColor('border-color'),
-          backgroundColor: ctx =>
-            ctx.p0DataIndex <= index
-              ? ctx.chart.chartArea &&
-                getGradientColor(ctx.chart, getThemeColor, growth)
-              : 'transparent'
+              ? getThemeColor(growth ? 'color-success' : 'color-danger')
+              : getThemeColor('border-color-default'),
+          backgroundColor: (ctx: ScriptableLineSegmentContext) => {
+            if (ctx.p0DataIndex > index) return 'transparent';
+            // segment contexts prototype-chain to the chart context, so
+            // `chart` exists at runtime but not in the declared type
+            const { chart } = ctx as unknown as { chart: ChartJS<'line'> };
+            return chart.chartArea
+              ? getGradientColor(chart, getThemeColor, growth)
+              : undefined;
+          }
         }
       }
     ]
@@ -117,12 +123,12 @@ const TopStockLineChart = ({
         alignToPixels: true,
         title: {},
         ticks: {
-          color: getThemeColor('body-color'),
+          color: getThemeColor('text-color-default'),
           maxTicksLimit: breakpoints.down('sm')
             ? 4
             : breakpoints.down('md')
-            ? 7
-            : 12
+              ? 7
+              : 12
         },
         grid: { color: 'transparent' }
       },
@@ -132,11 +138,11 @@ const TopStockLineChart = ({
         max: 290,
         ticks: {
           stepSize: 10,
-          color: getThemeColor('body-color'),
+          color: getThemeColor('text-color-default'),
           callback: value => `${value}     `
         },
         grid: {
-          color: getThemeColor('border-color-translucent'),
+          color: getThemeColor('border-color-subtle'),
           drawTicks: false
         }
       }

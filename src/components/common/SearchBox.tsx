@@ -1,10 +1,9 @@
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
+import { Input, cn } from '@hummingbirdui/react';
 import { CSSProperties } from 'react';
-import { Form, FormControlProps } from 'react-bootstrap';
 
-export interface SearchBoxProps extends FormControlProps {
+export interface SearchBoxProps extends Omit<Input.Props, 'size'> {
   placeholder?: string;
   className?: string;
   inputClassName?: string;
@@ -13,6 +12,11 @@ export interface SearchBoxProps extends FormControlProps {
   style?: CSSProperties;
 }
 
+/**
+ * Phoenix search box. Uses the `search-box` / `search-input` / `search-box-icon`
+ * structure from assets/css/components/search-box.css rather than Hummingbird's
+ * InputIcon so the markup matches phoenix-tailwind exactly.
+ */
 const SearchBox = ({
   placeholder = 'Search',
   size,
@@ -23,12 +27,12 @@ const SearchBox = ({
   ...rest
 }: SearchBoxProps) => {
   return (
-    <div className={classNames('search-box', className)} style={style}>
-      <form className={classNames('position-relative', formClassName)}>
-        <Form.Control
+    <div className={cn('search-box', className)} style={style}>
+      <form className={cn('relative', formClassName)}>
+        <Input
           type="search"
           placeholder={placeholder}
-          className={classNames('search-input search', inputClassName)}
+          className={cn('search-input search', inputClassName)}
           size={size}
           {...rest}
         />

@@ -1,0 +1,130 @@
+/*-----------------------------------------------
+|   Documentation link and Prism
+-----------------------------------------------*/
+.code-block {
+  padding: 0;
+  overflow: auto;
+  pre[class*='language-'] {
+    padding: 1.6rem;
+    border: 0;
+    margin: 0;
+    border-radius: 0;
+  }
+}
+
+:not(pre) > code[class*='language-'],
+pre[class*='language-'] {
+  background-color: var(--color-gray-950);
+}
+code.language-html:first-child {
+  display: block;
+}
+
+code[class*='language-'],
+pre[class*='language-'] {
+  font-size: var(--text-md);
+  border-radius: 0;
+}
+pre[class*='language-'] {
+  margin: 0;
+  padding: var(--card-padding-x);
+}
+.contains-anchor {
+  a {
+    opacity: 0;
+    transition-property: opacity;
+  }
+  &:hover,
+  &:focus {
+    a {
+      opacity: 1;
+      text-decoration: none;
+    }
+  }
+}
+
+.components-nav {
+  font-size: 0.85rem;
+}
+
+/*-----------------------------------------------
+|   Borders
+-----------------------------------------------*/
+.component-example {
+  [class^='border'] {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 8rem;
+    height: 8rem;
+    margin: 0.75rem;
+    background-color: var(--background-color-subtle);
+  }
+}
+
+/*-----------------------------------------------
+|   Utilities
+-----------------------------------------------*/
+.border-component {
+  [class^='border'],
+  [class^='rounded-'],
+  [class^='md\:rounded-'],
+  [class^='lg\:rounded-'] {
+    display: inline-block;
+    width: 5rem;
+    height: 5rem;
+    margin: 0.25rem;
+  }
+
+  [class^='border'] {
+    background-color: var(--background-color-subtle);
+  }
+
+  [class^='rounded-'],
+  [class^='md\:rounded-'],
+  [class^='lg\:rounded-'] {
+    background-color: var(--background-color-muted);
+  }
+}
+
+#loaders {
+  [class^='spinner'] {
+    margin-right: 0.5rem;
+  }
+}
+.doc-tab-nav {
+  a.btn {
+    width: 8.4375rem;
+    text-align: center;
+  }
+  .active {
+    display: none;
+  }
+}
+.code-btn {
+  &:not(.collapsed) {
+    display: none;
+  }
+}
+.code-btn.collapsed + .preview-btn {
+  display: none;
+}
+.opacity-docs {
+  [class^='text-white'] {
+    height: 100px;
+    width: 100px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.overflow-docs {
+  [class^='overflow-'] {
+    max-height: 70px;
+    max-width: 22%;
+    background-color: var(--background-color-subtle);
+    display: inline-block;
+    padding: --spacing(4);
+    margin-right: --spacing(2);
+  }
+}

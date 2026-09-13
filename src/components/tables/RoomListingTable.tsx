@@ -1,4 +1,3 @@
-import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ColumnDef } from '@tanstack/react-table';
 import AdvanceTable from 'components/base/AdvanceTable';
@@ -17,11 +16,10 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import SearchBox from 'components/common/SearchBox';
 
-import useAdvanceTable from 'hooks/useAdvanceTable';
+import useAdvanceTable, { buildSelectionColumn } from 'hooks/useAdvanceTable';
 import AdvanceTableProvider from 'providers/AdvanceTableProvider';
 import { ChangeEvent } from 'react';
 import { Link } from 'react-router';
-import Badge from 'components/base/Badge';
 import RevealDropdown, {
   RevealDropdownTrigger
 } from 'components/base/RevealDropdown';
@@ -32,141 +30,118 @@ import {
 } from 'data/travel-agency/roomListing';
 
 const columns: ColumnDef<RoomListingInterface>[] = [
+  buildSelectionColumn<RoomListingInterface>({
+    headerClassName:
+      'whitespace-nowrap text-md align-middle py-3.5 ps-0 max-w-5 w-4.5',
+    cellClassName: 'text-md align-middle ps-0'
+  }),
   {
-    id: 'roomInformation',
-    header: 'room Information',
+    id: 'name',
+    header: 'ROOM INFORMATION',
     accessorKey: 'name',
-
     cell: ({ row: { original } }) => {
       const { img, name, category, price } = original;
       return (
-        <>
-          <div className="d-flex align-items-center gap-3">
-            <Link to="#!">
-              <img
-                src={img}
-                alt=""
-                width={80}
-                className="rounded-1 border border-translucent"
-              />
+        <div className="flex items-center gap-4">
+          <Link to="#!" className="size-20">
+            <img
+              src={img}
+              alt=""
+              className="rounded-sm border border-subtle size-full"
+            />
+          </Link>
+          <div>
+            <Link
+              to="#!"
+              className="text-base font-extrabold text-emphasis text-nowrap"
+            >
+              {name}
             </Link>
-            <div>
-              <Link
-                to="#!"
-                className="fs-8 fw-bolder text-body-emphasis text-nowrap"
-              >
-                {name}
-              </Link>
-              <h6 className="fw-seibold text-body text-nowrap mt-1 mb-2">
-                <FontAwesomeIcon icon={faBorderAll} className="me-2" />
-                {category}
-              </h6>
-              <h4 className="fw-bolder mb-0">${price}</h4>
-            </div>
+            <h6 className="text-default text-nowrap mt-1 mb-2">
+              <FontAwesomeIcon icon={faBorderAll} className="me-2" />
+              {category}
+            </h6>
+            <h4 className="font-extrabold mb-0">${price}</h4>
           </div>
-        </>
+        </div>
       );
     },
     meta: {
-      headerProps: { style: { width: 300 } },
-      cellProps: { className: 'align-middle py-4' }
+      headerProps: {
+        className: 'text-subtle align-middle whitespace-nowrap w-75'
+      },
+      cellProps: { className: 'align-middle py-6 name' }
     }
   },
   {
-    header: 'NO. of Beds',
+    id: 'beds',
+    header: 'NO. OF BEDS',
     accessorKey: 'beds',
-
     cell: ({ row: { original } }) => {
       const { beds, bedRooms } = original;
       return (
-        <div className="d-flex align-items-center">
-          <div
-            className="d-flex align-items-center justify-content-center bg-primary-subtle rounded me-2"
-            style={{ height: 24, width: 24 }}
-          >
+        <div className="flex items-center">
+          <div className="flex items-center justify-center bg-primary-subtle rounded-md me-2 size-6">
             <FontAwesomeIcon
               icon={faPersonShelter}
               className="text-primary-darker"
             />
           </div>
-          <h5 className="text-body-emphasis fw-semibold mb-0 me-3">
-            {bedRooms}
-          </h5>
-          <div
-            className="d-flex align-items-center justify-content-center bg-success-subtle rounded me-2"
-            style={{ height: 24, width: 24 }}
-          >
+          <h5 className="text-emphasis font-semibold mb-0 me-4">{bedRooms}</h5>
+          <div className="flex items-center justify-center bg-success-subtle rounded-md me-2 size-6">
             <FontAwesomeIcon icon={faBed} className="text-success-darker" />
           </div>
-          <h5 className="text-body-emphasis fw-semibold mb-0">{beds}</h5>
+          <h5 className="text-emphasis font-semibold mb-0">{beds}</h5>
         </div>
       );
     },
     meta: {
-      headerProps: {
-        style: { width: 200 },
-        className: 'text-body-tertiary align-middle px-4'
-      },
-      cellProps: { className: 'align-middle px-4' }
+      headerProps: { className: 'text-subtle align-middle px-6 w-50' },
+      cellProps: { className: 'align-middle px-6 beds' }
     }
   },
   {
+    id: 'guest',
     accessorKey: 'guest',
-    header: 'NO. of Guests',
+    header: 'NO. OF GUESTS',
     cell: ({ row: { original } }) => {
       const { guest, child } = original;
       return (
-        <div className="d-flex align-items-center">
-          <div
-            className="d-flex align-items-center justify-content-center bg-warning-subtle rounded me-2"
-            style={{ height: 24, width: 24 }}
-          >
+        <div className="flex items-center">
+          <div className="flex items-center justify-center bg-warning-subtle rounded-md me-2 size-6">
             <FontAwesomeIcon icon={faUser} className="text-warning-darker" />
           </div>
-          <h5 className="text-body-emphasis fw-semibold mb-0 me-3">{guest}</h5>
-          <div
-            className="d-flex align-items-center justify-content-center bg-info-subtle rounded me-2"
-            style={{ height: 24, width: 24 }}
-          >
+          <h5 className="text-emphasis font-semibold mb-0 me-4">{guest}</h5>
+          <div className="flex items-center justify-center bg-info-subtle rounded-md me-2 size-6">
             <FontAwesomeIcon icon={faBaby} className="text-info-darker" />
           </div>
-          <h5 className="text-body-emphasis fw-semibold mb-0">{child}</h5>
+          <h5 className="text-emphasis font-semibold mb-0">{child}</h5>
         </div>
       );
     },
     meta: {
-      headerProps: {
-        style: { width: 200 },
-        className: 'text-body-tertiary align-middle px-4'
-      },
-      cellProps: { className: 'align-middle px-4' }
+      headerProps: { className: 'text-subtle align-middle px-6 w-50' },
+      cellProps: { className: 'align-middle px-6 guest' }
     }
   },
   {
-    accessorKey: 'bathrooms',
-    header: 'Bathroom',
+    id: 'bathRooms',
+    accessorKey: 'bathRooms',
+    header: 'BATHROOM',
     cell: ({ row: { original } }) => {
       const { bathRooms } = original;
       return (
-        <div className="d-flex align-items-center">
-          <div
-            className="d-flex align-items-center justify-content-center bg-danger-subtle rounded me-2"
-            style={{ height: 24, width: 24 }}
-          >
+        <div className="flex items-center">
+          <div className="flex items-center justify-center bg-danger-subtle rounded-md me-2 size-6">
             <FontAwesomeIcon icon={faBath} className="text-danger-darker" />
           </div>
-          <h5 className="text-body-emphasis fw-semibold mb-0 me-3">
-            {bathRooms}
-          </h5>
+          <h5 className="text-emphasis font-semibold mb-0 me-3">{bathRooms}</h5>
         </div>
       );
     },
     meta: {
-      headerProps: {
-        style: { width: 140 },
-        className: 'text-body-tertiary align-middle px-4'
-      },
-      cellProps: { className: 'align-middle px-4' }
+      headerProps: { className: 'text-subtle align-middle px-6 w-35' },
+      cellProps: { className: 'align-middle px-6 bathRooms' }
     }
   },
   {
@@ -176,19 +151,17 @@ const columns: ColumnDef<RoomListingInterface>[] = [
     cell: ({ row: { original } }) => {
       const { amenities } = original;
       return (
-        <div className="d-flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2">
           {amenities.slice(0, 13).map((item, index) => (
-            <Badge
+            <span
               key={index}
-              variant="phoenix"
-              bg="primary"
-              className="text-body-highlight py-1 fs-10 border-0"
+              className="badge bg-primary-subtle text-highlight uppercase px-1.75 py-1 text-[10.24px]"
             >
               {item}
-            </Badge>
+            </span>
           ))}
           {amenities.length > 13 && (
-            <Link to="#!" className="fw-bold fs-9">
+            <Link to="#!" className="font-bold text-md">
               +{amenities.length - 13} More
             </Link>
           )}
@@ -196,34 +169,32 @@ const columns: ColumnDef<RoomListingInterface>[] = [
       );
     },
     meta: {
-      headerProps: {
-        style: { minWidth: 450 },
-        className: 'text-body-tertiary align-middle ps-4'
-      },
-      cellProps: { className: 'align-middle ps-4' }
+      headerProps: { className: 'text-subtle align-middle ps-6 min-w-112.5' },
+      cellProps: { className: 'align-middle ps-6 amenities' }
     }
   },
   {
+    id: 'totalRooms',
     accessorKey: 'totalRooms',
-    header: 'Total Room',
+    header: 'TOTAL ROOM',
     cell: ({ row: { original } }) => {
       const { totalRooms } = original;
-      return <h2 className="text-body-secondary">{totalRooms}</h2>;
+      return <h2 className="text-muted">{totalRooms}</h2>;
     },
     meta: {
       headerProps: {
-        style: { width: 180 },
-        className: 'text-body-tertiary align-middle text-end ps-4'
+        className: 'text-subtle align-middle ps-6 text-end w-45'
       },
-      cellProps: { className: 'align-middle text-end ps-4' }
+      cellProps: { className: 'align-middle text-end ps-6 totalRooms' }
     }
   },
   {
     id: 'roomListingDropdown',
+    enableSorting: false,
     cell: () => {
       return (
-        <RevealDropdownTrigger>
-          <RevealDropdown>
+        <RevealDropdownTrigger className="static">
+          <RevealDropdown btnClassName="text-sm">
             <ActionDropdownItems />
           </RevealDropdown>
         </RevealDropdownTrigger>
@@ -231,20 +202,19 @@ const columns: ColumnDef<RoomListingInterface>[] = [
     },
     meta: {
       headerProps: {
-        className: 'text-body-tertiary align-middle text-end ps-4 pe-0'
+        className: 'text-subtle text-end align-middle pe-0 ps-6'
       },
-      cellProps: { className: 'align-middle ps-4' }
+      cellProps: { className: 'align-middle ps-6' }
     }
   }
 ];
+
 const RoomListingTable = () => {
   const table = useAdvanceTable({
     data: RoomListingData,
     columns,
-    pageSize: 6,
+    pageSize: 8,
     pagination: true,
-    selection: true,
-    selectionColumnWidth: '30px',
     sortable: true
   });
 
@@ -253,41 +223,31 @@ const RoomListingTable = () => {
   };
   return (
     <AdvanceTableProvider {...table}>
-      <div className="d-md-flex mt-5 mb-4">
-        <Button
-          variant="primary"
-          startIcon={<FontAwesomeIcon icon={faPlus} className="me-2" />}
-          className="me-4"
-        >
+      <div className="md:flex mt-8 mb-6">
+        <Button variant="primary" className="me-6">
+          <FontAwesomeIcon icon={faPlus} className="me-2" />
           Create Listing
         </Button>
-        <Button
-          variant="link"
-          startIcon={
-            <FontAwesomeIcon icon={faFileExport} className="me-2 fs-9" />
-          }
-          className="text-body me-4 px-0"
-        >
+        <Button variant="link" className="text-default me-6 px-0">
+          <FontAwesomeIcon icon={faFileExport} className="text-md me-2" />
           Export
         </Button>
-        <div className="d-flex gap-2 ms-md-auto mt-3 mt-md-0">
+        <div className="flex gap-2 md:ms-auto mt-4 md:mt-0">
           <SearchBox
             placeholder="Search products"
             onChange={handleSearchInputChange}
           />
-          <Button variant="phoenix-primary" className="px-3">
+          <Button variant="phoenix-primary" className="px-4">
             <FontAwesomeIcon transform="down-2" icon={faFilter} />
           </Button>
         </div>
       </div>
 
       <AdvanceTable
-        tableProps={{
-          className: 'phoenix-table fs-9 mb-0 border-translucent'
-        }}
-        rowClassName="hover-actions-trigger btn-reveal-trigger position-static"
+        tableProps={{ className: 'text-md mb-0' }}
+        rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />
-      <AdvanceTableFooter navBtn />
+      <AdvanceTableFooter navBtn className="py-2 g-0" />
     </AdvanceTableProvider>
   );
 };

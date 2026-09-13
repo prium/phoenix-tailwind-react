@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Card, Dropdown } from '@hummingbirdui/react';
 import Avatar from 'components/base/Avatar';
-import Button from 'components/base/Button';
 import RevealDropdown, {
   RevealDropdownTrigger
 } from 'components/base/RevealDropdown';
@@ -8,7 +8,6 @@ import CommentField from 'components/modules/social/CommentField';
 import PostComments from 'components/modules/social/PostComments';
 import PostGallery from 'components/image-gallery/PostGallery';
 import { Post } from 'data/social/postsData';
-import { Card, Dropdown } from 'react-bootstrap';
 import { Link } from 'react-router';
 import {
   faCircle,
@@ -22,84 +21,86 @@ interface PostCardProps {
   post: Post;
 }
 
+/** `+Post` in mixins/social/Feed.pug */
 const PostCard = ({ post }: PostCardProps) => {
   return (
-    <div className="mb-5">
-      <Card className="mb-4 overflow-hidden">
-        <Card.Body className="p-3 p-sm-4">
-          <div className="border-bottom border-translucent mb-3">
-            <div className="d-flex align-items-center mb-3">
-              <Link to="/apps/social/profile" style={{ lineHeight: 0 }}>
+    <div className="mb-8">
+      <Card className="mb-6">
+        <Card.Body className="p-4 sm:p-6">
+          <div className="border-b border-subtle mb-4">
+            <div className="flex items-center mb-4">
+              <Link to="/apps/social/profile">
                 <Avatar size="xl" src={post.author.avatar} className="me-2" />
               </Link>
               <div className="flex-1">
-                <Link to="/apps/social/profile" className="fw-bold mb-0">
+                <Link
+                  to="/apps/social/profile"
+                  className="font-bold mb-0 text-emphasis"
+                >
                   {post.author.name}
                 </Link>
-                <p className="fs-10 mb-0 text-body-tertiary text-opacity-85 fw-semibold">
+                <p className="text-sm mb-0 text-subtle/85 font-semibold">
                   {post.time}
                   {post.location && (
                     <>
                       <FontAwesomeIcon
                         icon={faCircle}
-                        className="text-light"
+                        className="text-soft/50"
                         transform="shrink-10 down-2"
                       />
                       {post.location}
                       <FontAwesomeIcon
                         icon={faCircle}
-                        className="text-light"
+                        className="text-soft/50"
                         transform="shrink-10 down-2"
                       />
                       <FontAwesomeIcon
                         icon={faEarthAmericas}
-                        className="text-body"
+                        className="text-default"
                       />
                     </>
                   )}
                 </p>
               </div>
               <RevealDropdownTrigger>
-                <RevealDropdown>
-                  <Dropdown.Item eventKey="1">Edit</Dropdown.Item>
-                  <Dropdown.Item eventKey="2" className="text-danger">
-                    Delete
-                  </Dropdown.Item>
-                  <Dropdown.Item eventKey="2">Download</Dropdown.Item>
-                  <Dropdown.Item eventKey="2">Report abuse</Dropdown.Item>
+                <RevealDropdown btnClassName="flex">
+                  <Dropdown.Item>Edit</Dropdown.Item>
+                  <Dropdown.Item className="text-danger">Delete</Dropdown.Item>
+                  <Dropdown.Item>Download</Dropdown.Item>
+                  <Dropdown.Item>Report abuse</Dropdown.Item>
                 </RevealDropdown>
               </RevealDropdownTrigger>
             </div>
-            <p className="text-body-secondary">{post.caption}</p>
+            <p className="text-muted">{post.caption}</p>
             {post.images && <PostGallery images={post.images} />}
           </div>
-          <div className="d-flex">
-            <Button
-              variant="link"
-              startIcon={<FontAwesomeIcon icon={faHeart} />}
-              className="p-0 me-3 fs-10 fw-bolder"
+          <div className="flex">
+            <button
+              type="button"
+              className="btn btn-link text-primary p-0 me-4 text-sm font-extrabold"
             >
-              {post.interactions.likes} Likes
-            </Button>
-            <Button
-              variant="link"
-              startIcon={<FontAwesomeIcon icon={faComment} />}
-              className="p-0 me-3 fs-10 fw-bolder text-body"
+              <FontAwesomeIcon icon={faHeart} className="me-1" />
+              {post.interactions.likes}
+            </button>
+            <button
+              type="button"
+              className="btn btn-link text-default p-0 text-sm me-4 font-extrabold"
             >
-              {post.interactions.comments} Comments
-            </Button>
-            <Button
-              variant="link"
-              startIcon={<FontAwesomeIcon icon={faShare} />}
-              className="p-0 me-3 fs-10 fw-bolder text-body"
+              <FontAwesomeIcon icon={faComment} className="me-1" />
+              {post.interactions.comments}
+            </button>
+            <button
+              type="button"
+              className="btn btn-link text-default p-0 text-sm me-2 font-extrabold"
             >
-              {post.interactions.shares} Shares
-            </Button>
+              <FontAwesomeIcon icon={faShare} className="me-1" />
+              {post.interactions.shares}
+            </button>
           </div>
         </Card.Body>
-        <div className="bg-body-highlight border-top border-translucent p-3 p-sm-4">
+        <div className="bg-subtle border-t border-subtle p-4 sm:p-6">
           {post.comments && <PostComments comments={post.comments} />}
-          <CommentField />
+          <CommentField avatar={post.commentInputAvatar} />
         </div>
       </Card>
     </div>

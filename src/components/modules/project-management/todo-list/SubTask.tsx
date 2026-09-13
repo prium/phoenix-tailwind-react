@@ -1,52 +1,68 @@
-import { faPencil, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faPencil, faPlus, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
-import Button from 'components/base/Button';
-import { SubTaskItem } from 'data/project-management/todoListData';
-import { snakeCase } from 'helpers/utils';
-import React from 'react';
-import { Form } from 'react-bootstrap';
+import { cn } from '@hummingbirdui/react';
+import { SubTaskItem, subTasks } from 'data/project-management/todoListData';
 
-const SubTask = ({
-  task,
-  className
-}: {
+interface SubTaskProps {
   task: SubTaskItem;
+  id: string;
   className?: string;
-}) => {
+}
+
+/** one row of `+SubTasks` in mixins/project-management/ToDoList.pug */
+const SubTask = ({ task, id, className }: SubTaskProps) => {
   return (
     <div
-      className={classNames(
-        className,
-        'd-flex flex-between-center hover-actions-trigger py-3 border-bottom'
+      className={cn(
+        'flex flex-between-center hover-actions-trigger py-4 border-t',
+        className
       )}
     >
-      <Form.Check
-        type="checkbox"
-        id={snakeCase(task.task)}
-        className="mb-1 mb-md-0 d-flex align-items-center lh-1 min-h-auto"
-      >
-        <Form.Check.Input
+      <div className="form-check mb-1 md:mb-0 flex items-center min-h-auto">
+        <input
+          className="subtask-checkbox form-check-input form-check-line-through mt-0 me-4"
           type="checkbox"
-          className="form-check-line-through mt-0 me-3"
+          id={id}
         />
-        <Form.Check.Label className="mb-0 fs-8"> {task.task}</Form.Check.Label>
-      </Form.Check>
-
-      <div className="hover-actions end-0">
-        <Button
-          variant=""
-          size="sm"
-          className="me-1 text-body-tertiary px-0 me-3"
+        <label
+          className="form-check-label mb-0 text-base leading-none"
+          htmlFor={id}
         >
-          <FontAwesomeIcon icon={faPencil} className="fs-10" />
-        </Button>
-        <Button size="sm" className="text-body-tertiary px-0">
-          <FontAwesomeIcon icon={faXmark} className="fs-8" />
-        </Button>
+          {task.task}
+        </label>
+      </div>
+      <div className="hover-actions end-0">
+        <button
+          type="button"
+          className="btn btn-sm text-sm text-subtle px-0 me-4"
+        >
+          <FontAwesomeIcon icon={faPencil} />
+        </button>
+        <button type="button" className="btn btn-sm text-subtle px-0">
+          <FontAwesomeIcon icon={faXmark} className="text-base" />
+        </button>
       </div>
     </div>
   );
 };
+
+/** `+SubTasks(index)` — heading, rows and the "Add subtask" link */
+export const SubTasks = ({ index = 0 }: { index?: number }) => (
+  <>
+    <h4 className="mb-4">Subtasks</h4>
+    {subTasks.map((task, i) => (
+      <SubTask
+        key={task.task}
+        task={task}
+        id={`subtask${index}${i + 1}`}
+        className={i === subTasks.length - 1 ? 'border-b mb-4' : undefined}
+      />
+    ))}
+    <a href="#!" className="font-bold text-md">
+      <FontAwesomeIcon icon={faPlus} className="me-1" />
+      Add subtask
+    </a>
+  </>
+);
 
 export default SubTask;

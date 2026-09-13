@@ -1,6 +1,8 @@
-import classNames from 'classnames';
+import { cn } from '@hummingbirdui/react';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { ChangeEvent, useState } from 'react';
-import { Form } from 'react-bootstrap';
+import Button from 'components/base/Button';
 
 interface PriceTierFormProps {
   id: string;
@@ -10,65 +12,102 @@ interface PriceTierFormProps {
   methods?: any;
 }
 
+/** gold `+PriceTierForm` (mixins/travel-agency/common/PriceTierForm.pug) */
 const PriceTierForm = ({
   id,
   name,
-  className = 'mb-3',
+  className = 'mb-4',
   methods
 }: PriceTierFormProps) => {
-  const { formData, setFormData } = methods;
+  const { formData, setFormData } = methods ?? {};
   const [active, setActive] = useState(false);
+  const [paid, setPaid] = useState(false);
+
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.checked
-    });
+    if (setFormData) {
+      setFormData({
+        ...formData,
+        [e.target.name]: e.target.checked
+      });
+    }
+    setActive(e.target.checked);
   };
 
   return (
     <div
-      className={classNames('form-price-tier border p-3 rounded-2', className, {
-        active: active
+      className={cn('form-price-tier border p-4 rounded-md', className, {
+        active
       })}
     >
-      <div className="d-sm-flex align-items-center gap-3">
-        <Form.Check id={id} type="switch" className="mb-0">
-          <Form.Check.Input
-            onClick={() => {
-              setActive(!active);
-            }}
-            onChange={handleChange}
+      <div className="sm:flex items-center gap-4">
+        <div className="form-check form-switch mb-0">
+          <input
+            className="form-check-input"
+            id={id}
+            type="checkbox"
             name={id}
+            checked={active}
+            onChange={handleChange}
           />
-          <Form.Check.Label className="fw-bold fs-8 text-body ms-2">
+          <label
+            className="form-check-label text-base font-bold text-default ms-2"
+            htmlFor={id}
+          >
             {name}
-          </Form.Check.Label>
-        </Form.Check>
-        <div
-          className={classNames('ms-auto mt-2 mt-sm-0', {
-            'd-block': active,
-            'd-none': !active
-          })}
-        >
-          <Form.Check type="radio" className="form-check-inline me-3 mb-0">
-            <Form.Check.Input
+          </label>
+        </div>
+        <div className="pricings ms-auto mt-2 sm:mt-0 leading-0">
+          <div className="form-check-inline me-4 mb-0">
+            <input
+              className="form-check-input"
               type="radio"
-              id={`${name}-free`}
+              id={`${id}-free`}
               name={`${name}-radio`}
-              defaultValue="free"
-              defaultChecked
+              value="free"
+              checked={!paid}
+              onChange={() => setPaid(false)}
             />
-            <Form.Check.Label htmlFor={`${name}-free`}>Free</Form.Check.Label>
-          </Form.Check>
-          <Form.Check type="radio" className="form-check-inline me-0 mb-0">
-            <Form.Check.Input
+            <label className="form-check-label" htmlFor={`${id}-free`}>
+              Free
+            </label>
+          </div>
+          <div className="form-check-inline me-0 mb-0">
+            <input
+              className="form-check-input"
               type="radio"
-              id={`${name}-paid`}
+              id={`${id}-paid`}
               name={`${name}-radio`}
-              defaultValue="paid"
+              value="paid"
+              checked={paid}
+              onChange={() => setPaid(true)}
             />
-            <Form.Check.Label htmlFor={`${name}-paid`}>Paid</Form.Check.Label>
-          </Form.Check>
+            <label className="form-check-label" htmlFor={`${id}-paid`}>
+              Paid
+            </label>
+          </div>
+        </div>
+      </div>
+      <div className={cn('collapse', { show: active && paid })}>
+        <div className="p-6 bg-primary-subtle rounded-lg mt-4">
+          {[1, 2, 3].map(option => (
+            <div className="form-check mb-6" key={option}>
+              <input
+                className="form-check-input"
+                id={`${id}-option${option}`}
+                type="checkbox"
+              />
+              <label
+                className="form-check-label font-normal text-base font-semibold"
+                htmlFor={`${id}-option${option}`}
+              >
+                Option {option}
+              </label>
+            </div>
+          ))}
+          <Button variant="link" className="p-0">
+            <FontAwesomeIcon icon={faPlus} className="me-2" />
+            Additional Condition
+          </Button>
         </div>
       </div>
     </div>

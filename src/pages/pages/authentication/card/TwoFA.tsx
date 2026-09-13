@@ -4,7 +4,7 @@ import AuthCardLayout from 'layouts/AuthCardLayout';
 const TwoFA = () => {
   return (
     <AuthCardLayout>
-      <TwoFAForm />
+      <TwoFAForm layout="card" />
     </AuthCardLayout>
   );
 };

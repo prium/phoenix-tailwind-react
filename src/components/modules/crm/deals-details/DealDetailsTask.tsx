@@ -1,62 +1,50 @@
 import { faFilter, faPlus, faSort } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
-import Button from 'components/base/Button';
+import { Col, Row } from '@hummingbirdui/react';
 import SearchBox from 'components/common/SearchBox';
 import TodoListItem from 'components/modules/project-management/todo-list/TodoListItem';
-import { Task } from 'data/crm/dealDetailsData';
-import React from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { ToDoItem } from 'data/project-management/todoListData';
 
-const DealDetailsTask = ({ tasks }: { tasks: Task[] }) => {
+/** `#tab-task` + `+TasksList` (mixins/crm/LeadDetails.pug) — the search bar is
+ *  `+TodoSearchBar('justify-start')` from dashboard/project-management/ToDo.pug */
+const DealDetailsTask = ({ tasks }: { tasks: ToDoItem[] }) => {
   return (
     <>
-      <h2 className="mb-4">Tasks</h2>
-      <Row className="align-items-center g-0 mb-3">
-        <Col sm="auto">
+      <h2 className="mb-6">Tasks</h2>
+      <Row className="items-center g-0 justify-start mb-4">
+        <Col xs={12} sm="auto">
           <SearchBox
             placeholder="Search tasks"
-            className="w-100 mb-2 mb-sm-0"
-            style={{ maxWidth: '30rem' }}
+            className="w-full mb-2 sm:mb-0 max-w-55"
           />
         </Col>
-        <Col xs="auto">
-          <div className="d-flex ms-sm-3">
-            <p className="mb-0 fs-9 text-body-tertiary fw-bold">
-              <FontAwesomeIcon
-                icon={faFilter}
-                className="me-1 fw-extra-bold fs-10"
-              />
-              23 tasks
-            </p>
-            <Button
-              variant="link"
-              className="p-0 ms-3 fs-9 text-primary fw-bold"
-              startIcon={<FontAwesomeIcon icon={faSort} className="fs-10" />}
-            >
-              Sorting
-            </Button>
-          </div>
+        <Col xs="auto" className="flex">
+          <p className="mb-0 sm:ms-4 text-md text-subtle font-bold">
+            <FontAwesomeIcon icon={faFilter} className="me-1 text-sm" />
+            23 tasks
+          </p>
+          <button
+            type="button"
+            className="btn btn-link p-0 ms-4 text-md text-primary font-bold"
+          >
+            <FontAwesomeIcon icon={faSort} className="me-1 text-sm" />
+            Sorting
+          </button>
         </Col>
       </Row>
       {tasks.map((task, index) => (
         <TodoListItem
-          key={task.id}
+          key={task.task}
           todo={task}
-          className={classNames('border-translucent', {
-            'border-top': index === 0,
-            'border-bottom-0': index === tasks.length - 1
-          })}
-          fullLayoutBreakpoints={['lg']}
+          index={index}
+          isLast={index === tasks.length - 1}
+          defaultChecked={task.completed}
         />
       ))}
-      <Button
-        variant="link"
-        className="p-0"
-        startIcon={<FontAwesomeIcon icon={faPlus} />}
-      >
+      <a href="#!" className="font-bold text-md mt-6">
+        <FontAwesomeIcon icon={faPlus} className="me-1" />
         Add new task
-      </Button>
+      </a>
     </>
   );
 };

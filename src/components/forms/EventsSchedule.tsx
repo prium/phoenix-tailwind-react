@@ -1,46 +1,26 @@
-import DatePicker from 'components/base/DatePicker';
-import { Col, FloatingLabel, Form } from 'react-bootstrap';
+import { Col, FloatingLabel, Select } from '@hummingbirdui/react';
+import FloatingDatePicker from 'components/base/FloatingDatePicker';
 
+/** "Schedule" fields of `+CreateEvent` in mixins/events/CreateEvent.pug */
 const EventsSchedule = () => {
   return (
     <>
-      <h4 className="mt-7">Schedule</h4>
+      <h4 className="text-lg mt-12">Schedule</h4>
       <Col sm={6}>
-        <DatePicker
-          render={(_, ref) => {
-            return (
-              <Form.Floating>
-                <Form.Control
-                  type="text"
-                  placeholder="start date"
-                  ref={ref}
-                  id="startDatepicker"
-                />
-                <label htmlFor="startDatepicker" className="ps-6">
-                  Start date
-                </label>
-              </Form.Floating>
-            );
-          }}
+        <FloatingDatePicker
+          icon
+          className="form-field"
+          id="startDatepicker"
+          label="Start date"
+          placeholder="start date"
         />
       </Col>
       <Col sm={6}>
-        <DatePicker
-          render={(_, ref) => {
-            return (
-              <Form.Floating>
-                <Form.Control
-                  type="text"
-                  placeholder="H:i"
-                  ref={ref}
-                  id="startTimepickerEvent"
-                  className="ps-3"
-                />
-                <label htmlFor="startTimepickerEvent">Start Time</label>
-              </Form.Floating>
-            );
-          }}
-          hideIcon={true}
+        <FloatingDatePicker
+          className="form-field"
+          id="timepickerEvent"
+          label="Start Time"
+          placeholder="H:i"
           options={{
             enableTime: true,
             noCalendar: true,
@@ -49,41 +29,20 @@ const EventsSchedule = () => {
         />
       </Col>
       <Col sm={6}>
-        <DatePicker
-          render={(_, ref) => {
-            return (
-              <Form.Floating>
-                <Form.Control
-                  type="text"
-                  placeholder="End date"
-                  ref={ref}
-                  id="endDatepicker"
-                />
-                <label htmlFor="endDatepicker" className="ps-6">
-                  End date
-                </label>
-              </Form.Floating>
-            );
-          }}
+        <FloatingDatePicker
+          icon
+          className="form-field"
+          id="endDatepicker"
+          label="End date"
+          placeholder="end date"
         />
       </Col>
       <Col sm={6}>
-        <DatePicker
-          render={(_, ref) => {
-            return (
-              <Form.Floating>
-                <Form.Control
-                  type="text"
-                  placeholder="H:i"
-                  ref={ref}
-                  id="endTimepickerEvent"
-                  className="ps-3"
-                />
-                <label htmlFor="endTimepickerEvent">End Time</label>
-              </Form.Floating>
-            );
-          }}
-          hideIcon={true}
+        <FloatingDatePicker
+          className="form-field"
+          id="timepickerEvent2"
+          label="End Time"
+          placeholder="H:i"
           options={{
             enableTime: true,
             noCalendar: true,
@@ -92,34 +51,25 @@ const EventsSchedule = () => {
         />
       </Col>
       <Col sm={6}>
-        <FloatingLabel controlId="floatingSelectTimeZone" label="TIME ZONE">
-          <Form.Select>
+        <FloatingLabel
+          className="form-field"
+          htmlFor="floatingSelectTimeZone"
+          label="Time zone"
+        >
+          <Select id="floatingSelectTimeZone">
             <option>Select time zone</option>
-            <option value="1">Time zone One</option>
-            <option value="2">Time zone Two</option>
-            <option value="3">Time zone Three</option>
-          </Form.Select>
+            <option value="1">Data Privacy One</option>
+            <option value="2">Data Privacy Two</option>
+            <option value="3">Data Privacy Three</option>
+          </Select>
         </FloatingLabel>
       </Col>
       <Col sm={6}>
-        <DatePicker
-          render={(_, ref) => {
-            return (
-              <Form.Floating>
-                <Form.Control
-                  type="text"
-                  placeholder="registration deadline"
-                  ref={ref}
-                  id="registrationDatepicker"
-                  className="ps-3"
-                />
-                <label htmlFor="registrationDatepicker">
-                  registration deadline
-                </label>
-              </Form.Floating>
-            );
-          }}
-          hideIcon={true}
+        <FloatingDatePicker
+          className="form-field"
+          id="datepicker"
+          label="Registration deadline"
+          placeholder="registration deadline"
         />
       </Col>
     </>

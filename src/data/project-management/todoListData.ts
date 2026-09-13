@@ -1,8 +1,9 @@
-import { BadgeBg } from 'components/base/Badge';
 import generic40 from 'assets/img/generic/40.png';
+
 interface Badge {
   label: string;
-  bg: BadgeBg;
+  /** literal phoenix badge class (Tailwind can't see `badge-phoenix-${variant}`) */
+  className: string;
 }
 
 export interface ToDoItem {
@@ -27,23 +28,18 @@ export interface Attachment {
   thumbnail?: string;
 }
 
+/** `todoList` in mixins/project-management/ToDoList.pug */
 export const todoList: ToDoItem[] = [
   {
     task: 'Designing the dungeon',
-    badge: {
-      label: 'DRAFT',
-      bg: 'primary'
-    },
+    badge: { label: 'DRAFT', className: 'badge-phoenix-primary' },
     attachment: 2,
     date: '12 Nov, 2021',
     time: '12:00 PM'
   },
   {
     task: 'Hiring a motion graphic designer',
-    badge: {
-      label: 'URGENT',
-      bg: 'warning'
-    },
+    badge: { label: 'URGENT', className: 'badge-phoenix-warning' },
     date: '12 Nov, 2021',
     time: '12:00 PM',
     attachment: 2,
@@ -51,10 +47,127 @@ export const todoList: ToDoItem[] = [
   },
   {
     task: 'Daily Meetings Purpose, participants',
-    badge: {
-      label: 'ON PROCESS',
-      bg: 'info'
-    },
+    badge: { label: 'ON PROCESS', className: 'badge-phoenix-info' },
+    date: '12 Dec, 2021',
+    time: '05:00 AM',
+    attachment: 4
+  },
+  {
+    task: 'Finalizing the geometric shapes',
+    date: '12 Nov, 2021',
+    time: '12:00 PM',
+    attachment: 3
+  },
+  {
+    task: 'Daily meeting with team members',
+    date: '1 Nov, 2021',
+    time: '12:00 PM'
+  },
+  {
+    task: 'Daily Standup Meetings',
+    date: '13 Nov, 2021',
+    time: '10:00 PM',
+    listitems: 4
+  },
+  {
+    task: 'Procrastinate for a month',
+    badge: { label: 'ON PROCESS', className: 'badge-phoenix-info' },
+    date: '12 Nov, 2021',
+    time: '12:00 PM',
+    attachment: 3,
+    completed: true
+  },
+  {
+    task: 'Warming up',
+    date: '12 Nov, 2021',
+    time: '12:00 PM',
+    attachment: 3,
+    badge: { label: 'CLOSE', className: 'badge-phoenix-secondary' },
+    completed: true
+  },
+  {
+    task: 'Make ready for release',
+    date: '2o Nov, 2021',
+    time: '1:00 AM',
+    attachment: 2,
+    completed: true,
+    listitems: 2
+  },
+  {
+    task: 'Modify the component',
+    date: '22 Nov, 2021',
+    time: '1:00 AM',
+    attachment: 4,
+    completed: true
+  },
+  {
+    task: 'Delete overlapping tasks and articles',
+    date: '25 Nov, 2021',
+    time: '1:00 AM',
+    attachment: 2,
+    badge: { label: 'CLOSE', className: 'badge-phoenix-secondary' },
+    completed: true
+  }
+];
+
+export const subTasks: SubTaskItem[] = [
+  { task: 'Study Dragons' },
+  { task: 'Procrastinate a bit' },
+  { task: 'Staring at the notebook for 5 mins' }
+];
+
+export const attachments: Attachment[] = [
+  {
+    name: 'Silly_sight_1.png',
+    mimeType: 'image',
+    size: '768 kb',
+    user: 'Shantinan Mekalan',
+    date: '21st Dec, 12:56 PM',
+    thumbnail: generic40
+  },
+  {
+    name: 'All_images.zip',
+    mimeType: 'zip',
+    size: '12.8 mb',
+    user: 'Yves Tanguy',
+    date: '19th Dec, 08:56 PM'
+  },
+  {
+    name: 'Project.txt',
+    mimeType: 'txt',
+    size: '123 kb',
+    user: 'Shantinan Mekalan',
+    date: '12th Dec, 12:56 PM'
+  }
+];
+
+/**
+ * `todoList` in mixins/dashboard/project-management/ToDo.pug — the set the
+ * WIDGETS page renders. Pug's per-page `append variables` shadowing means the
+ * gold shows this 9-row list on widgets.html but the 11-row `todoList` above
+ * on dashboard/project-management.html: no `list` counts on rows 6/9,
+ * lowercase "warming up" and an info CLOSE badge. Below `xl` the card body has
+ * no fixed height, so every extra row shifts the page.
+ */
+export const widgetsTodoList: ToDoItem[] = [
+  {
+    task: 'Designing the dungeon',
+    badge: { label: 'DRAFT', className: 'badge-phoenix-primary' },
+    attachment: 2,
+    date: '12 Nov, 2021',
+    time: '12:00 PM'
+  },
+  {
+    task: 'Hiring a motion graphic designer',
+    badge: { label: 'URGENT', className: 'badge-phoenix-warning' },
+    date: '12 Nov, 2021',
+    time: '12:00 PM',
+    attachment: 2,
+    listitems: 3
+  },
+  {
+    task: 'Daily Meetings Purpose, participants',
+    badge: { label: 'ON PROCESS', className: 'badge-phoenix-info' },
     date: '12 Dec, 2021',
     time: '05:00 AM',
     attachment: 4
@@ -77,10 +190,7 @@ export const todoList: ToDoItem[] = [
   },
   {
     task: 'Procrastinate for a month',
-    badge: {
-      label: 'ON PROCESS',
-      bg: 'info'
-    },
+    badge: { label: 'ON PROCESS', className: 'badge-phoenix-info' },
     date: '12 Nov, 2021',
     time: '12:00 PM',
     attachment: 3
@@ -90,52 +200,12 @@ export const todoList: ToDoItem[] = [
     date: '12 Nov, 2021',
     time: '12:00 PM',
     attachment: 3,
-    badge: {
-      label: 'CLOSE',
-      bg: 'secondary'
-    }
+    badge: { label: 'CLOSE', className: 'badge-phoenix-info' }
   },
   {
     task: 'Make ready for release',
     date: '2o Nov, 2021',
     time: '1:00 AM',
     attachment: 2
-  }
-];
-
-export const subTasks: SubTaskItem[] = [
-  {
-    task: 'Study Dragons'
-  },
-  {
-    task: 'Procrastinate a bit'
-  },
-  {
-    task: 'Staring at the notebook for 5 mins'
-  }
-];
-
-export const attachments: Attachment[] = [
-  {
-    name: 'Silly_sight_1.png',
-    mimeType: 'image',
-    size: '768kb',
-    user: 'Shantinan Mekalan',
-    date: '21st Dec, 12:56 PM',
-    thumbnail: generic40
-  },
-  {
-    name: 'All_images.zip',
-    mimeType: 'zip',
-    size: '12.8 mb',
-    user: 'Yves Tanguy',
-    date: '19th Dec, 08:56 PM'
-  },
-  {
-    name: 'Project.txt',
-    mimeType: 'txt',
-    size: '123 kb',
-    user: 'Shantinan Mekalan',
-    date: '12th Dec, 12:56 PM'
   }
 ];

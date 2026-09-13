@@ -1,102 +1,98 @@
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { UilTimes } from '@iconscout/react-unicons';
-import classNames from 'classnames';
+import { cn } from '@hummingbirdui/react';
 import Button from 'components/base/Button';
+import Unicon from 'components/base/Unicon';
 import {
   SidebarItem,
   filteredItems,
   labelItems,
   mailboxItems
 } from 'data/email';
-import { Nav } from 'react-bootstrap';
 import { Link } from 'react-router';
 
-const EmailSidebarItem = ({ item }: { item: SidebarItem }) => {
+/**
+ * Gold `mixin EmailSidebar` (../phoenix-tailwind/src/pug/mixins/email/Common.pug).
+ * The `filtered` group keeps the gold's `border-subtletext-start` typo
+ * (missing space between `border-subtle` and `text-start`).
+ */
+const EmailSidebarItem = ({
+  item,
+  filtered
+}: {
+  item: SidebarItem;
+  filtered?: boolean;
+}) => {
   return (
-    <Nav.Item>
-      <Nav.Link
-        as={Link}
-        className={classNames(
-          'py-2 ps-0 pe-3 border-end border-bottom border-translucent text-start outline-none',
-          {
-            active: item.active
-          }
+    <li className="nav-item">
+      <Link
+        className={cn(
+          filtered
+            ? 'nav-link py-2 ps-0 pe-4 border-e border-b border-subtletext-start outline-none'
+            : 'nav-link py-2 ps-0 pe-4 border-e border-b border-subtle text-start outline-none',
+          { active: item.active }
         )}
+        aria-current="page"
         to={item.link ? item.link : '#!'}
       >
-        <div className="d-flex gap-2 align-items-center">
+        <div className="flex items-center">
           {item.icon}
           <span className="flex-1">{item.label}</span>
           {item.count && <span className="nav-item-count">{item.count}</span>}
         </div>
-      </Nav.Link>
-    </Nav.Item>
+      </Link>
+    </li>
   );
 };
 
 const EmailSidebar = ({ hideSidebar }: { hideSidebar?: () => void }) => {
   return (
-    <div>
-      <div className="email-content scrollbar">
-        <div className="d-flex flex-between-center mb-2">
-          <p className="text-uppercase fs-10 text-body-tertiary text-opacity-85 mb-0 fw-bold">
-            Mailbox
-          </p>
-          {hideSidebar && (
-            <Button
-              className="d-lg-none p-0 mb-1"
-              onClick={() => hideSidebar()}
-            >
-              <UilTimes fill='currentColor' size={16} />
-            </Button>
-          )}
-        </div>
-
-        <Nav className="flex-column border-top border-translucent fs-9 vertical-nav mb-4">
-          {mailboxItems.map(item => (
-            <EmailSidebarItem item={item} key={item.label} />
-          ))}
-        </Nav>
-
-        <div className="d-flex flex-between-center mb-2">
-          <p className="text-uppercase fs-10 text-body-tertiary text-opacity-85 mb-0 fw-bold">
-            Filtered
-          </p>
-          <Button
-            variant="link"
-            className="fs-10 fw-bold p-0"
-            startIcon={<FontAwesomeIcon icon={faPlus} className="me-2" />}
-          >
-            Add Folder
-          </Button>
-        </div>
-
-        <Nav className="flex-column border-top border-translucent fs-9 vertical-nav mb-4">
-          {filteredItems.map(item => (
-            <EmailSidebarItem item={item} key={item.label} />
-          ))}
-        </Nav>
-
-        <div className="d-flex flex-between-center mb-2">
-          <p className="text-uppercase fs-10 text-body-tertiary text-opacity-85 mb-0 fw-bold">
-            Labels
-          </p>
-          <Button
-            variant="link"
-            className="fs-10 fw-bold p-0"
-            startIcon={<FontAwesomeIcon icon={faPlus} className="me-2" />}
-          >
-            Add Label
-          </Button>
-        </div>
-
-        <Nav className="flex-column border-top border-translucent fs-9 vertical-nav">
-          {labelItems.map(item => (
-            <EmailSidebarItem item={item} key={item.label} />
-          ))}
-        </Nav>
+    <div className="email-content scrollbar-overlay">
+      <div className="flex justify-between items-center">
+        <p className="uppercase text-sm text-subtle/85 mb-2 font-bold">
+          mailbox
+        </p>
+        <Button className="lg:hidden p-0 mb-2" onClick={() => hideSidebar?.()}>
+          <Unicon icon={UilTimes} lineBox fill="currentColor" size={16} />
+        </Button>
       </div>
+
+      <ul className="nav flex-col border-t border-subtle text-md vertical-nav mb-6">
+        {mailboxItems.map(item => (
+          <EmailSidebarItem item={item} key={item.label} />
+        ))}
+      </ul>
+
+      <div className="flex justify-between">
+        <p className="uppercase text-sm text-subtle/85 mb-2 font-bold">
+          Filtered
+        </p>
+        <a href="#!" className="text-sm font-bold">
+          <FontAwesomeIcon icon={faPlus} className="me-2" />
+          Add Folder
+        </a>
+      </div>
+      <ul className="nav flex-col border-t border-subtle text-md vertical-nav mb-6">
+        {filteredItems.map(item => (
+          <EmailSidebarItem item={item} filtered key={item.label} />
+        ))}
+      </ul>
+
+      <div className="flex justify-between">
+        <p className="uppercase text-sm text-subtle/85 mb-2 font-bold">
+          Labels
+        </p>
+        <a href="#!" className="text-sm font-bold">
+          <FontAwesomeIcon icon={faPlus} className="me-2" />
+          Add Label
+        </a>
+      </div>
+      <ul className="nav flex-col border-t border-subtle text-md vertical-nav">
+        {labelItems.map(item => (
+          <EmailSidebarItem item={item} key={item.label} />
+        ))}
+      </ul>
     </div>
   );
 };

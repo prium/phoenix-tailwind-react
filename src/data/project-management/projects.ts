@@ -26,6 +26,9 @@ export interface Project {
     label: string;
   };
   assigness: Member[];
+  /** the dashboard "Projects summary" table shows its own assignee set with an
+      explicit overflow count, mirroring the gold demo data */
+  summary?: { assignees: Member[]; more?: number };
   progress: {
     min: number;
     max: number;
@@ -50,7 +53,11 @@ export const projects: Project[] = [
       amount: '$4',
       label: 'Cost'
     },
-    assigness: [17, 16, 11, 5, 18, 19].map(index => members[index]),
+    assigness: [26, 27, 28, 29, 0, 1, 2].map(index => members[index]),
+    summary: {
+      assignees: [17, 16, 5, 32].map(index => members[index]),
+      more: 3
+    },
     progress: {
       min: 145,
       max: 145
@@ -72,7 +79,10 @@ export const projects: Project[] = [
   {
     id: 2,
     name: 'Project Doughnut Dungeon',
-    assigness: [18, 19].map(index => members[index]),
+    assigness: [12, 10, 7, 9, 5, 16].map(index => members[index]),
+    summary: {
+      assignees: [18, 19, 33].map(index => members[index])
+    },
     start: 'Jan 9, 2019',
     deadline: 'Dec 9, 2022',
     progress: {
@@ -96,7 +106,10 @@ export const projects: Project[] = [
   {
     id: 3,
     name: 'The Chewing Gum Attack',
-    assigness: [12, 10].map(index => members[index]),
+    assigness: [2, 0].map(index => members[index]),
+    summary: {
+      assignees: [12, 10].map(index => members[index])
+    },
     start: 'Sep 4, 2019',
     deadline: 'Dec 4, 2021',
     calculation: {
@@ -124,7 +137,10 @@ export const projects: Project[] = [
   {
     id: 4,
     name: 'Execution of Micky the foul mouse',
-    assigness: [11, 18, 17, 5, 19].map(index => members[index]),
+    assigness: [29, 7, 9, 11].map(index => members[index]),
+    summary: {
+      assignees: [20, 32, 22, 23].map(index => members[index])
+    },
     start: 'Nov 1, 2019',
     deadline: 'Dec 1, 2024',
     progress: {
@@ -148,7 +164,10 @@ export const projects: Project[] = [
   {
     id: 5,
     name: 'Harnessing stupidity from Jerry',
-    assigness: [17, 16, 15].map(index => members[index]),
+    assigness: [23, 24, 25].map(index => members[index]),
+    summary: {
+      assignees: [30, 31, 16].map(index => members[index])
+    },
     start: 'Dec 28, 2019',
     deadline: 'Nov 28, 2021',
     progress: {
@@ -172,7 +191,10 @@ export const projects: Project[] = [
   {
     id: 6,
     name: 'Water resistant mosquito killer gun',
-    assigness: [1, 11, 10, 2].map(index => members[index]),
+    assigness: [20, 21].map(index => members[index]),
+    summary: {
+      assignees: [1, 32, 10, 2, 33].map(index => members[index])
+    },
     start: 'Feb 24, 2020',
     deadline: 'Nov 24, 2021',
     calculation: {
@@ -200,7 +222,8 @@ export const projects: Project[] = [
   {
     id: 7,
     name: 'Olga Dies Dreaming by Xóchitl González',
-    assigness: [16, 18, 19].map(index => members[index]),
+    assigness: [23].map(index => members[index]),
+    summary: { assignees: [23].map(index => members[index]) },
     start: 'Feb 24, 2020',
     deadline: 'Nov 24, 2021',
     calculation: {
@@ -226,3 +249,9 @@ export const projects: Project[] = [
     budget: 6067
   }
 ];
+
+/** Gold list/card pages present the demo projects in their own order
+    (Doughnut, Water, Micky, Harnessing, Butterflies, Chewing gum, Olga). */
+export const listViewProjects: Project[] = [2, 6, 4, 5, 1, 3, 7].map(
+  id => projects.find(project => project.id === id) as Project
+);

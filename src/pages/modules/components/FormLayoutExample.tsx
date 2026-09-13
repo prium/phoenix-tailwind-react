@@ -3,315 +3,276 @@ import DocPageHeader from 'components/docs/DocPageHeader';
 import DocPagesLayout from 'layouts/DocPagesLayout';
 
 const basicFormCode = `
-<Form>
-  <Form.Group className="mb-3" controlId="formGroupName">
-    <Form.Label>Name</Form.Label>
-    <Form.Control type="text" placeholder="Name" />
-  </Form.Group>
+<form>
+  <Field className="mb-4">
+    <Field.Label htmlFor="formGroupName">Name</Field.Label>
+    <Input id="formGroupName" type="text" placeholder="Name" />
+  </Field>
 
-  <Form.Group className="mb-3" controlId="formGroupEmail">
-    <Form.Label>Email address</Form.Label>
-    <Form.Control type="email" placeholder="name@example.com" />
-  </Form.Group>
+  <Field className="mb-4">
+    <Field.Label htmlFor="formGroupEmail">Email address</Field.Label>
+    <Input id="formGroupEmail" type="email" placeholder="name@example.com" />
+    <Field.Text>We'll never share your email with anyone else.</Field.Text>
+  </Field>
 
-  <Form.Group className="mb-3" controlId="formGroupPassword">
-    <Form.Label>Password</Form.Label>
-    <Form.Control type="password" placeholder="Password" />
-  </Form.Group>
+  <Field className="mb-4">
+    <Field.Label htmlFor="formGroupPassword">Password</Field.Label>
+    <Input id="formGroupPassword" type="password" placeholder="Password" />
+  </Field>
 
-  <Form.Group className="mb-3" controlId="formGroupBod">
-    <Form.Label>Date of Birth</Form.Label>
-    <Form.Control type="date" placeholder="Password" />
-  </Form.Group>
-
-  <Form.Group className="mb-3" controlId="formGroupGender">
-    <Form.Label>Gender</Form.Label>
-    <Form.Select>
-      <option value=''>Select your gender</option>
+  <Field className="mb-4">
+    <Field.Label htmlFor="formGroupGender">Gender</Field.Label>
+    <Select id="formGroupGender" defaultValue="">
+      <option value="">Select your gender</option>
       <option value="male">Male</option>
       <option value="female">Female</option>
       <option value="other">Other</option>
-    </Form.Select>
-  </Form.Group>
+    </Select>
+  </Field>
 
-  <Form.Group className="mb-1" controlId="personalAccount">
-    <Form.Check
-      inline
-      type="radio"
-      name="accountType"
-      id="personalAccount"
-      className="me-2"
-      defaultChecked
-    />
-    <Form.Label className="mb-0">Personal Account</Form.Label>
-  </Form.Group>
+  <RadioGroup name="accountType" defaultValue="personal" className="mb-4">
+    <Radio value="personal" label="Personal Account" />
+    <Radio value="business" label="Business Account" />
+  </RadioGroup>
 
-  <Form.Group className="mb-3" controlId="businessAccount">
-    <Form.Check
-      inline
-      type="radio"
-      name="accountType"
-      id="businessAccount"
-      className="me-2"
-    />
-    <Form.Label className="mb-0">Business Account</Form.Label>
-  </Form.Group>
+  <Field className="mb-4">
+    <Field.Label htmlFor="imageUpload">Upload image</Field.Label>
+    <Input id="imageUpload" type="file" />
+  </Field>
 
-  <Form.Group controlId="imageUpload" className="mb-3">
-    <Form.Label>Upload Image</Form.Label>
-    <Form.Control type="file" />
-  </Form.Group>
+  <Field className="mb-4">
+    <Field.Label htmlFor="formGroupDescription">Description</Field.Label>
+    <Textarea id="formGroupDescription" rows={3} placeholder="Description" />
+  </Field>
 
-  <Form.Group className="mb-3" controlId="description">
-    <Form.Label>Description</Form.Label>
-    <Form.Control as="textarea" rows={3} placeholder="Description" />
-  </Form.Group>
+  <Checkbox id="rememberMe" name="remember" label="Remember me" className="mb-4" />
 
-  <Form.Group className="mb-3" controlId="rememberMe">
-    <Form.Check type="checkbox" id="rememberMe" label="Remember Me" name="remember" />
-  </Form.Group>
-
-  <Button variant="primary" type="submit">
+  <Button color="primary" type="submit">
     Submit
   </Button>
-</Form>
+</form>
 `;
 
 const horizontalFormCode = `
-<Form>
-  <Form.Group as={Row} className="mb-3" controlId="formHorizontalEmail">
-    <Form.Label column sm={2}>
-      Email
-    </Form.Label>
-    <Col sm={10}>
-      <Form.Control type="email" placeholder="Email" />
+<form>
+  <Row className="mb-4 items-center">
+    <Col sm={2}>
+      <Field.Label htmlFor="inputEmail3" className="mb-0">
+        Email
+      </Field.Label>
     </Col>
-  </Form.Group>
+    <Col sm={10}>
+      <Input id="inputEmail3" type="email" placeholder="Email" />
+    </Col>
+  </Row>
 
-  <Form.Group as={Row} className="mb-3" controlId="formHorizontalPassword">
-    <Form.Label column sm={2}>
-      Password
-    </Form.Label>
-    <Col sm={10}>
-      <Form.Control type="password" placeholder="Password" />
+  <Row className="mb-4 items-center">
+    <Col sm={2}>
+      <Field.Label htmlFor="inputPassword3" className="mb-0">
+        Password
+      </Field.Label>
     </Col>
-  </Form.Group>
-  
+    <Col sm={10}>
+      <Input id="inputPassword3" type="password" placeholder="Password" />
+    </Col>
+  </Row>
+
   <fieldset>
-    <Form.Group as={Row} className="mb-3">
-      <Form.Label as="legend" column sm={2}>
-        Radios
-      </Form.Label>
-      <Col sm={10}>
-        <Form.Check
-          type="radio"
-          label="first radio"
-          name="formHorizontalRadios"
-          id="formHorizontalRadios1"
-        />
-        <Form.Check
-          type="radio"
-          label="second radio"
-          name="formHorizontalRadios"
-          id="formHorizontalRadios2"
-        />
-        <Form.Check
-          type="radio"
-          label="third radio"
-          name="formHorizontalRadios"
-          id="formHorizontalRadios3"
-        />
+    <Row className="mb-4">
+      <Col sm={2}>
+        <legend className="form-label mb-0">Radios</legend>
       </Col>
-    </Form.Group>
+      <Col sm={10}>
+        <RadioGroup name="gridRadios" defaultValue="option1">
+          <Radio value="option1" label="First radio" />
+          <Radio value="option2" label="Second radio" />
+          <Radio value="option3" label="Third disabled radio" disabled />
+        </RadioGroup>
+      </Col>
+    </Row>
   </fieldset>
-  <Form.Group as={Row} className="mb-3" controlId="formHorizontalCheck">
+
+  <Row className="mb-4">
     <Col sm={{ span: 10, offset: 2 }}>
-      <Form.Check label="Remember me" />
+      <Checkbox id="gridCheck1" label="Remember me" />
     </Col>
-  </Form.Group>
-
-  <Form.Group as={Row} className="mb-3">
-    <Col sm={{ span: 10 }}>
-      <Button type="submit">Sign in</Button>
-    </Col>
-  </Form.Group>
-</Form>
-`;
-
-const formGridLayout = `
-<Form>
-  <Row className="mb-3 g-3">
-    <Form.Group as={Col} controlId="formGridEmail">
-      <Form.Label>Email</Form.Label>
-      <Form.Control type="email" placeholder="Enter email" />
-    </Form.Group>
-
-    <Form.Group as={Col} controlId="formGridPassword">
-      <Form.Label>Password</Form.Label>
-      <Form.Control type="password" placeholder="Password" />
-    </Form.Group>
   </Row>
 
-  <Form.Group className="mb-3" controlId="formGridAddress1">
-    <Form.Label>Address</Form.Label>
-    <Form.Control placeholder="1234 Main St" />
-  </Form.Group>
-
-  <Form.Group className="mb-3" controlId="formGridAddress2">
-    <Form.Label>Address 2</Form.Label>
-    <Form.Control placeholder="Apartment, studio, or floor" />
-  </Form.Group>
-
-  <Row className="mb-3 g-3">
-    <Form.Group as={Col} controlId="formGridCity">
-      <Form.Label>City</Form.Label>
-      <Form.Control />
-    </Form.Group>
-
-    <Form.Group as={Col} controlId="formGridState">
-      <Form.Label>State</Form.Label>
-      <Form.Select defaultValue="Choose...">
-        <option>Choose...</option>
-        <option>...</option>
-      </Form.Select>
-    </Form.Group>
-
-    <Form.Group as={Col} controlId="formGridZip">
-      <Form.Label>Zip</Form.Label>
-      <Form.Control />
-    </Form.Group>
+  <Row>
+    <Col sm={{ span: 10, offset: 2 }}>
+      <Button color="primary" type="submit">
+        Sign in
+      </Button>
+    </Col>
   </Row>
-
-  <Form.Group className="mb-3" id="formGridCheckbox">
-    <Form.Check type="checkbox" label="Check me out" />
-  </Form.Group>
-
-  <Button variant="primary" type="submit">
-    Submit
-  </Button>
-</Form>
+</form>
 `;
 
 const horizontalSizingCode = `
 <>
-  <Row  className='g-3'>
-    <Form.Label column="sm" lg={2}>
-      Email
-    </Form.Label>
-    <Col>
-      <Form.Control size="sm" type="email" placeholder="Small text" />
+  <Row className="mb-4 items-center">
+    <Col sm={2}>
+      <Field.Label htmlFor="colFormLabelSm" className="mb-0 text-sm">
+        Email
+      </Field.Label>
+    </Col>
+    <Col sm={10}>
+      <Input id="colFormLabelSm" size="sm" type="email" placeholder="Small text" />
     </Col>
   </Row>
-  <br />
-  <Row>
-    <Form.Label column lg={2}>
-      Email
-    </Form.Label>
-    <Col>
-      <Form.Control type="email" placeholder="Normal text" />
+  <Row className="mb-4 items-center">
+    <Col sm={2}>
+      <Field.Label htmlFor="colFormLabel" className="mb-0">
+        Email
+      </Field.Label>
+    </Col>
+    <Col sm={10}>
+      <Input id="colFormLabel" type="email" placeholder="Normal text" />
     </Col>
   </Row>
-  <br />
-  <Row>
-    <Form.Label column="lg" lg={2}>
-      Email
-    </Form.Label>
-    <Col>
-      <Form.Control size="lg" type="email" placeholder="Large text" />
+  <Row className="items-center">
+    <Col sm={2}>
+      <Field.Label htmlFor="colFormLabelLg" className="mb-0 text-lg">
+        Email
+      </Field.Label>
+    </Col>
+    <Col sm={10}>
+      <Input id="colFormLabelLg" size="lg" type="email" placeholder="Large text" />
     </Col>
   </Row>
-  
 </>
 `;
 
-const columnSizingCode = `
-<Form>
-  <Row className='g-3'>
-    <Col xs={7}>
-      <Form.Control placeholder="City" />
+const formGridLayoutCode = `
+<form>
+  <Row className="mb-4 g-4">
+    <Col md={6}>
+      <Field>
+        <Field.Label htmlFor="formGridEmail">Email</Field.Label>
+        <Input id="formGridEmail" type="email" placeholder="Enter email" />
+      </Field>
     </Col>
-    <Col>
-      <Form.Control placeholder="State" />
-    </Col>
-    <Col>
-      <Form.Control placeholder="Zip" />
+    <Col md={6}>
+      <Field>
+        <Field.Label htmlFor="formGridPassword">Password</Field.Label>
+        <Input id="formGridPassword" type="password" placeholder="Password" />
+      </Field>
     </Col>
   </Row>
-</Form>
+
+  <Field className="mb-4">
+    <Field.Label htmlFor="formGridAddress1">Address</Field.Label>
+    <Input id="formGridAddress1" placeholder="1234 Main St" />
+  </Field>
+
+  <Field className="mb-4">
+    <Field.Label htmlFor="formGridAddress2">Address 2</Field.Label>
+    <Input id="formGridAddress2" placeholder="Apartment, studio, or floor" />
+  </Field>
+
+  <Row className="mb-4 g-4">
+    <Col md={6}>
+      <Field>
+        <Field.Label htmlFor="formGridCity">City</Field.Label>
+        <Input id="formGridCity" />
+      </Field>
+    </Col>
+    <Col md={3}>
+      <Field>
+        <Field.Label htmlFor="formGridState">State</Field.Label>
+        <Select id="formGridState" defaultValue="">
+          <option value="">Choose...</option>
+          <option value="ny">New York</option>
+        </Select>
+      </Field>
+    </Col>
+    <Col md={3}>
+      <Field>
+        <Field.Label htmlFor="formGridZip">Zip</Field.Label>
+        <Input id="formGridZip" />
+      </Field>
+    </Col>
+  </Row>
+
+  <Checkbox id="formGridCheckbox" label="Check me out" className="mb-4" />
+
+  <Button color="primary" type="submit">
+    Submit
+  </Button>
+</form>
+`;
+
+const columnSizingCode = `
+<form>
+  <Row className="g-4">
+    <Col xs={7}>
+      <Input placeholder="City" aria-label="City" />
+    </Col>
+    <Col>
+      <Input placeholder="State" aria-label="State" />
+    </Col>
+    <Col>
+      <Input placeholder="Zip" aria-label="Zip" />
+    </Col>
+  </Row>
+</form>
 `;
 
 const autoSizingCode = `
-<Form>
-  <Row className="align-items-center g-3">
+<form>
+  <Row className="items-center g-4">
     <Col xs="auto">
-      <Form.Label htmlFor="inlineFormInput" visuallyHidden>
+      <Field.Label htmlFor="inlineFormInput" className="sr-only">
         Name
-      </Form.Label>
-      <Form.Control
-        className="mb-2"
-        id="inlineFormInput"
-        placeholder="Jane Doe"
-      />
+      </Field.Label>
+      <Input id="inlineFormInput" placeholder="Jane Doe" />
     </Col>
     <Col xs="auto">
-      <Form.Label htmlFor="inlineFormInputGroup" visuallyHidden>
+      <Field.Label htmlFor="inlineFormInputGroup" className="sr-only">
         Username
-      </Form.Label>
-      <InputGroup className="mb-2">
+      </Field.Label>
+      <InputGroup>
         <InputGroup.Text>@</InputGroup.Text>
-        <FormControl id="inlineFormInputGroup" placeholder="Username" />
+        <Input id="inlineFormInputGroup" placeholder="Username" />
       </InputGroup>
     </Col>
     <Col xs="auto">
-      <Form.Select className="mb-2">
-        <option value=''>Choose...</option>
-        <option value='1'>One</option>
-        <option value='2'>Two</option>
-        <option value='3'>Three</option>
-      </Form.Select>
+      <Select defaultValue="" aria-label="Choose one">
+        <option value="">Choose...</option>
+        <option value="1">One</option>
+        <option value="2">Two</option>
+        <option value="3">Three</option>
+      </Select>
     </Col>
     <Col xs="auto">
-      <Form.Check
-        type="checkbox"
-        id="autoSizingCheck"
-        className="mb-0"
-        label="Remember me"
-      />
+      <Checkbox id="autoSizingCheck" label="Remember me" />
     </Col>
     <Col xs="auto">
-      <Button type="submit" className="mb-2">
+      <Button color="primary" type="submit">
         Submit
       </Button>
     </Col>
   </Row>
-</Form>
+</form>
 `;
 
 const guttersCode = `
-<Form>
-  <Row className="align-items-center g-3">
+<form>
+  <Row className="items-center g-4">
     <Col>
-      <Form.Label htmlFor="firstName" visuallyHidden>
+      <Field.Label htmlFor="firstName" className="sr-only">
         First name
-      </Form.Label>
-      <Form.Control
-        className="mb-2"
-        id="firstName"
-        placeholder="First Name"
-      />
+      </Field.Label>
+      <Input id="firstName" placeholder="First name" />
     </Col>
     <Col>
-      <Form.Label htmlFor="lastName" visuallyHidden>
-        Last Name
-      </Form.Label>
-      <Form.Control
-        className="mb-2"
-        id="lastName"
-        placeholder="Last Name"
-      />
+      <Field.Label htmlFor="lastName" className="sr-only">
+        Last name
+      </Field.Label>
+      <Input id="lastName" placeholder="Last name" />
     </Col>
   </Row>
-</Form>
+</form>
 `;
 
 const FormLayoutExample = () => {
@@ -319,46 +280,92 @@ const FormLayoutExample = () => {
     <div>
       <DocPageHeader
         title="Layout"
-        description="Indicate the current page’s location within a navigational hierarchy that automatically adds separators via CSS."
+        description="Give your forms some structure — from inline to horizontal to custom grid implementations — with the Row and Col layout components."
         link={{
-          text: 'Forms layout on react-bootstrap',
-          url: `${import.meta.env.VITE_RB_URL_PREFIX || ''}/forms/layout/`
+          text: 'Grid on Hummingbird',
+          url: 'https://react.hbui.dev/docs/layout/grid'
         }}
       />
 
       <DocPagesLayout>
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header title="Basic form" />
+          <PhoenixDocCard.Header title="Basic form">
+            <p className="mb-0">
+              There is no form wrapper component — use a plain{' '}
+              <code>&lt;form&gt;</code> and stack a <code>Field</code> per
+              control. Each <code>Field</code> groups its{' '}
+              <code>Field.Label</code>, its control and an optional{' '}
+              <code>Field.Text</code>, and takes the spacing through{' '}
+              <code>className</code>.
+            </p>
+          </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={basicFormCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header title="Horizontal form" />
+          <PhoenixDocCard.Header title="Horizontal form">
+            <p className="mb-0">
+              Put the label and the control in sibling <code>Col</code>s of the
+              same <code>Row</code> to lay a field out horizontally. Add{' '}
+              <code>items-center</code> to the row to centre the label against
+              its control, and use the object form of a breakpoint prop to
+              indent a column that has no label.
+            </p>
+          </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={horizontalFormCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header title="Horizontal form label sizing" />
+          <PhoenixDocCard.Header title="Horizontal form label sizing">
+            <p className="mb-0">
+              Match the label to the control by setting <code>size</code> on the{' '}
+              <code>Input</code> and the matching text utility on the{' '}
+              <code>Field.Label</code>.
+            </p>
+          </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={horizontalSizingCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header title="Form Grid Layout" />
-          <PhoenixDocCard.Body code={formGridLayout} />
+          <PhoenixDocCard.Header title="Form Grid Layout">
+            <p className="mb-0">
+              More complex forms can be built on the twelve-column grid. Give
+              each <code>Col</code> a breakpoint span and set the spacing
+              between them with a gutter class on the <code>Row</code>.
+            </p>
+          </PhoenixDocCard.Header>
+          <PhoenixDocCard.Body code={formGridLayoutCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header title="Grid - Column Sizing" />
+          <PhoenixDocCard.Header title="Grid - Column Sizing">
+            <p className="mb-0">
+              Size one <code>Col</code> explicitly and leave the rest bare: the
+              remaining columns split whatever width is left over.
+            </p>
+          </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={columnSizingCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header title="Grid - Auto Sizing" />
+          <PhoenixDocCard.Header title="Grid - Auto Sizing">
+            <p className="mb-0">
+              <code>xs="auto"</code> sizes a column to the natural width of its
+              content, which is what an inline form needs. Keep the labels for
+              screen readers with <code>className="sr-only"</code>.
+            </p>
+          </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={autoSizingCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header title="Gutters" />
+          <PhoenixDocCard.Header title="Gutters">
+            <p className="mb-0">
+              Gutter classes on the <code>Row</code> control the spacing between
+              columns: <code>gx-*</code> horizontally, <code>gy-*</code>{' '}
+              vertically and <code>g-*</code> for both.
+            </p>
+          </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={guttersCode} />
         </PhoenixDocCard>
       </DocPagesLayout>

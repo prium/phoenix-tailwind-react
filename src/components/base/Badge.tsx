@@ -1,8 +1,15 @@
-import classNames from 'classnames';
-import { PropsWithChildren, ReactElement } from 'react';
-import { Badge as BsBadge, BadgeProps as BsBadgeProps } from 'react-bootstrap';
+import { ComponentProps, PropsWithChildren, ReactElement } from 'react';
+import { Badge as HbBadge, cn } from '@hummingbirdui/react';
+import { cva } from 'class-variance-authority';
 
-export type BadgeVariant = 'phoenix' | 'default' | 'tag';
+export type BadgeVariant =
+  | 'phoenix'
+  | 'default'
+  | 'tag'
+  | 'filled'
+  | 'subtle'
+  | 'outline';
+
 export type BadgeBg =
   | 'primary'
   | 'secondary'
@@ -11,56 +18,96 @@ export type BadgeBg =
   | 'warning'
   | 'info';
 
-interface BadgeProps extends BsBadgeProps {
+/** Phoenix soft badges — classes come from assets/css/components/badge.css */
+export const phoenixBadgeVariants = cva('badge', {
+  variants: {
+    color: {
+      primary: 'badge-phoenix-primary',
+      secondary: 'badge-phoenix-secondary',
+      success: 'badge-phoenix-success',
+      danger: 'badge-phoenix-danger',
+      warning: 'badge-phoenix-warning',
+      info: 'badge-phoenix-info'
+    },
+    pill: { true: 'rounded-full' }
+  },
+  defaultVariants: { color: 'primary' }
+});
+
+export interface BadgeProps extends Omit<ComponentProps<'span'>, 'color'> {
   variant?: BadgeVariant;
+  /** Colour. `bg` is the legacy react-bootstrap name and is kept as an alias. */
+  color?: BadgeBg;
   bg?: BadgeBg;
-  className?: string;
+  pill?: boolean;
+  size?: 'sm' | 'md' | 'lg';
   icon?: ReactElement;
   iconPosition?: 'start' | 'end';
   iconFamily?: 'fa' | 'unicons' | 'feather';
+  className?: string;
 }
 
 const Badge = ({
   children,
   bg,
+  color,
+  pill,
+  size,
   icon,
   className,
   variant = 'default',
   iconPosition = 'start',
-  iconFamily = 'feather',
   ...rest
 }: PropsWithChildren<BadgeProps>) => {
-  return (
-    <BsBadge
-      className={classNames(className, {
-        [`badge-phoenix badge-phoenix-${bg}`]: variant === 'phoenix',
-        'badge-tag': variant === 'tag'
-      })}
-      bg={['phoenix', 'tag'].includes(variant) ? '' : bg}
-      {...rest}
-    >
+  const resolvedColor = color ?? bg;
+
+  const content = (
+    <>
+      {icon && iconPosition === 'start' && icon}
       {variant === 'phoenix' ? (
-        <>
-          {icon ? (
-            <>
-              {icon && iconPosition === 'start' && icon}
-              <span
-                className={classNames({
-                  'badge-label': iconFamily === 'feather'
-                })}
-              >
-                {children}
-              </span>
-              {icon && iconPosition === 'end' && icon}
-            </>
-          ) : (
-            children
-          )}
-        </>
+        <span className="badge-label">{children}</span>
       ) : (
         children
       )}
-    </BsBadge>
+      {icon && iconPosition === 'end' && icon}
+    </>
+  );
+
+  if (variant === 'phoenix') {
+    return (
+      <span
+        className={cn(
+          phoenixBadgeVariants({ color: resolvedColor, pill }),
+          className
+        )}
+        {...rest}
+      >
+        {content}
+      </span>
+    );
+  }
+
+  if (variant === 'tag') {
+    return (
+      <span
+        className={cn('badge badge-tag', pill && 'rounded-full', className)}
+        {...rest}
+      >
+        {content}
+      </span>
+    );
+  }
+
+  return (
+    <HbBadge
+      variant={variant === 'default' ? 'filled' : variant}
+      color={resolvedColor}
+      size={size}
+      className={cn(pill && 'rounded-full', className)}
+      {...rest}
+    >
+      {content}
+    </HbBadge>
   );
 };
 

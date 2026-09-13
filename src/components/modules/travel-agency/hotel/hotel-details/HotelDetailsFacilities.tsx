@@ -1,12 +1,11 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import type {
   Facility,
   Charge
 } from 'data/travel-agency/customer/hotelDetails';
-import { Col, Row } from 'react-bootstrap';
+import { cn, Col, Row } from '@hummingbirdui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import classNames from 'classnames';
 
 interface HotelDetailsFacilitiesProps {
   facilities: Facility[];
@@ -15,30 +14,26 @@ interface HotelDetailsFacilitiesProps {
 
 interface CategoryListProps {
   category: Charge;
-  index: number;
+  /** margin class on the list — gold: mb-5 except the last of each column */
+  listClassName: string;
 }
 
-const CategoryLists = ({ category, index }: CategoryListProps) => {
+const CategoryLists = ({ category, listClassName }: CategoryListProps) => {
   return (
     <Fragment>
-      <h5 className="mb-3">
-        <FontAwesomeIcon icon={category.icon} className="fs-9 me-2" />
+      <h5 className="mb-4">
+        <FontAwesomeIcon icon={category.icon} className="text-md me-2" />
         {category.title}
       </h5>
       {category.desc && (
-        <p className="mb-2 fs-9 text-body-tertiary">{category.desc}</p>
+        <p className="mb-2 text-md text-subtle">{category.desc}</p>
       )}
-      <ul
-        className={classNames('list-unstyled text-body-highlight', {
-          'mb-5': index !== 4,
-          'mb-sm-0': index === 4
-        })}
-      >
+      <ul className={cn('p-0 list-none', listClassName)}>
         {category.items.map((item, idx) => (
-          <li key={idx}>
+          <li key={idx} className="text-highlight">
             <FontAwesomeIcon
               icon={faCheck}
-              className="fs-9 text-success me-2"
+              className="text-md text-success me-2"
             />
             {item.name}
           </li>
@@ -48,53 +43,63 @@ const CategoryLists = ({ category, index }: CategoryListProps) => {
   );
 };
 
+/** `+Facilities` in mixins/travel-agency/hotel/HotelDetailsTabContent.pug */
 const HotelDetailsFacilities = ({
   facilities,
   charges
 }: HotelDetailsFacilitiesProps) => {
   return (
     <>
-      <h3 className="mb-5 fw-bold">Facilities</h3>
-      <h5 className="mb-3">Most popular</h5>
+      <h3 className="mb-8 font-bold">Facilities</h3>
+      <h5 className="mb-4">Most popular</h5>
       <Row className="g-0">
         {facilities.map(facility => (
           <Col key={facility.id} sm={6} md={4}>
             <div
-              className={classNames(
-                'd-flex align-items-center gap-2 px-4 py-3 h-100 border-translucent',
+              className={cn(
+                'flex items-center gap-2 px-6 py-4 h-full border border-subtle',
                 facility.classes
               )}
             >
               <FontAwesomeIcon
                 icon={facility.icon}
-                className="fs-9 text-warning"
-                transform="down-1"
+                className="text-md text-warning"
               />
-              <h5 className="text-body-tertiary mb-0 fw-normal">
-                {facility.title}
-              </h5>
+              <h5 className="text-subtle mb-0 font-normal">{facility.title}</h5>
             </div>
           </Col>
         ))}
       </Row>
-      <h6 className="text-warning text-uppercase fw-normal my-5">
+      <h6 className="text-warning uppercase font-normal my-8">
         <span className="me-2">*</span>
-        additional charges
+        ADDITIONAL CHARGES
       </h6>
-      <Row className="g-3">
+      <Row className="g-4">
         <Col xs="auto" md={4}>
           {charges.slice(0, 5).map((category, index) => (
-            <CategoryLists key={index} category={category} index={index} />
+            <CategoryLists
+              key={category.id}
+              category={category}
+              listClassName={index !== 4 ? 'mb-5' : 'sm:mb-0'}
+            />
           ))}
         </Col>
         <Col xs={6} md={4}>
           {charges.slice(5, 10).map((category, index) => (
-            <CategoryLists key={index} category={category} index={index} />
+            <CategoryLists
+              key={category.id}
+              category={category}
+              listClassName={index !== 4 ? 'mb-5' : 'sm:mb-0'}
+            />
           ))}
         </Col>
         <Col xs="auto" md={4}>
           {charges.slice(10).map((category, index) => (
-            <CategoryLists key={index} category={category} index={index} />
+            <CategoryLists
+              key={category.id}
+              category={category}
+              listClassName={index !== 4 ? 'mb-5' : 'mb-0'}
+            />
           ))}
         </Col>
       </Row>

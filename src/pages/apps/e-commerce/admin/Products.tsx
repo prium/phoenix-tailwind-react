@@ -1,3 +1,4 @@
+import { Col, Row } from '@hummingbirdui/react';
 import { faFileExport, faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'components/base/Button';
@@ -87,12 +88,16 @@ const Products = () => {
   return (
     <div>
       <PageBreadcrumb items={defaultBreadcrumbItems} />
-      <div className="mb-9">
-        <h2 className="mb-4">Products</h2>
-        <FilterTab tabItems={tabItems} className="mb-2" />
+      <div className="mb-16">
+        <Row className="g-3 mb-6">
+          <Col xs="auto">
+            <h2 className="mb-0">Products</h2>
+          </Col>
+        </Row>
+        <FilterTab tabItems={tabItems} className="mb-4 lg:mb-2" />
         <AdvanceTableProvider {...table}>
-          <div className="mb-4">
-            <div className="d-flex flex-wrap gap-3">
+          <div className="mb-6">
+            <div className="flex flex-wrap gap-4">
               <SearchBox
                 placeholder="Search products"
                 onChange={handleSearchInputChange}
@@ -100,9 +105,12 @@ const Products = () => {
               <div className="scrollbar overflow-hidden-y">
                 <FilterButtonGroup menus={filterMenus} />
               </div>
-              <div className="ms-xxl-auto">
-                <Button variant="link" className="text-body me-4 px-0">
-                  <FontAwesomeIcon icon={faFileExport} className="fs-9 me-2" />
+              <div className="2xl:ms-auto">
+                <Button variant="link" className="text-default me-6 px-0">
+                  <FontAwesomeIcon
+                    icon={faFileExport}
+                    className="text-md me-2"
+                  />
                   Export
                 </Button>
                 <Button variant="primary">
@@ -113,7 +121,7 @@ const Products = () => {
             </div>
           </div>
 
-          <div className="mx-n4 px-4 mx-lg-n6 px-lg-6 bg-body-emphasis border-top border-bottom border-translucent position-relative top-1">
+          <div className="-mx-6 px-6 lg:-mx-10 lg:px-10 bg-soft border-t border-b border-subtle relative top-1">
             <ProductsTable />
           </div>
         </AdvanceTableProvider>

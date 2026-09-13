@@ -1,28 +1,26 @@
-import React from 'react';
-import CollapsibleContainer from 'components/common/CollapsibleContainer';
+import FilterCollapse from './FilterCollapse';
 import InputGroupCounter from 'components/common/InputGroupCounter';
 
-const FilterFormFlightBaggage = () => {
+/** `+FlightBaggage` in mixins/travel-agency/flight/homepage/FlightFilters.pug */
+const FilterFormFlightBaggage = ({ className }: { className?: string }) => {
   return (
-    <CollapsibleContainer
-      collapseTitle="Baggage"
-      titleClass="fs-8"
-      containerSize="sm"
+    <FilterCollapse
       id="flightBaggage"
+      title="Baggage"
+      titleClassName=""
+      className={className}
     >
-      <div className="p-3 pb-0">
-        <div className="d-flex gap-2 justify-content-between">
-          <div>
-            <h5 className="mb-3 text-body-highlight">Carry on bag</h5>
-            <InputGroupCounter />
-          </div>
-          <div>
-            <h5 className="mb-3 text-body-highlight">Checked bag</h5>
-            <InputGroupCounter />
-          </div>
+      <div className="flex gap-2 justify-between">
+        <div>
+          <h5 className="mb-4 text-highlight">Carry on bag</h5>
+          <InputGroupCounter id="carryOnBag" inputGap="flex-nowrap gap-1" />
+        </div>
+        <div>
+          <h5 className="mb-4 text-highlight">Checked bag</h5>
+          <InputGroupCounter id="checkedBag" inputGap="flex-nowrap gap-1" />
         </div>
       </div>
-    </CollapsibleContainer>
+    </FilterCollapse>
   );
 };
 

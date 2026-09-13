@@ -1,74 +1,82 @@
-import React from 'react';
+import { Col, Row } from '@hummingbirdui/react';
 import { Link } from 'react-router';
 import { HotelImageType } from 'data/travel-agency/customer/hotelDetails';
 import useLightbox from 'hooks/useLightbox';
-import Lightbox from 'components/base/LightBox';
-import classNames from 'classnames';
+import Lightbox from 'components/base/Lightbox';
 
 interface HotelDetailsGalleryProps {
   images: HotelImageType[];
-  className?: string;
 }
 
-interface HotelDetailsGalleryItemProps {
+interface GalleryLinkProps {
   item: HotelImageType;
-  handleClick: () => void;
-  isLast: boolean;
+  onOpen: () => void;
+  imgClassName?: string;
 }
 
-const DetailsGalleryItem = ({
+const GalleryLink = ({
   item,
-  handleClick,
-  isLast
-}: HotelDetailsGalleryItemProps) => {
-  return (
-    <div
-      className={classNames(item.classNames, 'cursor-pointer')}
-      onClick={handleClick}
-    >
-      {isLast ? (
-        <div className="position-relative rounded-2 overflow-hidden">
-          <img
-            src={item.img}
-            alt=""
-            className="w-100 h-md-100 object-fit-cover"
-            height={43}
-          />
-          <div className="position-absolute left-0 top-0 w-100 h-100 d-flex flex-center bg-black bg-opacity-50">
-            <Link
-              to="/apps/travel-agency/hotel/customer/gallery"
-              className="text-white stretched-link"
-            >
-              Show all
-            </Link>
-          </div>
-        </div>
-      ) : (
-        <img src={item.img} alt="" className="rounded-2 img-fluid" />
-      )}
-    </div>
-  );
-};
-const HotelDetailsGallery = ({
-  images,
-  className
-}: HotelDetailsGalleryProps) => {
+  onOpen,
+  imgClassName = 'rounded-md'
+}: GalleryLinkProps) => (
+  <a
+    href={item.largeImg}
+    onClick={e => {
+      e.preventDefault();
+      onOpen();
+    }}
+  >
+    <img src={item.img} alt="" className={imgClassName} />
+  </a>
+);
+
+/** `+DetailsGallery` in mixins/travel-agency/hotel/DetailsGallery.pug */
+const HotelDetailsGallery = ({ images }: HotelDetailsGalleryProps) => {
   const { lightboxProps, openLightbox } = useLightbox(
     images.map((item: HotelImageType) => item.largeImg)
   );
 
   return (
     <>
-      <div className={classNames(className, 'gap-3 d-grid grid-cols-12')}>
-        {images.map((imageItem, index) => (
-          <DetailsGalleryItem
-            key={imageItem.id}
-            item={imageItem}
-            handleClick={() => openLightbox(index + 1)}
-            isLast={index === images.length - 1}
-          />
+      <Row className="g-4 mb-4">
+        <Col md={6}>
+          <GalleryLink item={images[0]} onOpen={() => openLightbox(1)} />
+        </Col>
+        <Col xs={6} className="hidden md:block">
+          <Row className="g-4">
+            {images.slice(1, 4).map((item, index) => (
+              <Col xs={index === 0 ? 12 : 6} key={item.id}>
+                <GalleryLink
+                  item={item}
+                  onOpen={() => openLightbox(index + 2)}
+                />
+              </Col>
+            ))}
+          </Row>
+        </Col>
+        {images.slice(4, 7).map((item, index) => (
+          <Col xs={3} className="hidden md:block" key={item.id}>
+            <GalleryLink item={item} onOpen={() => openLightbox(index + 5)} />
+          </Col>
         ))}
-      </div>
+        <Col md={3}>
+          <div className="relative rounded-md overflow-hidden">
+            <GalleryLink
+              item={images[7]}
+              onOpen={() => openLightbox(8)}
+              imgClassName="w-full h-11 md:h-full object-cover"
+            />
+            <div className="absolute size-full left-0 top-0 flex flex-center bg-black/50">
+              <Link
+                to="/apps/travel-agency/hotel/customer/gallery"
+                className="text-white stretched-link"
+              >
+                Show all
+              </Link>
+            </div>
+          </div>
+        </Col>
+      </Row>
       <div>
         <Lightbox {...lightboxProps} />
       </div>

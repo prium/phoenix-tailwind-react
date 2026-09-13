@@ -10,11 +10,19 @@ const getDefaultOptions = (
   isDark: boolean
 ) => ({
   color: [
-    !isDark ? getThemeColor('info-light') : getThemeColor('info-dark'),
-    !isDark ? getThemeColor('warning-light') : getThemeColor('warning-dark'),
-    !isDark ? getThemeColor('danger-light') : getThemeColor('danger-dark'),
-    !isDark ? getThemeColor('success-light') : getThemeColor('success-dark'),
-    getThemeColor('primary')
+    !isDark
+      ? getThemeColor('color-info-light')
+      : getThemeColor('color-info-dark'),
+    !isDark
+      ? getThemeColor('color-warning-light')
+      : getThemeColor('color-warning-dark'),
+    !isDark
+      ? getThemeColor('color-danger-light')
+      : getThemeColor('color-danger-dark'),
+    !isDark
+      ? getThemeColor('color-success-light')
+      : getThemeColor('color-success-dark'),
+    getThemeColor('color-primary')
   ],
   tooltip: {
     trigger: 'item'
@@ -38,12 +46,12 @@ const getDefaultOptions = (
           x: {
             fontSize: 31.25,
             fontWeight: 800,
-            color: getThemeColor('tertiary-color'),
+            color: getThemeColor('text-color-subtle'),
             padding: [0, 0, 5, 15]
           },
           y: {
             fontSize: 12.8,
-            color: getThemeColor('tertiary-color'),
+            color: getThemeColor('text-color-subtle'),
             fontWeight: 600
           }
         }
@@ -84,7 +92,8 @@ const IssuesDiscoveredChart = () => {
     <ReactEChartsCore
       echarts={echarts}
       option={getDefaultOptions(getThemeColor, isDark)}
-      style={{ minHeight: '390px', width: '100%' }}
+      className="echart-issue-chart w-full min-h-97.5"
+      style={{ height: 'auto', width: '100%' }}
     />
   );
 };

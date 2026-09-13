@@ -1,13 +1,13 @@
 import { useAppContext } from 'providers/AppProvider';
 import { ChangeEvent } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row } from '@hummingbirdui/react';
 import topDefault from 'assets/img/generic/top-default.png';
-import topDefaultDarker from 'assets/img/generic/top-default-dark.png';
+import topDefaultDarker from 'assets/img/generic/top-style-darker.png';
 import navTopLight from 'assets/img/generic/navbar-top-style-light.png';
 import navTopLighter from 'assets/img/generic/top-style-lighter.png';
 import RadioItem from './RadioItem';
 import { NavbarAppearanceVariant } from 'config';
-import classNames from 'classnames';
+import { cn } from '@hummingbirdui/react';
 import WarningMessage from 'components/common/WarningMessage';
 import { useSettingsPanelContext } from 'providers/SettingsPanelProvider';
 
@@ -17,7 +17,7 @@ interface TopNavbarAppearanceProps {
 
 const TopNavbarAppearance = ({ className }: TopNavbarAppearanceProps) => {
   const {
-    config: { isDark, navbarTopAppearance },
+    config: { navbarTopAppearance },
     setConfig
   } = useAppContext();
 
@@ -33,7 +33,7 @@ const TopNavbarAppearance = ({ className }: TopNavbarAppearanceProps) => {
   };
 
   return (
-    <div className={classNames(className, 'setting-panel-item')}>
+    <div className={cn(className, 'setting-panel-item')}>
       <h5 className="setting-panel-item-title">Horizontal Navbar Appearance</h5>
       <Row className="gx-2">
         <Col xs={6}>
@@ -41,7 +41,7 @@ const TopNavbarAppearance = ({ className }: TopNavbarAppearanceProps) => {
             label="Default"
             name="top-navbar-appearance"
             value="default"
-            thumb={isDark === false ? topDefault : topDefaultDarker}
+            thumb={{ light: topDefault, dark: topDefaultDarker }}
             checked={navbarTopAppearance === 'default'}
             handleChange={handleChange}
             disabled={disableHorizontalNavbarAppearance}
@@ -49,10 +49,11 @@ const TopNavbarAppearance = ({ className }: TopNavbarAppearanceProps) => {
         </Col>
         <Col xs={6}>
           <RadioItem
-            label={isDark === false ? 'Darker' : 'Lighter'}
+            label="Darker"
+            darkLabel="Lighter"
             name="top-navbar-appearance"
             value="darker"
-            thumb={isDark === false ? navTopLight : navTopLighter}
+            thumb={{ light: navTopLight, dark: navTopLighter }}
             checked={navbarTopAppearance === 'darker'}
             handleChange={handleChange}
             disabled={disableHorizontalNavbarAppearance}
@@ -60,7 +61,7 @@ const TopNavbarAppearance = ({ className }: TopNavbarAppearanceProps) => {
         </Col>
       </Row>
       {disableHorizontalNavbarAppearance && (
-        <WarningMessage message="You can't update horizontal navbar appearance here" />
+        <WarningMessage message="You can't update horizontal navbar appearance in this page" />
       )}
     </div>
   );

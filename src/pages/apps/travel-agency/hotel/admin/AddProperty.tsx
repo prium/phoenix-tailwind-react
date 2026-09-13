@@ -1,12 +1,9 @@
 import WizardForm from 'components/wizard/WizardForm';
 import useWizardForm from 'hooks/useWizardForm';
 import WizardFormProvider from 'providers/WizardFormProvider';
-import { Col, Row, Tab } from 'react-bootstrap';
-import WizardFormFooter from 'components/wizard/WizardFormFooter';
-import classNames from 'classnames';
+import Button from 'components/base/Button';
 import PageBreadcrumb from 'components/common/PageBreadcrumb';
 import { defaultBreadcrumbItems } from 'data/commonData';
-// import BasicInformationForm from 'components/modules/travel-agency/dashboard/hotel/add-proterty/BasicInformationForm';
 import LocationForm from 'components/modules/travel-agency/hotel/add-proterty/LocationForm';
 import GeneralAmenitiesForm from 'components/modules/travel-agency/hotel/add-proterty/GeneralAmenitiesForm';
 import AddPhotos from 'components/modules/travel-agency/hotel/add-proterty/AddPhotos';
@@ -14,6 +11,7 @@ import FinanceForm from 'components/modules/travel-agency/hotel/add-proterty/Fin
 import Preview from 'components/modules/travel-agency/hotel/add-proterty/Preview';
 import { addPropertyWizardNav } from 'data/wizard/wizard';
 import WizardSideNav from 'components/wizard/WizardSideNav';
+import WizardTabPane from 'components/wizard/WizardTabPane';
 import { useEffect, useState } from 'react';
 import { urlToFile } from 'helpers/utils';
 import {
@@ -49,72 +47,80 @@ const AddProperty = () => {
 
   return (
     <>
-      <div className="mb-9">
-        <PageBreadcrumb items={defaultBreadcrumbItems} />
-        <h2 className="fs-5 mb-4 mb-xl-5">Add New Property </h2>
+      <PageBreadcrumb className="mb-4" items={defaultBreadcrumbItems} />
+      <div className="mb-16">
+        <h2 className="text-2xl mb-6 xl:mb-8">Add New Property</h2>
         <WizardFormProvider {...form}>
-          <Row className="gx-0 gx-xl-5 theme-wizard">
-            <Col xl={{ order: 1, span: 4 }}>
-              <div className="scrollbar mb-4">
+          <div className="theme-wizard">
+            <div className="row gx-0 xl:gx-8">
+              <div className="xl:col-4 xl:order-1">
                 <WizardSideNav
                   navItems={addPropertyWizardNav}
                   setTabEventKey={setTabEventKey}
                 />
               </div>
-            </Col>
-            <Col xl={8} className="flex-1">
-              <Row>
-                <Col xxl={8}>
-                  <Tab.Content>
-                    <Tab.Pane eventKey={1}>
-                      <WizardForm step={1}>
-                        <BasicInformationForm />
-                      </WizardForm>
-                    </Tab.Pane>
-                    <Tab.Pane eventKey={2}>
-                      <WizardForm step={2}>
-                        <LocationForm tabEventKey={tabEventKey} />
-                      </WizardForm>
-                    </Tab.Pane>
-                    <Tab.Pane eventKey={3}>
-                      <WizardForm step={3}>
-                        <GeneralAmenitiesForm />
-                      </WizardForm>
-                    </Tab.Pane>
-                    <Tab.Pane eventKey={4}>
-                      <WizardForm step={4}>
-                        <AddPhotos
-                          title="Add property picture"
-                          images={images}
-                        />
-                      </WizardForm>
-                    </Tab.Pane>
-                    <Tab.Pane eventKey={5}>
-                      <WizardForm step={5}>
-                        <FinanceForm />
-                      </WizardForm>
-                    </Tab.Pane>
-                    <Tab.Pane eventKey={6}>
-                      <WizardForm step={6}>
-                        <PoliciesForm />
-                      </WizardForm>
-                    </Tab.Pane>
-                    <Tab.Pane eventKey={7}>
-                      <WizardForm step={7}>
-                        <Preview />
-                      </WizardForm>
-                    </Tab.Pane>
-                  </Tab.Content>
-                  <div className="mt-6">
-                    <WizardFormFooter
-                      hidePrevBtn
-                      className={classNames({ 'd-none': !form.getCanNextPage })}
-                    />
+              <div className="xl:col-8 flex-1">
+                <div className="row">
+                  <div className="2xl:col-8">
+                    <div className="tab-content">
+                      <WizardTabPane step={1}>
+                        <WizardForm step={1}>
+                          <BasicInformationForm />
+                        </WizardForm>
+                      </WizardTabPane>
+                      <WizardTabPane step={2}>
+                        <WizardForm step={2}>
+                          <LocationForm tabEventKey={tabEventKey} />
+                        </WizardForm>
+                      </WizardTabPane>
+                      <WizardTabPane step={3}>
+                        <WizardForm step={3}>
+                          <GeneralAmenitiesForm />
+                        </WizardForm>
+                      </WizardTabPane>
+                      <WizardTabPane step={4}>
+                        <WizardForm step={4}>
+                          <AddPhotos
+                            title="Add property picture"
+                            className="mb-14"
+                            images={images}
+                          />
+                        </WizardForm>
+                      </WizardTabPane>
+                      <WizardTabPane step={5}>
+                        <WizardForm step={5}>
+                          <FinanceForm />
+                        </WizardForm>
+                      </WizardTabPane>
+                      <WizardTabPane step={6}>
+                        <WizardForm step={6}>
+                          <PoliciesForm />
+                        </WizardForm>
+                      </WizardTabPane>
+                      <WizardTabPane step={7}>
+                        <WizardForm step={7}>
+                          <Preview />
+                        </WizardForm>
+                      </WizardTabPane>
+                    </div>
+                    {form.getCanNextPage && (
+                      <div className="mt-10">
+                        <div className="hidden" />
+                        <Button
+                          type="submit"
+                          variant="primary"
+                          className="px-10 sm:px-20"
+                          onClick={() => form.goToStep(form.selectedStep + 1)}
+                        >
+                          Next
+                        </Button>
+                      </div>
+                    )}
                   </div>
-                </Col>
-              </Row>
-            </Col>
-          </Row>
+                </div>
+              </div>
+            </div>
+          </div>
         </WizardFormProvider>
       </div>
     </>

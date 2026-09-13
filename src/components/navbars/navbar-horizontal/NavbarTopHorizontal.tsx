@@ -1,12 +1,17 @@
-import { Navbar } from 'react-bootstrap';
+import { Navbar, cn } from '@hummingbirdui/react';
 import { useAppContext } from 'providers/AppProvider';
-import classNames from 'classnames';
 import NavbarBrand from 'components/navbars/nav-items/NavbarBrand';
-import NavItemsSlim from 'components/navbars/nav-items/NavItemsSlim';
 import NavItems from 'components/navbars/nav-items/NavItems';
+import NavItemsSlim from 'components/navbars/nav-items/NavItemsSlim';
 import NavbarTopNav from './NavbarTopNav';
 import { useBreakpoints } from 'providers/BreakpointsProvider';
 
+/**
+ * `+NavbarTop` / `+NavbarTopSlim` (NavbarTop.pug) and `+NavbarCombo` /
+ * `+NavbarComboSlim` (NavbarCombo.pug) in phoenix-tailwind, all `.navbar-expand-lg`.
+ * In combo mode below lg the menu is rendered inside the vertical navbar instead
+ * (gold moves it there with navbar-combo.js).
+ */
 const NavbarTopHorizontal = () => {
   const {
     config: {
@@ -14,30 +19,47 @@ const NavbarTopHorizontal = () => {
       openNavbarVertical,
       navbarTopShape,
       navbarTopAppearance
-    }
+    },
+    setConfig
   } = useAppContext();
-
   const { breakpoints } = useBreakpoints();
+
+  const combo = navbarPosition === 'combo';
+  const slim = navbarTopShape === 'slim';
+  const id = combo
+    ? slim
+      ? 'navbarComboSlim'
+      : 'navbarCombo'
+    : slim
+      ? 'navbarTopSlim'
+      : 'navbarTop';
 
   return (
     <Navbar
-      className={classNames('navbar-top fixed-top', {
-        'navbar-slim': navbarTopShape === 'slim'
-      })}
       expand="lg"
-      variant=""
+      id={id}
+      className={cn('navbar-top fixed right-0 top-0 left-0 z-1030', {
+        'navbar-slim justify-between': slim
+      })}
+      data-navbar-top={combo ? 'combo' : undefined}
+      data-move-target={combo ? '#navbarVerticalNav' : undefined}
       data-navbar-appearance={navbarTopAppearance === 'darker' ? 'darker' : ''}
+      open={openNavbarVertical}
+      onOpenChange={open => setConfig({ openNavbarVertical: open })}
     >
       <NavbarBrand />
-      {!(navbarPosition === 'combo' && breakpoints.down('lg')) && (
+      {!(combo && breakpoints.down('lg')) && (
         <Navbar.Collapse
-          className="navbar-top-collapse order-1 order-lg-0 justify-content-center pb-0"
-          in={openNavbarVertical}
+          id="navbarTopCollapse"
+          className={cn(
+            'navbar-top-collapse order-1 lg:order-0 lg:justify-center',
+            { show: openNavbarVertical }
+          )}
         >
           <NavbarTopNav />
         </Navbar.Collapse>
       )}
-      {navbarTopShape === 'default' ? <NavItems /> : <NavItemsSlim />}
+      {slim ? <NavItemsSlim /> : <NavItems />}
     </Navbar>
   );
 };

@@ -1,19 +1,18 @@
-import React from 'react';
 import { Policy } from 'data/travel-agency/customer/trip';
-import { Card } from 'react-bootstrap';
+import { Card } from '@hummingbirdui/react';
 import classNames from 'classnames';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircle } from '@fortawesome/free-solid-svg-icons';
+import TripDetailsListItem from './TripDetailsListItem';
 
 interface TripDetailsTabDetailsPolicyProps {
   policies: Policy[];
 }
 
+/** "Policy" body in mixins/travel-agency/trip/TripDetails.pug */
 const TripDetailsTabDetailsPolicy = ({
   policies
 }: TripDetailsTabDetailsPolicyProps) => {
   return (
-    <div className="py-6 px-4">
+    <div className="py-10 px-6">
       {policies.map((policy, index) => (
         <Card
           key={policy.id}
@@ -23,16 +22,16 @@ const TripDetailsTabDetailsPolicy = ({
         >
           <Card.Body>
             <h5 className="mb-3">{policy.label}</h5>
-            <ul className="list-unstyled mb-0">
-              {policy.policyItems.map(item => (
-                <li key={item.id} className="mb-3 d-flex">
-                  <FontAwesomeIcon
-                    icon={faCircle}
-                    className="text-secondary-light me-3 fs-11"
-                    transform="down-13 shrink-4"
-                  />
+            <ul className="list-none mb-0 p-0">
+              {policy.policyItems.map((item, itemIndex) => (
+                <TripDetailsListItem
+                  key={item.id}
+                  className={classNames({
+                    'mb-3': itemIndex !== policy.policyItems.length - 1
+                  })}
+                >
                   {item.policyItem}
-                </li>
+                </TripDetailsListItem>
               ))}
             </ul>
           </Card.Body>

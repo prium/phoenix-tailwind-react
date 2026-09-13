@@ -1,7 +1,7 @@
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
+import { cn } from '@hummingbirdui/react';
 import {
   Rating as ReactRating,
   RatingProps as ReactRatingProps
@@ -10,6 +10,7 @@ import { useAppContext } from 'providers/AppProvider';
 
 export interface RatingProps extends ReactRatingProps {
   iconClass?: string;
+  /** Tailwind colour name, e.g. `warning` → `text-warning` */
   fillIconColor?: string;
   emptyIconColor?: string;
 }
@@ -30,13 +31,13 @@ const Rating = ({
       fillIcon={
         <FontAwesomeIcon
           icon={faStar}
-          className={classNames(iconClass, `text-${fillIconColor}`)}
+          className={cn(iconClass, `text-${fillIconColor}`)}
         />
       }
       emptyIcon={
         <FontAwesomeIcon
           icon={farStar}
-          className={classNames(iconClass, `text-${emptyIconColor}`)}
+          className={cn(iconClass, `text-${emptyIconColor}`)}
         />
       }
       {...rest}

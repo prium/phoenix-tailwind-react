@@ -11,57 +11,54 @@ import FeatherIcon from 'feather-icons-react';
 export const ordersTableColumns: ColumnDef<Order>[] = [
   {
     accessorKey: 'orderId',
-    header: 'Order',
+    header: 'ORDER',
     cell: ({ row: { original } }) => {
       const { orderId } = original;
       return (
-        <Link to="#!" className="fw-semibold">
+        <Link to="#!" className="font-semibold">
           #{orderId}
         </Link>
       );
     },
     meta: {
-      headerProps: { style: { width: '5%' }, className: 'pe-3 ps-0' },
-      cellProps: { className: 'ps-0' }
+      headerProps: { className: 'whitespace-nowrap pe-4 w-1/20' },
+      cellProps: { className: 'whitespace-nowrap py-0' }
     }
   },
   {
     accessorKey: 'total',
-    header: 'Total',
+    header: 'TOTAL',
     cell: ({ row: { original } }) => currencyFormat(original.total),
     meta: {
-      headerProps: { style: { width: '6%' }, className: 'text-end' },
-      cellProps: { className: 'text-end fw-semibold text-body-highlight' }
+      headerProps: { className: 'text-end w-[6%]' },
+      cellProps: { className: 'text-end font-semibold text-highlight' }
     }
   },
   {
     id: 'customer',
     accessorFn: ({ customer }) => customer.name,
-    header: 'Customer',
+    header: 'CUSTOMER',
     cell: ({ row: { original } }) => {
       const { name, avatar } = original.customer;
       return (
         <Link
           to="/apps/e-commerce/admin/customer-details"
-          className="d-flex align-items-center"
+          className="flex items-center text-default"
         >
           <Avatar src={avatar} size="m" />
-          <p className="mb-0 ms-3 text-body-emphasis fw-bold">{name}</p>
+          <h6 className="mb-0 ms-4 text-default">{name}</h6>
         </Link>
       );
     },
     meta: {
-      headerProps: {
-        style: { width: '28%', minWidth: 250 },
-        className: 'ps-8'
-      },
-      cellProps: { className: 'ps-8 py-0 white-space-nowrap' }
+      headerProps: { className: 'ps-14 w-[28%] min-w-62.5' },
+      cellProps: { className: 'whitespace-nowrap ps-14' }
     }
   },
   {
     id: 'payment_status',
     accessorFn: ({ payment_status }) => payment_status.label,
-    header: 'Payment status',
+    header: 'PAYMENT STATUS',
     cell: ({ row: { original } }) => {
       const { payment_status } = original;
       return (
@@ -69,7 +66,7 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
           bg={payment_status.type}
           variant="phoenix"
           iconPosition="end"
-          className="fs-10"
+          className="text-sm"
           icon={
             <FeatherIcon
               icon={payment_status.icon}
@@ -83,13 +80,16 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
       );
     },
     meta: {
-      headerProps: { style: { width: '10%' }, className: 'pe-3' }
+      headerProps: { className: 'pe-4 w-1/10' },
+      cellProps: {
+        className: 'whitespace-nowrap text-start font-bold text-subtle'
+      }
     }
   },
   {
     id: 'fulfilment_status',
     accessorFn: ({ fulfilment_status }) => fulfilment_status.label,
-    header: 'Fulfilment status',
+    header: 'FULFILMENT STATUS',
     cell: ({ row: { original } }) => {
       const { fulfilment_status } = original;
       return (
@@ -97,7 +97,7 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
           bg={fulfilment_status.type}
           variant="phoenix"
           iconPosition="end"
-          className="fs-10"
+          className="text-sm"
           icon={
             <FeatherIcon
               icon={fulfilment_status.icon}
@@ -111,24 +111,29 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
       );
     },
     meta: {
-      headerProps: { style: { width: '12%', minWidth: 200 }, className: 'pe-3' }
+      headerProps: { className: 'text-start pe-4 w-[12%] min-w-50' },
+      cellProps: {
+        className: 'whitespace-nowrap text-start font-bold text-subtle'
+      }
     }
   },
   {
     accessorKey: 'delivery_type',
-    header: 'Delivery type',
+    header: 'DELIVERY TYPE',
     meta: {
-      headerProps: { style: { width: '30%' } },
-      cellProps: { className: 'text-body fs-9' }
+      headerProps: { className: 'text-start w-3/10' },
+      cellProps: {
+        className: 'whitespace-nowrap text-default text-md text-start'
+      }
     }
   },
   {
     accessorKey: 'date',
-    header: 'Date',
+    header: 'DATE',
     meta: {
-      headerProps: { className: 'text-end' },
+      headerProps: { className: 'text-end pe-0' },
       cellProps: {
-        className: 'text-body-tertiary fs-9 ps-4 text-end white-space-nowrap'
+        className: 'whitespace-nowrap text-subtle text-md ps-6 text-end'
       }
     }
   }
@@ -137,7 +142,7 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
 const OrdersTable = () => {
   return (
     <div>
-      <AdvanceTable tableProps={{ className: 'phoenix-table fs-9' }} />
+      <AdvanceTable tableProps={{ size: 'sm', className: 'text-md mb-0' }} />
       <AdvanceTableFooter pagination />
     </div>
   );

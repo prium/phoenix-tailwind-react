@@ -1,5 +1,6 @@
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Col, Row } from '@hummingbirdui/react';
 import { ColumnDef } from '@tanstack/react-table';
 import PageBreadcrumb from 'components/common/PageBreadcrumb';
 import ProjectsTopSection from 'components/modules/project-management/ProjectsTopSection';
@@ -8,7 +9,6 @@ import { defaultBreadcrumbItems } from 'data/commonData';
 import { Project, projects } from 'data/project-management/projects';
 import useAdvanceTable from 'hooks/useAdvanceTable';
 import AdvanceTableProvider from 'providers/AdvanceTableProvider';
-import { Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router';
 
 export const columns: ColumnDef<Project>[] = [
@@ -23,6 +23,7 @@ export const columns: ColumnDef<Project>[] = [
   }
 ];
 
+/** apps/project-management/project-board-view.pug (`+ProjectBoardView`) */
 const ProjectBoardView = () => {
   const table = useAdvanceTable<Project>({
     data: projects,
@@ -36,23 +37,27 @@ const ProjectBoardView = () => {
     <div>
       <PageBreadcrumb items={defaultBreadcrumbItems} />
       <AdvanceTableProvider {...table}>
-        <div className="d-flex flex-wrap mb-4 gap-3 gap-sm-6 align-items-center">
-          <h2 className="mb-0">
-            <span className="me-3">Projects</span>{' '}
-            <span className="fw-normal text-body-tertiary">
-              ({projects.length})
-            </span>
-          </h2>
-          <Link
-            className="btn btn-primary px-5"
-            to="/apps/project-management/create-new"
-          >
-            <FontAwesomeIcon icon={faPlus} className="me-2" />
-            Add new project
-          </Link>
-        </div>
+        <Row className="gx-10 gy-4 mb-6 items-center">
+          <Col xs="auto">
+            <h2 className="mb-0">
+              Projects
+              <span className="font-normal text-subtle ms-4">
+                ({projects.length})
+              </span>
+            </h2>
+          </Col>
+          <Col xs="auto">
+            <Link
+              className="btn btn-primary px-8"
+              to="/apps/project-management/create-new"
+            >
+              <FontAwesomeIcon icon={faPlus} className="me-2" />
+              Add new project
+            </Link>
+          </Col>
+        </Row>
         <ProjectsTopSection activeView="board" />
-        <Row className="g-3 mb-9">
+        <Row className="g-4 mb-16">
           {table
             .getRowModel()
             .rows.map(row => row.original)

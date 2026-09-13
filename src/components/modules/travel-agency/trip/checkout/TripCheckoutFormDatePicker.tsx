@@ -1,8 +1,6 @@
-import React from 'react';
 import DatePicker from 'components/base/DatePicker';
 import { faCalendarDays } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Form } from 'react-bootstrap';
 
 interface TripCheckoutFormDatePickerProps {
   label: string;
@@ -10,6 +8,7 @@ interface TripCheckoutFormDatePickerProps {
   placeholder?: string;
 }
 
+/** gold: label + `.input-group-icon.flatpickr-input-container` + `fa-calendar-alt` start icon */
 const TripCheckoutFormDatePicker = ({
   id,
   label,
@@ -17,35 +16,23 @@ const TripCheckoutFormDatePicker = ({
 }: TripCheckoutFormDatePickerProps) => {
   return (
     <>
-      <label htmlFor={id} className="fw-bold text-body-highlight mb-1">
+      <label htmlFor={id} className="font-bold text-highlight mb-1">
         {label}
       </label>
-      <div className="form-icon-container flatpickr-input-container">
-        <DatePicker
-          render={(_, ref) => {
-            return (
-              <>
-                <Form.Control
-                  type="text"
-                  placeholder={placeholder}
-                  ref={ref}
-                  id={id}
-                  className="form-icon-input"
-                />
-                <FontAwesomeIcon
-                  icon={faCalendarDays}
-                  className="form-icon text-body-quaternary fs-9"
-                  transform="up-1"
-                />
-              </>
-            );
-          }}
-          hideIcon={true}
-          options={{
-            dateFormat: 'Y-m-d'
-          }}
-        />
-      </div>
+      <DatePicker
+        wrapperClassName="input-group-icon"
+        hideIcon
+        icon={
+          <FontAwesomeIcon
+            icon={faCalendarDays}
+            className="text-soft text-md form-control-icon-start"
+            transform="up-1"
+          />
+        }
+        id={id}
+        placeholder={placeholder}
+        options={{ disableMobile: true }}
+      />
     </>
   );
 };

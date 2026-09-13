@@ -4,73 +4,61 @@ import {
   faListCheck
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Card, cn } from '@hummingbirdui/react';
 import Avatar from 'components/base/Avatar';
 import { KanbanBoard } from 'data/kanban';
-import { Card } from 'react-bootstrap';
 import { Link } from 'react-router';
 
+/** `+Board` in apps/kanban/boards.pug */
 const KanbanBoardCard = ({ board }: { board: KanbanBoard }) => {
   return (
-    <Card className="overflow-hidden bg-transparent h-100 position-relative">
-      <div className="position-relative">
-        {board.coverImage ? (
-          <>
-            <img
-              src={board.coverImage}
-              alt=""
-              height={128}
-              className="w-100 fit-cover"
-            />
-          </>
-        ) : (
-          <div className="bg-body-secondary" style={{ height: '128px' }} />
-        )}
-        <Avatar.Group
-          total={board.users.length}
-          size="m"
-          className="position-absolute bottom-0 mb-3 ms-4"
-        >
-          {board.users.map(user => (
-            <Avatar
-              size="m"
-              className="border rounded-circle border-light-subtle"
-              src={user.avatar}
-              key={user.id}
-            />
-          ))}
-        </Avatar.Group>
-      </div>
-      <Card.Body className="d-flex flex-column rounded-bottom-lg justify-content-between">
-        <div>
-          <h3 className="text-body">{board.title}</h3>
-          <p className="text-body-tertiary mb-4">{board.category}</p>
+    <Link to="/apps/kanban/kanban" className="no-underline">
+      <Card className="overflow-hidden bg-transparent h-full">
+        <div className="relative">
+          {board.coverImage ? (
+            <img src={board.coverImage} alt="" className="w-full h-32" />
+          ) : (
+            <div className={cn(board.bgClass, 'h-32')} />
+          )}
+          <div className="avatar-group absolute bottom-4 start-8">
+            {board.users.map((user, index) => (
+              <Avatar
+                size="m"
+                src={user}
+                className="border border-subtle-subtle"
+                key={index}
+              />
+            ))}
+          </div>
         </div>
-        <div className="d-flex gap-4">
-          <h5 className="text-body">
-            <FontAwesomeIcon
-              icon={faListCheck}
-              className="text-body-tertiary me-1"
-            />
-            {board.totalTasks}
-          </h5>
-          <h5 className="text-body">
-            <FontAwesomeIcon
-              icon={faComment}
-              className="text-body-tertiary me-1"
-            />
-            {board.comments}
-          </h5>
-          <h5 className="text-body">
-            <FontAwesomeIcon
-              icon={faCalendarXmark}
-              className="text-body-tertiary me-1"
-            />
-            {board.deadlines}
-          </h5>
-        </div>
-      </Card.Body>
-      <Link to="/apps/kanban/kanban" className="stretched-link" />
-    </Card>
+        <Card.Body className="flex flex-col justify-between">
+          <div>
+            <h3 className="text-default">{board.title}</h3>
+            <p className="text-base text-subtle mb-6">{board.category}</p>
+          </div>
+          <div className="flex gap-6">
+            <h5 className="text-default">
+              <FontAwesomeIcon
+                icon={faListCheck}
+                className="text-subtle me-1"
+              />
+              {board.totalTasks}
+            </h5>
+            <h5 className="text-default">
+              <FontAwesomeIcon icon={faComment} className="text-subtle me-1" />
+              {board.comments}
+            </h5>
+            <h5 className="text-default">
+              <FontAwesomeIcon
+                icon={faCalendarXmark}
+                className="text-subtle me-1"
+              />
+              {board.deadlines}
+            </h5>
+          </div>
+        </Card.Body>
+      </Card>
+    </Link>
   );
 };
 

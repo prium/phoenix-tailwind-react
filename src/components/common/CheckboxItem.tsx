@@ -1,35 +1,42 @@
-import React, { ReactNode } from 'react';
-import { Form } from 'react-bootstrap';
+import { ReactNode } from 'react';
 
 export interface CheckboxItemProps {
   type?: 'checkbox' | 'radio';
   name: string;
   label: string | ReactNode;
   value: string | number;
+  defaultChecked?: boolean;
+  disabled?: boolean;
 }
 
+/** `div.form-check.items-start.mb-1.25` in apps/e-commerce/landing/products-filter.pug */
 const CheckboxItem = ({
   type = 'checkbox',
   name,
   label,
-  value
+  value,
+  defaultChecked,
+  disabled
 }: CheckboxItemProps) => {
+  const id = `${name}-${value}`;
   return (
-    <Form.Check
-      type={type}
-      id={String(value)}
-      className="mb-0 d-flex align-items-center gap-2"
-    >
-      <Form.Check.Input
+    <div className="form-check items-start mb-1.25">
+      <input
         type={type}
+        id={id}
         value={value}
         name={name}
-        className="mt-0"
+        defaultChecked={defaultChecked}
+        disabled={disabled}
+        className="form-check-input mt-0"
       />
-      <Form.Check.Label className="d-block lh-sm fs-8 text-body fw-normal mb-0">
+      <label
+        htmlFor={id}
+        className="form-check-label block leading-sm text-base text-default font-normal mb-0"
+      >
         {label}
-      </Form.Check.Label>
-    </Form.Check>
+      </label>
+    </div>
   );
 };
 
