@@ -30,21 +30,21 @@ const Feature = () => {
         ref={parallaxElRef}
         data-parallax={JSON.stringify({ y: '-40%' })}
       />
-      <Container className="container-small relative py-8">
-        <Row className="align-items-center gx-xxl-13">
-          <Col lg={6} className="mb-6 z-1">
-            <img src={section63} alt="" className="mw-100" />
+      <Container className="container-small relative py-14">
+        <Row className="items-center 2xl:gx-26">
+          <Col lg={6} className="mb-10 z-1">
+            <img src={section63} alt="" className="max-w-full" />
           </Col>
           <Col lg={6}>
-            <h1 className="text-light font-normal mb-4 text-center text-lg-start">
+            <h1 className="text-light font-normal mb-6 text-center lg:text-start">
               Coded for
-              <br className="hidden d-lg-block d-xl-none" />
+              <br className="hidden lg:block xl:hidden" />
               <span className="text-primary-light ms-2 font-black">
                 any screen size
                 <img src={thumbsUpIcon} alt="" className="mb-2 ms-2" />
               </span>
             </h1>
-            <p className="text-light text-center text-lg-start">
+            <p className="text-light text-center lg:text-start">
               Built with all top-notch technologies, this admin dashboard is
               fully responsive, and the clean codebase helps it to stay intact
               without breaking down the layout around any device or screen size

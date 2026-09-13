@@ -7,18 +7,18 @@ import classNames from 'classnames';
 
 const NecessaryPages = () => {
   return (
-    <section className="pb-13">
+    <section className="pb-26">
       <Container fluid>
-        <Row className="justify-content-center">
+        <Row className="justify-center">
           <Col xs={12} lg={9} xl={8} xxl={6} className="text-center">
-            <h2 className="mb-6 text-highlight font-normal">
+            <h2 className="mb-10 text-highlight font-normal">
               Smartly designed
               <span className="text-primary relative font-black ms-2">
                 necessary pages
                 <img
                   src={illustration31}
                   alt=""
-                  className="w-100 text-illustration-underline"
+                  className="w-full text-illustration-underline"
                 />
               </span>
             </h2>
@@ -33,22 +33,22 @@ const NecessaryPages = () => {
             >
               <div
                 className={classNames(
-                  'flex px-4 pt-6 justify-content-center',
+                  'flex px-6 pt-10 justify-center',
                   {
-                    'justify-content-lg-end': (index + 1) % 2 !== 0,
-                    'justify-content-lg-start': (index + 1) % 2 === 0
+                    'lg:justify-end': (index + 1) % 2 !== 0,
+                    'lg:justify-start': (index + 1) % 2 === 0
                   }
                 )}
               >
                 <div className="text-center">
-                  <div className="img-container w-100">
+                  <div className="img-container w-full">
                     <img
                       src={page.thumb}
                       alt=""
-                      className="img-fluid page-thumb rounded z-2"
+                      className="img-fluid page-thumb rounded-md z-2"
                     />
                   </div>
-                  <h5 className="py-4 text-highlight">{page.pageName}</h5>
+                  <h5 className="py-6 text-highlight">{page.pageName}</h5>
                 </div>
               </div>
               <Link

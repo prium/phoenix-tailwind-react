@@ -17,9 +17,9 @@ const ImportantApplications = () => {
   useParallaxHooks(containerRef, parallaxElRef);
 
   return (
-    <section className="py-md-10" ref={containerRef}>
+    <section className="md:py-18" ref={containerRef}>
       <div
-        className="bg-holder hidden d-lg-block"
+        className="bg-holder hidden lg:block"
         style={{
           backgroundImage: `url(${bg29})`,
           backgroundPosition: 'left 10%',
@@ -32,7 +32,7 @@ const ImportantApplications = () => {
       />
 
       <div
-        className="bg-holder hidden d-lg-block"
+        className="bg-holder hidden lg:block"
         style={{
           backgroundImage: `url(${bg28})`,
           backgroundPosition: 'right 10%',
@@ -45,9 +45,9 @@ const ImportantApplications = () => {
       />
 
       <Container fluid="lg">
-        <Row className="justify-content-center">
+        <Row className="justify-center">
           <Col xs={12} lg={9} xl={8} xxl={6} className="text-center">
-            <h2 className="mb-6 lh-lg">
+            <h2 className="mb-10 leading-lg">
               <span className="text-primary relative">
                 Important applications
                 <img
@@ -64,28 +64,28 @@ const ImportantApplications = () => {
         </Row>
         <Row>
           <Col xxl={8} className="mx-auto">
-            <Row className="justify-content-center mt-7 mt-lg-11">
+            <Row className="justify-center mt-12 lg:mt-20">
               {importantApplications.map(application => (
                 <Col
                   xs={12}
                   lg={6}
-                  className="mb-7 mb-lg-10 ms-auto"
+                  className="mb-12 lg:mb-18 ms-auto"
                   key={application.title}
                 >
                   <div className="text-center">
                     <div
-                      className="mx-auto mb-5 mb-lg-7 mw-100"
+                      className="mx-auto mb-8 lg:mb-12 max-w-full"
                       style={{ width: '550px' }}
                     >
                       <div className="relative overflow-hidden">
                         <img
                           src={application.thumb}
                           alt=""
-                          className={classNames('shadow rounded mw-100')}
+                          className={classNames('shadow md:rounded-md max-w-full')}
                         />
                       </div>
                     </div>
-                    <div className="flex flex-center mb-3">
+                    <div className="flex flex-center mb-4">
                       <h4 className="text-highlight mb-0">
                         {application.title}
                       </h4>
@@ -95,7 +95,7 @@ const ImportantApplications = () => {
                         </Badge>
                       )}
                     </div>
-                    <p className="text-subtle lh-sm pb-2 pb-lg-4">
+                    <p className="text-subtle leading-sm pb-2 lg:pb-6">
                       {application.details}
                     </p>
                     <Button

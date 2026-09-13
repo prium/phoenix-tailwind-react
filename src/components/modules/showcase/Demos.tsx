@@ -16,29 +16,29 @@ const Demos = () => {
             >
               <div
                 className={classNames(
-                  'flex px-4 pt-6 justify-content-center',
+                  'flex px-6 pt-10 justify-center',
                   {
-                    'justify-content-lg-end': (index + 1) % 2 !== 0,
-                    'justify-content-lg-start': (index + 1) % 2 === 0
+                    'lg:justify-end': (index + 1) % 2 !== 0,
+                    'lg:justify-start': (index + 1) % 2 === 0
                   }
                 )}
               >
                 <div className="text-center">
-                  <div className="img-container w-100">
+                  <div className="img-container w-full">
                     <img
                       src={demo.sideThumb}
                       alt={demo.variantName}
-                      className="side-panel-thumb h-100 w-100 rounded"
+                      className="side-panel-thumb h-full w-full rounded-md"
                     />
                     <div className="layout-thumb">
                       <img
                         src={demo.mainThumb}
                         alt={demo.variantName}
-                        className="img-fluid rounded"
+                        className="img-fluid rounded-md"
                       />
                     </div>
                   </div>
-                  <h5 className="py-4 text-highlight">
+                  <h5 className="py-6 text-highlight">
                     {demo.variantName}
                   </h5>
                 </div>

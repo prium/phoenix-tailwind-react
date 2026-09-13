@@ -69,3 +69,8 @@ class names with different meanings (`mb-4` → `mb-6` → `mb-10` …).
   names ARE the content, so the converter would rewrite the strings the page
   exists to show; the widgets components were already half-converted, so a pass
   would have double-shifted their spacing. Both rewritten by hand from the pug.
+
+- showcase closure: src/components/modules/showcase, src/pages/Showcase.tsx,
+  src/data/showcase.ts — ShowcaseNavbar.tsx and tables/SpecificationTable.tsx
+  were NOT re-run (components/navbars and components/tables were converted with
+  the layout shell); manual pass only.

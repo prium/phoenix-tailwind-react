@@ -178,13 +178,13 @@ export const featureItems = [
 
 const EssentialFeatures = () => {
   return (
-    <section className="bg-subtle pt-14">
+    <section className="bg-subtle pt-28">
       <Container fluid="lg">
-        <Row className="justify-content-center">
+        <Row className="justify-center">
           <Col xs={12} lg={9} xl={8} xxl={6} className="text-center">
-            <h2 className="text-highlight font-normal mb-13 lh-sm">
+            <h2 className="text-highlight font-normal mb-26 leading-sm">
               Packed with{' '}
-              <span className="text-primary ms-2 relative font-black d-inline-flex">
+              <span className="text-primary ms-2 relative font-black inline-flex">
                 essential features
                 <img
                   className="text-illustration-underline"
@@ -198,11 +198,11 @@ const EssentialFeatures = () => {
                 <Col xs={12} sm={4} className="px-0" key={item.id}>
                   <div
                     className={classNames(
-                      'mb-10 text-center border-subtle',
+                      'mb-18 text-center border-subtle',
                       item.border
                     )}
                   >
-                    <img src={item.icon} alt="" className="img-fluid mb-4" />
+                    <img src={item.icon} alt="" className="img-fluid mb-6" />
                     <p>{item.title}</p>
                   </div>
                 </Col>

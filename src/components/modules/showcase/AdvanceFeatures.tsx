@@ -38,12 +38,12 @@ const AdvanceFeatures = () => {
     <section className="pb-0 overflow-hidden">
       <div ref={containerRef}>
         <Container fluid="lg" className="gsap">
-          <Row className="justify-content-center mb-11">
+          <Row className="justify-center mb-20">
             <Col xs={12} xl={7} className="text-center">
-              <h2 className="text-highlight font-normal lh-sm">
+              <h2 className="text-highlight font-normal leading-sm">
                 Beautiful blending of <br />
                 card and cardless designs of{' '}
-                <span className="text-primary relative font-black d-inline-flex ms-2">
+                <span className="text-primary relative font-black inline-flex ms-2">
                   advanced forms
                   <img
                     src={illustrations31}
@@ -59,11 +59,11 @@ const AdvanceFeatures = () => {
             className="g-2 showcase-gallery mx-auto"
             style={{ width: '1545px' }}
           >
-            <Col xs={3} className="align-self-end mb-2">
+            <Col xs={3} className="self-end mb-2">
               <Row className="g-2">
                 <Col xs={12}>
                   <img
-                    className="w-100 z-3 layer-4"
+                    className="w-full z-3 layer-4"
                     ref={el => {
                       parallaxElRef.current?.push(el)
                     }}
@@ -77,7 +77,7 @@ const AdvanceFeatures = () => {
                 </Col>
                 <Col xs={6}>
                   <img
-                    className="w-100 z-5 layer-6"
+                    className="w-full z-5 layer-6"
                     ref={el => {
                       parallaxElRef.current?.push(el)
                     }}
@@ -91,7 +91,7 @@ const AdvanceFeatures = () => {
                 </Col>
                 <Col xs={6}>
                   <img
-                    className="w-100 z-2 layer-3"
+                    className="w-full z-2 layer-3"
                     ref={el => {
                       parallaxElRef.current?.push(el)
                     }}
@@ -105,7 +105,7 @@ const AdvanceFeatures = () => {
                 </Col>
                 <Col xs={12} className="text-end">
                   <img
-                    className="w-100 z-3 layer-4"
+                    className="w-full z-3 layer-4"
                     ref={el => {
                       parallaxElRef.current?.push(el)
                     }}
@@ -120,7 +120,7 @@ const AdvanceFeatures = () => {
               </Row>
             </Col>
             <Col xs={9}>
-              <Row className="g-2 align-items-end mb-2">
+              <Row className="g-2 items-end mb-2">
                 <Col xs="auto">
                   <img
                     className="z-4 layer-5"

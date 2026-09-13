@@ -4,11 +4,11 @@ import { Accordion, Col, Row } from 'react-bootstrap';
 
 const Faq = () => {
   return (
-    <section className="pt-9 pt-sm-14">
+    <section className="pt-16 sm:pt-28">
       <div className="container-small">
         <Row className="flex-center">
           <Col xs={12} xl={7}>
-            <h2 className="text-center mb-6 mb-sm-10">
+            <h2 className="text-center mb-10 sm:mb-18">
               Frequently asked questions
             </h2>
             <Accordion
@@ -17,7 +17,7 @@ const Faq = () => {
             >
               {showcaseFaqs.map((faq, index) => (
                 <Accordion.Item
-                  className={classNames('border-bottom border-subtle')}
+                  className={classNames('border-b border-subtle')}
                   eventKey={String(index)}
                   key={faq.id}
                 >

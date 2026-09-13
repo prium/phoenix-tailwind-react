@@ -90,7 +90,7 @@ const ModulesItem = ({ item }: { item: Module }) => (
     <div className="image-container cursor-pointer">
       {item.images.map((image, idx) => (
         <div className="image" key={idx}>
-          <img src={image} alt="" className="w-100" />
+          <img src={image} alt="" className="w-full" />
         </div>
       ))}
     </div>
@@ -99,10 +99,10 @@ const ModulesItem = ({ item }: { item: Module }) => (
 
 const DifferentModules = () => {
   return (
-    <Container fluid className="pt-10">
-      <h2 className="text-highlight font-normal lh-sm text-center mb-11">
+    <Container fluid className="pt-18">
+      <h2 className="text-highlight font-normal leading-sm text-center mb-20">
         Different
-        <span className="text-primary relative font-black d-inline-flex ms-2">
+        <span className="text-primary relative font-black inline-flex ms-2">
           modules
           <img
             src={spotIllustration31}

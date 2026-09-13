@@ -10,21 +10,21 @@ const Cta = () => {
     <section>
       <div className="container-small">
         <Row className="flex-center">
-          <Col xs={12} lg={9} xl={7} className="pt-4 pb-11">
+          <Col xs={12} lg={9} xl={7} className="pt-6 pb-20">
             <div className="text-center">
               <img
                 src={spotIllustration33}
-                className="mw-100 mb-6"
+                className="max-w-full mb-10"
                 width="422"
                 alt=""
               />
-              <h2 className="mb-8 text-highlight font-normal">
+              <h2 className="mb-14 text-highlight font-normal">
                 Still have questions? We are
                 <span className="text-primary relative font-black ms-2">
                   happy to help
                   <img
                     src={spotIllustration31}
-                    className="w-100 text-illustration-underline"
+                    className="w-full text-illustration-underline"
                     alt=""
                   />
                 </span>

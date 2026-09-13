@@ -13,7 +13,7 @@ const FeatureFigma = () => {
 
   return (
     <section
-      className="py-12 relative overflow-hidden bg-subtle"
+      className="py-24 relative overflow-hidden bg-subtle"
       ref={containerRef}
     >
       <div
@@ -36,7 +36,7 @@ const FeatureFigma = () => {
         data-parallax={JSON.stringify({ y: '-50%' })}
       />
       <div className="relative container-small text-center">
-        <div className="flex gap-3 justify-content-center mb-3">
+        <div className="flex gap-4 justify-center mb-4">
           <img src={figmaIcon} alt="" />
           <h1 className="text-white">Figma design files</h1>
         </div>
