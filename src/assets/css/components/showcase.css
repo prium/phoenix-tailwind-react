@@ -1,0 +1,197 @@
+.variant-container {
+  .img-container {
+    position: relative;
+    z-index: 0;
+    max-width: 549px;
+    box-shadow: 0px 8px 24px -4px rgba(36, 40, 46, 0.08);
+    .side-panel-thumb {
+      position: absolute;
+      transition: transform 200ms ease-in-out;
+      z-index: 2;
+      left: 0;
+      filter: drop-shadow(0 0 13px transparent);
+    }
+  }
+  &:hover {
+    background: var(--color-primary-subtle);
+    transition: 0.2s;
+    .img-container {
+      + {
+        h5 {
+          color: var(--color-primary) !important;
+        }
+      }
+    }
+    .side-panel-thumb {
+      transform: scale(1.05);
+      filter: drop-shadow(0 0 13px rgba(0, 0, 0, 0.12));
+    }
+    .layout-thumb {
+      &::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: rgba(var(--color-primary-subtle), 0.6);
+      }
+    }
+  }
+}
+
+.module-variant-container {
+  --phoenix-module-image-width: 16.25rem;
+  --phoenix-module-images-width: calc(var(--phoenix-module-image-width) * 4);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  padding: 2.5rem 2.5rem 0;
+  background: linear-gradient(
+    116deg,
+    var(--color-secondary-subtle) 32.21%,
+    #dce1ec 109.49%
+  );
+  .module-badge {
+    position: absolute;
+    font-size: 9.25rem;
+    left: -0.625rem;
+    top: -1.189rem;
+    color: var(--color-secondary-light);
+    transition: color 0.3s;
+  }
+  .module-title {
+    color: var(--color-secondary-dark);
+    transition: color 0.3s;
+  }
+  .image-container {
+    @apply flex items-end relative -bottom-6 sm:bottom-[unset];
+    .image {
+      flex-shrink: 0;
+      width: var(--phoenix-module-image-width);
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(4) {
+        margin-left: calc(
+          ((var(--phoenix-module-images-width) - 100%) / 3) * -1
+        );
+      }
+      position: relative;
+      z-index: 1;
+      background: #f4f7fb;
+      img {
+        opacity: 40%;
+        transition: opacity 0.3s;
+      }
+    }
+  }
+  &:hover {
+    background: var(--color-primary-subtle);
+    .image-container {
+      .image {
+        img {
+          opacity: 100%;
+        }
+      }
+    }
+    h2 {
+      color: var(--color-primary) !important;
+    }
+  }
+  &.new {
+    &:hover {
+      background: var(--color-warning-subtle);
+      .module-title {
+        color: var(--color-warning-dark) !important;
+      }
+      .module-badge {
+        color: var(--color-warning-light);
+      }
+    }
+  }
+}
+
+.showcase-gallery {
+  img {
+    position: relative;
+    filter: drop-shadow(0px 0px 75.44px rgba(0, 0, 0, 0.12));
+    border-radius: 0.5rem;
+  }
+  .layer-1 {
+    transform: translateY(150px);
+  }
+  .layer-2 {
+    transform: translateY(180px);
+  }
+  .layer-3 {
+    transform: translateY(210px);
+  }
+  .layer-4 {
+    transform: translateY(240px);
+  }
+  .layer-5 {
+    transform: translateY(270px);
+  }
+  .layer-6 {
+    transform: translateY(300px);
+  }
+}
+
+.page-container {
+  .img-container {
+    position: relative;
+    max-width: 549px;
+    box-shadow: 0px 8px 24px -4px rgba(36, 40, 46, 0.08);
+    .page-thumb {
+      transition: transform 200ms ease-in-out;
+      z-index: 2;
+      left: 0;
+    }
+    &:hover {
+      .page-thumb {
+        transform: scale(1.05);
+        background: rgba(var(--color-primary-subtle), 0.6);
+        filter: drop-shadow(0 0 13px transparent);
+      }
+    }
+  }
+  &:hover {
+    .page-thumb {
+      filter: drop-shadow(0 0 13px rgba(0, 0, 0, 0.12));
+      transform: scale(1.05);
+    }
+    background: var(--color-primary-subtle);
+    transition: 0.2s;
+    .img-container {
+      + {
+        h5 {
+          color: var(--color-primary) !important;
+        }
+      }
+    }
+  }
+}
+
+.feature-figma-img {
+  @apply absolute max-w-62.5 
+  start-1/5 top-3/20 
+  opacity-50 xl:opacity-75 
+  mix-blend-overlay;
+}
+
+.bg-gradient-figma {
+  @apply absolute top-0 
+  w-full h-[1200%] 
+  bg-cover bg-no-repeat;
+  background: linear-gradient(
+    162.48deg,
+    #f24e1e -2.09%,
+    #ff7262 10.32%,
+    #ab69ff 35.4%,
+    #1a9efe 56.39%,
+    #1abdf9 70.28%,
+    #0acf83 89.37%
+  );
+}

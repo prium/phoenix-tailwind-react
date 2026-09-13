@@ -63,13 +63,16 @@ const getDefaultOptions = (
   range: Range,
   breakpoints: BreakpointsContextInterface
 ) => ({
-  color: [getThemeColor('primary'), getThemeColor('tertiary-bg')],
+  color: [
+    getThemeColor('color-primary'),
+    getThemeColor('background-color-highlight')
+  ],
   tooltip: {
     trigger: 'axis',
     padding: [7, 10],
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('border-color'),
-    textStyle: { color: getThemeColor('light-text-emphasis') },
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('border-color-default'),
+    textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,
     axisPointer: {
@@ -89,7 +92,7 @@ const getDefaultOptions = (
     boundaryGap: 0,
     axisLine: {
       lineStyle: {
-        color: getThemeColor('border-color-translucent')
+        color: getThemeColor('border-color-subtle')
       }
     },
     axisTick: {
@@ -98,7 +101,7 @@ const getDefaultOptions = (
     axisLabel: {
       hideOverlap: data.length > 31,
       showMinLabel: true,
-      color: getThemeColor('tertiary-color'),
+      color: getThemeColor('text-color-subtle'),
       formatter: (value: number) => formatAxisLabel(range, value),
       margin: 15,
       interval: formatInterval(range, breakpoints)
@@ -115,7 +118,7 @@ const getDefaultOptions = (
     boundaryGap: 0,
     axisLabel: {
       show: true,
-      color: getThemeColor('body-color'),
+      color: getThemeColor('text-color-default'),
       formatter: (value: number) => `${value}K`,
       margin: 15,
       interval: 20
@@ -123,7 +126,7 @@ const getDefaultOptions = (
     splitLine: {
       show: true,
       lineStyle: {
-        color: getThemeColor('border-color-translucent')
+        color: getThemeColor('border-color-subtle')
       }
     },
     axisTick: {
@@ -140,12 +143,12 @@ const getDefaultOptions = (
       name: 'Growth',
       data: data.map(item => item[1]),
       itemStyle: {
-        color: getThemeColor('body-highlight-bg'),
-        borderColor: getThemeColor('primary'),
+        color: getThemeColor('background-color-subtle'),
+        borderColor: getThemeColor('color-primary'),
         borderWidth: 1
       },
       lineStyle: {
-        color: getThemeColor('primary'),
+        color: getThemeColor('color-primary'),
         width: 1
       },
       areaStyle: {
@@ -158,11 +161,11 @@ const getDefaultOptions = (
           colorStops: [
             {
               offset: 0,
-              color: rgbaColor(getThemeColor('primary'), 0.5)
+              color: rgbaColor(getThemeColor('color-primary'), 0.5)
             },
             {
               offset: 1,
-              color: rgbaColor(getThemeColor('primary'), 0)
+              color: rgbaColor(getThemeColor('color-primary'), 0)
             }
           ]
         }

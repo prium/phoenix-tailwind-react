@@ -1,48 +1,52 @@
-import classNames from 'classnames';
-import { Col, ColProps, Row } from 'react-bootstrap';
-
 interface MessageAttachmentsProps {
   attachments: string[];
   openLightbox: (slideIndex: number) => void;
 }
+
+/**
+ * Message image attachments — `+Gallery` and the single-image branch of
+ * `+SentMessage`/`+ReceivedMessage` in phoenix-tailwind
+ * mixins/chat/ChatContent.pug (the `ol-xl-2` typo is the gold's own).
+ */
 const MessageAttachments = ({
   attachments,
   openLightbox
 }: MessageAttachmentsProps) => {
-  const spans = () => {
-    if (attachments.length > 3) {
-      return {
-        xs: 6,
-        md: 4,
-        xl: 3
-      };
-    }
-    if (attachments.length === 2) {
-      return {
-        xs: 6
-      };
-    }
-    if (attachments.length === 1) {
-      return {
-        xs: 'auto'
-      };
-    }
-  };
+  if (attachments.length === 1) {
+    return (
+      <a
+        href={attachments[0]}
+        onClick={e => {
+          e.preventDefault();
+          openLightbox(1);
+        }}
+      >
+        <img
+          className="rounded-md object-cover mt-1 max-w-50"
+          src={attachments[0]}
+          alt=""
+        />
+      </a>
+    );
+  }
+
   return (
-    <Row className={classNames('g-2 mt-0')}>
+    <div className="row g-2 mt-0">
       {attachments.map((attachment, index) => (
-        <Col {...(spans() as ColProps)} key={attachment}>
-          <img
-            src={attachment}
-            alt=""
-            className="rounded-2 cursor-pointer img-fluid"
-            onClick={() => {
+        <div className="col-6 md:col-4 ol-xl-2 xl:col-3" key={index}>
+          <a
+            href={attachment}
+            onClick={e => {
+              e.preventDefault();
               openLightbox(index + 1);
             }}
-          />
-        </Col>
+          >
+            {/* the gold anchor keeps a leading space text node before the img */}{' '}
+            <img className="rounded-md object-cover" src={attachment} alt="" />
+          </a>
+        </div>
       ))}
-    </Row>
+    </div>
   );
 };
 

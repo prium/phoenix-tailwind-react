@@ -1,0 +1,200 @@
+@utility list-group {
+  @layer base {
+    --list-group-bg: var(--background-color-soft);
+    --list-group-color: var(--text-color-muted);
+    --list-group-padding-y: 0;
+    --list-group-border-color: var(--border-color-subtle);
+    --list-group-border-radius: var(--radius-md);
+    --list-group-item-padding-x: --spacing(4);
+    --list-group-item-padding-y: --spacing(2);
+    --list-group-action-color: var(--text-color-muted);
+    --list-group-action-hover-color: var(--emphasis);
+    --list-group-action-hover-bg: var(--background-color-subtle);
+    --list-group-action-active-color: var(--text-color-default);
+    --list-group-action-active-bg: var(--background-color-muted);
+    --list-group-hover-bg: var(--background-color-subtle);
+    --list-group-hover-color: var(--text-color-emphasis);
+    --list-group-active-bg: var(--color-primary);
+    --list-group-active-color: var(--color-white);
+    --list-group-disabled-bg: var(--background-color-soft);
+    --list-group-disabled-color: var(--text-color-soft);
+  }
+}
+
+@utility list-group-item {
+  @layer base {
+    @apply border border-(--list-group-border-color)
+    bg-(--list-group-bg)
+    leading-base;
+    + .list-group-item {
+      @apply border-t-0;
+    }
+    &:last-child {
+      @apply rounded-b-md;
+    }
+    &:first-child {
+      @apply rounded-t-md;
+    }
+  }
+}
+
+@utility list-group-item-action {
+  @layer base {
+    &:not(.active):active {
+      @apply bg-(--list-group-action-active-bg)
+      text-(--list-group-action-active-color);
+    }
+  }
+}
+
+@utility list-group-item-primary {
+  @layer base {
+    --list-group-color: var(--color-primary-darker);
+    --list-group-bg: var(--color-primary-subtle);
+    --list-group-border-color: var(--border-color-primary-subtle);
+    --list-group-action-hover-color: var(--text-color-emphasis);
+    --list-group-action-hover-bg: var(--border-color-primary-subtle);
+    --list-group-action-active-color: var(--text-color-emphasis);
+    --list-group-action-active-bg: var(--border-color-primary-subtle);
+    --list-group-active-color: var(--color-primary-subtle);
+    --list-group-active-bg: var(--color-primary-darker);
+    --list-group-active-border-color: var(--color-primary-darker);
+  }
+}
+
+@utility list-group-item-secondary {
+  @layer base {
+    --list-group-color: var(--color-secondary-darker);
+    --list-group-bg: var(--color-secondary-subtle);
+    --list-group-border-color: var(--border-color-secondary-subtle);
+    --list-group-action-hover-color: var(--text-color-emphasis);
+    --list-group-action-hover-bg: var(--border-color-secondary-subtle);
+    --list-group-action-active-color: var(--text-color-emphasis);
+    --list-group-action-active-bg: var(--border-color-secondary-subtle);
+    --list-group-active-color: var(--color-secondary-subtle);
+    --list-group-active-bg: var(--color-secondary-darker);
+    --list-group-active-border-color: var(--color-secondary-darker);
+
+    @variant dark {
+      --list-group-color: var(--color-secondary-light);
+      --list-group-active-bg: var(--color-secondary-light);
+      --list-group-active-border-color: var(--color-secondary-light);
+    }
+  }
+}
+
+@utility list-group-item-success {
+  @layer base {
+    --list-group-color: var(--color-success-darker);
+    --list-group-bg: var(--color-success-subtle);
+    --list-group-border-color: var(--border-color-success-subtle);
+    --list-group-action-hover-color: var(--text-color-emphasis);
+    --list-group-action-hover-bg: var(--border-color-success-subtle);
+    --list-group-action-active-color: var(--text-color-emphasis);
+    --list-group-action-active-bg: var(--border-color-success-subtle);
+    --list-group-active-color: var(--color-success-subtle);
+    --list-group-active-bg: var(--color-success-darker);
+    --list-group-active-border-color: var(--color-success-darker);
+  }
+}
+
+@utility list-group-item-info {
+  @layer base {
+    --list-group-color: var(--color-info-darker);
+    --list-group-bg: var(--color-info-subtle);
+    --list-group-border-color: var(--border-color-info-subtle);
+    --list-group-action-hover-color: var(--text-color-emphasis);
+    --list-group-action-hover-bg: var(--border-color-info-subtle);
+    --list-group-action-active-color: var(--text-color-emphasis);
+    --list-group-action-active-bg: var(--border-color-info-subtle);
+    --list-group-active-color: var(--color-info-subtle);
+    --list-group-active-bg: var(--color-info-darker);
+    --list-group-active-border-color: var(--color-info-darker);
+  }
+}
+
+@utility list-group-item-warning {
+  @layer base {
+    --list-group-color: var(--color-warning-darker);
+    --list-group-bg: var(--color-warning-subtle);
+    --list-group-border-color: var(--border-color-warning-subtle);
+    --list-group-action-hover-color: var(--text-color-emphasis);
+    --list-group-action-hover-bg: var(--border-color-warning-subtle);
+    --list-group-action-active-color: var(--text-color-emphasis);
+    --list-group-action-active-bg: var(--border-color-warning-subtle);
+    --list-group-active-color: var(--color-warning-subtle);
+    --list-group-active-bg: var(--color-warning-darker);
+    --list-group-active-border-color: var(--color-warning-darker);
+  }
+}
+
+@utility list-group-item-danger {
+  @layer base {
+    --list-group-color: var(--color-danger-darker);
+    --list-group-bg: var(--color-danger-subtle);
+    --list-group-border-color: var(--border-color-danger-subtle);
+    --list-group-action-hover-color: var(--text-color-emphasis);
+    --list-group-action-hover-bg: var(--border-color-danger-subtle);
+    --list-group-action-active-color: var(--text-color-emphasis);
+    --list-group-action-active-bg: var(--border-color-danger-subtle);
+    --list-group-active-color: var(--color-danger-subtle);
+    --list-group-active-bg: var(--color-danger-darker);
+    --list-group-active-border-color: var(--color-danger-darker);
+  }
+}
+
+@utility list-group-item-light {
+  @layer base {
+    --list-group-color: var(--text-color-emphasis);
+    --list-group-bg: color-mix(
+      in oklab,
+      var(--background-color-subtle),
+      var(--color-white)
+    );
+    --list-group-border-color: var(--border-color-light-subtle);
+    --list-group-action-hover-color: var(--text-color-emphasis);
+    --list-group-action-hover-bg: var(--border-color-light-subtle);
+    --list-group-action-active-color: var(--text-color-emphasis);
+    --list-group-action-active-bg: var(--border-color-light-subtle);
+    --list-group-active-color: color-mix(
+      in oklab,
+      var(--color-gray-100),
+      var(--color-white)
+    );
+    --list-group-active-bg: var(--text-color-emphasis);
+    --list-group-active-border-color: var(--text-color-emphasis);
+
+    @variant dark {
+      --list-group-bg: var(--background-color-emphasis);
+      --list-group-active-color: var(--background-color-emphasis);
+    }
+  }
+}
+
+@utility list-group-item-dark {
+  @layer base {
+    --list-group-color: var(--color-contrast);
+    --list-group-bg: var(--background-color-emphasis);
+    --list-group-border-color: var(--border-color-dark-subtle);
+    --list-group-action-hover-color: var(--text-color-emphasis);
+    --list-group-action-hover-bg: var(--border-color-dark-subtle);
+    --list-group-action-active-color: var(--text-color-emphasis);
+    --list-group-action-active-bg: var(--border-color-dark-subtle);
+    --list-group-active-color: var(--background-color-emphasis);
+    --list-group-active-bg: var(--color-contrast);
+    --list-group-active-border-color: var(--color-contrast);
+
+    @variant dark {
+      --list-group-bg: color-mix(
+        in srgb,
+        var(--background-color-emphasis),
+        var(--color-black)
+      );
+      --list-group-active-color: color-mix(
+        in srgb,
+        var(--background-color-emphasis),
+        var(--color-black)
+      );
+    }
+  }
+}

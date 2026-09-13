@@ -16,11 +16,11 @@ import ActionDropdownItems from 'components/common/ActionDropdownItems';
 export const ordersTableColumns: ColumnDef<Order>[] = [
   {
     accessorKey: 'orderId',
-    header: 'Order',
+    header: 'ORDER',
     cell: ({ row: { original } }) => {
       const { orderId } = original;
       return (
-        <Link to="#!" className="fw-semibold">
+        <Link to="#!" className="font-semibold">
           #{orderId}
         </Link>
       );
@@ -31,17 +31,17 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
   },
   {
     accessorKey: 'total',
-    header: 'Total',
+    header: 'TOTAL',
     cell: ({ row: { original } }) => currencyFormat(original.total),
     meta: {
       headerProps: { style: { width: '10%' }, className: 'text-end pe-7' },
-      cellProps: { className: 'text-end fw-semibold text-body-highlight pe-7' }
+      cellProps: { className: 'text-end font-semibold text-highlight pe-7' }
     }
   },
   {
     id: 'payment_status',
     accessorFn: ({ payment_status }) => payment_status.label,
-    header: 'Payment status',
+    header: 'PAYMENT STATUS',
     cell: ({ row: { original } }) => {
       const { payment_status } = original;
       return (
@@ -49,7 +49,7 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
           bg={payment_status.type}
           variant="phoenix"
           iconPosition="end"
-          className="fs-10"
+          className="text-sm"
           icon={
             <FeatherIcon
               icon={payment_status.icon}
@@ -69,7 +69,7 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
   {
     id: 'fulfilment_status',
     accessorFn: ({ fulfilment_status }) => fulfilment_status.label,
-    header: 'Fulfilment status',
+    header: 'FULFILMENT STATUS',
     cell: ({ row: { original } }) => {
       const { fulfilment_status } = original;
       return (
@@ -77,7 +77,7 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
           bg={fulfilment_status.type}
           variant="phoenix"
           iconPosition="end"
-          className="fs-10"
+          className="text-sm"
           icon={
             <FeatherIcon
               icon={fulfilment_status.icon}
@@ -96,19 +96,19 @@ export const ordersTableColumns: ColumnDef<Order>[] = [
   },
   {
     accessorKey: 'delivery_type',
-    header: 'Delivery type',
+    header: 'DELIVERY TYPE',
     meta: {
       headerProps: { style: { width: '30%' } },
-      cellProps: { className: 'text-body fs-9' }
+      cellProps: { className: 'text-default text-md' }
     }
   },
   {
     accessorKey: 'date',
-    header: 'Date',
+    header: 'DATE',
     meta: {
       headerProps: { className: 'text-end' },
       cellProps: {
-        className: 'text-body-tertiary fs-9 ps-4 text-end white-space-nowrap'
+        className: 'text-subtle text-md ps-4 text-end whitespace-nowrap'
       }
     }
   },
@@ -139,9 +139,9 @@ const CustomerOrdersTable = () => {
 
   return (
     <AdvanceTableProvider {...table}>
-      <div className="border-y border-translucent">
+      <div className="border-y border-subtle">
         <AdvanceTable
-          tableProps={{ className: 'phoenix-table table-sm fs-9' }}
+          tableProps={{ className: ' table-sm text-md' }}
         />
         <AdvanceTableFooter pagination showViewAllBtn={false} />
       </div>

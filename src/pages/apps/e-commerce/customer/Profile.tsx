@@ -7,33 +7,35 @@ import EcomProfileCard from 'components/cards/EcomProfileCard';
 import PageBreadcrumb from 'components/common/PageBreadcrumb';
 import ProfileDetailsTab from 'components/modules/e-commerce/profile/ProfileDetailsTab';
 import { defaultBreadcrumbItems } from 'data/commonData';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row } from '@hummingbirdui/react';
 
 const Profile = () => {
   return (
-    <div className="pt-5 mb-9">
+    <div className="pt-8 mb-16">
       <Section small className="py-0">
         <PageBreadcrumb items={defaultBreadcrumbItems} />
-        <Row className="align-items-center justify-content-between g-3 mb-4">
+        <Row className="items-center justify-between g-4 mb-6">
           <Col xs="auto">
             <h2 className="mb-0">Profile</h2>
           </Col>
-          <Col xs="auto" className="d-flex flex-wrap gap-2 gap-sm-3">
+          <Col xs="auto" className="flex flex-wrap gap-2 sm:gap-4">
             <Button
-              variant="phoenix-danger"
+              variant="phoenix"
+              color="danger"
               startIcon={<FontAwesomeIcon className="me-2" icon={faTrashAlt} />}
             >
               Delete customer
             </Button>
             <Button
-              variant="phoenix-secondary"
+              variant="phoenix"
+              color="secondary"
               startIcon={<FontAwesomeIcon className="me-2" icon={faKey} />}
             >
               Reset password
             </Button>
           </Col>
         </Row>
-        <Row className="g-3 mb-6">
+        <Row className="g-4 mb-10">
           <Col xs={12} lg={8}>
             <EcomProfileCard />
           </Col>

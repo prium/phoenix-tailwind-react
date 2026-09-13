@@ -1,8 +1,8 @@
-import { Col, Form, Modal, Row } from 'react-bootstrap';
 import boardIcon from 'assets/img/kanban/board.png';
 import Button from 'components/base/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelope, faLink, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { Dialog, Input, Select } from '@hummingbirdui/react';
 import { Link } from 'react-router';
 
 const KanbanInviteModal = ({
@@ -13,74 +13,81 @@ const KanbanInviteModal = ({
   handleClose: () => void;
 }) => {
   return (
-    <Modal show={show} centered onHide={handleClose}>
-      <Modal.Header className="p-4 d-flex gap-2 border-0">
-        <img src={boardIcon} height={24} width={18} />
-        <h3 className="mb-0 text-body-emphasis fw-semibold flex-1">
-          Phoenix Kanban
-        </h3>
-        <Button className="p-0 ms-auto" onClick={handleClose}>
-          <FontAwesomeIcon icon={faXmark} className="fs-7" />
-        </Button>
-      </Modal.Header>
-      <Modal.Body className="p-4 pt-0">
-        <p className="text-body-tertiary fw-semibold fs-9">
-          Add the <strong className="fw-bolder">Members</strong> or{' '}
-          <strong className="fw-bolder">Guests</strong> to your Kanban board.
-          They can add, edit, or move tasks in your board. Tasks can also be
-          assigned to them.{' '}
-          <Link to="#!" className="fw-semibold">
-            Learn more
-          </Link>
-        </p>
-        <Row className="g-2 mb-2">
-          <Col xs={6}>
-            <Form.Control
-              type="text"
-              placeholder="Phoenix id or email address"
-              name="email"
-            />
-          </Col>
-          <Col xs="auto" sm={3} className="flex-1">
-            <Form.Select>
-              <option value="guest">Guest</option>
-              <option value="member">Member</option>
-            </Form.Select>
-          </Col>
-          <Col xs="auto" sm={3}>
-            <Button variant="primary">
-              <FontAwesomeIcon icon={faEnvelope} className="fs-10 me-sm-2" />
-              <span className="d-none d-sm-inline-block">Invite</span>
-            </Button>
-          </Col>
-        </Row>
-        <div className="py-2 border-bottom border-translucent border-dashed position-relative mb-4">
-          <span className="bg-body-emphasis px-1 position-absolute top-50 start-50 translate-x-50 fs-9 fw-semibold">
-            Or,
-          </span>
+    <Dialog open={show} onOpenChange={open => !open && handleClose()}>
+      <Dialog.Content centered aria-describedby={undefined}>
+        <div className="modal-header p-6 flex gap-2 border-0">
+          <img src={boardIcon} height={24} width={18} alt="" />
+          <Dialog.Title asChild>
+            <h3 className="mb-0 text-emphasis font-semibold flex-1">
+              Phoenix Kanban
+            </h3>
+          </Dialog.Title>
+          <Button className="p-0 ms-auto" onClick={handleClose}>
+            <FontAwesomeIcon icon={faXmark} className="text-lg" />
+          </Button>
         </div>
-        <Row className="g-2">
-          <Col xs="auto" sm={9} className="flex-1">
-            <Button
-              variant="phoenix-secondary"
-              startIcon={
-                <FontAwesomeIcon icon={faLink} className="ms-2 fs-9" />
-              }
-              className="w-100"
-            >
-              <span className="d-none d-sm-inline">Create & Copy</span>{' '}
-              <span>Shareable link</span>
-            </Button>
-          </Col>
-          <Col xs="auto" sm={3}>
-            <Form.Select>
-              <option value="guest">Guest</option>
-              <option value="member">Member</option>
-            </Form.Select>
-          </Col>
-        </Row>
-      </Modal.Body>
-    </Modal>
+        <div className="modal-body p-6 pt-0">
+          <p className="text-subtle font-semibold text-md">
+            Add the <strong className="font-black">Members</strong> or{' '}
+            <strong className="font-black">Guests</strong> to your Kanban board.
+            They can add, edit, or move tasks in your board. Tasks can also be
+            assigned to them.{' '}
+            <Link to="#!" className="font-semibold">
+              Learn more
+            </Link>
+          </p>
+          <div className="row g-2 mb-2">
+            <div className="col-6">
+              <Input
+                type="text"
+                placeholder="Phoenix id or email address"
+                name="email"
+              />
+            </div>
+            <div className="col-auto sm:col-3 flex-1">
+              <Select>
+                <option value="guest">Guest</option>
+                <option value="member">Member</option>
+              </Select>
+            </div>
+            <div className="col-auto sm:col-3">
+              <Button variant="primary">
+                <FontAwesomeIcon
+                  icon={faEnvelope}
+                  className="text-sm sm:me-2"
+                />
+                <span className="hidden sm:inline-block">Invite</span>
+              </Button>
+            </div>
+          </div>
+          <div className="py-2 border-b border-subtle border-dashed relative mb-6">
+            <span className="bg-soft px-1 absolute top-1/2 start-1/2 -translate-x-1/2 text-md font-semibold">
+              Or,
+            </span>
+          </div>
+          <div className="row g-2">
+            <div className="col-auto sm:col-9 flex-1">
+              <Button
+                variant="phoenix-secondary"
+                startIcon={
+                  <FontAwesomeIcon icon={faLink} className="ms-2 text-md" />
+                }
+                className="w-full"
+              >
+                <span className="hidden sm:inline">Create &amp; Copy</span>{' '}
+                <span>Shareable link</span>
+              </Button>
+            </div>
+            <div className="col-auto sm:col-3">
+              <Select>
+                <option value="guest">Guest</option>
+                <option value="member">Member</option>
+              </Select>
+            </div>
+          </div>
+        </div>
+      </Dialog.Content>
+    </Dialog>
   );
 };
 

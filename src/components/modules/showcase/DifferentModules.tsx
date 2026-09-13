@@ -85,7 +85,7 @@ const ModulesItem = ({ item }: { item: Module }) => (
     })}
   >
     {item.badge && <h1 className="module-badge">{item.badge.label}</h1>}
-    <h2 className="module-title position-relative">{item.name}</h2>
+    <h2 className="module-title relative">{item.name}</h2>
     <Link to={item.path || '#!'} className="stretched-link" />
     <div className="image-container cursor-pointer">
       {item.images.map((image, idx) => (
@@ -100,9 +100,9 @@ const ModulesItem = ({ item }: { item: Module }) => (
 const DifferentModules = () => {
   return (
     <Container fluid className="pt-10">
-      <h2 className="text-body-highlight fw-normal lh-sm text-center mb-11">
+      <h2 className="text-highlight font-normal lh-sm text-center mb-11">
         Different
-        <span className="text-primary position-relative fw-bolder d-inline-flex ms-2">
+        <span className="text-primary relative font-black d-inline-flex ms-2">
           modules
           <img
             src={spotIllustration31}

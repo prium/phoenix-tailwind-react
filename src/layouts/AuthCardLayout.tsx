@@ -1,122 +1,94 @@
 import { UilCheckCircle } from '@iconscout/react-unicons';
+import { Card, Col, Row, cn } from '@hummingbirdui/react';
 import Unicon from 'components/base/Unicon';
-import { Card, Col, Container, Row } from 'react-bootstrap';
 import bg37 from 'assets/img/bg/37.png';
 import bg38 from 'assets/img/bg/38.png';
-import authIllustrations from 'assets/img/spot-illustrations/auth.png';
-import authIllustrationsDark from 'assets/img/spot-illustrations/auth-dark.png';
+import authIllustration from 'assets/img/spot-illustrations/auth.png';
+import authIllustrationDark from 'assets/img/spot-illustrations/auth-dark.png';
 import { PropsWithChildren } from 'react';
-import { Link } from 'react-router';
-import Logo from 'components/common/Logo';
-import classNames from 'classnames';
 
 interface AuthCardLayoutProps {
-  logo?: boolean;
-  className?: string;
+  /** Mirrors the pug `config.page`, which picks the title-box paddings. */
+  page?: 'sign-in' | 'sign-up' | 'forgot-password';
 }
 
+const FEATURES = ['Fast', 'Simple', 'Responsive'];
+
+/** pug: layouts/LayoutCardAuth.pug — `mixin LayoutCardBasic`. */
 const AuthCardLayout = ({
-  logo = true,
-  className,
+  page,
   children
 }: PropsWithChildren<AuthCardLayoutProps>) => {
   return (
-    <Container fluid className="bg-body-tertiary dark__bg-gray-1200">
+    <div className="container-fluid bg-highlight dark:bg-default">
       <div
         className="bg-holder bg-auth-card-overlay"
         style={{ backgroundImage: `url(${bg37})` }}
       />
-
-      <Row className="flex-center position-relative min-vh-100 g-0 py-5">
+      <Row className="flex-center relative min-h-screen g-0 py-8">
         <Col xs={11} sm={10} xl={8}>
-          <Card className="border border-translucent auth-card">
-            <Card.Body className="pe-md-0">
-              <Row className="align-items-center gx-0 gy-7">
+          <Card className="border border-subtle auth-card">
+            <Card.Body className="md:pe-0">
+              <Row className="items-center gx-0 gy-12">
                 <Col
                   xs="auto"
-                  className="bg-body-highlight dark__bg-gray-1100 rounded-3 position-relative overflow-hidden auth-title-box"
+                  className="bg-subtle dark:bg-soft rounded-lg relative overflow-hidden auth-title-box z-1"
                 >
                   <div
                     className="bg-holder"
                     style={{ backgroundImage: `url(${bg38})` }}
                   />
                   <div
-                    className={classNames(
-                      className,
-                      'position-relative px-4 px-lg-7 py-7 pb-sm-5 text-center text-md-start pb-lg-7'
+                    className={cn(
+                      {
+                        'card-sign-up': page === 'sign-up',
+                        'md:pb-12': page === 'sign-in'
+                      },
+                      'relative px-6 lg:px-12 pt-12 pb-12 sm:pb-8 text-center md:text-start lg:pb-12'
                     )}
                   >
-                    <h3 className="mb-3 text-body-emphasis fs-7">
+                    <h3 className="mb-4 text-emphasis text-lg">
                       Phoenix Authentication
                     </h3>
-                    <p className="text-body-tertiary">
+                    <p className="text-subtle">
                       Give yourself some hassle-free development process with
                       the uniqueness of Phoenix!
                     </p>
-                    <ul className="list-unstyled mb-0 w-max-content w-md-auto mx-auto">
-                      <li className="d-flex align-items-center gap-2">
-                        <Unicon
-                          fill='currentColor'
-                          icon={UilCheckCircle}
-                          className="text-success"
-                          size={16}
-                        />
-                        <span className="text-body-tertiary fw-semibold">
-                          Fast
-                        </span>
-                      </li>
-                      <li className="d-flex align-items-center gap-2">
-                        <Unicon
-                          fill='currentColor'
-                          icon={UilCheckCircle}
-                          className="text-success"
-                          size={16}
-                        />
-                        <span className="text-body-tertiary fw-semibold">
-                          Simple
-                        </span>
-                      </li>
-                      <li className="d-flex align-items-center gap-2">
-                        <Unicon
-                          fill='currentColor'
-                          icon={UilCheckCircle}
-                          className="text-success"
-                          size={16}
-                        />
-                        <span className="text-body-tertiary fw-semibold">
-                          Responsive
-                        </span>
-                      </li>
+                    <ul className="list-none ps-0 mb-0 w-max md:w-auto">
+                      {FEATURES.map(feature => (
+                        <li className="flex items-center" key={feature}>
+                          <Unicon
+                            icon={UilCheckCircle}
+                            size={16}
+                            fill="currentColor"
+                            className="text-success me-2"
+                          />
+                          <span className="text-subtle font-semibold">
+                            {feature}
+                          </span>
+                        </li>
+                      ))}
                     </ul>
                   </div>
-                  <div className="position-relative mb-6 d-none d-md-block text-center mt-md-15 z-n1">
+                  <div
+                    className={cn(
+                      page === 'forgot-password' ? 'md:mt-8' : 'md:mt-30',
+                      'relative mb-10 hidden md:block text-center -z-1'
+                    )}
+                  >
                     <img
-                      className="auth-title-box-img d-dark-none"
-                      src={authIllustrations}
+                      className="auth-title-box-img dark:hidden"
+                      src={authIllustration}
                       alt=""
                     />
                     <img
-                      className="auth-title-box-img d-light-none"
-                      src={authIllustrationsDark}
+                      className="auth-title-box-img hidden dark:block"
+                      src={authIllustrationDark}
                       alt=""
                     />
                   </div>
                 </Col>
                 <Col className="mx-auto">
-                  {logo && (
-                    <div className="text-center">
-                      <Link
-                        to="/"
-                        className="d-inline-block text-decoration-none mb-4"
-                      >
-                        <Logo
-                          text={false}
-                          width={58}
-                          className="fw-bolder fs-5 d-inline-block"
-                        />
-                      </Link>
-                    </div>
-                  )}
                   <div className="auth-form-box">{children}</div>
                 </Col>
               </Row>
@@ -124,7 +96,7 @@ const AuthCardLayout = ({
           </Card>
         </Col>
       </Row>
-    </Container>
+    </div>
   );
 };
 

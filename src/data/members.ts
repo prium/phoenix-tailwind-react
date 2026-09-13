@@ -9,6 +9,7 @@ import team34 from 'assets/img/team/34.webp';
 import team29 from 'assets/img/team/29.webp';
 import team3 from 'assets/img/team/3.webp';
 import team25 from 'assets/img/team/25.webp';
+import teamAvatar from 'assets/img/team/avatar.webp';
 // import { BadgeBg } from 'components/base/Badge';
 import { PageBreadcrumbItem } from 'components/common/PageBreadcrumb';
 
@@ -25,6 +26,8 @@ export const memberBreadcrumbItems: PageBreadcrumbItem[] = [
 
 export type Member = {
   avatar?: string;
+  /** gold `img.avatar-placeholder` (the generic avatar.webp) */
+  avatarPlaceholder?: boolean;
   name: string;
   email: string;
   city: string;
@@ -44,6 +47,8 @@ export const members: Member[] = [
     joined: 'Dec 12, 12:56 PM'
   },
   {
+    avatar: teamAvatar,
+    avatarPlaceholder: true,
     name: 'Milind Mikuja',
     email: 'mimiku@yahoo.com',
     mobile: '+8801564768976',
@@ -141,12 +146,14 @@ export const members: Member[] = [
     joined: 'Oct 15, 12:00 PM'
   },
   {
+    avatar: teamAvatar,
+    avatarPlaceholder: true,
     name: 'Jennifer Schramm',
     email: 'jennifer@example.com',
     mobile: '+8283829631',
     city: 'Charlotte',
     lastActive: '12 hours ago',
-    joined: 'Oct 12, 12:56 PM'
+    joined: 'Oct 12, 11:00 AM'
   },
   {
     avatar: team32,

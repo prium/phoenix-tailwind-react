@@ -1,16 +1,14 @@
 import EcomProjectionVsActualChart from 'components/charts/e-charts/EcomProjectionVsActualChart';
-import React from 'react';
 
+/** `+EcomCharts` (projection vs actual) in phoenix-tailwind */
 const EcomProjectionVsActual = () => {
   return (
-    <div className="me-xl-4">
+    <div className="xl:me-6">
       <div>
         <h3>Projection vs actual</h3>
-        <p className="mb-1 text-body-tertiary">
-          Actual earnings vs projected earnings
-        </p>
+        <p className="mb-1 text-subtle">Actual earnings vs projected earnings</p>
       </div>
-      <EcomProjectionVsActualChart height="300px" width="100%" />
+      <EcomProjectionVsActualChart />
     </div>
   );
 };

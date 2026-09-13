@@ -1,225 +1,213 @@
 import { faCircleInfo } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Alert } from '@hummingbirdui/react';
 import PhoenixLiveEditor from 'components/docs/PhoenixLiveEditor';
-import { Alert } from 'react-bootstrap';
 import {
   ecomTopRegionsMap,
   forawardRefCode,
   providerCode,
+  scrollbarCode,
   scrollbarCodeType,
   scrollbarHelperCode,
   useContextReplaceCode
 } from 'data/migrations';
 
+/**
+ * Body of the `v1.10.0 → v2.0.0` entry on `/migrations` — the React 18 → 19
+ * upgrade. Historical: these steps describe what that release changed, and are
+ * only relevant if you are coming from v1.10.0 or older.
+ */
 const MigrationToNineteen = () => {
   return (
-    <>
-      <div className="bg-body-highlight p-3 py-5 mb-5">
-        <Alert variant={'subtle-warning'} className="d-flex align-items-center">
-          <FontAwesomeIcon
-            icon={faCircleInfo}
-            className="text-warning fs-5 me-3"
-          />
-          <p>
-            This is a major update. Please backup your project before upgrading
-            to the latest version. This version is purely focused on updating
-            the react version. See the{' '}
-            <a
-              href="https://react.dev/blog/2024/04/25/react-19-upgrade-guide"
-              target="_blank"
-            >
-              migration guide
-            </a>
-          </p>
-        </Alert>
-        <p>
-          In this version, we have migrated our project from{' '}
-          <code>React 18.2.0</code> to <code>React 19.1.0</code> and all the
-          dependencies that are compatible with <code>react 19</code>. If you're
-          upgrading from <code>v1.10.0</code> to <code>v2.0.0</code>, please
-          follow the steps outlined below.
-        </p>
-        <h5 className="mt-3 mb-2">
-          1. Update the <code>package.json</code> file.
-        </h5>
-        <p>
-          All Phoenix React packages are compatible with React 19. Please update
-          all dependencies and devDependencies in your <code>package.json</code>{' '}
-          to the latest versions from Phoenix React.
-        </p>
-
-        <h5 className="mt-3 mb-2">
-          2. Updating the <code>react-router-dom</code> to{' '}
-          <code>react-router</code>. See the{' '}
-          <a href="https://reactrouter.com/upgrading/v6#upgrade-to-v7">
-            migration
+    <div className="bg-subtle p-4 py-8 mb-8 rounded-md">
+      <Alert variant="subtle" color="warning" className="items-start mb-6">
+        <Alert.Icon>
+          <FontAwesomeIcon icon={faCircleInfo} />
+        </Alert.Icon>
+        <p className="mb-0 flex-1">
+          This is a major update. Back up your project before upgrading. The
+          release is focused on the React version itself — read React&apos;s own{' '}
+          <a
+            href="https://react.dev/blog/2024/04/25/react-19-upgrade-guide"
+            target="_blank"
+            rel="noreferrer"
+          >
+            React 19 upgrade guide
           </a>{' '}
-          guide for more details.
-        </h5>
-        <p>
-          As <code>react-router-dom</code> updates their package from{' '}
-          <code>react-router-dom</code> to <code>react-router</code>. We have
-          replaced all the occurrences of <code>react-router-dom</code> with{' '}
-          <code>react-router</code>. So we have to update the imports in the
-          components as such.
+          alongside the steps below.
         </p>
-        <h5 className="mt-3 mb-2">
-          3. Updating the <code>Suspense</code> in <code>Route.tsx</code>
-        </h5>
-        <p>
-          In the <code>Routes.tsx</code> where we have used suspense, we have to
-          use the key property. So that it helps with the better transition of
-          the page that avoid hiding already visible content.
-        </p>
-        <PhoenixLiveEditor
-          code={`<Suspense key={location.pathname} fallback={'Loading..'}>`}
-        />
-        <h5 className="mt-3 mb-2">
-          4. Updating the <code>forwardRef</code> to <code>ref</code>
-        </h5>
-        <p>
-          Previously, we used <code>forwardRef</code> to forward the{' '}
-          <code>ref</code>, just as React used to do. In the current version of
-          react, we can use <code>ref</code> directly in the component. We need to update the
-          components that use <code>forwardRef</code> to reference.
-        </p>
-        <PhoenixLiveEditor code={forawardRefCode} />
-        <h5 className="mt-3 mb-2">
-          5. Switch from <code>useContext</code> to the new <code>use()</code>{' '}
-          API hook
-        </h5>
-        <p>
-          React 19 introduces <code>use()</code> API Hook, which is useful for
-          retrieving Context or async data. Now look for all occurrence of{' '}
-          <code>useContext</code> and replace them with <code>use()</code> hook.
-        </p>
-        <PhoenixLiveEditor code={useContextReplaceCode} />
-        <h5 className="mt-3 mb-2">
-          6. Use the shorthand <code>Provider</code> syntax
-        </h5>
-        <p>
-          In React 19, you can render <code>Context</code> as a provider instead
-          of <code>{`<Context.Provider>`}</code>. So replace all the occurrences
-          of <code>{`<Context.Provider>`}</code> with the shorthand
-          <code>{`<Context>`}</code> syntax.
-        </p>
-        <PhoenixLiveEditor code={providerCode} />
-        <h5 className="mt-3 mb-2">
-          7. Check more updating guides using <code>Codemods</code>
-        </h5>
-        <p>
-          Codemons help with upgrading the react 19. It list all the changes that can
-          be made from react 18 to react 19 and changes them into react 19. It
-          also supports typescript support. You can change the code following
-          the list:
-        </p>
-        <PhoenixLiveEditor
-          code={`
-            npx types-react-codemod@latest preset-19 . // for TypeScript
-          `}
-        />
-        <h5 className="mt-3 mb-2">
-          8. Update the <code>Scrollbar</code> Component in{' '}
-          <code>components/base</code> and its types.
-        </h5>
-        <p>
-          Though we migrated our scrollbar from{' '}
-          <code>react-custom-scrollbars-2</code> to <code>simplebar-react</code>
-          . We have to update our <code>Scrollbar</code> base component in{' '}
-          <code>src/component/base/Scrollbar.tsx</code> as such.
-        </p>
-        <p className="mt-2">
-          Also we need to declare the types for the <code>simplebar-react</code>.
-          Though it doesn't provide the types default. To write the types, create
-          a file in the <code>src/types</code> named{' '}
-          <code>simplebar-react.d.ts</code> and add the following code.
-        </p>
-        <PhoenixLiveEditor code={scrollbarCodeType} />
-        <p className="mt-2">
-          After fixing the scrollbar. We have to fix all the occurrences of
-          Scrollbar. Though Scrollbar takes its own height. It will create
-          design inconsistencies. So that we have to update the height as its
-          design needs.
-        </p>
-        <PhoenixLiveEditor code={scrollbarHelperCode} />
+      </Alert>
 
-        <h5 className="mt-3 mb-2">
-          9. Updating the <code>EcomTopRegionsMap</code>
-        </h5>
-        <p>
-          Previously we had used{' '}
-          <code>@changey/react-leaflet-markercluster</code> to mark the
-          cluster in the Leaflet map. In this version we have removed this
-          package because it is incompatible with <code>react 19</code>. We have used{' '}
-          <code>react-leaflet-markercluster</code>. So we have to update the
-          <code>EcomTopRegionsMap</code> component accordingly.
-        </p>
-        <PhoenixLiveEditor code={ecomTopRegionsMap} />
+      <p>
+        This release moved the template from <code>React 18.2.0</code> to{' '}
+        <code>React 19.1.0</code>, along with every dependency that needed a
+        React 19 compatible version. If you are upgrading from{' '}
+        <code>v1.10.0</code> to <code>v2.0.0</code>, follow the steps below.
+      </p>
 
-        <h5 className="mt-3 mb-2">
-          10. Updating the <code>Unicons</code> and <code>FontAwesome</code>{' '}
-          icons.
-        </h5>
-        <p>
-          In the current version of <code>@iconscout/react-unicons</code> and{' '}
-          <code>font-awesome</code>. Some of the icons were removed. So, we have to
-          update the icons in the corresponding components. The icons that
-          removed are:
-        </p>
+      <h5 className="mt-4 mb-2">
+        1. Update <code>package.json</code>
+      </h5>
+      <p>
+        Every package the template ships with is React 19 compatible. Copy the{' '}
+        <code>dependencies</code> and <code>devDependencies</code> blocks from
+        this version of the template into your project.
+      </p>
+
+      <h5 className="mt-4 mb-2">
+        2. Replace <code>react-router-dom</code> with <code>react-router</code>
+      </h5>
+      <p>
+        React Router publishes the package as <code>react-router</code> from v7
+        on. Every <code>react-router-dom</code> import becomes{' '}
+        <code>react-router</code>; the exports are unchanged. See the{' '}
+        <a
+          href="https://reactrouter.com/upgrading/v6#upgrade-to-v7"
+          target="_blank"
+          rel="noreferrer"
+        >
+          React Router v7 upgrade guide
+        </a>
+        .
+      </p>
+
+      <h5 className="mt-4 mb-2">
+        3. Key the <code>Suspense</code> boundary in <code>Routes.tsx</code>
+      </h5>
+      <p>
+        Give the route-level <code>Suspense</code> a key so React remounts the
+        boundary per route instead of hiding content that is already on screen.
+      </p>
+      <PhoenixLiveEditor
+        code={`<Suspense key={location.pathname} fallback={'Loading..'}>`}
+      />
+
+      <h5 className="mt-4 mb-2">
+        4. Replace <code>forwardRef</code> with a <code>ref</code> prop
+      </h5>
+      <p>
+        React 19 passes <code>ref</code> to function components as an ordinary
+        prop, so the <code>forwardRef</code> wrapper can be dropped.
+      </p>
+      <PhoenixLiveEditor code={forawardRefCode} />
+
+      <h5 className="mt-4 mb-2">
+        5. Switch <code>useContext</code> to the <code>use()</code> API
+      </h5>
+      <p>
+        React 19 adds <code>use()</code>, which reads a context (or a promise).
+        Replace every <code>useContext</code> call with it.
+      </p>
+      <PhoenixLiveEditor code={useContextReplaceCode} />
+
+      <h5 className="mt-4 mb-2">
+        6. Use the shorthand <code>Provider</code> syntax
+      </h5>
+      <p>
+        A context can be rendered directly in React 19, so{' '}
+        <code>{`<Context.Provider>`}</code> becomes <code>{`<Context>`}</code>.
+      </p>
+      <PhoenixLiveEditor code={providerCode} />
+
+      <h5 className="mt-4 mb-2">
+        7. Run the React <code>codemods</code> for anything left
+      </h5>
+      <p>
+        The official codemods list and apply the remaining React 18 → 19
+        changes, including the TypeScript types.
+      </p>
+      <PhoenixLiveEditor
+        code={`npx types-react-codemod@latest preset-19 . // for TypeScript`}
+      />
+
+      <h5 className="mt-4 mb-2">
+        8. Update the <code>Scrollbar</code> component and its types
+      </h5>
+      <p>
+        The scrollbar moved from <code>react-custom-scrollbars-2</code> to{' '}
+        <code>simplebar-react</code>. Update{' '}
+        <code>src/components/base/Scrollbar.tsx</code> to match:
+      </p>
+      <PhoenixLiveEditor code={scrollbarCode} />
+      <p className="mt-2">
+        <code>simplebar-react</code> ships no types, so declare them yourself in{' '}
+        <code>src/types/simplebar-react.d.ts</code>:
+      </p>
+      <PhoenixLiveEditor code={scrollbarCodeType} />
+      <p className="mt-2">
+        SimpleBar sizes itself from its own content, so every existing{' '}
+        <code>Scrollbar</code> usage needs an explicit height or max height to
+        keep its previous layout.
+      </p>
+      <PhoenixLiveEditor code={scrollbarHelperCode} />
+
+      <h5 className="mt-4 mb-2">
+        9. Update <code>EcomTopRegionsMap</code>
+      </h5>
+      <p>
+        <code>@changey/react-leaflet-markercluster</code> is not compatible with
+        React 19 and was replaced by <code>react-leaflet-markercluster</code>.
+        Update the imports in the component accordingly.
+      </p>
+      <PhoenixLiveEditor code={ecomTopRegionsMap} />
+
+      <h5 className="mt-4 mb-2">
+        10. Update the <code>Unicons</code> and <code>FontAwesome</code> icons
+      </h5>
+      <p>
+        The current <code>@iconscout/react-unicons</code> and FontAwesome
+        releases dropped some icons, so the components using them have to be
+        updated. The removed icons are:
+      </p>
+      <p className="mb-2">
         <strong>
-          Unicons icon in (<code>react-unicons.d.ts</code> and{' '}
+          Unicons (<code>src/types/react-unicons.d.ts</code> and{' '}
           <code>src/data/icons/uniconList.ts</code>)
         </strong>
-        <ul className="list-inside">
-          <li>UilArrowGrowth</li>
-          <li>UilBabyCarriage</li>
-          <li>UilBed</li>
-          <li>UilBrowser</li>
-          <li>UilCalender to UilCalendar</li>
-          <li>UilCornerUpLeftAlt</li>
-        </ul>
+      </p>
+      <ul className="list-disc list-inside mb-4">
+        <li>UilArrowGrowth</li>
+        <li>UilBabyCarriage</li>
+        <li>UilBed</li>
+        <li>UilBrowser</li>
+        <li>UilCalender — renamed to UilCalendar</li>
+        <li>UilCornerUpLeftAlt</li>
+      </ul>
+      <p className="mb-2">
         <strong>
-          Font-awesome icon (<code>src/data/icons/faSolidIconList.ts</code>)
+          FontAwesome (<code>src/data/icons/faSolidIconList.ts</code>)
         </strong>
-        <ul className="list-inside">
-          <li>FaArrowTurnRight</li>
-        </ul>
-        <p>
-          Although Unicons no longer provide auto-fill color. Icons no longer 
-          automatically apply the color. So we have to explicitly add the{' '}
-          <code>fill="currentColor"</code> attribute in all the Unicons icons occurrences.
-        </p>
+      </p>
+      <ul className="list-disc list-inside mb-4">
+        <li>FaArrowTurnRight</li>
+      </ul>
+      <p>
+        Unicons no longer fill themselves from the current text color either, so
+        add <code>fill=&quot;currentColor&quot;</code> to every Unicon usage.
+      </p>
 
-        <h5 className="mt-3 mb-2">
-          11. Updating the <code>PhoenixLiveProvider</code>.
-        </h5>
-        <p>
-          In the <code>PhoenixLiveProvider</code> file. However,{' '}
-          <code>prism-react-renderer</code> no longer provides the{' '}
-          <code>defaultProps</code>. Therefore, we have to remove the{' '}
-          <code>defaultProps</code> and their type from the file. Update the{' '}
-          <code>PhoenixLiveProvider</code>.
-        </p>
-        <h5 className="mt-3 mb-2">
-          12. Remove the <code>package-lock.js</code> and{' '}
-          <code>node_modules</code>.
-        </h5>
-        <p>
-          After replacing the <code>package.json</code> file, remove the existing{' '}
-          <code>package-lock.json</code> and <code>node_modules</code>. Then run
-          the install command to add the dependencies
-        </p>
-        <PhoenixLiveEditor
-          code={`rm -rf package-lock.json node_modules && npm install`}
-        />
-        <h5 className="mt-3 mb-2">13. Run the project.</h5>
-        <p>
-          After updating all the changes. Run the project to see if everything
-          works as expected.
-        </p>
-        <PhoenixLiveEditor code="npm run dev" />
-      </div>
-    </>
+      <h5 className="mt-4 mb-2">
+        11. Update <code>PhoenixLiveProvider</code>
+      </h5>
+      <p>
+        <code>prism-react-renderer</code> no longer exports{' '}
+        <code>defaultProps</code>. Remove it and its type from{' '}
+        <code>src/components/docs/PhoenixLiveProvider.tsx</code>.
+      </p>
+
+      <h5 className="mt-4 mb-2">12. Reinstall the dependencies</h5>
+      <p>
+        After replacing <code>package.json</code>, delete the old lockfile and{' '}
+        <code>node_modules</code> before installing.
+      </p>
+      <PhoenixLiveEditor
+        code={`rm -rf package-lock.json node_modules && npm install`}
+      />
+
+      <h5 className="mt-4 mb-2">13. Run the project</h5>
+      <p>Start the dev server and check the app end to end.</p>
+      <PhoenixLiveEditor code="npm run dev" />
+    </div>
   );
 };
 

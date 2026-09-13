@@ -1,131 +1,199 @@
-import { faArrowsRotate } from '@fortawesome/free-solid-svg-icons';
+import { useState } from 'react';
+import {
+  faArrowsRotate,
+  faMinus,
+  faPlus
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Dropdown, cn } from '@hummingbirdui/react';
 import Button from 'components/base/Button';
 import DatePicker from 'components/base/DatePicker';
-import { Col, FloatingLabel, Form, Row, Dropdown } from 'react-bootstrap';
-import { DropdownItem } from '../../hotel/HotelActions';
 
-const FlightSearchForm = () => {
+/** gold `.input-group.gap-2(data-quantity)` counter in the traveler dropdown */
+const CounterInput = ({
+  id,
+  defaultValue
+}: {
+  id: string;
+  defaultValue: number;
+}) => {
+  const [value, setValue] = useState(defaultValue);
   return (
-    <Row className="g-3 mb-4">
-      <Col lg>
-        <Row className="flex-center g-2">
-          <Col sm>
-            <FloatingLabel
-              controlId="fromLocation"
-              label="From"
-              className="flex-1"
-            >
-              <Form.Control
+    <div className="input-group gap-2">
+      <Button
+        type="button"
+        variant="phoenix-primary"
+        className="px-2 rounded-md"
+        onClick={() => setValue(Math.max(0, value - 1))}
+      >
+        <FontAwesomeIcon icon={faMinus} className="px-1" />
+      </Button>
+      <input
+        className="form-control border-subtle input-spin-none text-center rounded-md"
+        id={id}
+        type="number"
+        value={value}
+        onChange={e => setValue(parseInt(e.target.value) || 0)}
+      />
+      <Button
+        type="button"
+        variant="phoenix-primary"
+        className="px-2 rounded-md"
+        onClick={() => setValue(value + 1)}
+      >
+        <FontAwesomeIcon icon={faPlus} className="px-1" />
+      </Button>
+    </div>
+  );
+};
+
+const FloatingDateInput = ({ id, label }: { id: string; label: string }) => (
+  <DatePicker
+    wrapperClassName="form-floating flex-1"
+    hideIcon
+    options={{
+      disableMobile: true,
+      defaultDate: 'today',
+      dateFormat: 'j M, Y'
+    }}
+    render={(_, ref) => (
+      <>
+        <input
+          className="form-control"
+          id={id}
+          type="text"
+          placeholder="dd/mm/yyyy"
+          ref={ref}
+        />
+        <label className="form-label" htmlFor={id}>
+          {label}
+        </label>
+      </>
+    )}
+  />
+);
+
+interface TravelerCountRowProps {
+  title: string;
+  id: string;
+  defaultValue: number;
+  className?: string;
+}
+
+const TravelerCountRow = ({
+  title,
+  id,
+  defaultValue,
+  className
+}: TravelerCountRowProps) => (
+  <div className={cn('row items-center g-0', className)}>
+    <div className="col-5">
+      <h5 className="mb-0 text-default">{title}</h5>
+    </div>
+    <div className="col-7">
+      <CounterInput id={id} defaultValue={defaultValue} />
+    </div>
+  </div>
+);
+
+/** `+FlightSearchForm` in mixins/travel-agency/flight/homepage/FlightSearch.pug */
+const FlightSearchForm = ({ className }: { className?: string }) => {
+  return (
+    <div className={cn('row g-4', className)}>
+      <div className="lg:col">
+        <div className="row flex-center g-2">
+          <div className="sm:col">
+            <div className="form-floating flex-1">
+              <input
+                className="form-control"
+                id="fromLocation"
                 type="text"
-                name="fromLocation"
                 placeholder="Dhaka (DAC)"
               />
-            </FloatingLabel>
-          </Col>
-          <Col xs="auto">
-            <Button variant="phoenix-secondary" className="circle-btn">
-              <FontAwesomeIcon icon={faArrowsRotate} />
+              <label className="form-label" htmlFor="fromLocation">
+                From
+              </label>
+            </div>
+          </div>
+          <div className="col-auto">
+            <Button
+              type="button"
+              variant="phoenix-secondary"
+              className="btn-circle size-8"
+            >
+              <FontAwesomeIcon icon={faArrowsRotate} transform="down-1" />
             </Button>
-          </Col>
-          <Col sm>
-            <FloatingLabel controlId="toLocation" label="To" className="flex-1">
-              <Form.Control
+          </div>
+          <div className="sm:col">
+            <div className="form-floating flex-1">
+              <input
+                className="form-control"
+                id="toLocation"
                 type="text"
-                name="toLocation"
                 placeholder="Sylhet (ZYL)"
               />
-            </FloatingLabel>
-          </Col>
-        </Row>
-      </Col>
+              <label className="form-label" htmlFor="toLocation">
+                To
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <Col lg>
-        <Row className="flex-center g-2">
-          <Col sm={6}>
-            <DatePicker
-              render={(_, ref) => {
-                return (
-                  <Form.Floating>
-                    <Form.Control
-                      type="text"
-                      name="journeyDate"
-                      placeholder="dd/mm/yyyy"
-                      ref={ref}
-                      id="journeyDate"
-                      className="ps-3"
-                    />
-                    <label htmlFor="journeyDate">Journey Date</label>
-                  </Form.Floating>
-                );
-              }}
-              hideIcon={true}
-              options={{
-                disableMobile: true,
-                defaultDate: 'today',
-                dateFormat: 'j M, Y'
-              }}
-            />
-          </Col>
-          <Col sm={6}>
-            <DatePicker
-              render={(_, ref) => {
-                return (
-                  <Form.Floating>
-                    <Form.Control
-                      type="text"
-                      name="returnDate"
-                      placeholder="dd/mm/yyyy"
-                      ref={ref}
-                      id="returnDate"
-                      className="ps-3"
-                    />
-                    <label htmlFor="returnDate">Return Date</label>
-                  </Form.Floating>
-                );
-              }}
-              hideIcon={true}
-              options={{
-                disableMobile: true,
-                defaultDate: 'today',
-                dateFormat: 'j M, Y'
-              }}
-            />
-          </Col>
-        </Row>
-      </Col>
-      <Col lg="auto">
-        <Dropdown autoClose="outside">
-          <Dropdown.Toggle variant="" className="p-0 dropdown-caret-none w-100">
-            <FloatingLabel
-              controlId="travelerCount"
-              label="Traveler"
-              className="flex-1"
-              style={{ minWidth: '13rem' }}
-            >
-              <Form.Control
+      <div className="lg:col">
+        <div className="row g-2">
+          <div className="sm:col-6">
+            <FloatingDateInput id="journeyDate" label="Journey Date" />
+          </div>
+          <div className="sm:col-6">
+            <FloatingDateInput id="returnDate" label="Return Date" />
+          </div>
+        </div>
+      </div>
+
+      <div className="lg:col-auto">
+        <Dropdown>
+          <Dropdown.Trigger asChild>
+            <div className="form-floating min-w-52">
+              <input
+                className="form-control cursor-pointer"
+                id="travelerCount"
                 type="text"
-                name="travelerCount"
-                defaultValue="1 Traveler"
                 readOnly
+                placeholder="1 Traveler"
+                defaultValue="1 Traveler"
               />
-            </FloatingLabel>
-          </Dropdown.Toggle>
-          <Dropdown.Menu
-            className="p-4"
-            align="start"
-            style={{ maxWidth: 320 }}
-          >
-            <DropdownItem title="Adults" className="pb-3 pt-0 border-bottom" />
-            <DropdownItem title="Infants" className="py-3 border-bottom" />
-            <DropdownItem title="Children" className="py-3" />
-            <Button variant="primary" className="w-100">
+              <label className="form-label" htmlFor="travelerCount">
+                Traveler
+              </label>
+            </div>
+          </Dropdown.Trigger>
+          <Dropdown.Content align="start" className="p-6 w-80 max-w-80">
+            <TravelerCountRow
+              title="Adults"
+              id="adults"
+              defaultValue={1}
+              className="pb-4 border-b border-subtle"
+            />
+            <TravelerCountRow
+              title="Infants"
+              id="infants"
+              defaultValue={0}
+              className="py-4 border-b border-subtle"
+            />
+            <TravelerCountRow
+              title="Children"
+              id="child"
+              defaultValue={0}
+              className="py-4"
+            />
+            <Button type="button" variant="primary" className="w-full">
               Complete
             </Button>
-          </Dropdown.Menu>
+          </Dropdown.Content>
         </Dropdown>
-      </Col>
-    </Row>
+      </div>
+    </div>
   );
 };
 

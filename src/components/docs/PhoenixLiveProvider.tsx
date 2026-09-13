@@ -1,5 +1,5 @@
 import React, { PropsWithChildren } from 'react';
-import * as ReactBootstrap from 'react-bootstrap';
+import * as Hummingbird from '@hummingbirdui/react';
 import { LiveProvider } from 'react-live';
 import { transformTSCode } from 'helpers/utils';
 
@@ -21,7 +21,9 @@ const PhoenixLiveProvider = ({
   return (
     <LiveProvider
       code={code}
-      scope={{ ...ReactBootstrap, ...React, ...scope }}
+      /* every `@hummingbirdui/react` export is in scope, so the examples
+         read exactly like the import the docs tell you to write */
+      scope={{ ...Hummingbird, ...React, ...scope }}
       noInline={noInline}
       transformCode={
         transformCode

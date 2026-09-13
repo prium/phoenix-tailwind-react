@@ -1,6 +1,6 @@
 import { useAppContext } from 'providers/AppProvider';
 import { ChangeEvent } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row } from '@hummingbirdui/react';
 import topDefault from 'assets/img/generic/top-default.png';
 import topDefaultDark from 'assets/img/generic/top-default-dark.png';
 import topSlim from 'assets/img/generic/top-slim.png';
@@ -12,7 +12,7 @@ import { useSettingsPanelContext } from 'providers/SettingsPanelProvider';
 
 const HorizontalNavbarShape = () => {
   const {
-    config: { isDark, navbarTopShape },
+    config: { navbarTopShape },
     setConfig
   } = useAppContext();
 
@@ -36,7 +36,7 @@ const HorizontalNavbarShape = () => {
             label="Default"
             name="top-nav-shape"
             value="default"
-            thumb={isDark === false ? topDefault : topDefaultDark}
+            thumb={{ light: topDefault, dark: topDefaultDark }}
             checked={navbarTopShape === 'default'}
             handleChange={handleChange}
             disabled={disableHorizontalNavbarShape}
@@ -47,7 +47,7 @@ const HorizontalNavbarShape = () => {
             label="Slim"
             name="top-nav-shape"
             value="slim"
-            thumb={isDark === false ? topSlim : topSlimDark}
+            thumb={{ light: topSlim, dark: topSlimDark }}
             checked={navbarTopShape === 'slim'}
             handleChange={handleChange}
             disabled={disableHorizontalNavbarShape}
@@ -55,7 +55,7 @@ const HorizontalNavbarShape = () => {
         </Col>
       </Row>
       {disableHorizontalNavbarShape && (
-        <WarningMessage message="You can't update horizontal navbar shape here" />
+        <WarningMessage message="You can't update horizontal navbar shape in this page" />
       )}
     </div>
   );

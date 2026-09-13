@@ -158,37 +158,37 @@ export const hotelImages: HotelImageType[] = [
     id: 2,
     img: img2,
     largeImg: largeImg2,
-    classNames: 'd-none d-md-block col-span-6 row-span-1'
+    classNames: 'hidden d-md-block col-span-6 row-span-1'
   },
   {
     id: 3,
     img: img3,
     largeImg: largeImg3,
-    classNames: 'd-none d-md-block col-span-3 row-span-1'
+    classNames: 'hidden d-md-block col-span-3 row-span-1'
   },
   {
     id: 4,
     img: img4,
     largeImg: largeImg4,
-    classNames: 'd-none d-md-block col-span-3 row-span-1'
+    classNames: 'hidden d-md-block col-span-3 row-span-1'
   },
   {
     id: 5,
     img: img5,
     largeImg: largeImg5,
-    classNames: 'd-none d-md-block col-span-3'
+    classNames: 'hidden d-md-block col-span-3'
   },
   {
     id: 6,
     img: img6,
     largeImg: largeImg6,
-    classNames: 'd-none d-md-block col-span-3'
+    classNames: 'hidden d-md-block col-span-3'
   },
   {
     id: 7,
     img: img7,
     largeImg: largeImg7,
-    classNames: 'd-none d-md-block col-span-3'
+    classNames: 'hidden d-md-block col-span-3'
   },
   {
     id: 8,

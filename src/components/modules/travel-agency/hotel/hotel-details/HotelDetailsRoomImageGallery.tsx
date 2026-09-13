@@ -1,29 +1,12 @@
-import React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import { Col, Row } from '@hummingbirdui/react';
 import useLightbox from 'hooks/useLightbox';
-import Lightbox from 'components/base/LightBox';
+import Lightbox from 'components/base/Lightbox';
 
 interface HotelDetailsRoomImageGalleryProps {
   images: string[];
 }
 
-interface RoomImageItemProps {
-  item: string;
-  handleClick: () => void;
-}
-
-const RoomImageItem = ({ item, handleClick }: RoomImageItemProps) => {
-  return (
-    <div className="cursor-pointer h-100" onClick={handleClick}>
-      <img
-        src={item}
-        alt=""
-        className="w-100 h-100 object-fit-cover rounded-2"
-      />
-    </div>
-  );
-};
-
+/** Room image row of `+RoomInfo` (HotelDetailsTabContent.pug) */
 const HotelDetailsRoomImageGallery = ({
   images
 }: HotelDetailsRoomImageGalleryProps) => {
@@ -31,13 +14,23 @@ const HotelDetailsRoomImageGallery = ({
 
   return (
     <>
-      <Row className="gx-2 h-100">
+      <Row className="gx-2 h-full">
         {images.map((imageItem, index) => (
-          <Col key={index}>
-            <RoomImageItem
-              item={imageItem}
-              handleClick={() => openLightbox(index + 1)}
-            />
+          <Col xs={4} key={index}>
+            <a
+              href={imageItem}
+              className="cursor-pointer"
+              onClick={e => {
+                e.preventDefault();
+                openLightbox(index + 1);
+              }}
+            >
+              <img
+                src={imageItem}
+                alt=""
+                className="size-full object-cover rounded-md"
+              />
+            </a>
           </Col>
         ))}
       </Row>

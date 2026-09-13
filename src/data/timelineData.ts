@@ -36,6 +36,7 @@ export interface TimelineItem {
   id: number;
   time: string;
   icon: IconProp;
+  /** literal class — Tailwind cannot see `text-${iconColor}` */
   iconColor: string;
   title: string;
   content?: string;
@@ -60,7 +61,7 @@ export const orderTrackingTimelineData: TimelineData[] = [
     },
     separator: {
       icon: faCheck,
-      dotClass: 'bg-success dark__bg-success',
+      dotClass: 'bg-success dark:bg-success',
       barClass: 'border-success'
     }
   },
@@ -75,7 +76,7 @@ export const orderTrackingTimelineData: TimelineData[] = [
     },
     separator: {
       icon: faCheck,
-      dotClass: 'bg-success dark__bg-success',
+      dotClass: 'bg-success dark:bg-success',
       barClass: 'border-warning'
     }
   },
@@ -90,7 +91,7 @@ export const orderTrackingTimelineData: TimelineData[] = [
     },
     separator: {
       icon: faTruckRampBox,
-      dotClass: 'bg-warning dark__bg-warning',
+      dotClass: 'bg-warning dark:bg-warning',
       barClass: 'border-dashed'
     }
   },
@@ -105,7 +106,7 @@ export const orderTrackingTimelineData: TimelineData[] = [
     },
     separator: {
       icon: faTruck,
-      dotClass: 'bg-body-quaternary',
+      dotClass: 'bg-emphasis',
       barClass: 'border-dashed'
     }
   },
@@ -120,7 +121,7 @@ export const orderTrackingTimelineData: TimelineData[] = [
     },
     separator: {
       icon: faTruckFast,
-      dotClass: 'bg-body-quaternary'
+      dotClass: 'bg-emphasis'
     }
   }
 ];
@@ -134,8 +135,8 @@ export const timelineData: Timeline[] = [
         id: 11,
         time: '4:33pm',
         icon: faClipboard,
-        iconColor: 'success',
-        title: `Assigned to serve as the <br class='d-sm-none'> project's director`,
+        iconColor: 'text-success',
+        title: `Assigned to serve as the <br class='sm:hidden'> project's director`,
         content:
           'Utilizing best practices to better leverage our assets, we must engage in black sky leadership thinking, not the usual band-aid solution.',
         tasker: 'John N. Ward'
@@ -144,8 +145,8 @@ export const timelineData: Timeline[] = [
         id: 12,
         time: '6:30pm',
         icon: faEnvelope,
-        iconColor: 'danger',
-        title: 'Quary about purchased <br class="d-sm-none"> soccer socks',
+        iconColor: 'text-danger',
+        title: 'Quary about purchased <br class="sm:hidden"> soccer socks',
         content:
           'I’ve come across your posts and found some favorable deals on your page. I’ve added a load of products to the cart and I don’t know the payment options you avail. Also, can you enlighten me about any discount.',
         tasker: 'Edward Hopper'
@@ -154,7 +155,7 @@ export const timelineData: Timeline[] = [
         id: 13,
         time: '9:33pm',
         icon: faVideo,
-        iconColor: 'info',
+        iconColor: 'text-info',
         title: 'Onboarding Meeting',
         content: '',
         tasker: 'John N. Ward'
@@ -169,7 +170,7 @@ export const timelineData: Timeline[] = [
         id: 21,
         time: '1:30pm',
         icon: faSwatchbook,
-        iconColor: 'primary',
+        iconColor: 'text-primary',
         title: 'Designing the dungeon',
         content:
           'To get off the runway and paradigm shift, we should take  brass tacks with above-the-board actionable analytics, ramp up with viral partnering, not the usual goat rodeo putting socks on an octopus. ',
@@ -179,8 +180,8 @@ export const timelineData: Timeline[] = [
         id: 22,
         time: '8:32pm',
         icon: faSkullCrossbones,
-        iconColor: 'danger',
-        title: 'How to take the headache <br class="d-sm-none"> out of Order',
+        iconColor: 'text-danger',
+        title: 'How to take the headache <br class="sm:hidden"> out of Order',
         content:
           'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters.',
         tasker: 'Edward Hopper'
@@ -189,7 +190,7 @@ export const timelineData: Timeline[] = [
         id: 23,
         time: '9:30pm',
         icon: faStethoscope,
-        iconColor: 'primary',
+        iconColor: 'text-primary',
         title: 'Mandatory routine checkup',
         content:
           'To get the bitter butter out and take the better butter into the bitter dough to make a bitter bread and broad donut, not the usual yellow butter, but the white butterless butter.',
@@ -199,7 +200,7 @@ export const timelineData: Timeline[] = [
         id: 24,
         time: '8:30pm',
         icon: faUtensils,
-        iconColor: 'success',
+        iconColor: 'text-success',
         title: 'Making bad butter better',
         content:
           "Check how long a fish might live out of water and if you can check the pulse to see if it's alive or not though it's okay to eat fish cause they don't have any feelings.",
@@ -209,7 +210,7 @@ export const timelineData: Timeline[] = [
         id: 25,
         time: '10:33pm',
         icon: faRocket,
-        iconColor: 'info',
+        iconColor: 'text-info',
         title: 'Launching Phoenix',
         content: '',
         tasker: 'John N. Ward'
@@ -224,7 +225,7 @@ export const timelineData: Timeline[] = [
         id: 31,
         time: '8:32pm',
         icon: faScrewdriverWrench,
-        iconColor: 'warning',
+        iconColor: 'text-warning',
         title: 'To take the ants out',
         content:
           'Many ants are crawling into my PC and now they live in there to get highly skilled in web development and programming language that will make them earn better than the humans so that they’ll be able to buy off all the sugar out of the market.',
@@ -234,7 +235,7 @@ export const timelineData: Timeline[] = [
         id: 32,
         time: '10:33pm',
         icon: faPaperclip,
-        iconColor: 'info',
+        iconColor: 'text-info',
         title: 'Added file',
         tasker: 'John N. Ward',
         file: 'Readme.pdf'

@@ -1,4 +1,3 @@
-import React from 'react';
 import ReactEChartsCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
 import { getDates } from 'helpers/utils';
@@ -44,13 +43,13 @@ const getDefaultOptions = (
   theme: ThemeVariant,
   getThemeColor: (name: string) => string
 ) => ({
-  color: [getThemeColor('primary'), getThemeColor('info')],
+  color: [getThemeColor('color-primary'), getThemeColor('color-info')],
   tooltip: {
     trigger: 'axis',
     padding: 10,
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('tertiary-bg'),
-    textStyle: { color: getThemeColor('light-text-emphasis') },
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('background-color-highlight'),
+    textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,
     axisPointer: {
@@ -67,7 +66,7 @@ const getDefaultOptions = (
         interval: 13,
         showMinLabel: true,
         showMaxLabel: false,
-        color: getThemeColor('secondary-color'),
+        color: getThemeColor('text-color-muted'),
         align: 'left',
         fontFamily: 'Nunito Sans',
         fontWeight: 600,
@@ -76,7 +75,7 @@ const getDefaultOptions = (
       axisLine: {
         show: true,
         lineStyle: {
-          color: getThemeColor('secondary-bg')
+          color: getThemeColor('background-color-muted')
         }
       },
       axisTick: {
@@ -88,8 +87,8 @@ const getDefaultOptions = (
         lineStyle: {
           color:
             theme === 'dark'
-              ? getThemeColor('body-highlight-bg')
-              : getThemeColor('secondary-bg')
+              ? getThemeColor('background-color-subtle')
+              : getThemeColor('background-color-muted')
         }
       },
       boundaryGap: 0
@@ -103,7 +102,7 @@ const getDefaultOptions = (
         interval: 130,
         showMaxLabel: true,
         showMinLabel: false,
-        color: getThemeColor('secondary-color'),
+        color: getThemeColor('text-color-muted'),
         align: 'right',
         fontFamily: 'Nunito Sans',
         fontWeight: 600,
@@ -144,7 +143,7 @@ const getDefaultOptions = (
       lineStyle: {
         type: 'dashed',
         width: 1,
-        color: getThemeColor('info')
+        color: getThemeColor('color-info')
       },
       showSymbol: false,
       symbol: 'circle'
@@ -160,6 +159,7 @@ const getDefaultOptions = (
   animation: false
 });
 
+/** Gold `.echart-line-chart-example.min-h-75` on modules/echarts/line-charts. */
 const SimpleLineChart = () => {
   const {
     config: { theme },
@@ -170,6 +170,8 @@ const SimpleLineChart = () => {
     <ReactEChartsCore
       echarts={echarts}
       option={getDefaultOptions(theme, getThemeColor)}
+      className="w-full min-h-75"
+      style={{ height: 'auto', width: '100%' }}
     />
   );
 };

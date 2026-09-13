@@ -1,8 +1,6 @@
-import classNames from 'classnames';
+import { Card, Textarea, cn } from '@hummingbirdui/react';
 import Button from 'components/base/Button';
 import { customerNotes } from 'data/e-commerce/customers';
-import React from 'react';
-import { Card, Form } from 'react-bootstrap';
 
 interface NoteProps {
   note: string;
@@ -12,13 +10,13 @@ interface NoteProps {
 const Note = ({ note, date, isLast }: NoteProps) => {
   return (
     <div
-      className={classNames('fs-9 fw-semibold', {
-        'border-bottom border-dashed pb-3 mb-4': !isLast
+      className={cn('text-md font-semibold', {
+        'pb-6 mb-6 border-b border-dashed': !isLast
       })}
     >
-      <p className="text-body-highlight mb-1">{note}</p>
+      <p className="text-highlight mb-1">{note}</p>
       <div className="text-end">
-        <p className="text-body-tertiary text-opacity-85 mb-0">{date}</p>
+        <p className="text-subtle/85 mb-0">{date}</p>
       </div>
     </div>
   );
@@ -26,11 +24,11 @@ const Note = ({ note, date, isLast }: NoteProps) => {
 
 const CustomerNotesCard = ({ className }: { className?: string }) => {
   return (
-    <Card className={classNames(className)}>
+    <Card className={className}>
       <Card.Body>
-        <h3 className="mb-4">Notes on Customer</h3>
-        <Form.Control as="textarea" className="mb-3" rows={4} />
-        <Button variant="phoenix-primary" className="w-100 mb-4">
+        <h3 className="mb-6">Notes on Customer</h3>
+        <Textarea className="mb-4" rows={4} />
+        <Button variant="phoenix" color="primary" className="w-full mb-6">
           Add Note
         </Button>
         {customerNotes.map((note, index) => (

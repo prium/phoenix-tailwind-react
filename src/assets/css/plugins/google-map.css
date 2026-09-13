@@ -1,0 +1,64 @@
+/* -------------------------------------------------------------------------- */
+/*                                 Google Map                                 */
+/* -------------------------------------------------------------------------- */
+
+.googlemap {
+  .gm-style-iw {
+    &.gm-style-iw-c {
+      background: var(--background-color-soft);
+      box-shadow: var(--shadow-lg) !important;
+      padding: 1rem !important;
+      button[title='Close'] {
+        margin-top: 1rem !important;
+        margin-right: 0.5rem !important;
+      }
+    }
+
+    .gm-style-iw-d {
+      overflow: auto !important;
+    }
+  }
+  .gm-style-iw-tc {
+    box-shadow: var(--shadow-lg) !important;
+    filter: none;
+    &:after {
+      background: var(--background-color-soft) !important;
+    }
+  }
+}
+html[dir='rtl'] {
+  .googlemap .gm-style-iw.gm-style-iw-c {
+    button[title='Close'] {
+      left: unset !important;
+      right: 0 !important;
+    }
+  }
+}
+
+.googlemap {
+  > {
+    div {
+      background: transparent !important;
+    }
+  }
+}
+
+.google-map-control-btn {
+  padding: --spacing(4);
+  .zoomIn,
+  .zoomOut {
+    @apply btn btn-phoenix-secondary btn-square;
+    --btn-width: 1.875rem;
+    --btn-height: 1.875rem;
+    border-width: 2px;
+  }
+  .zoomIn {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+  .zoomOut {
+    margin-top: -2px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
+}

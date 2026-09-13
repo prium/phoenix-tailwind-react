@@ -1,0 +1,227 @@
+/*-----------------------------------------------
+|   Tinymce
+-----------------------------------------------*/
+
+:root {
+  --tinymce-bg: var(--input-bg);
+  --tinymce-tox-tbtn-enabled-icon-color: var(--text-color-muted);
+
+  @variant dark {
+    --tinymce-tox-tbtn-enabled-icon-color: var(--text-color-highlight);
+  }
+}
+
+.tox {
+  &.tox-tinymce {
+    border: 0;
+    border-radius: 0;
+    overflow: unset !important;
+  }
+  .tox-editor-container {
+    overflow: unset !important;
+  }
+  .tox-edit-area {
+    font-family: var(
+      --font-sans-serif
+    ); /* TODO: check whether this variable is updated or not */
+
+    &::before {
+      border: none !important;
+    }
+  }
+  .tox-toolbar--scrolling {
+    background-color: transparent !important;
+    @apply scrollbar;
+  }
+  &:not([dir='rtl']) {
+    .tox-toolbar__group {
+      &:not(:last-of-type) {
+        border: none !important;
+      }
+    }
+  }
+  .tox-toolbar__group {
+    &:first-child {
+      padding-inline-start: 0 !important;
+    }
+  }
+  border-radius: 0;
+  .tox-editor-header {
+    margin-bottom: 0.25rem;
+    box-shadow: none !important;
+    background-color: transparent !important;
+    .tox-toolbar-overlord {
+      background-color: transparent !important;
+      .tox-toolbar__primary {
+        background-color: transparent !important;
+        [dir='rtl'] & {
+          justify-content: flex-end;
+        }
+      }
+    }
+  }
+  .tox-sidebar-wrap {
+    overflow: hidden;
+    border: 1px solid var(--input-border-color);
+    border-radius: var(--radius-md);
+  }
+
+  .tox-menu,
+  .tox-dialog {
+    border-radius: var(--radius-md) !important;
+    border-color: var(--border-color-subtle) !important;
+    background-color: var(--tinymce-bg) !important;
+  }
+  .tox-dialog__header,
+  .tox-dialog__footer {
+    background: var(--background-color-soft) !important;
+    padding: 8px 16px 32px !important;
+  }
+
+  .tox-collection__item--active,
+  .tox-collection__item-accessory {
+    background-color: var(--background-color-muted) !important;
+    color: var(--text-color-default) !important;
+  }
+
+  .tox-dialog__title {
+    color: var(--text-color-default) !important;
+  }
+
+  .tox-form__group {
+    margin-bottom: 1rem !important;
+  }
+  .tox-label {
+    color: var(--text-color-subtle) !important;
+    margin-bottom: 0.25rem !important;
+  }
+
+  .tox-textfield {
+    background-color: var(--input-bg) !important;
+    color: var(--body-color) !important;
+    border-color: var(--input-border-color) !important;
+    padding: 0.5rem 1rem !important;
+    &:focus {
+      border-color: var(--color-primary) !important;
+      box-shadow: var(--input-focus-box-shadow) !important;
+    }
+  }
+
+  .tox-listbox {
+    background-color: var(--input-bg) !important;
+    color: var(--text-color-default) !important;
+    padding-inline-start: 1rem !important;
+    padding-inline-end: 1rem !important;
+    border-color: var(--border-color-subtle) !important;
+    &.tox-listbox--select {
+      &:focus {
+        box-shadow: none !important;
+      }
+    }
+  }
+
+  .tox-collection--list {
+    .tox-collection__item {
+      background-color: transparent !important;
+      color: var(--text-color-muted) !important;
+    }
+    .tox-collection__item--active {
+      background-color: var(--background-color-muted) !important;
+    }
+  }
+
+  .tox-button--naked {
+    color: var(--text-color-default) !important;
+    &:hover:not(:disabled) {
+      background-color: var(--background-color-muted) !important;
+      border-color: var(--border-color-subtle) !important;
+    }
+  }
+  .tox-icon {
+    color: var(--text-color-default) !important;
+  }
+
+  .tox-button {
+    @apply btn btn-primary;
+  }
+
+  .tox-button-secondary {
+    @apply btn btn-phoenix-secondary;
+  }
+  .tox-dialog {
+    border-radius: var(--radius-md) !important;
+    border-color: var(--border-color-subtle) !important;
+    background-color: var(--tinymce-bg) !important;
+    &__header,
+    &__footer {
+      background-color: var(--tinymce-bg) !important;
+      border-color: var(--border-color-subtle) !important;
+    }
+    &__footer {
+      .tox-button--secondary {
+        @apply btn btn-phoenix-secondary;
+      }
+      .tox-button:last-child {
+        @apply btn btn-primary;
+      }
+    }
+  }
+  .tox-toolbar__overflow {
+    padding-inline-start: 1rem !important;
+    background-color: var(--background-color-subtle) !important;
+    background-image: none !important;
+  }
+  .tox-dialog-wrap__backdrop {
+    background-color: var(--color-black) !important;
+    opacity: 0.5;
+  }
+}
+
+.tox .tox-tbtn {
+  height: 24px !important;
+  width: 24px !important;
+  background: 0 0 !important;
+  &.tox-tbtn--select {
+    width: 130px !important;
+    background: var(--background-color-default) !important;
+    .tox-tbtn__select-label {
+      text-overflow: clip !important;
+      width: 7em !important;
+      color: var(--text-color-default);
+    }
+  }
+  span svg {
+    fill: var(--text-color-subtle) !important;
+    &:hover,
+    &:focus {
+      fill: var(--text-color-subtle) !important;
+    }
+  }
+  &:hover,
+  &:focus {
+    background: var(--background-color-muted) !important;
+
+    &::after {
+      content: none !important;
+    }
+  }
+}
+
+.tox .tox-tbtn--enabled {
+  background: var(--background-color-highlight) !important;
+  span svg {
+    fill: var(--tinymce-tox-tbtn-enabled-icon-color) !important;
+  }
+  &:hover,
+  &:focus {
+    background: var(--background-color-muted) !important;
+  }
+}
+
+.tox .tox-edit-area__iframe {
+  background-color: var(--tinymce-bg) !important;
+}
+.editor-focused {
+  box-shadow: var(--input-focus-box-shadow) !important;
+  border-color: var(--color-primary) !important;
+}

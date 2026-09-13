@@ -774,3 +774,290 @@ export const portfolioItems: PortfolioItem = {
     }
   ]
 };
+
+/* -------------------------------------------------------------------------- */
+/*  Gold-aligned demo data — literal display strings copied verbatim from     */
+/*  ../phoenix-tailwind/src/pug/mixins/stock/portfolio/                       */
+/*  {MyPortfolioMainContent,MyPortfolioSidebar}.pug                           */
+/* -------------------------------------------------------------------------- */
+
+export interface StockRangeOption {
+  label: string;
+  value: Range;
+}
+
+/** `.stock-btn-group` range filters (1D … All) shared by the stock pages */
+export const stockChartRanges: StockRangeOption[] = [
+  { label: '1D', value: '1d' },
+  { label: '5D', value: '5d' },
+  { label: '1M', value: '1m' },
+  { label: '3M', value: '3m' },
+  { label: '6M', value: '6m' },
+  { label: '1Y', value: '1y' },
+  { label: 'All', value: 'all' }
+];
+
+/** `portfolioStatus` in MyPortfolioMainContent.pug */
+export interface PortfolioStatusItem {
+  title: string;
+  amount: string;
+  /** literal gold badge classes — dynamic, so they live in data */
+  badgeClassName: string;
+  badgeContent: string;
+  className: string;
+  textColor?: string;
+}
+
+export const portfolioStatusItems: PortfolioStatusItem[] = [
+  {
+    title: 'Cash Holding',
+    amount: '$1.1K',
+    badgeClassName: 'badge-phoenix-success badge text-sm',
+    badgeContent: '+1.71',
+    className: 'border-e pe-6'
+  },
+  {
+    title: 'Day Change',
+    amount: '-$1.3K',
+    badgeClassName: 'badge-phoenix-danger badge text-sm',
+    badgeContent: '+1.71',
+    className: 'px-6 border-e',
+    textColor: 'text-danger'
+  },
+  {
+    title: 'Unrealized Gain/Loss',
+    amount: '-$5.5K',
+    badgeClassName: 'badge-phoenix-danger badge text-sm',
+    badgeContent: '+1.71',
+    className: 'border-e px-6',
+    textColor: 'text-danger'
+  },
+  {
+    title: 'Realized Gain/Loss',
+    amount: '+$3.5K',
+    badgeClassName: 'badge-phoenix-success badge text-sm',
+    badgeContent: '+1.71',
+    className: 'px-6',
+    textColor: 'text-success'
+  }
+];
+
+/** growth cells of `portfolioTableData` in MyPortfolioMainContent.pug */
+export interface PortfolioGrowth {
+  amount: string;
+  changes: string;
+  growth: boolean;
+}
+
+export interface PortfolioTableRowData {
+  portfolioName: string;
+  symbols: number;
+  costBasis: string;
+  marketValue: string;
+  dayChange?: PortfolioGrowth;
+  unrealized?: PortfolioGrowth;
+  realized?: PortfolioGrowth;
+}
+
+/** `portfolioTableData` in MyPortfolioMainContent.pug — verbatim */
+export const portfolioTableData: PortfolioTableRowData[] = [
+  {
+    portfolioName: 'My Watchlist',
+    symbols: 11,
+    costBasis: '26,514.56',
+    marketValue: '3.46 T',
+    dayChange: { amount: '978.90', changes: '0.74', growth: true },
+    unrealized: { amount: '2,429.49', changes: '0.74', growth: true },
+    realized: { amount: '321.42', changes: '0.74', growth: false }
+  },
+  {
+    portfolioName: 'Phoenix Growth Fund',
+    symbols: 14,
+    costBasis: '95,987.90',
+    marketValue: '2.02 T',
+    dayChange: { amount: '872.96', changes: '0.74', growth: true },
+    unrealized: { amount: '60.95', changes: '0.74', growth: false },
+    realized: { amount: '23.42', changes: '1.98', growth: false }
+  },
+  {
+    portfolioName: 'Titanium Edge',
+    symbols: 8,
+    costBasis: '30,675.98',
+    marketValue: '1.98 T',
+    dayChange: { amount: '823.12', changes: '0.74', growth: true },
+    unrealized: { amount: '639.12', changes: '2.15', growth: true },
+    realized: { amount: '98.86', changes: '2.74', growth: true }
+  },
+  {
+    portfolioName: 'Apex Capital',
+    symbols: 9,
+    costBasis: '12,789.98',
+    marketValue: '3.09 T',
+    dayChange: { amount: '129.21', changes: '0.74', growth: true },
+    unrealized: { amount: '978.99', changes: '0.54', growth: false },
+    realized: { amount: '61.93', changes: '2.74', growth: false }
+  },
+  {
+    portfolioName: 'Blue Horizon Fund',
+    symbols: 11,
+    costBasis: '2,787.49',
+    marketValue: '5,815.03',
+    dayChange: { amount: '312.95', changes: '0.74', growth: true },
+    unrealized: { amount: '125.42', changes: '1.74', growth: true },
+    realized: { amount: '100.90', changes: '5.74', growth: true }
+  },
+  {
+    portfolioName: 'Navigator Fund',
+    symbols: 17,
+    costBasis: '5,987.98',
+    marketValue: '589.95',
+    realized: { amount: '72.42', changes: '1.51', growth: true }
+  },
+  {
+    portfolioName: 'Equity Elevation',
+    symbols: 21,
+    costBasis: '19,845.37',
+    marketValue: '3.32 T',
+    dayChange: { amount: '120.31', changes: '1.74', growth: false },
+    unrealized: { amount: '2,429.49', changes: '0.51', growth: true }
+  }
+];
+
+/** gold echarts hook classes on the tiny overview chart divs */
+export type StockOverviewChartClass =
+  | 'echart-stock-overview-chart'
+  | 'echart-stock-overview-mixed-chart'
+  | 'echart-stock-overview-inverted-chart';
+
+/** `quoteLookupTable` in MyPortfolioSidebar.pug — verbatim */
+export interface QuoteLookupItem {
+  companyAbbr: string;
+  amount: string;
+  profit: string;
+  percent: string;
+  growth: boolean;
+  chart: StockOverviewChartClass;
+  echartData: number[];
+}
+
+export const quoteLookupItems: QuoteLookupItem[] = [
+  {
+    companyAbbr: 'AAPL',
+    amount: '232.98',
+    profit: '+$0.42',
+    percent: '+0.35',
+    growth: true,
+    chart: 'echart-stock-overview-chart',
+    echartData: [
+      70, 50, 85, 45, 200, 193, 196, 210, 198, 210, 103, 120, 84, 95, 130, 123,
+      214, 245, 287, 348, 356, 390
+    ]
+  },
+  {
+    companyAbbr: 'Tsla',
+    amount: '269.19',
+    profit: '-$0.42',
+    percent: '-0.35',
+    growth: false,
+    chart: 'echart-stock-overview-mixed-chart',
+    echartData: [
+      -100, 190, 200, -200, -190, 300, -110, 100, -100, 250, 200, 190, -80, 50,
+      40, 200, -200, 200, 150, 160, 300, -100
+    ]
+  },
+  {
+    companyAbbr: 'NVDA',
+    amount: '141.54',
+    profit: '+$0.42',
+    percent: '+0.35',
+    growth: true,
+    chart: 'echart-stock-overview-chart',
+    echartData: [
+      400, 450, 500, 490, 600, 550, 400, 350, 320, 330, 320, 450, 480, 350, 345,
+      200, 320, 400
+    ]
+  },
+  {
+    companyAbbr: 'AMZN',
+    amount: '187.83',
+    profit: '-$2.42',
+    percent: '-2.35',
+    growth: false,
+    chart: 'echart-stock-overview-inverted-chart',
+    echartData: [
+      -500, -300, -250, -280, -150, -250, -300, -180, -145, -250, -46, -250,
+      -90, -80, -85, -150, -250, -180, -175, -50
+    ]
+  },
+  {
+    companyAbbr: 'MSFT',
+    amount: '428.15',
+    profit: '+$5.42',
+    percent: '+1.21',
+    growth: true,
+    chart: 'echart-stock-overview-chart',
+    echartData: [
+      70, 50, 85, 45, 200, 193, 196, 210, 198, 210, 103, 120, 84, 95, 130, 123,
+      214, 245, 287, 348, 356, 390
+    ]
+  },
+  {
+    companyAbbr: 'GOOG',
+    amount: '232.98',
+    profit: '+$0.42',
+    percent: '+0.54',
+    growth: true,
+    chart: 'echart-stock-overview-chart',
+    echartData: [
+      400, 450, 500, 490, 600, 550, 400, 350, 320, 330, 320, 450, 480, 350, 345,
+      200, 320, 400
+    ]
+  },
+  {
+    companyAbbr: 'ADBE',
+    amount: '166.99',
+    profit: '+$1.11',
+    percent: '+0.35',
+    growth: true,
+    chart: 'echart-stock-overview-inverted-chart',
+    echartData: [
+      -500, -300, -250, -280, -150, -250, -300, -180, -145, -250, -46, -250,
+      -90, -80, -85, -150, -250, -180, -175, -50
+    ]
+  },
+  {
+    companyAbbr: 'AMD',
+    amount: '156.23',
+    profit: '-$0.42',
+    percent: '-0.35',
+    growth: false,
+    chart: 'echart-stock-overview-mixed-chart',
+    echartData: [
+      -120, 200, 230, -230, -190, 300, -110, 100, -100, 250, 200, 190, -80, 80,
+      50, 200, -200, 220, 150, 140, 310, -150
+    ]
+  },
+  {
+    companyAbbr: 'NFLX',
+    amount: '754.68',
+    profit: '+$0.42',
+    percent: '+0.35',
+    growth: true,
+    chart: 'echart-stock-overview-chart',
+    echartData: [
+      390, 356, 348, 287, 245, 214, 123, 130, 95, 84, 120, 103, 210, 198, 210,
+      196, 193, 200, 45, 85, 70, 50
+    ]
+  },
+  {
+    companyAbbr: 'NDQA',
+    amount: '74.69',
+    profit: '-$0.42',
+    percent: '-0.35',
+    growth: false,
+    chart: 'echart-stock-overview-chart',
+    echartData: [
+      500, 450, 600, 690, 700, 550, 400, 450, 480, 450, 445, 300, 420, 600
+    ]
+  }
+];

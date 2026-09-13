@@ -1,9 +1,9 @@
-const changelogListElips = `
+const changelogList = `
     <ul> 
       <li> Text 
         <ul>
-          <li><code>text-body-highlight </code></li>
-          <li><code>text-body-quaternary </code></li>
+          <li><code>text-highlight </code></li>
+          <li><code>text-soft </code></li>
           <li> <code>text-body-hover </code> </li>
           <li> <code>text-body-secondary-hover </code></li>
           <li><code>text-body-tertiary-hover </code></li>
@@ -19,16 +19,16 @@ const changelogListElips = `
       <li> Background 
         <ul>
           <li>
-            <code>bg-body-emphasis</code>
+            <code>bg-soft</code>
           </li>
           <li>
             <code>bg-body-quaternary</code>
           </li>
           <li>
-            <code>bg-body-highlight</code>
+            <code>bg-subtle</code>
           </li>
           <li>
-            <code>bg-body-hover</code>
+            <code>hover:bg-default</code>
           </li>
           <li>
             <code>bg-body-secondary-color</code>
@@ -55,7 +55,7 @@ const changelogListElips = `
         </ul>
       <li> Border 
         <ul>
-          <li><code>border-translucent</code></li>
+          <li><code>border-subtle</code></li>
           <li><code>border-{themeColor}-light</code></li>
           <li><code>border-{themeColor}-dark</code></li>
         </ul>
@@ -72,20 +72,20 @@ const changelogListElips = `
       </li>
       <li> Font Size 
         <ul>
-          <li>Replaced <code>.fs--3</code> with <code>.fs-11</code></li>
-          <li>Replaced <code>.fs--2</code> with <code>.fs-10</code></li>
-          <li>Replaced <code>.fs--1</code> with <code>.fs-9</code></li>
-          <li>Replaced <code>.fs-0</code> with <code>.fs-8</code></li>
+          <li>Replaced <code>.fs--3</code> with <code>.text-xs</code></li>
+          <li>Replaced <code>.fs--2</code> with <code>.text-sm</code></li>
+          <li>Replaced <code>.text-md</code> with <code>.text-md</code></li>
+          <li>Replaced <code>.fs-0</code> with <code>.text-base</code></li>
           <li>Replaced <code>.fs-1</code> with <code>.fs-</code></li>
-          <li>Replaced <code>.fs-2</code> with <code>.fs-6</code></li>
+          <li>Replaced <code>.fs-2</code> with <code>.text-xl</code></li>
           <li>Replaced <code>.fs-3</code> with <code>.fs-5</code></li>
           <li>Replaced <code>.fs-4</code> with <code>.fs-4</code></li>
           <li>Replaced <code>.fs-5</code> with <code>.fs-3</code></li>
-          <li>Replaced <code>.fs-6</code> with <code>.fs-2</code></li>
-          <li>Replaced <code>.fs-7</code> with <code>.fs-1</code></li>
+          <li>Replaced <code>.text-xl</code> with <code>.fs-2</code></li>
+          <li>Replaced <code>.text-lg</code> with <code>.fs-1</code></li>
         </ul>
       </li>
     </ul>
     `;
 
-export default changelogListElips;
+export default changelogList;

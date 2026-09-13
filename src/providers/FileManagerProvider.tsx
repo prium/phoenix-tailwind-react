@@ -1,14 +1,14 @@
 import { File, fileCollection as filesData } from 'data/file-manager';
 import {
-  useState,
   createContext,
   Dispatch,
-  SetStateAction,
   PropsWithChildren,
-  useEffect,
-  use
+  SetStateAction,
+  use,
+  useState
 } from 'react';
-import { gridBreakpoints } from './BreakpointsProvider';
+import { useLocation } from 'react-router';
+
 interface FileManagerContextInterface {
   fileCollection: File[];
   setFileCollection: Dispatch<SetStateAction<File[]>>;
@@ -17,7 +17,6 @@ interface FileManagerContextInterface {
   checkedFileIds: number[];
   setCheckedFileIds: Dispatch<SetStateAction<number[]>>;
   isGridView: boolean;
-  setIsGridView: Dispatch<SetStateAction<boolean>>;
   isGrouped: boolean;
   setIsGrouped: Dispatch<SetStateAction<boolean>>;
 }
@@ -27,17 +26,12 @@ export const FileManagerContext = createContext(
 );
 
 const FileManagerProvider = ({ children }: PropsWithChildren) => {
-  const [fileCollection, setFileCollection] = useState<File[]>([]);
-  const [showFileDetails, setShowFileDetails] = useState(
-    window.innerWidth >= gridBreakpoints.xxl
-  );
+  const { pathname } = useLocation();
+  const [fileCollection, setFileCollection] = useState<File[]>(filesData);
+  // the details column is visible at 2xl on first paint, like the gold
+  const [showFileDetails, setShowFileDetails] = useState(true);
   const [checkedFileIds, setCheckedFileIds] = useState<number[]>([]);
-  const [isGridView, setIsGridView] = useState(true);
   const [isGrouped, setIsGrouped] = useState(false);
-
-  useEffect(() => {
-    setFileCollection(filesData);
-  }, []);
 
   return (
     <FileManagerContext
@@ -48,8 +42,7 @@ const FileManagerProvider = ({ children }: PropsWithChildren) => {
         setShowFileDetails,
         checkedFileIds,
         setCheckedFileIds,
-        isGridView,
-        setIsGridView,
+        isGridView: !pathname.endsWith('list-view'),
         isGrouped,
         setIsGrouped
       }}

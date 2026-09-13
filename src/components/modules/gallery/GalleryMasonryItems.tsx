@@ -1,36 +1,35 @@
-import { useRef, useState } from 'react';
 import { faVideo } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
-import Lightbox from 'components/base/LightBox';
-import { GalleryMasonryItem } from 'data/gallery';
+import { cn } from '@hummingbirdui/react';
+import Lightbox from 'components/base/Lightbox';
+import type { GalleryItem } from 'data/gallery';
 import useLightbox from 'hooks/useLightbox';
+import { useRef, type MouseEvent } from 'react';
+import PackeryGrid from './PackeryGrid';
 
-interface GalleryMasonryItemsProps {
-  galleryItems: GalleryMasonryItem[];
-}
-
-const GalleryMasonryItems = ({ galleryItems }: GalleryMasonryItemsProps) => {
-  const [items] = useState(galleryItems);
-
+const GalleryMasonryItems = ({
+  galleryItems
+}: {
+  galleryItems: GalleryItem[];
+}) => {
   const { lightboxProps, openLightbox } = useLightbox(
-    items
-      .map((el: GalleryMasonryItem) => el.video || el.largeImage)
-      .filter((item): item is string => !!item)
+    galleryItems.map(item => item.largeImage)
   );
+
   return (
     <>
-      <div
-        className="d-grid grid-cols-12 gap-3"
-      >
+      <PackeryGrid className="row g-4" id="gallery-masonry">
         {galleryItems.map((item, index) => (
-          <GalleryItem
-            key={item.id}
-            item={item}
-            onClick={() => openLightbox(index + 1)}
-          />
+          <div key={item.id} className={cn(item.className, item.category)}>
+            <div className="img-zoom-hover relative rounded-md overflow-hidden">
+              <MasonryMedia
+                item={item}
+                onClick={() => openLightbox(index + 1)}
+              />
+            </div>
+          </div>
         ))}
-      </div>
+      </PackeryGrid>
       <Lightbox key={galleryItems.length} {...lightboxProps} />
     </>
   );
@@ -38,59 +37,59 @@ const GalleryMasonryItems = ({ galleryItems }: GalleryMasonryItemsProps) => {
 
 export default GalleryMasonryItems;
 
-interface GalleryItemProps {
-  item: GalleryMasonryItem;
+const Caption = ({ item }: { item: GalleryItem }) => (
+  <div className="backdrop-faded absolute w-full bottom-0 start-0 p-4!">
+    <h4 className="text-white">{item.title}</h4>
+    <p className="mb-0 text-secondary-lighter capitalize">
+      {item.category.split('-').join(' ')}
+    </p>
+  </div>
+);
+
+interface MasonryMediaProps {
+  item: GalleryItem;
   onClick: () => void;
 }
 
-const GalleryItem = ({ item, onClick }: GalleryItemProps) => {
+const MasonryMedia = ({ item, onClick }: MasonryMediaProps) => {
   const videoRef = useRef<HTMLVideoElement | null>(null);
-
-  const handleMouseEnter = () => {
-    videoRef.current?.play();
+  const handleClick = (event: MouseEvent) => {
+    event.preventDefault();
+    onClick();
   };
 
-  const handleMouseOut = () => {
-    videoRef.current?.pause();
-  };
-  return (
-    <div onClick={onClick} className={classNames(item.className)}>
-      <div className="img-zoom-hover position-relative rounded-2 overflow-hidden cursor-pointer">
-        {item.srcType === 'video' ? (
-          <div className="video-container position-relative">
-            <video
-              className="video d-block h-100 w-100 overflow-hidden rounded-2"
-              muted
-              poster={item.image}
-              onMouseEnter={handleMouseEnter}
-              onMouseOut={handleMouseOut}
-              ref={videoRef}
-            >
-              <source src={item.video} type="video/mp4" />
-            </video>
-            <div className="video-icon position-absolute top-50 start-50 translate-middle bg-body-emphasis rounded-pill bg-opacity-50">
-              <FontAwesomeIcon
-                icon={faVideo}
-                className="text-body fs-9 fs-sm-8"
-              />
-            </div>
-          </div>
-        ) : (
-          <>
-            <img
-              src={item.image}
-              alt={item.title}
-              className="rounded-2 w-100 h-100 object-fit-cover"
-            />
-          </>
-        )}
-        <div className="backdrop-faded position-absolute w-100 bottom-0 start-0 p-3">
-          <h4 className="text-white">{item.title}</h4>
-          <p className="mb-0 text-secondary-lighter text-capitalize">
-            {item.categoryTitle}
-          </p>
+  if (item.video) {
+    return (
+      <a className="video-container" href={item.video} onClick={handleClick}>
+        <video
+          className="video block h-full w-full overflow-hidden rounded-md"
+          muted
+          poster={item.image}
+          ref={videoRef}
+          onMouseEnter={() => videoRef.current?.play()}
+          onMouseOut={() => videoRef.current?.pause()}
+        >
+          <source src={item.video} type="video/mp4" />
+        </video>
+        <div className="circle-icon-item absolute top-1/2 left-1/2 -translate-1/2 bg-soft/50 rounded-full">
+          <FontAwesomeIcon
+            icon={faVideo}
+            className="text-default text-md sm:text-base"
+          />
         </div>
-      </div>
-    </div>
+        <Caption item={item} />
+      </a>
+    );
+  }
+
+  return (
+    <a href={item.largeImage} onClick={handleClick}>
+      <img
+        className="rounded-md w-full h-full object-cover"
+        src={item.image}
+        alt=""
+      />
+      <Caption item={item} />
+    </a>
   );
 };

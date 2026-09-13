@@ -1,120 +1,128 @@
 import { Dispatch, SetStateAction } from 'react';
-import { Card, Col, Nav, Row, Tab } from 'react-bootstrap';
-import Button from 'components/base/Button';
-import Badge from 'components/base/Badge';
+import { Tabs } from '@hummingbirdui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faUpRightFromSquare,
   faXmark
 } from '@fortawesome/free-solid-svg-icons';
-import { currencyFormat, numberFormat } from 'helpers/utils';
 import StockDetailsBuyAndSellForm from './StockDetailsBuyAndSellForm';
-import { Link } from 'react-router';
 import StockDetailsOptionChain from './StockDetailsOptionChain';
 
 interface StockDetailsSideBarContentProps {
   setOpen?: Dispatch<SetStateAction<boolean>>;
 }
 
+/** Gold: `+StockDetailSideBar` in mixins/stock/stock-details/StockDetailsSideBar.pug */
 const StockDetailsSideBarContent = ({
   setOpen
 }: StockDetailsSideBarContentProps) => {
   return (
-    <Card className="border-0 border-xl border-gray-300">
-      <Card.Body>
-        <Row className="g-0 flex-between-center mb-4">
-          <Col xs="auto">
-            <h4 className="text-body-highlight font-bold mb-0 text-center">
+    <div className="card border-0">
+      <div className="card-body">
+        <div className="row g-0 flex-between-center mb-6">
+          <div className="col-auto">
+            <h4 className="text-highlight font-bold mb-0 lg:text-center">
               Stock Details
             </h4>
-          </Col>
-          <Col xs="auto" className="d-xl-none">
-            <Button
-              variant="link"
-              size="sm"
-              className="fs-8 text-body"
+          </div>
+          <div className="col-auto xl:hidden">
+            <button
+              type="button"
+              className="btn btn-link btn-sm text-base text-default"
+              aria-label="close"
               onClick={() => setOpen && setOpen(false)}
             >
               <FontAwesomeIcon icon={faXmark} />
-            </Button>
-          </Col>
-        </Row>
-        <Card className="border text-center bg-body mb-3">
-          <Card.Body className="p-3">
-            <h3 className="mb-2 lh-sm text-body d-flex align-items-center gap-2 justify-content-center">
-              {currencyFormat(226.51, {
-                minimumFractionDigits: 2
-              })}
-              <Badge variant="phoenix" bg="success" className="fs-10">
-                +
-                {numberFormat(0.62, 'standard', {
-                  minimumFractionDigits: 2
-                })}{' '}
-                (
-                {numberFormat(0.27, 'standard', {
-                  minimumFractionDigits: 2
-                })}
-                %)
-              </Badge>
-            </h3>
-            <h6 className="lh-sm text-body mb-2">
-              Real time quote: Sep 24, 2024,{' '}
-              <span className="text-nowrap">1:34 PM</span>
-            </h6>
-            <Row className="py-3">
-              <Col xs={6} className="border-end">
-                <h6 className="lh-sm text-body">Bid x Size</h6>
-                <h5 className="fw-semibold text-body mb-0">
-                  {numberFormat(226.51, 'standard', {
-                    minimumFractionDigits: 2
-                  })}
-                  <span className="fs-9">x 100</span>
-                </h5>
-              </Col>
-              <Col xs={6}>
-                <h6 className="lh-sm text-body">Ask x Size</h6>
-                <h5 className="fw-semibold text-body mb-0">
-                  {numberFormat(226.51, 'standard', {
-                    minimumFractionDigits: 2
-                  })}
-                  <span className="fs-9">x 100</span>
-                </h5>
-              </Col>
-            </Row>
-          </Card.Body>
-        </Card>
-        <Tab.Container defaultActiveKey="buy">
-          <Nav variant="underline text-center gap-0 optionChainTableHeader mb-3">
-            <Nav.Item className="w-50">
-              <Nav.Link eventKey="buy">Buy</Nav.Link>
-            </Nav.Item>
-            <Nav.Item className="w-50">
-              <Nav.Link eventKey="sell">Sell</Nav.Link>
-            </Nav.Item>
-          </Nav>
-          <Tab.Content className="mb-3">
-            <Tab.Pane eventKey="buy">
-              <StockDetailsBuyAndSellForm title="buy" />
-            </Tab.Pane>
-            <Tab.Pane eventKey="sell">
-              <StockDetailsBuyAndSellForm title="sell" />
-            </Tab.Pane>
-          </Tab.Content>
-        </Tab.Container>
-        <div className="d-flex flex-between-center border-y py-3 mb-4">
-          <h5 className="text-body mb-0">Stock available</h5>
-          <Link
-            to="#!"
-            className="d-flex align-items-center gap-2 link-primary fw-bold"
-          >
-            {numberFormat(32432234, 'standard')}
-            <FontAwesomeIcon icon={faUpRightFromSquare} />
-          </Link>
+            </button>
+          </div>
         </div>
-        <h5 className="lh-sm text-center fw-bolder">Options Chain</h5>
+        <div className="card border p-4 text-center bg-default mb-4">
+          <h3 className="mb-2 leading-sm text-default flex items-center gap-2 justify-center">
+            $226.51
+            <span className="badge badge-phoenix-success text-sm">
+              +0.62 (0.27%)
+            </span>
+          </h3>
+          <h6 className="leading-sm text-default mb-2">
+            Real time quote: Sep 24, 2024,{' '}
+            <span className="text-nowrap">1:34 PM</span>
+          </h6>
+          <div className="row py-4 gx-8">
+            <div className="col-6 border-e">
+              <h6 className="leading-sm text-default">Bid x Size</h6>
+              <h5 className="font-semibold text-default mb-0">
+                226.51<span className="text-md">x 100</span>
+              </h5>
+            </div>
+            <div className="col-6">
+              <h6 className="leading-sm text-default">Ask x Size</h6>
+              <h5 className="font-semibold text-default mb-0">
+                226.51<span className="text-md">x 100</span>
+              </h5>
+            </div>
+          </div>
+        </div>
+
+        <Tabs defaultValue="tab-buy">
+          <Tabs.List
+            asChild
+            variant="underline"
+            className="mb-4 text-center gap-0 optionChainTableHeader"
+            id="buyAndSellTab"
+          >
+            <ul>
+              <li className="nav-item w-1/2">
+                <Tabs.Trigger asChild value="tab-buy">
+                  <a
+                    id="buy-tab"
+                    href="#tab-buy"
+                    onClick={e => e.preventDefault()}
+                  >
+                    Buy
+                  </a>
+                </Tabs.Trigger>
+              </li>
+              <li className="nav-item w-1/2">
+                <Tabs.Trigger asChild value="tab-sell">
+                  <a
+                    id="sell-tab"
+                    href="#tab-sell"
+                    onClick={e => e.preventDefault()}
+                  >
+                    Sell
+                  </a>
+                </Tabs.Trigger>
+              </li>
+            </ul>
+          </Tabs.List>
+          <div className="tab-content mb-4" id="buyAndSellTabContent">
+            <Tabs.Content value="tab-buy" className="tab-pane fade show active">
+              <StockDetailsBuyAndSellForm title="buy" />
+            </Tabs.Content>
+            <Tabs.Content
+              value="tab-sell"
+              className="tab-pane fade show active"
+            >
+              <StockDetailsBuyAndSellForm title="sell" />
+            </Tabs.Content>
+          </div>
+        </Tabs>
+
+        <div className="flex flex-between-center border-y py-4 mb-6">
+          <h5 className="text-default mb-0">Stock available</h5>
+          <a
+            href="#!"
+            className="flex items-center gap-2 link link-primary font-bold no-underline hover:underline"
+          >
+            32,432,234
+            <FontAwesomeIcon icon={faUpRightFromSquare} />
+          </a>
+        </div>
+
+        <h5 className="leading-sm text-center font-extrabold">Options Chain</h5>
         <StockDetailsOptionChain />
-      </Card.Body>
-    </Card>
+      </div>
+    </div>
   );
 };
 

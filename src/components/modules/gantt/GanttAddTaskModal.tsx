@@ -1,11 +1,13 @@
-import { faClock, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faClock } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Dialog, Input } from '@hummingbirdui/react';
+import { UilCalendarAlt } from '@iconscout/react-unicons';
 import Button from 'components/base/Button';
 import DatePicker from 'components/base/DatePicker';
 import { gantt } from 'dhtmlx-gantt';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { Col, Form, Modal, Row } from 'react-bootstrap';
 
+/** `+AddNewTaskModal` (#ganttAddTaskModal) in mixins/gantt-chart/GanttChart.pug */
 const GanttAddTaskModal = ({
   show,
   setShow
@@ -13,45 +15,37 @@ const GanttAddTaskModal = ({
   show: boolean;
   setShow: Dispatch<SetStateAction<boolean>>;
 }) => {
-  const defaultStartDate = new Date(2024, 4, 20); // May 20, 2024
+  const defaultStartDate = new Date(2022, 2, 2); // gold defaultDate: "Mar 2, 2022"
 
-  const [taskName, setTaskName] = useState('New Task');
+  const [taskName, setTaskName] = useState('');
   const [taskStart, setTaskStart] = useState<Date>(defaultStartDate);
   const [parentTask, setParentTask] = useState<string | null>(null);
-  const [taskDuration, setTaskDuration] = useState(2);
+  const [taskDuration, setTaskDuration] = useState<number | ''>('');
 
   const resetForm = () => {
-    setTaskName('New Task');
+    setTaskName('');
     setTaskStart(defaultStartDate);
-    setTaskDuration(2);
+    setTaskDuration('');
     setParentTask(null);
   };
 
   const handleCreateTask = () => {
-    if (
-      taskName &&
-      taskStart instanceof Date &&
-      !isNaN(taskStart.getTime()) &&
-      !isNaN(taskDuration)
-    ) {
+    const duration = Number(taskDuration) || 2;
+    if (taskName && taskStart instanceof Date && !isNaN(taskStart.getTime())) {
       const taskEnd = gantt.calculateEndDate({
         start_date: taskStart,
-        duration: taskDuration
+        duration
       });
 
-      const newTask = {
+      gantt.addTask({
         text: taskName,
         start_date: taskStart,
         end_date: taskEnd,
-        duration: taskDuration,
+        duration,
         parent: parentTask
-      };
-
-      gantt.addTask(newTask);
+      });
       setShow(false);
       resetForm();
-    } else {
-      console.warn('Invalid task input', { taskStart, taskDuration });
     }
   };
 
@@ -82,7 +76,7 @@ const GanttAddTaskModal = ({
   useEffect(() => {
     const id = gantt.attachEvent('onTaskCreated', task => {
       setShow(true);
-      if (task.text) setTaskName(task.text);
+      setTaskName(task.text ?? '');
       if (
         task.start_date instanceof Date &&
         !isNaN(task.start_date.getTime())
@@ -98,96 +92,122 @@ const GanttAddTaskModal = ({
   }, []);
 
   return (
-    <Modal
-      show={show}
-      onHide={() => setShow(false)}
-      centered
-      aria-labelledby="addTaskModalLabel"
-      backdrop={true}
-    >
-      <Modal.Header className="p-4 pb-3 align-items-start border-0 bg-body-highlight">
-        <h3 className="mb-0 text-body-highlight">Create New Task</h3>
-        <button onClick={() => setShow(false)} className="btn p-1 ms-auto">
-          <FontAwesomeIcon icon={faTimes} className="fs-10 btn-close" />
-        </button>
-      </Modal.Header>
-
-      <Modal.Body className="px-4 bg-body-highlight">
-        <Form id="addTaskForm">
-          <Form.Group controlId="createTaskName" className="mb-4">
-            <Form.Label className="form-label-header mb-2">
-              Task Name
-            </Form.Label>
-            <Form.Control
-              type="text"
-              placeholder="Enter task name"
-              value={taskName}
-              onChange={e => setTaskName(e.target.value)}
-            />
-          </Form.Group>
-
-          <Row className="g-3">
-            <Col xs={7} sm={8}>
-              <Form.Group controlId="createTaskStartDate">
-                <Form.Label className="form-label-header mb-2">
+    <Dialog open={show} onOpenChange={open => !open && setShow(false)}>
+      <Dialog.Content
+        centered
+        className="bg-subtle"
+        aria-describedby={undefined}
+      >
+        {/* the gold heading is a plain h3, not `.modal-title` (the phoenix skin
+            makes that text-lg/text-muted), so Radix gets a sr-only title */}
+        <Dialog.Title className="sr-only">Create New Task</Dialog.Title>
+        <div className="modal-header p-6 pb-4 items-start border-0">
+          <h3 className="mb-0 text-highlight" id="addTaskModalLabel">
+            Create New Task
+          </h3>
+          <button
+            type="button"
+            aria-label="Close"
+            className="btn btn-close text-sm"
+            onClick={() => setShow(false)}
+          />
+        </div>
+        <div className="modal-body px-6">
+          <form id="addTaskForm">
+            <div className="mb-6">
+              <label
+                className="font-bold text-highlight mb-2"
+                htmlFor="createTaskName"
+              >
+                Task Name
+              </label>
+              <Input
+                id="createTaskName"
+                type="text"
+                placeholder="Enter task name"
+                value={taskName}
+                onChange={e => setTaskName(e.target.value)}
+              />
+            </div>
+            <div className="row g-4">
+              <div className="col-7 sm:col-8">
+                <label
+                  className="font-bold text-highlight"
+                  htmlFor="createTaskStartDate"
+                >
                   Start Date
-                </Form.Label>
+                </label>
                 <DatePicker
-                  id="createTaskStartDate"
+                  hideIcon
+                  noContainer
+                  options={{ defaultDate: taskStart }}
                   onChange={date => {
-                    if (
-                      Array.isArray(date) &&
-                      date[0] instanceof Date &&
-                      !isNaN(date[0].getTime())
-                    ) {
-                      setTaskStart(date[0]);
-                    } else {
-                      setTaskStart(defaultStartDate);
-                    }
+                    const next = Array.isArray(date) ? date[0] : date;
+                    setTaskStart(
+                      next instanceof Date && !isNaN(next.getTime())
+                        ? next
+                        : defaultStartDate
+                    );
                   }}
-                  options={{
-                    defaultDate: taskStart
-                  }}
+                  render={(_, ref) => (
+                    <div className="input-group-icon mt-2">
+                      <UilCalendarAlt
+                        fill="currentColor"
+                        size={16}
+                        className="form-control-icon-start text-default"
+                      />
+                      <input
+                        id="createTaskStartDate"
+                        type="text"
+                        className="form-control ps-10 datetimepicker"
+                        ref={ref}
+                      />
+                    </div>
+                  )}
                 />
-              </Form.Group>
-            </Col>
+              </div>
 
-            <Col xs={5} sm={4}>
-              <Form.Group controlId="createTaskDuration" className="">
-                <Form.Label className="form-label-header mb-2">
+              <div className="col-5 sm:col-4">
+                <label
+                  className="font-bold text-highlight"
+                  htmlFor="createTaskDuration"
+                >
                   Time Duration
-                </Form.Label>
-                <div className="form-icon-container">
-                  <Form.Control
+                </label>
+                <div className="input-group-icon mt-2">
+                  <FontAwesomeIcon
+                    icon={faClock}
+                    className="form-control-icon-start text-default text-md"
+                  />
+                  <Input
+                    id="createTaskDuration"
                     type="number"
-                    placeholder="Days"
-                    className="form-icon-input"
+                    placeholder="0 days"
                     value={taskDuration}
                     onChange={e => {
                       const val = parseInt(e.target.value);
-                      setTaskDuration(!isNaN(val) ? val : 0);
+                      setTaskDuration(isNaN(val) ? '' : val);
                     }}
                   />
-                  <FontAwesomeIcon
-                    icon={faClock}
-                    className="fs-9 form-icon text-body-tertiary"
-                  />
                 </div>
-              </Form.Group>
-            </Col>
-          </Row>
-        </Form>
-      </Modal.Body>
-
-      <Modal.Footer className="border-0 px-4 pb-3 bg-body-highlight">
-        <Button variant="phoenix-secondary" onClick={() => setShow(false)}>
-          Cancel
-        </Button>
-        <Button onClick={handleCreateTask} variant="primary">
-          Create New Task
-        </Button>
-      </Modal.Footer>
-    </Modal>
+              </div>
+            </div>
+          </form>
+        </div>
+        <div className="modal-footer border-0 px-6 pb-4 gap-2">
+          <Button variant="phoenix-secondary" onClick={() => setShow(false)}>
+            Cancel{' '}
+          </Button>
+          <Button
+            id="createNewTask"
+            variant="primary"
+            onClick={handleCreateTask}
+          >
+            Create New Task{' '}
+          </Button>
+        </div>
+      </Dialog.Content>
+    </Dialog>
   );
 };
 

@@ -1,0 +1,144 @@
+/*-----------------------------------------------
+|   Scrollbar style for windows
+-----------------------------------------------*/
+
+@utility scrollbar {
+  overflow: auto;
+
+  &::-webkit-scrollbar-track {
+    visibility: hidden;
+  }
+
+  &::-webkit-scrollbar {
+    visibility: hidden;
+    -webkit-appearance: none;
+    width: 6px;
+    height: 6px;
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    visibility: hidden;
+    border-radius: 3px;
+    background-color: var(--scrollbar-bg);
+  }
+
+  &:hover,
+  &:focus {
+    &::-webkit-scrollbar,
+    &::-webkit-scrollbar-thumb {
+      visibility: visible;
+    }
+  }
+}
+
+@utility scrollbar-overlay {
+  overflow: auto;
+
+  &::-webkit-scrollbar-track {
+    visibility: hidden;
+  }
+
+  &::-webkit-scrollbar {
+    visibility: hidden;
+    -webkit-appearance: none;
+    width: 6px;
+    height: 6px;
+    background-color: transparent;
+  }
+  &::-webkit-scrollbar-thumb {
+    visibility: hidden;
+    border-radius: 3px;
+    background-color: var(--scrollbar-bg);
+  }
+
+  &:hover,
+  &:focus {
+    &::-webkit-scrollbar,
+    &::-webkit-scrollbar-thumb {
+      visibility: visible;
+    }
+  }
+}
+.navbar-vibrant {
+  .scrollbar {
+    overflow: auto;
+
+    &::-webkit-scrollbar {
+      visibility: hidden;
+      -webkit-appearance: none;
+      width: 6px;
+      height: 6px;
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      visibility: hidden;
+      border-radius: 3px;
+      background-color: --alpha(var(--color-white) / 40%);
+    }
+
+    &:hover,
+    &:focus {
+      &::-webkit-scrollbar,
+      &::-webkit-scrollbar-thumb {
+        visibility: visible;
+      }
+    }
+  }
+}
+
+.firefox {
+  .scrollbar {
+    overflow: auto !important;
+    scrollbar-color: var(--scrollbar-bg) transparent;
+    scrollbar-width: thin;
+  }
+  .navbar-vibrant {
+    .scrollbar {
+      overflow: auto !important;
+      scrollbar-color: --alpha(var(--color-white) / 40%) transparent;
+      scrollbar-width: thin;
+    }
+  }
+}
+
+.os-theme-dark {
+  & > .os-scrollbar {
+    & > .os-scrollbar-track > .os-scrollbar-handle {
+      background: var(--scrollbar-bg);
+    }
+    &:hover,
+    &:focus {
+      & > .os-scrollbar-track > .os-scrollbar-handle {
+        background: var(--scrollbar-bg);
+      }
+    }
+  }
+}
+
+/*-----------------------------------------------
+|   Simplebar
+-----------------------------------------------*/
+
+.simplebar-track {
+  &.simplebar-vertical {
+    width: 10px;
+  }
+}
+.simplebar-scrollbar {
+  &::before {
+    background: var(--scrollbar-bg);
+  }
+  &.simplebar-visible {
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+.simplebar-content-wrapper {
+  &::-webkit-scrollbar {
+    display: none;
+    width: 0;
+    height: 0;
+  }
+}

@@ -1,125 +1,129 @@
-import React from 'react';
-import { Form } from 'react-bootstrap';
+import { cn } from '@hummingbirdui/react';
+
+interface SettingsCheckItemProps {
+  id: string;
+  name: string;
+  label: string;
+  type: 'radio' | 'checkbox';
+  defaultChecked?: boolean;
+  className?: string;
+}
+
+/**
+ * Gold `div.form-check > input.form-check-input + label.form-check-label.text-base`
+ * — mixin `LeftSidebar` in `../phoenix-tailwind/src/pug/mixins/social/Settings.pug`.
+ */
+const SettingsCheckItem = ({
+  id,
+  name,
+  label,
+  type,
+  defaultChecked,
+  className
+}: SettingsCheckItemProps) => (
+  <div className={cn('form-check', className)}>
+    <input
+      className="form-check-input"
+      id={id}
+      type={type}
+      name={name}
+      defaultChecked={defaultChecked}
+    />
+    <label className="form-check-label text-base" htmlFor={id}>
+      {label}
+    </label>
+  </div>
+);
 
 const SocialSettingsSideBar = () => {
   return (
     <>
-      <div className="border-bottom border-translucent border-dashed pb-3 mb-4">
-        <h5 className="text-body mb-3">
+      <div className="border-b border-subtle border-dashed pb-4 mb-6">
+        <h5 className="text-default mb-4">
           Who will be able to see your profile?
         </h5>
-        <Form.Check type="radio" id="onlyMe">
-          <Form.Check.Input
-            type="radio"
-            name="profiileVisibility"
-            value="option1"
-            defaultChecked
-          />
-          <Form.Check.Label htmlFor="onlyMe" className="fs-8">
-            Only me
-          </Form.Check.Label>
-        </Form.Check>
-        <Form.Check type="radio" id="myFollowers">
-          <Form.Check.Input
-            type="radio"
-            name="profiileVisibility"
-            value="option2"
-          />
-          <Form.Check.Label htmlFor="myFollowers" className="fs-8">
-            My followers
-          </Form.Check.Label>
-        </Form.Check>
-        <Form.Check type="radio" id="everyone">
-          <Form.Check.Input
-            type="radio"
-            name="profiileVisibility"
-            value="option3"
-          />
-          <Form.Check.Label htmlFor="everyone" className="fs-8">
-            Everyone
-          </Form.Check.Label>
-        </Form.Check>
+        <SettingsCheckItem
+          className="mb-1.25"
+          id="onlyMe"
+          type="radio"
+          name="profiileVisibility"
+          label="Only me"
+          defaultChecked
+        />
+        <SettingsCheckItem
+          className="mb-1.25"
+          id="myFollowers"
+          type="radio"
+          name="profiileVisibility"
+          label="My followers"
+        />
+        <SettingsCheckItem
+          className="mb-1.25"
+          id="everyone"
+          type="radio"
+          name="profiileVisibility"
+          label="Everyone"
+        />
       </div>
-      <div className="border-bottom border-translucent border-dashed pb-3 mb-4">
-        <h5 className="text-body mb-3">Who can tag you?</h5>
-        <Form.Check type="radio" id="tagGroupMembers">
-          <Form.Check.Input
-            type="radio"
-            name="tagGroupMembers"
-            value="option1"
-          />
-          <Form.Check.Label htmlFor="tagGroupMembers" className="fs-8">
-            Group Members
-          </Form.Check.Label>
-        </Form.Check>
-        <Form.Check type="radio" id="tagEveryone">
-          <Form.Check.Input
-            type="radio"
-            name="tagGroupMembers"
-            value="option2"
-            defaultChecked
-          />
-          <Form.Check.Label htmlFor="tagEveryone" className="fs-8">
-            Everyone
-          </Form.Check.Label>
-        </Form.Check>
+      <div className="border-b border-subtle border-dashed pb-4 mb-6">
+        <h5 className="text-default mb-4">Who can tag you?</h5>
+        <SettingsCheckItem
+          className="mb-1.5"
+          id="tagGroupMembers"
+          type="radio"
+          name="tagPermission"
+          label="Group Members"
+          defaultChecked
+        />
+        <SettingsCheckItem
+          className="mb-1.5"
+          id="tagEveryone"
+          type="radio"
+          name="tagPermission"
+          label="Everyone"
+        />
       </div>
-      <div className="border-bottom border-translucent border-dashed pb-3 mb-4">
-        <Form.Check type="checkbox" id="showEmail">
-          <Form.Check.Input
-            type="checkbox"
-            name="showEmail"
-            value="option1"
-            defaultChecked
-          />
-          <Form.Check.Label htmlFor="showEmail" className="fs-8">
-            Allow users to see my email
-          </Form.Check.Label>
-        </Form.Check>
-        <Form.Check type="checkbox" id="showExperiences">
-          <Form.Check.Input
-            type="checkbox"
-            name="showExperiences"
-            value="option2"
-          />
-          <Form.Check.Label htmlFor="showExperiences" className="fs-8">
-            Allow users to see my experiences
-          </Form.Check.Label>
-        </Form.Check>
-        <Form.Check type="checkbox" id="showFollowers">
-          <Form.Check.Input
-            type="checkbox"
-            name="showFollowers"
-            value="option3"
-          />
-          <Form.Check.Label htmlFor="showFollowers" className="fs-8">
-            Allow users to see my followers
-          </Form.Check.Label>
-        </Form.Check>
+      <div className="border-b border-subtle border-dashed pb-4 mb-6">
+        <SettingsCheckItem
+          className="mb-1.25"
+          id="showEmail"
+          type="checkbox"
+          name="showEmail"
+          label="Allow users to show your email"
+        />
+        <SettingsCheckItem
+          className="mb-1.25"
+          id="showExperiences"
+          type="checkbox"
+          name="showExperiences"
+          label="Allow users to show your experiences"
+        />
+        <SettingsCheckItem
+          className="mb-1.25"
+          id="showFollowers"
+          type="checkbox"
+          name="showFollowers"
+          label="Allow users to show your followers"
+          defaultChecked
+        />
       </div>
-      <div className="mb-4">
-        <Form.Check type="checkbox" id="showPhone" className="form-switch">
-          <Form.Check.Input
-            type="checkbox"
-            name="showPhone"
-            value="option2"
-            defaultChecked
-          />
-          <Form.Check.Label htmlFor="showPhone" className="fs-8">
-            See my your phone number
-          </Form.Check.Label>
-        </Form.Check>
-        <Form.Check type="checkbox" id="permitFollow" className="form-switch">
-          <Form.Check.Input
-            defaultChecked
-            type="checkbox"
-            name="permitFollow"
-            value="option3"
-          />
-          <Form.Check.Label htmlFor="permitFollow" className="fs-8">
-            Permit users to follow you.
-          </Form.Check.Label>
-        </Form.Check>
+      <div className="mb-6">
+        <SettingsCheckItem
+          className="form-switch mb-1.5"
+          id="showPhone"
+          type="checkbox"
+          name="showPhone"
+          label="Show your phone number"
+          defaultChecked
+        />
+        <SettingsCheckItem
+          className="form-switch mb-1.5"
+          id="permitFollow"
+          type="checkbox"
+          name="permitFollow"
+          label="Permit users to follow you."
+          defaultChecked
+        />
       </div>
     </>
   );

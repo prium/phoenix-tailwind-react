@@ -1,4 +1,3 @@
-import { Stack } from 'react-bootstrap';
 import starterImg from 'assets/img/spot-illustrations/2.png';
 import starterDarkImg from 'assets/img/spot-illustrations/dark_2.png';
 import Button from 'components/base/Button';
@@ -6,32 +5,22 @@ import { Link } from 'react-router';
 
 const Starter = () => {
   return (
-    <Stack className="flex-center content-min-h">
-      <div className="text-center py-9">
-        <img
-          src={starterImg}
-          width={470}
-          className="img-fluid mb-7 d-dark-none"
-          alt="starter"
-        />
+    <div className="flex flex-center content-min-h">
+      <div className="text-center py-16">
+        <img src={starterImg} className="mb-12 w-117.5 dark:hidden" alt="" />
         <img
           src={starterDarkImg}
-          width={470}
-          className="img-fluid mb-7 d-light-none"
-          alt="starter"
+          className="mb-12 w-117.5 hidden mx-auto dark:block"
+          alt=""
         />
-        <h1 className="text-body-secondary fw-normal mb-5">
+        <h1 className="text-muted font-normal mb-8">
           Create Something Beautiful.
         </h1>
-        <Button
-          as={Link}
-          className="btn btn-lg btn-primary"
-          to="/documentation/getting-started"
-        >
-          Getting Started
+        <Button variant="primary" size="lg" asChild>
+          <Link to="/documentation/getting-started">Getting Started</Link>
         </Button>
       </div>
-    </Stack>
+    </div>
   );
 };
 

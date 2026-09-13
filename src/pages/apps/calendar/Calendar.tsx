@@ -8,17 +8,17 @@ import CalendarHeader from './CalendarHeader';
 import CalendarEventModal from 'components/modals/CalendarEventModal';
 import { HANDLE_SELECT, SET_CALENDAR_STATE } from 'reducers/CalendarReducer';
 import FullCalendar from 'components/base/FullCalendar';
-import events from 'data/calendarEvents';
+import { eventList } from 'data/calendarEvents';
 
-const index = () => {
+const Calendar = () => {
   return (
     <CalendarProvider>
-      <Calendar />
+      <CalendarContent />
     </CalendarProvider>
   );
 };
 
-const Calendar = () => {
+const CalendarContent = () => {
   const { calendarDispatch } = useCalendarContext();
 
   const handleEventClick = (info: EventClickArg) => {
@@ -36,26 +36,29 @@ const Calendar = () => {
   };
 
   return (
-    <div>
+    <>
       <CalendarTop />
       <CalendarHeader />
-      <div className="mt-6 mb-9">
+      {/* gold: `.calendar-outline.mt-10.mb-16#appCalendar` — the id carries
+          `height: calc(100vh - 12.4rem) !important` from the plugin skin, so
+          the calendar fills the wrapper instead of the gold's 800px option. */}
+      <div className="calendar-outline mt-10 mb-16" id="appCalendar">
         <FullCalendar
-          height={800}
+          height="100%"
           select={info => {
             calendarDispatch({
               type: HANDLE_SELECT,
               payload: info
             });
           }}
-          events={events}
+          events={eventList}
           eventClick={handleEventClick}
         />
       </div>
       <CalendarEventModal />
       <CalendarAddNewEventModal />
-    </div>
+    </>
   );
 };
 
-export default index;
+export default Calendar;

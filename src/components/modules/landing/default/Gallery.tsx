@@ -1,181 +1,90 @@
-import React, { useState } from 'react';
-import { Col, Row } from 'react-bootstrap';
-import img1 from 'assets/img/gallery/1.png';
-import img2 from 'assets/img/gallery/2.png';
-import img3 from 'assets/img/gallery/3.png';
-import img5 from 'assets/img/gallery/5.png';
-import img4 from 'assets/img/gallery/4.png';
-import img6 from 'assets/img/gallery/6.png';
-import img7 from 'assets/img/gallery/7.png';
-import img9 from 'assets/img/gallery/9.png';
-import img8 from 'assets/img/gallery/8.png';
-import img10 from 'assets/img/gallery/10.png';
+import { useState } from 'react';
+
+import bg5 from 'assets/img/bg/bg-5.png';
+import bgDark5 from 'assets/img/bg/bg-dark-5.png';
+import bgLeft5 from 'assets/img/bg/bg-left-5.png';
+import bgRight6 from 'assets/img/bg/bg-right-6.png';
+import Lightbox from 'components/base/Lightbox';
+import PackeryGrid from 'components/modules/gallery/PackeryGrid';
 import IsotopeNav from 'components/navs/IsotopeNav';
+import {
+  galleryFilters,
+  galleryItems
+} from 'data/landing/default-landing-data';
 import useLightbox from 'hooks/useLightbox';
-import Lightbox from 'components/base/LightBox';
 
-type GalleryItemType = {
-  img: string;
-  className: string;
-  category: string[];
-};
-
-const galleryItems: GalleryItemType[] = [
-  {
-    img: img1,
-    className: 'col-span-6 col-span-md-4 col-span-lg-3 row-span-2',
-    category: ['1', '4']
-  },
-  {
-    img: img2,
-    className: 'col-span-6 col-span-md-4 col-span-lg-3 row-span-2',
-    category: ['1', '3']
-  },
-  {
-    img: img3,
-    className: 'col-span-6 col-span-md-4 col-span-lg-3 row-span-1',
-    category: ['1', '2']
-  },
-  {
-    img: img5,
-    className: 'col-span-6 col-span-md-4 col-span-lg-3 row-span-2',
-    category: ['1', '3']
-  },
-  {
-    img: img4,
-    className: 'col-span-6 col-span-md-4 col-span-lg-3 row-span-1',
-    category: ['1', '2', '3']
-  },
-  {
-    img: img6,
-    className: 'col-span-6 col-span-md-4 col-span-lg-3 row-span-2',
-    category: ['1', '2']
-  },
-  {
-    img: img7,
-    className: 'col-span-6 col-span-md-4 col-span-lg-3 row-span-1',
-    category: ['1', '2']
-  },
-  {
-    img: img9,
-    className: 'col-span-6 col-span-md-4 col-span-lg-6 row-span-1',
-    category: ['1', '2']
-  },
-  {
-    img: img8,
-    className: 'col-span-6 col-span-md-4 col-span-lg-3 row-span-1',
-    category: ['1', '4']
-  },
-  {
-    img: img10,
-    className: 'col-span-6 col-span-md-4 col-span-lg-6 row-span-1',
-    category: ['1', '2']
-  }
-];
-
-const navItems = [
-  {
-    eventKey: '1',
-    label: 'First'
-  },
-  {
-    eventKey: '2',
-    label: 'Second'
-  },
-  {
-    eventKey: '3',
-    label: 'Third'
-  },
-  {
-    eventKey: '4',
-    label: 'Fourth'
-  }
-];
-
-const GalleryItem = ({
-  galleryItem,
-  onClick
-}: {
-  galleryItem: GalleryItemType;
-  onClick: () => void;
-}) => {
-  return (
-    <div
-      className={`${galleryItem.className} cursor-pointer`}
-      onClick={onClick}
-    >
-      <img
-        src={galleryItem.img}
-        alt=""
-        className="rounded h-100 w-100 fit-cover"
-      />
-    </div>
-  );
-};
-
+/** `+Gallery` in landing-1/Gallery.pug */
 const Gallery = () => {
-  const [images, setImages] = useState(galleryItems);
-  const [selectedCategory, setSelectedCategory] = useState('1');
+  const [filter, setFilter] = useState('*');
+  const images =
+    filter === '*'
+      ? galleryItems
+      : galleryItems.filter(item => item.filters.includes(filter));
 
   const { lightboxProps, openLightbox } = useLightbox(
-    images.map(image => image.img)
+    images.map(item => item.image)
   );
 
-  const handleNavItemSelect = (category: string | null) => {
-    setSelectedCategory(category || '1');
-    setImages(
-      galleryItems.filter(item =>
-        category ? item.category.includes(category) : true
-      )
-    );
-  };
-
-  const handleItemClick = (index: number) => {
-    openLightbox(index);
-  };
-
   return (
-    <section className="pt-15">
-      <div className="container-small position-relative px-lg-7 px-xxl-3">
-        <Row className="mb-8 text-center text-sm-start">
-          <Col xs={12} className="mb-4">
-            <h4 className="text-primary fw-bolder mb-3">Gallery</h4>
-            <h2>Some of Our Best Works</h2>
-          </Col>
-          <Col lg={6}>
-            <p>
-              Rise like Phoenix focusing only on functionalities for your
-              digital products leaving the design for us. Show what you do, with
-              our latest admin dashboard. Check our best works and let us know
-              what you want to find.
-            </p>
-          </Col>
-          <Col lg={6}>
-            <p>
-              Want to tell your customers about the details of how and what?
-              Tell them with all the posts at one place without them ridirecting
-              to another page or site.
-            </p>
-          </Col>
-        </Row>
-
+    <section className="bg-soft lg:pb-10 xl:pb-14">
+      <div
+        className="bg-holder bg-auto! dark:hidden"
+        style={{ backgroundImage: `url(${bg5})` }}
+      />
+      <div
+        className="bg-holder bg-auto! hidden dark:block"
+        style={{ backgroundImage: `url(${bgDark5})` }}
+      />
+      <div
+        className="bg-holder bg-left! bg-auto!"
+        style={{ backgroundImage: `url(${bgLeft5})` }}
+      />
+      <div
+        className="bg-holder bg-right! bg-auto!"
+        style={{ backgroundImage: `url(${bgRight6})` }}
+      />
+      <div className="container-small relative lg:px-12 2xl:px-4">
+        <div className="mb-14 text-center sm:text-start">
+          <h4 className="text-primary font-extrabold mb-4">Gallery</h4>
+          <h2>Some of Our Best Works</h2>
+        </div>
+        <p className="lg:columns-2">
+          Rise like Phoenix Tailwind focusing only on functionalities for your
+          digital products leaving the design for us. Show what you do, with our
+          latest admin dashboard. Check our best works and let us know what you
+          want to find. Want to tell your customers about the details of how and
+          what? Tell them with all the posts at one place without them
+          ridirecting to another page or site.
+        </p>
         <IsotopeNav
-          navItems={navItems}
-          className="mb-5 justify-content-center justify-content-sm-start w-max-content"
-          onSelect={handleNavItemSelect}
+          navItems={galleryFilters}
+          className="mb-10 justify-center sm:justify-start w-max"
+          onSelect={key => setFilter(key ?? '*')}
         />
 
-        <div className="d-grid grid-cols-12 gap-3">
-          {images.map((gallery, index) => (
-            <GalleryItem
-              galleryItem={gallery}
-              key={gallery.img}
-              onClick={() => handleItemClick(index + 1)}
-            />
+        <PackeryGrid className="row g-4" id="image_gallery">
+          {images.map((item, index) => (
+            // `.isotope-item` is `visibility: hidden` until the gold's
+            // isotope.js reveals it after imagesLoaded (plugins/isotope.css)
+            <div
+              className={item.className}
+              key={item.image}
+              style={{ visibility: 'visible' }}
+            >
+              <a
+                href="#!"
+                onClick={event => {
+                  event.preventDefault();
+                  openLightbox(index + 1);
+                }}
+              >
+                <img className="rounded-md w-full" src={item.image} alt="" />
+              </a>
+            </div>
           ))}
-        </div>
+        </PackeryGrid>
 
-        <Lightbox {...lightboxProps} key={selectedCategory} />
+        <Lightbox key={filter} {...lightboxProps} />
       </div>
     </section>
   );

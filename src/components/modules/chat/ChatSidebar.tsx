@@ -1,78 +1,99 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button from 'components/base/Button';
-import { Card, Dropdown, Form, Modal } from 'react-bootstrap';
-import classNames from 'classnames';
+import { Dialog, Dropdown, cn } from '@hummingbirdui/react';
 import ChatFilterTab from './ChatFilterTab';
-import DropdownSearchBox from 'components/common/DropdownSearchBox';
 import { useState } from 'react';
 import {
   faBars,
   faMagnifyingGlass,
   faUser
 } from '@fortawesome/free-solid-svg-icons';
-import { useAppContext } from 'providers/AppProvider';
+import { useChatContext } from 'providers/ChatProvider';
 
-const ChatSidebar = ({ className }: { className?: string }) => {
+/**
+ * Gold `#chat-sidebar` card + `#chatSearchBoxModal` — phoenix-tailwind
+ * `src/pug/apps/chat.pug`. The card doubles as a start offcanvas below `sm`.
+ */
+const ChatSidebar = () => {
   const [openSearchModal, setOpenSearchModal] = useState(false);
-  const {
-    config: { isRTL }
-  } = useAppContext();
+  const { showUserListOffcanvas } = useChatContext();
+
   return (
     <>
-      <Card className={classNames(className, 'chat-sidebar p-3 p-xl-1')}>
-        <Button
-          className="d-none d-sm-block d-xl-none mb-2"
+      <div
+        className={cn(
+          'card p-4 xl:p-1 xl:-mt-1 chat-sidebar me-4 phoenix-offcanvas phoenix-offcanvas-start',
+          { show: showUserListOffcanvas }
+        )}
+        id="chat-sidebar"
+      >
+        <button
+          className="btn hidden sm:block xl:hidden mb-2"
+          type="button"
           onClick={() => setOpenSearchModal(true)}
         >
           <FontAwesomeIcon
             icon={faMagnifyingGlass}
-            className="text-body-tertiary text-opacity-85 fs-7"
+            className="text-subtle/85 text-lg"
           />
-        </Button>
-        <Dropdown
-          className="d-none d-sm-block d-xl-none mb-5"
-          align={isRTL ? 'end' : 'start'}
-        >
-          <Dropdown.Toggle
-            variant=""
-            size="sm"
-            className="w-100 mx-auto dropdown-caret-none"
-          >
-            <FontAwesomeIcon
-              icon={faBars}
-              className="fs-7 text-body-tertiary text-opacity-85"
-            />
-          </Dropdown.Toggle>
-          <Dropdown.Menu className="p-0">
-            <Dropdown.Item eventKey="1">All</Dropdown.Item>
-            <Dropdown.Item eventKey="2">Read</Dropdown.Item>
-            <Dropdown.Item eventKey="3">Unread</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-        <Form.Group className="form-icon-container mb-4 d-sm-none d-xl-block">
-          <Form.Control
+        </button>
+        <div className="hidden sm:block xl:hidden mb-8">
+          <Dropdown>
+            <Dropdown.Trigger asChild>
+              <button className="btn w-full mx-auto" type="button">
+                <FontAwesomeIcon
+                  icon={faBars}
+                  className="text-subtle/85 text-lg"
+                />
+              </button>
+            </Dropdown.Trigger>
+            <Dropdown.Content align="end" className="p-0">
+              <Dropdown.Item asChild>
+                <a href="#!">All</a>
+              </Dropdown.Item>
+              <Dropdown.Item asChild>
+                <a href="#!">Read</a>
+              </Dropdown.Item>
+              <Dropdown.Item asChild>
+                <a href="#!">Unread</a>
+              </Dropdown.Item>
+            </Dropdown.Content>
+          </Dropdown>
+        </div>
+        <div className="input-group-icon mb-6 sm:hidden xl:block">
+          <FontAwesomeIcon
+            icon={faUser}
+            className="text-default text-md form-control-icon-start"
+            transform="up-2"
+          />
+          <input
+            className="form-control"
             type="text"
             placeholder="People, Groups and Messages"
-            className="form-icon-input"
           />
-          <FontAwesomeIcon icon={faUser} className="text-body fs-9 form-icon" />
-        </Form.Group>
+        </div>
         <ChatFilterTab />
-      </Card>
-      <Modal
-        show={openSearchModal}
-        onHide={() => setOpenSearchModal(false)}
-        className="search-box-modal mt-15"
-      >
-        <Modal.Body className="p-0 bg-transparent">
-          <DropdownSearchBox
-            placeholder="Search People, Groups and Messages"
-            size="lg"
-            style={{ width: 'auto' }}
-            autoFocus
-          />
-        </Modal.Body>
-      </Modal>
+      </div>
+      <Dialog open={openSearchModal} onOpenChange={setOpenSearchModal}>
+        <Dialog.Content className="mt-30" aria-describedby={undefined}>
+          <Dialog.Title className="sr-only">Search</Dialog.Title>
+          <Dialog.Body className="p-0">
+            <div className="chat-search-box">
+              <div className="input-group-icon">
+                <input
+                  className="form-control py-4 rounded-sm"
+                  type="text"
+                  autoFocus
+                  placeholder="Search People, Groups and Messages"
+                />
+                <FontAwesomeIcon
+                  icon={faMagnifyingGlass}
+                  className="text-md form-control-icon-start"
+                />
+              </div>
+            </div>
+          </Dialog.Body>
+        </Dialog.Content>
+      </Dialog>
     </>
   );
 };

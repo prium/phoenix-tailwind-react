@@ -22,7 +22,7 @@ const getDefaultOptions = (
   getThemeColor: (name: string) => string,
   isDark: boolean
 ) => ({
-  color: getThemeColor('body-highlight-bg'),
+  color: getThemeColor('background-color-subtle'),
   legend: {
     data: ['Fulfilled', 'Cancelled'],
     itemWidth: 16,
@@ -31,9 +31,9 @@ const getDefaultOptions = (
     itemGap: 32,
     left: 0,
     top: 0,
-    inactiveColor: getThemeColor('quaternary-color'),
+    inactiveColor: getThemeColor('text-color-soft'),
     textStyle: {
-      color: getThemeColor('secondary-color'),
+      color: getThemeColor('text-color-muted'),
       fontWeight: 600,
       fontFamily: 'Nunito Sans'
     }
@@ -44,9 +44,9 @@ const getDefaultOptions = (
       type: 'none'
     },
     padding: [7, 10],
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('border-color'),
-    textStyle: { color: getThemeColor('light-text-emphasis') },
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('border-color-default'),
+    textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,
     formatter: (params: CallbackDataParams[]) => tooltipFormatterDefault(params)
@@ -54,7 +54,7 @@ const getDefaultOptions = (
   xAxis: {
     type: 'category',
     axisLabel: {
-      color: getThemeColor('secondary-text-emphasis'),
+      color: getThemeColor('text-color-muted'),
       formatter: (value: number) => dayjs(value).format('MMM DD'),
 
       fontFamily: 'Nunito Sans',
@@ -64,14 +64,14 @@ const getDefaultOptions = (
     data: getPastDates(8),
     axisLine: {
       lineStyle: {
-        color: getThemeColor('border-color-translucent')
+        color: getThemeColor('border-color-subtle')
       }
     },
     axisTick: false
   },
   yAxis: {
     axisLabel: {
-      color: getThemeColor('body-color'),
+      color: getThemeColor('text-color-default'),
       formatter: (value: number) => `${Math.abs(Math.round(value / 1000))}K`,
       fontWeight: 700,
       fontFamily: 'Nunito Sans'
@@ -79,7 +79,7 @@ const getDefaultOptions = (
     splitLine: {
       interval: 10,
       lineStyle: {
-        color: getThemeColor('border-color-translucent')
+        color: getThemeColor('border-color-subtle')
       }
     }
   },
@@ -92,7 +92,9 @@ const getDefaultOptions = (
       barWidth: '27%',
       itemStyle: {
         borderRadius: [4, 4, 0, 0],
-        color: isDark ? getThemeColor('info') : getThemeColor('info-light')
+        color: isDark
+          ? getThemeColor('color-info')
+          : getThemeColor('color-info-light')
       }
     },
     {
@@ -104,18 +106,18 @@ const getDefaultOptions = (
       itemStyle: {
         borderRadius: [0, 0, 4, 4],
         color: isDark
-          ? rgbaColor(getThemeColor('info'), 0.5)
-          : getThemeColor('info-lighter')
+          ? rgbaColor(getThemeColor('color-info'), 0.5)
+          : getThemeColor('color-info-lighter')
       }
     }
   ],
-  grid: { 
+  grid: {
     left: -3,
     right: 8,
     top: 46,
     bottom: 0,
     outerBoundsMode: 'same',
-    outerBoundsContain: 'axisLabel' 
+    outerBoundsContain: 'axisLabel'
   }
 });
 

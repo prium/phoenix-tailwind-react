@@ -1,79 +1,92 @@
+import { Input, cn } from '@hummingbirdui/react';
 import Button from 'components/base/Button';
+import PasswordField from 'components/base/PasswordField';
+import AuthLogoLink from 'components/common/AuthLogoLink';
 import AuthSocialButtons from 'components/common/AuthSocialButtons';
-import { Col, Form, Row } from 'react-bootstrap';
 import { Link } from 'react-router';
+import { AuthLayout } from './SignInForm';
 
-const SignUpForm = ({ layout }: { layout: 'simple' | 'card' | 'split' }) => {
+/** pug: pages/authentication/{simple,split,card}/sign-up.pug */
+const SignUpForm = ({ layout }: { layout: AuthLayout }) => {
   return (
     <>
-      <div className="text-center mb-7">
-        <h3 className="text-body-highlight">Sign Up</h3>
-        <p className="text-body-tertiary">Create your account today</p>
+      <div className="text-center mb-12">
+        {layout === 'card' && <AuthLogoLink />}
+        <h3 className="text-highlight">Sign Up</h3>
+        <p className="text-subtle">Create your account today</p>
       </div>
       <AuthSocialButtons title="Sign up" />
-      <div className="position-relative mt-4">
-        <hr className="bg-body-secondary" />
-        <div className="divider-content-center">or use email</div>
+      <div className="relative mt-6">
+        <hr className="bg-muted" />
+        <div
+          className={cn('divider-content-center', {
+            'bg-soft': layout === 'card'
+          })}
+        >
+          or use email
+        </div>
       </div>
-      <Form>
-        <Form.Group className="mb-3 text-start">
-          <Form.Label htmlFor="name">Name</Form.Label>
-          <Form.Control id="name" type="text" placeholder="Name" />
-        </Form.Group>
-        <Form.Group className="mb-3 text-start">
-          <Form.Label htmlFor="email">Email address</Form.Label>
-          <Form.Control
-            id="email"
-            type="email"
-            placeholder="name@example.com"
-          />
-        </Form.Group>
-        <Row className="g-3 mb-3">
-          <Col sm={layout === 'card' ? 12 : 6} lg={6}>
-            <Form.Group>
-              <Form.Label htmlFor="password">Password</Form.Label>
-              <Form.Control id="password" type="text" placeholder="Password" />
-            </Form.Group>
-          </Col>
-          <Col sm={layout === 'card' ? 12 : 6} lg={6}>
-            <Form.Group>
-              <Form.Label htmlFor="confirmPassword">
-                Confirm Password
-              </Form.Label>
-              <Form.Control
-                id="confirmPassword"
-                type="text"
-                placeholder="Confirm Password"
-              />
-            </Form.Group>
-          </Col>
-        </Row>
-        <Form.Check type="checkbox" className="mb-3">
-          <Form.Check.Input
-            type="checkbox"
-            name="termsService"
+      <form>
+        <div className="mb-4 text-start">
+          <label className="form-label" htmlFor="name">
+            Name
+          </label>
+          <Input id="name" type="text" placeholder="Name" />
+        </div>
+        <div className="mb-4 text-start">
+          <label className="form-label" htmlFor="email">
+            Email address
+          </label>
+          <Input id="email" type="email" placeholder="name@example.com" />
+        </div>
+        <div className="row g-4 mb-4">
+          <div className="sm:col-6">
+            <label className="form-label" htmlFor="password">
+              Password
+            </label>
+            <PasswordField
+              id="password"
+              placeholder="Password"
+              inputClassName="form-icon-input pe-10"
+            />
+          </div>
+          <div className="sm:col-6">
+            <label className="form-label" htmlFor="confirmPassword">
+              Confirm Password
+            </label>
+            <PasswordField
+              id="confirmPassword"
+              placeholder="Confirm Password"
+              inputClassName="form-icon-input pe-10"
+            />
+          </div>
+        </div>
+        <div className="form-check mb-4 py-1">
+          <input
+            className="form-check-input"
             id="termsService"
+            type="checkbox"
           />
-          <Form.Check.Label
+          <label
+            className="form-label text-md normal-case"
             htmlFor="termsService"
-            className="fs-9 text-transform-none"
           >
             I accept the <Link to="#!">terms </Link>and{' '}
             <Link to="#!">privacy policy</Link>
-          </Form.Check.Label>
-        </Form.Check>
-        <Button variant="primary" className="w-100 mb-3">
+          </label>
+        </div>
+        <Button variant="primary" className="w-full mb-4">
           Sign up
         </Button>
         <div className="text-center">
           <Link
             to={`/pages/authentication/${layout}/sign-in`}
-            className="fs-9 fw-bold"
+            className="text-md font-bold"
           >
             Sign in to an existing account
           </Link>
         </div>
-      </Form>
+      </form>
     </>
   );
 };

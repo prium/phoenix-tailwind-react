@@ -23,20 +23,20 @@ const LeadDetailsOffcanvas = ({ open, setOpen }: LeadDetailsOffcanvasProps) => {
           open={open}
           onHide={() => setOpen(false)}
           style={{ maxWidth: 350 }}
-          className="p-4 pt-3 phoenix-offcanvas-content scrollbar"
+          className="p-6 pt-4 phoenix-offcanvas-content scrollbar"
           placement="start"
           fixed
         >
           <div>
-            <div className="d-flex justify-content-between align-items-center mb-2 d-md-none">
+            <div className="flex justify-between items-center mb-2 md:hidden">
               <h3 className="mb-0">Lead Details</h3>
               <Button className="p-0" onClick={() => setOpen(false)}>
-                <Unicon fill='currentColor' size={24} icon={UilTimes} />
+                <Unicon fill="currentColor" size={24} icon={UilTimes} />
               </Button>
             </div>
 
-            <LeadProfileCard className="mb-3" />
-            <AboutLeadCard className="mb-3" />
+            <LeadProfileCard className="mb-4" />
+            <AboutLeadCard className="mb-4" />
             <LeadAddressCard />
           </div>
         </PhoenixOffcanvas>

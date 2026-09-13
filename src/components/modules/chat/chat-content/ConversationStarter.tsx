@@ -1,19 +1,25 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPaperPlane } from '@fortawesome/free-solid-svg-icons';
 import { useChatContext } from 'providers/ChatProvider';
 
+/**
+ * Empty-thread greeting — phoenix-tailwind mixins/chat/ChatContent.pug
+ * (gold copy kept verbatim, including the "begining" typo).
+ */
 const ConversationStarter = () => {
   const { currentConversation } = useChatContext();
 
   return (
-    <div className="d-flex align-items-end justify-content-center text-center h-100">
+    <div className="flex items-end justify-center text-center h-full">
       <div>
-        This is the beginning of your private chat with{' '}
-        <a href="#!" className="fw-semibold">
-          {currentConversation?.user.name}
+        This is the begining of your private chat with{' '}
+        <a className="font-semibold" href="#!">
+          {currentConversation?.user.name}.{' '}
         </a>
-        . You have 237 mutual connections.
+        You have 137 mutual connections.
         <br />
         Say Hi to your new friend now
-        <span className="fa-solid fa-paper-plane text-primary ms-1"></span>
+        <FontAwesomeIcon icon={faPaperPlane} className="text-primary ms-1" />
       </div>
     </div>
   );

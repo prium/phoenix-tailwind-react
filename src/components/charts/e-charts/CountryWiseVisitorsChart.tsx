@@ -30,15 +30,15 @@ const getDefaultOptions = (
     axisPointer: {
       type: 'none'
     },
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('border-color'),
-    textStyle: { color: getThemeColor('light-text-emphasis') },
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('border-color-default'),
+    textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,
     formatter: (params: CallbackDataParams[]) => {
       return `<div>
-        <h6 class="fs-9 text-700 mb-0"><span class="fas fa-circle me-1 text-primary-light"></span>
-          Users : <span class="fw-normal">${params[0].value}</span>
+        <h6 class="text-md text-700 mb-0"><span class="fas fa-circle me-1 text-primary-light"></span>
+          Users : <span class="font-normal">${params[0].value}</span>
         </h6>
     </div>`;
     }
@@ -80,8 +80,8 @@ const getDefaultOptions = (
       data,
       itemStyle: {
         color: isDark
-          ? getThemeColor('primary')
-          : getThemeColor('primary-light'),
+          ? getThemeColor('color-primary')
+          : getThemeColor('color-primary-light'),
         borderRadius: [2, 2, 0, 0]
       }
     }
@@ -94,7 +94,7 @@ const getDefaultOptions = (
   }
 });
 
-const CountryWiseVitorsChart = ({
+const CountryWiseVisitorsChart = ({
   style,
   updateUserCounder
 }: {
@@ -142,4 +142,4 @@ const CountryWiseVitorsChart = ({
   );
 };
 
-export default CountryWiseVitorsChart;
+export default CountryWiseVisitorsChart;

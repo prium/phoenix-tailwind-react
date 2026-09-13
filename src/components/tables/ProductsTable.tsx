@@ -20,42 +20,42 @@ export const productsTablecolumns: ColumnDef<ProductsTableProductType>[] = [
       return (
         <Link
           to="/apps/e-commerce/customer/product-details"
-          className="rounded-2 border border-translucent d-inline-block"
+          className="inline-block border border-subtle rounded-md"
         >
           <img src={productImage} alt="" width={53} />
         </Link>
       );
     },
     meta: {
-      headerProps: { style: { width: 70 } },
-      cellProps: { className: 'py-0' }
+      headerProps: { className: 'min-w-17.75 whitespace-nowrap text-sm' },
+      cellProps: { className: 'whitespace-nowrap py-0' }
     },
     enableSorting: false
   },
   {
     accessorKey: 'product',
-    header: 'Product name',
+    header: 'PRODUCT NAME',
     cell: ({ row: { original } }) => {
       const { product } = original;
       return (
         <Link
           to="/apps/e-commerce/customer/product-details"
-          className="fw-semibold line-clamp-3"
+          className="font-semibold line-clamp-3 mb-0"
         >
           {product}
         </Link>
       );
     },
     meta: {
-      headerProps: { style: { width: 350 }, className: 'ps-4' },
-      cellProps: { className: 'ps-4' }
+      headerProps: { className: 'whitespace-nowrap ps-6 w-87.5' },
+      cellProps: { className: 'ps-6' }
     }
   },
   {
     id: 'price',
     accessorFn: ({ price, priceMax, priceMin }) =>
       `${price} ${priceMax} ${priceMin}`,
-    header: 'Price',
+    header: 'PRICE',
     cell: ({ row: { original } }) => {
       const { price, priceMax, priceMin } = original;
       return price
@@ -64,39 +64,43 @@ export const productsTablecolumns: ColumnDef<ProductsTableProductType>[] = [
           `${currencyFormat(priceMin!)} - ${currencyFormat(priceMax!)}`;
     },
     meta: {
-      headerProps: { style: { width: 150 }, className: 'ps-4 text-end' },
-      cellProps: { className: 'fw-bold ps-4 text-body-tertiary text-end' }
+      headerProps: { className: 'text-end ps-6 w-37.5' },
+      cellProps: {
+        className: 'whitespace-nowrap text-end font-bold text-subtle ps-4'
+      }
     }
   },
   {
     accessorKey: 'category',
-    header: 'Category',
+    header: 'CATEGORY',
     meta: {
-      headerProps: { style: { width: 150 }, className: 'ps-4' },
+      headerProps: { className: 'ps-6 w-37.5' },
       cellProps: {
-        className: 'fs-9 fw-semibold ps-4 text-body-tertiary text-opacity-85'
+        className: 'whitespace-nowrap text-soft text-md ps-6 font-semibold'
       }
     }
   },
   {
     id: 'tags',
     accessorFn: ({ tags }) => tags.join(''),
-    header: 'Tags',
+    header: 'TAGS',
     cell: ({ row: { original } }) => {
       const { tags } = original;
       return (
-        <div className="d-flex flex-wrap gap-2">
+        <>
           {tags.map(tag => (
-            <Link key={tag} to="#!" className="text-decoration-none">
-              <Badge variant="tag">{tag}</Badge>
+            <Link key={tag} to="#!" className="no-underline">
+              <Badge variant="tag" className="me-2 mb-2">
+                {tag}
+              </Badge>
             </Link>
           ))}
-        </div>
+        </>
       );
     },
     meta: {
-      headerProps: { style: { width: 250 }, className: 'ps-3' },
-      cellProps: { style: { minWidth: 225 }, className: 'ps-3' }
+      headerProps: { className: 'ps-4 w-62.5' },
+      cellProps: { className: 'pb-2 ps-4 min-w-56.25' }
     }
   },
   {
@@ -106,28 +110,28 @@ export const productsTablecolumns: ColumnDef<ProductsTableProductType>[] = [
       return <StarCheckbox />;
     },
     meta: {
-      headerProps: { style: { width: 125 }, className: 'ps-4' },
-      cellProps: { className: 'ps-4 text-center' }
+      headerProps: { className: 'text-base text-center ps-6 w-37.5' },
+      cellProps: { className: 'text-base text-center ps-6' }
     }
   },
   {
     accessorKey: 'vendor',
-    header: 'Vendor',
+    header: 'VENDOR',
     cell: ({ row: { original } }) => {
       const { vendor } = original;
       return <Link to="#!">{vendor}</Link>;
     },
     meta: {
-      headerProps: { style: { width: 200 }, className: 'ps-4' },
-      cellProps: { className: 'ps-4 fw-semibold text-start' }
+      headerProps: { className: 'ps-6 w-50' },
+      cellProps: { className: 'text-start font-semibold ps-6' }
     }
   },
   {
     accessorKey: 'publishedOn',
-    header: 'Published on',
+    header: 'PUBLISHED ON',
     meta: {
-      headerProps: { style: { width: 50 }, className: 'ps-4' },
-      cellProps: { className: 'text-body-tertiary text-opacity-85 ps-4' }
+      headerProps: { className: 'ps-6 whitespace-nowrap w-12.5' },
+      cellProps: { className: 'whitespace-nowrap text-subtle/85 ps-4' }
     }
   },
   {
@@ -140,8 +144,10 @@ export const productsTablecolumns: ColumnDef<ProductsTableProductType>[] = [
       </RevealDropdownTrigger>
     ),
     meta: {
-      headerProps: { style: { width: '7%' } },
-      cellProps: { className: 'text-end' }
+      headerProps: { className: 'text-end pe-0 ps-6' },
+      cellProps: {
+        className: 'whitespace-nowrap text-end pe-0 ps-6 btn-reveal-trigger'
+      }
     }
   }
 ];
@@ -149,7 +155,7 @@ export const productsTablecolumns: ColumnDef<ProductsTableProductType>[] = [
 const ProductsTable = () => {
   return (
     <div>
-      <AdvanceTable tableProps={{ className: 'phoenix-table fs-9' }} />
+      <AdvanceTable tableProps={{ className: 'text-md mb-0' }} />
       <AdvanceTableFooter pagination />
     </div>
   );

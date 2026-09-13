@@ -1,12 +1,10 @@
 import Badge from 'components/base/Badge';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Project } from 'data/project-management/projects';
-import { Card, ProgressBar } from 'react-bootstrap';
-import Button from 'components/base/Button';
+import { Card } from '@hummingbirdui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AvatarDropdown from 'components/common/AvatarDropdown';
 import Avatar from 'components/base/Avatar';
-import classNames from 'classnames';
 import CardViewModal from './CardViewModal';
 import { currencyFormat } from 'helpers/utils';
 import useProjectProgress from '../useProjectProgress';
@@ -17,105 +15,107 @@ import {
   faUser
 } from '@fortawesome/free-solid-svg-icons';
 
+/** `+ProjectCard` in project-management/ProjectCardView.pug */
 const CardViewItem = ({ project }: { project: Project }) => {
   const [openDetailsModal, setOpenDetailsModal] = useState(false);
   const { progress, bgClassName, variant } = useProjectProgress(project);
 
   return (
     <>
-      <Card className="h-100 hover-actions-trigger">
+      <Card className="h-full hover-actions-trigger">
         <Card.Body>
-          <div className="d-flex align-items-center">
-            <h4 className="mb-2 line-clamp-1 lh-sm flex-1 me-5">
+          <div className="flex items-center">
+            <h4 className="mb-3.25 line-clamp-1 leading-sm flex-1 me-5">
               {project.name}
             </h4>
-            <div className="hover-actions top-0 end-0 mt-4 me-4">
-              <Button
-                variant="primary"
-                className="btn-icon flex-shrink-0"
+            <div className="hover-actions top-0 end-0 mt-6 me-6">
+              <button
+                type="button"
+                className="btn btn-primary btn-square btn-sm w-8 h-8 shrink-0"
                 onClick={() => setOpenDetailsModal(true)}
               >
                 <FontAwesomeIcon icon={faChevronRight} />
-              </Button>
+              </button>
             </div>
           </div>
           <Badge
             variant="phoenix"
             bg={project.status.type}
-            className="fs-10 mb-4"
+            className="text-sm mb-6"
           >
             {project.status.label}
           </Badge>
-          <div className="d-flex align-items-center mb-2">
+          <div className="flex items-center mb-2">
             <FontAwesomeIcon
               icon={faUser}
-              className="me-2 text-body-tertiary fs-9 fw-extra-bold"
+              className="me-2 text-subtle text-md"
             />
-            <p className="fw-bold mb-0 text-truncate lh-1">
+            <p className="text-base font-bold mb-0 text-truncate leading-none">
               Client :{' '}
-              <span className="fw-semibold text-primary ms-1">
+              <span className="font-semibold text-primary ms-1">
                 {' '}
                 Gusteau’s Restaurant
               </span>
             </p>
           </div>
-          <div className="d-flex align-items-center mb-4">
+          <div className="flex items-center mb-6">
             <FontAwesomeIcon
               icon={faCreditCard}
-              className="me-2 text-body-tertiary fs-9 fw-extra-bold"
+              className="me-2 text-subtle text-md"
             />
-            <p className="fw-bold mb-0 text-truncate lh-1">
+            <p className="text-base font-bold mb-0 leading-none">
               Budget :{' '}
-              <span className="text-body-emphasis ms-1">
+              <span className="ms-1 text-emphasis">
                 {currencyFormat(project.budget)}
               </span>
             </p>
           </div>
-          <div className="d-flex justify-content-between text-body-tertiary fw-semibold">
+          <div className="flex justify-between text-subtle text-base font-semibold">
             <p className="mb-2"> Progress</p>
-            <p className="mb-2 text-body-emphasis">{progress}%</p>
+            <p className="mb-2 text-emphasis">{progress}%</p>
           </div>
-          <ProgressBar
-            now={progress}
-            className={classNames('flex-1', bgClassName)}
-            variant={variant}
-          />
+          <div className={`progress ${bgClassName} h-1.25`}>
+            <div
+              className={`progress-bar rounded-md ${variant}`}
+              role="progressbar"
+              style={{ width: `${progress}%` }}
+            />
+          </div>
 
-          <div>
-            <div className="d-flex align-items-center mt-4">
-              <p className="mb-0 fw-bold fs-9">
-                Started :
-                <span className="fw-semibold text-body-tertiary text-opactity-85 ms-1">
-                  {project.start}
-                </span>
+          <div className="flex items-center mt-6">
+            <p className="mb-0 font-bold text-md">
+              Started :
+              <span className="font-semibold text-subtle ms-1">
+                {project.start}
+              </span>
+            </p>
+          </div>
+          <div className="flex items-center mt-2">
+            <p className="mb-0 font-bold text-md">
+              Deadline :{' '}
+              <span className="font-semibold text-subtle ms-1">
+                {project.deadline}
+              </span>
+            </p>
+          </div>
+
+          <div className="flex lg:block xl:flex justify-between items-center mt-4">
+            <Avatar.Group
+              total={project.assigness.length}
+              size="m"
+              className="ms-2"
+            >
+              {project.assigness.slice(0, 4).map(assigne => (
+                <AvatarDropdown user={assigne} size="m" key={assigne.id} />
+              ))}
+            </Avatar.Group>
+
+            <div className="lg:mt-4 xl:mt-0 text-base">
+              <FontAwesomeIcon icon={faListCheck} className="me-1" />
+              <p className="inline-block font-bold mb-0">
+                {project.task}
+                <span className="font-normal"> Task</span>
               </p>
-            </div>
-            <div className="d-flex align-items-center mt-2">
-              <p className="mb-0 fw-bold fs-9">
-                Deadline :{' '}
-                <span className="fw-semibold text-body-tertiary text-opactity-85 ms-1">
-                  {project.deadline}
-                </span>
-              </p>
-            </div>
-
-            <div className="d-flex d-lg-block d-xl-flex justify-content-between align-items-center mt-3">
-              <div className="d-flex gap-1">
-                <Avatar.Group total={project.assigness.length} size="m">
-                  {project.assigness.slice(0, 4).map(assigne => (
-                    <AvatarDropdown user={assigne} size="m" key={assigne.id} />
-                  ))}
-                </Avatar.Group>
-              </div>
-
-              <div className="mt-lg-3 mt-xl-0">
-                <FontAwesomeIcon icon={faListCheck} className="me-1" />
-
-                <p className="d-inline-block fw-bold mb-0">
-                  {project.task}
-                  <span className="fw-normal"> Task</span>
-                </p>
-              </div>
             </div>
           </div>
         </Card.Body>

@@ -1,111 +1,106 @@
 import { faTrash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button from 'components/base/Button';
-import Scrollbar from 'components/base/Scrollbar';
+import { Table } from '@hummingbirdui/react';
 import QuantityButtons from 'components/common/QuantityButtons';
 import { CartItemType } from 'data/e-commerce/products';
 import { currencyFormat } from 'helpers/utils';
 import { useMemo, useState } from 'react';
-import { Table } from 'react-bootstrap';
 import { Link } from 'react-router';
 
 interface EcomCartTableProps {
   products: CartItemType[];
 }
 
+/** `+CartTable` in phoenix-tailwind mixins/e-commerce/cart/CartTable.pug */
 const EcomCartTable = ({ products }: EcomCartTableProps) => {
   return (
-    <Scrollbar style={{ maxHeight: '100%'}} className="table-scrollbar">
-      <Table className="phoenix-table fs-9 mb-0 border-top border-translucent">
-        <thead>
-          <tr>
-            <th scope="col" />
-            <th scope="col" style={{ minWidth: 250 }}>
+    <div className="overflow-x-auto scrollbar -mx-1 px-1">
+      <Table className="text-md mb-0 border-t border-subtle">
+        <Table.Header>
+          <Table.Row>
+            <Table.Head className="whitespace-nowrap align-middle text-sm min-w-[63px]" />
+            <Table.Head className="min-w-62.5 whitespace-nowrap align-middle">
               PRODUCTS
-            </th>
-            <th scope="col" style={{ width: 80 }}>
-              COLOR
-            </th>
-            <th scope="col" style={{ width: 150 }}>
-              SIZE
-            </th>
-            <th className="text-end" scope="col" style={{ width: 300 }}>
-              PRICE
-            </th>
-            <th className="ps-5" scope="col" style={{ width: 200 }}>
-              QUANTITY
-            </th>
-            <th className="text-end" scope="col" style={{ width: 250 }}>
-              TOTAL
-            </th>
-            <th className="text-end pe-0" scope="col" />
-          </tr>
-        </thead>
-        <tbody className="list" id="cart-table-body">
+            </Table.Head>
+            <Table.Head className="w-20 align-middle">COLOR</Table.Head>
+            <Table.Head className="w-37.5 align-middle">SIZE</Table.Head>
+            <Table.Head className="w-75 align-middle text-end">PRICE</Table.Head>
+            <Table.Head className="w-50 align-middle ps-8">QUANTITY</Table.Head>
+            <Table.Head className="w-62.5 align-middle text-end">TOTAL</Table.Head>
+            <Table.Head className="pe-0 text-end align-middle" />
+          </Table.Row>
+        </Table.Header>
+        <Table.Body className="list" id="cart-table-body">
           {products.map(product => (
             <EcomCartTableRow product={product} key={product.id} />
           ))}
 
-          <tr className="cart-table-row">
-            <td
-              className="text-body-emphasis fw-semibold ps-0 fs-8"
+          <Table.Row className="cart-table-row btn-reveal-trigger">
+            <Table.Cell
+              className="text-emphasis font-semibold ps-0 text-base"
               colSpan={6}
             >
               Items subtotal :
-            </td>
-            <td className="text-body-emphasis fw-bold text-end fs-8">$691</td>
-            <td />
-          </tr>
-        </tbody>
+            </Table.Cell>
+            <Table.Cell className="text-emphasis font-bold text-end text-base">
+              $691
+            </Table.Cell>
+            <Table.Cell />
+          </Table.Row>
+        </Table.Body>
       </Table>
-    </Scrollbar>
+    </div>
   );
 };
 
 const EcomCartTableRow = ({ product }: { product: CartItemType }) => {
   const [quantity, setQuantity] = useState(product.quantity);
 
-  const total = useMemo(() => {
-    return product.price * quantity;
-  }, [quantity]);
+  const total = useMemo(() => product.price * quantity, [quantity]);
 
   return (
-    <tr className="cart-table-row" key={product.id}>
-      <td className="py-0">
-        <div className="border border-translucent rounded-2">
+    <Table.Row className="cart-table-row btn-reveal-trigger">
+      <Table.Cell className="align-middle whitespace-nowrap py-0">
+        <Link
+          to="/apps/e-commerce/customer/product-details"
+          className="block border border-subtle rounded-md"
+        >
           <img src={product.image} alt={product.name} width={53} />
-        </div>
-      </td>
-      <td>
-        <Link className="fw-semibold line-clamp-2" to="#!">
+        </Link>
+      </Table.Cell>
+      <Table.Cell className="products align-middle">
+        <Link className="font-semibold mb-0 line-clamp-2" to="#!">
           {product.name}
         </Link>
-      </td>
-      <td className="white-space-nowrap">{product.color}</td>
-      <td className="white-space-nowrap text-body-tertiary fw-semibold">
+      </Table.Cell>
+      <Table.Cell className="color align-middle whitespace-nowrap text-md text-default">
+        {product.color}
+      </Table.Cell>
+      <Table.Cell className="size align-middle whitespace-nowrap text-subtle text-md font-semibold">
         {product.size}
-      </td>
-      <td className="fw-semibold text-end">{currencyFormat(product.price)}</td>
-      <td className="fs-8 ps-5">
+      </Table.Cell>
+      <Table.Cell className="price align-middle text-default text-md font-semibold text-end">
+        {currencyFormat(product.price)}
+      </Table.Cell>
+      <Table.Cell className="quantity align-middle text-base ps-8">
         <QuantityButtons
           type="secondary"
           quantity={quantity}
           setQuantity={setQuantity}
         />
-      </td>
-      <td className="fw-bold text-body-highlight text-end">
+      </Table.Cell>
+      <Table.Cell className="total align-middle font-bold text-highlight text-end">
         {currencyFormat(total)}
-      </td>
-      <td className="text-end ps-3">
-        <Button
-          size="sm"
-          variant="link"
-          className="text-body-quaternary text-body-tertiary-hover me-2"
+      </Table.Cell>
+      <Table.Cell className="align-middle whitespace-nowrap text-end pe-0 ps-4">
+        <button
+          type="button"
+          className="btn btn-sm text-subtle/85 hover:text-subtle me-2"
         >
           <FontAwesomeIcon icon={faTrash} />
-        </Button>
-      </td>
-    </tr>
+        </button>
+      </Table.Cell>
+    </Table.Row>
   );
 };
 

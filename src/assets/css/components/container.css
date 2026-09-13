@@ -1,0 +1,89 @@
+@utility container {
+  --grid-gutter-x: 2rem;
+  @apply w-full mx-auto;
+  @variant sm {
+    max-width: 540px;
+  }
+  @variant md {
+    max-width: 720px;
+  }
+  @variant lg {
+    max-width: 960px;
+  }
+  @variant xl {
+    max-width: 1184px;
+  }
+  @variant 2xl {
+    max-width: 1678px;
+  }
+}
+
+.sm\:container {
+  @apply container;
+  @variant max-sm {
+    @apply max-w-full;
+  }
+}
+.md\:container {
+  @apply container;
+  @variant max-md {
+    @apply max-w-full;
+  }
+}
+.lg\:container {
+  @apply container;
+  @variant max-lg {
+    @apply max-w-full;
+  }
+}
+.xl\:container {
+  @apply container;
+  @variant max-xl {
+    @apply max-w-full;
+  }
+}
+.\32xl\:container {
+  @apply container;
+  @variant max-2xl {
+    @apply max-w-full;
+  }
+}
+
+@utility container-small {
+  @apply w-full mx-auto px-4;
+  @variant sm {
+    max-width: 540px;
+  }
+  @variant md {
+    max-width: 720px;
+  }
+  @variant lg {
+    max-width: 960px;
+  }
+  @variant xl {
+    max-width: 1216px;
+  }
+}
+
+@utility container-medium {
+  @apply w-full mx-auto px-4;
+  @variant sm {
+    max-width: 540px;
+  }
+  @variant md {
+    max-width: 720px;
+  }
+  @variant lg {
+    max-width: 960px;
+  }
+  @variant xl {
+    max-width: 1216px;
+  }
+  @variant 2xl {
+    max-width: 1400px;
+  }
+}
+
+@utility container-fluid {
+  @apply relative w-full px-4 mx-auto;
+}

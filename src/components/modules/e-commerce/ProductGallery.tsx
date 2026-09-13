@@ -1,6 +1,6 @@
 import { useBreakpoints } from 'providers/BreakpointsProvider';
 import { useState } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row } from '@hummingbirdui/react';
 import { FreeMode, Navigation, Thumbs } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -10,7 +10,7 @@ const ProductGallery = ({ images }: { images: string[] }) => {
   const { breakpoints } = useBreakpoints();
 
   return (
-    <Row className="mb-3 g-3">
+    <Row className="mb-4 g-4">
       <Col xs={12} md={2} lg={12} xl={2}>
         <Swiper
           direction={
@@ -26,11 +26,11 @@ const ProductGallery = ({ images }: { images: string[] }) => {
           freeMode={true}
           watchSlidesProgress={true}
           modules={[Thumbs]}
-          className="swiper-products-thumb"
+          className="swiper-products-thumb theme-slider overflow-visible md:h-121 lg:h-auto xl:h-121"
         >
           {images.map((image, index) => (
             <SwiperSlide className="h-auto" key={index}>
-              <div className="product-thumb-container p-2 p-sm-3 p-xl-2">
+              <div className="product-thumb-container p-2 sm:p-4 xl:p-2">
                 <img src={image} alt="" />
               </div>
             </SwiperSlide>
@@ -38,7 +38,7 @@ const ProductGallery = ({ images }: { images: string[] }) => {
         </Swiper>
       </Col>
       <Col xs={12} md={10} lg={12} xl={10}>
-        <div className="d-flex align-items-center border border-translucent rounded-3 text-center p-5 h-100">
+        <div className="flex items-center border border-subtle rounded-lg text-center p-8 h-full">
           <Swiper
             loop={true}
             spaceBetween={10}
@@ -50,7 +50,7 @@ const ProductGallery = ({ images }: { images: string[] }) => {
           >
             {images.map((image, index) => (
               <SwiperSlide key={index}>
-                <img src={image} alt="" className="w-100" />
+                <img src={image} alt="" className="w-full" />
               </SwiperSlide>
             ))}
           </Swiper>

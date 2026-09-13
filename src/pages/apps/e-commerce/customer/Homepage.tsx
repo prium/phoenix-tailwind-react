@@ -1,5 +1,5 @@
 import EcomCategoryNavs from 'components/navs/EcomCategoryNavs';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Container, Row } from '@hummingbirdui/react';
 import EcomWhopingBanner from 'components/banners/EcomWhopingBanner';
 import EcomGiftItemsBanner from 'components/banners/EcomGiftItemsBanner';
 import EcomBestInMarketBanner from 'components/banners/EcomBestInMarketBanner';
@@ -16,7 +16,7 @@ import EcomBecomeMember from 'components/cta/EcomBecomeMember';
 
 const Homepage = () => {
   return (
-    <div className="ecommerce-homepage pt-5 mb-9">
+    <div className="ecommerce-homepage pt-8 mb-16">
       <section className="py-0">
         <div className="container-small">
           <div className="scrollbar">
@@ -24,9 +24,9 @@ const Homepage = () => {
           </div>
         </div>
       </section>
-      <section className="py-0 px-xl-3">
-        <Container className="px-xl-0 px-xxl-3">
-          <Row className="g-3 mb-9">
+      <section className="py-0 xl:px-4">
+        <Container className="xl:px-0 2xl:px-4">
+          <Row className="g-4 mb-16">
             <Col xs={12}>
               <EcomWhopingBanner />
             </Col>
@@ -37,12 +37,12 @@ const Homepage = () => {
               <EcomBestInMarketBanner />
             </Col>
           </Row>
-          <Row className="g-4 mb-6">
+          <Row className="g-6 mb-10">
             <Col xs={12} lg={9} xxl={10}>
               <EcomTopDeals products={topDealsProducts} />
             </Col>
-            <Col lg={3} xxl={2} className="d-none d-lg-block">
-              <div className="h-100 position-relative rounded-3 overflow-hidden">
+            <Col lg={3} xxl={2} className="hidden lg:block">
+              <div className="h-full relative rounded-lg overflow-hidden">
                 <div
                   className="bg-holder product-bg"
                   style={{
@@ -52,10 +52,10 @@ const Homepage = () => {
               </div>
             </Col>
           </Row>
-          <div className="mb-6">
+          <div className="mb-10">
             <EcomTopElectronics products={topElectronicProducts} />
           </div>
-          <div className="mb-6">
+          <div className="mb-10">
             <EcomBestOffers products={bestOfferProducts} />
           </div>
           <EcomBecomeMember />

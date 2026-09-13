@@ -1,4 +1,4 @@
-import FilterTab, { FilterTabItem } from 'components/common/FilterTab';
+import { cn } from '@hummingbirdui/react';
 import SearchBox from 'components/common/SearchBox';
 import LeadEmailsTable, {
   leadEmailsColumns
@@ -6,16 +6,24 @@ import LeadEmailsTable, {
 import { dealEmailsTableData } from 'data/crm/leadsData';
 import useAdvanceTable from 'hooks/useAdvanceTable';
 import AdvanceTableProvider from 'providers/AdvanceTableProvider';
-import React, { ChangeEvent, useMemo } from 'react';
+import { ChangeEvent, useState } from 'react';
 
+/** the gold demo hardcodes these counts in the tab labels */
+const tabItems = [
+  { label: 'Mails (68)', value: 'mails' },
+  { label: 'Drafts (6)', value: 'drafts' },
+  { label: 'Scheduled (17)', value: 'scheduled' }
+];
+
+/** `+Emails` in mixins/crm/LeadDetails.pug */
 const LeadEmails = () => {
+  const [activeTab, setActiveTab] = useState('mails');
   const table = useAdvanceTable({
     data: dealEmailsTableData,
     columns: leadEmailsColumns,
-    pageSize: 5,
+    pageSize: 7,
     pagination: true,
     sortable: true,
-    selection: true,
     initialState: {
       columnVisibility: {
         type: false
@@ -23,40 +31,13 @@ const LeadEmails = () => {
     }
   });
 
-  const { setGlobalFilter, getPrePaginationRowModel, getColumn } = table;
+  const { setGlobalFilter, getColumn } = table;
 
-  const handleFilterItemClick = (columnId: string, value: string) => {
-    const column = getColumn(columnId);
-    column?.setFilterValue(value === 'all' ? '' : value);
+  const handleTabClick = (value: string) => {
+    setActiveTab(value);
+    // the gold "Mails" tab shows the full demo set
+    getColumn('type')?.setFilterValue(value === 'mails' ? '' : value);
   };
-
-  const tabItems: FilterTabItem[] = useMemo(() => {
-    const getDataCount = (label: string) =>
-      getPrePaginationRowModel().rows.filter(
-        ({ original: { type } }) => type === label
-      ).length;
-
-    return [
-      {
-        label: 'Mails',
-        value: 'mails',
-        onClick: () => handleFilterItemClick('type', 'mails'),
-        count: getDataCount('mails')
-      },
-      {
-        label: 'Drafts',
-        value: 'drafts',
-        onClick: () => handleFilterItemClick('type', 'drafts'),
-        count: getDataCount('drafts')
-      },
-      {
-        label: 'Scheduled',
-        value: 'scheduled',
-        onClick: () => handleFilterItemClick('type', 'scheduled'),
-        count: getDataCount('scheduled')
-      }
-    ];
-  }, [getPrePaginationRowModel]);
 
   const handleSearchInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setGlobalFilter(e.target.value || undefined);
@@ -66,11 +47,35 @@ const LeadEmails = () => {
     <div>
       <h2 className="mb-2">Emails</h2>
       <AdvanceTableProvider {...table}>
-        <FilterTab tabItems={tabItems} />
+        <div className="scrollbar">
+          <ul
+            className="nav nav-underline text-md flex-nowrap mb-1"
+            role="tablist"
+          >
+            {tabItems.map(item => (
+              <li className="nav-item me-4" key={item.value}>
+                <a
+                  className={cn('nav-link text-nowrap border-0', {
+                    active: activeTab === item.value
+                  })}
+                  href="#!"
+                  role="tab"
+                  onClick={e => {
+                    e.preventDefault();
+                    handleTabClick(item.value);
+                  }}
+                >
+                  {item.label}
+                  <span className="text-subtle font-normal"></span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
         <SearchBox
           onChange={handleSearchInputChange}
-          placeholder="Search Emails"
-          className="w-100 mb-3"
+          placeholder="Search..."
+          className="w-full mb-4"
         />
         <LeadEmailsTable />
       </AdvanceTableProvider>

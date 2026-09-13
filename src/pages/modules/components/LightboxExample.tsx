@@ -8,11 +8,11 @@ import img13 from 'assets/img/gallery/13.png';
 import img9 from 'assets/img/gallery/9.png';
 import img10 from 'assets/img/gallery/10.png';
 import img24 from 'assets/img/gallery/24.png';
-import Lightbox from 'components/base/LightBox';
+import Lightbox from 'components/base/Lightbox';
 import PhoenixLiveEditor from 'components/docs/PhoenixLiveEditor';
 
 const useLightboxCode = `
-import Lightbox from 'components/base/LightBox';
+import Lightbox from 'components/base/Lightbox';
 import useLightbox from 'hooks/useLightbox';
 
 function LightboxExample () {
@@ -23,13 +23,13 @@ function LightboxExample () {
     <div>
       <Lightbox {...lightboxProps} />
 
-      <Row className="g-2 g-md-3">
+      <Row className="g-2 md:g-4">
         {attachments.map((img, index) => (
           <Col key={img} xs={6}>
             <img
               src={img}
               alt=""
-              className="w-100 rounded-3 cursor-pointer"
+              className="w-full rounded-lg cursor-pointer"
               onClick={() => openLightbox(index + 1)}
             />
           </Col>
@@ -40,7 +40,7 @@ function LightboxExample () {
 };`;
 
 const galleryCode = `
-import Lightbox from 'components/base/LightBox';
+import Lightbox from 'components/base/Lightbox';
 import useLightbox from 'hooks/useLightbox';
 
 function SocialPhotos () {
@@ -49,7 +49,7 @@ function SocialPhotos () {
   return (
     <div>
       <Lightbox {...lightboxProps} />
-      <Row className="g-2 g-md-3">
+      <Row className="g-2 md:g-4">
         {attachments.map((img, index) => (
           <Col key={img} xs={
             index === 0 ? 6 : index === 1 ? 6 : 4
@@ -57,7 +57,7 @@ function SocialPhotos () {
             <img
               src={img}
               alt=""
-              className="w-100 rounded-3 cursor-pointer"
+              className="w-full rounded-lg cursor-pointer"
               onClick={() => openLightbox(index + 1)}
             />
           </Col>
@@ -68,7 +68,7 @@ function SocialPhotos () {
 };`;
 
 const simpleImageCode = `
-import Lightbox from 'components/base/LightBox';
+import Lightbox from 'components/base/Lightbox';
 import useLightbox from 'hooks/useLightbox';
 
 function SocialPhotos () {
@@ -76,12 +76,12 @@ function SocialPhotos () {
   return (
     <div>
       <Lightbox {...lightboxProps} />
-      <Row className="g-3">
+      <Row className="g-4">
           <Col xs={4}>
             <img
               src={img24}
               alt=""
-              className="w-100 rounded-3 cursor-pointer"
+              className="w-full rounded-lg cursor-pointer"
               onClick={() => openLightbox(1)}
             />
           </Col>
@@ -137,7 +137,7 @@ const LightboxExample = () => {
                 <code>openLightbox</code> function empowers you to activate the
                 lightbox view for a specific image. You can activate this
                 function by providing the index of the image you intend to
-                display."
+                display.
               </p>
               <PhoenixLiveEditor code={useLightboxCode} />
             </div>

@@ -1,5 +1,5 @@
-import React, { PropsWithChildren, useState } from 'react';
-import { Accordion, Alert, Col, Row } from 'react-bootstrap';
+import { PropsWithChildren, useState } from 'react';
+import { Accordion, cn, Row } from '@hummingbirdui/react';
 import info from 'assets/img/icons/info.svg';
 import infoDark from 'assets/img/icons/info_dark.svg';
 import locationImg from 'assets/img/icons/location.svg';
@@ -13,7 +13,7 @@ import dollarAltDark from 'assets/img/icons/dollar-alt_dark.svg';
 import fileCheckAlt from 'assets/img/icons/file-check-alt.svg';
 import fileCheckAltDark from 'assets/img/icons/file-check-alt_dark.svg';
 import { Link } from 'react-router';
-import classNames from 'classnames';
+import Button from 'components/base/Button';
 import {
   AccordionItemInterface,
   AddPropertyWizardFormData,
@@ -24,32 +24,39 @@ import SummaryTable from './SummaryTable';
 import { useWizardFormContext } from 'providers/WizardFormProvider';
 import { formatDateToTime } from 'helpers/utils';
 
-const AccordionItem = (props: PropsWithChildren<AccordionItemInterface>) => {
-  const { img1, img2, title, eventKey, children } = props;
+const AccordionItem = ({
+  img1,
+  img2,
+  title,
+  eventKey,
+  editLabel,
+  children
+}: PropsWithChildren<AccordionItemInterface & { editLabel: string }>) => {
   return (
-    <>
-      <Accordion.Item
-        eventKey={eventKey}
-        className="border rounded-3 bg-body-emphasis p-3 p-sm-4 mb-5 scrollbar"
-      >
-        <Accordion.Button className="py-0 lh-1 text-body-highlight">
-          <img src={img1} alt="" className="me-2 d-dark-none" />
-          <img src={img2} alt="" className="me-2 d-light-none" />
-          <span className="fs-sm-7">{title}</span>
-        </Accordion.Button>
-        <Accordion.Collapse eventKey={eventKey} className="scrollbar">
-          <div className="mt-4">
-            <Link to="#!" className="fs-9 fw-semibold mb-2 d-inline-block">
-              Edit Info
-            </Link>
-            {children}
-          </div>
-        </Accordion.Collapse>
-      </Accordion.Item>
-    </>
+    <Accordion.Item
+      value={eventKey}
+      className="border rounded-lg bg-soft p-4 sm:p-6 mb-8"
+    >
+      <Accordion.Header className="text-xl">
+        <Accordion.Trigger className="py-0 text-highlight after:size-5 after:bg-cover">
+          <img src={img1} alt="" className="me-2 dark:hidden" />
+          <img src={img2} alt="" className="me-2 hidden dark:block" />
+          <span className="sm:text-lg">{title}</span>
+        </Accordion.Trigger>
+      </Accordion.Header>
+      <Accordion.Content className="p-0">
+        <div className="mt-6 scrollbar">
+          <Link to="#!" className="text-md font-semibold mb-2.5 inline-block">
+            {editLabel}
+          </Link>
+          {children}
+        </div>
+      </Accordion.Content>
+    </Accordion.Item>
   );
 };
 
+/** gold `+Preview` (mixins/travel-agency/add-property/Preview.pug) */
 const Preview = () => {
   const [show, setShow] = useState(true);
   const methods = useWizardFormContext<AddPropertyWizardFormData>();
@@ -58,7 +65,7 @@ const Preview = () => {
   const basicInfo: PropertyDetails[] = [
     {
       property: 'Property name',
-      value: formData.propertyName
+      value: 'Phoenix Oasis'
     },
     {
       property: 'Property Information',
@@ -70,7 +77,7 @@ const Preview = () => {
     },
     {
       property: 'Rating',
-      value: formData.propertyRating
+      value: `${formData.propertyRating ?? 5} Star`
     },
     {
       property: 'Email address',
@@ -82,11 +89,11 @@ const Preview = () => {
     },
     {
       property: 'Property chain',
-      value: formData.propertyChain ? 'available' : 'Not-available'
+      value: 'Not-available'
     },
     {
       property: 'CMS',
-      value: formData.channelManagement ? 'available' : 'Not-available'
+      value: formData.channelManagement ? 'Available' : 'Not-available'
     },
     {
       property: 'CMS provider name',
@@ -178,35 +185,35 @@ const Preview = () => {
       data: [
         {
           property: 'Payment currency',
-          value: formData.paymentCurrency
+          value: 'US Dollar'
         },
         {
           property: 'Payment method',
-          value: formData.paymentMethod
+          value: 'Electronic Funds Transfer (EFT)'
         },
         {
           property: 'Received payment',
-          value: formData.receivedPayment
+          value: 'Credit Card'
         },
         {
           property: 'Card type',
-          value: formData.cardType
+          value: 'Visa Debit Card'
         },
         {
           property: 'Card number',
-          value: formData.cardNumber
+          value: '123 456 7890'
         },
         {
           property: 'Card holder name',
-          value: formData.cardHolderName
+          value: 'Phoenix Oasis '
         },
         {
           property: 'Commission Percentage',
-          value: formData.commissionPercentage
+          value: 'Flat 10%'
         },
         {
           property: 'Invoice email',
-          value: formData.invoiceEmail || 'Not available'
+          value: 'Not-Available'
         }
       ]
     },
@@ -215,15 +222,15 @@ const Preview = () => {
       data: [
         {
           property: 'Cash payment',
-          value: formData.cashPayment ? 'yes' : 'no'
+          value: 'No'
         },
         {
           property: 'Card Payment',
-          value: formData.cardPayment ? 'yes' : 'no'
+          value: 'No'
         },
         {
           property: 'MFS / Online Payment',
-          value: formData.onlinePayment ? 'yes' : 'no'
+          value: 'No'
         }
       ]
     }
@@ -235,31 +242,35 @@ const Preview = () => {
       data: [
         {
           property: 'Check-in type',
-          value: formData.checkInType
+          value: 'Limited Check-in'
         },
         {
           property: 'Check-in start',
-          value: formatDateToTime(formData.checkInStarts)
+          value: formData.checkInStarts
+            ? formatDateToTime(formData.checkInStarts)
+            : '09:00 AM'
         },
         {
           property: 'Age Restriction',
-          value: formData.ageRegistration
+          value: 'No'
         },
         {
           property: 'Deposit at Check-in',
-          value: formData.depositAtCheckin
+          value: 'No'
         },
         {
           property: 'Documentation at Check-in',
-          value: formData.documentationAtCheckin
+          value: 'No'
         },
         {
           property: 'Late check-in',
-          value: formData.lateCheckIn ? 'Flat 10%' : 'Not Available'
+          value: 'Flat 10%'
         },
         {
           property: 'Check-in end',
-          value: formatDateToTime(formData.checkInEnds)
+          value: formData.checkInEnds
+            ? formatDateToTime(formData.checkInEnds)
+            : '12:00 PM'
         }
       ]
     },
@@ -268,19 +279,19 @@ const Preview = () => {
       data: [
         {
           property: 'Checkout before',
-          value: formatDateToTime(formData.checkOutBefore)
+          value: '11:00 AM'
         },
         {
           property: 'Flexible Checkout',
-          value: formData.flexibleCheckout
+          value: 'Available'
         },
         {
           property: 'Type',
-          value: formData.checkoutType
+          value: 'Amount per night'
         },
         {
           property: 'Amount',
-          value: formData.checkoutAmount
+          value: '$100.00'
         }
       ]
     },
@@ -289,15 +300,15 @@ const Preview = () => {
       data: [
         {
           property: 'Type',
-          value: formData.refundType
+          value: 'Optimal refund'
         },
         {
           property: 'Full refund',
-          value: formData.isFullRefand
+          value: 'No'
         },
         {
           property: 'Partial refund',
-          value: formData.isPartialRefand
+          value: 'No'
         }
       ]
     },
@@ -306,15 +317,15 @@ const Preview = () => {
       data: [
         {
           property: 'Type',
-          value: formData.petPolicyType
+          value: 'Allowed'
         },
         {
           property: 'Pet Restricted Zones',
-          value: formData.petRestictedZone
+          value: 'Not-Available'
         },
         {
           property: 'Additional Charges',
-          value: formData.petAdditionalCharge
+          value: 'No'
         }
       ]
     },
@@ -323,19 +334,19 @@ const Preview = () => {
       data: [
         {
           property: 'Age Segment 1',
-          value: `${formData.ageSegment1?.join(' - ')} years`
+          value: '0 - 7 Years'
         },
         {
           property: 'Age Segment 2',
-          value: `${formData.ageSegment2?.join(' - ')} years`
+          value: '7 -12 Years'
         },
         {
           property: 'Age Segment 3',
-          value: `${formData.ageSegment3?.join(' - ')} years`
+          value: '12 -18 Years'
         },
         {
           property: 'Documentation Requirement',
-          value: formData.childDocPolicy
+          value: 'Not-Available'
         }
       ]
     },
@@ -344,35 +355,35 @@ const Preview = () => {
       data: [
         {
           property: 'Vat',
-          value: formData.vat
+          value: 'Available'
         },
         {
           property: 'Type',
-          value: formData.taxType
+          value: 'Amount per night'
         },
         {
           property: 'Amount',
-          value: formData.taxAmount
+          value: '$100.00'
         },
         {
           property: 'Deposit at Check-in',
-          value: formData.depositAtCheckIn
+          value: 'No'
         },
         {
           property: 'GST',
-          value: formData.gst
+          value: 'No'
         },
         {
           property: 'Hotel tax',
-          value: formData.hotelTax
+          value: 'No'
         },
         {
           property: 'City / District tax',
-          value: formData.cityTax
+          value: 'No'
         },
         {
           property: 'Tourist tax',
-          value: formData.touristTax
+          value: 'No'
         }
       ]
     },
@@ -381,15 +392,15 @@ const Preview = () => {
       data: [
         {
           property: 'Property Registration No.',
-          value: formData.propertyRegNo
+          value: 'Null'
         },
         {
           property: 'Business Registration No.',
-          value: formData.businessRegNo
+          value: 'Null'
         },
         {
           property: 'Taxpayer Identification No.',
-          value: formData.taxpayeerIdNo
+          value: 'Null'
         }
       ]
     }
@@ -398,26 +409,33 @@ const Preview = () => {
   return (
     <>
       <h3 className="mb-2">We’re building your property</h3>
-      <p className="mb-5 text-body-tertiary">
+      <p className="mb-8 text-subtle">
         We're working on getting your property set up and ready for guests. Stay
         tuned for updates and start accepting bookings soon!
       </p>
       {show && (
-        <Alert
-          variant="subtle-success"
-          onClose={() => setShow(false)}
-          dismissible
-          className="mb-5"
+        <div
+          className="alert alert-subtle-success alert-dismissible items-start fade show gap-6 mb-8"
+          role="alert"
         >
-          <p className="mb-0 flex-1 fw-semibold fs-9 fs-sm-8">
+          <p className="mb-0 flex-1 font-semibold text-md sm:text-base">
             Congratulations on your successful listing! Join a community of
             hospitality professionals as a host. Your hard work will turn your
-            home into a sought-after destination?. We anticipate hearing about
+            home into a sought-after destination. We anticipate hearing about
             your achievements.
           </p>
-        </Alert>
+          <button
+            className="btn-close bg-size-[1rem] mt-0.5 -me-1"
+            type="button"
+            aria-label="Close"
+            onClick={() => setShow(false)}
+          />
+        </div>
       )}
       <Accordion
+        type="single"
+        collapsible
+        defaultValue="0"
         className="accordion-button-arrow-icon mt-2"
         id="previewAccordion"
       >
@@ -426,23 +444,25 @@ const Preview = () => {
           img2={infoDark}
           title="Basic Information"
           eventKey="0"
+          editLabel="Edit info"
         >
-          <SummaryTable tableData={basicInfo} />
+          <SummaryTable tableData={basicInfo} thirdColClassName="min-w-75" />
         </AccordionItem>
         <AccordionItem
           img1={locationImg}
           img2={locationDark}
           title="Location"
           eventKey="1"
+          editLabel="Edit location"
         >
           <SummaryTable tableData={location} />
         </AccordionItem>
-
         <AccordionItem
           img1={bedDouble}
           img2={bedDoubleDark}
           title="General Amenities"
           eventKey="2"
+          editLabel="Edit amenities"
         >
           <SummaryTable tableData={amenities} />
         </AccordionItem>
@@ -451,17 +471,17 @@ const Preview = () => {
           img2={pictureDark}
           title="Picture"
           eventKey="3"
+          editLabel="Edit pictures"
         >
-          <Row className="g-2 g-sm-3">
+          <Row className="g-2 sm:g-4">
             {formData?.photos?.map((item, index) => (
-              <Col key={index} xs={6} sm={4}>
+              <div className="sm:col-4" key={index}>
                 <img
                   src={URL.createObjectURL(item)}
-                  alt="item"
-                  height={160}
-                  className="rounded-2 w-100 object-fit-cover"
+                  alt=""
+                  className="rounded-md w-full h-40 object-cover"
                 />
-              </Col>
+              </div>
             ))}
           </Row>
         </AccordionItem>
@@ -470,17 +490,16 @@ const Preview = () => {
           img2={dollarAltDark}
           title="Finance"
           eventKey="4"
+          editLabel="Edit finance"
         >
           {financeData.map(({ name, data }, index) => (
             <div key={index}>
-              <h5
-                className={classNames('mb-3 fw-bolder', {
-                  'mt-4': index !== 0
-                })}
-              >
+              <h5 className={cn('font-black mb-4', { 'mt-4': index !== 0 })}>
                 {name}
               </h5>
-              <SummaryTable tableData={data} />
+              <div className="scrollbar">
+                <SummaryTable tableData={data} />
+              </div>
             </div>
           ))}
         </AccordionItem>
@@ -489,21 +508,25 @@ const Preview = () => {
           img2={fileCheckAltDark}
           title="Policy"
           eventKey="5"
+          editLabel="Edit policies"
         >
           {policiesData.map(({ name, data }, index) => (
             <div key={index}>
-              <h5
-                className={classNames('mb-3 fw-bolder', {
-                  'mt-4': index !== 0
-                })}
-              >
+              <h5 className={cn('mb-4 font-black', { 'mt-4': index !== 0 })}>
                 {name}
               </h5>
-              <SummaryTable tableData={data} />
+              <div className="scrollbar">
+                <SummaryTable tableData={data} />
+              </div>
             </div>
           ))}
         </AccordionItem>
       </Accordion>
+      <div className="mt-10">
+        <Button type="submit" variant="primary" className="px-10 sm:px-20">
+          Done
+        </Button>
+      </div>
     </>
   );
 };

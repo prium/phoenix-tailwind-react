@@ -1,4 +1,5 @@
 import { faCalendar, faPhoneAlt } from '@fortawesome/free-solid-svg-icons';
+import { Col, Row } from '@hummingbirdui/react';
 import CrmStatCard from 'components/cards/CrmStatCard';
 import ContactsCreatedChart from 'components/charts/e-charts/ContactsCreatedChart';
 import LeadSources from 'components/list-items/LeadSources';
@@ -8,18 +9,18 @@ import DealForecast from 'components/modules/crm/DealForecast';
 import LeadConversion from 'components/modules/crm/LeadConversion';
 import NewUsersAndLeads from 'components/modules/crm/NewUsersAndLeads';
 import RevenueTarget from 'components/modules/crm/RevenueTarget';
-import { Col, Row } from 'react-bootstrap';
 
+/** dashboard/crm.pug */
 const Crm = () => {
   return (
     <>
-      <Row className="mb-4 gy-3 justify-content-between">
+      <Row className="gy-4 mb-6 justify-between">
         <Col xxl={6}>
-          <h2 className="mb-2 text-body-emphasis">CRM Dashboard</h2>
-          <h5 className="text-body-tertiary fw-semibold mb-4">
+          <h2 className="mb-2 text-emphasis">CRM Dashboard</h2>
+          <h5 className="text-subtle font-semibold mb-6">
             Check your business growth in one place
           </h5>
-          <Row className="g-3 mb-3">
+          <Row className="g-4 mb-4">
             <Col sm={6} md={4} xl={3} xxl={4}>
               <CrmStatCard
                 icon={faPhoneAlt}
@@ -29,7 +30,7 @@ const Crm = () => {
                 title="Leads Today"
                 badgeLabel="+24.5%"
                 badgeBg="success"
-                footerText="Than yesterday"
+                footerText="Than Yesterday"
               />
             </Col>
             <Col sm={6} md={4} xl={3} xxl={4}>
@@ -39,45 +40,50 @@ const Crm = () => {
                 label="Outgoing meeting"
                 value={12}
                 title="This Week"
-                badgeLabel="+20.5%"
+                badgeLabel="+24.5%"
                 badgeBg="warning"
                 footerText="Than last week"
               />
             </Col>
-            <Col md={4} xl={6} xxl={4}>
-              <div className="border-bottom">
-                <h5 className="pb-4 border-bottom">Top 5 Lead Sources</h5>
+            <Col md={4} xl={6} xxl={4} className="gy-8 md:gy-4">
+              <div className="border-b border-subtle">
+                <h5 className="pb-6 border-b border-subtle">
+                  Top 5 Lead Sources
+                </h5>
                 <LeadSources />
               </div>
             </Col>
           </Row>
         </Col>
-        <Col xxl={6} className="mb-6">
+        <Col xxl={6} className="mb-10">
           <h3>Contacts Created</h3>
-          <p className="text-body-tertiary mb-1">
+          <p className="text-subtle mb-1">
             Payment received across all channels
           </p>
-          <ContactsCreatedChart style={{ height: 270, width: '100%' }} />
+          <ContactsCreatedChart
+            className="min-h-67.5 w-full"
+            style={{ height: 'auto', width: '100%' }}
+          />
         </Col>
-        <Col xs={12} xxl={6} className="mb-3 mb-sm-0">
+        <Col xs={12} xxl={6} className="mb-4 sm:mb-0">
           <ContactsBySource />
         </Col>
-        <Col xs={12} xxl={6} className="mb-8">
+        <Col xs={12} xxl={6} className="mb-14">
           <NewUsersAndLeads />
         </Col>
         <Col xs={12} xxl={6}>
           <AdClicks />
         </Col>
-        <Col xs={12} xxl={6} className="mb-6 gy-0 gy-xxl-3">
+        <Col xs={12} xxl={6} className="mb-10 gy-0 2xl:gy-4">
           <DealForecast />
         </Col>
       </Row>
-      <div className="mx-lg-n4">
-        <Row className="g-3 mb-9 mt-n7">
-          <Col xs={12} xl={5}>
+      <div className="lg:-mx-6">
+        <Row className="g-4 mb-16 -mt-12">
+          <Col xl={5}>
             <LeadConversion />
           </Col>
-          <Col xs={12} xl={7}>
+          <Col xl={7}>
             <RevenueTarget />
           </Col>
         </Row>

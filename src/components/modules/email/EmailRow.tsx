@@ -1,125 +1,160 @@
-import { faEllipsis } from '@fortawesome/free-solid-svg-icons';
+import { useState } from 'react';
+import { faEllipsis, faStar } from '@fortawesome/free-solid-svg-icons';
+import { faStar as farStar } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
+import { Dropdown, cn } from '@hummingbirdui/react';
 import Avatar from 'components/base/Avatar';
 import Button from 'components/base/Button';
-import IndeterminateCheckbox from 'components/base/IndeterminateCheckbox';
-import StarCheckbox from 'components/base/StarCheckbox';
 import { Email } from 'data/email';
-import { getFileIcon } from 'helpers/utils';
 import { useBulkSelect } from 'providers/BulkSelectProvider';
-import { Col, Dropdown, Row } from 'react-bootstrap';
 import { Link } from 'react-router';
 
 interface EmailRowProps {
   email: Email;
   index: number;
+  isLast?: boolean;
 }
 
-const EmailRow = ({ email, index }: EmailRowProps) => {
+/**
+ * Gold `mixin EmailRow` + `mixin ActionButton`
+ * (../phoenix-tailwind/src/pug/mixins/email/Common.pug).
+ */
+const EmailRow = ({ email, index, isLast }: EmailRowProps) => {
   const { getRowCheckboxProps } = useBulkSelect();
+  const [starred, setStarred] = useState(email.star);
+  // `indeterminate` is a DOM property, not an attribute — a plain row
+  // checkbox (the gold has no .form-check wrapper here) never needs it.
+  const { indeterminate, ...checkboxProps } = getRowCheckboxProps(
+    String(index)
+  );
+  void indeterminate;
   return (
-    <div className="border-bottom border-translucent hover-actions-trigger py-3">
-      <Row className="gx-2">
-        <Col xs="auto">
-          <div className="d-flex flex-column flex-sm-row">
-            <IndeterminateCheckbox
-              {...getRowCheckboxProps(String(index))}
-              className="mb-2 m-sm-0 me-sm-2"
+    <div
+      className={cn(
+        'border-t border-subtle hover-actions-trigger',
+        isLast ? 'pt-4' : 'py-4'
+      )}
+    >
+      <div className="row sm:items-center gx-2">
+        <div className="col-auto">
+          <div className="flex flex-col sm:flex-row">
+            <input
+              type="checkbox"
+              id={`checkbox-${email.id}`}
+              className="form-check-input mt-1 mb-2 me-0 sm:m-0 sm:me-2"
+              {...checkboxProps}
             />
-            <Button className="btn p-0">
-              <StarCheckbox defaultChecked={email.starred} iconClass="fs-9" />
+            <Button className="p-0" onClick={() => setStarred(!starred)}>
+              <FontAwesomeIcon
+                icon={starred ? faStar : farStar}
+                className={starred ? 'text-warning' : 'text-soft'}
+              />
             </Button>
           </div>
-        </Col>
-        <Col className="col-auto">
-          {email.sender.avatar ? (
-            <Avatar src={email.sender.avatar} size="s" />
+        </div>
+        <div className="col-auto">
+          {email.avatar ? (
+            <Avatar
+              size="s"
+              src={email.avatar}
+              placeholder={email.avatarPlaceholder}
+            />
           ) : (
             <Avatar size="s" variant="name">
-              {email.sender.name.charAt(0)}
+              {email.avatarName}
             </Avatar>
           )}
-        </Col>
-        <Col className="col-auto">
+        </div>
+        <div className="col-auto">
           <Link
-            to="#!"
-            className={classNames('fs-9 inbox-link', {
-              'text-body fw-semibold': email.read_at,
-              'text-body-emphasis fw-bold': !email.read_at
-            })}
+            to="/apps/email/email-detail"
+            className={cn(
+              'inbox-link text-md',
+              email.read
+                ? 'text-default font-semibold'
+                : 'text-emphasis font-bold'
+            )}
           >
-            {email.sender.name}
+            {email.user}
           </Link>
-        </Col>
-        <Col className="col-auto ms-auto">
+        </div>
+        <div className="col-auto ms-auto">
           <div className="hover-actions end-0">
             <Dropdown>
-              <Dropdown.Toggle
-                variant="phoenix-secondary"
-                className="dropdown-caret-none btn-icon"
-              >
-                <FontAwesomeIcon icon={faEllipsis} />
-              </Dropdown.Toggle>
-
-              <Dropdown.Menu>
-                <Dropdown.Item href="#!">Mark Unread</Dropdown.Item>
-                <Dropdown.Item href="#!">Mark Important</Dropdown.Item>
-                <Dropdown.Item href="#!">Archive</Dropdown.Item>
-                <Dropdown.Item href="#!">Download</Dropdown.Item>
-                <Dropdown.Item href="#!">Print</Dropdown.Item>
-                <Dropdown.Item href="#!">Report Spam</Dropdown.Item>
-                <Dropdown.Item href="#!">Report Phishing</Dropdown.Item>
-                <Dropdown.Item href="#!">
-                  Mute {email.sender.name}
+              <Dropdown.Trigger asChild>
+                <Button
+                  variant="phoenix-secondary"
+                  className="btn-square btn-sm"
+                >
+                  <FontAwesomeIcon icon={faEllipsis} />
+                </Button>
+              </Dropdown.Trigger>
+              <Dropdown.Content align="end" className="py-2">
+                <Dropdown.Item asChild>
+                  <a href="#!">Mark Unread</a>
                 </Dropdown.Item>
-                <Dropdown.Item href="#!">
-                  Block {email.sender.name}
+                <Dropdown.Item asChild>
+                  <a href="#!">Mark Important</a>
                 </Dropdown.Item>
-                <Dropdown.Item href="#!" className="text-danger">
-                  Delete
+                <Dropdown.Item asChild>
+                  <a href="#!">Archive</a>
                 </Dropdown.Item>
-              </Dropdown.Menu>
+                <Dropdown.Item asChild>
+                  <a href="#!">Download</a>
+                </Dropdown.Item>
+                <Dropdown.Item asChild>
+                  <a href="#!">Print</a>
+                </Dropdown.Item>
+                <Dropdown.Item asChild>
+                  <a href="#!">Report Spam</a>
+                </Dropdown.Item>
+                <Dropdown.Item asChild>
+                  <a href="#!">Report Phishing</a>
+                </Dropdown.Item>
+                {/* the gold mixin is called without a user, so every row
+                    hardcodes Jessica Ball */}
+                <Dropdown.Item asChild>
+                  <a href="#!">Mute Jessica Ball</a>
+                </Dropdown.Item>
+                <Dropdown.Item asChild>
+                  <a href="#!">Block Jessica Ball</a>
+                </Dropdown.Item>
+                <Dropdown.Item className="text-danger" asChild>
+                  <a href="#!">Delete</a>
+                </Dropdown.Item>
+              </Dropdown.Content>
             </Dropdown>
           </div>
-          <span
-            className={classNames('fs-10', {
-              'fw-bold': email.read_at
-            })}
-          >
+          <span className={cn(!email.read && 'font-bold', 'text-sm')}>
             {email.time}
           </span>
-        </Col>
-      </Row>
-      <div className="ms-4 mt-n3 mt-sm-0 ms-sm-11">
-        <Link to="/apps/email/email-detail" className="d-block inbox-link">
+        </div>
+      </div>
+      <div className="ms-6 -mt-4 sm:mt-0 sm:ms-20">
+        <Link to="/apps/email/email-detail" className="block inbox-link">
           <span
-            className={classNames('fs-9 line-clamp-1', {
-              'text-body-highlight': email.read_at,
-              'text-body-emphasis': !email.read_at
-            })}
+            className={cn(
+              email.read ? 'text-highlight' : 'text-emphasis',
+              'text-md line-clamp-1'
+            )}
           >
-            {email.subject}
+            {email.title}
           </span>
-          <p className="fs-9 ps-0 text-body-tertiary mb-0 line-clamp-2">
-            {email.details}
+          <p className="text-md ps-0 text-subtle mb-0 line-clamp-2">
+            {email.description}
           </p>
         </Link>
-
         {email.attachments?.map(attachment => (
           <a
+            className="inline-flex items-center border border-subtle rounded-full px-4 py-1 me-2 mt-2 inbox-link"
             href="#!"
-            className="d-inline-flex align-items-center border border-translucent rounded-pill px-3 py-1 me-2 mt-2 inbox-link"
             key={attachment.id}
           >
             <FontAwesomeIcon
-              icon={getFileIcon(attachment.format)}
-              className={classNames('fs-9', {
-                'text-warning': ['pdf', 'zip'].includes(attachment.format),
-                'text-primary': ['music'].includes(attachment.format)
-              })}
+              icon={attachment.icon}
+              className={attachment.iconClass}
             />
-            <span className="ms-2 fw-bold fs-10 text-body">
+            <span className="ms-2 font-bold text-sm text-default">
               {attachment.fileName}
             </span>
           </a>

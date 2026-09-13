@@ -1,130 +1,138 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { Card, Col, Collapse, Row } from 'react-bootstrap';
-import Badge from 'components/base/Badge';
-import Lightbox from 'components/base/LightBox';
-import useLightbox from 'hooks/useLightbox';
-import { Link } from 'react-router';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faChevronDown,
-  faChevronUp,
   faPause,
   faPlay
 } from '@fortawesome/free-solid-svg-icons';
-import Button from 'components/base/Button';
-import FilesDropdown from './FilesDropdown';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Card, cn } from '@hummingbirdui/react';
+import Lightbox from 'components/base/Lightbox';
 import { RecentFiles, recentFiles } from 'data/file-manager';
-import { useAdvanceTableContext } from 'providers/AdvanceTableProvider';
-import { useFileManagerContext } from 'providers/FileManagerProvider';
+import useLightbox from 'hooks/useLightbox';
+import { useEffect, useRef, useState } from 'react';
+import FilesDropdown from './FilesDropdown';
 
-const RecentFilesCardItem = ({
+const ITEM_CLASS = 'dropdown-item font-semibold text-start no-underline!';
+
+/** Gold `+RecentFile` in mixins/file-manager/RecentFiles.pug. */
+const RecentFileCard = ({
   file,
   openLightbox
 }: {
   file: RecentFiles;
   openLightbox: (index: number) => void;
 }) => {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [playing, setPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
-
-  const handlePlayPause = () => {
-    setIsPlaying(!isPlaying);
-  };
+  const isVideo = file.type === 'video';
 
   useEffect(() => {
-    if (videoRef.current) {
-      isPlaying ? videoRef.current.play() : videoRef.current.pause();
+    if (!videoRef.current) return;
+    if (playing) {
+      videoRef.current.play();
+    } else {
+      videoRef.current.pause();
     }
-  }, [isPlaying]);
+  }, [playing]);
 
   return (
-    <Col sm={6} xxl={3}>
+    <div className="sm:col-6 xl:col-6 2xl:col-3">
       <div
-        className="position-relative"
-        {...(file.type === 'video' && {
-          onMouseEnter: () => setIsPlaying(true),
-          onMouseLeave: () => setIsPlaying(false)
+        className="relative"
+        {...(isVideo && {
+          onMouseEnter: () => setPlaying(true),
+          onMouseLeave: () => setPlaying(false)
         })}
       >
-        <div className="img-zoom-hover mask-image-none overflow-hidden border rounded-3">
-          <div className="position-relative">
+        <div className="img-zoom-hover mask-none overflow-hidden border rounded-lg">
+          <div className="relative">
             <div className="mask-image-recent-file overflow-hidden">
-              <div className="ratio ratio-16x9">
-                {(file.type === 'image' || file.type === 'pdf') && (
+              {(file.type === 'image' || file.type === 'pdf') && (
+                <div className="aspect-video">
                   <img
+                    className="size-full object-cover"
                     src={file.img}
                     alt=""
-                    className="w-100 h-100 object-fit-cover"
                   />
+                </div>
+              )}
+              {isVideo && (
+                <div className="video-container rounded-lg h-full aspect-video">
+                  <video
+                    ref={videoRef}
+                    className="video block h-full w-full object-cover"
+                    muted
+                    poster={file.thumb}
+                  >
+                    <source src={file.video} type="video/mp4" />
+                  </video>
+                </div>
+              )}
+              <span
+                className={cn(
+                  'badge text-sm absolute top-0 start-0 mt-4 ms-4',
+                  file.actionType === 'Edited'
+                    ? 'badge-phoenix-warning'
+                    : 'badge-phoenix-info'
                 )}
-                {file.type === 'video' && (
-                  <>
-                    <video
-                      className="video d-block h-100 w-100 object-fit-cover"
-                      loop
-                      muted
-                      src={file.video}
-                      ref={videoRef}
-                      poster={file.thumb}
-                    />
-                    <Button
-                      data-bs-theme="light"
-                      className="p-0 circle-icon-item-md position-absolute top-50 start-50 translate-middle bg-body-emphasis bg-opacity-50 z-5"
-                      onClick={handlePlayPause}
-                    >
-                      <span className="play-icon pointer-events-none">
-                        {!isPlaying ? (
-                          <FontAwesomeIcon
-                            icon={faPlay}
-                            className="text-body-secondary fs-9"
-                            transform="down-1"
-                          />
-                        ) : (
-                          <FontAwesomeIcon
-                            icon={faPause}
-                            className="text-body-secondary fs-9"
-                            transform="down-1"
-                          />
-                        )}
-                      </span>
-                    </Button>
-                  </>
-                )}
-              </div>
-              <Badge
-                bg={file.actionType === 'Edited' ? 'warning' : 'info'}
-                variant="phoenix"
-                className="fs-10 position-absolute top-0 start-0 mt-3 ms-3"
               >
                 {file.actionType} {file.createdAt}
-              </Badge>
+              </span>
             </div>
+            {isVideo && (
+              <button
+                type="button"
+                data-hb-theme="light"
+                className="btn p-0 circle-icon-item-md absolute top-1/2 left-1/2 -translate-1/2 bg-soft/50 z-5"
+                onClick={() => setPlaying(prev => !prev)}
+              >
+                <span
+                  className={cn('pointer-events-none', {
+                    'play-icon': !playing,
+                    'pause-icon': playing
+                  })}
+                >
+                  <FontAwesomeIcon
+                    icon={playing ? faPause : faPlay}
+                    className="text-md text-muted"
+                    transform="down-1"
+                  />
+                </span>
+              </button>
+            )}
           </div>
-          <div className="bg-body p-3 pe-2 d-flex justify-content-between align-items-start rounded-bottom-3">
-            <div className="w-75">
-              <Link
-                to="#!"
-                className="stretched-link text-body-highlight fw-bold mb-2 d-block text-truncate"
-                onClick={() => openLightbox(file.fileNo)}
+          <div className="bg-default p-4 pe-2 flex justify-between items-start rounded-b-lg">
+            <div className="w-3/4">
+              <a
+                href="#!"
+                className="text-highlight font-bold mb-2 stretched-link block truncate"
+                data-gallery="recent-file"
+                onClick={event => {
+                  event.preventDefault();
+                  openLightbox(file.fileNo);
+                }}
               >
                 {file.name}
-              </Link>
-              <h6 className="mb-0 fw-semibold text-body-tertiary">
-                {file.size}
-              </h6>
+              </a>
+              <h6 className="mb-0 font-semibold text-subtle">{file.size}</h6>
             </div>
-            <FilesDropdown toggleClass="mt-n1" />
+            <div>
+              <FilesDropdown
+                triggerClassName="btn-square size-7.5 relative z-2 -mt-1"
+                iconTransform="shrink-2"
+                itemClassName={ITEM_CLASS}
+              />
+            </div>
           </div>
         </div>
       </div>
-    </Col>
+    </div>
   );
 };
 
+/** Gold `+RecentFiles` — 4 cards plus a `#collapseRecentFiles` "view more" row. */
 const RecentFilesCard = () => {
-  const table = useAdvanceTableContext<File>();
-  const { setCheckedFileIds } = useFileManagerContext();
-  const attachments = recentFiles.map(file => {
+  const [open, setOpen] = useState(false);
+  const sources = recentFiles.map(file => {
     if (file.type === 'pdf' && file.pdf) {
       return (
         <iframe
@@ -136,75 +144,63 @@ const RecentFilesCard = () => {
         />
       );
     }
-    if (file.type === 'video' && file.video) {
-      return file.video;
-    }
-    if (file.type === 'image' && file.img) {
-      return file.img;
-    }
+    if (file.type === 'video' && file.video) return file.video;
+    if (file.type === 'image' && file.img) return file.img;
     return '';
   });
-
-  const { lightboxProps, openLightbox } = useLightbox([...attachments]);
-  const [isCollapsed, setIsCollapsed] = useState(true);
-
-  const toggleCollapse = () => {
-    setIsCollapsed(!isCollapsed);
-  };
-
-  useEffect(() => {
-    setCheckedFileIds([]);
-    table.setRowSelection({});
-  }, [table.getState().globalFilter]);
+  const { lightboxProps, openLightbox } = useLightbox(sources);
 
   return (
-    <>
-      {table.getState().globalFilter === undefined && (
-        <Card className="mt-4">
-          <Lightbox {...lightboxProps} />
-          <Card.Body className="pb-5">
-            <h4 className="mb-3">Recent Files</h4>
-            <Row className="g-3">
-              {recentFiles.slice(0, 4).map((file, index) => (
-                <RecentFilesCardItem
+    <Card className="mt-6">
+      <Lightbox {...lightboxProps} />
+      <Card.Body className="pb-8">
+        <h4 className="mb-4">Recent Files</h4>
+        <div className="row g-4">
+          {recentFiles.slice(0, 4).map((file, index) => (
+            <RecentFileCard
+              key={index}
+              file={file}
+              openLightbox={openLightbox}
+            />
+          ))}
+        </div>
+        <div
+          className={cn('collapse', { show: open })}
+          id="collapseRecentFiles"
+        >
+          <div className="mt-4">
+            <div className="row g-4">
+              {recentFiles.slice(4).map((file, index) => (
+                <RecentFileCard
                   key={index}
                   file={file}
                   openLightbox={openLightbox}
                 />
               ))}
-            </Row>
-            <Collapse in={!isCollapsed}>
-              <div className="mt-3">
-                <Row className="g-3">
-                  {recentFiles.slice(4, 8).map((file, index) => (
-                    <RecentFilesCardItem
-                      key={index}
-                      file={file}
-                      openLightbox={openLightbox}
-                    />
-                  ))}
-                </Row>
-              </div>
-            </Collapse>
-            <Button
-              variant="phoenix-secondary"
-              className="btn collapse-indicator bg-body-emphasis fs-10 py-1 border rounded-1 px-3 position-absolute start-50 translate-middle-x"
-              style={{ bottom: '-11px' }}
-              role="button"
-              onClick={toggleCollapse}
-            >
-              <span className={isCollapsed ? 'collapse-show' : 'collapse-hide'}>
-                {isCollapsed ? 'VIEW MORE' : 'VIEW LESS'}
-              </span>
-              <FontAwesomeIcon
-                icon={isCollapsed ? faChevronDown : faChevronUp}
-                className="toggle-icon fs-10 ms-2"
-              />
-            </Button>
-          </Card.Body>
-        </Card>
-      )}
-    </>
+            </div>
+          </div>
+        </div>
+        <a
+          className="-bottom-2.75 btn collapse-indicator bg-soft text-sm py-1 border border-default rounded-sm px-4 absolute left-1/2 -translate-x-1/2"
+          data-bs-toggle="collapse"
+          href="#collapseRecentFiles"
+          role="button"
+          aria-expanded={open}
+          aria-controls="collapseRecentFiles"
+          onClick={event => {
+            event.preventDefault();
+            setOpen(prev => !prev);
+          }}
+        >
+          <span className="collapse-show">VIEW MORE</span>
+          <span className="collapse-hide">VIEW LESS</span>
+          <FontAwesomeIcon
+            icon={faChevronDown}
+            className="ms-2 text-sm toggle-icon"
+          />
+        </a>
+      </Card.Body>
+    </Card>
   );
 };
 

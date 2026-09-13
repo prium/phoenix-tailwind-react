@@ -1,72 +1,54 @@
 import { faMagnifyingGlassPlus } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
-import Lightbox from 'components/base/LightBox';
-import { GalleryColumnItemType } from 'data/gallery';
+import { cn } from '@hummingbirdui/react';
+import Lightbox from 'components/base/Lightbox';
+import type { GalleryItem } from 'data/gallery';
 import useLightbox from 'hooks/useLightbox';
-import { Col, Row } from 'react-bootstrap';
-
-interface GridItemProps {
-  galleryItem: GalleryColumnItemType;
-  onClick: () => void;
-}
-
-const GridItem = ({ galleryItem, onClick }: GridItemProps) => {
-  return (
-    <Col
-      sm={6}
-      md={4}
-      xl={3}
-      className={classNames(
-        'cursor-pointer text-center img-zoom-hover',
-        galleryItem.className
-      )}
-      onClick={onClick}
-    >
-      <div className="hoverbox rounded-2">
-        <img
-          src={galleryItem.image}
-          alt={galleryItem.title}
-          className="img-fluid"
-        />
-        <div className="hoverbox-content flex-center">
-          <div
-            className="rounded-pill bg-white d-flex flex-center"
-            style={{ width: 38, height: 38 }}
-          >
-            <FontAwesomeIcon
-              icon={faMagnifyingGlassPlus}
-              className="text-secondary"
-            />
-          </div>
-        </div>
-      </div>
-      <h4 className="title mt-2">{galleryItem.title}</h4>
-      <p className="mb-0 text-body-tertiary text-capitalize">
-        {galleryItem.type}
-      </p>
-    </Col>
-  );
-};
+import PackeryGrid from './PackeryGrid';
 
 const GalleryGridWithTitleItems = ({
   gridItems
 }: {
-  gridItems: GalleryColumnItemType[];
+  gridItems: GalleryItem[];
 }) => {
   const { lightboxProps, openLightbox } = useLightbox(
-    gridItems.map(item => item.image)
+    gridItems.map(item => item.largeImage)
   );
+
   return (
     <>
-      <Row className="g-3">
+      <PackeryGrid className="row g-4" id="image_gallery">
         {gridItems.map((item, index) => (
-          <GridItem
-            galleryItem={item}
-            onClick={() => openLightbox(index + 1)}
-          />
+          <a
+            key={item.id}
+            href={item.largeImage}
+            onClick={event => {
+              event.preventDefault();
+              openLightbox(index + 1);
+            }}
+            className={cn(
+              item.category,
+              'sm:col-6 md:col-4 xl:col-3 text-center no-underline img-zoom-hover'
+            )}
+          >
+            <div className="hoverbox rounded-md">
+              <img src={item.image} alt="" />
+              <div className="hoverbox-content flex-center">
+                <div className="rounded-full bg-white flex flex-center size-9.5">
+                  <FontAwesomeIcon
+                    icon={faMagnifyingGlassPlus}
+                    className="text-secondary"
+                  />
+                </div>
+              </div>
+            </div>
+            <h4 className="title mt-2">{item.title}</h4>
+            <p className="mb-0 text-subtle capitalize">
+              {item.category.split('-').join(' ')}
+            </p>
+          </a>
         ))}
-      </Row>
+      </PackeryGrid>
       <Lightbox key={gridItems.length} {...lightboxProps} />
     </>
   );

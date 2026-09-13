@@ -1,86 +1,25 @@
+import { faPause, faPlay } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faFolder,
-  faFileWord,
-  faFileExcel,
-  faFileInvoice,
-  faFileZipper,
-  faFilePdf,
-  faFileCsv,
-  faPlay,
-  faPause
-} from '@fortawesome/free-solid-svg-icons';
-import { useEffect, useRef, useState } from 'react';
-import { Button } from 'react-bootstrap';
-import { Link } from 'react-router';
-import { Form } from 'react-bootstrap';
-import FilesDropdown from '../FilesDropdown';
-import classNames from 'classnames';
+import { cn } from '@hummingbirdui/react';
+import Lightbox from 'components/base/Lightbox';
 import { File } from 'data/file-manager';
-import { useFileManagerContext } from 'providers/FileManagerProvider';
-import Lightbox from 'components/base/LightBox';
 import useLightbox from 'hooks/useLightbox';
+import { useFileManagerContext } from 'providers/FileManagerProvider';
+import { MouseEvent, useEffect, useRef, useState } from 'react';
+import FilesDropdown from '../FilesDropdown';
+import FileIcon from './FileIcon';
 
-const RenderFileIcon = ({ file }: { file: File }) => {
-  switch (file.type) {
-    case 'folder':
-      return (
-        <FontAwesomeIcon
-          icon={faFolder}
-          className={classNames(
-            'fs-3',
-            file.id === 3 ? 'text-info-light' : 'text-body-tertiary'
-          )}
-        />
-      );
-    case 'doc':
-      return (
-        <FontAwesomeIcon
-          icon={faFileWord}
-          className="fs-3 text-body-tertiary"
-        />
-      );
-    case 'xls':
-    case 'xlx':
-      return (
-        <FontAwesomeIcon
-          icon={faFileExcel}
-          className="fs-3 text-body-tertiary"
-        />
-      );
-    case 'source-code':
-    case 'html':
-      return (
-        <FontAwesomeIcon
-          icon={faFileInvoice}
-          className="fs-3 text-body-tertiary"
-        />
-      );
-    case 'zip':
-      return (
-        <FontAwesomeIcon
-          icon={faFileZipper}
-          className="fs-3 text-body-tertiary"
-        />
-      );
-    case 'pdf':
-      return (
-        <FontAwesomeIcon icon={faFilePdf} className="fs-3 text-body-tertiary" />
-      );
-    case 'csv':
-      return (
-        <FontAwesomeIcon icon={faFileCsv} className="fs-3 text-body-tertiary" />
-      );
-    default:
-      return null;
-  }
-};
+const ITEM_CLASS = 'dropdown-item font-semibold text-start no-underline!';
 
+/** Gold `+MyFile` in mixins/file-manager/MyFile.pug. */
 const FileBox = ({ file }: { file: File }) => {
   const { checkedFileIds, setCheckedFileIds } = useFileManagerContext();
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [playing, setPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement | null>(null);
-  const clickTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const clickTimeout = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const isVideo = file.type === 'video';
+  const fileId = String(file.id);
+
   const attachment = () => {
     if (file.type === 'pdf' && file.pdf) {
       return (
@@ -92,127 +31,137 @@ const FileBox = ({ file }: { file: File }) => {
         />
       );
     }
-    if (file.type === 'video' && file.video) {
-      return file.video;
-    }
-    if (file.type === 'image' && file.img) {
-      return file.img;
-    }
+    if (isVideo && file.video) return file.video;
+    if (file.type === 'image' && file.img) return file.img;
     return '';
   };
   const { lightboxProps, openLightbox } = useLightbox([attachment()]);
 
-  const handlePlayPause = () => setIsPlaying(prev => !prev);
+  useEffect(() => {
+    if (!videoRef.current) return;
+    if (playing) {
+      videoRef.current.play();
+    } else {
+      videoRef.current.pause();
+    }
+  }, [playing]);
 
-  const handleSingleClick = (event: React.MouseEvent) => {
+  const handleClick = (event: MouseEvent) => {
     if ((event.target as HTMLElement).closest('.dropdown')) return;
-
-    clickTimeoutRef.current && clearTimeout(clickTimeoutRef.current);
-
-    clickTimeoutRef.current = setTimeout(() => {
-      setCheckedFileIds(prevFilesId =>
-        prevFilesId.includes(file.id)
-          ? prevFilesId.filter(id => id !== file.id)
-          : [...prevFilesId, file.id]
+    if (clickTimeout.current) clearTimeout(clickTimeout.current);
+    clickTimeout.current = setTimeout(() => {
+      setCheckedFileIds(prev =>
+        prev.includes(file.id)
+          ? prev.filter(id => id !== file.id)
+          : [...prev, file.id]
       );
     }, 200);
   };
 
   const handleDoubleClick = () => {
-    // Prevent single-click action from executing
-    if (clickTimeoutRef.current) clearTimeout(clickTimeoutRef.current);
-
+    if (clickTimeout.current) clearTimeout(clickTimeout.current);
     if (['image', 'video', 'pdf'].includes(file.type)) {
       openLightbox(1);
-      setCheckedFileIds(prevFilesId =>
-        prevFilesId.includes(file.id) ? prevFilesId : [...prevFilesId, file.id]
+      setCheckedFileIds(prev =>
+        prev.includes(file.id) ? prev : [...prev, file.id]
       );
     }
   };
-  useEffect(() => {
-    if (videoRef.current) {
-      isPlaying ? videoRef.current.play() : videoRef.current.pause();
-    }
-  }, [isPlaying]);
 
   return (
     <>
       <Lightbox {...lightboxProps} />
       <div
         className="text-center"
-        onClick={handleSingleClick}
-        onDoubleClick={() => handleDoubleClick()}
-        {...(file.type === 'video' && {
-          onMouseEnter: () => setIsPlaying(true),
-          onMouseLeave: () => setIsPlaying(false)
+        onClick={handleClick}
+        onDoubleClick={handleDoubleClick}
+        {...(isVideo && {
+          'data-play-on-container-hover': true,
+          onMouseEnter: () => setPlaying(true),
+          onMouseLeave: () => setPlaying(false)
         })}
       >
         <div className="file-box-wrapper img-zoom-hover">
-          <Form.Check.Input
+          <input
+            className="form-check-input form-check-input-transparent absolute top-0 start-0 mt-4 ms-4 z-1"
             type="checkbox"
-            className="form-check-input-transparent position-absolute top-0 start-0 mt-3 ms-3 z-1"
-            name={file.id.toString()}
-            id={file.id.toString()}
+            name="fileManagerFiles"
+            id={fileId}
+            data-bulk-select-row
+            data-file={fileId}
             checked={checkedFileIds.includes(file.id)}
-            onChange={() => {}} // Dummy handler to suppress the warning
+            onChange={() => undefined}
           />
-          <Form.Check.Label
-            htmlFor={file.id.toString()}
-            className="stretched-link position-absolute top-0 start-0 w-100 h-100"
+          <label
+            className="stretched-link absolute top-0 start-0 w-full h-full"
+            htmlFor={fileId}
+            data-file={fileId}
+            data-file-thumbnail={
+              isVideo
+                ? file.video
+                : file.type === 'image'
+                  ? file.img
+                  : undefined
+            }
           />
-          <div className="position-relative h-100">
+          <div className="relative h-full">
             <div className="file-box overflow-hidden">
               {file.type === 'image' && (
                 <img
                   src={file.img}
                   alt=""
-                  className="w-100 h-100 object-fit-cover"
+                  className="w-full h-full object-cover"
                 />
               )}
-              {file.type === 'video' && (
-                <div className="video-container h-100">
+              {isVideo && (
+                <div className="video-container h-full">
                   <video
-                    className="video d-block h-100 w-100 overflow-hidden object-fit-cover"
-                    muted
                     ref={videoRef}
-                    src={file.video}
-                  />
+                    className="video block h-full w-full overflow-hidden object-cover"
+                    muted
+                    poster={file.thumb}
+                  >
+                    <source src={file.video} type="video/mp4" />
+                  </video>
                 </div>
               )}
-              <RenderFileIcon file={file} />
+              <FileIcon file={file} className="text-4xl" />
             </div>
-            {file.type === 'video' && (
-              <Button
-                data-bs-theme="light"
-                className="p-0 circle-icon-item-md position-absolute top-50 start-50 translate-middle bg-body-emphasis bg-opacity-50 z-1"
-                onClick={handlePlayPause}
+            {isVideo && (
+              <button
+                type="button"
+                data-hb-theme="light"
+                className="btn p-0 circle-icon-item-md bg-soft/50 absolute top-1/2 left-1/2 -translate-1/2 z-3"
+                onClick={() => setPlaying(prev => !prev)}
               >
-                <span className="play-icon pointer-events-none">
-                  {!isPlaying ? (
-                    <FontAwesomeIcon
-                      icon={faPlay}
-                      className="text-body-secondary fs-9"
-                      transform="down-1"
-                    />
-                  ) : (
-                    <FontAwesomeIcon
-                      icon={faPause}
-                      className="text-body-secondary fs-9"
-                      transform="down-1"
-                    />
-                  )}
+                <span
+                  className={cn('pointer-events-none', {
+                    'play-icon': !playing,
+                    'pause-icon': playing
+                  })}
+                >
+                  <FontAwesomeIcon
+                    icon={playing ? faPause : faPlay}
+                    className="text-muted text-md"
+                    transform="down-1"
+                  />
                 </span>
-              </Button>
+              </button>
             )}
           </div>
-          <FilesDropdown className="lh-1 position-absolute top-0 end-0 mt-2 me-2" />
-          <Link
-            to="#!"
-            className="d-block fw-bold text-body-highlight mt-2 text-nowrap text-truncate fs-9 fs-sm-8"
+          <FilesDropdown
+            className="dropdown leading-none absolute top-0 end-0 mt-2 me-2"
+            triggerClassName="btn-square size-7.5 text-default relative z-1"
+            iconTransform="shrink-2"
+            itemClassName={ITEM_CLASS}
+          />
+          <a
+            href="#!"
+            className="block font-bold text-highlight mt-2 text-nowrap truncate text-base"
           >
             {file.name}
-          </Link>
-          <h6 className="mb-0 fw-semibold text-body-tertiary fs-10 fs-sm-9">
+          </a>
+          <h6 className="mb-0 font-semibold text-subtle text-sm sm:text-md">
             {file.size || file.itemCount}
           </h6>
         </div>

@@ -615,7 +615,7 @@ export const homepageOffcanvasAmenitiesItems: HomepageOffcanvasAmenitiesItem[] =
     {
       id: 2,
       title: 'Location',
-      className: 'mt-3',
+      className: 'mt-4',
       checkboxItems: [
         {
           id: 'beachFront',

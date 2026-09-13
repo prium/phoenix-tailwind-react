@@ -1,45 +1,72 @@
+import { cn } from '@hummingbirdui/react';
 import PageBreadcrumb from 'components/common/PageBreadcrumb';
 import FilesHeader from 'components/modules/file-manager/FilesHeader';
-import Sidebar from 'components/modules/file-manager/sidebar/Sidebar';
 import RecentFilesCard from 'components/modules/file-manager/RecentFilesCard';
-import { defaultBreadcrumbItems } from 'data/commonData';
-import React, { PropsWithChildren, useState } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import Sidebar from 'components/modules/file-manager/sidebar/Sidebar';
 import FileManagerTableWrapper from 'components/tables/FileManagerTableWrapper';
+import { defaultBreadcrumbItems } from 'data/commonData';
+import { PropsWithChildren, useEffect, useState } from 'react';
 
+/**
+ * Gold `layouts/LayoutFileManager.pug` (content block). The sidebar keeps the
+ * gold `.phoenix-offcanvas.phoenix-offcanvas-fixed` + sibling backdrop DOM
+ * verbatim — file-manager.css makes it sticky from `lg` and `show` only drives
+ * the small-screen drawer. The `lg…xl` bars button toggles `show-sidebar` on
+ * `[data-collapse-filemanager-sidebar]`, exactly like the gold file-manager.js.
+ */
 const FileManagerLayout = ({ children }: PropsWithChildren) => {
   const [showSidebar, setShowSidebar] = useState(false);
   const [openOffcanvas, setOpenOffcanvas] = useState(false);
 
+  useEffect(() => {
+    if (openOffcanvas) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.removeProperty('overflow');
+    }
+    return () => {
+      document.body.style.removeProperty('overflow');
+    };
+  }, [openOffcanvas]);
+
   return (
-    <div>
-      <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-3" />
-      <h2 className="mb-4">File Manager</h2>
-      <Row
-        className={`gx-4 data-collapse-file-manager-sidebar mb-9 ${
-          showSidebar ? 'show-sidebar' : ''
-        }`}
+    <>
+      <PageBreadcrumb items={defaultBreadcrumbItems} />
+      <div
+        className={cn('mb-16', { 'show-sidebar': showSidebar })}
+        data-collapse-filemanager-sidebar
       >
-        <Col
-          xs="auto"
-          className="file-manager-sidebar-wrapper d-none d-lg-block "
-        >
-          <Sidebar setOpenOffcanvas={setOpenOffcanvas} />
-        </Col>
-        <Col className="my-files">
-          <FileManagerTableWrapper>
-            <FilesHeader
-              showSidebar={showSidebar}
-              setShowSidebar={setShowSidebar}
-              openOffcanvas={openOffcanvas}
-              setOpenOffcanvas={setOpenOffcanvas}
+        <h2 className="mb-6">File Manager</h2>
+        <div className="row gx-6">
+          <div className="col-auto file-manager-sidebar">
+            <div
+              className={cn(
+                'phoenix-offcanvas phoenix-offcanvas-fixed bg-default scrollbar overflow-x-hidden',
+                { show: openOffcanvas }
+              )}
+              id="fileManagerSideBar"
+              data-breakpoint="lg"
+            >
+              <Sidebar onHide={() => setOpenOffcanvas(false)} />
+            </div>
+            <div
+              className="phoenix-offcanvas-backdrop lg:hidden"
+              onClick={() => setOpenOffcanvas(false)}
             />
-            <RecentFilesCard />
-            {children}
-          </FileManagerTableWrapper>
-        </Col>
-      </Row>
-    </div>
+          </div>
+          <div className="col my-files">
+            <FileManagerTableWrapper>
+              <FilesHeader
+                onOpenSidebar={() => setOpenOffcanvas(true)}
+                onToggleSidebar={() => setShowSidebar(prev => !prev)}
+              />
+              <RecentFilesCard />
+              {children}
+            </FileManagerTableWrapper>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

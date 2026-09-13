@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import Button from 'components/base/Button';
-import { Collapse } from 'react-bootstrap';
-import classNames from 'classnames';
+import { cn } from '@hummingbirdui/react';
 
 interface SelectRoomCollapsibleContainerProps {
   collapseTitle: string;
@@ -12,6 +10,7 @@ interface SelectRoomCollapsibleContainerProps {
   className?: string;
 }
 
+/** `a.btn.p-4.collapse-indicator` + `.collapse` in ChangeRoomModal.pug */
 const SelectRoomCollapsibleContainer = ({
   collapseTitle,
   children,
@@ -21,27 +20,29 @@ const SelectRoomCollapsibleContainer = ({
   const [open, setOpen] = useState(false);
   return (
     <>
-      <Button
-        variant=""
-        className={classNames(
-          'p-3 d-flex flex-between-center collapse-indicator text-body-highlight bg-body-highlight w-100',
-          className,
-          {
-            collapsed: open
-          }
+      <a
+        href={`#${id}`}
+        role="button"
+        className={cn(
+          'btn p-4 flex flex-between-center collapse-indicator text-highlight bg-subtle',
+          className
         )}
         aria-controls={id}
-        onClick={() => setOpen(!open)}
+        aria-expanded={open}
+        onClick={e => {
+          e.preventDefault();
+          setOpen(!open);
+        }}
       >
         <h5 className="mb-0">{collapseTitle}</h5>
         <FontAwesomeIcon
           icon={faChevronDown}
-          className="toggle-icon text-body"
+          className="toggle-icon text-default"
         />
-      </Button>
-      <Collapse in={open}>
-        <div id={id}>{children}</div>
-      </Collapse>
+      </a>
+      <div className={cn('collapse', { show: open })} id={id}>
+        {children}
+      </div>
     </>
   );
 };

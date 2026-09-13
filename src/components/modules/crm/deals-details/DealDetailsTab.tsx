@@ -1,7 +1,7 @@
-import { JSX } from 'react';
+import { JSX, useState } from 'react';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Nav, Tab } from 'react-bootstrap';
+import { cn } from '@hummingbirdui/react';
 import DealDetailsActivity from './DealDetailsActivity';
 import {
   dealActivities,
@@ -70,33 +70,58 @@ const tabitems: TabItem[] = [
   }
 ];
 
+/** `#myTab` nav-underline tabs in apps/crm/deal-details.pug — plain markup so
+ *  the `.deal-details .nav-link` skin in crm.css keeps applying. */
 const DealDetailsTab = () => {
+  const [activeTab, setActiveTab] = useState('Activity');
   return (
-    <Tab.Container defaultActiveKey="activity">
-      <Nav
-        variant="underline"
-        className="deal-details scrollbar flex-nowrap w-100 pb-1 mb-6"
+    <>
+      <ul
+        className="nav nav-underline text-md deal-details scrollbar flex-nowrap w-full pb-1 mb-10 overflow-y-hidden"
+        role="tablist"
+        id="myTab"
       >
         {tabitems.map(item => (
-          <Nav.Item key={item.name} className="me-2 text-nowrap">
-            <Nav.Link eventKey={item.name.toLowerCase()}>
+          <li
+            key={item.name}
+            className="nav-item text-nowrap me-2"
+            role="presentation"
+          >
+            <a
+              className={cn('nav-link', { active: activeTab === item.name })}
+              href={`#tab-${item.name.toLowerCase()}`}
+              role="tab"
+              aria-controls={`tab-${item.name.toLowerCase()}`}
+              aria-selected={activeTab === item.name}
+              onClick={e => {
+                e.preventDefault();
+                setActiveTab(item.name);
+              }}
+            >
               <FontAwesomeIcon
                 icon={item.icon}
                 className="me-2 tab-icon-color"
               />
               {item.name}
-            </Nav.Link>
-          </Nav.Item>
+            </a>
+          </li>
         ))}
-      </Nav>
-      <Tab.Content>
+      </ul>
+      <div className="tab-content" id="myTabContent">
         {tabitems.map(item => (
-          <Tab.Pane key={item.name} eventKey={item.name.toLowerCase()}>
+          <div
+            key={item.name}
+            className={cn('tab-pane fade', {
+              'active show': activeTab === item.name
+            })}
+            id={`tab-${item.name.toLowerCase()}`}
+            role="tabpanel"
+          >
             {item.content}
-          </Tab.Pane>
+          </div>
         ))}
-      </Tab.Content>
-    </Tab.Container>
+      </div>
+    </>
   );
 };
 

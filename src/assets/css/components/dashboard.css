@@ -1,0 +1,7 @@
+.hover-actions-trigger.btn-reveal-trigger {
+  @layer base {
+    .hover-actions {
+      @apply end-12;
+    }
+  }
+}

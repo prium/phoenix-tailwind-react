@@ -11,7 +11,7 @@ const WizardAccountForm = ({ id }: { id: string }) => {
   return (
     <>
       <Form.Group className="mb-2">
-        <Form.Label className="text-body">Name</Form.Label>
+        <Form.Label className="text-default">Name</Form.Label>
         <Form.Control
           type="text"
           name="name"
@@ -41,7 +41,7 @@ const WizardAccountForm = ({ id }: { id: string }) => {
       <Row className="g-3 mb-3">
         <Col sm={6}>
           <Form.Group className="mb-2 mb-sm-0">
-            <Form.Label className="text-body">Password*</Form.Label>
+            <Form.Label className="text-default">Password*</Form.Label>
             <Form.Control
               type="password"
               name="password"
@@ -57,7 +57,7 @@ const WizardAccountForm = ({ id }: { id: string }) => {
         </Col>
         <Col sm={6}>
           <Form.Group className="mb-2">
-            <Form.Label className="text-body">Confirm Password*</Form.Label>
+            <Form.Label className="text-default">Confirm Password*</Form.Label>
             <Form.Control
               type="password"
               name="confirm_password"
@@ -80,7 +80,7 @@ const WizardAccountForm = ({ id }: { id: string }) => {
           checked={formData.accept_terms}
           onChange={onChange}
         />
-        <Form.Check.Label className="text-body" htmlFor={`${id}-terms`}>
+        <Form.Check.Label className="text-default" htmlFor={`${id}-terms`}>
           I accept the <Link to="#!">terms</Link> and{' '}
           <Link to="#!">privacy policy</Link>
         </Form.Check.Label>

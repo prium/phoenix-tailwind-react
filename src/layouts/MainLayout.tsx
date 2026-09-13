@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import { cn } from '@hummingbirdui/react';
 import ChatWidget from 'components/common/chat-widget/ChatWidget';
 import Footer from 'components/footers/Footer';
 import NavbarDual from 'components/navbars/navbar-dual/NavbarDual';
@@ -7,9 +7,13 @@ import NavbarTopDefault from 'components/navbars/navbar-top/NavbarTopDefault';
 import NavbarVertical from 'components/navbars/navbar-vertical/NavbarVertical';
 import { useAppContext } from 'providers/AppProvider';
 import { useMainLayoutContext } from 'providers/MainLayoutProvider';
-import { Container } from 'react-bootstrap';
 import { Outlet } from 'react-router';
 
+/**
+ * Mirrors phoenix-tailwind `mixins/layouts/LayoutContent.pug`.
+ * The vertical navbar, top navbar and `.content` must stay direct siblings:
+ * navbar-vertical.css positions `.content` with `~ .navbar-top ~ .content`.
+ */
 const MainLayout = () => {
   const {
     config: { navbarPosition }
@@ -18,7 +22,7 @@ const MainLayout = () => {
   const { contentClass, footerClass } = useMainLayoutContext();
 
   return (
-    <Container fluid className="px-0">
+    <>
       {(navbarPosition === 'vertical' || navbarPosition === 'combo') && (
         <NavbarVertical />
       )}
@@ -28,12 +32,12 @@ const MainLayout = () => {
       )}
       {navbarPosition === 'dual' && <NavbarDual />}
 
-      <div className={classNames(contentClass, 'content')}>
+      <div className={cn(contentClass, 'content')}>
         <Outlet />
-        <Footer className={classNames(footerClass, 'position-absolute')} />
+        <Footer className={cn(footerClass, 'absolute')} />
         <ChatWidget />
       </div>
-    </Container>
+    </>
   );
 };
 

@@ -30,7 +30,7 @@ export const getGradientColor = (
     chartArea: { top, bottom }
   } = chart;
 
-  const color = growth ? 'success' : 'danger';
+  const color = growth ? 'color-success' : 'color-danger';
 
   const gradientSegment = ctx.createLinearGradient(0, bottom, 0, top);
   gradientSegment.addColorStop(0, rgbaColor(getThemeColor(color), 0.0));
@@ -46,7 +46,7 @@ export const getOrCreateTooltip = (chart: Chart): HTMLDivElement => {
 
   if (!tooltipEl) {
     tooltipEl = document.createElement('div');
-    tooltipEl.classList.add('custom-tooltip', 'bg-body', 'border');
+    tooltipEl.classList.add('custom-tooltip', 'bg-default', 'border');
     Object.assign(tooltipEl.style, {
       borderRadius: '4px',
       opacity: '0',
@@ -81,39 +81,40 @@ export const externalTooltipHandler = (
     const params = tooltip.dataPoints;
 
     tooltipEl.innerHTML = `
-      <div class="fs-9 text-body-secondary">
-        <table class="mb-2 w-100">
-          <tbody class="w-100">
+      <div class="text-md text-muted">
+        <table class="mb-2 w-full">
+          <tbody class="w-full">
             <tr>
-              <th class="fw-bold" style="width: 71px;">Price</th>
-              <th class="text-center px-2 fw-semibold">:</th>
-              <th class="fw-semibold">${params[0].formattedValue} USD</th>
+              <th class="font-bold" style="width: 71px;">Price</th>
+              <th class="text-center px-2 font-semibold">:</th>
+              <th class="font-semibold">${params[0].formattedValue} USD</th>
             </tr>
           </tbody>
         </table>
-        <div class="border-top pt-2">
+        <div class="border-t pt-2">
           <table>
               <tr>
-                <th class="fw-bold" style="width: 72px;">Date</th>
-                <th class="text-center px-2 fw-semibold">:</th>
-                <th class="fw-semibold">${dayjs(data.date, 'YYYY/MM/DD').format(
-                  'D MMM'
-                )}</th>
+                <th class="font-bold" style="width: 72px;">Date</th>
+                <th class="text-center px-2 font-semibold">:</th>
+                <th class="font-semibold">${dayjs(
+                  data.date,
+                  'YYYY/MM/DD'
+                ).format('D MMM')}</th>
               </tr>
               <tr>
-                <th class="fw-bold" style="width: 72px;">Time</th>
-                <th class="text-center px-2 fw-semibold">:</th>
-                <th class="fw-semibold">${params[0].label}</th>
+                <th class="font-bold" style="width: 72px;">Time</th>
+                <th class="text-center px-2 font-semibold">:</th>
+                <th class="font-semibold">${params[0].label}</th>
               </tr>
               <tr>
-                <th class="fw-bold" style="width: 72px;">Time Zone</th>
-                <th class="text-center px-2 fw-semibold">:</th>
-                <th class="fw-semibold">UTC 4</th>
+                <th class="font-bold" style="width: 72px;">Time Zone</th>
+                <th class="text-center px-2 font-semibold">:</th>
+                <th class="font-semibold">UTC 4</th>
               </tr>
               <tr>
-                <th class="fw-bold" style="width: 72px;">Volume</th>
-                <th class="text-center px-2 fw-semibold">:</th>
-                <th class="fw-semibold">${data.volume}k</th>
+                <th class="font-bold" style="width: 72px;">Volume</th>
+                <th class="text-center px-2 font-semibold">:</th>
+                <th class="font-semibold">${data.volume}k</th>
               </tr>
             </tbody>
           </table>
@@ -151,8 +152,11 @@ export const externalTooltipHandler = (
     tooltipEl.style.opacity = '1';
     tooltipEl.style.left = `${leftPosition}px`;
     tooltipEl.style.top = `${top}px`;
+    // in the external-tooltip handler options are already resolved, so
+    // bodyFont is a concrete FontSpec (with .string), not a scriptable
     tooltipEl.style.font =
-      tooltip.options?.bodyFont?.string || '12px sans-serif';
+      (tooltip.options?.bodyFont as { string?: string })?.string ||
+      '12px sans-serif';
     tooltipEl.style.padding = `${tooltip.options?.padding || 8}px`;
   }
 };

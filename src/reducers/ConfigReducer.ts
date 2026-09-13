@@ -19,13 +19,13 @@ export const configReducer = (state: Config, action: ACTIONTYPE) => {
       Object.keys(payload).forEach(key => {
         if (
           [
-            'theme',
+            // `theme` is NOT here: hb-react's useThemeMode owns that key, and
+            // `isDark` is derived from it, so neither is persisted twice
             'navbarTopShape',
             'navbarPosition',
             'navbarTopAppearance',
             'navbarVerticalAppearance',
             'isRTL',
-            'isDark',
             'isNavbarVerticalCollapsed',
             'isChatWidgetVisible'
           ].includes(key)

@@ -1,180 +1,208 @@
+import {
+  Col,
+  FloatingLabel,
+  Input,
+  Row,
+  Select,
+  Textarea
+} from '@hummingbirdui/react';
+import { UilCalendarAlt } from '@iconscout/react-unicons';
 import Button from 'components/base/Button';
 import DatePicker from 'components/base/DatePicker';
 import ReactSelect from 'components/base/ReactSelect';
 import PageBreadcrumb from 'components/common/PageBreadcrumb';
 import { defaultBreadcrumbItems } from 'data/commonData';
-import { Col, FloatingLabel, Form, Row } from 'react-bootstrap';
+
+const tagOptions = [
+  { value: 'Biology', label: 'Biology' },
+  { value: 'Brainlessness', label: 'Brainlessness' },
+  { value: 'Jerry', label: 'Jerry' },
+  { value: 'Neurology', label: 'Neurology' },
+  { value: 'Not_the_mouse', label: 'Not_the_mouse' },
+  { value: 'Rick', label: 'Rick' },
+  { value: 'Stupidity', label: 'Stupidity' }
+];
+
+const FloatingDatePicker = ({
+  id,
+  label,
+  placeholder
+}: {
+  id: string;
+  label: string;
+  placeholder: string;
+}) => (
+  <DatePicker
+    hideIcon
+    render={(_, ref) => (
+      <div className="input-group-icon">
+        <UilCalendarAlt
+          fill="currentColor"
+          size={16}
+          className="text-subtle form-control-icon-start text-base"
+        />
+        <div className="form-floating">
+          <Input
+            type="text"
+            className="datetimepicker"
+            placeholder={placeholder}
+            ref={ref}
+            id={id}
+          />
+          <label className="form-label" htmlFor={id}>
+            {label}
+          </label>
+        </div>
+      </div>
+    )}
+  />
+);
 
 const CreateNew = () => {
   return (
     <div>
       <PageBreadcrumb items={defaultBreadcrumbItems} />
-      <h2 className="mb-4">Create a project</h2>
+      <h2 className="mb-6">Create a project</h2>
       <Row>
-        <Col xs={12} xl={9}>
-          <Row as="form" className="g-3 mb-6">
+        <Col xl={9}>
+          <form className="row g-4 mb-10">
             <Col sm={6} md={8}>
-              <FloatingLabel
-                controlId="floatingInputGrid"
-                label="Project title"
-              >
-                <Form.Control type="text" placeholder="Project title" />
-              </FloatingLabel>
-            </Col>
-            <Col sm={6} md={4}>
-              <FloatingLabel
-                controlId="floatingSelectTask"
-                label="Defult task view"
-              >
-                <Form.Select>
-                  <option>Select task view</option>
-                  <option value="1">technical</option>
-                  <option value="2">external</option>
-                  <option value="3">organizational</option>
-                </Form.Select>
-              </FloatingLabel>
-            </Col>
-            <Col sm={6} md={4}>
-              <FloatingLabel
-                controlId="floatingSelectPrivacy"
-                label="Project privacy"
-              >
-                <Form.Select>
-                  <option>Select privacy</option>
-                  <option value="1">Data Privacy One</option>
-                  <option value="2">Data Privacy Two</option>
-                  <option value="3">Data Privacy Three</option>
-                </Form.Select>
-              </FloatingLabel>
-            </Col>
-            <Col sm={6} md={4}>
-              <FloatingLabel controlId="floatingSelectTeam" label="Team">
-                <Form.Select>
-                  <option>Select team</option>
-                  <option value="1">Team One</option>
-                  <option value="2">Team Two</option>
-                  <option value="3">Team Three</option>
-                </Form.Select>
-              </FloatingLabel>
-            </Col>
-            <Col sm={6} md={4}>
-              <FloatingLabel controlId="floatingSelectAssignees" label="People">
-                <Form.Select>
-                  <option>Select assignees</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
-                </Form.Select>
-              </FloatingLabel>
-            </Col>
-            <Col sm={6} md={4}>
-              <FloatingLabel
-                controlId="floatingSelectAdmin"
-                label="Project Lead"
-              >
-                <Form.Select>
-                  <option>Select admin</option>
-                  <option value="1">Data Privacy One</option>
-                  <option value="2">Data Privacy Two</option>
-                  <option value="3">Data Privacy Three</option>
-                </Form.Select>
-              </FloatingLabel>
-            </Col>
-            <Col sm={6} md={4}>
-              <DatePicker
-                render={(_, ref) => {
-                  return (
-                    <Form.Floating>
-                      <Form.Control
-                        type="text"
-                        placeholder="Project title"
-                        ref={ref}
-                        id="startDate"
-                      />
-                      <label htmlFor="startDate" className="ps-6">
-                        Start date
-                      </label>
-                    </Form.Floating>
-                  );
-                }}
-              />
-            </Col>
-            <Col sm={6} md={4}>
-              <DatePicker
-                render={(_, ref) => {
-                  return (
-                    <Form.Floating>
-                      <Form.Control
-                        type="date"
-                        placeholder="Deadline"
-                        ref={ref}
-                        id="deadline"
-                      />
-                      <label htmlFor="deadline" className="ps-6">
-                        Deadline
-                      </label>
-                    </Form.Floating>
-                  );
-                }}
-              />
-            </Col>
-            <Col xs={12} className="gy-6">
-              <FloatingLabel
-                controlId="floatingProjectOverview"
-                label="Project overview"
-              >
-                <Form.Control
-                  as="textarea"
-                  placeholder="Leave a comment here"
-                  style={{ height: '100px' }}
+              <FloatingLabel htmlFor="floatingInputGrid" label="Project title">
+                <Input
+                  type="text"
+                  id="floatingInputGrid"
+                  placeholder="Project title"
                 />
               </FloatingLabel>
             </Col>
-            <Col md={6} className="gy-6">
-              <FloatingLabel controlId="floatingSelectClient" label="Client">
-                <Form.Select>
-                  <option>Select client</option>
+            <Col sm={6} md={4}>
+              <FloatingLabel
+                htmlFor="floatingSelectTask"
+                label="Default task view"
+              >
+                <Select id="floatingSelectTask" defaultValue="">
+                  <option value="">Select task view</option>
+                  <option value="1">technical</option>
+                  <option value="2">external</option>
+                  <option value="3">organizational</option>
+                </Select>
+              </FloatingLabel>
+            </Col>
+            <Col sm={6} md={4}>
+              <FloatingLabel
+                htmlFor="floatingSelectPrivacy"
+                label="Project privacy"
+              >
+                <Select id="floatingSelectPrivacy" defaultValue="">
+                  <option value="">Select privacy</option>
+                  <option value="1">Data Privacy One</option>
+                  <option value="2">Data Privacy Two</option>
+                  <option value="3">Data Privacy Three</option>
+                </Select>
+              </FloatingLabel>
+            </Col>
+            <Col sm={6} md={4}>
+              <FloatingLabel htmlFor="floatingSelectTeam" label="Team">
+                <Select id="floatingSelectTeam" defaultValue="">
+                  <option value="">Select team</option>
+                  <option value="1">Team One</option>
+                  <option value="2">Team Two</option>
+                  <option value="3">Team Three</option>
+                </Select>
+              </FloatingLabel>
+            </Col>
+            <Col sm={6} md={4}>
+              <FloatingLabel htmlFor="floatingSelectAssignees" label="People">
+                <Select id="floatingSelectAssignees" defaultValue="">
+                  <option value="">Select assignees</option>
+                  <option value="1">One</option>
+                  <option value="2">Two</option>
+                  <option value="3">Three</option>
+                </Select>
+              </FloatingLabel>
+            </Col>
+            <Col sm={6} md={4}>
+              <FloatingLabel htmlFor="floatingSelectAdmin" label="Project Lead">
+                <Select id="floatingSelectAdmin" defaultValue="">
+                  <option value="">Select admin</option>
+                  <option value="1">Data Privacy One</option>
+                  <option value="2">Data Privacy Two</option>
+                  <option value="3">Data Privacy Three</option>
+                </Select>
+              </FloatingLabel>
+            </Col>
+            <Col sm={6} md={4}>
+              <FloatingDatePicker
+                id="floatingInputStartDate"
+                label="Start date"
+                placeholder="end date"
+              />
+            </Col>
+            <Col sm={6} md={4}>
+              <FloatingDatePicker
+                id="floatingInputDeadline"
+                label="Deadline"
+                placeholder="deadline"
+              />
+            </Col>
+            <Col xs={12} className="gy-10">
+              <FloatingLabel
+                htmlFor="floatingProjectOverview"
+                label="project overview"
+              >
+                <Textarea
+                  id="floatingProjectOverview"
+                  className="h-25!"
+                  placeholder="Leave a comment here"
+                />
+              </FloatingLabel>
+            </Col>
+            <Col md={6} className="gy-10">
+              <FloatingLabel htmlFor="floatingSelectClient" label="client">
+                <Select id="floatingSelectClient" defaultValue="">
+                  <option value="">Select client</option>
                   <option value="1">Client One</option>
                   <option value="2">Client Two</option>
                   <option value="3">Client Three</option>
-                </Form.Select>
+                </Select>
               </FloatingLabel>
             </Col>
-            <Col md={6} className="gy-md-6">
-              <FloatingLabel controlId="floatingInputBudget" label="Budget">
-                <Form.Control type="text" placeholder="Budget" />
+            <Col md={6} className="md:gy-10">
+              <FloatingLabel htmlFor="floatingInputBudget" label="Budget">
+                <Input
+                  type="text"
+                  id="floatingInputBudget"
+                  placeholder="Budget"
+                />
               </FloatingLabel>
             </Col>
-            <Col xs={12} className="gy-6">
-              <ReactSelect
-                isMulti
-                placeholder="Add tags"
-                options={[
-                  { value: 'Biology', label: 'Biology' },
-                  { value: 'Brainlessness', label: 'Brainlessness' },
-                  { value: 'Jerry', label: 'Jerry' },
-                  { value: 'Neurology', label: 'Neurology' },
-                  { value: 'Not_the_mouse', label: 'Not_the_mouse' },
-                  { value: 'Rick', label: 'Rick' },
-                  { value: 'Stupidity', label: 'Stupidity' }
-                ]}
-                classNames={{
-                  control: () => 'py-3',
-                  valueContainer: () => 'lh-1'
-                }}
-              />
-            </Col>
-            <Col xs={12} className="gy-6">
-              <div className="d-flex justify-content-end gap-3">
-                <Button variant="phoenix-primary" className="px-5">
-                  Cancel
-                </Button>
-                <Button variant="primary" className="px-5 px-sm-15">
-                  Create Project
-                </Button>
+            <Col xs={12} className="gy-10">
+              <div className="form-floating form-floating-advance-select">
+                <ReactSelect
+                  isMulti
+                  inputId="organizerMultiple"
+                  placeholder=""
+                  options={tagOptions}
+                  defaultValue={[tagOptions[6]]}
+                />
+                <label htmlFor="organizerMultiple">Add tags</label>
               </div>
             </Col>
-          </Row>
+            <Col xs={12} className="gy-10">
+              <Row className="g-4 justify-end">
+                <Col xs="auto">
+                  <Button variant="phoenix-primary" className="px-8">
+                    Cancel
+                  </Button>
+                </Col>
+                <Col xs="auto">
+                  <Button variant="primary" className="px-8 sm:px-30">
+                    Create Project
+                  </Button>
+                </Col>
+              </Row>
+            </Col>
+          </form>
         </Col>
       </Row>
     </div>

@@ -2,100 +2,35 @@ import PhoenixDocCard from 'components/base/PhoenixDocCard';
 import DocPageHeader from 'components/docs/DocPageHeader';
 import DocPagesLayout from 'layouts/DocPagesLayout';
 
-const sizingWidthCode = `<>
-  <div className="bg-light text-dark p-2 border border-dashed mb-3 w-100"><code>.w-100</code></div>
-  <div className="bg-light text-dark p-2 border border-dashed mb-3 w-75"><code>.w-75</code></div>
-  <div className="bg-light text-dark p-2 border border-dashed mb-3 w-50"><code>.w-50</code></div>
-  <div className="bg-light text-dark p-2 border border-dashed mb-3 w-25"><code>.w-25</code></div>
-  <div className="bg-light text-dark p-2 border border-dashed mb-3 w-auto"><code>.w-auto</code></div>
+const sizingWidthCode = `
+<>
+  <div className="bg-subtle p-2 border-dashed mb-4 w-full"><code>.w-full</code></div>
+  <div className="bg-subtle p-2 border-dashed mb-4 w-3/4"><code>.w-3/4</code></div>
+  <div className="bg-subtle p-2 border-dashed mb-4 w-1/2"><code>.w-1/2</code></div>
+  <div className="bg-subtle p-2 border-dashed mb-4 w-1/4"><code>.w-1/4</code></div>
+  <div className="bg-subtle p-2 border-dashed mb-4 w-auto"><code>.w-auto</code></div>
 </>`;
 
-const sizingHeightCode = `<>
-  <div className="vh-50 text-dark py-3">
-    <Row className="h-100">
-      <Col>
-        <div className="bg-light p-2 border border-dashed h-100">
-          <code>.h-100</code>
-        </div>
-      </Col>
-      <Col>
-        <div className="bg-light p-2 border border-dashed h-75">
-          <code>.h-75</code>
-        </div>
-      </Col>
-      <Col>
-        <div className="bg-light p-2 border border-dashed h-50">
-          <code>.h-50</code>
-        </div>
-      </Col>
-      <Col>
-        <div className="bg-light p-2 border border-dashed h-25">
-          <code>.h-25</code>
-        </div>
-      </Col>
-      <Col>
-        <div className="bg-light p-2 border border-dashed h-auto">
-          <code>.h-auto</code>
-        </div>
-      </Col>
-    </Row>
-  </div>
-</>`;
-
-const specialClassesCode = `.min-vw-100 { minWidth: 100vw; }
-.vw-100 { width: 100vw; }
-.min-vh-100 { minHeight: 100vh; }
-.min-vh-75 { minHeight: 75vh; }
-.min-vh-50 { minHeight: 50vh; }
-.min-vh-25 { minHeight: 25vh; }
-.vh-100 { height: 100vh !important; }
-.vh-75 { height: 75vh !important; }
-.vh-50 { height: 50vh !important; }
-.vh-25 { height: 25vh !important; }
-
-.min-vh-sm-100 { minHeight: 100vh; }
-.min-vh-sm-75 { minHeight: 75vh; }
-.min-vh-sm-50 { minHeight: 50vh; }
-.min-vh-sm-25 { minHeight: 25vh; }
-.vh-sm-100 { height: 100vh !important; }
-.vh-sm-75 { height: 75vh !important; }
-.vh-sm-50 { height: 50vh !important; }
-.vh-sm-25 { height: 25vh !important; }
-
-.min-vh-md-100 { minHeight: 100vh; }
-.min-vh-md-75 { minHeight: 75vh; }
-.min-vh-md-50 { minHeight: 50vh; }
-.min-vh-md-25 { minHeight: 25vh; }
-.vh-md-100 { height: 100vh !important; }
-.vh-md-75 { height: 75vh !important; }
-.vh-md-50 { height: 50vh !important; }
-.vh-md-25 { height: 25vh !important; }
-
-.min-vh-lg-100 { minHeight: 100vh; }
-.min-vh-lg-75 { minHeight: 75vh; }
-.min-vh-lg-50 { minHeight: 50vh; }
-.min-vh-lg-25 { minHeight: 25vh; }
-.vh-lg-100 { height: 100vh !important; }
-.vh-lg-75 { height: 75vh !important; }
-.vh-lg-50 { height: 50vh !important; }
-.vh-lg-25 { height: 25vh !important; }
-
-.min-vh-xl-100 { minHeight: 100vh; }
-.min-vh-xl-75 { minHeight: 75vh; }
-.min-vh-xl-50 { minHeight: 50vh; }
-.min-vh-xl-25 { minHeight: 25vh; }
-.vh-xl-100 { height: 100vh !important; }
-.vh-xl-75 { height: 75vh !important; }
-.vh-xl-50 { height: 50vh !important; }
-.vh-xl-25 { height: 25vh !important; }
-.min-vh-xxl-100 { minHeight: 100vh; }
-.min-vh-xxl-75 { minHeight: 75vh; }
-.min-vh-xxl-50 { minHeight: 50vh; }
-.min-vh-xxl-25 { minHeight: 25vh; }
-.vh-xxl-100 { height: 100vh !important; }
-.vh-xxl-75 { height: 75vh !important; }
-.vh-xxl-50 { height: 50vh !important; }
-.vh-xxl-25 { height: 25vh !important; }`;
+const sizingHeightCode = `
+<div className="h-[50vh] py-4">
+  <Row className="h-full">
+    <Col>
+      <div className="bg-subtle p-2 border-dashed mb-4 h-full"><code>.h-full</code></div>
+    </Col>
+    <Col>
+      <div className="bg-subtle p-2 border-dashed mb-4 h-3/4"><code>.h-3/4</code></div>
+    </Col>
+    <Col>
+      <div className="bg-subtle p-2 border-dashed mb-4 h-1/2"><code>.h-1/2</code></div>
+    </Col>
+    <Col>
+      <div className="bg-subtle p-2 border-dashed mb-4 h-1/4"><code>.h-1/4</code></div>
+    </Col>
+    <Col>
+      <div className="bg-subtle p-2 border-dashed mb-4 h-auto"><code>.h-auto</code></div>
+    </Col>
+  </Row>
+</div>`;
 
 const SizingExample = () => {
   return (
@@ -103,26 +38,34 @@ const SizingExample = () => {
       <DocPageHeader
         title="Sizing"
         description="Easily make an element as wide or as tall with our width and height utilities."
+        link={{
+          text: 'Sizing on Tailwind',
+          url: 'https://tailwindcss.com/docs/width'
+        }}
       />
       <DocPagesLayout>
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header title="Width (relative to parent)" />
+          <PhoenixDocCard.Header title="Width (relative to parent)">
+            <p className="mb-0 text-muted">
+              <code>.w-full</code> and the fraction utilities{' '}
+              <code>.w-1/4</code>, <code>.w-1/2</code>, <code>.w-3/4</code> size
+              an element as a percentage of its parent;{' '}
+              <code>.w-{'{number}'}</code> sizes it on the{' '}
+              <code>--spacing</code> scale instead.
+            </p>
+          </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={sizingWidthCode} />
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header title="Height (relative to parent)" />
+          <PhoenixDocCard.Header title="Height (relative to parent)">
+            <p className="mb-0 text-muted">
+              The height utilities mirror the width ones. A percentage height
+              only resolves when the parent has a height, so the wrapper below
+              is given one with the arbitrary value <code>.h-[50vh]</code>.
+            </p>
+          </PhoenixDocCard.Header>
           <PhoenixDocCard.Body code={sizingHeightCode} />
-        </PhoenixDocCard>
-
-        <PhoenixDocCard className="mb-4">
-          <PhoenixDocCard.Header
-            title="Special classes (relative to viewport)"
-            noPreview
-          />
-          <div className="p-4">
-            <PhoenixDocCard.Body code={specialClassesCode} hidePreview />
-          </div>
         </PhoenixDocCard>
       </DocPagesLayout>
     </div>

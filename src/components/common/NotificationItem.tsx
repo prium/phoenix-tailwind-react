@@ -1,10 +1,9 @@
-import { faClock } from '@fortawesome/free-solid-svg-icons';
+import { faClock, faEllipsis } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
+import { Dropdown, cn } from '@hummingbirdui/react';
 import Avatar from 'components/base/Avatar';
 import RevealDropdown from 'components/base/RevealDropdown';
 import { Notification } from 'data/notifications';
-import { Dropdown } from 'react-bootstrap';
 
 export interface NotificationItemProps {
   notification: Notification;
@@ -12,64 +11,119 @@ export interface NotificationItemProps {
   type: 'dropdownItem' | 'pageItem';
 }
 
+/** `+NotificationItems` in phoenix-tailwind NotificationDropdown.pug */
 const NotificationItem = ({
   notification,
   className,
   type
 }: NotificationItemProps) => {
-  return (
-    <div
-      className={classNames(
-        className,
-        'py-3 notification-card position-relative',
-        {
-          unread: !notification.read,
-          'px-4 px-lg-6': type === 'pageItem',
-          'px-2 px-sm-3': type === 'dropdownItem'
-        }
-      )}
-    >
-      <div className="d-flex align-items-center justify-content-between position-relative">
-        <div className="d-flex">
-          <Avatar
-            src={notification.avatar}
-            placeholder={!notification.avatar}
-            size={type === 'pageItem' ? 'xl' : 'm'}
-            className="me-3 status-online"
-          />
-          <div
-            className={classNames('flex-1', {
-              'me-sm-3': type === 'dropdownItem',
-              'mt-2 me-2': type === 'pageItem'
-            })}
-          >
-            <h4 className="fs-9 text-body-emphasis">{notification.name}</h4>
-            <p className="fs-9 text-body-highlight mb-2 mb-sm-3 fw-normal">
-              <span className="me-1 fw-bold fs-10">
-                {notification.interactionIcon}
-              </span>
-              <span>{notification.interaction}</span>
-              {type === 'pageItem' && (
-                <span className="fw-bold">{notification.detail}</span>
-              )}
-
-              <span className="ms-2 text-body-quaternary text-opactity-75 fw-bold fs-10">
+  /**
+   * The notifications page markup (`pages/notifications.pug` +NotificationItem)
+   * differs from the navbar dropdown one: bigger avatar, no status dot, a plain
+   * `.dropdown` toggle and its own border/spacing — so it is rendered verbatim
+   * here instead of being approximated with the dropdown branch below.
+   */
+  if (type === 'pageItem') {
+    return (
+      <div
+        className={cn(
+          className,
+          notification.read ? 'read' : 'unread',
+          'flex items-center justify-between py-4 lg:px-10 px-6 notification-card border-t'
+        )}
+      >
+        <div className="flex">
+          {notification.avatar ? (
+            <Avatar
+              src={notification.avatar}
+              placeholder={notification.avatarPlaceholder}
+              size="xl"
+              className="me-4"
+            />
+          ) : (
+            <Avatar size="xl" variant="name" className="me-4">
+              {notification.name.charAt(0).toUpperCase()}
+            </Avatar>
+          )}
+          <div className="me-4 flex-1 mt-2">
+            <h4 className="text-md text-emphasis">{notification.name}</h4>
+            <p className="text-md text-highlight">
+              <span className="me-1">{notification.interactionIcon}</span>
+              {notification.interaction}
+              <span className="font-bold">{notification.detail}</span>
+              <span className="ms-2 text-subtle/85 text-sm font-bold">
                 {notification.ago}
               </span>
             </p>
-            <p className="text-body-secondary fs-9 mb-0">
+            <p className="text-muted text-md mb-0">
               <FontAwesomeIcon icon={faClock} className="me-1" />
-              <span className="fw-bold">{notification.time}</span>
+              <span className="font-bold">{notification.time}</span>
+              {notification.date}
+            </p>
+          </div>
+        </div>
+        <div className="dropdown">
+          <Dropdown>
+            <Dropdown.Trigger asChild>
+              <button
+                type="button"
+                className="btn text-sm btn-sm transition-none notification-dropdown-toggle"
+              >
+                <FontAwesomeIcon
+                  icon={faEllipsis}
+                  className="text-sm text-default"
+                />
+              </button>
+            </Dropdown.Trigger>
+            <Dropdown.Content align="end" className="py-2">
+              <Dropdown.Item asChild>
+                <a href="#!">Mark as unread</a>
+              </Dropdown.Item>
+            </Dropdown.Content>
+          </Dropdown>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div
+      className={cn(className, 'py-4 notification-card relative px-2 sm:px-4', {
+        unread: !notification.read,
+        read: notification.read
+      })}
+    >
+      <div className="flex items-center justify-between relative">
+        <div className="flex">
+          <Avatar
+            src={notification.avatar}
+            placeholder={!notification.avatar}
+            size="m"
+            status="online"
+            className="me-4"
+          />
+          <div className="flex-1 sm:me-4">
+            <h4 className="text-md text-emphasis">{notification.name}</h4>
+            <p className="text-md text-highlight mb-2 sm:mb-4 font-normal">
+              <span className="me-1 font-bold text-sm">
+                {notification.interactionIcon}
+              </span>
+              <span>{notification.interaction}</span>
+              <span className="ms-2 text-soft/75 font-bold text-sm">
+                {notification.ago}
+              </span>
+            </p>
+            <p className="text-muted text-md mb-0">
+              <FontAwesomeIcon icon={faClock} className="me-1" />
+              <span className="font-bold">{notification.time}</span>
               {notification.date}
             </p>
           </div>
         </div>
         <RevealDropdown
+          className="notification-dropdown"
           btnClassName="notification-dropdown-toggle"
-          dropdownMenuClassName={classNames(
-            'mt-2',
-            notification.notificationPosition
-          )}
+          dropdownMenuClassName={cn('mt-2', notification.notificationPosition)}
         >
           <Dropdown.Item>
             Mark as {notification.read ? 'unread' : 'read'}

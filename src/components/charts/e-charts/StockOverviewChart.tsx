@@ -23,14 +23,14 @@ const getDefaultOptions = (
   getThemeColor: (name: string) => string,
   data: number[]
 ) => ({
-  color: [getThemeColor('success'), getThemeColor('info')],
+  color: [getThemeColor('color-success'), getThemeColor('color-info')],
   tooltip: {
     show: false,
     trigger: 'axis',
     padding: 10,
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('border-color'),
-    textStyle: { color: getThemeColor('light-text-emphasis') },
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('border-color-default'),
+    textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,
     axisPointer: {
@@ -48,7 +48,7 @@ const getDefaultOptions = (
       interval: 5,
       showMinLabel: true,
       showMaxLabel: false,
-      color: getThemeColor('secondary-color'),
+      color: getThemeColor('text-color-muted'),
       align: 'left',
       fontFamily: 'Nunito Sans',
       fontWeight: 600,
@@ -59,7 +59,7 @@ const getDefaultOptions = (
       lineStyle: {
         type: 'dashed',
         width: 1.5,
-        color: getThemeColor('body-highlight-bg')
+        color: getThemeColor('background-color-subtle')
       }
     },
     axisTick: {
@@ -86,11 +86,11 @@ const getDefaultOptions = (
         scale: true
       },
       itemStyle: {
-        color: getThemeColor('body-highlight-bg'),
-        borderColor: getThemeColor('success')
+        color: getThemeColor('background-color-subtle'),
+        borderColor: getThemeColor('color-success')
       },
       lineStyle: {
-        color: getThemeColor('success'),
+        color: getThemeColor('color-success'),
         width: 1
       },
       areaStyle: {
@@ -103,11 +103,11 @@ const getDefaultOptions = (
           colorStops: [
             {
               offset: 0,
-              color: rgbaColor(getThemeColor('success'), 0.5)
+              color: rgbaColor(getThemeColor('color-success'), 0.5)
             },
             {
               offset: 1,
-              color: rgbaColor(getThemeColor('success'), 0.05)
+              color: rgbaColor(getThemeColor('color-success'), 0.05)
             }
           ]
         }

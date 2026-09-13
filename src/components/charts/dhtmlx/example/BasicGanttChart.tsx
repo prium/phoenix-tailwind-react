@@ -1,6 +1,5 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { gantt } from 'dhtmlx-gantt';
-import 'dhtmlx-gantt/codebase/dhtmlxgantt.css';
 import { useAppContext } from 'providers/AppProvider';
 import { resetGanttConfig } from '../resetGanttConfig';
 
@@ -69,6 +68,12 @@ const tasks = {
   ]
 };
 
+/**
+ * The gold's `modules/components/dhtmlx-gantt` page only prints the markup and
+ * the vendor script tags; this renders the same chart live. `.gantt-zero-roadmap`
+ * is the phoenix skin for a gantt in a card (`css/plugins/gantt-chart.css`) —
+ * it replaced the old bootstrap `.gantt-chart-example` selector.
+ */
 const BasicGanttChart = () => {
   const containerRef = useRef(null);
   const {
@@ -133,7 +138,8 @@ const BasicGanttChart = () => {
         ]
       };
 
-      gantt.ext.zoom.init(zoomConfig);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      gantt.ext.zoom.init(zoomConfig as any);
       gantt.ext.zoom.setLevel('week');
       // gantt.ext.zoom.attachEvent('onAfterZoom', function (level, config) {
       //   document.querySelector("input[value='" + config.name + "']").checked = true;
@@ -141,7 +147,7 @@ const BasicGanttChart = () => {
 
       gantt.config.columns = [{ name: 'text', width: 56, resize: true }];
 
-      gantt.templates.task_class = (start, end, task) => task.task_class;
+      gantt.templates.task_class = (_start, _end, task) => task.task_class;
 
       gantt.templates.timeline_cell_class = function () {
         return 'weekend';
@@ -155,16 +161,20 @@ const BasicGanttChart = () => {
     return () => {
       gantt.clearAll();
       gantt.resetSkin();
-      gantt.resetLayout()
+      gantt.resetLayout();
       gantt._events = [];
-    }
+    };
   }, []);
 
   useEffect(() => {
     gantt.config.rtl = isRTL;
   }, [isRTL]);
 
-  return <div ref={containerRef} style={{ height: '222px', width: '100%' }} />;
+  return (
+    <div className="gantt-zero-roadmap">
+      <div ref={containerRef} className="gantt-zero-roadmap-chart" />
+    </div>
+  );
 };
 
 export default BasicGanttChart;

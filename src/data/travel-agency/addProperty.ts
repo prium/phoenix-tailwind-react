@@ -123,6 +123,8 @@ export interface AccordionItemInterface {
 }
 export interface SummaryTableProp {
   tableData: PropertyDetails[];
+  /** gold puts `min-w-75` on the basic-info table's third `th` */
+  thirdColClassName?: string;
 }
 
 export const pictures = [gallery59, gallery60, gallery61, gallery62, gallery63];

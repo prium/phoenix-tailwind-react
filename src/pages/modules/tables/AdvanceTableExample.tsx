@@ -13,6 +13,7 @@ import DocPageHeader from 'components/docs/DocPageHeader';
 import PhoenixLiveEditor from 'components/docs/PhoenixLiveEditor';
 import { Project, projects, tableDocData } from 'data/doc/table';
 import useAdvanceTable from 'hooks/useAdvanceTable';
+import DocPagesLayout from 'layouts/DocPagesLayout';
 import AdvanceTableProvider from 'providers/AdvanceTableProvider';
 import { ChangeEvent, useMemo } from 'react';
 import { Link } from 'react-router';
@@ -344,9 +345,9 @@ const Example = () => {
       <AdvanceTable
         tableProps={{
           size: 'sm',
-          className: 'phoenix-table fs-9 mb-0 border-top border-translucent'
+          className: 'text-md mb-0 border-t border-subtle'
         }}
-        rowClassName="hover-actions-trigger btn-reveal-trigger position-static"
+        rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />
     </AdvanceTableProvider>
   );
@@ -372,9 +373,9 @@ const PaginationExample = () => {
       <AdvanceTable
         tableProps={{
           size: 'sm',
-          className: 'phoenix-table fs-9 mb-0 border-top border-translucent'
+          className: 'text-md mb-0 border-t border-subtle'
         }}
-        rowClassName="hover-actions-trigger btn-reveal-trigger position-static"
+        rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />
       <AdvanceTableFooter pagination />
     </AdvanceTableProvider>
@@ -415,8 +416,8 @@ const SearchExample = () => {
   const table = useAdvanceTable({
     data: data,
     columns,
-    pageSize: 5,
-    pagination:true,
+    pageSize: 6,
+    pagination: true,
     selection: true,
     sortable: true
   });
@@ -431,14 +432,14 @@ const SearchExample = () => {
         placeholder="Search..."
         size="sm"
         onChange={handleSearchInputChange}
-        className="mx-auto mb-4"
+        className="mx-auto mb-6"
       />
       <AdvanceTable
         tableProps={{
           size: 'sm',
-          className: 'phoenix-table fs-9 mb-0 border-top border-translucent'
+          className: 'text-md mb-0 border-t border-subtle'
         }}
-        rowClassName="hover-actions-trigger btn-reveal-trigger position-static"
+        rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />
       <AdvanceTableFooter navBtn />
     </AdvanceTableProvider>
@@ -543,13 +544,13 @@ const projectListTableColumns: ColumnDef<Project>[] = [
     cell: ({ row: { original } }) => {
       const { name } = original;
       return (
-        <Link to="#!" className="text-decoration-none fw-bold fs-8">
+        <Link to="#!" className="no-underline font-bold text-base">
           {name}
         </Link>
       );
     },
     meta: {
-      cellProps: { className: 'white-space-nowrap py-4' }
+      cellProps: { className: 'whitespace-nowrap py-4' }
     }
   },
 
@@ -557,7 +558,7 @@ const projectListTableColumns: ColumnDef<Project>[] = [
     header: 'Start date',
     accessorKey: 'start',
     meta: {
-      cellProps: { className: 'ps-3 fs-9 text-body white-space-nowrap py-4' },
+      cellProps: { className: 'ps-3 text-md text-default whitespace-nowrap py-4' },
       headerProps: { className: 'ps-3' }
     }
   },
@@ -566,7 +567,7 @@ const projectListTableColumns: ColumnDef<Project>[] = [
     accessorKey: 'task',
     header: 'Task',
     meta: {
-      cellProps: { className: 'ps-3 text-body py-4' },
+      cellProps: { className: 'ps-3 text-default py-4' },
       headerProps: { className: 'ps-3' }
     }
   },
@@ -663,13 +664,13 @@ const FilterByColumnExample = () => {
 
   return (
     <AdvanceTableProvider {...table}>
-      <FilterTab tabItems={tabItems} className="mb-3" />
+      <FilterTab tabItems={tabItems} className="mb-4" />
       <AdvanceTable
         tableProps={{
           size: 'sm',
-          className: 'phoenix-table fs-9 mb-0 border-top border-translucent'
+          className: 'text-md mb-0 border-t border-subtle'
         }}
-        rowClassName="hover-actions-trigger btn-reveal-trigger position-static"
+        rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />
       <AdvanceTableFooter navBtn />
     </AdvanceTableProvider>
@@ -682,54 +683,78 @@ import useAdvanceTable from 'hooks/useAdvanceTable';
 import AdvanceTableProvider from 'providers/AdvanceTableProvider';
 
 const YourTableComponent = () => {
-
   const table = useAdvanceTable({
-    data = [...], // Your array of data objects
-    columns = [...], // Your array of column definitions
-    selection = true, // Enable selection column
-    sortable = true, // Enable sorting,
-    pagination = true, // Enable pagination
-    pageSize = 10 // Number of rows per page
+    data,               // your array of rows
+    columns,            // your TanStack column definitions
+    selection: true,    // prepend the bulk-select column
+    sortable: true,     // make every column sortable
+    pagination: true,   // paginate client side
+    pageSize: 10        // rows per page (ignored without \`pagination\`)
   });
 
   return (
-    // Now pass the table variable to the AdvanceTableProvider to make it available in all nested components
-    <AdvanceTableProvider {...table}> 
-    {/* Your application components */}
+    // spreading the table instance into the provider makes it available to
+    // AdvanceTable, AdvanceTableFooter and any component of your own that
+    // calls useAdvanceTableContext()
+    <AdvanceTableProvider {...table}>
+      {/* your table UI */}
     </AdvanceTableProvider>
   );
 };
 `;
 
 const advanceTableFooterCode = `
-import AdvanceTableFooter from 'components/base/AdvanceTableFooter';
 import AdvanceTable from 'components/base/AdvanceTable';
+import AdvanceTableFooter from 'components/base/AdvanceTableFooter';
 
-const YourComponent = () => {
-  const table = useAdvanceTableContext();
+const YourTableUi = () => (
+  <>
+    <AdvanceTable
+      className="your-wrapper-class"
+      headerClassName="your-header-class"
+      bodyClassName="your-body-class"
+      rowClassName="hover-actions-trigger btn-reveal-trigger static"
+      tableProps={{
+        size: 'sm',
+        className: 'text-md mb-0 border-t border-subtle'
+      }}
+    />
+    <AdvanceTableFooter pagination />
+  </>
+);
+`;
 
-  return (
-    <>
-      <AdvanceTable
-        headerClassName="your-header-class"
-        bodyClassName="your-body-class"
-        rowClassName="your-row-class"
-        tableProps={{
-          striped: true,
-          bordered: true,
-          size: 'sm',
-          // other react-bootstrap table props
-        }}
-      />
-      <AdvanceTableFooter
-        className="table-footer"
-        pagination={true}
-        navBtn={true}
-      />
-    </>
+const selectionColumnCode = `
+import { ColumnDef } from '@tanstack/react-table';
+import { buildSelectionColumn } from 'hooks/useAdvanceTable';
 
-  );
-};
+// module scope, next to the other columns — never rebuilt in a component body
+export const leadsTableColumns: ColumnDef<LeadDataType>[] = [
+  buildSelectionColumn<LeadDataType>(),
+  {
+    accessorKey: 'customer.name',
+    header: 'NAME',
+    meta: {
+      headerProps: { className: 'whitespace-nowrap uppercase ps-0 w-1/4' },
+      cellProps: { className: 'whitespace-nowrap ps-0' }
+    }
+  }
+  // …
+];
+`;
+
+const selectionColumnPropsCode = `
+const table = useAdvanceTable({
+  data,
+  columns,
+  selection: true,
+  // merged onto the defaults of the selection th/td, for tables whose row
+  // padding differs from the shared one
+  selectionColumnProps: {
+    headerClassName: 'ps-4 py-4',
+    cellClassName: 'ps-4'
+  }
+});
 `;
 
 type Data = {
@@ -814,9 +839,9 @@ const Example = () => {
       <AdvanceTable
         tableProps={{
           size: 'sm',
-          className: 'phoenix-table fs-9 mb-0 border-top border-translucent'
+          className: 'text-md mb-0 border-t border-subtle'
         }}
-        rowClassName="hover-actions-trigger btn-reveal-trigger position-static"
+        rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />
     </AdvanceTableProvider>
   );
@@ -837,9 +862,9 @@ const PaginationExample = () => {
       <AdvanceTable
         tableProps={{
           size: 'sm',
-          className: 'phoenix-table fs-9 mb-0 border-top border-translucent'
+          className: 'text-md mb-0 border-t border-subtle'
         }}
-        rowClassName="hover-actions-trigger btn-reveal-trigger position-static"
+        rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />
       <AdvanceTableFooter pagination />
     </AdvanceTableProvider>
@@ -866,14 +891,14 @@ const SearchExample = () => {
         placeholder="Search..."
         size="sm"
         onChange={handleSearchInputChange}
-        className="mx-auto mb-4"
+        className="mx-auto mb-6"
       />
       <AdvanceTable
         tableProps={{
           size: 'sm',
-          className: 'phoenix-table fs-9 mb-0 border-top border-translucent'
+          className: 'text-md mb-0 border-t border-subtle'
         }}
-        rowClassName="hover-actions-trigger btn-reveal-trigger position-static"
+        rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />
       <AdvanceTableFooter navBtn />
     </AdvanceTableProvider>
@@ -887,13 +912,13 @@ export const projectListTableColumns: ColumnDef<Project>[] = [
     cell: ({ row: { original } }) => {
       const { name } = original;
       return (
-        <Link to="#!" className="text-decoration-none fw-bold fs-8">
+        <Link to="#!" className="no-underline font-bold text-base">
           {name}
         </Link>
       );
     },
     meta: {
-      cellProps: { className: 'white-space-nowrap py-4' }
+      cellProps: { className: 'whitespace-nowrap py-4' }
     }
   },
 
@@ -901,7 +926,9 @@ export const projectListTableColumns: ColumnDef<Project>[] = [
     header: 'Start date',
     accessorKey: 'start',
     meta: {
-      cellProps: { className: 'ps-3 fs-9 text-body white-space-nowrap py-4' },
+      cellProps: {
+        className: 'ps-3 text-md text-default whitespace-nowrap py-4'
+      },
       headerProps: { className: 'ps-3' }
     }
   },
@@ -910,7 +937,7 @@ export const projectListTableColumns: ColumnDef<Project>[] = [
     accessorKey: 'task',
     header: 'Task',
     meta: {
-      cellProps: { className: 'ps-3 text-body py-4' },
+      cellProps: { className: 'ps-3 text-default py-4' },
       headerProps: { className: 'ps-3' }
     }
   },
@@ -1007,13 +1034,13 @@ const FilterByColumnExample = () => {
 
   return (
     <AdvanceTableProvider {...table}>
-      <FilterTab tabItems={tabItems} className="mb-3" />
+      <FilterTab tabItems={tabItems} className="mb-4" />
       <AdvanceTable
         tableProps={{
           size: 'sm',
-          className: 'phoenix-table fs-9 mb-0 border-top border-translucent'
+          className: 'text-md mb-0 border-t border-subtle'
         }}
-        rowClassName="hover-actions-trigger btn-reveal-trigger position-static"
+        rowClassName="hover-actions-trigger btn-reveal-trigger static"
       />
       <AdvanceTableFooter navBtn />
     </AdvanceTableProvider>
@@ -1025,200 +1052,315 @@ const AdvanceTableExample = () => {
     <div>
       <DocPageHeader
         title="Advance Tables"
+        description="Sortable, selectable, paginated tables built on TanStack Table and rendered with hb-react's Table."
         link={{
-          text: 'Tanstack table documentation',
+          text: 'TanStack Table documentation',
           url: 'https://tanstack.com/table/v8'
         }}
       >
-        <div>
-          {`${import.meta.env.VITE_TITLE || ''}`}-React uses{' '}
-          <strong>TanStack Table</strong> for advance features of table.{' '}
-          <strong>TanStack Table</strong> is a headless UI for building powerful
-          tables & datagrids. <strong>TanStack Table's</strong> API and engine
-          are highly modular and framework-independent while still prioritizing
-          ergonomics.
-        </div>
+        <p className="mb-2 text-muted">
+          Every data table in this app — leads, orders, products, members,
+          reports — is the same four pieces: <code>useAdvanceTable</code> builds
+          a TanStack table instance, <code>AdvanceTableProvider</code> puts it
+          on context, <code>AdvanceTable</code> renders it through hb-react
+          &apos;s <code>Table</code>, and <code>AdvanceTableFooter</code> draws
+          the pagination.
+        </p>
       </DocPageHeader>
 
-      <PhoenixDocCard className="mb-4">
-        <PhoenixDocCard.Header title="How to use" noPreview />
-        <PhoenixDocCard.Body>
-          <div className="mb-5">
-            <p className="mb-2">
-              The <strong>Advance Table</strong> components consist of two main
-              parts. These components work together to enable you to easily
-              integrate complex table features into your application.
-            </p>
-            <ul className="mb-3">
-              <li className="mb-1">
-                <strong>useAdvanceTable :</strong> A custom hook that
-                initializes the table with provided data, columns, and options.
-                The <code>useAdvanceTable</code> hook is used to set up the
-                table with your data and configuration options. It returns a{' '}
-                <code>table</code> object containing various methods and
-                properties to interact with the table's functionality.
-              </li>
-              <li>
-                <strong>AdvanceTableProvider :</strong> A context provider that
-                encapsulates the state and functionality of the table. The{' '}
-                <code>AdvanceTableProvider</code> makes the context for the
-                table available to all nested components. It takes care of
-                initializing the table and its functionality.
-              </li>
-            </ul>
-            <div className="ms-3">
-              <p>Here's how you can use this two together: </p>
-              <PhoenixLiveEditor code={advanceTableProviderCode} />
-            </div>
-          </div>
-          <div className="mb-5">
-            <h5 className="mb-2">UI Components</h5>
-            <p className="mb-2">
-              To simplify the process of rendering complex tables while
-              providing a smooth integration with the{' '}
-              <code>AdvanceTableProvider</code> we created two UI components:{' '}
-              <code>AdvanceTable</code> and <code>AdvanceTableFooter</code>
-            </p>
-            <ul className="mb-3">
-              <li className="mb-1">
-                <strong>AdvanceTable :</strong> The <code>AdvanceTable</code>{' '}
-                component is a flexible and customizable table UI component
-                designed to work seamlessly with the{' '}
-                <code>AdvanceTableProvider</code>. The AdvanceTable component
-                accepts the following props:
-                <ul className="mb-2">
-                  <li>
-                    <code>headerClassName</code>: Custom class name for the{' '}
-                    <code>thead</code> element.
-                  </li>
-                  <li>
-                    <code>bodyClassName</code>: Custom class name for the{' '}
-                    <code>tbody</code> element.
-                  </li>
-                  <li>
-                    <code>rowClassName</code>: Custom class name for the rows
-                    (tr elements).
-                  </li>
-                  <li>
-                    <code>tableProps</code>: Props to be passed to the
-                    underlying <code>Table</code>
-                    component from <code>react-bootstrap.</code>
-                  </li>
-                </ul>
-              </li>
-              <li className="mb-1">
-                <strong>AdvanceTableFooter :</strong> The{' '}
-                <code>AdvanceTableFooter</code> component is designed to enhance
-                the footer of the advanced table by providing various pagination
-                controls and information about the current page and item counts.
-                The AdvanceTableFooter component accepts the following props:
-                <ul>
-                  <li>
-                    <code>className</code> : Custom class name for the footer
-                    container.
-                  </li>
-                  <li>
-                    <code>pagination</code> : Boolean indicating whether to
-                    display the pagination
-                  </li>
-                  <li>
-                    <code>navBtn</code> : Boolean indicating whether to display
-                    the previous and next navigation buttons.
-                  </li>
-                </ul>
-              </li>
-            </ul>
-            <div className="ms-3">
-              <p>Here's how you can use these components: </p>
-              <PhoenixLiveEditor code={advanceTableFooterCode} />
-            </div>
-          </div>
-          <div>
-            <h5 className="mb-2">Column definition</h5>
-            <div>
-              For <strong>Advance Table's</strong> column definition visit{' '}
-              <strong>tanstack react table's</strong>{' '}
-              <a
-                href="https://tanstack.com/table/v8/docs/api/core/column-def"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Official documentation
-              </a>
-              <br />
-              In addition to the standard properties for defining columns in a
-              table, you can add <code>cellProps</code> and{' '}
-              <code>headerProps</code> within the <code>meta</code> property of
-              your column definitions.
-              <ul>
-                <li>
-                  <code>cellProps</code> : when placed within the{' '}
-                  <code>meta</code> object of a column definition, allows you to
-                  add specific HTML attributes to the data cells within the
-                  column. This enables you to apply styling, classes, or event
-                  handlers to cells as needed.
+      <DocPagesLayout>
+        <PhoenixDocCard className="mb-4">
+          <PhoenixDocCard.Header title="How to use" noPreview />
+          <PhoenixDocCard.Body>
+            <div className="mb-8">
+              <p className="mb-2">
+                The two building blocks are a hook and a context provider. They
+                are always used together: the hook owns the table state, the
+                provider hands it to every component below it.
+              </p>
+              <ul className="mb-4">
+                <li className="mb-1">
+                  <strong>useAdvanceTable :</strong>{' '}
+                  <code>hooks/useAdvanceTable.tsx</code>. Wraps{' '}
+                  <code>useReactTable</code> with the core, sorted, filtered and
+                  paginated row models already wired up, and returns the table
+                  instance. Its own options are:
+                  <ul className="mb-2">
+                    <li>
+                      <code>data</code> / <code>columns</code>: the rows and the
+                      TanStack column definitions.
+                    </li>
+                    <li>
+                      <code>selection</code>: prepends the shared bulk-select
+                      column (see below).
+                    </li>
+                    <li>
+                      <code>sortable</code>: sets <code>enableSorting</code> for
+                      the whole table, which is what makes{' '}
+                      <code>AdvanceTable</code> emit the sort markup on each
+                      header.
+                    </li>
+                    <li>
+                      <code>pagination</code>: paginate client side.{' '}
+                      <code>pageSize</code> sets the rows per page and is
+                      ignored without it — with no <code>pagination</code> the
+                      page size is the full row count, so the whole data set
+                      renders.
+                    </li>
+                    <li>
+                      <code>selectionColumnProps</code>:{' '}
+                      <code>{`{ headerClassName, cellClassName }`}</code>,
+                      merged onto the defaults of the selection <code>th</code>/
+                      <code>td</code>.
+                    </li>
+                    <li>
+                      <code>initialState</code> and any remaining TanStack
+                      option (<code>state</code>,{' '}
+                      <code>onPaginationChange</code>,{' '}
+                      <code>manualPagination</code>, <code>rowCount</code>,{' '}
+                      <code>pageCount</code>) are forwarded to{' '}
+                      <code>useReactTable</code> untouched.
+                    </li>
+                  </ul>
                 </li>
                 <li>
-                  <code>headerProps</code> : when placed within the meta object
-                  is used to apply HTML attributes to the header cell of the
-                  column. This allows you to add attributes like classes or
-                  event handlers to the column headers.
-                </li>
-                <li>
-                  <code>footerProps</code> : This prop allows you to specify
-                  additional HTML attributes for the footer cell element in a
-                  table header to enhance its appearance or behavior.
+                  <strong>AdvanceTableProvider :</strong>{' '}
+                  <code>providers/AdvanceTableProvider.tsx</code>. Spread the
+                  table instance into it and everything underneath can read it
+                  with <code>useAdvanceTableContext()</code> — that is how{' '}
+                  <code>AdvanceTable</code>, <code>AdvanceTableFooter</code> and
+                  your own toolbars reach the same instance without prop
+                  drilling.
                 </li>
               </ul>
+              <div className="ms-4">
+                <p>Here&apos;s how you can use these two together: </p>
+                <PhoenixLiveEditor code={advanceTableProviderCode} />
+              </div>
             </div>
-          </div>
-        </PhoenixDocCard.Body>
-      </PhoenixDocCard>
+            <div className="mb-8">
+              <h5 className="mb-2">UI Components</h5>
+              <p className="mb-2">
+                Two components read the context and render the table for you:{' '}
+                <code>AdvanceTable</code> and <code>AdvanceTableFooter</code>.
+              </p>
+              <ul className="mb-4">
+                <li className="mb-1">
+                  <strong>AdvanceTable :</strong>{' '}
+                  <code>components/base/AdvanceTable.tsx</code>. Renders the
+                  header, body and optional footer of the context table with
+                  hb-react&apos;s <code>Table</code>. Props:
+                  <ul className="mb-2">
+                    <li>
+                      <code>className</code>: extra classes for the scroll
+                      wrapper (
+                      <code>div.table-list.overflow-x-auto.scrollbar</code>
+                      ).
+                    </li>
+                    <li>
+                      <code>headerClassName</code> / <code>bodyClassName</code>:
+                      classes for the <code>thead</code> and <code>tbody</code>.
+                    </li>
+                    <li>
+                      <code>rowClassName</code>: classes for every body{' '}
+                      <code>tr</code> — this is where{' '}
+                      <code>
+                        hover-actions-trigger btn-reveal-trigger static
+                      </code>{' '}
+                      goes when the rows carry a reveal dropdown.
+                    </li>
+                    <li>
+                      <code>tableProps</code>: forwarded to hb-react&apos;s{' '}
+                      <code>Table</code>, so <code>size</code>,{' '}
+                      <code>striped</code>, <code>bordered</code>,{' '}
+                      <code>hover</code> and <code>className</code> all apply.
+                    </li>
+                    <li>
+                      <code>hasFooter</code>: renders a <code>tfoot</code> from
+                      the columns&apos; <code>footer</code> definitions.
+                    </li>
+                  </ul>
+                </li>
+                <li className="mb-1">
+                  <strong>AdvanceTableFooter :</strong>{' '}
+                  <code>components/base/AdvanceTableFooter.tsx</code>. The row
+                  under the table: the &quot;x to y Items of z&quot; counter, a
+                  View all toggle and one of two navigations. Props:
+                  <ul>
+                    <li>
+                      <code>className</code>: classes for the footer{' '}
+                      <code>Row</code>.
+                    </li>
+                    <li>
+                      <code>pagination</code>: numbered pages — the gold list.js
+                      markup, prev/next <code>button.page-link</code> around a{' '}
+                      <code>ul.pagination</code>.
+                    </li>
+                    <li>
+                      <code>navBtn</code>: plain Previous / Next buttons
+                      instead.
+                    </li>
+                    <li>
+                      <code>showViewAllBtn</code> (default <code>true</code>)
+                      and <code>viewAllBtnClass</code>: the View all / View less
+                      toggle, which swaps the page size for the full row count.
+                    </li>
+                    <li>
+                      <code>tableInfo</code>: extra classes for the counter
+                      paragraph; <code>nextPageLinkClassName</code>: extra
+                      classes for the next-page button.
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+              <div className="ms-4">
+                <p>Here&apos;s how you can use these components: </p>
+                <PhoenixLiveEditor code={advanceTableFooterCode} />
+              </div>
+            </div>
+            <div className="mb-8">
+              <h5 className="mb-2">Column definition</h5>
+              <div>
+                For the column definition itself see TanStack Table&apos;s{' '}
+                <a
+                  href="https://tanstack.com/table/v8/docs/api/core/column-def"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  official documentation
+                </a>
+                . On top of the standard properties, <code>AdvanceTable</code>{' '}
+                reads three keys from a column&apos;s <code>meta</code> object:
+                <ul>
+                  <li>
+                    <code>headerProps</code>: props spread onto the
+                    column&apos;s <code>th</code>. Its <code>className</code> is
+                    merged with the sort classes, so this is where the
+                    header&apos;s width, alignment and{' '}
+                    <code>whitespace-nowrap</code> live.
+                  </li>
+                  <li>
+                    <code>cellProps</code>: props spread onto every{' '}
+                    <code>td</code> of the column.
+                  </li>
+                  <li>
+                    <code>footerProps</code>: props spread onto the{' '}
+                    <code>tfoot</code> cell, used together with{' '}
+                    <code>hasFooter</code>.
+                  </li>
+                </ul>
+                <p className="mb-0">
+                  Header labels are written literally in the case they should
+                  render — the skin has no <code>text-transform</code>, so a
+                  column that reads <code>NAME</code> in the design carries{' '}
+                  <code>header: &apos;NAME&apos;</code>.
+                </p>
+              </div>
+            </div>
+            <div className="mb-8">
+              <h5 className="mb-2">Selection column</h5>
+              <p className="mb-2">
+                <code>selection: true</code> prepends the one shared bulk-select
+                column: an <code>IndeterminateCheckbox</code> (
+                <code>div.form-check &gt; input.form-check-input</code>, no
+                label) in the header and in every row, with the header box in
+                the indeterminate state while only some rows are selected. The
+                same column is exported as <code>buildSelectionColumn</code> for
+                tables that declare their columns explicitly.
+              </p>
+              <div className="ms-4 mb-4">
+                <PhoenixLiveEditor code={selectionColumnCode} />
+              </div>
+              <p className="mb-2">
+                <strong>Build it at module scope</strong>, alongside the other
+                columns, as <code>components/tables/LeadsTable.tsx</code> does.{' '}
+                <code>flexRender</code> renders <code>columnDef.cell</code> as a
+                component <em>type</em>, so a column rebuilt on every render is
+                a new type in the same position and React remounts the cell —
+                the checkbox is replaced mid-click and loses focus. For the same
+                reason the hook memoizes the column it builds for{' '}
+                <code>selection</code>.
+              </p>
+              <p className="mb-2">
+                Pass <code>selectionColumnProps</code> only when a table&apos;s
+                own row padding differs; never to restyle the checkbox itself.
+              </p>
+              <div className="ms-4">
+                <PhoenixLiveEditor code={selectionColumnPropsCode} />
+              </div>
+            </div>
+            <div>
+              <h5 className="mb-2">Sorting markup</h5>
+              <p className="mb-0">
+                The sort carets are CSS, not icons. <code>AdvanceTable</code>{' '}
+                wraps the table in <code>div.table-list</code> and gives every
+                sortable header <code>class=&quot;sort&quot;</code> plus{' '}
+                <code>data-sort=&quot;&lt;column id&gt;&quot;</code>, adding{' '}
+                <code>asc</code> or <code>desc</code> as the state changes;{' '}
+                <code>assets/css/components/list.css</code> draws the caret from{' '}
+                <code>.table-list .sort[data-sort]</code>. Keep that wrapper and
+                those attributes whenever you render the table markup yourself.
+              </p>
+            </div>
+          </PhoenixDocCard.Body>
+        </PhoenixDocCard>
 
-      <PhoenixDocCard className="mb-4">
-        <PhoenixDocCard.Header title="Example" />
-        <PhoenixDocCard.Body code={exampleCode} hidePreview>
-          <Example />
-        </PhoenixDocCard.Body>
-      </PhoenixDocCard>
+        <PhoenixDocCard className="mb-4">
+          <PhoenixDocCard.Header title="Example">
+            <p className="mb-0">
+              <code>selection</code> and <code>sortable</code>, no pagination —
+              so the table renders every row. Click a header to sort it.
+            </p>
+          </PhoenixDocCard.Header>
+          <PhoenixDocCard.Body code={exampleCode} hidePreview>
+            <Example />
+          </PhoenixDocCard.Body>
+        </PhoenixDocCard>
 
-      <PhoenixDocCard className="mb-4">
-        <PhoenixDocCard.Header title="Pagination Example" />
-        <PhoenixDocCard.Body code={paginationExampleCode} hidePreview>
-          <PaginationExample />
-        </PhoenixDocCard.Body>
-      </PhoenixDocCard>
+        <PhoenixDocCard className="mb-4">
+          <PhoenixDocCard.Header title="Pagination Example">
+            <p className="mb-0">
+              <code>pagination</code> with a <code>pageSize</code>, and{' '}
+              <code>AdvanceTableFooter pagination</code> for the numbered pages.
+            </p>
+          </PhoenixDocCard.Header>
+          <PhoenixDocCard.Body code={paginationExampleCode} hidePreview>
+            <PaginationExample />
+          </PhoenixDocCard.Body>
+        </PhoenixDocCard>
 
-      <div>
         <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Serverside Pagination" noPreview />
           <PhoenixDocCard.Body>
             <p>
-              Add pagination state to your table component and all pass the
-              following options to enable serverside pagination. For more
-              information check trastake table documentation. Hare is some
-              important links may help you to configure serverside table{' '}
+              Hold the pagination state in your component and pass these options
+              through <code>useAdvanceTable</code> — they are forwarded to
+              TanStack Table as-is. The same applies to serverside filtering and
+              sorting:{' '}
               <a
                 rel="noreferrer"
                 target="_blank"
                 href="https://tanstack.com/table/latest/docs/guide/pagination#manual-server-side-pagination"
               >
                 serverside-pagination
-              </a>{' '}
+              </a>
+              ,{' '}
               <a
                 rel="noreferrer"
                 target="_blank"
                 href="https://tanstack.com/table/latest/docs/framework/react/examples/pagination-controlled"
               >
                 pagination-controlled
-              </a>{' '}
+              </a>
+              ,{' '}
               <a
                 rel="noreferrer"
                 target="_blank"
                 href="https://tanstack.com/table/latest/docs/guide/column-filtering#manual-server-side-filtering"
               >
                 filtering
-              </a>{' '}
+              </a>
+              ,{' '}
               <a
                 rel="noreferrer"
                 target="_blank"
@@ -1231,21 +1373,33 @@ const AdvanceTableExample = () => {
             <PhoenixLiveEditor code={serversidePaginationCode} />
           </PhoenixDocCard.Body>
         </PhoenixDocCard>
-      </div>
 
-      <PhoenixDocCard className="mb-4">
-        <PhoenixDocCard.Header title="Search Example" />
-        <PhoenixDocCard.Body code={searchExampleCode} hidePreview>
-          <SearchExample />
-        </PhoenixDocCard.Body>
-      </PhoenixDocCard>
+        <PhoenixDocCard className="mb-4">
+          <PhoenixDocCard.Header title="Search Example">
+            <p className="mb-0">
+              The table instance is on context, so a <code>SearchBox</code>{' '}
+              above it only has to call <code>table.setGlobalFilter</code> — the
+              filtered row model is already enabled.
+            </p>
+          </PhoenixDocCard.Header>
+          <PhoenixDocCard.Body code={searchExampleCode} hidePreview>
+            <SearchExample />
+          </PhoenixDocCard.Body>
+        </PhoenixDocCard>
 
-      <PhoenixDocCard className="mb-4">
-        <PhoenixDocCard.Header title="Column filter example" />
-        <PhoenixDocCard.Body code={filterExampleCode} hidePreview>
-          <FilterByColumnExample />
-        </PhoenixDocCard.Body>
-      </PhoenixDocCard>
+        <PhoenixDocCard className="mb-4">
+          <PhoenixDocCard.Header title="Column filter example">
+            <p className="mb-0">
+              <code>FilterTab</code> drives a single column&apos;s filter value
+              with <code>getColumn(id).setFilterValue()</code>, counting the
+              matches off <code>getPrePaginationRowModel()</code>.
+            </p>
+          </PhoenixDocCard.Header>
+          <PhoenixDocCard.Body code={filterExampleCode} hidePreview>
+            <FilterByColumnExample />
+          </PhoenixDocCard.Body>
+        </PhoenixDocCard>
+      </DocPagesLayout>
     </div>
   );
 };

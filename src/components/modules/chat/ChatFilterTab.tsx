@@ -1,66 +1,39 @@
-import { useEffect, useMemo, useState } from 'react';
-import { Tab } from 'react-bootstrap';
+import { useMemo, useState } from 'react';
 import UserList from './UserList';
 import { ConversationFilterType, useChatContext } from 'providers/ChatProvider';
-import { Conversation } from 'data/chat';
 import PhoenixNav from 'components/base/PhoenixNav';
+
+const filterItems = [
+  { label: 'All', eventKey: 'all' },
+  { label: 'Read', eventKey: 'read' },
+  { label: 'Unread', eventKey: 'unread' }
+];
 
 const ChatFilterTab = () => {
   const { conversations } = useChatContext();
-  const [filteredConversations, setFilteredConversations] = useState<
-    Conversation[]
-  >([]);
+  const [activeKey, setActiveKey] = useState<ConversationFilterType>('all');
 
-  const filterConversations = (type: ConversationFilterType) => {
-    setFilteredConversations(
-      conversations.filter(conversation => {
-        const hasUnreadMessages = conversation.messages.some(
-          message => message.type === 'received' && !message.readAt
-        );
-        return type === 'read'
-          ? !hasUnreadMessages
-          : type === 'unread'
-          ? hasUnreadMessages
-          : true;
-      })
-    );
-  };
-  const filterItems = useMemo(
-    () => [
-      {
-        label: 'All',
-        eventKey: 'all',
-        onClick() {
-          filterConversations('all');
-        }
-      },
-      {
-        label: 'Read',
-        eventKey: 'read',
-        onClick() {
-          filterConversations('read');
-        }
-      },
-      {
-        label: 'Unread',
-        eventKey: 'unread',
-        onClick() {
-          filterConversations('unread');
-        }
-      }
-    ],
-    [filteredConversations]
+  const filteredConversations = useMemo(
+    () =>
+      conversations.filter(conversation =>
+        activeKey === 'read'
+          ? !conversation.unread
+          : activeKey === 'unread'
+            ? conversation.unread
+            : true
+      ),
+    [conversations, activeKey]
   );
 
-  useEffect(() => {
-    filterConversations('all');
-  }, [conversations]);
-
   return (
-    <Tab.Container defaultActiveKey="all">
-      <PhoenixNav navItems={filterItems} />
+    <>
+      <PhoenixNav
+        navItems={filterItems}
+        activeKey={activeKey}
+        onSelect={eventKey => setActiveKey(eventKey as ConversationFilterType)}
+      />
       <UserList conversations={filteredConversations} />
-    </Tab.Container>
+    </>
   );
 };
 

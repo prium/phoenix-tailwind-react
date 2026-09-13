@@ -1,5 +1,4 @@
-import classNames from 'classnames';
-import { Card, Col, Row } from 'react-bootstrap';
+import { Card, cn } from '@hummingbirdui/react';
 import FeatherIcon from 'feather-icons-react';
 import { Stat } from 'data/crm/dealDetailsInfo';
 
@@ -8,6 +7,7 @@ interface DimensionsCardProps {
   className?: string;
 }
 
+/** `+PrintingDimensions` in mixins/crm/DealDetails.pug */
 const DealsPrintingDimensionsCard = ({
   stats,
   className
@@ -15,32 +15,32 @@ const DealsPrintingDimensionsCard = ({
   return (
     <Card className={className}>
       <Card.Body>
-        <Row className="g-4 g-xl-1 g-xxl-3 justify-content-between">
+        <div className="row g-6 xl:g-1 2xl:g-4 items-center justify-between">
           {stats.map((stat, index) => (
-            <Col key={stat.id} sm="auto">
+            <div key={stat.id} className="sm:col-auto">
               <div
-                className={classNames(
-                  'd-sm-block d-inline-flex d-md-flex flex-xl-column flex-xxl-row align-items-center align-items-xl-start align-items-xxl-center',
-                  { 'border-start-sm border-translucent ps-sm-5': index !== 0 }
+                className={cn(
+                  'sm:block inline-flex md:flex xl:flex-col 2xl:flex-row items-center xl:items-start 2xl:items-center',
+                  { 'sm:border-s sm:ps-8 border-subtle': index !== 0 }
                 )}
               >
                 <div
-                  className={`d-flex bg-${stat.color}-subtle rounded flex-center me-3 mb-sm-3 mb-md-0 mb-xl-3 mb-xxl-0`}
-                  style={{ width: '32px', height: '32px' }}
+                  className={`size-8 flex ${stat.bgClass} rounded-md flex-center me-4 sm:mb-4 md:mb-0 xl:mb-4 2xl:mb-0`}
                 >
                   <FeatherIcon
                     icon={stat.icon}
-                    className={`text-${stat.color}-dark`}
+                    size={16}
+                    className={`size-6 ${stat.textClass}`}
                   />
                 </div>
                 <div>
-                  <p className="fw-bold mb-1">{stat.title}</p>
-                  <h4 className="fw-bolder text-nowrap">{stat.value}</h4>
+                  <p className="font-bold mb-1">{stat.title}</p>
+                  <h4 className="font-extrabold text-nowrap">{stat.value}</h4>
                 </div>
               </div>
-            </Col>
+            </div>
           ))}
-        </Row>
+        </div>
       </Card.Body>
     </Card>
   );

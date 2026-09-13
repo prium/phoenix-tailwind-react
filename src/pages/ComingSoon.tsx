@@ -1,72 +1,64 @@
-import { Col, Form, Row } from 'react-bootstrap';
+import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Col, Row } from '@hummingbirdui/react';
 import Lottie from 'lottie-react';
+import { Link } from 'react-router';
 import comingSoonLight from 'assets/img/animated-icons/coming-soon-light.json';
 import comingSoonDark from 'assets/img/animated-icons/coming-soon-dark.json';
-import comingSoonText from 'assets/img/spot-illustrations/40.png';
-import comingSoonTextDark from 'assets/img/spot-illustrations/dark_40.png';
-import { useAppContext } from 'providers/AppProvider';
+import comingSoonImage from 'assets/img/spot-illustrations/42.png';
+import comingSoonImageDark from 'assets/img/spot-illustrations/dark_42.png';
 import Button from 'components/base/Button';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
+/** phoenix-tailwind `src/pug/coming-soon.pug` */
 const ComingSoon = () => {
-  const {
-    config: { theme }
-  } = useAppContext();
-
   return (
-    <Row className="flex-center content-min-h pb-9">
-      <Col xs={12} xxl={10}>
-        <Row className="align-items-xl-center g-2">
-          <Col xs={12} xl={6} className="order-xl-1">
-            <div className="d-flex flex-center">
-              <Lottie
-                animationData={
-                  theme === 'light' ? comingSoonLight : comingSoonDark
-                }
-                loop={true}
-                className="w-xl-100 animation"
-              />
+    <Row className="flex-center content-min-h pb-16 g-0">
+      <Col xxl={10}>
+        <Row className="xl:items-center g-2">
+          <Col xl={6} className="xl:order-1">
+            <div className="flex flex-center">
+              <div className="xl:w-full animation">
+                {/* both players are mounted and swapped by `dark:`, as in the gold */}
+                <Lottie
+                  animationData={comingSoonLight}
+                  loop
+                  className="lottie dark:hidden"
+                />
+                <Lottie
+                  animationData={comingSoonDark}
+                  loop
+                  className="lottie hidden dark:block"
+                />
+              </div>
             </div>
           </Col>
-          <Col xs={12} xl={6}>
-            <div className="d-flex justify-content-center mt-xl-15">
-              <div className="text-container text-center text-xl-start">
+          <Col xl={6}>
+            <div className="flex justify-center xl:mt-30">
+              <div className="text-container text-center xl:text-start">
                 <img
-                  src={comingSoonText}
+                  src={comingSoonImage}
                   alt=""
-                  className="mb-5 w-75 w-lg-50 w-xl-75 w-xxl-100 d-dark-none"
-                  style={{ maxWidth: 415 }}
+                  className="dark:hidden mb-8 xl:mb-18 w-3/4 lg:w-1/2 xl:w-3/4 2xl:w-full"
                 />
                 <img
-                  src={comingSoonTextDark}
+                  src={comingSoonImageDark}
                   alt=""
-                  className="mb-5 w-75 w-lg-50 w-xl-75 w-xxl-100 d-light-none"
-                  style={{ maxWidth: 415 }}
+                  className="hidden dark:block mb-8 xl:mb-18 w-3/4 lg:w-1/2 xl:w-3/4 2xl:w-full"
                 />
-
-                <h2 className="text-body-secondary fs-xl-6 mb-3">
-                  Get notified when we launch
+                <h2 className="text-muted xl:text-xl mb-4">
+                  This page is on the way !
                 </h2>
-                <p className="mb-6 w-xxl-75">
-                  <b>Something in the way!</b> Subscribe to our newsletter to be
-                  the first to know about upcoming features and discounts.
+                <p className="mb-10">
+                  Our developers are on the last stage of developing this page.
+                  We&apos;re just ironing out the kinks. You&apos;ll receive it
+                  on the next update. Lets go!
                 </p>
-                <Row className="g-3 w-md-75 w-xl-100 w-xxl-75 mx-auto mx-xl-0">
-                  <Col className="ps-0">
-                    <Form.Control />
-                  </Col>
-                  <Col xs="auto" className="pe-0">
-                    <Button
-                      variant="primary"
-                      endIcon={
-                        <FontAwesomeIcon icon={faEnvelope} className="fs-10" />
-                      }
-                    >
-                      Subscribe
-                    </Button>
-                  </Col>
-                </Row>
+                <Button variant="primary" size="lg" asChild>
+                  <Link to="/">
+                    <FontAwesomeIcon icon={faChevronLeft} className="me-2" />
+                    Go to Homepage
+                  </Link>
+                </Button>
               </div>
             </div>
           </Col>

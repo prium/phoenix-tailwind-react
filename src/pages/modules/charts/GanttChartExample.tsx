@@ -2,13 +2,13 @@ import PhoenixDocCard from 'components/base/PhoenixDocCard';
 import BasicGanttChart from 'components/charts/dhtmlx/example/BasicGanttChart';
 import DocPageHeader from 'components/docs/DocPageHeader';
 import DocPagesLayout from 'layouts/DocPagesLayout';
-import React from 'react';
 
+/* The snippet is the source of the component rendered next to it. */
 const basicGanttChartCode = `
 import { useEffect, useRef } from 'react';
 import { gantt } from 'dhtmlx-gantt';
-import 'dhtmlx-gantt/codebase/dhtmlxgantt.css';
 import { useAppContext } from 'providers/AppProvider';
+import { resetGanttConfig } from 'components/charts/dhtmlx/resetGanttConfig';
 
 const tasks = {
   data: [
@@ -83,6 +83,7 @@ const BasicGanttChart = () => {
 
   useEffect(() => {
     if (containerRef.current) {
+      resetGanttConfig();
       gantt.plugins({
         tooltip: true
       });
@@ -138,7 +139,8 @@ const BasicGanttChart = () => {
         ]
       };
 
-      gantt.ext.zoom.init(zoomConfig);
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      gantt.ext.zoom.init(zoomConfig as any);
       gantt.ext.zoom.setLevel('week');
       // gantt.ext.zoom.attachEvent('onAfterZoom', function (level, config) {
       //   document.querySelector("input[value='" + config.name + "']").checked = true;
@@ -146,7 +148,7 @@ const BasicGanttChart = () => {
 
       gantt.config.columns = [{ name: 'text', width: 56, resize: true }];
 
-      gantt.templates.task_class = (start, end, task) => task.task_class;
+      gantt.templates.task_class = (_start, _end, task) => task.task_class;
 
       gantt.templates.timeline_cell_class = function () {
         return 'weekend';
@@ -157,35 +159,63 @@ const BasicGanttChart = () => {
       gantt.init(containerRef.current);
       gantt.parse(tasks);
     }
+    return () => {
+      gantt.clearAll();
+      gantt.resetSkin();
+      gantt.resetLayout();
+      gantt._events = [];
+    };
   }, []);
 
   useEffect(() => {
     gantt.config.rtl = isRTL;
   }, [isRTL]);
 
-  return <div ref={containerRef} style={{ height: '222px', width: '100%' }} />;
+  return (
+    <div className="gantt-zero-roadmap">
+      <div ref={containerRef} className="gantt-zero-roadmap-chart" />
+    </div>
+  );
 };
 `;
 
+/**
+ * Gold: `modules/components/dhtmlx-gantt`. The gold page only prints the
+ * container markup and the vendor `<link>` / `<script>` tags, which a bundled
+ * React app does not have; this documents the equivalent React component and
+ * renders it live.
+ */
 const GanttChartExample = () => {
   return (
-    <div className="mb-9">
+    <div>
       <DocPageHeader
         title="Gantt chart"
-        description="DHTMLX Gantt is the most complete Gantt chart library to cover all the needs of a project management app and advance web development."
+        description="DHTMLX Gantt is an open source JavaScript Gantt chart library that helps you illustrate and manage a project schedule in a nice-looking diagram."
         link={{
-          text: 'Documentation for Gantt chart',
-          url: `https://github.com/DHTMLX/gantt`
+          text: 'DHTMLX Gantt',
+          url: 'https://github.com/DHTMLX/gantt'
         }}
-      />
+      >
+        <p className="mb-2">
+          The vendor stylesheet is imported once from{' '}
+          <code>src/assets/css/index.css</code>, ahead of the phoenix plugin
+          layer, so the skin in <code>css/plugins/gantt-chart.css</code> wins
+          the cascade. That skin is keyed on <code>.gantt-zero-roadmap</code>,
+          which is why the wrapper below carries it.
+        </p>
+      </DocPageHeader>
       <DocPagesLayout>
-        <PhoenixDocCard>
-          <PhoenixDocCard.Header title="Example" />
-          <PhoenixDocCard.Body
-            className="gantt-chart-example"
-            code={basicGanttChartCode}
-            hidePreview
-          >
+        <PhoenixDocCard className="mb-4">
+          <PhoenixDocCard.Header title="Example">
+            <p className="mb-0">
+              <code>gantt</code> is a singleton, so the component resets the
+              shared config with <code>resetGanttConfig()</code> before applying
+              its own, and clears the instance on unmount. Each task carries a{' '}
+              <code>task_class</code> that the skin colours, and the RTL flag
+              follows <code>useAppContext()</code>.
+            </p>
+          </PhoenixDocCard.Header>
+          <PhoenixDocCard.Body code={basicGanttChartCode} hidePreview>
             <BasicGanttChart />
           </PhoenixDocCard.Body>
         </PhoenixDocCard>

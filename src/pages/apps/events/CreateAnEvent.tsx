@@ -1,3 +1,4 @@
+import { Col, Row } from '@hummingbirdui/react';
 import Button from 'components/base/Button';
 import PageBreadcrumb from 'components/common/PageBreadcrumb';
 import EventCustomFields from 'components/forms/EventCustomFields';
@@ -6,95 +7,110 @@ import EventDetailsForm from 'components/forms/EventDetailsForm';
 import EventTicketPricing from 'components/forms/EventTicketPricing';
 import EventsSchedule from 'components/forms/EventsSchedule';
 import { defaultBreadcrumbItems } from 'data/commonData';
-import { Col, Form, Row } from 'react-bootstrap';
 import { Link } from 'react-router';
 
+const privacyOptions = [
+  {
+    id: 'exampleRadios1',
+    value: 'option1',
+    defaultChecked: true,
+    title: 'Public',
+    description:
+      'On Phoenix, our distribution partners, and search engines, anybody can find the event',
+    className: 'mb-2.5'
+  },
+  {
+    id: 'exampleRadios2',
+    value: 'option2',
+    defaultChecked: false,
+    title: 'Private',
+    description: 'Only the individuals you select have access to it.',
+    className: 'mb-0'
+  }
+];
+
+/** apps/events/create-an-event.pug + mixins/events/CreateEvent.pug */
 const CreateAnEvent = () => {
   return (
     <div>
-      <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-3" />
-      <Form className="mb-9">
-        <Row className="justify-content-between align-items-end g-3 mb-5">
+      <PageBreadcrumb items={defaultBreadcrumbItems} />
+      <form className="mb-16">
+        <Row className="justify-between items-end g-4 mb-8">
           <Col xs={12} sm="auto" xl={8}>
             <h2 className="mb-0">Create an Event</h2>
           </Col>
           <Col xs={12} sm="auto" xl={4}>
-            <div className="d-flex">
-              <Button
-                className="px-5 me-2"
-                variant="phoenix-primary"
-                type="button"
-              >
+            <div className="flex">
+              <Button variant="phoenix-primary" className="px-8 me-2">
                 Save
               </Button>
               <Button
                 variant="primary"
-                as={Link}
-                to="/apps/events/event-details"
-                className="px-5 w-100 text-nowrap"
+                className="text-center px-8 w-full text-nowrap"
+                asChild
               >
-                Publish Event
+                <Link to="/apps/events/event-detail">Publish event</Link>
               </Button>
             </div>
           </Col>
         </Row>
-        <Row className="g-5">
+        <Row className="g-8">
           <Col xl={8}>
-            <Row className="gx-3 gy-4">
+            <Row className="gx-4 gy-6">
               <EventDetailsForm />
               <EventsSchedule />
               <EventDescriptionForm />
             </Row>
           </Col>
           <Col xl={4}>
-            <div className="border-bottom border-translucent pb-6 mb-6">
-              <h4 className="mb-4">Privacy</h4>
-              <Form.Check type="radio" id="privacy1" className="mb-2">
-                <Form.Check.Input
-                  type="radio"
-                  name="vrivacyRadio"
-                  value="option1"
-                  defaultChecked
-                />
-                <Form.Check.Label className="fw-normal" htmlFor="privacy1">
-                  <span className="h5 d-block mt-1">Public</span>
-                  On Phoenix, our distribution partners, and search engines,{' '}
-                  <br />
-                  anybody can find the event
-                </Form.Check.Label>
-              </Form.Check>
-              <Form.Check type="radio" id="privacy2" className="mb-0">
-                <Form.Check.Input
-                  type="radio"
-                  name="vrivacyRadio"
-                  value="option1"
-                />
-                <Form.Check.Label className="fw-normal" htmlFor="privacy2">
-                  <span className="h5 d-block mt-1">Private</span>
-                  Only the individuals you select have access to it.
-                </Form.Check.Label>
-              </Form.Check>
+            <div className="border-b border-subtle pb-10 mb-10">
+              <h4 className="text-lg mb-6">Privacy</h4>
+              {privacyOptions.map(option => (
+                <div
+                  key={option.id}
+                  className={`form-check items-start ${option.className}`}
+                >
+                  <input
+                    className="form-check-input mt-1"
+                    id={option.id}
+                    type="radio"
+                    name="exampleRadios"
+                    value={option.value}
+                    defaultChecked={option.defaultChecked}
+                  />
+                  <label
+                    className="form-check-label font-normal"
+                    htmlFor={option.id}
+                  >
+                    <span className="text-base text-emphasis font-bold block">
+                      {option.title}
+                    </span>
+                    <span className="block max-w-90">{option.description}</span>
+                  </label>
+                </div>
+              ))}
             </div>
-            <div className="border-bottom border-translucent mb-6">
-              <Form.Check type="checkbox" id="flexChecked">
-                <Form.Check.Input
+            <div className="border-b border-subtle mb-10">
+              <div className="form-check mb-9.5">
+                <input
+                  className="form-check-input"
+                  id="flexChecked"
                   type="checkbox"
-                  value="option1"
                   defaultChecked
                 />
-                <Form.Check.Label
-                  className="fw-bold fs-8 mb-5"
+                <label
+                  className="form-check-label font-bold text-base"
                   htmlFor="flexChecked"
                 >
                   Show the number of available tickets
-                </Form.Check.Label>
-              </Form.Check>
+                </label>
+              </div>
             </div>
             <EventTicketPricing />
             <EventCustomFields />
           </Col>
         </Row>
-      </Form>
+      </form>
     </div>
   );
 };

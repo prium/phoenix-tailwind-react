@@ -22,7 +22,7 @@ const WizardNavItem = ({
   return (
     <Nav.Item as="li" className="nav-item">
       <Nav.Link
-        className={classNames('fw-semibold', {
+        className={classNames('font-semibold', {
           done: selectedStep > step && step !== totalStep,
           complete: selectedStep > step && step !== totalStep - 1,
           'py-0 py-xl-3': isHorizontal
@@ -46,9 +46,9 @@ const WizardNavItem = ({
             </span>
           </span>
           <span
-            className={classNames('fs-9 text-center', {
-              'd-none d-md-block mt-1': !isHorizontal,
-              'nav-item-title fs-xl-8': isHorizontal
+            className={classNames('text-md text-center', {
+              'hidden d-md-block mt-1': !isHorizontal,
+              'nav-item-title xl:text-base': isHorizontal
             })}
           >
             {label}

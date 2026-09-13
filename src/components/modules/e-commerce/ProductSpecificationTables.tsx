@@ -102,39 +102,39 @@ const additionalData: TableRowData[] = [
 const ProductSpecificationTables = () => {
   return (
     <>
-      <div className="mb-6">
+      <div className="mb-10">
         <SpecificationTable title="Processor/Chipset" data={processorData} />
       </div>
-      <div className="mb-6">
+      <div className="mb-10">
         <SpecificationTable title="Storage" data={storageData} />
       </div>
-      <div className="mb-6">
+      <div className="mb-10">
         <SpecificationTable title="Display" data={displayData} />
       </div>
-      <div className="mb-6">
+      <div className="mb-10">
         <SpecificationTable
           title="Additional Specifications"
           data={additionalData}
         />
       </div>
       <div>
-        <h3 className="mb-3 mt-6 ms-4 fw-bold">In The Box</h3>
-        <p className="lh-sm border-top border-translucent mb-0 py-3 px-4">
+        <h3 className="mb-4 mt-10 ms-6 font-bold">In The Box</h3>
+        <p className="leading-sm border-t border-subtle mb-0 py-4 px-6">
           iMac 24”
         </p>
-        <p className="lh-sm border-top border-translucent mb-0 py-3 px-4">
+        <p className="leading-sm border-t border-subtle mb-0 py-4 px-6">
           Magic Keyboard{' '}
         </p>
-        <p className="lh-sm border-top border-translucent mb-0 py-3 px-4">
+        <p className="leading-sm border-t border-subtle mb-0 py-4 px-6">
           Magic Mouse
         </p>
-        <p className="lh-sm border-top border-translucent mb-0 py-3 px-4">
+        <p className="leading-sm border-t border-subtle mb-0 py-4 px-6">
           143W power adapter
         </p>
-        <p className="lh-sm border-top border-translucent mb-0 py-3 px-4">
+        <p className="leading-sm border-t border-subtle mb-0 py-4 px-6">
           2m Power Cord
         </p>
-        <p className="lh-sm border-y border-translucent mb-0 py-3 px-4">
+        <p className="leading-sm border-y border-subtle mb-0 py-4 px-6">
           USB-C to Lightning Cable
         </p>
       </div>

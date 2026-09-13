@@ -1,17 +1,19 @@
 import logo from 'assets/img/icons/logo.png';
-import classNames from 'classnames';
+import { cn } from '@hummingbirdui/react';
 
 const PhoenixLoader = ({ fullPage }: { fullPage?: boolean }) => {
   return (
     <div
-      className={classNames(
-        'd-flex justify-content-center align-items-center h-100 w-100 ',
+      className={cn(
+        'phoenix-loader flex justify-center items-center h-full w-full',
         {
-          'vh-100': fullPage
+          'h-screen': fullPage
         }
       )}
     >
-      <div>
+      {/* the ripple logos are absolute; this box anchors and sizes them
+          (original phoenix-react .loading-container, 100px) */}
+      <div className="relative size-25">
         <img src={logo} alt="phoenix" className="logo-ripple ripple-1" />
         <img src={logo} alt="phoenix" className="logo-ripple ripple-2" />
         <img src={logo} alt="phoenix" className="logo-ripple ripple-3" />

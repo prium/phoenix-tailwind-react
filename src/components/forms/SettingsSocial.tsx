@@ -1,152 +1,65 @@
-import {
-  faArtstation,
-  faBehance,
-  faFacebook,
-  faLinkedin,
-  faTwitter,
-  faYoutube
-} from '@fortawesome/free-brands-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import React from 'react';
-import { Form } from 'react-bootstrap';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row } from '@hummingbirdui/react';
+import FloatingIconField from 'components/base/FloatingIconField';
 
+/** Gold: mixin `Social` in `../phoenix-tailwind/src/pug/mixins/social/Settings.pug` */
 const SettingsSocial = () => {
   return (
-    <div className="mb-6">
-      <h4 className="mb-4">Social</h4>
-      <Row className="g-3">
+    <div className="mb-10">
+      <h4 className="mb-6">Social</h4>
+      <Row className="g-4">
         <Col xs={12} sm={6}>
-          <div className="form-icon-container">
-            <Form.Floating>
-              <Form.Control
-                id="facebook"
-                type="text"
-                placeholder="Facebook"
-                className="form-icon-input"
-              />
-              <label
-                htmlFor="facebook"
-                className="form-icon-label text-body-tertiary"
-              >
-                FACEBOOK
-              </label>
-            </Form.Floating>
-            <FontAwesomeIcon
-              icon={faFacebook}
-              className="text-body fs-9 form-icon"
-            />
-          </div>
+          <FloatingIconField
+            id="facebook"
+            icon="fa-brands fa-facebook"
+            type="text"
+            placeholder="Facebook"
+            label="Facebook"
+          />
         </Col>
         <Col xs={12} sm={6}>
-          <div className="form-icon-container">
-            <Form.Floating>
-              <Form.Control
-                id="twitter"
-                type="text"
-                placeholder="Twitter"
-                className="form-icon-input"
-              />
-              <label
-                htmlFor="twitter"
-                className="form-icon-label text-body-tertiary"
-              >
-                TWITTER
-              </label>
-            </Form.Floating>
-            <FontAwesomeIcon
-              icon={faTwitter}
-              className="text-body fs-9 form-icon"
-            />
-          </div>
+          <FloatingIconField
+            id="twitter"
+            icon="fa-brands fa-twitter"
+            type="text"
+            placeholder="Twitter"
+            label="Twitter"
+          />
         </Col>
         <Col xs={12} sm={6}>
-          <div className="form-icon-container">
-            <Form.Floating>
-              <Form.Control
-                id="linkedin"
-                type="text"
-                placeholder="Linkedin"
-                className="form-icon-input"
-              />
-              <label
-                htmlFor="linkedin"
-                className="form-icon-label text-body-tertiary"
-              >
-                LINKEDIN
-              </label>
-            </Form.Floating>
-            <FontAwesomeIcon
-              icon={faLinkedin}
-              className="text-body fs-9 form-icon"
-            />
-          </div>
+          <FloatingIconField
+            id="linkedin"
+            icon="fa-brands fa-linkedin-in"
+            type="text"
+            placeholder="Linkedin"
+            label="linkedin"
+          />
         </Col>
         <Col xs={12} sm={6}>
-          <div className="form-icon-container">
-            <Form.Floating>
-              <Form.Control
-                id="youtube"
-                type="text"
-                placeholder="youtube"
-                className="form-icon-input"
-              />
-              <label
-                htmlFor="youtube"
-                className="form-icon-label text-body-tertiary"
-              >
-                YOUTUBE
-              </label>
-            </Form.Floating>
-            <FontAwesomeIcon
-              icon={faYoutube}
-              className="text-body fs-9 form-icon"
-            />
-          </div>
+          <FloatingIconField
+            id="youtube"
+            icon="fa-brands fa-youtube"
+            type="text"
+            placeholder="youtube"
+            label="youtube"
+          />
         </Col>
         <Col xs={12} sm={6}>
-          <div className="form-icon-container">
-            <Form.Floating>
-              <Form.Control
-                id="artstation"
-                type="text"
-                placeholder="Artstation"
-                className="form-icon-input"
-              />
-              <label
-                htmlFor="artstation"
-                className="form-icon-label text-body-tertiary"
-              >
-                ARTSTATION
-              </label>
-            </Form.Floating>
-            <FontAwesomeIcon
-              icon={faArtstation}
-              className="text-body fs-9 form-icon"
-            />
-          </div>
+          <FloatingIconField
+            id="artstation"
+            icon="fa-brands fa-artstation"
+            type="text"
+            placeholder="artstation"
+            label="artstation"
+          />
         </Col>
         <Col xs={12} sm={6}>
-          <div className="form-icon-container">
-            <Form.Floating>
-              <Form.Control
-                id="behance"
-                type="text"
-                placeholder="Behance"
-                className="form-icon-input"
-              />
-              <label
-                htmlFor="behance"
-                className="form-icon-label text-body-tertiary"
-              >
-                BEHANCE
-              </label>
-            </Form.Floating>
-            <FontAwesomeIcon
-              icon={faBehance}
-              className="text-body fs-9 form-icon"
-            />
-          </div>
+          <FloatingIconField
+            id="behance"
+            icon="fa-brands fa-behance"
+            type="text"
+            placeholder="behance"
+            label="behance"
+          />
         </Col>
       </Row>
     </div>

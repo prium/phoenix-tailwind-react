@@ -15,7 +15,7 @@ const countupCode = `
         {({ countUpRef }) => (
           <div>
             <h1
-              className="text-body-tertiary fw-bold mb-3"
+              className="text-subtle font-bold mb-3"
               ref={countUpRef as LegacyRef<HTMLHeadingElement>}
             />
             <p>(Default)</p>
@@ -35,7 +35,7 @@ const countupCode = `
         {({ countUpRef }) => (
           <div>
             <h1
-              className="text-body-tertiary fw-bold mb-3"
+              className="text-subtle font-bold mb-3"
               ref={countUpRef as LegacyRef<HTMLHeadingElement>}
             />
             <p>(Duration 10s)</p>
@@ -54,7 +54,7 @@ const countupCode = `
         {({ countUpRef }) => (
           <div>
             <h1
-              className="text-body-tertiary fw-bold mb-3"
+              className="text-subtle font-bold mb-3"
               ref={countUpRef as LegacyRef<HTMLHeadingElement>}
             />
             <p>(No Separator)</p>
@@ -73,7 +73,7 @@ const countupCode = `
         {({ countUpRef }) => (
           <div>
             <h1
-              className="text-body-tertiary fw-bold mb-3"
+              className="text-subtle font-bold mb-3"
               ref={countUpRef as LegacyRef<HTMLHeadingElement>}
             />
             <p>(Space)</p>
@@ -92,7 +92,7 @@ const countupCode = `
         {({ countUpRef }) => (
           <div>
             <h1
-              className="text-body-tertiary fw-bold mb-3"
+              className="text-subtle font-bold mb-3"
               ref={countUpRef as LegacyRef<HTMLHeadingElement>}
             />
             <p>(Suffix)</p>
@@ -111,7 +111,7 @@ const countupCode = `
         {({ countUpRef }) => (
           <div>
             <h1
-              className="text-body-tertiary fw-bold mb-3"
+              className="text-subtle font-bold mb-3"
               ref={countUpRef as LegacyRef<HTMLHeadingElement>}
             />
             <p>(Prefix)</p>

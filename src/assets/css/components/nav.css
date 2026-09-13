@@ -1,0 +1,95 @@
+@utility nav {
+  @layer base {
+    --nav-link-font-weight: var(--font-weight-semibold);
+    --nav-link-color: var(--color-primary);
+    --nav-link-disabled-color: var(--text-color-muted);
+    --nav-link-active-color: var(--nav-link-color);
+    --nav-link-line-height: var(--leading-base);
+  }
+}
+
+@utility nav-pills {
+  @layer components {
+    --nav-link-color: var(--text-color-muted);
+    --nav-link-font-weight: var(--font-weight-bold);
+    --nav-link-active-color: var(--color-primary);
+    --nav-pills-border-radius: calc(infinity * 1px);
+    --nav-pills-link-active-bg: transparent;
+    --nav-pills-link-active-border-color: var(--color-primary);
+
+    .nav-link {
+      @apply rounded-(--nav-pills-border-radius);
+    }
+
+    .nav-link.active,
+    .show > .nav-link {
+      @apply bg-(--nav-pills-link-active-bg)
+      border border-(--nav-pills-link-active-border-color);
+    }
+  }
+}
+
+@utility nav-underline {
+  @layer components {
+    --nav-underline-gap: --spacing(4);
+    --nav-link-padding-x: 0;
+    --nav-link-font-weight: var(--font-weight-bold);
+    --nav-link-font-size: var(--text-md);
+    --nav-link-color: var(--text-color-default);
+    --nav-link-active-color: var(--color-primary);
+    .nav-link {
+      &:hover,
+      &:focus {
+        @apply text-(--nav-link-active-color)
+        border-(--nav-link-active-border-color);
+      }
+    }
+  }
+}
+.nav-links {
+  .nav-link {
+    font-weight: var(--font-weight-bold);
+    font-size: var(--text-md);
+    &:hover {
+      span:first-child {
+        text-decoration: underline !important;
+      }
+    }
+    &.active {
+      color: var(--text-color-emphasis);
+    }
+  }
+}
+/* Justified variants */
+.nav-fill {
+  > .nav-link,
+  .nav-item {
+    @apply flex-[1_1_auto] text-center;
+  }
+}
+
+.nav-justified {
+  > .nav-link,
+  .nav-item {
+    @apply grow basis-0 text-center;
+  }
+}
+
+.nav-fill,
+.nav-justified {
+  .nav-item .nav-link {
+    @apply w-full;
+  }
+}
+
+.project-tab {
+  .nav-link {
+    color: var(--text-body-color);
+    &:hover {
+      color: var(--text-body-color);
+    }
+    &.active {
+      color: var(--color-primary);
+    }
+  }
+}

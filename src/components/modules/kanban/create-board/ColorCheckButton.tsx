@@ -1,16 +1,61 @@
 import { faPlus, faShuffle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button from 'components/base/Button';
-import { ChangeEvent, useEffect, useRef, useState } from 'react';
-import { getColorByBgColor, getRandomNumber } from 'helpers/utils';
+import { ChangeEvent, useState } from 'react';
+import { getRandomNumber } from 'helpers/utils';
 import { useWizardFormContext } from 'providers/WizardFormProvider';
 import { CreateBoardFormData } from './CreateBoardWizardForm';
 import { colors } from './BackgroundColorForm';
 
+/**
+ * Gold swatch pair `input.btn-check.kanban-swatch-radio + label.btn.btn-primary
+ * .kanban-swatch-label.kanban-swatch-btn-shadow` — the checked ring comes from
+ * the `.kanban-swatch-radio:checked + .kanban-swatch-btn-shadow` CSS sibling
+ * selector, so input and label must stay adjacent siblings of the flex grid.
+ * Pug: `Step3` in `../phoenix-tailwind/src/pug/mixins/kanban/KanbanWizardForm.pug`.
+ */
+export const ColorSwatch = ({
+  color,
+  index
+}: {
+  color: string;
+  index: number;
+}) => {
+  const { formData, setFormData } = useWizardFormContext<CreateBoardFormData>();
+
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.checked) {
+      setFormData({
+        ...formData,
+        backgroundImage: undefined,
+        backgroundColor: color
+      });
+    }
+  };
+
+  return (
+    <>
+      <input
+        className="btn-check kanban-swatch-radio"
+        type="radio"
+        value={color}
+        name="board-bg"
+        id={`color${index}`}
+        checked={formData.backgroundColor === color}
+        onChange={handleChange}
+      />
+      <label
+        className="btn btn-primary kanban-swatch-label kanban-swatch-btn-shadow"
+        htmlFor={`color${index}`}
+        style={{ backgroundColor: color }}
+      />
+    </>
+  );
+};
+
+/** Gold CUSTOM COLOR picker pill of `Step3` (KanbanWizardForm.pug). */
 export const CustomColorButton = () => {
   const { formData, setFormData } = useWizardFormContext<CreateBoardFormData>();
-  const [color, setColor] = useState('');
-  const [checked, setChecked] = useState(false);
+  const [color, setColor] = useState('#eeeeee');
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setColor(e.target.value);
@@ -21,57 +66,42 @@ export const CustomColorButton = () => {
     });
   };
 
-  useEffect(() => {
-    if (color === formData.backgroundColor) {
-      setChecked(true);
-    } else {
-      setChecked(false);
-      setColor('');
-    }
-  }, [formData.backgroundColor]);
-
   return (
-    <div>
+    <>
       <input
-        type="color"
-        id="customColor"
-        name="colors"
-        className="btn-check kanban-form-check"
-        onChange={handleChange}
-      />
-      <input
+        className="btn-check hidden"
+        data-custom-color-radio
         type="radio"
-        name="backgroundColor"
-        className="kanban-form-check d-none"
         value={color}
-        checked={checked}
+        name="board-bg"
+        checked={formData.backgroundColor === color}
         readOnly
       />
-      <Button
-        variant="outline-secondary"
-        as="label"
-        htmlFor="customColor"
-        className="rounded-pill text-uppercase"
-        startIcon={<FontAwesomeIcon icon={faPlus} className="me-2" />}
-        style={{
-          background: color,
-          color: color && getColorByBgColor(color)
-        }}
+      <input
+        className="btn-check"
+        data-custom-color-input
+        type="color"
+        id="customColorInput"
+        onChange={handleChange}
+      />
+      <label
+        className="btn btn-outline-secondary self-start rounded-full kanban-swatch-btn-shadow hover:text-(--btn-color) hover:border-(--btn-color)"
+        htmlFor="customColorInput"
       >
-        Custom Color
-      </Button>
-    </div>
+        <FontAwesomeIcon icon={faPlus} transform="shrink-3" className="me-2" />
+        CUSTOM COLOR
+      </label>
+    </>
   );
 };
 
+/** Gold RANDOM color pill of `Step3` (KanbanWizardForm.pug). */
 export const RandomColorButton = () => {
   const { formData, setFormData } = useWizardFormContext<CreateBoardFormData>();
   const [color, setColor] = useState('');
 
-  const ref = useRef<HTMLInputElement | null>(null);
-
   const handleChange = () => {
-    const value = colors[getRandomNumber(1, colors.length)];
+    const value = colors[getRandomNumber(0, colors.length - 1)];
     setColor(value);
     setFormData({
       ...formData,
@@ -81,29 +111,29 @@ export const RandomColorButton = () => {
   };
 
   return (
-    <div>
+    <>
       <input
+        className="btn-check kanban-swatch-radio"
         type="radio"
-        name="backgroundColor"
-        className="kanban-form-check d-none"
-        value={color}
-        id="randomColor"
-        ref={ref}
+        data-random-color
+        name="board-bg"
+        value=""
+        id="Randomcolor"
+        checked={!!color && formData.backgroundColor === color}
         onClick={handleChange}
+        readOnly
       />
-      <Button
-        variant="outline-danger"
-        as="label"
-        htmlFor="randomColor"
-        className="rounded-pill text-uppercase"
-        startIcon={<FontAwesomeIcon icon={faShuffle} className="me-2" />}
-        style={{
-          background: color,
-          color: color && getColorByBgColor(color)
-        }}
+      <label
+        className="btn btn-outline-danger self-start rounded-full kanban-swatch-btn-shadow hover:text-(--btn-color)"
+        htmlFor="Randomcolor"
       >
-        Random
-      </Button>
-    </div>
+        <FontAwesomeIcon
+          icon={faShuffle}
+          transform="shrink-3"
+          className="me-2"
+        />
+        RANDOM
+      </label>
+    </>
   );
 };

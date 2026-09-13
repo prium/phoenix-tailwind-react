@@ -10,21 +10,21 @@ import { faBolt, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 const EcomTopDeals = ({ products }: { products: Product[] }) => {
   return (
     <>
-      <div className="d-flex flex-between-center mb-3">
-        <div className="d-flex">
-          <FontAwesomeIcon icon={faBolt} className="text-warning fs-6" />
+      <div className="flex flex-between-center mb-4">
+        <div className="flex">
+          <FontAwesomeIcon icon={faBolt} className="text-warning text-xl" />
           <h3 className="mx-2">Top Deals today</h3>
-          <FontAwesomeIcon icon={faBolt} className="text-warning fs-6" />
+          <FontAwesomeIcon icon={faBolt} className="text-warning text-xl" />
         </div>
-        <Link to="#!" className="btn btn-link btn-lg p-0 d-none d-md-block">
+        <Link to="#!" className="btn btn-link btn-lg p-0 hidden md:block">
           Explore more
-          <FontAwesomeIcon icon={faChevronRight} className="fs-9 ms-1" />
+          <FontAwesomeIcon icon={faChevronRight} className="text-md ms-1" />
         </Link>
       </div>
       <Swiper
+        parentClassName="products-slider"
         slidesPerView={1}
         spaceBetween={16}
-        navigationPosition={{ top: '25%' }}
         breakpoints={{
           0: {
             slidesPerView: 1,

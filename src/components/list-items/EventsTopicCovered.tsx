@@ -1,10 +1,8 @@
 const EventsTopicCovered = () => {
   return (
     <>
-      <h4 className="mb-3 text-body-highlight fs-xxl-6">
-        Topic To Be Covered:
-      </h4>
-      <ul className="mb-6 ps-4">
+      <h4 className="mb-4 text-highlight 2xl:text-xl">Topic To Be Covered:</h4>
+      <ul className="mb-10 ps-6">
         <li>Latest Update With Bitcoin</li>
         <li>Blockchain Vs Bitcoin</li>
         <li>Why Do We Need CryptoCurrency?</li>

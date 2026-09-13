@@ -6,15 +6,14 @@ import {
   faSearch
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { FloatingLabel } from '@hummingbirdui/react';
 import Button from 'components/base/Button';
 import DatePicker from 'components/base/DatePicker';
 import PageBreadcrumb from 'components/common/PageBreadcrumb';
 import RoomCard from 'components/modules/travel-agency/hotel/search-room/RoomCard';
 import RoomFilterOffcanvas from 'components/modules/travel-agency/hotel/search-room/RoomFilterOffcanvas';
-import RoomFilterOffcanvasContent from 'components/modules/travel-agency/hotel/search-room/RoomFilterOffcanvasContent';
 import { defaultBreadcrumbItems } from 'data/commonData';
 import { useState } from 'react';
-import { Row, Col, Form, FloatingLabel } from 'react-bootstrap';
 import { Link } from 'react-router';
 import { roomsSearchData } from 'data/travel-agency/customer/hotel';
 
@@ -23,119 +22,117 @@ const SearchRoom = () => {
 
   return (
     <>
-      <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-3" />
-      <div className="mb-9">
-        <Row className="align-items-end mb-5 gy-3">
-          <Col style={{ maxWidth: 290 }}>
+      <PageBreadcrumb items={defaultBreadcrumbItems} className="mb-4" />
+      <div className="mb-16">
+        <div className="row items-end mb-8 gy-4">
+          <div className="col max-w-72.5">
             <h2>Rooms</h2>
-          </Col>
-          <Col xl>
-            <Row className="gx-2 gx-xl-3 gy-3">
-              <Col
-                xs={{ order: 1 }}
-                sm={{ span: 'auto', order: 0 }}
-                className="me-sm-2 d-xl-none"
-              >
+          </div>
+          <div className="xl:col">
+            <div className="row gx-2 xl:gx-4 gy-4">
+              <div className="sm:col-auto order-1 sm:order-0 sm:me-2 xl:hidden">
                 <Button
                   variant="phoenix-secondary"
                   size="lg"
-                  className="text-body-tertiary w-100"
+                  className="text-subtle w-full"
                   onClick={() => setOpenOffcanvas(true)}
                 >
                   <FontAwesomeIcon icon={faFilter} className="me-2" />
                   Filter
                 </Button>
-              </Col>
-              <Col xs sm={5} xxl={3}>
+              </div>
+              <div className="col sm:col-5 2xl:col-3">
                 <DatePicker
                   render={(_, ref) => {
                     return (
                       <FloatingLabel
-                        label="Select Time Range"
+                        htmlFor="checkIn"
+                        label="Select time range"
                         className="w-auto"
                       >
-                        <Form.Control
+                        <input
+                          className="form-control datetimepicker"
+                          id="checkIn"
                           type="text"
-                          placeholder="start date"
+                          placeholder="H:i"
                           ref={ref}
-                          id="startDatepicker"
-                          className="ps-3"
                         />
-
                         <FontAwesomeIcon
                           icon={faCalendarAlt}
-                          className="position-absolute top-0 end-0 mt-3 me-3"
+                          className="absolute top-0 end-0 mt-4 me-4"
                         />
                       </FloatingLabel>
                     );
                   }}
-                  hideIcon={true}
+                  hideIcon
                   options={{
+                    disableMobile: true,
                     mode: 'range',
                     minDate: 'today',
-                    dateFormat: 'Y-m-d'
+                    dateFormat: 'd-m-y'
                   }}
                 />
-              </Col>
-              <Col xs sm="auto" className="flex-grow-0">
+              </div>
+              <div className="col sm:col-auto grow-0">
                 <Button
                   variant="phoenix-primary"
                   size="lg"
-                  className="px-xxl-6 text-nowrap"
+                  className="2xl:px-10 text-nowrap"
                 >
-                  <span className="d-none d-xl-inline-block">Update</span>
-                  <FontAwesomeIcon icon={faSearch} className="fs-9 ms-xl-2" />
+                  <span className="hidden xl:inline-block">Update </span>
+                  <FontAwesomeIcon
+                    icon={faSearch}
+                    className="text-md xl:ms-2"
+                  />
                 </Button>
-              </Col>
-              <Col xs sm="auto" className="ms-auto flex-grow-0">
+              </div>
+              <div className="col sm:col-auto ms-auto grow-0">
                 <Button
                   variant="phoenix-secondary"
                   size="lg"
                   className="ms-auto text-nowrap"
                 >
-                  <span className="d-none d-xl-inline-block">Refresh</span>
-                  <FontAwesomeIcon icon={faRotate} className="fs-9 ms-xl-2" />
+                  <span className="hidden xl:inline-block">Refresh </span>
+                  <FontAwesomeIcon
+                    icon={faRotate}
+                    className="text-md xl:ms-2"
+                  />
                 </Button>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-        {/* header section end */}
-
-        <Row className="gx-6">
-          {/* offcanvas start */}
-          <Col xl="auto" className="d-none d-xl-block">
-            <div className="phoenix-room-filter-offcanvas bg-body scrollbar">
-              <RoomFilterOffcanvasContent />
+              </div>
             </div>
-          </Col>
-          {/* offcanvas end */}
-          <Col className="w-xl-25">
+          </div>
+        </div>
+
+        <div className="row gx-10">
+          <div className="xl:col-auto">
+            <RoomFilterOffcanvas
+              open={openOffcanvas}
+              setOpen={setOpenOffcanvas}
+            />
+          </div>
+          <div className="col xl:w-1/4">
             {roomsSearchData.map((item, index) => (
               <RoomCard
                 key={index}
                 data={item}
+                index={index}
                 isLastItem={roomsSearchData.length - 1 === index}
               />
             ))}
-            <div className="border p-3 rounded-3 mt-5 d-flex flex-end-center gap-3 gap-sm-6 flex-wrap">
-              <h2 className="text-body mb-0">
-                <span className="fs-9 text-body-tertiary fw-bold me-2">
+            <div className="border p-4 rounded-lg mt-8 flex flex-end-center gap-4 sm:gap-10 flex-wrap">
+              <h2 className="text-default mb-0">
+                <span className="text-md text-subtle font-bold me-2">
                   Total :
                 </span>
                 04
               </h2>
-              <Link to="#!">
-                <Button variant="primary" className="px-sm-7">
-                  Confirm Booking
-                  <FontAwesomeIcon icon={faChevronRight} className="ms-2" />
-                </Button>
+              <Link to="#!" className="btn btn-primary sm:px-12">
+                Confirm Booking
+                <FontAwesomeIcon icon={faChevronRight} className="ms-2" />
               </Link>
             </div>
-          </Col>
-        </Row>
-
-        <RoomFilterOffcanvas open={openOffcanvas} setOpen={setOpenOffcanvas} />
+          </div>
+        </div>
       </div>
     </>
   );

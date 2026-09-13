@@ -1,12 +1,8 @@
-import React from 'react';
-import { Form, Modal, Row, Col } from 'react-bootstrap';
+import { Dialog } from '@hummingbirdui/react';
+import DialogHeading from 'components/base/DialogHeading';
 import Button from 'components/base/Button';
 
-import {
-  faMagnifyingGlass,
-  faRotate,
-  faTimes
-} from '@fortawesome/free-solid-svg-icons';
+import { faMagnifyingGlass, faRotate } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import {
@@ -26,98 +22,107 @@ interface FlightFilterModalProps {
   handleModalClose: () => void;
 }
 
+/** `+FlightFilterModal` (#flightFilterModal) in mixins/travel-agency/flight/homepage/FlightFilterModal.pug */
 const FlightFilterModal = ({
   show,
   handleModalClose
 }: FlightFilterModalProps) => {
   return (
-    <Modal
-      show={show}
-      onHide={handleModalClose}
-      className="p-0 border-0"
-      centered
-      fullscreen={'md-down'}
-      dialogClassName="modal-53w"
-      scrollable={true}
-    >
-      <Modal.Header className="p-4 pb-3 align-items-start border-0">
-        <div>
-          <h4 id="flightFilterModalLabel" className="mb-2 text-body-highlight">
-            Filter
-          </h4>
-          <p className="mb-0">
-            Search for flights according to your preferences
-          </p>
-        </div>
-        <Button className="p-1 ms-auto" onClick={handleModalClose}>
-          <FontAwesomeIcon icon={faTimes} className="fs-10 btn-close" />
-        </Button>
-      </Modal.Header>
-      <Modal.Body className="scrollbar px-4 pt-3 pb-0">
-        <Form>
-          <Row className="g-5">
-            <Col md={6}>
-              <Row className="g-0">
-                <Col xs={12} className="mb-6">
-                  <FilterFormFlightStops />
-                </Col>
-                <Col xs={12} className="mb-6">
-                  <FilterFormFlightSchedule />
-                </Col>
-                <Col xs={12} className="mb-6">
-                  <FilterFormFlightAirlines />
-                </Col>
-                <Col xs={12}>
-                  <FilterFormFlightDuration />
-                </Col>
-              </Row>
-            </Col>
-            <Col md={6}>
-              <Row className="g-0">
-                <Col xs={12} className="mb-6">
-                  <FilterFormFlightPriceCalculator />
-                </Col>
-                <Col xs={12} className="mb-6">
-                  <FilterFormFlightAirports />
-                </Col>
-                <Col xs={12} className="mb-6">
-                  <FilterFormFlightBaggage />
-                </Col>
-                <Col xs={12} className="mb-6">
-                  <FilterFormFlightCabin />
-                </Col>
-                <Col xs={12}>
-                  <FilterFormFlightAircraft />
-                </Col>
-              </Row>
-            </Col>
-          </Row>
-          <div className="modal-footer border-0 px-0 pt-3 pb-4">
-            <div className="w-100 d-flex flex-wrap gap-3 border-top border-translucent pt-4">
-              <Button
-                variant="phoenix-primary"
-                className="m-0 text-nowrap"
-                size="lg"
+    <Dialog open={show} onOpenChange={open => !open && handleModalClose()}>
+      <Dialog.Content
+        centered
+        scrollable
+        fullscreen="md-down"
+        dialogClassName="max-w-213.25"
+        aria-describedby={undefined}
+        asChild
+      >
+        <form>
+          <div className="modal-header p-6 pb-4 items-start border-0">
+            <div>
+              <DialogHeading
+                as="h4"
+                className="mb-2 text-highlight"
+                id="flightFilterModalLabel"
               >
-                <FontAwesomeIcon icon={faRotate} className="me-sm-2" />
-                <span className="d-none d-sm-inline-block">Reset filter</span>
+                Filter
+              </DialogHeading>
+              <p className="mb-0">
+                Search for flights according to your preferences
+              </p>
+            </div>
+            <button
+              type="button"
+              aria-label="Close"
+              className="btn btn-close text-sm"
+              onClick={handleModalClose}
+            />
+          </div>
+          <div className="modal-body scrollbar px-6 py-4">
+            <div className="row g-8">
+              <div className="md:col-6">
+                <div className="row g-0">
+                  <div className="col-12">
+                    <FilterFormFlightStops className="mb-10" />
+                  </div>
+                  <div className="col-12">
+                    <FilterFormFlightSchedule className="mb-10" />
+                  </div>
+                  <div className="col-12">
+                    <FilterFormFlightAirlines className="mb-10" />
+                  </div>
+                  <div className="col-12">
+                    <FilterFormFlightDuration />
+                  </div>
+                </div>
+              </div>
+              <div className="md:col-6">
+                <div className="row g-0">
+                  <div className="col-12">
+                    <FilterFormFlightPriceCalculator className="mb-10" />
+                  </div>
+                  <div className="col-12">
+                    <FilterFormFlightAirports className="mb-10" />
+                  </div>
+                  <div className="col-12">
+                    <FilterFormFlightBaggage className="mb-10" />
+                  </div>
+                  <div className="col-12">
+                    <FilterFormFlightCabin className="mb-10" />
+                  </div>
+                  <div className="col-12">
+                    <FilterFormFlightAircraft />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="modal-footer border-0 p-6 pt-0">
+            <div className="w-full flex flex-wrap gap-4 border-t border-subtle pt-6">
+              <Button
+                type="button"
+                variant="phoenix-primary"
+                size="lg"
+                className="m-0 text-nowrap"
+              >
+                <FontAwesomeIcon icon={faRotate} className="sm:me-2" />
+                <span className="hidden sm:inline-block">Reset filter</span>
               </Button>
               <Button
+                type="button"
                 variant="primary"
-                className="m-0 text-nowrap flex-1"
-                type="submit"
                 size="lg"
-                startIcon={
-                  <FontAwesomeIcon icon={faMagnifyingGlass} className="me-2" />
-                }
+                className="m-0 text-nowrap flex-1"
+                onClick={handleModalClose}
               >
+                <FontAwesomeIcon icon={faMagnifyingGlass} className="me-2" />
                 Update results
               </Button>
             </div>
           </div>
-        </Form>
-      </Modal.Body>
-    </Modal>
+        </form>
+      </Dialog.Content>
+    </Dialog>
   );
 };
 

@@ -1,19 +1,9 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { categories } from 'data/e-commerce';
-import { useCallback, useLayoutEffect, useRef } from 'react';
-import {
-  Card,
-  Col,
-  Dropdown,
-  Nav,
-  NavItem,
-  Navbar,
-  Row
-} from 'react-bootstrap';
+import { useCallback, useLayoutEffect, useRef, useState } from 'react';
+import { Card, Col, Dropdown, Row, cn } from '@hummingbirdui/react';
 import { Link, useLocation } from 'react-router';
 import FeatherIcon from 'feather-icons-react';
-import Scrollbar from 'components/base/Scrollbar';
-import classNames from 'classnames';
 import {
   faAngleDown,
   faAngleRight,
@@ -27,11 +17,7 @@ type NavItemType = {
 };
 
 const initNavItems: NavItemType[] = [
-  {
-    id: 1,
-    label: 'Home',
-    url: '/apps/e-commerce/customer/homepage'
-  },
+  { id: 1, label: 'Home', url: '/apps/e-commerce/customer/homepage' },
   {
     id: 2,
     label: 'My Favorite Stores',
@@ -42,188 +28,186 @@ const initNavItems: NavItemType[] = [
     label: 'Products',
     url: '/apps/e-commerce/customer/products-filter'
   },
-  {
-    id: 4,
-    label: 'Wishlist',
-    url: '/apps/e-commerce/customer/wishlist'
-  },
+  { id: 4, label: 'Wishlist', url: '/apps/e-commerce/customer/wishlist' },
   {
     id: 5,
     label: 'Shipping Info',
     url: '/apps/e-commerce/customer/shipping-info'
   },
-  {
-    id: 6,
-    label: 'Be a vendor',
-    url: '/apps/e-commerce/admin/add-product'
-  },
+  { id: 6, label: 'Be a vendor', url: '/apps/e-commerce/admin/add-product' },
   {
     id: 7,
     label: 'Track order',
     url: '/apps/e-commerce/customer/order-tracking'
   },
-  {
-    id: 8,
-    label: 'Checkout',
-    url: '/apps/e-commerce/customer/checkout'
-  }
+  { id: 8, label: 'Checkout', url: '/apps/e-commerce/customer/checkout' }
 ];
 
+/** `+CategoryDropdown` in phoenix-tailwind mixins/e-commerce/Navbar.pug */
+const CategoryDropdown = () => (
+  <Dropdown>
+    <Dropdown.Trigger asChild>
+      <button
+        type="button"
+        className="btn text-default ps-0 pe-8 whitespace-nowrap dropdown-caret-none"
+      >
+        <FontAwesomeIcon icon={faBars} className="me-2" />
+        Category
+      </button>
+    </Dropdown.Trigger>
+    <Dropdown.Content
+      align="start"
+      className="border border-subtle py-0 category-dropdown-menu w-62.5 sm:w-130 md:w-187.5"
+    >
+      <Card className="border-0 scrollbar max-h-164.25">
+        <Card.Body className="p-10 pb-4">
+          <Row className="gx-12 gy-8 mb-8">
+            {categories.map(category => (
+              <Col xs={12} sm={6} md={4} key={category.title}>
+                <div className="flex items-center mb-4">
+                  <FeatherIcon
+                    icon={category.icon}
+                    className="text-primary me-2 stroke-3"
+                    size={16}
+                  />
+                  <h6 className="text-highlight mb-0 whitespace-nowrap">
+                    {category.title}
+                  </h6>
+                </div>
+                <div className="-ms-2">
+                  {category.sections.map(section => (
+                    <Link
+                      key={section.label}
+                      to={section.url}
+                      className="text-emphasis block mb-1 no-underline hover:bg-subtle px-2 py-1 rounded-md"
+                    >
+                      {section.label}
+                    </Link>
+                  ))}
+                </div>
+              </Col>
+            ))}
+          </Row>
+          <div className="text-center border-t border-subtle pt-4">
+            <Link className="font-bold" to="#!">
+              See all Categories
+              <FontAwesomeIcon
+                icon={faAngleRight}
+                className="ms-1"
+                transform="down-1"
+              />
+            </Link>
+          </div>
+        </Card.Body>
+      </Card>
+    </Dropdown.Content>
+  </Dropdown>
+);
+
+/**
+ * `+Navbar` in phoenix-tailwind mixins/e-commerce/Navbar.pug.
+ * Items that don't fit are hidden and listed under a "More" dropdown
+ * (same behaviour as phoenix-tailwind's navbar-responsive-navitems script).
+ */
 const EcommerceNavbar = () => {
   const { pathname } = useLocation();
 
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const otherElsRef = useRef<HTMLDivElement | null>(null);
-  const moreBtnRef = useRef<HTMLDivElement | null>(null);
-  const navItemsRef = useRef<(HTMLDivElement | null)[]>([]);
-  const dropdownItemsRef = useRef<(HTMLAnchorElement | null)[]>([]);
+  const categoryRef = useRef<HTMLDivElement | null>(null);
+  const moreBtnRef = useRef<HTMLLIElement | null>(null);
+  const navItemsRef = useRef<(HTMLLIElement | null)[]>([]);
+  /** Widths cached while visible — hidden items measure 0. */
+  const itemWidthsRef = useRef<number[]>([]);
+  const [visibleCount, setVisibleCount] = useState(initNavItems.length);
 
   const updateItems = useCallback(() => {
-    const otherElsWidth = otherElsRef.current?.clientWidth || 0;
+    const otherElsWidth = categoryRef.current?.clientWidth || 0;
     const containerWidth = containerRef.current?.clientWidth || 0;
     const moreBtnWidth = moreBtnRef.current?.clientWidth || 0;
 
     let totalItemsWidth = 0;
-    if (moreBtnRef.current) {
-      moreBtnRef.current.style.display = 'none';
-    }
+    let count = initNavItems.length;
     navItemsRef.current.forEach((item, index) => {
-      const dropdownItem = dropdownItemsRef.current[index];
-      item?.removeAttribute('style');
-      if (item && dropdownItem && moreBtnRef.current) {
-        totalItemsWidth = totalItemsWidth + item.clientWidth + 32;
-        if (
-          otherElsWidth + totalItemsWidth + moreBtnWidth + 50 >
-          containerWidth
-        ) {
-          item.style.display = 'none';
-          dropdownItem.style.display = 'block';
-          moreBtnRef.current.style.display = 'block';
-        } else {
-          item.style.display = 'block';
-          dropdownItem.style.display = 'none';
-        }
+      if (!item) return;
+      if (item.clientWidth) itemWidthsRef.current[index] = item.clientWidth;
+      totalItemsWidth += (itemWidthsRef.current[index] || 0) + 32;
+      if (
+        count === initNavItems.length &&
+        otherElsWidth + totalItemsWidth + moreBtnWidth + 50 > containerWidth
+      ) {
+        count = index;
       }
     });
+    setVisibleCount(count);
   }, []);
 
   useLayoutEffect(() => {
     updateItems();
-  }, []);
-
-  useLayoutEffect(() => {
     window.addEventListener('resize', updateItems);
-    return () => {
-      window.removeEventListener('resize', updateItems);
-    };
+    return () => window.removeEventListener('resize', updateItems);
   }, [updateItems]);
 
+  const overflowItems = initNavItems.slice(visibleCount);
+
   return (
-    <Navbar className="ecommerce-navbar bg-body-emphasis justify-content-between p-0">
+    <nav className="navbar-responsive-navitems navbar-expand bg-soft justify-between">
       <div
-        className="container-small d-flex flex-between-center flex-nowrap w-100"
+        className="container-small flex flex-between-center flex-nowrap w-full"
         ref={containerRef}
       >
-        <Dropdown ref={otherElsRef}>
-          <Dropdown.Toggle
-            variant=""
-            className="text-body ps-0 pe-5 text-nowrap dropdown-toggle dropdown-caret-none"
-          >
-            <FontAwesomeIcon icon={faBars} className="me-2" />
-            Category
-          </Dropdown.Toggle>
-
-          <Dropdown.Menu className="border border-translucent py-0 category-dropdown-menu">
-            <Card className="border-0">
-              <Scrollbar style={{ maxHeight: 657}}>
-                <Card.Body className="p-6 pb-3">
-                  <Row className="gx-7 gy-5 mb-5">
-                    {categories.map(category => (
-                      <Col xs={12} sm={6} md={4} key={category.title}>
-                        <div className="d-flex align-items-center mb-3">
-                          <FeatherIcon
-                            icon={category.icon}
-                            className="text-primary me-2"
-                            style={{ strokeWidth: 3 }}
-                            size={16}
-                          />
-                          <h6 className="text-body-highlight mb-0 text-nowrap">
-                            {category.title}
-                          </h6>
-                        </div>
-                        <div className="ms-n2">
-                          {category.sections.map(section => (
-                            <Link
-                              key={section.label}
-                              to={section.url}
-                              className="text-body-emphasis d-block mb-1 text-decoration-none bg-body-highlight-hover px-2 py-1 rounded-2"
-                            >
-                              {section.label}
-                            </Link>
-                          ))}
-                        </div>
-                      </Col>
-                    ))}
-                  </Row>
-                  <div className="text-center border-top border-translucent pt-3">
-                    <Link className="fw-bold" to="#!">
-                      See all Categories
-                      <FontAwesomeIcon icon={faAngleRight} className="ms-1" />
-                    </Link>
-                  </div>
-                </Card.Body>
-              </Scrollbar>
-            </Card>
-          </Dropdown.Menu>
-        </Dropdown>
-        <Nav as="ul" className="justify-content-end align-items-center gap-5">
+        <div ref={categoryRef}>
+          <CategoryDropdown />
+        </div>
+        <ul className="navbar-nav justify-end items-center">
           {initNavItems.map((item, index) => (
-            <Nav.Item
-              className="gap-3"
+            <li
+              className={cn('nav-item', { hidden: index >= visibleCount })}
               key={item.id}
-              ref={(el: HTMLDivElement) => {
-                (navItemsRef.current[index] = el)
+              ref={el => {
+                navItemsRef.current[index] = el;
               }}
             >
-              <Nav.Link
-                key={item.id}
-                as={Link}
+              <Link
                 to={item.url}
-                className={classNames({
+                className={cn('nav-link', {
+                  'ps-0': index === 0,
+                  'pe-0': index === initNavItems.length - 1,
                   active: pathname === item.url
                 })}
               >
                 {item.label}
-              </Nav.Link>
-            </Nav.Item>
+              </Link>
+            </li>
           ))}
-          <Dropdown align="end" as={NavItem} ref={moreBtnRef}>
-            <Dropdown.Toggle
-              variant=""
-              className="fw-bold nav-link dropdown-caret-none"
-            >
-              More
-              <FontAwesomeIcon icon={faAngleDown} className="ms-2" />
-            </Dropdown.Toggle>
-
-            <Dropdown.Menu align="end" renderOnMount>
-              {initNavItems.map((item, index) => (
-                <Dropdown.Item
-                  key={item.id}
-                  as={Link}
-                  to={item.url}
-                  ref={(el: HTMLAnchorElement) => {
-                    (dropdownItemsRef.current[index] = el)
-                  }}
+          <li
+            className={cn('nav-item dropdown', {
+              hidden: overflowItems.length === 0
+            })}
+            ref={moreBtnRef}
+          >
+            <Dropdown>
+              <Dropdown.Trigger asChild>
+                <a
+                  href="#!"
+                  onClick={e => e.preventDefault()}
+                  className="nav-link font-bold pe-0 dropdown-caret-none"
                 >
-                  {item.label}
-                </Dropdown.Item>
-              ))}
-            </Dropdown.Menu>
-          </Dropdown>
-        </Nav>
+                  More
+                  <FontAwesomeIcon icon={faAngleDown} className="ms-2" />
+                </a>
+              </Dropdown.Trigger>
+              <Dropdown.Content align="end" className="category-list">
+                {overflowItems.map(item => (
+                  <Dropdown.Item key={item.id} asChild>
+                    <Link to={item.url}>{item.label}</Link>
+                  </Dropdown.Item>
+                ))}
+              </Dropdown.Content>
+            </Dropdown>
+          </li>
+        </ul>
       </div>
-    </Navbar>
+    </nav>
   );
 };
 

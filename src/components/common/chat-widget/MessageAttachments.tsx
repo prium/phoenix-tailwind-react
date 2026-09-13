@@ -1,8 +1,6 @@
-import Lightbox from 'components/base/LightBox';
+import Lightbox from 'components/base/Lightbox';
 import useLightbox from 'hooks/useLightbox';
-import React from 'react';
-import { Col } from 'react-bootstrap';
-import { Row } from 'react-bootstrap';
+import { Col, Row } from '@hummingbirdui/react';
 
 const MessageAttachments = ({ attachments }: { attachments: string[] }) => {
   const { lightboxProps, openLightbox } = useLightbox(attachments);
@@ -20,7 +18,7 @@ const MessageAttachments = ({ attachments }: { attachments: string[] }) => {
             <img
               src={attachment}
               alt=""
-              className="rounded-2 cursor-pointer img-fluid"
+              className="rounded-md cursor-pointer max-w-full h-auto"
               onClick={() => {
                 openLightbox(index + 1);
               }}

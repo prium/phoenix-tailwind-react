@@ -1,15 +1,16 @@
-import React, { CSSProperties } from 'react';
+import { CSSProperties } from 'react';
 import ReactEChartsCore from 'echarts-for-react/lib/core';
 import * as echarts from 'echarts/core';
 import { getPastDates } from 'helpers/utils';
 import dayjs from 'dayjs';
 import { useAppContext } from 'providers/AppProvider';
-import { TooltipComponent } from 'echarts/components';
+import { GridComponent, TooltipComponent } from 'echarts/components';
+import { CanvasRenderer } from 'echarts/renderers';
 import { BarChart } from 'echarts/charts';
 import { CallbackDataParams } from 'echarts/types/dist/shared';
 import { tooltipFormatterDefault } from 'helpers/echart-utils';
 
-echarts.use([TooltipComponent, BarChart]);
+echarts.use([TooltipComponent, GridComponent, BarChart, CanvasRenderer]);
 
 const dates = getPastDates(9);
 
@@ -18,13 +19,16 @@ const data1 = [24, 14, 30, 24, 32, 32, 18, 12, 32];
 const data2 = [36, 28, 36, 39, 54, 38, 22, 34, 52];
 
 const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
-  color: [getThemeColor('primary'), getThemeColor('tertiary-bg')],
+  color: [
+    getThemeColor('color-primary'),
+    getThemeColor('background-color-highlight')
+  ],
   tooltip: {
     trigger: 'axis',
     padding: [7, 10],
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('tertiary-bg'),
-    textStyle: { color: getThemeColor('light-text-emphasis') },
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('background-color-highlight'),
+    textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,
     axisPointer: {
@@ -36,7 +40,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
   xAxis: {
     type: 'category',
     axisLabel: {
-      color: getThemeColor('secondary-color'),
+      color: getThemeColor('text-color-muted'),
       formatter: (value: string) => dayjs(value).format('D MMM, YY'),
       fontFamily: 'Nunito Sans',
       fontWeight: 600,
@@ -47,7 +51,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       show: true,
       interval: '10',
       lineStyle: {
-        color: getThemeColor('tertiary-bg')
+        color: getThemeColor('background-color-highlight')
       }
     },
     show: true,
@@ -55,7 +59,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     data: dates,
     axisLine: {
       lineStyle: {
-        color: getThemeColor('tertiary-bg')
+        color: getThemeColor('background-color-highlight')
       }
     },
     axisTick: false
@@ -67,7 +71,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     splitLine: {
       interval: 5,
       lineStyle: {
-        color: getThemeColor('secondary-bg')
+        color: getThemeColor('background-color-muted')
       }
     },
     axisLine: { show: false },
@@ -75,7 +79,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       fontFamily: 'Nunito Sans',
       fontWeight: 700,
       fontSize: 12.8,
-      color: getThemeColor('body-color'),
+      color: getThemeColor('text-color-default'),
       margin: 20,
       verticalAlign: 'bottom',
       formatter: (value: string) => `${value.toLocaleString()}`
@@ -91,7 +95,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       label: {
         show: false,
         position: 'top',
-        color: getThemeColor('body-color'),
+        color: getThemeColor('text-color-default'),
         fontWeight: 'bold',
         fontSize: '10.24px'
       },
@@ -103,7 +107,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       z: 10,
       itemStyle: {
         borderRadius: [2, 2, 0, 0],
-        color: getThemeColor('tertiary-bg')
+        color: getThemeColor('background-color-highlight')
       }
     },
     {
@@ -114,7 +118,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       label: {
         show: false,
         position: 'top',
-        color: getThemeColor('primary'),
+        color: getThemeColor('color-primary'),
         fontWeight: 'bold',
         fontSize: '10.24px'
       },
@@ -125,7 +129,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       },
       itemStyle: {
         borderRadius: [2, 2, 0, 0],
-        color: getThemeColor('primary')
+        color: getThemeColor('color-primary')
       }
     }
   ],
@@ -140,13 +144,20 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
   animation: false
 });
 
-const ContactsCreatedChart = ({ style }: { style: CSSProperties }) => {
+const ContactsCreatedChart = ({
+  className,
+  style
+}: {
+  className?: string;
+  style?: CSSProperties;
+}) => {
   const { getThemeColor } = useAppContext();
 
   return (
     <ReactEChartsCore
       echarts={echarts}
       option={getDefaultOptions(getThemeColor)}
+      className={className}
       style={style}
     />
   );

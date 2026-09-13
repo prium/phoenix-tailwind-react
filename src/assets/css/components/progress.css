@@ -1,0 +1,50 @@
+@utility progress {
+  @layer base {
+    --progress-font-size: var(--text-md);
+    --progress-bg: var(--background-color-muted);
+    --progress-border-radius: var(--radius-lg);
+    --progress-bar-color: var(--color-white);
+    --progress-bar-bg: var(--color-blue-500);
+  }
+}
+
+.progress-stack {
+  .progress-bar {
+    margin-left: 1px;
+    margin-right: 1px;
+
+    &:first-child {
+      margin-left: 0;
+    }
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}
+
+/* circle progress bar */
+
+.circle-progress-svg {
+  transform: rotate(170deg);
+  /* [dir='rtl'] & {
+    transform: rotate(-170deg);
+  } */
+  .progress-bar-rail {
+    stroke-dasharray: 340px;
+    stroke-dashoffset: 150;
+    stroke: var(--background-color-muted);
+  }
+  .progress-bar-top {
+    stroke-dasharray: 340px;
+    stroke-dashoffset: 340;
+    animation: strokeAnimation 1s ease-in-out forwards;
+  }
+}
+
+@keyframes strokeAnimation {
+  to {
+    stroke-dashoffset: calc(
+      340px - (188px * var(--phoenix-circle-progress-bar)) / 100
+    );
+  }
+}

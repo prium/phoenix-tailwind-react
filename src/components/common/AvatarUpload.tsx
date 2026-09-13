@@ -1,7 +1,7 @@
-import React, { CSSProperties, ChangeEvent, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import Avatar, { Size, Status } from 'components/base/Avatar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
+import { cn } from '@hummingbirdui/react';
 import { faCamera } from '@fortawesome/free-solid-svg-icons';
 
 interface AvatarUploadProps {
@@ -34,9 +34,9 @@ const AvatarUpload = ({
     }
   };
   return (
-    <div className={classNames('d-inline-flex', className)}>
+    <div className={cn('inline-flex', className)}>
       <input
-        className="d-none"
+        className="hidden"
         id="avatarFile"
         type="file"
         accept="image/*"
@@ -53,12 +53,8 @@ const AvatarUpload = ({
           thumbnail={thumbnail}
           imageClassName={imageClassName}
         />
-        <div
-          className="h-100 w-100 bg-black position-absolute top-0 rounded-circle justify-content-center align-items-center hover-actions"
-          data-bs-theme="light"
-          style={{ '--phoenix-bg-opacity': 0.56 } as CSSProperties}
-        >
-          <FontAwesomeIcon icon={faCamera} className="text-light w-30 h-30" />
+        <div className="h-full w-full bg-black/56 absolute top-0 rounded-full justify-center items-center hover-actions">
+          <FontAwesomeIcon icon={faCamera} className="text-white text-2xl" />
         </div>
       </label>
     </div>

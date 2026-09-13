@@ -1,12 +1,12 @@
-import React from 'react';
 import type { UploadedImage } from 'data/travel-agency/customer/trip';
 import useLightbox from 'hooks/useLightbox';
-import Lightbox from 'components/base/LightBox';
+import Lightbox from 'components/base/Lightbox';
 
 interface TripDetailsReviewTabCommentUploadProps {
   uploadedCommentImage: UploadedImage[];
 }
 
+/** review image strip in phoenix-tailwind mixins/travel-agency/trip/TripReview.pug */
 const TripDetailsReviewTabCommentUpload = ({
   uploadedCommentImage
 }: TripDetailsReviewTabCommentUploadProps) => {
@@ -16,13 +16,13 @@ const TripDetailsReviewTabCommentUpload = ({
   return (
     <>
       {uploadedCommentImage.map((upload, index) => (
-        <div
+        <a
           key={upload.id}
-          onClick={() => openLightbox(index + 1)}
           className="cursor-pointer"
+          onClick={() => openLightbox(index + 1)}
         >
-          <img src={upload.image} alt="" />
-        </div>
+          <img src={upload.image} alt="" className="rounded-md" />
+        </a>
       ))}
       <Lightbox {...lightboxProps} />
     </>

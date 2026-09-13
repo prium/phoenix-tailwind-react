@@ -1,5 +1,4 @@
-import React from 'react';
-import { Card, Col, ProgressBar, Row } from 'react-bootstrap';
+import { Card, cn, Col, Row } from '@hummingbirdui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBaby,
@@ -11,102 +10,76 @@ import masterCard from 'assets/img/logos/mastercard.png';
 import americanExpress from 'assets/img/logos/american_express.png';
 import visa from 'assets/img/logos/visa.png';
 
+/** Check in / Check out time bars of `+Policy` (HotelDetailsTabContent.pug) */
+const PolicyTimeCard = ({
+  label,
+  align
+}: {
+  label: string;
+  align: 'start' | 'end';
+}) => (
+  <Card className="bg-subtle mb-4">
+    <Card.Body>
+      <Row className="g-4">
+        <Col sm={3}>
+          <h5 className="mb-0">
+            <FontAwesomeIcon
+              icon={faClock}
+              className="text-md me-1"
+              transform="up-1"
+            />
+            {label}
+          </h5>
+        </Col>
+        <Col sm={9}>
+          <div
+            className="progress overflow-visible h-2"
+            role="progressbar"
+            aria-label="Basic example"
+            aria-valuenow={0}
+            aria-valuemin={0}
+            aria-valuemax={100}
+          >
+            <div
+              className={cn(
+                'progress-bar relative overflow-visible rounded-md w-1/2',
+                { 'ms-auto': align === 'end' }
+              )}
+            >
+              <span
+                className={cn('absolute mt-8 text-default text-sm', {
+                  'end-0': align === 'start'
+                })}
+              >
+                12 am
+              </span>
+            </div>
+          </div>
+          <div className="flex flex-between-center w-full">
+            <span className="text-default text-sm mt-1">6 am</span>
+            <span className="text-default text-sm mt-1">6 pm</span>
+          </div>
+        </Col>
+      </Row>
+    </Card.Body>
+  </Card>
+);
+
+/** `+Policy` in mixins/travel-agency/hotel/HotelDetailsTabContent.pug */
 const HotelDetailsPolicy = () => {
   return (
     <>
-      <h3 className="mb-5">Policy</h3>
-      <Card className="bg-body-highlight mb-3">
+      <h3 className="mb-8">Policy</h3>
+      <PolicyTimeCard label="Check in" align="end" />
+      <PolicyTimeCard label="Check out" align="start" />
+      <Card className="bg-subtle mb-4">
         <Card.Body>
-          <Row className="g-3">
+          <Row className="g-4">
             <Col sm={3}>
-              <h5 className="mb-0">
-                <FontAwesomeIcon
-                  icon={faClock}
-                  className="fs-9 me-1"
-                  transform="up-1"
-                />
-                Check in
-              </h5>
-            </Col>
-            <Col sm={9}>
-              <div className="position-relative">
-                <ProgressBar
-                  className="position-relative align-middle overflow-visible"
-                  style={{ height: 8 }}
-                >
-                  <ProgressBar
-                    now={50}
-                    isChild={true}
-                    className="ms-auto overflow-visible rounded"
-                  />
-                </ProgressBar>
-                <span
-                  className="text-body translate-middle-x position-absolute fs-10"
-                  style={{
-                    left: '50%',
-                    marginTop: '0.8rem'
-                  }}
-                >
-                  12 am
-                </span>
-              </div>
-              <div className="d-flex flex-between-center w-100">
-                <span className="text-body fs-10 mt-1">6 am</span>
-                <span className="text-body fs-10 mt-1">6 pm</span>
-              </div>
-            </Col>
-          </Row>
-        </Card.Body>
-      </Card>
-      {/* <Card className="bg-body-highlight mb-3">
-        <Card.Body>
-          <Row className="g-3">
-            <Col sm={3}>
-              <h5 className="mb-0">
-                <FontAwesomeIcon
-                  icon={faClock}
-                  className="fs-9 me-1"
-                  transform="up-1"
-                />
-                Check out
-              </h5>
-            </Col>
-            <Col sm={9}>
-              <ProgressBar
-                className="position-relative align-middle overflow-visible"
-                style={{ height: 8 }}
-              >
-                <ProgressBar
-                  now={50}
-                  className="overflow-visible rounded"
-                  isChild={true}
-                />
-                <span
-                  className="text-body translate-middle-x position-absolute fs-10"
-                  style={{
-                    left: '50%',
-                    marginTop: '0.8rem'
-                  }}
-                >
-                  12 am
-                </span>
-              </ProgressBar>
-              <div className="d-flex flex-between-center w-100">
-                <span className="text-body fs-10 mt-1">6 am</span>
-                <span className="text-body fs-10 mt-1">6 pm</span>
-              </div>
-            </Col>
-          </Row>
-        </Card.Body>
-      </Card> */}
-      <Card className="bg-body-highlight mb-3">
-        <Card.Body>
-          <Row className="g-3">
-            <Col xs={5} sm={3}>
               <h5 className="mb-0">
                 <FontAwesomeIcon
                   icon={faBaby}
-                  className="fs-9 me-1"
+                  className="text-md me-1"
                   transform="up-1"
                 />
                 Baby policy
@@ -114,7 +87,7 @@ const HotelDetailsPolicy = () => {
             </Col>
             <Col sm={9}>
               <h5 className="mb-2 text-success">Allowed</h5>
-              <p className="mb-0 text-body">
+              <p className="mb-0 text-default">
                 Children under the age of five can stay in the same room as
                 their parents and receive complimentary breakfast. Children from
                 5 to 10 years old will be charged $1,500 for extra bed and
@@ -126,14 +99,14 @@ const HotelDetailsPolicy = () => {
           </Row>
         </Card.Body>
       </Card>
-      <Card className="bg-body-highlight mb-3">
+      <Card className="bg-subtle mb-4">
         <Card.Body>
-          <Row className="g-3 align-items-center">
+          <Row className="g-4 items-center">
             <Col xs={5} sm={3}>
               <h5 className="mb-0">
                 <FontAwesomeIcon
                   icon={faPaw}
-                  className="fs-9 me-1"
+                  className="text-md me-1"
                   transform="up-1"
                 />
                 Pet policy
@@ -145,22 +118,22 @@ const HotelDetailsPolicy = () => {
           </Row>
         </Card.Body>
       </Card>
-      <Card className="bg-body-highlight">
+      <Card className="bg-subtle">
         <Card.Body>
-          <Row className="g-3 align-items-center">
+          <Row className="g-4 items-center">
             <Col xs={5} sm={3}>
               <h5 className="mb-0">
                 <FontAwesomeIcon
                   icon={faCreditCard}
-                  className="fs-9 me-1"
+                  className="text-md me-1"
                   transform="up-1"
                 />
                 Payment
               </h5>
             </Col>
             <Col xs={7} sm={9}>
-              <img src={masterCard} alt="" className="me-3" />
-              <img src={americanExpress} alt="" className="me-3" />
+              <img src={masterCard} alt="" className="me-4" />
+              <img src={americanExpress} alt="" className="me-4" />
               <img src={visa} alt="" />
             </Col>
           </Row>

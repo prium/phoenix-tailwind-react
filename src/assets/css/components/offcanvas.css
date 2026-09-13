@@ -1,0 +1,116 @@
+@utility offcanvas {
+  @layer base {
+    --offcanvas-width: 28.625rem;
+    --offcanvas-height: 30vh;
+    --offcanvas-color: var(--text-color-default);
+    --offcanvas-bg: var(--background-color-soft);
+    --offcanvas-border-width: 0;
+    --offcanvas-box-shadow: 0 0.125rem 0.25rem
+      --alpha(var(--color-black) / 7.5%);
+  }
+}
+
+@utility offcanvas-header {
+  .btn-close {
+    @apply py-[calc(var(--offcanvas-padding-y)*0.5)]
+    px-[calc(var(--offcanvas-padding-x)*0.5)]
+    mt-[calc(-0.5*var(--offcanvas-padding-y))]
+    me-[calc(-0.5*var(--offcanvas-padding-x))]
+    mb-[calc(-0.5*var(--offcanvas-padding-y))]
+    ms-auto;
+  }
+}
+
+@utility content-offcanvas {
+  @apply fixed w-140
+  top-[calc(var(--navbar-top-height)+1px)]
+  h-[calc(100vh-(var(--navbar-top-height)+var(--footer-height)))];
+  @variant sm {
+    @apply bg-position-[100%]!;
+  }
+}
+
+.offcanvas-backdrop-transparent ~ .offcanvas-backdrop {
+  @apply opacity-0!;
+}
+
+@utility phoenix-offcanvas-container {
+  @apply relative overflow-hidden;
+}
+
+@utility phoenix-offcanvas {
+  @apply absolute overflow-auto top-0 bottom-0 transition-transform duration-300 ease-in-out z-10;
+
+  &.phoenix-offcanvas-fixed {
+    @apply fixed start-0 -translate-x-full rtl:translate-x-full;
+  }
+  &.phoenix-offcanvas-start {
+    @apply start-0 -translate-x-full rtl:translate-x-full;
+  }
+  &.phoenix-offcanvas-end {
+    @apply end-0 translate-x-full rtl:-translate-x-full;
+  }
+  &.phoenix-offcanvas-top {
+    @apply -translate-y-full;
+  }
+  &.phoenix-offcanvas-bottom {
+    @apply translate-y-full;
+  }
+  &.show {
+    @apply translate-none;
+  }
+  &.show ~ .phoenix-offcanvas-backdrop {
+    @apply fixed top-0 start-0
+    h-screen w-screen bg-black/10 z-8;
+  }
+}
+
+.offcanvas-backdrop {
+  --backdrop-bg: --alpha(var(--color-black) / 50%);
+}
+
+/* Filter offcanvas */
+/* TODO: Check these offcanvas, if didn't used multiple times, then remove them and use utility instead */
+
+.phoenix-offcanvas-filter {
+  @apply max-w-75
+  top-(--navbar-top-height)
+  h-[calc(100vh-5rem)]
+  p-8;
+
+  @variant lg {
+    @apply sticky top-4!
+    py-0! pe-0! ps-2!
+    translate-none!
+    h-[calc(100vh-2rem)];
+  }
+}
+
+.phoenix-offcanvas-filter-xl {
+  width: 300px;
+  top: var(--navbar-top-height);
+  padding: --spacing(6) --spacing(6) 0;
+  @variant lg {
+    z-index: 9999;
+  }
+  @variant xl {
+    width: 250px;
+    /* padding: 0 0 0 0.5rem !important; */
+    padding: 0 !important;
+    padding-inline-start: 0.5rem !important;
+    position: sticky !important;
+    top: 1rem !important;
+    translate: none !important;
+    height: 100vh;
+    z-index: 10;
+  }
+}
+
+[data-todo-content-offcanvas='data-todo-content-offcanvas'] {
+  --offcanvas-zindex: 1028;
+}
+
+[data-todo-content-offcanvas='data-todo-content-offcanvas']
+  ~ .offcanvas-backdrop {
+  z-index: 1025 !important ;
+}

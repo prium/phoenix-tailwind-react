@@ -1,6 +1,29 @@
-import changelogListElips from './changelogList';
+import changelogList from './changelogList';
 
-export default [
+/** One release, as rendered by `pages/documentation/ChangeLog`. */
+export interface ChangelogEntry {
+  version: string;
+  /** Release code name shown next to the version. */
+  title: string;
+  publishDate: string;
+  /** Optional callout above the log, e.g. "back up before upgrading". */
+  alertText?: string;
+  /** Optional sentence appended to the callout, wrapped around a router link. */
+  alertLink?: {
+    prefix?: string;
+    linkText?: string;
+    link?: string;
+    suffix?: string;
+  };
+  /** Log lines, grouped by kind. Each entry is trusted HTML. */
+  logs: {
+    new?: string[];
+    update?: string[];
+    fix?: string[];
+  };
+}
+
+const changelog: ChangelogEntry[] = [
   {
     version: '2.2.0',
     title: 'Solara',
@@ -18,7 +41,7 @@ export default [
       update: [
         'SCSS: <code>src/assets/scss/theme/plugins/_swiper.scss</code>',
         'SCSS: <code>src/assets/scss/theme/_landing.scss</code>',
-        'SCSS: <code>src/assets/scss/theme/_mixed.scss</code>',
+        'SCSS: <code>src/assets/scss/theme/_mixed.scss</code>'
       ]
     }
   },
@@ -28,7 +51,7 @@ export default [
     publishDate: '17 Nov 2025',
     logs: {
       new: [
-        'PACKAGE: <code>emoji-picker-react</code>', 
+        'PACKAGE: <code>emoji-picker-react</code>',
         'SCSS: <code>_emoji-picker.scss</code>'
       ],
       update: [
@@ -70,7 +93,7 @@ export default [
         'PACKAGE: <code>vite</code> from <code>6.3.5</code> to <code>7.2.1</code>',
         'PACKAGE: <code>web-vitals</code> from <code>5.0.3</code> to <code>5.1.0</code>',
         'SCSS: Removed <code>_picmo.scss</code>',
-        'Picmo replaced by emoji-picker-react',
+        'Picmo replaced by emoji-picker-react'
       ],
       fix: [
         'Replaced the deprecated <code>containLabel</code> option in the Echarts grid configuration with the new <code>outerBoundsMode</code>.',
@@ -90,7 +113,7 @@ export default [
         'PACKAGE: <code>echarts</code>',
         'PACKAGE: <code>react-leaflet-markercluster</code>',
         'PACKAGE: <code>simplebar</code>',
-        'PACKAGE: <code>simplebar-react</code>',
+        'PACKAGE: <code>simplebar-react</code>'
       ],
       update: [
         'PACKAGE: React Updated to <code>v19</code>.',
@@ -258,7 +281,7 @@ export default [
       new: [
         'New theme color shades.',
         'DOC : Color page',
-        `Utility Classes ${changelogListElips}`
+        `Utility Classes ${changelogList}`
       ],
       update: [
         'Bootstrap to 5.3.2',
@@ -354,3 +377,5 @@ export default [
     }
   }
 ];
+
+export default changelog;

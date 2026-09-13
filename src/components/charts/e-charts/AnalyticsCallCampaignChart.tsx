@@ -4,26 +4,30 @@ import * as echarts from 'echarts/core';
 import { getPastDates, rgbaColor } from 'helpers/utils';
 import { useAppContext } from 'providers/AppProvider';
 import { TooltipComponent, GridComponent } from 'echarts/components';
+import { CanvasRenderer } from 'echarts/renderers';
 import { LineChart } from 'echarts/charts';
 import { CallbackDataParams } from 'echarts/types/dist/shared';
 import { tooltipFormatterDefault } from 'helpers/echart-utils';
 import dayjs from 'dayjs';
 import EChartsReactCore from 'echarts-for-react/lib/core';
 
-echarts.use([TooltipComponent, GridComponent, LineChart]);
+echarts.use([TooltipComponent, GridComponent, LineChart, CanvasRenderer]);
 
 const dates = getPastDates(7);
 
 const data1 = [8000, 7700, 5900, 10100, 5100, 6000, 4300];
 
 const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
-  color: [getThemeColor('primary-lighter'), getThemeColor('info-light')],
+  color: [
+    getThemeColor('color-primary-lighter'),
+    getThemeColor('color-info-light')
+  ],
   tooltip: {
     trigger: 'axis',
     padding: [7, 10],
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('border-color'),
-    textStyle: { color: getThemeColor('light-text-emphasis') },
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('border-color-default'),
+    textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,
     axisPointer: {
@@ -40,11 +44,11 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       splitLine: {
         show: true,
         lineStyle: {
-          color: getThemeColor('secondary-bg')
+          color: getThemeColor('background-color-muted')
         }
       },
       axisLabel: {
-        color: getThemeColor('body-color'),
+        color: getThemeColor('text-color-default'),
         // interval: 1,
         showMaxLabel: false,
         showMinLabel: true,
@@ -57,7 +61,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       },
       axisLine: {
         lineStyle: {
-          color: getThemeColor('secondary-bg')
+          color: getThemeColor('background-color-muted')
         }
       },
       axisTick: false
@@ -69,11 +73,11 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       splitLine: {
         show: true,
         lineStyle: {
-          color: getThemeColor('secondary-bg')
+          color: getThemeColor('background-color-muted')
         }
       },
       axisLabel: {
-        color: getThemeColor('body-color'),
+        color: getThemeColor('text-color-default'),
         interval: 130,
         showMaxLabel: true,
         showMinLabel: false,
@@ -87,7 +91,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       position: 'bottom',
       axisLine: {
         lineStyle: {
-          color: getThemeColor('secondary-bg')
+          color: getThemeColor('background-color-muted')
         }
       },
       axisTick: false
@@ -97,16 +101,16 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     type: 'value',
     axisLine: {
       lineStyle: {
-        color: getThemeColor('secondary-bg')
+        color: getThemeColor('background-color-muted')
       }
     },
     splitLine: {
       lineStyle: {
-        color: getThemeColor('secondary-bg')
+        color: getThemeColor('background-color-muted')
       }
     },
     axisLabel: {
-      color: getThemeColor('body-color'),
+      color: getThemeColor('text-color-default'),
       fontFamily: 'Nunito Sans',
       fontWeight: 700,
       fontSize: 12.8,
@@ -122,11 +126,11 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       smooth: 0.4,
       symbolSize: 11,
       itemStyle: {
-        color: getThemeColor('body-highlight-bg'),
-        borderColor: getThemeColor('primary')
+        color: getThemeColor('background-color-subtle'),
+        borderColor: getThemeColor('color-primary')
       },
       lineStyle: {
-        color: getThemeColor('primary')
+        color: getThemeColor('color-primary')
       },
       symbol: 'circle',
       areaStyle: {
@@ -139,11 +143,11 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
           colorStops: [
             {
               offset: 0,
-              color: rgbaColor(getThemeColor('primary-light'), 0.2)
+              color: rgbaColor(getThemeColor('color-primary-light'), 0.2)
             },
             {
               offset: 1,
-              color: rgbaColor(getThemeColor('primary-light'), 0.2)
+              color: rgbaColor(getThemeColor('color-primary-light'), 0.2)
             }
           ]
         }
@@ -162,7 +166,13 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
   animation: false
 });
 
-const AnalyticsCallCampaignChart = ({ style }: { style: CSSProperties }) => {
+const AnalyticsCallCampaignChart = ({
+  className,
+  style
+}: {
+  className?: string;
+  style?: CSSProperties;
+}) => {
   const chartRef = useRef<null | EChartsReactCore>(null);
   const updateDimensions = useCallback(() => {
     if (!chartRef.current) return;
@@ -198,13 +208,13 @@ const AnalyticsCallCampaignChart = ({ style }: { style: CSSProperties }) => {
         ]
       });
     }
-  }, [chartRef])
+  }, [chartRef]);
   useEffect(() => {
     const initialRun = setTimeout(() => {
       if (chartRef.current) {
         updateDimensions();
       }
-    }, 0)
+    }, 0);
     window.addEventListener('resize', updateDimensions);
     return () => {
       clearTimeout(initialRun);
@@ -219,6 +229,7 @@ const AnalyticsCallCampaignChart = ({ style }: { style: CSSProperties }) => {
       ref={chartRef}
       echarts={echarts}
       option={getDefaultOptions(getThemeColor)}
+      className={className}
       style={style}
     />
   );

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Card, Col, Dropdown, Row } from 'react-bootstrap';
+import { Card, Col, Dropdown, Row } from '@hummingbirdui/react';
 import { Link } from 'react-router';
 import behance from 'assets/img/nav-icons/behance.webp';
 import googleCloud from 'assets/img/nav-icons/google-cloud.webp';
@@ -15,8 +15,8 @@ import ln from 'assets/img/nav-icons/ln.webp';
 import googleMaps from 'assets/img/nav-icons/google-maps.webp';
 import googlePhotos from 'assets/img/nav-icons/google-photos.webp';
 import spotify from 'assets/img/nav-icons/spotify.webp';
-import Scrollbar from 'components/base/Scrollbar';
 
+/** `+NineDotsDropdown` in phoenix-tailwind Mixins.pug */
 const NineDotMenu = () => {
   const [items] = useState([
     { img: behance, title: 'Behance' },
@@ -35,39 +35,36 @@ const NineDotMenu = () => {
     { img: spotify, title: 'Spotify' }
   ]);
   return (
-    <Dropdown.Menu
+    <Dropdown.Content
       align="end"
+      sideOffset={8}
       className="navbar-dropdown-caret py-0 dropdown-nine-dots shadow border"
     >
-      <Card
-        className="position-relative border-0"
-        style={{ height: '20rem', minWidth: 244 }}
-      >
-        <Scrollbar style={{maxHeight: '20rem' }}>
-          <Card.Body className="pt-3 px-3 pb-0">
-            <Row className="text-center align-items-center g-0">
-              {items.map(item => (
-                <Col xs={4} key={item.title}>
-                  <Link
-                    to="#!"
-                    className="d-block bg-body-secondary-hover p-2 rounded-3 text-center text-decoration-none mb-3"
-                  >
-                    <img
-                      src={item.img}
-                      alt="behance"
-                      width={item.width || 30}
-                    />
-                    <p className="mb-0 text-body-emphasis text-truncate fs-10 mt-1 pt-1">
-                      {item.title}
-                    </p>
-                  </Link>
-                </Col>
-              ))}
-            </Row>
-          </Card.Body>
-        </Scrollbar>
+      <Card className="bg-soft relative border-0">
+        <Card.Body className="pt-4 px-4 pb-0 overflow-auto scrollbar h-80">
+          <Row className="text-center items-center gx-0 gy-0">
+            {items.map(item => (
+              <Col xs={4} key={item.title}>
+                <Link
+                  to="#!"
+                  className="block hover:bg-muted p-2 rounded-lg text-center no-underline mb-4"
+                >
+                  <img
+                    src={item.img}
+                    alt={item.title}
+                    width={item.width || 30}
+                    className="inline-block"
+                  />
+                  <p className="pt-1 mb-0 text-emphasis truncate text-sm mt-1">
+                    {item.title}
+                  </p>
+                </Link>
+              </Col>
+            ))}
+          </Row>
+        </Card.Body>
       </Card>
-    </Dropdown.Menu>
+    </Dropdown.Content>
   );
 };
 

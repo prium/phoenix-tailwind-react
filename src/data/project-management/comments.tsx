@@ -29,7 +29,7 @@ export const comments: Comment[] = [
     attachment: bg42,
     date: 'Oct 3 at 4:38 pm',
     details: (
-      <p className="text-body-highlight fw-semibold fs-9 mb-0">Fruit blast</p>
+      <p className="text-highlight font-semibold text-md mb-0">Fruit blast</p>
     )
   },
   {
@@ -60,8 +60,8 @@ export const comments: Comment[] = [
     },
     date: 'Oct 5 at 9:59 am',
     details: (
-      <div className="d-flex text-body-secondary fs-9">
-        <p className="mb-0 fw-semibold text-body-highlight">
+      <div className="flex text-muted text-md">
+        <p className="mb-0 font-semibold text-highlight">
           <FontAwesomeIcon
             icon={faCircle}
             className="text-primary"
@@ -70,7 +70,7 @@ export const comments: Comment[] = [
           Doing
         </p>
         <span className="mx-2">to</span>
-        <p className="mb-0 fw-semibold text-body-highlight">
+        <p className="mb-0 font-semibold text-highlight">
           <FontAwesomeIcon
             icon={faCircle}
             className="text-primary"
@@ -90,7 +90,7 @@ export const comments: Comment[] = [
     },
     date: 'Oct 5 at 11:09 pm',
     details: (
-      <p className="text-body fs-9 mb-0">
+      <p className="text-default text-md mb-0">
         There are many variations of passages of Lorem Ipsum available, but the
         majority have suffered alteration in some form
       </p>

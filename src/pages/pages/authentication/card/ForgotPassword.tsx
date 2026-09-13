@@ -3,8 +3,8 @@ import AuthCardLayout from 'layouts/AuthCardLayout';
 
 const ForgotPassword = () => {
   return (
-    <AuthCardLayout>
-      <ForgotPasswordForm />
+    <AuthCardLayout page="forgot-password">
+      <ForgotPasswordForm layout="card" />
     </AuthCardLayout>
   );
 };

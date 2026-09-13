@@ -8,14 +8,14 @@ import { ecomBreadcrumbItems } from 'data/commonData';
 
 const ProductDetails = () => {
   return (
-    <div className="pt-5 mb-9">
+    <div className="pt-8 mb-16">
       <Section small className="py-0">
-        <PageBreadcrumb items={ecomBreadcrumbItems} className="mb-3" />
+        <PageBreadcrumb items={ecomBreadcrumbItems} className="mb-4" />
         <ProductDescription />
       </Section>
 
       <Section small className="py-0">
-        <div className="mb-9">
+        <div className="mb-16">
           <ProductDetailsTab />
         </div>
       </Section>

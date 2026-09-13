@@ -1,142 +1,123 @@
-import { Dropdown } from 'react-bootstrap';
-import { Fragment, useState } from 'react';
+import { Fragment } from 'react';
 import { Route, RouteItems } from 'sitemap';
 import { capitalize } from 'helpers/utils';
 import { Link, useLocation } from 'react-router';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import FeatherIcon from 'feather-icons-react';
 import { UilAngleRight } from '@iconscout/react-unicons';
-import classNames from 'classnames';
-import { useBreakpoints } from 'providers/BreakpointsProvider';
+import { cn } from '@hummingbirdui/react';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import useTopNavDropdown from './useTopNavDropdown';
 
-const TopNavItem = ({ route }: { route: RouteItems }) => {
+interface MenuProps {
+  show?: boolean;
+}
+
+/** `+TopNavItem` in phoenix-tailwind Mixins.pug */
+const TopNavItem = ({ route, show }: { route: RouteItems } & MenuProps) => {
   return (
-    <Dropdown.Menu as="ul" className="navbar-dropdown-caret">
+    <ul
+      className={cn('dropdown-menu navbar-dropdown-caret', { show })}
+      data-bs-popper={show ? 'none' : undefined}
+    >
       {route.pages.map(page => (
         <Fragment key={page.name}>
           {page.pages ? (
-            <Fragment key={page.name}>
-              {page.flat ? (
-                page.pages?.map(page => (
-                  <TopNavDropdownItem page={page} key={page.name} />
-                ))
-              ) : (
-                <TopNavLooper page={page} />
-              )}
-            </Fragment>
+            page.flat ? (
+              page.pages.map(item => (
+                <TopNavDropdownItem page={item} key={item.name} />
+              ))
+            ) : (
+              <TopNavLooper page={page} />
+            )
           ) : (
             <TopNavDropdownItem page={page} />
           )}
         </Fragment>
       ))}
-    </Dropdown.Menu>
+    </ul>
   );
 };
 
+/** `+DropdownIcon` — gold always renders `span.me-2.uil` (empty when no icon) */
+const DropdownIcon = ({ page }: { page: Route }) => {
+  if (page.iconSet === 'font-awesome') {
+    return (
+      <FontAwesomeIcon icon={page.icon as IconProp} className="me-2 uil" />
+    );
+  }
+  const icon = (page.icon as string | undefined) || page.topNavIcon;
+  return icon ? (
+    <FeatherIcon icon={icon} size={16} className="me-2 uil" />
+  ) : (
+    <span className="me-2 uil" />
+  );
+};
+
+/** `+TopNavLooper` — nested dropdown (hover at ≥ lg unless `dropdownInside`) */
 const TopNavLooper = ({ page }: { page: Route }) => {
-  const [show, setShow] = useState(false);
-
-  const { breakpoints } = useBreakpoints();
-
-  const handleMouseEnter = () => {
-    if (breakpoints.up('lg')) {
-      setShow(true);
-    }
-  };
-
-  const handleMouseLeave = () => {
-    if (breakpoints.up('lg')) {
-      setShow(false);
-    }
-  };
-
-  const handleClick = () => {
-    setShow(!show);
-  };
+  const { open, toggleProps, containerProps } =
+    useTopNavDropdown<HTMLLIElement>(!page.dropdownInside);
 
   return (
-    <Dropdown
-      as="li"
-      show={show}
-      className={classNames({
-        'dropdown-inside': page.dropdownInside
-      })}
-      onMouseEnter={!page.dropdownInside ? handleMouseEnter : undefined}
-      onMouseLeave={!page.dropdownInside ? handleMouseLeave : undefined}
-      autoClose={false}
+    <li
+      className={cn('dropdown', { 'dropdown-inside': page.dropdownInside })}
+      {...containerProps}
     >
-      <Dropdown.Toggle
-        as="a"
-        variant=""
-        className="dropdown-item dropdown-caret-none lh-1 d-flex align-items-center cursor-pointer"
-        onClick={handleClick}
+      <a
+        href="#!"
+        id={page.pathName ?? page.name}
+        className={cn('dropdown-item dropdown-toggle', { show: open })}
+        {...toggleProps}
       >
-        <div
-          className={classNames('dropdown-item-wrapper', {
-            'text-body-quaternary': !page.active
-          })}
-        >
+        <div className="dropdown-item-wrapper">
           <UilAngleRight
-            fill="currentColor"
-            className="lh-1 dropdown-indicator-icon"
+            className="uil text-base uil-angle-right leading-none dropdown-indicator-icon"
             size={16}
+            fill="currentColor"
           />
           <span>
-            {page.icon && (
-              <FeatherIcon icon={page.icon} size={16} className="me-2" />
-            )}
+            <DropdownIcon page={page} />
             {capitalize(page.name)}
           </span>
         </div>
-      </Dropdown.Toggle>
-      <Dropdown.Menu as="ul">
-        {page.pages?.map(page => (
-          <Fragment key={page.name}>
-            {page.pages ? (
-              <TopNavLooper page={page} />
+      </a>
+      <ul
+        className={cn('dropdown-menu', { show: open })}
+        data-bs-popper={open ? 'none' : undefined}
+      >
+        {page.pages?.map(item => (
+          <Fragment key={item.name}>
+            {item.pages ? (
+              <TopNavLooper page={item} />
             ) : (
-              <TopNavDropdownItem page={page} />
+              <TopNavDropdownItem page={item} />
             )}
           </Fragment>
         ))}
-      </Dropdown.Menu>
-    </Dropdown>
+      </ul>
+    </li>
   );
 };
 
+/** `+TopNavDropdownItem` / `+TopNavDropdownLink` */
 const TopNavDropdownItem = ({ page }: { page: Route }) => {
   const { pathname } = useLocation();
   return (
     <li>
-      <Dropdown.Item
-        as={Link}
+      <Link
         to={page.path || '#!'}
-        target={page.isTargetBlank ? "_blank": undefined}
-        className={classNames({
-          'text-body-quaternary': !page.active,
+        target={page.isTargetBlank ? '_blank' : undefined}
+        className={cn('dropdown-item', {
+          'nav-link-disable': page.active === false,
           active: pathname === page.path
         })}
       >
         <div className="dropdown-item-wrapper">
-          {page.icon && (
-            <>
-              {page.iconSet === 'font-awesome' ? (
-                <FontAwesomeIcon
-                  icon={page.icon as IconProp}
-                  className="fs-8 ms-1 me-2"
-                />
-              ) : (
-                <FeatherIcon icon={page.icon} size={14} className="me-2" />
-              )}
-            </>
-          )}
-          {page.topNavIcon && (
-            <FeatherIcon icon={page.topNavIcon} size={14} className="me-2" />
-          )}
+          <DropdownIcon page={page} />
           {capitalize(page.name)}
         </div>
-      </Dropdown.Item>
+      </Link>
     </li>
   );
 };

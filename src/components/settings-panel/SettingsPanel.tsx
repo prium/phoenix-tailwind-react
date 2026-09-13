@@ -1,7 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Drawer } from '@hummingbirdui/react';
 import Button from 'components/base/Button';
 import { useAppContext } from 'providers/AppProvider';
-import { Offcanvas } from 'react-bootstrap';
 import NavigationType from './NavigationType';
 import HorizontalNavbarShape from './HorizontalNavbarShape';
 import ColorScheme from './ColorScheme';
@@ -17,8 +17,12 @@ import {
 import ChatWidgetVisibility from './ChatWidgetVisibility';
 import { RESET } from 'reducers/ConfigReducer';
 
+/** `+SettingsPanel` in phoenix-tailwind SettingsPanel.pug */
 const SettingsPanel = () => {
-  const { configDispatch } = useAppContext();
+  const {
+    config: { isRTL },
+    configDispatch
+  } = useAppContext();
 
   const {
     settingsPanelConfig: { openSettingPanel, disableResetButton },
@@ -26,67 +30,78 @@ const SettingsPanel = () => {
   } = useSettingsPanelContext();
 
   const handleClose = () => {
-    setSettingsPanelConfig({
-      openSettingPanel: !openSettingPanel
-    });
+    setSettingsPanelConfig({ openSettingPanel: false });
   };
   const handleResetToDefault = () => {
-    configDispatch({
-      type: RESET
-    });
+    configDispatch({ type: RESET });
   };
 
   return (
-    <Offcanvas
-      className="settings-panel border-0"
-      show={openSettingPanel}
-      onHide={handleClose}
-      placement="end"
+    <Drawer
+      direction={isRTL ? 'left' : 'right'}
+      open={openSettingPanel}
+      onOpenChange={open => setSettingsPanelConfig({ openSettingPanel: open })}
     >
-      <Offcanvas.Header className="align-items-start border-bottom border-translucent flex-column">
-        <div className="pt-1 w-100 mb-6 d-flex justify-content-between align-items-start">
-          <div>
-            <h5 className="mb-2 me-2 lh-sm">
-              <FontAwesomeIcon icon={faPalette} className="me-2 fs-8" />
-              Theme Customizer
-            </h5>
-            <p className="mb-0 fs-9">
-              Explore different styles according to your preferences
-            </p>
+      <Drawer.Content
+        className="settings-panel border-0"
+        aria-describedby={undefined}
+      >
+        <Drawer.Title className="sr-only">Theme Customizer</Drawer.Title>
+        <Drawer.Header className="items-start border-b flex-col border-subtle">
+          <div className="pt-1 w-full mb-10 flex justify-between items-start">
+            <div>
+              <h5 className="mb-2 me-2 leading-sm">
+                <FontAwesomeIcon icon={faPalette} className="me-2 text-base" />
+                Theme Customizer
+              </h5>
+              <p className="mb-0 text-md">
+                Explore different styles according to your preferences
+              </p>
+            </div>
+            <button
+              type="button"
+              className="btn p-1 font-black"
+              aria-label="Close"
+              onClick={handleClose}
+            >
+              <FontAwesomeIcon icon={faTimes} className="text-base" />
+            </button>
           </div>
-          <button className="btn p-1 fw-bolder" onClick={handleClose}>
-            <FontAwesomeIcon icon={faTimes} className="fs-8" />
-          </button>
-        </div>
-        <Button
-          variant="phoenix-secondary"
-          className="w-100"
-          onClick={handleResetToDefault}
-          disabled={disableResetButton}
-        >
-          <FontAwesomeIcon icon={faArrowsRotate} className="me-2 fs-10" />
-          Reset to default
-        </Button>
-      </Offcanvas.Header>
-      <Offcanvas.Body className="px-card scrollbar">
-        <ColorScheme />
-        <RTLMode />
-        <ChatWidgetVisibility />
-        <NavigationType />
-        <VerticalNavbarAppearance />
-        <HorizontalNavbarShape />
-        <TopNavbarAppearance className="mb-5" />
-        <Button
-          as="a"
-          target="_blank"
-          href={`${import.meta.env.VITE_PURCHASE_LINK}`}
-          className="w-100 mb-3 text-white"
-          variant="primary"
-        >
-          Purchase template
-        </Button>
-      </Offcanvas.Body>
-    </Offcanvas>
+          <Button
+            variant="phoenix"
+            color="secondary"
+            className="w-full"
+            onClick={handleResetToDefault}
+            disabled={disableResetButton}
+          >
+            <FontAwesomeIcon icon={faArrowsRotate} className="me-2 text-sm" />
+            Reset to default
+          </Button>
+        </Drawer.Header>
+        <Drawer.Body className="scrollbar px-card">
+          <ColorScheme />
+          <RTLMode />
+          <ChatWidgetVisibility />
+          <NavigationType />
+          <VerticalNavbarAppearance />
+          <HorizontalNavbarShape />
+          <TopNavbarAppearance />
+          <Button
+            asChild
+            variant="primary"
+            className="grid mb-4 text-white mt-8"
+          >
+            <a
+              target="_blank"
+              rel="noreferrer"
+              href={`${import.meta.env.VITE_PURCHASE_LINK}`}
+            >
+              Purchase template
+            </a>
+          </Button>
+        </Drawer.Body>
+      </Drawer.Content>
+    </Drawer>
   );
 };
 

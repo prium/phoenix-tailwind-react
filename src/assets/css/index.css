@@ -1,0 +1,88 @@
+/*
+ * App stylesheet entry.
+ * Everything except this file is a verbatim copy of ../phoenix-tailwind/src/css
+ * (see SOURCE.md). Differences from phoenix-tailwind's index.css:
+ *  - `theme(static)` keeps every @theme token in the output so getColor() can
+ *    read chart/map colours at runtime even when no utility uses them.
+ *  - `@hummingbirdui/react` replaces `@hummingbirdui/hummingbird`; it re-exports
+ *    the core CSS and adds the Radix-driven animation utilities the React
+ *    components rely on.
+ */
+@import 'tailwindcss' theme(static);
+@import '@hummingbirdui/react';
+@import '@hummingbirdui/hummingbird/src/plugins/choices.css';
+/* vendor stylesheets the gold loads in <head> BEFORE the theme bundle, so the
+   phoenix skins in ./plugins can override them (importing them from component
+   files would inject them after the skin and win the cascade) */
+@import 'flatpickr/dist/flatpickr.css';
+@import 'nouislider/dist/nouislider.css';
+@import 'swiper/css/bundle';
+@import 'dhtmlx-gantt/codebase/dhtmlxgantt.css';
+
+/* The copied phoenix CSS keys dark mode on [data-hb-theme=dark]; hb-react's
+   useThemeMode writes `.dark` on <html>. Accepting both means hummingbird's
+   own `@variant dark` blocks, this app's `dark:` utilities and hb-react's
+   DarkThemeToggle all resolve to the same thing. */
+@custom-variant dark (&:where([data-hb-theme=dark], [data-hb-theme=dark] *, .dark, .dark *), [data-hb-theme=dark], .dark);
+@custom-variant active (&:active, &.active);
+
+@import './theme.css';
+@import './root.css';
+@import './helpers/background.css';
+@import './components/component.css';
+@import './plugins/plugins.css';
+
+/* Legacy SCSS is kept for reference only — never scan it for class names. */
+@source not '../scss';
+
+/* React-only Suspense loader (components/common/PhoenixLoader) — ported from
+   the original phoenix-react _mixed.scss; the static gold has no counterpart.
+   The margin centers each 40px logo on the container so the ripple scales from
+   the true center (the keyframes own `transform`, so translate can't be used). */
+/* Route-level Suspense fallbacks render as direct children of .content, whose
+   min-height:100vh gives the loader's h-full nothing to inherit (percentages
+   don't resolve against min-height) — size those to the visible content area
+   so the ripple centers. Inline loaders (map/section placeholders) sit deeper
+   in the tree and keep plain h-full against their sized parent. */
+.content > .phoenix-loader {
+  min-height: calc(
+    100vh - var(--content-padding-top) - var(--footer-height) - 2rem
+  );
+  @variant sm {
+    min-height: calc(100vh - var(--content-padding-top) - var(--footer-height));
+  }
+}
+
+.logo-ripple {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  height: 40px;
+  width: 40px;
+  margin: -20px 0 0 -20px;
+}
+.ripple-1,
+.ripple-2,
+.ripple-3,
+.ripple-4 {
+  animation: phoenix-ripple 2s ease-out infinite;
+}
+.ripple-2 {
+  animation-delay: 0.5s;
+}
+.ripple-3 {
+  animation-delay: 1s;
+}
+.ripple-4 {
+  animation-delay: 1.5s;
+}
+@keyframes phoenix-ripple {
+  0% {
+    transform: rotate(0) scale(1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: rotate(30deg) scale(4);
+    opacity: 0;
+  }
+}

@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Card, Col, Nav, Pagination, Row, Stack, Tab } from 'react-bootstrap';
+import { useState } from 'react';
+import { Card, Col, Pagination, Row, Tabs } from '@hummingbirdui/react';
 import { Link } from 'react-router';
 import product23 from 'assets/img/products/23.png';
 import ProductSpecificationTables from './ProductSpecificationTables';
@@ -12,7 +12,7 @@ import ReviewModal from 'components/modals/ReviewModal';
 import UsuallyBoughtTogetherCard from 'components/cards/UsuallyBoughtTogetherCard';
 import { suggestedProducts } from 'data/e-commerce/products';
 import useLightbox from 'hooks/useLightbox';
-import Lightbox from 'components/base/LightBox';
+import Lightbox from 'components/base/Lightbox';
 import {
   faChevronLeft,
   faChevronRight
@@ -23,26 +23,20 @@ const ProductDetailsTab = () => {
   const { lightboxProps, openLightbox } = useLightbox([product23]);
   return (
     <>
-      <Tab.Container defaultActiveKey="description">
-        <Nav variant="underline" className="mb-4">
-          <Nav.Item>
-            <Nav.Link eventKey="description">Description</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link eventKey="specification">Specification</Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link eventKey="reviews">Ratings & reviews</Nav.Link>
-          </Nav.Item>
-        </Nav>
-        <Row className="gx-3 gy-7">
+      <Tabs defaultValue="description">
+        <Tabs.List variant="underline" className="text-md mb-6">
+          <Tabs.Trigger value="description">Description</Tabs.Trigger>
+          <Tabs.Trigger value="specification">Specification</Tabs.Trigger>
+          <Tabs.Trigger value="reviews">Ratings & reviews</Tabs.Trigger>
+        </Tabs.List>
+        <Row className="gx-4 gy-12">
           <Col xs={12} lg={7} xl={8}>
-            <Tab.Content>
-              <Tab.Pane
-                eventKey="description"
-                className="text-body-emphasis pe-lg-6 pe-xl-12"
+            <div className="tab-content">
+              <Tabs.Content
+                value="description"
+                className="text-emphasis lg:pe-10 xl:pe-24"
               >
-                <p className="mb-5">
+                <p className="mb-8">
                   CUPERTINO, CA , The M1 CPU allows Apple to deliver an all-new
                   iMac with a lot more compact and impressively thin design. The
                   new iMac delivers tremendous performance in an
@@ -68,7 +62,7 @@ const ProductDetailsTab = () => {
                   <img
                     src={product23}
                     alt=""
-                    className="img-fluid mb-5 rounded-3"
+                    className="mb-8 rounded-lg"
                     onClick={() => openLightbox(1)}
                   />
                 </Link>
@@ -90,73 +84,79 @@ const ProductDetailsTab = () => {
                   ever in a Mac, and Touch ID, combined with M1's incredible
                   performance and macOS Big Sur's power."
                 </p>
-              </Tab.Pane>
-              <Tab.Pane eventKey="specification" className="pe-lg-6 pe-xl-12">
+              </Tabs.Content>
+              <Tabs.Content value="specification" className="lg:pe-10 xl:pe-24">
                 <ProductSpecificationTables />
-              </Tab.Pane>
-              <Tab.Pane eventKey="reviews">
-                <Card>
-                  <Card.Header className="pb-0 border-bottom-0">
-                    <Stack
-                      gap={3}
-                      direction="horizontal"
-                      className="flex-wrap justify-content-between"
-                    >
-                      <div className="d-flex align-items-center flex-wrap">
-                        <h2 className="fw-bolder me-3">
+              </Tabs.Content>
+              <Tabs.Content value="reviews">
+                <Card className="bg-soft border border-subtle">
+                  <Card.Header className="pb-0 border-b-0">
+                    <div className="flex flex-wrap justify-between gap-4">
+                      <div className="flex items-center flex-wrap">
+                        <h2 className="font-black me-4">
                           4.9
-                          <span className="fs-8 text-body-quaternary fw-bold">
+                          <span className="text-base text-soft font-bold">
                             /5
                           </span>
                         </h2>
-                        <div className="me-3">
+                        <div className="me-4">
                           <Rating
                             initialValue={4.5}
                             readonly
-                            iconClass="fs-6"
+                            iconClass="text-xl"
                           />
                         </div>
-                        <p className="text-body mb-0 fw-semibold fs-7">
+                        <p className="text-default mb-0 font-semibold text-lg">
                           6548 ratings and 567 reviews
                         </p>
                       </div>
                       <Button
                         variant="primary"
-                        className="rounded-pill"
+                        className="rounded-full"
                         onClick={() => setOpenReviewModal(true)}
                       >
                         Rate this product
                       </Button>
-                    </Stack>
+                    </div>
                   </Card.Header>
                   <Card.Body>
                     {productReviews.map(review => (
                       <ProductReview key={review.id} review={review} />
                     ))}
 
-                    <Pagination className="mb-0 justify-content-center">
-                      <Pagination.Prev>
-                        <FontAwesomeIcon icon={faChevronLeft} />
-                      </Pagination.Prev>
-                      <Pagination.Item>1</Pagination.Item>
-                      <Pagination.Item>2</Pagination.Item>
-                      <Pagination.Item>3</Pagination.Item>
-                      <Pagination.Item active>4</Pagination.Item>
-                      <Pagination.Item>5</Pagination.Item>
-                      <Pagination.Next>
-                        <FontAwesomeIcon icon={faChevronRight} />
-                      </Pagination.Next>
-                    </Pagination>
+                    <div className="flex justify-center">
+                      <Pagination>
+                        <Pagination.Content className="mb-0">
+                          <Pagination.Item>
+                            <Pagination.Link href="#!">
+                              <FontAwesomeIcon icon={faChevronLeft} />
+                            </Pagination.Link>
+                          </Pagination.Item>
+                          {[1, 2, 3, 4, 5].map(page => (
+                            <Pagination.Item key={page} active={page === 4}>
+                              <Pagination.Link href="#!">
+                                {page}
+                              </Pagination.Link>
+                            </Pagination.Item>
+                          ))}
+                          <Pagination.Item>
+                            <Pagination.Link href="#!">
+                              <FontAwesomeIcon icon={faChevronRight} />
+                            </Pagination.Link>
+                          </Pagination.Item>
+                        </Pagination.Content>
+                      </Pagination>
+                    </div>
                   </Card.Body>
                 </Card>
-              </Tab.Pane>
-            </Tab.Content>
+              </Tabs.Content>
+            </div>
           </Col>
           <Col xs={12} lg={5} xl={4}>
             <UsuallyBoughtTogetherCard products={suggestedProducts} />
           </Col>
         </Row>
-      </Tab.Container>
+      </Tabs>
       <ReviewModal
         show={openReviewModal}
         handleClose={() => setOpenReviewModal(false)}

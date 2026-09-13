@@ -1,64 +1,51 @@
-import React from 'react';
 import { HighlightItem } from 'data/travel-agency/customer/trip';
 import useLightbox from 'hooks/useLightbox';
-import { Col, Row } from 'react-bootstrap';
+import { Row } from '@hummingbirdui/react';
 import { Link } from 'react-router';
-import classNames from 'classnames';
-import Lightbox from 'components/base/LightBox';
+import Lightbox from 'components/base/Lightbox';
 
 interface TripDetailsAlbumProps {
   imageItems: HighlightItem[];
 }
 
-interface LightBoxItemProps {
-  item: HighlightItem;
-  handleImageClick: () => void;
-  isLast: boolean;
-}
-
-const LightBoxItem = ({
-  item,
-  handleImageClick,
-  isLast
-}: LightBoxItemProps) => {
-  return (
-    <div
-      onClick={handleImageClick}
-      className={classNames('cursor-pointer', {
-        'position-relative rounded-2 overflow-hidden': isLast
-      })}
-    >
-      <img src={item.image} alt="" className="img-fluid rounded-2" />
-      {isLast && (
-        <div className="position-absolute w-100 h-100 left-0 top-0 d-flex flex-center bg-black bg-opacity-50">
-          <Link
-            to="/apps/travel-agency/hotel/customer/gallery"
-            className="text-white stretched-link fs-7 fs-lg-5 fw-bolder"
-          >
-            24+
-          </Link>
-        </div>
-      )}
-    </div>
-  );
-};
-
+/** thumbnail grid in phoenix-tailwind mixins/travel-agency/trip/TripGallery.pug */
 const TripDetailsAlbum = ({ imageItems }: TripDetailsAlbumProps) => {
   const { lightboxProps, openLightbox } = useLightbox(
     imageItems.map(image => image.largeImage)
   );
 
   return (
-    <Row className="g-2 g-md-3">
-      {imageItems.map((image, index) => (
-        <Col key={image.id} xs={4}>
-          <LightBoxItem
-            item={image}
-            handleImageClick={() => openLightbox(index + 1)}
-            isLast={imageItems.length - 1 === index}
-          />
-        </Col>
+    <Row className="g-2 md:g-4">
+      {imageItems.slice(0, 5).map((image, index) => (
+        <div className="col-4" key={image.id}>
+          <a
+            className="cursor-pointer"
+            data-gallery="trip-details-gallery"
+            onClick={() => openLightbox(index + 1)}
+          >
+            <img src={image.image} alt="" className="rounded-md" />
+          </a>
+        </div>
       ))}
+      <div className="col-4">
+        <div className="relative rounded-md overflow-hidden">
+          <a
+            className="cursor-pointer"
+            data-gallery="trip-details-gallery"
+            onClick={() => openLightbox(imageItems.length)}
+          >
+            <img src={imageItems[5].image} alt="" height={43} />
+          </a>
+          <div className="absolute size-full left-0 top-0 flex flex-center bg-black/50">
+            <Link
+              to="/apps/travel-agency/hotel/customer/gallery"
+              className="text-white stretched-link text-lg lg:text-2xl font-extrabold"
+            >
+              24+
+            </Link>
+          </div>
+        </div>
+      </div>
       <Lightbox {...lightboxProps} />
     </Row>
   );

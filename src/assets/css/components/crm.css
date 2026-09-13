@@ -1,0 +1,169 @@
+.lead-details-container {
+  .nav-underline-scrollspy {
+    @apply z-1014 top-[calc(var(--navbar-top-height)+1px)];
+  }
+}
+
+.deal-details {
+  .nav-link {
+    @apply text-(--text-color-emphasis) font-semibold;
+    .tab-icon-color {
+      @apply text-(--text-color-subtle);
+    }
+    &.active {
+      @apply text-(--color-primary);
+      .tab-icon-color {
+        @apply text-(--color-primary);
+      }
+    }
+  }
+}
+
+.sticky-leads-sidebar {
+  @apply sticky top-[calc(var(--navbar-top-height)+21px)] z-1015;
+}
+.leads-table {
+  th {
+    @apply relative after:absolute top-7/20;
+  }
+}
+
+.lead-details-offcanvas {
+  @apply p-6 pt-4 max-w-87.5 top-(--navbar-top-height)!
+  h-[calc(100vh-var(--navbar-top-height))]
+  md:static! md:top-4! md:p-0! md:translate-none! md:max-w-[unset] md:h-auto;
+}
+
+/* .icon-wrapper-sm {
+  position: relative;
+  display: inline-block;
+  &::before {
+    position: absolute;
+
+    content: '';
+    height: 1.299rem;
+    width: 1.299rem;
+    border-radius: 0.243rem;
+    top: 0.5rem;
+    left: 0.2rem;
+  }
+} */
+
+/* .shadow-primary-100 {
+  &:before {
+    background-color: rgba(var(--#{$prefix}primary-rgb), 0.3);
+  }
+} */
+/* .shadow-info-100 {
+  &:before {
+    background-color: rgba(var(--#{$prefix}info-rgb), 0.3);
+  }
+} */
+
+/* .list-group-item {
+  &.list-group-crm {
+    padding: 0.3rem 0;
+  }
+} */
+
+/* .echart-contacts-width {
+  min-width: 19rem !important;
+  min-height: 320px;
+  overflow: hidden;
+  @include media-breakpoint-up(sm) {
+    min-width: unset !important;
+  }
+  @include media-breakpoint-up(md) {
+    min-height: 435px !important;
+  }
+  @include media-breakpoint-up(lg) {
+    min-height: 320px !important;
+  }
+  @include media-breakpoint-between(xl, xxl) {
+    min-height: 430px !important;
+  }
+} */
+
+.table-stats {
+  tr {
+    th {
+      @apply sm:nth-1:w-1/2 sm:nth-2:w-1/20 sm:nth-3:w-9/20;
+    }
+    td {
+      @apply table-row sm:table-cell nth-2:hidden sm:nth-2:table-cell;
+    }
+  }
+}
+
+.reports-details-chart-table {
+  tbody {
+    tr {
+      &:last-child {
+        td {
+          @apply border-b-0 pb-0!;
+        }
+      }
+    }
+  }
+}
+
+.deals {
+  @apply whitespace-nowrap w-[146.06rem]
+  h-[calc(100vh-var(--navbar-top-height)-15.625rem-var(--footer-height))] 
+  xl:h-[calc(100vh-var(--navbar-top-height)-12.375rem-var(--footer-height))];
+
+  .deals-col {
+    @apply w-91.5 h-full inline-block align-top
+    whitespace-nowrap select-none;
+
+    .deals-items-container {
+      @apply h-[calc(100%-5.25rem)];
+      .sortable-ghost {
+        @apply relative 
+        before:absolute
+        before:content-['']
+        before:inset-0 
+        before:z-1000 
+        before:rounded-sm
+        before:bg-(--kanban-ghost-bg);
+      }
+      .sortable-drag {
+        .card {
+          @apply border-0! -rotate-5! top-1.25;
+        }
+      }
+      .dropdown-indicator-icon {
+        @apply end-6 top-5;
+        .fa-angle-down {
+          @apply transition-transform duration-500 ease-initial;
+        }
+      }
+      [aria-expanded='true'] {
+        &.dropdown-indicator-icon {
+          .fa-angle-down {
+            @apply rotate-180;
+          }
+        }
+        & ~ .deals-company-agent {
+          @apply hidden!;
+        }
+        & ~ .deals-items-head {
+          .deals-revenue {
+            @apply hidden!;
+          }
+          .deals-category {
+            @apply flex!;
+          }
+        }
+      }
+    }
+  }
+}
+
+.kanban-deals-content {
+  @apply px-0! fixed! left-0 right-0;
+}
+
+.crm-deals-breadcrumb {
+  @apply px-6 lg:px-10;
+}

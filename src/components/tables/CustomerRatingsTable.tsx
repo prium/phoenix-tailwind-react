@@ -23,7 +23,7 @@ const columns: ColumnDef<CustomerReview>[] = [
     cell: ({ row: { original } }) => {
       const { product } = original;
       return (
-        <Link to="#!" className="fw-semibold line-clamp-1">
+        <Link to="#!" className="font-semibold line-clamp-1">
           {product}
         </Link>
       );
@@ -39,7 +39,7 @@ const columns: ColumnDef<CustomerReview>[] = [
     header: 'RATING',
     cell: ({ row: { original } }) => {
       const { rating } = original;
-      return <Rating readonly initialValue={rating} iconClass="fs-10" />;
+      return <Rating readonly initialValue={rating} iconClass="text-sm" />;
     },
     meta: {
       headerProps: { style: { width: '10%' } }
@@ -51,7 +51,7 @@ const columns: ColumnDef<CustomerReview>[] = [
     cell: ({ row: { original } }) => {
       const { review } = original;
       return (
-        <p className="fw-semibold text-body-highlight mb-0 line-clamp-2">
+        <p className="font-semibold text-highlight mb-0 line-clamp-2">
           {review.slice(0, 134)}
           {review.length > 134 && (
             <>
@@ -78,7 +78,7 @@ const columns: ColumnDef<CustomerReview>[] = [
           bg={badgeBg}
           variant="phoenix"
           iconPosition="end"
-          className="fs-10"
+          className="text-sm"
           icon={<FeatherIcon icon={icon} size={12} className="ms-1" />}
         >
           {title}
@@ -92,14 +92,14 @@ const columns: ColumnDef<CustomerReview>[] = [
   },
   {
     accessorKey: 'time',
-    header: 'Date',
+    header: 'DATE',
     cell: ({ row: { original } }) => {
       const { time } = original;
-      return <p className="text-body-highlight mb-0">{time}</p>;
+      return <p className="text-highlight mb-0">{time}</p>;
     },
     meta: {
       headerProps: { className: 'text-end', style: { width: '10%' } },
-      cellProps: { className: 'text-end white-space-nowrap' }
+      cellProps: { className: 'text-end whitespace-nowrap' }
     }
   },
   {
@@ -132,10 +132,10 @@ const CustomerRatingsTable = () => {
   return (
     <>
       <AdvanceTableProvider {...table}>
-        <div className="border-y border-translucent">
+        <div className="border-y border-subtle">
           <AdvanceTable
-            tableProps={{ className: 'phoenix-table fs-9 mb-0' }}
-            rowClassName="hover-actions-trigger btn-reveal-trigger position-static"
+            tableProps={{ className: ' text-md mb-0' }}
+            rowClassName="hover-actions-trigger btn-reveal-trigger static"
           />
           <AdvanceTableFooter navBtn showViewAllBtn={false} />
         </div>

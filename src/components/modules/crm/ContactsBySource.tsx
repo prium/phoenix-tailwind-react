@@ -1,50 +1,42 @@
-import classNames from 'classnames';
+import { Col, Row } from '@hummingbirdui/react';
 import ContactsBySourceChart from 'components/charts/e-charts/ContactsBySourceChart';
 import ContactSourceItem from 'components/grid-list-items/ContactSourceItem';
 import { contactSourceData } from 'data/crm/dashboardData';
 import { useMemo } from 'react';
-import { Col, Row } from 'react-bootstrap';
 
+/** `+ContactBySources` in mixins/dashboard/CRM/Crm.pug */
 const ContactsBySource = () => {
-  const total = useMemo(() => {
-    return contactSourceData.reduce((acc, item) => acc + item.value, 0);
-  }, [contactSourceData]);
+  const total = useMemo(
+    () => contactSourceData.reduce((acc, item) => acc + item.value, 0),
+    []
+  );
 
   return (
     <Row>
-      <Col xs={12} sm={7} md={8} xxl={8} className="mb-md-3 mb-lg-0">
+      <Col sm={7} md={8} xxl={8} className="md:mb-4 lg:mb-0">
         <h3>New Contacts by Source</h3>
-        <p className="text-body-tertiary">
-          Payment received across all channels
-        </p>
+        <p className="text-subtle">Payment received across all channels</p>
         <Row className="g-0">
-          {contactSourceData.map((item, index) => (
+          {contactSourceData.map(item => (
             <Col xs={6} xl={4} key={item.name}>
               <ContactSourceItem
                 value={item.value}
                 label={item.name}
-                color={item.color}
-                className={classNames('border-translucent', {
-                  'border-bottom border-end': index === 0,
-                  'border-bottom border-end-md-0 border-end-xl': index === 1,
-                  'border-bottom border-end border-end-md border-end-xl-0':
-                    index === 2,
-                  'border-end-xl border-bottom border-bottom-xl-0': index === 3,
-                  'border-end': index === 4
-                })}
+                iconClass={item.iconClass}
+                className={item.borderClass}
               />
             </Col>
           ))}
         </Row>
       </Col>
-      <Col sm={5} md={4} xxl={4} className="my-3 my-sm-0">
-        <div className="position-relative d-flex flex-center mb-sm-4 mb-xl-0 echart-contact-by-source-container mt-sm-7 mt-lg-4 mt-xl-0">
-          <ContactsBySourceChart style={{ height: 245, width: '100%' }} />
-          <div
-            className="position-absolute rounded-circle bg-primary-subtle top-50 start-50 translate-middle d-flex flex-center"
-            style={{ height: '100px', width: '100px' }}
-          >
-            <h3 className="mb-0 text-primary-dark fw-bolder">{total}</h3>
+      <Col sm={5} md={4} xxl={4} className="my-4 sm:my-0">
+        <div className="relative flex flex-center sm:mb-6 xl:mb-0 echart-contact-by-source-container sm:mt-12 lg:mt-6 xl:mt-0">
+          <ContactsBySourceChart
+            className="min-h-61.25 w-full"
+            style={{ height: 'auto', width: '100%' }}
+          />
+          <div className="size-25 rounded-full bg-primary-subtle absolute top-1/2 left-1/2 -translate-1/2 flex flex-center">
+            <h3 className="mb-0 text-primary-dark font-extrabold">{total}</h3>
           </div>
         </div>
       </Col>

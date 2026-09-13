@@ -1,5 +1,5 @@
-import classNames from 'classnames';
-import React, { CSSProperties, PropsWithChildren, useEffect } from 'react';
+import { cn } from '@hummingbirdui/react';
+import { CSSProperties, PropsWithChildren, useEffect } from 'react';
 
 interface PhoenixOffcanvasProps {
   open: boolean;
@@ -17,7 +17,7 @@ export const PhoenixOffcanvasContainer = ({
   className
 }: PropsWithChildren<{ className?: string }>) => {
   return (
-    <div className={classNames(className, 'phoenix-offcanvas-container')}>
+    <div className={cn(className, 'phoenix-offcanvas-container')}>
       {children}
     </div>
   );
@@ -49,7 +49,7 @@ const PhoenixOffcanvas = ({
   return (
     <>
       <div
-        className={classNames(className, 'phoenix-offcanvas', {
+        className={cn(className, 'phoenix-offcanvas', {
           show: open,
           'phoenix-offcanvas-fixed': fixed,
           [`phoenix-offcanvas-${placement}`]: placement
@@ -60,10 +60,7 @@ const PhoenixOffcanvas = ({
       </div>
       {!noBackdrop && (
         <div
-          className={classNames(
-            backdropClassName,
-            'phoenix-offcanvas-backdrop'
-          )}
+          className={cn(backdropClassName, 'phoenix-offcanvas-backdrop')}
           onClick={onHide}
         />
       )}

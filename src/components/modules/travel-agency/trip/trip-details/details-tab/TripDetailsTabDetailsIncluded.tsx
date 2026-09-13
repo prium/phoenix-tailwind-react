@@ -1,51 +1,38 @@
-import React from 'react';
 import { IncludeOrExclude } from 'data/travel-agency/customer/trip';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {
-  faCircle,
-  faThumbsDown,
-  faThumbsUp
-} from '@fortawesome/free-solid-svg-icons';
+import { faThumbsDown, faThumbsUp } from '@fortawesome/free-solid-svg-icons';
+import TripDetailsListItem from './TripDetailsListItem';
 
 interface TripDetailsTabDetailsIncludedProps {
   includedItems: IncludeOrExclude;
 }
 
+/** "What are included or excluded" body in mixins/travel-agency/trip/TripDetails.pug */
 const TripDetailsTabDetailsIncluded = ({
   includedItems
 }: TripDetailsTabDetailsIncludedProps) => {
   return (
-    <div className="px-4 py-6">
-      <h5 className="mb-3 text-body-highlight">
+    <div className="py-10 px-6">
+      <h5 className="mb-4 text-highlight">
         <FontAwesomeIcon icon={faThumbsUp} className="me-2" />
         Included
       </h5>
-      <ul className="list-unstyled mb-4">
+      <ul className="list-none p-0 mb-6">
         {includedItems.include.map(item => (
-          <li key={item.id} className="mb-1 d-flex">
-            <FontAwesomeIcon
-              icon={faCircle}
-              className="text-secondary-light me-3 fs-11"
-              transform="down-13 shrink-4"
-            />
+          <TripDetailsListItem key={item.id}>
             {item.encompass}
-          </li>
+          </TripDetailsListItem>
         ))}
       </ul>
-      <h5 className="mb-3 text-body-highlight">
+      <h5 className="mb-4 text-highlight">
         <FontAwesomeIcon icon={faThumbsDown} className="me-2" />
         Excluded
       </h5>
-      <ul className="list-unstyled mb-0">
+      <ul className="list-none p-0 mb-0">
         {includedItems.exclude.map(item => (
-          <li key={item.id} className="mb-1 d-flex">
-            <FontAwesomeIcon
-              icon={faCircle}
-              className="text-secondary-light me-3 fs-11"
-              transform="down-13 shrink-4"
-            />
+          <TripDetailsListItem key={item.id}>
             {item.encompass}
-          </li>
+          </TripDetailsListItem>
         ))}
       </ul>
     </div>

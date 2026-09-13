@@ -7,7 +7,7 @@ interface OrderInfoItemProps {
 
 const OrderInfoItem = ({ icon, label }: OrderInfoItemProps) => {
   return (
-    <div className="d-flex align-items-center mb-1">
+    <div className="flex items-center mb-1">
       <FeatherIcon
         icon={icon}
         className="me-2"

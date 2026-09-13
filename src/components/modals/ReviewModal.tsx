@@ -1,50 +1,61 @@
 import Button from 'components/base/Button';
 import Rating from 'components/base/Rating';
-import { Form, Modal } from 'react-bootstrap';
+import { Dialog, Textarea } from '@hummingbirdui/react';
 import Dropzone from 'components/base/Dropzone';
+
 interface ReviewModalProps {
   show: boolean;
   handleClose: () => void;
 }
 
+/** `#reviewModal` in apps/e-commerce/landing/product-details.pug */
 const ReviewModal = ({ show, handleClose }: ReviewModalProps) => {
   return (
-    <Modal show={show} onHide={handleClose} centered>
-      <div className="p-4">
-        <div className="d-flex flex-between-center mb-3">
-          <h5 className="fs-8 mb-0">Your rating</h5>
-          <button className="btn p-0 fs-10" onClick={handleClose}>
+    <Dialog open={show} onOpenChange={open => !open && handleClose()}>
+      <Dialog.Content centered className="p-6" aria-describedby={undefined}>
+        <Dialog.Title className="sr-only">Rate this product</Dialog.Title>
+        <div className="flex flex-between-center mb-2">
+          <h5 className="text-base mb-0">Your rating</h5>
+          <button type="button" className="btn p-0 text-sm" onClick={handleClose}>
             Clear
           </button>
         </div>
-        <Rating emptyIconColor="warning" iconClass="fs-5" className="mb-3" />
-        <div className="mb-3">
-          <h5 className="text-body-highlight mb-3">Your review</h5>
-          <Form.Control as="textarea" rows={5} />
+        <Rating emptyIconColor="warning" iconClass="text-2xl" className="mb-4" />
+        <div className="mb-4">
+          <h5 className="text-highlight mb-4">Your review</h5>
+          <Textarea rows={5} placeholder="Write your review" />
         </div>
         <Dropzone
-          className="mb-3 bg-body"
+          className="mb-4 bg-default"
           size="sm"
           accept={{
             'image/*': ['.png', '.gif', '.jpeg', '.jpg']
           }}
         />
-        <div className="d-sm-flex flex-between-center">
-          <Form.Check type="checkbox" id="confirmCheck" className="flex-1">
-            <Form.Check.Input type="checkbox" defaultChecked />
-            <Form.Check.Label className="text-body-emphasis">
+        <div className="sm:flex flex-between-center">
+          <div className="form-check flex-1">
+            <input
+              type="checkbox"
+              id="reviewAnonymously"
+              className="form-check-input"
+              defaultChecked
+            />
+            <label
+              htmlFor="reviewAnonymously"
+              className="form-check-label mb-0 text-emphasis font-semibold"
+            >
               Review anonymously
-            </Form.Check.Label>
-          </Form.Check>
-          <button className="btn ps-0" onClick={handleClose}>
+            </label>
+          </div>
+          <button type="button" className="btn ps-0" onClick={handleClose}>
             Close
           </button>
-          <Button variant="primary" className="rounded-pill">
+          <Button variant="primary" className="rounded-full">
             Submit
           </Button>
         </div>
-      </div>
-    </Modal>
+      </Dialog.Content>
+    </Dialog>
   );
 };
 

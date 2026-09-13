@@ -1,4 +1,3 @@
-import { Col, FloatingLabel, Form, Modal, Row } from 'react-bootstrap';
 import boardIcon from 'assets/img/kanban/board.png';
 import Button from 'components/base/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -8,6 +7,7 @@ import {
   faPlus,
   faXmark
 } from '@fortawesome/free-solid-svg-icons';
+import { Dialog, FloatingLabel, Input, Select } from '@hummingbirdui/react';
 import { useKanbanContext } from 'providers/KanbanProvider';
 import PhoenixFloatingLabel from 'components/base/PhoenixFloatingLabel';
 import usePhoenixForm from 'hooks/usePhoenixForm';
@@ -45,7 +45,8 @@ const KanbanAddListModal = () => {
     const list = {
       id: getRandomNumber(20, 100),
       title: formData.name,
-      borderColor: formData.color,
+      borderClass: 'border-primary',
+      underlineClass: 'after:bg-(--color-primary)',
       tasks: []
     };
 
@@ -60,87 +61,110 @@ const KanbanAddListModal = () => {
   };
 
   return (
-    <Modal show={openAddListModal} centered onHide={handleClose}>
-      <Modal.Header className="p-4 d-flex gap-2 border-0">
-        <img src={boardIcon} height={24} width={18} />
-        <h3 className="mb-0 text-body-emphasis fw-semibold flex-1">
-          Phoenix Kanban
-        </h3>
-        <Button className="p-0 ms-auto" onClick={handleClose}>
-          <FontAwesomeIcon icon={faXmark} className="fs-7" />
-        </Button>
-      </Modal.Header>
-      <Modal.Body className="p-4 pt-0">
-        <form onSubmit={handleSubmit}>
-          <Row className="g-3 mb-4">
-            <Col xs={12}>
-              <PhoenixFloatingLabel
-                label="Column Name"
-                className="flex-1"
-                startComponent={<FontAwesomeIcon icon={faBars} />}
-                endComponent={
-                  <button className="btn p-0 lh-1">
+    <Dialog
+      open={openAddListModal}
+      onOpenChange={open => !open && handleClose()}
+    >
+      <Dialog.Content centered aria-describedby={undefined}>
+        <div className="modal-header p-6 flex gap-2 border-0">
+          <img src={boardIcon} height={24} width={18} alt="" />
+          <Dialog.Title asChild>
+            <h3 className="mb-0 text-emphasis font-semibold flex-1">
+              Phoenix Kanban
+            </h3>
+          </Dialog.Title>
+          <Button className="p-0 ms-auto" onClick={handleClose}>
+            <FontAwesomeIcon icon={faXmark} className="text-lg" />
+          </Button>
+        </div>
+        <div className="modal-body p-6 pt-0">
+          <form onSubmit={handleSubmit}>
+            <div className="row g-4 mb-6">
+              <div className="col-12">
+                <PhoenixFloatingLabel
+                  label="Column Name"
+                  className="flex-1"
+                  htmlFor="kanbanAddListName"
+                  startComponent={
                     <FontAwesomeIcon
-                      className="text-light"
-                      icon={faCircleXmark}
+                      icon={faBars}
+                      className="form-control-icon-start text-subtle text-md"
                     />
-                  </button>
-                }
-              >
-                <Form.Control
-                  type="text"
-                  placeholder="Board Name"
-                  name="name"
-                  value={formData.name}
-                  onChange={onChange}
-                />
-              </PhoenixFloatingLabel>
-            </Col>
-            <Col sm={6}>
-              <FloatingLabel label="Column No.">
-                <Form.Select
-                  name="columnNo"
-                  value={formData.columnNo}
-                  onChange={onChange}
+                  }
+                  endComponent={
+                    <button
+                      className="btn p-0 leading-none absolute top-1/2 -translate-y-1/2 end-4"
+                      type="button"
+                      onClick={() => setFormData({ ...formData, name: '' })}
+                    >
+                      <FontAwesomeIcon
+                        className="text-light"
+                        icon={faCircleXmark}
+                      />
+                    </button>
+                  }
                 >
-                  {boardLists.map((list, index) => (
-                    <option key={list.id} value={index + 1}>
-                      {index + 1}
+                  <Input
+                    id="kanbanAddListName"
+                    type="text"
+                    placeholder="Board Name"
+                    name="name"
+                    value={formData.name}
+                    onChange={onChange}
+                  />
+                </PhoenixFloatingLabel>
+              </div>
+              <div className="sm:col-6">
+                <FloatingLabel
+                  label="Column No."
+                  htmlFor="kanbanAddListColumnNo"
+                >
+                  <Select
+                    id="kanbanAddListColumnNo"
+                    name="columnNo"
+                    value={formData.columnNo}
+                    onChange={onChange}
+                  >
+                    {boardLists.map((list, index) => (
+                      <option key={list.id} value={index + 1}>
+                        {index + 1}
+                      </option>
+                    ))}
+                    <option value={boardLists.length + 1}>
+                      {boardLists.length + 1}
                     </option>
-                  ))}
-                  <option value={boardLists.length + 1}>
-                    {boardLists.length + 1}
-                  </option>
-                </Form.Select>
-              </FloatingLabel>
-            </Col>
-            <Col sm={6}>
-              <FloatingLabel label="Color">
-                <Form.Control
-                  type="color"
-                  className="kanban-color-picker"
-                  name="color"
-                  value={formData.color}
-                  onChange={onChange}
-                />
-              </FloatingLabel>
-            </Col>
-          </Row>
-          <div className="d-flex gap-3 flex-between-center">
-            <Button variant="link" className="p-0" type="button">
-              Edit Columns
-            </Button>
-            <Button
-              variant="primary"
-              startIcon={<FontAwesomeIcon icon={faPlus} />}
-              type="submit"
-            >
-              Add Column
-            </Button>
-          </div>
-        </form>
-      </Modal.Body>
-    </Modal>
+                  </Select>
+                </FloatingLabel>
+              </div>
+              <div className="sm:col-6">
+                <FloatingLabel label="Color" htmlFor="kanbanAddListColor">
+                  <Input
+                    id="kanbanAddListColor"
+                    type="color"
+                    className="kanban-color-picker"
+                    name="color"
+                    value={formData.color}
+                    onChange={onChange}
+                  />
+                </FloatingLabel>
+              </div>
+            </div>
+            <div className="flex gap-4 flex-between-center">
+              <Button variant="link" className="p-0" type="button">
+                Edit Columns
+              </Button>
+              <Button
+                variant="primary"
+                startIcon={<FontAwesomeIcon icon={faPlus} />}
+                type="submit"
+              >
+                Add Column
+              </Button>
+            </div>
+          </form>
+        </div>
+      </Dialog.Content>
+    </Dialog>
   );
 };
 

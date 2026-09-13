@@ -4,82 +4,99 @@ import {
   faLink,
   faListCheck,
   faPaperclip,
+  faPencil,
   faPlus,
   faThumbsUp,
-  faXmark,
-  faPencil,
-  faTimes
+  faXmark
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Drawer, Input, Select, Textarea } from '@hummingbirdui/react';
+import { UilCalendarAlt } from '@iconscout/react-unicons';
 import Button from 'components/base/Button';
 import DatePicker from 'components/base/DatePicker';
 import Dropzone from 'components/base/Dropzone';
+import Unicon from 'components/base/Unicon';
 import AvatarDropdown from 'components/common/AvatarDropdown';
 import { members } from 'data/users';
 import { gantt, Task } from 'dhtmlx-gantt';
 import { useEffect, useState } from 'react';
-import { Form, Offcanvas, Row, Col, Card, Modal } from 'react-bootstrap';
 import { Link } from 'react-router';
-// declare type DateOption = Date | string | number;
+import GanttConfirmDeleteModal from './GanttConfirmDeleteModal';
 
+const subtasks = [
+  { id: 'subtask1', label: 'Study Dragons' },
+  { id: 'subtask2', label: 'Procrastinate a bit' },
+  { id: 'subtask3', label: 'Staring at the notebook for 5 mins', isLast: true }
+];
+
+/** `+SubTasks` in mixins/gantt-chart/GanttChart.pug */
 const Subtasks = () => (
   <>
-    <h5 className="mb-3 mt-4">Subtasks</h5>
+    <h5 className="mb-4 mt-6">Subtasks</h5>
 
-    {[
-      { id: '1', label: 'Study Dragons' },
-      { id: '2', label: 'Procrastinate a bit' },
-      { id: '3', label: 'Staring at the notebook for 5 mins', isLast: true }
-    ].map(({ id, label, isLast }) => (
+    {subtasks.map(({ id, label, isLast }) => (
       <div
         key={id}
-        className={`d-flex flex-between-center hover-actions-trigger py-3 border-top ${
-          isLast ? ' border-bottom mb-3' : ''
+        className={`flex flex-between-center hover-actions-trigger py-4 border-t${
+          isLast ? ' border-b mb-4' : ''
         }`}
       >
-        <Form.Check
-          id={`subtask${id}`}
-          className="mb-1 mb-md-0 d-flex align-items-center lh-1 min-h-auto"
-        >
-          <Form.Check.Input
+        <div className="form-check mb-1 md:mb-0 flex items-center min-h-auto">
+          <input
             type="checkbox"
-            className="subtask-checkbox form-check-input form-check-line-through mt-0 me-3"
+            id={id}
+            className="subtask-checkbox form-check-input form-check-line-through mt-0 me-4"
           />
-          <Form.Check.Label className="mb-0 fs-8">{label}</Form.Check.Label>
-        </Form.Check>
-
-        <div className="hover-actions end-0">
-          <button className="btn btn-sm me-1 fs-10 text-body-tertiary px-0 me-3">
+          <label
+            className="form-check-label mb-0 text-base leading-none"
+            htmlFor={id}
+          >
+            {label}
+          </label>
+        </div>
+        <div className="hover-actions right-0">
+          <button
+            type="button"
+            className="btn btn-sm text-sm text-subtle px-0 me-4"
+          >
             <FontAwesomeIcon icon={faPencil} />
           </button>
-          <button className="btn btn-sm text-body-tertiary px-0">
-            <FontAwesomeIcon icon={faXmark} className="fs-8" />
+          <button type="button" className="btn btn-sm text-subtle px-0">
+            <FontAwesomeIcon icon={faXmark} className="text-base" />
           </button>
         </div>
       </div>
     ))}
 
-    <Button variant="link" href="#!" className="fw-bold fs-9 p-0">
+    <a href="#!" className="font-bold text-md">
       <FontAwesomeIcon icon={faPlus} className="me-1" />
       Add subtask
-    </Button>
+    </a>
   </>
 );
 
+/** `span.uil.uil-calendar-alt.flatpickr-icon.text-default` in the gold offcanvas */
+const flatpickrIcon = (
+  <Unicon
+    icon={UilCalendarAlt}
+    lineBox
+    wrapperClassName="flatpickr-icon text-default"
+    fill="currentColor"
+    size={16}
+  />
+);
+
+/** `+EditTaskOffcanvas` (#taskDetailsOffcanvas) in mixins/gantt-chart/GanttChart.pug */
 const GanttOffcanvas = () => {
   const [show, setShow] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [task, setTask] = useState<Task>();
   const [taskTitle, setTaskTitle] = useState('title');
-  const [taskStart, setTaskStart] = useState<Date | undefined>(
-    new Date(2024, 4, 20)
-  );
-  const [taskEnd, setTaskEnd] = useState<Date | undefined>(
-    new Date(2024, 4, 20)
-  );
-  const [taskDuration, setTaskDuration] = useState<number | undefined>(2);
+  const [taskStart, setTaskStart] = useState<Date | undefined>();
+  const [taskEnd, setTaskEnd] = useState<Date | undefined>();
+  const [taskDuration, setTaskDuration] = useState<number | undefined>();
+
   const handleClose = () => setShow(false);
-  const handleCloseModal = () => setShowModal(false);
 
   const handleTaskUpdate = () => {
     if (task) {
@@ -95,6 +112,7 @@ const GanttOffcanvas = () => {
       setShow(false);
     }
   };
+
   const handleTaskDelete = () => {
     if (task) {
       gantt.deleteTask(task.id);
@@ -103,383 +121,369 @@ const GanttOffcanvas = () => {
   };
 
   useEffect(() => {
-    const taskDoubleClickHandler = () => {
-      gantt.attachEvent('onTaskDblClick', id => {
-        const task = gantt?.getTask(id);
-        if (task) {
-          setTask(task);
-        }
-        setTaskTitle(task.text);
-        setTaskStart(task.start_date);
-        setTaskEnd(task.end_date);
-        setTaskDuration(task.duration);
-        setShow(true);
-        return false; // Prevent default lightbox
-      });
-    };
-    taskDoubleClickHandler();
+    const id = gantt.attachEvent('onTaskDblClick', taskId => {
+      const clicked = gantt.getTask(taskId);
+      if (clicked) {
+        setTask(clicked);
+        setTaskTitle(clicked.text);
+        setTaskStart(clicked.start_date);
+        setTaskEnd(clicked.end_date);
+        setTaskDuration(clicked.duration);
+      }
+      setShow(true);
+      return false; // Prevent default lightbox
+    });
+    return () => gantt.detachEvent(id);
   }, []);
 
   return (
     <>
-      <Offcanvas
-        className="gantt-offcanvas"
-        show={show}
-        onHide={handleClose}
-        placement="end"
-      >
-        <Offcanvas.Header className="border-bottom">
-          <div className="d-flex justify-content-between w-100">
-            <Button variant="phoenix-success" className="me-1 mb-1">
-              <FontAwesomeIcon
-                icon={faCheck}
-                className="me-2"
-                transform="shrink-3"
-              />
-              Mark Complete
-            </Button>
-
-            <div className="d-flex gap-2">
-              <Button variant="phoenix-secondary" className="btn-square px-2">
-                <FontAwesomeIcon icon={faThumbsUp} />
-              </Button>
-              <Button variant="phoenix-secondary" className="btn-square px-2">
-                <FontAwesomeIcon icon={faPaperclip} />
-              </Button>
-              <Button variant="phoenix-secondary" className="btn-square px-2">
-                <FontAwesomeIcon icon={faListCheck} />
-              </Button>
-              <Button variant="phoenix-secondary" className="btn-square px-2">
-                <FontAwesomeIcon icon={faLink} />
-              </Button>
+      <Drawer direction="right" open={show} onOpenChange={setShow}>
+        {/* the gold sizes `.gantt-offcanvas .offcanvas`; the drawer content is
+            portaled out of that wrapper, so the width lives on the content */}
+        <Drawer.Content
+          className="w-full max-w-157.5"
+          aria-describedby={undefined}
+        >
+          <Drawer.Title className="sr-only">Task details</Drawer.Title>
+          <Drawer.Header className="border-b">
+            <div className="flex justify-between w-full">
               <Button
-                onClick={() => setShow(false)}
                 variant="phoenix-secondary"
-                className="btn-square px-2"
+                className="me-1 mb-1 text-success"
               >
-                <FontAwesomeIcon icon={faXmark} />
+                <FontAwesomeIcon
+                  icon={faCheck}
+                  className="me-2"
+                  transform="shrink-3"
+                />
+                Mark Complete
               </Button>
-            </div>
-          </div>
-        </Offcanvas.Header>
-        <Offcanvas.Body>
-          <Form>
-            <Form.Group className="mb-3">
-              <Form.Control
-                type="text"
-                value={taskTitle}
-                onChange={e => setTaskTitle(e.target.value)}
-                placeholder="Task title"
-                className="fs-8"
-              />
-            </Form.Group>
-            <div className="mb-3">
-              <h5 className="mb-3">Assignee</h5>
-              <div className="d-flex">
-                {members.slice(0, 5).map(member => (
-                  <AvatarDropdown
-                    key={member.id}
-                    user={member}
-                    size="m"
-                    dropdownClass="d-inline-block border-0"
-                    className="me-2 rounded-pill border border-light-subtle"
-                  />
-                ))}
-                <Link
-                  to="#!"
-                  className="text-decoration-none text-body-secondary"
+
+              <div className="flex gap-2">
+                <Button variant="phoenix-secondary" className="btn-square px-2">
+                  <FontAwesomeIcon icon={faThumbsUp} />
+                </Button>
+                <Button variant="phoenix-secondary" className="btn-square px-2">
+                  <FontAwesomeIcon icon={faPaperclip} />
+                </Button>
+                <Button variant="phoenix-secondary" className="btn-square px-2">
+                  <FontAwesomeIcon icon={faListCheck} />
+                </Button>
+                <Button variant="phoenix-secondary" className="btn-square px-2">
+                  <FontAwesomeIcon icon={faLink} />
+                </Button>
+                <Button
+                  variant="phoenix-secondary"
+                  className="btn-square px-2"
+                  aria-label="Close"
+                  onClick={handleClose}
                 >
-                  <div className="circle-btn bg-body-secondary mx-auto">
-                    <FontAwesomeIcon icon={faPlus} transform="shrink-2" />
-                  </div>
-                </Link>
+                  <FontAwesomeIcon icon={faXmark} />
+                </Button>
               </div>
             </div>
-            <Row className="mt-3 gy-3">
-              <Col xs={6} sm={4}>
-                <Form.Group controlId="editTaskStartDate">
-                  <Form.Label className="form-label-header mb-2">
+          </Drawer.Header>
+
+          <Drawer.Body>
+            <Input
+              id="taskDetailsName"
+              type="text"
+              className="mb-4 text-base"
+              value={taskTitle}
+              onChange={e => setTaskTitle(e.target.value)}
+            />
+            <h5 className="mb-4">Assignee</h5>
+            <div className="flex">
+              {members.slice(0, 5).map(member => (
+                <AvatarDropdown
+                  key={member.id}
+                  user={member}
+                  size="m"
+                  dropdownClass="dropdown-toggle dropdown-caret-none"
+                  className="me-2 border border-subtle-subtle"
+                />
+              ))}
+              <Link to="#!" className="no-underline text-muted">
+                <div className="circle-btn bg-muted mx-auto">
+                  <FontAwesomeIcon icon={faPlus} transform="shrink-2" />
+                </div>
+              </Link>
+            </div>
+
+            <form id="taskForm">
+              <div className="row mt-4 gy-4">
+                <div className="col-6 sm:col-4">
+                  <label
+                    className="font-bold text-highlight mb-2"
+                    htmlFor="taskDetailsStartDate"
+                  >
                     Start Date
-                  </Form.Label>
+                  </label>
                   <DatePicker
-                    id="editTaskStartDate"
-                    onChange={date => {
-                      setTaskStart(Array.isArray(date) ? date[0] : date);
-                    }}
-                    options={{
-                      defaultDate: taskStart
-                    }}
+                    id="taskDetailsStartDate"
+                    icon={flatpickrIcon}
+                    options={{ defaultDate: taskStart }}
+                    onChange={date =>
+                      setTaskStart(Array.isArray(date) ? date[0] : date)
+                    }
                   />
-                </Form.Group>
-              </Col>
+                </div>
 
-              <Col xs={6} sm={4}>
-                <Form.Group controlId="EditTaskEndDate">
-                  <Form.Label className="form-label-header mb-2">
+                <div className="col-6 sm:col-4">
+                  <label
+                    className="font-bold text-highlight mb-2"
+                    htmlFor="taskDetailsEndDate"
+                  >
                     End Date
-                  </Form.Label>
+                  </label>
                   <DatePicker
-                    id="EditTaskEndDate"
+                    id="taskDetailsEndDate"
                     disabled
-                    onChange={date => {
-                      setTaskEnd(Array.isArray(date) ? date[0] : date);
-                    }}
-                    options={{
-                      defaultDate: taskEnd
-                    }}
+                    icon={flatpickrIcon}
+                    options={{ defaultDate: taskEnd }}
+                    onChange={date =>
+                      setTaskEnd(Array.isArray(date) ? date[0] : date)
+                    }
                   />
-                </Form.Group>
-              </Col>
+                </div>
 
-              <Col xs={6} sm={4}>
-                <Form.Group controlId="createTaskDuration">
-                  <Form.Label className="form-label-header mb-2">
+                <div className="col-6 sm:col-4">
+                  <label
+                    className="font-bold text-highlight mb-2"
+                    htmlFor="taskDetailsDuration"
+                  >
                     Duration{' '}
-                    <span className="text-body-quaternary fw-normal">
-                      (Days)
-                    </span>
-                  </Form.Label>
+                    <span className="text-soft font-normal">(Days)</span>
+                  </label>
                   <div className="form-icon-container">
-                    <Form.Control
+                    <Input
+                      id="taskDetailsDuration"
                       type="number"
-                      placeholder="Days"
-                      className="form-icon-input ps-6"
-                      value={taskDuration}
-                      onChange={e => setTaskDuration(parseInt(e.target.value))}
+                      placeholder="0 days"
+                      className="form-icon-input ps-10"
+                      value={taskDuration ?? ''}
+                      onChange={e =>
+                        setTaskDuration(
+                          e.target.value ? parseInt(e.target.value) : undefined
+                        )
+                      }
                     />
                     <FontAwesomeIcon
                       icon={faClock}
-                      className="fs-9 form-icon text-body"
+                      className="text-default text-md form-icon"
                     />
                   </div>
-                </Form.Group>
-              </Col>
+                </div>
 
-              <Col xs={6} sm={4}>
-                <Form.Group controlId="selectProject">
-                  <Form.Label className="form-label-header mb-2">
+                <div className="col-6 sm:col-4">
+                  <label
+                    className="font-bold text-highlight mb-2"
+                    htmlFor="selectProject"
+                  >
                     Select Project
-                  </Form.Label>
-                  <Form.Select aria-label="Default select example">
-                    <option defaultValue="selected">Our new projects</option>
+                  </label>
+                  <Select
+                    id="selectProject"
+                    aria-label="Default select example"
+                  >
+                    <option>Our new projects</option>
                     <option value="1">Phoenix</option>
                     <option value="2">Falcon</option>
                     <option value="3">Sparrow</option>
-                  </Form.Select>
-                </Form.Group>
-              </Col>
+                  </Select>
+                </div>
 
-              <Col xs={6} sm={4}>
-                <Form.Group controlId="selectPriority">
-                  <Form.Label className="form-label-header mb-2">
+                <div className="col-6 sm:col-4">
+                  <label
+                    className="font-bold text-highlight mb-2"
+                    htmlFor="priority"
+                  >
                     Priority
-                  </Form.Label>
-                  <Form.Select aria-label="Default select example">
-                    <option defaultValue="selected">Urgent</option>
+                  </label>
+                  <Select id="priority" aria-label="Default select example">
+                    <option>Urgent</option>
                     <option value="1">High</option>
                     <option value="2">Medium</option>
                     <option value="3">Low</option>
-                  </Form.Select>
-                </Form.Group>
-              </Col>
+                  </Select>
+                </div>
 
-              <Col xs={6} sm={4}>
-                <Form.Group controlId="selectStatus">
-                  <Form.Label className="form-label-header mb-2">
+                <div className="col-6 sm:col-4">
+                  <label
+                    className="font-bold text-highlight mb-2"
+                    htmlFor="onTrack"
+                  >
                     Status
-                  </Form.Label>
-                  <Form.Select aria-label="Default select example">
-                    <option defaultValue="selected">On track</option>
+                  </label>
+                  <Select id="onTrack" aria-label="Default select example">
+                    <option>On track</option>
                     <option value="1">One</option>
                     <option value="2">Two</option>
                     <option value="3">Three</option>
-                  </Form.Select>
-                </Form.Group>
-              </Col>
-            </Row>
-            <Card className="mt-4">
-              <Card.Body className="p-3">
-                <div className="d-flex justify-content-between align-items-center">
-                  <h4 className="mb-0">Dependency</h4>
-                  <Button variant="link" className="pe-0">
-                    Add new
-                  </Button>
+                  </Select>
                 </div>
+              </div>
 
-                <div className="bg-body p-3 mt-3 rounded">
-                  {/* First Dependency Row */}
-                  <Row className="gy-3">
-                    <Col sm={8}>
-                      <Form.Group controlId="Dependency1">
-                        <h5 className="mb-3">Dependency type</h5>
-                        <div className="d-sm-flex gap-3">
-                          <Form.Select aria-label="Dependency type 1">
-                            <option defaultValue="selected">Blocked by</option>
+              <div className="card mt-6">
+                <div className="card-body p-4">
+                  <div className="flex justify-between items-center">
+                    <h4 className="mb-0">Dependency</h4>
+                    <Button variant="link" className="pe-0">
+                      Add new
+                    </Button>
+                  </div>
+                  <div className="bg-default p-4 mt-4 rounded-md">
+                    <div className="row gy-4">
+                      <div className="sm:col-8">
+                        <h5 className="mb-4">Dependency type</h5>
+                        <div className="sm:flex gap-4">
+                          <Select
+                            id="Dependency1"
+                            aria-label="Default select example"
+                          >
+                            <option>Blocked by</option>
                             <option value="1">Blocking</option>
                             <option value="2">Paused</option>
-                          </Form.Select>
-                          <Form.Select
-                            aria-label="Dependency type 2"
-                            className="mt-2 mt-sm-0"
+                          </Select>
+                          <Select
+                            id="Dependency2div"
+                            aria-label="Default select example"
+                            className="mt-2 sm:mt-0"
                           >
-                            <option defaultValue="selected">
-                              Start to start
-                            </option>
+                            <option>Start to start</option>
                             <option value="1">Finish to Finish</option>
                             <option value="2">Start to Finish</option>
                             <option value="3">Finish to Start</option>
-                          </Form.Select>
+                          </Select>
                         </div>
-                      </Form.Group>
-                    </Col>
-
-                    <Col sm={4}>
-                      <Form.Group controlId="selectTask1">
-                        <h5 className="mb-3">Select task</h5>
-                        <Form.Select aria-label="Select task">
-                          <option defaultValue="selected">Select Task</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </Form.Select>
-                      </Form.Group>
-                    </Col>
-                  </Row>
-
-                  <hr className="my-4" />
-
-                  {/* Second Dependency Row */}
-                  <Row className="gy-3">
-                    <Col sm={8}>
-                      <Form.Group controlId="dependency3">
-                        <h5 className="mb-3">Dependency type</h5>
-                        <div className="d-sm-flex gap-3">
-                          <Form.Select aria-label="Dependency type 3">
-                            <option defaultValue="selected">Blocking</option>
+                      </div>
+                      <div className="sm:col-4">
+                        <h5 className="mb-4">Select task</h5>
+                        <div className="sm:flex">
+                          <Select
+                            id="selectTask1"
+                            aria-label="Default select example"
+                          >
+                            <option>Select Task</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                          </Select>
+                        </div>
+                      </div>
+                    </div>
+                    <hr className="my-6" />
+                    <div className="row gy-4">
+                      <div className="sm:col-8">
+                        <h5 className="mb-4">Dependency type</h5>
+                        <div className="sm:flex gap-4">
+                          <Select
+                            id="dependency3"
+                            aria-label="Default select example"
+                          >
+                            <option>Blocking</option>
                             <option value="1">Blocked by</option>
                             <option value="2">Paused</option>
-                          </Form.Select>
-                          <Form.Select
-                            aria-label="Dependency type 4"
-                            className="mt-2 mt-sm-0"
+                          </Select>
+                          <Select
+                            id="dependency4div"
+                            aria-label="Default select example"
+                            className="mt-2 sm:mt-0"
                           >
-                            <option defaultValue="selected">
-                              Start to start
-                            </option>
+                            <option>Start to start</option>
                             <option value="1">Finish to Finish</option>
                             <option value="2">Start to Finish</option>
                             <option value="3">Finish to Start</option>
-                          </Form.Select>
+                          </Select>
                         </div>
-                      </Form.Group>
-                    </Col>
-
-                    <Col sm={4}>
-                      <Form.Group controlId="selectTask6">
-                        <h5 className="mb-3">Select task</h5>
-                        <Form.Select aria-label="Select task">
-                          <option defaultValue="selected">Select task</option>
-                          <option value="1">One</option>
-                          <option value="2">Two</option>
-                          <option value="3">Three</option>
-                        </Form.Select>
-                      </Form.Group>
-                    </Col>
-                  </Row>
+                      </div>
+                      <div className="sm:col-4">
+                        <h5 className="mb-4">Select task</h5>
+                        <div className="flex">
+                          <Select
+                            id="selectTask6"
+                            aria-label="Default select example"
+                          >
+                            <option>Select task</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                          </Select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </Card.Body>
-            </Card>
-            <Form.Group controlId="EditTaskNotes" className="mt-4 mb-3">
-              <Form.Label className="form-label-header fw-bold text-body-highlight mb-2">
+              </div>
+
+              <label
+                className="font-bold text-highlight mb-2 mt-6"
+                htmlFor="EditTaskNotes"
+              >
                 Description
-              </Form.Label>
-              <Form.Control
-                as="textarea"
-                rows={2}
+              </label>
+              <Textarea
+                id="EditTaskNotes"
+                className="mb-4"
                 defaultValue="Complete the project documentation by outlining key processes, roles, and responsibilities to ensure smooth and efficient workflow execution."
               />
-            </Form.Group>
-            <Subtasks />
-            <Dropzone
-              accept={{
-                'image/*': ['.png', '.gif', '.jpeg', '.jpg']
-              }}
-              previewWidth={140}
-              multiple
-              size="sm"
-              className="d-block border-0 ps-0 pb-2"
-            >
-              <div
-                className="dz-message text-body-tertiary text-opacity-85 d-flex justify-content-center align-items-center"
-                data-dz-message
-                style={{ height: '140px', width: '140px' }}
+
+              <Subtasks />
+
+              {/* the gold's `.fallback > input[type=file]` and its `.dz-preview`
+                  block are dropzone.js scaffolding (the escape hatch it deletes
+                  and the preview template it clones) — neither renders in the
+                  gold, and react-dropzone owns the input here */}
+              <Dropzone
+                accept={{ 'image/*': ['.png', '.gif', '.jpeg', '.jpg'] }}
+                multiple
+                noPreview
+                className="p-0 mt-6"
               >
-                <FontAwesomeIcon icon={faPlus} className="fs-4" />
+                <div
+                  className="dz-message text-subtle/85 flex flex-center size-35"
+                  data-dz-message
+                >
+                  <FontAwesomeIcon icon={faPlus} className="text-3xl" />
+                </div>
+              </Dropzone>
+
+              <div className="flex border-t pt-6 gap-4 mt-6">
+                <Button
+                  id="ganttDeleteTask"
+                  variant="phoenix-danger"
+                  className="ms-auto"
+                  onClick={() => {
+                    setShow(false);
+                    setTimeout(() => setShowModal(true), 350);
+                  }}
+                >
+                  Delete Task{' '}
+                </Button>
+                <Button
+                  id="ganttUpdateTask"
+                  variant="phoenix-primary"
+                  onClick={handleTaskUpdate}
+                >
+                  Save Task{' '}
+                </Button>
               </div>
-            </Dropzone>
-            <div className="d-flex border-top pt-4 gap-3 mt-4">
-              <Button
-                type="button"
-                id="ganttDeleteTask"
-                className="ms-auto"
-                variant="phoenix-danger"
-                onClick={() => {
-                  setShow(false);
-                  setTimeout(() => {
-                    setShowModal(true);
-                  }, 350);
-                }}
-              >
-                Delete Task
-              </Button>
-              <Button
-                type="button"
-                id="ganttUpdateTask"
-                variant="phoenix-primary"
-                onClick={handleTaskUpdate}
-              >
-                Save Task
-              </Button>
-            </div>
-          </Form>
-        </Offcanvas.Body>
-      </Offcanvas>
-      <Modal
+            </form>
+          </Drawer.Body>
+        </Drawer.Content>
+      </Drawer>
+
+      <GanttConfirmDeleteModal
         show={showModal}
-        onHide={handleCloseModal}
-        centered
-        aria-labelledby="deleteTaskModal"
-      >
-        <Modal.Header className="p-4 pb-3 align-items-start">
-          <h3 className="mb-2 text-body-highlight">Delete Task</h3>
-          <button
-            onClick={() => setShowModal(false)}
-            className="btn p-1 ms-auto"
-          >
-            <FontAwesomeIcon icon={faTimes} className="btn-close" />
-          </button>
-        </Modal.Header>
-
-        <Modal.Body className="px-4">
-          <p>
-            Are you sure you want to delete this task permanently? Once deleted,
-            it cannot be recovered or undone.
-          </p>
-        </Modal.Body>
-
-        <Modal.Footer className="px-4 pb-3">
-          <Button
-            id="ganttConfirmDeleteTask"
-            variant="subtle-danger"
-            onClick={handleTaskDelete}
-          >
-            Delete task
-          </Button>
-          <Button variant="phoenix-secondary" onClick={handleCloseModal}>
-            Cancel
-          </Button>
-        </Modal.Footer>
-      </Modal>
+        onHide={() => setShowModal(false)}
+        labelId="deleteTaskModal"
+        title="Delete Task"
+        body="Are you sure you want to delete this task permanently? Once deleted, it cannot be recovered or undone."
+        confirmId="ganttConfirmDeleteTask"
+        confirmLabel="Delete task"
+        onConfirm={handleTaskDelete}
+      />
     </>
   );
 };

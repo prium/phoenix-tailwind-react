@@ -14,6 +14,7 @@ import Brands from 'components/modules/landing/default/Brands';
 import DefaultLandingNavbar from 'components/navbars/default-landing-navbar/DefaultLandingNavbar';
 import useSettingsMountEffect from 'hooks/useSettingsMountEffect';
 
+/** `pages/landing/alternate.pug` — the gold puts `bg-soft` on `<body>`. */
 const Alternate = () => {
   useSettingsMountEffect({
     disableNavigationType: true,
@@ -21,9 +22,10 @@ const Alternate = () => {
     disableVerticalNavbarAppearance: true,
     disableHorizontalNavbarShape: true
   });
+
   return (
-    <div className="bg-body-emphasis dark__bg-gray-1200">
-      <DefaultLandingNavbar className="dark__bg-gray-1200" />
+    <main className="main bg-soft" id="top">
+      <DefaultLandingNavbar />
       <HeroHeader />
       <Brands />
       <Features />
@@ -37,7 +39,7 @@ const Alternate = () => {
       <TeamSection />
       <Cta />
       <Footer />
-    </div>
+    </main>
   );
 };
 

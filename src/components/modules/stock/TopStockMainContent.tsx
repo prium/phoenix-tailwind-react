@@ -1,6 +1,6 @@
-import { ButtonGroup, Col, Nav, Row, Tab } from 'react-bootstrap';
+import { useState } from 'react';
+import { cn } from '@hummingbirdui/react';
 import type { TopStockItem } from 'data/stock/dashboardTopStocks';
-import { currencyFormat } from 'helpers/utils';
 import Badge from 'components/base/Badge';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -17,36 +17,53 @@ import TopStockLineChart from 'components/charts/chartjs/TopStockLineChart';
 
 interface TopStockMainContentProps {
   topStockItem: TopStockItem;
+  index: number;
 }
 
-const TopStockMainContent = ({ topStockItem }: TopStockMainContentProps) => {
+/** gold `.btn-group.stock-btn-group` chart range filter — TopStocks.pug */
+const chartFilterButtons = [
+  { label: '1 D', suffix: 'ay', active: true },
+  { label: '5 D', suffix: 'ays' },
+  { label: '3 M', suffix: 'onths' },
+  { label: '6 M', suffix: 'onths' },
+  { label: '1 Y', suffix: 'ear' },
+  { label: '5 Y', suffix: 'ears' },
+  { label: 'Max' }
+];
+
+/** `+TopStocks` tab pane body — mixins/dashboard/stock/TopStocks.pug */
+const TopStockMainContent = ({
+  topStockItem,
+  index
+}: TopStockMainContentProps) => {
+  const [activeTab, setActiveTab] = useState<'chart' | 'optionChain'>('chart');
+
   return (
     <>
-      <Row className="g-3 mb-5 justify-content-between">
-        <Col xs="auto">
-          <h4 className="text-body-tertiary mb-2 lh-sm">{topStockItem.abbr}</h4>
-          <h3 className="text-body-highlight d-flex gap-2 flex-between-center lh-sm mb-0">
-            {currencyFormat(topStockItem.amount, {
-              minimumFractionDigits: 2,
-              maximumFractionDigits: 2
-            })}
+      <div className="row justify-between g-4 mb-8">
+        <div className="col-auto">
+          <h4 className="text-subtle mb-2 leading-sm">{topStockItem.abbr}</h4>
+          <h3 className="text-highlight flex gap-2 flex-between-center leading-sm mb-0">
+            ${topStockItem.amount}
             <Badge
               variant="phoenix"
               bg={topStockItem.growth ? 'success' : 'danger'}
-              className="fs-10 d-flex align-items-center"
+              className="text-sm flex flex-between-center"
+              iconPosition="end"
+              icon={
+                <FontAwesomeIcon
+                  icon={topStockItem.growth ? faChevronUp : faChevronDown}
+                />
+              }
             >
               {topStockItem.percent}%
-              <FontAwesomeIcon
-                icon={topStockItem.growth ? faChevronUp : faChevronDown}
-                className="ms-1"
-              />
             </Badge>
           </h3>
-        </Col>
-        <Col xs="auto">
-          <div className="d-flex align-items-center gap-2">
+        </div>
+        <div className="col-auto">
+          <div className="flex items-center gap-2">
             <Link
-              to={'/apps/stock/stock-details'}
+              to="/apps/stock/stock-details"
               className="btn btn-sm btn-phoenix-primary"
             >
               View full stock details
@@ -59,91 +76,116 @@ const TopStockMainContent = ({ topStockItem }: TopStockMainContentProps) => {
               <FontAwesomeIcon icon={faEye} />
             </Button>
           </div>
-        </Col>
-      </Row>
-      <Tab.Container defaultActiveKey="chart">
-        <Nav variant="underline" className="mb-4 gap-0 optionChainTableHeader">
-          <Nav.Item>
-            <Nav.Link eventKey="chart" className="pt-0 pe-2">
-              Chart
-            </Nav.Link>
-          </Nav.Item>
-          <Nav.Item>
-            <Nav.Link eventKey="optionChain" className="px-3 pt-0">
-              Option Chain
-            </Nav.Link>
-          </Nav.Item>
-          <Nav.Item className="flex-1">
-            <Nav.Link className="h-100" disabled></Nav.Link>
-          </Nav.Item>
-        </Nav>
-        <Tab.Content>
-          <Tab.Pane eventKey="chart" unmountOnExit>
-            <div className="scrollbar mb-4">
-              <ButtonGroup
-                size="sm"
-                className="stock-btn-group text-nowrap"
-                role="group"
-                aria-label="top-stock-chart-filter"
-              >
-                <Button
-                  variant="phoenix-secondary"
-                  className="fw-bolder active"
+        </div>
+      </div>
+      <ul
+        className="nav nav-underline optionChainTableHeader mb-6 gap-0"
+        id={`companyStatesTab-${index}`}
+        role="tablist"
+      >
+        <li className="nav-item">
+          <a
+            className={cn('nav-link pt-0 pe-2', {
+              active: activeTab === 'chart'
+            })}
+            id={`chart-tab-${index}`}
+            href={`#tab-chart-${index}`}
+            role="tab"
+            aria-controls={`tab-chart-${index}`}
+            aria-selected={activeTab === 'chart'}
+            onClick={e => {
+              e.preventDefault();
+              setActiveTab('chart');
+            }}
+          >
+            Chart
+          </a>
+        </li>
+        <li className="nav-item">
+          <a
+            className={cn('nav-link pt-0 px-4', {
+              active: activeTab === 'optionChain'
+            })}
+            id={`option-chain-tab-${index}`}
+            href={`#tab-optionChain-${index}`}
+            role="tab"
+            aria-controls={`tab-optionChain-${index}`}
+            aria-selected={activeTab === 'optionChain'}
+            onClick={e => {
+              e.preventDefault();
+              setActiveTab('optionChain');
+            }}
+          >
+            Option Chain
+          </a>
+        </li>
+        <li className="nav-item flex-1">
+          <a
+            className="nav-link disabled h-full"
+            id={`empty-div-${index}`}
+            href="#!"
+            role="tab"
+            aria-selected="false"
+            onClick={e => e.preventDefault()}
+          ></a>
+        </li>
+      </ul>
+      <div className="tab-content" id={`companyStatesTabContent-${index}`}>
+        <div
+          className={cn('tab-pane fade', {
+            'show active': activeTab === 'chart'
+          })}
+          id={`tab-chart-${index}`}
+          role="tabpanel"
+          aria-labelledby={`chart-tab-${index}`}
+        >
+          <div className="scrollbar mb-6">
+            <div
+              className="btn-group stock-btn-group btn-group-sm text-nowrap"
+              role="group"
+              aria-label="top-stock-chart-filter"
+            >
+              {chartFilterButtons.map(btn => (
+                <button
+                  key={btn.label}
                   type="button"
+                  className={cn(
+                    'btn btn-phoenix-secondary font-extrabold',
+                    btn.active &&
+                      'active bg-white dark:bg-black text-primary border-subtle'
+                  )}
                 >
-                  1 D
-                  <span className="d-none d-sm-inline d-xl-none d-xxl-inline">
-                    ay
-                  </span>
-                </Button>
-                <Button variant="phoenix-secondary" className="fw-bolder">
-                  5 D
-                  <span className="d-none d-sm-inline d-xl-none d-xxl-inline">
-                    ays
-                  </span>
-                </Button>
-                <Button variant="phoenix-secondary" className="fw-bolder">
-                  3 M
-                  <span className="d-none d-sm-inline d-xl-none d-xxl-inline">
-                    onths
-                  </span>
-                </Button>
-                <Button variant="phoenix-secondary" className="fw-bolder">
-                  6 M
-                  <span className="d-none d-sm-inline d-xl-none d-xxl-inline">
-                    onths
-                  </span>
-                </Button>
-                <Button variant="phoenix-secondary" className="fw-bolder">
-                  1 Y
-                  <span className="d-none d-sm-inline d-xl-none d-xxl-inline">
-                    ear
-                  </span>
-                </Button>
-                <Button variant="phoenix-secondary" className="fw-bolder">
-                  5 Y
-                  <span className="d-none d-sm-inline d-xl-none d-xxl-inline">
-                    ears
-                  </span>
-                </Button>
-                <Button variant="phoenix-secondary" className="fw-bolder">
-                  Max
-                </Button>
-              </ButtonGroup>
+                  {btn.label}
+                  {btn.suffix && (
+                    <span className="hidden sm:inline xl:hidden 2xl:inline">
+                      {btn.suffix}
+                    </span>
+                  )}
+                </button>
+              ))}
             </div>
-            <div className="top-stock-chart">
-              <TopStockLineChart
-                id={`line-chart-${topStockItem.id}`}
-                chartData={topStockItem.chartData}
-                growth={topStockItem.growth}
-              />
-            </div>
-          </Tab.Pane>
-          <Tab.Pane eventKey="optionChain" unmountOnExit>
+          </div>
+          <div className="top-stock-chart">
+            <TopStockLineChart
+              id={`line-chart-${topStockItem.id}`}
+              chartData={topStockItem.chartData}
+              growth={topStockItem.growth}
+            />
+          </div>
+        </div>
+        <div
+          className={cn('tab-pane fade', {
+            'show active': activeTab === 'optionChain'
+          })}
+          role="tabpanel"
+          id={`tab-optionChain-${index}`}
+          aria-labelledby={`option-chain-tab-${index}`}
+        >
+          {activeTab === 'optionChain' && (
             <TopStockOptionChainTabContent topStockItem={topStockItem} />
-          </Tab.Pane>
-        </Tab.Content>
-      </Tab.Container>
+          )}
+        </div>
+      </div>
     </>
   );
 };

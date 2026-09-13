@@ -4,7 +4,7 @@ import AuthSimpleLayout from 'layouts/AuthSimpleLayout';
 const ResetPassword = () => {
   return (
     <AuthSimpleLayout>
-      <ResetPasswordForm />
+      <ResetPasswordForm layout="simple" />
     </AuthSimpleLayout>
   );
 };

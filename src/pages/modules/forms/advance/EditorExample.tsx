@@ -3,7 +3,6 @@ import TinymceEditor from 'components/base/TinymceEditor';
 import DocPageHeader from 'components/docs/DocPageHeader';
 import PhoenixLiveEditor from 'components/docs/PhoenixLiveEditor';
 import DocPagesLayout from 'layouts/DocPagesLayout';
-import React from 'react';
 
 const editorCode = `
 import TinymceEditor from 'components/base/TinymceEditor';

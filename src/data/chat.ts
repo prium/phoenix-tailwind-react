@@ -22,6 +22,7 @@ import team1 from 'assets/img/team/1.webp';
 import team6 from 'assets/img/team/6.webp';
 import team60 from 'assets/img/team/60.webp';
 import team57 from 'assets/img/team/57.webp';
+import teamAvatar from 'assets/img/team/avatar.webp';
 import { FileAttachment } from 'components/common/AttachmentPreview';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import {
@@ -46,11 +47,21 @@ export interface User {
   avatar?: string;
   status: 'online' | 'offline';
   name: string;
+  /** gold `thread.placeholder` — renders the avatar with `avatar-placeholder` */
+  placeholder?: boolean;
 }
 export interface Conversation {
   id: number;
   user: User;
   messages: Message[];
+  /** Sidebar preview line (gold `thread.message` — independent of messages). */
+  message?: string;
+  /** Sidebar preview time (gold `thread.time`). */
+  time?: string;
+  /** gold `thread.unread` — bold name + `unread` classes in the thread list. */
+  unread?: boolean;
+  /** gold `thread.badge` — count badges in the thread list. */
+  badge?: string;
   unreadMessages?: number;
 }
 
@@ -72,10 +83,13 @@ export const suggestions: string[] = [
   'My payment method not working'
 ];
 
+// Threads mirror gold mixins/chat/ChatData.pug (names, previews, typos kept).
 export const conversations: Conversation[] = [
   {
     id: 1,
     user: { id: 1, avatar: team20, status: 'online', name: 'Sharuka Nijibum' },
+    message: 'This is a message from you',
+    time: 'Just now',
     messages: [
       {
         id: 1,
@@ -149,6 +163,8 @@ export const conversations: Conversation[] = [
       status: 'offline',
       name: 'Urito Nisemuno'
     },
+    message: 'Say Hi to your new friend now',
+    time: 'Yesterday, 11 PM',
     messages: [
       {
         id: 1,
@@ -163,7 +179,6 @@ export const conversations: Conversation[] = [
         type: 'sent',
         attachments: {
           images: [
-            image12,
             image13,
             image2,
             image3,
@@ -174,7 +189,8 @@ export const conversations: Conversation[] = [
             image8,
             image9,
             image10,
-            image11
+            image11,
+            image12
           ]
         },
         time: 'Yesterday, 10 AM',
@@ -213,24 +229,9 @@ export const conversations: Conversation[] = [
       {
         id: 7,
         type: 'sent',
-        // message: 'However, the shot Shott shot shot not Shott, but Nott.',
+        message: 'However, the shot Shott shot shot not Shott, but Nott.',
         time: 'Yesterday, 10 AM',
-        readAt: new Date(),
-        attachments: {
-          file: {
-            name: 'Unsupported file format.mad',
-            size: '11.13 KB',
-            date: 'Dec 2, 2011',
-            format: 'mad'
-          }
-        }
-      },
-      {
-        id: 8,
-        type: 'received',
-        time: 'Yesterday, 10 AM',
-        message: `I can't see the file. It may be unsupported or corrupted.`,
-        readAt: null
+        readAt: new Date()
       }
     ],
     unreadMessages: 3
@@ -243,6 +244,8 @@ export const conversations: Conversation[] = [
       status: 'online',
       name: 'Xiang Ledepisipang'
     },
+    message: 'We can also discuss prese....',
+    time: 'Yesterday, 10 PM',
     messages: [
       {
         id: 1,
@@ -262,6 +265,10 @@ export const conversations: Conversation[] = [
       status: 'online',
       name: 'Abshini Thipano'
     },
+    message: 'WHAT!',
+    time: 'Yesterday, 10 PM',
+    unread: true,
+    badge: '3',
     messages: [
       {
         id: 1,
@@ -327,6 +334,8 @@ export const conversations: Conversation[] = [
       status: 'online',
       name: 'Nenko Nimitanip'
     },
+    message: 'Nenko sent an attachment',
+    time: 'Yesterday, 9 PM',
     messages: [
       {
         id: 1,
@@ -346,6 +355,9 @@ export const conversations: Conversation[] = [
       status: 'online',
       name: 'Shanito Bistroglini'
     },
+    message: 'https://youtu.be/dQw4w9WgXcQ',
+    time: 'Yesterday, 1 PM',
+    unread: true,
     messages: [
       {
         id: 1,
@@ -368,9 +380,13 @@ export const conversations: Conversation[] = [
     id: 7,
     user: {
       id: 7,
+      avatar: teamAvatar,
       status: 'online',
-      name: 'Misthoni Trepalnano'
+      name: 'Misthoni Trepalnano',
+      placeholder: true
     },
+    message: 'You shared an album',
+    time: 'Yesterday, 11 AM',
     messages: [
       {
         id: 1,
@@ -406,6 +422,8 @@ export const conversations: Conversation[] = [
       status: 'online',
       name: 'Zogidi Lishang'
     },
+    message: 'Reacted ❤️ to your photo',
+    time: 'Yesterday, 10 AM',
     messages: [
       {
         id: 1,
@@ -456,6 +474,8 @@ export const conversations: Conversation[] = [
       status: 'online',
       name: 'Nonteporano Lepat'
     },
+    message: 'Thanks for understanding. I will forever be in debt',
+    time: 'Yesterday, 10 AM',
     messages: [
       {
         id: 1,
@@ -476,7 +496,7 @@ export const conversations: Conversation[] = [
         id: 3,
         type: 'received',
         message:
-          "Victor Hugo’s 'Les Miserables' contains an 823 word sentence, and hopefully no one else will write longer to break the record.",
+          'Victor Hugo’s "Les Miserables" contains an 823 word sentence, and hopefully no one elese will write longer to break the record.',
         time: 'Yesterday, 10 AM',
         readAt: new Date()
       },
@@ -513,6 +533,8 @@ export const conversations: Conversation[] = [
       status: 'online',
       name: 'Jessica Ball'
     },
+    message: 'Thanks for understanding. I will forever be in debt',
+    time: 'Yesterday, 10 AM',
     messages: [
       {
         id: 1,
@@ -561,6 +583,8 @@ export const conversations: Conversation[] = [
       status: 'online',
       name: 'Harley Brown'
     },
+    message: 'Thanks for understanding. I will forever be in debt',
+    time: 'Yesterday, 10 AM',
     messages: [
       {
         id: 1,
@@ -651,12 +675,16 @@ export const attachments = [
   },
   {
     image: image14
+  },
+  // the gold shared-media list repeats chat/2.png as its 14th image
+  {
+    image: image2
   }
 ];
 
 export const files: FileAttachment[] = [
   {
-    name: 'Federico_salsaniuella_godarf_design.zip',
+    name: 'Federico_godarf_design.zip',
     size: '53.34 MB',
     date: 'Dec 8, 2011',
     format: 'zip'
@@ -681,25 +709,26 @@ export const files: FileAttachment[] = [
   }
 ];
 
-export const actions: MessageActionType[] = [
-  {
-    icon: faTrash,
-    label: 'Delete'
+const reply: MessageActionType = { icon: faReply, label: 'Reply' };
+const edit: MessageActionType = { icon: faPenToSquare, label: 'Edit' };
+const remove: MessageActionType = { icon: faTrash, label: 'Delete' };
+const share: MessageActionType = { icon: faShare, label: 'Share' };
+const emoji: MessageActionType = { icon: faFaceSmile, label: 'Emoji' };
+
+/**
+ * Hover action sets per message side, in the gold DOM order
+ * (mixins/chat/ChatContent.pug `+SentMessage` / `+ReceivedMessage`).
+ */
+export const messageActions: Record<
+  'sent' | 'received',
+  { desktop: MessageActionType[]; mobile: MessageActionType[] }
+> = {
+  sent: {
+    desktop: [reply, edit, share, remove, emoji],
+    mobile: [reply, edit, remove, share, emoji]
   },
-  {
-    icon: faReply,
-    label: 'Reply'
-  },
-  {
-    icon: faPenToSquare,
-    label: 'Edit'
-  },
-  {
-    icon: faShare,
-    label: 'Share'
-  },
-  {
-    icon: faFaceSmile,
-    label: 'Emoji'
+  received: {
+    desktop: [reply, remove, share, emoji],
+    mobile: [reply, remove, share, emoji]
   }
-];
+};

@@ -1,9 +1,19 @@
+import { cn } from '@hummingbirdui/react';
 import Dropzone from 'components/base/Dropzone';
 import { useWizardFormContext } from 'providers/WizardFormProvider';
 import { AddPropertyWizardFormData } from 'data/travel-agency/addProperty';
 import { useEffect, useState } from 'react';
 
-const AddPhotos = ({ title, images }: { title: string; images: File[] }) => {
+/** gold `+AddPhotos` (mixins/travel-agency/add-property/AddPhotos.pug) */
+const AddPhotos = ({
+  title,
+  images,
+  className
+}: {
+  title: string;
+  images: File[];
+  className?: string;
+}) => {
   const methods = useWizardFormContext<AddPropertyWizardFormData>();
   const { formData, setFormData } = methods;
   const [photos, setPhotos] = useState(images);
@@ -17,7 +27,7 @@ const AddPhotos = ({ title, images }: { title: string; images: File[] }) => {
 
   return (
     <>
-      <h3 className="mb-6">{title}</h3>
+      <h3 className="mb-10">{title}</h3>
 
       <Dropzone
         accept={{
@@ -25,7 +35,7 @@ const AddPhotos = ({ title, images }: { title: string; images: File[] }) => {
         }}
         defaultFiles={photos.length ? photos : images}
         setPhotos={setPhotos}
-        className="border border-dashed"
+        className={cn('p-0 mb-12', className)}
         onDrop={(acceptedFiles: File[]) => {
           setFormData({
             ...formData,

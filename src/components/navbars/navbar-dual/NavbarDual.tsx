@@ -1,40 +1,48 @@
-import { Navbar } from 'react-bootstrap';
+import { Navbar, cn } from '@hummingbirdui/react';
 import NavbarBrand from '../nav-items/NavbarBrand';
 import DropdownSearchBox from 'components/common/DropdownSearchBox';
 import SearchResult from 'components/common/SearchResult';
 import NavItems from '../nav-items/NavItems';
 import NavbarTopNav from '../navbar-horizontal/NavbarTopNav';
 import { useAppContext } from 'providers/AppProvider';
+import { useBreakpoints } from 'providers/BreakpointsProvider';
 
+/** `+DualNav` in phoenix-tailwind NavbarTop.pug (`.navbar-expand-lg`) */
 const NavbarDual = () => {
   const {
-    config: { navbarTopAppearance }
+    config: { navbarTopAppearance, openNavbarVertical },
+    setConfig
   } = useAppContext();
+  const { breakpoints } = useBreakpoints();
 
   return (
     <Navbar
-      className="navbar-top fixed-top"
       expand="lg"
-      variant=""
+      id="dualNav"
+      className="navbar-top fixed right-0 top-0 left-0 z-1030"
       data-navbar-appearance={navbarTopAppearance === 'darker' ? 'darker' : ''}
+      open={openNavbarVertical}
+      onOpenChange={open => setConfig({ openNavbarVertical: open })}
     >
-      <div className="w-100">
-        <div className="d-flex flex-between-center dual-nav-first-layer">
+      <div className="w-full">
+        <div className="flex flex-between-center dual-nav-first-layer">
           <NavbarBrand />
-          <DropdownSearchBox
-            className="navbar-top-search-box"
-            inputClassName="rounded-pill"
-            searchBoxClassName=" d-none d-lg-block"
-            size="sm"
-            style={{ width: '25rem' }}
-          >
-            <SearchResult />
-          </DropdownSearchBox>
+          {breakpoints.up('lg') && (
+            <DropdownSearchBox
+              className="navbar-top-search-box w-100"
+              inputClassName="rounded-full"
+              size="sm"
+            >
+              <SearchResult />
+            </DropdownSearchBox>
+          )}
           <NavItems />
         </div>
         <Navbar.Collapse
-          className="navbar-top-collapse justify-content-center"
-          id="basic-navbar-nav"
+          id="navbarTopCollapse"
+          className={cn('navbar-top-collapse lg:justify-center', {
+            show: openNavbarVertical
+          })}
         >
           <NavbarTopNav />
         </Navbar.Collapse>

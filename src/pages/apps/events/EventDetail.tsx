@@ -1,7 +1,7 @@
 import PageBreadcrumb from 'components/common/PageBreadcrumb';
 import { defaultBreadcrumbItems } from 'data/commonData';
 import coverImg from 'assets/img/generic/34.png';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row } from '@hummingbirdui/react';
 import EventTitleCard from 'components/cards/EventTitleCard';
 import ResponsesAndShare from 'components/modules/events/ResponsesAndShare';
 import Location from 'components/modules/events/Location';
@@ -12,22 +12,22 @@ import EventsTopicCovered from 'components/list-items/EventsTopicCovered';
 import EventsOrganized from 'components/modules/events/EventsOrganized';
 import { SingerPhotos, events } from 'data/eventsData';
 
+/** apps/events/event-detail.pug + mixins/events/EventDetail.pug */
 const EventDetail = () => {
   return (
-    <div className="pb-9">
+    <div className="pb-16">
       <PageBreadcrumb items={defaultBreadcrumbItems} />
-      <h2 className="mb-4 mb-lg-6">Event details</h2>
+      <h2 className="mb-6 lg:mb-10">Event details</h2>
       <img
         src={coverImg}
         alt=""
-        className="rounded w-100 fit-cover mb-5 mb-md-6 mb-xl-8"
-        style={{ minHeight: '250px' }}
+        className="min-h-62.5 rounded-md w-full object-cover mb-8 md:mb-10 xl:mb-14"
       />
-      <Row className="gx-lg-9">
-        <Col xl={8} className="border-end-xl">
-          <EventTitleCard className="mb-9" />
-          <h2 className="mb-3">About this event</h2>
-          <p className="text-justify text-body-secondary mb-6 mb-xxl-8">
+      <Row className="lg:gx-16">
+        <Col xl={8} className="xl:border-e">
+          <EventTitleCard className="mb-16" />
+          <h2 className="mb-4">About this event</h2>
+          <p className="text-justify text-muted mb-10 2xl:mb-14">
             The Festival Season hopes to continue its rescheduled events in 2023
             during the spring block. This will be a continuation of the
             tradition for the loyal fanbase to watch a jam-packed day full of
@@ -39,29 +39,29 @@ const EventDetail = () => {
           </p>
           <EventsSingersSection photos={SingerPhotos} />
           <EventsTopicCovered />
-          <h4 className="mb-3 text-body-highlight fs-xxl-6">Refund Policy:</h4>
-          <ul className="mb-6 ps-4">
+          <h4 className="mb-4 text-highlight 2xl:text-xl">Refund Policy:</h4>
+          <ul className="mb-10 ps-6">
             <li>Contact the organizer to request a refund.</li>
-            <li>Eventbrite’s fee is nonrefundable.</li>
+            <li>Eventbrite&apos;s fee is nonrefundable.</li>
           </ul>
           <ResponsesAndShare />
         </Col>
         <Col xl={4}>
           <EventsOrganized />
           <Location />
-          <h3 className="mb-3">Tags</h3>
-          <div className="d-flex flex-wrap mb-8">
-            <Badge variant="tag" className="me-2">
+          <h3 className="mb-4">Tags</h3>
+          <div className="flex flex-wrap pb-12 border-b border-subtle">
+            <Badge variant="tag" className="me-2 mb-2">
               Music
             </Badge>
-            <Badge variant="tag" className="me-2">
+            <Badge variant="tag" className="me-2 mb-2">
               CONCERT
             </Badge>
-            <Badge variant="tag">Greatest show on earth</Badge>
+            <Badge variant="tag" className="mb-2">
+              Greatest show on earth
+            </Badge>
           </div>
-          <div className="border-top border-translucent">
-            <Events events={events} title="Upcoming events" />
-          </div>
+          <Events events={events} title="Upcoming events" />
         </Col>
       </Row>
     </div>

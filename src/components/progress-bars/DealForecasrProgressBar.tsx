@@ -1,41 +1,58 @@
-import { ProgressBar } from 'react-bootstrap';
+const segments = [
+  {
+    label: '$21.0k',
+    title: 'Appointment',
+    now: 20.72,
+    labelClass: 'mb-2 text-subtle font-semibold text-md w-[20.72%]',
+    barClass: 'progress w-[20.72%] bg-primary-dark border-e-2'
+  },
+  {
+    label: '$3.4k',
+    title: 'Qualified',
+    now: 35.76,
+    labelClass: 'mb-2 text-subtle font-semibold text-md w-[35.76%]',
+    barClass: 'progress w-[35.76%] bg-primary border-e-2'
+  },
+  {
+    label: '$15.1k',
+    title: 'Closed Won',
+    now: 25.38,
+    labelClass: 'mb-2 text-subtle font-semibold text-md w-[25.38%]',
+    barClass: 'progress w-[25.38%] bg-success border-e-2'
+  },
+  {
+    label: '$4.6k',
+    title: 'Contact Sent',
+    now: 25.14,
+    labelClass: 'mb-2 text-subtle font-semibold text-md w-[25.14%]',
+    barClass: 'progress w-[25.14%] bg-info'
+  }
+];
 
+/** `+DealForecastProgress` in mixins/dashboard/CRM/Crm.pug */
 const DealForecasrProgressBar = () => {
   return (
-    <div className="w-100">
-      <div className="d-flex flex-start">
-        <div style={{ width: '20.72%' }}>
-          <p className="mb-2 text-body-tertiary fw-semibold fs-9">$21.0k</p>
-        </div>
-        <div style={{ width: '35.76%' }}>
-          <p className="mb-2 text-body-tertiary fw-semibold fs-9">$3.4k</p>
-        </div>
-        <div style={{ width: '25.38%' }}>
-          <p className="mb-2 text-body-tertiary fw-semibold fs-9">$15.1k</p>
-        </div>
-        <div style={{ width: '25.14%' }}>
-          <p className="mb-2 text-body-tertiary fw-semibold fs-9">$4.6k</p>
-        </div>
+    <div className="w-full">
+      <div className="flex flex-start">
+        {segments.map(segment => (
+          <p key={segment.title} className={segment.labelClass}>
+            {segment.label}
+          </p>
+        ))}
       </div>
-
-      <ProgressBar className="mb-3 rounded-3" style={{ height: '10px' }}>
-        <ProgressBar
-          className="border-end bg-primary-dark border-2"
-          now={20.72}
-          key={1}
-        />
-        <ProgressBar
-          className="bg-primary-light border-end border-2"
-          now={35.76}
-          key={2}
-        />
-        <ProgressBar
-          className="bg-success border-end border-2"
-          now={25.38}
-          key={3}
-        />
-        <ProgressBar className="bg-info" now={25.14} key={4} />
-      </ProgressBar>
+      <div className="progress-stacked gap-0 mb-4 rounded-lg h-2.5">
+        {segments.map(segment => (
+          <div
+            key={segment.title}
+            className={segment.barClass}
+            role="progressbar"
+            aria-valuenow={segment.now}
+            aria-valuemin={0}
+            aria-valuemax={100}
+            title={segment.title}
+          />
+        ))}
+      </div>
     </div>
   );
 };

@@ -9,13 +9,16 @@ import { tooltipFormatterDefault } from 'helpers/echart-utils';
 echarts.use([TooltipComponent, BarChart]);
 
 const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
-  color: [getThemeColor('primary-lighter'), getThemeColor('primary-light')],
+  color: [
+    getThemeColor('color-primary-lighter'),
+    getThemeColor('color-primary-light')
+  ],
   tooltip: {
     trigger: 'axis',
     padding: [7, 10],
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('border-color'),
-    textStyle: { color: getThemeColor('light-text-emphasis') },
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('border-color-default'),
+    textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,
     formatter: (params: CallbackDataParams[]) =>
@@ -30,7 +33,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     axisLine: {
       show: false,
       lineStyle: {
-        color: getThemeColor('tertiary-bg'),
+        color: getThemeColor('background-color-highlight'),
         type: 'solid'
       }
     },
@@ -39,7 +42,7 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     },
     axisLabel: {
       show: false,
-      color: getThemeColor('body-color'),
+      color: getThemeColor('text-color-default'),
       margin: 15
     },
     splitLine: {
@@ -51,12 +54,12 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
     boundaryGap: 0,
     axisLabel: {
       show: false,
-      color: getThemeColor('quaternary-color')
+      color: getThemeColor('text-color-soft')
     },
     splitLine: {
       show: false,
       lineStyle: {
-        color: getThemeColor('secondary-bg')
+        color: getThemeColor('background-color-muted')
       }
     },
     axisTick: {
@@ -80,17 +83,17 @@ const getDefaultOptions = (getThemeColor: (name: string) => string) => ({
       data: [
         {
           value: 1200,
-          lineStyle: { color: getThemeColor('primary-lighter') },
+          lineStyle: { color: getThemeColor('color-primary-lighter') },
           itemStyle: {
-            color: getThemeColor('primary-lighter'),
+            color: getThemeColor('color-primary-lighter'),
             borderRadius: [3, 3, 0, 0]
           }
         },
         {
           value: 2400,
-          lineStyle: { color: getThemeColor('primary-light') },
+          lineStyle: { color: getThemeColor('color-primary-light') },
           itemStyle: {
-            color: getThemeColor('primary-light'),
+            color: getThemeColor('color-primary-light'),
             borderRadius: [3, 3, 0, 0]
           }
         }
@@ -113,6 +116,8 @@ const RevenueNextYearChart = () => {
       echarts={echarts}
       option={getDefaultOptions(getThemeColor)}
       className="revenue-next-year-chart"
+      // size comes from the revenue-next-year-chart CSS class; suppress the library default 300px
+      style={{ height: undefined }}
     />
   );
 };

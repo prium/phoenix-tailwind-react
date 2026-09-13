@@ -73,14 +73,22 @@ export const bedTypeOptions: roomFiltercheckbox[] = [
   },
   {
     id: 4,
-    name: 'Sofa bed'
+    name: 'Queen bed'
   },
   {
     id: 5,
-    name: 'Twin bed'
+    name: 'Rollaway bed'
   },
   {
     id: 6,
+    name: 'Sofa bed'
+  },
+  {
+    id: 7,
+    name: 'Twin bed'
+  },
+  {
+    id: 8,
     name: 'Futon'
   }
 ];

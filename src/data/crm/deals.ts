@@ -1,7 +1,10 @@
+import { BadgeBg } from 'components/base/Badge';
+
 export interface Deal {
   id: number;
   title: string;
-  revenue: number;
+  /** gold literal string incl. the `$33,00.00` typo in the Completed column */
+  revenue: string;
   category: string;
   date: string;
   time: string;
@@ -12,35 +15,48 @@ export interface Deal {
   openDetails?: boolean;
   status: {
     label: string;
-    variant: string;
+    variant: BadgeBg;
   };
   priority: {
     label: string;
-    variant: string;
+    variant: BadgeBg;
   };
   probability: {
-    value: string;
-    variant: string;
+    value: number;
+    /** literal progress-bar class from the gold pug (`bg-300` is intentionally unstyled) */
+    barClass: string;
   };
 }
 
 export interface DealColumn {
   id: number;
   title: string;
-  revenue: number;
+  revenue: string;
   deals: Deal[];
 }
+
+export const dealAgents = [
+  'Ally Aagaard',
+  'Lonnie Kub',
+  'Aida Moen',
+  'Niko Koss',
+  'Alec Haag',
+  'Ola Smith',
+  'Leif Walsh',
+  'Brain Cole',
+  'Reese Mann'
+];
 
 export const dealColumnsData: DealColumn[] = [
   {
     id: 1,
     title: 'New',
-    revenue: 37000,
+    revenue: '$37,000.00',
     deals: [
       {
         id: 101,
         title: 'Jo_Td01',
-        revenue: 14000,
+        revenue: '$14,000.00',
         category: 'Financial',
         date: 'Dec 30, 2022',
         time: '2:15 PM',
@@ -57,14 +73,14 @@ export const dealColumnsData: DealColumn[] = [
           variant: 'danger'
         },
         probability: {
-          value: '20',
-          variant: 'info'
+          value: 20,
+          barClass: 'bg-info'
         }
       },
       {
         id: 102,
         title: 'Dimensions for Printing',
-        revenue: 23000,
+        revenue: '$23,000.00',
         category: 'Marketplace',
         date: 'Dec 29, 2022',
         time: '12:15 PM',
@@ -81,8 +97,8 @@ export const dealColumnsData: DealColumn[] = [
           variant: 'success'
         },
         probability: {
-          value: '20',
-          variant: 'info'
+          value: 20,
+          barClass: 'bg-info'
         }
       }
     ]
@@ -90,12 +106,12 @@ export const dealColumnsData: DealColumn[] = [
   {
     id: 2,
     title: 'In Progress',
-    revenue: 101300,
+    revenue: '$101,300.00',
     deals: [
       {
         id: 201,
         title: 'True and True Attorneys',
-        revenue: 33000,
+        revenue: '$33,000.00',
         category: 'Financial',
         date: 'Dec 30, 2022',
         time: '06:15 PM',
@@ -112,14 +128,14 @@ export const dealColumnsData: DealColumn[] = [
           variant: 'warning'
         },
         probability: {
-          value: '40',
-          variant: 'primary'
+          value: 40,
+          barClass: 'bg-primary'
         }
       },
       {
         id: 202,
         title: 'The Morlong Corporation',
-        revenue: 45300,
+        revenue: '$45,300.00',
         category: 'Marketplace',
         date: 'Dec 30, 2022',
         time: '08:20 PM',
@@ -136,14 +152,14 @@ export const dealColumnsData: DealColumn[] = [
           variant: 'info'
         },
         probability: {
-          value: '40',
-          variant: 'primary'
+          value: 40,
+          barClass: 'bg-primary'
         }
       },
       {
         id: 203,
         title: 'Product List',
-        revenue: 23000,
+        revenue: '$23,000.00',
         category: 'Marketplace',
         date: 'Dec 30, 2022',
         time: '3:25 PM',
@@ -160,8 +176,8 @@ export const dealColumnsData: DealColumn[] = [
           variant: 'danger'
         },
         probability: {
-          value: '40',
-          variant: 'primary'
+          value: 40,
+          barClass: 'bg-primary'
         }
       }
     ]
@@ -169,12 +185,12 @@ export const dealColumnsData: DealColumn[] = [
   {
     id: 3,
     title: 'Pending',
-    revenue: 23400,
+    revenue: '$23,400.00',
     deals: [
       {
         id: 301,
         title: 'Printing Services by Feltz',
-        revenue: 23400,
+        revenue: '$23,400.00',
         category: 'Marketplace',
         date: 'Dec 30, 2022',
         time: '3:15 PM',
@@ -191,8 +207,8 @@ export const dealColumnsData: DealColumn[] = [
           variant: 'warning'
         },
         probability: {
-          value: '60',
-          variant: 'warning'
+          value: 60,
+          barClass: 'bg-warning'
         }
       }
     ]
@@ -200,12 +216,12 @@ export const dealColumnsData: DealColumn[] = [
   {
     id: 4,
     title: 'Canceled',
-    revenue: 260,
+    revenue: '$260.00',
     deals: [
       {
         id: 401,
         title: 'SP Flat Plate',
-        revenue: 14000,
+        revenue: '$14,000.00',
         category: 'Financial',
         date: 'Dec 31, 2022',
         time: '01:30 PM',
@@ -222,14 +238,14 @@ export const dealColumnsData: DealColumn[] = [
           variant: 'success'
         },
         probability: {
-          value: '80',
-          variant: '300'
+          value: 80,
+          barClass: 'bg-300'
         }
       },
       {
         id: 402,
         title: 'Ventilated Pipe',
-        revenue: 14000,
+        revenue: '$14,000.00',
         category: 'Marketplace',
         date: 'Dec 31, 2022',
         time: '2:15 PM',
@@ -246,8 +262,8 @@ export const dealColumnsData: DealColumn[] = [
           variant: 'info'
         },
         probability: {
-          value: '80',
-          variant: '300'
+          value: 80,
+          barClass: 'bg-300'
         }
       }
     ]
@@ -255,12 +271,12 @@ export const dealColumnsData: DealColumn[] = [
   {
     id: 5,
     title: 'Completed',
-    revenue: 1650,
+    revenue: '$1,650.00',
     deals: [
       {
         id: 501,
         title: 'Product Shipping',
-        revenue: 15000,
+        revenue: '$15,000.00',
         category: 'Financial',
         date: 'Dec 29, 2022',
         time: '03:12 PM',
@@ -277,14 +293,14 @@ export const dealColumnsData: DealColumn[] = [
           variant: 'danger'
         },
         probability: {
-          value: '100',
-          variant: 'success'
+          value: 100,
+          barClass: 'bg-success'
         }
       },
       {
         id: 502,
         title: 'Product List',
-        revenue: 3300,
+        revenue: '$33,00.00',
         category: 'Financial',
         date: 'Dec 29, 2022',
         time: '06:15 PM',
@@ -301,14 +317,14 @@ export const dealColumnsData: DealColumn[] = [
           variant: 'info'
         },
         probability: {
-          value: '100',
-          variant: 'success'
+          value: 100,
+          barClass: 'bg-success'
         }
       },
       {
         id: 503,
         title: 'Dimensions for Printing',
-        revenue: 23400,
+        revenue: '$23,400.00',
         category: 'Marketplace',
         date: 'Dec 29, 2022',
         time: '2:15 PM',
@@ -325,8 +341,8 @@ export const dealColumnsData: DealColumn[] = [
           variant: 'danger'
         },
         probability: {
-          value: '100',
-          variant: 'success'
+          value: 100,
+          barClass: 'bg-success'
         }
       }
     ]

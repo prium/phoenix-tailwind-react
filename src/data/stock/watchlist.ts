@@ -1,4 +1,5 @@
 import { BadgeBg } from 'components/base/Badge';
+import { StockOverviewChartClass } from 'data/stock/portfolio';
 
 interface HoldingSummaryOverallSummaryItem {
   id: number;
@@ -70,7 +71,7 @@ export const holdingSummaryOverallSummaryItems: HoldingSummaryOverallSummaryItem
     {
       id: 1,
       title: 'Total Holding',
-      amount: { count: 1000, className: 'text-body' },
+      amount: { count: 1000, className: 'text-default' },
       badge: {
         label: 1.71,
         prefix: '+',
@@ -546,3 +547,278 @@ export const watchlistItems: WatchlistItem = {
     }
   ]
 };
+
+/* -------------------------------------------------------------------------- */
+/*  Gold-aligned demo data — literal display strings copied verbatim from     */
+/*  ../phoenix-tailwind/src/pug/mixins/stock/watchlist/                       */
+/*  {CollapsibleContainer,SummaryTable,CashTransactionTable}.pug              */
+/* -------------------------------------------------------------------------- */
+
+/** summary statistics row in CollapsibleContainer.pug */
+export interface WatchlistSummaryStat {
+  title: string;
+  amount: string;
+  /** literal gold classes — dynamic, so they live in data */
+  amountClassName: string;
+  badgeClassName: string;
+  badgeContent: string;
+  className: string;
+}
+
+export const watchlistSummaryStats: WatchlistSummaryStat[] = [
+  {
+    title: 'Total Holding',
+    amount: '$1,000.00',
+    amountClassName: 'mb-0 text-default',
+    badgeClassName: 'badge badge-phoenix-success text-sm',
+    badgeContent: '+1.71%',
+    className: 'pe-6 border-e'
+  },
+  {
+    title: 'Day Change',
+    amount: '-$5,000.00',
+    amountClassName: 'mb-0 text-danger',
+    badgeClassName: 'badge badge-phoenix-danger text-sm',
+    badgeContent: '+1.71%',
+    className: 'px-6 border-e'
+  },
+  {
+    title: 'Unrealized Gain/Loss',
+    amount: '+$3,000.00',
+    amountClassName: 'mb-0 text-success',
+    badgeClassName: 'badge badge-phoenix-success text-sm',
+    badgeContent: '+1.71%',
+    className: 'ps-6'
+  }
+];
+
+/** `summaryTableData` in SummaryTable.pug — verbatim */
+export interface WatchlistSummaryRow {
+  symbol: string;
+  lastPrice: string;
+  change: {
+    growth: string;
+    percent: string;
+    className: 'success' | 'danger';
+  };
+  priceAdds: string;
+  volume: string;
+  share?: number;
+  avgVolume: string;
+  chart: StockOverviewChartClass;
+  echartData: number[];
+  marketCap: string;
+}
+
+export const summaryTableData: WatchlistSummaryRow[] = [
+  {
+    symbol: 'AAPL',
+    lastPrice: '230.76',
+    change: { growth: '+$0.42', percent: '+0.35', className: 'success' },
+    priceAdds: '230.34',
+    volume: '50.658M',
+    share: 2,
+    avgVolume: '50.658M',
+    chart: 'echart-stock-overview-chart',
+    echartData: [
+      70, 50, 85, 45, 200, 193, 196, 210, 198, 210, 103, 120, 84, 95, 130, 123,
+      214, 245, 287, 348, 356, 390
+    ],
+    marketCap: '3.518T'
+  },
+  {
+    symbol: 'AMZN',
+    lastPrice: '184.71',
+    change: { growth: '+$0.54', percent: '+0.12', className: 'success' },
+    priceAdds: '184.19',
+    volume: '34.16M',
+    avgVolume: '34.16M',
+    chart: 'echart-stock-overview-mixed-chart',
+    echartData: [
+      -100, 190, 200, -200, -190, 300, -110, 100, -100, 250, 200, 190, -80, 50,
+      40, 200, -200, 200, 150, 160, 300, -100
+    ],
+    marketCap: '1.971T'
+  },
+  {
+    symbol: 'TSLA',
+    lastPrice: '213.65',
+    change: { growth: '-$4.32', percent: '-1.98', className: 'danger' },
+    priceAdds: '217.97',
+    volume: '74.38M',
+    avgVolume: '74.38M',
+    chart: 'echart-stock-overview-chart',
+    echartData: [
+      400, 450, 500, 490, 600, 550, 400, 350, 320, 330, 320, 450, 480, 350, 345,
+      200, 320, 400
+    ],
+    marketCap: '864.116B'
+  },
+  {
+    symbol: 'NVDA',
+    lastPrice: '121.78',
+    change: { growth: '+$0.12', percent: '+0.09', className: 'success' },
+    priceAdds: '120.82',
+    volume: '278.17M',
+    avgVolume: '278.17M',
+    chart: 'echart-stock-overview-mixed-chart',
+    echartData: [
+      -100, 190, 200, -200, -190, 300, -110, 100, -100, 250, 200, 190, -80, 50,
+      40, 200, -200, 200, 150, 160, 300, -100
+    ],
+    marketCap: '3.472T'
+  },
+  {
+    symbol: 'GOOG',
+    lastPrice: '164.48',
+    change: { growth: '-$2.34', percent: '-1.40', className: 'danger' },
+    priceAdds: '166.82',
+    volume: '15.57M',
+    share: 4,
+    avgVolume: '15.57M',
+    chart: 'echart-stock-overview-chart',
+    echartData: [
+      70, 50, 85, 45, 200, 193, 196, 210, 198, 210, 103, 120, 84, 95, 130, 123,
+      214, 245, 287, 348, 356, 390
+    ],
+    marketCap: '2.013T'
+  },
+  {
+    symbol: 'INTC',
+    lastPrice: '21.98',
+    change: { growth: '-$0.42', percent: '-1.88', className: 'danger' },
+    priceAdds: '23.89',
+    volume: '82.86M',
+    avgVolume: '82.86M',
+    chart: 'echart-stock-overview-mixed-chart',
+    echartData: [
+      100, -190, 200, -210, -190, 300, -190, 100, -100, 250, 200, 190, -80, 50,
+      40, 200, -200, 200, 150, 160, 300, -100
+    ],
+    marketCap: '96.98B'
+  },
+  {
+    symbol: 'GSPC',
+    lastPrice: '184.71',
+    change: { growth: '+$0.54', percent: '+0.12', className: 'success' },
+    priceAdds: '184.19',
+    volume: '34.16M',
+    avgVolume: '34.16M',
+    chart: 'echart-stock-overview-mixed-chart',
+    echartData: [
+      -100, 190, 200, -200, -190, 300, -110, 100, -100, 250, 200, 190, -80, 50,
+      40, 200, -200, 200, 150, 160, 300, -100
+    ],
+    marketCap: '1.971T'
+  },
+  {
+    symbol: 'IBRX',
+    lastPrice: '213.65',
+    change: { growth: '-$4.32', percent: '-1.98', className: 'danger' },
+    priceAdds: '217.97',
+    volume: '74.38',
+    avgVolume: '74.38',
+    chart: 'echart-stock-overview-chart',
+    echartData: [
+      400, 450, 500, 490, 600, 550, 400, 350, 320, 330, 320, 450, 480, 350, 345,
+      200, 320, 400
+    ],
+    marketCap: '864.116B'
+  },
+  {
+    symbol: 'NIO',
+    lastPrice: '121.78',
+    change: { growth: '+$0.12', percent: '+0.09', className: 'success' },
+    priceAdds: '120.82',
+    volume: '278.1M',
+    avgVolume: '278.1M',
+    chart: 'echart-stock-overview-inverted-chart',
+    echartData: [
+      -500, -300, -250, -280, -150, -250, -300, -180, -145, -250, -46, -250,
+      -90, -80, -85, -150, -250, -180, -175, -50
+    ],
+    marketCap: '3.472T'
+  },
+  {
+    symbol: 'TLN',
+    lastPrice: '164.48',
+    change: { growth: '-$2.34', percent: '-1.40', className: 'danger' },
+    priceAdds: '166.82',
+    volume: '15.57M',
+    avgVolume: '15.57M',
+    chart: 'echart-stock-overview-chart',
+    echartData: [
+      70, 50, 85, 45, 200, 193, 196, 210, 198, 210, 103, 120, 84, 95, 130, 123,
+      214, 245, 287, 348, 356, 390
+    ],
+    marketCap: '2.013T'
+  },
+  {
+    symbol: 'ES=F',
+    lastPrice: '21.98',
+    change: { growth: '-$0.42', percent: '-1.88', className: 'danger' },
+    priceAdds: '23.89',
+    volume: '82.86M',
+    avgVolume: '82.86M',
+    chart: 'echart-stock-overview-chart',
+    echartData: [
+      0, 200, 150, 120, 155, 115, 125, 160, 150, 145, 140, 90, 20, 120, 110, 80,
+      120, 40, 90, 210, 220
+    ],
+    marketCap: '3.518T'
+  }
+];
+
+/** `cashTransactionTableData` in CashTransactionTable.pug — verbatim */
+export interface CashTransactionRow {
+  date: string;
+  type: string;
+  amount: string;
+  currency: string;
+  note: string;
+}
+
+export const cashTransactionTableData: CashTransactionRow[] = [
+  {
+    date: '10 Nov, 2024',
+    type: 'Withdrawal',
+    amount: '$230.34',
+    currency: 'USD',
+    note: 'Cash Withdrawal Completed'
+  },
+  {
+    date: '01 Nov, 2024',
+    type: 'Deposit',
+    amount: '$184.19',
+    currency: 'USD',
+    note: 'Funds Withdrawn Successfully'
+  },
+  {
+    date: '23 Oct, 2024',
+    type: 'Income',
+    amount: '$217.97',
+    currency: 'USD',
+    note: 'Withdrawal Confirmed'
+  },
+  {
+    date: '13 Oct, 2024',
+    type: 'Fee',
+    amount: '$120.82',
+    currency: 'CAD',
+    note: 'Cash Disbursed'
+  },
+  {
+    date: '03 Oct, 2024',
+    type: 'Withdrawal',
+    amount: '$166.82',
+    currency: 'CAD',
+    note: 'Withdrawal Request Fulfilled'
+  },
+  {
+    date: '23 Sep, 2024',
+    type: 'Deposit',
+    amount: '$23.89',
+    currency: 'CAD',
+    note: 'Withdrawal Processed'
+  }
+];

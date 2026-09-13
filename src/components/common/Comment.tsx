@@ -1,6 +1,5 @@
-import classNames from 'classnames';
+import { cn } from '@hummingbirdui/react';
 import { Comment as CommentType } from 'data/project-management/comments';
-import { Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router';
 
 interface CommentProps {
@@ -8,24 +7,25 @@ interface CommentProps {
   className?: string;
 }
 
+/** one row of `+ModalNotification` in mixins/project-management/ProjectDetailsModal.pug */
 const Comment = ({ comment, className }: CommentProps) => {
   return (
-    <Row
-      className={classNames(
+    <div
+      className={cn(
         className,
-        'justify-contnet-between g-0 py-3 align-items-start'
+        'row justify-contnet-between g-0 py-6 items-start'
       )}
     >
-      <Col xs={12} sm>
+      <div className="col-12 sm:col">
         <p
-          className={classNames('fs-9 text-body-secondary mb-0', {
+          className={cn('text-md text-muted mb-0', {
             'mb-2': comment.attachment
           })}
         >
           <Link
             to={comment.user.url}
-            className={classNames('fw-semibold', {
-              'text-body-highlight text-decoration-none': comment.own
+            className={cn('font-semibold', {
+              'text-highlight no-underline': comment.own
             })}
           >
             {comment.own ? 'You' : comment.user.name}
@@ -38,17 +38,17 @@ const Comment = ({ comment, className }: CommentProps) => {
             src={comment.attachment}
             alt=""
             width={220}
-            className="rounded-2 mb-2"
+            className="rounded-md mb-2"
           />
         )}
-      </Col>
-      <Col xs={{ span: 12, order: 1 }} sm={{ span: 'auto', order: 0 }}>
-        <p className="text-body-secondary fw-semibold fs-10 mb-0">
+      </div>
+      <div className="col-12 sm:col-auto order-1 sm:order-0">
+        <p className="text-muted font-semibold text-sm mb-0">
           Oct 4 at 12:18 pm
         </p>
-      </Col>
-      {comment.details && <Col xs={12}>{comment.details}</Col>}
-    </Row>
+      </div>
+      {comment.details && <div className="col-12">{comment.details}</div>}
+    </div>
   );
 };
 

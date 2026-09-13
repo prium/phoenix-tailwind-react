@@ -1,0 +1,91 @@
+/* -------------------------------------------------------------------------- */
+/*                                   Leaflet                                  */
+/* -------------------------------------------------------------------------- */
+
+.leaflet-touch {
+  .leaflet-bar {
+    border-color: var(--border-color-subtle) !important;
+  }
+}
+.leaflet-bar {
+  box-shadow: var(--shadow-base);
+  a {
+    &,
+    &:hover {
+      background-color: var(--background-color-subtle) !important;
+      color: var(--text-color-default) !important;
+      border-bottom-color: var(--border-color-default) !important;
+    }
+    &.leaflet-disabled {
+      background-color: var(--background-color-muted);
+    }
+  }
+}
+
+.marker-cluster-small {
+  background-color: --alpha(var(--color-primary) / 20%) !important;
+  div {
+    margin: 5px;
+    background-color: var(--color-primary) !important;
+    color: var(--background-color-soft);
+  }
+}
+.marker-cluster-medium {
+  background-color: --alpha(var(--color-warning) / 20%) !important;
+  div {
+    margin: 5px;
+    background-color: var(--color-warning) !important;
+    color: var(--background-color-soft);
+  }
+}
+.marker-cluster-large {
+  background-color: --alpha(var(--color-success) / 20%) !important;
+  div {
+    margin: 5px;
+    background-color: var(--color-success) !important;
+    color: var(--background-color-soft);
+  }
+}
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background-color: var(--background-color-soft) !important;
+  box-shadow: var(--shadow-lg) !important;
+  border-radius: var(--radius-md) !important;
+}
+.leaflet-popup-close-button {
+  right: 3px !important;
+  top: 3px !important;
+}
+.leaflet-marker-icon {
+  height: auto !important;
+  width: auto !important;
+}
+
+.leaflet-control-attribution {
+  display: none;
+}
+.leaflet-top,
+.leaflet-bottom {
+  z-index: 999;
+}
+
+.leaflet-left {
+  .leaflet-control {
+    margin-left: --spacing(6);
+  }
+}
+.leaflet-right {
+  .leaflet-control {
+    margin-right: --spacing(6);
+  }
+}
+.leaflet-top {
+  .leaflet-control {
+    margin-top: --spacing(6);
+  }
+}
+.leaflet-bottom {
+  .leaflet-control {
+    margin-bottom: --spacing(6);
+  }
+}

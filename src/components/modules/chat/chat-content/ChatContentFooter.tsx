@@ -1,18 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'components/base/Button';
-import { ChangeEvent, useState } from 'react';
-import { Card, Form } from 'react-bootstrap';
+import { ChangeEvent, FormEvent, useRef, useState } from 'react';
 import { useChatContext } from 'providers/ChatProvider';
-import ReactTextareaAutosize from 'react-textarea-autosize';
 import AttachmentPreview from 'components/common/AttachmentPreview';
 import { convertFileToAttachment } from 'helpers/utils';
 import ImageAttachmentPreview from 'components/common/ImageAttachmentPreview';
 import { faFaceSmile } from '@fortawesome/free-regular-svg-icons';
-import EmojiPicker, {
-  EmojiClickData,
-  Theme,
-  EmojiStyle
-} from 'emoji-picker-react';
+import EmojiPickerButton from 'components/base/EmojiPickerButton';
 import {
   faEllipsis,
   faImage,
@@ -21,22 +15,25 @@ import {
   faPaperclip
 } from '@fortawesome/free-solid-svg-icons';
 import { SENT_MESSAGE } from 'reducers/ChatReducer';
-import { useAppContext } from 'providers/AppProvider';
 
+/**
+ * `.card-footer` of a chat thread — phoenix-tailwind
+ * mixins/chat/ChatContent.pug. The message box is the gold contenteditable
+ * `.chat-textarea` (its placeholder is painted by chat.css from the
+ * `placeholder` attribute the gold JS sets).
+ */
 const ChatContentFooter = () => {
-  const {
-    config: { isDark }
-  } = useAppContext();
-
   const { currentConversation, chatDispatch } = useChatContext();
   const [messageText, setMessageText] = useState('');
-  const [previewEmoji, setPreviewEmoji] = useState(false);
   const [fileAttachment, setFileAttachment] = useState<File | null>(null);
   const [imageAttachments, setImageAttachments] = useState<File[]>([]);
+  const textareaRef = useRef<HTMLDivElement | null>(null);
 
-  const addEmoji = (emojiObject: EmojiClickData) => {
-    setMessageText(prev => prev + emojiObject.emoji);
-    setPreviewEmoji(false);
+  const addEmoji = (emoji: string) => {
+    if (textareaRef.current) {
+      textareaRef.current.textContent += emoji;
+      setMessageText(textareaRef.current.textContent ?? '');
+    }
   };
 
   const sentMessage = () => {
@@ -62,18 +59,22 @@ const ChatContentFooter = () => {
       setMessageText('');
       setImageAttachments([]);
       setFileAttachment(null);
+      if (textareaRef.current) textareaRef.current.textContent = '';
     }
   };
 
   return (
-    <Card.Footer>
-      <ReactTextareaAutosize
-        minRows={1}
-        maxRows={6}
-        value={messageText}
-        placeholder="Type your message..."
-        onChange={({ target: { value } }) => setMessageText(value)}
-        className="chat-textarea form-control outline-none border-0 scrollbar resize-none mb-1 p-0 fs-8 fw-normal"
+    <div className="card-footer">
+      <div
+        ref={textareaRef}
+        className="chat-textarea outline-none scrollbar mb-1"
+        contentEditable
+        suppressContentEditableWarning
+        // chat.css paints the placeholder attr on the empty contenteditable
+        {...{ placeholder: 'Type your message...' }}
+        onInput={(e: FormEvent<HTMLDivElement>) =>
+          setMessageText(e.currentTarget.textContent ?? '')
+        }
       />
 
       {fileAttachment && (
@@ -86,8 +87,8 @@ const ChatContentFooter = () => {
         </div>
       )}
 
-      {imageAttachments && (
-        <div className="mb-2 d-flex gap-2">
+      {imageAttachments.length > 0 && (
+        <div className="mb-2 flex gap-2">
           {imageAttachments.map((attachment, index) => (
             <ImageAttachmentPreview
               key={index}
@@ -102,86 +103,63 @@ const ChatContentFooter = () => {
         </div>
       )}
 
-      <div className="d-flex gap-3 align-items-center">
-        <div>
-          <Button
-            variant="link"
-            className="p-0 text-body fs-9 btn-emoji"
-            onClick={() => setPreviewEmoji(prev => !prev)}
+      <div className="flex justify-between items-end">
+        <div className="flex">
+          <EmojiPickerButton
+            className="btn btn-link py-0 ps-0 pe-2 text-default text-md btn-emoji"
+            aria-label="Add an emoji"
+            onSelect={addEmoji}
           >
             <FontAwesomeIcon icon={faFaceSmile} />
-          </Button>
-          {previewEmoji && (
-            <div className="chat-emoji-picker" dir="ltr">
-              <EmojiPicker
-                onEmojiClick={addEmoji}
-                theme={isDark ? Theme.DARK : Theme.LIGHT}
-                skinTonesDisabled={true}
-                previewConfig={{ showPreview: false }}
-                emojiStyle={EmojiStyle.GOOGLE}
-                width={354}
-                height={435}
-              />
-            </div>
-          )}
-        </div>
-        <div>
-          <Button className="p-0">
-            <label className="text-body fs-9 cursor-pointer" htmlFor="images">
-              <FontAwesomeIcon icon={faImage} />
-            </label>
-          </Button>
-          <Form.Control
-            className="d-none"
+          </EmojiPickerButton>
+          <label
+            className="btn btn-link py-0 px-2 text-default text-md"
+            htmlFor="chatPhotos"
+          >
+            <FontAwesomeIcon icon={faImage} />
+          </label>
+          <input
+            className="hidden"
             type="file"
             accept="image/*"
-            id="images"
+            id="chatPhotos"
             multiple
             onChange={({ target: { files } }: ChangeEvent<HTMLInputElement>) =>
               files && setImageAttachments(Array.from(files))
             }
           />
-        </div>
-        <div>
-          <Button className="p-0">
-            <label
-              className="text-body fs-9 cursor-pointer"
-              htmlFor="attachments"
-            >
-              <FontAwesomeIcon icon={faPaperclip} />
-            </label>
-          </Button>
-          <Form.Control
-            className="d-none"
+          <label
+            className="btn btn-link py-0 px-2 text-default text-md"
+            htmlFor="chatAttachment"
+          >
+            {' '}
+            <FontAwesomeIcon icon={faPaperclip} />
+          </label>
+          <input
+            className="hidden"
             type="file"
-            id="attachments"
-            accept=".pdf,.doc,.docx,.xls,.xlsx,.ppt,.pptx,.zip,.rar"
+            id="chatAttachment"
             onChange={({
               target: { files }
             }: ChangeEvent<HTMLInputElement>) => {
-              files && setFileAttachment(files[0]);
+              if (files) setFileAttachment(files[0]);
             }}
           />
+          <Button variant="link" className="py-0 px-2 text-default text-md">
+            <FontAwesomeIcon icon={faMicrophone} />
+          </Button>
+          <Button variant="link" className="py-0 px-2 text-default text-md">
+            <FontAwesomeIcon icon={faEllipsis} />
+          </Button>
         </div>
-
-        <Button className="p-0 text-body fs-9">
-          <FontAwesomeIcon icon={faMicrophone} />
-        </Button>
-        <Button className="p-0 text-body fs-9">
-          <FontAwesomeIcon icon={faEllipsis} />
-        </Button>
-
-        <Button
-          variant="primary"
-          endIcon={<FontAwesomeIcon icon={faPaperPlane} className="ms-2" />}
-          className="ms-auto"
-          type="submit"
-          onClick={sentMessage}
-        >
-          Send
-        </Button>
+        <div>
+          <Button variant="primary" className="text-sm" onClick={sentMessage}>
+            Send
+            <FontAwesomeIcon icon={faPaperPlane} className="ms-1" />
+          </Button>
+        </div>
       </div>
-    </Card.Footer>
+    </div>
   );
 };
 

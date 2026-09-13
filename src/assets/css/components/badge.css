@@ -1,0 +1,92 @@
+@utility badge {
+  @layer base {
+    --badge-color: var(--color-contrast);
+    --badge-font-size: 0.75em;
+    --badge-padding-y: 0.355555em;
+    --badge-padding-x: 0.711111em;
+    --badge-border-radius: var(--radius-sm);
+    --badge-font-weight: var(--font-weight-bold);
+
+    @apply inline-block text-nowrap border-0;
+
+    &[class*='badge-phoenix-'] {
+      --badge-padding-y: --spacing(0.5);
+      --badge-padding-x: --spacing(2);
+      @apply uppercase border;
+    }
+  }
+}
+
+@utility badge-secondary {
+  @layer base {
+    --badge-color: var(--color-white);
+  }
+}
+
+@utility badge-phoenix-primary {
+  @layer base {
+    --badge-color: var(--color-primary-darker);
+    --badge-bg: var(--color-primary-subtle);
+    --badge-border-color: var(--border-color-primary-subtle);
+  }
+}
+
+@utility badge-phoenix-secondary {
+  @layer base {
+    --badge-color: var(--color-secondary-darker);
+    --badge-bg: var(--color-secondary-subtle);
+    --badge-border-color: var(--border-color-secondary-subtle);
+    @variant dark {
+      --badge-color: var(--color-secondary-light);
+    }
+  }
+}
+
+@utility badge-phoenix-success {
+  @layer base {
+    --badge-color: var(--color-success-darker);
+    --badge-bg: var(--color-success-subtle);
+    --badge-border-color: var(--border-color-success-subtle);
+  }
+}
+
+@utility badge-phoenix-info {
+  @layer base {
+    --badge-color: var(--color-info-darker);
+    --badge-bg: var(--color-info-subtle);
+    --badge-border-color: var(--border-color-info-subtle);
+  }
+}
+
+@utility badge-phoenix-warning {
+  @layer base {
+    --badge-color: var(--color-warning-darker);
+    --badge-bg: var(--color-warning-subtle);
+    --badge-border-color: var(--border-color-warning-subtle);
+  }
+}
+
+@utility badge-phoenix-danger {
+  @layer base {
+    --badge-color: var(--color-danger-darker);
+    --badge-bg: var(--color-danger-subtle);
+    --badge-border-color: var(--border-color-danger-subtle);
+  }
+}
+
+@utility badge-label {
+  @layer base {
+    @apply inline-block translate-y-[1.4px];
+  }
+}
+
+@utility badge-tag {
+  @layer components {
+    --badge-bg: var(--background-color-muted);
+    --badge-color: var(--text-color-highlight);
+    --badge-padding-y: --spacing(1);
+    --badge-padding-x: --spacing(2);
+    --badge-font-size: var(--text-sm);
+    @apply uppercase font-bold focus:bg-highlight;
+  }
+}

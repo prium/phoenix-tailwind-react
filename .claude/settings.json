@@ -1,0 +1,23 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cp public/assets/css/index.css /private/tmp/claude-502/-Users-khayrul-Developer-Technext-phoenix-tailwind-react/e0c1812f-f329-4f66-bd2e-3c7a27cb0df2/scratchpad/index.104.css)",
+      "Bash(npx gulp *)",
+      "Bash(grep -vE \"^\\\\s*[<>]\\\\s*$\")",
+      "Bash(git checkout *)",
+      "Bash(npm view *)",
+      "Bash(npm uninstall *)",
+      "Bash(cp -R /Users/khayrul/Developer/Technext/phoenix-tailwind/src/css src/assets/css)",
+      "Bash(git rm *)",
+      "Bash(sed -i '' -e '/^VITE_BS_VERSION=/d' -e '/^VITE_RB_URL_PREFIX=/d' .env)",
+      "Bash(git add *)",
+      "Bash(git commit -q -m 'build: replace Bootstrap/SCSS pipeline with Tailwind v4 + Hummingbird React *)",
+      "Bash(grep -n 'avatar-sizes\\\\|$avatar' src/assets/scss/theme/_variables.scss)",
+      "Bash(npm pkg *)",
+      "Bash(grep -nE \"@utility|^\\\\.[a-z-]+ \\\\{|^\\\\.[a-z-]+,\" navbar.css)"
+    ],
+    "additionalDirectories": [
+      "/Users/khayrul/Developer/Technext/phoenix-tailwind/src/css"
+    ]
+  }
+}

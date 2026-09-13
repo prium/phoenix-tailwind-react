@@ -10,14 +10,16 @@ import {
 } from 'data/LatestReviewsTableData';
 import useAdvanceTable from 'hooks/useAdvanceTable';
 import AdvanceTableProvider from 'providers/AdvanceTableProvider';
-import { Col, Dropdown, Row } from 'react-bootstrap';
+import { Col, Dropdown, Row } from '@hummingbirdui/react';
 import { Link } from 'react-router';
 import FeatherIcon from 'feather-icons-react';
 import AdvanceTableFooter from 'components/base/AdvanceTableFooter';
 import { ColumnDef } from '@tanstack/react-table';
 import { ChangeEvent } from 'react';
 import Rating from 'components/base/Rating';
-import RevealDropdown from 'components/base/RevealDropdown';
+import RevealDropdown, {
+  RevealDropdownTrigger
+} from 'components/base/RevealDropdown';
 import ActionDropdownItems from 'components/common/ActionDropdownItems';
 import {
   faCheck,
@@ -25,6 +27,7 @@ import {
   faTrash
 } from '@fortawesome/free-solid-svg-icons';
 
+/** `+LatestReviews` in phoenix-tailwind e-commerce/LatestReviews.pug */
 const columns: ColumnDef<LatestReviewsTableDataType>[] = [
   {
     id: 'productImage',
@@ -34,30 +37,34 @@ const columns: ColumnDef<LatestReviewsTableDataType>[] = [
       return (
         <Link
           to="/apps/e-commerce/customer/product-details"
-          className="d-block rounded-2 border border-translucent"
+          className="inline-block rounded-md border border-subtle"
         >
           <img src={productImage} alt="" width={53} />
         </Link>
       );
     },
-    meta: { cellProps: { className: 'py-0' } },
+    meta: {
+      headerProps: { className: 'whitespace-nowrap min-w-17.75' },
+      cellProps: { className: 'whitespace-nowrap py-0' }
+    },
     enableSorting: false
   },
   {
     accessorKey: 'product',
-    header: () => 'Product',
+    header: 'PRODUCT',
     cell: ({ row: { original } }) => {
       const { product } = original;
       return (
         <Link
           to="/apps/e-commerce/customer/product-details"
-          className="fw-semibold"
+          className="font-semibold"
         >{`${product.slice(0, 46)}${product.length > 46 ? '...' : ''}`}</Link>
       );
     },
     enableSorting: true,
     meta: {
-      headerProps: { style: { minWidth: 360 }, className: 'py-2' }
+      headerProps: { className: 'whitespace-nowrap min-w-90' },
+      cellProps: { className: 'whitespace-nowrap' }
     }
   },
   {
@@ -68,7 +75,7 @@ const columns: ColumnDef<LatestReviewsTableDataType>[] = [
       return (
         <Link
           to="/apps/e-commerce/admin/customer-details"
-          className="d-flex align-items-center text-body"
+          className="flex items-center text-default"
         >
           {customer.variant === 'name' ? (
             <Avatar src={customer.avatar} size="l" variant={customer.variant}>
@@ -77,12 +84,13 @@ const columns: ColumnDef<LatestReviewsTableDataType>[] = [
           ) : (
             <Avatar src={customer.avatar} size="l" variant={customer.variant} />
           )}
-          <h6 className="mb-0 ms-3 text-body">{customer.name}</h6>
+          <h6 className="mb-0 ms-4 text-default">{customer.name}</h6>
         </Link>
       );
     },
     meta: {
-      headerProps: { style: { minWidth: 200 } }
+      headerProps: { className: 'min-w-50' },
+      cellProps: { className: 'whitespace-nowrap' }
     }
   },
   {
@@ -90,10 +98,11 @@ const columns: ColumnDef<LatestReviewsTableDataType>[] = [
     header: 'RATING',
     cell: ({ row: { original } }) => {
       const { rating } = original;
-      return <Rating iconClass="fs-10" readonly initialValue={rating} />;
+      return <Rating iconClass="text-sm" readonly initialValue={rating} />;
     },
     meta: {
-      headerProps: { style: { minWidth: 110 } }
+      headerProps: { className: 'min-w-27.5' },
+      cellProps: { className: 'whitespace-nowrap text-sm' }
     }
   },
   {
@@ -102,7 +111,7 @@ const columns: ColumnDef<LatestReviewsTableDataType>[] = [
     cell: ({ row: { original } }) => {
       const { review } = original;
       return (
-        <p className="fs--1 fw-semibold text-body-highlight mb-0 line-clamp-3">
+        <p className="text-md font-semibold text-highlight mb-0">
           {review.slice(0, 134)}
           {review.length > 134 && (
             <>
@@ -114,7 +123,8 @@ const columns: ColumnDef<LatestReviewsTableDataType>[] = [
       );
     },
     meta: {
-      headerProps: { style: { minWidth: 350 } }
+      headerProps: { className: 'max-w-87.5' },
+      cellProps: { className: 'min-w-87.5' }
     }
   },
   {
@@ -126,19 +136,19 @@ const columns: ColumnDef<LatestReviewsTableDataType>[] = [
       } = original;
       return (
         <Badge
-          bg={badgeBg}
+          color={badgeBg}
           variant="phoenix"
           iconPosition="end"
-          className="fs-10"
-          icon={<FeatherIcon icon={icon} size={12} className="ms-1" />}
+          className="text-sm"
+          icon={<FeatherIcon icon={icon} size={12.8} className="ms-1" />}
         >
           {title}
         </Badge>
       );
     },
     meta: {
-      headerProps: { className: 'ps-5' },
-      cellProps: { className: 'ps-5' }
+      headerProps: { className: 'text-start ps-8' },
+      cellProps: { className: 'text-start ps-8' }
     }
   },
   {
@@ -148,13 +158,13 @@ const columns: ColumnDef<LatestReviewsTableDataType>[] = [
       const { time } = original;
       return (
         <div className="hover-hide">
-          <h6 className="text-body-highlight mb-0">{time}</h6>
+          <h6 className="text-highlight mb-0">{time}</h6>
         </div>
       );
     },
     meta: {
       headerProps: { className: 'text-end' },
-      cellProps: { className: 'text-end white-space-nowrap' }
+      cellProps: { className: 'text-end whitespace-nowrap' }
     }
   },
   {
@@ -164,28 +174,37 @@ const columns: ColumnDef<LatestReviewsTableDataType>[] = [
     cell: () => {
       return (
         <>
-          <div className="position-relative">
+          <div className="relative">
             <div className="hover-actions">
               <Button
-                variant="phoenix-secondary"
-                className="me-1 fs-10"
+                variant="phoenix"
+                color="secondary"
+                className="me-1 text-sm"
                 size="sm"
               >
                 <FontAwesomeIcon icon={faCheck} />
               </Button>
-              <Button variant="phoenix-secondary" className="fs-10" size="sm">
+              <Button
+                variant="phoenix"
+                color="secondary"
+                className="text-sm"
+                size="sm"
+              >
                 <FontAwesomeIcon icon={faTrash} />
               </Button>
             </div>
           </div>
-          <RevealDropdown btnClassName="fs-10">
-            <ActionDropdownItems />
-          </RevealDropdown>
+          <RevealDropdownTrigger className="static">
+            <RevealDropdown btnClassName="text-sm">
+              <ActionDropdownItems />
+            </RevealDropdown>
+          </RevealDropdownTrigger>
         </>
       );
     },
     meta: {
-      cellProps: { className: 'text-end' }
+      headerProps: { className: 'text-end pe-0' },
+      cellProps: { className: 'whitespace-nowrap text-end pe-0' }
     }
   }
 ];
@@ -197,7 +216,6 @@ const EcomLatestReviewsTable = () => {
     pageSize: 6,
     pagination: true,
     selection: true,
-    selectionColumnWidth: '30px',
     sortable: true
   });
 
@@ -206,65 +224,60 @@ const EcomLatestReviewsTable = () => {
   };
 
   return (
-    <>
-      <AdvanceTableProvider {...table}>
-        <Row className="align-items-end justify-content-between pb-5 g-3">
-          <Col xs="auto">
-            <h3>Latest reviews</h3>
-            <p className="text-body-tertiary lh-sm mb-0">
-              Payment received across all channels
-            </p>
-          </Col>
-          <Col xs={12} md="auto">
-            <Row className="g-2 gy-3">
-              <Col xs="auto" className="flex-1">
-                <SearchBox
-                  placeholder="Search..."
-                  size="sm"
-                  onChange={handleSearchInputChange}
-                />
-              </Col>
-              <Col xs="auto" className="d-flex gap-2">
-                <Button
-                  variant="phoenix-secondary"
-                  size="sm"
-                  className="bg-body-emphasis bg-body-hover"
-                >
-                  All products
-                </Button>
-                <Dropdown>
-                  <Dropdown.Toggle
-                    variant="phoenix-secondary"
+    <AdvanceTableProvider {...table}>
+      <Row className="items-end justify-between pb-8 g-4">
+        <Col xs="auto">
+          <h3>Latest reviews</h3>
+          <p className="text-subtle leading-sm mb-0">
+            Payment received across all channels
+          </p>
+        </Col>
+        <Col xs={12} md="auto">
+          <Row className="items-center g-2 gy-4">
+            <Col xs="auto" className="flex-1">
+              <SearchBox
+                placeholder="Search"
+                size="sm"
+                onChange={handleSearchInputChange}
+              />
+            </Col>
+            <Col xs="auto" className="flex items-center">
+              <Button
+                variant="phoenix"
+                color="secondary"
+                size="sm"
+                className="bg-soft hover:bg-default me-3"
+              >
+                All products
+              </Button>
+              <Dropdown>
+                <Dropdown.Trigger asChild>
+                  <Button
+                    variant="phoenix"
+                    color="secondary"
                     size="sm"
-                    className="bg-body-emphasis bg-body-hover dropdown-caret-none"
+                    className="bg-soft hover:bg-default action-btn dropdown-caret-none"
                   >
-                    <FontAwesomeIcon icon={faEllipsisH} className="10" />
-                  </Dropdown.Toggle>
+                    <FontAwesomeIcon icon={faEllipsisH} transform="shrink-2" />
+                  </Button>
+                </Dropdown.Trigger>
+                <Dropdown.Content align="end">
+                  <Dropdown.Item>Action</Dropdown.Item>
+                  <Dropdown.Item>Another action</Dropdown.Item>
+                  <Dropdown.Item>Something else here</Dropdown.Item>
+                </Dropdown.Content>
+              </Dropdown>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
 
-                  <Dropdown.Menu align="end">
-                    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                    <Dropdown.Item href="#/action-2">
-                      Another action
-                    </Dropdown.Item>
-                    <Dropdown.Item href="#/action-3">
-                      Something else
-                    </Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
-              </Col>
-            </Row>
-          </Col>
-        </Row>
-
-        <AdvanceTable
-          tableProps={{
-            className: 'phoenix-table fs-9 mb-0 border-top border-translucent'
-          }}
-          rowClassName="hover-actions-trigger btn-reveal-trigger position-static"
-        />
-        <AdvanceTableFooter navBtn />
-      </AdvanceTableProvider>
-    </>
+      <AdvanceTable
+        tableProps={{ className: 'text-md mb-0 border-t border-subtle' }}
+        rowClassName="hover-actions-trigger btn-reveal-trigger static"
+      />
+      <AdvanceTableFooter navBtn />
+    </AdvanceTableProvider>
   );
 };
 

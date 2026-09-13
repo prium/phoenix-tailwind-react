@@ -24,3 +24,6 @@ dist
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+tests/visual/output
+tests/visual/results
+tests/visual/report

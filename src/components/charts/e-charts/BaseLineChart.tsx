@@ -17,9 +17,9 @@ const getDefaultOptions = (
   tooltip: {
     trigger: 'axis',
     padding: 10,
-    backgroundColor: getThemeColor('body-highlight-bg'),
-    borderColor: getThemeColor('border-color'),
-    textStyle: { color: getThemeColor('light-text-emphasis') },
+    backgroundColor: getThemeColor('background-color-subtle'),
+    borderColor: getThemeColor('border-color-default'),
+    textStyle: { color: getThemeColor('text-color-emphasis') },
     borderWidth: 1,
     transitionDuration: 0,
     axisPointer: {
@@ -45,10 +45,10 @@ const getDefaultOptions = (
       data,
       lineStyle: {
         width: 2,
-        color: getThemeColor(color)
+        color: getThemeColor(`color-${color}`)
       },
       itemStyle: {
-        color: getThemeColor(color)
+        color: getThemeColor(`color-${color}`)
       },
       showSymbol: false,
       symbol: 'circle'
