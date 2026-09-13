@@ -1,7 +1,7 @@
 import { faCheck, faDollarSign } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { cn, Col, Row } from '@hummingbirdui/react';
-import PhoenixReactRange from 'components/forms/PhoenixReactRange';
+import PhoenixSlider from 'components/forms/PhoenixSlider';
 import { Fragment, useState } from 'react';
 import { homepageOffcanvasAmenitiesItems } from 'data/travel-agency/customer/hotel';
 import { Link } from 'react-router';
@@ -48,14 +48,10 @@ const HomepageFilterOffcanvasContent = () => {
           </div>
         </Col>
       </Row>
-      <PhoenixReactRange
-        min={0}
-        max={250}
-        values={range}
-        onChange={val => setRange(val)}
-        trackHeight="1.5rem"
-        variant="primary-lighter"
-        classNames="phoenix-react-range-large ps-8 pe-4 mt-4"
+      <PhoenixSlider
+        options={{ range: { min: 0, max: 250 }, start: range, connect: true }}
+        onChange={val => setRange(val.map(Number))}
+        className="noUi-primary-lighter noUi-slider-large noUi-handle-primary noUi-handle-circle ps-8 pe-4 mt-4"
       />
       <hr className="my-8" />
       <h4 className="mb-6 text-highlight">Amenities</h4>

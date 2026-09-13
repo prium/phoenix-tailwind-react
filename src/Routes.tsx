@@ -185,8 +185,8 @@ const GanttChartExample = lazy(
 const EmojiButtonExample = lazy(
   () => import('pages/modules/forms/advance/EmojiButtonExample')
 );
-const ReactRangeExample = lazy(
-  () => import('pages/modules/forms/advance/ReactRangeExample')
+const RangeSliderExample = lazy(
+  () => import('pages/modules/forms/advance/RangeSliderExample')
 );
 const LightboxExample = lazy(
   () => import('pages/modules/components/LightboxExample')
@@ -1009,7 +1009,7 @@ const Routes: RouteObject[] = [
                     path: 'advance/range',
                     element: (
                       <Suspense key="range" fallback={<PhoenixLoader />}>
-                        <ReactRangeExample />
+                        <RangeSliderExample />
                       </Suspense>
                     )
                   },

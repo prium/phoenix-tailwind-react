@@ -40,3 +40,13 @@ Commit it upstream with the avatar fix.
 Third working-tree patch upstream: financial-activities-chart.js tooltip now
 Math.abs()es the diverging revenue/expanses values (bundle rebuilt via gulp
 script) — the raw negatives leaked into the tooltip on both sides.
+
+Sixth working-tree patch upstream: plugins/nouislider.css adds `.noUi-primary`,
+`.noUi-success`, `.noUi-info`, `.noUi-warning` and `.noUi-danger`, each setting
+`.noUi-connect { background: var(--color-<name>) !important }`. The theme's own
+markup — `modules/forms/advance/range.html` and the demos — has always used
+these classes, but only `.noUi-primary-lighter` was ever written, so the
+"Colored Sliders" card rendered five identical blue sliders in the gold too.
+Verified: success #25b003, info #0097eb, warning #e5780b, danger #fa3b1d.
+Rebuild the gold's public/assets/css before comparing that page visually.
+

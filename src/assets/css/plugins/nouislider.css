@@ -1,3 +1,37 @@
+/* The markup on modules/forms/advance/range.html (and the theme's own demos)
+   uses .noUi-primary / -success / -info / -warning / -danger to colour the
+   connected part of the track, but only -lighter was ever written, so the
+   "Colored Sliders" card rendered five identical blue sliders. */
+.noUi-primary {
+  .noUi-connect {
+    background: var(--color-primary) !important;
+  }
+}
+
+.noUi-success {
+  .noUi-connect {
+    background: var(--color-success) !important;
+  }
+}
+
+.noUi-info {
+  .noUi-connect {
+    background: var(--color-info) !important;
+  }
+}
+
+.noUi-warning {
+  .noUi-connect {
+    background: var(--color-warning) !important;
+  }
+}
+
+.noUi-danger {
+  .noUi-connect {
+    background: var(--color-danger) !important;
+  }
+}
+
 .noUi-primary-lighter {
   .noUi-connect {
     background: var(--color-primary-lighter) !important;
