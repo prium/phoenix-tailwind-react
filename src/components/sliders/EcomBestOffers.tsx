@@ -18,9 +18,9 @@ const EcomBestOffers = ({ products }: { products: Product[] }) => {
         </Link>
       </div>
       <Swiper
+        parentClassName="products-slider"
         slidesPerView={1}
         spaceBetween={16}
-        navigationPosition={{ top: '25%' }}
         breakpoints={{
           0: {
             slidesPerView: 1,
