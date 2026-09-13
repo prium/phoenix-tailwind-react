@@ -1,8 +1,11 @@
-import classNames from 'classnames';
+import { Accordion, Col, Row, cn } from '@hummingbirdui/react';
 import { showcaseFaqs } from 'data/showcase';
-import { Accordion, Col, Row } from 'react-bootstrap';
+import { useState } from 'react';
 
+/** `mixins/showcase/Faq.pug` — the gold opens the first panel. */
 const Faq = () => {
+  const [openItem, setOpenItem] = useState<string>(String(showcaseFaqs[0].id));
+
   return (
     <section className="pt-16 sm:pt-28">
       <div className="container-small">
@@ -12,19 +15,32 @@ const Faq = () => {
               Frequently asked questions
             </h2>
             <Accordion
-              className="border-to border-translucentp"
-              defaultActiveKey="0"
+              type="single"
+              collapsible
+              value={openItem}
+              onValueChange={setOpenItem}
             >
               {showcaseFaqs.map((faq, index) => (
                 <Accordion.Item
-                  className={classNames('border-b border-subtle')}
-                  eventKey={String(index)}
                   key={faq.id}
+                  value={String(faq.id)}
+                  className={cn({ 'border-t border-subtle': index === 0 })}
                 >
-                  <Accordion.Button className="text-lg">
-                    {faq.question}
-                  </Accordion.Button>
-                  <Accordion.Body className="pt-0">{faq.answer}</Accordion.Body>
+                  <Accordion.Header asChild>
+                    <h2 id={`heading${faq.id}`}>
+                      <Accordion.Trigger
+                        className={cn('text-lg pb-4', {
+                          // phoenix keys the active icon on `:not(.collapsed)`
+                          collapsed: openItem !== String(faq.id)
+                        })}
+                      >
+                        {faq.question}
+                      </Accordion.Trigger>
+                    </h2>
+                  </Accordion.Header>
+                  <Accordion.Content className="pt-0" id={`collapse${faq.id}`}>
+                    {faq.answer}
+                  </Accordion.Content>
                 </Accordion.Item>
               ))}
             </Accordion>

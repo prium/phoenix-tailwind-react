@@ -15,7 +15,7 @@ import { MutableRefObject, useEffect } from 'react';
 //    The transition occurs as you scroll down, giving a smooth visual effect.
 
 const useNavbarBgChangeOnScroll = (
-  navbarRef: MutableRefObject<HTMLDivElement | null>,
+  navbarRef: MutableRefObject<HTMLElement | null>,
   bgColor = '#ffffff'
 ) => {
   useEffect(() => {
@@ -24,13 +24,16 @@ const useNavbarBgChangeOnScroll = (
       if (navbarRef.current) {
         const windowHeight = window.innerHeight;
         const scrollTop = window.scrollY;
-        let alpha = (scrollTop / windowHeight) * 2;
-        alpha >= 1 && (alpha = 1);
+        const alpha = Math.min((scrollTop / windowHeight) * 2, 1);
         navbarRef.current.style.backgroundColor = `rgba(${bgColorRgb}, ${alpha})`;
       }
     };
 
-    document.addEventListener('scroll', () => handleAlpha());
+    // The gold (`navbar-soft-on-scroll.js`) paints the initial alpha before the
+    // first scroll, which is what keeps a navbar with its own background class
+    // transparent at the top of the page.
+    handleAlpha();
+    document.addEventListener('scroll', handleAlpha);
 
     return () => document.removeEventListener('scroll', handleAlpha);
   }, []);

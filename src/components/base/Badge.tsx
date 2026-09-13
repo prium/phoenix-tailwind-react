@@ -45,6 +45,12 @@ export interface BadgeProps extends Omit<ComponentProps<'span'>, 'color'> {
   iconPosition?: 'start' | 'end';
   iconFamily?: 'fa' | 'unicons' | 'feather';
   className?: string;
+  /**
+   * `badge-label` nudges the text down 1.4px. Most gold phoenix badges carry
+   * it, but a few (the showcase "New" chips) are a bare span — pass false
+   * there so the text is not shifted.
+   */
+  label?: boolean;
 }
 
 const Badge = ({
@@ -57,6 +63,7 @@ const Badge = ({
   className,
   variant = 'default',
   iconPosition = 'start',
+  label = true,
   ...rest
 }: PropsWithChildren<BadgeProps>) => {
   const resolvedColor = color ?? bg;
@@ -64,7 +71,7 @@ const Badge = ({
   const content = (
     <>
       {icon && iconPosition === 'start' && icon}
-      {variant === 'phoenix' ? (
+      {variant === 'phoenix' && label ? (
         <span className="badge-label">{children}</span>
       ) : (
         children

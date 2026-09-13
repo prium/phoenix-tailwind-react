@@ -1,12 +1,12 @@
-import classNames from 'classnames';
+import { Col, Row, cn } from '@hummingbirdui/react';
 import { demos } from 'data/showcase';
-import { Col, Container, Row } from 'react-bootstrap';
 import { Link } from 'react-router';
 
+/** `mixins/showcase/Demos.pug` */
 const Demos = () => {
   return (
     <section className="pt-0">
-      <Container fluid>
+      <div className="container-fluid">
         <Row>
           {demos.map((demo, index) => (
             <Col
@@ -15,39 +15,30 @@ const Demos = () => {
               className="relative variant-container"
             >
               <div
-                className={classNames(
+                className={cn(
                   'flex px-6 pt-10 justify-center',
-                  {
-                    'lg:justify-end': (index + 1) % 2 !== 0,
-                    'lg:justify-start': (index + 1) % 2 === 0
-                  }
+                  index % 2 === 0 ? 'lg:justify-end' : 'lg:justify-start'
                 )}
               >
                 <div className="text-center">
                   <div className="img-container w-full">
                     <img
                       src={demo.sideThumb}
-                      alt={demo.variantName}
+                      alt=""
                       className="side-panel-thumb h-full w-full rounded-md"
                     />
                     <div className="layout-thumb">
-                      <img
-                        src={demo.mainThumb}
-                        alt={demo.variantName}
-                        className="img-fluid rounded-md"
-                      />
+                      <img src={demo.mainThumb} alt="" className="rounded-md" />
                     </div>
                   </div>
-                  <h5 className="py-6 text-highlight">
-                    {demo.variantName}
-                  </h5>
+                  <h5 className="py-6 text-highlight">{demo.variantName}</h5>
                 </div>
               </div>
               <Link to={demo.link} target="_blank" className="stretched-link" />
             </Col>
           ))}
         </Row>
-      </Container>
+      </div>
     </section>
   );
 };

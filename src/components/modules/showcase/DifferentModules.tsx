@@ -1,4 +1,4 @@
-import { Col, Container, Row } from 'react-bootstrap';
+import { Row, cn } from '@hummingbirdui/react';
 import spotIllustration31 from 'assets/img/spot-illustrations/31.png';
 import module1 from 'assets/img/sections/module-1.png';
 import module2 from 'assets/img/sections/module-2.png';
@@ -25,7 +25,6 @@ import module22 from 'assets/img/sections/module-22.png';
 import module23 from 'assets/img/sections/module-23.png';
 import module24 from 'assets/img/sections/module-24.png';
 import { BadgeBg } from 'components/base/Badge';
-import classNames from 'classnames';
 import { Link } from 'react-router';
 
 interface Badge {
@@ -44,22 +43,22 @@ const modules: Module[] = [
   {
     name: 'E commerce',
     images: [module4, module3, module2, module1],
-    path: '/apps/e-commerce/admin/add-product'
+    path: '/'
   },
   {
     name: 'Project Management',
     images: [module8, module7, module6, module5],
-    path: '/apps/project-management/create-new'
+    path: '/dashboard/project-management'
   },
   {
     name: 'CRM',
     images: [module12, module11, module10, module9],
-    path: '/apps/crm/analytics'
+    path: '/dashboard/crm'
   },
   {
     name: 'Booking',
     images: [module16, module15, module14, module13],
-    path: '/apps/travel-agency/hotel/customer/homepage'
+    path: '/dashboard/travel-agency'
   },
   {
     name: 'Social',
@@ -78,46 +77,48 @@ const modules: Module[] = [
 ];
 
 const ModulesItem = ({ item }: { item: Module }) => (
-  <Col
-    lg={6}
-    className={classNames('module-variant-container', {
-      new: item.badge
-    })}
+  <Link
+    to={item.path || '#!'}
+    className={cn(
+      item.badge && 'new',
+      'lg:col-6 module-variant-container no-underline'
+    )}
   >
     {item.badge && <h1 className="module-badge">{item.badge.label}</h1>}
     <h2 className="module-title relative">{item.name}</h2>
-    <Link to={item.path || '#!'} className="stretched-link" />
-    <div className="image-container cursor-pointer">
+    <div className="image-container">
       {item.images.map((image, idx) => (
         <div className="image" key={idx}>
           <img src={image} alt="" className="w-full" />
         </div>
       ))}
     </div>
-  </Col>
+  </Link>
 );
 
 const DifferentModules = () => {
   return (
-    <Container fluid className="pt-18">
-      <h2 className="text-highlight font-normal leading-sm text-center mb-20">
-        Different
-        <span className="text-primary relative font-black inline-flex ms-2">
-          modules
-          <img
-            src={spotIllustration31}
-            alt=""
-            className="text-illustration-underline"
-          />
-        </span>{' '}
-        dedicated for different purposes
-      </h2>
-      <Row>
-        {modules.map((item, index) => (
-          <ModulesItem key={index} item={item} />
-        ))}
-      </Row>
-    </Container>
+    <section className="pt-18">
+      <div className="container-fluid">
+        <h2 className="text-highlight font-normal leading-sm text-center mb-20">
+          Different
+          <span className="text-primary relative font-black inline-flex ms-2">
+            modules
+            <img
+              src={spotIllustration31}
+              alt=""
+              className="text-illustration-underline"
+            />
+          </span>{' '}
+          dedicated for different purposes
+        </h2>
+        <Row>
+          {modules.map((item, index) => (
+            <ModulesItem key={index} item={item} />
+          ))}
+        </Row>
+      </div>
+    </section>
   );
 };
 

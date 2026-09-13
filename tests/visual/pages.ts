@@ -1211,5 +1211,10 @@ export const pages: VisualPage[] = [
       // to-do / project search boxes
       '.search-box .search-box-icon'
     ]
+  },
+  {
+    name: 'showcase',
+    react: '/showcase',
+    gold: '/showcase.html'
   }
 ];
