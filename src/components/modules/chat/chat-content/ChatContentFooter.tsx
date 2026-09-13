@@ -6,11 +6,7 @@ import AttachmentPreview from 'components/common/AttachmentPreview';
 import { convertFileToAttachment } from 'helpers/utils';
 import ImageAttachmentPreview from 'components/common/ImageAttachmentPreview';
 import { faFaceSmile } from '@fortawesome/free-regular-svg-icons';
-import EmojiPicker, {
-  EmojiClickData,
-  Theme,
-  EmojiStyle
-} from 'emoji-picker-react';
+import EmojiPickerButton from 'components/base/EmojiPickerButton';
 import {
   faEllipsis,
   faImage,
@@ -19,7 +15,6 @@ import {
   faPaperclip
 } from '@fortawesome/free-solid-svg-icons';
 import { SENT_MESSAGE } from 'reducers/ChatReducer';
-import { useAppContext } from 'providers/AppProvider';
 
 /**
  * `.card-footer` of a chat thread — phoenix-tailwind
@@ -28,23 +23,17 @@ import { useAppContext } from 'providers/AppProvider';
  * `placeholder` attribute the gold JS sets).
  */
 const ChatContentFooter = () => {
-  const {
-    config: { isDark }
-  } = useAppContext();
-
   const { currentConversation, chatDispatch } = useChatContext();
   const [messageText, setMessageText] = useState('');
-  const [previewEmoji, setPreviewEmoji] = useState(false);
   const [fileAttachment, setFileAttachment] = useState<File | null>(null);
   const [imageAttachments, setImageAttachments] = useState<File[]>([]);
   const textareaRef = useRef<HTMLDivElement | null>(null);
 
-  const addEmoji = (emojiObject: EmojiClickData) => {
+  const addEmoji = (emoji: string) => {
     if (textareaRef.current) {
-      textareaRef.current.textContent += emojiObject.emoji;
+      textareaRef.current.textContent += emoji;
       setMessageText(textareaRef.current.textContent ?? '');
     }
-    setPreviewEmoji(false);
   };
 
   const sentMessage = () => {
@@ -114,29 +103,15 @@ const ChatContentFooter = () => {
         </div>
       )}
 
-      {previewEmoji && (
-        <div className="chat-emoji-picker" dir="ltr">
-          <EmojiPicker
-            onEmojiClick={addEmoji}
-            theme={isDark ? Theme.DARK : Theme.LIGHT}
-            skinTonesDisabled={true}
-            previewConfig={{ showPreview: false }}
-            emojiStyle={EmojiStyle.GOOGLE}
-            width={354}
-            height={435}
-          />
-        </div>
-      )}
-
       <div className="flex justify-between items-end">
         <div className="flex">
-          <Button
-            variant="link"
-            className="py-0 ps-0 pe-2 text-default text-md btn-emoji"
-            onClick={() => setPreviewEmoji(prev => !prev)}
+          <EmojiPickerButton
+            className="btn btn-link py-0 ps-0 pe-2 text-default text-md btn-emoji"
+            aria-label="Add an emoji"
+            onSelect={addEmoji}
           >
             <FontAwesomeIcon icon={faFaceSmile} />
-          </Button>
+          </EmojiPickerButton>
           <label
             className="btn btn-link py-0 px-2 text-default text-md"
             htmlFor="chatPhotos"
