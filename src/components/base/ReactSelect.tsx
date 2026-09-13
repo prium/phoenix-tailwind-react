@@ -1,5 +1,5 @@
 import { cn } from '@hummingbirdui/react';
-import { ReactElement } from 'react';
+import { FocusEvent, ReactElement, useState } from 'react';
 import Select, {
   ControlProps,
   GroupBase,
@@ -63,11 +63,28 @@ const ReactSelect = ({
   isMulti,
   className,
   classNames,
+  onMenuOpen,
+  onMenuClose,
+  onFocus,
+  onBlur,
   ...rest
 }: ReactSelectProps) => {
+  /**
+   * choices.js puts `is-open` / `is-focused` on the wrapper, and the skin needs
+   * them: `.choices` is `overflow-hidden`, and only `.choices.is-open` turns
+   * that back to `visible`. Without them the absolutely-positioned menu was
+   * clipped away entirely — the control looked dead because no options could
+   * ever be seen. They also drive the focused border, via `.is-focused &`.
+   */
+  const [isOpen, setIsOpen] = useState(false);
+  const [isFocused, setIsFocused] = useState(false);
+
   return (
     <div
-      className={cn('choices', icon && 'choices-select-container', className)}
+      className={cn('choices', icon && 'choices-select-container', className, {
+        'is-open': isOpen,
+        'is-focused': isFocused
+      })}
       data-type={isMulti ? 'select-multiple' : 'select-one'}
       role="combobox"
     >
@@ -83,6 +100,22 @@ const ReactSelect = ({
           MultiValueRemove,
           DropdownIndicator: null,
           IndicatorSeparator: null
+        }}
+        onMenuOpen={() => {
+          setIsOpen(true);
+          onMenuOpen?.();
+        }}
+        onMenuClose={() => {
+          setIsOpen(false);
+          onMenuClose?.();
+        }}
+        onFocus={(e: FocusEvent<HTMLInputElement>) => {
+          setIsFocused(true);
+          onFocus?.(e);
+        }}
+        onBlur={(e: FocusEvent<HTMLInputElement>) => {
+          setIsFocused(false);
+          onBlur?.(e);
         }}
         classNamePrefix="react-select"
         // emotion wins over utility classes: match the gold inline layout
@@ -102,7 +135,13 @@ const ReactSelect = ({
           multiValueLabel: () => '',
           singleValue: () => 'choices__item',
           placeholder: () => cn('choices__placeholder', icon && 'ps-2'),
-          input: () => 'choices__input choices__input--cloned',
+          // Only the multi control carries a visible inline input in choices.
+          // For `select-one` the cloned search field lives in the DROPDOWN, so
+          // `.choices__input` is styled as one — `block w-full py-2.5 px-3`
+          // plus a bottom border. Putting that on react-select's in-control
+          // input grew the single select to 83px against the gold's 38px and
+          // drew a stray rule under the placeholder.
+          input: () => (isMulti ? 'choices__input choices__input--cloned' : ''),
           menu: () => 'choices__list choices__list--dropdown is-active',
           menuList: () => 'choices__list',
           option: ({ isFocused }) =>
