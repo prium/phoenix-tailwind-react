@@ -1,13 +1,14 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { memo, useEffect } from 'react';
+import { memo } from 'react';
 import { cn } from '@hummingbirdui/react';
 import FeatherIcon from 'feather-icons-react';
 import { Route } from 'sitemap';
 import { capitalize } from 'helpers/utils';
-import { NavLink, useLocation } from 'react-router';
+import { NavLink } from 'react-router';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { useNavbarVerticalCollapse } from './NavbarVerticalCollapseProvider';
+import useCollapseTransition from 'hooks/useCollapseTransition';
 import Badge from 'components/base/Badge';
 
 interface NavbarVerticalMenuProps {
@@ -101,20 +102,11 @@ const NavItem = ({ route, level }: NavItemProps) => {
 
 /** Parent link + `ul.nav.collapse.parent` — PageLooper in NavbarVertical.pug */
 const CollapsableNavItem = ({ route, level }: NavItemProps) => {
-  const { pathname } = useLocation();
   const { setOpenItems, openItems } = useNavbarVerticalCollapse();
 
   const isOpen = openItems[level] === route.name;
-
-  const openCollapse = (childrens: Route[] = []) => {
-    const checkLink = (children: Route): boolean => {
-      if (`${children.path}` === pathname) {
-        return true;
-      }
-      return !!children.pages && children.pages.some(checkLink);
-    };
-    return childrens.some(checkLink);
-  };
+  const { ref: menuRef, isCollapsing } =
+    useCollapseTransition<HTMLUListElement>(isOpen);
 
   const updateOpenItems = (name: string) => {
     const updatedOpenItems = [...openItems];
@@ -126,12 +118,6 @@ const CollapsableNavItem = ({ route, level }: NavItemProps) => {
     });
     setOpenItems(updatedOpenItems);
   };
-
-  useEffect(() => {
-    if (openCollapse(route.pages)) {
-      updateOpenItems(route.name);
-    }
-  }, []);
 
   const toggle = () => updateOpenItems(isOpen ? '' : route.name);
 
@@ -188,8 +174,13 @@ const CollapsableNavItem = ({ route, level }: NavItemProps) => {
           `.parent-wrapper.label-1 > .parent` as a hover fly-out.
         */}
         <ul
+          ref={menuRef}
           id={`nv-${route.name}`}
-          className={cn('nav collapse parent', { show: isOpen })}
+          className={cn('nav parent', {
+            collapsing: isCollapsing,
+            collapse: !isCollapsing,
+            show: isOpen && !isCollapsing
+          })}
         >
           {level === 1 && (
             <li className="collapsed-nav-item-title hidden">
