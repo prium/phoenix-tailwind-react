@@ -39,6 +39,10 @@
                   ? 'dark'
                   : 'light';
           }
+          // Pages painted in one scheme whatever was picked, mirroring their
+          // useForcedTheme() call. The stored choice is deliberately untouched.
+          // Matched on the path's end so any VITE_BASENAME prefix still works.
+          if (/\/showcase\/?$/.test(location.pathname)) mode = 'light';
           html.classList.toggle('dark', mode === 'dark');
           html.setAttribute('data-hb-theme', mode);
 
@@ -80,7 +84,7 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>Phoenix React | ReactJS Dashboard & WebApp Template</title>
-    <script type="module" crossorigin src="/assets/index-Dq_bo0HT.js"></script>
+    <script type="module" crossorigin src="/assets/index-Dl9cSaZS.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-Dmu77_PF.css">
   </head>
 
