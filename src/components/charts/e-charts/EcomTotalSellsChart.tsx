@@ -12,7 +12,6 @@ import {
 } from 'echarts/components';
 import { LineChart } from 'echarts/charts';
 import { CanvasRenderer } from 'echarts/renderers';
-import { ThemeVariant } from 'config';
 import { tooltipFormatterList } from 'helpers/echart-utils';
 
 echarts.use([
@@ -41,7 +40,7 @@ const prevMonthData = [
 ];
 
 const getDefaultOptions = (
-  theme: ThemeVariant,
+  isDark: boolean,
   getThemeColor: (name: string) => string
 ) => ({
   color: [getThemeColor('color-primary'), getThemeColor('color-info')],
@@ -88,10 +87,9 @@ const getDefaultOptions = (
         show: true,
         interval: 0,
         lineStyle: {
-          color:
-            theme === 'dark'
-              ? getThemeColor('background-color-subtle')
-              : getThemeColor('background-color-muted')
+          color: isDark
+            ? getThemeColor('background-color-subtle')
+            : getThemeColor('background-color-muted')
         }
       },
       boundaryGap: 0
@@ -168,7 +166,7 @@ const getDefaultOptions = (
 /** `.echart-total-sales-chart.h-80.w-full` in phoenix-tailwind */
 const EcomTotalSellsChart = ({ className }: { className?: string }) => {
   const {
-    config: { theme },
+    config: { isDark },
     getThemeColor
   } = useAppContext();
 
@@ -176,7 +174,7 @@ const EcomTotalSellsChart = ({ className }: { className?: string }) => {
     <div className={cn('h-80 w-full', className)}>
       <ReactEChartsCore
         echarts={echarts}
-        option={getDefaultOptions(theme, getThemeColor)}
+        option={getDefaultOptions(isDark, getThemeColor)}
         style={{ height: '100%', width: '100%' }}
       />
     </div>

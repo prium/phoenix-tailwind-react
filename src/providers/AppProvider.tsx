@@ -5,7 +5,8 @@ import {
   use,
   useCallback,
   useEffect,
-  useReducer
+  useReducer,
+  useState
 } from 'react';
 import { useThemeMode } from '@hummingbirdui/react';
 import { getColor, getItemFromStore } from 'helpers/utils';
@@ -19,8 +20,17 @@ interface AppContextInterFace {
   toggleTheme: () => void;
   /** Set the colour scheme. `auto` follows the OS. */
   setTheme: (theme: ThemeVariant) => void;
-  /** The theme actually painted: `auto` resolved to light or dark. */
+  /**
+   * The theme actually painted: `auto` resolved to light or dark, or the
+   * scheme a page has pinned. Branch colour decisions on this (or
+   * `config.isDark`), never on `config.theme`, which can read `auto`.
+   */
   computedTheme: 'light' | 'dark';
+  /**
+   * Pin the painted scheme without touching the visitor's stored choice, or
+   * pass null to release it. Pages call this through `useForcedTheme`.
+   */
+  setForcedTheme: (theme: 'light' | 'dark' | null) => void;
   setConfig: (payload: Partial<Config>) => void;
   getThemeColor: (name: string) => string;
 }
@@ -42,6 +52,22 @@ const AppProvider = ({ children }: PropsWithChildren) => {
    */
   const { mode, computedMode, setMode, toggleMode } = useThemeMode();
   const theme: ThemeVariant = mode === 'system' ? 'auto' : mode;
+
+  /**
+   * A page whose design is one scheme (the showcase, like the gold's
+   * LayoutShowcase) pins what is painted here instead of calling `setTheme`.
+   * `setTheme` persists: it would sync the pin to every other open tab, and a
+   * reload away from the page would leave the visitor's choice overwritten.
+   */
+  const [forcedTheme, setForcedTheme] = useState<'light' | 'dark' | null>(null);
+  const paintedTheme = forcedTheme ?? computedMode;
+
+  // useThemeMode writes `.dark` from its own computed mode. Declared after the
+  // hook, this runs after it in the same effect flush, so a pinned scheme wins
+  // even on a direct load, and is re-asserted if another tab changes the mode.
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', paintedTheme === 'dark');
+  }, [paintedTheme, computedMode]);
 
   const setTheme = useCallback(
     (next: ThemeVariant) => setMode(next === 'auto' ? 'system' : next),
@@ -72,7 +98,7 @@ const AppProvider = ({ children }: PropsWithChildren) => {
       initialConfig.navbarTopShape
     ),
     isRTL: getItemFromStore('isRTL', initialConfig.isRTL),
-    isDark: computedMode === 'dark',
+    isDark: paintedTheme === 'dark',
     isChatWidgetVisible: getItemFromStore(
       'isChatWidgetVisible',
       initialConfig.isChatWidgetVisible
@@ -93,10 +119,10 @@ const AppProvider = ({ children }: PropsWithChildren) => {
   // keep the mirrored copies in config in step with hb-react's state, so the
   // charts and maps reading `config.isDark` still see one consistent value
   useEffect(() => {
-    const isDark = computedMode === 'dark';
+    const isDark = paintedTheme === 'dark';
     if (config.theme === theme && config.isDark === isDark) return;
     configDispatch({ type: SET_CONFIG, payload: { theme, isDark } });
-  }, [theme, computedMode, config.theme, config.isDark]);
+  }, [theme, paintedTheme, config.theme, config.isDark]);
 
   const getThemeColor = (name: string) => {
     return getColor(name);
@@ -146,7 +172,8 @@ const AppProvider = ({ children }: PropsWithChildren) => {
         setConfig,
         toggleTheme,
         setTheme,
-        computedTheme: computedMode,
+        computedTheme: paintedTheme,
+        setForcedTheme,
         getThemeColor,
         configDispatch
       }}

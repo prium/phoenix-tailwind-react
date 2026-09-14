@@ -11,9 +11,14 @@ import { AppContext } from 'providers/AppProvider';
 const TILE_URL =
   'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
 
-/** Same colour filters as phoenix-tailwind src/js/theme/leaflet.js */
-const getFilter = (theme: string) =>
-  theme === 'dark'
+/**
+ * Same colour filters as phoenix-tailwind src/js/theme/leaflet.js. Takes the
+ * *painted* scheme: `config.theme` is the visitor's choice and reads `auto` in
+ * follow-the-OS mode, so a `theme === 'dark'` check laid the light filter over
+ * a dark page on every load until the scheme was toggled to an explicit value.
+ */
+const getFilter = (isDark: boolean) =>
+  isDark
     ? [
         'invert:98%',
         'grayscale:69%',
@@ -35,7 +40,7 @@ const LayerComponent = ({ data }: { data: MapMarkerPoints[] }) => {
   });
   const map = useMap();
   const { config } = use(AppContext);
-  const { theme } = config;
+  const { isDark } = config;
   const tileLayerRef = useRef<ColorFilterTileLayer | null>(null);
 
   useEffect(() => {
@@ -43,7 +48,7 @@ const LayerComponent = ({ data }: { data: MapMarkerPoints[] }) => {
   }, [config]);
 
   useEffect(() => {
-    const filter = getFilter(theme);
+    const filter = getFilter(isDark);
     if (!tileLayerRef.current) {
       tileLayerRef.current = L.tileLayer(TILE_URL, {
         attribution: undefined,
@@ -53,7 +58,7 @@ const LayerComponent = ({ data }: { data: MapMarkerPoints[] }) => {
     } else {
       tileLayerRef.current.updateColorFilter(filter);
     }
-  }, [theme]);
+  }, [isDark]);
 
   return (
     <MarkerClusterGroup chunkedLoading={false} spiderfyOnMaxZoom={false}>

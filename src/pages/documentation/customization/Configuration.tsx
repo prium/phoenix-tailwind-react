@@ -525,7 +525,9 @@ const Configuration = () => {
               values on unmount; <code>useSettingsMountEffect</code> does the
               same for the settings panel, disabling controls that do not apply.
               The layout demos under <code>src/pages/pages/layouts</code> are
-              built from the two.
+              built from the two. A page that must render in one colour scheme
+              should use <code>useForcedTheme</code> instead, which paints the
+              scheme without writing the stored choice — see Dark mode.
             </p>
           </PhoenixDocCard.Header>
           <PhoenixDocCard.Body>

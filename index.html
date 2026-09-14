@@ -39,6 +39,10 @@
                   ? 'dark'
                   : 'light';
           }
+          // Pages painted in one scheme whatever was picked, mirroring their
+          // useForcedTheme() call. The stored choice is deliberately untouched.
+          // Matched on the path's end so any VITE_BASENAME prefix still works.
+          if (/\/showcase\/?$/.test(location.pathname)) mode = 'light';
           html.classList.toggle('dark', mode === 'dark');
           html.setAttribute('data-hb-theme', mode);
 

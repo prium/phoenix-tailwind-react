@@ -8,7 +8,6 @@ import { GridComponent, TooltipComponent } from 'echarts/components';
 import { CanvasRenderer } from 'echarts/renderers';
 import { LineChart } from 'echarts/charts';
 import { tooltipFormatterList } from 'helpers/echart-utils';
-import { ThemeVariant } from 'config';
 
 echarts.use([TooltipComponent, GridComponent, LineChart, CanvasRenderer]);
 
@@ -23,7 +22,7 @@ const prevMonthData = [
 
 const getDefaultOptions = (
   getThemeColor: (name: string) => string,
-  theme: ThemeVariant
+  isDark: boolean
 ) => ({
   tooltip: {
     trigger: 'axis',
@@ -103,10 +102,9 @@ const getDefaultOptions = (
     splitLine: {
       show: true,
       lineStyle: {
-        color:
-          theme === 'dark'
-            ? getThemeColor('background-color-subtle')
-            : getThemeColor('background-color-muted')
+        color: isDark
+          ? getThemeColor('background-color-subtle')
+          : getThemeColor('background-color-muted')
       }
     },
     axisLine: { show: false },
@@ -179,14 +177,14 @@ const AdClicksChart = ({
   style?: CSSProperties;
 }) => {
   const {
-    config: { theme },
+    config: { isDark },
     getThemeColor
   } = useAppContext();
 
   return (
     <ReactEChartsCore
       echarts={echarts}
-      option={getDefaultOptions(getThemeColor, theme)}
+      option={getDefaultOptions(getThemeColor, isDark)}
       className={className}
       style={style}
     />

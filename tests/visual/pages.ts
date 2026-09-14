@@ -1215,6 +1215,10 @@ export const pages: VisualPage[] = [
   {
     name: 'showcase',
     react: '/showcase',
-    gold: '/showcase.html'
+    gold: '/showcase.html',
+    // The page is light whatever the visitor picked. The dark variant stores
+    // theme=dark and emulates a dark OS on both sides; the gold pins
+    // data-hb-theme="light", so React must stay light too (useForcedTheme).
+    dark: true
   }
 ];
