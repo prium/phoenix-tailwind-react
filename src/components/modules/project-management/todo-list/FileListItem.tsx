@@ -19,7 +19,7 @@ interface FileListItemProps {
 
 const FileDropdown = () => (
   <RevealDropdownTrigger>
-    <RevealDropdown btnClassName="dropdown-toggle">
+    <RevealDropdown btnClassName="dropdown-toggle" iconClassName="">
       <Dropdown.Item>Edit</Dropdown.Item>
       <Dropdown.Item className="text-danger">Delete</Dropdown.Item>
       <Dropdown.Item>Download</Dropdown.Item>

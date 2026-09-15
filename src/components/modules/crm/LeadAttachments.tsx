@@ -9,7 +9,7 @@ import generic40 from 'assets/img/generic/40.png';
 
 const AttachmentDropdown = () => (
   <RevealDropdownTrigger>
-    <RevealDropdown btnClassName="dropdown-toggle">
+    <RevealDropdown btnClassName="dropdown-toggle" iconClassName="">
       <Dropdown.Item asChild>
         <a href="#!">Edit</a>
       </Dropdown.Item>

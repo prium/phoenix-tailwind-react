@@ -66,6 +66,21 @@ build warnings and that had therefore never applied.
    Enable it there if that sizing was the intent.
 Gold public CSS rebuilt via `npx gulp style`.
 
+Eighth working-tree patch upstream: small/large control sizes. root.css only
+set the base `--input-btn-*` tokens, so every `-sm`/`-lg` size in hummingbird
+(btn, form-control, form-select, input-group) kept hummingbird's defaults: a
+10.24px (`--text-sm` in this scale) small font instead of 0.8rem, 4px/8px radii,
+1.25/1.5 line-heights and 20px large input padding. Measured against the
+original Bootstrap phoenix (../phoenix) on identical markup:
+  btn-sm 30.28 -> 33.34px, form-control-sm / form-select-sm 29.25 -> 33.06px,
+  btn-lg 54 -> 49.19px, form-control-lg / form-select-lg 50 -> 49.83px.
+1. root.css adds phoenix's `$input-btn-*-sm/-lg` as `--input-btn-*-sm/-lg`.
+2. buttons.css btn-lg pins radius-md and line-height 1.2.
+3. forms.css form-control-lg / form-select-lg keep the 1rem input padding-x;
+   input-group-text is semibold; input-group-sm/-lg size the addon, button and
+   select (3.5rem padding-right) as phoenix does.
+Gold public CSS rebuilt via `npx gulp style`.
+
 APP-ONLY DEVIATION (not upstream, re-apply after every sync) — three `url()`
 paths. Upstream writes them for phoenix-tailwind's *build output*, where the
 stylesheet sits in public/assets/css/ beside public/assets/img/; Vite resolves

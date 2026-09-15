@@ -55,6 +55,7 @@
 
 @utility form-control-lg {
   --input-padding-y: --spacing(3);
+  --input-padding-x: --spacing(4);
   min-height: calc(
     var(--input-line-height) * 1em + 1.5rem +
       calc(var(--input-border-width) * 2)
@@ -302,9 +303,40 @@
 .input-group {
   .input-group-text {
     --input-group-addon-bg: var(--color-gray-100);
+    --input-group-addon-font-weight: var(--font-weight-semibold);
     @variant dark {
       --input-group-addon-bg: var(--color-gray-900);
     }
+  }
+}
+
+/* phoenix .input-group-sm / -lg: the addon, button and select take the
+   input's box (hummingbird sizes them with its own smaller/taller defaults) */
+@utility input-group-sm {
+  > .input-group-text {
+    --input-group-addon-padding-x: --spacing(4);
+    --input-group-addon-padding-y: --spacing(1.5);
+    --input-group-addon-border-radius: var(--radius-md);
+    --input-group-addon-line-height: 1.49;
+  }
+  > .btn {
+    --btn-padding-y: --spacing(1.5);
+  }
+  > .form-select {
+    --form-select-padding-right: --spacing(14);
+  }
+}
+
+@utility input-group-lg {
+  > .input-group-text {
+    --input-group-addon-padding-y: --spacing(3);
+  }
+  > .btn {
+    --btn-padding-y: --spacing(3);
+    --btn-padding-x: --spacing(4);
+  }
+  > .form-select {
+    --form-select-padding-right: --spacing(14);
   }
 }
 
@@ -367,6 +399,7 @@
 
 @utility form-select-lg {
   --form-select-padding-y: --spacing(3);
+  --form-select-padding-x: --spacing(4);
   min-height: calc(
     var(--form-select-line-height) * 1em + 1.5rem +
       calc(var(--form-select-border-width) * 2)

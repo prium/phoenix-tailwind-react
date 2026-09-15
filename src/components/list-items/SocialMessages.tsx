@@ -20,7 +20,7 @@ const SocialMessages = ({ messages }: SocialMessagesProps) => {
           <span className="text-subtle ms-2 font-normal">(97)</span>
         </h3>
         <RevealDropdownTrigger>
-          <RevealDropdown btnClassName="flex">
+          <RevealDropdown btnClassName="flex" iconClassName="">
             <Dropdown.Item>Edit</Dropdown.Item>
             <Dropdown.Item className="text-danger">Delete</Dropdown.Item>
             <Dropdown.Item>Download</Dropdown.Item>

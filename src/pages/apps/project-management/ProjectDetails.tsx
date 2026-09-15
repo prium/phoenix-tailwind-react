@@ -36,7 +36,7 @@ const ProjectDetails = () => {
                 Retrieving Old Repos to Redirect to a new URL
               </h2>
               <RevealDropdownTrigger>
-                <RevealDropdown btnClassName="dropdown-toggle">
+                <RevealDropdown btnClassName="dropdown-toggle" iconClassName="">
                   <Dropdown.Item>Edit</Dropdown.Item>
                   <Dropdown.Item className="text-danger">Delete</Dropdown.Item>
                   <Dropdown.Item>Download</Dropdown.Item>

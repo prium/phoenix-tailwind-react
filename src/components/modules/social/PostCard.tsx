@@ -63,7 +63,7 @@ const PostCard = ({ post }: PostCardProps) => {
                 </p>
               </div>
               <RevealDropdownTrigger>
-                <RevealDropdown btnClassName="flex">
+                <RevealDropdown btnClassName="flex" iconClassName="">
                   <Dropdown.Item>Edit</Dropdown.Item>
                   <Dropdown.Item className="text-danger">Delete</Dropdown.Item>
                   <Dropdown.Item>Download</Dropdown.Item>
