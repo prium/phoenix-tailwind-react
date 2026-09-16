@@ -13,16 +13,19 @@ import PhoenixLoader from 'components/common/PhoenixLoader';
 const Mapbox = lazy(() => import('components/base/Mapbox'));
 
 /** gold `+LocationForm` (mixins/travel-agency/add-property/LocationForm.pug) */
-const LocationForm = ({ tabEventKey }: { tabEventKey: number }) => {
+const LocationForm = () => {
   const mapRef = useRef<Map | null>(null);
   const methods = useWizardFormContext<AddPropertyWizardFormData>();
-  const { onChange } = methods;
+  const { onChange, selectedStep } = methods;
 
+  // mapbox measures its container on init, and this pane is hidden then, so the
+  // canvas starts at 0x0 and the map paints blank until it is told to resize.
+  // Watch the wizard's own step: an earlier `tabEventKey` prop was a second
+  // copy of it that only the side nav updated, so stepping here with Next left
+  // the map unsized.
   useEffect(() => {
-    if (tabEventKey === 2) {
-      mapRef.current?.resize();
-    }
-  }, [tabEventKey]);
+    mapRef.current?.resize();
+  }, [selectedStep]);
 
   return (
     <>

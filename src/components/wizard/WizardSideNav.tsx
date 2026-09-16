@@ -8,19 +8,8 @@ import { useWizardFormContext } from 'providers/WizardFormProvider';
  * gold `+WizardHeader` (theme-wizard vertical-at-xl nav,
  * mixins/travel-agency/{add-room,add-property}/…Wizard.pug)
  */
-const WizardSideNav = ({
-  navItems,
-  setTabEventKey
-}: {
-  navItems: WizardNav[];
-  setTabEventKey?: (key: number) => void;
-}) => {
+const WizardSideNav = ({ navItems }: { navItems: WizardNav[] }) => {
   const { selectedStep, totalStep, goToStep } = useWizardFormContext();
-
-  const handleSelect = (step: number) => {
-    goToStep(step);
-    setTabEventKey && setTabEventKey(step);
-  };
 
   return (
     <div className="scrollbar mb-6">
@@ -37,7 +26,7 @@ const WizardSideNav = ({
                   done: selectedStep > step && step !== totalStep,
                   complete: selectedStep > step && step !== totalStep - 1
                 })}
-                onClick={() => handleSelect(step)}
+                onClick={() => goToStep(step)}
               >
                 <div className="text-center inline-block xl:flex items-center gap-4">
                   <span className="nav-item-circle-parent">

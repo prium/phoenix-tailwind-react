@@ -75,7 +75,10 @@ const Mapbox = ({ className, options, mapRef, ...rest }: MapboxProps) => {
   return (
     <>
       <div className={classNames(className, 'mapbox-container')} {...rest}>
-        <div ref={mapContainer} className="map-container" />
+        {/* the gold puts the height class on the map element itself; here the
+            caller sizes the wrapper, so the map has to fill it — without this
+            the element is 0 tall and mapbox keeps its default 300px canvas */}
+        <div ref={mapContainer} className="map-container size-full" />
         <div className="mapbox-control-btn">
           <Button onClick={() => map.current?.zoomIn()} className="zoomIn">
             <FontAwesomeIcon icon={faPlus} />

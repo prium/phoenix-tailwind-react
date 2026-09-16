@@ -153,7 +153,8 @@ const MapboxCluster: React.FC<MapboxProps> = ({
 
   return (
     <div className={classNames(className, 'mapbox-container')} {...rest}>
-      <div ref={mapContainer} className="map-container" />
+      {/* fills the wrapper the caller sized; see components/base/Mapbox */}
+      <div ref={mapContainer} className="map-container size-full" />
       <div className="mapbox-control-btn">
         <Button onClick={() => map.current?.zoomIn()} className="zoomIn">
           <FontAwesomeIcon icon={faPlus} />
