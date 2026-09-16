@@ -21,13 +21,20 @@ const columns: ColumnDef<WishlistProductType>[] = [
           to="/apps/e-commerce/customer/product-details"
           className="rounded-md border border-subtle inline-block"
         >
-          <img src={productImage} alt="" width={40} height={40} />
+          <img src={productImage} alt="" className="size-10" />
         </Link>
       );
     },
     meta: {
-      headerProps: { style: { width: '5%' } },
-      cellProps: { className: 'py-1' }
+      // min-w-12.5 on the cell, as the gold has: without it the column
+      // collapses on narrow screens and `img { max-width: 100% }` shrinks the
+      // thumbnail instead of letting the table scroll.
+      headerProps: {
+        className: 'whitespace-nowrap align-middle w-[5%] max-w-12.5'
+      },
+      cellProps: {
+        className: 'align-middle whitespace-nowrap py-1 min-w-12.5'
+      }
     }
   },
   {
