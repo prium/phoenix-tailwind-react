@@ -1,7 +1,7 @@
 import Badge from 'components/base/Badge';
 import { useState } from 'react';
 import { Project } from 'data/project-management/projects';
-import { Card } from '@hummingbirdui/react';
+import { Card, Progress } from '@hummingbirdui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import AvatarDropdown from 'components/common/AvatarDropdown';
 import Avatar from 'components/base/Avatar';
@@ -74,13 +74,9 @@ const CardViewItem = ({ project }: { project: Project }) => {
             <p className="mb-2"> Progress</p>
             <p className="mb-2 text-emphasis">{progress}%</p>
           </div>
-          <div className={`progress ${bgClassName} h-1.25`}>
-            <div
-              className={`progress-bar rounded-md ${variant}`}
-              role="progressbar"
-              style={{ width: `${progress}%` }}
-            />
-          </div>
+          <Progress value={progress} className={`${bgClassName} h-1.25`}>
+            <Progress.Bar className={`rounded-md ${variant}`} />
+          </Progress>
 
           <div className="flex items-center mt-6">
             <p className="mb-0 font-bold text-md">

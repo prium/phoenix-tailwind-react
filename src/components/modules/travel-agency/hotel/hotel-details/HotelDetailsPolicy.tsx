@@ -1,4 +1,4 @@
-import { Card, cn, Col, Row } from '@hummingbirdui/react';
+import { Card, cn, Col, Progress, Row } from '@hummingbirdui/react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faBaby,
@@ -32,19 +32,15 @@ const PolicyTimeCard = ({
           </h5>
         </Col>
         <Col sm={9}>
-          <div
-            className="progress overflow-visible h-2"
-            role="progressbar"
+          <Progress
+            value={50}
             aria-label="Basic example"
-            aria-valuenow={0}
-            aria-valuemin={0}
-            aria-valuemax={100}
+            className="overflow-visible h-2"
           >
-            <div
-              className={cn(
-                'progress-bar relative overflow-visible rounded-md w-1/2',
-                { 'ms-auto': align === 'end' }
-              )}
+            <Progress.Bar
+              className={cn('relative overflow-visible rounded-md', {
+                'ms-auto': align === 'end'
+              })}
             >
               <span
                 className={cn('absolute mt-8 text-default text-sm', {
@@ -53,8 +49,8 @@ const PolicyTimeCard = ({
               >
                 12 am
               </span>
-            </div>
-          </div>
+            </Progress.Bar>
+          </Progress>
           <div className="flex flex-between-center w-full">
             <span className="text-default text-sm mt-1">6 am</span>
             <span className="text-default text-sm mt-1">6 pm</span>

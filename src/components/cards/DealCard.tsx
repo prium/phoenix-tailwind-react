@@ -6,7 +6,7 @@ import {
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Unicon from 'components/base/Unicon';
 import { Deal, dealAgents } from 'data/crm/deals';
-import { cn } from '@hummingbirdui/react';
+import { cn, Progress } from '@hummingbirdui/react';
 import FeatherIcon from 'feather-icons-react';
 import { UilHeadphones, UilUser } from '@iconscout/react-unicons';
 import { Link } from 'react-router';
@@ -261,16 +261,11 @@ const DealCard = ({ deal, columnId, cursor }: DealCardProps) => {
             </table>
 
             <p className="text-md mb-1">Probability:</p>
-            <div className="progress h-2">
-              <div
-                className={`progress-bar rounded-full ${deal.probability.barClass}`}
-                role="progressbar"
-                style={{ width: `${deal.probability.value}%` }}
-                aria-valuenow={deal.probability.value}
-                aria-valuemin={0}
-                aria-valuemax={100}
+            <Progress value={deal.probability.value} className="h-2">
+              <Progress.Bar
+                className={`rounded-full ${deal.probability.barClass}`}
               />
-            </div>
+            </Progress>
           </div>
         </div>
       </div>

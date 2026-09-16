@@ -9,6 +9,7 @@ import RevealDropdown, {
 } from 'components/base/RevealDropdown';
 import ActionDropdownItems from 'components/common/ActionDropdownItems';
 import Badge from 'components/base/Badge';
+import { Progress } from '@hummingbirdui/react';
 
 /** `+ProjectListTable` in project-management/Common.pug */
 export const projectListTableColumns: ColumnDef<Project>[] = [
@@ -104,13 +105,9 @@ export const projectListTableColumns: ColumnDef<Project>[] = [
           <p className="text-muted text-sm mb-0">
             {progress.min} / {progress.max}
           </p>
-          <div className="progress h-0.75">
-            <div
-              className="progress-bar bg-success"
-              role="progressbar"
-              style={{ width: `${(progress.min / progress.max) * 100}%` }}
-            />
-          </div>
+          <Progress value={progress.min} max={progress.max} className="h-0.75">
+            <Progress.Bar className="bg-success" />
+          </Progress>
         </>
       );
     },

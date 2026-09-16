@@ -1,4 +1,4 @@
-import { cn } from '@hummingbirdui/react';
+import { Progress, cn } from '@hummingbirdui/react';
 
 interface ProjectModalProgressProps {
   progress: number;
@@ -16,13 +16,9 @@ const ProjectModalProgress = ({
 }: ProjectModalProgressProps) => (
   <div className={cn('flex items-center', className)}>
     <p className="text-highlight mb-0 me-2">{progress}%</p>
-    <div className={cn('progress flex-1', trackClassName)}>
-      <div
-        role="progressbar"
-        className={cn('progress-bar rounded-lg', barClassName)}
-        style={{ width: `${progress}%` }}
-      />
-    </div>
+    <Progress value={progress} className={cn('flex-1', trackClassName)}>
+      <Progress.Bar className={cn('rounded-lg', barClassName)} />
+    </Progress>
   </div>
 );
 

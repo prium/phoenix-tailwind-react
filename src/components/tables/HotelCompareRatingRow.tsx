@@ -1,4 +1,4 @@
-import { cn } from '@hummingbirdui/react';
+import { cn, Progress } from '@hummingbirdui/react';
 import { numberFormat } from 'helpers/utils';
 
 interface HotelCompareRatingRowProps {
@@ -30,19 +30,13 @@ const HotelCompareRatingRow = ({
                 minimumFractionDigits: 1
               })}
             </span>
-            <div
-              className="progress w-full bg-subtle h-2"
-              role="progressbar"
+            <Progress
+              value={value * 20}
               aria-label="review"
-              aria-valuenow={0}
-              aria-valuemin={0}
-              aria-valuemax={100}
+              className="w-full bg-subtle h-2"
             >
-              <div
-                className="progress-bar rounded-md"
-                style={{ width: `${value * 20}%` }}
-              />
-            </div>
+              <Progress.Bar className="rounded-md" />
+            </Progress>
           </div>
         </td>
       ))}

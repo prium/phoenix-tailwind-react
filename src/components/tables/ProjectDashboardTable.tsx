@@ -1,5 +1,5 @@
 import { ColumnDef } from '@tanstack/react-table';
-import { Tooltip } from '@hummingbirdui/react';
+import { Progress, Tooltip } from '@hummingbirdui/react';
 import AdvanceTable from 'components/base/AdvanceTable';
 import useAdvanceTable from 'hooks/useAdvanceTable';
 import AdvanceTableProvider from 'providers/AdvanceTableProvider';
@@ -137,16 +137,9 @@ const columns: ColumnDef<Project>[] = [
           <p className="text-muted text-sm text-start mb-0">
             {progress.min} / {progress.max}
           </p>
-          <div className="progress h-0.75">
-            <div
-              className="progress-bar bg-success"
-              style={{ width: `${(progress.min / progress.max) * 100}%` }}
-              role="progressbar"
-              aria-valuenow={25}
-              aria-valuemin={0}
-              aria-valuemax={100}
-            />
-          </div>
+          <Progress value={progress.min} max={progress.max} className="h-0.75">
+            <Progress.Bar className="bg-success" />
+          </Progress>
         </>
       );
     },
