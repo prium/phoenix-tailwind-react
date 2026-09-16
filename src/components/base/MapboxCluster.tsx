@@ -1,7 +1,6 @@
 import React, { HTMLAttributes, useEffect, useRef } from 'react';
 import mapboxgl, { AnyLayer, Layer, Map, MapboxOptions } from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMinus, faPlus } from '@fortawesome/free-solid-svg-icons';
 import classNames from 'classnames';
@@ -155,13 +154,22 @@ const MapboxCluster: React.FC<MapboxProps> = ({
     <div className={classNames(className, 'mapbox-container')} {...rest}>
       {/* fills the wrapper the caller sized; see components/base/Mapbox */}
       <div ref={mapContainer} className="map-container size-full" />
+      {/* plain buttons; see components/base/Mapbox */}
       <div className="mapbox-control-btn">
-        <Button onClick={() => map.current?.zoomIn()} className="zoomIn">
+        <button
+          type="button"
+          onClick={() => map.current?.zoomIn()}
+          className="zoomIn"
+        >
           <FontAwesomeIcon icon={faPlus} />
-        </Button>
-        <Button onClick={() => map.current?.zoomOut()} className="zoomOut">
+        </button>
+        <button
+          type="button"
+          onClick={() => map.current?.zoomOut()}
+          className="zoomOut"
+        >
           <FontAwesomeIcon icon={faMinus} />
-        </Button>
+        </button>
       </div>
     </div>
   );

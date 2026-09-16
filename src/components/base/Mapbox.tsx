@@ -2,7 +2,6 @@
 import React, { HTMLAttributes, useEffect, useRef } from 'react';
 import mapboxgl, { Map, MapboxOptions } from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import Button from 'components/base/Button';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames';
 import { useAppContext } from 'providers/AppProvider';
@@ -79,13 +78,26 @@ const Mapbox = ({ className, options, mapRef, ...rest }: MapboxProps) => {
             caller sizes the wrapper, so the map has to fill it — without this
             the element is 0 tall and mapbox keeps its default 300px canvas */}
         <div ref={mapContainer} className="map-container size-full" />
+        {/* plain buttons, as the gold's FlightMap markup has: plugins/mapbox.css
+            styles `.zoomIn`/`.zoomOut` itself with `@apply btn … btn-square
+            size-7.5`. Adding the literal `btn` class via <Button> brought in
+            HB's `width: var(--btn-width)` (unset), which beat that size and
+            left 52x30 pills instead of 30px squares. */}
         <div className="mapbox-control-btn">
-          <Button onClick={() => map.current?.zoomIn()} className="zoomIn">
+          <button
+            type="button"
+            onClick={() => map.current?.zoomIn()}
+            className="zoomIn"
+          >
             <FontAwesomeIcon icon={faPlus} />
-          </Button>
-          <Button onClick={() => map.current?.zoomOut()} className="zoomOut">
+          </button>
+          <button
+            type="button"
+            onClick={() => map.current?.zoomOut()}
+            className="zoomOut"
+          >
             <FontAwesomeIcon icon={faMinus} />
-          </Button>
+          </button>
         </div>
       </div>
     </>
