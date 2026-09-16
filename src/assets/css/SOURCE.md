@@ -81,6 +81,17 @@ original Bootstrap phoenix (../phoenix) on identical markup:
    select (3.5rem padding-right) as phoenix does.
 Gold public CSS rebuilt via `npx gulp style`.
 
+Ninth working-tree patch upstream: two rules set an individual transform
+property (`translate:` / `rotate:`) next to `transform:` in the same block.
+Both hold in dev, where the browser composes them in spec order, but the
+production minifier folds the pair into one matrix with the parts reversed:
+  components/setting-panel.css  .setting-toggle  -> tab sat ~16px off the edge
+  plugins/gantt.css  .gantt_tree_icon:before      -> caret flipped and dropped
+                                                     below the row
+Rewritten as a single `transform` in composition order (translate, rotate,
+then the transform value), which minifies to the same matrix the browser
+computes. Gold public CSS rebuilt via `npx gulp style`.
+
 APP-ONLY DEVIATION (not upstream, re-apply after every sync) — three `url()`
 paths. Upstream writes them for phoenix-tailwind's *build output*, where the
 stylesheet sits in public/assets/css/ beside public/assets/img/; Vite resolves

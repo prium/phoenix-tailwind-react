@@ -138,8 +138,11 @@
   inset-inline-end: 0;
   text-decoration: none;
   z-index: 1016;
-  transform: rotate(-90deg);
-  translate: 42px 25px;
+  /* one transform, not `transform` + `translate`: minifiers merge the pair
+     into a single matrix and apply the translation after the rotation, which
+     moved the tab away from the edge in the built CSS. Written out in the
+     order the spec composes them (translate, then rotate). */
+  transform: translate(42px, 25px) rotate(-90deg);
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
 
@@ -148,19 +151,17 @@
   box-shadow: var(--setting-toggle-shadow);
 
   [dir='rtl'] & {
-    translate: -42px 25px;
-    transform: rotate(90deg);
+    transform: translate(-42px, 25px) rotate(90deg);
   }
 
   @variant max-sm {
-    transform: rotate(-90deg);
+    transform: translate(1px, 25px) rotate(-90deg);
     outline: none;
-    translate: 1px 25px;
     small {
       display: none;
     }
     [dir='rtl'] & {
-      translate: -1px 25px;
+      transform: translate(-1px, 25px) rotate(90deg);
     }
   }
 

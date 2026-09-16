@@ -193,8 +193,11 @@
       background: var(--gantt-indicator-icon) !important;
       background-size: contain !important;
       background-repeat: no-repeat !important;
-      rotate: 180deg;
-      transform: translate(50%, 50%);
+      /* one transform, not `rotate` + `transform`: minifiers merge the pair
+         into a single matrix in the wrong order, which flipped the caret and
+         dropped it below the row in the built CSS. Written in the order the
+         spec composes them (rotate, then transform). */
+      transform: rotate(180deg) translate(50%, 50%);
       transition: all 2s ease-in !important;
     }
     [dir='rtl'] & {
@@ -206,7 +209,6 @@
   .gantt_tree_icon {
     &.gantt_open:before {
       transform: translate(-50%, -50%);
-      rotate: 0deg;
     }
   }
 
