@@ -1,6 +1,6 @@
 {
-  "name": "phoenix-react",
-  "version": "2.2.0",
+  "name": "phoenix-tailwind-react",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "dependencies": {
@@ -19,7 +19,7 @@
     "@fullcalendar/react": "^6.1.19",
     "@fullcalendar/timegrid": "^6.1.19",
     "@hummingbirdui/hummingbird": "^1.4.0",
-    "@hummingbirdui/react": "^1.0.0-beta.0",
+    "@hummingbirdui/react": "^1.0.0",
     "@iconscout/react-unicons": "^2.2.5",
     "@picmo/popup-picker": "^5.7.6",
     "@react-leaflet/core": "^3.0.0",
@@ -95,8 +95,8 @@
     "format": "prettier --write 'src/**/*.{js,jsx,ts,tsx,css,md,json}'",
     "predeploy": "npm run build && cp ./dist/index.html ./dist/404.html",
     "predeploy:alt": "npm run build && cp ./dist/index.html ./dist/404.html",
-    "deploy": "echo https://phoenix-react.prium.me > ./dist/CNAME && gh-pages -d dist",
-    "deploy:alt": "echo phoenix-react-alt.prium.me > ./dist/CNAME && gh-pages -d dist -r git@github.com:prium/phoenix-react-alt.git",
+    "deploy": "echo https://phoenix-tailwind-react.prium.me > ./dist/CNAME && gh-pages -d dist",
+    "deploy:alt": "echo https://phoenix-tailwind-react-alt.prium.me > ./dist/CNAME && gh-pages -d dist -r git@github.com:prium/phoenix-react-alt.git",
     "convert:tw": "node tools/bs2tw/converter.mjs",
     "test:visual": "playwright test --config playwright.config.ts",
     "test:visual:report": "playwright show-report tests/visual/report"

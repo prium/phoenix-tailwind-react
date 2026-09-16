@@ -30,7 +30,7 @@ const Crm = () => {
                 title="Leads Today"
                 badgeLabel="+24.5%"
                 badgeBg="success"
-                footerText="Than Yesterday"
+                footerText="Than yesterday"
               />
             </Col>
             <Col sm={6} md={4} xl={3} xxl={4}>

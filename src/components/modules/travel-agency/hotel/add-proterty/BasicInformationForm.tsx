@@ -40,7 +40,7 @@ const BasicInformationForm = () => {
       </div>
       <div className="form-floating my-4">
         <Textarea
-          className="h-40.5"
+          className="h-40.5!"
           placeholder="Description"
           name="propertyInfo"
           id="wizard-des"

@@ -22,7 +22,9 @@ const WatchlistTab = () => {
           className="h-full disabled flex-1"
           disabled
           tabIndex={-1}
-        ></Tabs.Trigger>
+        >
+          <span className="invisible">empty</span>
+        </Tabs.Trigger>
       </Tabs.List>
       <div className="mt-2">
         <Tabs.Content value="summary">

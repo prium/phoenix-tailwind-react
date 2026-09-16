@@ -72,7 +72,7 @@ const ProjectsTopSection = ({ activeView }: ProjectsTopSectionInterface) => {
     <Row className="g-4 justify-between items-end mb-6">
       <Col xs={12} sm="auto">
         <FilterTab
-          className="-mx-2 project-tab"
+          className="-mx-2! project-tab"
           navLinkClassName="px-2 py-1"
           tabItems={tabItems}
         />

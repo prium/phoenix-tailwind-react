@@ -98,7 +98,7 @@ const DealProfileCard = ({ className }: { className?: string }) => {
 
             {/* the gold's bar is 2/5 wide but carries aria-valuenow=25; HB
                 drives both from `value`, so the label matches what is drawn */}
-            <Progress value={40} className="mb-2 h-1.25 dark">
+            <Progress value={40} className="mb-2 h-1.25">
               <Progress.Bar className="bg-blue-200" />
             </Progress>
             <div className="flex items-center justify-between">
