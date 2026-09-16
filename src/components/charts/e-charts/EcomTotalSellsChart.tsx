@@ -92,7 +92,7 @@ const getDefaultOptions = (
             : getThemeColor('background-color-muted')
         }
       },
-      boundaryGap: 0
+      boundaryGap: false
     },
     {
       type: 'category',
@@ -118,7 +118,7 @@ const getDefaultOptions = (
       splitLine: {
         show: false
       },
-      boundaryGap: 0
+      boundaryGap: false
     }
   ],
   yAxis: {
@@ -152,13 +152,16 @@ const getDefaultOptions = (
       zlevel: 1
     }
   ],
+  // Verbatim from the gold's total-sales-chart.js. With outerBoundsMode 'same'
+  // echarts shrinks the grid until every label fits, so the first axis' last
+  // label (29 May) stayed visible under the second axis' 30 May; 'none' lets it
+  // overflow the canvas and be clipped, as in the gold.
   grid: {
-    right: -1,
-    left: 2,
-    bottom: -1,
+    right: 2,
+    left: 5,
+    bottom: '20px',
     top: '2%',
-    outerBoundsMode: 'same',
-    outerBoundsContain: 'axisLabel'
+    outerBoundsMode: 'none'
   },
   animation: false
 });

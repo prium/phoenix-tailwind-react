@@ -63,7 +63,7 @@ const getDefaultOptions = (
         show: true,
         interval: 5
       },
-      boundaryGap: 0
+      boundaryGap: false
     },
     {
       type: 'category',
@@ -93,7 +93,7 @@ const getDefaultOptions = (
       splitLine: {
         show: false
       },
-      boundaryGap: 0
+      boundaryGap: false
     }
   ],
   yAxis: {
@@ -163,8 +163,7 @@ const getDefaultOptions = (
     left: 2,
     bottom: 38,
     top: 1,
-    outerBoundsMode: 'same',
-    outerBoundsContain: 'axisLabel'
+    containLabel: true
   },
   animation: false
 });
