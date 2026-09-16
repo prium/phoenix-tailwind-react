@@ -1,8 +1,7 @@
-import { faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Col, Row } from '@hummingbirdui/react';
+import { Col, Input, Row } from '@hummingbirdui/react';
 import Lottie from 'lottie-react';
-import { Link } from 'react-router';
 import comingSoonLight from 'assets/img/animated-icons/coming-soon-light.json';
 import comingSoonDark from 'assets/img/animated-icons/coming-soon-dark.json';
 import comingSoonImage from 'assets/img/spot-illustrations/42.png';
@@ -38,27 +37,38 @@ const ComingSoon = () => {
                 <img
                   src={comingSoonImage}
                   alt=""
-                  className="dark:hidden mb-8 xl:mb-18 w-3/4 lg:w-1/2 xl:w-3/4 2xl:w-full"
+                  className="dark:hidden mb-8 w-3/4 lg:w-1/2 xl:w-3/4 2xl:w-full max-w-[415px]"
                 />
                 <img
                   src={comingSoonImageDark}
                   alt=""
-                  className="hidden dark:block mb-8 xl:mb-18 w-3/4 lg:w-1/2 xl:w-3/4 2xl:w-full"
+                  className="hidden dark:block mb-8 w-3/4 lg:w-1/2 xl:w-3/4 2xl:w-full max-w-[415px]"
                 />
                 <h2 className="text-muted xl:text-xl mb-4">
-                  This page is on the way !
+                  Get notified when we launch
                 </h2>
-                <p className="mb-10">
-                  Our developers are on the last stage of developing this page.
-                  We&apos;re just ironing out the kinks. You&apos;ll receive it
-                  on the next update. Lets go!
+                <p className="mb-10 2xl:w-3/4">
+                  <b>Something in the way!</b> Subscribe to our newsletter to be
+                  the first to know about upcoming features and discounts.
                 </p>
-                <Button variant="primary" size="lg" asChild>
-                  <Link to="/">
-                    <FontAwesomeIcon icon={faChevronLeft} className="me-2" />
-                    Go to Homepage
-                  </Link>
-                </Button>
+                <Row className="g-4 md:w-3/4 xl:w-full 2xl:w-3/4 mx-auto xl:mx-0">
+                  <Col className="ps-0">
+                    <Input type="text" />
+                  </Col>
+                  <Col xs="auto" className="pe-0">
+                    <Button
+                      variant="primary"
+                      endIcon={
+                        <FontAwesomeIcon
+                          icon={faEnvelope}
+                          className="text-sm"
+                        />
+                      }
+                    >
+                      Subscribe
+                    </Button>
+                  </Col>
+                </Row>
               </div>
             </div>
           </Col>
