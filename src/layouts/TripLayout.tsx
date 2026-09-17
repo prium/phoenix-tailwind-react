@@ -17,7 +17,7 @@ const TripLayout = () => {
       <NavbarMain />
       <Outlet />
       <TripCommonCTASection />
-      <TravelAgencyFooter />
+      <TravelAgencyFooter className="mt-6 mb-4" />
       <ChatWidget />
     </>
   );
