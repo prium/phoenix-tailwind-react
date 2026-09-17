@@ -2,7 +2,6 @@ import { faList, faTableCellsLarge } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Select, Tooltip, cn } from '@hummingbirdui/react';
 import Button from 'components/base/Button';
-import IndeterminateCheckbox from 'components/base/IndeterminateCheckbox';
 import { File } from 'data/file-manager';
 import { useAdvanceTableContext } from 'providers/AdvanceTableProvider';
 import { useFileManagerContext } from 'providers/FileManagerProvider';
@@ -58,16 +57,21 @@ const MyFilesHeader = () => {
           <option value="name">Sort by - Name</option>
           <option value="size">Sort by - Size</option>
         </Select>
-        {/* gold puts the tooltip on the input itself; Radix needs a trigger
-            element it can hold a ref on, so the switch stays plain */}
-        <IndeterminateCheckbox
-          className="form-switch flex items-center"
-          role="switch"
-          id="viewAsGroup"
-          title="View as group"
-          checked={isGrouped}
-          onChange={() => setIsGrouped(prev => !prev)}
-        />
+        <div className="form-check form-switch flex items-center mb-0">
+          <Tooltip>
+            <Tooltip.Trigger asChild>
+              <input
+                className="form-check-input"
+                type="checkbox"
+                role="switch"
+                id="viewAsGroup"
+                checked={isGrouped}
+                onChange={() => setIsGrouped(prev => !prev)}
+              />
+            </Tooltip.Trigger>
+            <Tooltip.Content>View as group</Tooltip.Content>
+          </Tooltip>
+        </div>
       </div>
     </div>
   );
