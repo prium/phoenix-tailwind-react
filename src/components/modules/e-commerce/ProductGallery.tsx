@@ -20,16 +20,18 @@ const ProductGallery = ({ images }: { images: string[] }) => {
               : 'vertical'
           }
           onInit={setThumbsSwiper}
-          loop={true}
+          slidesPerView={5}
           spaceBetween={16}
-          slidesPerView={4}
-          freeMode={true}
+          breakpoints={{
+            768: { spaceBetween: 100 },
+            992: { spaceBetween: 16 }
+          }}
           watchSlidesProgress={true}
           modules={[Thumbs]}
           className="swiper-products-thumb theme-slider overflow-visible md:h-121 lg:h-auto xl:h-121"
         >
           {images.map((image, index) => (
-            <SwiperSlide className="h-auto" key={index}>
+            <SwiperSlide key={index}>
               <div className="product-thumb-container p-2 sm:p-4 xl:p-2">
                 <img src={image} alt="" />
               </div>
