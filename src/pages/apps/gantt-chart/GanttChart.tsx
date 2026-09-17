@@ -180,6 +180,61 @@ const GanttChart = () => {
     return () => observer.disconnect();
   }, []);
 
+  // The assignee column is a dhtmlx HTML template carrying the gold's
+  // `data-bs-toggle="dropdown"` markup, which has no script behind it here.
+  // Toggle `.show` on the sibling menu ourselves; the menu is fixed-positioned
+  // because `.gantt_cell` clips overflow. Capture phase + stopPropagation keeps
+  // dhtmlx from selecting the row, which would repaint it and drop the menu.
+  useEffect(() => {
+    const wrapper = wrapperRef.current;
+    if (!wrapper) return;
+    let openMenu: HTMLElement | null = null;
+
+    const close = () => {
+      if (!openMenu) return;
+      openMenu.classList.remove('show');
+      openMenu.removeAttribute('style');
+      openMenu.previousElementSibling?.setAttribute('aria-expanded', 'false');
+      openMenu = null;
+    };
+
+    const onClick = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      const toggle = target.closest<HTMLElement>('[data-bs-toggle="dropdown"]');
+      if (toggle && wrapper.contains(toggle)) {
+        e.preventDefault();
+        e.stopPropagation();
+        const menu = toggle.nextElementSibling as HTMLElement | null;
+        if (!menu?.classList.contains('dropdown-menu')) return;
+        const wasOpen = menu === openMenu;
+        close();
+        if (wasOpen) return;
+        menu.classList.add('show');
+        const box = toggle.getBoundingClientRect();
+        const menuWidth = menu.offsetWidth;
+        const left = isRTL ? box.left : box.right - menuWidth;
+        menu.style.cssText = `position:fixed;top:${box.bottom + 2}px;left:${Math.max(left, 0)}px;margin:0`;
+        toggle.setAttribute('aria-expanded', 'true');
+        openMenu = menu;
+        return;
+      }
+      if (openMenu && !openMenu.contains(target)) close();
+    };
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && close();
+
+    document.addEventListener('click', onClick, true);
+    document.addEventListener('keydown', onKey);
+    wrapper.addEventListener('scroll', close, true);
+    window.addEventListener('resize', close);
+    return () => {
+      close();
+      document.removeEventListener('click', onClick, true);
+      document.removeEventListener('keydown', onKey);
+      wrapper.removeEventListener('scroll', close, true);
+      window.removeEventListener('resize', close);
+    };
+  }, [isRTL]);
+
   return (
     <>
       <GanttActions setCurrentView={setCurrentView} />

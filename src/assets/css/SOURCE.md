@@ -92,6 +92,12 @@ Rewritten as a single `transform` in composition order (translate, rotate,
 then the transform value), which minifies to the same matrix the browser
 computes. Gold public CSS rebuilt via `npx gulp style`.
 
+Tenth working-tree patch upstream: plugins/gantt.css maps
+`--dhx-gantt-base-colors-border-light` to `var(--border-color-subtle)`.
+dhtmlx draws the timeline/scale column separators with that variable
+(`--dhx-gantt-scale-border-vertical`), which still held its #F0F0F0 default,
+so vertical lines did not match the subtle row borders. Gold public CSS rebuilt.
+
 APP-ONLY DEVIATION (not upstream, re-apply after every sync) — three `url()`
 paths. Upstream writes them for phoenix-tailwind's *build output*, where the
 stylesheet sits in public/assets/css/ beside public/assets/img/; Vite resolves

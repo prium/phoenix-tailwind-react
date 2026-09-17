@@ -1,5 +1,6 @@
 :root {
   --dhx-gantt-base-colors-border-subtle: var(--border-color-subtle);
+  --dhx-gantt-base-colors-border-light: var(--border-color-subtle);
   --dhx-gantt-base-colors-text-light: var(--text-color-soft);
   --dhx-gantt-scale-color: var(--text-color-default);
   --dhx-gantt-font-family: var(--font-sans) !important;
