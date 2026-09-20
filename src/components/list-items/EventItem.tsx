@@ -18,7 +18,7 @@ const EventItem = ({ event }: EventItemProps) => {
       <div className="flex flex-between-center">
         <p className="text-warning text-sm mb-0 font-bold mb-1">{event.date}</p>
         <RevealDropdownTrigger>
-          <RevealDropdown btnClassName="flex">
+          <RevealDropdown btnClassName="flex" iconClassName="">
             <Dropdown.Item>Edit</Dropdown.Item>
             <Dropdown.Item className="text-danger">Delete</Dropdown.Item>
             <Dropdown.Item>Download</Dropdown.Item>

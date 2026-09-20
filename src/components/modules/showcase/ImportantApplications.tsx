@@ -1,53 +1,102 @@
-import { Col, Container, Row } from 'react-bootstrap';
+import { Row, cn } from '@hummingbirdui/react';
 import illustration31 from 'assets/img/spot-illustrations/31.png';
 import Button from 'components/base/Button';
+import Badge from 'components/base/Badge';
 import { Link } from 'react-router';
 import { importantApplications } from 'data/showcase';
 import bg29 from 'assets/img/bg/29.png';
 import bg28 from 'assets/img/bg/28.png';
 import { useRef } from 'react';
 import useParallaxHooks from 'hooks/useParallaxHooks';
-import classNames from 'classnames';
-import Badge from 'components/base/Badge';
 
+type Application = (typeof importantApplications)[number];
+
+/** One tile — `mixins/showcase/ImportantApplications.pug`. */
+const ApplicationItem = ({
+  application,
+  first
+}: {
+  application: Application;
+  first: boolean;
+}) => (
+  <div className={cn('md:col-9 lg:col-6 2xl:col-4', first && 'mb-12 lg:mb-0')}>
+    <div className="text-center">
+      <img
+        src={application.thumb}
+        alt=""
+        className="w-137.5 mb-8 lg:mb-12 shadow rounded-md max-w-full"
+      />
+      {application.badge ? (
+        <div className="flex items-center justify-center mb-4">
+          <h4 className="text-highlight mb-0">{application.title}</h4>
+          <Badge
+            variant="phoenix"
+            bg={application.badge.bg}
+            label={false}
+            className="ms-2 text-sm"
+          >
+            {application.badge.label}
+          </Badge>
+        </div>
+      ) : (
+        <h4 className="text-highlight mb-4">{application.title}</h4>
+      )}
+      <p className="text-subtle leading-sm pb-2 lg:pb-6">
+        {application.details}
+      </p>
+      <Button variant="primary" asChild>
+        {/* the gold leaves the Email button without `text-light` */}
+        <Link
+          to={application.link}
+          className={cn(application.title !== 'Email' && 'text-light')}
+        >
+          {application.btnLabel}
+        </Link>
+      </Button>
+    </div>
+  </div>
+);
+
+/** `mixins/showcase/ImportantApplications.pug` */
 const ImportantApplications = () => {
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  const containerRef = useRef<HTMLElement | null>(null);
   const parallaxElRef = useRef<(HTMLDivElement | null)[]>([]);
 
-  useParallaxHooks(containerRef, parallaxElRef);
+  useParallaxHooks(
+    containerRef as React.MutableRefObject<HTMLDivElement | null>,
+    parallaxElRef
+  );
+
+  // the gold lays the six apps out as three two-up rows
+  const pairs = importantApplications.reduce<Application[][]>((acc, app, i) => {
+    if (i % 2 === 0) acc.push([app]);
+    else acc[acc.length - 1].push(app);
+    return acc;
+  }, []);
 
   return (
-    <section className="py-md-10" ref={containerRef}>
+    <section className="md:py-15" ref={containerRef}>
       <div
-        className="bg-holder hidden d-lg-block"
-        style={{
-          backgroundImage: `url(${bg29})`,
-          backgroundPosition: 'left 10%',
-          backgroundSize: '15%'
-        }}
+        className="bg-holder hidden lg:block bg-position-[left_10%]! bg-size-[15%]! -z-10!"
+        style={{ backgroundImage: `url(${bg29})` }}
         ref={el => {
           parallaxElRef.current?.push(el);
         }}
         data-parallax={JSON.stringify({ y: '40%' })}
       />
-
       <div
-        className="bg-holder hidden d-lg-block"
-        style={{
-          backgroundImage: `url(${bg28})`,
-          backgroundPosition: 'right 10%',
-          backgroundSize: '15%'
-        }}
+        className="bg-holder hidden lg:block bg-position-[right_10%]! bg-size-[15%]! -z-10!"
+        style={{ backgroundImage: `url(${bg28})` }}
         ref={el => {
           parallaxElRef.current?.push(el);
         }}
         data-parallax={JSON.stringify({ y: '50%' })}
       />
 
-      <Container fluid="lg">
-        <Row className="justify-content-center">
-          <Col xs={12} lg={9} xl={8} xxl={6} className="text-center">
-            <h2 className="mb-6 lh-lg">
+      <div className="lg:container">
+        <Row className="justify-center">
+          <div className="col-12 md:col-9 xl:col-8 2xl:col-6 text-center">
+            <h2 className="mb-8 leading-loose">
               <span className="text-primary relative">
                 Important applications
                 <img
@@ -60,59 +109,20 @@ const ImportantApplications = () => {
                 you’re definitely gonna need
               </span>
             </h2>
-          </Col>
+          </div>
         </Row>
-        <Row>
-          <Col xxl={8} className="mx-auto">
-            <Row className="justify-content-center mt-7 mt-lg-11">
-              {importantApplications.map(application => (
-                <Col
-                  xs={12}
-                  lg={6}
-                  className="mb-7 mb-lg-10 ms-auto"
-                  key={application.title}
-                >
-                  <div className="text-center">
-                    <div
-                      className="mx-auto mb-5 mb-lg-7 mw-100"
-                      style={{ width: '550px' }}
-                    >
-                      <div className="relative overflow-hidden">
-                        <img
-                          src={application.thumb}
-                          alt=""
-                          className={classNames('shadow rounded mw-100')}
-                        />
-                      </div>
-                    </div>
-                    <div className="flex flex-center mb-3">
-                      <h4 className="text-highlight mb-0">
-                        {application.title}
-                      </h4>
-                      {application.badge && (
-                        <Badge variant="phoenix" bg={application.badge.bg} className='ms-2 text-sm'>
-                          {application.badge.label}
-                        </Badge>
-                      )}
-                    </div>
-                    <p className="text-subtle lh-sm pb-2 pb-lg-4">
-                      {application.details}
-                    </p>
-                    <Button
-                      as={Link}
-                      target="_blank"
-                      to={application.link}
-                      variant="primary"
-                    >
-                      {application.btnLabel}
-                    </Button>
-                  </div>
-                </Col>
-              ))}
-            </Row>
-          </Col>
-        </Row>
-      </Container>
+        {pairs.map(pair => (
+          <Row key={pair[0].title} className="justify-center mt-12 lg:mt-20">
+            {pair.map((application, i) => (
+              <ApplicationItem
+                key={application.title}
+                application={application}
+                first={i === 0}
+              />
+            ))}
+          </Row>
+        ))}
+      </div>
     </section>
   );
 };

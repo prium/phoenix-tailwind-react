@@ -1,5 +1,5 @@
 import { useRef } from 'react';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Row } from '@hummingbirdui/react';
 import illustrations31 from 'assets/img/spot-illustrations/31.png';
 import section1 from 'assets/img/sections/1.webp';
 import section2 from 'assets/img/sections/2.webp';
@@ -27,272 +27,252 @@ const AdvanceFeatures = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const parallaxElRef = useRef<(HTMLImageElement | null)[]>([]);
 
-  useParallaxHooks(containerRef, parallaxElRef, {
+  // the gold triggers every gallery tween off `section.gsap` itself
+  useParallaxHooks(containerRef, parallaxElRef, () => ({
     scrollTrigger: {
-      trigger: '.gsap',
+      trigger: containerRef.current,
       start: '+=450 bottom'
     }
-  });
+  }));
 
   return (
-    <section className="pb-0 overflow-hidden">
-      <div ref={containerRef}>
-        <Container fluid="lg" className="gsap">
-          <Row className="justify-content-center mb-11">
-            <Col xs={12} xl={7} className="text-center">
-              <h2 className="text-highlight font-normal lh-sm">
-                Beautiful blending of <br />
-                card and cardless designs of{' '}
-                <span className="text-primary relative font-black d-inline-flex ms-2">
-                  advanced forms
-                  <img
-                    src={illustrations31}
-                    alt=""
-                    className="text-illustration-underline"
-                  />
-                </span>
-              </h2>
-            </Col>
-          </Row>
+    <section className="gsap pb-0 overflow-hidden" ref={containerRef}>
+      <div className="lg:container">
+        <Row className="justify-center mb-20">
+          <Col xs={12} xl={7} className="text-center">
+            <h2 className="text-highlight font-normal leading-sm">
+              Beautiful blending of <br />
+              card and cardless designs of{' '}
+              <span className="text-primary relative font-black inline-flex ms-2">
+                advanced forms
+                <img
+                  src={illustrations31}
+                  alt=""
+                  className="text-illustration-underline"
+                />
+              </span>
+            </h2>
+          </Col>
+        </Row>
 
-          <Row
-            className="g-2 showcase-gallery mx-auto"
-            style={{ width: '1545px' }}
-          >
-            <Col xs={3} className="align-self-end mb-2">
-              <Row className="g-2">
-                <Col xs={12}>
-                  <img
-                    className="w-100 z-3 layer-4"
-                    ref={el => {
-                      parallaxElRef.current?.push(el)
-                    }}
-                    data-parallax={JSON.stringify({
-                      y: '-480'
-                    })}
-                    src={section1}
-                    alt=""
-                    style={{ maxWidth: '375px' }}
-                  />
-                </Col>
-                <Col xs={6}>
-                  <img
-                    className="w-100 z-5 layer-6"
-                    ref={el => {
-                      parallaxElRef.current?.push(el)
-                    }}
-                    data-parallax={JSON.stringify({
-                      y: '-600'
-                    })}
-                    src={section2}
-                    alt=""
-                    style={{ maxWidth: '183px' }}
-                  />
-                </Col>
-                <Col xs={6}>
-                  <img
-                    className="w-100 z-2 layer-3"
-                    ref={el => {
-                      parallaxElRef.current?.push(el)
-                    }}
-                    data-parallax={JSON.stringify({
-                      y: '-420'
-                    })}
-                    src={section3}
-                    alt=""
-                    style={{ maxWidth: '183px' }}
-                  />
-                </Col>
-                <Col xs={12} className="text-end">
-                  <img
-                    className="w-100 z-3 layer-4"
-                    ref={el => {
-                      parallaxElRef.current?.push(el)
-                    }}
-                    data-parallax={JSON.stringify({
-                      y: '-480'
-                    })}
-                    src={section4}
-                    alt=""
-                    style={{ maxWidth: '234px' }}
-                  />
-                </Col>
-              </Row>
-            </Col>
-            <Col xs={9}>
-              <Row className="g-2 align-items-end mb-2">
-                <Col xs="auto">
-                  <img
-                    className="z-4 layer-5"
-                    ref={el => {
-                      parallaxElRef.current?.push(el)
-                    }}
-                    data-parallax={JSON.stringify({
-                      y: '-540'
-                    })}
-                    src={section5}
-                    alt=""
-                    style={{ maxWidth: '454px' }}
-                  />
-                </Col>
-                <Col xs="auto">
-                  <img
-                    className="z-2 layer-3"
-                    ref={el => {
-                      parallaxElRef.current?.push(el)
-                    }}
-                    data-parallax={JSON.stringify({
-                      y: '-420'
-                    })}
-                    src={section8}
-                    alt=""
-                    style={{ maxWidth: '303px' }}
-                  />
-                </Col>
-                <Col xs="auto">
-                  <img
-                    className="z-4 layer-5"
-                    ref={el => {
-                      parallaxElRef.current?.push(el)
-                    }}
-                    data-parallax={JSON.stringify({
-                      y: '-540'
-                    })}
-                    src={section12}
-                    alt=""
-                    style={{ maxWidth: '376px' }}
-                  />
-                </Col>
-              </Row>
-              <Row className="g-2 mb-2">
-                <Col xs="auto">
-                  <img
-                    className="layer-1"
-                    ref={el => {
-                      parallaxElRef.current?.push(el)
-                    }}
-                    data-parallax={JSON.stringify({
-                      y: '-300'
-                    })}
-                    src={section6}
-                    alt=""
-                    style={{ maxWidth: '444px' }}
-                  />
-                </Col>
-                <Col xs="auto">
-                  <img
-                    className="z-4 layer-5"
-                    ref={el => {
-                      parallaxElRef.current?.push(el)
-                    }}
-                    data-parallax={JSON.stringify({
-                      y: '-540'
-                    })}
-                    src={section9}
-                    alt=""
-                    style={{ maxWidth: '165px' }}
-                  />
-                </Col>
-                <Col xs="auto">
-                  <img
-                    className="z-1 layer-2"
-                    ref={el => {
-                      parallaxElRef.current?.push(el)
-                    }}
-                    data-parallax={JSON.stringify({
-                      y: '-360'
-                    })}
-                    src={section10}
-                    alt=""
-                    style={{ maxWidth: '165px' }}
-                  />
-                </Col>
-                <Col xs="auto">
-                  <img
-                    className="z-2 layer-3"
-                    ref={el => {
-                      parallaxElRef.current?.push(el)
-                    }}
-                    data-parallax={JSON.stringify({
-                      y: '-420'
-                    })}
-                    src={section13}
-                    alt=""
-                    style={{ maxWidth: '343px' }}
-                  />
-                </Col>
-              </Row>
-              <Row className="g-2 mb-2">
-                <Col xs="auto">
-                  <img
-                    className="z-5 layer-6"
-                    ref={el => {
-                      parallaxElRef.current?.push(el)
-                    }}
-                    data-parallax={JSON.stringify({
-                      y: '-600'
-                    })}
-                    src={section7}
-                    alt=""
-                    style={{ maxWidth: '510px' }}
-                  />
-                </Col>
-                <Col xs="auto">
-                  <img
-                    className="mb-2 block layer-1"
-                    ref={el => {
-                      parallaxElRef.current?.push(el)
-                    }}
-                    data-parallax={JSON.stringify({
-                      y: '-300'
-                    })}
-                    src={section11}
-                    alt=""
-                    style={{ maxWidth: '355px' }}
-                  />
-                  <img
-                    className="z-2 layer-3"
-                    ref={el => {
-                      parallaxElRef.current?.push(el)
-                    }}
-                    data-parallax={JSON.stringify({
-                      y: '-420'
-                    })}
-                    src={section16}
-                    alt=""
-                    style={{ maxWidth: '355px' }}
-                  />
-                </Col>
-                <Col xs="auto">
-                  <img
-                    className="z-5 mb-2 block layer-6"
-                    ref={el => {
-                      parallaxElRef.current?.push(el)
-                    }}
-                    data-parallax={JSON.stringify({
-                      y: '-600'
-                    })}
-                    src={section14}
-                    alt=""
-                    style={{ maxWidth: '137px' }}
-                  />
-                  <img
-                    className="z-5 layer-6"
-                    ref={el => {
-                      parallaxElRef.current?.push(el)
-                    }}
-                    data-parallax={JSON.stringify({
-                      y: '-600'
-                    })}
-                    src={section15}
-                    alt=""
-                    style={{ maxWidth: '137px' }}
-                  />
-                </Col>
-              </Row>
-            </Col>
-          </Row>
-        </Container>
+        <Row className="g-2 showcase-gallery mx-auto w-386.25">
+          <Col xs={3} className="self-end mb-2">
+            <Row className="g-2">
+              <Col xs={12}>
+                <img
+                  className="w-full z-3 layer-4 max-w-93.75"
+                  ref={el => {
+                    parallaxElRef.current?.push(el);
+                  }}
+                  data-parallax={JSON.stringify({
+                    y: '-480'
+                  })}
+                  src={section1}
+                  alt=""
+                />
+              </Col>
+              <Col xs={6}>
+                <img
+                  className="w-full z-5 layer-6 max-w-45.75"
+                  ref={el => {
+                    parallaxElRef.current?.push(el);
+                  }}
+                  data-parallax={JSON.stringify({
+                    y: '-600'
+                  })}
+                  src={section2}
+                  alt=""
+                />
+              </Col>
+              <Col xs={6}>
+                <img
+                  className="w-full z-2 layer-3 max-w-45.75"
+                  ref={el => {
+                    parallaxElRef.current?.push(el);
+                  }}
+                  data-parallax={JSON.stringify({
+                    y: '-420'
+                  })}
+                  src={section3}
+                  alt=""
+                />
+              </Col>
+              <Col xs={12} className="text-end">
+                <img
+                  className="w-full z-3 layer-4 max-w-58.5"
+                  ref={el => {
+                    parallaxElRef.current?.push(el);
+                  }}
+                  data-parallax={JSON.stringify({
+                    y: '-480'
+                  })}
+                  src={section4}
+                  alt=""
+                />
+              </Col>
+            </Row>
+          </Col>
+          <Col xs={9}>
+            <Row className="g-2 items-end mb-2">
+              <Col xs="auto">
+                <img
+                  className="z-4 layer-5 max-w-113.5"
+                  ref={el => {
+                    parallaxElRef.current?.push(el);
+                  }}
+                  data-parallax={JSON.stringify({
+                    y: '-540'
+                  })}
+                  src={section5}
+                  alt=""
+                />
+              </Col>
+              <Col xs="auto">
+                <img
+                  className="z-2 layer-3 max-w-75.75"
+                  ref={el => {
+                    parallaxElRef.current?.push(el);
+                  }}
+                  data-parallax={JSON.stringify({
+                    y: '-420'
+                  })}
+                  src={section8}
+                  alt=""
+                />
+              </Col>
+              <Col xs="auto">
+                <img
+                  className="z-4 layer-5 max-w-94"
+                  ref={el => {
+                    parallaxElRef.current?.push(el);
+                  }}
+                  data-parallax={JSON.stringify({
+                    y: '-540'
+                  })}
+                  src={section12}
+                  alt=""
+                />
+              </Col>
+            </Row>
+            <Row className="g-2 mb-2">
+              <Col xs="auto">
+                <img
+                  className="layer-1 max-w-111"
+                  ref={el => {
+                    parallaxElRef.current?.push(el);
+                  }}
+                  data-parallax={JSON.stringify({
+                    y: '-300'
+                  })}
+                  src={section6}
+                  alt=""
+                />
+              </Col>
+              <Col xs="auto">
+                <img
+                  className="z-4 layer-5 max-w-41.25"
+                  ref={el => {
+                    parallaxElRef.current?.push(el);
+                  }}
+                  data-parallax={JSON.stringify({
+                    y: '-540'
+                  })}
+                  src={section9}
+                  alt=""
+                />
+              </Col>
+              <Col xs="auto">
+                <img
+                  className="z-1 layer-2 max-w-41.25"
+                  ref={el => {
+                    parallaxElRef.current?.push(el);
+                  }}
+                  data-parallax={JSON.stringify({
+                    y: '-360'
+                  })}
+                  src={section10}
+                  alt=""
+                />
+              </Col>
+              <Col xs="auto">
+                <img
+                  className="z-2 layer-3 max-w-85.75"
+                  ref={el => {
+                    parallaxElRef.current?.push(el);
+                  }}
+                  data-parallax={JSON.stringify({
+                    y: '-420'
+                  })}
+                  src={section13}
+                  alt=""
+                />
+              </Col>
+            </Row>
+            <Row className="g-2 mb-2">
+              <Col xs="auto">
+                <img
+                  className="z-5 layer-6 max-w-127.5"
+                  ref={el => {
+                    parallaxElRef.current?.push(el);
+                  }}
+                  data-parallax={JSON.stringify({
+                    y: '-600'
+                  })}
+                  src={section7}
+                  alt=""
+                />
+              </Col>
+              <Col xs="auto">
+                <img
+                  className="mb-2 block layer-1 max-w-88.75"
+                  ref={el => {
+                    parallaxElRef.current?.push(el);
+                  }}
+                  data-parallax={JSON.stringify({
+                    y: '-300'
+                  })}
+                  src={section11}
+                  alt=""
+                />
+                <img
+                  className="z-2 layer-3 max-w-88.75"
+                  ref={el => {
+                    parallaxElRef.current?.push(el);
+                  }}
+                  data-parallax={JSON.stringify({
+                    y: '-420'
+                  })}
+                  src={section16}
+                  alt=""
+                />
+              </Col>
+              <Col xs="auto">
+                <img
+                  className="z-5 mb-2 block layer-6 max-w-34.25"
+                  ref={el => {
+                    parallaxElRef.current?.push(el);
+                  }}
+                  data-parallax={JSON.stringify({
+                    y: '-600'
+                  })}
+                  src={section14}
+                  alt=""
+                />
+                <img
+                  className="z-5 layer-6 max-w-34.25"
+                  ref={el => {
+                    parallaxElRef.current?.push(el);
+                  }}
+                  data-parallax={JSON.stringify({
+                    y: '-600'
+                  })}
+                  src={section15}
+                  alt=""
+                />
+              </Col>
+            </Row>
+          </Col>
+        </Row>
       </div>
     </section>
   );

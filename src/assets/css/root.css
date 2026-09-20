@@ -5,6 +5,22 @@
   --input-btn-line-height: 1.49;
   --input-btn-border-radius: var(--radius-md);
 
+  /* phoenix $input-btn-*-sm / -lg. btn-sm/-lg, form-control-sm/-lg,
+     form-select-sm/-lg and input-group-sm/-lg in hummingbird all read these.
+     Left unset they kept hummingbird's defaults — `--text-sm` for the small
+     font, which is 10.24px in this type scale instead of phoenix's 0.8rem. */
+  --input-btn-font-size-sm: var(--text-md);
+  --input-btn-padding-x-sm: --spacing(4);
+  --input-btn-padding-y-sm: --spacing(2);
+  --input-btn-line-height-sm: 1.49;
+  --input-btn-border-radius-sm: var(--radius-md);
+
+  --input-btn-font-size-lg: var(--text-base);
+  --input-btn-padding-x-lg: --spacing(6);
+  --input-btn-padding-y-lg: --spacing(3.5);
+  --input-btn-line-height-lg: 1.49;
+  --input-btn-border-radius-lg: var(--radius-md);
+
   --input-bg: var(--background-color-soft);
   --input-color: var(--text-color-default);
   --input-border-color: var(--border-color-default);

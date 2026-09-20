@@ -23,7 +23,6 @@ import BasicInformationForm from 'components/modules/travel-agency/hotel/add-pro
 
 const AddProperty = () => {
   const [images, setImages] = useState<File[]>([]);
-  const [tabEventKey, setTabEventKey] = useState(1);
   const form = useWizardForm({
     totalStep: 7
   });
@@ -54,10 +53,7 @@ const AddProperty = () => {
           <div className="theme-wizard">
             <div className="row gx-0 xl:gx-8">
               <div className="xl:col-4 xl:order-1">
-                <WizardSideNav
-                  navItems={addPropertyWizardNav}
-                  setTabEventKey={setTabEventKey}
-                />
+                <WizardSideNav navItems={addPropertyWizardNav} />
               </div>
               <div className="xl:col-8 flex-1">
                 <div className="row">
@@ -70,7 +66,7 @@ const AddProperty = () => {
                       </WizardTabPane>
                       <WizardTabPane step={2}>
                         <WizardForm step={2}>
-                          <LocationForm tabEventKey={tabEventKey} />
+                          <LocationForm />
                         </WizardForm>
                       </WizardTabPane>
                       <WizardTabPane step={3}>

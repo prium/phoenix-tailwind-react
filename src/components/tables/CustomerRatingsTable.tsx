@@ -19,7 +19,7 @@ import {
 const columns: ColumnDef<CustomerReview>[] = [
   {
     accessorKey: 'product',
-    header: () => 'Product',
+    header: () => 'PRODUCT',
     cell: ({ row: { original } }) => {
       const { product } = original;
       return (
@@ -30,7 +30,7 @@ const columns: ColumnDef<CustomerReview>[] = [
     },
     enableSorting: true,
     meta: {
-      headerProps: { style: { width: '20%' }, className: 'py-2' }
+      headerProps: { style: { width: '20%' }, className: 'py-2 ps-0' }
     }
   },
 

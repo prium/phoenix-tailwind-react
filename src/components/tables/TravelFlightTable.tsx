@@ -203,7 +203,7 @@ const columns: ColumnDef<FlightInterface>[] = [
     cell: () => {
       return (
         <div className="btn-reveal-trigger">
-          <RevealDropdown btnClassName="ms-auto flex">
+          <RevealDropdown btnClassName="ms-auto flex" iconClassName="">
             <Dropdown.Item>Track flight</Dropdown.Item>
             <Dropdown.Item>Download</Dropdown.Item>
             <Dropdown.Item>Report abuse</Dropdown.Item>

@@ -1,7 +1,7 @@
 import { Fragment } from 'react';
 import { Link } from 'react-router';
 import type { Rating, Review } from 'data/travel-agency/customer/hotelDetails';
-import { Card, cn, Col, Row } from '@hummingbirdui/react';
+import { Card, cn, Col, Progress, Row } from '@hummingbirdui/react';
 import Avatar from 'components/base/Avatar';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
@@ -42,19 +42,13 @@ const HotelReviews = ({ ratings, reviews }: HotelReviewsProps) => {
                   <span className="badge text-white bg-primary text-base">
                     {formatRating(item.rating)}
                   </span>
-                  <div
-                    className="progress w-full h-1.25"
-                    role="progressbar"
+                  <Progress
+                    value={item.rating * 20}
                     aria-label="review"
-                    aria-valuenow={0}
-                    aria-valuemin={0}
-                    aria-valuemax={100}
+                    className="w-full h-1.25"
                   >
-                    <div
-                      className="progress-bar rounded-md"
-                      style={{ width: `${item.rating * 20}%` }}
-                    />
-                  </div>
+                    <Progress.Bar className="rounded-md" />
+                  </Progress>
                 </div>
               </Col>
             </Row>

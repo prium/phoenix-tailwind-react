@@ -11,7 +11,14 @@ const useParallaxHooks = (
   parallaxElRef:
     | MutableRefObject<HTMLDivElement | null>
     | MutableRefObject<(HTMLDivElement | HTMLImageElement | null)[]>,
-  commonOptions?: unknown
+  /**
+   * Options merged into every element's tween. Pass a function when an option
+   * needs a DOM node: `gsap.context` resolves selector strings against
+   * `containerRef`'s *descendants*, so a trigger that is the container itself
+   * (the showcase gallery's `section.gsap`) can only be given as an element,
+   * and the ref is not populated until the effect runs.
+   */
+  commonOptions?: unknown | (() => unknown)
 ) => {
   useLayoutEffect(() => {
     const ctx = gsap.context(() => {
@@ -32,7 +39,7 @@ const useParallaxHooks = (
               toggleActions: 'play none none reverse'
             }
           },
-          commonOptions,
+          typeof commonOptions === 'function' ? commonOptions() : commonOptions,
           elOptions
         );
 

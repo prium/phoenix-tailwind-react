@@ -1,18 +1,18 @@
+import verticalSidenav from 'assets/img/sections/vertical-sidenav.webp';
+import sidenavDark from 'assets/img/sections/sidenav-dark.webp';
+import topnavSlimCombo from 'assets/img/sections/topnav-slim-combo.webp';
+import topnavOnly from 'assets/img/sections/topnav-only.webp';
+import horizontalSlim from 'assets/img/sections/horizontal-slim.webp';
+import comboNav from 'assets/img/sections/combo-nav.webp';
+import demo9Thumb from 'assets/img/sections/demo-9-thumb.webp';
+import darkMode from 'assets/img/sections/demo.webp';
 import demo1 from 'assets/img/sections/demo-1.webp';
-import demo2 from 'assets/img/sections/demo-2.webp';
-import demo16 from 'assets/img/sections/demo-16.webp';
 import demo4 from 'assets/img/sections/demo-4.webp';
 import demo5 from 'assets/img/sections/demo-5.webp';
 import demo6 from 'assets/img/sections/demo-6.webp';
 import demo7 from 'assets/img/sections/demo-7.webp';
 import demo8 from 'assets/img/sections/demo-8.webp';
 import demo9 from 'assets/img/sections/demo-9.webp';
-import demo10 from 'assets/img/sections/demo-10.webp';
-import demo11 from 'assets/img/sections/demo-11.webp';
-import demo12 from 'assets/img/sections/demo-12.webp';
-import demo13 from 'assets/img/sections/demo-13.webp';
-import demo14 from 'assets/img/sections/demo-14.webp';
-import demo15 from 'assets/img/sections/demo-15.webp';
 import section64 from 'assets/img/sections/64.webp';
 import section65 from 'assets/img/sections/65.webp';
 import section66 from 'assets/img/sections/66.webp';
@@ -20,10 +20,10 @@ import section21 from 'assets/img/sections/21.webp';
 import section22 from 'assets/img/sections/22.webp';
 import section23 from 'assets/img/sections/23.webp';
 import section24 from 'assets/img/sections/24.webp';
+import section25 from 'assets/img/sections/25.webp';
 import section26 from 'assets/img/sections/26.webp';
-import section27 from 'assets/img/sections/27.webp';
 import section28 from 'assets/img/sections/gantt-chart.webp';
-import section29 from 'assets/img/sections/file-manager.webp'
+import section29 from 'assets/img/sections/file-manager.webp';
 import kanban from 'assets/img/sections/kanban.webp';
 import { BadgeBg } from 'components/base/Badge';
 
@@ -36,56 +36,56 @@ interface ImportantApplications {
   disable?: boolean;
   badge?: {
     label: string;
-    bg: BadgeBg
-  }
+    bg: BadgeBg;
+  };
 }
 
 export const demos = [
   {
-    sideThumb: demo2,
+    sideThumb: verticalSidenav,
     mainThumb: demo1,
     variantName: 'Vertical Sidenav (Default)',
     link: '/pages/demo/vertical-sidenav'
   },
   {
-    sideThumb: demo16,
-    mainThumb: demo16,
+    sideThumb: darkMode,
+    mainThumb: darkMode,
     variantName: 'Dark Mode',
     link: '/pages/demo/dark-mode'
   },
   {
-    sideThumb: demo5,
-    mainThumb: demo4,
+    sideThumb: sidenavDark,
+    mainThumb: demo5,
     variantName: 'Darknav',
     link: '/pages/demo/darknav'
   },
   {
-    sideThumb: demo7,
+    sideThumb: topnavSlimCombo,
     mainThumb: demo6,
     variantName: 'Topnav Slim',
     link: '/pages/demo/topnav-slim'
   },
   {
-    sideThumb: demo9,
-    mainThumb: demo8,
-    variantName: 'Topnav Only',
+    sideThumb: topnavOnly,
+    mainThumb: demo4,
+    variantName: 'Navbar Horizontal',
     link: '/pages/demo/navbar-top'
   },
   {
-    sideThumb: demo11,
-    mainThumb: demo10,
+    sideThumb: horizontalSlim,
+    mainThumb: demo7,
     variantName: 'Horizontal Slim',
     link: '/pages/demo/navbar-top-slim'
   },
   {
-    sideThumb: demo13,
-    mainThumb: demo12,
+    sideThumb: comboNav,
+    mainThumb: demo8,
     variantName: 'Combo Nav',
     link: '/pages/demo/combo-nav'
   },
   {
-    sideThumb: demo15,
-    mainThumb: demo14,
+    sideThumb: demo9Thumb,
+    mainThumb: demo9,
     variantName: 'Dual Nav',
     link: '/pages/demo/dual-nav'
   }
@@ -170,9 +170,9 @@ export const necessaryPages = [
     pageLink: '/pages/notifications'
   },
   {
-    thumb: section27,
+    thumb: section25,
     pageName: 'Authentication',
-    pageLink: '/pages/authentication/simple/sign-in'
+    pageLink: '/pages/authentication/split/sign-in'
   },
   {
     thumb: section26,
@@ -185,7 +185,7 @@ export const showcaseFaqs = [
   {
     id: 1,
     question: `Is this template built on Vite or Create React App scaffolding?`,
-    answer: 'This template is built using Create React App scaffolding.'
+    answer: 'This template is built using Vite.'
   },
   {
     id: 2,
@@ -203,8 +203,8 @@ export const showcaseFaqs = [
   },
   {
     id: 4,
-    question: `Which bootstrap react framework you are using?`,
-    answer: `We are using React-Bootstrap for ${
+    question: `Which React component library are you using?`,
+    answer: `We are using Hummingbird React (@hummingbirdui/react) with Tailwind CSS v4 for ${
       import.meta.env.VITE_TITLE
     } React`
   },

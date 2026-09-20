@@ -36,10 +36,8 @@ html[dir='rtl'] {
 }
 
 .googlemap {
-  > {
-    div {
-      background: transparent !important;
-    }
+  > div {
+    background: transparent !important;
   }
 }
 

@@ -216,7 +216,7 @@ const LeadsTable = () => {
       {/* gold: `.row.items-center.justify-end.py-6.pe-0.text-md`, info `me-4` */}
       <AdvanceTableFooter
         pagination
-        className="justify-end! py-6!"
+        className="py-6!"
         nextPageLinkClassName="pe-0"
       />
     </div>

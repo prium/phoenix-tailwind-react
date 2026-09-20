@@ -1,6 +1,5 @@
-import classNames from 'classnames';
-import React, { Fragment } from 'react';
-import { Table } from 'react-bootstrap';
+import { Fragment } from 'react';
+import { Table, cn } from '@hummingbirdui/react';
 
 export interface TableRowData {
   key: string;
@@ -17,22 +16,22 @@ const SpecificationTable = ({ title, data }: SpecificationTableProps) => {
     <>
       <h3 className="mb-0 ms-6 font-bold">{title}</h3>
       <Table>
-        <thead>
-          <tr>
-            <th style={{ width: '40%' }}></th>
-            <th style={{ width: '60%' }}></th>
-          </tr>
-        </thead>
-        <tbody>
+        <Table.Header>
+          <Table.Row>
+            <Table.Head className="w-2/5" />
+            <Table.Head className="w-3/5" />
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
           {data.map(item => (
-            <tr key={item.key}>
-              <td
-                className={classNames('bg-subtle', {
+            <Table.Row key={item.key}>
+              <Table.Cell
+                className={cn('bg-subtle', {
                   'align-middle': !Array.isArray(item.value)
                 })}
               >
                 <h6
-                  className={classNames(
+                  className={cn(
                     'mb-0 text-default uppercase font-black px-6 text-md leading-sm',
                     {
                       'mt-1': Array.isArray(item.value)
@@ -41,8 +40,8 @@ const SpecificationTable = ({ title, data }: SpecificationTableProps) => {
                 >
                   {item.key}
                 </h6>
-              </td>
-              <td className="px-8 mb-0">
+              </Table.Cell>
+              <Table.Cell className="px-8 mb-0">
                 {Array.isArray(item.value)
                   ? item.value.map(val => (
                       <Fragment key={val}>
@@ -50,10 +49,10 @@ const SpecificationTable = ({ title, data }: SpecificationTableProps) => {
                       </Fragment>
                     ))
                   : item.value}
-              </td>
-            </tr>
+              </Table.Cell>
+            </Table.Row>
           ))}
-        </tbody>
+        </Table.Body>
       </Table>
     </>
   );

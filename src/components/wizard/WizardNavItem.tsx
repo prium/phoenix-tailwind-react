@@ -1,9 +1,8 @@
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
+import { cn } from '@hummingbirdui/react';
 import { useWizardFormContext } from 'providers/WizardFormProvider';
-import { Nav } from 'react-bootstrap';
 
 interface WizardNavItemProps {
   icon: IconProp;
@@ -12,33 +11,36 @@ interface WizardNavItemProps {
   isHorizontal?: boolean;
 }
 
+/** One `li.nav-item` of gold `+WizardHeader` (mixins/wizard/WizardHeader.pug) */
 const WizardNavItem = ({
   icon,
   label,
   step,
   isHorizontal
 }: WizardNavItemProps) => {
-  const { selectedStep, totalStep } = useWizardFormContext();
+  const { selectedStep, totalStep, goToStep } = useWizardFormContext();
   return (
-    <Nav.Item as="li" className="nav-item">
-      <Nav.Link
-        className={classNames('font-semibold', {
+    <li className="nav-item">
+      <a
+        role="button"
+        className={cn('nav-link font-semibold', {
+          active: selectedStep === step,
           done: selectedStep > step && step !== totalStep,
           complete: selectedStep > step && step !== totalStep - 1,
-          'py-0 py-xl-3': isHorizontal
+          'py-0 xl:py-4': isHorizontal
         })}
-        eventKey={step}
+        onClick={() => goToStep(step)}
       >
         <div
-          className={classNames('text-center d-inline-block', {
-            'd-xl-flex align-items-center gap-3': isHorizontal
+          className={cn('text-center inline-block', {
+            'xl:flex items-center gap-4': isHorizontal
           })}
         >
           <span className="nav-item-circle-parent">
             <span className="nav-item-circle">
               <FontAwesomeIcon
                 icon={icon}
-                className={`${isHorizontal ? 'nav-item-icon' : null}`}
+                className={isHorizontal ? 'nav-item-icon' : undefined}
               />
               {isHorizontal && (
                 <FontAwesomeIcon className="check-icon" icon={faCheck} />
@@ -46,16 +48,16 @@ const WizardNavItem = ({
             </span>
           </span>
           <span
-            className={classNames('text-md text-center', {
-              'hidden d-md-block mt-1': !isHorizontal,
+            className={cn('text-md text-center', {
+              'hidden md:block mt-1': !isHorizontal,
               'nav-item-title xl:text-base': isHorizontal
             })}
           >
             {label}
           </span>
         </div>
-      </Nav.Link>
-    </Nav.Item>
+      </a>
+    </li>
   );
 };
 

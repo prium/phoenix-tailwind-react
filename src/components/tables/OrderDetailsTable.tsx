@@ -10,21 +10,28 @@ import {
 } from 'data/e-commerce/products';
 import { useMemo } from 'react';
 
+/** `+OrderTable` in mixins/e-commerce/order-details/OrderTable.pug */
 const columns: ColumnDef<WishlistProductType>[] = [
   {
     id: 'productImage',
     accessorKey: '',
+    enableSorting: false,
     cell: ({ row: { original } }) => {
       const { productImage } = original;
       return (
-        <div className="rounded-md border border-subtle inline-block">
+        <Link
+          to="/apps/e-commerce/customer/product-details"
+          className="block border border-subtle rounded-md"
+        >
           <img src={productImage} alt="" width={53} />
-        </div>
+        </Link>
       );
     },
     meta: {
-      headerProps: { className: 'whitespace-nowrap min-w-[63px]' },
-      cellProps: { className: 'whitespace-nowrap py-0' }
+      headerProps: {
+        className: 'whitespace-nowrap align-middle text-sm min-w-15.75'
+      },
+      cellProps: { className: 'align-middle whitespace-nowrap py-2' }
     }
   },
   {
@@ -33,31 +40,37 @@ const columns: ColumnDef<WishlistProductType>[] = [
     cell: ({ row: { original } }) => {
       const { product } = original;
       return (
-        <Link to="#!" className="font-semibold line-clamp-2">
+        <Link
+          to="/apps/e-commerce/customer/product-details"
+          className="font-semibold line-clamp-2 mb-0"
+        >
           {product}
         </Link>
       );
     },
     meta: {
-      headerProps: { style: { minWidth: 380 } },
-      cellProps: { className: '' }
+      headerProps: { className: 'whitespace-nowrap align-middle min-w-100' },
+      cellProps: { className: 'align-middle py-0' }
     }
   },
   {
     accessorKey: 'color',
     header: 'COLOR',
     meta: {
-      headerProps: { style: { width: 150 }, className: 'ps-4' },
-      cellProps: { className: 'whitespace-nowrap text-default ps-4' }
+      headerProps: { className: 'align-middle ps-6 w-37.5' },
+      cellProps: {
+        className: 'align-middle whitespace-nowrap text-default py-0 ps-6'
+      }
     }
   },
   {
     accessorKey: 'size',
     header: 'SIZE',
     meta: {
-      headerProps: { style: { width: 300 }, className: 'ps-4' },
+      headerProps: { className: 'align-middle ps-6 w-75' },
       cellProps: {
-        className: 'whitespace-nowrap text-subtle font-semibold ps-4'
+        className:
+          'align-middle whitespace-nowrap text-subtle font-semibold py-0 ps-6'
       }
     }
   },
@@ -66,16 +79,18 @@ const columns: ColumnDef<WishlistProductType>[] = [
     header: 'PRICE',
     cell: ({ row: { original } }) => currencyFormat(original.price),
     meta: {
-      headerProps: { style: { width: 150 }, className: 'ps-4 text-end' },
-      cellProps: { className: 'text-default font-semibold text-end ps-4' }
+      headerProps: { className: 'align-middle text-end ps-6 w-37.5' },
+      cellProps: {
+        className: 'align-middle text-default font-semibold text-end py-0 ps-6'
+      }
     }
   },
   {
     accessorKey: 'quantity',
     header: 'QUANTITY',
     meta: {
-      headerProps: { style: { width: 200 }, className: 'ps-4 text-end' },
-      cellProps: { className: 'text-end ps-4 text-subtle' }
+      headerProps: { className: 'align-middle text-end ps-6 w-50' },
+      cellProps: { className: 'align-middle text-end py-0 ps-6 text-subtle' }
     }
   },
   {
@@ -85,8 +100,10 @@ const columns: ColumnDef<WishlistProductType>[] = [
     cell: ({ row: { original } }) =>
       currencyFormat(original.price * original.quantity),
     meta: {
-      headerProps: { style: { width: 250 }, className: 'ps-4 text-end' },
-      cellProps: { className: 'font-bold text-highlight text-end ps-4' }
+      headerProps: { className: 'align-middle text-end ps-6 w-62.5' },
+      cellProps: {
+        className: 'align-middle font-bold text-highlight text-end py-0 ps-6'
+      }
     }
   }
 ];
@@ -100,29 +117,29 @@ const OrderDetailsTable = () => {
     sortable: true
   });
 
-  const subtotal = useMemo(() => {
-    return wishlistProducts.reduce(
-      (sum, item) => sum + item.price * item.quantity,
-      0
-    );
-  }, [wishlistProducts]);
+  const subtotal = useMemo(
+    () =>
+      wishlistProducts.reduce(
+        (sum, item) => sum + item.price * item.quantity,
+        0
+      ),
+    []
+  );
 
   return (
-    <div>
-      <AdvanceTableProvider {...table}>
-        <div className="border-y border-subtle">
-          <AdvanceTable tableProps={{ className: ' text-md' }} />
-          <div className="flex flex-between-center py-4">
-            <p className="text-emphasis font-semibold leading-sm mb-0">
-              Items subtotal :
-            </p>
-            <p className="text-emphasis font-bold leading-sm mb-0">
-              {currencyFormat(subtotal)}
-            </p>
-          </div>
-        </div>
-      </AdvanceTableProvider>
-    </div>
+    <AdvanceTableProvider {...table}>
+      <AdvanceTable
+        tableProps={{ className: 'text-md mb-0 border-t border-subtle' }}
+      />
+      <div className="flex flex-between-center py-4 border-b border-subtle mb-10">
+        <p className="text-emphasis font-semibold leading-sm mb-0">
+          Items subtotal :
+        </p>
+        <p className="text-emphasis font-bold leading-sm mb-0">
+          {currencyFormat(subtotal)}
+        </p>
+      </div>
+    </AdvanceTableProvider>
   );
 };
 

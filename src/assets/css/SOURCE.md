@@ -50,3 +50,64 @@ these classes, but only `.noUi-primary-lighter` was ever written, so the
 Verified: success #25b003, info #0097eb, warning #e5780b, danger #fa3b1d.
 Rebuild the gold's public/assets/css before comparing that page visually.
 
+
+Seventh working-tree patch upstream: unconverted SCSS that Tailwind reported as
+build warnings and that had therefore never applied.
+1. Seven `> {` / `+ {` blocks (navbar-top, mixed x2, treeview, showcase x2,
+   google-map) are SCSS's "children of the parent" shorthand, which is an
+   invalid empty selector in native CSS nesting — the whole block was dropped.
+   Merged into the child selector (`+ label`, `> div`, ...).
+2. Four `@include hover-focus` blocks in plugins/flatpickr.css became
+   `&:hover, &:focus` — the flatpickr hover/focus styling had never applied.
+3. components/stock.css kept two `@include media-breakpoint-up` calls that were
+   never converted. Left inert (commented, as this theme's other unconverted
+   blocks are) rather than enabled: the xxl one would widen
+   `.stock-overview-card` from 300px to 360px at >= 1540px, a design change.
+   Enable it there if that sizing was the intent.
+Gold public CSS rebuilt via `npx gulp style`.
+
+Eighth working-tree patch upstream: small/large control sizes. root.css only
+set the base `--input-btn-*` tokens, so every `-sm`/`-lg` size in hummingbird
+(btn, form-control, form-select, input-group) kept hummingbird's defaults: a
+10.24px (`--text-sm` in this scale) small font instead of 0.8rem, 4px/8px radii,
+1.25/1.5 line-heights and 20px large input padding. Measured against the
+original Bootstrap phoenix (../phoenix) on identical markup:
+  btn-sm 30.28 -> 33.34px, form-control-sm / form-select-sm 29.25 -> 33.06px,
+  btn-lg 54 -> 49.19px, form-control-lg / form-select-lg 50 -> 49.83px.
+1. root.css adds phoenix's `$input-btn-*-sm/-lg` as `--input-btn-*-sm/-lg`.
+2. buttons.css btn-lg pins radius-md and line-height 1.2.
+3. forms.css form-control-lg / form-select-lg keep the 1rem input padding-x;
+   input-group-text is semibold; input-group-sm/-lg size the addon, button and
+   select (3.5rem padding-right) as phoenix does.
+Gold public CSS rebuilt via `npx gulp style`.
+
+Ninth working-tree patch upstream: two rules set an individual transform
+property (`translate:` / `rotate:`) next to `transform:` in the same block.
+Both hold in dev, where the browser composes them in spec order, but the
+production minifier folds the pair into one matrix with the parts reversed:
+  components/setting-panel.css  .setting-toggle  -> tab sat ~16px off the edge
+  plugins/gantt.css  .gantt_tree_icon:before      -> caret flipped and dropped
+                                                     below the row
+Rewritten as a single `transform` in composition order (translate, rotate,
+then the transform value), which minifies to the same matrix the browser
+computes. Gold public CSS rebuilt via `npx gulp style`.
+
+Tenth working-tree patch upstream: plugins/gantt.css maps
+`--dhx-gantt-base-colors-border-light` to `var(--border-color-subtle)`.
+dhtmlx draws the timeline/scale column separators with that variable
+(`--dhx-gantt-scale-border-vertical`), which still held its #F0F0F0 default,
+so vertical lines did not match the subtle row borders. Gold public CSS rebuilt.
+
+APP-ONLY DEVIATION (not upstream, re-apply after every sync) — three `url()`
+paths. Upstream writes them for phoenix-tailwind's *build output*, where the
+stylesheet sits in public/assets/css/ beside public/assets/img/; Vite resolves
+them against the source file, so they failed to resolve and shipped as broken
+background images. No single path satisfies both layouts, and Tailwind rebases
+relative urls while inlining @import, so a Vite plugin cannot intercept them.
+Rewritten to this app's src/assets/img:
+  components/navbar-top.css  ../img/icons/logo-bg.png   -> ../../img/icons/logo-bg.png
+  components/feed.css        generic/59.png             -> ../../img/generic/59.png
+  plugins/rater.css          /assets/img/icons/star.svg -> ../../img/icons/star.svg
+(components/landing.css and components/travel-agency.css already use the
+source-relative form upstream, so they need no patch — they are the ones that
+are broken in the gold instead.)

@@ -12,6 +12,7 @@ import { currencyFormat } from 'helpers/utils';
 import useAdvanceTable from 'hooks/useAdvanceTable';
 import AdvanceTableProvider from 'providers/AdvanceTableProvider';
 import { Link } from 'react-router';
+import { Progress } from '@hummingbirdui/react';
 
 const getBadgeBg = (label: string): BadgeBg => {
   switch (label) {
@@ -115,18 +116,13 @@ const columns: ColumnDef<LeadDeal>[] = [
       return (
         <>
           <p className="text-muted text-sm mb-0">{probability}%</p>
-          <div
-            className="progress bg-primary-subtle h-0.75"
-            role="progressbar"
-            aria-valuenow={probability}
-            aria-valuemin={0}
-            aria-valuemax={100}
+          <Progress
+            value={probability}
+            max={PROGRESS_MAX}
+            className="bg-primary-subtle h-0.75"
           >
-            <div
-              className={`progress-bar ${getProgressBarClass(probability)}`}
-              style={{ width: `${(probability / PROGRESS_MAX) * 100}%` }}
-            />
-          </div>
+            <Progress.Bar className={getProgressBarClass(probability)} />
+          </Progress>
         </>
       );
     },

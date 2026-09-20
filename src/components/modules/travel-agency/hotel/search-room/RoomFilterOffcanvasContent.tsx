@@ -104,11 +104,12 @@ const RoomFilterOffcanvasContent = ({
         contentClassName="border-b pb-6 pt-1"
       >
         <NouiSlider
-          className="noUi-target-primary noUi-handle-primary noUi-slider-slim noUi-handle-circle bg-primary-subtle px-2 mb-4"
+          className="noUi-target-primary noUi-handle-primary noUi-slider-slim noUi-handle-circle bg-primary-subtle px-2 mb-4 mt-2"
           options={{
             range: { min: 500, max: 2000 },
             start: [699, 1299],
-            connect: true
+            connect: true,
+            tooltips: false
           }}
           onChange={vals => setPriceRange(vals.map(v => Math.round(Number(v))))}
         />

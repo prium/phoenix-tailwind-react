@@ -254,6 +254,8 @@
     --btn-font-size: var(--text-base);
     --btn-padding-y: --spacing(3.5);
     --btn-padding-x: --spacing(6);
+    --btn-border-radius: var(--radius-md);
+    --btn-line-height: 1.2;
   }
 }
 

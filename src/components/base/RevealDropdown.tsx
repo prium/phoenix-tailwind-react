@@ -12,6 +12,11 @@ interface RevealDropdownProps {
   btnClassName?: string;
   dropdownMenuClassName?: string;
   icon?: IconProp;
+  /**
+   * Gold's `DashboardDropdown` pins the icon to `text-sm`; `RevealBtn` leaves
+   * it unsized so it inherits the button's 0.8rem — pass `""` for those.
+   */
+  iconClassName?: string;
 }
 
 /** Hover target: `.btn-reveal-trigger:hover .btn-reveal` gets its border/bg. */
@@ -30,7 +35,8 @@ const RevealDropdown = ({
   className,
   btnClassName,
   dropdownMenuClassName,
-  icon = faEllipsis
+  icon = faEllipsis,
+  iconClassName = 'text-sm'
 }: PropsWithChildren<RevealDropdownProps>) => {
   const dropdown = (
     <Dropdown>
@@ -42,10 +48,13 @@ const RevealDropdown = ({
             btnClassName
           )}
         >
-          <FontAwesomeIcon icon={icon} className="text-sm" />
+          <FontAwesomeIcon icon={icon} className={iconClassName || undefined} />
         </button>
       </Dropdown.Trigger>
-      <Dropdown.Content align="end" className={cn('py-2', dropdownMenuClassName)}>
+      <Dropdown.Content
+        align="end"
+        className={cn('py-2', dropdownMenuClassName)}
+      >
         {children}
       </Dropdown.Content>
     </Dropdown>

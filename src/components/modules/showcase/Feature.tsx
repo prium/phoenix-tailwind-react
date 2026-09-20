@@ -1,10 +1,11 @@
-import { Container, Row, Col } from 'react-bootstrap';
+import { Col, Row } from '@hummingbirdui/react';
 import thumbsUpIcon from 'assets/img/icons/thumbs-up.png';
 import bg26 from 'assets/img/bg/26.png';
 import section63 from 'assets/img/sections/63.webp';
 import { useRef } from 'react';
 import useParallaxHooks from 'hooks/useParallaxHooks';
 
+/** `mixins/showcase/Feature.pug` */
 const Feature = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const parallaxElRef = useRef<HTMLDivElement | null>(null);
@@ -13,38 +14,30 @@ const Feature = () => {
 
   return (
     <section
-      className="overflow-hidden py-0"
-      style={{
-        background: 'linear-gradient(94.41deg, #193D91 -6.4%, #091F51 105.25%)'
-      }}
+      className="section overflow-hidden py-0 bg-[linear-gradient(94.41deg,#193D91_-6.4%,#091F51_105.25%)]"
       ref={containerRef}
     >
       <div
-        className="bg-holder gsap-parallax opacity-50"
-        style={{
-          backgroundImage: `url(${bg26})`,
-          backgroundPosition: '14%',
-          backgroundSize: 'contain',
-          height: '150%'
-        }}
+        className="bg-holder opacity-50 bg-position-[14%]! bg-contain! h-[150%]!"
+        style={{ backgroundImage: `url(${bg26})` }}
         ref={parallaxElRef}
         data-parallax={JSON.stringify({ y: '-40%' })}
       />
-      <Container className="container-small relative py-8">
-        <Row className="align-items-center gx-xxl-13">
-          <Col lg={6} className="mb-6 z-1">
-            <img src={section63} alt="" className="mw-100" />
+      <div className="container-small relative py-14">
+        <Row className="items-center 2xl:gx-26">
+          <Col lg={6} className="mb-10 z-1">
+            <img src={section63} alt="" className="max-w-full" />
           </Col>
           <Col lg={6}>
-            <h1 className="text-light font-normal mb-4 text-center text-lg-start">
+            <h1 className="text-light font-normal mb-6 text-center lg:text-start">
               Coded for
-              <br className="hidden d-lg-block d-xl-none" />
-              <span className="text-primary-light ms-2 font-black">
+              <br className="hidden lg:block xl:hidden" />
+              <span className="text-primary-light font-extrabold">
                 any screen size
                 <img src={thumbsUpIcon} alt="" className="mb-2 ms-2" />
               </span>
             </h1>
-            <p className="text-light text-center text-lg-start">
+            <p className="text-light text-center lg:text-start">
               Built with all top-notch technologies, this admin dashboard is
               fully responsive, and the clean codebase helps it to stay intact
               without breaking down the layout around any device or screen size
@@ -52,7 +45,7 @@ const Feature = () => {
             </p>
           </Col>
         </Row>
-      </Container>
+      </div>
     </section>
   );
 };

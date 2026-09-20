@@ -52,11 +52,6 @@
     top: 50%;
     transform: translateY(-12px);
   }
-  .form-floating {
-    input {
-      padding-left: --spacing(9);
-    }
-  }
   &.flatpicker-input-sm {
     .flatpicker-icon {
       transform: translateY(-12px);
@@ -68,7 +63,8 @@
   .flatpickr-am-pm,
   input {
     color: var(--background-color-emphasis);
-    @include hover-focus {
+    &:hover,
+    &:focus {
       background-color: var(--background-color-subtle) !important;
     }
   }
@@ -117,7 +113,8 @@
     background-color: var(--dtp-calendar-day-hover-bg);
   }
   &.today {
-    @include hover-focus {
+    &:hover,
+    &:focus {
       background: var(--color-primary-dark) !important;
       color: var(--color-white);
     }
@@ -126,7 +123,8 @@
     background-color: var(--background-color-highlight);
     color: var(--text-color-default);
     border: 0;
-    @include hover-focus {
+    &:hover,
+    &:focus {
       background-color: --alpha(var(--color-primary) / 35%);
     }
   }
@@ -181,9 +179,12 @@ span.flatpickr-weekday,
   }
 }
 .flatpickr-day.inRange {
-  -webkit-box-shadow: -5px 0 0 var(--dtp-calendar-bg),
+  -webkit-box-shadow:
+    -5px 0 0 var(--dtp-calendar-bg),
     5px 0 0 var(--dtp-calendar-bg);
-  box-shadow: -5px 0 0 var(--dtp-calendar-bg), 5px 0 0 var(--dtp-calendar-bg);
+  box-shadow:
+    -5px 0 0 var(--dtp-calendar-bg),
+    5px 0 0 var(--dtp-calendar-bg);
 }
 
 .flatpickr-monthDropdown-months {
@@ -225,7 +226,8 @@ span.flatpickr-weekday,
       }
       .cur-month,
       .numInputWrapper {
-        @include hover-focus {
+        &:hover,
+        &:focus {
           background: transparent;
         }
       }

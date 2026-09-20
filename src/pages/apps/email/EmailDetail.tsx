@@ -45,7 +45,7 @@ const EmailDetail = () => {
                 Query about recently purchased soccer socks
               </h3>
               <RevealDropdownTrigger>
-                <RevealDropdown>
+                <RevealDropdown btnClassName="flex" iconClassName="">
                   <Dropdown.Item asChild>
                     <a href="#!">Edit</a>
                   </Dropdown.Item>

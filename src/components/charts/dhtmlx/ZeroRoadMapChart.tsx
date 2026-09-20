@@ -90,9 +90,11 @@ const ZeroRoadMapChart = ({
       });
 
       gantt.config.date_format = '%Y-%m-%d %H:%i';
-      // gold uses dhtmlx defaults here (resetGanttConfig narrows them for the gantt example page)
+      // gold leaves dhtmlx's 70px column default (resetGanttConfig narrows it
+      // for the gantt example page). scroll_size stays resetGanttConfig's 15,
+      // as in the gold: at 20 the 222px box kept only 199px for six 36px rows,
+      // clipping "Review II" and adding a vertical scrollbar the gold lacks.
       gantt.config.min_column_width = 70;
-      gantt.config.scroll_size = 20;
       gantt.config.scale_height = 0;
       gantt.config.row_height = 36;
       gantt.config.bar_height = 12;
@@ -170,19 +172,27 @@ const ZeroRoadMapChart = ({
     gantt.config.rtl = isRTL;
   }, [isRTL]);
 
+  // The effects below only touch gantt when the value really changed, as the
+  // gold's change handlers do. Any setLevel/init after parse re-lays out the
+  // chart: the six 36px rows overflow the 204px data area, so dhtmlx adds a
+  // vertical scrollbar cell the gold never shows on load, narrowing the
+  // timeline by 15px.
   useEffect(() => {
-    gantt.ext.zoom.setLevel(scaleView);
+    const { zoom } = gantt.ext;
+    if (zoom.getLevels()[zoom.getCurrentLevel()]?.name !== scaleView) {
+      zoom.setLevel(scaleView);
+    }
   }, [scaleView]);
 
   useEffect(() => {
-    if (containerRef.current) {
+    if (containerRef.current && gantt.config.show_progress !== showProgress) {
       gantt.config.show_progress = showProgress;
       gantt.init(containerRef.current);
     }
   }, [showProgress]);
 
   useEffect(() => {
-    if (containerRef.current) {
+    if (containerRef.current && gantt.config.show_links !== showLinks) {
       gantt.config.show_links = showLinks;
       gantt.init(containerRef.current);
     }

@@ -26,6 +26,52 @@
 @custom-variant dark (&:where([data-hb-theme=dark], [data-hb-theme=dark] *, .dark, .dark *), [data-hb-theme=dark], .dark);
 @custom-variant active (&:active, &.active);
 
+/* hb-react's useThemeMode puts `.disable-transition` on <html> while it swaps
+   the colour scheme, and hummingbird's utility behind that class forces
+   `animation: none` on every element. The swap holds the main thread long
+   enough (~100ms here) for that to paint, so an open drawer's slide-in is
+   cancelled and then replayed when the class goes: the settings panel looked
+   like it closed and reopened on every theme change. CSS cannot undo an
+   `!important` rule, only outrank it, so re-assert vaul's own values on the
+   drawer while the class is on — the computed animation then never changes.
+   Values mirror node_modules/vaul/style.css. Remove this once hummingbird's
+   disable-transition stops forcing animate-none (it only needs to suppress
+   transitions). */
+[data-vaul-drawer][data-vaul-snap-points='false'][data-vaul-drawer-direction='top'][data-state='open'] {
+  --vaul-animation-name: slideFromTop;
+}
+[data-vaul-drawer][data-vaul-snap-points='false'][data-vaul-drawer-direction='top'][data-state='closed'] {
+  --vaul-animation-name: slideToTop;
+}
+[data-vaul-drawer][data-vaul-snap-points='false'][data-vaul-drawer-direction='right'][data-state='open'] {
+  --vaul-animation-name: slideFromRight;
+}
+[data-vaul-drawer][data-vaul-snap-points='false'][data-vaul-drawer-direction='right'][data-state='closed'] {
+  --vaul-animation-name: slideToRight;
+}
+[data-vaul-drawer][data-vaul-snap-points='false'][data-vaul-drawer-direction='bottom'][data-state='open'] {
+  --vaul-animation-name: slideFromBottom;
+}
+[data-vaul-drawer][data-vaul-snap-points='false'][data-vaul-drawer-direction='bottom'][data-state='closed'] {
+  --vaul-animation-name: slideToBottom;
+}
+[data-vaul-drawer][data-vaul-snap-points='false'][data-vaul-drawer-direction='left'][data-state='open'] {
+  --vaul-animation-name: slideFromLeft;
+}
+[data-vaul-drawer][data-vaul-snap-points='false'][data-vaul-drawer-direction='left'][data-state='closed'] {
+  --vaul-animation-name: slideToLeft;
+}
+/* in a layer, and an early one: for `!important` declarations the cascade
+   reverses, so an earlier layer outranks hummingbird's utilities layer (an
+   unlayered rule would lose to it however specific it is). */
+@layer components {
+  html.disable-transition [data-vaul-drawer] {
+    animation-name: var(--vaul-animation-name) !important;
+    animation-duration: 0.5s !important;
+    animation-timing-function: cubic-bezier(0.32, 0.72, 0, 1) !important;
+  }
+}
+
 @import './theme.css';
 @import './root.css';
 @import './helpers/background.css';
@@ -33,7 +79,6 @@
 @import './plugins/plugins.css';
 
 /* Legacy SCSS is kept for reference only — never scan it for class names. */
-@source not '../scss';
 
 /* React-only Suspense loader (components/common/PhoenixLoader) — ported from
    the original phoenix-react _mixed.scss; the static gold has no counterpart.

@@ -1,20 +1,34 @@
 import { faSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { ColumnDef } from '@tanstack/react-table';
+import { ColumnDef, Table } from '@tanstack/react-table';
 import AdvanceTable from 'components/base/AdvanceTable';
 import {
   ForecastTableData,
   dealForecastTableData
 } from 'data/crm/dashboardData';
+import { currencyFormat, numberFormat } from 'helpers/utils';
 import useAdvanceTable from 'hooks/useAdvanceTable';
 import AdvanceTableProvider from 'providers/AdvanceTableProvider';
 import { Link } from 'react-router';
 
-/* footer totals are hardcoded in the gold pug (mixins/dashboard/CRM/Crm.pug);
-   `font-bold!` because the gold row is a td (700) while AdvanceTable renders
+/* `font-bold!` because the gold row is a td (700) while AdvanceTable renders
    tfoot th, which resolves to font-weight 800 */
 const FOOTER_CELL_CLASSES =
   'align-middle border-b-0 border-e border-subtle whitespace-nowrap text-end font-bold! text-emphasis pt-2 leading-sm pb-0 px-4';
+
+/**
+ * Sum of every row, as the original phoenix react app totals these columns.
+ * Reads `row.original`, not `getValue`: the column ids are kebab-case
+ * (`closed-won`) while the data keys are snake_case, so a key lookup by
+ * column id returns undefined and totals NaN.
+ */
+const columnTotal = (
+  table: Table<ForecastTableData>,
+  key: keyof Omit<ForecastTableData, 'contact'>
+) =>
+  table
+    .getFilteredRowModel()
+    .rows.reduce((total, row) => total + row.original[key], 0);
 
 const columns: ColumnDef<ForecastTableData>[] = [
   {
@@ -58,7 +72,7 @@ const columns: ColumnDef<ForecastTableData>[] = [
       </>
     ),
     accessorKey: 'appointment',
-    cell: ({ row: { original } }) => original.appointment,
+    cell: ({ row: { original } }) => numberFormat(original.appointment),
     meta: {
       headerProps: {
         className:
@@ -70,7 +84,7 @@ const columns: ColumnDef<ForecastTableData>[] = [
       },
       footerProps: { className: FOOTER_CELL_CLASSES }
     },
-    footer: () => '4,744'
+    footer: ({ table }) => numberFormat(columnTotal(table, 'appointment'))
   },
   {
     id: 'qualified',
@@ -89,7 +103,7 @@ const columns: ColumnDef<ForecastTableData>[] = [
       </>
     ),
     accessorKey: 'qualified',
-    cell: ({ row: { original } }) => `$${original.qualified}`,
+    cell: ({ row: { original } }) => currencyFormat(original.qualified),
     meta: {
       headerProps: {
         className:
@@ -101,7 +115,7 @@ const columns: ColumnDef<ForecastTableData>[] = [
       },
       footerProps: { className: FOOTER_CELL_CLASSES }
     },
-    footer: () => '$5,665'
+    footer: ({ table }) => currencyFormat(columnTotal(table, 'qualified'))
   },
   {
     id: 'closed-won',
@@ -120,7 +134,7 @@ const columns: ColumnDef<ForecastTableData>[] = [
       </>
     ),
     accessorKey: 'closed_won',
-    cell: ({ row: { original } }) => `$${original.closed_won}`,
+    cell: ({ row: { original } }) => currencyFormat(original.closed_won),
     meta: {
       headerProps: {
         className:
@@ -132,7 +146,7 @@ const columns: ColumnDef<ForecastTableData>[] = [
       },
       footerProps: { className: FOOTER_CELL_CLASSES }
     },
-    footer: () => '$4630'
+    footer: ({ table }) => currencyFormat(columnTotal(table, 'closed_won'))
   },
   {
     id: 'contact-sent',
@@ -151,7 +165,7 @@ const columns: ColumnDef<ForecastTableData>[] = [
       </>
     ),
     accessorKey: 'contact_sent',
-    cell: ({ row: { original } }) => `$${original.contact_sent}`,
+    cell: ({ row: { original } }) => currencyFormat(original.contact_sent),
     meta: {
       headerProps: {
         className: 'text-end ps-4 uppercase text-subtle min-w-25 w-1/5'
@@ -165,7 +179,7 @@ const columns: ColumnDef<ForecastTableData>[] = [
           'align-middle border-b-0 whitespace-nowrap text-end font-bold! text-emphasis pt-2 pb-0 ps-4 pe-0'
       }
     },
-    footer: () => '$4630'
+    footer: ({ table }) => currencyFormat(columnTotal(table, 'contact_sent'))
   }
 ];
 

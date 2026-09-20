@@ -116,6 +116,20 @@ const cssCode = `
 }
 `;
 
+const forcedCode = `
+import useForcedTheme from 'hooks/useForcedTheme';
+
+const Showcase = () => {
+  // painted light while mounted; the visitor's stored choice is left alone
+  useForcedTheme('light');
+  return <>…</>;
+};
+
+// index.html — the same route in the pre-paint check, so a direct load
+// does not paint the stored scheme for a frame first
+if (/\\/showcase\\/?$/.test(location.pathname)) mode = 'light';
+`;
+
 const DarkMode = () => {
   return (
     <div>
@@ -219,6 +233,26 @@ const DarkMode = () => {
         </PhoenixDocCard>
 
         <PhoenixDocCard className="mb-4">
+          <PhoenixDocCard.Header title="One scheme for one page">
+            <p className="mb-2">
+              Some pages are designed in a single scheme — the showcase is
+              always light. Pin it with <code>useForcedTheme</code> rather than{' '}
+              <code>setTheme</code>: <code>setTheme</code> persists, so it would
+              switch every other open tab too, and leaving the page by a reload
+              would never restore what the visitor had picked.
+            </p>
+            <p className="mb-0">
+              While the pin holds, <code>computedTheme</code> and{' '}
+              <code>isDark</code> report the pinned scheme and{' '}
+              <code>theme</code> keeps reporting the visitor&apos;s choice. Add
+              the route to the pre-paint check in <code>index.html</code> as
+              well, or a direct load flashes the stored scheme first.
+            </p>
+          </PhoenixDocCard.Header>
+          <PhoenixDocCard.Body code={forcedCode} hidePreview />
+        </PhoenixDocCard>
+
+        <PhoenixDocCard className="mb-4">
           <PhoenixDocCard.Header title="Styling for dark mode">
             <p className="mb-0">
               Prefer the semantic tokens — <code>text-default</code>,{' '}
@@ -252,6 +286,13 @@ const DarkMode = () => {
               the effect that builds your options and it happens for free. Note
               that a change can arrive from another tab, not just from a click
               in this one.
+            </p>
+            <p className="mb-0 mt-2">
+              Branch on <code>isDark</code> or <code>computedTheme</code>, never
+              on <code>theme</code>. In follow-the-OS mode <code>theme</code> is{' '}
+              <code>auto</code>, so a <code>theme === &apos;dark&apos;</code>{' '}
+              check quietly takes the light path on a dark system — the top
+              regions map shipped exactly that bug.
             </p>
           </PhoenixDocCard.Header>
         </PhoenixDocCard>

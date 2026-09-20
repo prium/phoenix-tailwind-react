@@ -1,4 +1,4 @@
-import { Card, Col, Dropdown, Row } from '@hummingbirdui/react';
+import { Card, Col, Dropdown, Progress, Row } from '@hummingbirdui/react';
 import FeatherIcon from 'feather-icons-react';
 import Avatar from 'components/base/Avatar';
 import avatar from 'assets/img/team/72x72/58.webp';
@@ -96,15 +96,11 @@ const DealProfileCard = ({ className }: { className?: string }) => {
               </div>
             </div>
 
-            <div className="progress mb-2 h-1.25 dark">
-              <div
-                className="progress-bar w-2/5 bg-blue-200"
-                role="progressbar"
-                aria-valuenow={25}
-                aria-valuemin={0}
-                aria-valuemax={100}
-              />
-            </div>
+            {/* the gold's bar is 2/5 wide but carries aria-valuenow=25; HB
+                drives both from `value`, so the label matches what is drawn */}
+            <Progress value={40} className="mb-2 h-1.25">
+              <Progress.Bar className="bg-blue-200" />
+            </Progress>
             <div className="flex items-center justify-between">
               <p className="mb-0">New</p>
               <div>
