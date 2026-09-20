@@ -68,9 +68,7 @@ const OrderDetails = () => {
         </div>
         <Row className="g-8 gy-12">
           <Col xs={12} xl={8} xxl={9}>
-            <div className="mb-10">
-              <OrderDetailsTable />
-            </div>
+            <OrderDetailsTable />
             <Row className="gx-6 gy-10 xl:g-12 sm:justify-center xl:justify-start">
               <Col xs={12} sm="auto">
                 <BillingDetails />
