@@ -1,90 +1,107 @@
+import { Col, Input, Row } from '@hummingbirdui/react';
 import { WizardFormData } from 'pages/modules/forms/WizardExample';
 import { useWizardFormContext } from 'providers/WizardFormProvider';
-import React from 'react';
-import { Col, Form, Row } from 'react-bootstrap';
 import { Link } from 'react-router';
 
+/** gold `+AccountForm` in mixins/wizard/WizardForms.pug */
 const WizardAccountForm = ({ id }: { id: string }) => {
-  const methods = useWizardFormContext<WizardFormData>();
-  const { formData, onChange, validation } = methods;
+  const { formData, onChange, validation } =
+    useWizardFormContext<WizardFormData>();
 
   return (
     <>
-      <Form.Group className="mb-2">
-        <Form.Label className="text-default">Name</Form.Label>
-        <Form.Control
+      <div className="mb-2">
+        <label
+          className="form-label text-default"
+          htmlFor={`${id}-wizard-name`}
+        >
+          Name
+        </label>
+        <Input
           type="text"
           name="name"
+          id={`${id}-wizard-name`}
           placeholder="John Smith"
           value={formData.name || ''}
           onChange={onChange}
           required={validation}
         />
-        <Form.Control.Feedback type="invalid">
-          This field is required.
-        </Form.Control.Feedback>
-      </Form.Group>
-      <Form.Group className="mb-2">
-        <Form.Label>Email*</Form.Label>
-        <Form.Control
+        <div className="invalid-feedback">This field is required.</div>
+      </div>
+      <div className="mb-2">
+        <label className="form-label" htmlFor={`${id}-wizard-email`}>
+          Email*
+        </label>
+        <Input
           type="email"
           name="email"
+          id={`${id}-wizard-email`}
           placeholder="Email address"
           value={formData.email || ''}
           onChange={onChange}
           required={validation}
         />
-        <Form.Control.Feedback type="invalid">
-          This field is required.
-        </Form.Control.Feedback>
-      </Form.Group>
-      <Row className="g-3 mb-3">
+        <div className="invalid-feedback">This field is required.</div>
+      </div>
+      <Row className="g-4 mb-4">
         <Col sm={6}>
-          <Form.Group className="mb-2 mb-sm-0">
-            <Form.Label className="text-default">Password*</Form.Label>
-            <Form.Control
+          <div className="mb-2 sm:mb-0">
+            <label
+              className="form-label text-default"
+              htmlFor={`${id}-wizard-password`}
+            >
+              Password*
+            </label>
+            <Input
               type="password"
               name="password"
+              id={`${id}-wizard-password`}
               placeholder="Password"
               value={formData.password || ''}
               onChange={onChange}
               required={validation}
-            />{' '}
-            <Form.Control.Feedback type="invalid">
-              This field is required.
-            </Form.Control.Feedback>
-          </Form.Group>
+            />
+            <div className="invalid-feedback">This field is required.</div>
+          </div>
         </Col>
         <Col sm={6}>
-          <Form.Group className="mb-2">
-            <Form.Label className="text-default">Confirm Password*</Form.Label>
-            <Form.Control
+          <div className="mb-2">
+            <label
+              className="form-label text-default"
+              htmlFor={`${id}-wizard-confirm-password`}
+            >
+              Confirm Password*
+            </label>
+            <Input
               type="password"
               name="confirm_password"
+              id={`${id}-wizard-confirm-password`}
               placeholder="Confirm Password"
               value={formData.confirm_password || ''}
               onChange={onChange}
               required={validation}
-            />{' '}
-            <Form.Control.Feedback type="invalid">
-              This field is required.
-            </Form.Control.Feedback>
-          </Form.Group>
+            />
+            <div className="invalid-feedback">This field is required.</div>
+          </div>
         </Col>
       </Row>
-      <Form.Check className="form-check">
-        <Form.Check.Input
+      <div className="form-check">
+        <input
+          className="form-check-input"
           type="checkbox"
           name="terms"
           id={`${id}-terms`}
           checked={formData.accept_terms}
           onChange={onChange}
         />
-        <Form.Check.Label className="text-default" htmlFor={`${id}-terms`}>
+        <label
+          className="form-check-label text-default"
+          htmlFor={`${id}-terms`}
+        >
           I accept the <Link to="#!">terms</Link> and{' '}
           <Link to="#!">privacy policy</Link>
-        </Form.Check.Label>
-      </Form.Check>
+        </label>
+      </div>
     </>
   );
 };

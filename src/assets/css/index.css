@@ -79,7 +79,6 @@
 @import './plugins/plugins.css';
 
 /* Legacy SCSS is kept for reference only — never scan it for class names. */
-@source not '../scss';
 
 /* React-only Suspense loader (components/common/PhoenixLoader) — ported from
    the original phoenix-react _mixed.scss; the static gold has no counterpart.

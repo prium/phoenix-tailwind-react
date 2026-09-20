@@ -1,15 +1,16 @@
 import Avatar from 'components/base/Avatar';
 import { useWizardFormContext } from 'providers/WizardFormProvider';
 import { useState } from 'react';
-import { Col, Form, Row } from 'react-bootstrap';
+import { Col, Input, Row, Select, Textarea } from '@hummingbirdui/react';
 import avatarPlaceholder from 'assets/img/team/avatar.webp';
 import AvatarDropzone from 'components/common/AvatarDropzone';
 import DatePicker from 'components/base/DatePicker';
 import { WizardFormData } from 'pages/modules/forms/WizardExample';
 
+/** gold `+PersonalForm` in mixins/wizard/WizardForms.pug */
 const WizardPersonalForm = () => {
-  const methods = useWizardFormContext<WizardFormData>();
-  const { formData, onChange, validation } = methods;
+  const { formData, onChange, validation } =
+    useWizardFormContext<WizardFormData>();
   const [avatar, setAvatar] = useState(avatarPlaceholder);
 
   const onDrop = (acceptedFiles: File[]) => {
@@ -18,7 +19,7 @@ const WizardPersonalForm = () => {
 
   return (
     <>
-      <Row className="mb-4">
+      <Row className="g-6 mb-6">
         <Col md="auto">
           <Avatar src={avatar} placeholder size="4xl" />
         </Col>
@@ -26,10 +27,13 @@ const WizardPersonalForm = () => {
           <AvatarDropzone onDrop={onDrop} />
         </Col>
       </Row>
-      <Form.Group className="mb-2">
-        <Form.Label>Gender</Form.Label>
-        <Form.Select
+      <div className="mb-2">
+        <label className="form-label" htmlFor="wizard-gender">
+          Gender
+        </label>
+        <Select
           name="gender"
+          id="wizard-gender"
           value={formData.gender}
           onChange={onChange}
           required={validation}
@@ -38,57 +42,58 @@ const WizardPersonalForm = () => {
           <option value="Male">Male</option>
           <option value="Female">Female</option>
           <option value="Other">Other</option>
-        </Form.Select>
-        <Form.Control.Feedback type="invalid">
-          This field is required.
-        </Form.Control.Feedback>
-      </Form.Group>
-      <Form.Group className="mb-2">
-        <Form.Label>Phone</Form.Label>
-        <Form.Control
+        </Select>
+        <div className="invalid-feedback">This field is required.</div>
+      </div>
+      <div className="mb-2">
+        <label className="form-label" htmlFor="wizard-phone">
+          Phone
+        </label>
+        <Input
           type="text"
           name="phone"
+          id="wizard-phone"
           placeholder="Phone"
           value={formData.phone}
           onChange={onChange}
           required={validation}
         />
-        <Form.Control.Feedback type="invalid">
-          This field is required.
-        </Form.Control.Feedback>
-      </Form.Group>
+        <div className="invalid-feedback">This field is required.</div>
+      </div>
 
       <DatePicker
         hideIcon
-        render={(_, ref) => {
-          return (
-            <Form.Group className="mb-2">
-              <Form.Label>Date of birth</Form.Label>
-              <Form.Control
-                type="date"
-                placeholder="Date of birth"
-                ref={ref}
-                value={formData.dob}
-                name="dob"
-              />
-            </Form.Group>
-          );
-        }}
+        render={(_, ref) => (
+          <div className="mb-2">
+            <label className="form-label" htmlFor="wizard-datepicker">
+              Date of birth
+            </label>
+            <Input
+              type="date"
+              id="wizard-datepicker"
+              placeholder="Date of birth"
+              ref={ref}
+              value={formData.dob}
+              name="dob"
+            />
+          </div>
+        )}
       />
 
-      <Form.Group className="mb-2">
-        <Form.Label>Address</Form.Label>
-        <Form.Control
-          as="textarea"
+      <div className="mb-2">
+        <label className="form-label" htmlFor="wizard-address">
+          Address
+        </label>
+        <Textarea
+          id="wizard-address"
+          name="address"
           value={formData.address}
           onChange={onChange}
           rows={4}
           required={validation}
         />
-        <Form.Control.Feedback type="invalid">
-          This field is required.
-        </Form.Control.Feedback>
-      </Form.Group>
+        <div className="invalid-feedback">This field is required.</div>
+      </div>
     </>
   );
 };

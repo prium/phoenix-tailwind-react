@@ -1,7 +1,6 @@
 import SpecificationTable, {
   TableRowData
 } from 'components/tables/SpecificationTable';
-import React from 'react';
 
 const processorData: TableRowData[] = [
   {
