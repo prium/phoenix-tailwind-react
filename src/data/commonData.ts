@@ -61,7 +61,7 @@ export const ecomBreadcrumbItems: PageBreadcrumbItem[] = [
     url: '#!'
   },
   {
-    label: 'Womens Fashion',
+    label: 'Women fashion',
     url: '#!'
   },
   {
