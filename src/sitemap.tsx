@@ -597,7 +597,6 @@ export const routes: RouteItems[] = [
         name: 'gallery',
         icon: 'image',
         active: true,
-        new: true,
         pages: [
           {
             name: 'album',
@@ -691,8 +690,7 @@ export const routes: RouteItems[] = [
             name: 'faq-tab',
             path: '/pages/faq/faq-tab',
             pathName: 'faq-tab',
-            active: true,
-            new: true
+            active: true
           }
         ]
       },
@@ -711,8 +709,7 @@ export const routes: RouteItems[] = [
             name: 'alternate',
             path: '/pages/landing/alternate',
             pathName: 'landing-alternate',
-            active: true,
-            new: true
+            active: true
           }
         ]
       },
@@ -1142,8 +1139,7 @@ export const routes: RouteItems[] = [
             name: 'wizard',
             path: '/modules/forms/wizard',
             pathName: 'forms-wizard',
-            active: true,
-            new: true
+            active: true
           }
         ]
       },
@@ -1196,6 +1192,7 @@ export const routes: RouteItems[] = [
         name: 'charts',
         icon: 'bar-chart-2',
         active: true,
+        hasNew: true,
         pages: [
           {
             name: 'ECharts',
@@ -1207,7 +1204,8 @@ export const routes: RouteItems[] = [
             name: 'gantt-chart',
             path: '/modules/charts/gantt-chart',
             pathName: 'gantt-chart',
-            active: true
+            active: true,
+            new: true
           }
         ]
       },
@@ -1215,7 +1213,6 @@ export const routes: RouteItems[] = [
         name: 'components',
         icon: 'package',
         active: true,
-        hasNew: true,
         pages: [
           {
             name: 'accordion',
@@ -1311,8 +1308,7 @@ export const routes: RouteItems[] = [
             name: 'draggable',
             pathName: 'components-draggable',
             path: '/modules/components/draggable',
-            active: true,
-            new: true
+            active: true
           },
           {
             name: 'dialog',
@@ -1646,8 +1642,7 @@ export const routes: RouteItems[] = [
             name: 'color',
             path: '/documentation/customization/color',
             pathName: 'doc-color',
-            active: true,
-            new: true
+            active: true
           },
           {
             name: 'styling',

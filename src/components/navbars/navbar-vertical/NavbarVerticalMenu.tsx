@@ -85,9 +85,9 @@ const NavItem = ({ route, level }: NavItemProps) => {
             </span>
             <span className="nav-link-text-wrapper">
               <span className="nav-link-text">{capitalize(route.name)}</span>
-              {/* `.navbar-vertical-collapsed .nav-link-badge` hides this */}
-              <RouteBadges route={route} className="nav-link-badge" />
             </span>
+            {/* `.navbar-vertical-collapsed .nav-link-badge` hides this */}
+            <RouteBadges route={route} className="nav-link-badge" />
           </>
         ) : (
           <>
@@ -161,11 +161,13 @@ const CollapsableNavItem = ({ route, level }: NavItemProps) => {
           )}
           <span className={cn('nav-link-text', { new: route.hasNew })}>
             {capitalize(route.name)}
-            <RouteBadges
-              route={route}
-              className={level === 1 ? 'nav-link-badge' : undefined}
-            />
           </span>
+          {/* sibling of the text, as in NavbarVertical.pug — inside
+              `.nav-link-text` it would inherit that span's smaller font */}
+          <RouteBadges
+            route={route}
+            className={level === 1 ? 'nav-link-badge' : undefined}
+          />
         </div>
       </a>
       <div className={cn('parent-wrapper', { 'label-1': level === 1 })}>
