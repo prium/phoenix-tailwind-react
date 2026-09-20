@@ -24,17 +24,18 @@ const ProductsFilter = () => {
   const handleShow = () => setShow(true);
   return (
     <div>
+      {/* gold `#productFilterColumn`: `.phoenix-offcanvas-filter.bg-default
+          .scrollbar.phoenix-offcanvas.phoenix-offcanvas-fixed.top-23!` — one
+          element there, drawer here plus the sticky column below */}
       <PhoenixOffcanvas
         open={show}
         onHide={handleClose}
-        style={{ width: 300, top: 92 }}
-        className="py-8 ps-8 products-filter-offcanvas"
+        className="phoenix-offcanvas-filter bg-default scrollbar top-23! w-75 lg:hidden"
+        backdropClassName="top-23! lg:hidden"
         fixed
       >
         <Scrollbar style={{ height: '100%' }} className="table-scrollbar">
-          <div className="pe-8">
-            <ProductFilterItems handleClose={handleClose} />
-          </div>
+          <ProductFilterItems handleClose={handleClose} />
         </Scrollbar>
       </PhoenixOffcanvas>
       <Section className="pt-8 pb-16" containerClassName="xl:max-2xl:max-w-304">

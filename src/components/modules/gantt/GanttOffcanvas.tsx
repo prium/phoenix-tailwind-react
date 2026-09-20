@@ -22,6 +22,7 @@ import { gantt, Task } from 'dhtmlx-gantt';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import GanttConfirmDeleteModal from './GanttConfirmDeleteModal';
+import { useAppContext } from 'providers/AppProvider';
 
 const subtasks = [
   { id: 'subtask1', label: 'Study Dragons' },
@@ -88,6 +89,9 @@ const flatpickrIcon = (
 
 /** `+EditTaskOffcanvas` (#taskDetailsOffcanvas) in mixins/gantt-chart/GanttChart.pug */
 const GanttOffcanvas = () => {
+  const {
+    config: { isRTL }
+  } = useAppContext();
   const [show, setShow] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [task, setTask] = useState<Task>();
@@ -138,7 +142,11 @@ const GanttOffcanvas = () => {
 
   return (
     <>
-      <Drawer direction="right" open={show} onOpenChange={setShow}>
+      <Drawer
+        direction={isRTL ? 'left' : 'right'}
+        open={show}
+        onOpenChange={setShow}
+      >
         {/* the gold sizes `.gantt-offcanvas .offcanvas`; the drawer content is
             portaled out of that wrapper, so the width lives on the content */}
         <Drawer.Content

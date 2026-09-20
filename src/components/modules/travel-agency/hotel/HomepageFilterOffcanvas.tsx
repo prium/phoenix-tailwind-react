@@ -1,6 +1,7 @@
 import { Dispatch, SetStateAction } from 'react';
 import { Drawer } from '@hummingbirdui/react';
 import Button from 'components/base/Button';
+import { useAppContext } from 'providers/AppProvider';
 import HomepageFilterOffcanvasContent from './HomepageFilterOffcanvasContent';
 
 interface HomepageFilterOffcanvasProps {
@@ -13,8 +14,16 @@ const HomepageFilterOffcanvas = ({
   isOpen,
   setIsOpen
 }: HomepageFilterOffcanvasProps) => {
+  const {
+    config: { isRTL }
+  } = useAppContext();
+
   return (
-    <Drawer direction="right" open={isOpen} onOpenChange={setIsOpen}>
+    <Drawer
+      direction={isRTL ? 'left' : 'right'}
+      open={isOpen}
+      onOpenChange={setIsOpen}
+    >
       <Drawer.Content aria-describedby={undefined}>
         <Drawer.Header className="p-6 bg-subtle">
           <Drawer.Title asChild>

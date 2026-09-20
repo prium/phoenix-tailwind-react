@@ -22,8 +22,8 @@ const LeadDetailsOffcanvas = ({ open, setOpen }: LeadDetailsOffcanvasProps) => {
         <PhoenixOffcanvas
           open={open}
           onHide={() => setOpen(false)}
-          style={{ maxWidth: 350 }}
-          className="p-6 pt-4 phoenix-offcanvas-content scrollbar"
+          className="lead-details-offcanvas bg-default scrollbar"
+          backdropClassName="top-0"
           placement="start"
           fixed
         >
