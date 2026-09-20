@@ -85,7 +85,7 @@ Open the pug mixin and copy its class string.
 | `useBreakpoints` | keep (`hooks/useBreakpoints`) |
 | classnames | `cn` from `@hummingbirdui/react` |
 
-Anything unmigrated still compiles through the temporary shim `src/react-bootstrap/` — delete the shim once `grep -rl react-bootstrap src` is empty.
+The temporary `src/react-bootstrap/` shim is gone — nothing imports react-bootstrap any more. A page still to migrate keeps its own pre-Tailwind class names; port it against the gold pug rather than reintroducing a compatibility layer.
 
 ## 3. Scale + token cheatsheet (Bootstrap → Tailwind/phoenix)
 
@@ -130,4 +130,4 @@ Anything unmigrated still compiles through the temporary shim `src/react-bootstr
 
 - `npm run test:visual` green with every page of the module listed in `tests/visual/pages.ts` (dashboards with `dark: true, widths: [768]`); any tolerance above 1% is commented as data-only.
 - `grep -rl react-bootstrap` over the module's import closure is empty; leftover grep (1.6) empty.
-- `CONVERTED.md` updated; commits per page; final message lists pages verified, known data-only deltas, and what remains on the shim.
+- `CONVERTED.md` updated; commits per page; final message lists pages verified and known data-only deltas.

@@ -6,8 +6,8 @@ finishes a page/module** (the hb-migrate skill's per-page loop ends with this).
 
 - ✅ done — pixel-verified against `../phoenix-tailwind` gold, listed in
   `tests/visual/pages.ts`, closure free of react-bootstrap
-- 🚧 partial — some files ported or codemodded, not verified / closure still on the shim
-- ⬜ todo — untouched, compiles through the `src/react-bootstrap/` shim
+- 🚧 partial — some files ported or codemodded, not verified
+- ⬜ todo — untouched (markup still on the gold's pre-Tailwind classes)
 
 A module is only ✅ when `npm run test:visual` is green with its pages listed,
 the leftover-Bootstrap grep is empty for its closure, and this table says so.
@@ -23,8 +23,8 @@ the leftover-Bootstrap grep is empty for its closure, and this table says so.
 | Base components (Button, Badge, Avatar, AdvanceTable, footer, dropdowns, SearchBox, DatePicker, ReactSelect, CheckButton, PhoenixOffcanvas…) | ✅ | see skill §0 finished examples |
 | Chat widget | ✅ | live in MainLayout, HB-based (tracker note was stale) |
 | Auth layouts (simple / split / card) | ✅ | done with the authentication pages; `PasswordField` + `AuthLogoLink` extracted |
-| DocPagesLayout | ⬜ | still on shim; EmailLayout + FileManagerLayout done with their modules |
-| `src/react-bootstrap/` shim | 🚧 | delete when `grep -rl react-bootstrap src` is empty |
+| DocPagesLayout | ⬜ | EmailLayout + FileManagerLayout done with their modules |
+| `src/react-bootstrap/` shim | ✅ | deleted; `grep -rl react-bootstrap src` is empty. The Bootstrap-era `src/assets/scss` tree is gone too |
 
 ## Dashboards
 
