@@ -72,6 +72,24 @@
   }
 }
 
+/* vaul's geometry is physical — a `left` drawer slides in with
+   `translate3d(-100%,0,0)` and paints its overscroll filler (`::after`) at
+   `right: 100%` — but hb-react positions the panel with logical utilities
+   (`offcanvas-start` / `offcanvas-end`). The two agree in LTR and contradict
+   each other in RTL: a `left` drawer lands on the right and its white filler
+   covers the page. Pin left/right drawers to the side vaul assumes.
+   Remove once hb-react's drawer places left/right physically. */
+[dir='rtl'] [data-vaul-drawer][data-vaul-drawer-direction='left'] {
+  inset-inline: 0 auto;
+  left: 0;
+  right: auto;
+}
+[dir='rtl'] [data-vaul-drawer][data-vaul-drawer-direction='right'] {
+  inset-inline: auto 0;
+  left: auto;
+  right: 0;
+}
+
 @import './theme.css';
 @import './root.css';
 @import './helpers/background.css';
